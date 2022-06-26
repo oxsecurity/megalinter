@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                     | Configuration key       |
-|----------------------------|-------------------------|
-| [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) |
+| Linter                     | Configuration key       | Status                                                                                                                               |
+|----------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits) |
 
 ## Linted files
 

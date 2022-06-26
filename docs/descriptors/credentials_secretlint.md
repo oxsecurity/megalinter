@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits)
+
 ## secretlint documentation
 
 - Version in MegaLinter: **4.1.0**

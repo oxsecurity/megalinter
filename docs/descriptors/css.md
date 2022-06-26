@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter                        | Configuration key                 |
-|-------------------------------|-----------------------------------|
-| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) |
-| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) |
+| Linter                        | Configuration key                 | Status                                                                                                                                 |
+|-------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) |
+| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits)             |
 
 ## Linted files
 

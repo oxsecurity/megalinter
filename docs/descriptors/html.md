@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                       | Configuration key        |
-|------------------------------|--------------------------|
-| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) |
+| Linter                       | Configuration key        | Status                                                                                                                             |
+|------------------------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/commits) |
 
 ## Linted files
 

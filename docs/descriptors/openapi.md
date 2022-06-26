@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                          | Configuration key              |
-|---------------------------------|--------------------------------|
-| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) |
+| Linter                          | Configuration key              | Status                                                                                                                                   |
+|---------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) |
 
 ## Linted files
 

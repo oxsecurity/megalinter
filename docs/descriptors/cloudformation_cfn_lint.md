@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/martysweet/cfn-lint)](https://github.com/martysweet/cfn-lint/commits)
+
 ## cfn-lint documentation
 
 - Version in MegaLinter: **0.61.1**

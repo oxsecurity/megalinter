@@ -8,18 +8,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+**Except for special cases, updates of v5 are frozen until v6 release**
+
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.16.1] - 2022-06-26
+
+- Quick fix release management
+
+## [v5.16.0] - 2022-06-26
+
 - Support for named Docker container.
 
 - Linter versions upgrades
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
-  - [kics](https://www.kics.io) from 1.5.10 to **1.5.11** on 2022-06-23
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.0 to **0.38.1** on 2022-06-23
   - [checkov](https://www.checkov.io/) from 2.0.1230 to **2.1.0** on 2022-06-23
   - [checkov](https://www.checkov.io/) from 2.1.0 to **2.1.5** on 2022-06-24
   - [checkov](https://www.checkov.io/) from 2.1.5 to **2.1.7** on 2022-06-25
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.1.7 to **3.9** on 2022-06-26
+  - [kics](https://www.kics.io) from 1.5.10 to **1.5.11** on 2022-06-23
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.1 to **0.38.2** on 2022-06-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.0 to **0.38.1** on 2022-06-23
 
 ## [v5.15.0] - 2022-06-23
 

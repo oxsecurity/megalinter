@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                    | Configuration key        |
-|---------------------------|--------------------------|
-| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |
+| Linter                    | Configuration key        | Status |
+|---------------------------|--------------------------|--------|
+| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |        |
 
 ## Linted files
 
