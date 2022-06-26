@@ -282,7 +282,7 @@ def build_dockerfile(
             gem_packages += item["install"]["gem"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
-        apk_packages += ["nodejs", "npm", "yarn"]
+        apk_packages += ["npm", "nodejs-current", "yarn"]
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
         apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
