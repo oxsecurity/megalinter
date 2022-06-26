@@ -122,7 +122,8 @@ When you don't know what option to select, please use default values`
       {
         type: "confirm",
         name: "ox",
-        message: "Do you want to test Ox.security to secure your repositories ?",
+        message:
+          "Do you want to test Ox.security to secure your repositories ?",
         default: true,
       },
     ];
@@ -322,6 +323,6 @@ When you don't know what option to select, please use default values`
 ==========================================================
 =============   MegaLinter, by Ox.security   =============
 ==========================================================
-`
+`;
   }
 };

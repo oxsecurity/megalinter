@@ -323,7 +323,6 @@ jobs:
         test: "wesh megalinter/megalinter",
         testRes: "wesh oxsecurity/megalinter",
       },
-
     ];
   }
 
