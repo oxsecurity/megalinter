@@ -1,3 +1,4 @@
+// This is a package comment
 package main
 
 import "fmt"
