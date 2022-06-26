@@ -5522,18 +5522,15 @@
 <ul>
 <li>Version in MegaLinter: <strong>0.35.0</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md" target="_blank">How to configure tflint rules</a><ul>
-<li>If custom <code>.tflint.hcl</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
-</ul>
-</li>
+<li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md" target="_blank">How to configure tflint rules</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md" target="_blank">How to disable tflint rules in files</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules" target="_blank">Index of problems detected by tflint</a></li>
 </ul>
 <p><a href="https://github.com/terraform-linters/tflint" target="_blank"><img alt="tflint - GitHub" src="https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.github.io/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.github.io/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -5587,7 +5584,7 @@
 <tr>
 <td>TERRAFORM_TFLINT_CONFIG_FILE</td>
 <td>tflint configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.tflint.hcl</code></td>
+<td><code>.tflint.hcl - --format</code></td>
 </tr>
 <tr>
 <td>TERRAFORM_TFLINT_RULES_PATH</td>
@@ -5621,17 +5618,24 @@
 <tbody>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
+<td align="left"><a href="https://megalinter.github.io/v6-alpha/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">97</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">102</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://megalinter.github.io/v6-alpha/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">20</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-security" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://megalinter.github.io/flavors/terraform/">terraform</a></td>
+<td align="left"><a href="https://megalinter.github.io/v6-alpha/flavors/terraform/">terraform</a></td>
 <td align="left">Optimized for TERRAFORM based projects</td>
-<td align="center">47</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-terraform" /></td>
+<td align="center">49</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-terraform" /></td>
 </tr>
 </tbody>
 </table>

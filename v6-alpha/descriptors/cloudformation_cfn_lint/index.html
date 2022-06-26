@@ -5534,11 +5534,11 @@
   </a>
 </div>
 
-<p><a href="https://github.com/martysweet/cfn-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/martysweet/cfn-lint" /></a></p>
+<p><a href="https://github.com/aws-cloudformation/cfn-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint" /></a></p>
 <h2 id="cfn-lint-documentation">cfn-lint documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.61.1</strong></li>
-<li>Visit <a href="https://github.com/martysweet/cfn-lint#readme" target="_blank">Official Web Site</a><ul>
+<li>Visit <a href="https://github.com/aws-cloudformation/cfn-lint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.cfnlintrc.yml</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml" target="_blank">.cfnlintrc.yml</a> will be used</li>
 </ul>
 </li>
@@ -5577,7 +5577,7 @@
 <tr>
 <td>CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS</td>
@@ -5674,10 +5674,17 @@
 <tbody>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
+<td align="left"><a href="https://megalinter.github.io/v6-alpha/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">97</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">102</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://megalinter.github.io/v6-alpha/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">20</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-security" /></td>
 </tr>
 </tbody>
 </table>
