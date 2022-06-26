@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                               | Configuration key               |
-|--------------------------------------|---------------------------------|
-| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) |
+| Linter                               | Configuration key               | Status                                                                                                                         |
+|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/IBM/tekton-lint)](https://github.com/IBM/tekton-lint/commits) |
 
 ## Linted files
 

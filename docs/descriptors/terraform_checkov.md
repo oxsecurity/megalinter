@@ -7,9 +7,11 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
+
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.5**
+- Version in MegaLinter: **3.9**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -73,6 +75,8 @@ checkov --file myfile.tf
 ### Help content
 
 ```shell
+/usr/local/lib/python3.9/site-packages/requests/__init__.py:109: RequestsDependencyWarning: urllib3 (1.26.9) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn(
 usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]

@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)
+
 ## prettier documentation
 
 - Version in MegaLinter: **2.7.1**

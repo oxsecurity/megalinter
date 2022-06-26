@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/pylint)](https://github.com/PyCQA/pylint/commits)
+
 ## pylint documentation
 
 - Version in MegaLinter: **2.14.3**

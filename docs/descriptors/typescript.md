@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                             | Configuration key                             |
-|------------------------------------|-----------------------------------------------|
-| [eslint](typescript_eslint.md)     | [TYPESCRIPT_ES](typescript_eslint.md)         |
-| [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
-| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md)          |
+| Linter                             | Configuration key                             | Status                                                                                                                             |
+|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [eslint](typescript_eslint.md)     | [TYPESCRIPT_ES](typescript_eslint.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits)         |
+| [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) |
+| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md)          | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) |
 
 ## Linted files
 

@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                      | Configuration key      |
-|-----------------------------|------------------------|
-| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |
-| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) |
-| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) |
+| Linter                      | Configuration key      | Status                                                                                                                                   |
+|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/joereynolds/sql-lint)](https://github.com/joereynolds/sql-lint/commits) |
+| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits)       |
+| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits)       |
 
 ## Linted files
 

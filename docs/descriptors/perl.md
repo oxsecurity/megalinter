@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                           | Configuration key          |
-|----------------------------------|----------------------------|
-| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) |
+| Linter                           | Configuration key          | Status                                                                                                                                         |
+|----------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) |
 
 ## Linted files
 

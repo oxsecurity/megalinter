@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                      | Configuration key      |
-|-----------------------------|------------------------|
-| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) |
+| Linter                      | Configuration key      | Status                                                                                                                             |
+|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/luarocks/luacheck)](https://github.com/luarocks/luacheck/commits) |
 
 ## Linted files
 

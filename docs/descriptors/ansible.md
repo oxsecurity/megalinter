@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                  | Configuration key                  |
-|-----------------------------------------|------------------------------------|
-| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) |
+| Linter                                  | Configuration key                  | Status                                                                                                                                   |
+|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/commits) |
 
 ## Linted files
 

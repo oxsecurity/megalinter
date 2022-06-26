@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits)
+
 ## terraform-fmt documentation
 
 - Version in MegaLinter: **1.2.3**

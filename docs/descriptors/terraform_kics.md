@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits)
+
 ## kics documentation
 
 - Version in MegaLinter: **1.5.11**

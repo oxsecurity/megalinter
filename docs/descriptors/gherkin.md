@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                  | Configuration key                  |
-|-----------------------------------------|------------------------------------|
-| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) |
+| Linter                                  | Configuration key                  | Status                                                                                                                                   |
+|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/vsiakka/gherkin-lint)](https://github.com/vsiakka/gherkin-lint/commits) |
 
 ## Linted files
 

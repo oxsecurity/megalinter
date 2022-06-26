@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits)
+
 ## snakemake documentation
 
 - Version in MegaLinter: **7.8.3**

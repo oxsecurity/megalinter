@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits)
+
 `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
 
 ## kubeconform documentation

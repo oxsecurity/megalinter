@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits)
+
 ## checkstyle documentation
 
 - Version in MegaLinter: **10.3**
