@@ -50,7 +50,7 @@ class Megalinter:
         self.linter_version_only = None
         self.load_cli_vars()
 
-        # Initialisation for lint request cases
+        # Initialization for lint request cases
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
