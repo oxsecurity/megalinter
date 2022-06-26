@@ -1,22 +1,24 @@
 ---
-site_name: MegaLinter
+site_name: MegaLinter by OX Security
 site_url: https://megalinter.github.io
 repo_url: https://github.com/megalinter/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.
 # site_description-end
-copyright: Copyright &copy; 2021 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
+copyright: Copyright &copy; 2022 <a href="https://www.ox.security/" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
   name: material
+  font: 
+    text: Satoshi, sans-serif
   custom_dir: docs/overrides
   features:
     - navigation.instant
   logo: assets/images/mega-linter-square.png
   favicon: assets/images/mega-linter-square.png
   palette:
-    primary: teal
+    primary: white
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -31,6 +33,7 @@ extra_javascript:
   - javascripts/tables.js
   - javascripts/gtag.js
   - javascripts/version-mike.js
+  - javascripts/quickfixes.js
 extra_css:
   - stylesheets/extra.css
 extra:
@@ -38,6 +41,8 @@ extra:
     provider: mike
     default: latest
   social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/ox-security/
     - icon: fontawesome/regular/circle-question
       link: https://github.com/megalinter/megalinter/issues
       title: Need help ? Post an issue :)

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                        | Configuration key          |
-|-------------------------------|----------------------------|
-| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) |
+| Linter                        | Configuration key          | Status                                                                                                                                   |
+|-------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/commits) |
 
 ## Linted files
 

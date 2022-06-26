@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                  | Configuration key         |
-|-------------------------|---------------------------|
-| [cpplint](c_cpplint.md) | [C_CPPLINT](c_cpplint.md) |
+| Linter                  | Configuration key         | Status                                                                                                                         |
+|-------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [cpplint](c_cpplint.md) | [C_CPPLINT](c_cpplint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) |
 
 ## Linted files
 

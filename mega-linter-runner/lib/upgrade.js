@@ -220,6 +220,110 @@ jobs:
   build:
 `,
       },
+      // V5 to V6 migration rules
+      // Documentation base URL
+      {
+        regex: /https:\/\/megalinter\.github\.io/gm,
+        replacement: "https://oxsecurity.github.io/megalinter",
+        test: "https://megalinter.github.io/configuration",
+        testRes: "https://oxsecurity.github.io/megalinter/configuration",
+      },
+      // Github actions flavors
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@v6",
+        test: "megalinter/megalinter/flavors/python@v5.1.2",
+        testRes: "oxsecurity/megalinter/flavors/python@v6",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@v6",
+        test: "megalinter/megalinter/flavors/python@v5",
+        testRes: "oxsecurity/megalinter/flavors/python@v6",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@$2",
+        test: "megalinter/megalinter/flavors/python@alpha",
+        testRes: "oxsecurity/megalinter/flavors/python@alpha",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1",
+        test: "megalinter/megalinter/flavors/python",
+        testRes: "oxsecurity/megalinter/flavors/python",
+      },
+      // Docker image flavors
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter-$1:v6",
+        test: "megalinter/megalinter-python:v5.1.2",
+        testRes: "oxsecurity/megalinter-python:v6",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5/gm,
+        replacement: "oxsecurity/megalinter-$1:v6",
+        test: "megalinter/megalinter-python:v5",
+        testRes: "oxsecurity/megalinter-python:v6",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1:$2",
+        test: "megalinter/megalinter-python:alpha",
+        testRes: "oxsecurity/megalinter-python:alpha",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1",
+        test: "megalinter/megalinter-python",
+        testRes: "oxsecurity/megalinter-python",
+      },
+      // Github actions using main flavor
+      {
+        regex: /megalinter\/megalinter@v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter@v6",
+        test: "megalinter/megalinter@v5.2.4",
+        testRes: "oxsecurity/megalinter@v6",
+      },
+      {
+        regex: /megalinter\/megalinter@v5/gm,
+        replacement: "oxsecurity/megalinter@v6",
+        test: "megalinter/megalinter@v5",
+        testRes: "oxsecurity/megalinter@v6",
+      },
+      {
+        regex: /megalinter\/megalinter@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter@$1",
+        test: "megalinter/megalinter@alpha",
+        testRes: "oxsecurity/megalinter@alpha",
+      },
+      // Docker images using main flavor
+      {
+        regex: /megalinter\/megalinter:v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter:v6",
+        test: "megalinter/megalinter:v5.2.4",
+        testRes: "oxsecurity/megalinter:v6",
+      },
+      {
+        regex: /megalinter\/megalinter:v5/gm,
+        replacement: "oxsecurity/megalinter:v6",
+        test: "megalinter/megalinter:v5",
+        testRes: "oxsecurity/megalinter:v6",
+      },
+      {
+        regex: /megalinter\/megalinter:([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter:$1",
+        test: "megalinter/megalinter:alpha",
+        testRes: "oxsecurity/megalinter:alpha",
+      },
+      // All remaining cases... cross fingers :)
+      {
+        regex: /megalinter\/megalinter/gm,
+        replacement: "oxsecurity/megalinter",
+        test: "wesh megalinter/megalinter",
+        testRes: "wesh oxsecurity/megalinter",
+      },
+
     ];
   }
 

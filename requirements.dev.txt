@@ -9,6 +9,7 @@ commentjson
 pytablewriter
 pytest-cov
 pytest-timeout
+pytest-xdist
 python-gitlab
 pyyaml
 requests

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                      | Configuration key      |
-|-----------------------------|------------------------|
-| [git_diff](git_git_diff.md) | [GIT](git_git_diff.md) |
+| Linter                      | Configuration key      | Status                                                                                                         |
+|-----------------------------|------------------------|----------------------------------------------------------------------------------------------------------------|
+| [git_diff](git_git_diff.md) | [GIT](git_git_diff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/git/git)](https://github.com/git/git/commits) |
 
 ## Linted files
 

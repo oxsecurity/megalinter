@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                       | Configuration key        |
-|------------------------------|--------------------------|
-| [prettier](yaml_prettier.md) | [YAML](yaml_prettier.md) |
-| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |
-| [v8r](yaml_v8r.md)           | [YAML](yaml_v8r.md)      |
+| Linter                       | Configuration key        | Status                                                                                                                                   |
+|------------------------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [prettier](yaml_prettier.md) | [YAML](yaml_prettier.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)       |
+| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/commits) |
+| [v8r](yaml_v8r.md)           | [YAML](yaml_v8r.md)      | [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits)                 |
 
 ## Linted files
 

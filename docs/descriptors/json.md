@@ -5,12 +5,12 @@
 
 ## Linters
 
-| Linter                                             | Configuration key                   |
-|----------------------------------------------------|-------------------------------------|
-| [jsonlint](json_jsonlint.md)                       | [JSON](json_jsonlint.md)            |
-| [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md) | [JSON](json_eslint_plugin_jsonc.md) |
-| [v8r](json_v8r.md)                                 | [JSON](json_v8r.md)                 |
-| [prettier](json_prettier.md)                       | [JSON](json_prettier.md)            |
+| Linter                                             | Configuration key                   | Status                                                                                                                                                     |
+|----------------------------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [jsonlint](json_jsonlint.md)                       | [JSON](json_jsonlint.md)            | [![GitHub last commit](https://img.shields.io/github/last-commit/zaach/jsonlint)](https://github.com/zaach/jsonlint/commits)                               |
+| [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md) | [JSON](json_eslint_plugin_jsonc.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) |
+| [v8r](json_v8r.md)                                 | [JSON](json_v8r.md)                 | [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits)                                   |
+| [prettier](json_prettier.md)                       | [JSON](json_prettier.md)            | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)                         |
 
 ## Linted files
 

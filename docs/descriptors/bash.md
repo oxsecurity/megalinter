@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                           | Configuration key                     |
-|----------------------------------|---------------------------------------|
-| [bash-exec](bash_bash_exec.md)   | [BASH_EXEC](bash_bash_exec.md)        |
-| [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) |
-| [shfmt](bash_shfmt.md)           | [BASH_SHFMT](bash_shfmt.md)           |
+| Linter                           | Configuration key                     | Status                                                                                                                                 |
+|----------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [bash-exec](bash_bash_exec.md)   | [BASH_EXEC](bash_bash_exec.md)        |                                                                                                                                        |
+| [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/koalaman/shellcheck)](https://github.com/koalaman/shellcheck/commits) |
+| [shfmt](bash_shfmt.md)           | [BASH_SHFMT](bash_shfmt.md)           | [![GitHub last commit](https://img.shields.io/github/last-commit/mvdan/sh)](https://github.com/mvdan/sh/commits)                       |
 
 ## Linted files
 

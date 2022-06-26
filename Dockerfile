@@ -11,8 +11,9 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
@@ -136,7 +137,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
-          'ansible-lint[community,yamllint]' \
+          'ansible-lint==6.0.2' \
           'cpplint' \
           'cfn-lint' \
           'pylint' \
@@ -172,8 +173,8 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
-                editorconfig-checker \
                 gherkin-lint \
+                graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
@@ -363,6 +364,9 @@ RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sge
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+
+# editorconfig-checker installation
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

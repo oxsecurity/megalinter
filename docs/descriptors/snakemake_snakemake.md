@@ -7,9 +7,11 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits)
+
 ## snakemake documentation
 
-- Version in MegaLinter: **7.4.0**
+- Version in MegaLinter: **7.8.3**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -50,7 +52,7 @@ This linter is available in the following flavours
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        51        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/v6-alpha/flavors/go/)                       | Optimized for GO based projects                       |        45        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/v6-alpha/flavors/java/)                   | Optimized for JAVA based projects                     |        45        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/v6-alpha/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
@@ -98,8 +100,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
                  [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
-                 [--keep-going] [--force] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--keep-going]
+                 [--rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]]
+                 [--force] [--forceall] [--forcerun [TARGET ...]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -124,9 +128,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--delete-all-output] [--delete-temp-output]
                  [--bash-completion] [--keep-incomplete] [--drop-metadata]
                  [--version] [--reason] [--gui [PORT]] [--printshellcmds]
-                 [--debug-dag] [--stats FILE] [--nocolor] [--quiet]
-                 [--print-compilation] [--verbose] [--force-use-threads]
-                 [--allow-ambiguity] [--nolock] [--ignore-incomplete]
+                 [--debug-dag] [--stats FILE] [--nocolor]
+                 [--quiet [{progress,rules,all} ...]] [--print-compilation]
+                 [--verbose] [--force-use-threads] [--allow-ambiguity]
+                 [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
@@ -134,7 +139,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
-                 [-T RESTART_TIMES] [--attempt ATTEMPT]
+                 [-T RETRIES] [--attempt ATTEMPT]
                  [--wrapper-prefix WRAPPER_PREFIX]
                  [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}]
                  [--default-remote-prefix DEFAULT_REMOTE_PREFIX]
@@ -346,6 +351,14 @@ EXECUTION:
                         should be used only as a last resort. (default: False)
   --keep-going, -k      Go on with independent jobs if a job fails. (default:
                         False)
+  --rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]
+                        Define what triggers the rerunning of a job. By
+                        default, all triggers are used, which guarantees that
+                        results are consistent with the workflow code and
+                        configuration. If you rather prefer the traditional
+                        way of just considering file modification dates, use '
+                        --rerun-trigger mtime'. (default: ['mtime', 'params',
+                        'input', 'software-env', 'code'])
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -616,8 +629,8 @@ UTILITIES:
   --version, -v         show program's version number and exit
 
 OUTPUT:
-  --reason, -r          Print the reason for each executed rule. (default:
-                        False)
+  --reason, -r          Print the reason for each executed rule (deprecated,
+                        always true now). (default: False)
   --gui [PORT]          Serve an HTML based user interface to the given
                         network and port e.g. 168.129.10.15:8000. By default
                         Snakemake is only available in the local network
@@ -634,8 +647,11 @@ OUTPUT:
   --stats FILE          Write stats about Snakefile execution in JSON format
                         to the given file. (default: None)
   --nocolor             Do not use a colored output. (default: False)
-  --quiet, -q           Do not output any progress or rule information.
-                        (default: False)
+  --quiet [{progress,rules,all} ...], -q [{progress,rules,all} ...]
+                        Do not output certain information. If used without
+                        arguments, do not output any progress or rule
+                        information. Defining 'all' results in no information
+                        being printed at all. (default: None)
   --print-compilation   Print the python representation of the workflow.
                         (default: False)
   --verbose             Print debugging output. (default: False)
@@ -703,7 +719,7 @@ BEHAVIOR:
   --max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND
                         Maximal number of job status checks per second,
                         default is 10, fractions allowed. (default: 10)
-  -T RESTART_TIMES, --restart-times RESTART_TIMES
+  -T RETRIES, --retries RETRIES, --restart-times RETRIES
                         Number of times to restart failing jobs (defaults to
                         0). (default: 0)
   --attempt ATTEMPT     Internal use only: define the initial value of the

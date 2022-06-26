@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)
+
 ## black documentation
 
 - Version in MegaLinter: **22.3.0**
@@ -112,8 +114,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (time, pypy, prun, python3, timeit,
-                                  capture, python). Useful for formatting
+                                  magics (capture, prun, pypy, python3,
+                                  python, time, timeit). Useful for formatting
                                   cells with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.

@@ -18,7 +18,7 @@ linters:
     linter_name: bash-exec
     linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
     linter_text: |
-      Checks if shell files are defined are executable
+      Checks if shell files are executable
 
       Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
     linter_megalinter_ref_url: never

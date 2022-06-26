@@ -9,10 +9,9 @@ linters:
   # Lintr
   - class: RLinter
     linter_name: lintr
-    linter_url: https://github.com/jimhester/lintr
-    linter_repo: https://github.com/jimhester/lintr
-    linter_rules_url: https://github.com/jimhester/lintr#available-linters
-    linter_rules_configuration_url: https://github.com/jimhester/lintr#project-configuration
+    linter_url: https://lintr.r-lib.org/
+    linter_rules_url: https://lintr.r-lib.org/reference/index.html
+    linter_rules_configuration_url: https://lintr.r-lib.org/articles/lintr.html#configuring-linters
     config_file_name: .lintr
     linter_version_cache: "0.0.0"
     examples:
@@ -45,4 +44,4 @@ linters:
           url: https://github.com/dense-analysis/ale
       vscode:
         - name: VsCode R LSP
-          url: https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp
+          url: https://marketplace.visualstudio.com/items?itemName=REditorSupport.r

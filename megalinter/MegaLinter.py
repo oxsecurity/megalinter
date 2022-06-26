@@ -43,9 +43,14 @@ class Megalinter:
     def __init__(self, params=None):
         if params is None:
             params = {}
+
+        # megalinter_exec cli variables
         self.arg_input = None
         self.arg_output = None
+        self.linter_version_only = None
         self.load_cli_vars()
+
+        # Initialization for lint request cases
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
@@ -115,6 +120,13 @@ class Megalinter:
 
     # Collect files, run linters on them and write reports
     def run(self):
+
+        # Manage case where we only want to return standalone linter version
+        if self.linter_version_only is True:
+            standalone_linter = self.linters[0]
+            linter_version = standalone_linter.get_linter_version()
+            logging.info(f"{standalone_linter.name}: {linter_version}")
+            return
 
         # Collect files for each identified linter
         self.collect_files()
@@ -327,6 +339,13 @@ class Megalinter:
         parser = argparse.ArgumentParser()
         parser.add_argument("--input", type=str, help="Input folder to lint")
         parser.add_argument("--output", type=str, help="Output file or directory")
+        parser.add_argument(
+            "--linterversion",
+            nargs="?",
+            const="yes",
+            default=None,
+            help="Collect version of standalone linter",
+        )
         args, _unknown = parser.parse_known_args()
         # Input folder to lint
         if args.input:
@@ -334,6 +353,9 @@ class Megalinter:
         # Report folder or file
         if args.output:
             self.arg_output = args.output
+        # Linter version
+        if args.linterversion == "yes":
+            self.linter_version_only = True
 
     # Manage configuration variables
     def load_config_vars(self):
@@ -717,7 +739,9 @@ class Megalinter:
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         if os.environ.get("GITHUB_REPOSITORY", "") != "":
-            logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
+            logging.info(
+                "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
+            )
             # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
             logging.info("GITHUB_REF: " + os.environ.get("GITHUB_REF", ""))
             # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                 | Configuration key                      |
-|----------------------------------------|----------------------------------------|
-| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) |
+| Linter                                 | Configuration key                      | Status                                                                                                                                                 |
+|----------------------------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
 
 ## Linted files
 

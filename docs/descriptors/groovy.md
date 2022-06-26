@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                       | Configuration key                   |
-|----------------------------------------------|-------------------------------------|
-| [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) |
+| Linter                                       | Configuration key                   | Status                                                                                                                                           |
+|----------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/nvuillam/npm-groovy-lint)](https://github.com/nvuillam/npm-groovy-lint/commits) |
 
 ## Linted files
 

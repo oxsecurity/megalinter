@@ -1,5 +1,8 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
+<!-- header-intro-start -->
+<!-- header-intro-end -->
+
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
@@ -9,12 +12,12 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter
+## MegaLinter, by [OX Security](https://www.ox.security/)
 
 <!-- mega-linter-title-end -->
-
+<!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.2M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -24,12 +27,12 @@
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
+<!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](#languages), [**22** formats](#formats), [**20** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).
 
-Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
-
+Supporting [**48** languages](#languages), [**22** formats](#formats), [**20** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -40,7 +43,8 @@ ________
 
 [![_**See Article on Medium**_](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
 
-[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+<!-- NV: remove for now until we have a branded archi table
+[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
 
 ________
 
@@ -74,6 +78,7 @@ _Github PR reporter_
     - [Other](#other)
   - [Installation](#installation)
     - [Assisted installation](#assisted-installation)
+    - [Upgrade from MegaLinter v4](#upgrade-from-megalinter-v4)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
     - [Azure Pipelines](#azure-pipelines)
@@ -82,7 +87,7 @@ _Github PR reporter_
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
-    - [Run MegaLinter locally](#run-mega-linter-locally)
+    - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
@@ -99,6 +104,7 @@ _Github PR reporter_
   - [Plugins](#plugins)
     - [Use plugins](#use-plugins)
       - [Example](#example)
+    - [Plugins Catalog](#plugins-catalog)
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
   - [Articles](#articles)
@@ -125,7 +131,7 @@ _Github PR reporter_
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness & stability](#improve-robustness--stability)
-  - [v4 vs v5](#v4-vs-v5)
+  - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
 ## Why MegaLinter
@@ -205,7 +211,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [isort](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_isort.md#readme)                             | [PYTHON_ISORT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_isort.md#readme)                                 |                                     [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow)                                      |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [bandit](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_bandit.md#readme)                           | [PYTHON_BANDIT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_bandit.md#readme)                               |                                       [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)                                       |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [mypy](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_mypy.md#readme)                               | [PYTHON_MYPY](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_mypy.md#readme)                                   |                                                                [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                                 |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/r.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**R**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r.md#readme)                                   | [lintr](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                  | [R_LINTR](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                           |                                                            [![GitHub stars](https://img.shields.io/github/stars/jimhester/lintr?cacheSeconds=3600)](https://github.com/jimhester/lintr)                                                             |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/r.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**R**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r.md#readme)                                   | [lintr](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                  | [R_LINTR](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                           |                                                                                                                                                                                                                                                     |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/raku.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RAKU**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku.md#readme)                             | [raku](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku_raku.md#readme)                                 | [RAKU_RAKU](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku_raku.md#readme)                                       |                                                              [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo)                                                               |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RUBY**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby.md#readme)                             | [rubocop](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby_rubocop.md#readme)                           | [RUBY_RUBOCOP](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby_rubocop.md#readme)                                 |                               [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green)                                |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RUST**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust.md#readme)                             | [clippy](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust_clippy.md#readme)                             | [RUST_CLIPPY](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust_clippy.md#readme)                                   |                                                      [![GitHub stars](https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600)](https://github.com/rust-lang/rust-clippy)                                                       |
@@ -825,7 +831,7 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/megalinter/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        18        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dart.md#readme)                   | Optimized for DART based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/megalinter/megalinter/tree/main/docs/flavors/documentation.md#readme) | MegaLinter for documentation projects                                  |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dotnet.md#readme)               | Optimized for C, C++, C# or VB based projects                          |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dotnet.md#readme)               | Optimized for C, C++, C# or VB based projects                          |        51        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://github.com/megalinter/megalinter/tree/main/docs/flavors/go.md#readme)                       | Optimized for GO based projects                                        |        45        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://github.com/megalinter/megalinter/tree/main/docs/flavors/java.md#readme)                   | Optimized for JAVA based projects                                      |        45        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://github.com/megalinter/megalinter/tree/main/docs/flavors/javascript.md#readme)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
@@ -895,7 +901,9 @@ But any linter can be callable within MegaLinter thanks to the plugin mechanism 
 
 ### Use plugins
 
-Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
+Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either begin with "https://" or take the form of "file://\<path\>", where \<path\> points to a valid plugin descriptor file.
+
+> Note: Both \<path\> and the default mount directory (/tmp/lint/\<path\>) will be checked for a valid descriptor.
 
 #### Example
 
@@ -903,11 +911,14 @@ Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
 PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
+  - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
 
 ### Plugins Catalog
 
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
+* [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+
 
 Submit a PR if you want your plugin to appear here :)
 
@@ -915,13 +926,15 @@ Submit a PR if you want your plugin to appear here :)
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
-- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
 - Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
+- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
+- File URLs must conform to the same directory and file naming criteria as defined above.
 
 #### Limitations
 
 - For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
+
 <!-- plugins-section-end -->
 
 <!-- articles-section-start -->

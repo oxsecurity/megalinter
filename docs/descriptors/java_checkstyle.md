@@ -7,9 +7,11 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits)
+
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.1**
+- Version in MegaLinter: **10.3**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used

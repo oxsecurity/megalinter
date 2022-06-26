@@ -47,6 +47,23 @@ Example:
 npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+### Pre-commit hook
+
+You can run mega-linter-runner as a [pre-commit](https://pre-commit.com/) hook
+
+Sample `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/megalinter/megalinter
+    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
+    hooks:
+      - id: megalinter # Faster, less thorough, runs pre-commit by default
+      - id: megalinter-all # Slower, more thorough, runs pre-push by default
+```
+
+See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
+
 ## Usage
 
 ```shell
@@ -66,6 +83,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
+| `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
@@ -85,7 +103,7 @@ mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 
 ## Configuration
 
-You can define generate a ready to use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
 ![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 

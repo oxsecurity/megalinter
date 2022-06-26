@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits)
+
 ## terrascan documentation
 
 - Version in MegaLinter: **1.14.0**

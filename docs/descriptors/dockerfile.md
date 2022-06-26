@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                             | Configuration key                             |
-|------------------------------------|-----------------------------------------------|
-| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |
+| Linter                             | Configuration key                             | Status                                                                                                                             |
+|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits) |
 
 ## Linted files
 

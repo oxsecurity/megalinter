@@ -15,7 +15,7 @@
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.2M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue)](https://megalinter.github.io/flavors/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.github.io)
 [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
@@ -65,6 +65,23 @@ Example:
 npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+### Pre-commit hook
+
+You can run mega-linter-runner as a [pre-commit](https://pre-commit.com/) hook
+
+Sample `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/megalinter/megalinter
+    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
+    hooks:
+      - id: megalinter # Faster, less thorough, runs pre-commit by default
+      - id: megalinter-all # Slower, more thorough, runs pre-push by default
+```
+
+See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
+
 ## Usage
 
 ```shell
@@ -84,6 +101,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
+| `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
@@ -103,7 +121,7 @@ mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 
 ## Configuration
 
-You can define generate a ready to use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
 ![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
@@ -146,7 +164,7 @@ You can define generate a ready to use [.mega-linter.yml configuration file](htt
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [isort](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_isort.md#readme)                             | [PYTHON_ISORT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_isort.md#readme)                                 |                                     [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow)                                      |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [bandit](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_bandit.md#readme)                           | [PYTHON_BANDIT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_bandit.md#readme)                               |                                       [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)                                       |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [mypy](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_mypy.md#readme)                               | [PYTHON_MYPY](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_mypy.md#readme)                                   |                                                                [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                                 |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/r.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**R**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r.md#readme)                                   | [lintr](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                  | [R_LINTR](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                           |                                                            [![GitHub stars](https://img.shields.io/github/stars/jimhester/lintr?cacheSeconds=3600)](https://github.com/jimhester/lintr)                                                             |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/r.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**R**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r.md#readme)                                   | [lintr](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                  | [R_LINTR](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/r_lintr.md#readme)                                           |                                                                                                                                                                                                                                                     |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/raku.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RAKU**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku.md#readme)                             | [raku](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku_raku.md#readme)                                 | [RAKU_RAKU](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/raku_raku.md#readme)                                       |                                                              [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo)                                                               |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RUBY**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby.md#readme)                             | [rubocop](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby_rubocop.md#readme)                           | [RUBY_RUBOCOP](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/ruby_rubocop.md#readme)                                 |                               [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green)                                |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RUST**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust.md#readme)                             | [clippy](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust_clippy.md#readme)                             | [RUST_CLIPPY](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/rust_clippy.md#readme)                                   |                                                      [![GitHub stars](https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600)](https://github.com/rust-lang/rust-clippy)                                                       |

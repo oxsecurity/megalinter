@@ -7,9 +7,11 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits)
+
 ## rubocop documentation
 
-- Version in MegaLinter: **1.28.1**
+- Version in MegaLinter: **1.30.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -99,7 +101,7 @@ Usage: rubocop [options] [file1, file2, ...]
 
 Basic Options:
     -l, --lint                       Run only lint cops.
-    -x, --fix-layout                 Run only layout cops, with auto-correct on.
+    -x, --fix-layout                 Run only layout cops, with autocorrect on.
         --safe                       Run only safe cops.
         --except [COP1,COP2,...]     Exclude the given cop(s).
         --only [COP1,COP2,...]       Run only the given cop(s).
@@ -120,6 +122,7 @@ Basic Options:
                                      of user configuration or default configuration.
         --ignore-parent-exclusion    Prevent from inheriting `AllCops/Exclude` from
                                      parent folders.
+        --ignore-unrecognized-cops   Ignore unrecognized cops or departments in the config.
         --force-default-config       Use default configuration even if configuration
                                      files are present in the directory tree.
     -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
@@ -157,6 +160,7 @@ Output Options:
                                        [h]tml
                                        [j]son
                                        [ju]nit
+                                       [m]arkdown
                                        [o]ffenses
                                        [pa]cman
                                        [p]rogress (default)
@@ -175,7 +179,7 @@ Output Options:
                                      if no format is specified.
         --stderr                     Write all output to stderr except for the
                                      autocorrected source. This is especially useful
-                                     when combined with --auto-correct and --stdin.
+                                     when combined with --autocorrect and --stdin.
         --display-time               Display elapsed time in seconds.
         --display-only-failed        Only output offense messages. Omit passing
                                      cops. Only valid for --format junit.
@@ -187,11 +191,13 @@ Output Options:
                                      Only output safe-correctable offense messages
                                      when combined with --display-only-correctable.
 
-Auto-correction:
-    -a, --auto-correct               Auto-correct offenses (only when it's safe).
+Autocorrection:
+    -a, --autocorrect                Autocorrect offenses (only when it's safe).
+        --auto-correct               (same, deprecated)
         --safe-auto-correct          (same, deprecated)
-    -A, --auto-correct-all           Auto-correct offenses (safe and unsafe)
-        --disable-uncorrectable      Used with --auto-correct to annotate any
+    -A, --autocorrect-all            Autocorrect offenses (safe and unsafe).
+        --auto-correct-all           (same, deprecated)
+        --disable-uncorrectable      Used with --autocorrect to annotate any
                                      offenses that do not support autocorrect
                                      with `rubocop:todo` comments.
 

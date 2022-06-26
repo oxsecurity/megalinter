@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                  | Configuration key    |
-|-------------------------|----------------------|
-| [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) |
+| Linter                  | Configuration key    | Status                                                                                                                                                     |
+|-------------------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) |
 
 ## Linted files
 

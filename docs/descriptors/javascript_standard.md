@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits)
+
 ## standard documentation
 
 - Version in MegaLinter: **15.0.1**

@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits)
+
 ## dustilock documentation
 
 - Visit [Official Web Site](https://github.com/Checkmarx/dustilock#readme){target=_blank}

@@ -169,7 +169,8 @@ linters:
         - goodcheck
 
   # SECRETLINT
-  - linter_name: secretlint
+  - class: SecretLintLinter
+    linter_name: secretlint
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project

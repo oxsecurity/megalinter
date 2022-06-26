@@ -13,6 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
@@ -83,7 +84,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
-          'ansible-lint[community,yamllint]' \
+          'ansible-lint==6.0.2' \
           'semgrep' \
           'snakemake' \
           'sqlfluff' \
@@ -107,7 +108,7 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
-                editorconfig-checker \
+                graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
@@ -192,6 +193,9 @@ COPY --from=shfmt /bin/shfmt /usr/bin/
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+
+# editorconfig-checker installation
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

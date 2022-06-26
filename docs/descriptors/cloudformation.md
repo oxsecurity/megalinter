@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                 | Configuration key                            |
-|----------------------------------------|----------------------------------------------|
-| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) |
+| Linter                                 | Configuration key                            | Status                                                                                                                                                 |
+|----------------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) |
 
 ## Linted files
 

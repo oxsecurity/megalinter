@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                             | Configuration key              |
-|------------------------------------|--------------------------------|
-| [actionlint](action_actionlint.md) | [ACTION](action_actionlint.md) |
+| Linter                             | Configuration key              | Status                                                                                                                           |
+|------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| [actionlint](action_actionlint.md) | [ACTION](action_actionlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rhysd/actionlint)](https://github.com/rhysd/actionlint/commits) |
 
 ## Linted files
 
