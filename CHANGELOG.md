@@ -53,6 +53,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - mega-linter-runner
   - Propose to test ox.security service
+  - --upgrade option can now upgrade repos MegaLinter config to v6
 
 ## [Unreleased] (beta, main branch content)
 
