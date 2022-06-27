@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -3102,20 +3102,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rst_rstfmt/" class="md-nav__link">
-        rstfmt
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -5614,7 +5600,7 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/v6-alpha/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">102</td>
+<td align="center">101</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
@@ -5751,7 +5737,7 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 &amp;&amp; \
+<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 &amp;&amp; \
     wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl &amp;&amp; \
     chmod 644 /usr/local/bin/sarif.tpl
 
