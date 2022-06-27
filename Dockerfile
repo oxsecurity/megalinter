@@ -16,7 +16,6 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
 FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM accurics/terrascan:latest as terrascan
@@ -466,8 +465,11 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # lintr installation
-COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
-RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+RUN mkdir -p /home/r-library \
+    && cp -r /usr/lib/R/library/ /home/r-library/ \
+    && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+
 
 # raku installation
 RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \

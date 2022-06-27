@@ -80,9 +80,11 @@ you could try ‘??lintr’
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
-COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
-RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+RUN mkdir -p /home/r-library \
+&& cp -r /usr/lib/R/library/ /home/r-library/ \
+&& Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+&& R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+
 ```
 
 - APK packages (Linux):
