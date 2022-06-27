@@ -34,24 +34,3 @@ linters:
       vscode:
         - name: vscode-restructuredtext
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
-  # rstfmt
-  - linter_name: rstfmt
-    disabled: true
-    is_formatter: true
-    linter_url: https://github.com/dzhu/rstfmt
-    linter_repo: https://github.com/dzhu/rstfmt
-    linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
-    cli_lint_extra_args:
-      - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
-    cli_lint_fix_remove_args:
-      - "--check"
-    test_folder: rst_rstfmt
-    examples:
-      - "rstfmt --check myfile.rst"
-      - "rstfmt myfile.rst" # Format
-    install:
-      pip:
-        - "sphinx<4.0" # Necessary until https://github.com/dzhu/rstfmt/issues/12 is resolved
-        - rstfmt
-    version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
