@@ -124,8 +124,8 @@ ERROR: Docker engine has not been found on your system.
     if (options["removeContainer"]) {
       commandArgs.push("--rm");
     }
-    if (options.containername) {
-      commandArgs.push(...["--name", options.containername]);
+    if (options["containerName"]) {
+      commandArgs.push(...["--name", options["containerName"]]);
     }
     commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
