@@ -108,14 +108,17 @@ RUN apk add --update --no-cache \
                 yarn \
                 openssl \
                 readline-dev \
-                libxml2 \
+                gcc \
+                g++ \
+                libc-dev \
+                libffi-dev \
+                libgcc \
+                libxml2-dev \
+                libxml2-utils \
+                linux-headers \
                 R \
                 R-dev \
                 R-doc \
-                libc-dev \
-                libxml2-dev \
-                libxml2-utils \
-                libgcc \
                 nodejs-current \
                 ruby \
                 ruby-dev \
