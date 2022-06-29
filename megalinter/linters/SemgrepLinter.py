@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Use dotnet-format to lint CSharp files
+Use SemGrep to lint any type of file according to local config
 """
 
 import logging

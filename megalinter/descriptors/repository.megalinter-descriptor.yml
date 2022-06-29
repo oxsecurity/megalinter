@@ -225,7 +225,7 @@ linters:
       - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:
       - "{{WORKSPACE}}"
-    cli_lint_fix_arg_name: --autofix
+    # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
       - --sarif
     cli_help_arg_name: -h

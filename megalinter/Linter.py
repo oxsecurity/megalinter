@@ -186,18 +186,22 @@ class Linter:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
             # Manage apply fixes flag on linter
             param_apply_fixes = params.get("apply_fixes", "none")
+            # No fixing config on linter descriptor
             if self.cli_lint_fix_arg_name is None:
                 self.apply_fixes = False
+            # APPLY_FIXES is "all"
             elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True
+            # APPLY_FIXES is a comma-separated list in a single string
             elif (
                 param_apply_fixes != "none"
                 and isinstance(param_apply_fixes, str)
                 and self.name in param_apply_fixes.split(",")
             ):
                 self.apply_fixes = True
+            # APPLY_FIXES is a list of strings
             elif (
                 param_apply_fixes != "none"
                 and isinstance(param_apply_fixes, list)
