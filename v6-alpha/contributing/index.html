@@ -5501,11 +5501,11 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <pre><code class="language-shell">python3 -m venv .venv
 . .venv/bin/activate
 echo &quot;.venv/&quot; &gt;&gt; .git/info/exclude
-python3 -m pip install -U pip
-python3 -m pip install -r requirements.dev.txt
+python3 -m pip install --ignore-pipfile-U pip
+python3 -m pip install --ignore-pipfile-r requirements.dev.txt
 </code></pre>
 <p><em>If it does not work, just run the following script</em></p>
-<pre><code class="language-shell">pip install -r requirements.dev.txt
+<pre><code class="language-shell">pip install --ignore-pipfile-r requirements.dev.txt
 pip install mkdocs-material
 npm install markdown-table-formatter -g
 </code></pre>
