@@ -19,9 +19,10 @@ class RLinter(Linter):
             copyfile(self.config_file, dir_name + os.path.sep + self.config_file_name)
         # Build command in R format
         r_commands = [
-            f"errors <- lintr::lint('{file}');",
-            "print(errors);",
-            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
+            f"lints <- lintr::lint('{file}');",
+            "print(lints);",
+            "errors <- purrr::keep(lints, ~ .\$type == 'error');",
+            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)"
         ]
         # Build shell command
         cmd = ["R", "--slave", "-e", "".join(r_commands)]
