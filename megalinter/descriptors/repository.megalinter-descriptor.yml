@@ -130,8 +130,8 @@ linters:
       - "--verbose"
       - "--source"
       - "."
-    linter_version_cache: "0.0.0" # TODO: retrieve gitleaks version
     cli_help_arg_name: help
+    cli_version_arg_name: version
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "leaks found: ([0-9]+)"
     test_folder: gitleaks
@@ -140,7 +140,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:latest as gitleaks
+        - FROM zricethezav/gitleaks:v8.8.7 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
