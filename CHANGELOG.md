@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Automate update of CHANGELOG.md after release (pilot)
   - Rename default report folder from `report` to `megalinter-reports`
   - Accelerate internal CI testing performances
-  - Display GitHub stars in linters summary table in documentation
+  - Display GitHub stars in linters summary table in documentation 
   - Change base docker image to python:3.10.5-alpine3.15
 
 - Linters:
@@ -1347,7 +1347,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [4.37.0] - 2021-07-05
 
-- Downgrade npm to npm@latest-6 to avoid idealTree error when using npm ci
+- Downgrade npm to npm@latest-6 to avoid idealTree error when using npm install
 - Use pip to install ansible & ansible-lint as alpine apk package ansible disappeared
 - Add `--doc` argument to build.sh to generate doc only when requested (manually, or from CI job Auto-Update-Linters)
 - Add rust in default installations as it is required for latest pip cryptography package

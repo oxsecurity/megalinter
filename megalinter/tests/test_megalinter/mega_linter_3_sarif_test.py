@@ -8,8 +8,8 @@ import os
 import tempfile
 import unittest
 import uuid
+from megalinter import MegaLinter, Linter
 
-from megalinter import Linter, MegaLinter
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 from megalinter.tests.test_megalinter.helpers import utilstest
@@ -65,8 +65,8 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         sarif_dir_absolute = os.path.realpath(sarif_dir)
         for sarif_file in glob.glob(f"{sarif_dir_absolute}{os.path.sep}*.sarif"):
             # Create linter
-            linter = Linter(None, {})
-            linter.name = "SAMPLE_" + os.path.basename(sarif_file)
+            linter = Linter(None,{})
+            linter.name = "SAMPLE_"+os.path.basename(sarif_file)
             linter.can_output_sarif = True
             linter.sarif_output_file = sarif_file
             mega_linter.linters += [linter]
@@ -74,9 +74,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         # Create reporter
         tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
         os.makedirs(tmp_report_folder)
-        reporter = SarifReporter(
-            {"master": mega_linter, "report_folder": tmp_report_folder}
-        )
+        reporter = SarifReporter({"master": mega_linter,  "report_folder": tmp_report_folder })
         # Produce report
         reporter.produce_report()
         expected_output_file = (

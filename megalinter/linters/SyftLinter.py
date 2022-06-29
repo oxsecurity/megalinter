@@ -8,11 +8,7 @@ import logging
 import os
 
 from megalinter import Linter
-from megalinter.constants import (
-    DEFAULT_SARIF_SCHEMA_URI,
-    DEFAULT_SARIF_VERSION,
-    ML_DOC_URL,
-)
+from megalinter.constants import DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION, ML_DOC_URL
 
 
 class SyftLinter(Linter):
@@ -60,7 +56,7 @@ class SyftLinter(Linter):
                             ],
                         }
                     ],
-                    "version": DEFAULT_SARIF_VERSION,
+                    "version": DEFAULT_SARIF_VERSION
                 }
                 with open(self.sarif_output_file, "w", encoding="utf-8") as outfile:
                     json.dump(sarif_obj, outfile, indent=4, sort_keys=False)

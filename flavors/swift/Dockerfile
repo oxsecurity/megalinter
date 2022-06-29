@@ -104,7 +104,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
-RUN npm ci --ignore-scripts \
+RUN npm install --ignore-scripts \
                 jscpd@3.3.26 \
                 stylelint \
                 stylelint-config-standard \

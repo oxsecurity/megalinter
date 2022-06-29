@@ -15,8 +15,8 @@ from distutils.dir_util import copy_tree
 from git import Repo
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
-    DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
+    DEFAULT_DOCKER_WORKSPACE_DIR,
 )
 
 REPO_HOME = (

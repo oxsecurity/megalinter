@@ -8,11 +8,7 @@ import json
 import logging
 
 from megalinter import Linter
-from megalinter.constants import (
-    DEFAULT_SARIF_SCHEMA_URI,
-    DEFAULT_SARIF_VERSION,
-    ML_DOC_URL,
-)
+from megalinter.constants import DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION, ML_DOC_URL
 
 
 class DustilockLinter(Linter):
@@ -21,9 +17,7 @@ class DustilockLinter(Linter):
     def manage_sarif_output(self, return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:
             # Build results
-            logging.debug(
-                "[dustilock] Build SARIF result from output stdout:\n" + return_stdout
-            )
+            logging.debug("[dustilock] Build SARIF result from output stdout:\n" + return_stdout)
             results = []
             for line in return_stdout.splitlines():
                 if line.startswith("error"):
@@ -39,7 +33,7 @@ class DustilockLinter(Linter):
                     # other error (we should not go there)
                     else:
                         rule_id = "OTHER_ERROR"
-                        rule_index = 2
+                        rule_index = 2          
                     file = error_text.partition(". ")[2]
                     result = {
                         "level": "error",
@@ -49,13 +43,13 @@ class DustilockLinter(Linter):
                                 "physicalLocation": {
                                     "artifactLocation": {
                                         "uri": file,
-                                        "uriBaseId": "ROOTPATH",
+                                        "uriBaseId": "ROOTPATH"
                                     }
                                 }
                             }
                         ],
                         "ruleId": rule_id,
-                        "ruleIndex": rule_index,
+                        "ruleIndex": rule_index
                     }
                     results += [result]
             # Build final output
@@ -89,7 +83,9 @@ class DustilockLinter(Linter):
                                     {
                                         "id": "OTHER_ERROR",
                                         "name": "other_error",
-                                        "shortDescription": {"text": "Other error"},
+                                        "shortDescription": {
+                                            "text": "Other error"
+                                        },
                                     },
                                 ],
                             }

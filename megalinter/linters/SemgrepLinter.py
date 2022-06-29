@@ -23,7 +23,7 @@ class SemgrepLinter(Linter):
             cmd = (
                 cmd[: replace_index - 1]
                 + custom_rulesets_args
-                + cmd[replace_index + 1 :]  # noqa: E203
+                + cmd[replace_index + 1 :] # noqa: E203
             )
             logging.debug(
                 "[SemgrepLinter] Custom rulesets: " + ",".join(custom_rulesets)

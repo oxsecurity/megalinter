@@ -17,14 +17,14 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 python3 -m venv .venv
 . .venv/bin/activate
 echo ".venv/" >> .git/info/exclude
-python3 -m pip install --ignore-pipfile-U pip
-python3 -m pip install --ignore-pipfile-r requirements.dev.txt
+python3 -m pip install -U pip
+python3 -m pip install -r requirements.dev.txt
 ```
 
 _If it does not work, just run the following script_
 
 ```shell
-pip install --ignore-pipfile-r requirements.dev.txt
+pip install -r requirements.dev.txt
 pip install mkdocs-material
 npm install markdown-table-formatter -g
 ```

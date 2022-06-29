@@ -9,8 +9,8 @@ install:
   apk:
     - icu-libs
     - libcurl
-    - libintl
-    - libssl1.1
+    - libintl 
+    - libssl1.1 
     - libstdc++
     - lttng-ust-dev
     - zlib

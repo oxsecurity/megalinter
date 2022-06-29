@@ -80,7 +80,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
-RUN npm ci --ignore-scripts \
+RUN npm install --ignore-scripts \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif && \
