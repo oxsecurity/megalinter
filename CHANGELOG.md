@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
   - Add [trivy](https://github.com/aquasecurity/trivy) security linter
   - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
+  - Remove **rstfmt** as it is not maintained anymore
   - SARIF management for:
     - bandit
     - checkov
