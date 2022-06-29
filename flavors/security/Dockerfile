@@ -100,7 +100,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
-RUN npm install --ignore-scripts \
+RUN npm ci --ignore-scripts \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif && \

@@ -73,25 +73,25 @@ else
     set -eu
     SSH_VOLUME_FOLDER=/root/docker_ssh
     if [ -d "$SSH_VOLUME_FOLDER" ]; then
-        # SSH key copy from local volume
-        echo "Docker ssh folder content:"
-        ls "$SSH_VOLUME_FOLDER"
-        mkdir ~/.ssh
-        chmod 700 ~/.ssh
-        touch ~/.ssh/authorized_keys
-        chmod 600 ~/.ssh/authorized_keys
-        cat $SSH_VOLUME_FOLDER/id_rsa.pub >> ~/.ssh/authorized_keys
-        chmod 644 /root/.ssh/authorized_keys
-        mkdir -p /var/run/sshd
-        ssh-keygen -A
-        sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
-        sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config
-        sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config
-        echo "root:root" | chpasswd
+      # SSH key copy from local volume
+      echo "Docker ssh folder content:"
+      ls "$SSH_VOLUME_FOLDER"
+      mkdir ~/.ssh
+      chmod 700 ~/.ssh
+      touch ~/.ssh/authorized_keys
+      chmod 600 ~/.ssh/authorized_keys
+      cat $SSH_VOLUME_FOLDER/id_rsa.pub >>~/.ssh/authorized_keys
+      chmod 644 /root/.ssh/authorized_keys
+      mkdir -p /var/run/sshd
+      ssh-keygen -A
+      sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
+      sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config
+      sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config
+      echo "root:root" | chpasswd
     fi
     # SSH startup
     echo "[MegaLinter init] SSH"
-    export -p > /var/ml-env-vars  # save all environment variables configured during Dockerfile creation
+    export -p >/var/ml-env-vars # save all environment variables configured during Dockerfile creation
     /usr/sbin/sshd -D
   else
     # Normal  (run megalinter)

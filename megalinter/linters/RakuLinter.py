@@ -23,7 +23,7 @@ class RakuLinter(megalinter.Linter):
                 pre_command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                shell=True,
+                shell=False,
             )
             return_code = process.returncode
             return_stdout = megalinter.utils.decode_utf8(process.stdout)

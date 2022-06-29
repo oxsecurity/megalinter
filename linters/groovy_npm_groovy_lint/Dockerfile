@@ -81,7 +81,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
-RUN npm install --ignore-scripts \
+RUN npm ci --ignore-scripts \
                 npm-groovy-lint && \
     npm audit fix --audit-level=critical || true
 WORKDIR /

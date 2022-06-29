@@ -3,12 +3,17 @@
 Produce SARIF report
 """
 import json
-from json.decoder import JSONDecodeError
 import logging
 import os
+from json.decoder import JSONDecodeError
 
 from megalinter import Reporter, config
-from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME, DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION, ML_DOC_URL
+from megalinter.constants import (
+    DEFAULT_SARIF_REPORT_FILE_NAME,
+    DEFAULT_SARIF_SCHEMA_URI,
+    DEFAULT_SARIF_VERSION,
+    ML_DOC_URL,
+)
 
 
 class SarifReporter(Reporter):
@@ -38,7 +43,7 @@ class SarifReporter(Reporter):
                     "buildRevision": config.get("BUILD_REVISION", ""),
                     "buildVersion": config.get("BUILD_VERSION", ""),
                     "flavor": config.get("MEGALINTER_FLAVOR", "none"),
-                    "singleLinter": config.get("SINGLE_LINTER", "")
+                    "singleLinter": config.get("SINGLE_LINTER", ""),
                 },
             },
             "runs": [],

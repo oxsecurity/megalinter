@@ -120,7 +120,7 @@ def generate_flavor(flavor, flavor_info):
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f, Loader=yaml.FullLoader)
             if (
                 match_flavor(descriptor, flavor, flavor_info) is True
                 and "install" in descriptor
@@ -319,7 +319,7 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm install --ignore-scripts \\\n                "
+            + "RUN npm ci --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             + "    npm audit fix --audit-level=critical || true\n"
@@ -387,7 +387,7 @@ def generate_linter_dockerfiles():
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f, Loader=yaml.FullLoader)
         if "install" in descriptor:
             descriptor_items += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
@@ -1890,8 +1890,8 @@ def validate_own_megalinter_config():
             logging.info("Validating " + os.path.basename(OWN_MEGALINTER_CONFIG_FILE))
             mega_linter_config = descriptor_file1.read()
             jsonschema.validate(
-                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),
-                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                instance=yaml.safe_load(mega_linter_config, Loader=yaml.FullLoader),
+                schema=yaml.safe_load(descriptor_schema, Loader=yaml.FullLoader),
             )
 
 
@@ -1907,8 +1907,8 @@ def validate_descriptors():
                 descriptor = descriptor_file1.read()
                 try:
                     jsonschema.validate(
-                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),
-                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                        instance=yaml.safe_load(descriptor, Loader=yaml.FullLoader),
+                        schema=yaml.safe_load(descriptor_schema, Loader=yaml.FullLoader),
                     )
                 except jsonschema.exceptions.ValidationError as validation_error:
                     logging.error(
@@ -2539,7 +2539,7 @@ def reformat_markdown_tables():
         stdout=subprocess.PIPE,
         universal_newlines=True,
         cwd=os.getcwd() + "/.automation",
-        shell=True,
+        shell=False,
     )
     print(process.stdout)
     print(process.stderr)
@@ -2561,7 +2561,7 @@ def generate_version():
         stdout=subprocess.PIPE,
         universal_newlines=True,
         cwd=cwd_to_use,
-        shell=True,
+        shell=False,
     )
     print(process.stdout)
     print(process.stderr)

@@ -108,7 +108,7 @@ def process_install(install):
             command,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            shell=True,
+            shell=False,
             executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
         )
         return_code = process.returncode

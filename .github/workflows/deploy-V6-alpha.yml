@@ -65,7 +65,7 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && npm install
+      - run: cd mega-linter-runner && npm ci
       - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="v6-alpha$BETAID"
         shell: bash
       - run: cd mega-linter-runner && npm publish --tag v6-alpha || echo "mega-linter-runner v6-alpha not published"

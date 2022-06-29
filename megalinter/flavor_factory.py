@@ -58,7 +58,7 @@ def list_megalinter_flavors():
         "rust": {"label": "Optimized for RUST based projects"},
         "salesforce": {"label": "Optimized for Salesforce based projects"},
         "scala": {"label": "Optimized for SCALA based projects"},
-        "security": { "label": "Optimized for security", "strict": True},
+        "security": {"label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }
@@ -76,7 +76,9 @@ def check_active_linters_match_flavor(active_linters):
         logging.debug('MegaLinter flavor is "all", no need to check match with linters')
         return True
     elif flavor == "none":
-        logging.debug('MegaLinter image contains a single linter, no need to check match with linters')
+        logging.debug(
+            "MegaLinter image contains a single linter, no need to check match with linters"
+        )
         return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]

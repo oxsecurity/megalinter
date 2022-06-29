@@ -105,8 +105,7 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     cli_executable_version: "npm"
     cli_version_arg_name: ""
-    cli_version_extra_args:
-      ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]
+    cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]
     examples:
       - "eslint myfile.json"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"

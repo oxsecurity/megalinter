@@ -79,7 +79,7 @@ RUN npm install npm@latest-6 -g || true && \
     echo 'package-lock=false' >> .npmrc || true
 
 #NPM__START
-RUN npm install --no-cache --ignore-scripts \
+RUN npm ci --no-cache --ignore-scripts \
                 htmlhint
 #NPM__END
 

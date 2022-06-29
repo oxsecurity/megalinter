@@ -56,7 +56,7 @@ def init_config(workspace=None):
     # if config file is found, merge its values with environment variables (with priority to env values)
     if os.path.isfile(config_file):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
-            config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
+            config_data = yaml.safe_load(config_file_stream, Loader=yaml.FullLoader)
             if config_data is None:  # .mega-linter.yml existing but empty
                 runtime_config = env
             else:
@@ -78,7 +78,7 @@ def init_config(workspace=None):
             assert (
                 r.status_code == 200
             ), f"Unable to retrieve EXTENDS config file {config_file_name}"
-            extends_config_data = yaml.load(r.content, Loader=yaml.FullLoader)
+            extends_config_data = yaml.safe_load(r.content, Loader=yaml.FullLoader)
             runtime_config.update(extends_config_data)
             CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
     # Print & set config in cache
