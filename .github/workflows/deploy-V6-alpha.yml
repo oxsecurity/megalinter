@@ -118,7 +118,7 @@ jobs:
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:v6-alpha
-        timeout-minutes: 30
+        timeout-minutes: 60
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -132,3 +132,4 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+          timeout: 10m0s
