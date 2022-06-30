@@ -137,7 +137,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:latest as gitleaks
+FROM zricethezav/gitleaks:v8.8.7 as gitleaks
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

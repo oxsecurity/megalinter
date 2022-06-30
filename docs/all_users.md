@@ -30,6 +30,7 @@
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
+[![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
@@ -42,8 +43,8 @@
 [![llaville/php-compatinfo-db - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo-db.svg?fullname=)](https://github.com/llaville/php-compatinfo-db){target=_blank}
 [![wareismymind/peer - GitHub](https://gh-card.dev/repos/wareismymind/peer.svg?fullname=)](https://github.com/wareismymind/peer){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
-[![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
+[![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
 [![AliceO2Group/O2Physics - GitHub](https://gh-card.dev/repos/AliceO2Group/O2Physics.svg?fullname=)](https://github.com/AliceO2Group/O2Physics){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}

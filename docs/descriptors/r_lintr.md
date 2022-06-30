@@ -81,14 +81,22 @@ you could try ‘??lintr’
 - Dockerfile commands :
 ```dockerfile
 RUN mkdir -p /home/r-library \
-&& cp -r /usr/lib/R/library/ /home/r-library/ \
-&& Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
-&& R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+    && cp -r /usr/lib/R/library/ /home/r-library/ \
+    && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
 
 ```
 
 - APK packages (Linux):
-  - [libxml2](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2)
+  - [gcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcc)
+  - [g++](https://pkgs.alpinelinux.org/packages?branch=edge&name=g++)
+  - [libc-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libc-dev)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
+  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libffi-dev)
+  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
+  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-dev)
+  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-utils)
+  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=edge&name=linux-headers)
   - [R](https://pkgs.alpinelinux.org/packages?branch=edge&name=R)
   - [R-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-dev)
   - [R-doc](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-doc)
