@@ -104,15 +104,15 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: "docker.io/megalinter/megalinter:${{ github.event.release.tag_name }}"
-          format: "table"
-          exit-code: "1"
+          format: 'table'
+          exit-code: '1'
           ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-          timeout: 5m0s
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          timeout: 10m0s
 
   deploy_doc:
     runs-on: ubuntu-latest
