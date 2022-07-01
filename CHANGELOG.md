@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Automate update of CHANGELOG.md after release (pilot)
   - Rename default report folder from `report` to `megalinter-reports`
   - Accelerate internal CI testing performances
-  - Display GitHub stars in linters summary table in documentation 
+  - Display GitHub stars in linters summary table in documentation
   - Change base docker image to python:3.10.5-alpine3.15
 
 - Linters:

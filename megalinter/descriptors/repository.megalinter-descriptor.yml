@@ -5,8 +5,7 @@ descriptor_flavors:
   - ci_light
 lint_all_files: true
 linters:
-
-  # DEVSKIM 
+  # DEVSKIM
   - linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
@@ -34,8 +33,8 @@ linters:
       apk:
         - icu-libs
         - libcurl
-        - libintl 
-        - libssl1.1 
+        - libintl
+        - libssl1.1
         - libstdc++
         - lttng-ust-dev
         - zlib
@@ -84,7 +83,7 @@ linters:
               chmod +x dustilock && \
               mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
               find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
-              
+
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true
@@ -317,4 +316,3 @@ linters:
       vscode:
         - name: VsCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
-    

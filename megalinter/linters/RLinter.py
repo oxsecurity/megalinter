@@ -22,7 +22,7 @@ class RLinter(Linter):
             f"lints <- lintr::lint('{file}');",
             "print(lints);",
             "errors <- purrr::keep(lints, ~ .type == 'error');",
-            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)"
+            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
         ]
         # Build shell command
         cmd = ["R", "--slave", "-e", "".join(r_commands)]
