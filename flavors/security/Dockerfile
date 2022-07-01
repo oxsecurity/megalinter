@@ -181,7 +181,6 @@ RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
     chmod +x dustilock && \
     mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
-    
 
 
 # gitleaks installation
