@@ -1006,6 +1006,7 @@
         "repos",
         "repositoryformatversion",
         "reqparse",
+        "reqs",
         "returncode",
         "returnrules",
         "rexec",
