@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://www.accurics.com/products/terrascan/" target="blank" title="Visit linter Web Site">
-    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px" class="megalinter-banner">
+    <img src="https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png" alt="terrascan" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -72,7 +72,7 @@ terrascan scan -i terraform -t all -f myfile.tf
 Terrascan
 
 Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
-For more information, please visit https://docs.accurics.com
+For more information, please visit https://runterrascan.io
 
 Usage:
   terrascan [command]
@@ -97,7 +97,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM accurics/terrascan:latest as terrascan
+FROM tenable/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 
