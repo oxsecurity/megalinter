@@ -913,8 +913,12 @@
                   "enum": [
                     "amd64",
                     "arm64",
-                    "arm64v8",
-                    "arm32v7"
+                    "arm",
+                    "386",
+                    "mips64le",
+                    "ppc64le",
+                    "riscv64",
+                    "s390x"
                   ],
                   "title": "CPU architecture",
                   "default": "amd64"
@@ -944,6 +948,7 @@
                       "$id": "#/properties/linters/items/properties/supported_architectures/properties/install_override/items/properties/arch",
                       "description": "CPU architecture to define special installation steps for.",
                       "$ref": "#/properties/linters/items/properties/supported_architectures/properties/arch/items",
+                      "default": "arm64",
                       "type": "string",
                       "examples": []
                     },
