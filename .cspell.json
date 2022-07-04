@@ -944,6 +944,7 @@
         "returnrules",
         "rexec",
         "risd",
+        "riscv",
         "rmfamily",
         "rockspec",
         "rockspecs",
