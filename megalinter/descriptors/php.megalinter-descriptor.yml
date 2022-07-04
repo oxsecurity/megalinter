@@ -167,4 +167,3 @@ linters:
           RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
               && chmod +x phplint.phar \
               && mv phplint.phar /usr/local/bin/phplint
-
