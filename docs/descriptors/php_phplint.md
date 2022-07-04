@@ -122,10 +122,14 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
-RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.0 \
+RUN composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
     && composer global config bin-dir --absolute
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
+RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
+    && chmod +x phplint.phar \
+    && mv phplint.phar /usr/local/bin/phplint
+
 ```
 

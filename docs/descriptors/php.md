@@ -45,6 +45,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 - APK packages (Linux):
