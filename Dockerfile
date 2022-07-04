@@ -18,7 +18,7 @@ FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.8.7 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
-FROM accurics/terrascan:latest as terrascan
+FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
 #FROM__END
