@@ -4328,18 +4328,18 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures">
+<div class="accordion" id="accordionlinters_items_supported_platforms">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures">
+        <div class="card-header" id="headinglinters_items_supported_platforms">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures" onclick="setAnchor('#linters_items_supported_architectures')"><span class="property-name">supported_architectures</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms" onclick="setAnchor('#linters_items_supported_platforms')"><span class="property-name">supported_platforms</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures"
-             data-parent="#accordionlinters_items_supported_architectures">
+        <div id="linters_items_supported_platforms"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms"
+             data-parent="#accordionlinters_items_supported_platforms">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4363,8 +4363,8 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a></div><span class="badge badge-dark value-type">Type: object</span> <span class="badge badge-success default-value">Default: {"arch": ["amd64"]}</span><br/>
-<span class="description"><p>Specifies the supported CPU architectures for the linters, and optionally overrides install instructions for a specific CPU architecture. Uses the same architecture naming conventions as Docker.</p>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a></div><span class="badge badge-dark value-type">Type: object</span> <span class="badge badge-success default-value">Default: {"platform": ["linux/amd64"]}</span><br/>
+<span class="description"><p>Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the linters, and optionally overrides install instructions for a specific platform. Uses the same <a href="https://docs.docker.com/desktop/multi-arch/">architecture naming conventions as Docker</a>.</p>
 </span>
             
 
@@ -4373,51 +4373,49 @@
 
             <br/>
 <div class="badge badge-secondary">Examples:</div>
-<br/><div id="linters_items_supported_architectures_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;arm64&quot;</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/amd64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/arm64&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
-</div><div id="linters_items_supported_architectures_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;amd64&quot;</span><span class="w"></span>
+</div><div id="linters_items_supported_platforms_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/amd64&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
-</div><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_architectures_ex3" aria-controls="linters_items_supported_architectures_ex3"></button><div id="linters_items_supported_architectures_ex3" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;arm64&quot;</span><span class="w"></span>
+</div><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_platforms_ex3" aria-controls="linters_items_supported_platforms_ex3"></button><div id="linters_items_supported_platforms_ex3" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/amd64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/arm64&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;install_override&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;linux/arm64&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;install_arm&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;dockerfile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;RUN ML_THIRD_PARTY_DIR=\&quot;/third-party/shellcheck\&quot; \\\n    &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    &amp;&amp; wget -qO- \&quot;https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\&quot; | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    &amp;&amp; mv \&quot;${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\&quot; /usr/bin/ \\\n    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name &#39;LICENSE*&#39; -delete -o -type d -empty -delete \\\n    &amp;&amp; shellcheck --version\n&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;dockerfile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;RUN ML_THIRD_PARTY_DIR=\&quot;/third-party/shellcheck\&quot; \\\n    &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    &amp;&amp; wget -qO- \&quot;https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\&quot; | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    &amp;&amp; mv \&quot;${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\&quot; /usr/bin/ \\\n    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name &#39;LICENSE*&#39; -delete -o -type d -empty -delete \\\n    &amp;&amp; shellcheck --version\n&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_arch">
+<div class="accordion" id="accordionlinters_items_supported_platforms_platform">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_arch">
+        <div class="card-header" id="headinglinters_items_supported_platforms_platform">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_arch"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_arch" onclick="setAnchor('#linters_items_supported_architectures_arch')"><span class="property-name">arch</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_platform"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_platform" onclick="setAnchor('#linters_items_supported_platforms_platform')"><span class="property-name">platform</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_arch"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_arch"
-             data-parent="#accordionlinters_items_supported_architectures_arch">
+        <div id="linters_items_supported_platforms_platform"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_platform"
+             data-parent="#accordionlinters_items_supported_platforms_platform">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4441,24 +4439,24 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_arch" onclick="anchorLink('linters_items_supported_architectures_arch')">arch</a></div><span class="badge badge-dark value-type">Type: array of enum (of string)</span> <span class="badge badge-success default-value">Default: ["amd64"]</span><br/>
-<span class="description"><p>The list of CPU architectures that this linter supports.</p>
+    <a href="#linters_items_supported_platforms_platform" onclick="anchorLink('linters_items_supported_platforms_platform')">platform</a></div><span class="badge badge-dark value-type">Type: array of enum (of string)</span> <span class="badge badge-success default-value">Default: ["linux/amd64"]</span><br/>
+<span class="description"><p>The list of target platforms (OS/CPU architecture/CPU Variant) that this linter supports.</p>
 </span>
             
 
             
             
 
-            <p><span class="badge badge-light restriction unique-items-restriction" id="linters_items_supported_architectures_arch_uniqueItems">All items must be unique</span></p><h4>Each item of this array must be:</h4>
+            <p><span class="badge badge-light restriction unique-items-restriction" id="linters_items_supported_platforms_platform_uniqueItems">All items must be unique</span></p><h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_arch_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_platform_items">
             
 
     <div class="breadcrumbs">root
@@ -4482,24 +4480,26 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_arch" onclick="anchorLink('linters_items_supported_architectures_arch')">arch</a>
+    <a href="#linters_items_supported_platforms_platform" onclick="anchorLink('linters_items_supported_platforms_platform')">platform</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_arch_items" onclick="anchorLink('linters_items_supported_architectures_arch_items')">CPU architecture</a></div><span class="badge badge-dark value-type">Type: enum (of string)</span> <span class="badge badge-success default-value">Default: "amd64"</span><br/>
-<div class="enum-value" id="linters_items_supported_architectures_arch_items_enum">
+    <a href="#linters_items_supported_platforms_platform_items" onclick="anchorLink('linters_items_supported_platforms_platform_items')">Target platform</a></div><span class="badge badge-dark value-type">Type: enum (of string)</span> <span class="badge badge-success default-value">Default: "linux/amd64"</span><br/>
+<span class="description"><p>Target platforms <a href="https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27">available to use on Docker</a>.<br />
+<strong><em>Please note that Megalinter does not support all Docker's platforms.</em></strong></p>
+</span><div class="enum-value" id="linters_items_supported_platforms_platform_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"amd64"</li><li class="list-group-item enum-item">"arm64"</li><li class="list-group-item enum-item">"arm"</li><li class="list-group-item enum-item">"386"</li><li class="list-group-item enum-item">"mips64le"</li><li class="list-group-item enum-item">"ppc64le"</li><li class="list-group-item enum-item">"riscv64"</li><li class="list-group-item enum-item">"s390x"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -4510,16 +4510,16 @@
         </div>
     </div><br/>
 <div class="badge badge-secondary">Examples:</div>
-<br/><div id="linters_items_supported_architectures_arch_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;arm64&quot;</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_platform_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/amd64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/arm64&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
-</div><div id="linters_items_supported_architectures_arch_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;amd64&quot;</span><span class="w"></span>
+</div><div id="linters_items_supported_platforms_platform_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;linux/amd64&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
@@ -4528,18 +4528,18 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override" onclick="setAnchor('#linters_items_supported_architectures_install_override')"><span class="property-name">install_override</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override" onclick="setAnchor('#linters_items_supported_platforms_install_override')"><span class="property-name">install_override</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override"
-             data-parent="#accordionlinters_items_supported_architectures_install_override">
+        <div id="linters_items_supported_platforms_install_override"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override"
+             data-parent="#accordionlinters_items_supported_platforms_install_override">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4563,15 +4563,15 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a></div><span class="badge badge-dark value-type">Type: array of object</span><br/>
-<span class="description"><p>Defines special installation steps for a specific CPU architecture, replacing the linter's install instructions given in the <code>install</code> node for this CPU architecture only.</p>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a></div><span class="badge badge-dark value-type">Type: array of object</span><br/>
+<span class="description"><p>Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the linter's install instructions given in the <code>install</code> node for this target platform only.</p>
 </span>
             
 
@@ -4580,7 +4580,7 @@
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items">
             
 
     <div class="breadcrumbs">root
@@ -4604,21 +4604,21 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
 
             
 
@@ -4626,18 +4626,18 @@
             
 
             
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_arch">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_platform">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_arch">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_platform">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_arch"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_arch" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_arch')"><span class="property-name">arch</span> <span class="badge badge-warning required-property">Required</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_platform"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_platform" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_platform')"><span class="property-name">platform</span> <span class="badge badge-warning required-property">Required</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_arch"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_arch"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_arch">
+        <div id="linters_items_supported_platforms_install_override_items_platform"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_platform"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_platform">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4661,34 +4661,34 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_arch" onclick="anchorLink('linters_items_supported_architectures_install_override_items_arch')">arch</a></div><span class="badge badge-dark value-type">Type: string</span> <span class="badge badge-success default-value">Default: "arm64"</span><br/>
-<span class="description"><p>CPU architecture to define special installation steps for.</p>
+    <a href="#linters_items_supported_platforms_install_override_items_platform" onclick="anchorLink('linters_items_supported_platforms_install_override_items_platform')">platform</a></div><span class="badge badge-dark value-type">Type: string</span> <span class="badge badge-success default-value">Default: "linux/arm64"</span><br/>
+<span class="description"><p>Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.</p>
 </span>
 
-    <div class="enum-value" id="linters_items_supported_architectures_install_override_items_arch_enum">
+    <div class="enum-value" id="linters_items_supported_platforms_install_override_items_platform_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"amd64"</li><li class="list-group-item enum-item">"arm64"</li><li class="list-group-item enum-item">"arm"</li><li class="list-group-item enum-item">"386"</li><li class="list-group-item enum-item">"mips64le"</li><li class="list-group-item enum-item">"ppc64le"</li><li class="list-group-item enum-item">"riscv64"</li><li class="list-group-item enum-item">"s390x"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -4700,18 +4700,18 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install')"><span class="property-name">install</span> <span class="badge badge-warning required-property">Required</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install')"><span class="property-name">install</span> <span class="badge badge-warning required-property">Required</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install">
+        <div id="linters_items_supported_platforms_install_override_items_install"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4735,30 +4735,30 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a></div><span class="badge badge-dark value-type">Type: object</span> <span class="badge badge-success default-value">Default: {}</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a></div><span class="badge badge-dark value-type">Type: object</span> <span class="badge badge-success default-value">Default: {}</span><br/>
 <span class="description"><p>List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter.<br />
-These special installation steps replace the instructions in the <a href="#linters_items_install"><code>linters</code> &gt; <code>install</code></a> node when using this CPU architecture pair only.</p>
+These special installation steps replace the instructions in the <a href="#linters_items_install"><code>linters</code> &gt; <code>install</code></a> node when using this target platform pair only.</p>
 </span>
 
     
@@ -4769,7 +4769,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <br/>
 <div class="badge badge-secondary">Examples:</div>
-<br/><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_ex1" aria-controls="linters_items_supported_architectures_install_override_items_install_ex1"></button><div id="linters_items_supported_architectures_install_override_items_install_ex1" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<br/><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_ex1" aria-controls="linters_items_supported_platforms_install_override_items_install_ex1"></button><div id="linters_items_supported_platforms_install_override_items_install_ex1" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;dockerfile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span><span class="w"></span>
@@ -4777,7 +4777,7 @@ These special installation steps replace the instructions in the <a href="#linte
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
-</div><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_ex2" aria-controls="linters_items_supported_architectures_install_override_items_install_ex2"></button><div id="linters_items_supported_architectures_install_override_items_install_ex2" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+</div><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_ex2" aria-controls="linters_items_supported_platforms_install_override_items_install_ex2"></button><div id="linters_items_supported_platforms_install_override_items_install_ex2" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;npm&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="s2">&quot;eslint&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="s2">&quot;eslint-config-airbnb&quot;</span><span class="p">,</span><span class="w"></span>
@@ -4789,18 +4789,18 @@ These special installation steps replace the instructions in the <a href="#linte
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install_apk">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install_apk">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install_apk">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install_apk">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_apk"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install_apk" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install_apk')"><span class="property-name">apk</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_apk"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install_apk" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install_apk')"><span class="property-name">apk</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install_apk"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install_apk"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install_apk">
+        <div id="linters_items_supported_platforms_install_override_items_install_apk"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install_apk"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install_apk">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4824,35 +4824,35 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_apk" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_apk')">apk</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_apk" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_apk')">apk</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
 <span class="description"><p>APK packages identifiers (with or without version)</p>
 </span>
             
@@ -4862,7 +4862,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items_install_apk_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items_install_apk_items">
             
 
     <div class="breadcrumbs">root
@@ -4886,42 +4886,42 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_apk" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_apk')">apk</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install_apk" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_apk')">apk</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_apk_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_apk_items')">apk items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_apk_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_apk_items')">apk items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -4932,7 +4932,7 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
-<br/><div id="linters_items_supported_architectures_install_override_items_install_apk_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_install_override_items_install_apk_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;perl&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;perl-dev&quot;</span><span class="w"></span>
 <span class="p">]</span><span class="w"></span>
@@ -4942,18 +4942,18 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install_dockerfile">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install_dockerfile">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install_dockerfile">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install_dockerfile">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_dockerfile"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install_dockerfile" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install_dockerfile')"><span class="property-name">dockerfile</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_dockerfile"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install_dockerfile" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install_dockerfile')"><span class="property-name">dockerfile</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install_dockerfile"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install_dockerfile"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install_dockerfile">
+        <div id="linters_items_supported_platforms_install_override_items_install_dockerfile"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install_dockerfile"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install_dockerfile">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -4977,35 +4977,35 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_dockerfile" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_dockerfile')">dockerfile</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_dockerfile" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_dockerfile')">dockerfile</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
 <span class="description"><p>Will be automatically integrated in generated Dockerfile</p>
 </span>
             
@@ -5015,7 +5015,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items_install_dockerfile_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items_install_dockerfile_items">
             
 
     <div class="breadcrumbs">root
@@ -5039,42 +5039,42 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_dockerfile" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_dockerfile')">dockerfile</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install_dockerfile" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_dockerfile')">dockerfile</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_dockerfile_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_dockerfile_items')">dockerfile items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_dockerfile_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_dockerfile_items')">dockerfile items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -5085,7 +5085,7 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
-<br/><div id="linters_items_supported_architectures_install_override_items_install_dockerfile_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_install_override_items_install_dockerfile_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;RUN terrascan init&quot;</span><span class="w"></span>
@@ -5096,18 +5096,18 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install_gem">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install_gem">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install_gem">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install_gem">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_gem"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install_gem" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install_gem')"><span class="property-name">gem</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_gem"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install_gem" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install_gem')"><span class="property-name">gem</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install_gem"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install_gem"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install_gem">
+        <div id="linters_items_supported_platforms_install_override_items_install_gem"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install_gem"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install_gem">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -5131,35 +5131,35 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_gem" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_gem')">gem</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_gem" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_gem')">gem</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
 <span class="description"><p>GEM packages identifiers (with or without version)</p>
 </span>
             
@@ -5169,7 +5169,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items_install_gem_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items_install_gem_items">
             
 
     <div class="breadcrumbs">root
@@ -5193,42 +5193,42 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_gem" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_gem')">gem</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install_gem" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_gem')">gem</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_gem_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_gem_items')">gem items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_gem_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_gem_items')">gem items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -5239,7 +5239,7 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
-<br/><div id="linters_items_supported_architectures_install_override_items_install_gem_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_install_override_items_install_gem_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;rubocop:0.82.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;rubocop-github:0.16.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;rubocop-performance&quot;</span><span class="w"></span>
@@ -5250,18 +5250,18 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install_npm">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install_npm">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install_npm">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install_npm">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_npm"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install_npm" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install_npm')"><span class="property-name">npm</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_npm"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install_npm" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install_npm')"><span class="property-name">npm</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install_npm"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install_npm"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install_npm">
+        <div id="linters_items_supported_platforms_install_override_items_install_npm"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install_npm"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install_npm">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -5285,35 +5285,35 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_npm" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_npm')">npm</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_npm" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_npm')">npm</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
 <span class="description"><p>NPM packages identifiers (with or without version)</p>
 </span>
             
@@ -5323,7 +5323,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items_install_npm_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items_install_npm_items">
             
 
     <div class="breadcrumbs">root
@@ -5347,42 +5347,42 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_npm" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_npm')">npm</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install_npm" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_npm')">npm</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_npm_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_npm_items')">npm items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_npm_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_npm_items')">npm items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -5393,7 +5393,7 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
-<br/><div id="linters_items_supported_architectures_install_override_items_install_npm_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_install_override_items_install_npm_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;eslint&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;eslint-config-airbnb@3.2.1&quot;</span><span class="w"></span>
 <span class="p">]</span><span class="w"></span>
@@ -5403,18 +5403,18 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionlinters_items_supported_architectures_install_override_items_install_pip">
+<div class="accordion" id="accordionlinters_items_supported_platforms_install_override_items_install_pip">
     <div class="card">
-        <div class="card-header" id="headinglinters_items_supported_architectures_install_override_items_install_pip">
+        <div class="card-header" id="headinglinters_items_supported_platforms_install_override_items_install_pip">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_architectures_install_override_items_install_pip"
-                        aria-expanded="" aria-controls="linters_items_supported_architectures_install_override_items_install_pip" onclick="setAnchor('#linters_items_supported_architectures_install_override_items_install_pip')"><span class="property-name">pip</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_pip"
+                        aria-expanded="" aria-controls="linters_items_supported_platforms_install_override_items_install_pip" onclick="setAnchor('#linters_items_supported_platforms_install_override_items_install_pip')"><span class="property-name">pip</span></button>
             </h2>
         </div>
 
-        <div id="linters_items_supported_architectures_install_override_items_install_pip"
-             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_architectures_install_override_items_install_pip"
-             data-parent="#accordionlinters_items_supported_architectures_install_override_items_install_pip">
+        <div id="linters_items_supported_platforms_install_override_items_install_pip"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_supported_platforms_install_override_items_install_pip"
+             data-parent="#accordionlinters_items_supported_platforms_install_override_items_install_pip">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -5438,35 +5438,35 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_pip" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_pip')">pip</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_pip" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_pip')">pip</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
 <span class="description"><p>PIP packages identifiers (with or without version)</p>
 </span>
             
@@ -5476,7 +5476,7 @@ These special installation steps replace the instructions in the <a href="#linte
 
             <h4>Each item of this array must be:</h4>
     <div class="card">
-        <div class="card-body items-definition" id="linters_items_supported_architectures_install_override_items_install_pip_items">
+        <div class="card-body items-definition" id="linters_items_supported_platforms_install_override_items_install_pip_items">
             
 
     <div class="breadcrumbs">root
@@ -5500,42 +5500,42 @@ These special installation steps replace the instructions in the <a href="#linte
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures" onclick="anchorLink('linters_items_supported_architectures')">supported_architectures</a>
+    <a href="#linters_items_supported_platforms" onclick="anchorLink('linters_items_supported_platforms')">supported_platforms</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override" onclick="anchorLink('linters_items_supported_architectures_install_override')">install_override</a>
+    <a href="#linters_items_supported_platforms_install_override" onclick="anchorLink('linters_items_supported_platforms_install_override')">install_override</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items')">install_override items</a>
+    <a href="#linters_items_supported_platforms_install_override_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items')">install_override items</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install')">install</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install')">install</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_pip" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_pip')">pip</a>
+    <a href="#linters_items_supported_platforms_install_override_items_install_pip" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_pip')">pip</a>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_supported_architectures_install_override_items_install_pip_items" onclick="anchorLink('linters_items_supported_architectures_install_override_items_install_pip_items')">pip items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+    <a href="#linters_items_supported_platforms_install_override_items_install_pip_items" onclick="anchorLink('linters_items_supported_platforms_install_override_items_install_pip_items')">pip items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -5546,7 +5546,7 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
-<br/><div id="linters_items_supported_architectures_install_override_items_install_pip_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<br/><div id="linters_items_supported_platforms_install_override_items_install_pip_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;flake8&quot;</span><span class="w"></span>
 <span class="p">]</span><span class="w"></span>
 </pre></div>
@@ -7369,6 +7369,6 @@ These special installation steps replace the instructions in the <a href="#linte
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2022-07-04 at 01:40:21 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2022-07-04 at 02:19:34 +0000</p>
     </footer></body>
 </html>

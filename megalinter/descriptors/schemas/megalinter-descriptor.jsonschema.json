@@ -897,70 +897,73 @@
             "title": "Installation requirements",
             "type": "object"
           },
-          "supported_architectures": {
-            "$id": "#/properties/linters/items/properties/supported_architectures",
-            "description": "Specifies the supported CPU architectures for the linters, and optionally overrides install instructions for a specific CPU architecture. Uses the same architecture naming conventions as Docker.",
+          "supported_platforms": {
+            "$id": "#/properties/linters/items/properties/supported_platforms",
+            "description": "Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the linters, and optionally overrides install instructions for a specific platform. Uses the same [architecture naming conventions as Docker](https://docs.docker.com/desktop/multi-arch/).",
             "properties": {
-              "arch": {
-                "$id": "#/properties/linters/items/properties/supported_architectures/properties/arch",
-                "description": "The list of CPU architectures that this linter supports.",
+              "platform": {
+                "$id": "#/properties/linters/items/properties/supported_platforms/properties/platform",
+                "description": "The list of target platforms (OS/CPU architecture/CPU Variant) that this linter supports.",
                 "default": [
-                  "amd64"
+                  "linux/amd64"
                 ],
                 "uniqueItems": true,
                 "items": {
                   "type": "string",
+                  "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27).\n***Please note that Megalinter does not support all Docker's platforms.***",
                   "enum": [
-                    "amd64",
-                    "arm64",
-                    "arm",
-                    "386",
-                    "mips64le",
-                    "ppc64le",
-                    "riscv64",
-                    "s390x"
+                    "linux/amd64",
+                    "linux/arm64",
+                    "linux/arm/v7",
+                    "linux/arm/v5",
+                    "linux/386",
+                    "linux/mips64le",
+                    "linux/ppc64le",
+                    "linux/riscv64",
+                    "linux/s390x",
+                    "windows/amd64"
                   ],
-                  "title": "CPU architecture",
-                  "default": "amd64"
+                  "title": "Target platform",
+                  "default": "linux/amd64"
                 },
                 "examples": [
                   {
-                    "arch": [
-                      "amd64",
-                      "arm64"
+                    "platform": [
+                      "linux/amd64",
+                      "linux/arm64"
                     ]
                   },
                   {
-                    "arch": [
-                      "amd64"
+                    "platform": [
+                      "linux/amd64"
                     ]
                   }
                 ],
                 "type": "array",
-                "title": "List of CPU architectures"
+                "title": "List of target platforms"
               },
               "install_override": {
-                "$id": "#/properties/linters/items/properties/supported_architectures/properties/install_override",
-                "description": "Defines special installation steps for a specific CPU architecture, replacing the linter's install instructions given in the `install` node for this CPU architecture only.",
+                "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override",
+                "description": "Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the linter's install instructions given in the `install` node for this target platform only.",
                 "items": {
                   "properties": {
-                    "arch": {
-                      "$id": "#/properties/linters/items/properties/supported_architectures/properties/install_override/items/properties/arch",
-                      "description": "CPU architecture to define special installation steps for.",
-                      "$ref": "#/properties/linters/items/properties/supported_architectures/properties/arch/items",
-                      "default": "arm64",
+                    "platform": {
+                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/platform",
+                      "description": "Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.",
+                      "$ref": "#/properties/linters/items/properties/supported_platforms/properties/platform/items",
+                      "default": "linux/arm64",
                       "type": "string",
                       "examples": []
                     },
                     "install": {
-                      "$id": "#/properties/linters/items/properties/supported_architectures/properties/install_override/items/properties/install",
-                      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter.\nThese special installation steps replace the instructions in the [`linters` > `install`](#linters_items_install) node when using this CPU architecture pair only.",
+                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/install",
+                      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter.\nThese special installation steps replace the instructions in the [`linters` > `install`](#linters_items_install) node when using this target platform pair only.",
                       "$ref": "#/properties/linters/items/properties/install"
                     }
                   },
                   "type": "object",
                   "required": [
-                    "arch",
+                    "platform",
                     "install"
                   ]
                 },
@@ -969,42 +972,40 @@
               }
             },
             "default": {
-              "arch": [
-                "amd64"
+              "platform": [
+                "linux/amd64"
               ]
             },
             "examples": [
               {
-                "arch": [
-                  "amd64",
-                  "arm64"
+                "platform": [
+                  "linux/amd64",
+                  "linux/arm64"
                 ]
               },
               {
-                "arch": [
-                  "amd64"
+                "platform": [
+                  "linux/amd64"
                 ]
               },
               {
-                "arch": [
-                  "amd64",
-                  "arm64"
+                "platform": [
+                  "linux/amd64",
+                  "linux/arm64"
                 ],
                 "install_override": [
                   {
-                    "arch": "arm64",
+                    "platform": "linux/arm64",
                     "install": {
-                      "install_arm": {
-                        "dockerfile": [
-                          "RUN ML_THIRD_PARTY_DIR=\"/third-party/shellcheck\" \\\n    && mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    && wget -qO- \"https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    && mv \"${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\" /usr/bin/ \\\n    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \\\n    && shellcheck --version\n"
-                        ]
-                      }
+                      "dockerfile": [
+                        "RUN ML_THIRD_PARTY_DIR=\"/third-party/shellcheck\" \\\n    && mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    && wget -qO- \"https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    && mv \"${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\" /usr/bin/ \\\n    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \\\n    && shellcheck --version\n"
+                      ]
                     }
                   }
                 ]
               }
             ],
-            "title": "Supported architectures",
+            "title": "Supported platforms",
             "type": "object"
           },
           "is_formatter": {
