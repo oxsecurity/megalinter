@@ -269,7 +269,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10 \
+    && echo 'memory_limit = -1' > /etc/php7/conf.d/02_memlimit.ini \
+    && echo 'memory_limit = -1' > /etc/php8/conf.d/02_memlimit.ini
 
 
 # POWERSHELL installation
