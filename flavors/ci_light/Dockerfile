@@ -102,7 +102,7 @@ RUN npm install --ignore-scripts \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \
-                v8r@0.6.1 \
+                v8r \
                 prettier \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \

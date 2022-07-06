@@ -90,6 +90,7 @@ linters:
     linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
     linter_rules_url: https://www.schemastore.org/json/
     linter_megalinter_ref_url: "no"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"
@@ -100,7 +101,7 @@ linters:
     downgraded_version: true
     install:
       npm:
-        - v8r@0.6.1
+        - v8r
     ide:
       eclipse:
         - name: native support

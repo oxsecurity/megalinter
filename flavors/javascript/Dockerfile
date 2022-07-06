@@ -133,7 +133,7 @@ RUN npm install --ignore-scripts \
                 prettier \
                 jsonlint \
                 eslint-plugin-jsonc \
-                v8r@0.6.1 \
+                v8r \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
