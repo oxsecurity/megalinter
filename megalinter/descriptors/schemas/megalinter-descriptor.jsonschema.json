@@ -42,7 +42,6 @@
         "all_flavors",
         "all",
         "ci_light",
-        "dart",
         "documentation",
         "dotnet",
         "go",
@@ -53,7 +52,6 @@
         "ruby",
         "rust",
         "salesforce",
-        "scala",
         "security",
         "swift",
         "terraform"

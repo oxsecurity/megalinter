@@ -44,7 +44,6 @@ def list_megalinter_flavors():
         "ci_light": {
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
-        "dart": {"label": "Optimized for DART based projects"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
         "go": {"label": "Optimized for GO based projects"},
@@ -57,7 +56,6 @@ def list_megalinter_flavors():
         "ruby": {"label": "Optimized for RUBY based projects"},
         "rust": {"label": "Optimized for RUST based projects"},
         "salesforce": {"label": "Optimized for Salesforce based projects"},
-        "scala": {"label": "Optimized for SCALA based projects"},
         "security": {"label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
