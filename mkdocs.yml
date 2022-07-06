@@ -306,7 +306,6 @@ nav:
       - "All flavors": "flavors.md"
       # flavors-start
       - "ci_light": "flavors/ci_light.md"
-      - "dart": "flavors/dart.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
       - "go": "flavors/go.md"
@@ -317,7 +316,6 @@ nav:
       - "ruby": "flavors/ruby.md"
       - "rust": "flavors/rust.md"
       - "salesforce": "flavors/salesforce.md"
-      - "scala": "flavors/scala.md"
       - "security": "flavors/security.md"
       - "swift": "flavors/swift.md"
       - "terraform": "flavors/terraform.md"
