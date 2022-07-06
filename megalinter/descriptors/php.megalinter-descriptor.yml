@@ -43,7 +43,6 @@ install:
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
           && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
-    - ENV PATH="/root/.composer/vendor/bin:$PATH"
 linters:
   # PHPCS
   - linter_name: phpcs
