@@ -135,8 +135,6 @@ RUN npm install --ignore-scripts \
                 v8r \
                 prettier \
                 markdownlint-cli \
-                remark-cli \
-                remark-preset-lint-recommended \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \

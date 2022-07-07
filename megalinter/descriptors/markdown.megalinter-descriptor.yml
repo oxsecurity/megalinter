@@ -45,6 +45,7 @@ linters:
           url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
   # remark-lint
   - linter_name: remark-lint
+    disabled: true
     is_formatter: true
     activation_rules:
       - type: variable
