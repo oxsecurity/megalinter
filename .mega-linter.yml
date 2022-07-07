@@ -14,7 +14,7 @@ DISABLE:
   - TEKTON
 DISABLE_LINTERS:
   - JSON_PRETTIER
-#  - REPOSITORY_GITLEAKS
+  - REPOSITORY_GITLEAKS
 PRINT_ALL_FILES: false
 FLAVOR_SUGGESTIONS: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
