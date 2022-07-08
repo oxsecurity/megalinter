@@ -11,13 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Core architecture
   - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
     - Correct SARIF files for known format errors
-  - Manage offline run of `bash build.sh` for those who want to code in planes :)
-  - Automate update of CHANGELOG.md after release (beta)
-  - Rename default report folder from `report` to `megalinter-reports`
-  - Accelerate internal CI testing performances
-  - Display GitHub stars in linters summary table in documentation
-  - Change base docker image to python:3.10.5-alpine3.15
   - New config variable **DISABLE_LINTERS_ERRORS** to define a list of linters that will be considered as non blocking
+  - Upgrade base docker image to python:3.10.4-alpine3.15
+  - Rename default report folder from `report` to `megalinter-reports`
+  - Display GitHub stars in linters summary table in documentation
 
 - Linters:
   - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
@@ -51,12 +48,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Descriptors:
   - New flavor **Security**
-  - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck
-    - remove CREDENTIALS and GIT descriptors
+  - New descriptor **repository**: contains DevSkip, dustilock, gitleaks, secretlint, semgrep, syft, trivy
+  - Remove CREDENTIALS and GIT descriptors
 
 - mega-linter-runner
+  - `--upgrade` option can now upgrade repos MegaLinter config to v6
+  - Create/update local `.gitignore` file when installing / updating MegaLinter using mega-linter-runner
   - Propose to test ox.security service
-  - --upgrade option can now upgrade repos MegaLinter config to v6
+  - Switch from npm to yarn
+
+- Dev architecture
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
+  - Automate update of CHANGELOG.md after release (beta)
+  - Accelerate internal CI testing performances
 
 ## [Unreleased] (beta, main branch content)
 

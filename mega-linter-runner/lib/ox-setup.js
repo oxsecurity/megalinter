@@ -1,7 +1,5 @@
 const uuid = require("uuid");
-const fs = require("fs-extra");
-const path = require("path");
-const { OX_LOGIN_URL, OX_REPO_LOCAL_CONFIG_FILE } = require("./config");
+const { OX_LOGIN_URL } = require("./config");
 const open = require("open");
 
 // Class to setup Ox security on the repository

@@ -1,10 +1,11 @@
 "use strict";
 const Generator = require("yeoman-generator");
+const { asciiArt } = require("../../lib/ascii");
 const { OxSecuritySetup } = require("../../lib/ox-setup");
 
 module.exports = class extends Generator {
   prompting() {
-    console.log(this._asciiArt());
+    console.log(asciiArt());
     this.log(
       `Welcome to the MegaLinter configuration generator !
 When you don't know what option to select, please use default values`
@@ -320,29 +321,4 @@ When you don't know what option to select, please use default values`
     }
   }
 
-  _asciiArt() {
-    return `
-    .:oool'                                  ,looo;                           
-    .xNXNXl                                 .dXNNXo.                          
-     lXXXX0c.                              'oKXXN0;                           
-     .oKNXNX0kxdddddddoc,.    .;lodddddddxk0XXXX0c                            
-      .:kKXXXXXXXXXXXXNXX0dllx0XXXXXXXXXXXXXXXKd,                             
-        .,cdkOOOOOOOO0KXXXXXXXXXXK0OOOOOOOkxo:'                               
-                      'ckKXNNNXkc'                                            
-              ':::::;.  .c0XX0l.  .;::::;.                                    
-              'xXXXXXx'   :kx:   ;OXXXXKd.                                    
-               .dKNNXXO;   ..   :0XXXXKl.                                     
-                .lKXXXX0:     .lKXXXX0:                                       
-                  :0XXXXKl.  .dXXXXXk,                                        
-                   ;kXXXXKd:cxXXXXXx'                                         
-                    'xXNXXXXXXXXXKo.                                          
-                     .oKXXXXNXXX0l.                                           
-                      .lKNNXNNXO:                                             
-                        ,looool'                                              
-
-==========================================================
-=============   MegaLinter, by Ox.security   =============
-==========================================================
-`;
-  }
 };

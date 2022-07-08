@@ -4,6 +4,9 @@ const glob = require("glob-promise");
 const fs = require("fs-extra");
 const path = require("path");
 const c = require("chalk");
+const prompts = require("prompts");
+const { OxSecuritySetup } = require("./ox-setup");
+const { asciiArt } = require("./ascii");
 
 class MegaLinterUpgrader {
   constructor() {
@@ -328,6 +331,37 @@ jobs:
   }
 
   async run() {
+    console.log(asciiArt());
+    const promptsUpgradeRes = await prompts({
+      name: "upgrade",
+      message: c.blueBright(`This assistant will automatically upgrade your local files so you use MegaLinter v6\nPlease confirm to proceed :)`),
+      type: "confirm",
+      initial: true
+    });
+    if (promptsUpgradeRes.upgrade === false) {
+      console.log("You should upgrade to v6 to benefit from latest versions of linters, and more features :)")
+      return ;
+    }
+    // Update local files
+    await this.applyReplacements();
+    this.manageGitIgnore();
+    console.log("");
+    console.log(c.green("You MegaLinter local configuration files has been updated !"));
+    console.log(c.grey("Now stage and commit updated files then push to see latest version of MegaLinter in action !"));
+    console.log("");
+    // Propose to try ox service
+    const promptsOxRes = await prompts({
+      name: "ox",
+      message: c.blueBright(`MegaLinter is now part of ${c.green("OX.Security")}.\n Do you want to try our online service to secure your repository ?`),
+      type: "confirm",
+      initial: true
+    });
+    if (promptsOxRes.ox === true) {
+      new OxSecuritySetup().run();
+    }
+  }
+
+  async applyReplacements() {
     // List yaml and shell files
     const globPattern1 = process.cwd() + `/**/*.{yaml,yml,sh,bash}`;
     const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true });
@@ -379,8 +413,8 @@ jobs:
     if (fs.existsSync(gitIgnoreFile)) {
       gitIgnoreTextLines = fs.readFileSync(gitIgnoreFile, "utf8").split(/\r?\n/);
     }
-    if (!gitIgnoreTextLines.includes("megalinter-reports")) {
-      gitIgnoreTextLines.push("megalinter-reports");
+    if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
+      gitIgnoreTextLines.push("megalinter-reports/");
       doWrite = true;
     }
     if (doWrite) {
