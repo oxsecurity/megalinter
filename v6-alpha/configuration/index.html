@@ -5486,6 +5486,11 @@ You can see an example config file in this repo: <a href="https://github.com/meg
 <td>List of disabled linters keys <a href="#activation-and-deactivation">(more info)</a></td>
 </tr>
 <tr>
+<td><a href="#activation-and-deactivation"><strong>DISABLE_ERRORS_LINTERS</strong></a></td>
+<td><!-- --></td>
+<td>List of enabled but not blocking linters keys <a href="#activation-and-deactivation">(more info)</a></td>
+</tr>
+<tr>
 <td><a href="#activation-and-deactivation"><strong>ENABLE</strong></a></td>
 <td><!-- --></td>
 <td>List of enabled descriptors keys <a href="#activation-and-deactivation">(more info)</a></td>
@@ -5644,13 +5649,15 @@ You can see an example config file in this repo: <a href="https://github.com/meg
 <li>If <code>ENABLE_LINTERS</code> is set, only listed linters will be processed</li>
 <li>If <code>DISABLE</code> is set, the linters in the listed descriptors will be skipped</li>
 <li>If <code>DISABLE_LINTERS</code> is set, the listed linters will be skipped</li>
+<li>If <code>DISABLE_ERRORS_LINTERS</code> is set, the linter linters will be run, but if errors are found, they will be considered as non blocking</li>
 </ul>
 <p>Examples:</p>
 <ul>
-<li>Run all javascript and groovy linters except STANDARD javascript linter</li>
+<li>Run all javascript and groovy linters except STANDARD javascript linter. DevSkip errors will be non-blocking</li>
 </ul>
 <pre><code class="language-yaml">ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
+DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
 </code></pre>
 <ul>
 <li>Run all linters except PHP linters (PHP_BUILTIN, PHP_PHPCS, PHP_PHPSTAN, PHP_PSALM)</li>
