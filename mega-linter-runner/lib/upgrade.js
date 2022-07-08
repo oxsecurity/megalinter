@@ -225,6 +225,13 @@ jobs:
 `,
       },
       // V5 to V6 migration rules
+      // GitHub actions
+      {
+        regex: /actions\/checkout@v2/gm,
+        replacement: "actions/checkout@v3",
+        test: "uses: actions/checkout@v2",
+        testRes: "uses: actions/checkout@v3",
+      },
       // Documentation base URL
       {
         regex: /https:\/\/megalinter\.github\.io/gm,
