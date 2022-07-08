@@ -496,6 +496,8 @@ class Linter:
             )
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
+        elif self.name in self.master.disable_errors_linters:
+            self.disable_errors = True
         elif config.get(self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
         elif config.get(self.name + "_DISABLE_ERRORS", "") == "true":

@@ -86,6 +86,7 @@ class Megalinter:
         self.enable_linters = config.get_list("ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list("DISABLE", [])
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
+        self.disable_errors_linters = config.get_list("DISABLE_ERRORS_LINTERS",[])
         self.manage_default_linter_activation()
         self.apply_fixes = config.get_list("APPLY_FIXES", "none")
         self.show_elapsed_time = (

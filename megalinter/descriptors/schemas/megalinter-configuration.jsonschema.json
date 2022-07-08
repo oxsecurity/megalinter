@@ -2419,6 +2419,21 @@
       "title": "Disable errors",
       "type": "boolean"
     },
+    "DISABLE_ERRORS_LINTERS": {
+      "$id": "#/properties/DISABLE_ERRORS_LINTERS",
+      "description": "If DISABLE_ERRORS_LINTERS is set, the listed linters will be run but errors will be not blocking",
+      "examples": [
+        [
+          "BASH_BASH_SHFMT",
+          "JAVASCRIPT_STANDARD"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "Disabled errors linter keys",
+      "type": "array"
+    },
     "DISABLE_LINTERS": {
       "$id": "#/properties/DISABLE_LINTERS",
       "description": "If DISABLE_LINTERS is set, the listed linters will be skipped",

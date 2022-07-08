@@ -663,6 +663,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | **DISABLE_ERRORS**                                  | `false`                      | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                            |
 | [**DISABLE**](#activation-and-deactivation)         | <!-- -->                     | List of disabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                              |
 | [**DISABLE_LINTERS**](#activation-and-deactivation) | <!-- -->                     | List of disabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                  |
+| [**DISABLE_ERRORS_LINTERS**](#activation-and-deactivation) | <!-- -->                     | List of enabled but not blocking linters keys [(more info)](#activation-and-deactivation)                                                                                                                                  |
 | [**ENABLE**](#activation-and-deactivation)          | <!-- -->                     | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
 | [**ENABLE_LINTERS**](#activation-and-deactivation)  | <!-- -->                     | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
 | **EXCLUDED_DIRECTORIES**                            | \[...many values...\]        | List of excluded directory basenames. They are excluded at any nested level.                                                                                                                               |
@@ -702,14 +703,16 @@ MegaLinter have all linters enabled by default, but allows to enable only some, 
 - If `ENABLE_LINTERS` is set, only listed linters will be processed
 - If `DISABLE` is set, the linters in the listed descriptors will be skipped
 - If `DISABLE_LINTERS` is set, the listed linters will be skipped
+- If `DISABLE_ERRORS_LINTERS` is set, the linter linters will be run, but if errors are found, they will be considered as non blocking
 
 Examples:
 
-- Run all javascript and groovy linters except STANDARD javascript linter
+- Run all javascript and groovy linters except STANDARD javascript linter. DevSkip errors will be non-blocking
 
 ```yaml
 ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
+DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
 ```
 
 - Run all linters except PHP linters (PHP_BUILTIN, PHP_PHPCS, PHP_PHPSTAN, PHP_PSALM)

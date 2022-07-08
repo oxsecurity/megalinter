@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Accelerate internal CI testing performances
   - Display GitHub stars in linters summary table in documentation
   - Change base docker image to python:3.10.5-alpine3.15
+  - New config variable **DISABLE_LINTERS_ERRORS** to define a list of linters that will be considered as non blocking
 
 - Linters:
   - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
