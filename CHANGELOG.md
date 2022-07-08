@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
     - Correct SARIF files for known format errors
   - Manage offline run of `bash build.sh` for those who want to code in planes :)
-  - Automate update of CHANGELOG.md after release (pilot)
+  - Automate update of CHANGELOG.md after release (beta)
   - Rename default report folder from `report` to `megalinter-reports`
   - Accelerate internal CI testing performances
   - Display GitHub stars in linters summary table in documentation
