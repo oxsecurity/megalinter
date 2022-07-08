@@ -229,6 +229,8 @@ linters:
       - --sarif
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "files: ([0-9]+) findings."
     test_folder: repository_semgrep
     examples:
       - "semgrep /tmp/lint"
