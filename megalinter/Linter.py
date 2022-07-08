@@ -137,6 +137,7 @@ class Linter:
                 "enable_linters": [],
                 "disable_descriptors": [],
                 "disable_linters": [],
+                "disable_errors_linters": [],
                 "post_linter_status": True,
             }
 
@@ -253,7 +254,7 @@ class Linter:
                 params["report_folder"] if "report_folder" in params else ""
             )
 
-            self.load_config_vars()
+            self.load_config_vars(params)
 
             # Manage sub-directory filter if defined
             if self.files_sub_directory is not None:
@@ -363,7 +364,7 @@ class Linter:
             self.is_active = utils.check_activation_rules(self.activation_rules, self)
 
     # Manage configuration variables
-    def load_config_vars(self):
+    def load_config_vars(self, params):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
         if config.exists(self.name + "_CONFIG_FILE"):
@@ -496,7 +497,7 @@ class Linter:
             )
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
-        elif self.name in self.master.disable_errors_linters:
+        elif self.name in params["disable_errors_linters"]:
             self.disable_errors = True
         elif config.get(self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
