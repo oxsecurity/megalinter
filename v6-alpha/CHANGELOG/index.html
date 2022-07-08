@@ -6503,13 +6503,10 @@
 <li>Correct SARIF files for known format errors</li>
 </ul>
 </li>
-<li>Manage offline run of <code>bash build.sh</code> for those who want to code in planes :)</li>
-<li>Automate update of CHANGELOG.md after release (beta)</li>
-<li>Rename default report folder from <code>report</code> to <code>megalinter-reports</code></li>
-<li>Accelerate internal CI testing performances</li>
-<li>Display GitHub stars in linters summary table in documentation</li>
-<li>Change base docker image to python:3.10.5-alpine3.15</li>
 <li>New config variable <strong>DISABLE_LINTERS_ERRORS</strong> to define a list of linters that will be considered as non blocking</li>
+<li>Upgrade base docker image to python:3.10.4-alpine3.15</li>
+<li>Rename default report folder from <code>report</code> to <code>megalinter-reports</code></li>
+<li>Display GitHub stars in linters summary table in documentation</li>
 </ul>
 </li>
 </ul>
@@ -6551,17 +6548,25 @@
 <ul>
 <li>Descriptors:<ul>
 <li>New flavor <strong>Security</strong></li>
-<li>New descriptor <strong>repository</strong>: contains secretlint, git_diff, gitleaks and goodcheck<ul>
-<li>remove CREDENTIALS and GIT descriptors</li>
-</ul>
-</li>
+<li>New descriptor <strong>repository</strong>: contains DevSkip, dustilock, gitleaks, secretlint, semgrep, syft, trivy</li>
+<li>Remove CREDENTIALS and GIT descriptors</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>mega-linter-runner<ul>
+<li><code>--upgrade</code> option can now upgrade repos MegaLinter config to v6</li>
+<li>Create/update local <code>.gitignore</code> file when installing / updating MegaLinter using mega-linter-runner</li>
 <li>Propose to test ox.security service</li>
-<li>--upgrade option can now upgrade repos MegaLinter config to v6</li>
+<li>Switch from npm to yarn</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Dev architecture<ul>
+<li>Manage offline run of <code>bash build.sh</code> for those who want to code in planes :)</li>
+<li>Automate update of CHANGELOG.md after release (beta)</li>
+<li>Accelerate internal CI testing performances</li>
 </ul>
 </li>
 </ul>
