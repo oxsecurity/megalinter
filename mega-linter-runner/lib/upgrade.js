@@ -2,6 +2,7 @@
 "use strict";
 const glob = require("glob-promise");
 const fs = require("fs-extra");
+const path = require("path");
 const c = require("chalk");
 
 class MegaLinterUpgrader {
@@ -368,6 +369,24 @@ jobs:
         )} replacements in ${c.green(updatedFiles)} files.`
       )
     );
+  }
+
+  // Create or update .gitignore files
+  manageGitIgnore() {
+    const gitIgnoreFile = path.join(process.cwd(), ".gitignore");
+    let gitIgnoreTextLines = [];
+    let doWrite = false;
+    if (fs.existsSync(gitIgnoreFile)) {
+      gitIgnoreTextLines = fs.readFileSync(gitIgnoreFile, "utf8").split(/\r?\n/);
+    }
+    if (!gitIgnoreTextLines.includes("megalinter-reports")) {
+      gitIgnoreTextLines.push("megalinter-reports");
+      doWrite = true;
+    }
+    if (doWrite) {
+      fs.writeFileSync(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
+      console.log("Updated .gitignore file to exclude megalinter-reports from commits");
+    }
   }
 }
 

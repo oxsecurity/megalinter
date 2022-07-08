@@ -154,6 +154,8 @@ When you don't know what option to select, please use default values`
     this._generateCSpellConfig();
     // Generate .jscpd.json config
     this._generateJsCpdConfig();
+    // Create/update .gitignore
+    this._manageGitIgnore();
     // Process linking to ox.security service
     if (this.props.ox === true) {
       new OxSecuritySetup().run();
@@ -298,6 +300,24 @@ When you don't know what option to select, please use default values`
       this.destinationPath(".jscpd.json"),
       {}
     );
+  }
+
+  // Create or update .gitignore files
+  _manageGitIgnore() {
+    const gitIgnoreFile = this.destinationPath(".gitignore");
+    let gitIgnoreTextLines = [];
+    let doWrite = false;
+    if (this.fs.exists(gitIgnoreFile)) {
+      gitIgnoreTextLines = this.fs.read(gitIgnoreFile).split(/\r?\n/);
+    }
+    if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
+      gitIgnoreTextLines.push("megalinter-reports/");
+      doWrite = true;
+    }
+    if (doWrite) {
+      this.fs.write(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
+      this.log("Updated .gitignore file to exclude megalinter-reports from commits");
+    }
   }
 
   _asciiArt() {

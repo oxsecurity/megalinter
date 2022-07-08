@@ -15,28 +15,32 @@ class OxSecuritySetup {
     open(registerUrl);
   }
 
-  // Handle response from ox server
-  async handleResponse(body) {
-    // Check if the response contains the sent clientToken
-    if (body.clientToken !== this.clientToken) {
-      throw new Error("Client token error");
+  /*
+  
+    // Handle response from ox server
+    async handleResponse(body) {
+      // Check if the response contains the sent clientToken
+      if (body.clientToken !== this.clientToken) {
+        throw new Error("Client token error");
+      }
+      if (body.oxToken) {
+        await this.storeOxToken(body.oxToken);
+      }
     }
-    if (body.oxToken) {
-      await this.storeOxToken(body.oxToken);
+  
+    // Store ox token in local config file
+    async storeOxToken(oxToken) {
+      const oxAuthInfo = fs.existsSync(OX_REPO_LOCAL_CONFIG_FILE)
+        ? fs.readJSONSync(OX_REPO_LOCAL_CONFIG_FILE)
+        : {};
+      oxAuthInfo.oxToken = oxToken;
+      // Make sure ox directory is not existing
+      fs.ensureDir(path.dirname(OX_REPO_LOCAL_CONFIG_FILE));
+      await fs.writeJSON(OX_REPO_LOCAL_CONFIG_FILE, oxAuthInfo);
+      console.log(`Written Ox token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
     }
-  }
+    */
 
-  // Store ox token in local config file
-  async storeOxToken(oxToken) {
-    const oxAuthInfo = fs.existsSync(OX_REPO_LOCAL_CONFIG_FILE)
-      ? fs.readJSONSync(OX_REPO_LOCAL_CONFIG_FILE)
-      : {};
-    oxAuthInfo.oxToken = oxToken;
-    // Make sure ox directory is not existing
-    fs.ensureDir(path.dirname(OX_REPO_LOCAL_CONFIG_FILE));
-    await fs.writeJSON(OX_REPO_LOCAL_CONFIG_FILE, oxAuthInfo);
-    console.log(`Written Ox token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
-  }
 }
 
 module.exports = { OxSecuritySetup };
