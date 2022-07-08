@@ -5027,7 +5027,7 @@
     },
     "JSON_V8R_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_V8R_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -13608,7 +13608,7 @@
     },
     "YAML_V8R_CLI_LINT_MODE": {
       "$id": "#/properties/YAML_V8R_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
