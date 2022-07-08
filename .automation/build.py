@@ -30,6 +30,7 @@ from megalinter.constants import (
     ML_DOC_URL,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
+    ML_DOCKER_IMAGE_LEGACY_V5,
     ML_REPO,
     ML_REPO_URL,
 )
@@ -1493,6 +1494,9 @@ def update_docker_pulls_counter():
             )
             legacy_docker_image_url = (
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}"
+            )
+            legacy_v5_docker_image_url = (
+                f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY_V5}"
             )
         else:
             docker_image_url = (
