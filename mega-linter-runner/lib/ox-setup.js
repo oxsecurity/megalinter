@@ -7,8 +7,8 @@ class OxSecuritySetup {
   // Open Ox registration page
   // Once SSO (managed internally by Ox app) is performed, we'll receive an ox token in response
   async run() {
-    this.clientToken = uuid.v4(); // generate a random key
-    const registerUrl = OX_LOGIN_URL + "?token=" + this.clientToken;
+    //,this.clientToken = uuid.v4(); // generate a random key
+    const registerUrl = OX_LOGIN_URL + "?ml=true";
     // console.log(`Waiting for response from Ox.security app...`);
     open(registerUrl);
   }

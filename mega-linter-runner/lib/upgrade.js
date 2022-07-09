@@ -361,7 +361,7 @@ jobs:
       name: "ox",
       message: c.blueBright(`MegaLinter is now part of ${c.green("OX.Security")}.\n Do you want to try our online service to secure your repository ?`),
       type: "confirm",
-      initial: true
+      initial: false
     });
     if (promptsOxRes.ox === true) {
       new OxSecuritySetup().run();

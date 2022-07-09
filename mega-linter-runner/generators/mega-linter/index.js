@@ -125,7 +125,7 @@ When you don't know what option to select, please use default values`
         name: "ox",
         message:
           "Do you want to test Ox.security to secure your repositories ?",
-        default: true,
+        default: false,
       },
     ];
 
