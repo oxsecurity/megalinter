@@ -328,6 +328,7 @@ nav:
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
+  - "They use MegaLinter": "all_users.md"
   - "Sponsoring": 'sponsor.md'
   - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":

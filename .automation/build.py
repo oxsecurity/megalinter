@@ -2409,7 +2409,12 @@ def generate_documentation_all_users():
     with open(USERS_FILE, "r", encoding="utf-8") as json_file:
         megalinter_users = json.load(json_file)
     repositories = megalinter_users["repositories"]
-    linter_doc_md = ["# They use MegaLinter", ""]
+    linter_doc_md = [
+        "# They use MegaLinter",
+        "",
+        "Here is a non-exhaustive list of open-source projects that use Megalinter",
+        "",
+    ]
     for repo in repositories:
         if "info" in repo:
             repo_full = repo["info"]["full_name"]
