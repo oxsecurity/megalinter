@@ -1503,9 +1503,12 @@ def update_docker_pulls_counter():
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
             )
             legacy_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
+            legacy_v5_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
+
         flavor_count_1 = perform_count_request(docker_image_url)
         flavor_count_2 = perform_count_request(legacy_docker_image_url)
-        flavor_count = flavor_count_1 + flavor_count_2
+        flavor_count_3 = perform_count_request(legacy_v5_docker_image_url)
+        flavor_count = flavor_count_1 + flavor_count_2 + flavor_count_3
         logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
         total_count = total_count + flavor_count
         flavor_stats = list(docker_stats.get(flavor_id, []))
