@@ -1396,6 +1396,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.github.io/v6-alpha/reporters/SarifReporter/</loc>
+         <lastmod>2022-07-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.github.io/v6-alpha/reporters/TapReporter/</loc>
          <lastmod>2022-07-09</lastmod>
          <changefreq>daily</changefreq>
