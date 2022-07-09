@@ -6,6 +6,7 @@ import json
 import logging
 import os
 from json.decoder import JSONDecodeError
+import random
 
 from megalinter import Reporter, config
 from megalinter.constants import (
@@ -129,6 +130,24 @@ class SarifReporter(Reporter):
         # browse runs
         if "runs" in linter_sarif_obj:
             for id_run, run in enumerate(linter_sarif_obj["runs"]):
+                # fix duplicate rules property
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "rules" in run["tool"]["driver"]
+                ):
+                    rules = run["tool"]["driver"]["rules"]
+                    rules_updated = []
+                    for rule in rules:
+                        # If duplicate id, update duplicate items ids with a random value
+                        if "id" in rule and any(
+                            "id" in rule_item and rule_item["id"] == rule["id"]
+                            for rule_item in rules_updated
+                        ):
+                            rule["id"] = rule["id"] + "_DUPLICATE_" + random.randint()
+                        rules_updated += [rule]
+                    run["tool"]["driver"]["rules"] = rules_updated
+                # fix results property
                 if "results" in run:
                     # browse run results
                     for id_result, result in enumerate(run["results"]):
