@@ -2,6 +2,8 @@
 
 Here is a non-exhaustive list of open-source projects that use Megalinter
 
+According to posted issues, there are many more private and self-hosted repos using MegaLinter but as we don't track them I can't provide a list :)
+
 [![nektos/act - GitHub](https://gh-card.dev/repos/nektos/act.svg?fullname=)](https://github.com/nektos/act){target=_blank}
 [![stepancheg/rust-protobuf - GitHub](https://gh-card.dev/repos/stepancheg/rust-protobuf.svg?fullname=)](https://github.com/stepancheg/rust-protobuf){target=_blank}
 [![IlanCosman/tide - GitHub](https://gh-card.dev/repos/IlanCosman/tide.svg?fullname=)](https://github.com/IlanCosman/tide){target=_blank}

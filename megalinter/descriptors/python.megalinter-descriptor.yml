@@ -16,7 +16,7 @@ linters:
     linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
     linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
     cli_lint_mode: list_of_files
-    config_file_name: .python-lint
+    config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+):"

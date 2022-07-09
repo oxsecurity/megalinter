@@ -1503,7 +1503,10 @@ def update_docker_pulls_counter():
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
             )
             legacy_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
-            legacy_v5_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
+            legacy_v5_docker_image_url = (
+                "https://hub.docker.com/v2/repositories/"
+                + f"{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
+            )
 
         flavor_count_1 = perform_count_request(docker_image_url)
         flavor_count_2 = perform_count_request(legacy_docker_image_url)
@@ -2413,6 +2416,8 @@ def generate_documentation_all_users():
         "# They use MegaLinter",
         "",
         "Here is a non-exhaustive list of open-source projects that use Megalinter",
+        "",
+        "According to posted issues, there are many more private and self-hosted repos using MegaLinter but as we don't track them I can't provide a list :)",
         "",
     ]
     for repo in repositories:

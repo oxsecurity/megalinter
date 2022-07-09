@@ -439,6 +439,7 @@
         "codeclimate",
         "codecov",
         "codenarcargs",
+        "codeql",
         "codestyle",
         "coffeelint",
         "collectd",

@@ -17,14 +17,14 @@ If you want GitHub to handle the SARIF file to display it in its UI, add the fol
 ```yaml
 - name: Upload MegaLinter scan results to GitHub Security tab
 if: ${{ success() }} || ${{ failure() }}
-uses: github/codeql-action/upload-sarif@v1
+uses: github/codeql-action/upload-sarif@v2
 with:
     sarif_file: 'megalinter-reports/megalinter-report.sarif'
 ```
 
 ## Configuration
 
-| Variable                    | Description                           | Default value           |
-|-----------------------------|---------------------------------------|-------------------------|
-| SARIF_REPORTER               | Activates/deactivates reporter        | false                   |
-| SARIF_REPORTER_FILE_NAME     | File name for SARIF report output file | mega-linter-report.sarif |
+| Variable                 | Description                            | Default value            |
+|--------------------------|----------------------------------------|--------------------------|
+| SARIF_REPORTER           | Activates/deactivates reporter         | false                    |
+| SARIF_REPORTER_FILE_NAME | File name for SARIF report output file | mega-linter-report.sarif |
