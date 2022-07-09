@@ -685,7 +685,11 @@ class Megalinter:
     # Propose legacy versions users to upgrade
     def manage_upgrade_message(self):
         mega_linter_version = config.get("BUILD_VERSION", "No docker image")
-        if "insiders" in mega_linter_version or "v4" in mega_linter_version or "v5" in mega_linter_version:
+        if (
+            "insiders" in mega_linter_version
+            or "v4" in mega_linter_version
+            or "v5" in mega_linter_version
+        ):
             logging.warning(
                 c.yellow(
                     "#######################################################################"
@@ -693,10 +697,10 @@ class Megalinter:
             )
             logging.warning(
                 c.yellow(
-                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter.\n"+
-                    "Please upgrade your configuration by running the following command at the root "+
-                    "of your repo (requires node.js): \n"+
-                    c.green("npx mega-linter-runner --upgrade")
+                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter.\n"
+                    + "Please upgrade your configuration by running the following command at the root "
+                    + "of your repo (requires node.js): \n"
+                    + c.green("npx mega-linter-runner --upgrade")
                 )
             )
             logging.warning(
