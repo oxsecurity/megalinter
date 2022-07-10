@@ -145,7 +145,7 @@ class SarifReporter(Reporter):
                             for rule_item in rules_updated
                         ):
                             rule["id"] = (
-                                rule["id"] + "_DUPLICATE_" + random.randint(1, 500)
+                                rule["id"] + "_DUPLICATE_" + str(random.randint(1, 99999))
                             )
                         rules_updated += [rule]
                     run["tool"]["driver"]["rules"] = rules_updated
