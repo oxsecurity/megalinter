@@ -1,6 +1,6 @@
 ---
 # MegaLinter GitHub Action configuration file
-# More info at https://megalinter.github.io
+# More info at https://oxsecurity.github.io/megalinter
 name: MegaLinter for mega-linter-runner
 
 # Start lint on any push and on pull requests
@@ -35,11 +35,11 @@ jobs:
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter/flavors/javascript@v6-alpha
+        # More info at https://oxsecurity.github.io/megalinter/flavors/
+        uses: oxsecurity/megalinter/flavors/javascript@v6-alpha
         env:
           # All available variables are described in documentation
-          # https://megalinter.github.io/configuration/#shared-variables
+          # https://oxsecurity.github.io/megalinter/configuration/#shared-variables
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           DEFAULT_WORKSPACE: mega-linter-runner
           VALIDATE_ALL_CODEBASE: true #  ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources

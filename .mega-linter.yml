@@ -1,5 +1,5 @@
 # Configuration file for MegaLinter
-# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
+# See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
 
 APPLY_FIXES: all
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
@@ -41,7 +41,7 @@ FILEIO_REPORTER: true
 JSON_REPORTER: true
 GITHUB_STATUS_REPORTER: false
 PLUGINS:
-  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"

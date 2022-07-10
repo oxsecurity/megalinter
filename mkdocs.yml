@@ -1,7 +1,7 @@
 ---
 site_name: MegaLinter by OX Security
-site_url: https://megalinter.github.io
-repo_url: https://github.com/megalinter/megalinter
+site_url: https://oxsecurity.github.io/megalinter
+repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
@@ -44,12 +44,12 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/ox-security/
     - icon: fontawesome/regular/circle-question
-      link: https://github.com/megalinter/megalinter/issues
+      link: https://github.com/oxsecurity/megalinter/issues
       title: Need help ? Post an issue :)
     - icon: fontawesome/brands/github
-      link: https://github.com/megalinter/megalinter
+      link: https://github.com/oxsecurity/megalinter
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/megalinter/megalinter
+      link: https://hub.docker.com/r/oxsecurity/megalinter
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/NicolasVuillamy
   generator: false

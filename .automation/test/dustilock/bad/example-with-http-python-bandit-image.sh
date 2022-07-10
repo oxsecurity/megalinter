@@ -3,7 +3,7 @@
 
 # DEFINE SCRIPT VARIABLES (you can do the same in your script)
 ROOT_FOLDER="c:/git" # Always put an absolute path here. Must be the root of all your repositories
-DOCKER_IMAGE="megalinter/megalinter-only-python_bandit:v6-alpha"
+DOCKER_IMAGE="oxsecurity/megalinter-only-python_bandit:v6-alpha"
 LINTER_NAME="PYTHON_BANDIT"
 WORKSPACE_TO_LINT="demo-megalinter-security-flavor" #name of the folder you want to lint within root folder
 
