@@ -352,17 +352,13 @@
             "default": "linux/amd64"
           },
           "examples": [
-            {
-              "platform": [
-                "linux/amd64",
-                "linux/arm64"
-              ]
-            },
-            {
-              "platform": [
-                "linux/amd64"
-              ]
-            }
+            [
+              "linux/amd64",
+              "linux/arm64"
+            ],
+            [
+              "linux/amd64"
+            ]
           ],
           "type": "array",
           "title": "List of target platforms"
@@ -1040,17 +1036,13 @@
                   "default": "linux/amd64"
                 },
                 "examples": [
-                  {
-                    "platform": [
-                      "linux/amd64",
-                      "linux/arm64"
-                    ]
-                  },
-                  {
-                    "platform": [
-                      "linux/amd64"
-                    ]
-                  }
+                  [
+                    "linux/amd64",
+                    "linux/arm64"
+                  ],
+                  [
+                    "linux/amd64"
+                  ]
                 ],
                 "type": "array",
                 "title": "List of target platforms"
