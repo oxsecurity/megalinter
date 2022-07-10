@@ -14,6 +14,18 @@ install:
   # Salesforce DX
   npm:
     - sfdx-cli
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+  install_override:
+    - platform: linux/arm64
+      install:
+        dockerfile:
+          - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+          - ENV PATH="$JAVA_HOME/bin:${PATH}"
+          - ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+          - RUN echo y|sfdx plugins:install sfdx-hardis
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex

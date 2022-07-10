@@ -29,6 +29,9 @@ linters:
               && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
               && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
               && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
+    supported_platforms:
+      platform:
+        - linux/amd64
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell
