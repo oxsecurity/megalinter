@@ -11,7 +11,7 @@
 
 ## spectral documentation
 
-- Version in MegaLinter: **5.6.0**
+- Version in MegaLinter: **5.9.2**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
   - If custom `.openapirc.yml` config file is not found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
@@ -106,7 +106,7 @@ Options:
   --version                    Show version number  [boolean]
   --help                       Show help  [boolean]
   --encoding, -e               text encoding to use  [string] [default: "utf8"]
-  --format, -f                 formatter to use for outputting results  [string] [default: "stylish"]
+  --format, -f                 formatter to use for outputting results  [string] [choices: "json", "stylish", "junit", "html", "text", "teamcity"] [default: "stylish"]
   --output, -o                 output to a file instead of stdout  [string]
   --resolver                   path to custom json-ref-resolver instance  [string]
   --ruleset, -r                path/URL to a ruleset file  [string]
@@ -114,7 +114,8 @@ Options:
   --fail-severity, -F          results of this level or above will trigger a failure exit code  [string] [choices: "error", "warn", "info", "hint"] [default: "error"]
   --display-only-failures, -D  only output results equal to or greater than --fail-severity  [boolean] [default: false]
   --ignore-unknown-format      do not warn about unmatched formats  [boolean] [default: false]
-  --show-unmatched-globs       show unmatched glob patterns  [boolean] [default: false]
+  --show-unmatched-globs       show unmatched glob patterns  [deprecated: use --fail-on-unmatched-globs] [boolean] [default: false]
+  --fail-on-unmatched-globs    fail on unmatched glob patterns  [boolean] [default: false]
   --verbose, -v                increase verbosity  [boolean]
   --quiet, -q                  no logging - output only  [boolean]
 ```

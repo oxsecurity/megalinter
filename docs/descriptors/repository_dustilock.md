@@ -61,6 +61,25 @@ dustilock
 ```
 
 
+### Help content
+
+```shell
+usage: DustiLock [-h|--help] [-r|--recursive] [-a|--audit] [-p|--path
+                 "<value>"]
+
+                 a tool to find which of your dependencies is susceptible to
+                 Dependency Confusion attack
+
+Arguments:
+
+  -h  --help       Print help information
+  -r  --recursive  scan all files recursively
+  -a  --audit      audit only mode
+  -p  --path       the path to scan. default is cwd
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :

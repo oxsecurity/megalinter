@@ -11,7 +11,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.8.3**
+- Version in MegaLinter: **7.8.5**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -172,7 +172,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
 Snakemake is a Python based language and execution environment for GNU Make-
 like workflows.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 EXECUTION:

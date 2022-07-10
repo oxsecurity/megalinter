@@ -4,6 +4,7 @@
 
 ## gitleaks documentation
 
+- Version in MegaLinter: **8.8.7**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
 
@@ -77,58 +78,35 @@ gitleaks detect -c .gitleaks.toml --no-git --verbose --source .
 ### Help content
 
 ```shell
+Gitleaks scans code, past or present, for secrets
+
 Usage:
-  C:\Users\33614\go\bin\gitleaks.EXE [OPTIONS]
+  gitleaks [command]
 
-Application Options:
-  /v, /verbose              Show verbose output from scan
-  /q, /quiet                Sets log level to error and only output leaks, one
-                            json object per line
-  /r, /repo-url:            Repository URL
-  /p, /path:                Path to directory (repo if contains .git) or file
-  /c, /config-path:         Path to config
-      /repo-config-path:    Path to gitleaks config relative to repo root
-      /clone-path:          Path to clone repo to disk
-      /version              Version number
-      /username:            Username for git repo
-      /password:            Password for git repo
-      /access-token:        Access token for git repo
-      /threads:             Maximum number of threads gitleaks spawns
-      /ssh-key:             Path to ssh key used for auth
-      /unstaged             Run gitleaks on unstaged code
-      /branch:              Branch to scan
-      /redact               Redact secrets from log messages and leaks
-      /debug                Log debug messages
-      /no-git               Treat git repos as plain directories and scan those
-                            files
-      /leaks-exit-code:     Exit code when leaks have been encountered
-                            (default: 1)
-      /append-repo-config   Append the provided or default config with the repo
-                            config.
-      /additional-config:   Path to an additional gitleaks config to append
-                            with an existing config. Can be used with
-                            --append-repo-config to append up to three
-                            configurations
-  /o, /report:              Report output path
-  /f, /format:              json, csv, sarif (default: json)
-      /files-at-commit:     Sha of commit to scan all files at commit
-      /commit:              Sha of commit to scan or "latest" to scan the last
-                            commit of the repository
-      /commits:             Comma separated list of a commits to scan
-      /commits-file:        Path to file of line separated list of commits to
-                            scan
-      /commit-from:         Commit to start scan from
-      /commit-to:           Commit to stop scan
-      /commit-since:        Scan commits more recent than a specific date. Ex:
-                            '2006-01-02' or '2006-01-02T15:04:05-0700' format.
-      /commit-until:        Scan commits older than a specific date. Ex:
-                            '2006-01-02' or '2006-01-02T15:04:05-0700' format.
-      /depth:               Number of commits to scan
+Available Commands:
+  completion  generate the autocompletion script for the specified shell
+  detect      detect secrets in code
+  help        Help about any command
+  protect     protect secrets in code
+  version     display gitleaks version
 
-Help Options:
-  /?                        Show this help message
-  /h, /help                 Show this help message
+Flags:
+  -c, --config string          config file path
+                               order of precedence:
+                               1. --config/-c
+                               2. env var GITLEAKS_CONFIG
+                               3. (--source/-s)/.gitleaks.toml
+                               If none of the three options are used, then gitleaks will use the default config
+      --exit-code int          exit code when leaks have been encountered (default 1)
+  -h, --help                   help for gitleaks
+  -l, --log-level string       log level (debug, info, warn, error, fatal) (default "info")
+      --redact                 redact secrets from logs and stdout
+  -f, --report-format string   output format (json, csv, sarif) (default "json")
+  -r, --report-path string     report file
+  -s, --source string          path to source (default: $PWD) (default ".")
+  -v, --verbose                show verbose output from scan
 
+Use "gitleaks [command] --help" for more information about a command.
 ```
 
 ### Installation on mega-linter Docker image

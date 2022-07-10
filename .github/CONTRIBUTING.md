@@ -71,7 +71,7 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 - Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 - Write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
-- Update [CHANGELOG.md](https://github.com/megalinter/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
+- Update [CHANGELOG.md](https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
 
 Draft pull requests are also welcome to get feedback early on, or if there is something blocking you.
 
@@ -93,7 +93,7 @@ Then run `bash build.py` and it will generate all the rest !
 - Configuration JSON schema
 - Online documentation menus
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
 
 
 ### CI/CT/CD
@@ -102,7 +102,7 @@ The **MegaLinter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 
 - When a branch is created and code is pushed, a **GitHub** Action is triggered for building the new **Docker** container with the new codebase
   - To test your updates during your development, you may have to create a draft Pull Request to trigger CI on the main repo
-  - During development, if all you updated is python code, you can write `quick build` in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over megalinter/megalinter:test-YOURUSERNAME-YOURBRANCH or megalinter/megalinter:latest if a previous full run has not been performed yet
+  - During development, if all you updated is python code, you can write `quick build` in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over oxsecurity/megalinter:test-YOURUSERNAME-YOURBRANCH or oxsecurity/megalinter:latest if a previous full run has not been performed yet
   - You can [filter the performed tests](https://docs.pytest.org/en/stable/usage.html#specifying-tests-selecting-tests) by writing `TEST_KEYWORDS=my keywords` in the commit message body. Example: `TEST_KEYWORDS=kubernetes_kubeval_test`
   - The last commit before the validation of a Pull Request must be a full build with all tests (about 45 minutes)
 - The **Docker** container is then ran against the _test cases_ to validate all code sanity
@@ -128,6 +128,6 @@ If you are the current maintainer of this action:
 - [Using Pull Requests](https://help.github.com/articles/about-pull-requests/)
 - [GitHub Help](https://help.github.com)
 
-[pulls]: https://github.com/megalinter/megalinter/pulls
-[pr]: https://github.com/megalinter/megalinter/compare
-[fork]: https://github.com/megalinter/megalinter/fork
+[pulls]: https://github.com/oxsecurity/megalinter/pulls
+[pr]: https://github.com/oxsecurity/megalinter/compare
+[fork]: https://github.com/oxsecurity/megalinter/fork

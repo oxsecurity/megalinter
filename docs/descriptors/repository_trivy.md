@@ -11,6 +11,7 @@
 
 ## trivy documentation
 
+- Version in MegaLinter: **0.29.2**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 
 [![trivy - GitHub](https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=)](https://github.com/aquasecurity/trivy){target=_blank}
@@ -81,6 +82,41 @@ trivy is called once on the whole project directory
 trivy fs --security-checks vuln,config .
 ```
 
+
+### Help content
+
+```shell
+NAME:
+   trivy - Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets
+
+USAGE:
+   trivy [global options] command [command options] target
+
+VERSION:
+   0.29.2
+
+COMMANDS:
+   image, i          scan an image
+   filesystem, fs    scan local filesystem for language-specific dependencies and config files
+   rootfs            scan rootfs
+   repository, repo  scan remote repository
+   server, s         server mode
+   config, conf      scan config files
+   plugin, p         manage plugins
+   module, m         manage modules
+   kubernetes, k8s   scan kubernetes vulnerabilities, secrets and misconfigurations
+   sbom              generate SBOM for an artifact
+   version           print the version
+   help, h           Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --cache-dir value  cache directory (default: "/root/.cache/trivy") [$TRIVY_CACHE_DIR]
+   --debug, -d        debug mode (default: false) [$TRIVY_DEBUG]
+   --help, -h         show help (default: false)
+   --quiet, -q        suppress progress bar and log output (default: false) [$TRIVY_QUIET]
+   --version, -v      print the version (default: false)
+
+```
 
 ### Installation on mega-linter Docker image
 

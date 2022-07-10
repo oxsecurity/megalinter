@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.61**
+- Version in MegaLinter: **0.1.62**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -98,6 +98,7 @@ Some common cargo commands are (see all commands with --list):
     doc, d      Build this package's and its dependencies' documentation
     new         Create a new cargo package
     init        Create a new cargo package in an existing directory
+    add         Add dependencies to a manifest file
     run, r      Run a binary or example of the local package
     test, t     Run the tests
     bench       Run the benchmarks
