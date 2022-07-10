@@ -33,7 +33,6 @@ concurrency:
 jobs:
 
   build:
-    needs: prepare
     # Name the Job
     name: Deploy Docker Image - Release - Linters
     # Set the agent to run on
