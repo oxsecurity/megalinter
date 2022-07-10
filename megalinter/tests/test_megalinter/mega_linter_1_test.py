@@ -7,7 +7,7 @@ import os
 import unittest
 
 import megalinter
-from megalinter.constants import ML_REPO
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -105,8 +105,8 @@ class mega_linter_1_test(unittest.TestCase):
         megalinter.config.set_value(
             "GITHUB_WORKSPACE",
             (
-                "/tmp/lint"
-                if os.path.isdir("/tmp/lint")
+                DEFAULT_DOCKER_WORKSPACE_DIR
+                if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
                 else os.path.relpath(
                     os.path.relpath(os.path.dirname(os.path.abspath(__file__)))
                     + "/../../.."
@@ -333,32 +333,6 @@ class mega_linter_1_test(unittest.TestCase):
             )
             == 1,
             "YAML_YAMLLINT should have been processed with cli_lint_mode = file",
-        )
-
-    def test_override_cli_executable(self):
-        mega_linter, output = utilstest.call_mega_linter(
-            {
-                "ENABLE": "PHP",
-                "PHP_BUILTIN_CLI_EXECUTABLE": "/usr/bin/php8",
-            }
-        )
-        self.assertTrue(
-            len(mega_linter.linters) > 0, "Linters have been created and run"
-        )
-        self.assertTrue(
-            len(
-                list(
-                    filter(
-                        lambda x: (
-                            x.name == "PHP_BUILTIN"
-                            and x.cli_executable == "/usr/bin/php8"
-                        ),
-                        mega_linter.linters,
-                    )
-                )
-            )
-            == 1,
-            "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
         )
 
     def test_print_all_files_false_and_no_flavor_suggestion(self):

@@ -8,6 +8,9 @@ file_extensions:
   - ".bash"
   - ".dash"
   - ".ksh"
+install:
+  apk:
+    - bash
 test_folder: shell
 linters:
   # Bash Built in Linter
@@ -20,6 +23,9 @@ linters:
       Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
     linter_megalinter_ref_url: never
     name: BASH_EXEC
+    descriptor_flavors:
+      - all_flavors
+      - security
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
@@ -37,7 +43,12 @@ linters:
   # Shellcheck
   - linter_name: shellcheck
     name: BASH_SHELLCHECK
+    descriptor_flavors:
+      - all_flavors
+      - ci_light
+      - security
     linter_url: https://github.com/koalaman/shellcheck
+    linter_repo: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
     linter_megalinter_ref_url: never
@@ -85,6 +96,7 @@ linters:
   - linter_name: shfmt
     is_formatter: true
     linter_url: https://github.com/mvdan/sh
+    linter_repo: https://github.com/mvdan/sh
     linter_megalinter_ref_url: "no"
     name: BASH_SHFMT
     cli_lint_mode: list_of_files
@@ -101,6 +113,8 @@ linters:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
     install:
+      apk:
+        - go
       dockerfile:
         - FROM mvdan/shfmt:latest-alpine as shfmt
         - COPY --from=shfmt /bin/shfmt /usr/bin/

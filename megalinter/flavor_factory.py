@@ -44,7 +44,6 @@ def list_megalinter_flavors():
         "ci_light": {
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
-        "dart": {"label": "Optimized for DART based projects"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
         "go": {"label": "Optimized for GO based projects"},
@@ -57,7 +56,7 @@ def list_megalinter_flavors():
         "ruby": {"label": "Optimized for RUBY based projects"},
         "rust": {"label": "Optimized for RUST based projects"},
         "salesforce": {"label": "Optimized for Salesforce based projects"},
-        "scala": {"label": "Optimized for SCALA based projects"},
+        "security": {"label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }
@@ -73,6 +72,11 @@ def check_active_linters_match_flavor(active_linters):
     flavor = get_image_flavor()
     if flavor == "all":
         logging.debug('MegaLinter flavor is "all", no need to check match with linters')
+        return True
+    elif flavor == "none":
+        logging.debug(
+            "MegaLinter image contains a single linter, no need to check match with linters"
+        )
         return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]

@@ -2,7 +2,11 @@
 "use strict";
 const glob = require("glob-promise");
 const fs = require("fs-extra");
+const path = require("path");
 const c = require("chalk");
+const prompts = require("prompts");
+const { OxSecuritySetup } = require("./ox-setup");
+const { asciiArt } = require("./ascii");
 
 class MegaLinterUpgrader {
   constructor() {
@@ -220,10 +224,165 @@ jobs:
   build:
 `,
       },
+      // V5 to V6 migration rules
+      // GitHub actions
+      {
+        regex: /actions\/checkout@v2/gm,
+        replacement: "actions/checkout@v3",
+        test: "uses: actions/checkout@v2",
+        testRes: "uses: actions/checkout@v3",
+      },
+      // Documentation base URL
+      {
+        regex: /https:\/\/megalinter\.github\.io/gm,
+        replacement: "https://oxsecurity.github.io/megalinter",
+        test: "https://megalinter.github.io/configuration",
+        testRes: "https://oxsecurity.github.io/megalinter/configuration",
+      },
+      // Github actions flavors
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@v6",
+        test: "megalinter/megalinter/flavors/python@v5.1.2",
+        testRes: "oxsecurity/megalinter/flavors/python@v6",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@v6",
+        test: "megalinter/megalinter/flavors/python@v5",
+        testRes: "oxsecurity/megalinter/flavors/python@v6",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@$2",
+        test: "megalinter/megalinter/flavors/python@alpha",
+        testRes: "oxsecurity/megalinter/flavors/python@alpha",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1",
+        test: "megalinter/megalinter/flavors/python",
+        testRes: "oxsecurity/megalinter/flavors/python",
+      },
+      // Docker image flavors
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter-$1:v6",
+        test: "megalinter/megalinter-python:v5.1.2",
+        testRes: "oxsecurity/megalinter-python:v6",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5/gm,
+        replacement: "oxsecurity/megalinter-$1:v6",
+        test: "megalinter/megalinter-python:v5",
+        testRes: "oxsecurity/megalinter-python:v6",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1:$2",
+        test: "megalinter/megalinter-python:alpha",
+        testRes: "oxsecurity/megalinter-python:alpha",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1",
+        test: "megalinter/megalinter-python",
+        testRes: "oxsecurity/megalinter-python",
+      },
+      // Github actions using main flavor
+      {
+        regex: /megalinter\/megalinter@v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter@v6",
+        test: "megalinter/megalinter@v5.2.4",
+        testRes: "oxsecurity/megalinter@v6",
+      },
+      {
+        regex: /megalinter\/megalinter@v5/gm,
+        replacement: "oxsecurity/megalinter@v6",
+        test: "megalinter/megalinter@v5",
+        testRes: "oxsecurity/megalinter@v6",
+      },
+      {
+        regex: /megalinter\/megalinter@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter@$1",
+        test: "megalinter/megalinter@alpha",
+        testRes: "oxsecurity/megalinter@alpha",
+      },
+      // Docker images using main flavor
+      {
+        regex: /megalinter\/megalinter:v5\.(.*)/gm,
+        replacement: "oxsecurity/megalinter:v6",
+        test: "megalinter/megalinter:v5.2.4",
+        testRes: "oxsecurity/megalinter:v6",
+      },
+      {
+        regex: /megalinter\/megalinter:v5/gm,
+        replacement: "oxsecurity/megalinter:v6",
+        test: "megalinter/megalinter:v5",
+        testRes: "oxsecurity/megalinter:v6",
+      },
+      {
+        regex: /megalinter\/megalinter:([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter:$1",
+        test: "megalinter/megalinter:alpha",
+        testRes: "oxsecurity/megalinter:alpha",
+      },
+      // All remaining cases... cross fingers :)
+      {
+        regex: /megalinter\/megalinter/gm,
+        replacement: "oxsecurity/megalinter",
+        test: "wesh megalinter/megalinter",
+        testRes: "wesh oxsecurity/megalinter",
+      },
     ];
   }
 
   async run() {
+    console.log(asciiArt());
+    const promptsUpgradeRes = await prompts({
+      name: "upgrade",
+      message: c.blueBright(
+        `This assistant will automatically upgrade your local files so you use MegaLinter v6\nPlease confirm to proceed :)`
+      ),
+      type: "confirm",
+      initial: true,
+    });
+    if (promptsUpgradeRes.upgrade === false) {
+      console.log(
+        "You should upgrade to v6 to benefit from latest versions of linters, and more features :)"
+      );
+      return;
+    }
+    // Update local files
+    await this.applyReplacements();
+    this.manageGitIgnore();
+    console.log("");
+    console.log(
+      c.green("You MegaLinter local configuration files has been updated !")
+    );
+    console.log(
+      c.grey(
+        "Now stage and commit updated files then push to see latest version of MegaLinter in action !"
+      )
+    );
+    console.log("");
+    // Propose to try ox service
+    const promptsOxRes = await prompts({
+      name: "ox",
+      message: c.blueBright(
+        `MegaLinter is now part of ${c.green(
+          "OX Security"
+        )}.\nDo you want to connect to OX Security to secure your repository ?`
+      ),
+      type: "confirm",
+      initial: false,
+    });
+    if (promptsOxRes.ox === true) {
+      new OxSecuritySetup().run();
+    }
+  }
+
+  async applyReplacements() {
     // List yaml and shell files
     const globPattern1 = process.cwd() + `/**/*.{yaml,yml,sh,bash}`;
     const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true });
@@ -265,6 +424,28 @@ jobs:
         )} replacements in ${c.green(updatedFiles)} files.`
       )
     );
+  }
+
+  // Create or update .gitignore files
+  manageGitIgnore() {
+    const gitIgnoreFile = path.join(process.cwd(), ".gitignore");
+    let gitIgnoreTextLines = [];
+    let doWrite = false;
+    if (fs.existsSync(gitIgnoreFile)) {
+      gitIgnoreTextLines = fs
+        .readFileSync(gitIgnoreFile, "utf8")
+        .split(/\r?\n/);
+    }
+    if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
+      gitIgnoreTextLines.push("megalinter-reports/");
+      doWrite = true;
+    }
+    if (doWrite) {
+      fs.writeFileSync(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
+      console.log(
+        "Updated .gitignore file to exclude megalinter-reports from commits"
+      );
+    }
   }
 }
 
