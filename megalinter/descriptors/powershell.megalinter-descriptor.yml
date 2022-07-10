@@ -53,6 +53,10 @@ linters:
       dockerfile:
         - ARG PSSA_VERSION='latest'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension
@@ -83,6 +87,10 @@ linters:
       dockerfile:
         - ARG PSSA_VERSION='latest'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension
