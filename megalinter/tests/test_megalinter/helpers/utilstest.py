@@ -148,7 +148,7 @@ def test_linter_success(linter, test_self):
     if (
         linter.disabled is True
         or "all" in getattr(linter, "descriptor_flavors_exclude", [])
-        # todov6: remove when bug is fixed https://github.com/accurics/terrascan/issues/1036
+        # todo: remove when bug is fixed https://github.com/accurics/terrascan/issues/1036
         or linter.linter_name == "terrascan"
     ):
         raise unittest.SkipTest("Linter has been disabled")
