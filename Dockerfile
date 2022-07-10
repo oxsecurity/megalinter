@@ -16,7 +16,7 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
+FROM ghcr.io/assignuser/lintr-lib:0.3.0 as lintr-lib
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
