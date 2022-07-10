@@ -359,7 +359,7 @@ jobs:
     // Propose to try ox service
     const promptsOxRes = await prompts({
       name: "ox",
-      message: c.blueBright(`MegaLinter is now part of ${c.green("OX.Security")}.\n Do you want to try our online service to secure your repository ?`),
+      message: c.blueBright(`MegaLinter is now part of ${c.green("OX Security")}.\nDo you want to connect to OX Security to secure your repository ?`),
       type: "confirm",
       initial: false
     });
