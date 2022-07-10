@@ -7,7 +7,7 @@
 - Version in MegaLinter: **0.26.1**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
-  - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
+  - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
 - See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html){target=_blank}
 - See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html){target=_blank}
 
@@ -15,8 +15,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -39,20 +39,20 @@ Use luacheck in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                  |                                                                                    Install                                                                                    |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [linter-luacheck](https://atom.io/packages/linter-luacheck)                                     |                                                   [Visit Web Site](https://atom.io/packages/linter-luacheck){target=_blank}                                                   |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                      | [brackets-luacheck](https://github.com/Malcolm3141/brackets-luacheck)                           |                                               [Visit Web Site](https://github.com/Malcolm3141/brackets-luacheck){target=_blank}                                               |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#lua)                                |                                             [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#lua){target=_blank}                                             |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-luacheck](https://packagecontrol.io/packages/SublimeLinter-luacheck)             |                                          [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-luacheck){target=_blank}                                           |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [Syntastic](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck)                  |                                      [Visit Web Site](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck){target=_blank}                                       |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-luacheck](https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dwenegar.vscode-luacheck){target=_blank} |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [linter-luacheck](https://atom.io/packages/linter-luacheck)                                     |                                                   [Visit Web Site](https://atom.io/packages/linter-luacheck){target=_blank}                                                   |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                      | [brackets-luacheck](https://github.com/Malcolm3141/brackets-luacheck)                           |                                               [Visit Web Site](https://github.com/Malcolm3141/brackets-luacheck){target=_blank}                                               |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#lua)                                |                                             [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#lua){target=_blank}                                             |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-luacheck](https://packagecontrol.io/packages/SublimeLinter-luacheck)             |                                          [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-luacheck){target=_blank}                                           |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [Syntastic](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck)                  |                                      [Visit Web Site](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck){target=_blank}                                       |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-luacheck](https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dwenegar.vscode-luacheck){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        97        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description               | Embedded linters |                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor |       101        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -282,33 +282,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 ```
 
-
-### Example success log
-
-```shell
-Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua OK
-    
-    Total: 0 warnings / 0 errors in 1 file
-
-```
-
-### Example error log
-
-```shell
-Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[ERROR] .automation/test/lua/lua_bad_1.lua
-    Checking .automation/test/lua/lua_bad_1.lua 1 error
-    
-        .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near <eof>
-    
-    Total: 0 warnings / 1 error in 1 file
-
-```
+- APK packages (Linux):
+  - [openssl](https://pkgs.alpinelinux.org/packages?branch=edge&name=openssl)
+  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=readline-dev)

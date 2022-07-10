@@ -14,7 +14,7 @@
 - Version in MegaLinter: **2.14.3**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
-  - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-lint){target=_blank} will be used
+  - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
 - See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html){target=_blank}
 - See [Index of problems detected by pylint](http://pylint-messages.wikidot.com/all-codes){target=_blank}
 
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -35,7 +35,7 @@
 | PYTHON_PYLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | PYTHON_PYLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | PYTHON_PYLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PYTHON_PYLINT_CONFIG_FILE                 | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.python-lint`                                  |
+| PYTHON_PYLINT_CONFIG_FILE                 | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.pylintrc`                                     |
 | PYTHON_PYLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -46,20 +46,20 @@ Use pylint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                          |                                                        Install                                                         |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [PyLint](https://pydev.org/manual_adv_pylint.html)                                                      |                       [Visit Web Site](https://pydev.org/manual_adv_pylint.html){target=_blank}                        |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PyCharm (Native Support)](https://www.jetbrains.com/pycharm/)                                          |                          [Visit Web Site](https://www.jetbrains.com/pycharm/){target=_blank}                           |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [pylint.vim](https://www.vim.org/scripts/script.php?script_id=891)                                      |                 [Visit Web Site](https://www.vim.org/scripts/script.php?script_id=891){target=_blank}                  |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio                                            | [Native Support](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019) | [Visit Web Site](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019){target=_blank} |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Native Support](https://code.visualstudio.com/docs/python/linting#_pylint)                             |               [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_pylint){target=_blank}               |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [PyLint](https://pydev.org/manual_adv_pylint.html)                                                      |                       [Visit Web Site](https://pydev.org/manual_adv_pylint.html){target=_blank}                        |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PyCharm (Native Support)](https://www.jetbrains.com/pycharm/)                                          |                          [Visit Web Site](https://www.jetbrains.com/pycharm/){target=_blank}                           |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [pylint.vim](https://www.vim.org/scripts/script.php?script_id=891)                                      |                 [Visit Web Site](https://www.vim.org/scripts/script.php?script_id=891){target=_blank}                  |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio                                            | [Native Support](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019) | [Visit Web Site](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Native Support](https://code.visualstudio.com/docs/python/linting#_pylint)                             |               [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_pylint){target=_blank}               |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor           |       101        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -714,28 +714,3 @@ Imports:
 
 - PIP packages (Python):
   - [pylint](https://pypi.org/project/pylint)
-
-### Example success log
-
-```shell
-Results of pylint linter (version 2.6.0)
-See documentation on https://megalinter.github.io/descriptors/python_pylint/
------------------------------------------------
-
-[SUCCESS] .automation/test/python/python_good_1.py
-    
-
-```
-
-### Example error log
-
-```shell
-Results of pylint linter (version 2.6.0)
-See documentation on https://megalinter.github.io/descriptors/python_pylint/
------------------------------------------------
-
-[ERROR] .automation/test/python/python_bad_1.py
-    ************* Module python_bad_1
-    .automation/test/python/python_bad_1.py:15:24: E0001: invalid syntax (<unknown>, line 15) (syntax-error)
-
-```

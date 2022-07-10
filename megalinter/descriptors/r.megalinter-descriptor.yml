@@ -19,13 +19,24 @@ linters:
       - 'R --slave -e "errors <- lintr::lint(''myfile.r''); print(errors); quit(save = ''no'', status = if (length(errors) > 0) 1 else 0) "'
     install:
       apk:
+        - gcc
+        - g++
+        - libc-dev
+        - libcurl
+        - libffi-dev
+        - libgcc
+        - libxml2-dev
+        - libxml2-utils
+        - linux-headers
         - R
         - R-dev
         - R-doc
       dockerfile:
-        - FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
-        - COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
-        - RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+        - |
+          RUN mkdir -p /home/r-library \
+              && cp -r /usr/lib/R/library/ /home/r-library/ \
+              && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+              && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
     ide:
       atom:
         - name: Atom lintr

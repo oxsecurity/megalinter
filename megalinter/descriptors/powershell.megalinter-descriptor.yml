@@ -14,6 +14,8 @@ file_extensions:
 # Slightly modified to always retrieve latest stable Powershell version
 # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
 install:
+  apk:
+    - icu-libs
   dockerfile:
     - ARG PWSH_VERSION='latest'
     - ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
@@ -31,6 +33,7 @@ linters:
   - class: PowershellLinter
     linter_name: powershell
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
     linter_rules_configuration_url: https://github.com/PowerShell/PSScriptAnalyzer#explicit
     linter_rules_inline_disable_url: https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules

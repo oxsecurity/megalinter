@@ -12,10 +12,10 @@
 
 ## Configuration in MegaLinter
 
-- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/latest/configuration/#apply-fixes)
 
 | Variable                                         | Description                                                                                                                                                                                                         | Default value                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -36,10 +36,11 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)       | Default MegaLinter Flavor              |       101        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -129,31 +130,3 @@ FROM alpine/terragrunt:latest as terragrunt
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
 
-
-### Example success log
-
-```shell
-Results of terragrunt linter (version 0.26.7)
-See documentation on https://megalinter.github.io/descriptors/terraform_terragrunt/
------------------------------------------------
-
-[SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-    [terragrunt] 2020/12/05 12:35:50 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
-    [terragrunt] 2020/12/05 12:35:50 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-
-```
-
-### Example error log
-
-```shell
-Results of terragrunt linter (version 0.26.7)
-See documentation on https://megalinter.github.io/descriptors/terraform_terragrunt/
------------------------------------------------
-
-[ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/12/05 12:35:49 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
-    [terragrunt] 2020/12/05 12:35:49 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/12/05 12:35:49 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/12/05 12:35:49 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
-
-```

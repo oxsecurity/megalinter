@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "5.16.1",
+  "version": "5.17.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/megalinter/megalinter.git"
@@ -82,7 +82,10 @@
     "find-package-json": "^1.2.0",
     "fs-extra": "^10.0.0",
     "glob-promise": "^4.2.2",
+    "open": "^8.4.0",
     "optionator": "^0.9.1",
+    "prompts": "^2.4.2",
+    "uuid": "^8.3.2",
     "which": "^2.0.2",
     "yeoman-environment": "^3.8.0",
     "yeoman-generator": "^5.4.2",

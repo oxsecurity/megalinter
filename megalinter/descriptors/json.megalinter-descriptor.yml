@@ -9,6 +9,7 @@ linters:
   # JSONLINT
   - linter_name: jsonlint
     linter_url: https://github.com/zaach/jsonlint
+    linter_repo: https://github.com/zaach/jsonlint
     linter_megalinter_ref_url: https://github.com/zaach/jsonlint/pull/127
     version_command_return_code: 1
     examples:
@@ -18,6 +19,7 @@ linters:
         - jsonlint
   # ESLINT-PLUGIN-JSONC
   - linter_name: eslint-plugin-jsonc
+    can_output_sarif: true
     file_extensions:
       - ".json"
       - ".json5"
@@ -94,11 +96,16 @@ linters:
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --format
+      - "@microsoft/eslint-formatter-sarif"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     cli_executable_version: "npm"
     cli_version_arg_name: ""
-    cli_version_extra_args: ["list", "eslint-plugin-jsonc"]
+    cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]
     examples:
       - "eslint myfile.json"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
@@ -109,6 +116,7 @@ linters:
       npm:
         - eslint
         - eslint-plugin-jsonc
+        - "@microsoft/eslint-formatter-sarif"
     ide:
       vscode:
         - name: vscode-eslint
@@ -116,9 +124,11 @@ linters:
     # V8R
   - linter_name: v8r
     linter_url: https://github.com/chris48s/v8r
+    linter_repo: https://github.com/chris48s/v8r
     linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
     linter_rules_url: https://www.schemastore.org/json/
     linter_megalinter_ref_url: "no"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"
@@ -128,7 +138,7 @@ linters:
     downgraded_version: true
     install:
       npm:
-        - v8r@0.6.1
+        - v8r
     ide:
       eclipse:
         - name: native support

@@ -6,6 +6,7 @@ file_extensions:
   - ".php"
 install:
   apk:
+    - gnupg
     - php7
     - php7-phar
     - php7-json
@@ -43,21 +44,11 @@ install:
           && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
           && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 linters:
-  # PHP Built in Linter
-  - linter_name: php
-    linter_url: https://www.php.net
-    linter_repo: https://github.com/php/php-src
-    linter_banner_image_url: https://www.php.net/images/logos/new-php-logo.svg
-    linter_megalinter_ref_url: never
-    name: PHP_BUILTIN
-    cli_lint_extra_args:
-      - "-l"
-    examples:
-      - "php -l myfile.js"
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
     linter_url: https://github.com/squizlabs/PHP_CodeSniffer
+    linter_repo: https://github.com/squizlabs/PHP_CodeSniffer
     linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
     linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
     config_file_name: phpcs.xml
@@ -125,6 +116,7 @@ linters:
   # PSALM
   - linter_name: psalm
     name: PHP_PSALM
+    can_output_sarif: true
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
     linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
@@ -134,6 +126,8 @@ linters:
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config="
+    cli_sarif_args:
+      - "--report={{SARIF_OUTPUT_FILE}}"
     version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "([0-9]+) error"
@@ -166,6 +160,9 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require overtrue/phplint ^3.0 \
+          RUN composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
               && composer global config bin-dir --absolute
-        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+        - |
+          RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
+              && chmod +x phplint.phar \
+              && mv phplint.phar /usr/local/bin/phplint

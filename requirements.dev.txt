@@ -9,6 +9,7 @@ commentjson
 pytablewriter
 pytest-cov
 pytest-timeout
+pytest-xdist
 python-gitlab
 pyyaml
 requests
@@ -21,3 +22,4 @@ mdx_truly_sane_lists
 beautifulsoup4
 giturlparse
 json-schema-for-humans
+# flask-restful

@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!-- unreleased-content-marker -->
+
 ## [Unreleased] (beta, main branch content)
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
@@ -12,6 +14,68 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
 <!-- linter-versions-end -->
+
+## [v6.0.0] - 2022-07-10
+
+- Breaking changes: you must run `npx mega-linter-runner --upgrade` to use MegaLinter v6
+
+- Core architecture
+  - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
+    - Correct SARIF files for known format errors
+  - New config variable **DISABLE_LINTERS_ERRORS** to define a list of linters that will be considered as non blocking
+  - Upgrade base docker image to python:3.10.4-alpine3.15
+  - Rename default report folder from `report` to `megalinter-reports`
+  - Display GitHub stars in linters summary table in documentation
+
+- Linters:
+  - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
+  - Add [dustilock](https://github.com/Checkmarx/dustilock) to check for dependency confusion attacks with node and python packages
+  - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+  - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
+  - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
+  - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
+  - Add [trivy](https://github.com/aquasecurity/trivy) security linter
+  - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
+  - Remove **rstfmt** as it is not maintained anymore
+  - SARIF management for:
+    - bandit
+    - checkov
+    - checkstyle
+    - cfn-lint
+    - devskim
+    - eslint
+    - gitleaks
+    - hadolint
+    - ktlint
+    - npm-groovy-lint
+    - psalm
+    - semgrep
+    - secretlint
+    - revive
+    - terrascan
+    - tflint
+    - trivy
+
+- Descriptors:
+  - New flavor **Security**
+  - New descriptor **repository**: contains DevSkip, dustilock, gitleaks, secretlint, semgrep, syft, trivy
+  - Remove CREDENTIALS and GIT descriptors
+
+- mega-linter-runner
+  - `--upgrade` option can now upgrade repos MegaLinter config to v6
+  - Create/update local `.gitignore` file when installing / updating MegaLinter using mega-linter-runner
+  - Propose to test ox.security service
+  - Switch from npm to yarn
+
+- Dev architecture
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
+  - Automate update of CHANGELOG.md after release (beta)
+  - Accelerate internal CI testing performances
+
+## [v5.17.0] - 2022-07-10
+
+- Message to propose users to upgrade to v6
 
 ## [v5.16.1] - 2022-06-26
 
@@ -722,6 +786,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
   - `cpplint`: Use `cli_lint_mode: project` to improve performances
 
+
 - Linter versions upgrades
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
   - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
@@ -813,6 +878,24 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
 - Fix typo error in `.jscpd.json` config file (#986)
 - Deprecate `DEFAULT_BRANCH`, and change its default from `master` to `HEAD` (#915)
+
+- Core architecture
+  - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
+  - Documentation versioning with mike
+  - Allow GithubStatusReporter to work for other CI platforms
+  - Add license info in **List of linters** documentation page
+
+- Linters
+  - Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+  - Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
+  - Upgrade checkov install instructions to use alpine-oriented ones
+  - Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
+  - Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+
+- Bug fixes
+  - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+  - Bypass random CI issue with sql_tsqllint_test test version and test help
+  - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
