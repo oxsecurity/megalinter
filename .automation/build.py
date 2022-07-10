@@ -459,7 +459,19 @@ def generate_linter_dockerfiles():
     # Update github action workflow
     gha_workflow_yml += ["          ]"]
     replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-v6-alpha-linters.yml",
+        f"{REPO_HOME}/.github/workflows/deploy-DEV-linters.yml",
+        "# linters-start",
+        "# linters-end",
+        "\n".join(gha_workflow_yml),
+    )
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-PROD-linters.yml",
+        "# linters-start",
+        "# linters-end",
+        "\n".join(gha_workflow_yml),
+    )
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-RELEASE-linters.yml",
         "# linters-start",
         "# linters-end",
         "\n".join(gha_workflow_yml),

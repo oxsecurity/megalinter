@@ -2,7 +2,7 @@ ML_REPO_OWNER = "oxsecurity"
 ML_REPO_NAME = "megalinter"
 ML_REPO = f"{ML_REPO_OWNER}/{ML_REPO_NAME}"
 ML_REPO_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}"
-ML_DOC_URL = "https://oxsecurity.github.io/megalinter/latest"  # TODOv6: remove v6-alpha, replace by latest
+ML_DOC_URL = "https://oxsecurity.github.io/megalinter/latest"
 ML_REPO_ISSUES_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}/issues"
 ML_DOC_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/descriptors"
 
@@ -19,4 +19,4 @@ DEFAULT_SARIF_SCHEMA_URI = (
     "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json"
 )
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "v6"
+DEFAULT_RELEASE = "beta"
