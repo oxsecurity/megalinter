@@ -716,11 +716,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/rst_rstfmt/</loc>
-         <lastmod>2022-07-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/ruby/</loc>
          <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
@@ -956,11 +951,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://oxsecurity.github.io/megalinter/beta/flavors/dart/</loc>
-         <lastmod>2022-07-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/flavors/documentation/</loc>
          <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
@@ -1007,11 +997,6 @@
     </url>
     <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/flavors/salesforce/</loc>
-         <lastmod>2022-07-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://oxsecurity.github.io/megalinter/beta/flavors/scala/</loc>
          <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
