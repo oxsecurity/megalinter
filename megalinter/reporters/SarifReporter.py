@@ -5,8 +5,8 @@ Produce SARIF report
 import json
 import logging
 import os
-from json.decoder import JSONDecodeError
 import random
+from json.decoder import JSONDecodeError
 
 from megalinter import Reporter, config
 from megalinter.constants import (
@@ -145,7 +145,9 @@ class SarifReporter(Reporter):
                             for rule_item in rules_updated
                         ):
                             rule["id"] = (
-                                rule["id"] + "_DUPLICATE_" + str(random.randint(1, 99999))
+                                rule["id"]
+                                + "_DUPLICATE_"
+                                + str(random.randint(1, 99999))
                             )
                         rules_updated += [rule]
                     run["tool"]["driver"]["rules"] = rules_updated
