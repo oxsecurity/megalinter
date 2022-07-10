@@ -67,8 +67,9 @@ class MegaLinterRunner {
         : options.flavor !== "all" && this.isv4(release)
         ? `nvuillam/mega-linter-${options.flavor}`
         : // << v4 retrocompatibility
-      // v5 retrocompatibility >>
-      (options.flavor === "all" || options.flavor == null) && this.isv5(release)
+        // v5 retrocompatibility >>
+        (options.flavor === "all" || options.flavor == null) &&
+          this.isv5(release)
         ? "megalinter/megalinter"
         : options.flavor !== "all" && this.isv5(release)
         ? `megalinter/megalinter-${options.flavor}`
