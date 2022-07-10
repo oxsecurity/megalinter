@@ -2417,7 +2417,8 @@ def generate_documentation_all_users():
         "",
         "Here is a non-exhaustive list of open-source projects that use Megalinter",
         "",
-        "According to posted issues, there are many more private and self-hosted repos using MegaLinter but as we don't track them I can't provide a list :)",
+        "According to posted issues, there are many more private and self-hosted "
+        "repos using MegaLinter but as we don't track them I can't provide a list :)",
         "",
     ]
     for repo in repositories:
