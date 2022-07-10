@@ -11,26 +11,17 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - v6-alpha linters"
+name: "Build & Deploy - Release linters"
 on:
-  push:
-    branches:
-      - "v6_dev"
-      - "v6/keep-alive-images"
-      - "v6/docker-standalone-linters"
+  release:
+    # Want to run the automation when a release is created
+    types: ["created"]
     paths:
-      - ".github/workflows/**"
       - "Dockerfile"
-      - "**/Dockerfile"
-      - "flavors/**"
       - "megalinter/**"
-      - "mega-linter-runner/**"
+      - "flavors/**"
       - "**/linter-versions.json"
-      - "TEMPLATES/**"
-      - ".trivyignore"
-      - "**/*.sh"
-      - "**/*.py"
-      - "**/sh/**"
+      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -41,26 +32,10 @@ concurrency:
 
 jobs:
 
-  prepare:
-    name: Prepare matrix
-    runs-on: ubuntu-latest  
-    steps:
-
-    - name: Build unique image name for v6_alpha
-      shell: bash
-      run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo v6_alpha_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
-
-    - name: Prepare result is ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
-      shell: bash
-      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}  
-
-    outputs:
-      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"  
-
   build:
     needs: prepare
     # Name the Job
-    name: Deploy Docker Image - v6-alpha - Linters
+    name: Deploy Docker Image - Release - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
@@ -112,25 +87,25 @@ jobs:
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy v6-alpha image to DockerHub
+      - name: Deploy Release image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: v6-alpha
+          IMAGE_VERSION: ${{ github.event.release.tag_name }}
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
 
-      - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
+      - name: Deploy ${{ github.event.release.tag_name }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ needs.prepare.outputs.unique_docker_image_name }}"
+          IMAGE_VERSION: "${{ github.event.release.tag_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
           ALWAYS_BUILD: force
@@ -145,7 +120,7 @@ jobs:
         run: |
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:v6-alpha
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
         timeout-minutes: 30
 
       ##############################################
@@ -154,7 +129,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v6-alpha'
+          image-ref: 'docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
