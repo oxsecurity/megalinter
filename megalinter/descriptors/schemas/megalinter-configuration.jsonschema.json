@@ -10720,6 +10720,13 @@
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string"
     },
+    "SARIF_REPORTER": {
+      "$id": "#/properties/SARIF_REPORTER",
+      "default": false,
+      "description": "Generate SARIF reports that can be used to display issues directly in GitHub UI",
+      "title": "Activate SARIF reporter",
+      "type": "boolean"
+    },
     "SCALA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SCALA descriptor",
