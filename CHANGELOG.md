@@ -13,6 +13,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
+## [v5.17.0] - 2022-07-XX
+
+- Message to propose users to upgrade to v6
+
 ## [v5.16.1] - 2022-06-26
 
 - Quick fix release management
