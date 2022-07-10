@@ -70,7 +70,7 @@ class MegaLinterRunner {
       // v5 retrocompatibility >>
       (options.flavor === "all" || options.flavor == null) && this.isv5(release)
         ? "megalinter/megalinter"
-        : options.flavor !== "all" && this.isv4(release)
+        : options.flavor !== "all" && this.isv5(release)
         ? `megalinter/megalinter-${options.flavor}`
         : // << v5 retrocompatibility
         options.flavor === "all" || options.flavor == null

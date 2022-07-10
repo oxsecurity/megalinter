@@ -38,22 +38,22 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ### Additional Reporters
 
-- [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)
+- [Console](reporters/ConsoleReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
-- [Text files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TextReporter.md)
-- [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
+- [Text files](reporters/TextReporter.md)
+- [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
-- [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
+- [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
-- [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
-- [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)
-- [File.io](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/FileIoReporter.md)
+- [Updated sources](reporters/UpdatedSourcesReporter.md)
+- [Email](reporters/EmailReporter.md)
+- [File.io](reporters/FileIoReporter.md)
 
 ## Enhanced Configuration
 
@@ -129,7 +129,7 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 
 - [Test classes](https://github.com/oxsecurity/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
 - [Test classes for each linter](https://github.com/oxsecurity/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
-- Setup **code coverage** [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
+- Setup **code coverage** [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 - **Development CD / CI**
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
