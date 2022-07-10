@@ -888,6 +888,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 + badge
             ]
         # Text as title
+        elif badge == "": 
+            linter_doc_md += [f"# {linter.linter_name}"]
         else:
             linter_doc_md += [f"# {linter.linter_name} {badge}"]
 
