@@ -29,7 +29,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --ignore-installed mkdocs-material
+  pip3 install --ignore-installed mkdocs-material webpreview
   cd /tmp/lint || exit 1
   chmod +x build.sh
   bash build.sh --doc
