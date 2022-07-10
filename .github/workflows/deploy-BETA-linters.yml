@@ -11,7 +11,7 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - Beta linters"
+name: "Build & Deploy - BETA linters"
 on:
   push:
     branches:

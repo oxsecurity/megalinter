@@ -19,4 +19,4 @@ DEFAULT_SARIF_SCHEMA_URI = (
     "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json"
 )
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "beta"
+DEFAULT_RELEASE = "v6"

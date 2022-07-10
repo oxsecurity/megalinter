@@ -465,7 +465,7 @@ def generate_linter_dockerfiles():
         "\n".join(gha_workflow_yml),
     )
     replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-PROD-linters.yml",
+        f"{REPO_HOME}/.github/workflows/deploy-BETA-linters.yml",
         "# linters-start",
         "# linters-end",
         "\n".join(gha_workflow_yml),
@@ -1478,7 +1478,7 @@ def update_mkdocs_and_workflow_yml_with_flavors():
     )
     # Update Github actions workflow files
     replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-PROD-flavors.yml",
+        f"{REPO_HOME}/.github/workflows/deploy-BETA-flavors.yml",
         "# flavors-start",
         "# flavors-end",
         "\n".join(gha_workflow_yml),
