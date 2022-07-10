@@ -38,7 +38,6 @@ class OxSecuritySetup {
       console.log(`Written Ox token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
     }
     */
-
 }
 
 module.exports = { OxSecuritySetup };

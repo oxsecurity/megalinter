@@ -317,8 +317,9 @@ When you don't know what option to select, please use default values`
     }
     if (doWrite) {
       this.fs.write(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
-      this.log("Updated .gitignore file to exclude megalinter-reports from commits");
+      this.log(
+        "Updated .gitignore file to exclude megalinter-reports from commits"
+      );
     }
   }
-
 };

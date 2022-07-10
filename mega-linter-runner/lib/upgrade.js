@@ -341,27 +341,41 @@ jobs:
     console.log(asciiArt());
     const promptsUpgradeRes = await prompts({
       name: "upgrade",
-      message: c.blueBright(`This assistant will automatically upgrade your local files so you use MegaLinter v6\nPlease confirm to proceed :)`),
+      message: c.blueBright(
+        `This assistant will automatically upgrade your local files so you use MegaLinter v6\nPlease confirm to proceed :)`
+      ),
       type: "confirm",
-      initial: true
+      initial: true,
     });
     if (promptsUpgradeRes.upgrade === false) {
-      console.log("You should upgrade to v6 to benefit from latest versions of linters, and more features :)")
-      return ;
+      console.log(
+        "You should upgrade to v6 to benefit from latest versions of linters, and more features :)"
+      );
+      return;
     }
     // Update local files
     await this.applyReplacements();
     this.manageGitIgnore();
     console.log("");
-    console.log(c.green("You MegaLinter local configuration files has been updated !"));
-    console.log(c.grey("Now stage and commit updated files then push to see latest version of MegaLinter in action !"));
+    console.log(
+      c.green("You MegaLinter local configuration files has been updated !")
+    );
+    console.log(
+      c.grey(
+        "Now stage and commit updated files then push to see latest version of MegaLinter in action !"
+      )
+    );
     console.log("");
     // Propose to try ox service
     const promptsOxRes = await prompts({
       name: "ox",
-      message: c.blueBright(`MegaLinter is now part of ${c.green("OX Security")}.\nDo you want to connect to OX Security to secure your repository ?`),
+      message: c.blueBright(
+        `MegaLinter is now part of ${c.green(
+          "OX Security"
+        )}.\nDo you want to connect to OX Security to secure your repository ?`
+      ),
       type: "confirm",
-      initial: false
+      initial: false,
     });
     if (promptsOxRes.ox === true) {
       new OxSecuritySetup().run();
@@ -418,7 +432,9 @@ jobs:
     let gitIgnoreTextLines = [];
     let doWrite = false;
     if (fs.existsSync(gitIgnoreFile)) {
-      gitIgnoreTextLines = fs.readFileSync(gitIgnoreFile, "utf8").split(/\r?\n/);
+      gitIgnoreTextLines = fs
+        .readFileSync(gitIgnoreFile, "utf8")
+        .split(/\r?\n/);
     }
     if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
       gitIgnoreTextLines.push("megalinter-reports/");
@@ -426,7 +442,9 @@ jobs:
     }
     if (doWrite) {
       fs.writeFileSync(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
-      console.log("Updated .gitignore file to exclude megalinter-reports from commits");
+      console.log(
+        "Updated .gitignore file to exclude megalinter-reports from commits"
+      );
     }
   }
 }

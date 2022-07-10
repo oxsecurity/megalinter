@@ -1,5 +1,5 @@
 function asciiArt() {
-    return `
+  return `
     .:oool'                                  ,looo;                           
     .xNXNXl                                 .dXNNXo.                          
      lXXXX0c.                              'oKXXN0;                           
@@ -22,6 +22,6 @@ function asciiArt() {
 =============   MegaLinter, by OX Security   =============
 ==========================================================
 `;
-  }
+}
 
-  module.exports = {asciiArt};
+module.exports = { asciiArt };
