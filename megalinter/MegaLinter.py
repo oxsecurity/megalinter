@@ -822,7 +822,7 @@ class Megalinter:
             )
             logging.warning(
                 c.yellow(
-                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter.\n"
+                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter .\n"
                     + "Please upgrade your configuration by running the following command at the "
                     + "root of your repository (requires node.js): \n"
                     + c.green("npx mega-linter-runner --upgrade")
