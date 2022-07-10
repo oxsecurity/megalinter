@@ -48,7 +48,6 @@ jobs:
         flavor:
           [
             "ci_light",
-            "dart",
             "documentation",
             "dotnet",
             "go",
@@ -59,7 +58,6 @@ jobs:
             "ruby",
             "rust",
             "salesforce",
-            "scala",
             "security",
             "swift",
             "terraform",
