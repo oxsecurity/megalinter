@@ -19,8 +19,8 @@
   stages:
     - commit
   description: >
-    See https://megalinter.github.io/latest/mega-linter-runner/#usage and
-    https://megalinter.github.io/latest/configuration/ if you wish to override
+    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage and
+    https://oxsecurity.github.io/megalinter/latest/configuration/ if you wish to override
     the default arguments. mega-linter-runner is specified as an argument so
     that you may override the version (e.g., mega-linter-runner@vx.y.z). Depends
     on npx, which ships with npm 7+, and Docker. Unlike most pre-commit hooks,
@@ -53,8 +53,8 @@
   stages:
     - push
   description: >
-    See https://megalinter.github.io/latest/mega-linter-runner/#usage and
-    https://megalinter.github.io/latest/configuration/ if you wish to override
+    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage and
+    https://oxsecurity.github.io/megalinter/latest/configuration/ if you wish to override
     the default arguments. mega-linter-runner is specified as an argument so
     that you may override the version (e.g., mega-linter-runner@vx.y.z). Depends
     on npx, which ships with npm 7+, and Docker. Runs very slowly when the

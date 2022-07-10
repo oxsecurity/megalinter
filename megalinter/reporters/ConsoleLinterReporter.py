@@ -15,7 +15,7 @@ DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 class ConsoleLinterReporter(Reporter):
     name = "CONSOLE"
     scope = "linter"
-    print_all_files = True
+    print_all_files = False
 
     def __init__(self, params=None):
         # Activate console output by default
@@ -23,8 +23,8 @@ class ConsoleLinterReporter(Reporter):
         self.report_type = "simple"
         if config.get("OUTPUT_DETAIL", "") == "detailed":
             self.report_type = "detailed"
-        if config.get("PRINT_ALL_FILES", "") == "false":
-            self.print_all_files = False
+        if config.get("PRINT_ALL_FILES", "") == "true":
+            self.print_all_files = True
         super().__init__(params)
 
     def manage_activation(self):

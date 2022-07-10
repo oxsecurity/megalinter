@@ -10,7 +10,7 @@ import unittest
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
-class mega_linter_2_fixes(unittest.TestCase):
+class mega_linter_2_fixes_test(unittest.TestCase):
     def setUp(self):
         utilstest.linter_test_setup(
             {
@@ -24,7 +24,8 @@ class mega_linter_2_fixes(unittest.TestCase):
                 "APPLY_FIXES": "JAVASCRIPT_STANDARD",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "DISABLE_LINTERS": "TERRAFORM_KICS",
+                "DISABLE_LINTERS": "TERRAFORM_KICS,REPOSITORY_GITLEAKS,REPOSITORY_TRIVY,"
+                "JSON_V8R,YAML_V8R,MARKDOWN_MARKDOWN_LINK_CHECK,TERRAFORM_CHECKOV",
             }
         )
         self.assertTrue(
@@ -41,7 +42,8 @@ class mega_linter_2_fixes(unittest.TestCase):
                 "APPLY_FIXES": "all",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "DISABLE_LINTERS": "TERRAFORM_KICS",
+                "DISABLE_LINTERS": "TERRAFORM_KICS,REPOSITORY_GITLEAKS,REPOSITORY_TRIVY,"
+                "JSON_V8R,YAML_V8R,MARKDOWN_MARKDOWN_LINK_CHECK,TERRAFORM_CHECKOV",
             }
         )
         self.assertTrue(
@@ -76,7 +78,7 @@ class mega_linter_2_fixes(unittest.TestCase):
             # file_name = (
             #     updated_sources_dir
             #    + os.path.sep
-            #    + fixable_file.replace('/tmp/lint', "")
+            #    + fixable_file.replace(DEFAULT_DOCKER_WORKSPACE_DIR, "")
             # )
             # self.assertTrue(
             #    os.path.isfile(file_name),

@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+
+###############################################################################################
+#Script Name	    : megalinter_exec
+#Description	    : Run the Megalinter scanner, for use when Megalinter is running in SSH mode
+#Owner            : ox.security
+#Email Contact    : support@ox.security
+#Email Author     : inbar@ox.security
+###############################################################################################
+
+usage()
+{
+    echo -e ""
+    echo -e "execute megalinter"
+    echo -e ""
+    echo -e "Usage"
+    echo -e "\tmegalinter_exec [options] --input <INPUT> --output <OUTPUT> [--capture-std <LOG>]"
+    echo -e ""
+    echo -e "Arguments"
+    echo -e "\t-h|-?|--help                          show usage (this message)"
+    echo -e "\t--input            <INPUT>            specify the directory to scan"
+    echo -e "\t--output           <OUTPUT>           specify the path for the report file to be created at"
+    echo -e "\t--capture-std      <LOG>              specify a path to write all captured STDOUT and STDERR to"
+    echo -e ""
+    echo -e "Options"
+    echo -e "\t-v|--verbose                          verbose output (useful for debugging)"
+    echo -e ""
+    echo -e "Examples"
+    echo -e "\t1. scan megalinter repo"
+    echo -e "\t\tmegalinter_exec --input /megalinter --output /tmp/output.sarif"
+    echo -e "\t2. scan megalinter repo with capture std"
+    echo -e "\t\tmegalinter_exec --input /megalinter --output /tmp/output.sarif --capture-std /tmp/out.log"
+    echo -e ""
+}
+
+INPUT=""
+OUTPUT=""
+CAPTURE_STD=""
+VERBOSE=0
+ML_ENV_VARS=/var/ml-env-vars
+ML_ENV_FIX_COMMAND="set -a; . ${ML_ENV_VARS}; set +a"
+
+# parse command line arguments
+while :; do
+    case $1 in
+        -h|-\?|--help)
+            usage
+            exit
+            ;;
+        # options
+        -v|--verbose)
+            VERBOSE=1
+            ;;
+        # arguments
+        --input)
+            if [ -n "$2" ]; then
+                INPUT=$2
+                shift
+            else
+                printf 'ERROR: "--input" requires a non-empty option argument.\n' >&2
+                exit 1
+            fi
+            ;;
+        --output)
+            if [ -n "$2" ]; then
+                OUTPUT=$2
+                shift
+            else
+                printf 'ERROR: "--output" requires a non-empty option argument.\n' >&2
+                exit 1
+            fi
+            ;;
+        --capture-std)
+            if [ -n "$2" ]; then
+                CAPTURE_STD=$2
+                shift
+            else
+                printf 'ERROR: "--capture-std" requires a non-empty option argument.\n' >&2
+                exit 1
+            fi
+            ;;
+        --) # End of all options.
+            shift
+            break
+            ;;
+        -?*)
+            printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+            ;;
+        *)  # Default case: If no more options then break out of the loop.
+            break
+    esac
+    shift
+done
+
+## prepare Megalinter scan command
+if [ "${INPUT}" == "" ]; then
+  printf 'ERROR: No input given (--input)\n' >&2
+  exit 1
+fi
+
+if [ "${OUTPUT}" == "" ]; then
+  printf 'ERROR: No output given (--output)\n' >&2
+  exit 1
+fi
+
+echo "Setting git safe.directory to /tmp/lint and ${INPUT} ..."
+git config --global --add safe.directory /tmp/lint
+git config --global --add safe.directory "${INPUT}"
+
+MEGALINTER_SCAN_COMMAND="DEFAULT_WORKSPACE=${INPUT} python -m megalinter.run --output ${OUTPUT}"
+if [ "${CAPTURE_STD}" != "" ]; then
+  MEGALINTER_SCAN_COMMAND="${MEGALINTER_SCAN_COMMAND} &> ${CAPTURE_STD}"
+fi
+## prepare bash command
+if [ "${VERBOSE}" == "1" ]; then
+  echo "The Megalinter Scan command is: ${MEGALINTER_SCAN_COMMAND}"
+fi
+BASH_COMMAND_TO_EXECUTE="${ML_ENV_FIX_COMMAND}; ${MEGALINTER_SCAN_COMMAND}"
+if [ "${VERBOSE}" == "1" ]; then
+  echo "About to run the following scan command (also setting -x): ${BASH_COMMAND_TO_EXECUTE}"
+  set -x
+fi
+## run bash command
+bash --login -c "${BASH_COMMAND_TO_EXECUTE}"

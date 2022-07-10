@@ -38,22 +38,22 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ### Additional Reporters
 
-- [Console](reporters/ConsoleReporter.md)
+- [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
-- [Text files](reporters/TextReporter.md)
-- [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)
+- [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)
+- [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
-- [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md)
+- [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
-- [Updated sources](reporters/UpdatedSourcesReporter.md)
-- [Email](reporters/EmailReporter.md)
-- [File.io](reporters/FileIoReporter.md)
+- [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
+- [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)
+- [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)
 
 ## Enhanced Configuration
 

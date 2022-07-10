@@ -1,0 +1,25 @@
+####################################
+Welcome to MegaLinter SSH server !
+####################################
+(2021) Nicolas Vuillamy
+
+You can run the following commands:
+
+- bash : get within bash context
+
+- load the environment variables configured during Dockerfile creation
+
+    - set -a; . /var/ml-env-vars; set +a
+
+- Run MegaLinter
+
+    - python -m megalinter.run --input demo-megalinter-security-flavor --output /tmp/report"                        (requires a /tmp/report mounted volume)
+    - python -m megalinter.run --input demo-megalinter-security-flavor --output /tmp/report/myfile.sarif"           (requires a /tmp/report mounted volume)
+    - python -m megalinter.run --input demo-megalinter-security-flavor --output myfile.sarif"                       (Will generate myfile.sarif in repo megalinter-reports folder)
+    - DEFAULT_WORKSPACE=/tmp/lint/demo-megalinter-security-flavor python -m megalinter.run"                         (working !)
+
+- alternatively, you could perform the operation in one command using megalinter_exec alias (also works through the SSH command)
+
+    - megalinter_exec --input myrepository --output myoutputfile.sarif                                                   (from inside the container in an interactive bash shell)
+    - ssh@megalinter-container "/bin/bash --login -c 'megalinter_exec --input myrepository --output myoutputfile.sarif'" (from outside the container, using ssh to run a command in the container)
+

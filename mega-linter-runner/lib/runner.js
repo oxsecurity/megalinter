@@ -113,13 +113,12 @@ ERROR: Docker engine has not been found on your system.
 
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
-    const commandArgs = [
-      "run",
-      "-v",
-      "/var/run/docker.sock:/var/run/docker.sock:rw",
-      "-v",
-      `${lintPath}:/tmp/lint:rw`,
-    ];
+    const commandArgs = ["run"];
+    if (options.containername) {
+      commandArgs.push(...["--name", options.containername]);
+    }
+    commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
+    commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
     if (options.fix === true) {
       commandArgs.push(...["-e", "APPLY_FIXES=all"]);
     }
@@ -133,9 +132,6 @@ ERROR: Docker engine has not been found on your system.
       for (const envVarEqualsValue of options.env) {
         commandArgs.push(...["-e", envVarEqualsValue]);
       }
-    }
-    if (commandArgs.containername) {
-      commandArgs.push(...["--name", commandArgs.containername]);
     }
     commandArgs.push(dockerImage);
 
