@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                                  | Configuration key                  | Status                                                                                                                                   |
+|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/vsiakka/gherkin-lint)](https://github.com/vsiakka/gherkin-lint/commits) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
