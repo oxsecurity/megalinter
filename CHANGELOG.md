@@ -10,33 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-**Except for special cases, updates of v5 are frozen until v6 release**
-
 - Linter versions upgrades
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.13 to **1.6.15** on 2022-07-10
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.1 to **0.61.2** on 2022-07-10
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3 to **10.3.1** on 2022-07-10
-  - [eslint](https://eslint.org) from 8.18.0 to **8.19.0** on 2022-07-10
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.0 to **2.3.1** on 2022-07-10
-  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.13.0** on 2022-07-10
-  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 5.6.0 to **5.9.2** on 2022-07-10
-  - [phpstan](https://phpstan.org/) from 1.7.15 to **1.8.0** on 2022-07-10
-  - [black](https://black.readthedocs.io/en/stable/) from 22.3.0 to **22.6.0** on 2022-07-10
-  - [pylint](https://www.pylint.org) from 2.14.3 to **2.14.4** on 2022-07-10
-  - [git_diff](https://git-scm.com) from 2.30.3 to **2.34.2** on 2022-07-10
-  - [secretlint](https://github.com/secretlint/secretlint) from 4.1.0 to **5.2.3** on 2022-07-10
-  - [rubocop](https://rubocop.org/) from 1.30.1 to **1.31.2** on 2022-07-10
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.61 to **0.1.62** on 2022-07-10
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.3 to **7.8.5** on 2022-07-10
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.2 to **6.2.3** on 2022-07-10
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.0.0 to **1.1.0** on 2022-07-10
-  - [checkov](https://www.checkov.io/) from 3.9 to **2.1.43** on 2022-07-10
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.3 to **1.2.4** on 2022-07-10
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.1 to **0.38.4** on 2022-07-10
-  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.14.0 to **1.15.2** on 2022-07-10
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.27.1** on 2022-07-10
 <!-- linter-versions-end -->
-
 ## [v6.0.0] - 2022-07-10
 
 - Breaking changes: you must run `npx mega-linter-runner --upgrade` to use MegaLinter v6
@@ -94,6 +69,30 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Manage offline run of `bash build.sh` for those who want to code in planes :)
   - Automate update of CHANGELOG.md after release (beta)
   - Accelerate internal CI testing performances
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.13 to **1.6.15** on 2022-07-10
+  - [black](https://black.readthedocs.io/en/stable/) from 22.3.0 to **22.6.0** on 2022-07-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.1 to **0.61.2** on 2022-07-10
+  - [checkov](https://www.checkov.io/) from 3.9 to **2.1.43** on 2022-07-10
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3 to **10.3.1** on 2022-07-10
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.61 to **0.1.62** on 2022-07-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.2 to **6.2.3** on 2022-07-10
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.0 to **2.3.1** on 2022-07-10
+  - [eslint](https://eslint.org) from 8.18.0 to **8.19.0** on 2022-07-10
+  - [git_diff](https://git-scm.com) from 2.30.3 to **2.34.2** on 2022-07-10
+  - [phpstan](https://phpstan.org/) from 1.7.15 to **1.8.0** on 2022-07-10
+  - [pylint](https://www.pylint.org) from 2.14.3 to **2.14.4** on 2022-07-10
+  - [rubocop](https://rubocop.org/) from 1.30.1 to **1.31.2** on 2022-07-10
+  - [secretlint](https://github.com/secretlint/secretlint) from 4.1.0 to **5.2.3** on 2022-07-10
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.3 to **7.8.5** on 2022-07-10
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 5.6.0 to **5.9.2** on 2022-07-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.0.0 to **1.1.0** on 2022-07-10
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.3 to **1.2.4** on 2022-07-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.1 to **0.38.4** on 2022-07-10
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.14.0 to **1.15.2** on 2022-07-10
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.13.0** on 2022-07-10
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.27.1** on 2022-07-10
 
 ## [v5.17.0] - 2022-07-10
 
