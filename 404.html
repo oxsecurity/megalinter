@@ -9,21 +9,13 @@
         window.onload = function () {
             const defaultVersion = 'latest' ;
             const destination = window.location.href;
-            if (window.location.href.includes("megalinter.github.io/" + defaultVersion)){
+            if (window.location.href.includes("oxsecurity.github.io/megalinter/" + defaultVersion)){
                 return ;
             }
-            else if (window.location.href.includes("megalinter.github.io/megalinter")) {
+            else if (window.location.href.includes("oxsecurity.github.io/megalinter/")) {
                 const redirectLocation = window.location.href.replace(
-                    "megalinter.github.io/megalinter",
-                    "megalinter.github.io/megalinter/" + defaultVersion
-                );
-                document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
-                window.location.href = redirectLocation;
-            }
-            else if (window.location.href.includes("megalinter.github.io")) {
-                const redirectLocation = window.location.href.replace(
-                    "megalinter.github.io",
-                    "megalinter.github.io/" + defaultVersion
+                    "oxsecurity.github.io/megalinter/",
+                    "oxsecurity.github.io/megalinter/" + defaultVersion + "/"
                 );
                 document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
                 window.location.href = redirectLocation;
@@ -33,7 +25,7 @@
 </head>
 
 <body id="body" style="text-align: center">
-    Page not found
+    Page not found :(
 </body>
 
 </html>
