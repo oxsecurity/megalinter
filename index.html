@@ -4,35 +4,27 @@
   <meta charset="utf-8">
   <title>Redirecting</title>
   <noscript>
-    <meta http-equiv="refresh" content="1; url=latest/" />
+    <meta http-equiv="refresh" content="1; url=https://oxsecurity.github.io/megalinter/latest/" />
   </noscript>
   <script>
     window.onload = function () {
-      const defaultVersion = 'latest' ;
-      const destination = window.location.href;
-      if (window.location.href.includes("megalinter.github.io/" + defaultVersion)){
+      if (window.location.href === "https://oxsecurity.github.io/megalinter") {
+          const redirectLocation = "https://oxsecurity.github.io/megalinter/latest/" ;
+          document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+          window.location.href = redirectLocation;
           return ;
       }
-      else if (window.location.href.includes("megalinter.github.io/megalinter")) {
-          const redirectLocation = window.location.href.replace(
-              "megalinter.github.io/megalinter",
-              "megalinter.github.io/" + defaultVersion
-          );
-          document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
-          window.location.href = redirectLocation;
-      }
-      else if (window.location.href.includes("megalinter.github.io")) {
-          const redirectLocation = window.location.href.replace(
-              "megalinter.github.io",
-              "megalinter.github.io/" + defaultVersion
-          );
-          document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
-          window.location.href = redirectLocation;
-      }
+      const defaultVersion = 'latest' ;
+      const redirectLocation = window.location.href.replace(
+          "oxsecurity.github.io/megalinter/",
+          "oxsecurity.github.io/megalinter/" + defaultVersion +"/"
+      );
+      document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+      window.location.href = redirectLocation;
   }
   </script>
 </head>
 <body id="body" style="text-align: center">
-  Redirecting to <a href="latest/">latest/</a>...
+  Redirecting to <a href="https://oxsecurity.github.io/megalinter/latest/">latest/</a>...
 </body>
 </html>
