@@ -59,7 +59,7 @@ class MegaLinterRunner {
     }
 
     // Build MegaLinter docker image name with flavor and release version
-    const release = options.release in ["stable"] ? "v5" : options.release;
+    const release = options.release in ["stable"] ? "v6" : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)

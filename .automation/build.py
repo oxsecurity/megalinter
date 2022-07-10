@@ -2000,11 +2000,11 @@ def finalize_doc_build():
         target_file,
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
-        """![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver&color=%23FD80CD)
+        """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
-[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
 

@@ -4,7 +4,7 @@ setup(
     name="megalinter",
     version="0.1",
     description="MegaLinter",
-    url="http://github.com/megalinter/megalinter",
+    url="http://github.com/oxsecurity/megalinter",
     author="Nicolas Vuillamy",
     author_email="nicolas.vuillamy@gmail.com",
     license="MIT",
