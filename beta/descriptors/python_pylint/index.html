@@ -5524,7 +5524,7 @@
 <p><a href="https://github.com/PyCQA/pylint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PyCQA/pylint" /></a></p>
 <h2 id="pylint-documentation">pylint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.14.3</strong></li>
+<li>Version in MegaLinter: <strong>2.14.4</strong></li>
 <li>Visit <a href="https://www.pylint.org" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PyCQA/pylint/blob/master/pylintrc" target="_blank">How to configure pylint rules</a><ul>
 <li>If custom <code>.pylintrc</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc" target="_blank">.pylintrc</a> will be used</li>
@@ -5702,7 +5702,7 @@
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">usage: pylint [options]
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 Commands:
@@ -5775,7 +5775,8 @@ Main:
   --jobs &lt;n-processes&gt;, -j &lt;n-processes&gt;
                         Use multiple processes to speed up Pylint. Specifying
                         0 will auto-detect the number of processors available
-                        to use. (default: 1)
+                        to use, and will cap the count on Windows to avoid
+                        hangs. (default: 1)
   --limit-inference-results &lt;number-of-results&gt;
                         Control the amount of potential inferred values when
                         inferring a single object. This can help the
@@ -5808,7 +5809,7 @@ Main:
   --py-version &lt;py_version&gt;
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 9))
+                        pylint. (default: (3, 10))
   --ignored-modules &lt;module names&gt;
                         List of module names for which member attributes
                         should not be checked (useful for modules/projects
@@ -6016,8 +6017,8 @@ Variables:
   --dummy-variables-rgx &lt;regexp&gt;
                         A regular expression matching the name of dummy
                         variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unus
-                        ed_)
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
+                        9]+?$)|dummy|^ignored_|^unused_)
   --additional-builtins &lt;comma separated list&gt;
                         List of additional names supposed to be defined in
                         builtins. Remember that you should avoid defining new

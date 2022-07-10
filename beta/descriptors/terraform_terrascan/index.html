@@ -5510,7 +5510,7 @@
 <p><a href="https://github.com/accurics/terrascan/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/accurics/terrascan" /></a></p>
 <h2 id="terrascan-documentation">terrascan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.14.0</strong></li>
+<li>Version in MegaLinter: <strong>1.15.2</strong></li>
 <li>Visit <a href="https://www.accurics.com/products/terrascan/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/" target="_blank">How to configure terrascan rules</a></li>
 <li>See <a href="https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/" target="_blank">Index of problems detected by terrascan</a></li>
@@ -5633,7 +5633,7 @@
 <pre><code class="language-shell">Terrascan
 
 Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
-For more information, please visit https://docs.accurics.com
+For more information, please visit https://runterrascan.io/
 
 Usage:
   terrascan [command]
@@ -5645,11 +5645,12 @@ Available Commands:
   version     Terrascan version
 
 Flags:
-  -c, --config-path string   config file path
-  -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default &quot;info&quot;)
-  -x, --log-type string      log output type (console, json) (default &quot;console&quot;)
-  -o, --output string        output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default &quot;human&quot;)
-      --temp-dir string      temporary directory path to download remote repository,module and templates
+  -c, --config-path string      config file path
+  -l, --log-level string        log level (debug, info, warn, error, panic, fatal) (default &quot;info&quot;)
+      --log-output-dir string   directory path to write the log and output files
+  -x, --log-type string         log output type (console, json) (default &quot;console&quot;)
+  -o, --output string           output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default &quot;human&quot;)
+      --temp-dir string         temporary directory path to download remote repository,module and templates
 
 Use &quot;terrascan [command] --help&quot; for more information about a command.
 </code></pre>

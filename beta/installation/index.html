@@ -5531,26 +5531,26 @@
 <h1 id="installation">Installation</h1>
 <h2 id="assisted-installation">Assisted installation</h2>
 <p>Just run <code>npx mega-linter-runner --install</code> at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)</p>
-<p><img alt="Runner Install" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
+<p><img alt="Runner Install" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
 <h2 id="upgrade-from-megalinter-v4">Upgrade from MegaLinter v4</h2>
 <ul>
 <li>Run <code>npx mega-linter-runner --upgrade</code> to automatically upgrade your configuration to v5 :)</li>
 </ul>
 <h2 id="manual-installation">Manual installation</h2>
-<p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/megalinter/megalinter/releases">latest release</a>)</p>
+<p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>GitHub Action: megalinter/megalinter@v5</li>
-<li>Docker image: megalinter/megalinter:v5</li>
+<li>GitHub Action: oxsecurity/megalinter@v5</li>
+<li>Docker image: oxsecurity/megalinter:v5</li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
-<li>GitHub Action: megalinter/megalinter@beta</li>
-<li>Docker image: megalinter/megalinter:beta</li>
+<li>GitHub Action: oxsecurity/megalinter@beta</li>
+<li>Docker image: oxsecurity/megalinter:beta</li>
 </ul>
 <h2 id="github-action">GitHub Action</h2>
 <ol>
 <li>Create a new file in your repository called <code>.github/workflows/mega-linter.yml</code></li>
-<li>Copy the <a href="https://raw.githubusercontent.com/megalinter/megalinter/main/TEMPLATES/mega-linter.yml">example workflow from below</a> into that new file, no extra configuration required</li>
+<li>Copy the <a href="https://raw.githubusercontent.com/oxsecurity/megalinter/main/TEMPLATES/mega-linter.yml">example workflow from below</a> into that new file, no extra configuration required</li>
 <li>Commit that file to a new branch</li>
 <li>Open up a pull request and observe the action working</li>
 <li>Enjoy your more <em>stable</em>, and <em>cleaner</em> code base</li>
@@ -5606,7 +5606,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter@v5
+        uses: oxsecurity/megalinter@v5
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
@@ -5666,8 +5666,8 @@ jobs:
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+        docker pull oxsecurity/megalinter:v5
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v5
       displayName: 'MegaLinter analysis'
 
     # Publish the Anchore report as an artifact to Azure Pipelines
@@ -5685,7 +5685,7 @@ jobs:
 stage('MegaLinter') {
     agent {
         docker {
-            image 'megalinter/megalinter:v5'
+            image 'oxsecurity/megalinter:v5'
             args &quot;-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''&quot;
             reuseNode true
         }
@@ -5709,7 +5709,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter:v5
+  image: oxsecurity/megalinter:v5
   script: [ &quot;true&quot; ] # if script: [&quot;true&quot;] does not work, you may try -&gt;  script: [ &quot;/bin/bash /entrypoint.sh&quot; ]
   variables:
     # All available variables are described in documentation
@@ -5724,7 +5724,7 @@ mega-linter:
 </code></pre>
 <p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables</p>
 <p><img alt="config-gitlab-access-token" src="https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif" /></p>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;" /></p>
 <h2 id="concourse">Concourse</h2>
 <h3 id="pipeline-step">Pipeline step</h3>
 <p>Use the following <code>job.step</code> in your pipeline template</p>
@@ -5740,7 +5740,7 @@ mega-linter:
           image_resource:
             type: docker-image
             source:
-              repository: megalinter/megalinter
+              repository: oxsecurity/megalinter
               tag: v5
           inputs:
             - name: repo
@@ -5771,7 +5771,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: megalinter/megalinter
+    repository: oxsecurity/megalinter
     tag: v5
 
 inputs:

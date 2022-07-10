@@ -5488,7 +5488,7 @@
 <p><img alt="👋" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f44b.svg" title=":wave:" /> Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.</p>
 <h2 id="submitting-a-pull-request">Submitting a pull request</h2>
-<p><a href="https://github.com/megalinter/megalinter/pulls">Pull Requests</a> are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.</p>
+<p><a href="https://github.com/oxsecurity/megalinter/pulls">Pull Requests</a> are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.</p>
 <h3 id="pre-requisites">Pre-requisites</h3>
 <ul>
 <li>You need <a href="https://www.python.org/downloads/"><strong>Python 3</strong></a> (version 3.7 minimum) and <a href="https://nodejs.org/en/download/"><strong>Node.js</strong> (14+)</a> to be installed on your computer.<ul>
@@ -5531,24 +5531,24 @@ INFO    -  Documentation built in 9.76 seconds
 <li>Make your change</li>
 <li>Update <strong>CHANGELOG.md</strong> (the root one, not the one in /docs)</li>
 <li>Run <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
-<li>Push and <a href="https://github.com/megalinter/megalinter/compare">submit a pull request</a></li>
+<li>Push and <a href="https://github.com/oxsecurity/megalinter/compare">submit a pull request</a></li>
 <li>Pat yourself on the back and wait for your pull request to be reviewed and merged.</li>
 </ol>
 <h3 id="without-write-access">Without write access</h3>
 <ol>
-<li><a href="https://github.com/megalinter/megalinter/fork">Fork</a> and clone the repository</li>
+<li><a href="https://github.com/oxsecurity/megalinter/fork">Fork</a> and clone the repository</li>
 <li>Create a new branch: <code>git checkout -b my-branch-name</code></li>
 <li>Make your change</li>
 <li>Update <strong>CHANGELOG.md</strong> (the root one, not the one in /docs)</li>
 <li>Run <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
-<li>Push to your fork and <a href="https://github.com/megalinter/megalinter/compare">submit a pull request</a></li>
+<li>Push to your fork and <a href="https://github.com/oxsecurity/megalinter/compare">submit a pull request</a></li>
 <li>Pat your self on the back and wait for your pull request to be reviewed and merged.</li>
 </ol>
 <p>Here are a few things you can do that will increase the likelihood of your pull request being accepted:</p>
 <ul>
 <li>Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.</li>
 <li>Write <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">good commit messages</a>.</li>
-<li>Update <a href="https://github.com/megalinter/megalinter/blob/main/CHANGELOG.md">CHANGELOG.md</a> to briefly describe your changes</li>
+<li>Update <a href="https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md">CHANGELOG.md</a> to briefly describe your changes</li>
 </ul>
 <p>Draft pull requests are also welcome to get feedback early on, or if there is something blocking you.</p>
 <ul>
@@ -5569,13 +5569,13 @@ INFO    -  Documentation built in 9.76 seconds
 <li>Configuration JSON schema</li>
 <li>Online documentation menus</li>
 </ul>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true&gt;" /></p>
 <h3 id="cictcd">CI/CT/CD</h3>
 <p>The <strong>MegaLinter</strong> has <em>CI/CT/CD</em> configured utilizing <strong>GitHub</strong> Actions.</p>
 <ul>
 <li>When a branch is created and code is pushed, a <strong>GitHub</strong> Action is triggered for building the new <strong>Docker</strong> container with the new codebase<ul>
 <li>To test your updates during your development, you may have to create a draft Pull Request to trigger CI on the main repo</li>
-<li>During development, if all you updated is python code, you can write <code>quick build</code> in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over megalinter/megalinter:test-YOURUSERNAME-YOURBRANCH or megalinter/megalinter:latest if a previous full run has not been performed yet</li>
+<li>During development, if all you updated is python code, you can write <code>quick build</code> in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over oxsecurity/megalinter:test-YOURUSERNAME-YOURBRANCH or oxsecurity/megalinter:latest if a previous full run has not been performed yet</li>
 <li>You can <a href="https://docs.pytest.org/en/stable/usage.html#specifying-tests-selecting-tests">filter the performed tests</a> by writing <code>TEST_KEYWORDS=my keywords</code> in the commit message body. Example: <code>TEST_KEYWORDS=kubernetes_kubeval_test</code></li>
 <li>The last commit before the validation of a Pull Request must be a full build with all tests (about 45 minutes)</li>
 </ul>

@@ -5519,13 +5519,13 @@
 <p><a href="https://npmjs.org/package/mega-linter-runner"><img alt="Version" src="https://img.shields.io/npm/v/mega-linter-runner.svg" /></a>
 <a href="https://npmjs.org/package/mega-linter-runner"><img alt="Downloads/week" src="https://img.shields.io/npm/dw/mega-linter-runner.svg" /></a>
 <a href="https://npmjs.org/package/mega-linter-runner"><img alt="Downloads/total" src="https://img.shields.io/npm/dt/mega-linter-runner.svg" /></a>
-<a href="https://GitHub.com/megalinter/megalinter/stargazers/"><img alt="GitHub stars" src="https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000" /></a></p>
+<a href="https://GitHub.com/oxsecurity/megalinter/stargazers/"><img alt="GitHub stars" src="https://img.shields.io/github/stars/oxsecurity/megalinter?maxAge=2592000" /></a></p>
 <!-- readme-header-start -->
 
 <!-- readme-header-end -->
 
 <p>This package allows to run <a href="https://megalinter.github.io/">MegaLinter</a> locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files</p>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
 <h2 id="installation">Installation</h2>
 <h3 id="pre-requisites">Pre-requisites</h3>
 <p>You need to have <a href="https://nodejs.org/en/">NodeJS</a> and <a href="https://www.docker.com/">Docker</a> installed on your computer to run MegaLinter locally with MegaLinter Runner</p>
@@ -5544,7 +5544,7 @@
 <p>You can run mega-linter-runner as a <a href="https://pre-commit.com/">pre-commit</a> hook</p>
 <p>Sample <code>.pre-commit-config.yaml</code>:</p>
 <pre><code class="language-yaml">repos:
-  - repo: https://github.com/megalinter/megalinter
+  - repo: https://github.com/oxsecurity/megalinter
     rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
     hooks:
       - id: megalinter # Faster, less thorough, runs pre-commit by default
@@ -5626,7 +5626,7 @@
 </code></pre>
 <h2 id="configuration">Configuration</h2>
 <p>You can generate a ready-to-use <a href="https://megalinter.github.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>
-<p><img alt="Runner Install" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
+<p><img alt="Runner Install" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
 <!-- linters-section-start -->
 
 <!-- linters-section-end -->

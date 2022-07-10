@@ -5572,29 +5572,29 @@
 </ul>
 <h3 id="additional-reporters">Additional Reporters</h3>
 <ul>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md">Console</a></li>
+<li><a href="../reporters/ConsoleReporter/">Console</a></li>
 </ul>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
 <ul>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md">Text files</a></li>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md">GitHub Pull Request comments</a></li>
+<li><a href="../reporters/TextReporter/">Text files</a></li>
+<li><a href="../reporters/GitHubCommentReporter/">GitHub Pull Request comments</a></li>
 </ul>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true&gt;" /></p>
 <ul>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md">Gitlab Merge Request comments</a></li>
+<li><a href="../reporters/GitlabCommentReporter/">Gitlab Merge Request comments</a></li>
 </ul>
-<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true&gt;" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true&gt;" /></p>
 <ul>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md">Updated sources</a></li>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md">Email</a></li>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md">File.io</a></li>
+<li><a href="../reporters/UpdatedSourcesReporter/">Updated sources</a></li>
+<li><a href="../reporters/EmailReporter/">Email</a></li>
+<li><a href="../reporters/FileIoReporter/">File.io</a></li>
 </ul>
 <h2 id="enhanced-configuration">Enhanced Configuration</h2>
 <ul>
 <li><strong>Assisted installation and configuration</strong> using a yeoman generator and JSON schemas for configuration file</li>
 </ul>
-<p><img alt="Runner Install" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
-<p><img alt="Assisted configuration" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif" /></p>
+<p><img alt="Runner Install" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
+<p><img alt="Assisted configuration" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif" /></p>
 <ul>
 <li>Configure <strong>include and exclude regexes</strong> for a <strong>single language or linter</strong>: ex: <code>JAVASCRIPT_FILTER_REGEX_INCLUDE (src)</code></li>
 <li>Configure <strong>additional CLI arguments</strong> for a linter: ex: <code>JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"</code></li>
@@ -5612,7 +5612,7 @@
 <ul>
 <li><a href="https://megalinter.github.io/"><strong>HTML documentation</strong></a></li>
 </ul>
-<p><img alt="HTML doc home" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_home.jpg" /></p>
+<p><img alt="HTML doc home" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_home.jpg" /></p>
 <ul>
 <li><strong>One page per linter documentation</strong> :<ul>
 <li><strong>All variables</strong> that can be used with this linter</li>
@@ -5627,11 +5627,11 @@
 </ul>
 </li>
 </ul>
-<p><img alt="HTML doc linter" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg" /></p>
+<p><img alt="HTML doc linter" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg" /></p>
 <ul>
 <li>Installation links for related IDEs</li>
 </ul>
-<p><img alt="HTML doc IDE" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg" /></p>
+<p><img alt="HTML doc IDE" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg" /></p>
 <ul>
 <li>README<ul>
 <li>Separate languages, formats and tooling formats in the linters table</li>
@@ -5643,14 +5643,14 @@
 <p>For linters less commonly used, MegaLinters offers a plugins architecture so anyone can publish plugins</p>
 <h2 id="simplify-architecture-and-evolutive-maintenance">Simplify architecture and evolutive maintenance</h2>
 <ul>
-<li>Refactoring runtime in Python, for easier handling than bash thanks to <a href="https://github.com/megalinter/megalinter/tree/main/megalinter">classes</a> and python modules</li>
-<li>Everything related to each linter <a href="https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors">in a single descriptor YML file</a><ul>
+<li>Refactoring runtime in Python, for easier handling than bash thanks to <a href="https://github.com/oxsecurity/megalinter/tree/main/megalinter">classes</a> and python modules</li>
+<li>Everything related to each linter <a href="https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors">in a single descriptor YML file</a><ul>
 <li>easier evolutive maintenance</li>
 <li>less conflicts to manage between PRs.</li>
-<li>Few special cases require a <a href="https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors">python linter class</a>)</li>
+<li>Few special cases require a <a href="https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors">python linter class</a>)</li>
 </ul>
 </li>
-<li><a href="https://github.com/megalinter/megalinter/blob/main/megalinter/Linter.py">Default behaviours for all linters</a>, with possibility to override part of them for special cases</li>
+<li><a href="https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py">Default behaviours for all linters</a>, with possibility to override part of them for special cases</li>
 <li>Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update</li>
 <li><strong>Documentation as code</strong><ul>
 <li>Generate linters tables (ordered by type: language, format &amp; tooling format) and include it in README. <a href="https://megalinter.github.io/supported-linters/">(see result)</a></li>
@@ -5670,9 +5670,9 @@
 </ul>
 <h2 id="improve-robustness-stability">Improve robustness &amp; stability</h2>
 <ul>
-<li><a href="https://github.com/megalinter/megalinter/blob/main/megalinter/tests/test_megalinter">Test classes</a> for each capability</li>
-<li><a href="https://github.com/megalinter/megalinter/tree/main/megalinter/tests/test_megalinter/linters">Test classes for each linter</a>: Automatic generation of test classes using <a href="https://github.com/megalinter/megalinter/blob/main/.automation/build.py">.automation/build.py</a></li>
-<li>Setup <strong>code coverage</strong> <a href="https://codecov.io/gh/megalinter/megalinter"><img alt="codecov" src="https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg" /></a></li>
+<li><a href="https://github.com/oxsecurity/megalinter/blob/main/megalinter/tests/test_megalinter">Test classes</a> for each capability</li>
+<li><a href="https://github.com/oxsecurity/megalinter/tree/main/megalinter/tests/test_megalinter/linters">Test classes for each linter</a>: Automatic generation of test classes using <a href="https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py">.automation/build.py</a></li>
+<li>Setup <strong>code coverage</strong> <a href="https://codecov.io/gh/oxsecurity/megalinter"><img alt="codecov" src="https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg" /></a></li>
 <li><strong>Development CD / CI</strong><ul>
 <li>Validate multi-status on PR inside each PR (posted from step "Run against all code base")</li>
 <li>Run test classes and code coverage with pytest during validation GitHub Action</li>

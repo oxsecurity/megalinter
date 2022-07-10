@@ -4554,6 +4554,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5467,6 +5474,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5510,6 +5524,7 @@
 <p><a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy" /></a></p>
 <h2 id="trivy-documentation">trivy documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>0.29.2</strong></li>
 <li>Visit <a href="https://aquasecurity.github.io/trivy/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/aquasecurity/trivy" target="_blank"><img alt="trivy - GitHub" src="https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=" /></a></p>
@@ -5719,6 +5734,38 @@
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">trivy fs --security-checks vuln,config .
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">NAME:
+   trivy - Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets
+
+USAGE:
+   trivy [global options] command [command options] target
+
+VERSION:
+   0.29.2
+
+COMMANDS:
+   image, i          scan an image
+   filesystem, fs    scan local filesystem for language-specific dependencies and config files
+   rootfs            scan rootfs
+   repository, repo  scan remote repository
+   server, s         server mode
+   config, conf      scan config files
+   plugin, p         manage plugins
+   module, m         manage modules
+   kubernetes, k8s   scan kubernetes vulnerabilities, secrets and misconfigurations
+   sbom              generate SBOM for an artifact
+   version           print the version
+   help, h           Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --cache-dir value  cache directory (default: &quot;/root/.cache/trivy&quot;) [$TRIVY_CACHE_DIR]
+   --debug, -d        debug mode (default: false) [$TRIVY_DEBUG]
+   --help, -h         show help (default: false)
+   --quiet, -q        suppress progress bar and log output (default: false) [$TRIVY_QUIET]
+   --version, -v      print the version (default: false)
+
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>

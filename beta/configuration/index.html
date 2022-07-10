@@ -5462,13 +5462,13 @@
 
 <h1 id="configuration">Configuration</h1>
 <p>MegaLinter configuration variables can be defined in a <strong>.mega-linter.yml</strong> file at the root of the repository or with <strong>environment variables</strong>.
-You can see an example config file in this repo: <a href="https://github.com/megalinter/megalinter/blob/main/.mega-linter.yml"><strong>.mega-linter.yml</strong></a></p>
+You can see an example config file in this repo: <a href="https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml"><strong>.mega-linter.yml</strong></a></p>
 <p>Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to <a href="https://megalinter.github.io/json-schemas/configuration.html">JSON schema</a> stored on <a href="https://www.schemastore.org/">schemastore.org</a></p>
 <ul>
 <li>VsCode: You need a VsCode extension like <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">Red Hat YAML</a></li>
 <li>IDEA family: Auto-completion natively supported</li>
 </ul>
-<p><img alt="Assisted configuration" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif" /></p>
+<p><img alt="Assisted configuration" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif" /></p>
 <h2 id="common-variables">Common variables</h2>
 <table>
 <thead>
@@ -5714,12 +5714,12 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 </ul>
 <p>Only for GitHub Action Workflow file if you use it:</p>
 <ul>
-<li><strong>APPLY_FIXES_EVENT</strong>: <code>all</code>, <code>push</code>, <code>pull_request</code>, <code>none</code> <em>(use none in case of use of <a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md">Updated sources reporter</a>)</em></li>
+<li><strong>APPLY_FIXES_EVENT</strong>: <code>all</code>, <code>push</code>, <code>pull_request</code>, <code>none</code> <em>(use none in case of use of <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a>)</em></li>
 <li><strong>APPLY_FIXES_MODE</strong>: <code>commit</code> to create a new commit and push it on the same branch, or <code>pull_request</code> to create a new PR targeting the branch.</li>
 </ul>
 <p>Notes:</p>
 <ul>
-<li>You can use <a href="https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md"><strong>Updated sources reporter</strong></a> if you do not want fixes to be automatically applied on git branch, but <strong>download them in a zipped file</strong> and manually <strong>extract them in your project</strong></li>
+<li>You can use <a href="../reporters/UpdatedSourcesReporter/"><strong>Updated sources reporter</strong></a> if you do not want fixes to be automatically applied on git branch, but <strong>download them in a zipped file</strong> and manually <strong>extract them in your project</strong></li>
 <li>If used, <strong>APPLY_FIXES_EVENT</strong> and <strong>APPLY_FIXES_MODE</strong> can not be defined in <code>.mega-linter.yml</code>config file, they must be set as environment variables</li>
 </ul>
 <ul>

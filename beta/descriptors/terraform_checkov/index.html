@@ -5524,7 +5524,7 @@
 <p><a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov" /></a></p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.9</strong></li>
+<li>Version in MegaLinter: <strong>2.1.43</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -5667,13 +5667,11 @@
 <pre><code class="language-shell">checkov --file myfile.tf
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">/usr/local/lib/python3.9/site-packages/requests/__init__.py:109: RequestsDependencyWarning: urllib3 (1.26.9) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!
-  warnings.warn(
-usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
+<pre><code class="language-shell">usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
+               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
                [--framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
@@ -5695,10 +5693,11 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--output-baseline-as-skipped]
                [--skip-cve-package SKIP_CVE_PACKAGE]
                [--policy-metadata-filter POLICY_METADATA_FILTER]
+               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
 
 Infrastructure as code static analysis
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v, --version         version
   -d DIRECTORY, --directory DIRECTORY
@@ -5727,7 +5726,7 @@ optional arguments:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
+  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
@@ -5914,6 +5913,18 @@ optional arguments:
                         sma.pan.dev/api/cloud/cspm/policy#operation/get-
                         policy-filters-and-options for information on allowed
                         filters. Format: policy.label=test,cloud.type=aws
+  --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
+                        add scan secret for requested files. You can specify
+                        this argument multiple times to add multiple file
+                        types. To scan all types (&quot;.tf&quot;, &quot;.yml&quot;, &quot;.yaml&quot;,
+                        &quot;.json&quot;, &quot;.template&quot;, &quot;.py&quot;, &quot;.js&quot;, &quot;.properties&quot;,
+                        &quot;.pem&quot;, &quot;.php&quot;, &quot;.xml&quot;, &quot;.ts&quot;, &quot;.env&quot;, &quot;Dockerfile&quot;,
+                        &quot;.java&quot;, &quot;.rb&quot;, &quot;.go&quot;, &quot;.cs&quot;, &quot;.txt&quot;) specify the
+                        argument with `--secrets-scan-file-type all`. default
+                        scan will be for &quot;.tf&quot;, &quot;.yml&quot;, &quot;.yaml&quot;, &quot;.json&quot;,
+                        &quot;.template&quot; and exclude &quot;Pipfile.lock&quot;, &quot;yarn.lock&quot;,
+                        &quot;package-lock.json&quot;, &quot;requirements.txt&quot; [env var:
+                        CKV_SECRETS_SCAN_FILE_TYPE]
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
