@@ -15,7 +15,7 @@ name: "Build & Deploy - BETA linters"
 on:
   push:
     branches:
-      - "main "
+      - "main"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
