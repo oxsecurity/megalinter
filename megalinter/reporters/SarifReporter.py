@@ -144,7 +144,9 @@ class SarifReporter(Reporter):
                             "id" in rule_item and rule_item["id"] == rule["id"]
                             for rule_item in rules_updated
                         ):
-                            rule["id"] = rule["id"] + "_DUPLICATE_" + random.randint()
+                            rule["id"] = (
+                                rule["id"] + "_DUPLICATE_" + random.randint(1, 500)
+                            )
                         rules_updated += [rule]
                     run["tool"]["driver"]["rules"] = rules_updated
                 # fix results property
