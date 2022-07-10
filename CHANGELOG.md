@@ -6,7 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 <!-- unreleased-content-marker -->
 
-## [v6-alpha] (v6-alpha, v6_dev branch content)
+## [Unreleased] (beta, main branch content)
+
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+
+**Except for special cases, updates of v5 are frozen until v6 release**
+
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.O.O] - 2022-07-10
+
+- Breaking changes: you must run `npx mega-linter-runner --upgrade` to use MegaLinter v6
 
 - Core architecture
   - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
@@ -61,15 +72,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Manage offline run of `bash build.sh` for those who want to code in planes :)
   - Automate update of CHANGELOG.md after release (beta)
   - Accelerate internal CI testing performances
-
-## [Unreleased] (beta, main branch content)
-
-Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
-
-**Except for special cases, updates of v5 are frozen until v6 release**
-
-- Linter versions upgrades
-<!-- linter-versions-end -->
 
 ## [v5.17.0] - 2022-07-10
 

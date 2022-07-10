@@ -108,12 +108,12 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 
 Only for GitHub Action Workflow file if you use it:
 
-- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
 Notes:
 
-- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+- You can use [**Updated sources reporter**](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
 - If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
 
 - If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
