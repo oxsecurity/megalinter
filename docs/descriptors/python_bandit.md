@@ -29,40 +29,40 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 - Enable bandit by adding `PYTHON_BANDIT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable bandit by adding `PYTHON_BANDIT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PYTHON_BANDIT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| PYTHON_BANDIT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| PYTHON_BANDIT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| PYTHON_BANDIT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PYTHON_BANDIT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
-| PYTHON_BANDIT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| PYTHON_BANDIT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| PYTHON_BANDIT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PYTHON_BANDIT_CONFIG_FILE                 | bandit configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.bandit.yml`                                   |
-| PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| PYTHON_BANDIT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PYTHON_BANDIT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PYTHON_BANDIT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| PYTHON_BANDIT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| PYTHON_BANDIT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
+| PYTHON_BANDIT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_BANDIT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PYTHON_BANDIT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| PYTHON_BANDIT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| PYTHON_BANDIT_CONFIG_FILE | bandit configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.bandit.yml` |
+| PYTHON_BANDIT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| PYTHON_BANDIT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## IDE Integration
 
 Use bandit in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                |                                          Install                                           |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [bandit-lint](https://atom.io/packages/bandit-lint)                           |           [Visit Web Site](https://atom.io/packages/bandit-lint){target=_blank}            |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) |   [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank}   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit)   | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [bandit-lint](https://atom.io/packages/bandit-lint) | [Visit Web Site](https://atom.io/packages/bandit-lint){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) | [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit) | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                       | Description                         | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)     | Default MegaLinter Flavor           |       101        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/)     | Optimized for PYTHON based projects |        50        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security              |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 101 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security | 20 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -94,7 +94,7 @@ usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
               [-p PROFILE] [-t TESTS] [-s SKIPS]
               [-l | --severity-level {all,low,medium,high}]
               [-i | --confidence-level {all,low,medium,high}]
-              [-f {csv,custom,html,json,screen,txt,xml,yaml}]
+              [-f {csv,custom,html,json,sarif,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
               [--ini INI_PATH] [--exit-zero] [--version]
@@ -105,7 +105,7 @@ Bandit - a Python source code security analyzer
 positional arguments:
   targets               source file(s) or directory(s) to be tested
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -r, --recursive       find and process files in subdirectories
   -a {file,vuln}, --aggregate {file,vuln}
@@ -136,7 +136,7 @@ optional arguments:
                         higher. "all" and "low" are likely to produce the same
                         results, but it is possible for rules to be undefined
                         which will not be listed in "low".
-  -f {csv,custom,html,json,screen,txt,xml,yaml}, --format {csv,custom,html,json,screen,txt,xml,yaml}
+  -f {csv,custom,html,json,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
                         specify output message template (only usable with

@@ -11,7 +11,7 @@
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.14.0**
+- Version in MegaLinter: **1.15.2**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -23,27 +23,27 @@
 - Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
-|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| TERRAFORM_TERRASCAN_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| TERRAFORM_TERRASCAN_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
-| TERRAFORM_TERRASCAN_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| TERRAFORM_TERRASCAN_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| TERRAFORM_TERRASCAN_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| TERRAFORM_TERRASCAN_CONFIG_FILE                 | terrascan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `terrascan-config.toml`                         |
-| TERRAFORM_TERRASCAN_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| TERRAFORM_TERRASCAN_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| TERRAFORM_TERRASCAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TERRAFORM_TERRASCAN_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
+| TERRAFORM_TERRASCAN_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TERRAFORM_TERRASCAN_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| TERRAFORM_TERRASCAN_POST_COMMANDS | List of bash commands to run after the linter| None |
+| TERRAFORM_TERRASCAN_CONFIG_FILE | terrascan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terrascan-config.toml` |
+| TERRAFORM_TERRASCAN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)       | Default MegaLinter Flavor              |       101        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 101 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security | 20 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects | 48 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -73,7 +73,7 @@ terrascan scan -i terraform -t all -f myfile.tf
 Terrascan
 
 Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
-For more information, please visit https://docs.accurics.com
+For more information, please visit https://runterrascan.io/
 
 Usage:
   terrascan [command]
@@ -85,11 +85,12 @@ Available Commands:
   version     Terrascan version
 
 Flags:
-  -c, --config-path string   config file path
-  -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
-  -x, --log-type string      log output type (console, json) (default "console")
-  -o, --output string        output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
-      --temp-dir string      temporary directory path to download remote repository,module and templates
+  -c, --config-path string      config file path
+  -l, --log-level string        log level (debug, info, warn, error, panic, fatal) (default "info")
+      --log-output-dir string   directory path to write the log and output files
+  -x, --log-type string         log output type (console, json) (default "console")
+  -o, --output string           output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
+      --temp-dir string         temporary directory path to download remote repository,module and templates
 
 Use "terrascan [command] --help" for more information about a command.
 ```

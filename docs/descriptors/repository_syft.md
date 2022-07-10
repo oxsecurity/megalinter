@@ -13,6 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
+- Version in MegaLinter: **0.50.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -22,26 +23,26 @@ Builds a SBOM (Software Build Of Materials) from your repository
 - Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                                                                                                                                  | Default value                                   |
-|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| REPOSITORY_SYFT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| REPOSITORY_SYFT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                              | `.syft.yaml`                                    |
-| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| REPOSITORY_SYFT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_SYFT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| REPOSITORY_SYFT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| REPOSITORY_SYFT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| REPOSITORY_SYFT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| REPOSITORY_SYFT_CONFIG_FILE | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.syft.yaml` |
+| REPOSITORY_SYFT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SYFT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                       | Description               | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)     | Default MegaLinter Flavor |       101        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security    |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 101 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security | 20 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -64,6 +65,72 @@ syft is called once on the whole project directory
 syft /tmp/lint
 ```
 
+
+### Help content
+
+```shell
+Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
+
+Usage:
+   [flags]
+   [command]
+
+Examples:
+  syft packages alpine:latest                    a summary of discovered packages
+  syft packages alpine:latest -o json                        show all possible cataloging details
+  syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
+  syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
+  syft packages alpine:latest -o spdx                        show a SPDX 2.2 Tag-Value formatted SBOM
+  syft packages alpine:latest -o spdx-json                   show a SPDX 2.2 JSON formatted SBOM
+  syft packages alpine:latest -vv                            show verbose debug information
+  syft packages alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
+
+  Supports the following image sources:
+    syft packages yourrepo/yourimage:tag     defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry.
+    syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, or generic filesystem directory
+
+  You can also explicitly specify the scheme to use:
+    syft packages docker:yourrepo/yourimage:tag          explicitly use the Docker daemon
+    syft packages podman:yourrepo/yourimage:tag           explicitly use the Podman daemon
+    syft packages registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
+    syft packages docker-archive:path/to/yourimage.tar   use a tarball from disk for archives created from "docker save"
+    syft packages oci-archive:path/to/yourimage.tar      use a tarball from disk for OCI archives (from Skopeo or otherwise)
+    syft packages oci-dir:path/to/yourimage              read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
+    syft packages dir:path/to/yourproject                read directly from a path on disk (any directory)
+    syft packages file:path/to/yourproject/file          read directly from a path on disk (any single file)
+
+
+Available Commands:
+  attest      Generate a package SBOM as an attestation for the given [SOURCE] container image
+  completion  Generate a shell completion for Syft (listing local docker images)
+  convert     Convert between SBOM formats
+  help        Help about any command
+  login       Log in to a registry
+  packages    Generate a package SBOM
+  version     show the version
+
+Flags:
+      --catalogers stringArray     enable one or more package catalogers
+  -c, --config string              application config file
+  -d, --dockerfile string          include dockerfile for upload to Anchore Enterprise
+      --exclude stringArray        exclude paths from being scanned using a glob expression
+      --file string                file to write the default report output to (default is STDOUT)
+  -h, --help                       help for this command
+  -H, --host string                the hostname or URL of the Anchore Enterprise instance to upload to
+      --import-timeout uint        set a timeout duration (in seconds) for the upload to Anchore Enterprise (default 30)
+  -o, --output stringArray         report output format, options=[syft-json cyclonedx-xml cyclonedx-json github github-json spdx-tag-value spdx-json table text template] (default [table])
+      --overwrite-existing-image   overwrite an existing image during the upload to Anchore Enterprise
+  -p, --password string            the password to authenticate against Anchore Enterprise
+      --platform string            an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -q, --quiet                      suppress all logging output
+  -s, --scope string               selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
+  -t, --template string            specify the path to a Go template file
+  -u, --username string            the username to authenticate against Anchore Enterprise
+  -v, --verbose count              increase verbosity (-v = info, -vv = debug)
+      --version                    version for this command
+
+Use " [command] --help" for more information about a command.
+```
 
 ### Installation on mega-linter Docker image
 

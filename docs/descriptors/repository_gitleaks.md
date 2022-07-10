@@ -4,6 +4,7 @@
 
 ## gitleaks documentation
 
+- Version in MegaLinter: **8.8.7**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
 
@@ -14,39 +15,39 @@
 - Enable gitleaks by adding `REPOSITORY_GITLEAKS` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable gitleaks by adding `REPOSITORY_GITLEAKS` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
-|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| REPOSITORY_GITLEAKS_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| REPOSITORY_GITLEAKS_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.gitleaks.toml`                                |
-| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| REPOSITORY_GITLEAKS_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_GITLEAKS_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| REPOSITORY_GITLEAKS_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| REPOSITORY_GITLEAKS_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| REPOSITORY_GITLEAKS_POST_COMMANDS | List of bash commands to run after the linter| None |
+| REPOSITORY_GITLEAKS_CONFIG_FILE | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.gitleaks.toml` |
+| REPOSITORY_GITLEAKS_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                                 | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)               | Default MegaLinter Flavor                                              |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://oxsecurity.github.io/megalinter/latest/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        18        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://oxsecurity.github.io/megalinter/latest/flavors/documentation/) | MegaLinter for documentation projects                                  |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://oxsecurity.github.io/megalinter/latest/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://oxsecurity.github.io/megalinter/latest/flavors/go/)                       | Optimized for GO based projects                                        |        44        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/latest/flavors/java/)                   | Optimized for JAVA based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/latest/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        51        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://oxsecurity.github.io/megalinter/latest/flavors/php/)                     | Optimized for PHP based projects                                       |        46        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/)               | Optimized for PYTHON based projects                                    |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://oxsecurity.github.io/megalinter/latest/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        43        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://oxsecurity.github.io/megalinter/latest/flavors/rust/)                   | Optimized for RUST based projects                                      |        43        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        45        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/)           | Optimized for security                                                 |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://oxsecurity.github.io/megalinter/latest/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        43        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        48        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 101 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a> | [ci_light](https://oxsecurity.github.io/megalinter/latest/flavors/ci_light/) | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML | 18 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a> | [documentation](https://oxsecurity.github.io/megalinter/latest/flavors/documentation/) | MegaLinter for documentation projects | 42 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://oxsecurity.github.io/megalinter/latest/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://oxsecurity.github.io/megalinter/latest/flavors/go/) | Optimized for GO based projects | 44 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://oxsecurity.github.io/megalinter/latest/flavors/java/) | Optimized for JAVA based projects | 44 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://oxsecurity.github.io/megalinter/latest/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 51 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://oxsecurity.github.io/megalinter/latest/flavors/php/) | Optimized for PHP based projects | 46 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://oxsecurity.github.io/megalinter/latest/flavors/ruby/) | Optimized for RUBY based projects | 43 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://oxsecurity.github.io/megalinter/latest/flavors/rust/) | Optimized for RUST based projects | 43 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects | 45 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security | 20 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a> | [swift](https://oxsecurity.github.io/megalinter/latest/flavors/swift/) | Optimized for SWIFT based projects | 43 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects | 48 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -77,58 +78,35 @@ gitleaks detect -c .gitleaks.toml --no-git --verbose --source .
 ### Help content
 
 ```shell
+Gitleaks scans code, past or present, for secrets
+
 Usage:
-  C:\Users\33614\go\bin\gitleaks.EXE [OPTIONS]
+  gitleaks [command]
 
-Application Options:
-  /v, /verbose              Show verbose output from scan
-  /q, /quiet                Sets log level to error and only output leaks, one
-                            json object per line
-  /r, /repo-url:            Repository URL
-  /p, /path:                Path to directory (repo if contains .git) or file
-  /c, /config-path:         Path to config
-      /repo-config-path:    Path to gitleaks config relative to repo root
-      /clone-path:          Path to clone repo to disk
-      /version              Version number
-      /username:            Username for git repo
-      /password:            Password for git repo
-      /access-token:        Access token for git repo
-      /threads:             Maximum number of threads gitleaks spawns
-      /ssh-key:             Path to ssh key used for auth
-      /unstaged             Run gitleaks on unstaged code
-      /branch:              Branch to scan
-      /redact               Redact secrets from log messages and leaks
-      /debug                Log debug messages
-      /no-git               Treat git repos as plain directories and scan those
-                            files
-      /leaks-exit-code:     Exit code when leaks have been encountered
-                            (default: 1)
-      /append-repo-config   Append the provided or default config with the repo
-                            config.
-      /additional-config:   Path to an additional gitleaks config to append
-                            with an existing config. Can be used with
-                            --append-repo-config to append up to three
-                            configurations
-  /o, /report:              Report output path
-  /f, /format:              json, csv, sarif (default: json)
-      /files-at-commit:     Sha of commit to scan all files at commit
-      /commit:              Sha of commit to scan or "latest" to scan the last
-                            commit of the repository
-      /commits:             Comma separated list of a commits to scan
-      /commits-file:        Path to file of line separated list of commits to
-                            scan
-      /commit-from:         Commit to start scan from
-      /commit-to:           Commit to stop scan
-      /commit-since:        Scan commits more recent than a specific date. Ex:
-                            '2006-01-02' or '2006-01-02T15:04:05-0700' format.
-      /commit-until:        Scan commits older than a specific date. Ex:
-                            '2006-01-02' or '2006-01-02T15:04:05-0700' format.
-      /depth:               Number of commits to scan
+Available Commands:
+  completion  generate the autocompletion script for the specified shell
+  detect      detect secrets in code
+  help        Help about any command
+  protect     protect secrets in code
+  version     display gitleaks version
 
-Help Options:
-  /?                        Show this help message
-  /h, /help                 Show this help message
+Flags:
+  -c, --config string          config file path
+                               order of precedence:
+                               1. --config/-c
+                               2. env var GITLEAKS_CONFIG
+                               3. (--source/-s)/.gitleaks.toml
+                               If none of the three options are used, then gitleaks will use the default config
+      --exit-code int          exit code when leaks have been encountered (default 1)
+  -h, --help                   help for gitleaks
+  -l, --log-level string       log level (debug, info, warn, error, fatal) (default "info")
+      --redact                 redact secrets from logs and stdout
+  -f, --report-format string   output format (json, csv, sarif) (default "json")
+  -r, --report-path string     report file
+  -s, --source string          path to source (default: $PWD) (default ".")
+  -v, --verbose                show verbose output from scan
 
+Use "gitleaks [command] --help" for more information about a command.
 ```
 
 ### Installation on mega-linter Docker image
