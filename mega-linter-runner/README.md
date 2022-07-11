@@ -3,7 +3,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="300px">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="300px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -13,11 +13,11 @@
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?maxAge=2592000)](https://GitHub.com/oxsecurity/megalinter/stargazers/)
 <!-- readme-header-start -->
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue)](https://megalinter.github.io/flavors/)
-[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.github.io)
-[![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
+[![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.github.io)
+[![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -35,7 +35,7 @@ See [**MegaLinter Online Documentation Web Site**](https://megalinter.github.io/
 
 This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ## Installation
 
@@ -73,7 +73,7 @@ Sample `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-  - repo: https://github.com/megalinter/megalinter
+  - repo: https://github.com/oxsecurity/megalinter
     rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
     hooks:
       - id: megalinter # Faster, less thorough, runs pre-commit by default
@@ -123,7 +123,7 @@ mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 
 You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
+![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 <!-- linters-section-start -->
 ## Linters

@@ -33,7 +33,6 @@ concurrency:
 jobs:
 
   build:
-    needs: prepare
     # Name the Job
     name: Deploy Docker Image - Release - Linters
     # Set the agent to run on
@@ -87,18 +86,6 @@ jobs:
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy Release image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
       - name: Deploy ${{ github.event.release.tag_name }} image to DockerHub
         env:
           # Set the Env Vars
@@ -133,6 +120,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
+          security-checks: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

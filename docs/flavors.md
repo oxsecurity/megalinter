@@ -31,7 +31,7 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](flavors/terraform.md#readme)                                 | Optimized for TERRAFORM based projects                                 |        48        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 <!-- flavors-table-end -->
 
-If you need a new flavor, [post an issue](https://github.com/megalinter/megalinter/issues) :wink:
+If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
 
 
 <!-- flavors-section-end -->

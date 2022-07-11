@@ -11,7 +11,7 @@
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.3**
+- Version in MegaLinter: **10.3.1**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used

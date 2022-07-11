@@ -104,6 +104,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
+          security-checks: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

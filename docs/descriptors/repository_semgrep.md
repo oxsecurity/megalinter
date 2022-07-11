@@ -15,6 +15,7 @@ Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
 
 ## semgrep documentation
 
+- Version in MegaLinter: **0.103.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -93,6 +94,26 @@ semgrep /tmp/lint
 semgrep 
 ```
 
+
+### Help content
+
+```shell
+Usage: semgrep [OPTIONS] COMMAND [ARGS]...
+
+  To get started quickly, run `semgrep scan --config auto`
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  ci            The recommended way to run semgrep in CI
+  login         Obtain and save credentials for semgrep.dev
+  logout        Remove locally stored credentials to semgrep.dev
+  lsp           [EXPERIMENTAL] Start the Semgrep LSP server.
+  publish       Upload rule to semgrep.dev
+  scan          Run semgrep rules on files
+  shouldafound  Report a false negative in this project.
+```
 
 ### Installation on mega-linter Docker image
 

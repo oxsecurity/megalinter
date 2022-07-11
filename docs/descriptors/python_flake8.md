@@ -83,7 +83,7 @@ usage: flake8 [options] file file ...
 positional arguments:
   filename
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v, --verbose         Print more information about what is happening in
                         flake8. This option is repeatable and will increase
@@ -124,8 +124,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E24', 'W503', 'E126', 'E121', 'E704',
-                        'W504', 'E226', 'E123'])
+                        (Default: ['E704', 'W504', 'E123', 'E121', 'W503',
+                        'E226', 'E126', 'E24'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

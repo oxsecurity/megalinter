@@ -11,7 +11,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.30.1**
+- Version in MegaLinter: **1.31.2**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -146,6 +146,18 @@ Caching:
                                      Takes precedence over the configuration
                                      parameter AllCops: CacheRootDirectory and
                                      the $RUBOCOP_CACHE_ROOT environment variable.
+
+Server Options:
+        --[no-]server                If a server process has not been started yet, start
+                                     the server process and execute inspection with server.
+                                     Default is false.
+                                     You can specify the server host and port with the
+                                     $RUBOCOP_SERVER_HOST and the $RUBOCOP_SERVER_PORT
+                                     environment variables.
+        --restart-server             Restart server process.
+        --start-server               Start server process.
+        --stop-server                Stop server process.
+        --server-status              Show server status.
 
 Output Options:
     -f, --format FORMATTER           Choose an output formatter. This option

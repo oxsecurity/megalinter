@@ -8,7 +8,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -16,11 +16,11 @@
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
-![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver&color=%23FD80CD)
+![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
-[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
 <!-- mega-linter-badges-end -->
 
@@ -36,28 +36,28 @@ Supporting [**48** languages](supported-linters.md#languages), [**21** formats](
 
 ________
 
-[![_**See Article on Medium**_](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+[![_**See Article on Medium**_](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
 
 <!-- NV: remove for now until we have a branded archi table
-[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
+[![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
 
 ________
 
 _Process_
 
-![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
+![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
 
 ________
 
 _Console reporter_
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ________
 
 _Github PR reporter_
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
 
@@ -77,7 +77,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Reading error logs, **developers learn best practices** of the language they are using
 - [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
-- **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
 - MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
@@ -88,7 +88,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- supported-linters-section-start -->
 ## Supported Linters
 
-All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
+All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions
 
 <!-- languages-section-start-->
 <!-- linters-table-start -->
@@ -266,12 +266,12 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 
 ## V4 versus V5
 
-- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _megalinter/megalinter_)
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _oxsecurity/megalinter_)
 
-- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **oxsecurity/megalinter**
 
 - Migration from docker hub space **nvuillam** to space **megalinter**
-  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+  - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
 
 - Documentation is now hosted at <https://megalinter.github.io/>
 

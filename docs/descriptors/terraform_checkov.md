@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.9**
+- Version in MegaLinter: **2.1.43**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -76,13 +76,11 @@ checkov --file myfile.tf
 ### Help content
 
 ```shell
-/usr/local/lib/python3.9/site-packages/requests/__init__.py:109: RequestsDependencyWarning: urllib3 (1.26.9) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!
-  warnings.warn(
 usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
+               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
                [--framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
@@ -104,10 +102,11 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--output-baseline-as-skipped]
                [--skip-cve-package SKIP_CVE_PACKAGE]
                [--policy-metadata-filter POLICY_METADATA_FILTER]
+               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
 
 Infrastructure as code static analysis
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v, --version         version
   -d DIRECTORY, --directory DIRECTORY
@@ -136,7 +135,7 @@ optional arguments:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
+  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
@@ -323,6 +322,18 @@ optional arguments:
                         sma.pan.dev/api/cloud/cspm/policy#operation/get-
                         policy-filters-and-options for information on allowed
                         filters. Format: policy.label=test,cloud.type=aws
+  --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
+                        add scan secret for requested files. You can specify
+                        this argument multiple times to add multiple file
+                        types. To scan all types (".tf", ".yml", ".yaml",
+                        ".json", ".template", ".py", ".js", ".properties",
+                        ".pem", ".php", ".xml", ".ts", ".env", "Dockerfile",
+                        ".java", ".rb", ".go", ".cs", ".txt") specify the
+                        argument with `--secrets-scan-file-type all`. default
+                        scan will be for ".tf", ".yml", ".yaml", ".json",
+                        ".template" and exclude "Pipfile.lock", "yarn.lock",
+                        "package-lock.json", "requirements.txt" [env var:
+                        CKV_SECRETS_SCAN_FILE_TYPE]
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
