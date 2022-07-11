@@ -45,8 +45,8 @@ module.exports = optionator({
       type: "String",
       description: "MegaLinter docker image",
       example: [
-        "ghcr.io/megalinter/megalinter:latest",
-        "ghcr.io/megalinter/megalinter:v5",
+        "ghcr.io/oxsecurity/megalinter:latest",
+        "ghcr.io/oxsecurity/megalinter:v5",
         "my-registry.com/mega-linter-python:v5",
       ],
     },

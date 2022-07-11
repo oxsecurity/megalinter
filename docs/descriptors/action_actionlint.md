@@ -6,7 +6,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.6.13**
+- Version in MegaLinter: **1.6.15**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -124,6 +124,8 @@ Flags:
       Command name or file path of "pyflakes" external command (default "pyflakes")
   -shellcheck string
       Command name or file path of "shellcheck" external command (default "shellcheck")
+  -stdin-filename string
+      File name when reading input from stdin
   -verbose
       Enable verbose output
   -version

@@ -4,6 +4,7 @@
 
 ## devskim documentation
 
+- Version in MegaLinter: **0.6.9**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 
 [![DevSkim - GitHub](https://gh-card.dev/repos/microsoft/DevSkim.svg?fullname=)](https://github.com/microsoft/DevSkim){target=_blank}
@@ -65,6 +66,28 @@ devskim analyze .
 devskim analyze --file-format sarif .
 ```
 
+
+### Help content
+
+```shell
+Microsoft DevSkim Command Line Interface 0.6.9+456d78fa02
+
+Usage: devskim [options] [command]
+
+Options:
+  -?|-h|--help  Show help information
+  -v|--version  Show version information
+
+Commands:
+  analyze    Analyze source code
+  catalogue  Create csv file catalogue of rules
+  pack       Pack rules into a single file
+  test       Run tests for rules
+  verify     Verify integrity and syntax of rules
+
+Use "devskim [command] --help" for more information about a command.
+
+```
 
 ### Installation on mega-linter Docker image
 

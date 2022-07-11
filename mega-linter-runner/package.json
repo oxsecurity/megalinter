@@ -1,9 +1,9 @@
 {
   "name": "mega-linter-runner",
-  "version": "5.17.0",
+  "version": "6.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/megalinter/megalinter.git"
+    "url": "https://github.com/oxsecurity/megalinter.git"
   },
   "description": "Local runner for MegaLinter",
   "main": "index.js",

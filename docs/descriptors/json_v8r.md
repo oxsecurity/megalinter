@@ -6,7 +6,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **0.6.1**
+- Version in MegaLinter: **0.13.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -84,30 +84,41 @@ v8r --ignore-errors myfile.json
 ### Help content
 
 ```shell
-v8r <filename>
+ℹ No config file found
+v8r <patterns..>
 
-Validate a local json/yaml file against a schema
+Validate local json/yaml files against schema(s)
 
 Positionals:
-  filename  Local file to validate
+  patterns  One or more filenames or glob patterns describing local file or file
+            s to validate
 
 Options:
       --help           Show help                                       [boolean]
       --version        Show version number                             [boolean]
   -v, --verbose        Run with verbose logging. Can be stacked e.g: -vv -vvv
                                                                          [count]
-  -s, --schema         Local path or URL of schema to validate file against. If
-                       not supplied, we will attempt to find an appropriate
-                       schema on schemastore.org using the filename     [string]
-  -c, --catalogs       Local path or URL of custom catalogs to use prior to
-                       schemastore.org                                   [array]
-      --ignore-errors  Exit with code 0 even if an error was encountered.
-                       Passing this flag means a non-zero exit code is only
-                       issued if validation could be completed successfully and
-                       the file was invalid           [boolean] [default: false]
-      --cache-ttl      Remove cached HTTP responses older than <cache-ttl>
-                       seconds old. Passing 0 clears and disables cache
-                       completely                        [number] [default: 600]
+  -s, --schema         Local path or URL of a schema to validate against. If not
+                        supplied, we will attempt to find an appropriate schema
+                       on schemastore.org using the filename. If passed with glo
+                       b pattern(s) matching multiple files, all matching files
+                       will be validated against this schema            [string]
+  -c, --catalogs       Local path or URL of custom catalogs to use prior to sche
+                       mastore.org                                       [array]
+      --ignore-errors  Exit with code 0 even if an error was encountered. Passin
+                       g this flag means a non-zero exit code is only issued if
+                       validation could be completed successfully and one or mor
+                       e files were invalid           [boolean] [default: false]
+      --cache-ttl      Remove cached HTTP responses older than <cache-ttl> secon
+                       ds old. Passing 0 clears and disables cache completely
+                                                         [number] [default: 600]
+      --format         Output format for validation results
+                            [string] [choices: "text", "json"] [default: "text"]
+
+Examples:
+  v8r file.json                 Validate a single file
+  v8r file1.json file2.json     Validate multiple files
+  v8r 'dir/*.yml' 'dir/*.yaml'  Specify files to validate with glob patterns
 ```
 
 ### Installation on mega-linter Docker image

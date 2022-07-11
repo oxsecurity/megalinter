@@ -7,7 +7,7 @@
 ##################
 # Get base image #
 ##################
-ARG MEGALINTER_BASE_IMAGE=megalinter/megalinter:beta
+ARG MEGALINTER_BASE_IMAGE=oxsecurity/megalinter:beta
 FROM $MEGALINTER_BASE_IMAGE
 
 ######################
@@ -55,7 +55,7 @@ LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
       org.opencontainers.image.version=$BUILD_VERSION \
       org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
       org.opencontainers.image.url="https://megalinter.github.io" \
-      org.opencontainers.image.source="https://github.com/megalinter/megalinter" \
+      org.opencontainers.image.source="https://github.com/oxsecurity/megalinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions (DEV VERSION)"

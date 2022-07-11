@@ -6,7 +6,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -16,14 +16,14 @@
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
-![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
+![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
-[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
-[![codecov](https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
+[![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
+[![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
-[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg)](https://github.com/megalinter/megalinter/graphs/contributors/)
+[![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
@@ -41,28 +41,28 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 
 ________
 
-[![_**See Article on Medium**_](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+[![_**See Article on Medium**_](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
 
 <!-- NV: remove for now until we have a branded archi table
-[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
+[![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
 
 ________
 
 _Process_
 
-![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
+![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
 
 ________
 
 _Console reporter_
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ________
 
 _Github PR reporter_
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
 ## Table of Contents
@@ -148,7 +148,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Reading error logs, **developers learn best practices** of the language they are using
 - [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](#quick-start)
-- **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
 - MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
@@ -159,12 +159,12 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Commit, push, and create a pull request
 - Watch !
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
+![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 **Notes**:
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `megalinter/megalinter@v5` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `oxsecurity/megalinter@v5` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](#installation)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
@@ -172,7 +172,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- supported-linters-section-start -->
 ## Supported Linters
 
-All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
+All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions
 
 <!-- languages-section-start-->
 <!-- linters-table-start -->
@@ -307,7 +307,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
+![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ### Upgrade from MegaLinter v4
 
@@ -315,20 +315,20 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ### Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v5
-- Docker image: megalinter/megalinter:v5
+- GitHub Action: oxsecurity/megalinter@v5
+- Docker image: oxsecurity/megalinter:v5
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- GitHub Action: megalinter/megalinter@beta
-- Docker image: megalinter/megalinter:beta
+- GitHub Action: oxsecurity/megalinter@beta
+- Docker image: oxsecurity/megalinter:beta
 
 ### GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
-2. Copy the [example workflow from below](https://raw.githubusercontent.com/megalinter/megalinter/main/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
+2. Copy the [example workflow from below](https://raw.githubusercontent.com/oxsecurity/megalinter/main/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
 3. Commit that file to a new branch
 4. Open up a pull request and observe the action working
 5. Enjoy your more _stable_, and _cleaner_ code base
@@ -384,7 +384,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter@v5
+        uses: oxsecurity/megalinter@v5
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
@@ -447,8 +447,8 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+        docker pull oxsecurity/megalinter:v5
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v5
       displayName: 'MegaLinter analysis'
 
     # Publish the Anchore report as an artifact to Azure Pipelines
@@ -471,7 +471,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 stage('MegaLinter') {
     agent {
         docker {
-            image 'megalinter/megalinter:v5'
+            image 'oxsecurity/megalinter:v5'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -499,7 +499,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter:v5
+  image: oxsecurity/megalinter:v5
   script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -517,7 +517,7 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ### Concourse
 
@@ -539,7 +539,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
           image_resource:
             type: docker-image
             source:
-              repository: megalinter/megalinter
+              repository: oxsecurity/megalinter
               tag: v5
           inputs:
             - name: repo
@@ -574,7 +574,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: megalinter/megalinter
+    repository: oxsecurity/megalinter
     tag: v5
 
 inputs:
@@ -643,14 +643,14 @@ Note: You can also use such command line from your custom CI/CD pipelines
 ## Configuration
 
 MegaLinter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
-You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/megalinter/megalinter/blob/main/.mega-linter.yml)
+You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml)
 
 Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.github.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 - VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
+![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 ### Common variables
 
@@ -746,12 +746,12 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 
 Only for GitHub Action Workflow file if you use it:
 
-- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md))_
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
 Notes:
 
-- You can use [**Updated sources reporter**](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+- You can use [**Updated sources reporter**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
 - If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
 
 - If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
@@ -803,17 +803,17 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 
 | Reporter                                                                                                                    | Description                                                                                                   | Default                 |
 |-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
-| [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
-| [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
-| [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
-| [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)              | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
-| [IDE Configuration](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConfigReporter.md)                    | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
-| [GitHub Status](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                  | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
-| [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)                              | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
-| [JSON](https://github.com/megalinter/megalinter/tree/main/docs/reporters/JsonReporter.md)                                   | Generates a JSON output report file                                                                           | Inactive                |
-| [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)                                 | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
-| [TAP files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TapReporter.md)                               | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
-| [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                             | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
+| [Text files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
+| [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
+| [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
+| [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)              | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
+| [IDE Configuration](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConfigReporter.md)                    | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
+| [GitHub Status](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                  | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
+| [File.io](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/FileIoReporter.md)                              | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
+| [JSON](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/JsonReporter.md)                                   | Generates a JSON output report file                                                                           | Inactive                |
+| [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)                                 | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
+| [TAP files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TapReporter.md)                               | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
+| [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                             | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -846,7 +846,7 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/terraform.md#readme)         | Optimized for TERRAFORM based projects                                 |        48        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 <!-- flavors-table-end -->
 
-If you need a new flavor, [post an issue](https://github.com/megalinter/megalinter/issues) :wink:
+If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
 
 <!-- flavors-section-end -->
 
@@ -855,7 +855,7 @@ If you need a new flavor, [post an issue](https://github.com/megalinter/megalint
 
 You can show MegaLinter status with a badge in your repository README
 
-[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
+[![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
 If your main branch is **main** , replace **main** by **main** in URLs
 
@@ -909,7 +909,7 @@ Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either be
 
 ```yaml
 PLUGINS:
-  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
   - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
@@ -926,8 +926,8 @@ Submit a PR if you want your plugin to appear here :)
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
-- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
-- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
+- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
+- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
 - File URLs must conform to the same directory and file naming criteria as defined above.
 
@@ -990,9 +990,9 @@ Please follow [Contributing Guide](https://megalinter.github.io/contributing/)
 
 To help, you can also:
 
-- [:star: star the repository](https://github.com/megalinter/megalinter/stargazers)
+- [:star: star the repository](https://github.com/oxsecurity/megalinter/stargazers)
 - [:beer: offer a beer !](https://github.com/sponsors/nvuillam)
-- [report problems and request new features](https://github.com/megalinter/megalinter/issues)
+- [report problems and request new features](https://github.com/oxsecurity/megalinter/issues)
 - [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.github.io/&via=nvuillam){target=_blank}
 <!-- how-to-contribute-section-end -->
 
@@ -1001,8 +1001,8 @@ To help, you can also:
 
 ### Contributors
 
-<a href="https://github.com/megalinter/megalinter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
+<a href="https://github.com/oxsecurity/megalinter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
 <br/>
 <a href="https://cauldron.io/project/5222">
@@ -1056,7 +1056,7 @@ Even if I disagree with their decision to remain in bash, the core team has alwa
 <!-- license-section-start -->
 ## License
 
-- [GNU Affero General Public License](https://github.com/megalinter/megalinter/blob/main/LICENSE)
+- [GNU Affero General Public License](https://github.com/oxsecurity/megalinter/blob/main/LICENSE)
 <!-- license-section-end -->
 
 <!-- mega-linter-vs-super-linter-section-start -->
@@ -1096,30 +1096,30 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 #### Additional Reporters
 
-- [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)
+- [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
-- [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)
-- [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
+- [Text files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TextReporter.md)
+- [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
-- [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
+- [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
-- [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
-- [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)
-- [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)
+- [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
+- [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)
+- [File.io](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/FileIoReporter.md)
 
 ### Enhanced Configuration
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
+![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
+![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
@@ -1135,7 +1135,7 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 - [**HTML documentation**](https://megalinter.github.io/)
 
-![HTML doc home](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
+![HTML doc home](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
 
 - **One page per linter documentation** :
   - **All variables** that can be used with this linter
@@ -1148,11 +1148,11 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
   - **Help** command text
   - Installation commands
 
-![HTML doc linter](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg)
+![HTML doc linter](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg)
 
 - Installation links for related IDEs
 
-![HTML doc IDE](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg)
+![HTML doc IDE](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg)
 
 - README
   - Separate languages, formats and tooling formats in the linters table
@@ -1164,12 +1164,12 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 
 ### Simplify architecture and evolutive maintenance
 
-- Refactoring runtime in Python, for easier handling than bash thanks to [classes](https://github.com/megalinter/megalinter/tree/main/megalinter) and python modules
-- Everything related to each linter [in a single descriptor YML file](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors)
+- Refactoring runtime in Python, for easier handling than bash thanks to [classes](https://github.com/oxsecurity/megalinter/tree/main/megalinter) and python modules
+- Everything related to each linter [in a single descriptor YML file](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors)
   - easier evolutive maintenance
   - less conflicts to manage between PRs.
-  - Few special cases require a [python linter class](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors))
-- [Default behaviours for all linters](https://github.com/megalinter/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
+  - Few special cases require a [python linter class](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors))
+- [Default behaviours for all linters](https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
   - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.github.io/supported-linters/)
@@ -1185,9 +1185,9 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 
 ### Improve robustness & stability
 
-- [Test classes](https://github.com/megalinter/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
-- [Test classes for each linter](https://github.com/megalinter/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/megalinter/megalinter/blob/main/.automation/build.py)
-- Setup **code coverage** [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
+- [Test classes](https://github.com/oxsecurity/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
+- [Test classes for each linter](https://github.com/oxsecurity/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
+- Setup **code coverage** [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 - **Development CD / CI**
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
@@ -1197,12 +1197,12 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 
 ## V4 versus V5
 
-- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _megalinter/megalinter_)
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _oxsecurity/megalinter_)
 
-- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **oxsecurity/megalinter**
 
 - Migration from docker hub space **nvuillam** to space **megalinter**
-  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+  - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
 
 - Documentation is now hosted at <https://megalinter.github.io/>
 

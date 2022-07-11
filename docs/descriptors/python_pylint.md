@@ -11,7 +11,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.14.3**
+- Version in MegaLinter: **2.14.4**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -89,7 +89,7 @@ pylint --rcfile .python-lint myfile.py
 ```shell
 usage: pylint [options]
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 Commands:
@@ -162,7 +162,8 @@ Main:
   --jobs <n-processes>, -j <n-processes>
                         Use multiple processes to speed up Pylint. Specifying
                         0 will auto-detect the number of processors available
-                        to use. (default: 1)
+                        to use, and will cap the count on Windows to avoid
+                        hangs. (default: 1)
   --limit-inference-results <number-of-results>
                         Control the amount of potential inferred values when
                         inferring a single object. This can help the
@@ -195,7 +196,7 @@ Main:
   --py-version <py_version>
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 9))
+                        pylint. (default: (3, 10))
   --ignored-modules <module names>
                         List of module names for which member attributes
                         should not be checked (useful for modules/projects
@@ -403,8 +404,8 @@ Variables:
   --dummy-variables-rgx <regexp>
                         A regular expression matching the name of dummy
                         variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unus
-                        ed_)
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
+                        9]+?$)|dummy|^ignored_|^unused_)
   --additional-builtins <comma separated list>
                         List of additional names supposed to be defined in
                         builtins. Remember that you should avoid defining new

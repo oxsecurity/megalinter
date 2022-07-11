@@ -28,8 +28,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
-[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
+[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
@@ -49,9 +49,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
 [![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
+[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![llaville/php-compatinfo-db - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo-db.svg?fullname=)](https://github.com/llaville/php-compatinfo-db){target=_blank}
 [![wareismymind/peer - GitHub](https://gh-card.dev/repos/wareismymind/peer.svg?fullname=)](https://github.com/wareismymind/peer){target=_blank}
-[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}

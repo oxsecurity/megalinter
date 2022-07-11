@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/megalinter/megalinter-configuration.json",
+  "$id": "http://github.com/oxsecurity/megalinter-configuration.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
@@ -49,6 +49,7 @@
         "COFFEE",
         "COPYPASTE",
         "CPP",
+        "CREDENTIALS",
         "CSHARP",
         "CSS",
         "DART",
@@ -56,6 +57,7 @@
         "EDITORCONFIG",
         "ENV",
         "GHERKIN",
+        "GIT",
         "GO",
         "GRAPHQL",
         "GROOVY",
@@ -112,14 +114,17 @@
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
+        "CREDENTIALS_SECRETLINT",
         "CSHARP_DOTNET_FORMAT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DART_DARTANALYZER",
+        "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
         "GHERKIN_GHERKIN_LINT",
+        "GIT_GIT_DIFF",
         "GO_GOLANGCI_LINT",
         "GO_REVIVE",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -145,6 +150,7 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
+        "PHP_BUILTIN",
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",
@@ -169,6 +175,7 @@
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
         "REPOSITORY_TRIVY",
+        "RST_RSTFMT",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RUBY_RUBOCOP",
@@ -3073,8 +3080,8 @@
       "$id": "#/properties/EXTENDS",
       "description": "Base mega-linter.yml config file(s) to extend local configuration from. Can be a single URL or a list of .mega-linter.yml config files URLs",
       "examples:": [
-        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
-        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+        "https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
+        "https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
       ],
       "items": {
         "type": "string"
@@ -10736,6 +10743,13 @@
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string"
+    },
+    "SARIF_REPORTER": {
+      "$id": "#/properties/SARIF_REPORTER",
+      "default": false,
+      "description": "Generate SARIF reports that can be used to display issues directly in GitHub UI",
+      "title": "Activate SARIF reporter",
+      "type": "boolean"
     },
     "SCALA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_FILTER_REGEX_EXCLUDE",

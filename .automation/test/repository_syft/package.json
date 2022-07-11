@@ -3,7 +3,7 @@
   "version": "5.6.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/megalinter/megalinter.git"
+    "url": "https://github.com/oxsecurity/megalinter.git"
   },
   "description": "Local runner for MegaLinter",
   "main": "index.js",
