@@ -24,6 +24,10 @@ linters:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - windows/amd64
     install:
       dockerfile:
         - FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo

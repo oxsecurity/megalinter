@@ -25,3 +25,7 @@ linters:
     examples:
       - "dotnet-format --folder --check --exclude / --include myfile.vb"
       - "dotnet-format --folder --exclude / --include myfile.vb"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

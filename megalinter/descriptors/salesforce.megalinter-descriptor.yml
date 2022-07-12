@@ -3,17 +3,6 @@ descriptor_type: language
 descriptor_flavors:
   - salesforce
 lint_all_files: true
-install:
-  # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
-  apk:
-    - openjdk11
-  dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-    - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - RUN echo y|sfdx plugins:install sfdx-hardis
-  # Salesforce DX
-  npm:
-    - sfdx-cli
 supported_platforms:
   platform:
     - linux/amd64
@@ -26,6 +15,17 @@ supported_platforms:
           - ENV PATH="$JAVA_HOME/bin:${PATH}"
           - ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
           - RUN echo y|sfdx plugins:install sfdx-hardis
+install:
+  # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
+  apk:
+    - openjdk11
+  dockerfile:
+    - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+    - ENV PATH="$JAVA_HOME/bin:${PATH}"
+    - RUN echo y|sfdx plugins:install sfdx-hardis
+  # Salesforce DX
+  npm:
+    - sfdx-cli
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -75,6 +75,10 @@ linters:
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
       - "sfdx scanner:run"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN sfdx plugins:install @salesforce/sfdx-scanner
@@ -139,6 +143,10 @@ linters:
     cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN sfdx plugins:install @salesforce/sfdx-scanner
@@ -194,6 +202,10 @@ linters:
     cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN sfdx plugins:install @salesforce/sfdx-scanner

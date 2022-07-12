@@ -335,11 +335,12 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27).\n***Please note that Megalinter does not support all Docker's platforms.***",
+            "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
             "enum": [
               "linux/amd64",
               "linux/arm64",
               "linux/arm/v7",
+              "linux/arm/v6",
               "linux/arm/v5",
               "linux/386",
               "linux/mips64le",
@@ -1019,11 +1020,12 @@
                 "uniqueItems": true,
                 "items": {
                   "type": "string",
-                  "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27).\n***Please note that Megalinter does not support all Docker's platforms.***",
+                  "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
                   "enum": [
                     "linux/amd64",
                     "linux/arm64",
                     "linux/arm/v7",
+                    "linux/arm/v6",
                     "linux/arm/v5",
                     "linux/386",
                     "linux/mips64le",

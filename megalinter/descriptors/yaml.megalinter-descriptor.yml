@@ -28,6 +28,10 @@ linters:
       - "prettier --check myfile.yml"
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "prettier"
@@ -73,6 +77,10 @@ linters:
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - yamllint
@@ -97,6 +105,10 @@ linters:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - v8r@0.6.1

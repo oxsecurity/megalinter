@@ -16,6 +16,10 @@ linters:
     help_command_return_code: 1
     examples:
       - "xmllint myfile.xml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       apk:
         - libc-dev

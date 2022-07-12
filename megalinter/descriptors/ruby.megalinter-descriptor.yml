@@ -4,6 +4,10 @@ descriptor_flavors:
   - ruby
 file_extensions:
   - ".rb"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - ruby
@@ -26,6 +30,10 @@ linters:
       - "rubocop --force-exclusion myfile.rb"
       - "rubocop --force-exclusion -c .ruby-lint.yml myfile.rb"
       - "rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       gem:
         - rubocop

@@ -8,6 +8,10 @@ file_extensions:
 file_contains_regex:
   - "#!/usr/bin/env perl"
   - "#!/usr/bin/perl"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - perl
@@ -27,6 +31,10 @@ linters:
     help_command_return_code: 2
     examples:
       - "perlcritic myfile.pl"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

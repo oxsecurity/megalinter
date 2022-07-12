@@ -5,6 +5,18 @@ descriptor_flavors:
 file_extensions:
   - ".go"
 test_folder: golang
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+    - linux/arm/v7
+    - linux/arm/v6
+    - linux/386
+    - linux/mips64le
+    - linux/ppc64le
+    - linux/riscv64
+    - linux/s390x
+    - windows/amd64
 install:
   apk:
     - go
@@ -25,6 +37,18 @@ linters:
     examples:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+        - linux/arm/v6
+        - linux/386
+        - linux/mips64le
+        - linux/ppc64le
+        - linux/riscv64
+        - linux/s390x
+        - windows/amd64
     install:
       dockerfile:
         - |
@@ -68,6 +92,12 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+        - linux/386
+        - windows/amd64
     install:
       dockerfile:
         - RUN go get -u github.com/mgechev/revive

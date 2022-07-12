@@ -4,6 +4,10 @@ descriptor_flavors:
   - scala
 file_extensions:
   - ".scala"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   dockerfile:
     - |
@@ -35,6 +39,10 @@ linters:
       - "scalafix --check myfile.scala"
       - "scalafix --check --config .scalafix.conf myfile.scala"
       - "scalafix --config .scalafix.conf myfile.scala" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN ./coursier install scalafix --quiet --install-dir /usr/bin

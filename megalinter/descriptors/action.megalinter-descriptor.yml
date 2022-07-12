@@ -22,6 +22,13 @@ linters:
     cli_lint_errors_regex: "([0-9]+) \\|"
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v6
+        - linux/386
+        - windows/amd64
     install:
       dockerfile:
         - ENV GO111MODULE=on

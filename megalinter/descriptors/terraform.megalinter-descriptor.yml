@@ -18,6 +18,10 @@ linters:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
@@ -44,6 +48,10 @@ linters:
     test_folder: terraform_terrascan
     examples:
       - "terrascan scan -i terraform -t all -f myfile.tf"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - FROM accurics/terrascan:latest as terrascan
@@ -73,6 +81,10 @@ linters:
     examples:
       - "terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl"
       - "terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
@@ -95,6 +107,10 @@ linters:
       - "--check"
     examples:
       - "terraform fmt myfile.tf"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - COPY --from=terragrunt /bin/terraform /usr/bin/
@@ -127,6 +143,10 @@ linters:
       - "--file"
     examples:
       - "checkov --file myfile.tf"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |
@@ -154,6 +174,10 @@ linters:
     cli_version_arg_name: "version"
     examples:
       - "kics scan --path myfile.tf"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics

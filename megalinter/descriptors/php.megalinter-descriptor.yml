@@ -4,6 +4,10 @@ descriptor_flavors:
   - php
 file_extensions:
   - ".php"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - php7
@@ -54,6 +58,10 @@ linters:
       - "-l"
     examples:
       - "php -l myfile.js"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
@@ -67,6 +75,10 @@ linters:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
       - "phpcs --standard=phpcs.xml mydir/ myfile.php"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |
@@ -111,6 +123,10 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
       - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |
@@ -142,6 +158,10 @@ linters:
       - "psalm myfile.php mydir/"
       - "psalm --config=psalm.xml myfile.php"
       - "psalm --config=psalm.xml myfile.php mydir/"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |
@@ -163,6 +183,10 @@ linters:
       - "phplint mydir"
       - "phplint mydir myfile.php"
       - "phplint mydir -vvv"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |

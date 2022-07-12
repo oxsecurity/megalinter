@@ -3,6 +3,10 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   dockerfile:
     - RUN git config --global core.autocrlf true
@@ -24,3 +28,7 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

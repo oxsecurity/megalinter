@@ -5,6 +5,13 @@ descriptor_flavors:
   - dotnet
 file_extensions:
   - ".cs"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+    - linux/arm/v7
+    - linux/386
+    - windows/amd64
 install:
   apk:
     - lttng-ust-dev
@@ -36,6 +43,13 @@ linters:
     examples:
       - "dotnet-format --folder --check --exclude / --include myfile.cs"
       - "dotnet-format --folder --exclude / --include myfile.cs" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+        - linux/386
+        - windows/amd64
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format

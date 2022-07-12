@@ -17,6 +17,9 @@ linters:
     examples:
       - "chktex -q myfile.tex"
       - "chktex -q -l .chktexrc myfile.tex"
+    supported_platforms:
+      platform:
+        - linux/amd64
     install:
       dockerfile:
         - FROM ghcr.io/assignuser/chktex-alpine:latest as chktex

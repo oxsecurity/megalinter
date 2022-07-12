@@ -15,6 +15,10 @@ linters:
     examples:
       - "sql-lint myfile.sql"
       - "sql-lint --config .sql-config.json myfile.sql"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - sql-lint
@@ -44,6 +48,10 @@ linters:
     examples:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - sqlfluff
@@ -66,6 +74,10 @@ linters:
     examples:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN dotnet tool install --global TSQLLint

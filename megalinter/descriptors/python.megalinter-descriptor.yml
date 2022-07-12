@@ -23,6 +23,10 @@ linters:
     examples:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - pylint
@@ -64,6 +68,10 @@ linters:
       - "black --diff --check myfile.py"
       - "black --config pyproject.toml --diff --check myfile.py"
       - "black --config pyproject.toml myfile.py" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - black
@@ -103,6 +111,10 @@ linters:
     examples:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - flake8
@@ -143,6 +155,10 @@ linters:
       - "isort --diff --check --profile black myfile.py"
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
       - "isort --profile black --settings-file .isort.cfg myfile.py"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - isort
@@ -190,6 +206,10 @@ linters:
     examples:
       - "bandit myfile.py"
       - "bandit --configfile .bandit.yml myfile.py"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - bandit
@@ -230,6 +250,10 @@ linters:
     examples:
       - "mypy myfile.py"
       - "mypy --config-file .mypy.yml myfile.py"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - mypy

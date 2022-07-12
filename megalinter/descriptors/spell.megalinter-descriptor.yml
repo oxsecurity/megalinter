@@ -20,6 +20,9 @@ linters:
     help_command_return_code: 2
     examples:
       - "misspell myfile.any"
+    supported_platforms:
+      platform:
+        - linux/amd64
     install:
       dockerfile:
         - |
@@ -29,9 +32,6 @@ linters:
               && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
               && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
               && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
-    supported_platforms:
-      platform:
-        - linux/amd64
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell
@@ -52,6 +52,10 @@ linters:
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "cspell"

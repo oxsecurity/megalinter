@@ -30,6 +30,10 @@ linters:
       - "spectral lint myfile.yml"
       - "spectral lint -r .openapirc.yml myfile.yml"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "@stoplight/spectral@5.6.0"

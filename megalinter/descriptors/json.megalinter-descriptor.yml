@@ -13,6 +13,10 @@ linters:
     version_command_return_code: 1
     examples:
       - "jsonlint myfile.json"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - jsonlint
@@ -105,6 +109,10 @@ linters:
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - eslint
@@ -126,6 +134,10 @@ linters:
     examples:
       - "v8r --ignore-errors myfile.json"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - v8r@0.6.1
@@ -164,6 +176,10 @@ linters:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "prettier"

@@ -26,6 +26,10 @@ linters:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdownlint.json myfile.md"
       - "markdownlint --fix -c .markdownlint.json myfile.md"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - markdownlint-cli
@@ -69,6 +73,10 @@ linters:
       - "remark --frail myfile.md"
       - "remark --frail --rc-path .remarkrc myfile.md"
       - "remark --frail -o --rc-path .remarkrc myfile.md"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - remark-cli
@@ -99,6 +107,10 @@ linters:
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - markdown-link-check
@@ -119,6 +131,10 @@ linters:
       - "markdown-table-formatter --check myfile.md" # Check only
       - "markdown-table-formatter myfile.md" # Apply formatting
       - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - markdown-table-formatter

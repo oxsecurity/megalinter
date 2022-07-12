@@ -42,6 +42,10 @@ linters:
       - "eslint myfile.js"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - eslint
@@ -102,6 +106,10 @@ linters:
       - "standard myfile.js"
       - "standard --fix myfile.js"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "standard@15.0.1"
@@ -156,6 +164,10 @@ linters:
       - "prettier --check myfile.js"
       - "prettier --config .prettierrc.json --check myfile.js"
       - "prettier --config .prettierrc.json --write myfile.js" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "prettier"

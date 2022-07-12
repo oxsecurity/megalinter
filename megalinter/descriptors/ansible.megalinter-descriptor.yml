@@ -29,6 +29,10 @@ linters:
     examples:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - ansible-lint==6.0.2

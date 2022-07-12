@@ -4,6 +4,10 @@ descriptor_flavors:
   - rust
 file_extensions:
   - ".rs"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   dockerfile:
     - RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -26,6 +30,10 @@ linters:
       - "clippy"
     examples:
       - "cargo clippy"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN rustup component add clippy

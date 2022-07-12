@@ -19,6 +19,10 @@ linters:
     examples:
       - "snakemake --lint -s Snakefile"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - snakemake
@@ -48,6 +52,10 @@ linters:
       - "snakefmt --check --compact-diff Snakefile"
       - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"
       - "snakefmt --config .snakefmt.toml Snakefile" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - snakefmt

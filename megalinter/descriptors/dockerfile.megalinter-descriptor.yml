@@ -17,6 +17,10 @@ linters:
     cli_config_arg_name: ""
     examples:
       - "dockerfilelint Dockerfile"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - dockerfilelint
@@ -35,6 +39,10 @@ linters:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"
     downgraded_version: true
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - FROM hadolint/hadolint:v2.10.0-alpine as hadolint
