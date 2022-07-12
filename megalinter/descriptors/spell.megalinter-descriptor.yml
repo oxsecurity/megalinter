@@ -33,6 +33,10 @@ linters:
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "cspell"

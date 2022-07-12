@@ -26,6 +26,10 @@ linters:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
       - "stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - stylelint
@@ -66,6 +70,10 @@ linters:
     examples:
       - "scss-lint myfile.scss"
       - "scss-lint -config .scss-lint.yml myfile.scss"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       gem:
         - scss_lint

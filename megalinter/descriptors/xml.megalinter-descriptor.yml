@@ -35,3 +35,7 @@ linters:
         - libxml2-dev
         - libxml2-utils
         - libgcc
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

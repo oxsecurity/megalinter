@@ -21,6 +21,10 @@ linters:
       - "-c"
     examples:
       - "raku -I ./lib -c myfile.raku"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |

@@ -29,6 +29,10 @@ linters:
         - rubocop-rails
         - rubocop-rake
         - rubocop-rspec
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-rubocop

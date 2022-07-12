@@ -29,6 +29,10 @@ linters:
     cli_lint_errors_regex: "Total errors found: ([0-9]+)"
     examples:
       - "cpplint myfile.cpp"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - cpplint

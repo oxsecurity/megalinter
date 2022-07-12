@@ -16,6 +16,10 @@ linters:
     examples:
       - "gherkin-lint myfile.feature"
       - "gherkin-lint -c .gherkin-lintrc myfile.feature"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - gherkin-lint

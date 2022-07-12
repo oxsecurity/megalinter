@@ -2,6 +2,10 @@ descriptor_id: SCALA
 descriptor_type: language
 file_extensions:
   - ".scala"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - openjdk11
@@ -35,6 +39,10 @@ linters:
       - "scalafix --check myfile.scala"
       - "scalafix --check --config .scalafix.conf myfile.scala"
       - "scalafix --config .scalafix.conf myfile.scala" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache

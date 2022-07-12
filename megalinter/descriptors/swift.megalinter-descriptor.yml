@@ -38,6 +38,10 @@ linters:
     examples:
       - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
       - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-swiftlint

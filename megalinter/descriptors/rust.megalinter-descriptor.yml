@@ -23,6 +23,10 @@ linters:
     install:
       cargo:
         - clippy
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: Atom IDE Rest

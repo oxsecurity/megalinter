@@ -24,6 +24,10 @@ linters:
     examples:
       - "ktlint myfile.kt"
       - "ktlint --format myfile.kt"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |

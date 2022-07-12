@@ -24,6 +24,10 @@ linters:
     examples:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       apk:
         - go
@@ -74,6 +78,10 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 as revive" is available, use

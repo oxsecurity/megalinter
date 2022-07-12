@@ -74,6 +74,10 @@ linters:
               && chmod +x dart-sdk/bin/dart* \
               && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
               && rm -r dart-sdk/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: dart-jetbrains-plugin

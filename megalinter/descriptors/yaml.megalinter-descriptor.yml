@@ -29,6 +29,10 @@ linters:
       - "prettier --check myfile.yml"
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "prettier"
@@ -76,6 +80,10 @@ linters:
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - yamllint
@@ -106,6 +114,10 @@ linters:
     install:
       npm:
         - v8r
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: native support

@@ -18,6 +18,10 @@ linters:
     cli_config_arg_name: ""
     examples:
       - "tekton-lint myfile.yml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "tekton-lint"

@@ -13,6 +13,10 @@ linters:
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - restructuredtext_lint
@@ -28,6 +32,10 @@ linters:
     examples:
       - "rstcheck myfile.rst"
       - "rstcheck -c .rstcheck.cfg myfile.rst"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - rstcheck
@@ -49,6 +57,10 @@ linters:
     examples:
       - "rstfmt --check myfile.rst"
       - "rstfmt myfile.rst" # Format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - rstfmt

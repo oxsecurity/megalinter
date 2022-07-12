@@ -48,6 +48,10 @@ linters:
       - "eslint myfile.jsx"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - eslint

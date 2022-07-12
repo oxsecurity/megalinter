@@ -29,6 +29,10 @@ linters:
     examples:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       pip:
         - cfn-lint

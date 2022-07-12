@@ -23,6 +23,10 @@ linters:
     install:
       npm:
         - "@prantlf/jsonlint"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # ESLINT-PLUGIN-JSONC
   - class: EslintLinter
     linter_name: eslint-plugin-jsonc
@@ -122,6 +126,10 @@ linters:
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - eslint
@@ -149,6 +157,10 @@ linters:
     install:
       npm:
         - v8r
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: native support
@@ -184,6 +196,10 @@ linters:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - "prettier"

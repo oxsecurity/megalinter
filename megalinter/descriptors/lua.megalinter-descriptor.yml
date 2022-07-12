@@ -16,6 +16,10 @@ linters:
     examples:
       - "luacheck myfile.lua"
       - "luacheck --config .chktexrc myfile.lua"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       apk:
         - openssl

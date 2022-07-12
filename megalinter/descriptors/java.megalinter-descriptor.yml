@@ -5,6 +5,10 @@ descriptor_flavors:
   - java
 file_extensions:
   - ".java"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - openjdk11
@@ -42,6 +46,10 @@ linters:
     examples:
       - "java -jar /usr/bin/checkstyle myfile.java"
       - "java -jar /usr/bin/checkstyle -c sun_checks.xml myfile.java"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       dockerfile:
         - |

@@ -60,6 +60,10 @@ linters:
     examples:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - htmlhint

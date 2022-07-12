@@ -31,6 +31,10 @@ linters:
       dockerfile:
         - FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
@@ -68,6 +72,10 @@ linters:
       dockerfile:
         - FROM tenable/terrascan:1.18.1 as terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
@@ -101,6 +109,10 @@ linters:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
@@ -123,6 +135,10 @@ linters:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: terraform-fmt
@@ -169,3 +185,7 @@ linters:
         - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
         - COPY --from=kics /app/bin/assets /opt/kics/assets/
     test_folder: terraform_kics
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

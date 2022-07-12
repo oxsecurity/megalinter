@@ -49,6 +49,10 @@ linters:
       - "eslint myfile.tsx"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     install:
       npm:
         - typescript

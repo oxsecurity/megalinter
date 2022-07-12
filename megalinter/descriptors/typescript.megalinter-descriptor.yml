@@ -70,6 +70,10 @@ linters:
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-eslint
@@ -126,6 +130,10 @@ linters:
         - standard
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-js-standard
@@ -180,6 +188,10 @@ linters:
     install:
       npm:
         - "prettier"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: prettier-atom
