@@ -27,7 +27,7 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v5",
+      default: "v6",
       description: "MegaLinter version",
       example: ["stable", "latest", "v5.9.0"],
     },

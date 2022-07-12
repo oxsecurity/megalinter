@@ -11,6 +11,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
+## [v6.0.3] - 2022-07-11
+
+- mega-linter-runner: Update query args when opening OX Security
+- Fix mega-linter-runner doesn't default to v6 for flavors [(1596)](https://github.com/oxsecurity/megalinter/issues/1596)
+
 ## [v6.0.0] - 2022-07-10
 
 - Breaking changes: you must run `npx mega-linter-runner --upgrade` to use MegaLinter v6
