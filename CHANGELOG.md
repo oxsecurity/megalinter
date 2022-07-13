@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-13
+  - [git_diff](https://git-scm.com) from 2.34.2 to **2.34.4** on 2022-07-13
+  - [syft](https://github.com/anchore/syft) from 0.50.0 to **0.51.0** on 2022-07-13
+  - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-13
 <!-- linter-versions-end -->
 
 ## [v6.0.3] - 2022-07-11

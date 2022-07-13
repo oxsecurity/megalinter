@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                                 | Configuration key                            | Status                                                                                                                                                 |
-|----------------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) |
 
 ## Linted files
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                            | Description                   | Default value |
-|-------------------------------------|-------------------------------|---------------|
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
