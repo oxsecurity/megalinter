@@ -31,6 +31,8 @@ import urllib.error
 import urllib.request
 from time import perf_counter
 
+import yaml
+
 from megalinter import config, pre_post_factory, utils
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -971,8 +973,18 @@ class Linter:
         return []
 
     # Find number of errors in linter stdout log
-    def get_total_number_errors(self, stdout):
+    def get_total_number_errors(self, stdout: str):
         total_errors = 0
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            try:
+                sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                if "results" in sarif_output["runs"][0] and len(sarif_output["runs"][0]["results"] > 0):
+                    total_errors = len(sarif_output["runs"][0]["results"])
+                else:
+                    total_errors = 1
+            except Exception as e:
+                total_errors = 1
         # Get number with a single regex.
         if self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)

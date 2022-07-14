@@ -15,6 +15,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-13
 <!-- linter-versions-end -->
 
+## [v6.0.4] - 2022-07-14
+
+- Fix count of errors when using SARIF reporter
+
 ## [v6.0.3] - 2022-07-11
 
 - mega-linter-runner: Update query args when opening OX Security
