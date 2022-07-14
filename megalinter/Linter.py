@@ -988,10 +988,7 @@ class Linter:
                 else:
                     # SARIF is in stdout
                     sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
-                if (
-                    "results" in sarif_output["runs"][0]
-                    and len(sarif_output["runs"][0]["results"]) > 0
-                ):
+                if "results" in sarif_output["runs"][0]:
                     # Get number of results
                     total_errors = len(sarif_output["runs"][0]["results"])
                     # Append number of invocation config notifications (other type of errors, not in result)
@@ -1001,12 +998,17 @@ class Linter:
                                 total_errors += len(
                                     invocation["toolConfigurationNotifications"]
                                 )
-                else:
-                    total_errors = 0
+                # If we got here, we should have found a number of errors from SARIF output
+                if total_errors == 0:
+                    logging.error(
+                        "Unable to get total errors from SARIF output.\nSARIF:"
+                        + str(sarif_output)
+                    )
             except Exception as e:
                 total_errors = 1
                 logging.error(
-                    f"Unable to get total errors from SARIF output.\n{str(e)}"
+                    f"Error while getting total errors from SARIF output.\nSARIF:"
+                    + str(e)
                 )
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":
@@ -1031,7 +1033,7 @@ class Linter:
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
-        if self.cli_lint_errors_count is not None:
+        if self.cli_lint_errors_count is not None and self.output_sarif is False:
             logging.warning(
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"
