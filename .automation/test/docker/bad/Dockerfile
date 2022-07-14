@@ -1,5 +1,7 @@
 from node:latest
 
+USER root
+
 # Create app directory
 run mkdir -p /usr/src/app
 WORKDIR /usr/src/app
