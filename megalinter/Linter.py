@@ -980,7 +980,7 @@ class Linter:
             try:
                 with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
                     sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
-                if "results" in sarif_output["runs"][0] and len(sarif_output["runs"][0]["results"] > 0):
+                if "results" in sarif_output["runs"][0] and len(sarif_output["runs"][0]["results"]) > 0:
                     total_errors = len(sarif_output["runs"][0]["results"])
                 else:
                     total_errors = 1
