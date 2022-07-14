@@ -561,6 +561,13 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
+    # Check number of errors is ok
+    for linter in mega_linter:
+        if linter.sarif_output_file is not None:
+            test_self.assertTrue(
+                linter.total_number_errors > 1,
+                f"Empty sarif errors in {linter.name}",
+            )
 
 
 def assert_is_skipped(skipped_item, output, test_self):

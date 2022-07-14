@@ -4479,8 +4479,8 @@
                 "network_count": 1,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzOTE3NjkwNDE=",
                 "notifications_url": "https://api.github.com/repos/jr0dd/home-ops/notifications{?since,all,participating}",
-                "open_issues": 3,
-                "open_issues_count": 3,
+                "open_issues": 2,
+                "open_issues_count": 2,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/285797?v=4",
                     "events_url": "https://api.github.com/users/jr0dd/events{/privacy}",

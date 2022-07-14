@@ -94,7 +94,9 @@
         "TYPESCRIPT",
         "VBDOTNET",
         "XML",
-        "YAML"
+        "YAML",
+        "CREDENTIALS",
+        "GIT"
       ],
       "type": "string"
     },
@@ -200,7 +202,12 @@
         "XML_XMLLINT",
         "YAML_PRETTIER",
         "YAML_YAMLLINT",
-        "YAML_V8R"
+        "YAML_V8R",
+        "CREDENTIALS_SECRETLINT",
+        "DOKERFILE_DOCKERFILELINT",
+        "GIT_GIT_DIFF",
+        "PHP_BUILTIN",
+        "RST_RSTFMT"
       ],
       "type": "string"
     }
