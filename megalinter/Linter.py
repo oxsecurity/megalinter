@@ -980,17 +980,27 @@ class Linter:
                 if self.sarif_output_file is not None and os.path.isfile(
                     self.sarif_output_file
                 ):
+                    # SARIF is in file
                     with open(
                         self.sarif_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
                         sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
                 else:
+                    # SARIF is in stdout
                     sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
                 if (
                     "results" in sarif_output["runs"][0]
                     and len(sarif_output["runs"][0]["results"]) > 0
                 ):
+                    # Get number of results
                     total_errors = len(sarif_output["runs"][0]["results"])
+                    # Append number of invocation config notifications (other type of errors, not in result)
+                    if "invocations" in sarif_output["runs"][0]:
+                        for invocation in sarif_output["runs"][0]["invocations"]:
+                            if "toolConfigurationNotifications" in invocation:
+                                total_errors += len(
+                                    invocation["toolConfigurationNotifications"]
+                                )
                 else:
                     total_errors = 0
             except Exception as e:
