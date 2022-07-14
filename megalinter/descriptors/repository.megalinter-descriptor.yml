@@ -23,6 +23,8 @@ linters:
     cli_lint_extra_args_after:
       - "."
       - -E
+      - --ignore-globs
+      - "**/megalinter-reports/**"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(\\[.*\\])"
     test_folder: devskim

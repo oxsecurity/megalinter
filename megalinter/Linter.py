@@ -999,7 +999,7 @@ class Linter:
                     f"Unable to get total errors from SARIF output.\n{str(e)}"
                 )
         # Get number with a single regex.
-        if self.cli_lint_errors_count == "regex_number":
+        elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
             m = re.search(reg, stdout)
             if m:

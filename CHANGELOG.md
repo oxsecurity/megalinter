@@ -19,6 +19,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 ## [v6.0.4] - 2022-07-14
 
 - Fix count of errors when using SARIF reporter
+- DevSkim: Ignore megalinter-reports by default
 
 ## [v6.0.3] - 2022-07-11
 
