@@ -23,6 +23,7 @@ class config_test(unittest.TestCase):
             "FILTER_REGEX_INCLUDE",
             "FILTER_REGEX_EXCLUDE",
             "SHOW_ELAPSED_TIME",
+            "PRE_COMMANDS",
         ]:
             if key in os.environ:
                 del os.environ[key]
@@ -68,3 +69,12 @@ class config_test(unittest.TestCase):
             config.init_config()
         except Exception as e:
             self.assertIn("http", str(e))
+
+    def test_list_of_obj_as_env_var(self):
+        os.environ[
+            "PRE_COMMANDS"
+        ] = '[{"cwd": "workspace", "command:": "echo \\"hello world\\""}]'
+        config.init_config()
+        pre_commands = config.get_list("PRE_COMMANDS", [])
+        del os.environ["PRE_COMMANDS"]
+        self.assertTrue(len(pre_commands) > 0, "PRE_COMMANDS not loaded from ENV var")

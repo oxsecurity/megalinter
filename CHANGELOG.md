@@ -16,10 +16,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-14
 <!-- linter-versions-end -->
 
-## [v6.0.4] - 2022-07-14
-
 - Fix count of errors when using SARIF reporter
 - DevSkim: Ignore megalinter-reports by default
+- Load JSON when list of objects is defined in an ENV var [#1605](https://github.com/oxsecurity/megalinter/issues/1605)
 
 ## [v6.0.3] - 2022-07-11
 
