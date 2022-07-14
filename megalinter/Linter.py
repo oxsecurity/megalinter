@@ -976,16 +976,29 @@ class Linter:
     def get_total_number_errors(self, stdout: str):
         total_errors = 0
         # Count using SARIF output file
-        if self.output_sarif is True and os.path.isfile(self.sarif_output_file):
+        if self.output_sarif is True:
             try:
-                with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
-                    sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
-                if "results" in sarif_output["runs"][0] and len(sarif_output["runs"][0]["results"]) > 0:
+                if self.sarif_output_file is not None and os.path.isfile(
+                    self.sarif_output_file
+                ):
+                    with open(
+                        self.sarif_output_file, "r", encoding="utf-8"
+                    ) as sarif_file:
+                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                else:
+                    sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                if (
+                    "results" in sarif_output["runs"][0]
+                    and len(sarif_output["runs"][0]["results"]) > 0
+                ):
                     total_errors = len(sarif_output["runs"][0]["results"])
                 else:
                     total_errors = 1
             except Exception as e:
                 total_errors = 1
+                logging.error(
+                    f"Unable to get total errors from SARIF output.\n{str(e)}"
+                )
         # Get number with a single regex.
         if self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
