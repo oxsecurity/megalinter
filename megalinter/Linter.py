@@ -32,7 +32,6 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-
 from megalinter import config, pre_post_factory, utils
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
