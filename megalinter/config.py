@@ -118,6 +118,7 @@ def set(config_var, value):
     assert CONFIG_DATA is not None, "Config has not been initialized yet !"
     CONFIG_DATA[config_var] = value
 
+
 # Get list of elements from configuration. It can be list of strings or objects
 def get_list(config_var, default=None):
     var = get(config_var, None)
