@@ -86,7 +86,7 @@ def run_command(command_info, log_key, mega_linter):
     }
 
 
-def complete_command(command_info: str):
+def complete_command(command_info):
     if command_info["command"].startswith("npm install") or command_info[
         "command"
     ].startswith("npm i"):

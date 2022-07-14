@@ -1007,7 +1007,7 @@ class Linter:
             except Exception as e:
                 total_errors = 1
                 logging.error(
-                    f"Error while getting total errors from SARIF output.\nSARIF:"
+                    "Error while getting total errors from SARIF output.\nSARIF:"
                     + str(e)
                 )
         # Get number with a single regex.
