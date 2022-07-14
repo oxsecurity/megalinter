@@ -11,6 +11,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix count of errors when using SARIF reporter
 - DevSkim: Ignore megalinter-reports by default [(#1603)](https://github.com/oxsecurity/megalinter/issues/1603)
 - Load JSON when list of objects is defined in an ENV var [(#1605)](https://github.com/oxsecurity/megalinter/issues/1605)
+- AutoFix pre_commands using `npm install` [(1258)](https://github.com/oxsecurity/megalinter/issues/1258)
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-14

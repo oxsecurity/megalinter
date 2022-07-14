@@ -992,7 +992,7 @@ class Linter:
                 ):
                     total_errors = len(sarif_output["runs"][0]["results"])
                 else:
-                    total_errors = 1
+                    total_errors = 0
             except Exception as e:
                 total_errors = 1
                 logging.error(
