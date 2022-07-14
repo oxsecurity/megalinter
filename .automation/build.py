@@ -2123,7 +2123,15 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
         x["descriptor_id"] for x in descriptors
     ]
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] += [
+        "CREDENTIALS_SECRETLINT",
+        "DOCKERFILE_DOCKERFILELINT",
+        "GIT_GIT_DIFF",
+        "PHP_BUILTIN",
+        "RST_RSTFMT",
+    ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")

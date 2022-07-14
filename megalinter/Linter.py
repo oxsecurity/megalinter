@@ -31,6 +31,7 @@ import urllib.error
 import urllib.request
 from time import perf_counter
 
+import yaml
 from megalinter import config, pre_post_factory, utils
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -971,10 +972,46 @@ class Linter:
         return []
 
     # Find number of errors in linter stdout log
-    def get_total_number_errors(self, stdout):
+    def get_total_number_errors(self, stdout: str):
         total_errors = 0
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            try:
+                if self.sarif_output_file is not None and os.path.isfile(
+                    self.sarif_output_file
+                ):
+                    # SARIF is in file
+                    with open(
+                        self.sarif_output_file, "r", encoding="utf-8"
+                    ) as sarif_file:
+                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                else:
+                    # SARIF is in stdout
+                    sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                if "results" in sarif_output["runs"][0]:
+                    # Get number of results
+                    total_errors = len(sarif_output["runs"][0]["results"])
+                    # Append number of invocation config notifications (other type of errors, not in result)
+                    if "invocations" in sarif_output["runs"][0]:
+                        for invocation in sarif_output["runs"][0]["invocations"]:
+                            if "toolConfigurationNotifications" in invocation:
+                                total_errors += len(
+                                    invocation["toolConfigurationNotifications"]
+                                )
+                # If we got here, we should have found a number of errors from SARIF output
+                if total_errors == 0:
+                    logging.error(
+                        "Unable to get total errors from SARIF output.\nSARIF:"
+                        + str(sarif_output)
+                    )
+            except Exception as e:
+                total_errors = 1
+                logging.error(
+                    "Error while getting total errors from SARIF output.\nSARIF:"
+                    + str(e)
+                )
         # Get number with a single regex.
-        if self.cli_lint_errors_count == "regex_number":
+        elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
             m = re.search(reg, stdout)
             if m:
@@ -996,7 +1033,7 @@ class Linter:
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
-        if self.cli_lint_errors_count is not None:
+        if self.cli_lint_errors_count is not None and self.output_sarif is False:
             logging.warning(
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"

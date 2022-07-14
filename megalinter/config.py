@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import json
 import logging
 import os
 import shlex
@@ -118,13 +119,20 @@ def set(config_var, value):
     CONFIG_DATA[config_var] = value
 
 
+# Get list of elements from configuration. It can be list of strings or objects
 def get_list(config_var, default=None):
     var = get(config_var, None)
     if var is not None:
+        # List format
         if isinstance(var, list):
             return var
+        # Empty var: return empty list
         if var == "":
             return []
+        # Serialized JSON
+        if var.startswith("["):
+            return json.loads(var)
+        # String with comma-separated elements
         return var.split(",")
     return default
 
