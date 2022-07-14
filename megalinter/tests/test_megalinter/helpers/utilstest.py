@@ -566,7 +566,9 @@ def test_linter_report_sarif(linter, test_self):
         if linter.output_sarif is True:
             test_self.assertTrue(
                 linter.total_number_errors > 1,
-                f"Empty sarif errors in {linter.name}",
+                f"Missing multiple sarif errors in {linter.name}"
+                + f" ({linter.total_number_errors})\n"
+                + f"SARIF:{str(sarif_content)}",
             )
 
 
