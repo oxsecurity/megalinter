@@ -2127,7 +2127,7 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     json_schema["definitions"]["enum_linter_keys"]["enum"] += [
         "CREDENTIALS_SECRETLINT",
-        "DOKERFILE_DOCKERFILELINT",
+        "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
         "PHP_BUILTIN",
         "RST_RSTFMT",
