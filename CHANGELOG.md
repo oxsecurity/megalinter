@@ -8,18 +8,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.0.4] - 2022-07-14
+
 - Fix count of errors when using SARIF reporter
 - DevSkim: Ignore megalinter-reports by default [(#1603)](https://github.com/oxsecurity/megalinter/issues/1603)
 - Load JSON when list of objects is defined in an ENV var [(#1605)](https://github.com/oxsecurity/megalinter/issues/1605)
 - AutoFix pre_commands using `npm install` [(1258)](https://github.com/oxsecurity/megalinter/issues/1258)
 
 - Linter versions upgrades
-  - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-14
-  - [git_diff](https://git-scm.com) from 2.34.2 to **2.34.4** on 2022-07-14
-  - [syft](https://github.com/anchore/syft) from 0.50.0 to **0.51.0** on 2022-07-14
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.1.0 to **1.2.0** on 2022-07-14
   - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-14
-<!-- linter-versions-end -->
+  - [git_diff](https://git-scm.com) from 2.34.2 to **2.34.4** on 2022-07-14
+  - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.1.0 to **1.2.0** on 2022-07-14
+  - [syft](https://github.com/anchore/syft) from 0.50.0 to **0.51.0** on 2022-07-14
 
 ## [v6.0.3] - 2022-07-11
 
