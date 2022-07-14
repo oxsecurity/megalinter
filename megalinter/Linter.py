@@ -976,9 +976,10 @@ class Linter:
     def get_total_number_errors(self, stdout: str):
         total_errors = 0
         # Count using SARIF output file
-        if self.output_sarif is True:
+        if self.output_sarif is True and os.path.isfile(self.sarif_output_file):
             try:
-                sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
+                    sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
                 if "results" in sarif_output["runs"][0] and len(sarif_output["runs"][0]["results"] > 0):
                     total_errors = len(sarif_output["runs"][0]["results"])
                 else:
