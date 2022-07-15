@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                     | Configuration key          | Status                                                                                                                           |
-|----------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) |
 
 ## Linted files
@@ -17,10 +17,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

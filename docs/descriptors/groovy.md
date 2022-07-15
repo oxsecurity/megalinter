@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                                       | Configuration key                   | Status                                                                                                                                           |
-|----------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/nvuillam/npm-groovy-lint)](https://github.com/nvuillam/npm-groovy-lint/commits) |
 
 ## Linted files
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
