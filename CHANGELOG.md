@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Fix mega-linter-runner --upgrade so it also updates report folder to megalinter-reports in GitHub Actions Workflows [#1609](https://github.com/oxsecurity/megalinter/issues/1609)
+- Fix documentation and templates to use `megalinter-reports` folder everywhere
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.38.2 to **0.38.3** on 2022-07-15

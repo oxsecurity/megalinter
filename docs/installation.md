@@ -157,7 +157,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       displayName: 'Publish Artifact: MegaLinter Report'
       condition: succeededOrFailed()
       inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
         ArtifactName: MegaLinterReport
 ```
 
@@ -182,7 +182,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,report/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
         }
     }
 }
@@ -210,7 +210,7 @@ mega-linter:
   artifacts:
     when: always
     paths:
-      - report
+      - megalinter-reports
     expire_in: 1 week
 ```
 
@@ -241,7 +241,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v5
+              tag: v6
           inputs:
             - name: repo
           run:
@@ -276,7 +276,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v5
+    tag: v6
 
 inputs:
 - name: repo
@@ -284,7 +284,7 @@ inputs:
 # uncomment this if you want reports as task output
 # output:
 # - name: reports
-#   path: repo/report
+#   path: repo/megalinter-reports
 
 run:
   path: bash
