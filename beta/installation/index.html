@@ -5675,7 +5675,7 @@ jobs:
       displayName: 'Publish Artifact: MegaLinter Report'
       condition: succeededOrFailed()
       inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
         ArtifactName: MegaLinterReport
 </code></pre>
 <h2 id="jenkins">Jenkins</h2>
@@ -5695,7 +5695,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,report/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
         }
     }
 }
@@ -5719,7 +5719,7 @@ mega-linter:
   artifacts:
     when: always
     paths:
-      - report
+      - megalinter-reports
     expire_in: 1 week
 </code></pre>
 <p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables</p>
@@ -5741,7 +5741,7 @@ mega-linter:
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v5
+              tag: v6
           inputs:
             - name: repo
           run:
@@ -5772,7 +5772,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v5
+    tag: v6
 
 inputs:
 - name: repo
@@ -5780,7 +5780,7 @@ inputs:
 # uncomment this if you want reports as task output
 # output:
 # - name: reports
-#   path: repo/report
+#   path: repo/megalinter-reports
 
 run:
   path: bash

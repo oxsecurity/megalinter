@@ -5646,7 +5646,7 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 </tr>
 <tr>
 <td><strong>REPORT_OUTPUT_FOLDER</strong></td>
-<td><code>${GITHUB_WORKSPACE}/report</code></td>
+<td><code>${GITHUB_WORKSPACE}/megalinter-reports</code></td>
 <td>Directory for generating report files</td>
 </tr>
 <tr>
@@ -5725,7 +5725,7 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 <ul>
 <li>If you use <strong>APPLY_FIXES</strong>, add the following line in your <code>.gitignore file</code></li>
 </ul>
-<pre><code class="language-shell">report/
+<pre><code class="language-shell">megalinter-reports/
 </code></pre>
 <ul>
 <li>You may see <strong>github permission errors</strong>, or workflows not run on the new commit. To solve these issues:<ul>
