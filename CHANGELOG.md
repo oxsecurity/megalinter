@@ -10,7 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Fix mega-linter-runner --upgrade so it also updates report folder to megalinter-reports in GitHub Actions Workflows [#1609](https://github.com/oxsecurity/megalinter/issues/1609)
 - Fix documentation and templates to use `megalinter-reports` folder everywhere
-- Workaround for python-markdown issue https://github.com/radude/mdx_truly_sane_lists/issues/9
+- Workaround for python-markdown issue <https://github.com/radude/mdx_truly_sane_lists/issues/9>
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.38.2 to **0.38.3** on 2022-07-15
