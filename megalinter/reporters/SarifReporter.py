@@ -8,13 +8,14 @@ import os
 import random
 from json.decoder import JSONDecodeError
 
-from megalinter import Reporter, config
+from megalinter import Linter, Reporter, config
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
     ML_DOC_URL,
 )
+from megalinter.utils_reporter import get_linter_doc_url
 
 
 class SarifReporter(Reporter):
@@ -86,7 +87,7 @@ class SarifReporter(Reporter):
                         logging.error(str(e))
                 if load_ok is True:
                     # fix sarif file
-                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
+                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj, linter)
                     # append to global megalinter sarif run
                     sarif_obj["runs"] += linter_sarif_obj["runs"]
                     # Delete linter SARIF file if LOG_FILE=none
@@ -126,10 +127,36 @@ class SarifReporter(Reporter):
 
     # Some SARIF linter output contain errors (like references to line 0)
     # We must correct them so SARIF is valid
-    def fix_sarif(self, linter_sarif_obj):
+    def fix_sarif(self, linter_sarif_obj, linter: Linter):
         # browse runs
         if "runs" in linter_sarif_obj:
             for id_run, run in enumerate(linter_sarif_obj["runs"]):
+                
+                # Add MegaLinter info
+                run_properties = run["properties"] if "properties" in run else {}
+                run_properties["megalinter"] = {
+                    "linterKey": linter.name,
+                    "docUrl": get_linter_doc_url(linter),
+                    "linterVersion": linter.get_linter_version(),
+                }
+                run["properties"] = run_properties
+
+                # fix missing informationUri
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "informationUri" not in run["tool"]["driver"]
+                ):
+                    run["tool"]["driver"]["informationUri"] = get_linter_doc_url(linter)
+
+                # fix missing version
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "version" not in run["tool"]["driver"]
+                ):
+                    run["tool"]["driver"]["version"] = linter.get_linter_version()
+
                 # fix duplicate rules property
                 if (
                     "tool" in run
@@ -151,6 +178,7 @@ class SarifReporter(Reporter):
                             )
                         rules_updated += [rule]
                     run["tool"]["driver"]["rules"] = rules_updated
+
                 # fix results property
                 if "results" in run:
                     # browse run results
@@ -166,6 +194,8 @@ class SarifReporter(Reporter):
                                     )
                                 result["locations"][id_location] = location
                         run["results"][id_result] = result
+
+                # Update run in full list
                 linter_sarif_obj["runs"][id_run] = run
         return linter_sarif_obj
 

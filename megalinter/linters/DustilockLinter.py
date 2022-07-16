@@ -71,24 +71,25 @@ class DustilockLinter(Linter):
                             "driver": {
                                 "informationUri": "https://github.com/Checkmarx/dustilock",
                                 "name": "dustilock",
+                                "version": self.get_linter_version()
                                 "rules": [
                                     {
                                         "id": "PACKAGE_JSON_ERROR",
-                                        "name": "package_json_error",
+                                        "name": "Error in package.json",
                                         "shortDescription": {
                                             "text": "Dependency injection in package.json"
                                         },
                                     },
                                     {
                                         "id": "PYTHON_REQUIREMENT_ERROR",
-                                        "name": "python_requirement_error",
+                                        "name": "Error in Python requirements",
                                         "shortDescription": {
                                             "text": "Dependency injection in python requirements.txt"
                                         },
                                     },
                                     {
                                         "id": "OTHER_ERROR",
-                                        "name": "other_error",
+                                        "name": "Other errors",
                                         "shortDescription": {"text": "Other error"},
                                     },
                                 ],

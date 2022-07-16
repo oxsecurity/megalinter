@@ -143,3 +143,12 @@ def log_link(label, url):
         return label
     else:
         return f"[{label}]({url})"
+
+
+def get_linter_doc_url(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    linter_doc_url = (
+        f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    )
+    return linter_doc_url
