@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                      | Configuration key      | Status                                                                                                                             |
+|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/luarocks/luacheck)](https://github.com/luarocks/luacheck/commits) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
