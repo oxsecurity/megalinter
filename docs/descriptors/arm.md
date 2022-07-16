@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                    | Configuration key     | Status                                                                                                                     |
-|---------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/commits) |
 
 ## Linted files
@@ -19,10 +19,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes
