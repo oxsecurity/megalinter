@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                          | Configuration key           | Status                                                                                                                         |
-|---------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                   | Default value |
-|----------------------------|-------------------------------|---------------|
-| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

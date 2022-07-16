@@ -17,6 +17,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.54 to **2.1.56** on 2022-07-15
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.4 to **1.2.5** on 2022-07-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.4 to **0.38.5** on 2022-07-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.0 to **1.2.1** on 2022-07-16
+  - [checkov](https://www.checkov.io/) from 2.1.56 to **2.1.57** on 2022-07-16
+  - [kics](https://www.kics.io) from 1.5.11 to **1.5.12** on 2022-07-16
 <!-- linter-versions-end -->
 
 ## [v6.0.4] - 2022-07-14
