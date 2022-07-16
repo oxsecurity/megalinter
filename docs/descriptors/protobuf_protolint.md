@@ -4,7 +4,7 @@
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.38.2**
+- Version in MegaLinter: **0.38.3**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file is not found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used

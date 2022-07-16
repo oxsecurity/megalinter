@@ -8,8 +8,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fix mega-linter-runner --upgrade so it also updates report folder to megalinter-reports in GitHub Actions Workflows [#1609](https://github.com/oxsecurity/megalinter/issues/1609)
+- Fix documentation and templates to use `megalinter-reports` folder everywhere
+- Workaround for python-markdown issue <https://github.com/radude/mdx_truly_sane_lists/issues/9>
+
 - Linter versions upgrades
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.2 to **0.38.3** on 2022-07-15
+  - [checkov](https://www.checkov.io/) from 2.1.54 to **2.1.56** on 2022-07-15
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.4 to **1.2.5** on 2022-07-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.4 to **0.38.5** on 2022-07-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.0 to **1.2.1** on 2022-07-16
+  - [checkov](https://www.checkov.io/) from 2.1.56 to **2.1.57** on 2022-07-16
+  - [kics](https://www.kics.io) from 1.5.11 to **1.5.12** on 2022-07-16
 <!-- linter-versions-end -->
+
+## [v6.0.4] - 2022-07-14
+
+- Fix count of errors when using SARIF reporter
+- DevSkim: Ignore megalinter-reports by default [(#1603)](https://github.com/oxsecurity/megalinter/issues/1603)
+- Load JSON when list of objects is defined in an ENV var [(#1605)](https://github.com/oxsecurity/megalinter/issues/1605)
+- AutoFix pre_commands using `npm install` [(1258)](https://github.com/oxsecurity/megalinter/issues/1258)
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-14
+  - [git_diff](https://git-scm.com) from 2.34.2 to **2.34.4** on 2022-07-14
+  - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.1.0 to **1.2.0** on 2022-07-14
+  - [syft](https://github.com/anchore/syft) from 0.50.0 to **0.51.0** on 2022-07-14
+
+## [v6.0.3] - 2022-07-11
+
+- mega-linter-runner: Update query args when opening OX Security
+- Fix mega-linter-runner doesn't default to v6 for flavors [(1596)](https://github.com/oxsecurity/megalinter/issues/1596)
 
 ## [v6.0.0] - 2022-07-10
 

@@ -40,6 +40,7 @@ from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
+UPDATE_CHANGELOG = "--changelog" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
@@ -888,7 +889,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 + badge
             ]
         # Text as title
-        elif badge == "": 
+        elif badge == "":
             linter_doc_md += [f"# {linter.linter_name}"]
         else:
             linter_doc_md += [f"# {linter.linter_name} {badge}"]
@@ -2123,7 +2124,15 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
         x["descriptor_id"] for x in descriptors
     ]
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] += [
+        "CREDENTIALS_SECRETLINT",
+        "DOCKERFILE_DOCKERFILELINT",
+        "GIT_GIT_DIFF",
+        "PHP_BUILTIN",
+        "RST_RSTFMT",
+    ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -2598,24 +2607,26 @@ def generate_version():
     print(process.stdout)
     print(process.stderr)
     # Update changelog
-    changelog_file = f"{REPO_HOME}/CHANGELOG.md"
-
-    with open(changelog_file, "r", encoding="utf-8") as md_file:
-        changelog_content = md_file.read()
-    changelog_content = changelog_content.replace("<!-- linter-versions-end -->", "")
-    new_release_lines = [
-        "," "<!-- unreleased-content-marker -->",
-        "",
-        "- Linter versions upgrades",
-        "<!-- linter-versions-end -->",
-        "",
-        f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}",
-    ]
-    changelog_content = changelog_content.replace(
-        "<!-- unreleased-content-marker -->", "\n".join(new_release_lines)
-    )
-    with open(changelog_file, "w", encoding="utf-8") as file:
-        file.write(changelog_content)
+    if UPDATE_CHANGELOG is True:
+        changelog_file = f"{REPO_HOME}/CHANGELOG.md"
+        with open(changelog_file, "r", encoding="utf-8") as md_file:
+            changelog_content = md_file.read()
+        changelog_content = changelog_content.replace(
+            "<!-- linter-versions-end -->", ""
+        )
+        new_release_lines = [
+            "," "<!-- unreleased-content-marker -->",
+            "",
+            "- Linter versions upgrades",
+            "<!-- linter-versions-end -->",
+            "",
+            f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}",
+        ]
+        changelog_content = changelog_content.replace(
+            "<!-- unreleased-content-marker -->", "\n".join(new_release_lines)
+        )
+        with open(changelog_file, "w", encoding="utf-8") as file:
+            file.write(changelog_content)
 
     # git add , commit & tag
     repo = git.Repo(os.getcwd())

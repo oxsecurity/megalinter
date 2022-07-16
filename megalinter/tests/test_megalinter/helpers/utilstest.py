@@ -561,6 +561,23 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
+    # Check number of errors is ok
+    for linter in mega_linter.linters:
+        if (
+            linter.output_sarif is True
+            and linter.cli_lint_mode != "file"
+            and linter.name
+            not in [
+                "REPOSITORY_DUSTILOCK",
+                "REPOSITORY_SYFT",
+            ]
+        ):
+            test_self.assertTrue(
+                linter.total_number_errors > 1,
+                f"Missing multiple sarif errors in {linter.name}"
+                + f" ({linter.total_number_errors})\n"
+                + f"SARIF:{str(sarif_content)}",
+            )
 
 
 def assert_is_skipped(skipped_item, output, test_self):
