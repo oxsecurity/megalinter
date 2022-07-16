@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                          | Configuration key              | Status                                                                                                                                   |
+|---------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) |
 
 ## Linted files
@@ -24,8 +24,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
