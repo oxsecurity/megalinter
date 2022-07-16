@@ -2,4 +2,4 @@
 
 cd ..
 echo "Formatting markdown tables..."
-npm_config_yes=true npx markdown-table-formatter "./**/*.md"
+npx --yes markdown-table-formatter "./**/*.md"
