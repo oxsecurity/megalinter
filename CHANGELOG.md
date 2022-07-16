@@ -20,6 +20,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.2.0 to **1.2.1** on 2022-07-16
   - [checkov](https://www.checkov.io/) from 2.1.56 to **2.1.57** on 2022-07-16
   - [kics](https://www.kics.io) from 1.5.11 to **1.5.12** on 2022-07-16
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.8.7 to **8.8.12** on 2022-07-16
 <!-- linter-versions-end -->
 
 ## [v6.0.4] - 2022-07-14

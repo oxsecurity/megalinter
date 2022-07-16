@@ -4,9 +4,10 @@
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.8.7**
+- Version in MegaLinter: **8.8.12**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
+  - If custom `.gitleaks.toml` config file is not found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
 
 [![gitleaks - GitHub](https://gh-card.dev/repos/zricethezav/gitleaks.svg?fullname=)](https://github.com/zricethezav/gitleaks){target=_blank}
 
@@ -113,7 +114,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.8.7 as gitleaks
+FROM zricethezav/gitleaks:v8.8.12 as gitleaks
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 
