@@ -532,7 +532,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()+ os.path.sep + str(uuid.uuid4())
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "SARIF_REPORTER": "true",

@@ -688,7 +688,9 @@ class Megalinter:
         os.makedirs(self.report_folder, exist_ok=True)
         # Clear report folder if requested
         if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
-            logging.info(f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}")
+            logging.info(
+                f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
+            )
             shutil.rmtree(self.report_folder, ignore_errors=True)
             os.makedirs(self.report_folder, exist_ok=True)
 
