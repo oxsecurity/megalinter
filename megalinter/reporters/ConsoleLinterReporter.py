@@ -83,7 +83,6 @@ class ConsoleLinterReporter(Reporter):
             )
         # Linter header prints
         msg = [
-            "",
             f"- Using [{self.master.linter_name} v{linter_version}] {linter_doc_url}",
         ]
         if self.master.descriptor_id != self.master.name:
