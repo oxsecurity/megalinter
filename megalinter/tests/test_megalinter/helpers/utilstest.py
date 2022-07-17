@@ -38,6 +38,7 @@ REPO_HOME = (
 def linter_test_setup(params=None):
     for key in [
         "APPLY_FIXES",
+        "CLEAR_REPORT_FOLDER",
         "ENABLE",
         "ENABLE_LINTERS",
         "DISABLE",
@@ -55,6 +56,8 @@ def linter_test_setup(params=None):
         "DISABLE_ERRORS",
         "SARIF_REPORTER",
         "LOG_FILE",
+        "REPORT_OUTPUT_FOLDER",
+        "OUTPUT_FOLDER",
         "REPOSITORY_SEMGREP_RULESETS_TYPE",
         "REPOSITORY_SEMGREP_RULESETS",
     ]:
@@ -456,7 +459,7 @@ def test_linter_report_tap(linter, test_self):
             f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
         )
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "OUTPUT_FORMAT": "tap",
@@ -529,7 +532,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir()+ os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "SARIF_REPORTER": "true",
