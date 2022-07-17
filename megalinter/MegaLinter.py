@@ -8,6 +8,7 @@ import argparse
 import logging
 import multiprocessing as mp
 import os
+import shutil
 import sys
 
 import chalk as c
@@ -677,6 +678,10 @@ class Megalinter:
                 self.report_folder = self.arg_output
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)
+        # Clear report folder if requested
+        if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
+            shutil.rmtree(self.report_folder)
+            logging.debug(f"Emptied report folder {self.report_folder}")
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
