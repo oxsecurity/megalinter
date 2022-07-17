@@ -6,8 +6,8 @@
 
 ## Contributors
 
-<a href="https://github.com/megalinter/megalinter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
+<a href="https://github.com/oxsecurity/megalinter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
 <br/>
 <a href="https://cauldron.io/project/5222">

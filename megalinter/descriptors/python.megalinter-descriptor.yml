@@ -16,7 +16,7 @@ linters:
     linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
     linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
     cli_lint_mode: list_of_files
-    config_file_name: .python-lint
+    config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+):"
@@ -186,6 +186,10 @@ linters:
   # BANDIT
   - linter_name: bandit
     name: PYTHON_BANDIT
+    can_output_sarif: true
+    descriptor_flavors:
+      - python
+      - security
     linter_text: |
       bandit checks for security risks
 
@@ -199,6 +203,11 @@ linters:
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
     config_file_name: ".bandit.yml"
+    cli_sarif_args:
+      - --format
+      - sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ">> Issue: \\["
     version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
@@ -213,6 +222,7 @@ linters:
     install:
       pip:
         - bandit
+        - bandit_sarif_formatter
     ide:
       atom:
         - name: bandit-lint
@@ -232,6 +242,7 @@ linters:
       If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
+    linter_spdx_license: MIT
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
     linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config

@@ -15,5 +15,6 @@ __all__ = [
     "plugin_factory",
     "pre_post_factory",
     "utils",
-    "alpaca",
+    "alpaca"
+    # "megalinter_server"
 ]

@@ -59,6 +59,7 @@ def run_command(command_info, log_key, mega_linter):
     cwd = os.getcwd()
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
+    command_info = complete_command(command_info)
     logging.info(f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]")
     # Run command
     process = subprocess.run(
@@ -83,3 +84,11 @@ def run_command(command_info, log_key, mega_linter):
         "status": return_code,
         "stdout": return_stdout,
     }
+
+
+def complete_command(command_info):
+    if command_info["command"].startswith("npm install") or command_info[
+        "command"
+    ].startswith("npm i"):
+        command_info["command"] = "cd /node-deps && " + command_info["command"]
+    return command_info

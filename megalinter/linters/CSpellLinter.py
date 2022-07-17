@@ -9,6 +9,7 @@ import os
 import re
 
 from megalinter import Linter, utils
+from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 
 class CSpellLinter(Linter):
@@ -37,7 +38,7 @@ class CSpellLinter(Linter):
                 "**/.git/**",
                 ".vscode",
                 "package-lock.json",
-                "report",
+                DEFAULT_REPORT_FOLDER_NAME,
             ],
             "words": whitelisted_words_clean,
         }

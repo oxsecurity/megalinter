@@ -77,6 +77,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go
   # REVIVE
   - linter_name: revive
+    can_output_sarif: true
     linter_url: https://revive.run/
     linter_repo: https://github.com/mgechev/revive
     linter_rules_url: https://revive.run/r
@@ -86,6 +87,9 @@ linters:
     cli_config_arg_name: "-config"
     cli_lint_extra_args:
       - -set_exit_status
+    cli_sarif_args:
+      - -formatter
+      - sarif
     cli_help_arg_name: "-help"
     help_command_return_code: 0
     linter_version_cache: "0.0.0"

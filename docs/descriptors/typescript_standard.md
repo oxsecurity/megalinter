@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits)
+
 ## standard documentation
 
 - Version in MegaLinter: **15.0.1**
@@ -17,10 +19,10 @@
 
 ## Configuration in MegaLinter
 
-- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/latest/configuration/#apply-fixes)
 
 | Variable                                        | Description                                                                                                                                                                                                         | Default value      |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -42,23 +44,23 @@ Use standard in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                      |                                                  Install                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard](https://atom.io/packages/linter-js-standard)                                   |                [Visit Web Site](https://atom.io/packages/linter-js-standard){target=_blank}                |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine)                     |            [Visit Web Site](https://atom.io/packages/linter-js-standard-engine){target=_blank}             |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [standard-formatter](https://atom.io/packages/standard-formatter)                                   |                [Visit Web Site](https://atom.io/packages/standard-formatter){target=_blank}                |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-standard](https://github.com/ishamf/brackets-standard/)                                   |               [Visit Web Site](https://github.com/ishamf/brackets-standard/){target=_blank}                |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/)         | [Visit Web Site](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/){target=_blank} |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |     [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-standard){target=_blank}     |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [StandardFormat](https://packagecontrol.io/packages/StandardFormat)                                 |             [Visit Web Site](https://packagecontrol.io/packages/StandardFormat){target=_blank}             |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |                             [Visit Web Site](vscode-standardjs){target=_blank}                             |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard](https://atom.io/packages/linter-js-standard)                                   |                [Visit Web Site](https://atom.io/packages/linter-js-standard){target=_blank}                |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine)                     |            [Visit Web Site](https://atom.io/packages/linter-js-standard-engine){target=_blank}             |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [standard-formatter](https://atom.io/packages/standard-formatter)                                   |                [Visit Web Site](https://atom.io/packages/standard-formatter){target=_blank}                |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-standard](https://github.com/ishamf/brackets-standard/)                                   |               [Visit Web Site](https://github.com/ishamf/brackets-standard/){target=_blank}                |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/)         | [Visit Web Site](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |     [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-standard){target=_blank}     |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [StandardFormat](https://packagecontrol.io/packages/StandardFormat)                                 |             [Visit Web Site](https://packagecontrol.io/packages/StandardFormat){target=_blank}             |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |                             [Visit Web Site](vscode-standardjs){target=_blank}                             |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        97        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor                             |       101        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/latest/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -121,28 +123,3 @@ Flags (advanced):
   - [standard@15.0.1](https://www.npmjs.com/package/standard)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-
-### Example success log
-
-```shell
-Results of standard linter (version 15.0.1)
-See documentation on https://megalinter.github.io/descriptors/typescript_standard/
------------------------------------------------
-
-[SUCCESS] .automation/test/typescript/typescript_good_1.ts
-    
-
-```
-
-### Example error log
-
-```shell
-Results of standard linter (version 15.0.1)
-See documentation on https://megalinter.github.io/descriptors/typescript_standard/
------------------------------------------------
-
-[ERROR] .automation/test/typescript/typescript_bad_1.ts
-    standard: Use JavaScript Standard Style (https://standardjs.com)
-      .automation/test/typescript/typescript_bad_1.ts:5:39: Parsing error: Unterminated regular expression literal.
-
-```

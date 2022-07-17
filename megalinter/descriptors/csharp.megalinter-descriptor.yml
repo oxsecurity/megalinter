@@ -14,6 +14,11 @@ supported_platforms:
     - windows/amd64
 install:
   apk:
+    - icu-libs
+    - libcurl
+    - libintl
+    - libssl1.1
+    - libstdc++
     - lttng-ust-dev
     - zlib
     - zlib-dev
@@ -29,6 +34,7 @@ linters:
     linter_name: dotnet-format
     is_formatter: true
     linter_url: https://github.com/dotnet/format
+    linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     cli_lint_extra_args:
       - "--folder"

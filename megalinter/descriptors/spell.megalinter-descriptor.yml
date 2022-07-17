@@ -3,12 +3,15 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
 lint_all_other_linters_files: true
+file_extensions:
+  - "*"
 linters:
   # MISSPELL
   - linter_name: misspell
     name: SPELL_MISSPELL
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
+    linter_repo: https://github.com/client9/misspell
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "-error"

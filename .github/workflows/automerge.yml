@@ -20,7 +20,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: github.repository == 'megalinter/megalinter'
+    if: github.repository == 'oxsecurity/megalinter'
     steps:
       - name: automerge
         env:
