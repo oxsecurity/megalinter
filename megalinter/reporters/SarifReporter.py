@@ -15,6 +15,7 @@ from megalinter.constants import (
     DEFAULT_SARIF_VERSION,
     ML_DOC_URL,
 )
+from megalinter.utils import normalize_log_string
 from megalinter.utils_reporter import get_linter_doc_url
 
 
@@ -96,6 +97,8 @@ class SarifReporter(Reporter):
                     ):
                         os.remove(linter.sarif_output_file)
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
+        # Remove workspace prefix from file names
+        result_json = normalize_log_string(result_json)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             "SARIF_REPORTER_FILE_NAME", DEFAULT_SARIF_REPORT_FILE_NAME
