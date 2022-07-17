@@ -1007,7 +1007,7 @@ class Linter:
             except Exception as e:
                 total_errors = 1
                 logging.error(
-                    "Error while getting total errors from SARIF output.\Error:"
+                    "Error while getting total errors from SARIF output.\nError:"
                     + str(e)
                     + "\nstdout: "
                     + stdout

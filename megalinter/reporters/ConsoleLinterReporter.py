@@ -78,7 +78,8 @@ class ConsoleLinterReporter(Reporter):
             logging.error(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    f"❌ There is a MegaLinter issue, please report it: {self.master.return_code} / {self.master.status}",
+                    f"❌ There is a MegaLinter issue, please report it: {self.master.return_code}"
+                    + " / {self.master.status}",
                 )
             )
         # Linter header prints
