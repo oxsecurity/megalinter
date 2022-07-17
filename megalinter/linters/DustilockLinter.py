@@ -71,7 +71,7 @@ class DustilockLinter(Linter):
                             "driver": {
                                 "informationUri": "https://github.com/Checkmarx/dustilock",
                                 "name": "dustilock",
-                                "version": self.get_linter_version()
+                                "version": self.get_linter_version(),
                                 "rules": [
                                     {
                                         "id": "PACKAGE_JSON_ERROR",
