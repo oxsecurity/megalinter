@@ -134,7 +134,10 @@ class Megalinter:
 
         # Collect files for each identified linter
         logging.info(
-            log_section_start("megalinter-file-listing", "MegaLinter now collects the files to analyse")
+            log_section_start(
+                "megalinter-file-listing",
+                "MegaLinter now collects the files to analyse",
+            )
         )
         self.collect_files()
 
