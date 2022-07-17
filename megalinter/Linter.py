@@ -1007,8 +1007,10 @@ class Linter:
             except Exception as e:
                 total_errors = 1
                 logging.error(
-                    "Error while getting total errors from SARIF output.\nSARIF:"
+                    "Error while getting total errors from SARIF output.\Error:"
                     + str(e)
+                    + "\nstdout: "
+                    + stdout
                 )
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":

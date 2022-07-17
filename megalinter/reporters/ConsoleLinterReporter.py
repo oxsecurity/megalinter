@@ -7,6 +7,7 @@ import logging
 import chalk as c
 from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL
+from megalinter.utils_reporter import log_section_end, log_section_start
 
 mega_linter_version = config.get("BUILD_VERSION", "latest")
 DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
@@ -47,7 +48,7 @@ class ConsoleLinterReporter(Reporter):
         # Linter header prints
         msg = [
             "",
-            c.bold(f"### Processed [{self.master.descriptor_id}] files"),
+            log_section_start(f"processed-{self.master.name}",f"### Processed [{self.master.descriptor_id}] files with [{self.master.linter_name}]"),
             f"- Using [{self.master.linter_name} v{linter_version}] {linter_doc_url}",
         ]
         if self.master.descriptor_id != self.master.name:
@@ -86,6 +87,8 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(f"--Error detail:\n{self.master.stdout}")
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{self.master.stdout}")
+        # Close section
+        log_section_end(f"processed-{self.master.name}"),
         # Output linter status
         base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
         elapse = str(round(self.master.elapsed_time_s, 2)) + "s"

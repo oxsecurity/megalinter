@@ -53,7 +53,7 @@ def get_excluded_directories():
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get("REPORT_OUTPUT_FOLDER", "report"),
+        config.get("REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
     excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
     excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])

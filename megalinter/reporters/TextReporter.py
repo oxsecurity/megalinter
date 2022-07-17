@@ -94,6 +94,6 @@ class TextReporter(Reporter):
         with open(text_file_name, "w", encoding="utf-8") as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"
             text_file.write(text_file_content)
-            logging.info(
+            logging.debug(
                 f"[Text Reporter] Generated {self.name} report: {text_file_name}"
             )

@@ -29,6 +29,8 @@ from megalinter.constants import (
 )
 from multiprocessing_logging import install_mp_handler
 
+from megalinter.utils_reporter import log_section_end, log_section_start
+
 
 # Function to run linters using multiprocessing pool
 def run_linters(linters):
@@ -119,6 +121,7 @@ class Megalinter:
         self.compute_file_extensions()
         # Load MegaLinter reporters
         self.load_reporters()
+        logging.info(log_section_end("megalinter-init"))
 
     # Collect files, run linters on them and write reports
     def run(self):
@@ -733,7 +736,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("MegaLinter"))
+        logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -748,6 +751,7 @@ class Megalinter:
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
+        logging.info(log_section_start("megalinter-init","MegaLinter initialization"))
         if os.environ.get("GITHUB_REPOSITORY", "") != "":
             logging.info(
                 "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
