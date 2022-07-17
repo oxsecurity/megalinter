@@ -122,7 +122,8 @@ Printer options:
 Utilities:
 
   -f, --find   recursively find all shell files and print the paths
-  --tojson     print syntax tree to stdout as a typed JSON
+  --to-json    print syntax tree to stdout as a typed JSON
+  --from-json  read syntax tree from stdin as a typed JSON
 
 For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 ```
