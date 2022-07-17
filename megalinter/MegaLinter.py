@@ -690,6 +690,7 @@ class Megalinter:
         if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
             shutil.rmtree(self.report_folder)
             logging.debug(f"Emptied report folder {self.report_folder}")
+            os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
