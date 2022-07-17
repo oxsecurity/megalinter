@@ -88,7 +88,7 @@ class ConsoleLinterReporter(Reporter):
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{self.master.stdout}")
         # Close section
-        log_section_end(f"processed-{self.master.name}"),
+        log_section_end(f"processed-{self.master.name}")
         # Output linter status
         base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
         elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
