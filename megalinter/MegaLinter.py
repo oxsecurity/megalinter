@@ -27,9 +27,8 @@ from megalinter.constants import (
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
 )
-from multiprocessing_logging import install_mp_handler
-
 from megalinter.utils_reporter import log_section_end, log_section_start
+from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -134,7 +133,9 @@ class Megalinter:
             return
 
         # Collect files for each identified linter
-        logging.info(log_section_start("megalinter-file-listing","MegaLinter file listing"))
+        logging.info(
+            log_section_start("megalinter-file-listing", "MegaLinter file listing")
+        )
         self.collect_files()
 
         # Process linters serial or parallel according to configuration
@@ -752,7 +753,7 @@ class Megalinter:
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
-        logging.info(log_section_start("megalinter-init","MegaLinter initialization"))
+        logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
         if os.environ.get("GITHUB_REPOSITORY", "") != "":
             logging.info(
                 "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
