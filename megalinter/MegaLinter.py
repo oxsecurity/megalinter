@@ -134,6 +134,7 @@ class Megalinter:
             return
 
         # Collect files for each identified linter
+        logging.info(log_section_start("megalinter-file-listing","MegaLinter file listing"))
         self.collect_files()
 
         # Process linters serial or parallel according to configuration

@@ -156,9 +156,9 @@ def get_linter_doc_url(linter):
 def log_section_start(section_key: str,section_title: str):
     if "CI" in os.environ:
         if is_github_actions():
-            return f"::group::{section_title}"
+            return f"::group::{section_title} (expand for details)"
         elif is_gitlab_ci():
-            return f"\e[0Ksection_start:`{time.time_ns()}`:{section_key}[collapsed=true]\r\e[0K{section_key}"
+            return f"\e[0Ksection_start:`{time.time_ns()}`:{section_key}[collapsed=true]\r\e[0K{section_title} (expand for details)"
     return section_title
 
 def log_section_end(section_key):
