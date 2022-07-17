@@ -45,10 +45,45 @@ class ConsoleLinterReporter(Reporter):
                 f"{DOCS_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
                 f"{self.master.linter_name.lower().replace('-', '_')}"
             )
+        # Output linter status
+        base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
+        elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
+        total_errors = str(self.master.total_number_errors)
+        if self.master.return_code == 0 and self.master.status == "success":
+            logging.info(
+                log_section_start(
+                    f"processed-{self.master.name}",
+                    c.green(f"✅ {base_phrase} successfully - ({elapse})"),
+                )
+            )
+        elif self.master.return_code == 0 and self.master.status != "success":
+            logging.warning(
+                log_section_start(
+                    f"processed-{self.master.name}",
+                    c.yellow(
+                        f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
+                    ),
+                )
+            )
+        elif self.master.return_code != 0 and self.master.status != "success":
+            logging.error(
+                log_section_start(
+                    f"processed-{self.master.name}",
+                    c.red(
+                        f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})"
+                    ),
+                )
+            )
+        else:
+            logging.error(
+                log_section_start(
+                    f"processed-{self.master.name}",
+                    f"❌ There is a MegaLinter issue, please report it: {self.master.return_code} / {self.master.status}",
+                )
+            )
         # Linter header prints
         msg = [
             "",
-            log_section_start(f"processed-{self.master.name}",f"### Processed [{self.master.descriptor_id}] files with [{self.master.linter_name}]"),
             f"- Using [{self.master.linter_name} v{linter_version}] {linter_doc_url}",
         ]
         if self.master.descriptor_id != self.master.name:
@@ -89,23 +124,3 @@ class ConsoleLinterReporter(Reporter):
                 logging.info(f"--Log detail:\n{self.master.stdout}")
         # Close section
         logging.info(log_section_end(f"processed-{self.master.name}"))
-        # Output linter status
-        base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
-        elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
-        total_errors = str(self.master.total_number_errors)
-        if self.master.return_code == 0 and self.master.status == "success":
-            logging.info(c.green(f"✅ {base_phrase} successfully - ({elapse})"))
-        elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(
-                c.yellow(
-                    f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
-                )
-            )
-        elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(
-                c.red(f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})")
-            )
-        else:
-            logging.error(
-                f"❌ There is a MegaLinter issue, please report it: {self.master.return_code} / {self.master.status}"
-            )
