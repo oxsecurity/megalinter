@@ -131,7 +131,7 @@ class SarifReporter(Reporter):
         # browse runs
         if "runs" in linter_sarif_obj:
             for id_run, run in enumerate(linter_sarif_obj["runs"]):
-                
+
                 # Add MegaLinter info
                 run_properties = run["properties"] if "properties" in run else {}
                 run_properties["megalinter"] = {
@@ -164,7 +164,7 @@ class SarifReporter(Reporter):
                     and "rules" in run["tool"]["driver"]
                 ):
                     rules = run["tool"]["driver"]["rules"]
-                    rules_updated = []
+                    rules_updated: list = []
                     for rule in rules:
                         # If duplicate id, update duplicate items ids with a random value
                         if "id" in rule and any(
