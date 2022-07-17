@@ -37,7 +37,7 @@ class plugins_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [TEST] files", output)
+        self.assertIn("Linted [TEST] files", output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
 
@@ -53,7 +53,7 @@ class plugins_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [TEST] files", output)
+        self.assertIn("Linted [TEST] files", output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
 
