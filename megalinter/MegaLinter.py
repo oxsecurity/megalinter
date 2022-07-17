@@ -689,7 +689,7 @@ class Megalinter:
         # Clear report folder if requested
         if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
             shutil.rmtree(self.report_folder)
-            logging.debug(f"Emptied report folder {self.report_folder}")
+            logging.info(f"CLEAR_REPORT_FOLDER found: emptied {self.report_folder}")
             os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
