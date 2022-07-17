@@ -975,7 +975,7 @@ class Linter:
     def get_total_number_errors(self, stdout: str):
         total_errors = 0
         # Count using SARIF output file
-        if self.output_sarif is True:
+        if self.can_output_sarif is True and self.output_sarif is True:
             try:
                 if self.sarif_output_file is not None and os.path.isfile(
                     self.sarif_output_file
