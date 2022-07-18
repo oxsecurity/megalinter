@@ -14,6 +14,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Replace CI paths in logs
   - Add missing required properties so SARIF is [valid](https://sarifweb.azurewebsites.net/Validation)
   - Add MegaLinter information in SARIF linter runs
+  - Allow to select linters to activate SARIF for, using SARIF_REPORTER_LINTERS
+  - Fix issue when a linter is used in multiple SARIF lint results
 
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
