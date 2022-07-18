@@ -33,8 +33,6 @@
 MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).
 
 Supporting [**48** languages](#languages), [**21** formats](#formats), [**20** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
-
-[**Upgrade to MegaLinter v6 !**](https://github.com/oxsecurity/megalinter/issues/1592)
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->

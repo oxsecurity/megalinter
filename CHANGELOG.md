@@ -21,6 +21,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://www.pylint.org) from 2.14.4 to **2.14.5** on 2022-07-18
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
   - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
+  - [golangci-lint](https://golangci-lint.run/) from 1.46.2 to **1.47.0** on 2022-07-18
 <!-- linter-versions-end -->
 
 ## [v6.0.5] - 2022-07-16
