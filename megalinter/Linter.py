@@ -1013,10 +1013,11 @@ class Linter:
                                 )
                 # If we got here, we should have found a number of errors from SARIF output
                 if total_errors == 0:
-                    logging.error(
+                    logging.warning(
                         "Unable to get total errors from SARIF output.\nSARIF:"
                         + str(sarif_output)
                     )
+                return total_errors
             except Exception as e:
                 total_errors = 1
                 logging.error(
@@ -1025,6 +1026,7 @@ class Linter:
                     + "\nstdout: "
                     + stdout
                 )
+                return total_errors
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
