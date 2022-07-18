@@ -18,6 +18,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17
+  - [pylint](https://www.pylint.org) from 2.14.4 to **2.14.5** on 2022-07-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
+  - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
 <!-- linter-versions-end -->
 
 ## [v6.0.5] - 2022-07-16
