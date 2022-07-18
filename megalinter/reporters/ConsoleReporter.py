@@ -10,6 +10,7 @@ import chalk as c
 import terminaltables
 from megalinter import Reporter, config
 from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.utils_reporter import log_section_end
 
 
 class ConsoleReporter(Reporter):
@@ -55,7 +56,7 @@ class ConsoleReporter(Reporter):
         logging.info("")
         for table_line in table.table.splitlines():
             logging.info(table_line)
-        logging.info("")
+        logging.info(log_section_end("megalinter-file-listing"))
 
     def produce_report(self):
         table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors"]

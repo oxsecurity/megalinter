@@ -8,6 +8,7 @@ import argparse
 import logging
 import multiprocessing as mp
 import os
+import shutil
 import sys
 
 import chalk as c
@@ -26,6 +27,7 @@ from megalinter.constants import (
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
 )
+from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
 
 
@@ -118,6 +120,7 @@ class Megalinter:
         self.compute_file_extensions()
         # Load MegaLinter reporters
         self.load_reporters()
+        logging.info(log_section_end("megalinter-init"))
 
     # Collect files, run linters on them and write reports
     def run(self):
@@ -130,6 +133,12 @@ class Megalinter:
             return
 
         # Collect files for each identified linter
+        logging.info(
+            log_section_start(
+                "megalinter-file-listing",
+                "MegaLinter now collects the files to analyse",
+            )
+        )
         self.collect_files()
 
         # Process linters serial or parallel according to configuration
@@ -677,6 +686,13 @@ class Megalinter:
                 self.report_folder = self.arg_output
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)
+        # Clear report folder if requested
+        if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
+            logging.info(
+                f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
+            )
+            shutil.rmtree(self.report_folder, ignore_errors=True)
+            os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
@@ -728,7 +744,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("MegaLinter"))
+        logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -743,6 +759,7 @@ class Megalinter:
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
+        logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
         if os.environ.get("GITHUB_REPOSITORY", "") != "":
             logging.info(
                 "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")

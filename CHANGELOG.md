@@ -8,6 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Improve console logs by using collapsible sections in GitHub Actions and Gitlab CI (disable by defining `CONSOLE_REPORTER_SECTIONS: false`)
+- Define `CLEAR_REPORT_FOLDER=true` to empty report folder at the beginning of each run ([#1502](https://github.com/oxsecurity/megalinter/issues/1502))
+- Improve SARIF output
+  - Replace CI paths in logs
+  - Add missing required properties so SARIF is [valid](https://sarifweb.azurewebsites.net/Validation)
+  - Add MegaLinter information in SARIF linter runs
+
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17

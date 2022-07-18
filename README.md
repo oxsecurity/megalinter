@@ -33,6 +33,8 @@
 MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).
 
 Supporting [**48** languages](#languages), [**21** formats](#formats), [**20** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
+
+[**Upgrade to MegaLinter v6 !**](https://github.com/oxsecurity/megalinter/issues/1592)
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -658,6 +660,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 |------------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ADDITIONAL_EXCLUDED_DIRECTORIES**                        | \[\]                                     | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                    |
 | [**APPLY_FIXES**](#apply-fixes)                            | `none`                                   | Activates formatting and auto-fixing [(more info)](#apply-fixes)                                                                                                                                           |
+| **CLEAR_REPORT_FOLDER**                                    | `false`                                  | Flag to clear files from report folder (usually megalinter-reports) before starting the linting process                                                                                                    |
 | **DEFAULT_BRANCH**                                         | `HEAD`                                   | Deprecated: The name of the repository's default branch.                                                                                                                                                   |
 | **DEFAULT_WORKSPACE**                                      | `/tmp/lint`                              | The location containing files to lint if you are running locally.                                                                                                                                          |
 | **DISABLE_ERRORS**                                         | `false`                                  | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                            |

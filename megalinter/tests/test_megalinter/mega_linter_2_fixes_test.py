@@ -31,7 +31,7 @@ class mega_linter_2_fixes_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         time.sleep(5)
         utilstest.assert_file_has_been_updated("javascript_for_fixes_1.js", True, self)
         utilstest.assert_file_has_been_updated("env_for_fixes_1.env", False, self)
@@ -49,7 +49,7 @@ class mega_linter_2_fixes_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         time.sleep(5)
         # Check fixable files has been updated
         fixable_files = [
