@@ -42,8 +42,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
-[![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
+[![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
 [![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
