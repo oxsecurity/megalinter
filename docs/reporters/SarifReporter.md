@@ -26,5 +26,6 @@ with:
 
 | Variable                 | Description                            | Default value            |
 |--------------------------|----------------------------------------|--------------------------|
-| SARIF_REPORTER           | Activates/deactivates reporter         | false                    |
-| SARIF_REPORTER_FILE_NAME | File name for SARIF report output file | mega-linter-report.sarif |
+| SARIF_REPORTER           | Activates/deactivates reporter         | `false`                    |
+| SARIF_REPORTER_FILE_NAME | File name for SARIF report output file | `mega-linter-report.sarif` |
+| SARIF_REPORTER_LINTERS | List of linter keys that will output SARIF (if not set, all SARIF compliant linters will output SARIF) | `[]` |

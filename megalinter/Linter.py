@@ -143,11 +143,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
-        self.output_sarif = (
-            params["output_sarif"]
-            if "output_sarif" in params and self.can_output_sarif is True
-            else self.output_sarif
-        )
+        # Disable errors
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
@@ -157,11 +153,25 @@ class Linter:
             if config.get("DISABLE_ERRORS", "false") == "true"
             else False
         )
+        # Name
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
-
+        # Sarif enablement
+        self.output_sarif = (
+            params["output_sarif"]
+            if "output_sarif" in params and self.can_output_sarif is True
+            else self.output_sarif
+        )
+        if self.output_sarif is True:
+            # Disable SARIF if linter not in specified linter list
+            sarif_enabled_linters = config.get_list("SARIF_REPORTER_LINTERS", None)
+            if (
+                sarif_enabled_linters is not None
+                and self.name not in sarif_enabled_linters
+            ):
+                self.output_sarif = False
         # Override default executable
         if config.exists(self.name + "_CLI_EXECUTABLE"):
             self.cli_executable = config.get(self.name + "_CLI_EXECUTABLE")
