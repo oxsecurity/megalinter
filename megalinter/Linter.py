@@ -144,7 +144,9 @@ class Linter:
 
         self.is_active = params["default_linter_activation"]
         self.output_sarif = (
-            params["output_sarif"] if "output_sarif" in params else self.output_sarif
+            params["output_sarif"]
+            if "output_sarif" in params and self.can_output_sarif is True
+            else self.output_sarif
         )
         self.disable_errors_if_less_than = None
         self.disable_errors = (
@@ -1007,8 +1009,10 @@ class Linter:
             except Exception as e:
                 total_errors = 1
                 logging.error(
-                    "Error while getting total errors from SARIF output.\nSARIF:"
+                    "Error while getting total errors from SARIF output.\nError:"
                     + str(e)
+                    + "\nstdout: "
+                    + stdout
                 )
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":

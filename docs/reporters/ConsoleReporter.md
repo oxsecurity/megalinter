@@ -10,7 +10,7 @@ Open GitHub action (or other CI tool) logs and look in MegaLinter step
 
 ## Configuration
 
-| Variable         | Description                    | Default value |
-|------------------|--------------------------------|---------------|
-| CONSOLE_REPORTER | Activates/deactivates reporter | true          |
-
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| CONSOLE_REPORTER          | Activates/deactivates reporter                  | true          |
+| CONSOLE_REPORTER_SECTIONS | Activates/deactivates sections for console logs | true          |

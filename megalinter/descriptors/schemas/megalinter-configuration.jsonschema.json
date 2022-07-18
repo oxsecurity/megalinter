@@ -1409,6 +1409,13 @@
       "title": "Activate console reporter",
       "type": "boolean"
     },
+    "CONSOLE_REPORTER_SECTIONS": {
+      "$id": "#/properties/CONSOLE_REPORTER_SECTIONS",
+      "default": true,
+      "description": "Define to false if you do not want logs to be organized in sections",
+      "title": "Activate console logs sections",
+      "type": "boolean"
+    }, 
     "COPYPASTE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/COPYPASTE_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for COPYPASTE descriptor",
