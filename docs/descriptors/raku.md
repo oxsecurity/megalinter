@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter               | Configuration key    | Status                                                                                                                     |
-|----------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [raku](raku_raku.md) | [RAKU](raku_raku.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rakudo/rakudo)](https://github.com/rakudo/rakudo/commits) |
 
 ## Linted files
@@ -21,8 +21,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
