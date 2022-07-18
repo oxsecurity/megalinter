@@ -123,6 +123,9 @@ class Linter:
         # If linter --version does not return 0 when it is in success, override. ex: 1
         self.version_command_return_code = 0
 
+        self.log_lines_pre: list(str) = []
+        self.log_lines_post: list(str) = []
+
         self.report_folder = ""
         self.reporters = []
 

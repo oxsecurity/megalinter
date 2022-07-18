@@ -99,6 +99,9 @@ class ConsoleLinterReporter(Reporter):
                 f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"
             ]
         logging.info("\n".join(msg))
+        # Pre-commands logs
+        if len(self.master.log_lines_pre) > 0:
+            logging.info("\n".join(self.master.log_lines_pre))
         # Output results
         for res in self.master.files_lint_results:
             file_nm = utils.normalize_log_string(res["file"])
@@ -122,5 +125,8 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(f"--Error detail:\n{self.master.stdout}")
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{self.master.stdout}")
+        # Post-commands logs
+        if len(self.master.log_lines_post) > 0:
+            logging.info("\n".join(self.master.log_lines_post))
         # Close section
         logging.info(log_section_end(f"processed-{self.master.name}"))
