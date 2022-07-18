@@ -6582,9 +6582,22 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
+<li>Improve console logs by using collapsible sections in GitHub Actions and Gitlab CI (disable by defining <code>CONSOLE_REPORTER_SECTIONS: false</code>)</li>
+<li>Define <code>CLEAR_REPORT_FOLDER=true</code> to empty report folder at the beginning of each run (<a href="https://github.com/oxsecurity/megalinter/issues/1502">#1502</a>)</li>
+<li>Improve SARIF output<ul>
+<li>Replace CI paths in logs</li>
+<li>Add missing required properties so SARIF is <a href="https://sarifweb.azurewebsites.net/Validation">valid</a></li>
+<li>Add MegaLinter information in SARIF linter runs</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Linter versions upgrades<ul>
 <li><a href="https://eslint.org">eslint</a> from 8.19.0 to <strong>8.20.0</strong> on 2022-07-17</li>
 <li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.31.1 to <strong>0.32.0</strong> on 2022-07-17</li>
+<li><a href="https://www.pylint.org">pylint</a> from 2.14.4 to <strong>2.14.5</strong> on 2022-07-18</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.2.3 to <strong>6.3.0</strong> on 2022-07-18</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.57 to <strong>2.1.59</strong> on 2022-07-18</li>
 </ul>
 </li>
 </ul>
