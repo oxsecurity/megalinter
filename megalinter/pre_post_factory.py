@@ -5,7 +5,7 @@ import shutil
 import subprocess
 import sys
 
-from megalinter import Linter, config, utils
+from megalinter import config, utils
 
 
 # User defined commands to run before running linters
@@ -43,8 +43,8 @@ def run_pre_post_commands(key, log_key, mega_linter):
 
 
 # Perform run of commands
-def run_commands(all_commands, log_key, mega_linter, linter: Linter = None):
-    pre_commands_results = []
+def run_commands(all_commands, log_key, mega_linter, linter=None):
+    pre_commands_results: list = []
     if all_commands is None:
         logging.debug(f"{log_key} No commands declared in user configuration")
         return pre_commands_results
@@ -54,7 +54,7 @@ def run_commands(all_commands, log_key, mega_linter, linter: Linter = None):
     return pre_commands_results
 
 
-def run_command(command_info, log_key, mega_linter, linter: Linter = None):
+def run_command(command_info, log_key, mega_linter, linter=None):
     # Run a command in Docker image root or in workspace root
     cwd = os.getcwd()
     if command_info.get("cwd", "root") == "workspace":
