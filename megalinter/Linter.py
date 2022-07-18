@@ -526,15 +526,16 @@ class Linter:
     # Processes the linter
     def run(self):
         self.start_perf = perf_counter()
+
+        # Initialize linter reports
+        for reporter in self.reporters:
+            reporter.initialize()
+
         # Apply actions defined on Linter class if defined
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
         pre_post_factory.run_linter_pre_commands(self.master, self)
-
-        # Initialize linter reports
-        for reporter in self.reporters:
-            reporter.initialize()
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -584,13 +585,13 @@ class Linter:
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
 
+        # Run commands defined in descriptor, or overridden by user in configuration
+        pre_post_factory.run_linter_post_commands(self.master, self)
+
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
-
-        # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
 
         return self
 
