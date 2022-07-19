@@ -14,3 +14,4 @@ Open GitHub action (or other CI tool) logs and look in MegaLinter step
 |---------------------------|-------------------------------------------------|---------------|
 | CONSOLE_REPORTER          | Activates/deactivates reporter                  | true          |
 | CONSOLE_REPORTER_SECTIONS | Activates/deactivates sections for console logs | true          |
+| OUTPUT_DETAIL             | `simple` for only error files, `detailed` for all files | `simple` |
