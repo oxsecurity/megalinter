@@ -144,6 +144,21 @@ class SarifReporter(Reporter):
                 }
                 run["properties"] = run_properties
 
+                # Update linter name in case there are duplicates
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "name" in run["tool"]["driver"]
+                    and linter.master.megalinter_flavor
+                    != "none"  # single linter image case
+                ):
+                    run["tool"]["driver"]["name"] = (
+                        run["tool"]["driver"]["name"]
+                        + " (MegaLinter "
+                        + linter.name
+                        + ")"
+                    )
+
                 # fix missing informationUri
                 if (
                     "tool" in run

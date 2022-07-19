@@ -1415,7 +1415,7 @@
       "description": "Define to false if you do not want logs to be organized in sections",
       "title": "Activate console logs sections",
       "type": "boolean"
-    }, 
+    },
     "COPYPASTE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/COPYPASTE_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for COPYPASTE descriptor",
@@ -10740,6 +10740,28 @@
       "description": "Generate SARIF reports that can be used to display issues directly in GitHub UI",
       "title": "Activate SARIF reporter",
       "type": "boolean"
+    },
+    "SARIF_REPORTER_FILE_NAME": {
+      "$id": "#/properties/SARIF_REPORTER_FILE_NAME",
+      "default": "mega-linter-report.sarif",
+      "description": "Override SARIF output file name",
+      "title": "SARIF report file name",
+      "type": "string"
+    },
+    "SARIF_REPORTER_LINTERS": {
+      "$id": "#/properties/SARIF_REPORTER_LINTERS",
+      "description": "If SARIF_REPORTER_LINTERS is set, only the linters in the list will output SARIF",
+      "examples": [
+        [
+          "BASH_BASH_SHFMT",
+          "JAVASCRIPT_STANDARD"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "SARIF enabled linters",
+      "type": "array"
     },
     "SCALA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_FILTER_REGEX_EXCLUDE",

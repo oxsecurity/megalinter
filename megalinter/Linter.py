@@ -123,6 +123,9 @@ class Linter:
         # If linter --version does not return 0 when it is in success, override. ex: 1
         self.version_command_return_code = 0
 
+        self.log_lines_pre: list(str) = []
+        self.log_lines_post: list(str) = []
+
         self.report_folder = ""
         self.reporters = []
 
@@ -143,11 +146,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
-        self.output_sarif = (
-            params["output_sarif"]
-            if "output_sarif" in params and self.can_output_sarif is True
-            else self.output_sarif
-        )
+        # Disable errors
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
@@ -157,11 +156,25 @@ class Linter:
             if config.get("DISABLE_ERRORS", "false") == "true"
             else False
         )
+        # Name
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
-
+        # Sarif enablement
+        self.output_sarif = (
+            params["output_sarif"]
+            if "output_sarif" in params and self.can_output_sarif is True
+            else self.output_sarif
+        )
+        if self.output_sarif is True:
+            # Disable SARIF if linter not in specified linter list
+            sarif_enabled_linters = config.get_list("SARIF_REPORTER_LINTERS", None)
+            if (
+                sarif_enabled_linters is not None
+                and self.name not in sarif_enabled_linters
+            ):
+                self.output_sarif = False
         # Override default executable
         if config.exists(self.name + "_CLI_EXECUTABLE"):
             self.cli_executable = config.get(self.name + "_CLI_EXECUTABLE")
@@ -526,15 +539,16 @@ class Linter:
     # Processes the linter
     def run(self):
         self.start_perf = perf_counter()
+
+        # Initialize linter reports
+        for reporter in self.reporters:
+            reporter.initialize()
+
         # Apply actions defined on Linter class if defined
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
         pre_post_factory.run_linter_pre_commands(self.master, self)
-
-        # Initialize linter reports
-        for reporter in self.reporters:
-            reporter.initialize()
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -584,13 +598,13 @@ class Linter:
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
 
+        # Run commands defined in descriptor, or overridden by user in configuration
+        pre_post_factory.run_linter_post_commands(self.master, self)
+
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
-
-        # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
 
         return self
 
@@ -691,18 +705,6 @@ class Linter:
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         return_code, return_output = self.execute_lint_command(command)
-        # Move SARIF file if necessary
-        if (
-            self.sarif_output_file is not None
-            and self.sarif_default_output_file is not None
-        ):
-            linter_sarif_report = (
-                self.sarif_default_output_file
-                if os.path.isfile(self.sarif_default_output_file)
-                else os.path.join(self.workspace, self.sarif_default_output_file)
-            )
-            shutil.move(linter_sarif_report, self.sarif_output_file)
-            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
@@ -758,6 +760,21 @@ class Linter:
         return return_code, return_stdout
 
     def manage_sarif_output(self, return_stdout):
+        # Move SARIF file if necessary if generated in a fixed place by the linter
+        if (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and self.sarif_output_file is not None
+            and self.sarif_default_output_file is not None
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            linter_sarif_report = (
+                self.sarif_default_output_file
+                if os.path.isfile(self.sarif_default_output_file)
+                else os.path.join(self.workspace, self.sarif_default_output_file)
+            )
+            shutil.move(linter_sarif_report, self.sarif_output_file)
+            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
         # Manage case when SARIF output is in stdout (and not generated by the linter)
         if (
             self.can_output_sarif is True
@@ -979,14 +996,24 @@ class Linter:
         # Count using SARIF output file
         if self.output_sarif is True:
             try:
+                # SARIF is in MegaLinter named file
                 if self.sarif_output_file is not None and os.path.isfile(
                     self.sarif_output_file
                 ):
-                    # SARIF is in file
                     with open(
                         self.sarif_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
                         sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        # SARIF is in default output file
+                elif self.sarif_default_output_file is not None and os.path.isfile(
+                    self.sarif_default_output_file
+                ):
+
+                    with open(
+                        self.sarif_default_output_file, "r", encoding="utf-8"
+                    ) as sarif_file:
+                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        # SARIF is in stdout
                 else:
                     # SARIF is in stdout
                     sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
@@ -1002,10 +1029,11 @@ class Linter:
                                 )
                 # If we got here, we should have found a number of errors from SARIF output
                 if total_errors == 0:
-                    logging.error(
+                    logging.warning(
                         "Unable to get total errors from SARIF output.\nSARIF:"
                         + str(sarif_output)
                     )
+                return total_errors
             except Exception as e:
                 total_errors = 1
                 logging.error(
@@ -1014,6 +1042,7 @@ class Linter:
                     + "\nstdout: "
                     + stdout
                 )
+                return total_errors
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)

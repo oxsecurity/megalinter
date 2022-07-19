@@ -39,25 +39,11 @@ class SyftLinter(Linter):
                                 "driver": {
                                     "informationUri": "https://github.com/anchore/syft",
                                     "name": "syft",
-                                    "rules": [
-                                        {
-                                            "id": "SYFT_SBOM",
-                                            "name": "sbom_generation",
-                                            "shortDescription": {
-                                                "text": "Generate Software Bill Of Materials"
-                                            },
-                                        },
-                                    ],
+                                    "rules": [],
                                 }
                             },
-                            "results": [
-                                {
-                                    "level": "note",
-                                    "properties": {"sbom": syft_result_sbom},
-                                    "message": {"text": "Generated SBOM"},
-                                    "ruleId": "SYFT_SBOM",
-                                }
-                            ],
+                            "properties": {"megalinter": {"sbom": syft_result_sbom}},
+                            "results": [],
                         }
                     ],
                     "version": DEFAULT_SARIF_VERSION,
