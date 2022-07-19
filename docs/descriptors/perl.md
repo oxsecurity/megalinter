@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                           | Configuration key          | Status                                                                                                                                         |
+|----------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) |
 
 ## Linted files
@@ -23,10 +23,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes
