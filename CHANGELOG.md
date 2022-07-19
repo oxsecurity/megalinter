@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.1.0] - 2022-07-19
+
 - Improve console logs by using collapsible sections in GitHub Actions and Gitlab CI (disable by defining `CONSOLE_REPORTER_SECTIONS: false`)
 - Define `CLEAR_REPORT_FOLDER=true` to empty report folder at the beginning of each run ([#1502](https://github.com/oxsecurity/megalinter/issues/1502))
 - Improve SARIF output
@@ -18,16 +23,15 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Fix issue when a linter is used in multiple SARIF lint results
 
 - Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.2 to **0.61.3** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
+  - [checkov](https://www.checkov.io/) from 2.1.59 to **2.1.60** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
   - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.46.2 to **1.47.0** on 2022-07-19
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.4.5** on 2022-07-19
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17
   - [pylint](https://www.pylint.org) from 2.14.4 to **2.14.5** on 2022-07-18
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
-  - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.2 to **0.61.3** on 2022-07-19
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.4.5** on 2022-07-19
-  - [golangci-lint](https://golangci-lint.run/) from 1.46.2 to **1.47.0** on 2022-07-19
-  - [checkov](https://www.checkov.io/) from 2.1.59 to **2.1.60** on 2022-07-19
-<!-- linter-versions-end -->
 
 ## [v6.0.5] - 2022-07-16
 
