@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
