@@ -11,6 +11,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
   - [checkov](https://www.checkov.io/) from 2.1.60 to **2.1.61** on 2022-07-19
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.5 to **3.3.26** on 2022-07-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.961 to **0.971** on 2022-07-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.5 to **7.9.0** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.3.0 to **6.4.0** on 2022-07-19
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
