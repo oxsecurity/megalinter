@@ -6,7 +6,9 @@ Note: Only linters able to handle SARIF will provide output in the aggregated SA
 
 This reporter **is deactivated by default**.
 
-![Screenshot](../assets/images/SarifReporter.jpg)
+![Screenshot](../assets/images/SarifReporter_1.jpg)
+
+![Screenshot](../assets/images/SarifReporter_2.jpg)
 
 ## Usage
 
