@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/CHANGELOG/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -6588,6 +6588,8 @@
 <li>Replace CI paths in logs</li>
 <li>Add missing required properties so SARIF is <a href="https://sarifweb.azurewebsites.net/Validation">valid</a></li>
 <li>Add MegaLinter information in SARIF linter runs</li>
+<li>Allow to select linters to activate SARIF for, using SARIF_REPORTER_LINTERS</li>
+<li>Fix issue when a linter is used in multiple SARIF lint results</li>
 </ul>
 </li>
 </ul>
@@ -6598,6 +6600,9 @@
 <li><a href="https://www.pylint.org">pylint</a> from 2.14.4 to <strong>2.14.5</strong> on 2022-07-18</li>
 <li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.2.3 to <strong>6.3.0</strong> on 2022-07-18</li>
 <li><a href="https://www.checkov.io/">checkov</a> from 2.1.57 to <strong>2.1.59</strong> on 2022-07-18</li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.61.2 to <strong>0.61.3</strong> on 2022-07-19</li>
+<li><a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd">jscpd</a> from 3.3.26 to <strong>3.4.5</strong> on 2022-07-19</li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.46.2 to <strong>1.47.0</strong> on 2022-07-19</li>
 </ul>
 </li>
 </ul>

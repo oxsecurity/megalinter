@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/configuration/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -5488,6 +5488,11 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <td><a href="./#apply-fixes"><strong>APPLY_FIXES</strong></a></td>
 <td><code>none</code></td>
 <td>Activates formatting and auto-fixing <a href="./#apply-fixes">(more info)</a></td>
+</tr>
+<tr>
+<td><strong>CLEAR_REPORT_FOLDER</strong></td>
+<td><code>false</code></td>
+<td>Flag to clear files from report folder (usually megalinter-reports) before starting the linting process</td>
 </tr>
 <tr>
 <td><strong>DEFAULT_BRANCH</strong></td>
