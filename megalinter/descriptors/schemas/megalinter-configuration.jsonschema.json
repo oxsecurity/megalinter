@@ -3119,7 +3119,14 @@
       "description": "If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io. Important: MegaLinter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
       "title": "Activate File.io reporter",
       "type": "boolean"
-    },
+    }, 
+    "FILEIO_REPORTER_SEND_SUCCESS": {
+      "$id": "#/properties/FILEIO_REPORTER_SEND_SUCCESS",
+      "default": false,
+      "description": "Skip posting to file.io if linting is in success",
+      "title": "Skip file.io if success",
+      "type": "boolean"
+    }, 
     "FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/FILTER_REGEX_EXCLUDE",
       "description": "Regular expression defining which files will be excluded from linting",
@@ -5023,6 +5030,17 @@
       "title": "JSON reporter",
       "type": "boolean"
     },
+    "JSON_REPORTER_OUTPUT_DETAIL": {
+      "$id": "#/properties/JSON_REPORTER_OUTPUT_DETAIL",
+      "default": "simple",
+      "description": "Defines if output contain only error files (simple) or all files (detailed)",
+      "enum": [
+        "simple",
+        "detailed"
+      ],
+      "title": "JSON reporter output detail",
+      "type": "string"
+    },
     "JSON_V8R_ARGUMENTS": {
       "$id": "#/properties/JSON_V8R_ARGUMENTS",
       "description": "JSON_V8R: User custom arguments to add in linter CLI call",
@@ -6484,6 +6502,13 @@
       "title": "MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string"
     },
+    "MULTI_STATUS": {
+      "$id": "#/properties/MULTI_STATUS",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_STATUS_REPORTER) Posts a status on the pull request for each processed linter",
+      "title": "(DEPRECATED) Activate GitHub Status reporter",
+      "type": "boolean"
+    },
     "OPENAPI_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/OPENAPI_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for OPENAPI descriptor",
@@ -6619,6 +6644,26 @@
       "$id": "#/properties/OPENAPI_SPECTRAL_RULES_PATH",
       "description": "OPENAPI_SPECTRAL: Path where to find linter configuration file",
       "title": "OPENAPI_SPECTRAL: Custom config file path",
+      "type": "string"
+    },
+    "OUTPUT_DETAIL": {
+      "$id": "#/properties/OUTPUT_DETAIL",
+      "description": "(DEPRECATED) Output detail for text reporter: only error files (simple) or all files (detailed)",
+      "enum": [
+        "simple",
+        "detailed"
+      ],
+      "title": "Output detail (DEPRECATED, use reporters variables instead)",
+      "type": "string"
+    },
+    "OUTPUT_FORMAT": {
+      "$id": "#/properties/OUTPUT_FORMAT",
+      "description": "(DEPRECATED) Output format: text or tap",
+      "enum": [
+        "text",
+        "tap"
+      ],
+      "title": "Output format (DEPRECATED, use reporters variables instead)",
       "type": "string"
     },
     "PARALLEL": {
@@ -7407,6 +7452,20 @@
       },
       "title": "Post run commands",
       "type": "array"
+    },
+    "POST_GITHUB_COMMENT": {
+      "$id": "#/properties/POST_GITHUB_COMMENT",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related pull request (if existing)",
+      "title": "(DEPRECATED) Activate GitHub PR Comments reporter",
+      "type": "boolean"
+    },
+    "POST_GITLAB_COMMENT": {
+      "$id": "#/properties/POST_GITLAB_COMMENT",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related merge request (if existing)",
+      "title": "(DEPRECATED) Activate Gitlab MR Comments reporter",
+      "type": "boolean"
     },
     "POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_EXCLUDE",

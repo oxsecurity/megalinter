@@ -122,7 +122,7 @@ def linter_test_setup(params=None):
 
 
 def print_output(output):
-    if config.exists("OUTPUT_DETAILS") and config.get("OUTPUT_DETAILS") == "detailed":
+    if config.exists("OUTPUT_DETAIL") and config.get("OUTPUT_DETAIL") == "detailed":
         for line in output.splitlines():
             print(line)
 
