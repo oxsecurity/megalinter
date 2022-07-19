@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/instrumenta/kubeval)](https://github.com/instrumenta/kubeval/commits) |
-| [kubeconform](kubernetes_kubeconform.md) | [KUBERNETES_KUBECONFORM](kubernetes_kubeconform.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits) |
+| Linter                                   | Configuration key                                   | Status                                                                                                                                 |
+|------------------------------------------|-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [kubeval](kubernetes_kubeval.md)         | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/instrumenta/kubeval)](https://github.com/instrumenta/kubeval/commits) |
+| [kubeconform](kubernetes_kubeconform.md) | [KUBERNETES_KUBECONFORM](kubernetes_kubeconform.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits)     |
 
 ## Linted files
 
@@ -24,8 +24,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
