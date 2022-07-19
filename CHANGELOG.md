@@ -11,6 +11,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
 
 - Linter versions upgrades
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.60 to **2.1.61** on 2022-07-19
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
