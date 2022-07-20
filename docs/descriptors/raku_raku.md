@@ -14,38 +14,38 @@
 - Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                              | Description                                                                                                                                                                                                         | Default value                                               |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
-| RAKU_RAKU_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                             |
-| RAKU_RAKU_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                                          |
-| RAKU_RAKU_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                             |
-| RAKU_RAKU_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                                                      |
-| RAKU_RAKU_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".raku", ".rakumod", ".rakutest", ".pm6", ".pl6", ".p6"]` |
-| RAKU_RAKU_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                                          |
-| RAKU_RAKU_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                                        |
-| RAKU_RAKU_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                        |
-| RAKU_RAKU_CONFIG_FILE                 | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                     | `META6.json`                                                |
-| RAKU_RAKU_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules             |
-| RAKU_RAKU_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                                     |
-| RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                         |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RAKU_RAKU_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| RAKU_RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| RAKU_RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| RAKU_RAKU_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file` |
+| RAKU_RAKU_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".raku", ".rakumod", ".rakutest", ".pm6", ".pl6", ".p6"]` |
+| RAKU_RAKU_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| RAKU_RAKU_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| RAKU_RAKU_POST_COMMANDS | List of bash commands to run after the linter| None |
+| RAKU_RAKU_CONFIG_FILE | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `META6.json` |
+| RAKU_RAKU_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| RAKU_RAKU_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## IDE Integration
 
 Use raku in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                   |                                                                                 Install                                                                                 |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [language-perl6](https://atom.io/packages/language-perl6)                                        |                                                [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank}                                                 |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                         [Visit Web Site](https://commaide.com/){target=_blank}                                                          |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [language-perl6](https://atom.io/packages/language-perl6) | [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma | [Native Support](https://commaide.com/) | [Visit Web Site](https://commaide.com/){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor |       102        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 102 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

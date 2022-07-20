@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                             | Configuration key              | Status                                                                                                                           |
-|------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [actionlint](action_actionlint.md) | [ACTION](action_actionlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rhysd/actionlint)](https://github.com/rhysd/actionlint/commits) |
 
 ## Linted files
@@ -17,10 +17,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes
