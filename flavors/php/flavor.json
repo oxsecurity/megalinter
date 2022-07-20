@@ -46,6 +46,7 @@
         "SNAKEMAKE_LINT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
+        "SPELL_PROSELINT",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "TEKTON_TEKTON_LINT",

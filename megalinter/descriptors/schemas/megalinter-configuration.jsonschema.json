@@ -183,6 +183,7 @@
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
+        "SPELL_PROSELINT",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SQL_TSQLLINT",
@@ -3119,14 +3120,14 @@
       "description": "If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io. Important: MegaLinter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
       "title": "Activate File.io reporter",
       "type": "boolean"
-    }, 
+    },
     "FILEIO_REPORTER_SEND_SUCCESS": {
       "$id": "#/properties/FILEIO_REPORTER_SEND_SUCCESS",
       "default": false,
       "description": "Skip posting to file.io if linting is in success",
       "title": "Skip file.io if success",
       "type": "boolean"
-    }, 
+    },
     "FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/FILTER_REGEX_EXCLUDE",
       "description": "Regular expression defining which files will be excluded from linting",
