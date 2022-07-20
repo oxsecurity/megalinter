@@ -3695,6 +3695,24 @@
         "",
         ""
     ],
+    "proselint": [
+        "Usage: python -m proselint [OPTIONS] [PATHS]...",
+        "",
+        "  Create the CLI for proselint, a linter for prose.",
+        "",
+        "Options:",
+        "  -v, --version          Show the version and exit.",
+        "  --config PATH          Path to configuration file.",
+        "  -d, --debug            Give verbose output.",
+        "  -c, --clean            Clear the cache.",
+        "  -j, --json             Output as JSON.",
+        "  -t, --time             Time on a corpus.",
+        "  --demo                 Run over demo file.",
+        "  --compact              Shorten output.",
+        "  --dump-config          Prints current config.",
+        "  --dump-default-config  Prints default config.",
+        "  -h, --help             Show this message and exit."
+    ],
     "protolint": [
         "Usage of lint:",
         "  -config_dir_path string",
