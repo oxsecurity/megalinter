@@ -91,7 +91,7 @@ proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst
 ### Help content
 
 ```shell
-Usage: python -m proselint [OPTIONS] [PATHS]...
+Usage: proselint [OPTIONS] [PATHS]...
 
   Create the CLI for proselint, a linter for prose.
 
