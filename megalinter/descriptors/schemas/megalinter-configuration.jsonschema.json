@@ -979,6 +979,13 @@
       "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "CLEAR_REPORT_FOLDER": {
+      "$id": "#/properties/CLEAR_REPORT_FOLDER",
+      "default": false,
+      "title": "Clear Report Folder",
+      "description": "Flag to clear files from report folder (usually megalinter-reports) before starting the linting process",
+      "type": "boolean"
+    },
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_ARGUMENTS",
       "description": "CLOJURE_CLJ_KONDO: User custom arguments to add in linter CLI call",
