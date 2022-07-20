@@ -288,6 +288,7 @@ nav:
               - "All SPELL linters": "descriptors/spell.md"
               - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
+              - "proselint": "descriptors/spell_proselint.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
