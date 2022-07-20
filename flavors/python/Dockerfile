@@ -98,6 +98,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'restructuredtext_lint' \
           'rstcheck' \
           'snakemake' \
+          'proselint' \
           'sqlfluff' \
           'yamllint'
 #PIP__END

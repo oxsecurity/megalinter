@@ -940,6 +940,13 @@
             "title": "Lint all files",
             "type": "boolean"
           },
+          "lint_all_other_linters_files": {
+            "$id": "#/properties/linters/items/lint_all_other_linters_files",
+            "default": false,
+            "description": "If set to true, this descriptor linters will lint one by one all files collected by all other linters",
+            "title": "Lint all other linters files",
+            "type": "boolean"
+          },
           "linter_banner_image_url": {
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "description": "URL of an image used to build header of linter Markdown documentation",

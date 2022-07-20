@@ -54,6 +54,7 @@
     "phpstan": "1.8.1",
     "powershell": "7.2.5",
     "prettier": "2.7.1",
+    "proselint": "0.13.0",
     "protolint": "0.38.3",
     "psalm": "Psalm.5.x-dev@",
     "puppet-lint": "2.5.2",
