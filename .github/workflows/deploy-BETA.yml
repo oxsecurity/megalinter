@@ -124,14 +124,14 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "docker.io/oxsecurity/megalinter:beta"
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          security-checks: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
+#      - name: Run Trivy vulnerability scanner
+#        uses: aquasecurity/trivy-action@master
+#        with:
+#          image-ref: "docker.io/oxsecurity/megalinter:beta"
+#          format: 'table'
+#          exit-code: '1'
+#          ignore-unfixed: true
+#          security-checks: vuln
+#          vuln-type: 'os,library'
+#          severity: 'CRITICAL,HIGH'
+#          timeout: 10m0s
