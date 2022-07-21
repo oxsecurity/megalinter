@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **2.13.5**
+- Version in MegaLinter: **2.13.6**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -27,35 +27,35 @@ See more details in [Help](#help-content)
 - Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 - Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-| Variable                                                | Description                                                                                                                                                                                  | Default value                                   |
-|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE                 | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                  | `--eslintconfig`                                |
-| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files                                                                                                                                                        | `force-app`                                     |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS | List of bash commands to run after the linter| None |
+| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `--eslintconfig` |
+| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files | `force-app` |
 
 ## IDE Integration
 
 Use sfdx-scanner-lwc in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                                  |                                                                                       Install                                                                                       |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                             | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       102        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor | 102 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects | 46 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -219,6 +219,7 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
+=== We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
 WARNING: In September 2022, v3.x of the Salesforce Code Analyzer will become the default version,
          and older versions, including your currently installed version, will no longer be supported.
          You can manually update to v3.x earlier for a smoother transition.
@@ -232,9 +233,9 @@ VfCsrf                                             visualforce  Security        
 VfHtmlStyleTagXss                                  visualforce  Security                                                            pmd
 VfUnescapeEl                                       visualforce  Security          Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                 apex         Best Practices                                                      pmd
-ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
+ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation       apex         Best Practices                                                      pmd
-ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
+ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
 AvoidGlobalModifier                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
 AvoidLogicInTrigger                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
 DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
@@ -245,17 +246,17 @@ AvoidSoqlInLoops                                   apex         Performance     
 AvoidSoslInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
 EagerlyLoadedDescribeSObjectResult                 apex         Performance                                                         pmd
 OperationWithLimitsInLoop                          apex         Performance       quickstart                                        pmd
-ApexBadCrypto                                      apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexCRUDViolation                                  apex         Security          quickstart,Default ruleset...,Security            pmd
+ApexBadCrypto                                      apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexCRUDViolation                                  apex         Security          Security,quickstart,Default ruleset...            pmd
 ApexCSRF                                           apex         Security          Security                                          pmd
-ApexDangerousMethods                               apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexInsecureEndpoint                               apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexOpenRedirect                                   apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexSharingViolations                              apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexSOQLInjection                                  apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexSuggestUsingNamedCred                          apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexXSSFromEscapeFalse                             apex         Security          quickstart,Default ruleset...,Security            pmd
-ApexXSSFromURLParam                                apex         Security          quickstart,Default ruleset...,Security            pmd
+ApexDangerousMethods                               apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexInsecureEndpoint                               apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexOpenRedirect                                   apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSharingViolations                              apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSOQLInjection                                  apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSuggestUsingNamedCred                          apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexXSSFromEscapeFalse                             apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexXSSFromURLParam                                apex         Security          Security,quickstart,Default ruleset...            pmd
 ClassNamingConventions                             apex         Code Style        quickstart,Default ruleset...,Style               pmd
 IfElseStmtsMustUseBraces                           apex         Code Style        quickstart,Default ruleset...,Braces              pmd
 IfStmtsMustUseBraces                               apex         Code Style        quickstart,Default ruleset...,Braces              pmd
@@ -285,11 +286,11 @@ ApexCSRF                                           apex         Error Prone     
 AvoidDirectAccessTriggerMap                        apex         Error Prone       quickstart,Default ruleset...,Style               pmd
 AvoidHardcodingId                                  apex         Error Prone       quickstart,Default ruleset...,Style               pmd
 AvoidNonExistentAnnotations                        apex         Error Prone       quickstart,Default ruleset...                     pmd
-EmptyCatchBlock                                    apex         Error Prone       Empty Code,quickstart,Default ruleset...          pmd
-EmptyIfStmt                                        apex         Error Prone       Empty Code,quickstart,Default ruleset...          pmd
-EmptyStatementBlock                                apex         Error Prone       Empty Code,quickstart,Default ruleset...          pmd
-EmptyTryOrFinallyBlock                             apex         Error Prone       Empty Code,quickstart,Default ruleset...          pmd
-EmptyWhileStmt                                     apex         Error Prone       Empty Code,quickstart,Default ruleset...          pmd
+EmptyCatchBlock                                    apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyIfStmt                                        apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyStatementBlock                                apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyTryOrFinallyBlock                             apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyWhileStmt                                     apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
 InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
 MethodWithSameNameAsEnclosingClass                 apex         Error Prone       quickstart,Default ruleset...,Style               pmd
 OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
