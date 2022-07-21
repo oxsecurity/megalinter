@@ -23,6 +23,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
   - [checkov](https://www.checkov.io/) from 2.1.63 to **2.1.65** on 2022-07-21
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.1 to **1.47.2** on 2022-07-21
+  - [rubocop](https://rubocop.org/) from 1.31.2 to **1.32.0** on 2022-07-21
+  - [checkov](https://www.checkov.io/) from 2.1.65 to **2.1.67** on 2022-07-21
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
