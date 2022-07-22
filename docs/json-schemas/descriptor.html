@@ -148,7 +148,7 @@
 
     <div class="enum-value" id="descriptor_flavors_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"dart"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"scala"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"security"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
                 </div>
             
 
@@ -223,7 +223,7 @@
 
     <div class="enum-value" id="descriptor_flavors_exclude_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"dart"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"scala"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"security"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
                 </div>
             
 
@@ -1272,11 +1272,11 @@
             />
         </svg>
     <a href="#supported_platforms_platform_items" onclick="anchorLink('supported_platforms_platform_items')">Target platform</a></div><span class="badge badge-dark value-type">Type: enum (of string)</span> <span class="badge badge-success default-value">Default: "linux/amd64"</span><br/>
-<span class="description"><p>Target platforms <a href="https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27">available to use on Docker</a>.<br />
+<span class="description"><p>Target platforms <a href="https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29">available to use on Docker</a>.<br />
 <strong><em>Please note that Megalinter does not support all Docker's platforms.</em></strong></p>
 </span><div class="enum-value" id="supported_platforms_platform_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v6"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -1419,7 +1419,7 @@
 
     <div class="enum-value" id="supported_platforms_install_override_items_platform_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v6"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -2480,6 +2480,54 @@ These special installation steps replace the instructions in the descriptor's <a
         </div>
     </div>
 </div>
+<div class="accordion" id="accordionlinters_items_can_output_sarif">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_can_output_sarif">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_can_output_sarif"
+                        aria-expanded="" aria-controls="linters_items_can_output_sarif" onclick="setAnchor('#linters_items_can_output_sarif')"><span class="property-name">can_output_sarif</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_can_output_sarif"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_can_output_sarif"
+             data-parent="#accordionlinters_items_can_output_sarif">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_can_output_sarif" onclick="anchorLink('linters_items_can_output_sarif')">can_output_sarif</a></div><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+<span class="description"><p>Shows if the linter is capable of output SARIF report within MegaLinter</p>
+</span>
+            
+
+            
+            
+
+            
+            </div>
+        </div>
+    </div>
+</div>
 <div class="accordion" id="accordionlinters_items_class">
     <div class="card">
         <div class="card-header" id="headinglinters_items_class">
@@ -2572,6 +2620,53 @@ These special installation steps replace the instructions in the descriptor's <a
             />
         </svg>
     <a href="#linters_items_cli_config_arg_name" onclick="anchorLink('linters_items_cli_config_arg_name')">cli_config_arg_name</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+
+            
+
+            
+            
+
+            
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_cli_config_default_value">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_cli_config_default_value">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_cli_config_default_value"
+                        aria-expanded="" aria-controls="linters_items_cli_config_default_value" onclick="setAnchor('#linters_items_cli_config_default_value')"><span class="property-name">cli_config_default_value</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_cli_config_default_value"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_cli_config_default_value"
+             data-parent="#accordionlinters_items_cli_config_default_value">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_config_default_value" onclick="anchorLink('linters_items_cli_config_default_value')">cli_config_default_value</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 
             
 
@@ -3746,6 +3841,105 @@ These special installation steps replace the instructions in the descriptor's <a
         </div>
     </div>
 </div>
+<div class="accordion" id="accordionlinters_items_cli_sarif_args">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_cli_sarif_args">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_cli_sarif_args"
+                        aria-expanded="" aria-controls="linters_items_cli_sarif_args" onclick="setAnchor('#linters_items_cli_sarif_args')"><span class="property-name">cli_sarif_args</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_cli_sarif_args"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_cli_sarif_args"
+             data-parent="#accordionlinters_items_cli_sarif_args">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_sarif_args" onclick="anchorLink('linters_items_cli_sarif_args')">cli_sarif_args</a></div><span class="badge badge-dark value-type">Type: array of string</span> <span class="badge badge-success default-value">Default: []</span><br/>
+<span class="description"><p>Arguments to generate SARIF output</p>
+</span>
+            
+
+            
+            
+
+            <h4>Each item of this array must be:</h4>
+    <div class="card">
+        <div class="card-body items-definition" id="linters_items_cli_sarif_args_items">
+            
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_sarif_args" onclick="anchorLink('linters_items_cli_sarif_args')">cli_sarif_args</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_sarif_args_items" onclick="anchorLink('linters_items_cli_sarif_args_items')">cli_sarif_args items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+
+            
+
+            
+            
+
+            
+        </div>
+    </div><br/>
+<div class="badge badge-secondary">Example:</div>
+<br/><div id="linters_items_cli_sarif_args_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;--format&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;sarif&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;--output&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;{{SARIF_OUTPUT_FILE}}&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="accordion" id="accordionlinters_items_cli_version_arg_name">
     <div class="card">
         <div class="card-header" id="headinglinters_items_cli_version_arg_name">
@@ -4020,7 +4214,7 @@ These special installation steps replace the instructions in the descriptor's <a
 
     <div class="enum-value" id="linters_items_descriptor_flavors_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"dart"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"scala"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"security"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
                 </div>
             
 
@@ -4123,7 +4317,7 @@ These special installation steps replace the instructions in the descriptor's <a
 
     <div class="enum-value" id="linters_items_descriptor_flavors_exclude_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"dart"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"scala"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"all_flavors"</li><li class="list-group-item enum-item">"all"</li><li class="list-group-item enum-item">"ci_light"</li><li class="list-group-item enum-item">"documentation"</li><li class="list-group-item enum-item">"dotnet"</li><li class="list-group-item enum-item">"go"</li><li class="list-group-item enum-item">"java"</li><li class="list-group-item enum-item">"javascript"</li><li class="list-group-item enum-item">"php"</li><li class="list-group-item enum-item">"python"</li><li class="list-group-item enum-item">"ruby"</li><li class="list-group-item enum-item">"rust"</li><li class="list-group-item enum-item">"salesforce"</li><li class="list-group-item enum-item">"security"</li><li class="list-group-item enum-item">"swift"</li><li class="list-group-item enum-item">"terraform"</li></ul>
                 </div>
             
 
@@ -5479,11 +5673,11 @@ These special installation steps replace the instructions in the descriptor's <a
             />
         </svg>
     <a href="#linters_items_supported_platforms_platform_items" onclick="anchorLink('linters_items_supported_platforms_platform_items')">Target platform</a></div><span class="badge badge-dark value-type">Type: enum (of string)</span> <span class="badge badge-success default-value">Default: "linux/amd64"</span><br/>
-<span class="description"><p>Target platforms <a href="https://github.com/docker-library/bashbrew/blob/v0.1.2/architecture/oci-platform.go#L14-L27">available to use on Docker</a>.<br />
+<span class="description"><p>Target platforms <a href="https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29">available to use on Docker</a>.<br />
 <strong><em>Please note that Megalinter does not support all Docker's platforms.</em></strong></p>
 </span><div class="enum-value" id="linters_items_supported_platforms_platform_items_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v6"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -5668,7 +5862,7 @@ These special installation steps replace the instructions in the descriptor's <a
 
     <div class="enum-value" id="linters_items_supported_platforms_install_override_items_platform_enum">
                 <h4>Must be one of:</h4>
-                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
+                <ul class="list-group"><li class="list-group-item enum-item">"linux/amd64"</li><li class="list-group-item enum-item">"linux/arm64"</li><li class="list-group-item enum-item">"linux/arm/v7"</li><li class="list-group-item enum-item">"linux/arm/v6"</li><li class="list-group-item enum-item">"linux/arm/v5"</li><li class="list-group-item enum-item">"linux/386"</li><li class="list-group-item enum-item">"linux/mips64le"</li><li class="list-group-item enum-item">"linux/ppc64le"</li><li class="list-group-item enum-item">"linux/riscv64"</li><li class="list-group-item enum-item">"linux/s390x"</li><li class="list-group-item enum-item">"windows/amd64"</li></ul>
                 </div>
             
 
@@ -7950,6 +8144,60 @@ These special installation steps replace the instructions in the <a href="#linte
         </div>
     </div>
 </div>
+<div class="accordion" id="accordionlinters_items_sarif_default_output_file">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_sarif_default_output_file">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_sarif_default_output_file"
+                        aria-expanded="" aria-controls="linters_items_sarif_default_output_file" onclick="setAnchor('#linters_items_sarif_default_output_file')"><span class="property-name">sarif_default_output_file</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_sarif_default_output_file"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_sarif_default_output_file"
+             data-parent="#accordionlinters_items_sarif_default_output_file">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_sarif_default_output_file" onclick="anchorLink('linters_items_sarif_default_output_file')">sarif_default_output_file</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Path to find default SARIF output file when generated by linter</p>
+</span>
+            
+
+            
+            
+
+            <br/>
+<div class="badge badge-secondary">Example:</div>
+<br/><div id="linters_items_sarif_default_output_file_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;./results.sarif&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="accordion" id="accordionlinters_items_test_folder">
     <div class="card">
         <div class="card-header" id="headinglinters_items_test_folder">
@@ -8349,6 +8597,6 @@ These special installation steps replace the instructions in the <a href="#linte
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2022-07-10 at 21:04:34 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2022-07-17 at 13:39:30 +0000</p>
     </footer></body>
 </html>

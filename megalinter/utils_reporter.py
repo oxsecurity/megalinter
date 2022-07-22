@@ -37,6 +37,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             )
             linter_link = f"[{linter.linter_name}]({linter_doc_url})"
             nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
+            # Project count
             if linter.cli_lint_mode == "project":
                 found = "yes"
                 nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
@@ -45,6 +46,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                     if linter.number_errors > 0
                     else "no"
                 )
+            # Count using files
             else:
                 found = str(len(linter.files))
                 errors_cell = (

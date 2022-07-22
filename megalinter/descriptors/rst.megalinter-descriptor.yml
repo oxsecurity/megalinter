@@ -8,6 +8,7 @@ linters:
   # restructuredtext-lint
   - linter_name: rst-lint
     linter_url: https://github.com/twolfson/restructuredtext-lint
+    linter_repo: https://github.com/twolfson/restructuredtext-lint
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
@@ -21,6 +22,7 @@ linters:
   # rstcheck
   - linter_name: rstcheck
     linter_url: https://github.com/myint/rstcheck
+    linter_repo: https://github.com/myint/rstcheck
     config_file_name: ".rstcheck.cfg"
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
@@ -40,27 +42,3 @@ linters:
       vscode:
         - name: vscode-restructuredtext
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
-  # rstfmt
-  - linter_name: rstfmt
-    disabled: true
-    is_formatter: true
-    linter_url: https://github.com/dzhu/rstfmt
-    linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
-    cli_lint_extra_args:
-      - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
-    cli_lint_fix_remove_args:
-      - "--check"
-    test_folder: rst_rstfmt
-    examples:
-      - "rstfmt --check myfile.rst"
-      - "rstfmt myfile.rst" # Format
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    install:
-      pip:
-        - "sphinx<4.0" # Necessary until https://github.com/dzhu/rstfmt/issues/12 is resolved
-        - rstfmt
-    version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"

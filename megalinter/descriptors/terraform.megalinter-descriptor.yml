@@ -7,13 +7,21 @@ file_extensions:
 linters:
   # TFLINT
   - class: TfLintLinter
+    can_output_sarif: true
     linter_name: tflint
     name: TERRAFORM_TFLINT
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://github.com/terraform-linters/tflint
+    linter_repo: https://github.com/terraform-linters/tflint
     linter_rules_url: https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     config_file_name: .tflint.hcl
+    cli_sarif_args:
+      - --format
+      - sarif
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
@@ -29,21 +37,31 @@ linters:
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
+    can_output_sarif: true
     name: TERRAFORM_TERRASCAN
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.accurics.com/products/terrascan/
     linter_repo: https://github.com/accurics/terrascan
     linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
-    linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
+    linter_banner_image_url: https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png
     config_file_name: terrascan-config.toml
     cli_config_arg_name: --config-path
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
+      - "d"
+      - "."
       - "-i"
       - "terraform"
       - "-t"
       - "all"
+      - "-v"
+    cli_sarif_args:
+      - -o
+      - sarif
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
@@ -54,7 +72,7 @@ linters:
         - linux/arm64
     install:
       dockerfile:
-        - FROM accurics/terrascan:latest as terrascan
+        - FROM tenable/terrascan:latest as terrascan
         - COPY --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
@@ -63,6 +81,9 @@ linters:
       - ".hcl"
     file_names_not_ends_with:
       - ".tflint.hcl"
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://terragrunt.gruntwork.io
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
@@ -113,6 +134,7 @@ linters:
         - linux/arm64
     install:
       dockerfile:
+        - FROM alpine/terragrunt:latest as terragrunt
         - COPY --from=terragrunt /bin/terraform /usr/bin/
     ide:
       atom:
@@ -132,6 +154,10 @@ linters:
   # CHECKOV
   - linter_name: checkov
     name: TERRAFORM_CHECKOV
+    can_output_sarif: true
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
@@ -139,7 +165,9 @@ linters:
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
-    cli_lint_extra_args:
+    cli_sarif_args: ["--output", "sarif"]
+    sarif_default_output_file: ./results.sarif
+    cli_lint_extra_args_after:
       - "--file"
     examples:
       - "checkov --file myfile.tf"
@@ -160,6 +188,9 @@ linters:
   # KICS
   - linter_name: kics
     name: TERRAFORM_KICS
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.kics.io
     linter_repo: https://github.com/checkmarx/kics
     linter_rules_url: https://docs.kics.io/latest/queries/all-queries/

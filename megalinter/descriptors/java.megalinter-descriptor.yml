@@ -17,8 +17,10 @@ install:
 linters:
   # Java Checkstyle
   - linter_name: checkstyle
+    can_output_sarif: true
     linter_url: https://checkstyle.sourceforge.io
     linter_repo: https://github.com/checkstyle/checkstyle
+    linter_spdx_license: LGPL-2.1
     linter_rules_url: https://checkstyle.sourceforge.io/checks.html
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
@@ -29,6 +31,11 @@ linters:
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
+    cli_sarif_args:
+      - -f
+      - sarif
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_regex: "Checkstyle ends with ([0-9]+) errors"
     cli_version_extra_args:
       - "-jar"

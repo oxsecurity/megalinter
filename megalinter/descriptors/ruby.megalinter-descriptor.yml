@@ -4,16 +4,14 @@ descriptor_flavors:
   - ruby
 file_extensions:
   - ".rb"
+  -
+# Install of apk packages for ruby support are automatically
+# added by .automation/build.py if a linter installs himself
+# with gem packages.
 supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
-install:
-  apk:
-    - ruby
-    - ruby-dev
-    - ruby-bundler
-    - ruby-rdoc
 linters:
   # RUBOCOP
   - linter_name: rubocop

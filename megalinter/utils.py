@@ -9,10 +9,11 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 from megalinter import config
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 REPO_HOME_DEFAULT = (
-    "/tmp/lint"
-    if os.path.isdir("/tmp/lint")
+    DEFAULT_DOCKER_WORKSPACE_DIR
+    if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
     else os.environ.get("DEFAULT_WORKSPACE")
     if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
@@ -21,7 +22,7 @@ REPO_HOME_DEFAULT = (
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 LIST_OF_REPLACEMENTS = [
     # MegaLinter image
-    ["/tmp/lint/", ""],
+    [f"{DEFAULT_DOCKER_WORKSPACE_DIR}/", ""],
     ["tmp/lint/", ""],
     # GitHub Actions
     ["/github/workspace/", ""],
@@ -230,6 +231,14 @@ def list_updated_files(repo_home):
     return changed_files
 
 
+def is_git_repo(path):
+    try:
+        _ = git.Repo(path).git_dir
+        return True
+    except git.InvalidGitRepositoryError:
+        return False
+
+
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:
         changed_files = list_updated_files(repo_home)
@@ -252,3 +261,28 @@ def format_bullet_list(files):
     prefix = list_separator if any(files) is True else ""
     file_list = list_separator.join(files) if len(files) > 0 else ""
     return "{}{}".format(prefix, file_list)
+
+
+def find_json_in_stdout(stdout: str):
+    # Whole stdout is json
+    if stdout.startswith("{"):
+        return truncate_json_from_line(stdout)
+    # Try to find a json line within stdout
+    found_json = ""
+    stdout_lines = stdout.splitlines()
+    stdout_lines.reverse()  # start from last lines
+    for line in stdout_lines:
+        if line.startswith("{"):
+            json_only = truncate_json_from_line(line)
+            if json_only != "":
+                found_json = json_only
+                break
+    return found_json
+
+
+def truncate_json_from_line(line: str):
+    start_pos = line.find("{")
+    end_pos = line.rfind("}")
+    if start_pos > -1 and end_pos > -1:
+        return line[start_pos : end_pos + 1]  # noqa: E203
+    return ""
