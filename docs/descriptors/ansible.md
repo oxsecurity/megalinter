@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                                  | Configuration key                  | Status                                                                                                                                   |
+|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/commits) |
 
 ## Linted files
@@ -17,8 +17,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
