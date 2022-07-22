@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                               | Configuration key               | Status                                                                                                                               |
-|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rodjek/puppet-lint)](https://github.com/rodjek/puppet-lint/commits) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
