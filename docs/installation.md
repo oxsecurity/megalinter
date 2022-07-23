@@ -18,8 +18,8 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- GitHub Action: oxsecurity/megalinter@v5
-- Docker image: oxsecurity/megalinter:v5
+- GitHub Action: oxsecurity/megalinter@v6
+- Docker image: oxsecurity/megalinter:v6
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -85,7 +85,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: oxsecurity/megalinter@v5
+        uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
