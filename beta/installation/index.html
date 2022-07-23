@@ -5553,8 +5553,8 @@
 <h2 id="manual-installation">Manual installation</h2>
 <p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>GitHub Action: oxsecurity/megalinter@v5</li>
-<li>Docker image: oxsecurity/megalinter:v5</li>
+<li>GitHub Action: oxsecurity/megalinter@v6</li>
+<li>Docker image: oxsecurity/megalinter:v6</li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
@@ -5620,7 +5620,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: oxsecurity/megalinter@v5
+        uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
