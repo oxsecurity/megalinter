@@ -27,6 +27,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.31.2 to **1.32.0** on 2022-07-21
   - [checkov](https://www.checkov.io/) from 2.1.65 to **2.1.67** on 2022-07-21
   - [syft](https://github.com/anchore/syft) from 0.51.0 to **0.52.0** on 2022-07-22
+  - [checkov](https://www.checkov.io/) from 2.1.67 to **2.1.68** on 2022-07-23
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
