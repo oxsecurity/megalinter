@@ -2,4 +2,10 @@
 
 cd ..
 echo "Formatting markdown tables..."
-npx --yes markdown-table-formatter "./**/*.md"
+
+if [[ -z "${CI}" ]]; then
+  npm i markdown-table-formatter -g
+  markdown-table-formatter "./**/*.md"
+else
+  npx --yes markdown-table-formatter "./**/*.md"
+fi
