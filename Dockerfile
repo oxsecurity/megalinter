@@ -440,6 +440,12 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && luarocks install luacheck
 
 
+# checkmake installation
+RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
+
+
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 

@@ -275,6 +275,12 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 
+# checkmake installation
+RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
+
+
 # powershell installation
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 
