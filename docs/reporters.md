@@ -6,8 +6,8 @@
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                                                                                    | Description                                                                                                   | Default                 |
-|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| Reporter                                                            | Description                                                                                                   | Default                 |
+|---------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
 | [Text files](reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
 | [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
 | [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
