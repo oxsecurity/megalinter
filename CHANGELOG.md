@@ -28,6 +28,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.65 to **2.1.67** on 2022-07-21
   - [syft](https://github.com/anchore/syft) from 0.51.0 to **0.52.0** on 2022-07-22
   - [checkov](https://www.checkov.io/) from 2.1.67 to **2.1.68** on 2022-07-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.4.0 to **6.4.1** on 2022-07-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.5 to **0.38.6** on 2022-07-24
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
