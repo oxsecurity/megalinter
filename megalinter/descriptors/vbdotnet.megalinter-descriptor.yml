@@ -19,7 +19,7 @@ install:
     - |
       RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
           && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
     - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 linters:
   # DOTNET FORMAT
@@ -28,6 +28,7 @@ linters:
     is_formatter: true
     linter_url: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--folder"
       - "--check"
@@ -39,8 +40,8 @@ linters:
       - "--check"
     linter_version_cache: "000"
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.vb"
-      - "dotnet-format --folder --exclude / --include myfile.vb"
+      - "dotnet-format --folder --check --exclude / --include myfile.vb myfile2.vb"
+      - "dotnet-format --folder --exclude / --include myfile.vb myfile2.vb"
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format

@@ -19,7 +19,7 @@ install:
     - |
       RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
           && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
     - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 linters:
   # DOTNET FORMAT
@@ -29,19 +29,20 @@ linters:
     linter_url: https://github.com/dotnet/format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--folder"
       - "--check"
       - "--exclude"
       - "/"
       - "--include"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
       - "--check"
     linter_version_cache: "000"
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.cs"
-      - "dotnet-format --folder --exclude / --include myfile.cs" # Fix
+      - "dotnet-format --folder --check --exclude / --include myfile.cs myfile2.cs"
+      - "dotnet-format --folder --exclude / --include myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
