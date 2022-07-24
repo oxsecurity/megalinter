@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                      | Configuration key      | Status                                                                                                                                                       |
+|-----------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/commits) |
-| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits) |
+| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits)                                 |
 
 ## Linted files
 
@@ -17,8 +17,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

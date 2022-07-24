@@ -5,14 +5,14 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [tflint](terraform_tflint.md) | [TERRAFORM_TFLINT](terraform_tflint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) |
-| [terrascan](terraform_terrascan.md) | [TERRAFORM_TERRASCAN](terraform_terrascan.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits) |
-| [terragrunt](terraform_terragrunt.md) | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/commits) |
-| [terraform-fmt](terraform_terraform_fmt.md) | [TERRAFORM_TERRAFORM_FMT](terraform_terraform_fmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits) |
-| [checkov](terraform_checkov.md) | [TERRAFORM_CHECKOV](terraform_checkov.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) |
-| [kics](terraform_kics.md) | [TERRAFORM_KICS](terraform_kics.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) |
+| Linter                                      | Configuration key                                     | Status                                                                                                                                           |
+|---------------------------------------------|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| [tflint](terraform_tflint.md)               | [TERRAFORM_TFLINT](terraform_tflint.md)               | [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) |
+| [terrascan](terraform_terrascan.md)         | [TERRAFORM_TERRASCAN](terraform_terrascan.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits)             |
+| [terragrunt](terraform_terragrunt.md)       | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/commits)   |
+| [terraform-fmt](terraform_terraform_fmt.md) | [TERRAFORM_TERRAFORM_FMT](terraform_terraform_fmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits)           |
+| [checkov](terraform_checkov.md)             | [TERRAFORM_CHECKOV](terraform_checkov.md)             | [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)         |
+| [kics](terraform_kics.md)                   | [TERRAFORM_KICS](terraform_kics.md)                   | [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits)                     |
 
 ## Linted files
 
@@ -21,8 +21,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                       | Description                   | Default value |
+|--------------------------------|-------------------------------|---------------|
+| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
