@@ -486,6 +486,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/makefile/</loc>
+         <lastmod>2022-07-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/makefile_checkmake/</loc>
+         <lastmod>2022-07-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/markdown/</loc>
          <lastmod>2022-07-24</lastmod>
          <changefreq>daily</changefreq>
