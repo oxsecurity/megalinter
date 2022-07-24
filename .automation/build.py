@@ -2588,7 +2588,7 @@ def reformat_markdown_tables():
         shell=True,
     )
     stdout = utils.decode_utf8(process.stdout)
-    logging.info("Format table results:\n" + stdout)
+    logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
 def generate_version():
