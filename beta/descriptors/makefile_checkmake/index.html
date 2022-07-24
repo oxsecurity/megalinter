@@ -1424,6 +1424,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5534,6 +5541,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5568,6 +5582,7 @@
 <h1 id="checkmake">checkmake <a href="https://github.com/mrtazz/checkmake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mrtazz/checkmake" /></a></h1>
 <h2 id="checkmake-documentation">checkmake documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>0.2.1</strong></li>
 <li>Visit <a href="https://github.com/mrtazz/checkmake#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini" target="_blank">How to configure checkmake rules</a></li>
 </ul>
@@ -5699,6 +5714,23 @@
 <pre><code class="language-shell">checkmake Makefile
 </code></pre>
 <pre><code class="language-shell">checkmake --config .hadolint.yml Dockerfile
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">checkmake.
+
+  Usage:
+  checkmake [options] &lt;makefile&gt;
+  checkmake -h | --help
+  checkmake --version
+  checkmake --list-rules
+
+  Options:
+  -h --help               Show this screen.
+  --version               Show version.
+  --debug                 Enable debug mode
+  --config=&lt;configPath&gt;   Configuration file to read
+  --format=&lt;format&gt;       Output format as a Golang text/template template
+  --list-rules            List registered rules
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
