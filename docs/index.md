@@ -28,6 +28,8 @@
 MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).
 
 Supporting [**48** languages](supported-linters.md#languages), [**21** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
+
+[**Upgrade to MegaLinter v6 !**](https://github.com/oxsecurity/megalinter/issues/1592)
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -212,6 +214,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 |                                                                    <!-- --> <!-- linter-icon -->                                                                    |                                                    | [trivy](descriptors/repository_trivy.md#readme)           | [REPOSITORY_TRIVY](descriptors/repository_trivy.md#readme)           |    [![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange)    |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**SPELL**](descriptors/spell.md#readme)           | [misspell](descriptors/spell_misspell.md#readme)          | [SPELL_MISSPELL](descriptors/spell_misspell.md#readme)               |    [![GitHub stars](https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600)](https://github.com/client9/misspell) ![autofix](https://shields.io/badge/-autofix-green)     |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                    |                                                    | [cspell](descriptors/spell_cspell.md#readme)              | [SPELL_CSPELL](descriptors/spell_cspell.md#readme)                   |                     [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell)                      |
+|                                                                    <!-- --> <!-- linter-icon -->                                                                    |                                                    | [proselint](descriptors/spell_proselint.md#readme)        | [SPELL_PROSELINT](descriptors/spell_proselint.md#readme)             |                            [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)                             |
 
 <!-- linters-table-end -->
 <!-- supported-linters-section-end -->

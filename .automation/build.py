@@ -579,7 +579,9 @@ def generate_documentation():
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
-        + "**highly configurable** and **free for all uses**."
+        + "**highly configurable** and **free for all uses**.\n\n"
+        + "[**Upgrade to MegaLinter v6 !**]"
+        + "(https://github.com/oxsecurity/megalinter/issues/1592)"
     )
     # Update README.md file
     replace_in_file(

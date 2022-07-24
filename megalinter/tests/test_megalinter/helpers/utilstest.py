@@ -38,6 +38,7 @@ REPO_HOME = (
 def linter_test_setup(params=None):
     for key in [
         "APPLY_FIXES",
+        "CLEAR_REPORT_FOLDER",
         "ENABLE",
         "ENABLE_LINTERS",
         "DISABLE",
@@ -55,6 +56,8 @@ def linter_test_setup(params=None):
         "DISABLE_ERRORS",
         "SARIF_REPORTER",
         "LOG_FILE",
+        "REPORT_OUTPUT_FOLDER",
+        "OUTPUT_FOLDER",
         "REPOSITORY_SEMGREP_RULESETS_TYPE",
         "REPOSITORY_SEMGREP_RULESETS",
     ]:
@@ -95,6 +98,7 @@ def linter_test_setup(params=None):
     config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
+    config.set_value("CLEAR_REPORT_FOLDER", "true")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
             "additional_test_variables"
@@ -118,7 +122,7 @@ def linter_test_setup(params=None):
 
 
 def print_output(output):
-    if config.exists("OUTPUT_DETAILS") and config.get("OUTPUT_DETAILS") == "detailed":
+    if config.exists("OUTPUT_DETAIL") and config.get("OUTPUT_DETAIL") == "detailed":
         for line in output.splitlines():
             print(line)
 
@@ -455,7 +459,7 @@ def test_linter_report_tap(linter, test_self):
             f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
         )
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "OUTPUT_FORMAT": "tap",
@@ -528,7 +532,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "SARIF_REPORTER": "true",

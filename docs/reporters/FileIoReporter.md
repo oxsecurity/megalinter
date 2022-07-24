@@ -24,6 +24,7 @@ Activate the reporter (`FILEIO_REPORTER: true`) to see link to reports zip on fi
 
 ## Configuration
 
-| Variable        | Description                    | Default value |
-|-----------------|--------------------------------|---------------|
-| FILEIO_REPORTER | Activates/deactivates reporter | false         |
+| Variable                     | Description                                              | Default value |
+|------------------------------|----------------------------------------------------------|---------------|
+| FILEIO_REPORTER              | Activates/deactivates reporter                           | `false`       |
+| FILEIO_REPORTER_SEND_SUCCESS | Skip sending report to file.io if the lint is in success | `false`       |

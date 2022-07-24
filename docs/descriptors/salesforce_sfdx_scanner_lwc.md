@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **2.13.5**
+- Version in MegaLinter: **2.13.6**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -54,8 +54,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                             | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       101        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       102        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -219,6 +219,7 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
+=== We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
 WARNING: In September 2022, v3.x of the Salesforce Code Analyzer will become the default version,
          and older versions, including your currently installed version, will no longer be supported.
          You can manually update to v3.x earlier for a smoother transition.
@@ -232,17 +233,17 @@ VfCsrf                                             visualforce  Security        
 VfHtmlStyleTagXss                                  visualforce  Security                                                            pmd
 VfUnescapeEl                                       visualforce  Security          Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                 apex         Best Practices                                                      pmd
-ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
+ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation       apex         Best Practices                                                      pmd
-ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
-AvoidGlobalModifier                                apex         Best Practices    Style,quickstart,Default ruleset...               pmd
-AvoidLogicInTrigger                                apex         Best Practices    Style,quickstart,Default ruleset...               pmd
+ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
+AvoidGlobalModifier                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
+AvoidLogicInTrigger                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
 DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
 UnusedLocalVariable                                apex         Best Practices                                                      pmd
 AvoidDebugStatements                               apex         Performance                                                         pmd
-AvoidDmlStatementsInLoops                          apex         Performance       Default ruleset...,Performance                    pmd
-AvoidSoqlInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
-AvoidSoslInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
+AvoidDmlStatementsInLoops                          apex         Performance       Performance,Default ruleset...                    pmd
+AvoidSoqlInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
+AvoidSoslInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
 EagerlyLoadedDescribeSObjectResult                 apex         Performance                                                         pmd
 OperationWithLimitsInLoop                          apex         Performance       quickstart                                        pmd
 ApexBadCrypto                                      apex         Security          Security,quickstart,Default ruleset...            pmd
@@ -256,7 +257,7 @@ ApexSOQLInjection                                  apex         Security        
 ApexSuggestUsingNamedCred                          apex         Security          Security,quickstart,Default ruleset...            pmd
 ApexXSSFromEscapeFalse                             apex         Security          Security,quickstart,Default ruleset...            pmd
 ApexXSSFromURLParam                                apex         Security          Security,quickstart,Default ruleset...            pmd
-ClassNamingConventions                             apex         Code Style        Style,quickstart,Default ruleset...               pmd
+ClassNamingConventions                             apex         Code Style        quickstart,Default ruleset...,Style               pmd
 IfElseStmtsMustUseBraces                           apex         Code Style        quickstart,Default ruleset...,Braces              pmd
 IfStmtsMustUseBraces                               apex         Code Style        quickstart,Default ruleset...,Braces              pmd
 FieldDeclarationsShouldBeAtStart                   apex         Code Style                                                          pmd
@@ -264,26 +265,26 @@ FieldNamingConventions                             apex         Code Style      
 ForLoopsMustUseBraces                              apex         Code Style        quickstart,Default ruleset...,Braces              pmd
 FormalParameterNamingConventions                   apex         Code Style        quickstart                                        pmd
 LocalVariableNamingConventions                     apex         Code Style        quickstart                                        pmd
-MethodNamingConventions                            apex         Code Style        Style,quickstart,Default ruleset...               pmd
+MethodNamingConventions                            apex         Code Style        quickstart,Default ruleset...,Style               pmd
 OneDeclarationPerLine                              apex         Code Style        quickstart,Default ruleset...                     pmd
 PropertyNamingConventions                          apex         Code Style        quickstart                                        pmd
-VariableNamingConventions                          apex         Code Style        Style,Default ruleset...                          pmd
+VariableNamingConventions                          apex         Code Style        Default ruleset...,Style                          pmd
 WhileLoopsMustUseBraces                            apex         Code Style        quickstart,Default ruleset...,Braces              pmd
-AvoidDeeplyNestedIfStmts                           apex         Design            quickstart,Default ruleset...,Complexity          pmd
-CyclomaticComplexity                               apex         Design            Metrics tempora...,quickstart,Default ruleset...  pmd
+AvoidDeeplyNestedIfStmts                           apex         Design            Complexity,quickstart,Default ruleset...          pmd
+CyclomaticComplexity                               apex         Design            quickstart,Default ruleset...,Metrics tempora...  pmd
 CognitiveComplexity                                apex         Design                                                              pmd
-ExcessiveClassLength                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
-ExcessiveParameterList                             apex         Design            quickstart,Default ruleset...,Complexity          pmd
-ExcessivePublicCount                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
-NcssConstructorCount                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
-NcssMethodCount                                    apex         Design            quickstart,Default ruleset...,Complexity          pmd
-NcssTypeCount                                      apex         Design            quickstart,Default ruleset...,Complexity          pmd
-StdCyclomaticComplexity                            apex         Design            quickstart,Default ruleset...,Complexity          pmd
-TooManyFields                                      apex         Design            quickstart,Default ruleset...,Complexity          pmd
+ExcessiveClassLength                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
+ExcessiveParameterList                             apex         Design            Complexity,quickstart,Default ruleset...          pmd
+ExcessivePublicCount                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
+NcssConstructorCount                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
+NcssMethodCount                                    apex         Design            Complexity,quickstart,Default ruleset...          pmd
+NcssTypeCount                                      apex         Design            Complexity,quickstart,Default ruleset...          pmd
+StdCyclomaticComplexity                            apex         Design            Complexity,quickstart,Default ruleset...          pmd
+TooManyFields                                      apex         Design            Complexity,quickstart,Default ruleset...          pmd
 ApexDoc                                            apex         Documentation     quickstart,Default ruleset...                     pmd
 ApexCSRF                                           apex         Error Prone       quickstart,Default ruleset...                     pmd
-AvoidDirectAccessTriggerMap                        apex         Error Prone       Style,quickstart,Default ruleset...               pmd
-AvoidHardcodingId                                  apex         Error Prone       Style,quickstart,Default ruleset...               pmd
+AvoidDirectAccessTriggerMap                        apex         Error Prone       quickstart,Default ruleset...,Style               pmd
+AvoidHardcodingId                                  apex         Error Prone       quickstart,Default ruleset...,Style               pmd
 AvoidNonExistentAnnotations                        apex         Error Prone       quickstart,Default ruleset...                     pmd
 EmptyCatchBlock                                    apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
 EmptyIfStmt                                        apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
@@ -291,7 +292,7 @@ EmptyStatementBlock                                apex         Error Prone     
 EmptyTryOrFinallyBlock                             apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
 EmptyWhileStmt                                     apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
 InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
-MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Style,quickstart,Default ruleset...               pmd
+MethodWithSameNameAsEnclosingClass                 apex         Error Prone       quickstart,Default ruleset...,Style               pmd
 OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
 TestMethodsMustBeInTestClasses                     apex         Error Prone                                                         pmd
 constructor-super                                  javascript   ECMAScript 6      ECMAScript 6                                      eslint

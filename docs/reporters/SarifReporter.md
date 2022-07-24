@@ -6,7 +6,9 @@ Note: Only linters able to handle SARIF will provide output in the aggregated SA
 
 This reporter **is deactivated by default**.
 
-![Screenshot](../assets/images/SarifReporter.jpg)
+![Screenshot](../assets/images/SarifReporter_1.jpg)
+
+![Screenshot](../assets/images/SarifReporter_2.jpg)
 
 ## Usage
 
@@ -24,7 +26,8 @@ with:
 
 ## Configuration
 
-| Variable                 | Description                            | Default value            |
-|--------------------------|----------------------------------------|--------------------------|
-| SARIF_REPORTER           | Activates/deactivates reporter         | false                    |
-| SARIF_REPORTER_FILE_NAME | File name for SARIF report output file | mega-linter-report.sarif |
+| Variable                 | Description                                                                                            | Default value              |
+|--------------------------|--------------------------------------------------------------------------------------------------------|----------------------------|
+| SARIF_REPORTER           | Activates/deactivates reporter                                                                         | `false`                    |
+| SARIF_REPORTER_FILE_NAME | File name for SARIF report output file                                                                 | `mega-linter-report.sarif` |
+| SARIF_REPORTER_LINTERS   | List of linter keys that will output SARIF (if not set, all SARIF compliant linters will output SARIF) | `[]`                       |

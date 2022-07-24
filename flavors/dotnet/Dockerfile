@@ -103,6 +103,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'cpplint' \
           'semgrep' \
           'snakemake' \
+          'proselint' \
           'sqlfluff' \
           'yamllint'
 #PIP__END

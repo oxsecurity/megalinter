@@ -8,10 +8,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
+
 - Linter versions upgrades
-  - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.60 to **2.1.61** on 2022-07-19
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.5 to **3.3.26** on 2022-07-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.961 to **0.971** on 2022-07-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.5 to **7.9.0** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.3.0 to **6.4.0** on 2022-07-19
+  - [phpstan](https://phpstan.org/) from 1.8.1 to **1.8.2** on 2022-07-20
+  - [checkov](https://www.checkov.io/) from 2.1.61 to **2.1.63** on 2022-07-20
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [checkov](https://www.checkov.io/) from 2.1.63 to **2.1.65** on 2022-07-21
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.1 to **1.47.2** on 2022-07-21
+  - [rubocop](https://rubocop.org/) from 1.31.2 to **1.32.0** on 2022-07-21
+  - [checkov](https://www.checkov.io/) from 2.1.65 to **2.1.67** on 2022-07-21
+  - [syft](https://github.com/anchore/syft) from 0.51.0 to **0.52.0** on 2022-07-22
+  - [checkov](https://www.checkov.io/) from 2.1.67 to **2.1.68** on 2022-07-23
 <!-- linter-versions-end -->
+
+## [v6.1.0] - 2022-07-19
+
+- Improve console logs by using collapsible sections in GitHub Actions and Gitlab CI (disable by defining `CONSOLE_REPORTER_SECTIONS: false`)
+- Define `CLEAR_REPORT_FOLDER=true` to empty report folder at the beginning of each run ([#1502](https://github.com/oxsecurity/megalinter/issues/1502))
+- Improve SARIF output
+  - Replace CI paths in logs
+  - Add missing required properties so SARIF is [valid](https://sarifweb.azurewebsites.net/Validation)
+  - Add MegaLinter information in SARIF linter runs
+  - Allow to select linters to activate SARIF for, using SARIF_REPORTER_LINTERS
+  - Fix issue when a linter is used in multiple SARIF lint results
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.2 to **0.61.3** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
+  - [checkov](https://www.checkov.io/) from 2.1.59 to **2.1.60** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
+  - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.46.2 to **1.47.0** on 2022-07-19
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.4.5** on 2022-07-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17
+  - [pylint](https://www.pylint.org) from 2.14.4 to **2.14.5** on 2022-07-18
 
 ## [v6.0.5] - 2022-07-16
 
@@ -830,7 +869,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
-- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Correct some broken links in `README` from `Mega-Linter` to `MegaLinter` (#1030)
 - Docker run -- clean-up containers when exits (#1033)
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)

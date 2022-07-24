@@ -183,6 +183,7 @@
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
+        "SPELL_PROSELINT",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SQL_TSQLLINT",
@@ -978,6 +979,13 @@
       "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "CLEAR_REPORT_FOLDER": {
+      "$id": "#/properties/CLEAR_REPORT_FOLDER",
+      "default": false,
+      "description": "Flag to clear files from report folder (usually megalinter-reports) before starting the linting process",
+      "title": "Clear Report Folder",
+      "type": "boolean"
+    },
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_ARGUMENTS",
       "description": "CLOJURE_CLJ_KONDO: User custom arguments to add in linter CLI call",
@@ -1407,6 +1415,13 @@
       "default": true,
       "description": "",
       "title": "Activate console reporter",
+      "type": "boolean"
+    },
+    "CONSOLE_REPORTER_SECTIONS": {
+      "$id": "#/properties/CONSOLE_REPORTER_SECTIONS",
+      "default": true,
+      "description": "Define to false if you do not want logs to be organized in sections",
+      "title": "Activate console logs sections",
       "type": "boolean"
     },
     "COPYPASTE_FILTER_REGEX_EXCLUDE": {
@@ -3111,6 +3126,13 @@
       "default": false,
       "description": "If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io. Important: MegaLinter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
       "title": "Activate File.io reporter",
+      "type": "boolean"
+    },
+    "FILEIO_REPORTER_SEND_SUCCESS": {
+      "$id": "#/properties/FILEIO_REPORTER_SEND_SUCCESS",
+      "default": false,
+      "description": "Skip posting to file.io if linting is in success",
+      "title": "Skip file.io if success",
       "type": "boolean"
     },
     "FILTER_REGEX_EXCLUDE": {
@@ -5016,6 +5038,17 @@
       "title": "JSON reporter",
       "type": "boolean"
     },
+    "JSON_REPORTER_OUTPUT_DETAIL": {
+      "$id": "#/properties/JSON_REPORTER_OUTPUT_DETAIL",
+      "default": "simple",
+      "description": "Defines if output contain only error files (simple) or all files (detailed)",
+      "enum": [
+        "simple",
+        "detailed"
+      ],
+      "title": "JSON reporter output detail",
+      "type": "string"
+    },
     "JSON_V8R_ARGUMENTS": {
       "$id": "#/properties/JSON_V8R_ARGUMENTS",
       "description": "JSON_V8R: User custom arguments to add in linter CLI call",
@@ -6477,6 +6510,13 @@
       "title": "MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string"
     },
+    "MULTI_STATUS": {
+      "$id": "#/properties/MULTI_STATUS",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_STATUS_REPORTER) Posts a status on the pull request for each processed linter",
+      "title": "(DEPRECATED) Activate GitHub Status reporter",
+      "type": "boolean"
+    },
     "OPENAPI_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/OPENAPI_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for OPENAPI descriptor",
@@ -6612,6 +6652,26 @@
       "$id": "#/properties/OPENAPI_SPECTRAL_RULES_PATH",
       "description": "OPENAPI_SPECTRAL: Path where to find linter configuration file",
       "title": "OPENAPI_SPECTRAL: Custom config file path",
+      "type": "string"
+    },
+    "OUTPUT_DETAIL": {
+      "$id": "#/properties/OUTPUT_DETAIL",
+      "description": "(DEPRECATED) Output detail for text reporter: only error files (simple) or all files (detailed)",
+      "enum": [
+        "simple",
+        "detailed"
+      ],
+      "title": "Output detail (DEPRECATED, use reporters variables instead)",
+      "type": "string"
+    },
+    "OUTPUT_FORMAT": {
+      "$id": "#/properties/OUTPUT_FORMAT",
+      "description": "(DEPRECATED) Output format: text or tap",
+      "enum": [
+        "text",
+        "tap"
+      ],
+      "title": "Output format (DEPRECATED, use reporters variables instead)",
       "type": "string"
     },
     "PARALLEL": {
@@ -7400,6 +7460,20 @@
       },
       "title": "Post run commands",
       "type": "array"
+    },
+    "POST_GITHUB_COMMENT": {
+      "$id": "#/properties/POST_GITHUB_COMMENT",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related pull request (if existing)",
+      "title": "(DEPRECATED) Activate GitHub PR Comments reporter",
+      "type": "boolean"
+    },
+    "POST_GITLAB_COMMENT": {
+      "$id": "#/properties/POST_GITLAB_COMMENT",
+      "default": true,
+      "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related merge request (if existing)",
+      "title": "(DEPRECATED) Activate Gitlab MR Comments reporter",
+      "type": "boolean"
     },
     "POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_EXCLUDE",
@@ -10734,6 +10808,28 @@
       "title": "Activate SARIF reporter",
       "type": "boolean"
     },
+    "SARIF_REPORTER_FILE_NAME": {
+      "$id": "#/properties/SARIF_REPORTER_FILE_NAME",
+      "default": "mega-linter-report.sarif",
+      "description": "Override SARIF output file name",
+      "title": "SARIF report file name",
+      "type": "string"
+    },
+    "SARIF_REPORTER_LINTERS": {
+      "$id": "#/properties/SARIF_REPORTER_LINTERS",
+      "description": "If SARIF_REPORTER_LINTERS is set, only the linters in the list will output SARIF",
+      "examples": [
+        [
+          "BASH_BASH_SHFMT",
+          "JAVASCRIPT_STANDARD"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "SARIF enabled linters",
+      "type": "array"
+    },
     "SCALA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SCALA descriptor",
@@ -11372,6 +11468,126 @@
       },
       "title": "SPELL_MISSPELL: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "SPELL_PROSELINT_ARGUMENTS": {
+      "$id": "#/properties/SPELL_PROSELINT_ARGUMENTS",
+      "description": "SPELL_PROSELINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_PROSELINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SPELL_PROSELINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SPELL_PROSELINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SPELL_PROSELINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "SPELL_PROSELINT_CONFIG_FILE": {
+      "$id": "#/properties/SPELL_PROSELINT_CONFIG_FILE",
+      "default": ".proselintrc",
+      "description": "SPELL_PROSELINT: User custom config file name if different from default",
+      "title": "SPELL_PROSELINT: Custom config file name",
+      "type": "string"
+    },
+    "SPELL_PROSELINT_DISABLE_ERRORS": {
+      "$id": "#/properties/SPELL_PROSELINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "SPELL_PROSELINT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SPELL_PROSELINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SPELL_PROSELINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SPELL_PROSELINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SPELL_PROSELINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_PROSELINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_PROSELINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_PROSELINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_PROSELINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_PROSELINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SPELL_PROSELINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SPELL_PROSELINT_FILTER_REGEX_EXCLUDE",
+      "title": "SPELL_PROSELINT: Excluding Regex",
+      "type": "string"
+    },
+    "SPELL_PROSELINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SPELL_PROSELINT_FILTER_REGEX_INCLUDE",
+      "title": "SPELL_PROSELINT: Including Regex",
+      "type": "string"
+    },
+    "SPELL_PROSELINT_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_PROSELINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_PROSELINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SPELL_PROSELINT_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_PROSELINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_PROSELINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SPELL_PROSELINT_RULES_PATH": {
+      "$id": "#/properties/SPELL_PROSELINT_RULES_PATH",
+      "description": "SPELL_PROSELINT: Path where to find linter configuration file",
+      "title": "SPELL_PROSELINT: Custom config file path",
+      "type": "string"
     },
     "SQL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_FILTER_REGEX_EXCLUDE",
