@@ -982,8 +982,8 @@
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
       "default": false,
-      "title": "Clear Report Folder",
       "description": "Flag to clear files from report folder (usually megalinter-reports) before starting the linting process",
+      "title": "Clear Report Folder",
       "type": "boolean"
     },
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {

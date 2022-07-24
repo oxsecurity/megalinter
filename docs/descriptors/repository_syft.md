@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.51.0**
+- Version in MegaLinter: **0.52.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -76,7 +76,7 @@ Usage:
    [command]
 
 Examples:
-  syft packages alpine:latest                    a summary of discovered packages
+  syft packages alpine:latest                                a summary of discovered packages
   syft packages alpine:latest -o json                        show all possible cataloging details
   syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
   syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
