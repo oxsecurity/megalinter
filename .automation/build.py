@@ -24,6 +24,7 @@ import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
+from megalinter import utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -2576,16 +2577,18 @@ def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
     # Call markdown-table-formatter with the list of files
     format_md_tables_command = ["bash", "format-tables.sh"]
-    logging.info("Running command: " + str(format_md_tables_command))
+    cwd = os.getcwd() + "/.automation"
+    logging.info("Running command: " + str(format_md_tables_command) + f" in cwd {cwd}")
     process = subprocess.run(
         format_md_tables_command,
         stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         universal_newlines=True,
-        cwd=os.getcwd() + "/.automation",
+        cwd=cwd,
         shell=True,
     )
-    print(process.stdout)
-    print(process.stderr)
+    stdout = utils.decode_utf8(process.stdout)
+    logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
 def generate_version():

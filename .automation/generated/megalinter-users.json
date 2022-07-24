@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6047,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 26265,
+                "stargazers_count": 26271,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 117,
@@ -127,15 +127,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-07-24T09:57:53Z",
+                "updated_at": "2022-07-24T16:52:29Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 26265,
-                "watchers_count": 26265,
+                "watchers": 26271,
+                "watchers_count": 26271,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 26265
+            "stargazers": 26271
         },
         {
             "info": {
@@ -343,7 +343,7 @@
                 "releases_url": "https://api.github.com/repos/IlanCosman/tide/releases{/id}",
                 "size": 6388,
                 "ssh_url": "git@github.com:IlanCosman/tide.git",
-                "stargazers_count": 1403,
+                "stargazers_count": 1404,
                 "stargazers_url": "https://api.github.com/repos/IlanCosman/tide/stargazers",
                 "statuses_url": "https://api.github.com/repos/IlanCosman/tide/statuses/{sha}",
                 "subscribers_count": 10,
@@ -360,15 +360,15 @@
                     "prompt"
                 ],
                 "trees_url": "https://api.github.com/repos/IlanCosman/tide/git/trees{/sha}",
-                "updated_at": "2022-07-23T17:37:28Z",
+                "updated_at": "2022-07-24T12:50:14Z",
                 "url": "https://api.github.com/repos/IlanCosman/tide",
                 "visibility": "public",
-                "watchers": 1403,
-                "watchers_count": 1403,
+                "watchers": 1404,
+                "watchers_count": 1404,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/IlanCosman/tide",
-            "stargazers": 1403
+            "stargazers": 1404
         },
         {
             "info": {
@@ -672,8 +672,8 @@
                 "network_count": 108,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 37,
-                "open_issues_count": 37,
+                "open_issues": 36,
+                "open_issues_count": 36,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -716,9 +716,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-07-24T10:51:58Z",
+                "pushed_at": "2022-07-24T12:45:41Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 181973,
+                "size": 183478,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 726,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
@@ -848,11 +848,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-07-24T11:44:37Z",
+                "pushed_at": "2022-07-24T17:21:58Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
-                "size": 25468,
+                "size": 25457,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
-                "stargazers_count": 575,
+                "stargazers_count": 576,
                 "stargazers_url": "https://api.github.com/repos/onedr0p/home-ops/stargazers",
                 "statuses_url": "https://api.github.com/repos/onedr0p/home-ops/statuses/{sha}",
                 "subscribers_count": 8,
@@ -874,15 +874,15 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/onedr0p/home-ops/git/trees{/sha}",
-                "updated_at": "2022-07-22T15:00:16Z",
+                "updated_at": "2022-07-24T16:25:43Z",
                 "url": "https://api.github.com/repos/onedr0p/home-ops",
                 "visibility": "public",
-                "watchers": 575,
-                "watchers_count": 575,
+                "watchers": 576,
+                "watchers_count": 576,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/onedr0p/home-ops",
-            "stargazers": 575
+            "stargazers": 576
         },
         {
             "info": {
@@ -1726,9 +1726,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-07-24T10:03:53Z",
+                "pushed_at": "2022-07-24T14:06:14Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 30851,
+                "size": 30852,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 151,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -2106,7 +2106,7 @@
                 "releases_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/releases{/id}",
                 "size": 68577,
                 "ssh_url": "git@github.com:nvuillam/npm-groovy-lint.git",
-                "stargazers_count": 103,
+                "stargazers_count": 104,
                 "stargazers_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/stargazers",
                 "statuses_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/statuses/{sha}",
                 "subscribers_count": 3,
@@ -2126,15 +2126,15 @@
                     "linter"
                 ],
                 "trees_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/git/trees{/sha}",
-                "updated_at": "2022-07-19T20:41:51Z",
+                "updated_at": "2022-07-24T13:34:23Z",
                 "url": "https://api.github.com/repos/nvuillam/npm-groovy-lint",
                 "visibility": "public",
-                "watchers": 103,
-                "watchers_count": 103,
+                "watchers": 104,
+                "watchers_count": 104,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nvuillam/npm-groovy-lint",
-            "stargazers": 103
+            "stargazers": 104
         },
         {
             "info": {
@@ -4503,9 +4503,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
-                "pushed_at": "2022-07-24T10:05:10Z",
+                "pushed_at": "2022-07-24T14:03:53Z",
                 "releases_url": "https://api.github.com/repos/jr0dd/home-ops/releases{/id}",
-                "size": 5004,
+                "size": 5005,
                 "ssh_url": "git@github.com:jr0dd/home-ops.git",
                 "stargazers_count": 26,
                 "stargazers_url": "https://api.github.com/repos/jr0dd/home-ops/stargazers",
@@ -4865,7 +4865,7 @@
                 "pulls_url": "https://api.github.com/repos/0dragosh/homelab/pulls{/number}",
                 "pushed_at": "2022-07-24T10:49:51Z",
                 "releases_url": "https://api.github.com/repos/0dragosh/homelab/releases{/id}",
-                "size": 3550,
+                "size": 3554,
                 "ssh_url": "git@github.com:0dragosh/homelab.git",
                 "stargazers_count": 17,
                 "stargazers_url": "https://api.github.com/repos/0dragosh/homelab/stargazers",
@@ -6797,9 +6797,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AliceO2Group/O2Physics/pulls{/number}",
-                "pushed_at": "2022-07-24T09:31:14Z",
+                "pushed_at": "2022-07-24T16:23:44Z",
                 "releases_url": "https://api.github.com/repos/AliceO2Group/O2Physics/releases{/id}",
-                "size": 7556,
+                "size": 7563,
                 "ssh_url": "git@github.com:AliceO2Group/O2Physics.git",
                 "stargazers_count": 8,
                 "stargazers_url": "https://api.github.com/repos/AliceO2Group/O2Physics/stargazers",

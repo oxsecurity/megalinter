@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
+- Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
@@ -31,6 +32,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.4.0 to **6.4.1** on 2022-07-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.5 to **0.38.6** on 2022-07-24
   - [checkov](https://www.checkov.io/) from 2.1.68 to **2.1.69** on 2022-07-24
+  - [checkov](https://www.checkov.io/) from 2.1.69 to **2.1.70** on 2022-07-24
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19

@@ -4,6 +4,7 @@
 
 ## checkmake documentation
 
+- Version in MegaLinter: **0.2.1**
 - Visit [Official Web Site](https://github.com/mrtazz/checkmake#readme){target=_blank}
 - See [How to configure checkmake rules](https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini){target=_blank}
 
@@ -61,6 +62,26 @@ checkmake Makefile
 checkmake --config .hadolint.yml Dockerfile
 ```
 
+
+### Help content
+
+```shell
+checkmake.
+
+  Usage:
+  checkmake [options] <makefile>
+  checkmake -h | --help
+  checkmake --version
+  checkmake --list-rules
+
+  Options:
+  -h --help               Show this screen.
+  --version               Show version.
+  --debug                 Enable debug mode
+  --config=<configPath>   Configuration file to read
+  --format=<format>       Output format as a Golang text/template template
+  --list-rules            List registered rules
+```
 
 ### Installation on mega-linter Docker image
 
