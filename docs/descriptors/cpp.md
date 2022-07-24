@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                    | Configuration key             | Status                                                                                                                         |
-|---------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [cpplint](cpp_cpplint.md) | [CPP_CPPLINT](cpp_cpplint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) |
 
 ## Linted files
@@ -26,8 +26,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
