@@ -18,7 +18,7 @@ linters:
     config_file_name: .checkmake.ini
     examples:
       - "checkmake Makefile"
-      - "checkmake --config .hadolint.yml Dockerfile"
+      - "checkmake --config .checkmake.ini Makefile"
     install:
       dockerfile:
         - |

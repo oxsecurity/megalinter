@@ -59,7 +59,7 @@ checkmake Makefile
 ```
 
 ```shell
-checkmake --config .hadolint.yml Dockerfile
+checkmake --config .checkmake.ini Makefile
 ```
 
 
