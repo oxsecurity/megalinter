@@ -133,7 +133,7 @@ def filter_files(
         # Skip according to file name regex
         if file_contains_regex and not file_contains(file, file_contains_regex_object):
             continue
-        # Skip acccording to IGNORE_GENERATED_FILES
+        # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
