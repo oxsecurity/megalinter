@@ -31,7 +31,6 @@ linters:
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
-      - "--folder"
       - "--verify-no-changes"
       - "--exclude"
       - "/"
@@ -41,8 +40,8 @@ linters:
       - "--verify-no-changes"
     linter_version_cache: "000"
     examples:
-      - "dotnet-format --folder --verify-no-changes --exclude / --include myfile.cs myfile2.cs"
-      - "dotnet-format --folder --exclude / --include myfile.cs myfile2.cs" # Fix
+      - "dotnet-format --verify-no-changes --exclude / --include myfile.cs myfile2.cs"
+      - "dotnet-format --exclude / --include myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
