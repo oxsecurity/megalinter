@@ -32,16 +32,16 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--folder"
-      - "--check"
+      - "--verify-no-changes"
       - "--exclude"
       - "/"
       - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
-      - "--check"
+      - "--verify-no-changes"
     linter_version_cache: "000"
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.cs myfile2.cs"
+      - "dotnet-format --folder --verify-no-changes --exclude / --include myfile.cs myfile2.cs"
       - "dotnet-format --folder --exclude / --include myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
