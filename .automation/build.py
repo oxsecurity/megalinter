@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import date, datetime
@@ -2586,6 +2587,7 @@ def reformat_markdown_tables():
         universal_newlines=True,
         cwd=cwd,
         shell=True,
+        executable=None if sys.platform == "win32" else "/bin/bash",
     )
     stdout = utils.decode_utf8(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)

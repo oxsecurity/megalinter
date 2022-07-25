@@ -2,7 +2,7 @@
 set -e
 
 cd ..
-echo "Formatting markdown tables..."
+echo "format-tables.sh: Formatting markdown tables..."
 
 if [[ -z "${CI}" ]]; then
   echo "Formatting tables by using npx markdown-table-formatter..."

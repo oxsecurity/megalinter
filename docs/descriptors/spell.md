@@ -13,9 +13,6 @@
 
 ## Linted files
 
-- File extensions:
-  - `*`
-
 ## Configuration in MegaLinter
 
 | Variable                   | Description                   | Default value |
