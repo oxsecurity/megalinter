@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                   | Configuration key      | Status                                                                                                                                     |
-|--------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [clippy](rust_clippy.md) | [RUST](rust_clippy.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rust-lang/rust-clippy)](https://github.com/rust-lang/rust-clippy/commits) |
 
 ## Linted files
@@ -16,10 +16,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

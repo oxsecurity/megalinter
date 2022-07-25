@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                                     | Configuration key                     | Status                                                                                                                     |
-|--------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [dotnet-format](vbdotnet_dotnet_format.md) | [VBDOTNET](vbdotnet_dotnet_format.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/format)](https://github.com/dotnet/format/commits) |
 
 ## Linted files
@@ -16,10 +16,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes
