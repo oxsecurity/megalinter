@@ -70,6 +70,10 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "error"
+    cli_lint_warnings_count: regex_count
+    cli_lint_warnings_regex: "warning"
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"

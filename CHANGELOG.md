@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Addition of warnings to reporters and logic changes to surface warnings even when there are no errors. Addition of cli_lint_warning_count & cli_lint_warning_regex variables to the JSON schema. [(#1541)](https://github.com/oxsecurity/megalinter/issues/1541)
 - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
 - Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
 - Avoid cspell to lint all files. Lint only other linter files [(#1648)](https://github.com/oxsecurity/megalinter/issues/1648)
