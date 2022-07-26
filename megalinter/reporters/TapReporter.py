@@ -16,6 +16,8 @@ class TapReporter(Reporter):
     def __init__(self, params=None):
         # report_type is tap by default
         self.report_type = "tap"
+        if config.get("OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
         super().__init__(params)
 
     def manage_activation(self):
@@ -23,8 +25,6 @@ class TapReporter(Reporter):
         output_format = config.get("OUTPUT_FORMAT", "")
         if output_format.startswith("tap"):
             self.is_active = True
-            if config.get("OUTPUT_DETAIL", "") == "detailed":
-                self.report_type = "detailed"
         # MegaLinter vars (false by default)
         elif config.get("TAP_REPORTER", "false") == "true":
             self.is_active = True
