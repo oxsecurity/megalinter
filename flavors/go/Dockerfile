@@ -192,7 +192,7 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 
 # revive installation
-RUN go get -u github.com/mgechev/revive
+RUN go install github.com/mgechev/revive@latest
 
 # ktlint installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
