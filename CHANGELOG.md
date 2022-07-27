@@ -37,6 +37,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.69 to **2.1.70** on 2022-07-24
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.0 to **0.32.1** on 2022-07-25
   - [checkov](https://www.checkov.io/) from 2.1.70 to **2.1.74** on 2022-07-25
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.3.0 to **1.4.0** on 2022-07-25
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
