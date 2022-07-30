@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **2.13.6**
+- Version in MegaLinter: **2.13.7**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -219,7 +219,7 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
-=== We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
+WARNING: We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
 WARNING: In September 2022, v3.x of the Salesforce Code Analyzer will become the default version,
          and older versions, including your currently installed version, will no longer be supported.
          You can manually update to v3.x earlier for a smoother transition.
