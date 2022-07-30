@@ -141,7 +141,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+        - FROM zricethezav/gitleaks:v8.9.0 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -212,9 +212,11 @@ linters:
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
     linter_text: |
-      If you do not want to use default semgrep recommended rules, you can send them as arguments
+      To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
-      Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
+      Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
+
+      Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
     linter_rules_url: https://semgrep.dev/r
     linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
     linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments

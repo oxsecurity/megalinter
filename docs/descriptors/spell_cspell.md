@@ -7,7 +7,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## cspell documentation
 
-- Version in MegaLinter: **6.4.1**
+- Version in MegaLinter: **6.5.0**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -25,7 +25,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 | SPELL_CSPELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | SPELL_CSPELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | SPELL_CSPELL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| SPELL_CSPELL_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `["*"]`                                         |
+| SPELL_CSPELL_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | Exclude every file                              |
 | SPELL_CSPELL_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | SPELL_CSPELL_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | SPELL_CSPELL_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
@@ -67,7 +67,6 @@ This linter is available in the following flavours
 ### How are identified applicable files
 
 - If this linter is active, all files linted by all other active linters will be linted
-- File extensions: `*`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
