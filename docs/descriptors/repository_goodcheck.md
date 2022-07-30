@@ -61,7 +61,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-goodcheck is called once on the whole project directory
+goodcheck is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using goodcheck configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make goodcheck analyze only updated files

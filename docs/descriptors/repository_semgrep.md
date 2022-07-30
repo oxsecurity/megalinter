@@ -9,9 +9,11 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits)
 
-If you do not want to use default semgrep recommended rules, you can send them as arguments
+To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
-Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
+Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
+
+Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
 
 ## semgrep documentation
 
@@ -19,6 +21,7 @@ Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
+- See [How to ignore files and directories with semgrep](https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore){target=_blank}
 - See [Index of problems detected by semgrep](https://semgrep.dev/r){target=_blank}
 
 [![semgrep - GitHub](https://gh-card.dev/repos/returntocorp/semgrep.svg?fullname=)](https://github.com/returntocorp/semgrep){target=_blank}
@@ -79,7 +82,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-semgrep is called once on the whole project directory
+semgrep is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using semgrep configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make semgrep analyze only updated files

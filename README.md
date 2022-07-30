@@ -98,6 +98,7 @@ _Github PR reporter_
     - [Linter specific variables](#linter-specific-variables)
     - [Pre-commands](#pre-commands)
     - [Post-commands](#post-commands)
+    - [CLI lint mode](#cli-lint-mode)
   - [Reporters](#reporters)
   - [Flavors](#flavors)
   - [Badge](#badge)
@@ -743,6 +744,8 @@ Examples:
 - Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
 - Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
+Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
+
 ### Apply fixes
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
@@ -798,6 +801,22 @@ POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 ```
+
+### CLI lint mode
+
+Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
+
+- `list_of_files`: All files are sent in single call to the linter
+- `project`: The linter is called from the root of the project, without specifying any file name
+- `file`: The linter is called once by file (so the performances may not be very good)
+
+You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://oxsecurity.github.io/megalinter/supported-linters/))
+
+- Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
+
+Special considerations:
+
+- As list of files is not sent to the linter command, linters using `project` lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it is awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
 <!-- configuration-section-end -->
 

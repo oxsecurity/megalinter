@@ -46,7 +46,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rst-lint is called one time by identified file
+- rst-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

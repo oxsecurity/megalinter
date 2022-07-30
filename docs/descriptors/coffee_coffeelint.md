@@ -61,7 +61,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- coffeelint is called one time by identified file
+- coffeelint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

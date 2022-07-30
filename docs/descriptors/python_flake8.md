@@ -62,7 +62,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- flake8 is called once with the list of files as arguments
+- flake8 is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -124,8 +124,8 @@ options:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E123', 'E126', 'E226', 'E121', 'E704',
-                        'W504', 'E24', 'W503'])
+                        (Default: ['W504', 'E123', 'W503', 'E121', 'E24',
+                        'E126', 'E226', 'E704'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

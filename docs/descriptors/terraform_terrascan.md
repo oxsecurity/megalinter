@@ -55,7 +55,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-terrascan is called once on the whole project directory
+terrascan is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using terrascan configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make terrascan analyze only updated files

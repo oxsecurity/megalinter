@@ -68,7 +68,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- dotenv-linter is called one time by identified file
+- dotenv-linter is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
