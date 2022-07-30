@@ -114,7 +114,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:latest as gitleaks
+FROM zricethezav/gitleaks:v8.9.0 as gitleaks
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

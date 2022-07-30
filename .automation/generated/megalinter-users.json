@@ -227,7 +227,7 @@
                 "releases_url": "https://api.github.com/repos/stepancheg/rust-protobuf/releases{/id}",
                 "size": 55947,
                 "ssh_url": "git@github.com:stepancheg/rust-protobuf.git",
-                "stargazers_count": 2124,
+                "stargazers_count": 2125,
                 "stargazers_url": "https://api.github.com/repos/stepancheg/rust-protobuf/stargazers",
                 "statuses_url": "https://api.github.com/repos/stepancheg/rust-protobuf/statuses/{sha}",
                 "subscribers_count": 21,
@@ -243,15 +243,15 @@
                     "serialization"
                 ],
                 "trees_url": "https://api.github.com/repos/stepancheg/rust-protobuf/git/trees{/sha}",
-                "updated_at": "2022-07-29T01:56:16Z",
+                "updated_at": "2022-07-30T18:32:19Z",
                 "url": "https://api.github.com/repos/stepancheg/rust-protobuf",
                 "visibility": "public",
-                "watchers": 2124,
-                "watchers_count": 2124,
+                "watchers": 2125,
+                "watchers_count": 2125,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/stepancheg/rust-protobuf",
-            "stargazers": 2124
+            "stargazers": 2125
         },
         {
             "info": {
@@ -716,9 +716,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-07-30T18:13:45Z",
+                "pushed_at": "2022-07-30T18:40:03Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 184848,
+                "size": 184987,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 747,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
