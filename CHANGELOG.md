@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New default config for gitleaks with `useDefault=true`
 - Fix bug that disables megalinter.log file in most cases
 - Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is `project`
+- Use `REPORT_OUTPUT_FOLDER: none` to not generate report files
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
