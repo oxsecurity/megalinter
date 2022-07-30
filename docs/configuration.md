@@ -101,6 +101,8 @@ Examples:
 - Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
 - Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
+Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
+
 ## Apply fixes
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
@@ -159,7 +161,7 @@ POST_COMMANDS:
 
 ## CLI lint mode
 
-Each linter has a lint mode by default:
+Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
 
 - `list_of_files`: All files are sent in single call to the linter
 - `project`: The linter is called from the root of the project, without specifying any file name
