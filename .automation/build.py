@@ -965,8 +965,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_rules_ignore_config_url is not None
         ):
             linter_doc_md += [
-                f"- See [How to ignore files and directories with {linter.linter_name}]({linter.linter_rules_ignore_config_url})"
-                "{target=_blank}"
+                f"- See [How to ignore files and directories with {linter.linter_name}]"
+                "({linter.linter_rules_ignore_config_url}){target=_blank}"
             ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
@@ -1347,7 +1347,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         elif linter.cli_lint_mode == "list_of_files":
             linter_doc_md += [
-                f"- {linter.linter_name} is called once with the list of files as arguments (`list_of_files` CLI lint mode)"
+                f"- {linter.linter_name} is called once with the list "
+                "of files as arguments (`list_of_files` CLI lint mode)"
             ]
         else:
             linter_doc_md += [
