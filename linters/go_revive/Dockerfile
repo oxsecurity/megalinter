@@ -100,7 +100,7 @@ ENV NODE_PATH="/node-deps/node_modules"
 #############################################################################################
 #OTHER__START
 # revive installation
-RUN go get -u github.com/mgechev/revive
+RUN go install github.com/mgechev/revive@latest
 
 #OTHER__END
 
