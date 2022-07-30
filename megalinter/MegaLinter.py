@@ -56,7 +56,7 @@ class Megalinter:
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
-        self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
+        self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
         self.initialize_logger()
         self.manage_upgrade_message()
