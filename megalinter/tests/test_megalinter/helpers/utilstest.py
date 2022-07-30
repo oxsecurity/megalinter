@@ -604,3 +604,10 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
         test_self.assertTrue(updated, f"{file_name} has been updated")
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
+
+
+def get_current_test_name():
+    current_name = os.environ.get('PYTEST_CURRENT_TEST',None)
+    if current_name is not None:
+       return current_name.split(':')[-1].split(' ')[0]
+    return ""

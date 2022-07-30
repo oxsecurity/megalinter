@@ -6,9 +6,24 @@ Use SemGrep to lint any type of file according to local config
 import logging
 
 from megalinter import Linter, config
+from megalinter.tests.test_megalinter.helpers.utilstest import get_current_test_name
 
 
 class SemgrepLinter(Linter):
+
+    # Activate SemGrep only if we have custom rulesets defined
+    def manage_activation(self, params):
+        super().manage_activation(params)
+        if self.is_active is True:
+            custom_rulesets = self.get_custom_rulesets()
+            if len(custom_rulesets) == 0 and len(
+                config.get_list("REPOSITORY_SEMGREP_ARGUMENTS", []) == 0
+                and "SEMGREP" not in get_current_test_name()
+            ):
+                logging.info(
+                    "[SemgrepLinter] Deactivated because no ruleset has been defined"
+                )
+                self.is_active = False
 
     # Manage case when we want semgrep rulesets to be selected related to security
     def build_lint_command(self, file=None):
