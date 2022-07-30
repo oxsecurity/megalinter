@@ -5,7 +5,7 @@ Use SemGrep to lint any type of file according to local config
 
 import logging
 
-from megalinter import Linter, config
+from megalinter import Linter, config, flavor_factory
 from megalinter.tests.test_megalinter.helpers.utilstest import get_current_test_name
 
 
@@ -16,9 +16,10 @@ class SemgrepLinter(Linter):
         super().manage_activation(params)
         if self.is_active is True:
             custom_rulesets = self.get_custom_rulesets()
-            if len(custom_rulesets) == 0 and len(
-                config.get_list("REPOSITORY_SEMGREP_ARGUMENTS", []) == 0
-                and "SEMGREP" not in get_current_test_name()
+            if (
+                len(custom_rulesets) == 0
+                and len(config.get_list("REPOSITORY_SEMGREP_ARGUMENTS", [])) == 0
+                and "semgrep" not in get_current_test_name(full_name=True)
             ):
                 logging.info(
                     "[SemgrepLinter] Deactivated because no ruleset has been defined"
@@ -51,7 +52,7 @@ class SemgrepLinter(Linter):
             return config.get_list("REPOSITORY_SEMGREP_RULESETS")
         elif (
             # security rulesets
-            self.master.megalinter_flavor in ["security", "none"]
+            flavor_factory.get_image_flavor() in ["security", "none"]
             or config.get("REPOSITORY_SEMGREP_RULESETS_TYPE", "") == "security"
         ):
             return [
