@@ -103,6 +103,6 @@ Usage of revive:
 
 - Dockerfile commands :
 ```dockerfile
-RUN go get -u github.com/mgechev/revive
+RUN go install github.com/mgechev/revive@latest
 ```
 

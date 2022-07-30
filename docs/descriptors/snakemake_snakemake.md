@@ -11,7 +11,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.9.0**
+- Version in MegaLinter: **7.12.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -93,6 +93,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--max-threads MAX_THREADS]
                  [--set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
+                 [--set-resource-scopes RESOURCE=[global|local]
+                 [RESOURCE=[global|local] ...]]
                  [--default-resources [NAME=INT ...]]
                  [--preemption-default PREEMPTION_DEFAULT]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
@@ -217,9 +219,12 @@ EXECUTION:
   --cores [N], -c [N]   Use at most N CPU cores/jobs in parallel. If N is
                         omitted or 'all', the limit is set to the number of
                         available CPU cores. In case of cluster/cloud
-                        execution, this argument sets the number of total
-                        cores used over all jobs (made available to rules via
-                        workflow.cores). (default: None)
+                        execution, this argument sets the maximum number of
+                        cores requested from the cluster or cloud scheduler.
+                        (See https://snakemake.readthedocs.io/en/stable/snakef
+                        iles/rules.html#resources-remote-execution for more
+                        info)This number is available to rules via
+                        workflow.cores. (default: None)
   --jobs [N], -j [N]    Use at most N CPU cluster/cloud jobs in parallel. For
                         local execution this is an alias for --cores.
                         (default: None)
@@ -230,13 +235,17 @@ EXECUTION:
                         (default: 2)
   --resources [NAME=INT ...], --res [NAME=INT ...]
                         Define additional resources that shall constrain the
-                        scheduling analogously to threads (see above). A
+                        scheduling analogously to --cores (see above). A
                         resource is defined as a name and an integer value.
                         E.g. --resources mem_mb=1000. Rules can use resources
                         by defining the resource keyword, e.g. resources:
                         mem_mb=600. If now two rules require 600 of the
                         resource 'mem_mb' they won't be run in parallel by the
-                        scheduler. (default: None)
+                        scheduler. In cluster/cloud mode, this argument will
+                        also constrain the amount of resources requested from
+                        the server. (See https://snakemake.readthedocs.io/en/s
+                        table/snakefiles/rules.html#resources-remote-execution
+                        for more info) (default: None)
   --set-threads RULE=THREADS [RULE=THREADS ...]
                         Overwrite thread usage of rules. This allows to fine-
                         tune workflow parallelization. In particular, this is
@@ -246,12 +255,13 @@ EXECUTION:
                         positive integer, and RULE has to be the name of the
                         rule. (default: None)
   --max-threads MAX_THREADS
-                        Define a global maximum number of threads for any job.
-                        This can be helpful in a cluster/cloud setting, when
-                        you want to restrict the maximum number of requested
-                        threads without modifying the workflow definition or
-                        overwriting them invidiually with --set-threads.
-                        (default: None)
+                        Define a global maximum number of threads available to
+                        any rule. Rules requesting more threads (via the
+                        threads keyword) will have their values reduced to the
+                        maximum. This can be useful when you want to restrict
+                        the maximum number of threads without modifying the
+                        workflow definition or overwriting rules individually
+                        with --set-threads. (default: None)
   --set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]
                         Overwrite resource usage of rules. This allows to
                         fine-tune workflow resources. In particular, this is
@@ -268,6 +278,20 @@ EXECUTION:
                         positive integer, and NAME has to be the name of the
                         scattergather process defined via a scattergather
                         directive in the workflow. (default: None)
+  --set-resource-scopes RESOURCE=[global|local] [RESOURCE=[global|local] ...]
+                        Overwrite resource scopes. A scope determines how a
+                        constraint is reckoned in cluster execution. With
+                        RESOURCE=local, a constraint applied to RESOURCE using
+                        --resources will be considered the limit for each
+                        group submission. With RESOURCE=global, the constraint
+                        will apply across all groups cumulatively. By default,
+                        only `mem_mb` and `disk_mb` are considered local, all
+                        other resources are global. This may be modified in
+                        the snakefile using the `resource_scopes:` directive.
+                        Note that number of threads, specified via --cores, is
+                        always considered local. (See https://snakemake.readth
+                        edocs.io/en/stable/snakefiles/rules.html#resources-
+                        remote-execution for more info) (default: None)
   --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
