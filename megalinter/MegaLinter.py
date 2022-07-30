@@ -684,6 +684,9 @@ class Megalinter:
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
+        # Do not initialize reports if report folder is none or false
+        if self.report_folder == "none" or self.report_folder == "false":
+            return
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)
         # Clear report folder if requested
