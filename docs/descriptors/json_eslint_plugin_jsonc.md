@@ -73,6 +73,7 @@ DISABLE_LINTERS:
 - See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
   - If custom `.eslintrc-json.json` config file is not found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
 - See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [How to ignore files and directories with eslint-plugin-jsonc](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
 
 [![eslint-plugin-jsonc - GitHub](https://gh-card.dev/repos/ota-meshi/eslint-plugin-jsonc.svg?fullname=)](https://github.com/ota-meshi/eslint-plugin-jsonc){target=_blank}
@@ -138,7 +139,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint-plugin-jsonc is called once with the list of files as arguments
+- eslint-plugin-jsonc is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

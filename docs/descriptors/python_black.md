@@ -73,7 +73,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- black is called once with the list of files as arguments
+- black is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

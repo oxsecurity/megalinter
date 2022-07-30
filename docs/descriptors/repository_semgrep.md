@@ -21,6 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
+- See [How to ignore files and directories with semgrep](https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore){target=_blank}
 - See [Index of problems detected by semgrep](https://semgrep.dev/r){target=_blank}
 
 [![semgrep - GitHub](https://gh-card.dev/repos/returntocorp/semgrep.svg?fullname=)](https://github.com/returntocorp/semgrep){target=_blank}
@@ -81,7 +82,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-semgrep is called once on the whole project directory
+semgrep is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using semgrep configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make semgrep analyze only updated files

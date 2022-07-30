@@ -53,7 +53,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- terragrunt is called one time by identified file
+- terragrunt is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

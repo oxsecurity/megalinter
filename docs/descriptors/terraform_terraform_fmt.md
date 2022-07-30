@@ -66,7 +66,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- terraform-fmt is called one time by identified file
+- terraform-fmt is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

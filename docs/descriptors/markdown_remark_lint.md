@@ -67,7 +67,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- remark-lint is called one time by identified file
+- remark-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file is not found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
+- See [How to ignore files and directories with gitleaks](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
 
 [![gitleaks - GitHub](https://gh-card.dev/repos/zricethezav/gitleaks.svg?fullname=)](https://github.com/zricethezav/gitleaks){target=_blank}
 
@@ -60,7 +61,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-gitleaks is called once on the whole project directory
+gitleaks is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using gitleaks configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make gitleaks analyze only updated files

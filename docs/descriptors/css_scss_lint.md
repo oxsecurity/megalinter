@@ -78,7 +78,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- scss-lint is called one time by identified file
+- scss-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

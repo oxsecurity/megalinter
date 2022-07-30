@@ -62,7 +62,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- flake8 is called once with the list of files as arguments
+- flake8 is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
