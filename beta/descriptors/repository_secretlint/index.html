@@ -5591,6 +5591,7 @@
 <li>If custom <code>.secretlintrc.json</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json" target="_blank">.secretlintrc.json</a> will be used</li>
 </ul>
 </li>
+<li>See <a href="https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore" target="_blank">How to ignore files and directories with secretlint</a></li>
 <li>See <a href="https://github.com/secretlint/secretlint#rule-packages" target="_blank">Index of problems detected by secretlint</a></li>
 </ul>
 <p><a href="https://github.com/secretlint/secretlint" target="_blank"><img alt="secretlint - GitHub" src="https://gh-card.dev/repos/secretlint/secretlint.svg?fullname=" /></a></p>
@@ -5783,7 +5784,7 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
-<p>secretlint is called once on the whole project directory</p>
+<p>secretlint is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
 <li>filtering can not be done using MegaLinter configuration variables,it must be done using secretlint configuration or ignore file (if existing)</li>
 <li><code>VALIDATE_ALL_CODEBASE: false</code> does not make secretlint analyze only updated files</li>

@@ -5582,12 +5582,13 @@
 <h1 id="gitleaks">gitleaks <a href="https://github.com/zricethezav/gitleaks/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zricethezav/gitleaks" /></a></h1>
 <h2 id="gitleaks-documentation">gitleaks documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.8.12</strong></li>
+<li>Version in MegaLinter: <strong>8.9.0</strong></li>
 <li>Visit <a href="https://github.com/zricethezav/gitleaks#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/zricethezav/gitleaks#configuration" target="_blank">How to configure gitleaks rules</a><ul>
 <li>If custom <code>.gitleaks.toml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml" target="_blank">.gitleaks.toml</a> will be used</li>
 </ul>
 </li>
+<li>See <a href="https://github.com/zricethezav/gitleaks#configuration" target="_blank">How to ignore files and directories with gitleaks</a></li>
 </ul>
 <p><a href="https://github.com/zricethezav/gitleaks" target="_blank"><img alt="gitleaks - GitHub" src="https://gh-card.dev/repos/zricethezav/gitleaks.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
@@ -5779,7 +5780,7 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
-<p>gitleaks is called once on the whole project directory</p>
+<p>gitleaks is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
 <li>filtering can not be done using MegaLinter configuration variables,it must be done using gitleaks configuration or ignore file (if existing)</li>
 <li><code>VALIDATE_ALL_CODEBASE: false</code> does not make gitleaks analyze only updated files</li>
@@ -5811,7 +5812,7 @@ Flags:
                                If none of the three options are used, then gitleaks will use the default config
       --exit-code int          exit code when leaks have been encountered (default 1)
   -h, --help                   help for gitleaks
-  -l, --log-level string       log level (debug, info, warn, error, fatal) (default &quot;info&quot;)
+  -l, --log-level string       log level (trace, debug, info, warn, error, fatal) (default &quot;info&quot;)
       --redact                 redact secrets from logs and stdout
   -f, --report-format string   output format (json, csv, sarif) (default &quot;json&quot;)
   -r, --report-path string     report file

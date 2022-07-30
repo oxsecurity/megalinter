@@ -5597,10 +5597,13 @@
 </div>
 
 <p><a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy" /></a></p>
+<p>You can ignore a list of errors by defining a <a href="https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids">.trivyignore file</a></p>
 <h2 id="trivy-documentation">trivy documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.29.2</strong></li>
 <li>Visit <a href="https://aquasecurity.github.io/trivy/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/" target="_blank">How to configure trivy rules</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories" target="_blank">How to ignore files and directories with trivy</a></li>
 </ul>
 <p><a href="https://github.com/aquasecurity/trivy" target="_blank"><img alt="trivy - GitHub" src="https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
@@ -5802,7 +5805,7 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
-<p>trivy is called once on the whole project directory</p>
+<p>trivy is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
 <li>filtering can not be done using MegaLinter configuration variables,it must be done using trivy configuration or ignore file (if existing)</li>
 <li><code>VALIDATE_ALL_CODEBASE: false</code> does not make trivy analyze only updated files</li>

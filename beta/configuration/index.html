@@ -357,6 +357,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cli-lint-mode" class="md-nav__link">
+    CLI lint mode
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5513,6 +5520,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cli-lint-mode" class="md-nav__link">
+    CLI lint mode
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5787,6 +5801,7 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 <li>Do not lint files inside test and example folders: <code>FILTER_REGEX_EXCLUDE: (test/|examples/)</code></li>
 <li>Do not lint javascript files inside test folder: <code>FILTER_REGEX_EXCLUDE: (test/.*\.js)</code></li>
 </ul>
+<p>Warning: not applicable with linters using CLI lint mode <code>project</code> (<a href="#cli-lint-mode">see details</a>)</p>
 <h2 id="apply-fixes">Apply fixes</h2>
 <p>Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 <strong>env variables</strong> defined at top level</p>
 <ul>
@@ -5832,6 +5847,21 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
   - command: npm run test
     cwd: &quot;workspace&quot;   # Will be run at the root of the workspace (usually your repository root)
 </code></pre>
+<h2 id="cli-lint-mode">CLI lint mode</h2>
+<p>Each linter has a lint mode by default, visible in its MegaLinter documentation (<a href="https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed">example</a>):</p>
+<ul>
+<li><code>list_of_files</code>: All files are sent in single call to the linter</li>
+<li><code>project</code>: The linter is called from the root of the project, without specifying any file name</li>
+<li><code>file</code>: The linter is called once by file (so the performances may not be very good)</li>
+</ul>
+<p>You can override the CLI_LINT_MODE by using configuration variable for each linter (see <a href="https://oxsecurity.github.io/megalinter/supported-linters/">linters documentation</a>)</p>
+<ul>
+<li>Linters with <code>project</code> default lint mode can not be overridden to <code>list_of_files</code> or <code>file</code></li>
+</ul>
+<p>Special considerations:</p>
+<ul>
+<li>As list of files is not sent to the linter command, linters using <code>project</code> lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it is awaited by the linter (for example with a <code>.secretlintignore</code> file for secretlint)</li>
+</ul>
 <!-- configuration-section-end -->
 
               
