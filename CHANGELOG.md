@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
 - Fix mega-linter-runner install template [(#1662)](https://github.com/oxsecurity/megalinter/issues/1662)
 - New default config for gitleaks with `useDefault=true`
+- Fix bug that disables megalinter.log file in most cases
 - Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is `project`
 
 - Linter versions upgrades

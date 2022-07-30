@@ -713,10 +713,7 @@ class Megalinter:
         log_file = (
             self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
         )
-        if (
-            config.get("LOG_FILE", "") == "none"
-            or config.get("PARALLEL", "true") == "true"
-        ):
+        if config.get("LOG_FILE", "") == "none":
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
