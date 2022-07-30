@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Remove redundant line separator after generated table [(#1650)](https://github.com/oxsecurity/megalinter/pull/1650)
 - Fix revive installation command
 - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
+- Fix mega-linter-runner install template [(#1662)](https://github.com/oxsecurity/megalinter/issues/1662)
 - New default config for gitleaks with `useDefault=true`
 
 - Linter versions upgrades
