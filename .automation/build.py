@@ -966,7 +966,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ):
             linter_doc_md += [
                 f"- See [How to ignore files and directories with {linter.linter_name}]"
-                "({linter.linter_rules_ignore_config_url}){target=_blank}"
+                f"({linter.linter_rules_ignore_config_url})"
+                "{target=_blank}"
             ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
