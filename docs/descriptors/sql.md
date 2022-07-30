@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                      | Configuration key      | Status                                                                                                                                   |
-|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/joereynolds/sql-lint)](https://github.com/joereynolds/sql-lint/commits) |
-| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits)       |
-| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits)       |
+| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) |
+| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits) |
 
 ## Linted files
 
@@ -18,8 +18,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

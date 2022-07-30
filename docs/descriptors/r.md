@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter              | Configuration key | Status                                                                                                                 |
-|---------------------|-------------------|------------------------------------------------------------------------------------------------------------------------|
-| [lintr](r_lintr.md) | [R](r_lintr.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/r-lib/lintr)](https://github.com/r-lib/lintr/commits) |
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
+| [lintr](r_lintr.md) | [R](r_lintr.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/r-lib/lintr)](https://github.com/r-lib/lintr/commits) |
 
 ## Linted files
 
@@ -19,8 +19,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable               | Description                   | Default value |
-|------------------------|-------------------------------|---------------|
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| R_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
