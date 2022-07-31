@@ -15,7 +15,7 @@
 
 <!-- readme-header-end -->
 
-This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
+This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files. You can still use use the `.mega-linter.yml` [configuration file](#configuration) to specify environment variables. The package can also find linting configuration files which are not held in the root project e.g. .github/linters.
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
@@ -41,10 +41,19 @@ npm install mega-linter-runner --save-dev
 
 You can run mega-linter-runner without installation by using `npx`
 
-Example:
+Examples:
+
+```shell
+# Environment variables specified in .mega-linter.yml configuration file
+npx mega-linter-runner
+```
 
 ```shell
 npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+```
+
+```shell
+npx mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY,REPOSITORY_SEMGREP,SPELL_CSPELL'"
 ```
 
 ### Pre-commit hook
@@ -77,7 +86,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
 | `--flavor`             | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
-| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
+| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory, you might also need double quotes around the single quotes  | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
 | `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                         | `v5`              |
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
