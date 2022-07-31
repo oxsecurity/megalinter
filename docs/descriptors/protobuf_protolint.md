@@ -73,7 +73,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- protolint is called one time by identified file
+- protolint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

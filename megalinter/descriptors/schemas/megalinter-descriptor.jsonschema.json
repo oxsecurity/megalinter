@@ -1005,6 +1005,13 @@
             "title": "Linter rules configuration URL",
             "type": "string"
           },
+          "linter_rules_ignore_config_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_ignore_config_url",
+            "description": "URL to linter documentation explaining how to ignore files",
+            "format": "uri",
+            "title": "Linter rules ignore config URL",
+            "type": "string"
+          },
           "linter_rules_inline_disable_url": {
             "$id": "#/properties/linters/items/properties/linter_rules_inline_disable_url",
             "description": "URL to linter documentation explaining how to disable rules directly with comments in files",

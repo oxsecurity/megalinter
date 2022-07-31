@@ -77,7 +77,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rubocop is called one time by identified file
+- rubocop is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

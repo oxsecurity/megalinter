@@ -50,7 +50,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- gherkin-lint is called one time by identified file
+- gherkin-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

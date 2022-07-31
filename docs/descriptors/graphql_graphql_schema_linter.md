@@ -62,7 +62,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- graphql-schema-linter is called one time by identified file
+- graphql-schema-linter is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

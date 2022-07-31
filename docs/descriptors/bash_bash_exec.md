@@ -61,7 +61,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- bash-exec is called one time by identified file
+- bash-exec is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

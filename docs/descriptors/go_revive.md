@@ -59,7 +59,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- revive is called one time by identified file
+- revive is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -103,6 +103,6 @@ Usage of revive:
 
 - Dockerfile commands :
 ```dockerfile
-RUN go get -u github.com/mgechev/revive
+RUN go install github.com/mgechev/revive@latest
 ```
 

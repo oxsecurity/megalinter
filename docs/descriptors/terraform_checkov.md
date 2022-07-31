@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.70**
+- Version in MegaLinter: **2.1.82**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- checkov is called one time by identified file
+- checkov is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

@@ -19,6 +19,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
 - See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
 [![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react){target=_blank}
@@ -81,7 +82,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint is called once with the list of files as arguments
+- eslint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

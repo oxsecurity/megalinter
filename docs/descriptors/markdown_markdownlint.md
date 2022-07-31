@@ -4,7 +4,7 @@
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.32.0**
+- Version in MegaLinter: **0.32.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdownlint.json` config file is not found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
@@ -77,7 +77,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- markdownlint is called once with the list of files as arguments
+- markdownlint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

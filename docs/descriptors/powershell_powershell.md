@@ -59,7 +59,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- powershell is called one time by identified file
+- powershell is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

@@ -4,10 +4,11 @@
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.8.12**
+- Version in MegaLinter: **8.9.0**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file is not found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
+- See [How to ignore files and directories with gitleaks](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
 
 [![gitleaks - GitHub](https://gh-card.dev/repos/zricethezav/gitleaks.svg?fullname=)](https://github.com/zricethezav/gitleaks){target=_blank}
 
@@ -60,7 +61,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-gitleaks is called once on the whole project directory
+gitleaks is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using gitleaks configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make gitleaks analyze only updated files
@@ -100,7 +101,7 @@ Flags:
                                If none of the three options are used, then gitleaks will use the default config
       --exit-code int          exit code when leaks have been encountered (default 1)
   -h, --help                   help for gitleaks
-  -l, --log-level string       log level (debug, info, warn, error, fatal) (default "info")
+  -l, --log-level string       log level (trace, debug, info, warn, error, fatal) (default "info")
       --redact                 redact secrets from logs and stdout
   -f, --report-format string   output format (json, csv, sarif) (default "json")
   -r, --report-path string     report file
@@ -114,7 +115,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+FROM zricethezav/gitleaks:v8.9.0 as gitleaks
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 
