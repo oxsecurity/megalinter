@@ -85,7 +85,7 @@ def check_active_linters_match_flavor(active_linters):
         if active_linter.name not in flavor_linters:
             missing_linters += [active_linter.name]
             active_linter.is_active = False
-    if len(missing_linters) > 0 and not are_all_repository_linters(missing_linters):
+    if len(missing_linters) > 0 and (not are_all_repository_linters(missing_linters)):
         missing_linters_str = ",".join(missing_linters)
         logging.warning(
             f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
@@ -138,8 +138,8 @@ def get_megalinter_flavor_suggestions(active_linters):
 def are_all_repository_linters(linter_names: list[str]) -> bool:
     if len(linter_names) == 0:
         return False
-    result = False
+    result = True
     for linter_name in linter_names:
         if not linter_name.startswith("REPOSITORY"):
-            result = True
+            result = False
     return result
