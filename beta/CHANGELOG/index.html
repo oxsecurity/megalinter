@@ -6671,17 +6671,26 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Fixes about JSON Schema <a href="https://github.com/oxsecurity/megalinter/issues/1621">(#1621)</a></li>
-<li>Add <a href="https://github.com/mrtazz/checkmake">checkmake</a> to lint Makefile</li>
-<li>Avoid cspell to lint all files. Lint only other linter files <a href="https://github.com/oxsecurity/megalinter/issues/1648">(#1648)</a></li>
-<li>Remove redundant line separator after generated table <a href="https://github.com/oxsecurity/megalinter/pull/1650">(#1650)</a></li>
-<li>Fix revive installation command</li>
-<li>Disable SemGrep by default if <code>REPOSITORY_SEMGREP_RULESETS</code> is not defined.</li>
-<li>Fix mega-linter-runner install template <a href="https://github.com/oxsecurity/megalinter/issues/1662">(#1662)</a></li>
-<li>New default config for gitleaks with <code>useDefault=true</code></li>
-<li>Fix bug that disables megalinter.log file in most cases</li>
-<li>Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is <code>project</code></li>
+<li>Core<ul>
+<li>Fix mega-linter-runner --install template <a href="https://github.com/oxsecurity/megalinter/issues/1662">(#1662)</a></li>
 <li>Use <code>REPORT_OUTPUT_FOLDER: none</code> to not generate report files</li>
+<li>Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is <code>project</code></li>
+<li>Fix bug that disables generation of <code>megalinter.log</code> file in most cases</li>
+<li>Fixes about JSON Schema <a href="https://github.com/oxsecurity/megalinter/issues/1621">(#1621)</a></li>
+<li>Remove redundant line separator after generated table <a href="https://github.com/oxsecurity/megalinter/pull/1650">(#1650)</a></li>
+<li>Avoid flavor suggestion message when only REPOSITORY linters are not found</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linters<ul>
+<li>Add <a href="https://github.com/mrtazz/checkmake">checkmake</a> to lint Makefile</li>
+<li>Disable SemGrep by default if <code>REPOSITORY_SEMGREP_RULESETS</code> is not defined.</li>
+<li>Avoid cspell to lint all files. Lint only other linter files <a href="https://github.com/oxsecurity/megalinter/issues/1648">(#1648)</a></li>
+<li>Fix revive installation command</li>
+<li>New default config for gitleaks with <code>useDefault=true</code></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
@@ -6718,6 +6727,7 @@
 <li><a href="https://www.checkov.io/">checkov</a> from 2.1.74 to <strong>2.1.82</strong> on 2022-07-30</li>
 <li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.5 to <strong>1.2.6</strong> on 2022-07-30</li>
 <li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.8.12 to <strong>8.9.0</strong> on 2022-07-30</li>
+<li><a href="https://flake8.pycqa.org">flake8</a> from 4.0.1 to <strong>5.0.0</strong> on 2022-07-31</li>
 </ul>
 </li>
 </ul>
@@ -6846,7 +6856,7 @@
 <ul>
 <li>Descriptors:<ul>
 <li>New flavor <strong>Security</strong></li>
-<li>New descriptor <strong>repository</strong>: contains DevSkip, dustilock, gitleaks, secretlint, semgrep, syft, trivy</li>
+<li>New descriptor <strong>repository</strong>: contains DevSkim, dustilock, gitleaks, secretlint, semgrep, syft, trivy</li>
 <li>Remove CREDENTIALS and GIT descriptors</li>
 </ul>
 </li>

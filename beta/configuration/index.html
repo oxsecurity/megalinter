@@ -5691,7 +5691,7 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <tr>
 <td><strong>LOG_FILE</strong></td>
 <td><code>mega-linter.log</code></td>
-<td>The file name for outputting logs. All output is sent to the log file regardless of <code>LOG_LEVEL</code>.</td>
+<td>The file name for outputting logs. All output is sent to the log file regardless of <code>LOG_LEVEL</code>. Use <code>none</code> to not generate this file.</td>
 </tr>
 <tr>
 <td><strong>LOG_LEVEL</strong></td>
@@ -5741,7 +5741,7 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <tr>
 <td><strong>REPORT_OUTPUT_FOLDER</strong></td>
 <td><code>${GITHUB_WORKSPACE}/megalinter-reports</code></td>
-<td>Directory for generating report files</td>
+<td>Directory for generating report files. Send <code>none</code> to not generate reports</td>
 </tr>
 <tr>
 <td><strong>SHOW_ELAPSED_TIME</strong></td>
@@ -5776,7 +5776,7 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 </ul>
 <p>Examples:</p>
 <ul>
-<li>Run all javascript and groovy linters except STANDARD javascript linter. DevSkip errors will be non-blocking</li>
+<li>Run all javascript and groovy linters except STANDARD javascript linter. DevSkim errors will be non-blocking</li>
 </ul>
 <pre><code class="language-yaml">ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
@@ -5790,7 +5790,9 @@ DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
 <ul>
 <li>Run all linters except PHP_PHPSTAN and PHP_PSALM linters</li>
 </ul>
-<pre><code class="language-yaml">DISABLE_LINTERS: PHP_PHPSTAN,PHP_PSALM
+<pre><code class="language-yaml">DISABLE_LINTERS: 
+  - PHP_PHPSTAN
+  - PHP_PSALM
 </code></pre>
 <h2 id="filter-linted-files">Filter linted files</h2>
 <p>If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters <code>FILTER_REGEX_INCLUDE</code> and <code>FILTER_REGEX_EXCLUDE</code>
