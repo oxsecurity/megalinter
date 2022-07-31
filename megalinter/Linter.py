@@ -1087,16 +1087,16 @@ class Linter:
     # Manage ignore arguments
     def get_ignore_arguments(self):
         ignore_args = []
-        if self.ignore_file is not None:
+        if self.ignore_file is not None and self.cli_lint_ignore_arg_name is not None:
             self.final_ignore_file = self.ignore_file
             if self.cli_docker_image is not None:
                 self.final_ignore_file = self.final_ignore_file.replace(
                     self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
                 )
-            if self.cli_ignore_arg_name.endswith("="):
-                ignore_args += [self.cli_ignore_arg_name + self.final_ignore_file]
-            elif self.cli_ignore_arg_name != "":
-                ignore_args += [self.cli_ignore_arg_name, self.final_ignore_file]
+            if self.cli_lint_ignore_arg_name.endswith("="):
+                ignore_args += [self.cli_lint_ignore_arg_name + self.final_ignore_file]
+            elif self.cli_lint_ignore_arg_name != "":
+                ignore_args += [self.cli_lint_ignore_arg_name, self.final_ignore_file]
         return ignore_args
 
     # Manage SARIF arguments
