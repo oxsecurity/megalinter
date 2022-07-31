@@ -10,7 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Manage ignore files (like `.secretlintignore` or `.eslintignore`)
   - Define ignore argument for client in descriptors
-  - Define ignore file name in descriptors (overriddable with _IGNORE_FILE_NAME at runtime)
+  - Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)
   - Update documentation generation to take in account this new configuration
 
 - Linter versions upgrades
