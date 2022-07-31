@@ -42,7 +42,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | **IGNORE_GITIGNORED_FILES**                                | `true`                                   | If set to `true`, MegaLinter will skip files ignored by git using `.gitignore` file                                                                                                                        |
 | **JAVASCRIPT_DEFAULT_STYLE**                               | `standard`                               | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
 | **LINTER_RULES_PATH**                                      | `.github/linters`                        | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                   |
-| **LOG_FILE**                                               | `mega-linter.log`                        | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                                           |
+| **LOG_FILE**                                               | `mega-linter.log`                        | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`. Use `none` to not generate this file.                                                                     |
 | **LOG_LEVEL**                                              | `INFO`                                   | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                                                     |
 | **MARKDOWN_DEFAULT_STYLE**                                 | `markdownlint`                           | Markdown default style to check/apply. `markdownlint`,`remark-lint`                                                                                                                                        |
 | **MEGALINTER_CONFIG**                                      | `.mega-linter.yml`                       | Name of MegaLinter configuration file. Can be defined remotely, in that case set this environment variable with the remote URL of `.mega-linter.yml` config file                                           |
@@ -52,7 +52,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | [**PRE_COMMANDS**](#pre-commands)                          | \[\]                                     | Custom bash commands to run before linters                                                                                                                                                                 |
 | **PRINT_ALPACA**                                           | `true`                                   | Enable printing alpaca image to console                                                                                                                                                                    |
 | **PRINT_ALL_FILES**                                        | `false`                                  | Display all files analyzed by the linter instead of only the number                                                                                                                                        |
-| **REPORT_OUTPUT_FOLDER**                                   | `${GITHUB_WORKSPACE}/megalinter-reports` | Directory for generating report files                                                                                                                                                                      |
+| **REPORT_OUTPUT_FOLDER**                                   | `${GITHUB_WORKSPACE}/megalinter-reports` | Directory for generating report files. Send `none` to not generate reports                                                                                                                                 |
 | **SHOW_ELAPSED_TIME**                                      | `false`                                  | Displays elapsed time in reports                                                                                                                                                                           |
 | **SHOW_SKIPPED_LINTERS**                                   | `true`                                   | Displays all disabled linters mega-linter could have run                                                                                                                                                   |
 | **TYPESCRIPT_DEFAULT_STYLE**                               | `standard`                               | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
@@ -70,7 +70,7 @@ MegaLinter have all linters enabled by default, but allows to enable only some, 
 
 Examples:
 
-- Run all javascript and groovy linters except STANDARD javascript linter. DevSkip errors will be non-blocking
+- Run all javascript and groovy linters except STANDARD javascript linter. DevSkim errors will be non-blocking
 
 ```yaml
 ENABLE: JAVASCRIPT,GROOVY
@@ -87,7 +87,9 @@ DISABLE: PHP
 - Run all linters except PHP_PHPSTAN and PHP_PSALM linters
 
 ```yaml
-DISABLE_LINTERS: PHP_PHPSTAN,PHP_PSALM
+DISABLE_LINTERS: 
+  - PHP_PHPSTAN
+  - PHP_PSALM
 ```
 
 ## Filter linted files

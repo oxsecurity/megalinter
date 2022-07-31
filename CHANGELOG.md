@@ -8,17 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
-- Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
-- Avoid cspell to lint all files. Lint only other linter files [(#1648)](https://github.com/oxsecurity/megalinter/issues/1648)
-- Remove redundant line separator after generated table [(#1650)](https://github.com/oxsecurity/megalinter/pull/1650)
-- Fix revive installation command
-- Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
-- Fix mega-linter-runner install template [(#1662)](https://github.com/oxsecurity/megalinter/issues/1662)
-- New default config for gitleaks with `useDefault=true`
-- Fix bug that disables megalinter.log file in most cases
-- Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is `project`
-- Use `REPORT_OUTPUT_FOLDER: none` to not generate report files
+- Core
+  - Fix mega-linter-runner --install template [(#1662)](https://github.com/oxsecurity/megalinter/issues/1662)
+  - Use `REPORT_OUTPUT_FOLDER: none` to not generate report files
+  - Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is `project`
+  - Fix bug that disables generation of `megalinter.log` file in most cases
+  - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
+  - Remove redundant line separator after generated table [(#1650)](https://github.com/oxsecurity/megalinter/pull/1650)
+  - Avoid flavor suggestion message when only REPOSITORY linters are not found
+
+- Linters
+  - Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
+  - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
+  - Avoid cspell to lint all files. Lint only other linter files [(#1648)](https://github.com/oxsecurity/megalinter/issues/1648)
+  - Fix revive installation command
+  - New default config for gitleaks with `useDefault=true`
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
@@ -54,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.74 to **2.1.82** on 2022-07-30
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.5 to **1.2.6** on 2022-07-30
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.8.12 to **8.9.0** on 2022-07-30
+  - [flake8](https://flake8.pycqa.org) from 4.0.1 to **5.0.0** on 2022-07-31
 <!-- linter-versions-end -->
 
 ## [v6.1.0] - 2022-07-19
@@ -157,7 +162,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Descriptors:
   - New flavor **Security**
-  - New descriptor **repository**: contains DevSkip, dustilock, gitleaks, secretlint, semgrep, syft, trivy
+  - New descriptor **repository**: contains DevSkim, dustilock, gitleaks, secretlint, semgrep, syft, trivy
   - Remove CREDENTIALS and GIT descriptors
 
 - mega-linter-runner
