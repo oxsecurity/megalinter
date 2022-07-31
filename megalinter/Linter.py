@@ -75,7 +75,7 @@ class Linter:
         self.ignore_file_name = None
         self.cli_lint_ignore_arg_name = None
         self.final_ignore_file = None
-        # Other 
+        # Other
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
@@ -548,7 +548,7 @@ class Linter:
             elif os.path.isfile(
                 self.default_rules_location + os.path.sep + self.ignore_file_name
             ):
-                self.config_file = (
+                self.ignore_file = (
                     self.default_rules_location + os.path.sep + self.ignore_file_name
                 )
             # Set ignore file label if not set by remote rule
@@ -1056,7 +1056,7 @@ class Linter:
             cmd += self.cli_config_extra_args
 
         # Manage ignore arguments if necessary
-        cmd += self.get_ignore_arguments()
+        cmd += self.get_ignore_arguments(cmd)
 
         # Manage SARIF arguments if necessary
         cmd += self.get_sarif_arguments()
@@ -1085,9 +1085,14 @@ class Linter:
         return self.manage_docker_command(cmd)
 
     # Manage ignore arguments
-    def get_ignore_arguments(self):
+    def get_ignore_arguments(self, cmd):
         ignore_args = []
-        if self.ignore_file is not None and self.cli_lint_ignore_arg_name is not None:
+        if (
+            self.ignore_file is not None
+            and self.cli_lint_ignore_arg_name is not None
+            and self.cli_lint_ignore_arg_name not in cmd
+            and self.cli_lint_ignore_arg_name not in self.cli_lint_extra_args_after
+        ):
             self.final_ignore_file = self.ignore_file
             if self.cli_docker_image is not None:
                 self.final_ignore_file = self.final_ignore_file.replace(
