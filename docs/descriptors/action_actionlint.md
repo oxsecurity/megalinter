@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- actionlint is called once with the list of files as arguments
+- actionlint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

@@ -85,7 +85,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- stylelint is called once with the list of files as arguments
+- stylelint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 

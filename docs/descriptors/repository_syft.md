@@ -54,7 +54,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-syft is called once on the whole project directory
+syft is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using syft configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make syft analyze only updated files

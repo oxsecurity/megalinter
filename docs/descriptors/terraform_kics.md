@@ -56,7 +56,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- kics is called one time by identified file
+- kics is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 

@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-swiftlint is called once on the whole project directory
+swiftlint is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using swiftlint configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make swiftlint analyze only updated files

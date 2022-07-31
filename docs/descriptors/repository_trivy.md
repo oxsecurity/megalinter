@@ -9,10 +9,14 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)
 
+You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
+
 ## trivy documentation
 
 - Version in MegaLinter: **0.29.2**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
+- See [How to configure trivy rules](https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/){target=_blank}
+- See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories){target=_blank}
 
 [![trivy - GitHub](https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=)](https://github.com/aquasecurity/trivy){target=_blank}
 
@@ -71,7 +75,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-trivy is called once on the whole project directory
+trivy is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using trivy configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make trivy analyze only updated files
