@@ -191,6 +191,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
     config_file_name: .secretlintrc.json
     cli_config_arg_name: "--secretlintrc"
+    ignore_file_name: .secretlintignore
+    cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
     cli_lint_extra_args_after:
       - "**/*"
@@ -231,6 +233,7 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: --config
     cli_config_default_value: auto
+    ignore_file_name: .semgrepignore
     cli_lint_extra_args:
       - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:

@@ -88,12 +88,19 @@ class ConsoleLinterReporter(Reporter):
         ]
         if self.master.descriptor_id != self.master.name:
             msg += [f"- MegaLinter key: [{self.master.name}]"]
+        # Config info
         if self.master.config_file is not None:
             msg += [f"- Rules config: [{self.master.config_file_label}]"]
         else:
             msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
         if self.master.config_file_error is not None:
             logging.warning(self.master.config_file_error)
+        # Ignore file info
+        if self.master.ignore_file is not None:
+            msg += [f"- Ignore file: [{self.master.ignore_file_label}]"]
+        if self.master.ignore_file_error is not None:
+            logging.warning(self.master.ignore_file_error)
+        # List of files
         if self.print_all_files is False and self.master.cli_lint_mode != "project":
             msg += [
                 f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"
