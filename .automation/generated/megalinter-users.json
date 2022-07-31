@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6115,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 26432,
+                "stargazers_count": 26434,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 118,
@@ -127,15 +127,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-07-31T08:14:11Z",
+                "updated_at": "2022-07-31T08:39:38Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 26432,
-                "watchers_count": 26432,
+                "watchers": 26434,
+                "watchers_count": 26434,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 26432
+            "stargazers": 26434
         },
         {
             "info": {
@@ -672,8 +672,8 @@
                 "network_count": 113,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 40,
-                "open_issues_count": 40,
+                "open_issues": 39,
+                "open_issues_count": 39,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -716,9 +716,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-07-31T08:11:26Z",
+                "pushed_at": "2022-07-31T09:55:13Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 186619,
+                "size": 186666,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 747,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
@@ -969,8 +969,8 @@
                 "network_count": 91,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyMzA5OTk4MjY=",
                 "notifications_url": "https://api.github.com/repos/onedr0p/home-ops/notifications{?since,all,participating}",
-                "open_issues": 9,
-                "open_issues_count": 9,
+                "open_issues": 10,
+                "open_issues_count": 10,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/213795?v=4",
                     "events_url": "https://api.github.com/users/onedr0p/events{/privacy}",
@@ -993,7 +993,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-07-30T23:03:21Z",
+                "pushed_at": "2022-07-31T09:03:30Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
                 "size": 25667,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
@@ -1994,7 +1994,7 @@
                 "releases_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/releases{/id}",
                 "size": 303,
                 "ssh_url": "git@github.com:unixorn/tumult.plugin.zsh.git",
-                "stargazers_count": 134,
+                "stargazers_count": 135,
                 "stargazers_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/stargazers",
                 "statuses_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/statuses/{sha}",
                 "subscribers_count": 1,
@@ -2015,15 +2015,15 @@
                     "zsh-plugins"
                 ],
                 "trees_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/git/trees{/sha}",
-                "updated_at": "2022-07-25T16:31:23Z",
+                "updated_at": "2022-07-31T08:48:53Z",
                 "url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh",
                 "visibility": "public",
-                "watchers": 134,
-                "watchers_count": 134,
+                "watchers": 135,
+                "watchers_count": 135,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/unixorn/tumult.plugin.zsh",
-            "stargazers": 134
+            "stargazers": 135
         },
         {
             "info": {
@@ -2111,7 +2111,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/toboshii/home-ops/pulls{/number}",
-                "pushed_at": "2022-07-30T22:15:53Z",
+                "pushed_at": "2022-07-31T09:51:47Z",
                 "releases_url": "https://api.github.com/repos/toboshii/home-ops/releases{/id}",
                 "size": 2386,
                 "ssh_url": "git@github.com:toboshii/home-ops.git",
