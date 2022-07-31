@@ -10,6 +10,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![dorssel/usbipd-win - GitHub](https://gh-card.dev/repos/dorssel/usbipd-win.svg?fullname=)](https://github.com/dorssel/usbipd-win){target=_blank}
 [![flosse/sloc - GitHub](https://gh-card.dev/repos/flosse/sloc.svg?fullname=)](https://github.com/flosse/sloc){target=_blank}
 [![oxsecurity/megalinter - GitHub](https://gh-card.dev/repos/oxsecurity/megalinter.svg?fullname=)](https://github.com/oxsecurity/megalinter){target=_blank}
+[![k8s-at-home/flux-cluster-template - GitHub](https://gh-card.dev/repos/k8s-at-home/flux-cluster-template.svg?fullname=)](https://github.com/k8s-at-home/flux-cluster-template){target=_blank}
 [![onedr0p/home-ops - GitHub](https://gh-card.dev/repos/onedr0p/home-ops.svg?fullname=)](https://github.com/onedr0p/home-ops){target=_blank}
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
@@ -19,6 +20,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![ruzickap/packer-templates - GitHub](https://gh-card.dev/repos/ruzickap/packer-templates.svg?fullname=)](https://github.com/ruzickap/packer-templates){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
+[![toboshii/home-ops - GitHub](https://gh-card.dev/repos/toboshii/home-ops.svg?fullname=)](https://github.com/toboshii/home-ops){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
 [![nvuillam/npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
@@ -26,10 +28,12 @@ According to posted issues, there are many more private and self-hosted repos us
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
+[![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
+[![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
