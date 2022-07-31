@@ -1,6 +1,18 @@
 {
     "repositories": [
         {
+            "repo_url": "https://github.com/k8s-at-home/flux-cluster-template"
+        },
+        {
+            "repo_url": "https://github.com/toboshii/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/auricom/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/telstra/open-kilda"
+        }
+        {
             "info": {
                 "allow_forking": true,
                 "archive_url": "https://api.github.com/repos/nektos/act/{archive_format}{/ref}",

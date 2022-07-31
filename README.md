@@ -713,7 +713,7 @@ MegaLinter have all linters enabled by default, but allows to enable only some, 
 
 Examples:
 
-- Run all javascript and groovy linters except STANDARD javascript linter. DevSkip errors will be non-blocking
+- Run all javascript and groovy linters except STANDARD javascript linter. DevSkim errors will be non-blocking
 
 ```yaml
 ENABLE: JAVASCRIPT,GROOVY
