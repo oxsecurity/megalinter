@@ -9,7 +9,8 @@ install:
     - typescript
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: TYPESCRIPT_ES
     can_output_sarif: true
     linter_text: |

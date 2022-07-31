@@ -6,7 +6,8 @@ file_extensions:
   - ".js"
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: JAVASCRIPT_ES
     can_output_sarif: true
     file_extensions:

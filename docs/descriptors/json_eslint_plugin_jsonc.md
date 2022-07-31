@@ -74,6 +74,7 @@ DISABLE_LINTERS:
   - If custom `.eslintrc-json.json` config file is not found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
 - See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
 - See [How to ignore files and directories with eslint-plugin-jsonc](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
+  - You can define a `.eslintignore` file to ignore file and folders
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
 
 [![eslint-plugin-jsonc - GitHub](https://gh-card.dev/repos/ota-meshi/eslint-plugin-jsonc.svg?fullname=)](https://github.com/ota-meshi/eslint-plugin-jsonc){target=_blank}

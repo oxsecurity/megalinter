@@ -20,6 +20,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
 - See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
+  - You can define a `.eslintignore` file to ignore file and folders
 - See [Index of problems detected by eslint](https://eslint.org/docs/rules/){target=_blank}
 
 [![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
