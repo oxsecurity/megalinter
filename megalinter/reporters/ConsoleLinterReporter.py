@@ -96,7 +96,7 @@ class ConsoleLinterReporter(Reporter):
         if self.master.config_file_error is not None:
             logging.warning(self.master.config_file_error)
         # Ignore file info
-        if self.master.ignore_file is not None:
+        if self.master.ignore_file_label is not None:
             msg += [f"- Ignore file: [{self.master.ignore_file_label}]"]
         if self.master.ignore_file_error is not None:
             logging.warning(self.master.ignore_file_error)
