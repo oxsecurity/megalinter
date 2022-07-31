@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Manage ignore files (like `.secretlintignore` or `.eslintignore`)
+  - Define ignore argument for client in descriptors
+  - Define ignore file name in descriptors (overriddable with _IGNORE_FILE_NAME at runtime)
+  - Update documentation generation to take in account this new configuration
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
