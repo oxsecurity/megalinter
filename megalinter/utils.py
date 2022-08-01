@@ -287,3 +287,13 @@ def truncate_json_from_line(line: str):
     if start_pos > -1 and end_pos > -1:
         return line[start_pos : end_pos + 1]  # noqa: E203
     return ""
+
+
+def get_current_test_name(full_name=False):
+    current_name = os.environ.get("PYTEST_CURRENT_TEST", None)
+    if current_name is not None:
+        if full_name is True:
+            return current_name
+        else:
+            return current_name.split(":")[-1].split(" ")[0]
+    return ""
