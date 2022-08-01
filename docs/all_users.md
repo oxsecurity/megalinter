@@ -84,6 +84,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![bsrodrigs/terraform-aws-fully-connected-vpn - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-fully-connected-vpn.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn){target=_blank}
 [![MTUCI-VR/shooter-project - GitHub](https://gh-card.dev/repos/MTUCI-VR/shooter-project.svg?fullname=)](https://github.com/MTUCI-VR/shooter-project){target=_blank}
 [![lpmatos/docker-crypto-miner - GitHub](https://gh-card.dev/repos/lpmatos/docker-crypto-miner.svg?fullname=)](https://github.com/lpmatos/docker-crypto-miner){target=_blank}
+[![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![tonic-team/tonic.site - GitHub](https://gh-card.dev/repos/tonic-team/tonic.site.svg?fullname=)](https://github.com/tonic-team/tonic.site){target=_blank}
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}
 [![ewencluley/final-curtain - GitHub](https://gh-card.dev/repos/ewencluley/final-curtain.svg?fullname=)](https://github.com/ewencluley/final-curtain){target=_blank}
