@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 import urllib
 
 from megalinter import config
@@ -37,6 +38,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             )
             linter_link = f"[{linter.linter_name}]({linter_doc_url})"
             nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
+            # Project count
             if linter.cli_lint_mode == "project":
                 found = "yes"
                 nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
@@ -45,6 +47,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                     if linter.number_errors > 0
                     else "no"
                 )
+            # Count using files
             else:
                 found = str(len(linter.files))
                 errors_cell = (
@@ -65,7 +68,7 @@ def build_markdown_summary(reporter_self, action_run_url):
     # Build markdown table
     table_data_raw.pop(0)
     writer = MarkdownTableWriter(headers=table_header, value_matrix=table_data_raw)
-    table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
+    table_content = str(writer)
     status = (
         "✅"
         if reporter_self.master.return_code == 0
@@ -141,3 +144,39 @@ def log_link(label, url):
         return label
     else:
         return f"[{label}]({url})"
+
+
+def get_linter_doc_url(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    return linter_doc_url
+
+
+def log_section_start(section_key: str, section_title: str):
+    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+        if is_github_actions():
+            return f"::group::{section_title} (expand for details)"
+        elif is_gitlab_ci():
+            return (
+                f"\\e[0Ksection_start:`{time.time_ns()}`:{section_key}"
+                + f"[collapsed=true]\\r\\e[0K{section_title} (expand for details)"
+            )
+    return section_title
+
+
+def log_section_end(section_key):
+    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+        if is_github_actions():
+            return "::endgroup::"
+        elif is_gitlab_ci():
+            return f"\\e[0Ksection_end:`{time.time_ns()}`:{section_key}\\r\\e[0K"
+    return ""
+
+
+def is_github_actions() -> bool:
+    return "GITHUB_ACTIONS" in os.environ
+
+
+def is_gitlab_ci() -> bool:
+    return "GITLAB_CI" in os.environ

@@ -6,7 +6,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **0.6.1**
+- Version in MegaLinter: **0.13.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -14,15 +14,15 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## Configuration in MegaLinter
 
-- Enable v8r by adding `YAML_V8R` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable v8r by adding `YAML_V8R` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable v8r by adding `YAML_V8R` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable v8r by adding `YAML_V8R` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                             | Description                                                                                                                                                                                                         | Default value       |
 |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | YAML_V8R_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                     |
 | YAML_V8R_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file  |
 | YAML_V8R_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file     |
-| YAML_V8R_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`              |
+| YAML_V8R_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`     |
 | YAML_V8R_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".yml", ".yaml"]` |
 | YAML_V8R_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file  |
 | YAML_V8R_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                |
@@ -36,33 +36,31 @@ Use v8r in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                 |                                    Install                                    |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|----------------------------------------------------------------|:-----------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [native support](https://www.eclipse.org/)                     |           [Visit Web Site](https://www.eclipse.org/){target=_blank}           |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://www.jetbrains.com/products/#type=ide) | [Visit Web Site](https://www.jetbrains.com/products/#type=ide){target=_blank} |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [vison](https://github.com/Quramy/vison)                       |       [Visit Web Site](https://github.com/Quramy/vison){target=_blank}        |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [native support](https://code.visualstudio.com/)               |        [Visit Web Site](https://code.visualstudio.com/){target=_blank}        |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [native support](https://www.eclipse.org/)                     |           [Visit Web Site](https://www.eclipse.org/){target=_blank}           |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://www.jetbrains.com/products/#type=ide) | [Visit Web Site](https://www.jetbrains.com/products/#type=ide){target=_blank} |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [vison](https://github.com/Quramy/vison)                       |       [Visit Web Site](https://github.com/Quramy/vison){target=_blank}        |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [native support](https://code.visualstudio.com/)               |        [Visit Web Site](https://code.visualstudio.com/){target=_blank}        |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                                              |        97        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.github.io/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        16        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
-|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                                  |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                                        |        43        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                                      |        43        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                                       |        46        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                                    |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        44        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)                 | Optimized for SCALA based projects                                     |        42        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        42        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        47        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                                 | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)               | Default MegaLinter Flavor                                              |       103        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://oxsecurity.github.io/megalinter/latest/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        19        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://oxsecurity.github.io/megalinter/latest/flavors/documentation/) | MegaLinter for documentation projects                                  |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://oxsecurity.github.io/megalinter/latest/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        52        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://oxsecurity.github.io/megalinter/latest/flavors/go/)                       | Optimized for GO based projects                                        |        45        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/latest/flavors/java/)                   | Optimized for JAVA based projects                                      |        45        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/latest/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://oxsecurity.github.io/megalinter/latest/flavors/php/)                     | Optimized for PHP based projects                                       |        47        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/)               | Optimized for PYTHON based projects                                    |        51        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://oxsecurity.github.io/megalinter/latest/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://oxsecurity.github.io/megalinter/latest/flavors/rust/)                   | Optimized for RUST based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        46        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://oxsecurity.github.io/megalinter/latest/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        49        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -74,7 +72,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- v8r is called one time by identified file
+- v8r is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -90,33 +88,44 @@ v8r --ignore-errors myfile.yaml
 ### Help content
 
 ```shell
-v8r <filename>
+ℹ No config file found
+v8r <patterns..>
 
-Validate a local json/yaml file against a schema
+Validate local json/yaml files against schema(s)
 
 Positionals:
-  filename  Local file to validate
+  patterns  One or more filenames or glob patterns describing local file or file
+            s to validate
 
 Options:
       --help           Show help                                       [boolean]
       --version        Show version number                             [boolean]
   -v, --verbose        Run with verbose logging. Can be stacked e.g: -vv -vvv
                                                                          [count]
-  -s, --schema         Local path or URL of schema to validate file against. If
-                       not supplied, we will attempt to find an appropriate
-                       schema on schemastore.org using the filename     [string]
-  -c, --catalogs       Local path or URL of custom catalogs to use prior to
-                       schemastore.org                                   [array]
-      --ignore-errors  Exit with code 0 even if an error was encountered.
-                       Passing this flag means a non-zero exit code is only
-                       issued if validation could be completed successfully and
-                       the file was invalid           [boolean] [default: false]
-      --cache-ttl      Remove cached HTTP responses older than <cache-ttl>
-                       seconds old. Passing 0 clears and disables cache
-                       completely                        [number] [default: 600]
+  -s, --schema         Local path or URL of a schema to validate against. If not
+                        supplied, we will attempt to find an appropriate schema
+                       on schemastore.org using the filename. If passed with glo
+                       b pattern(s) matching multiple files, all matching files
+                       will be validated against this schema            [string]
+  -c, --catalogs       Local path or URL of custom catalogs to use prior to sche
+                       mastore.org                                       [array]
+      --ignore-errors  Exit with code 0 even if an error was encountered. Passin
+                       g this flag means a non-zero exit code is only issued if
+                       validation could be completed successfully and one or mor
+                       e files were invalid           [boolean] [default: false]
+      --cache-ttl      Remove cached HTTP responses older than <cache-ttl> secon
+                       ds old. Passing 0 clears and disables cache completely
+                                                         [number] [default: 600]
+      --format         Output format for validation results
+                            [string] [choices: "text", "json"] [default: "text"]
+
+Examples:
+  v8r file.json                 Validate a single file
+  v8r file1.json file2.json     Validate multiple files
+  v8r 'dir/*.yml' 'dir/*.yaml'  Specify files to validate with glob patterns
 ```
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [v8r@0.6.1](https://www.npmjs.com/package/v8r)
+  - [v8r](https://www.npmjs.com/package/v8r)

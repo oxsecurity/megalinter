@@ -14,7 +14,7 @@
 - Version in MegaLinter: **2022.04.25**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
-  - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
+  - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
 - See [How to disable clj-kondo rules in files](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression){target=_blank}
 - See [Index of problems detected by clj-kondo](https://github.com/borkdude/clj-kondo#features){target=_blank}
 
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -46,19 +46,19 @@ Use clj-kondo in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                      |                                                                                 Install                                                                                 |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-kondo](https://atom.io/packages/linter-kondo)                               |                                                 [Visit Web Site](https://atom.io/packages/linter-kondo){target=_blank}                                                  |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo)                |                                             [Visit Web Site](https://github.com/borkdude/flycheck-clj-kondo){target=_blank}                                             |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/borkdude.clj-kondo){target=_blank} |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint)                         |                                              [Visit Web Site](https://github.com/marcomorain/clojure-lint){target=_blank}                                               |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-kondo](https://atom.io/packages/linter-kondo)                               |                                                 [Visit Web Site](https://atom.io/packages/linter-kondo){target=_blank}                                                  |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo)                |                                             [Visit Web Site](https://github.com/borkdude/flycheck-clj-kondo){target=_blank}                                             |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/borkdude.clj-kondo){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint)                         |                                              [Visit Web Site](https://github.com/marcomorain/clojure-lint){target=_blank}                                               |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        97        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)     | Optimized for JAVA based projects |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                       | Embedded linters |                                                                                                                                                                               Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor         |       103        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/latest/flavors/java/)     | Optimized for JAVA based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
@@ -70,7 +70,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- clj-kondo is called one time by identified file
+- clj-kondo is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -137,49 +137,3 @@ FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 ```
 
-
-### Example success log
-
-```shell
-Results of clj-kondo linter (version 2020.09.09)
-See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
------------------------------------------------
-
-[SUCCESS] .automation/test/clojure/clojure_good_1.clj
-    linting took 14ms, errors: 0, warnings: 0
-
-```
-
-### Example error log
-
-```shell
-Results of clj-kondo linter (version 2020.09.09)
-See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
------------------------------------------------
-
-[ERROR] .automation/test/clojure/clojure_bad_1.clj
-    .automation/test/clojure/clojure_bad_1.clj:5:5: warning: namespace clojure.set is required but never used
-    .automation/test/clojure/clojure_bad_1.clj:8:2: error: unresolved symbol but-last
-    .automation/test/clojure/clojure_bad_1.clj:12:1: error: clojure.string/join is called with 0 args but expects 1 or 2
-    .automation/test/clojure/clojure_bad_1.clj:15:17: warning: unused binding y
-    .automation/test/clojure/clojure_bad_1.clj:17:3: warning: redundant do
-    .automation/test/clojure/clojure_bad_1.clj:19:5: warning: inline def
-    .automation/test/clojure/clojure_bad_1.clj:22:7: warning: Redundant let expression.
-    .automation/test/clojure/clojure_bad_1.clj:22:13: warning: unused binding z
-    .automation/test/clojure/clojure_bad_1.clj:24:9: error: y is called with 1 arg but expects 0
-    .automation/test/clojure/clojure_bad_1.clj:26:9: error: recur argument count mismatch (expected 2, got 0)
-    .automation/test/clojure/clojure_bad_1.clj:29:9: error: h is called with 1 arg but expects 0
-    .automation/test/clojure/clojure_bad_1.clj:30:9: error: f is called with 1 arg but expects 0
-    .automation/test/clojure/clojure_bad_1.clj:34:1: warning: redefined var #'foo/private-fn
-    .automation/test/clojure/clojure_bad_1.clj:34:8: warning: Unused private var foo/private-fn
-    .automation/test/clojure/clojure_bad_1.clj:38:6: error: Expected: number, received: keyword.
-    .automation/test/clojure/clojure_bad_1.clj:42:1: error: java.lang.Thread/sleep is called with 3 args but expects 1 or 2
-    .automation/test/clojure/clojure_bad_1.clj:48:1: error: foo/foo-fn is called with 0 args but expects 2
-    .automation/test/clojure/clojure_bad_1.clj:51:1: error: #'foo/private-fn is private
-    .automation/test/clojure/clojure_bad_1.clj:54:7: error: duplicate key :a
-    .automation/test/clojure/clojure_bad_1.clj:56:5: error: duplicate set element 1
-    .automation/test/clojure/clojure_bad_1.clj:58:7: error: missing value for key :b
-    .automation/test/clojure/clojure_bad_1.clj:64:3: warning: missing test assertion
-    linting took 14ms, errors: 13, warnings: 9
-
-```

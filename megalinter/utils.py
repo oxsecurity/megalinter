@@ -9,10 +9,11 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 from megalinter import config
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 REPO_HOME_DEFAULT = (
-    "/tmp/lint"
-    if os.path.isdir("/tmp/lint")
+    DEFAULT_DOCKER_WORKSPACE_DIR
+    if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
     else os.environ.get("DEFAULT_WORKSPACE")
     if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
@@ -21,7 +22,7 @@ REPO_HOME_DEFAULT = (
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 LIST_OF_REPLACEMENTS = [
     # MegaLinter image
-    ["/tmp/lint/", ""],
+    [f"{DEFAULT_DOCKER_WORKSPACE_DIR}/", ""],
     ["tmp/lint/", ""],
     # GitHub Actions
     ["/github/workspace/", ""],
@@ -52,7 +53,7 @@ def get_excluded_directories():
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get("REPORT_OUTPUT_FOLDER", "report"),
+        config.get("REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
     excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
     excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
@@ -95,10 +96,10 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
-
+        # Skip if file is in ignore list
         if file in ignored_fileset:
             continue
-
+        # Skip if file is in ignored patterns
         if ignored_patterns and any(
             fnmatch(file, pattern) for pattern in ignored_patterns
         ):
@@ -106,17 +107,18 @@ def filter_files(
 
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
-
+        # Skip according to FILTER_REGEX_INCLUDE
         if filter_regex_include_object and not filter_regex_include_object.search(file):
             continue
-
+        # Skip according to FILTER_REGEX_EXCLUDE
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
-
+        # Skip if file is not in defined files_sub_directory
         if files_sub_directory and files_sub_directory not in file:
             continue
 
-        if not lint_all_other_linters_files:
+        # Skip according to file extension (only if lint_all_other_linter_files is false)
+        if lint_all_other_linters_files is False:
             if file_extension in file_extensions:
                 pass
             elif "*" in file_extensions:
@@ -125,13 +127,13 @@ def filter_files(
                 pass
             else:
                 continue
-
+        # Skip according to end of file name
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
-
+        # Skip according to file name regex
         if file_contains_regex and not file_contains(file, file_contains_regex_object):
             continue
-
+        # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
@@ -230,6 +232,14 @@ def list_updated_files(repo_home):
     return changed_files
 
 
+def is_git_repo(path):
+    try:
+        _ = git.Repo(path).git_dir
+        return True
+    except git.InvalidGitRepositoryError:
+        return False
+
+
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:
         changed_files = list_updated_files(repo_home)
@@ -252,3 +262,38 @@ def format_bullet_list(files):
     prefix = list_separator if any(files) is True else ""
     file_list = list_separator.join(files) if len(files) > 0 else ""
     return "{}{}".format(prefix, file_list)
+
+
+def find_json_in_stdout(stdout: str):
+    # Whole stdout is json
+    if stdout.startswith("{"):
+        return truncate_json_from_line(stdout)
+    # Try to find a json line within stdout
+    found_json = ""
+    stdout_lines = stdout.splitlines()
+    stdout_lines.reverse()  # start from last lines
+    for line in stdout_lines:
+        if line.startswith("{"):
+            json_only = truncate_json_from_line(line)
+            if json_only != "":
+                found_json = json_only
+                break
+    return found_json
+
+
+def truncate_json_from_line(line: str):
+    start_pos = line.find("{")
+    end_pos = line.rfind("}")
+    if start_pos > -1 and end_pos > -1:
+        return line[start_pos : end_pos + 1]  # noqa: E203
+    return ""
+
+
+def get_current_test_name(full_name=False):
+    current_name = os.environ.get("PYTEST_CURRENT_TEST", None)
+    if current_name is not None:
+        if full_name is True:
+            return current_name
+        else:
+            return current_name.split(":")[-1].split(" ")[0]
+    return ""

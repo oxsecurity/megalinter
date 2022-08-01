@@ -19,7 +19,7 @@
 name: "Build & Deploy - DEV"
 on:
   push:
-    branches-ignore: [main, alpha]
+    branches-ignore: [main]
   pull_request:
     branches-ignore: []
 
@@ -49,7 +49,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3
         with:
           # Full git history is needed to get a proper list of changed files within `mega-linter`
           fetch-depth: 0
@@ -83,12 +83,12 @@ jobs:
               echo "Checking existence of https://hub.docker.com/v2/repositories/$1/tags/$2"
               curl --silent -f -lSL https://hub.docker.com/v2/repositories/$1/tags/$2 > /dev/null
           }
-          MEGA_LINTER_BASE_IMAGE="megalinter/megalinter:beta"
-          if docker_tag_exists megalinter/megalinter ${{steps.image_tag.outputs.tag}}; then
-             MEGA_LINTER_BASE_IMAGE="megalinter/megalinter:${{steps.image_tag.outputs.tag}}"
+          MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
+          if docker_tag_exists oxsecurity/megalinter ${{steps.image_tag.outputs.tag}}; then
+             MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
              echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
           fi
-          docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t megalinter/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+          docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       ##########################
@@ -100,7 +100,7 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
+          IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
           DOCKERFILE_PATH: Dockerfile-quick
           REGISTRY: Docker
@@ -114,13 +114,13 @@ jobs:
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
-          (github.event_name == 'push' && github.repository != 'megalinter/megalinter')
+          (github.event_name == 'push' && github.repository != 'oxsecurity/megalinter')
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t megalinter/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 90
 
       ####################################
@@ -130,7 +130,7 @@ jobs:
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
-          (github.event_name == 'push' && github.repository == 'megalinter/megalinter')
+          (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
@@ -138,12 +138,19 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
+          IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
         shell: bash
-        run: .automation/upload-docker.sh || true
+        run: .automation/upload-docker.sh
+
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
       #####################################
       # Run Linter test cases #
@@ -162,8 +169,8 @@ jobs:
                 TEST_KEYWORDS_TO_USE=""
             fi
           fi
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:${{steps.image_tag.outputs.tag}}
-        timeout-minutes: 30
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+        timeout-minutes: 60
 
       #####################################
       # Run Linter against ALL code base  #
@@ -171,8 +178,8 @@ jobs:
       - name: Run against all code base
         if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:${{steps.image_tag.outputs.tag}}
-        timeout-minutes: 10
+        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+        timeout-minutes: 15
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
@@ -181,7 +188,7 @@ jobs:
         with:
           name: MegaLinter reports
           path: |
-            report
+            megalinter-reports
             mega-linter.log
             linter-helps.json
             linter-versions.json
@@ -198,28 +205,23 @@ jobs:
           node-version: "12"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        run: cd mega-linter-runner && sudo npm ci && sudo npm link
+        run: cd mega-linter-runner && sudo yarn install --frozen-lockfile && sudo npm link
       - name: Run mega-linter-runner tests
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
-
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
-        with:
-          image-ref: "docker.io/megalinter/megalinter:${{steps.image_tag.outputs.tag}}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-          timeout: 10m0s
+      
+#      - name: Run Trivy vulnerability scanner
+#        uses: aquasecurity/trivy-action@master
+#        with:
+#          image-ref: "docker.io/oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
+#          format: 'table'
+#          exit-code: '1'
+#          ignore-unfixed: true
+#          security-checks: vuln
+#          vuln-type: 'os,library'
+#          severity: 'CRITICAL,HIGH'
+#          timeout: 10m0s

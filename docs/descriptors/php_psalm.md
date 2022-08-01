@@ -14,7 +14,7 @@
 - Version in MegaLinter: **Psalm.5.x-dev@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
-  - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
+  - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
 - See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression){target=_blank}
 - See [Index of problems detected by psalm](https://psalm.dev/docs/running_psalm/issues/){target=_blank}
 
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                              | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -46,17 +46,17 @@ Use psalm in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                          |                                                                                      Install                                                                                      |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics)       |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                           |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/getpsalm.psalm-vscode-plugin){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics)       |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                           |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/getpsalm.psalm-vscode-plugin){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        97        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                      | Embedded linters |                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor        |       103        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://oxsecurity.github.io/megalinter/latest/flavors/php/)       | Optimized for PHP based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -68,7 +68,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- psalm is called once with the list of files as arguments
+- psalm is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -273,152 +273,3 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 ```
 
-
-### Example success log
-
-```shell
-Results of psalm linter (version 4.3.1)
-See documentation on https://megalinter.github.io/descriptors/php_psalm/
------------------------------------------------
-
-[SUCCESS] .automation/test/php/php_good_1.php
-    Scanning files...
-    Analyzing files...
-    
-    ░
-    ------------------------------
-    No errors found!
-    ------------------------------
-    
-    Checks took 0.25 seconds and used 39.379MB of memory
-    Psalm was unable to infer types in the codebase
-
-[SUCCESS] .automation/test/php/php_good_2.php
-    Scanning files...
-    Analyzing files...
-    
-    ░
-    ------------------------------
-    No errors found!
-    ------------------------------
-    
-    Checks took 0.31 seconds and used 36.996MB of memory
-    Psalm was unable to infer types in the codebase
-
-```
-
-### Example error log
-
-```shell
-Results of psalm linter (version 4.3.1)
-See documentation on https://megalinter.github.io/descriptors/php_psalm/
------------------------------------------------
-
-[ERROR] .automation/test/php/php_bad_1.php
-    Scanning files...
-    Analyzing files...
-    
-    E
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:2 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:2 - Const pe98y is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:8 - Const r is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:10 - Const n0u823n is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:17 - Syntax error, unexpected '=' on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:18 - Const r is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:21 - Invalid numeric literal on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:24 - Const u3 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:28 - Const r08u2q098ry is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:40 - Syntax error, unexpected T_LNUMBER on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:42 - Const nq2yr09n2yr9 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:55 - Const y2n is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:61 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:61 - Const yr is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:68 - Const yr3 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
-    
-    
-    ------------------------------
-    15 errors found
-    ------------------------------
-    
-    Checks took 0.30 seconds and used 39.560MB of memory
-    Psalm was unable to infer types in the codebase
-
-[ERROR] .automation/test/php/php_bad_2.php
-    Scanning files...
-    Analyzing files...
-    
-    E
-    
-    ERROR: InvalidReturnType - ../../...automation/test/php/php_bad_2.php:4:12 - The declared return type 'array<array-key, string>' for takesAnInt is incorrect, got 'array{int, string(hello)}' (see https://psalm.dev/011)
-     * @return array<string>
-    
-    
-    ERROR: InvalidReturnStatement - ../../...automation/test/php/php_bad_2.php:7:12 - The inferred type 'array{int, string(hello)}' does not match the declared return type 'array<array-key, string>' for takesAnInt (see https://psalm.dev/128)
-        return [$i, "hello"];
-    
-    
-    ERROR: InvalidScalarArgument - ../../...automation/test/php/php_bad_2.php:11:12 - Argument 1 of takesAnInt expects int, string(some text) provided (see https://psalm.dev/012)
-    takesAnInt($data[0]);
-    
-    
-    ERROR: ParseError - ../../...automation/test/php/php_bad_2.php:15:1 - Syntax error, unexpected '}' on line 15 (see https://psalm.dev/173)
-    } elseif ($condition) {}
-    
-    
-    ------------------------------
-    4 errors found
-    ------------------------------
-    Psalm can automatically fix 1 of these issues.
-    Run Psalm again with 
-    --alter --issues=InvalidReturnType --dry-run
-    to see what it can fix.
-    ------------------------------
-    
-    Checks took 0.32 seconds and used 36.047MB of memory
-    Psalm was unable to infer types in the codebase
-
-```

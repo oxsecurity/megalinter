@@ -21,8 +21,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                    | Description                                                                                                                                                                                                         | Default value              |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
@@ -41,9 +41,9 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        97        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description               | Embedded linters |                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor |       103        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -56,7 +56,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- perlcritic is called one time by identified file
+- perlcritic is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -102,30 +102,3 @@ Usage:
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 ```
 
-
-### Example success log
-
-```shell
-Results of perlcritic linter (version 1.138)
-See documentation on https://megalinter.github.io/descriptors/perl_perlcritic/
------------------------------------------------
-
-[SUCCESS] .automation/test/perl/perl_good_1.pl
-    .automation/test/perl/perl_good_1.pl source OK
-
-[SUCCESS] .automation/test/perl/perl_good_2
-    .automation/test/perl/perl_good_2 source OK
-
-```
-
-### Example error log
-
-```shell
-Results of perlcritic linter (version 1.138)
-See documentation on https://megalinter.github.io/descriptors/perl_perlcritic/
------------------------------------------------
-
-[ERROR] .automation/test/perl/perl_bad_1.pl
-    Code before strictures are enabled at line 14, column 1.  See page 429 of PBP.  (Severity: 5)
-
-```

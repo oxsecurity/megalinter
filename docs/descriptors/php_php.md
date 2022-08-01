@@ -111,35 +111,3 @@ Usage: php [options] [-f] <file> [--] [args...]
 
 ### Installation on mega-linter Docker image
 
-
-### Example success log
-
-```shell
-Results of php linter (version 7.3.25)
-See documentation on https://megalinter.github.io/descriptors/php_php/
------------------------------------------------
-
-[SUCCESS] .automation/test/php/php_good_1.php
-    No syntax errors detected in .automation/test/php/php_good_1.php
-
-[SUCCESS] .automation/test/php/php_good_2.php
-    No syntax errors detected in .automation/test/php/php_good_2.php
-
-```
-
-### Example error log
-
-```shell
-Results of php linter (version 7.3.25)
-See documentation on https://megalinter.github.io/descriptors/php_php/
------------------------------------------------
-
-[ERROR] .automation/test/php/php_bad_1.php
-    PHP Parse error:  syntax error, unexpected 'pe98y' (T_STRING) in .automation/test/php/php_bad_1.php on line 3
-    Errors parsing .automation/test/php/php_bad_1.php
-
-[ERROR] .automation/test/php/php_bad_2.php
-    PHP Parse error:  syntax error, unexpected '}' in .automation/test/php/php_bad_2.php on line 15
-    Errors parsing .automation/test/php/php_bad_2.php
-
-```

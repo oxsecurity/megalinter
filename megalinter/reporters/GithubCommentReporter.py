@@ -93,7 +93,7 @@ class GithubCommentReporter(Reporter):
             m = re.compile("refs/pull/(\\d+)/merge").match(ref)
             if m is not None:
                 pr_id = m.group(1)
-                logging.info(f"Identified PR#{pr_id} from environment")
+                logging.debug(f"Identified PR#{pr_id} from environment")
                 try:
                     pr_list = [repo.get_pull(int(pr_id))]
                 except Exception as e:

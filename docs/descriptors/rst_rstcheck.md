@@ -13,8 +13,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -37,16 +37,16 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                  |                                                                                    Install                                                                                     |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor           |       103        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -58,7 +58,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rstcheck is called one time by identified file
+- rstcheck is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -126,27 +126,3 @@ Options:
 
 - PIP packages (Python):
   - [rstcheck](https://pypi.org/project/rstcheck)
-
-### Example success log
-
-```shell
-Results of rstcheck linter (version 3.3.1)
-See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
------------------------------------------------
-
-[SUCCESS] .automation/test/rst/rst_good_1.rst
-    
-
-```
-
-### Example error log
-
-```shell
-Results of rstcheck linter (version 3.3.1)
-See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
------------------------------------------------
-
-[ERROR] .automation/test/rst/rst_bad_1.rst
-    .automation/test/rst/rst_bad_1.rst:2: (WARNING/2) Title underline too short.
-
-```

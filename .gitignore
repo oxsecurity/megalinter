@@ -94,7 +94,7 @@ coverage.xml
 
 .automation/test/copypaste/good/report/
 
-**/report/*
+**/megalinter-reports/*
 !**/salesforce/report/*
 !**/salesforce/good/report/*
 !**/salesforce/bad/report/*

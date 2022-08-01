@@ -1,11 +1,11 @@
 ---
 site_name: MegaLinter by OX Security
-site_url: https://megalinter.github.io
-repo_url: https://github.com/megalinter/megalinter
+site_url: https://oxsecurity.github.io/megalinter
+repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 49 languages, 22 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 49 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -44,12 +44,12 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/ox-security/
     - icon: fontawesome/regular/circle-question
-      link: https://github.com/megalinter/megalinter/issues
+      link: https://github.com/oxsecurity/megalinter/issues
       title: Need help ? Post an issue :)
     - icon: fontawesome/brands/github
-      link: https://github.com/megalinter/megalinter
+      link: https://github.com/oxsecurity/megalinter
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/megalinter/megalinter
+      link: https://hub.docker.com/r/oxsecurity/megalinter
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/NicolasVuillamy
   generator: false
@@ -110,12 +110,14 @@ nav:
           - "LUA":
               - "All LUA linters": "descriptors/lua.md"
               - "luacheck": "descriptors/lua_luacheck.md"
+          - "MAKEFILE":
+              - "All MAKEFILE linters": "descriptors/makefile.md"
+              - "checkmake": "descriptors/makefile_checkmake.md"
           - "PERL":
               - "All PERL linters": "descriptors/perl.md"
               - "perlcritic": "descriptors/perl_perlcritic.md"
           - "PHP":
               - "All PHP linters": "descriptors/php.md"
-              - "php": "descriptors/php_php.md"
               - "phpcs": "descriptors/php_phpcs.md"
               - "phpstan": "descriptors/php_phpstan.md"
               - "psalm": "descriptors/php_psalm.md"
@@ -209,7 +211,6 @@ nav:
               - "All RST linters": "descriptors/rst.md"
               - "rst-lint": "descriptors/rst_rst_lint.md"
               - "rstcheck": "descriptors/rst_rstcheck.md"
-              - "rstfmt": "descriptors/rst_rstfmt.md"
           - "XML":
               - "All XML linters": "descriptors/xml.md"
               - "xmllint": "descriptors/xml_xmllint.md"
@@ -236,7 +237,6 @@ nav:
               - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
           - "DOCKERFILE":
               - "All DOCKERFILE linters": "descriptors/dockerfile.md"
-              - "dockerfilelint": "descriptors/dockerfile_dockerfilelint.md"
               - "hadolint": "descriptors/dockerfile_hadolint.md"
           - "EDITORCONFIG":
               - "All EDITORCONFIG linters": "descriptors/editorconfig.md"
@@ -276,16 +276,22 @@ nav:
           - "COPYPASTE":
               - "All COPYPASTE linters": "descriptors/copypaste.md"
               - "jscpd": "descriptors/copypaste_jscpd.md"
-          - "CREDENTIALS":
-              - "All CREDENTIALS linters": "descriptors/credentials.md"
-              - "secretlint": "descriptors/credentials_secretlint.md"
-          - "GIT":
-              - "All GIT linters": "descriptors/git.md"
-              - "git_diff": "descriptors/git_git_diff.md"
+          - "REPOSITORY":
+              - "All REPOSITORY linters": "descriptors/repository.md"
+              - "devskim": "descriptors/repository_devskim.md"
+              - "dustilock": "descriptors/repository_dustilock.md"
+              - "git_diff": "descriptors/repository_git_diff.md"
+              - "gitleaks": "descriptors/repository_gitleaks.md"
+              - "goodcheck": "descriptors/repository_goodcheck.md"
+              - "secretlint": "descriptors/repository_secretlint.md"
+              - "semgrep": "descriptors/repository_semgrep.md"
+              - "syft": "descriptors/repository_syft.md"
+              - "trivy": "descriptors/repository_trivy.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
+              - "proselint": "descriptors/spell_proselint.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
@@ -293,6 +299,7 @@ nav:
       - "GitHub Pull Request comments": "reporters/GitHubCommentReporter.md"
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
+      - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
       - "E-mail": "reporters/EmailReporter.md"
       - "File.io": "reporters/FileIoReporter.md"
@@ -304,7 +311,6 @@ nav:
       - "All flavors": "flavors.md"
       # flavors-start
       - "ci_light": "flavors/ci_light.md"
-      - "dart": "flavors/dart.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
       - "go": "flavors/go.md"
@@ -315,7 +321,7 @@ nav:
       - "ruby": "flavors/ruby.md"
       - "rust": "flavors/rust.md"
       - "salesforce": "flavors/salesforce.md"
-      - "scala": "flavors/scala.md"
+      - "security": "flavors/security.md"
       - "swift": "flavors/swift.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
@@ -327,6 +333,7 @@ nav:
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
+  - "They use MegaLinter": "all_users.md"
   - "Sponsoring": 'sponsor.md'
   - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":

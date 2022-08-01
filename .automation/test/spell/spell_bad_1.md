@@ -1,0 +1,3 @@
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)

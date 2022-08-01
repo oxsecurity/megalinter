@@ -4,14 +4,17 @@ Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
+import argparse
 import logging
 import multiprocessing as mp
 import os
+import shutil
 import sys
 
 import chalk as c
 import git
 from megalinter import (
+    Linter,
     config,
     flavor_factory,
     linter_factory,
@@ -19,7 +22,12 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import (
+    DEFAULT_DOCKER_WORKSPACE_DIR,
+    DEFAULT_REPORT_FOLDER_NAME,
+    ML_DOC_URL,
+)
+from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
 
 
@@ -37,14 +45,19 @@ class Megalinter:
     def __init__(self, params=None):
         if params is None:
             params = {}
+
+        # megalinter_exec cli variables
+        self.arg_input = None
+        self.arg_output = None
+        self.linter_version_only = None
+        self.load_cli_vars()
+
+        # Initialization for lint request cases
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
-        self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
-        self.report_folder = config.get(
-            "REPORT_OUTPUT_FOLDER",
-            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
-        )
+        self.megalinter_flavor = flavor_factory.get_image_flavor()
+        self.initialize_output()
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()
@@ -68,12 +81,14 @@ class Megalinter:
         self.filter_regex_exclude = None
         self.cli = params["cli"] if "cli" in params else False
         self.default_linter_activation = True
+        self.output_sarif = False
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list("ENABLE", [])
         self.enable_linters = config.get_list("ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list("DISABLE", [])
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
+        self.disable_errors_linters = config.get_list("DISABLE_ERRORS_LINTERS", [])
         self.manage_default_linter_activation()
         self.apply_fixes = config.get_list("APPLY_FIXES", "none")
         self.show_elapsed_time = (
@@ -84,7 +99,7 @@ class Megalinter:
         self.load_config_vars()
         # Runtime properties
         self.reporters = []
-        self.linters = []
+        self.linters: list[Linter] = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"
@@ -105,11 +120,25 @@ class Megalinter:
         self.compute_file_extensions()
         # Load MegaLinter reporters
         self.load_reporters()
+        logging.info(log_section_end("megalinter-init"))
 
     # Collect files, run linters on them and write reports
     def run(self):
 
+        # Manage case where we only want to return standalone linter version
+        if self.linter_version_only is True:
+            standalone_linter = self.linters[0]
+            linter_version = standalone_linter.get_linter_version()
+            logging.info(f"{standalone_linter.name}: {linter_version}")
+            return
+
         # Collect files for each identified linter
+        logging.info(
+            log_section_start(
+                "megalinter-file-listing",
+                "MegaLinter now collects the files to analyse",
+            )
+        )
         self.collect_files()
 
         # Process linters serial or parallel according to configuration
@@ -228,25 +257,48 @@ class Megalinter:
     def get_workspace(self):
         default_workspace = config.get("DEFAULT_WORKSPACE", "")
         github_workspace = config.get("GITHUB_WORKSPACE", "")
-        # Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint
-        if (
+        # Use CLI input argument
+        if self.arg_input is not None:
+            if os.path.isdir(self.arg_input):
+                # Absolute directory
+                return self.arg_input
+            else:
+                # Relative directory
+                logging.debug(
+                    f"[Context] workspace sent as input argument: {self.arg_input}"
+                )
+                assert os.path.isdir(
+                    DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
+                ), (
+                    f"--input directory not found at {DEFAULT_DOCKER_WORKSPACE_DIR}/"
+                    + self.arg_input
+                )
+                return DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
+        # Github action run without override of DEFAULT_WORKSPACE and using DEFAULT_DOCKER_WORKSPACE_DIR
+        elif (
             default_workspace == ""
             and github_workspace != ""
-            and os.path.isdir(github_workspace + "/tmp/lint")
+            and os.path.isdir(github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR)
         ):
             logging.debug(
-                "[Context] Github action run without override of DEFAULT_WORKSPACE - /tmp/lint"
+                "[Context] Github action run without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
-            return github_workspace + "/tmp/lint"
+            return github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR
         # Docker run without override of DEFAULT_WORKSPACE
         elif default_workspace != "" and os.path.isdir(
-            "/tmp/lint" + os.path.sep + default_workspace
+            DEFAULT_DOCKER_WORKSPACE_DIR + os.path.sep + default_workspace
         ):
             logging.debug(
                 "[Context] Docker run without override of DEFAULT_WORKSPACE"
-                f" - {default_workspace}/tmp/lint{os.path.sep + default_workspace}"
+                f" - {default_workspace}{DEFAULT_DOCKER_WORKSPACE_DIR}{os.path.sep + default_workspace}"
             )
-            return default_workspace + "/tmp/lint" + os.path.sep + default_workspace
+            return (
+                default_workspace
+                + DEFAULT_DOCKER_WORKSPACE_DIR
+                + os.path.sep
+                + default_workspace
+            )
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
@@ -254,11 +306,12 @@ class Megalinter:
             )
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE
-        elif os.path.isdir("/tmp/lint"):
+        elif os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR):
             logging.debug(
-                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - /tmp/lint"
+                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
-            return "/tmp/lint"
+            return DEFAULT_DOCKER_WORKSPACE_DIR
         # Github action with override of DEFAULT_WORKSPACE
         elif (
             default_workspace != ""
@@ -270,7 +323,7 @@ class Megalinter:
                 f" - {github_workspace + os.path.sep + default_workspace}"
             )
             return github_workspace + os.path.sep + default_workspace
-        # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
+        # Github action without override of DEFAULT_WORKSPACE and NOT using DEFAULT_DOCKER_WORKSPACE_DIR
         elif (
             default_workspace == ""
             and github_workspace != ""
@@ -278,7 +331,8 @@ class Megalinter:
             and os.path.isdir(github_workspace)
         ):
             logging.debug(
-                "[Context] Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                "[Context] Github action without override of DEFAULT_WORKSPACE"
+                f" and NOT using {DEFAULT_DOCKER_WORKSPACE_DIR}"
                 f" - {github_workspace}"
             )
             return github_workspace
@@ -289,6 +343,29 @@ class Megalinter:
                 f"DEFAULT_WORKSPACE: {default_workspace}\n"
                 f"GITHUB_WORKSPACE: {github_workspace}"
             )
+
+    # Manage CLI variables
+    def load_cli_vars(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--input", type=str, help="Input folder to lint")
+        parser.add_argument("--output", type=str, help="Output file or directory")
+        parser.add_argument(
+            "--linterversion",
+            nargs="?",
+            const="yes",
+            default=None,
+            help="Collect version of standalone linter",
+        )
+        args, _unknown = parser.parse_known_args()
+        # Input folder to lint
+        if args.input:
+            self.arg_input = args.input
+        # Report folder or file
+        if args.output:
+            self.arg_output = args.output
+        # Linter version
+        if args.linterversion == "yes":
+            self.linter_version_only = True
 
     # Manage configuration variables
     def load_config_vars(self):
@@ -323,6 +400,9 @@ class Megalinter:
             self.ignore_generated_files = (
                 config.get("IGNORE_GENERATED_FILES", "false") == "true"
             )
+        # Manage SARIF output
+        if config.get("SARIF_REPORTER", "") == "true":
+            self.output_sarif = True
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -347,16 +427,25 @@ class Megalinter:
             "enable_linters": self.enable_linters,
             "disable_descriptors": self.disable_descriptors,
             "disable_linters": self.disable_linters,
+            "disable_errors_linters": self.disable_errors_linters,
             "workspace": self.workspace,
             "github_workspace": self.github_workspace,
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
             "show_elapsed_time": self.show_elapsed_time,
+            "output_sarif": self.output_sarif,
         }
 
         # Build linters from descriptor files
         # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
-        if (
+        if self.megalinter_flavor == "none":
+            # Single linter docker image
+            unique_linter = config.get("SINGLE_LINTER")
+            all_linters = linter_factory.list_linters_by_name(
+                linter_init_params, [unique_linter]
+            )
+        elif (
+            # Flavored MegaLinter
             self.megalinter_flavor != "all"
             and config.get("FLAVOR_SUGGESTIONS", "true") != "true"
         ):
@@ -364,6 +453,7 @@ class Megalinter:
                 linter_init_params, self.megalinter_flavor
             )
         else:
+            # main flavor
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
@@ -571,6 +661,42 @@ class Megalinter:
         ignored_files = sorted(list(ignored_files))
         return ignored_files
 
+    def initialize_output(self):
+        self.report_folder = config.get(
+            "REPORT_OUTPUT_FOLDER",
+            config.get(
+                "OUTPUT_FOLDER",
+                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
+            ),
+        )
+        # Manage case when output is sent as argument.
+        if self.arg_output is not None:
+            if ".sarif" in self.arg_output:
+                if "/" in self.arg_output:
+                    # --output /logs/megalinter/myoutputfile.sarif
+                    self.report_folder = os.path.dirname(self.arg_output)
+                    config.set(
+                        "SARIF_REPORTER_FILE_NAME", os.path.basename(self.arg_output)
+                    )
+                else:
+                    # --output myoutputfile.sarif
+                    config.set("SARIF_REPORTER_FILE_NAME", self.arg_output)
+            elif os.path.isdir(self.arg_output):
+                # --output /logs/megalinter
+                self.report_folder = self.arg_output
+        # Do not initialize reports if report folder is none or false
+        if self.report_folder == "none" or self.report_folder == "false":
+            return
+        # Initialize output dir
+        os.makedirs(self.report_folder, exist_ok=True)
+        # Clear report folder if requested
+        if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
+            logging.info(
+                f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
+            )
+            shutil.rmtree(self.report_folder, ignore_errors=True)
+            os.makedirs(self.report_folder, exist_ok=True)
+
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
@@ -588,25 +714,37 @@ class Megalinter:
             else logging.INFO
         )
         log_file = (
-            self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
+            self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
         )
-        if not os.path.isdir(os.path.dirname(log_file)):
-            os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        logging.basicConfig(
-            force=True,
-            level=logging_level,
-            format="%(message)s",
-            handlers=[
-                logging.FileHandler(log_file, "w", "utf-8"),
-                logging.StreamHandler(sys.stdout),
-            ],
-        )
+        if config.get("LOG_FILE", "") == "none":
+            # Do not log console output in a file
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
+        else:
+            # Log console output in a file
+            if not os.path.isdir(os.path.dirname(log_file)):
+                os.makedirs(os.path.dirname(log_file), exist_ok=True)
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.FileHandler(log_file, "w", "utf-8"),
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
 
     @staticmethod
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("MegaLinter"))
+        logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -621,12 +759,16 @@ class Megalinter:
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
-        logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
-        # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
-        logging.info("GITHUB_REF: " + os.environ.get("GITHUB_REF", ""))
-        # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
-        logging.info("GITHUB_RUN_ID: " + os.environ.get("GITHUB_RUN_ID", ""))
-        logging.info("PAT: " + "set" if os.environ.get("PAT", "") != "" else "")
+        logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
+        if os.environ.get("GITHUB_REPOSITORY", "") != "":
+            logging.info(
+                "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
+            )
+            # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
+            logging.info("GITHUB_REF: " + os.environ.get("GITHUB_REF", ""))
+            # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
+            logging.info("GITHUB_RUN_ID: " + os.environ.get("GITHUB_RUN_ID", ""))
+            logging.info("PAT: " + "set" if os.environ.get("PAT", "") != "" else "")
         # Display config variables for debug mode
         for name, value in sorted(config.get_config().items()):
             logging.debug("" + name + "=" + str(value))
@@ -685,7 +827,11 @@ class Megalinter:
     # Propose legacy versions users to upgrade
     def manage_upgrade_message(self):
         mega_linter_version = config.get("BUILD_VERSION", "No docker image")
-        if "insiders" in mega_linter_version or "v4" in mega_linter_version:
+        if (
+            "insiders" in mega_linter_version
+            or "v4" in mega_linter_version
+            or "v5" in mega_linter_version
+        ):
             logging.warning(
                 c.yellow(
                     "#######################################################################"
@@ -693,20 +839,10 @@ class Megalinter:
             )
             logging.warning(
                 c.yellow(
-                    "MEGA-LINTER HAS A NEW V5 VERSION at https://github.com/megalinter/megalinter."
-                    " Please upgrade to it by:"
-                )
-            )
-            logging.warning(
-                c.yellow(
-                    "- Running the command at the root of your repo (requires node.js):"
-                    " npx mega-linter-runner --upgrade"
-                )
-            )
-            logging.warning(
-                c.yellow(
-                    "- Replace versions used by latest (v5 latest stable version) "
-                    "or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
+                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter .\n"
+                    + "Please upgrade your configuration by running the following command at the "
+                    + "root of your repository (requires node.js): \n"
+                    + c.green("npx mega-linter-runner --upgrade")
                 )
             )
             logging.warning(

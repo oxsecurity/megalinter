@@ -11,10 +11,10 @@
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.46.2**
+- Version in MegaLinter: **1.47.2**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
-  - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
+  - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
 - See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint){target=_blank}
 - See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/){target=_blank}
 
@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                     | Description                                                                                                                                                                                                         | Default value                                   |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -46,22 +46,22 @@ Use golangci-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                            |                                                                              Install                                                                              |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [go-plus](https://atom.io/packages/go-plus)                                                               |                                                 [Visit Web Site](https://atom.io/packages/go-plus){target=_blank}                                                 |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint)                            |                                       [Visit Web Site](https://github.com/weijiangan/flycheck-golangci-lint){target=_blank}                                       |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |                   [Visit Web Site](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites){target=_blank}                   |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland                                               | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html)                             |                               [Visit Web Site](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html){target=_blank}                                |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint)  |                                [Visit Web Site](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint){target=_blank}                                 |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [vim-go](https://github.com/fatih/vim-go)                                                                 |                                                 [Visit Web Site](https://github.com/fatih/vim-go){target=_blank}                                                  |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)                             | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [go-plus](https://atom.io/packages/go-plus)                                                               |                                                 [Visit Web Site](https://atom.io/packages/go-plus){target=_blank}                                                 |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint)                            |                                       [Visit Web Site](https://github.com/weijiangan/flycheck-golangci-lint){target=_blank}                                       |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |                   [Visit Web Site](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites){target=_blank}                   |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland                                               | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html)                             |                               [Visit Web Site](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html){target=_blank}                                |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint)  |                                [Visit Web Site](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint){target=_blank}                                 |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [vim-go](https://github.com/fatih/vim-go)                                                                 |                                                 [Visit Web Site](https://github.com/fatih/vim-go){target=_blank}                                                  |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)                             | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                     | Embedded linters |                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor       |        97        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)         | Optimized for GO based projects |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                     | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:--------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor       |       103        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://oxsecurity.github.io/megalinter/latest/flavors/go/)         | Optimized for GO based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 
 ## Behind the scenes
 
@@ -73,7 +73,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- golangci-lint is called one time by identified file
+- golangci-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -126,30 +126,3 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 ```
 
-
-### Example success log
-
-```shell
-Results of golangci-lint linter (version 1.33.0)
-See documentation on https://megalinter.github.io/descriptors/go_golangci_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/golang/golang_good_01.go
-    
-
-```
-
-### Example error log
-
-```shell
-Results of golangci-lint linter (version 1.33.0)
-See documentation on https://megalinter.github.io/descriptors/go_golangci_lint/
------------------------------------------------
-
-[ERROR] .automation/test/golang/golang_bad_01.go
-    level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
-    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1020: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
-    level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
-    level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
-
-```

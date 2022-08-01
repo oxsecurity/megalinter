@@ -6,15 +6,15 @@
 
 - Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme){target=_blank}
 - See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration){target=_blank}
-  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
+  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
 - See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules){target=_blank}
 
 [![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                         | Description                                                                                                                                                                                                         | Default value                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -35,10 +35,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor                     |       103        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://oxsecurity.github.io/megalinter/latest/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -50,7 +50,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- gherkin-lint is called one time by identified file
+- gherkin-lint is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -83,30 +83,3 @@ Options:
 
 - NPM packages (node.js):
   - [gherkin-lint](https://www.npmjs.com/package/gherkin-lint)
-
-### Example success log
-
-```shell
-Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/gherkin/gherkin_good_01.feature
-    
-
-```
-
-### Example error log
-
-```shell
-Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
------------------------------------------------
-
-[ERROR] .automation/test/gherkin/gherkin_bad_01.feature
-    .automation/test/gherkin/gherkin_bad_01.feature
-      8     Scenario name is already used in: .automation/test/gherkin/gherkin_bad_01.feature:4    no-dupe-scenario-names
-      11    Trailing spaces are not allowed                                                                  no-trailing-spaces
-      12    Multiple empty lines are not allowed                                                             no-multiple-empty-lines
-
-```

@@ -1,0 +1,335 @@
+descriptor_id: REPOSITORY
+descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+  - ci_light
+lint_all_files: true
+linters:
+  # DEVSKIM
+  - linter_name: devskim
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_text: |
+      Use `--ignore-globs` to ignore files and/or folders
+    linter_url: https://github.com/microsoft/DevSkim
+    linter_repo: https://github.com/microsoft/DevSkim
+    linter_rules_configuration_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
+    linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
+    linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - analyze
+    cli_sarif_args:
+      - --file-format
+      - sarif
+    cli_lint_extra_args_after:
+      - "."
+      - -E
+      - --ignore-globs
+      - "**/megalinter-reports/**"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(\\[.*\\])"
+    test_folder: devskim
+    examples:
+      - "devskim analyze ."
+      - "devskim analyze --file-format sarif ."
+    install:
+      apk:
+        - icu-libs
+        - libcurl
+        - libintl
+        - libssl1.1
+        - libstdc++
+        - lttng-ust-dev
+        - zlib
+        - zlib-dev
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+              && chmod +x dotnet-install.sh \
+              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+    ide:
+      vscode:
+        - name: VsCode DevSkim
+          url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
+
+  # DUSTILOCK
+  - class: DustilockLinter
+    linter_name: dustilock
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_url: https://github.com/Checkmarx/dustilock
+    linter_repo: https://github.com/Checkmarx/dustilock
+    linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - --recursive
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(error )"
+    linter_version_cache: "0.0.0"
+    test_folder: dustilock
+    examples:
+      - "dustilock"
+    install:
+      apk:
+        - go
+      dockerfile:
+        - |
+          RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
+              mkdir -p ${ML_THIRD_PARTY_DIR} && \
+              git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
+              cd ${ML_THIRD_PARTY_DIR} && \
+              go build && \
+              chmod +x dustilock && \
+              mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
+              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+  # GIT_DIFF
+  - linter_name: git_diff
+    lint_all_files: true
+    test_folder: git_diff
+    linter_text: Git diff checks for git conflicts markers in files
+    linter_url: https://git-scm.com
+    linter_repo: https://github.com/git/git
+    linter_spdx_license: LGPL-2.1
+    linter_megalinter_ref_url: never
+    cli_config_arg_name: ""
+    cli_executable: git
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "diff"
+      - "--check"
+    cli_help_arg_name: "--help"
+    examples:
+      - "git diff --check"
+
+  # GITLEAKS
+  - class: GitleaksLinter
+    linter_name: gitleaks
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
+    linter_url: https://github.com/zricethezav/gitleaks
+    linter_repo: https://github.com/zricethezav/gitleaks
+    linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
+    linter_rules_ignore_config_url: https://github.com/zricethezav/gitleaks#configuration
+    config_file_name: .gitleaks.toml
+    cli_config_arg_name: "-c"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - detect
+      - --no-git
+    cli_sarif_args:
+      - --report-format
+      - sarif
+      - --report-path
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args_after:
+      - "--verbose"
+      - "--source"
+      - "."
+    cli_help_arg_name: help
+    cli_version_arg_name: version
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "leaks found: ([0-9]+)"
+    test_folder: gitleaks
+    examples:
+      - "gitleaks detect --no-git --verbose --source ."
+      - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
+    install:
+      dockerfile:
+        - FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+        - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+
+  # GOODCHECK
+  - linter_name: goodcheck
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+    linter_url: https://sider.github.io/goodcheck/
+    linter_repo: https://github.com/sider/goodcheck
+    linter_rules_url: https://sider.github.io/goodcheck/docs/rules
+    linter_rules_configuration_url: https://sider.github.io/goodcheck/docs/configuration
+    active_only_if_file_found:
+      - goodcheck.yml
+    config_file_name: goodcheck.yml
+    cli_config_arg_name: "-c"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - check
+    cli_help_arg_name: "help"
+    test_folder: repository_goodcheck
+    examples:
+      - "goodcheck check"
+      - "goodcheck check -c goodcheck.yml"
+    install:
+      gem:
+        - goodcheck
+
+  # SECRETLINT
+  - class: SecretLintLinter
+    linter_name: secretlint
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
+    linter_url: https://github.com/secretlint/secretlint
+    linter_repo: https://github.com/secretlint/secretlint
+    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
+    linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
+    linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
+    linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
+    linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
+    config_file_name: .secretlintrc.json
+    cli_config_arg_name: "--secretlintrc"
+    cli_lint_mode: project
+    cli_lint_extra_args_after:
+      - "**/*"
+    cli_sarif_args:
+      - --format
+      - "@secretlint/secretlint-formatter-sarif"
+    cli_help_arg_name: "--help"
+    test_folder: credentials
+    examples:
+      - 'secretlint "*/**"'
+      - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
+    install:
+      npm:
+        - secretlint
+        - "@secretlint/secretlint-rule-preset-recommend"
+        - "@secretlint/secretlint-formatter-sarif"
+
+  # SEMGREP
+  - class: SemgrepLinter
+    linter_name: semgrep
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - security
+    linter_url: https://semgrep.dev/
+    linter_repo: https://github.com/returntocorp/semgrep
+    linter_text: |
+      To use SemGrep in MegaLinter you must define a list of rulesets to use.
+
+      Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
+
+      Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
+    linter_rules_url: https://semgrep.dev/r
+    linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
+    linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
+    linter_rules_ignore_config_url: https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore
+    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    cli_lint_mode: project
+    cli_config_arg_name: --config
+    cli_config_default_value: auto
+    cli_lint_extra_args:
+      - --error # Exit 1 when errors are found
+    cli_lint_extra_args_after:
+      - "{{WORKSPACE}}"
+    # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
+    cli_sarif_args:
+      - --sarif
+    cli_help_arg_name: -h
+    cli_help_extra_args: ["--help"]
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "files: ([0-9]+) findings."
+    test_folder: repository_semgrep
+    examples:
+      - "semgrep /tmp/lint"
+      - "semgrep "
+    install:
+      pip:
+        - semgrep
+    variables:
+      - name: REPOSITORY_SEMGREP_RULESETS
+        description: List of semgrep rulesets identifiers that you want to enforce
+        default_value: auto
+      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
+        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
+        default_value: ""
+    ide:
+      vscode:
+        - name: VsCode SemGrep
+          url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
+
+  # SYFT
+  - class: SyftLinter
+    linter_name: syft
+    can_output_sarif: true
+    descriptor_flavors:
+      - security
+    linter_url: https://github.com/anchore/syft
+    linter_repo: https://github.com/anchore/syft
+    linter_text: |
+      Builds a SBOM (Software Build Of Materials) from your repository
+    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    cli_lint_mode: project
+    config_file_name: .syft.yaml
+    cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - packages
+      - .
+    cli_sarif_args:
+      - --output
+      - json
+      - --file
+      - "{{SARIF_OUTPUT_FILE}}.syft.json"
+    test_folder: repository_syft
+    examples:
+      - "syft /tmp/lint"
+    install:
+      dockerfile:
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
+  # TRIVY
+  - linter_name: trivy
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
+    linter_text: |
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories
+    cli_lint_mode: project
+    cli_sarif_args:
+      - --format
+      - template
+      - --template
+      - "@/usr/local/bin/sarif.tpl"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args:
+      - fs
+      - --security-checks
+      - vuln,config
+      - --exit-code
+      - "1"
+    cli_lint_extra_args_after:
+      - "."
+    test_folder: trivy
+    examples:
+      - "trivy fs --security-checks vuln,config ."
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 && \
+              wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl && \
+              chmod 644 /usr/local/bin/sarif.tpl
+    ide:
+      vscode:
+        - name: VsCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

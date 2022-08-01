@@ -11,17 +11,17 @@
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.2.3**
+- Version in MegaLinter: **1.2.6**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/latest/configuration/#apply-fixes)
 
 | Variable                                            | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -42,19 +42,19 @@ Use terraform-fmt in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                                                    |                                                                                 Install                                                                                  |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [terraform-fmt](https://atom.io/packages/terraform-fmt)                                                                           |                                                 [Visit Web Site](https://atom.io/packages/terraform-fmt){target=_blank}                                                  |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [HashiCorp Terraform / HCL language support](https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support) |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7808"></iframe>                       |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [Terrafmt](https://packagecontrol.io/packages/Terrafmt)                                                                           |                                               [Visit Web Site](https://packagecontrol.io/packages/Terrafmt){target=_blank}                                               |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)                                    | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/HashiCorp.terraform){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [terraform-fmt](https://atom.io/packages/terraform-fmt)                                                                           |                                                 [Visit Web Site](https://atom.io/packages/terraform-fmt){target=_blank}                                                  |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [HashiCorp Terraform / HCL language support](https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support) |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7808"></iframe>                       |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [Terrafmt](https://packagecontrol.io/packages/Terrafmt)                                                                           |                                               [Visit Web Site](https://packagecontrol.io/packages/Terrafmt){target=_blank}                                               |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)                                    | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/HashiCorp.terraform){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)       | Default MegaLinter Flavor              |       103        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -66,7 +66,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- terraform-fmt is called one time by identified file
+- terraform-fmt is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -122,6 +122,7 @@ Global options (use these before the subcommand, if any):
 
 - Dockerfile commands :
 ```dockerfile
+FROM alpine/terragrunt:latest as terragrunt
 COPY --from=terragrunt /bin/terraform /usr/bin/
 ```
 

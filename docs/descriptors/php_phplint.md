@@ -6,14 +6,14 @@
 
 - Version in MegaLinter: **3.0**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
-  - If custom `.phplint.yml` config file is not found, [.phplint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
+  - If custom `.phplint.yml` config file is not found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
 [![phplint - GitHub](https://gh-card.dev/repos/overtrue/phplint.svg?fullname=)](https://github.com/overtrue/phplint){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable phplint by adding `PHP_PHPLINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable phplint by adding `PHP_PHPLINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable phplint by adding `PHP_PHPLINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable phplint by adding `PHP_PHPLINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -34,10 +34,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        97        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                      | Embedded linters |                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor        |       103        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://oxsecurity.github.io/megalinter/latest/flavors/php/)       | Optimized for PHP based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -49,7 +49,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- phplint is called once with the list of files as arguments
+- phplint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -123,9 +123,12 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
-RUN composer global require overtrue/phplint ^3.0 \
+RUN composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
     && composer global config bin-dir --absolute
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
+RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
+    && chmod +x phplint.phar \
+    && mv phplint.phar /usr/local/bin/phplint
+
 ```
 
