@@ -5,6 +5,41 @@ descriptor_flavors:
   - ci_light
 lint_all_files: true
 linters:
+  # CHECKOV
+  - linter_name: checkov
+    name: REPOSITORY_CHECKOV
+    can_output_sarif: true
+    descriptor_flavors:
+      - terraform
+      - security
+    linter_url: https://www.checkov.io/
+    linter_repo: https://github.com/bridgecrewio/checkov
+    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_rules_configuration_url: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
+    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
+    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
+    linter_megalinter_ref_url: "no"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config-file"
+    config_file_name: .checkov.yml
+    cli_sarif_args: ["--output", "sarif"]
+    sarif_default_output_file: ./results.sarif
+    cli_lint_extra_args:
+      - "--directory"
+      - "."
+    examples:
+      - "checkov --directory ."
+      - "checkov --directory . --output --sarif"
+    install:
+      dockerfile:
+        - |
+          RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+              && pip3 install --no-cache-dir checkov
+    ide:
+      vscode:
+        - name: Checkov
+          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+    test_folder: repository_checkov
   # DEVSKIM
   - linter_name: devskim
     can_output_sarif: true

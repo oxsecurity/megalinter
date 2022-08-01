@@ -66,6 +66,7 @@ jobs:
             "kotlin_ktlint",
             "php_psalm",
             "python_bandit",
+            "repository_checkov",
             "repository_devskim",
             "repository_dustilock",
             "repository_gitleaks",

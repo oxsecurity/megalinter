@@ -493,6 +493,11 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # devskim installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -573,9 +578,9 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # checkov installation
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
-
+# Next line commented because already managed by another linter
+# RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+#     && pip3 install --no-cache-dir checkov
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/
