@@ -49,7 +49,7 @@ npx mega-linter-runner
 ```
 
 ```shell
-npx mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY,REPOSITORY_SEMGREP,SPELL_CSPELL'"
+npx mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ### Pre-commit hook
