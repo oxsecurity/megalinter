@@ -15,7 +15,7 @@
 
 <!-- readme-header-end -->
 
-This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files. You can still use use the `.mega-linter.yml` [configuration file](#configuration) to specify environment variables. The package can also find linting configuration files which are not held in the root project e.g. .github/linters.
+This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files.
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
@@ -44,12 +44,8 @@ You can run mega-linter-runner without installation by using `npx`
 Examples:
 
 ```shell
-# Environment variables specified in .mega-linter.yml configuration file
+# Use default settings + .mega-linter.yml configuration file.
 npx mega-linter-runner
-```
-
-```shell
-npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ```shell
@@ -79,14 +75,14 @@ See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
 mega-linter-runner [OPTIONS]
 ```
 
-The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
+The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration). If settings are defined in both option flags and .mega-linter.yml, the priority is on option flags. 
 
 | Option                 | Description                                                                                                        | Default           |
 |------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
 | `--flavor`             | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
-| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory, you might also need double quotes around the single quotes  | <!-- -->          |
+| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory; you will also need double quotes around the single quotes when setting lists | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
 | `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                         | `v5`              |
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
@@ -106,9 +102,6 @@ mega-linter-runner
 mega-linter-runner -p myFolder --fix
 ```
 
-```shell
-mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
-```
 
 ## Configuration
 
