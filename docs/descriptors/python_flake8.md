@@ -4,7 +4,7 @@
 
 ## flake8 documentation
 
-- Version in MegaLinter: **5.0.1**
+- Version in MegaLinter: **5.0.2**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file is not found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
