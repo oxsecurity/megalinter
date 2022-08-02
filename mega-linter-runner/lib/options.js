@@ -122,7 +122,7 @@ module.exports = optionator({
       description: "Specify MegaLinter container name",
     },
     {
-      option: "removecontainer",
+      option: "remove-container",
       type: "Boolean",
       description: "Remove MegaLinter Docker container when done",
     },
