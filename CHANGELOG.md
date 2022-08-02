@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Support for automatic removal of Docker container when linting is finished
+- Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.47.3** on 2022-08-01
