@@ -75,7 +75,7 @@ See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
 mega-linter-runner [OPTIONS]
 ```
 
-The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration). If settings are defined in both option flags and .mega-linter.yml, the priority is on option flags. 
+The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration). Option flags take precedence over the configuration file.
 
 | Option                 | Description                                                                                                        | Default           |
 |------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
@@ -100,6 +100,10 @@ mega-linter-runner
 
 ```shell
 mega-linter-runner -p myFolder --fix
+```
+
+```shell
+npx mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 
