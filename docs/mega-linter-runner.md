@@ -103,7 +103,7 @@ mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
-npx mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'" -e 'SHOW_ELAPSED_TIME=true'
+mega-linter-runner --flavor python -e "'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 
