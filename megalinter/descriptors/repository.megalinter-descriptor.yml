@@ -27,6 +27,8 @@ linters:
     cli_lint_extra_args:
       - "--directory"
       - "."
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
     examples:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
