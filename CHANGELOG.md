@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.20.0 to **8.21.0** on 2022-08-01
   - [flake8](https://flake8.pycqa.org) from 5.0.1 to **5.0.2** on 2022-08-01
   - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.85** on 2022-08-01
+  - [flake8](https://flake8.pycqa.org) from 5.0.2 to **5.0.3** on 2022-08-02
+  - [checkov](https://www.checkov.io/) from 2.1.85 to **2.1.86** on 2022-08-02
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01
