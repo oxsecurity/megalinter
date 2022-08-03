@@ -5,17 +5,18 @@
 
 ## Linters
 
-| Linter                                 | Configuration key                      | Status                                                                                                                                     |
-|----------------------------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| [devskim](repository_devskim.md)       | [REPOSITORY](repository_devskim.md)    | [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits)         |
-| [dustilock](repository_dustilock.md)   | [REPOSITORY](repository_dustilock.md)  | [![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits)     |
-| [git_diff](repository_git_diff.md)     | [REPOSITORY](repository_git_diff.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/git/git)](https://github.com/git/git/commits)                             |
-| [gitleaks](repository_gitleaks.md)     | [REPOSITORY](repository_gitleaks.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/zricethezav/gitleaks)](https://github.com/zricethezav/gitleaks/commits)   |
-| [goodcheck](repository_goodcheck.md)   | [REPOSITORY](repository_goodcheck.md)  | [![GitHub last commit](https://img.shields.io/github/last-commit/sider/goodcheck)](https://github.com/sider/goodcheck/commits)             |
-| [secretlint](repository_secretlint.md) | [REPOSITORY](repository_secretlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) |
-| [semgrep](repository_semgrep.md)       | [REPOSITORY](repository_semgrep.md)    | [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits)   |
-| [syft](repository_syft.md)             | [REPOSITORY](repository_syft.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits)                   |
-| [trivy](repository_trivy.md)           | [REPOSITORY](repository_trivy.md)      | [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)       |
+| Linter                                 | Configuration key                           | Status                                                                                                                                     |
+|----------------------------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| [checkov](repository_checkov.md)       | [REPOSITORY_CHECKOV](repository_checkov.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)   |
+| [devskim](repository_devskim.md)       | [REPOSITORY](repository_devskim.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits)         |
+| [dustilock](repository_dustilock.md)   | [REPOSITORY](repository_dustilock.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits)     |
+| [git_diff](repository_git_diff.md)     | [REPOSITORY](repository_git_diff.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/git/git)](https://github.com/git/git/commits)                             |
+| [gitleaks](repository_gitleaks.md)     | [REPOSITORY](repository_gitleaks.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/zricethezav/gitleaks)](https://github.com/zricethezav/gitleaks/commits)   |
+| [goodcheck](repository_goodcheck.md)   | [REPOSITORY](repository_goodcheck.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/sider/goodcheck)](https://github.com/sider/goodcheck/commits)             |
+| [secretlint](repository_secretlint.md) | [REPOSITORY](repository_secretlint.md)      | [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) |
+| [semgrep](repository_semgrep.md)       | [REPOSITORY](repository_semgrep.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits)   |
+| [syft](repository_syft.md)             | [REPOSITORY](repository_syft.md)            | [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits)                   |
+| [trivy](repository_trivy.md)           | [REPOSITORY](repository_trivy.md)           | [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)       |
 
 ## Linted files
 

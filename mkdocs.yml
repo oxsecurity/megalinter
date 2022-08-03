@@ -278,6 +278,7 @@ nav:
               - "jscpd": "descriptors/copypaste_jscpd.md"
           - "REPOSITORY":
               - "All REPOSITORY linters": "descriptors/repository.md"
+              - "checkov": "descriptors/repository_checkov.md"
               - "devskim": "descriptors/repository_devskim.md"
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
