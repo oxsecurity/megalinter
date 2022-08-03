@@ -9,14 +9,12 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
 
-TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
-
-You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
-
 ## checkov documentation
 
 - Version in MegaLinter: **2.1.91**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
+- See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
+  - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
 
@@ -24,21 +22,20 @@ You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
 
 ## Configuration in MegaLinter
 
-- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable checkov by adding `REPOSITORY_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Disable checkov by adding `REPOSITORY_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_CHECKOV_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
-| TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
-| TERRAFORM_CHECKOV_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file` |
-| TERRAFORM_CHECKOV_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
-| TERRAFORM_CHECKOV_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| TERRAFORM_CHECKOV_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| TERRAFORM_CHECKOV_POST_COMMANDS | List of bash commands to run after the linter| None |
-| TERRAFORM_CHECKOV_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| REPOSITORY_CHECKOV_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_CHECKOV_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| REPOSITORY_CHECKOV_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| REPOSITORY_CHECKOV_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| REPOSITORY_CHECKOV_POST_COMMANDS | List of bash commands to run after the linter| None |
+| REPOSITORY_CHECKOV_CONFIG_FILE | checkov configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.checkov.yml` |
+| REPOSITORY_CHECKOV_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## IDE Integration
 
@@ -62,18 +59,25 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions: `.tf`
+- If this linter is active, all files will always be linted
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- checkov is called one time by identified file (`file` CLI lint mode)
+checkov is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using checkov configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` does not make checkov analyze only updated files
 
 ### Example calls
 
 ```shell
-checkov --file myfile.tf
+checkov --directory .
+```
+
+```shell
+checkov --directory . --output --sarif
 ```
 
 

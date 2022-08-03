@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.85 to **2.1.86** on 2022-08-02
   - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.2** on 2022-08-03
   - [checkov](https://www.checkov.io/) from 2.1.86 to **2.1.87** on 2022-08-03
+  - [checkov](https://www.checkov.io/) from 2.1.87 to **2.1.91** on 2022-08-03
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01
