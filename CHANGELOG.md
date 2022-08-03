@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.85** on 2022-08-01
   - [flake8](https://flake8.pycqa.org) from 5.0.2 to **5.0.3** on 2022-08-02
   - [checkov](https://www.checkov.io/) from 2.1.85 to **2.1.86** on 2022-08-02
+  - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.2** on 2022-08-03
+  - [checkov](https://www.checkov.io/) from 2.1.86 to **2.1.87** on 2022-08-03
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01
