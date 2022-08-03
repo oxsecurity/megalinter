@@ -6,4 +6,3 @@ skip-check:
   - CKV_DOCKER_3
   - CKV_DOCKER_7
   - CKV_GHA_2
-  
