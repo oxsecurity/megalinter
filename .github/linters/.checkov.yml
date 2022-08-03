@@ -1,0 +1,8 @@
+# You can see all available properties here: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
+quiet: true
+skip-check:
+  - CKV_DOCKER_1
+  - CKV_DOCKER_2
+  - CKV_DOCKER_3
+  - CKV_DOCKER_7
+  - CKV_GHA_2

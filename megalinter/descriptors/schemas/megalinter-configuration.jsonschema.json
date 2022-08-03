@@ -164,6 +164,7 @@
         "PYTHON_MYPY",
         "R_LINTR",
         "RAKU_RAKU",
+        "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
         "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GIT_DIFF",
