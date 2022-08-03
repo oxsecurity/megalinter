@@ -5599,7 +5599,7 @@
 
 <!-- readme-header-end -->
 
-<p>This package allows to run <a href="https://megalinter.github.io/">MegaLinter</a> locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files.</p>
+<p>This package allows to run <a href="https://megalinter.github.io/">MegaLinter</a> locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files</p>
 <p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
 <h2 id="installation">Installation</h2>
 <h3 id="pre-requisites">Pre-requisites</h3>
@@ -5612,11 +5612,8 @@
 </code></pre>
 <h3 id="no-installation">No installation</h3>
 <p>You can run mega-linter-runner without installation by using <code>npx</code></p>
-<p>Examples:</p>
-<pre><code class="language-shell"># Use default settings + .mega-linter.yml configuration file.
-npx mega-linter-runner
-</code></pre>
-<pre><code class="language-shell">npx mega-linter-runner --flavor python -e &quot;'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'&quot; -e 'SHOW_ELAPSED_TIME=true'
+<p>Example:</p>
+<pre><code class="language-shell">npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
 <h3 id="pre-commit-hook">Pre-commit hook</h3>
 <p>You can run mega-linter-runner as a <a href="https://pre-commit.com/">pre-commit</a> hook</p>
@@ -5632,7 +5629,7 @@ npx mega-linter-runner
 <h2 id="usage">Usage</h2>
 <pre><code class="language-shell">mega-linter-runner [OPTIONS]
 </code></pre>
-<p>The options are only related to mega-linter-runner. For MegaLinter options, please use a <code>.mega-linter.yml</code> <a href="#configuration">configuration file</a>. Option flags take precedence over the configuration file.</p>
+<p>The options are only related to mega-linter-runner. For MegaLinter options, please use a <code>.mega-linter.yml</code> <a href="#configuration">configuration file</a></p>
 <table>
 <thead>
 <tr>
@@ -5659,7 +5656,7 @@ npx mega-linter-runner
 </tr>
 <tr>
 <td><code>-e</code> <br/> <code>--env</code></td>
-<td>Environment variables for MegaLinter, following format <strong>'ENV_VAR_NAME=VALUE'</strong> <br/>Warning: Quotes are mandatory; you will also need double quotes around the single quotes when setting lists</td>
+<td>Environment variables for MegaLinter, following format <strong>'ENV_VAR_NAME=VALUE'</strong> <br/>Warning: Quotes are mandatory</td>
 <td><!-- --></td>
 </tr>
 <tr>
@@ -5705,7 +5702,7 @@ npx mega-linter-runner
 </code></pre>
 <pre><code class="language-shell">mega-linter-runner -p myFolder --fix
 </code></pre>
-<pre><code class="language-shell">mega-linter-runner --flavor python -e &quot;'DISABLE_LINTERS=PYTHON_BANDIT,PYTHON_PYLINT,PYTHON_MYPY'&quot; -e 'SHOW_ELAPSED_TIME=true'
+<pre><code class="language-shell">mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
 <h2 id="configuration">Configuration</h2>
 <p>You can generate a ready-to-use <a href="https://megalinter.github.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>
