@@ -666,6 +666,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/repository_checkov/</loc>
+         <lastmod>2022-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/repository_devskim/</loc>
          <lastmod>2022-08-03</lastmod>
          <changefreq>daily</changefreq>
