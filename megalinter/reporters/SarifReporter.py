@@ -225,5 +225,9 @@ class SarifReporter(Reporter):
                 location_item["startLine"] = 1
             if "endLine" in location_item and location_item["endLine"] == 0:
                 location_item["endLine"] = 1
+            if "startColumn" in location_item and location_item["startColumn"] == 0:
+                location_item["startColumn"] = 1
+            if "endColumn" in location_item and location_item["endColumn"] == 0:
+                location_item["endColumn"] = 1
             physical_location[location_key] = location_item
         return physical_location
