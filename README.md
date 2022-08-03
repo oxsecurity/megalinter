@@ -1039,12 +1039,13 @@ To help, you can also:
 
 ### Sites referring to MegaLinter
 
-#### Global
+#### Web Sites
 
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 - [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
+- [abhith.net](https://www.abhith.net/recommended/){target=_blank}
 
 #### Linters
 
