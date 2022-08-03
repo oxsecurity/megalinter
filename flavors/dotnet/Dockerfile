@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+FROM zricethezav/gitleaks:v8.9.0 as gitleaks
 #FROM__END
 
 ##################
@@ -273,6 +273,12 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+
+# checkmake installation
+RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
 
 
 # powershell installation

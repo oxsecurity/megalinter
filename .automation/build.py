@@ -24,6 +24,7 @@ import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
+from megalinter import utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -958,6 +959,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
                 "{target=_blank}"
             ]
+        # Ignore configuration
+        if (
+            hasattr(linter, "linter_rules_ignore_config_url")
+            and linter.linter_rules_ignore_config_url is not None
+        ):
+            linter_doc_md += [
+                f"- See [How to ignore files and directories with {linter.linter_name}]"
+                f"({linter.linter_rules_ignore_config_url})"
+                "{target=_blank}"
+            ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [
@@ -1329,7 +1340,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ["### How the linting is performed", ""]
         if linter.cli_lint_mode == "project":
             linter_doc_md += [
-                f"{linter.linter_name} is called once on the whole project directory",
+                f"{linter.linter_name} is called once on the whole project directory (`project` CLI lint mode)",
                 "",
                 "- filtering can not be done using MegaLinter configuration variables,"
                 f"it must be done using {linter.linter_name} configuration or ignore file (if existing)",
@@ -1337,11 +1348,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         elif linter.cli_lint_mode == "list_of_files":
             linter_doc_md += [
-                f"- {linter.linter_name} is called once with the list of files as arguments"
+                f"- {linter.linter_name} is called once with the list "
+                "of files as arguments (`list_of_files` CLI lint mode)"
             ]
         else:
             linter_doc_md += [
-                f"- {linter.linter_name} is called one time by identified file"
+                f"- {linter.linter_name} is called one time by identified file (`file` CLI lint mode)"
             ]
 
         linter_doc_md += ["", "### Example calls", ""]
@@ -2576,16 +2588,19 @@ def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
     # Call markdown-table-formatter with the list of files
     format_md_tables_command = ["bash", "format-tables.sh"]
-    logging.info("Running command: " + str(format_md_tables_command))
+    cwd = os.getcwd() + "/.automation"
+    logging.info("Running command: " + str(format_md_tables_command) + f" in cwd {cwd}")
     process = subprocess.run(
         format_md_tables_command,
         stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         universal_newlines=True,
-        cwd=os.getcwd() + "/.automation",
+        cwd=cwd,
         shell=True,
+        executable=None if sys.platform == "win32" else "/bin/bash",
     )
-    print(process.stdout)
-    print(process.stderr)
+    stdout = utils.decode_utf8(process.stdout)
+    logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
 def generate_version():

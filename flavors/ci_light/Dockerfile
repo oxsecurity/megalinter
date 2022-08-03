@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+FROM zricethezav/gitleaks:v8.9.0 as gitleaks
 #FROM__END
 
 ##################
@@ -149,6 +149,12 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+
+# checkmake installation
+RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
+
 
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/

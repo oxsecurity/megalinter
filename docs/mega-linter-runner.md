@@ -84,6 +84,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
 | `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
+| `--remove-container`   | Remove MegaLinter Docker container when done                                                                       | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 

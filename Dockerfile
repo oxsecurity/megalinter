@@ -16,7 +16,7 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+FROM zricethezav/gitleaks:v8.9.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -385,7 +385,7 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 
 # revive installation
-RUN go get -u github.com/mgechev/revive
+RUN go install github.com/mgechev/revive@latest
 
 # checkstyle installation
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
@@ -440,6 +440,12 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && luarocks install luacheck
 
 
+# checkmake installation
+RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
+
+
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 
@@ -486,6 +492,11 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
     && /opt/rakudo-pkg/bin/install-zef-as-user
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
+
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
 
 # devskim installation
 # Next line commented because already managed by another linter
@@ -567,9 +578,9 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # checkov installation
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
-
+# Next line commented because already managed by another linter
+# RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+#     && pip3 install --no-cache-dir checkov
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/

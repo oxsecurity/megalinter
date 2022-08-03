@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **2.13.6**
+- Version in MegaLinter: **2.13.7**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -54,7 +54,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                             | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       102        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       103        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
@@ -68,7 +68,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-sfdx-scanner-lwc is called once on the whole project directory
+sfdx-scanner-lwc is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using sfdx-scanner-lwc configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make sfdx-scanner-lwc analyze only updated files
@@ -219,7 +219,7 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
-=== We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
+WARNING: We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
 WARNING: In September 2022, v3.x of the Salesforce Code Analyzer will become the default version,
          and older versions, including your currently installed version, will no longer be supported.
          You can manually update to v3.x earlier for a smoother transition.

@@ -34,6 +34,11 @@
     "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
     "title": "martysweet/cfn-lint"
   },
+  "checkmake": {
+    "description": "experimental linter/analyzer for Makefiles. Contribute to mrtazz/checkmake development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/ef6a33ff4ba9b8f5c2285e94cbbbdd502ccb64f6c18462c0b9eae50d306bbc6e/mrtazz/checkmake",
+    "title": "GitHub - mrtazz/checkmake: experimental linter/analyzer for Makefiles"
+  },
   "checkov": {
     "description": "Prevent cloud misconfigurations during build-time for Terraform, Cloudformation, Kubernetes, Serverless framework and other infrastructure-as-code-languages with Checkov by Bridgecrew.",
     "image": null,

@@ -68,7 +68,7 @@ def build_markdown_summary(reporter_self, action_run_url):
     # Build markdown table
     table_data_raw.pop(0)
     writer = MarkdownTableWriter(headers=table_header, value_matrix=table_data_raw)
-    table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
+    table_content = str(writer)
     status = (
         "✅"
         if reporter_self.master.return_code == 0

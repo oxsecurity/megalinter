@@ -5,14 +5,55 @@ descriptor_flavors:
   - ci_light
 lint_all_files: true
 linters:
+  # CHECKOV
+  - linter_name: checkov
+    name: REPOSITORY_CHECKOV
+    can_output_sarif: true
+    descriptor_flavors:
+      - terraform
+      - security
+    linter_url: https://www.checkov.io/
+    linter_repo: https://github.com/bridgecrewio/checkov
+    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_rules_configuration_url: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
+    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
+    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
+    linter_megalinter_ref_url: "no"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config-file"
+    config_file_name: .checkov.yml
+    cli_sarif_args: ["--output", "sarif"]
+    sarif_default_output_file: ./results.sarif
+    cli_lint_extra_args:
+      - "--directory"
+      - "."
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
+    examples:
+      - "checkov --directory ."
+      - "checkov --directory . --output --sarif"
+    install:
+      dockerfile:
+        - |
+          RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+              && pip3 install --no-cache-dir checkov
+    ide:
+      vscode:
+        - name: Checkov
+          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+    test_folder: repository_checkov
   # DEVSKIM
   - linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
       - security
+    linter_text: |
+      Use `--ignore-globs` to ignore files and/or folders
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
+    linter_rules_configuration_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
+    linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     cli_lint_mode: project
     cli_lint_extra_args:
@@ -116,6 +157,7 @@ linters:
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
     linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
+    linter_rules_ignore_config_url: https://github.com/zricethezav/gitleaks#configuration
     config_file_name: .gitleaks.toml
     cli_config_arg_name: "-c"
     cli_lint_mode: project
@@ -141,7 +183,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.8.12 as gitleaks
+        - FROM zricethezav/gitleaks:v8.9.0 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -182,6 +224,7 @@ linters:
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
     linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
     linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
+    linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
     linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
     config_file_name: .secretlintrc.json
     cli_config_arg_name: "--secretlintrc"
@@ -212,12 +255,15 @@ linters:
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
     linter_text: |
-      If you do not want to use default semgrep recommended rules, you can send them as arguments
+      To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
-      Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
+      Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
+
+      Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
     linter_rules_url: https://semgrep.dev/r
     linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
     linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
+    linter_rules_ignore_config_url: https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore
     linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
     cli_lint_mode: project
     cli_config_arg_name: --config
@@ -288,9 +334,13 @@ linters:
       - all_flavors # Applicable to CI in any language project
       - ci_light
       - security
+    linter_text: |
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories
     cli_lint_mode: project
     cli_sarif_args:
       - --format
