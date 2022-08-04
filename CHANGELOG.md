@@ -11,6 +11,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Upgrade to dotnet 6.0 + `list_of_files` for dotnet-format CLI lint mode to improve performances (requires `.csproj` or `.vbproj` in the repo)
 
 - Linter versions upgrades
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.1 to **10.3.2** on 2022-08-01
+  - [flake8](https://flake8.pycqa.org) from 5.0.0 to **5.0.1** on 2022-08-01
+  - [checkov](https://www.checkov.io/) from 2.1.82 to **2.1.83** on 2022-08-01
 <!-- linter-versions-end -->
 
 ## [v6.2.0] - 2022-07-31

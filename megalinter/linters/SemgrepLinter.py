@@ -5,8 +5,7 @@ Use SemGrep to lint any type of file according to local config
 
 import logging
 
-from megalinter import Linter, config, flavor_factory
-from megalinter.tests.test_megalinter.helpers.utilstest import get_current_test_name
+from megalinter import Linter, config, flavor_factory, utils
 
 
 class SemgrepLinter(Linter):
@@ -19,7 +18,7 @@ class SemgrepLinter(Linter):
             if (
                 len(custom_rulesets) == 0
                 and len(config.get_list("REPOSITORY_SEMGREP_ARGUMENTS", [])) == 0
-                and "semgrep" not in get_current_test_name(full_name=True)
+                and "semgrep" not in utils.get_current_test_name(full_name=True)
             ):
                 logging.info(
                     "[SemgrepLinter] Deactivated because no ruleset has been defined"
