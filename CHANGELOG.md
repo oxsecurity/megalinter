@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [flake8](https://flake8.pycqa.org) from 5.0.3 to **5.0.4** on 2022-08-04
   - [syft](https://github.com/anchore/syft) from 0.53.2 to **0.53.4** on 2022-08-04
   - [kics](https://www.kics.io) from 1.5.12 to **1.5.13** on 2022-08-04
+  - [checkov](https://www.checkov.io/) from 2.1.92 to **2.1.94** on 2022-08-04
+  - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0** on 2022-08-04
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01
