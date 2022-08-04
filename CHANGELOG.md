@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
 - Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
 - Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
+- Fix collapsible sections in Gitlab console logs
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.47.3** on 2022-08-01
