@@ -47,7 +47,7 @@ linters:
       - '"./**/*"'
       - "--violations-cause-error"
       - "--outfile"
-      - "./report/sfdx-scanner-report-apex.csv"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-apex.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
