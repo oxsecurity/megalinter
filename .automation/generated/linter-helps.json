@@ -345,8 +345,8 @@
         "                                  input).",
         "  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the",
         "                                  given magic to the list of known python-",
-        "                                  magics (python3, python, capture, timeit,",
-        "                                  prun, pypy, time). Useful for formatting",
+        "                                  magics (python, timeit, capture, time,",
+        "                                  python3, pypy, prun). Useful for formatting",
         "                                  cells with custom python magics.",
         "  -S, --skip-string-normalization",
         "                                  Don't normalize string quotes or prefixes.",
@@ -974,7 +974,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2022.04.25",
+        "clj-kondo v2022.08.03",
         "",
         "",
         "Options:",
@@ -997,7 +997,7 @@
         "  nearest `.clj-kondo` directory in the current and parent directories.",
         "",
         "  --config <config>: config may be a file or an EDN expression. See",
-        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.04.25/doc/configuration",
+        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.08.03/doc/configuration",
         "",
         "  --config-dir <config-dir>: use this config directory instead of auto-detected",
         "    .clj-kondo dir.",
@@ -1680,7 +1680,7 @@
         "  --exclude-from-doctest EXCLUDE_FROM_DOCTEST",
         "                        Skip these files when running doctests",
         "",
-        "Installed plugins: mccabe: 0.7.0, pycodestyle: 2.9.0, pyflakes: 2.5.0"
+        "Installed plugins: mccabe: 0.7.0, pycodestyle: 2.9.1, pyflakes: 2.5.0"
     ],
     "gherkin-lint": [
         "Usage: gherkin-lint [options] <feature-files>",

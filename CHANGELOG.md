@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Support for automatic removal of Docker container when linting is finished
 - Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
 - Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
+- Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
 - Fix collapsible sections in Gitlab console logs
 
 - Linter versions upgrades
@@ -24,6 +25,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.86 to **2.1.87** on 2022-08-03
   - [checkov](https://www.checkov.io/) from 2.1.87 to **2.1.91** on 2022-08-03
   - [checkov](https://www.checkov.io/) from 2.1.91 to **2.1.92** on 2022-08-03
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.25 to **2022.08.03** on 2022-08-04
+  - [flake8](https://flake8.pycqa.org) from 5.0.3 to **5.0.4** on 2022-08-04
+  - [syft](https://github.com/anchore/syft) from 0.53.2 to **0.53.4** on 2022-08-04
+  - [kics](https://www.kics.io) from 1.5.12 to **1.5.13** on 2022-08-04
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01

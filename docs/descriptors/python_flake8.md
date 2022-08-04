@@ -4,7 +4,7 @@
 
 ## flake8 documentation
 
-- Version in MegaLinter: **5.0.3**
+- Version in MegaLinter: **5.0.4**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file is not found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -184,7 +184,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.9.0, pyflakes: 2.5.0
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.9.1, pyflakes: 2.5.0
 ```
 
 ### Installation on mega-linter Docker image
