@@ -164,6 +164,11 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # devskim installation
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
@@ -205,9 +210,9 @@ COPY --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 # checkov installation
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
-
+# Next line commented because already managed by another linter
+# RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+#     && pip3 install --no-cache-dir checkov
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/

@@ -8,13 +8,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Support for automatic removal of Docker container when linting is finished
+- Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
+- Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
+- Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
+- Fix collapsible sections in Gitlab console logs
+
 - Upgrade to dotnet 6.0 + `list_of_files` for dotnet-format CLI lint mode to improve performances (requires `.csproj` or `.vbproj` in the repo)
+
+- Linter versions upgrades
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.47.3** on 2022-08-01
+  - [eslint](https://eslint.org) from 8.20.0 to **8.21.0** on 2022-08-01
+  - [flake8](https://flake8.pycqa.org) from 5.0.1 to **5.0.2** on 2022-08-01
+  - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.85** on 2022-08-01
+  - [flake8](https://flake8.pycqa.org) from 5.0.2 to **5.0.3** on 2022-08-02
+  - [checkov](https://www.checkov.io/) from 2.1.85 to **2.1.86** on 2022-08-02
+  - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.2** on 2022-08-03
+  - [checkov](https://www.checkov.io/) from 2.1.86 to **2.1.87** on 2022-08-03
+  - [checkov](https://www.checkov.io/) from 2.1.87 to **2.1.91** on 2022-08-03
+  - [checkov](https://www.checkov.io/) from 2.1.91 to **2.1.92** on 2022-08-03
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.25 to **2022.08.03** on 2022-08-04
+  - [flake8](https://flake8.pycqa.org) from 5.0.3 to **5.0.4** on 2022-08-04
+  - [syft](https://github.com/anchore/syft) from 0.53.2 to **0.53.4** on 2022-08-04
+  - [kics](https://www.kics.io) from 1.5.12 to **1.5.13** on 2022-08-04
+  - [checkov](https://www.checkov.io/) from 2.1.92 to **2.1.94** on 2022-08-04
+  - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0** on 2022-08-04
+<!-- linter-versions-end -->
+
+## [v6.2.1] - 2022-08-01
+
+- Fix blocking bug in MegaLinter v6.2.0 core ([#1684](https://github.com/oxsecurity/megalinter/issues/1684) and [#1685](https://github.com/oxsecurity/megalinter/issues/1685))
 
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.1 to **10.3.2** on 2022-08-01
   - [flake8](https://flake8.pycqa.org) from 5.0.0 to **5.0.1** on 2022-08-01
   - [checkov](https://www.checkov.io/) from 2.1.82 to **2.1.83** on 2022-08-01
-<!-- linter-versions-end -->
 
 ## [v6.2.0] - 2022-07-31
 
