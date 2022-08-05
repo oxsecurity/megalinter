@@ -20,7 +20,7 @@ linters:
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     pre_commands:
       - command: dotnet --info
-        cwd: "workspace"
+        cwd: "root"
     cli_lint_mode: project
     cli_lint_extra_args:
       - analyze
