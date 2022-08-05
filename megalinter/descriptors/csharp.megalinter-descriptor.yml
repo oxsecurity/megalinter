@@ -34,6 +34,10 @@ linters:
     pre_commands:
       - command: dotnet --info
         cwd: "root"
+      - command: dotnet-format --version
+        cwd: "root"
+      - command: dotnet format --version
+        cwd: "root"
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "{{WORKSPACE}}"
