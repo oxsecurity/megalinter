@@ -13,6 +13,7 @@
 | KOTLIN_KTLINT            | oxsecurity/megalinter-only-kotlin_ktlint:v6            |      ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-kotlin_ktlint/v6)       |
 | PHP_PSALM                | oxsecurity/megalinter-only-php_psalm:v6                |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-php_psalm/v6)         |
 | PYTHON_BANDIT            | oxsecurity/megalinter-only-python_bandit:v6            |      ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-python_bandit/v6)       |
+| REPOSITORY_CHECKOV       | oxsecurity/megalinter-only-repository_checkov:v6       |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-repository_checkov/v6)    |
 | REPOSITORY_DEVSKIM       | oxsecurity/megalinter-only-repository_devskim:v6       |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-repository_devskim/v6)    |
 | REPOSITORY_DUSTILOCK     | oxsecurity/megalinter-only-repository_dustilock:v6     |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-repository_dustilock/v6)   |
 | REPOSITORY_GITLEAKS      | oxsecurity/megalinter-only-repository_gitleaks:v6      |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-repository_gitleaks/v6)    |
