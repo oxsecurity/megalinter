@@ -133,7 +133,7 @@ RUN npm install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \

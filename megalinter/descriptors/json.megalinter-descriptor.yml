@@ -8,15 +8,20 @@ file_extensions:
 linters:
   # JSONLINT
   - linter_name: jsonlint
-    linter_url: https://github.com/zaach/jsonlint
-    linter_repo: https://github.com/zaach/jsonlint
-    linter_megalinter_ref_url: https://github.com/zaach/jsonlint/pull/127
-    version_command_return_code: 1
+    linter_url: https://github.com/prantlf/jsonlint
+    linter_repo: https://github.com/prantlf/jsonlint
+    linter_rules_url: https://github.com/prantlf/jsonlint#configuration
+    linter_rules_configuration_url: https://github.com/prantlf/jsonlint#configuration
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: --config
+    config_file_name: .jsonlintrc
+    cli_lint_extra_args:
+      - --quiet
     examples:
-      - "jsonlint myfile.json"
+      - "jsonlint myfile1.json myfile2.json"
     install:
       npm:
-        - jsonlint
+        - "@prantlf/jsonlint"
   # ESLINT-PLUGIN-JSONC
   - linter_name: eslint-plugin-jsonc
     can_output_sarif: true
