@@ -127,6 +127,7 @@
         "GO_REVIVE",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
+        "HTML_DJLINT",
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
         "JAVASCRIPT_ES",
