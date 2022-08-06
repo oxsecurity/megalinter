@@ -19,7 +19,7 @@ linters:
       - golang
       - angular
 
-      For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to select django format 
+      For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to select django format
     linter_url: https://djlint.com/
     linter_repo: https://github.com/Riverside-Healthcare/djlint
     linter_rules_url: https://djlint.com/docs/linter/
