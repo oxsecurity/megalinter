@@ -124,7 +124,7 @@ RUN npm install --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \
