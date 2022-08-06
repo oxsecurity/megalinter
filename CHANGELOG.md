@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0** on 2022-08-04
   - [golangci-lint](https://golangci-lint.run/) from 1.47.3 to **1.48.0** on 2022-08-06
   - [checkov](https://www.checkov.io/) from 2.1.94 to **2.1.98** on 2022-08-06
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 1.6.3 to **11.6.0** on 2022-08-06
 <!-- linter-versions-end -->
 
 ## [v6.2.1] - 2022-08-01
