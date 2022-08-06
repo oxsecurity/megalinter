@@ -366,6 +366,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/html_djlint/</loc>
+         <lastmod>2022-08-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/html_htmlhint/</loc>
          <lastmod>2022-08-06</lastmod>
          <changefreq>daily</changefreq>

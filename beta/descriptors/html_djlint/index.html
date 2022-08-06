@@ -12,14 +12,14 @@
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/descriptors/gherkin/">
+        <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/descriptors/html_djlint/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>All GHERKIN linters - MegaLinter by OX Security</title>
+        <title>djlint - MegaLinter by OX Security</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gherkin" class="md-skip">
+        <a href="#djlint-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              All GHERKIN linters
+              djlint
             
           </span>
         </div>
@@ -2473,12 +2473,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -2710,12 +2712,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_5" type="checkbox" id="__nav_5_3_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_5" type="checkbox" id="__nav_5_3_5" checked>
       
       
       
@@ -2750,11 +2754,117 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../html_djlint/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          djlint
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         djlint
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#djlint-documentation" class="md-nav__link">
+    djlint documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-in-megalinter" class="md-nav__link">
+    Configuration in MegaLinter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    IDE Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#megalinter-flavours" class="md-nav__link">
+    MegaLinter Flavours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    Behind the scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Behind the scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-are-identified-applicable-files" class="md-nav__link">
+    How are identified applicable files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-linting-is-performed" class="md-nav__link">
+    How the linting is performed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-calls" class="md-nav__link">
+    Example calls
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
+    Installation on mega-linter Docker image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3345,14 +3455,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
       
       
       
@@ -3753,14 +3861,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_8" type="checkbox" id="__nav_5_4_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_8" type="checkbox" id="__nav_5_4_8" >
       
       
       
@@ -3781,66 +3887,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          All GHERKIN linters
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../gherkin/" class="md-nav__link">
         All GHERKIN linters
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
-    Linters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
-    Linted files
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
-    Configuration in MegaLinter
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5461,8 +5512,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5471,15 +5520,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
-    Linters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
-    Linted files
+  <a href="#djlint-documentation" class="md-nav__link">
+    djlint documentation
   </a>
   
 </li>
@@ -5488,6 +5530,68 @@
   <a href="#configuration-in-megalinter" class="md-nav__link">
     Configuration in MegaLinter
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    IDE Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#megalinter-flavours" class="md-nav__link">
+    MegaLinter Flavours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    Behind the scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Behind the scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-are-identified-applicable-files" class="md-nav__link">
+    How are identified applicable files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-linting-is-performed" class="md-nav__link">
+    How the linting is performed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-calls" class="md-nav__link">
+    Example calls
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
+    Installation on mega-linter Docker image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5503,41 +5607,49 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/gherkin.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/html_djlint.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->
+  <h1>djlint</h1>
+
+<!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please do not update manually -->
-<!-- Instead, update descriptor file at https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors/gherkin.yml -->
-<h1 id="gherkin">GHERKIN</h1>
-<h2 id="linters">Linters</h2>
-<table>
-<thead>
-<tr>
-<th>Linter</th>
-<th>Configuration key</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../gherkin_gherkin_lint/">gherkin-lint</a></td>
-<td><a href="../gherkin_gherkin_lint/">GHERKIN</a></td>
-<td><a href="https://github.com/vsiakka/gherkin-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vsiakka/gherkin-lint" /></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="linted-files">Linted files</h2>
+
+<div align="center">
+  <a href="https://djlint.com/" target="blank" title="Visit linter Web Site">
+    <img src="https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png" alt="djlint" height="150px" class="megalinter-banner">
+  </a>
+</div>
+
+<p><a href="https://github.com/Riverside-Healthcare/djlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint" /></a></p>
+<p>DjLint can analyse multiple formats of HTML:</p>
 <ul>
-<li>File extensions:<ul>
-<li><code>.feature</code></li>
+<li>html (default)</li>
+<li>django</li>
+<li>jinja</li>
+<li>nunjucks (for nunjucks and twig)</li>
+<li>handlebars (for handlebars and mustache)</li>
+<li>golang</li>
+<li>angular</li>
 </ul>
-</li>
+<p>For example, define <code>HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
+<h2 id="djlint-documentation">djlint documentation</h2>
+<ul>
+<li>Version in MegaLinter: <strong>1.9.4</strong></li>
+<li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
+<li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
+<li>See <a href="https://djlint.com/docs/linter/" target="_blank">Index of problems detected by djlint</a></li>
 </ul>
+<p><a href="https://github.com/Riverside-Healthcare/djlint" target="_blank"><img alt="djlint - GitHub" src="https://gh-card.dev/repos/Riverside-Healthcare/djlint.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
+<ul>
+<li>Enable djlint by adding <code>HTML_DJLINT</code> in <a href="https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable djlint by adding <code>HTML_DJLINT</code> in <a href="https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -5548,17 +5660,237 @@
 </thead>
 <tbody>
 <tr>
-<td>GHERKIN_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter</td>
+<td>HTML_DJLINT_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>GHERKIN_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter</td>
-<td></td>
+<td>HTML_DJLINT_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>HTML_DJLINT_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
+<td>Exclude no file</td>
+</tr>
+<tr>
+<td>HTML_DJLINT_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>list_of_files</code></td>
+</tr>
+<tr>
+<td>HTML_DJLINT_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
+<td><code>[".html", ".htm"]</code></td>
+</tr>
+<tr>
+<td>HTML_DJLINT_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>HTML_DJLINT_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>HTML_DJLINT_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>HTML_DJLINT_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
 </tr>
 </tbody>
 </table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use djlint in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th align="center">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
+<td><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-djlint">SublimeLinter-contrib-djlint</a></td>
+<td align="center"><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-djlint" target="_blank">Visit Web Site</a></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=monosans.djlint">djlint-vscode</a></td>
+<td align="center"><a href="vscode:extension/monosans.djlint" target="_blank"><img alt="Install in VsCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png" /></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
+<p>This linter is available in the following flavours</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th align="left">Flavor</th>
+<th align="left">Description</th>
+<th align="center">Embedded linters</th>
+<th align="right">Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/supported-linters/">all</a></td>
+<td align="left">Default MegaLinter Flavor</td>
+<td align="center">105</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/documentation/">documentation</a></td>
+<td align="left">MegaLinter for documentation projects</td>
+<td align="center">44</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/dotnet/">dotnet</a></td>
+<td align="left">Optimized for C, C++, C# or VB based projects</td>
+<td align="center">53</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/go/">go</a></td>
+<td align="left">Optimized for GO based projects</td>
+<td align="center">46</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/java/">java</a></td>
+<td align="left">Optimized for JAVA based projects</td>
+<td align="center">46</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/javascript/">javascript</a></td>
+<td align="left">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
+<td align="center">53</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/php/">php</a></td>
+<td align="left">Optimized for PHP based projects</td>
+<td align="center">48</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/python/">python</a></td>
+<td align="left">Optimized for PYTHON based projects</td>
+<td align="center">52</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/ruby/">ruby</a></td>
+<td align="left">Optimized for RUBY based projects</td>
+<td align="center">45</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/rust/">rust</a></td>
+<td align="left">Optimized for RUST based projects</td>
+<td align="center">45</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/">salesforce</a></td>
+<td align="left">Optimized for Salesforce based projects</td>
+<td align="center">47</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/swift/">swift</a></td>
+<td align="left">Optimized for SWIFT based projects</td>
+<td align="center">45</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/latest/flavors/terraform/">terraform</a></td>
+<td align="left">Optimized for TERRAFORM based projects</td>
+<td align="center">51</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>File extensions: <code>.html</code>, <code>.htm</code></li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<ul>
+<li>djlint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<pre><code class="language-shell">djlint myfile1.html myfile2.html
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Usage: djlint [OPTIONS] SRC ...
+
+  djLint · HTML template linter and formatter.
+
+Options:
+  --version                 Show the version and exit.
+  -e, --extension TEXT      File extension to check [default: html]
+  -i, --ignore TEXT         Codes to ignore. ex: &quot;H014,H017&quot;
+  --reformat                Reformat the file(s).
+  --check                   Check formatting on the file(s).
+  --indent INTEGER          Indent spacing. [default: 4]
+  --quiet                   Do not print diff when reformatting.
+  --profile TEXT            Enable defaults by template language. ops: django,
+                            jinja, nunjucks, handlebars, golang, angular, html
+                            [default: html]
+  --require-pragma          Only format or lint files that starts with a
+                            comment with the text 'djlint:on'
+  --lint                    Lint for common issues. [default option]
+  --use-gitignore           Use .gitignore file to extend excludes.
+  --warn                    Return errors as warnings.
+  --preserve-leading-space  Attempt to preserve leading space on text.
+  --preserve-blank-lines    Attempt to preserve blank lines.
+  --format-css              Also format contents of &lt;style&gt; tags.
+  --format-js               Also format contents of &lt;script&gt; tags.
+  -h, --help                Show this message and exit.
+</code></pre>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
+<ul>
+<li>PIP packages (Python):<ul>
+<li><a href="https://pypi.org/project/djlint">djlint</a></li>
+</ul>
+</li>
+</ul>
 
               
             </article>
@@ -5574,7 +5906,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../editorconfig_editorconfig_checker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: editorconfig-checker" rel="prev">
+        <a href="../html/" class="md-footer__link md-footer__link--prev" aria-label="Previous: All HTML linters" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -5583,20 +5915,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              editorconfig-checker
+              All HTML linters
             </div>
           </div>
         </a>
       
       
         
-        <a href="../gherkin_gherkin_lint/" class="md-footer__link md-footer__link--next" aria-label="Next: gherkin-lint" rel="next">
+        <a href="../html_htmlhint/" class="md-footer__link md-footer__link--next" aria-label="Next: htmlhint" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              gherkin-lint
+              htmlhint
             </div>
           </div>
           <div class="md-footer__button md-icon">
