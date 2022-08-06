@@ -23,9 +23,11 @@ class TextReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        # Super-Linter legacy variables
         output_format = config.get("OUTPUT_FORMAT", "")
-        if output_format.startswith("text"):
+        if not utils.can_write_in_repo(self.master):
+            self.is_active = False
+        elif output_format.startswith("text"):
+            # Super-Linter legacy variable
             self.is_active = True
         # MegaLinter vars (true by default)
         elif config.get("TEXT_REPORTER", "true") != "true":

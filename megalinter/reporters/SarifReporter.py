@@ -9,6 +9,7 @@ import random
 from json.decoder import JSONDecodeError
 
 from megalinter import Linter, Reporter, config
+from megalinter import utils
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
@@ -31,7 +32,9 @@ class SarifReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("SARIF_REPORTER", "false") == "true":
+        if not utils.can_write_in_repo(self.master):
+            self.is_active = False
+        elif config.get("SARIF_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):

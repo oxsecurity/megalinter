@@ -685,7 +685,7 @@ class Megalinter:
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
         # Do not initialize reports if report folder is none or false
-        if self.report_folder == "none" or self.report_folder == "false":
+        if not utils.can_write_in_repo(self):
             return
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)

@@ -30,6 +30,8 @@ class TapReporter(Reporter):
             self.is_active = True
         else:
             self.is_active = False
+        if not utils.can_write_in_repo(self.master):
+            self.is_active = False
         if self.is_active is True:
             # If TAP is active, we must lint file by file to have result file by file in TAP
             if self.master.cli_lint_mode == "list_of_files":
