@@ -297,3 +297,12 @@ def get_current_test_name(full_name=False):
         else:
             return current_name.split(":")[-1].split(" ")[0]
     return ""
+
+
+def can_write_report_files(megalinter_instance) -> bool:
+    if (
+        megalinter_instance.report_folder == "none"
+        or megalinter_instance.report_folder == "false"
+    ):
+        return False
+    return True
