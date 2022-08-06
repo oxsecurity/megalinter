@@ -17,7 +17,6 @@ linters:
     config_file_name: .jsonlintrc
     cli_lint_extra_args:
       - --quiet
-    version_command_return_code: 1
     examples:
       - "jsonlint myfile1.json myfile2.json"
     install:
