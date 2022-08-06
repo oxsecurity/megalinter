@@ -8,6 +8,18 @@ file_extensions:
 linters:
   # DJLINT
   - linter_name: djlint
+    linter_text: |
+      DjLint can analyse multiple formats of HTML:
+
+      - html (default)
+      - django
+      - jinja
+      - nunjucks (for nunjucks and twig)
+      - handlebars (for handlebars and mustache)
+      - golang
+      - angular
+
+      For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to select django format 
     linter_url: https://djlint.com/
     linter_repo: https://github.com/Riverside-Healthcare/djlint
     linter_rules_url: https://djlint.com/docs/linter/
