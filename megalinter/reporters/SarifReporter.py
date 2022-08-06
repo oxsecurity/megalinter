@@ -8,8 +8,7 @@ import os
 import random
 from json.decoder import JSONDecodeError
 
-from megalinter import Linter, Reporter, config
-from megalinter import utils
+from megalinter import Linter, Reporter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
