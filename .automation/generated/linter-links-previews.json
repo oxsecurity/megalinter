@@ -89,6 +89,11 @@
     "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",
     "title": "GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security \"linting\" capabilities."
   },
+  "djlint": {
+    "description": "Find common syntax errors, reformat to make your HTML templates shine! Supports django, jinja, nunjucks, twig, handlebars, mustache, golang, and more!",
+    "image": "https://www.djlint.com/static/img/icon.png",
+    "title": "HTML Template Linter and Formatter | djLint"
+  },
   "dockerfilelint": {
     "description": "An opinionated Dockerfile linter. Contribute to replicatedhq/dockerfilelint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/13105802?s=400&v=4",
