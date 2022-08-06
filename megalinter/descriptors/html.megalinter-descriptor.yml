@@ -16,7 +16,7 @@ linters:
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "found ([0-9]+) errors in"
+    cli_lint_errors_regex: "found ([0-9]+) errors"
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
