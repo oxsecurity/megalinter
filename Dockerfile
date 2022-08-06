@@ -144,6 +144,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'ansible-lint==6.0.2' \
           'cpplint' \
           'cfn-lint' \
+          'djlint' \
           'pylint' \
           'black' \
           'flake8' \
