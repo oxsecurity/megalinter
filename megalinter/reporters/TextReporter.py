@@ -24,7 +24,7 @@ class TextReporter(Reporter):
 
     def manage_activation(self):
         output_format = config.get("OUTPUT_FORMAT", "")
-        if not utils.can_write_in_repo(self.master):
+        if not utils.can_write_report_files(self.master):
             self.is_active = False
         elif output_format.startswith("text"):
             # Super-Linter legacy variable

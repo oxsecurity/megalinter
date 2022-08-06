@@ -57,7 +57,7 @@ class JsonReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if not utils.can_write_in_repo(self.master):
+        if not utils.can_write_report_files(self.master):
             self.is_active = False
         elif config.get("JSON_REPORTER", "false") == "true":
             self.is_active = True

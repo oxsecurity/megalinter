@@ -299,7 +299,7 @@ def get_current_test_name(full_name=False):
     return ""
 
 
-def can_write_in_repo(megalinter_instance) -> bool:
+def can_write_report_files(megalinter_instance) -> bool:
     if (
         megalinter_instance.report_folder == "none"
         or megalinter_instance.report_folder == "false"
