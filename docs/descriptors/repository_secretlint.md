@@ -16,6 +16,7 @@
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file is not found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
 - See [How to ignore files and directories with secretlint](https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore){target=_blank}
+  - If custom `.secretlintignore` ignore file is not found, [.secretlintignore](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintignore){target=_blank} will be used
 - See [Index of problems detected by secretlint](https://github.com/secretlint/secretlint#rule-packages){target=_blank}
 
 [![secretlint - GitHub](https://gh-card.dev/repos/secretlint/secretlint.svg?fullname=)](https://github.com/secretlint/secretlint){target=_blank}

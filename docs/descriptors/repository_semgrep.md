@@ -22,6 +22,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
 - See [How to ignore files and directories with semgrep](https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore){target=_blank}
+  - You can define a `.semgrepignore` file to ignore file and folders
 - See [Index of problems detected by semgrep](https://semgrep.dev/r){target=_blank}
 
 [![semgrep - GitHub](https://gh-card.dev/repos/returntocorp/semgrep.svg?fullname=)](https://github.com/returntocorp/semgrep){target=_blank}

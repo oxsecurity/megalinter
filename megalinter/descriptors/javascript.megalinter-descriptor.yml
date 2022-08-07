@@ -6,7 +6,8 @@ file_extensions:
   - ".js"
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: JAVASCRIPT_ES
     can_output_sarif: true
     file_extensions:
@@ -35,6 +36,8 @@ linters:
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"

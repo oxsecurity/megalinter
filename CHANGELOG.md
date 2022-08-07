@@ -16,6 +16,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add [djlint](https://www.djlint.com/) (HTML_DJLINT) to lint HTML files (html, django, jinja, nunjucks, handlebars, golang, angular)
 - Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<https://www.npmjs.com/package/@prantlf/jsonlint>) + use cli_lint_mode `list_of_files` to improve performances
 
+- Manage ignore files (like `.secretlintignore` or `.eslintignore`)
+  - Define ignore argument for client in descriptors
+  - Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)
+  - Update documentation generation to take in account this new configuration
+
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.47.3** on 2022-08-01
   - [eslint](https://eslint.org) from 8.20.0 to **8.21.0** on 2022-08-01

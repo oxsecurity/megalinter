@@ -1069,6 +1069,7 @@
         "selectfont",
         "semanticdb",
         "semgrep",
+        "semgrepignore",
         "separated",
         "serverhost",
         "serverport",
