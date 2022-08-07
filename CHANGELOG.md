@@ -8,40 +8,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Support for automatic removal of Docker container when linting is finished
-- Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
-- Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
-- Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
-- Fix collapsible sections in Gitlab console logs
-- Add [djlint](https://www.djlint.com/) (HTML_DJLINT) to lint HTML files (html, django, jinja, nunjucks, handlebars, golang, angular)
-- Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<https://www.npmjs.com/package/@prantlf/jsonlint>) + use cli_lint_mode `list_of_files` to improve performances
+- Linter versions upgrades
+<!-- linter-versions-end -->
 
-- Manage ignore files (like `.secretlintignore` or `.eslintignore`)
-  - Define ignore argument for client in descriptors
-  - Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)
-  - Update documentation generation to take in account this new configuration
+## [v6.3.0] - 2022-08-07
+
+- Linters
+
+  - Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
+  - Add [djlint](https://www.djlint.com/) (HTML_DJLINT) to lint HTML files (html, django, jinja, nunjucks, handlebars, golang, angular)
+  - Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<https://www.npmjs.com/package/@prantlf/jsonlint>) + use cli_lint_mode `list_of_files` to improve performances
+
+
+- Core
+  - Support for automatic removal of Docker container when linting is finished
+  - Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
+  - Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
+  - Fix collapsible sections in Gitlab console logs
+  - Manage ignore files (like `.secretlintignore` or `.eslintignore`)
+    - Define ignore argument for client in descriptors
+    - Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)
+    - Update documentation generation to take in account this new configuration
 
 - Linter versions upgrades
-  - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.47.3** on 2022-08-01
-  - [eslint](https://eslint.org) from 8.20.0 to **8.21.0** on 2022-08-01
-  - [flake8](https://flake8.pycqa.org) from 5.0.1 to **5.0.2** on 2022-08-01
-  - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.85** on 2022-08-01
-  - [flake8](https://flake8.pycqa.org) from 5.0.2 to **5.0.3** on 2022-08-02
-  - [checkov](https://www.checkov.io/) from 2.1.85 to **2.1.86** on 2022-08-02
-  - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.2** on 2022-08-03
-  - [checkov](https://www.checkov.io/) from 2.1.86 to **2.1.87** on 2022-08-03
-  - [checkov](https://www.checkov.io/) from 2.1.87 to **2.1.91** on 2022-08-03
-  - [checkov](https://www.checkov.io/) from 2.1.91 to **2.1.92** on 2022-08-03
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.25 to **2022.08.03** on 2022-08-04
-  - [flake8](https://flake8.pycqa.org) from 5.0.3 to **5.0.4** on 2022-08-04
-  - [syft](https://github.com/anchore/syft) from 0.53.2 to **0.53.4** on 2022-08-04
-  - [kics](https://www.kics.io) from 1.5.12 to **1.5.13** on 2022-08-04
-  - [checkov](https://www.checkov.io/) from 2.1.92 to **2.1.94** on 2022-08-04
-  - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0** on 2022-08-04
-  - [golangci-lint](https://golangci-lint.run/) from 1.47.3 to **1.48.0** on 2022-08-06
-  - [checkov](https://www.checkov.io/) from 2.1.94 to **2.1.98** on 2022-08-06
-  - [jsonlint](https://github.com/prantlf/jsonlint) from 1.6.3 to **11.6.0** on 2022-08-06
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.98**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.25 to **2022.08.03**
+  - [eslint](https://eslint.org) from 8.20.0 to **8.21.0**
+  - [flake8](https://flake8.pycqa.org) from 5.0.1 to **5.0.2**
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.48.0**
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 1.6.3 to **11.6.0**
+  - [kics](https://www.kics.io) from 1.5.12 to **1.5.13**
+  - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0**
+  - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.4**
 
 ## [v6.2.1] - 2022-08-01
 
