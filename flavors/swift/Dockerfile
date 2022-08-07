@@ -89,6 +89,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
           'ansible-lint==6.0.2' \
+          'djlint' \
           'semgrep' \
           'snakemake' \
           'proselint' \
@@ -116,7 +117,7 @@ RUN npm install --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \

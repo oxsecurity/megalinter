@@ -98,7 +98,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 WORKDIR /node-deps
 RUN npm install --ignore-scripts \
                 npm-groovy-lint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \

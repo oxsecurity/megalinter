@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 49 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 49 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -188,6 +188,7 @@ nav:
               - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
           - "HTML":
               - "All HTML linters": "descriptors/html.md"
+              - "djlint": "descriptors/html_djlint.md"
               - "htmlhint": "descriptors/html_htmlhint.md"
           - "JSON":
               - "All JSON linters": "descriptors/json.md"

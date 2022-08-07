@@ -144,6 +144,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'ansible-lint==6.0.2' \
           'cpplint' \
           'cfn-lint' \
+          'djlint' \
           'pylint' \
           'black' \
           'flake8' \
@@ -200,7 +201,7 @@ RUN npm install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \

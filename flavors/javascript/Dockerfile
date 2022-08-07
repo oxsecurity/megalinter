@@ -87,6 +87,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
           'ansible-lint==6.0.2' \
+          'djlint' \
           'semgrep' \
           'snakemake' \
           'proselint' \
@@ -132,7 +133,7 @@ RUN npm install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
