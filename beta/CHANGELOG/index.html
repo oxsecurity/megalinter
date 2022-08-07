@@ -5417,6 +5417,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v630-2022-08-07" class="md-nav__link">
+    [v6.3.0] - 2022-08-07
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v621-2022-08-01" class="md-nav__link">
     [v6.2.1] - 2022-08-01
   </a>
@@ -6081,6 +6088,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v630-2022-08-07" class="md-nav__link">
+    [v6.3.0] - 2022-08-07
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v621-2022-08-01" class="md-nav__link">
     [v6.2.1] - 2022-08-01
   </a>
@@ -6727,15 +6741,27 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Support for automatic removal of Docker container when linting is finished</li>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v630-2022-08-07">[v6.3.0] - 2022-08-07</h2>
+<ul>
+<li>
+<p>Linters</p>
+<ul>
 <li>Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version</li>
-<li>Fix SARIF when endColumn is 0 (<a href="https://github.com/oxsecurity/megalinter/issues/1702">#1702</a>)</li>
-<li>Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors</li>
-<li>Fix collapsible sections in Gitlab console logs</li>
 <li>Add <a href="https://www.djlint.com/">djlint</a> (HTML_DJLINT) to lint HTML files (html, django, jinja, nunjucks, handlebars, golang, angular)</li>
 <li>Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<a href="https://www.npmjs.com/package/@prantlf/jsonlint">https://www.npmjs.com/package/@prantlf/jsonlint</a>) + use cli_lint_mode <code>list_of_files</code> to improve performances</li>
 </ul>
+</li>
+</ul>
 <ul>
+<li>Core<ul>
+<li>Support for automatic removal of Docker container when linting is finished</li>
+<li>Fix SARIF when endColumn is 0 (<a href="https://github.com/oxsecurity/megalinter/issues/1702">#1702</a>)</li>
+<li>Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors</li>
+<li>Fix collapsible sections in Gitlab console logs</li>
 <li>Manage ignore files (like <code>.secretlintignore</code> or <code>.eslintignore</code>)<ul>
 <li>Define ignore argument for client in descriptors</li>
 <li>Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)</li>
@@ -6743,32 +6769,22 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.47.2 to <strong>1.47.3</strong> on 2022-08-01</li>
-<li><a href="https://eslint.org">eslint</a> from 8.20.0 to <strong>8.21.0</strong> on 2022-08-01</li>
-<li><a href="https://flake8.pycqa.org">flake8</a> from 5.0.1 to <strong>5.0.2</strong> on 2022-08-01</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.83 to <strong>2.1.85</strong> on 2022-08-01</li>
-<li><a href="https://flake8.pycqa.org">flake8</a> from 5.0.2 to <strong>5.0.3</strong> on 2022-08-02</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.85 to <strong>2.1.86</strong> on 2022-08-02</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.52.0 to <strong>0.53.2</strong> on 2022-08-03</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.86 to <strong>2.1.87</strong> on 2022-08-03</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.87 to <strong>2.1.91</strong> on 2022-08-03</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.91 to <strong>2.1.92</strong> on 2022-08-03</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.04.25 to <strong>2022.08.03</strong> on 2022-08-04</li>
-<li><a href="https://flake8.pycqa.org">flake8</a> from 5.0.3 to <strong>5.0.4</strong> on 2022-08-04</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.53.2 to <strong>0.53.4</strong> on 2022-08-04</li>
-<li><a href="https://www.kics.io">kics</a> from 1.5.12 to <strong>1.5.13</strong> on 2022-08-04</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.92 to <strong>2.1.94</strong> on 2022-08-04</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.32.0 to <strong>1.33.0</strong> on 2022-08-04</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.47.3 to <strong>1.48.0</strong> on 2022-08-06</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.94 to <strong>2.1.98</strong> on 2022-08-06</li>
-<li><a href="https://github.com/prantlf/jsonlint">jsonlint</a> from 1.6.3 to <strong>11.6.0</strong> on 2022-08-06</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.83 to <strong>2.1.98</strong></li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.04.25 to <strong>2022.08.03</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.20.0 to <strong>8.21.0</strong></li>
+<li><a href="https://flake8.pycqa.org">flake8</a> from 5.0.1 to <strong>5.0.2</strong></li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.47.2 to <strong>1.48.0</strong></li>
+<li><a href="https://github.com/prantlf/jsonlint">jsonlint</a> from 1.6.3 to <strong>11.6.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.5.12 to <strong>1.5.13</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.32.0 to <strong>1.33.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.52.0 to <strong>0.53.4</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
 <h2 id="v621-2022-08-01">[v6.2.1] - 2022-08-01</h2>
 <ul>
 <li>Fix blocking bug in MegaLinter v6.2.0 core (<a href="https://github.com/oxsecurity/megalinter/issues/1684">#1684</a> and <a href="https://github.com/oxsecurity/megalinter/issues/1685">#1685</a>)</li>
