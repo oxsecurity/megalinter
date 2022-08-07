@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6149,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 26655,
+                "stargazers_count": 26656,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 119,
@@ -127,15 +127,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-08-07T20:18:15Z",
+                "updated_at": "2022-08-07T22:09:03Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 26655,
-                "watchers_count": 26655,
+                "watchers": 26656,
+                "watchers_count": 26656,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 26655
+            "stargazers": 26656
         },
         {
             "info": {
@@ -672,8 +672,8 @@
                 "network_count": 113,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 35,
-                "open_issues_count": 35,
+                "open_issues": 36,
+                "open_issues_count": 36,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -716,9 +716,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-08-07T21:00:04Z",
+                "pushed_at": "2022-08-07T21:33:57Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 194433,
+                "size": 195477,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 761,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
@@ -824,8 +824,8 @@
                 "network_count": 123,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzNTc4OTkyNDA=",
                 "notifications_url": "https://api.github.com/repos/k8s-at-home/flux-cluster-template/notifications{?since,all,participating}",
-                "open_issues": 12,
-                "open_issues_count": 12,
+                "open_issues": 11,
+                "open_issues_count": 11,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/61287648?v=4",
                     "events_url": "https://api.github.com/users/k8s-at-home/events{/privacy}",
@@ -868,7 +868,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/k8s-at-home/flux-cluster-template/pulls{/number}",
-                "pushed_at": "2022-08-07T21:11:13Z",
+                "pushed_at": "2022-08-07T22:30:45Z",
                 "releases_url": "https://api.github.com/repos/k8s-at-home/flux-cluster-template/releases{/id}",
                 "size": 923,
                 "ssh_url": "git@github.com:k8s-at-home/flux-cluster-template.git",
@@ -969,8 +969,8 @@
                 "network_count": 89,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyMzA5OTk4MjY=",
                 "notifications_url": "https://api.github.com/repos/onedr0p/home-ops/notifications{?since,all,participating}",
-                "open_issues": 7,
-                "open_issues_count": 7,
+                "open_issues": 5,
+                "open_issues_count": 5,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/213795?v=4",
                     "events_url": "https://api.github.com/users/onedr0p/events{/privacy}",
@@ -993,7 +993,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-08-07T21:03:36Z",
+                "pushed_at": "2022-08-07T22:20:40Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
                 "size": 25833,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
@@ -1119,7 +1119,7 @@
                 "releases_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/releases{/id}",
                 "size": 430,
                 "ssh_url": "git@github.com:unixorn/zsh-quickstart-kit.git",
-                "stargazers_count": 555,
+                "stargazers_count": 556,
                 "stargazers_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/stargazers",
                 "statuses_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/statuses/{sha}",
                 "subscribers_count": 14,
@@ -1146,15 +1146,15 @@
                     "zshrc-enhancements"
                 ],
                 "trees_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/git/trees{/sha}",
-                "updated_at": "2022-08-07T07:43:26Z",
+                "updated_at": "2022-08-07T22:20:39Z",
                 "url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit",
                 "visibility": "public",
-                "watchers": 555,
-                "watchers_count": 555,
+                "watchers": 556,
+                "watchers_count": 556,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/unixorn/zsh-quickstart-kit",
-            "stargazers": 555
+            "stargazers": 556
         },
         {
             "info": {
@@ -1873,7 +1873,7 @@
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
                 "pushed_at": "2022-08-07T21:06:43Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 31240,
+                "size": 31241,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 156,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -5025,7 +5025,7 @@
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
                 "pushed_at": "2022-08-07T21:19:50Z",
                 "releases_url": "https://api.github.com/repos/jr0dd/home-ops/releases{/id}",
-                "size": 5117,
+                "size": 5119,
                 "ssh_url": "git@github.com:jr0dd/home-ops.git",
                 "stargazers_count": 27,
                 "stargazers_url": "https://api.github.com/repos/jr0dd/home-ops/stargazers",
