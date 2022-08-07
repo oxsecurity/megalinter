@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Add REPOSITORY_CHECKOV in all flavors
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.98 to **2.1.100** on 2022-08-07
   - [checkov](https://www.checkov.io/) from 2.1.100 to **2.1.102** on 2022-08-07

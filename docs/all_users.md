@@ -84,6 +84,13 @@ According to posted issues, there are many more private and self-hosted repos us
 [![bsrodrigs/terraform-aws-fully-connected-vpn - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-fully-connected-vpn.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn){target=_blank}
 [![MTUCI-VR/shooter-project - GitHub](https://gh-card.dev/repos/MTUCI-VR/shooter-project.svg?fullname=)](https://github.com/MTUCI-VR/shooter-project){target=_blank}
 [![lpmatos/docker-crypto-miner - GitHub](https://gh-card.dev/repos/lpmatos/docker-crypto-miner.svg?fullname=)](https://github.com/lpmatos/docker-crypto-miner){target=_blank}
+[![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
+[![eresturo/scanadf2docspell - GitHub](https://gh-card.dev/repos/eresturo/scanadf2docspell.svg?fullname=)](https://github.com/eresturo/scanadf2docspell){target=_blank}
+[![janderssonse/gradle-versions-filter-plugin - GitHub](https://gh-card.dev/repos/janderssonse/gradle-versions-filter-plugin.svg?fullname=)](https://github.com/janderssonse/gradle-versions-filter-plugin){target=_blank}
+[![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
+[![xenedium/xecours - GitHub](https://gh-card.dev/repos/xenedium/xecours.svg?fullname=)](https://github.com/xenedium/xecours){target=_blank}
+[![LiveEnhancementSuite/HSModule - GitHub](https://gh-card.dev/repos/LiveEnhancementSuite/HSModule.svg?fullname=)](https://github.com/LiveEnhancementSuite/HSModule){target=_blank}
+[![nujiak/recce - GitHub](https://gh-card.dev/repos/nujiak/recce.svg?fullname=)](https://github.com/nujiak/recce){target=_blank}
 [![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![tonic-team/tonic.site - GitHub](https://gh-card.dev/repos/tonic-team/tonic.site.svg?fullname=)](https://github.com/tonic-team/tonic.site){target=_blank}
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}

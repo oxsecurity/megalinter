@@ -274,6 +274,11 @@ RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releas
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 

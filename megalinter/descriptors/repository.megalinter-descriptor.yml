@@ -10,6 +10,7 @@ linters:
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
       - terraform
       - security
     linter_url: https://www.checkov.io/
