@@ -6736,6 +6736,14 @@
 <li>Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<a href="https://www.npmjs.com/package/@prantlf/jsonlint">https://www.npmjs.com/package/@prantlf/jsonlint</a>) + use cli_lint_mode <code>list_of_files</code> to improve performances</li>
 </ul>
 <ul>
+<li>Manage ignore files (like <code>.secretlintignore</code> or <code>.eslintignore</code>)<ul>
+<li>Define ignore argument for client in descriptors</li>
+<li>Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)</li>
+<li>Update documentation generation to take in account this new configuration</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Linter versions upgrades<ul>
 <li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.47.2 to <strong>1.47.3</strong> on 2022-08-01</li>
 <li><a href="https://eslint.org">eslint</a> from 8.20.0 to <strong>8.21.0</strong> on 2022-08-01</li>
