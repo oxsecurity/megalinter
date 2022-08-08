@@ -90,6 +90,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'djlint' \
           'semgrep' \
           'snakemake' \
+          'snakefmt' \
           'proselint' \
           'sqlfluff' \
           'yamllint'
@@ -122,6 +123,8 @@ RUN npm install --ignore-scripts \
                 v8r \
                 prettier \
                 markdownlint-cli \
+                remark-cli \
+                remark-preset-lint-recommended \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \
