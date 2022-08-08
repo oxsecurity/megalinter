@@ -454,17 +454,17 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull oxsecurity/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v5
+        docker pull oxsecurity/megalinter:v6
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v6
       displayName: 'MegaLinter analysis'
 
     # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifact@1
       displayName: 'Publish Artifact: MegaLinter Report'
       condition: succeededOrFailed()
       inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
-        ArtifactName: MegaLinterReport
+        targetPath: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
+        artifactName: MegaLinterReport
 ```
 
 ### Jenkins
