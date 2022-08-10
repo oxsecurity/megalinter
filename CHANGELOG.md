@@ -9,8 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Fix SARIF when a run is missing a results list ([#1725](https://github.com/oxsecurity/megalinter/issues/1725))
-
 - Add REPOSITORY_CHECKOV in all flavors
+- Fix missing quotes for Powershell script analyzer ([#1728](https://github.com/oxsecurity/megalinter/issues/1728))
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.98 to **2.1.100** on 2022-08-07
