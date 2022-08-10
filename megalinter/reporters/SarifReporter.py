@@ -217,7 +217,7 @@ class SarifReporter(Reporter):
                 else:
                     # make sure that there is a results entry so GitHub's SARIF validator doesn't cry
                     run["results"] = []
-                    
+
                 # Update run in full list
                 linter_sarif_obj["runs"][id_run] = run
         return linter_sarif_obj
