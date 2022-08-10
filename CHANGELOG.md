@@ -16,6 +16,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.98 to **2.1.100** on 2022-08-07
   - [checkov](https://www.checkov.io/) from 2.1.100 to **2.1.102** on 2022-08-07
   - [checkov](https://www.checkov.io/) from 2.1.102 to **2.1.103** on 2022-08-07
+  - [checkov](https://www.checkov.io/) from 2.1.103 to **2.1.106** on 2022-08-10
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.9.0 to **8.10.1** on 2022-08-10
+  - [rubocop](https://rubocop.org/) from 1.33.0 to **1.34.1** on 2022-08-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.5.0 to **6.6.0** on 2022-08-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.6 to **0.38.7** on 2022-08-10
 <!-- linter-versions-end -->
 
 ## [v6.3.0] - 2022-08-07
