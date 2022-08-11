@@ -36,6 +36,7 @@ class CSpellLinter(Linter):
                 "**/node_modules/**",
                 "**/vscode-extension/**",
                 "**/.git/**",
+                "**/.pnpm-lock.json",
                 ".vscode",
                 "package-lock.json",
                 DEFAULT_REPORT_FOLDER_NAME,
