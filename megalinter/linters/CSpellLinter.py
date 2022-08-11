@@ -57,7 +57,7 @@ Of course, please correct real typos before :)
 
         # Generate updated .cspell.json for manual update
         cspell_config_file = self.final_config_file
-        if os.path.isfile(cspell_config_file):
+        if cspell_config_file is not None and os.path.isfile(cspell_config_file):
             try:
                 with open(cspell_config_file, "r", encoding="utf-8") as json_file:
                     data = json.load(json_file)
