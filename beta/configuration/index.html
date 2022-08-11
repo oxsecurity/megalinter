@@ -5737,6 +5737,11 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <td>Name of MegaLinter configuration file. Can be defined remotely, in that case set this environment variable with the remote URL of <code>.mega-linter.yml</code> config file</td>
 </tr>
 <tr>
+<td><strong>MEGALINTER_FILES_TO_LINT</strong></td>
+<td>[]</td>
+<td>Comma-separated list of files to analyze. Using this variable will bypass other file listing methods</td>
+</tr>
+<tr>
 <td><strong>PARALLEL</strong></td>
 <td><code>true</code></td>
 <td>Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files</td>
@@ -5780,6 +5785,11 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <td><strong>SHOW_SKIPPED_LINTERS</strong></td>
 <td><code>true</code></td>
 <td>Displays all disabled linters mega-linter could have run</td>
+</tr>
+<tr>
+<td><strong>SKIP_CLI_LINT_MODES</strong></td>
+<td>[]</td>
+<td>Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: <code>file,project</code>). Available values: <code>file</code>,<code>cli_lint_mode</code>,<code>project</code>.</td>
 </tr>
 <tr>
 <td><strong>TYPESCRIPT_DEFAULT_STYLE</strong></td>
