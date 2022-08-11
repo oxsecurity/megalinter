@@ -55,11 +55,7 @@ Of course, please correct real typos before :)
         )
 
         # Generate updated .cspell.json for manual update
-        cspell_config_file = (
-            reporter_self.master.github_workspace
-            + os.path.sep
-            + reporter_self.master.config_file_name
-        )
+        cspell_config_file = self.final_config_file
         if os.path.isfile(cspell_config_file):
             try:
                 with open(cspell_config_file, "r", encoding="utf-8") as json_file:
