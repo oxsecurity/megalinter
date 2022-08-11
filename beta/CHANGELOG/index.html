@@ -6744,6 +6744,11 @@
 <li>Fix SARIF when a run is missing a results list (<a href="https://github.com/oxsecurity/megalinter/issues/1725">#1725</a>)</li>
 <li>Add REPOSITORY_CHECKOV in all flavors</li>
 <li>Fix missing quotes for Powershell script analyzer (<a href="https://github.com/oxsecurity/megalinter/issues/1728">#1728</a>)</li>
+<li>New config variables:<ul>
+<li><strong>MEGALINTER_FILES_TO_LINT</strong>: Comma-separated list of files to analyze. Using this variable will bypass other file listing methods (<a href="https://github.com/oxsecurity/megalinter/issues/808">#808</a>)</li>
+<li><strong>SKIP_CLI_LINT_MODES</strong>: Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: <code>file,project</code>). Available values: <code>file</code>,<code>cli_lint_mode</code>,<code>project</code>.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
