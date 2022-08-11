@@ -457,15 +457,25 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
-        # Remove inactive or disabled linters
+        # Remove inactive, disabled or skipped linters
+        skip_cli_lint_modes = config.get_list("SKIP_CLI_LINT_MODES", [])
         for linter in all_linters:
             linter.master = self
-            if linter.is_active is False or linter.disabled is True:
+            if (
+                linter.is_active is False
+                or linter.disabled is True
+                or linter.cli_lint_mode in skip_cli_lint_modes
+            ):
                 skipped_linters += [linter.name]
                 if linter.disabled is True:
                     logging.warning(
                         f"{linter.name} has been temporary disabled in MegaLinter, please use a "
                         "previous MegaLinter version or wait for the next one !"
+                    )
+                if linter.cli_lint_mode in skip_cli_lint_modes:
+                    logging.info(
+                        f"{linter.name} has been skipped because its CLI lint mode"
+                        " {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
                     )
                 continue
             self.linters += [linter]
@@ -501,7 +511,23 @@ class Megalinter:
     # Collect list of files matching extensions and regex
     def collect_files(self):
         # Collect not filtered list of files
-        if self.validate_all_code_base is False:
+        files_to_lint = config.get_list("MEGALINTER_FILES_TO_LINT", [])
+        if len(files_to_lint) > 0:
+            # Files sent as input parameter
+            all_files = list()
+            for file_to_lint in files_to_lint:
+                if os.path.isfile(self.workspace + os.path.sep + file_to_lint):
+                    all_files += [self.workspace + os.path.sep + file_to_lint]
+                else:
+                    logging.warning(
+                        "[File listing] Input file "
+                        + self.workspace
+                        + os.path.sep
+                        + file_to_lint
+                        + " not found"
+                    )
+        elif self.validate_all_code_base is False:
+            # List files using git diff
             try:
                 all_files = self.list_files_git_diff()
             except git.InvalidGitRepositoryError as git_err:
@@ -512,6 +538,7 @@ class Megalinter:
                 all_files = self.list_files_all()
                 self.validate_all_code_base = True
         else:
+            # List all files
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
 
