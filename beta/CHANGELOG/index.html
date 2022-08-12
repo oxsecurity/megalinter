@@ -5417,6 +5417,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v640-2022-08-12" class="md-nav__link">
+    [v6.4.0] - 2022-08-12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v630-2022-08-07" class="md-nav__link">
     [v6.3.0] - 2022-08-07
   </a>
@@ -6088,6 +6095,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v640-2022-08-12" class="md-nav__link">
+    [v6.4.0] - 2022-08-12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v630-2022-08-07" class="md-nav__link">
     [v6.3.0] - 2022-08-07
   </a>
@@ -6741,14 +6755,22 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Fix SARIF when a run is missing a results list (<a href="https://github.com/oxsecurity/megalinter/issues/1725">#1725</a>)</li>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v640-2022-08-12">[v6.4.0] - 2022-08-12</h2>
+<ul>
 <li>Add REPOSITORY_CHECKOV in all flavors</li>
-<li>Fix missing quotes for Powershell script analyzer (<a href="https://github.com/oxsecurity/megalinter/issues/1728">#1728</a>)</li>
-<li>New config variables:<ul>
+</ul>
+<ul>
+<li>New config variables<ul>
 <li><strong>MEGALINTER_FILES_TO_LINT</strong>: Comma-separated list of files to analyze. Using this variable will bypass other file listing methods (<a href="https://github.com/oxsecurity/megalinter/issues/808">#808</a>)</li>
 <li><strong>SKIP_CLI_LINT_MODES</strong>: Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: <code>file,project</code>). Available values: <code>file</code>,<code>cli_lint_mode</code>,<code>project</code>.</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li>mega-linter-runner:<ul>
 <li>Allow <code>MEGALINTER_FILES_TO_LINT</code> to be sent as positional arguments</li>
 <li>New argument <code>--filesonly</code> that sends <code>SKIP_CLI_LINT_MODES=project</code></li>
@@ -6757,34 +6779,29 @@
 </li>
 </ul>
 <ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.98 to <strong>2.1.100</strong> on 2022-08-07</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.100 to <strong>2.1.102</strong> on 2022-08-07</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.102 to <strong>2.1.103</strong> on 2022-08-07</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.103 to <strong>2.1.106</strong> on 2022-08-10</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.9.0 to <strong>8.10.1</strong> on 2022-08-10</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.33.0 to <strong>1.34.1</strong> on 2022-08-10</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.5.0 to <strong>6.6.0</strong> on 2022-08-10</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.6 to <strong>0.38.7</strong> on 2022-08-10</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.106 to <strong>2.1.113</strong> on 2022-08-10</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.113 to <strong>2.1.114</strong> on 2022-08-11</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.10.1 to <strong>8.10.2</strong> on 2022-08-11</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.12.0 to <strong>7.12.1</strong> on 2022-08-11</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.6.0 to <strong>6.6.1</strong> on 2022-08-11</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.61.4 to <strong>0.61.5</strong> on 2022-08-12</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.9.1 to <strong>14.10.0</strong> on 2022-08-12</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.2.5 to <strong>7.2.6</strong> on 2022-08-12</li>
-<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.38.3 to <strong>0.39.0</strong> on 2022-08-12</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.114 to <strong>2.1.120</strong> on 2022-08-12</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.62 to <strong>0.1.63</strong> on 2022-08-12</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.6 to <strong>1.2.7</strong> on 2022-08-12</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.120 to <strong>2.1.121</strong> on 2022-08-12</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.34.1 to <strong>1.35.0</strong> on 2022-08-12</li>
+<li>Fixes<ul>
+<li>Fix SARIF when a run is missing a results list (<a href="https://github.com/oxsecurity/megalinter/issues/1725">#1725</a>)</li>
+<li>Fix missing quotes for Powershell script analyzer (<a href="https://github.com/oxsecurity/megalinter/issues/1728">#1728</a>)</li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.61.4 to <strong>0.61.5</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.100 to <strong>2.1.121</strong></li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.62 to <strong>0.1.63</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.5.0 to <strong>6.6.1</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.10.1 to <strong>8.10.1</strong></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.2.5 to <strong>7.2.6</strong></li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.38.3 to <strong>0.39.0</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.33.0 to <strong>1.35.0</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.12.0 to <strong>7.12.1</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.9.1 to <strong>14.10.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.6 to <strong>1.2.7</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.6 to <strong>0.38.7</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v630-2022-08-07">[v6.3.0] - 2022-08-07</h2>
 <ul>
 <li>
