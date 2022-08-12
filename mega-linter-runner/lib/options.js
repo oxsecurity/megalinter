@@ -75,6 +75,11 @@ module.exports = optionator({
       description: "Apply formatters and fixes in linted sources",
     },
     {
+      option: "filesonly",
+      type: "Boolean",
+      description: "Do not run linters with project as CLI lint mode",
+    },
+    {
       option: "json",
       alias: "j",
       type: "Boolean",
