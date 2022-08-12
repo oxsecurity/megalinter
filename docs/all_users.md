@@ -60,9 +60,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
+[![AliceO2Group/O2Physics - GitHub](https://gh-card.dev/repos/AliceO2Group/O2Physics.svg?fullname=)](https://github.com/AliceO2Group/O2Physics){target=_blank}
 [![chgl/kube-powertools - GitHub](https://gh-card.dev/repos/chgl/kube-powertools.svg?fullname=)](https://github.com/chgl/kube-powertools){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
-[![AliceO2Group/O2Physics - GitHub](https://gh-card.dev/repos/AliceO2Group/O2Physics.svg?fullname=)](https://github.com/AliceO2Group/O2Physics){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}
 [![curedao/docs - GitHub](https://gh-card.dev/repos/curedao/docs.svg?fullname=)](https://github.com/curedao/docs){target=_blank}
 [![practicalli/clojure-web-services - GitHub](https://gh-card.dev/repos/practicalli/clojure-web-services.svg?fullname=)](https://github.com/practicalli/clojure-web-services){target=_blank}
