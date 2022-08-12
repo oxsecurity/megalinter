@@ -29,6 +29,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.1 to **8.10.2** on 2022-08-11
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.0 to **7.12.1** on 2022-08-11
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.6.0 to **6.6.1** on 2022-08-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.4 to **0.61.5** on 2022-08-12
+  - [stylelint](https://stylelint.io) from 14.9.1 to **14.10.0** on 2022-08-12
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.5 to **7.2.6** on 2022-08-12
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.3 to **0.39.0** on 2022-08-12
+  - [checkov](https://www.checkov.io/) from 2.1.114 to **2.1.120** on 2022-08-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.62 to **0.1.63** on 2022-08-12
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.6 to **1.2.7** on 2022-08-12
 <!-- linter-versions-end -->
 
 ## [v6.3.0] - 2022-08-07
