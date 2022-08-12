@@ -67,7 +67,7 @@ See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
 ## Usage
 
 ```shell
-mega-linter-runner [OPTIONS]
+mega-linter-runner [OPTIONS] [FILES]
 ```
 
 The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
@@ -100,6 +100,10 @@ mega-linter-runner -p myFolder --fix
 
 ```shell
 mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+```
+
+```shell
+mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
 ```
 
 ## Configuration
