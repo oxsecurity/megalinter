@@ -6749,6 +6749,12 @@
 <li><strong>SKIP_CLI_LINT_MODES</strong>: Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: <code>file,project</code>). Available values: <code>file</code>,<code>cli_lint_mode</code>,<code>project</code>.</li>
 </ul>
 </li>
+<li>mega-linter-runner:<ul>
+<li>Allow <code>MEGALINTER_FILES_TO_LINT</code> to be sent as positional arguments</li>
+<li>New argument <code>--filesonly</code> that sends <code>SKIP_CLI_LINT_MODES=project</code></li>
+<li>Example: <code>mega-linter-runner --flavor python --release beta --filesonly megalinter/config.py megalinter/flavor_factory.py megalinter/MegaLinter.py</code></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
