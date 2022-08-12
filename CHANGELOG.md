@@ -40,6 +40,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.114 to **2.1.120** on 2022-08-12
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.62 to **0.1.63** on 2022-08-12
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.6 to **1.2.7** on 2022-08-12
+  - [checkov](https://www.checkov.io/) from 2.1.120 to **2.1.121** on 2022-08-12
+  - [rubocop](https://rubocop.org/) from 1.34.1 to **1.35.0** on 2022-08-12
 <!-- linter-versions-end -->
 
 ## [v6.3.0] - 2022-08-07
