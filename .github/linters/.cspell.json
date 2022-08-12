@@ -582,6 +582,7 @@
         "filemode",
         "fileoverview",
         "fileset",
+        "filesonly",
         "fixrules",
         "fkirc",
         "fkotlin",
