@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.62**
+- Version in MegaLinter: **0.1.63**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -86,7 +86,7 @@ OPTIONS:
         --frozen                Require Cargo.lock and cache are up to date
         --locked                Require Cargo.lock is up to date
         --offline               Run without accessing the network
-        --config <KEY=VALUE>    Override a configuration value (unstable)
+        --config <KEY=VALUE>    Override a configuration value
     -Z <FLAG>                   Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for
                                 details
     -h, --help                  Print help information

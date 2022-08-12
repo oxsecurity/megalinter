@@ -11,7 +11,7 @@
 
 ## stylelint documentation
 
-- Version in MegaLinter: **14.9.1**
+- Version in MegaLinter: **14.10.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -193,11 +193,12 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
     --formatter, -f               [default: "string"]
 
-      The output formatter: "compact", "json", "string", "tap", "unix" or "verbose".
+      The output formatter: "compact", "github", "json", "string", "tap", "unix" or "verbose".
 
     --custom-formatter
 
       Path to a JS file exporting a custom formatting function.
+      The file can either be a filesystem path, a module name, or a file to load from a dependency.
 
     --quiet, -q
 
