@@ -3,7 +3,7 @@ See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_fo
 -----------------------------------------------
 
 [ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb
-      vbdotnet\vbdotnet_bad_1.vb(3,20): error WHITESPACE: Fix whitespace formatting. Replace 4 characters with '\r\n\s\s\s\s'. [.automation\test\vbdotnet\vb_projecty.vbproj]
-      vbdotnet\vbdotnet_bad_1.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation\test\vbdotnet\vb_projecty.vbproj]
-      vbdotnet\vbdotnet_bad_1.vb(4,23): error WHITESPACE: Fix whitespace formatting. Replace 7 characters with '\r\n\s\s\s\s\s\s\s\s'. [.automation\test\vbdotnet\vb_projecty.vbproj]
+      .automation/test/vbdotnet/vbdotnet_bad_1.vb(3,20): error WHITESPACE: Fix whitespace formatting. Replace 4 characters with '\r\n\s\s\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+      .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation/test/vbdotnet/vb_projecty.vbproj]
+      .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,23): error WHITESPACE: Fix whitespace formatting. Replace 7 characters with '\r\n\s\s\s\s\s\s\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
 
