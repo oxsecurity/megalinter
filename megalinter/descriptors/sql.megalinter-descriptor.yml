@@ -58,9 +58,6 @@ linters:
     linter_rules_url: https://github.com/tsqllint/tsqllint#rule-configuration
     linter_rules_configuration_url: https://github.com/tsqllint/tsqllint#rule-configuration
     linter_rules_inline_disable_url: https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments
-    pre_commands:
-      - command: dotnet --info
-        cwd: "root"
     config_file_name: ".tsqllintrc"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
