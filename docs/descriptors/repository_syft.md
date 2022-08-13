@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.52.0**
+- Version in MegaLinter: **0.53.4**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -41,8 +41,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                       | Description               | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)     | Default MegaLinter Flavor |       103        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security    |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)     | Default MegaLinter Flavor |       104        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -90,14 +90,15 @@ Examples:
     syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, or generic filesystem directory
 
   You can also explicitly specify the scheme to use:
-    syft packages docker:yourrepo/yourimage:tag          explicitly use the Docker daemon
-    syft packages podman:yourrepo/yourimage:tag           explicitly use the Podman daemon
-    syft packages registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
-    syft packages docker-archive:path/to/yourimage.tar   use a tarball from disk for archives created from "docker save"
-    syft packages oci-archive:path/to/yourimage.tar      use a tarball from disk for OCI archives (from Skopeo or otherwise)
-    syft packages oci-dir:path/to/yourimage              read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
-    syft packages dir:path/to/yourproject                read directly from a path on disk (any directory)
-    syft packages file:path/to/yourproject/file          read directly from a path on disk (any single file)
+    syft packages docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
+    syft packages podman:yourrepo/yourimage:tag             explicitly use the Podman daemon
+    syft packages registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
+    syft packages docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from "docker save"
+    syft packages oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
+    syft packages oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
+    syft packages singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
+    syft packages dir:path/to/yourproject                  read directly from a path on disk (any directory)
+    syft packages file:path/to/yourproject/file            read directly from a path on disk (any single file)
 
 
 Available Commands:

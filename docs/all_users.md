@@ -35,9 +35,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
+[![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
-[![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![AlbanAndrieu/ansible-windows - GitHub](https://gh-card.dev/repos/AlbanAndrieu/ansible-windows.svg?fullname=)](https://github.com/AlbanAndrieu/ansible-windows){target=_blank}
 [![quackduck/secret - GitHub](https://gh-card.dev/repos/quackduck/secret.svg?fullname=)](https://github.com/quackduck/secret){target=_blank}
@@ -48,9 +48,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
+[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
 [![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
-[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
 [![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
@@ -84,6 +84,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![bsrodrigs/terraform-aws-fully-connected-vpn - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-fully-connected-vpn.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn){target=_blank}
 [![MTUCI-VR/shooter-project - GitHub](https://gh-card.dev/repos/MTUCI-VR/shooter-project.svg?fullname=)](https://github.com/MTUCI-VR/shooter-project){target=_blank}
 [![lpmatos/docker-crypto-miner - GitHub](https://gh-card.dev/repos/lpmatos/docker-crypto-miner.svg?fullname=)](https://github.com/lpmatos/docker-crypto-miner){target=_blank}
+[![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![tonic-team/tonic.site - GitHub](https://gh-card.dev/repos/tonic-team/tonic.site.svg?fullname=)](https://github.com/tonic-team/tonic.site){target=_blank}
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}
 [![ewencluley/final-curtain - GitHub](https://gh-card.dev/repos/ewencluley/final-curtain.svg?fullname=)](https://github.com/ewencluley/final-curtain){target=_blank}

@@ -218,6 +218,11 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
@@ -249,9 +254,9 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # checkov installation
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
-
+# Next line commented because already managed by another linter
+# RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+#     && pip3 install --no-cache-dir checkov
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/
