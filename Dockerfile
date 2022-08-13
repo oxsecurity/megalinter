@@ -357,9 +357,6 @@ COPY --from=shfmt /bin/shfmt /usr/bin/
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 
-# dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
-
 # dartanalyzer installation
 RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
@@ -587,10 +584,6 @@ COPY --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 COPY --from=kics /app/bin/assets /opt/kics/assets/
-
-# dotnet-format installation
-# Next line commented because already managed by another linter
-# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

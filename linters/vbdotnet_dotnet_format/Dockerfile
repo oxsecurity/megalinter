@@ -111,9 +111,6 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
-# dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
-
 #OTHER__END
 
 ######################

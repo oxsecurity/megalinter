@@ -238,9 +238,6 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
 # shfmt installation
 COPY --from=shfmt /bin/shfmt /usr/bin/
 
-# dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
-
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
@@ -313,10 +310,6 @@ RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global TSQLLint
-
-# dotnet-format installation
-# Next line commented because already managed by another linter
-# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 
