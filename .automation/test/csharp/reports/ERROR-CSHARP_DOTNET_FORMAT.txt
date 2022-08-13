@@ -1,10 +1,7 @@
-Results of dotnet-format linter (version 4.1.131201)
+Results of dotnet-format linter (version 6.3.322007)
 See documentation on https://megalinter.github.io/descriptors/csharp_dotnet_format/
 -----------------------------------------------
 
 [ERROR] .automation/test/csharp/csharp_bad_01.cs
-      Formatting code files in workspace '.automation/test/csharp'.
-      csharp/csharp_bad_01.cs(1,33): Fix whitespace formatting.
-      Formatted code file '.automation/test/csharp/csharp_bad_01.cs'.
-      Format complete in 1295ms.
+      .automation\test\csharp\csharp_bad_01.cs(5,18): error WHITESPACE: Fix whitespace formatting. Replace 1 characters with '\r\n\s\s\s\s'. [.automation\test\csharp\csharp_project.csproj]
 

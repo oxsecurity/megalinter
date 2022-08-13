@@ -1,12 +1,9 @@
-Results of dotnet-format linter (version 4.1.131201)
+Results of dotnet-format linter (version 6.3.322007)
 See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
 [ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb
-      Formatting code files in workspace '.automation/test/vbdotnet'.
-      vbdotnet/vbdotnet_bad_1.vb(4,4): Fix whitespace formatting.
-      vbdotnet/vbdotnet_bad_1.vb(4,20): Fix whitespace formatting.
-      vbdotnet/vbdotnet_bad_1.vb(5,7): Fix whitespace formatting.
-      Formatted code file '.automation/test/vbdotnet/vbdotnet_bad_1.vb'.
-      Format complete in 1188ms.
+      vbdotnet\vbdotnet_bad_1.vb(3,20): error WHITESPACE: Fix whitespace formatting. Replace 4 characters with '\r\n\s\s\s\s'. [.automation\test\vbdotnet\vb_projecty.vbproj]
+      vbdotnet\vbdotnet_bad_1.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation\test\vbdotnet\vb_projecty.vbproj]
+      vbdotnet\vbdotnet_bad_1.vb(4,23): error WHITESPACE: Fix whitespace formatting. Replace 7 characters with '\r\n\s\s\s\s\s\s\s\s'. [.automation\test\vbdotnet\vb_projecty.vbproj]
 
