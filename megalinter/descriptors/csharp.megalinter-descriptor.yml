@@ -34,6 +34,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
+      - "format"
       - "{{WORKSPACE}}"
       - "--verify-no-changes"
       - "--exclude"
