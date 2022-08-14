@@ -11,6 +11,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.5.0 to **10.0.0** on 2022-08-14
   - [checkov](https://www.checkov.io/) from 2.1.121 to **2.1.122** on 2022-08-14
+  - [eslint](https://eslint.org) from 8.21.0 to **8.22.0** on 2022-08-14
+  - [checkov](https://www.checkov.io/) from 2.1.122 to **2.1.123** on 2022-08-14
 <!-- linter-versions-end -->
 
 ## [v6.4.0] - 2022-08-12
