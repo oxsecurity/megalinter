@@ -345,8 +345,8 @@
         "                                  input).",
         "  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the",
         "                                  given magic to the list of known python-",
-        "                                  magics (prun, capture, time, timeit, python,",
-        "                                  pypy, python3). Useful for formatting cells",
+        "                                  magics (prun, timeit, time, python3, python,",
+        "                                  pypy, capture). Useful for formatting cells",
         "                                  with custom python magics.",
         "  -S, --skip-string-normalization",
         "                                  Don't normalize string quotes or prefixes.",
@@ -3140,8 +3140,7 @@
     "npm-groovy-lint": [
         "npm-groovy-lint [options]",
         "",
-        "  -p, --path path::String      Directory containing the files to lint (default: current directory) - default: .",
-        "  -f, --files String           Comma-separated list of Ant-style file patterns specifying files that must be included",
+        "  --ext [String]               Specify Groovy file extensions",
         "  -s, --source String          Source text to lint (if no path/files arguments)",
         "  --sourcefilepath String      Full path of the file whose content is sent in source argument",
         "  --parse                      Try to parse the source code with GroovyShell and return errors (use argument --no-parse if you want to deactivate)",
@@ -3172,7 +3171,9 @@
         "  --returnrules                Return rule descriptions and url if this argument is set",
         "  --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you want to enable them, use --insight option",
         "  -h, --help                   Show help (npm-groovy-lint -help OPTIONNAME to see option detail)",
-        "  -v, --version                Show version"
+        "  -v, --version                Show version",
+        "  -p, --path path::String      (DEPRECATED) Directory containing the files to lint (default: current directory) - default: .",
+        "  -f, --files String           (DEPRECATED) Comma-separated list of Ant-style file patterns specifying files that must be included"
     ],
     "perlcritic": [
         "Usage:",

@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **9.5.0**
+- Version in MegaLinter: **10.0.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -97,8 +97,7 @@ npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix
 ```shell
 npm-groovy-lint [options]
 
-  -p, --path path::String      Directory containing the files to lint (default: current directory) - default: .
-  -f, --files String           Comma-separated list of Ant-style file patterns specifying files that must be included
+  --ext [String]               Specify Groovy file extensions
   -s, --source String          Source text to lint (if no path/files arguments)
   --sourcefilepath String      Full path of the file whose content is sent in source argument
   --parse                      Try to parse the source code with GroovyShell and return errors (use argument --no-parse if you want to deactivate)
@@ -130,6 +129,8 @@ Note: command-line arguments have priority on config file properties - default: 
   --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you want to enable them, use --insight option
   -h, --help                   Show help (npm-groovy-lint -help OPTIONNAME to see option detail)
   -v, --version                Show version
+  -p, --path path::String      (DEPRECATED) Directory containing the files to lint (default: current directory) - default: .
+  -f, --files String           (DEPRECATED) Comma-separated list of Ant-style file patterns specifying files that must be included
 ```
 
 ### Installation on mega-linter Docker image
