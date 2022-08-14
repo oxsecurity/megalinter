@@ -32,9 +32,9 @@ linters:
     cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
-      - "npm-groovy-lint --path . --files myfile.groovy"
-      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
-      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
+      - "npm-groovy-lint myfile.groovy"
+      - "npm-groovy-lint -c .groovylintrc.json "
+      - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
     install:
       apk:
         - openjdk11
