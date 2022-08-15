@@ -10,9 +10,9 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-## Upgrade from MegaLinter v4
+## Upgrade to MegaLinter v6
 
-- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
+- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration from v4 or v5 to v6 :)
 
 ## Manual installation
 
@@ -172,7 +172,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v5'
+            image 'oxsecurity/megalinter:v6'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -200,7 +200,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v5
+  image: oxsecurity/megalinter:v6
   script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
