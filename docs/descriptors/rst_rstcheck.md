@@ -4,7 +4,7 @@
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.1.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -74,52 +74,71 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ### Help content
 
 ```shell
-Usage: rstcheck [OPTIONS] FILES...
 
-  CLI of rstcheck.
+ Usage: rstcheck [OPTIONS] FILES...
 
-  Enabled features: ['Toml']
+ CLI of rstcheck.
+ Enabled features: ['Toml']
+ Pass one ore more rst FILES to check. Can be files or directories if
+ --recursive is passed too. Pass "-" if you want to read from stdin.
 
-  Pass one ore more rst FILES to check. Can be files or directories if
-  --recursive is passed too. Pass "-" if you want to read from stdin.
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --config                         PATH   Config file to load. Can be a INI or │
+│                                         TOML file or directory. If a         │
+│                                         directory is passed it will be       │
+│                                         searched for .rstcheck.cfg |         │
+│                                         pyproject.toml | setup.cfg. If       │
+│                                         'NONE' is passed no config file is   │
+│                                         loaded at all.                       │
+│                                         [default: None]                      │
+│ --warn-unknown-settings                 Log a WARNING for unknown settings   │
+│                                         in config files. Can be hidden via   │
+│                                         --log-level.                         │
+│ --recursive              -r             Recursively search passed            │
+│                                         directories for RST files to check.  │
+│ --report-level                   LEVEL  The report level of the linting      │
+│                                         issues found. Valid levels are: INFO │
+│                                         | WARNING | ERROR | SEVERE | NONE.   │
+│                                         Defaults to INFO. Can be set in      │
+│                                         config file.                         │
+│                                         [default: None]                      │
+│ --log-level                      LEVEL  The log level of the application for │
+│                                         information that is not a linting    │
+│                                         issue. Valid levels are: DEBUG |     │
+│                                         INFO | WARNING | ERROR | CRITICAL.   │
+│                                         Defaults to WARNING.                 │
+│                                         [default: WARNING]                   │
+│ --ignore-directives              TEXT   Comma-separated-list of directives   │
+│                                         to add to the ignore list. Can be    │
+│                                         set in config file.                  │
+│                                         [default: None]                      │
+│ --ignore-roles                   TEXT   Comma-separated-list of roles to add │
+│                                         to the ignore list. Can be set in    │
+│                                         config file.                         │
+│                                         [default: None]                      │
+│ --ignore-substitutions           TEXT   Comma-separated-list of              │
+│                                         substitutions to add to the ignore   │
+│                                         list. Can be set in config file.     │
+│                                         [default: None]                      │
+│ --ignore-languages               TEXT   Comma-separated-list of languages    │
+│                                         for code-blocks to add to the ignore │
+│                                         list. The code in ignored            │
+│                                         code-blocks will not be checked for  │
+│                                         errors. Can be set in config file.   │
+│                                         [default: None]                      │
+│ --ignore-messages                REGEX  A regular expression to match        │
+│                                         linting issue messages against to    │
+│                                         ignore. Can be set in config file.   │
+│                                         [default: None]                      │
+│ --version                                                                    │
+│ --install-completion                    Install completion for the current   │
+│                                         shell.                               │
+│ --show-completion                       Show completion for the current      │
+│                                         shell, to copy it or customize the   │
+│                                         installation.                        │
+│ --help                                  Show this message and exit.          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
-Options:
-  --config PATH                Config file to load. Can be a INI or TOML file
-                               or directory. If a directory is passed it will
-                               be searched for .rstcheck.cfg | pyproject.toml
-                               | setup.cfg. If 'NONE' is passed no config file
-                               is loaded at all.
-  --warn-unknown-settings      Log a WARNING for unknown settings in config
-                               files. Can be hidden via --log-level.
-  -r, --recursive              Recursively search passed directories for RST
-                               files to check.
-  --report-level LEVEL         The report level of the linting issues found.
-                               Valid levels are: INFO | WARNING | ERROR |
-                               SEVERE | NONE. Defaults to INFO. Can be set in
-                               config file.
-  --log-level LEVEL            The log level of the application for
-                               information that is not a linting issue. Valid
-                               levels are: DEBUG | INFO | WARNING | ERROR |
-                               CRITICAL. Defaults to WARNING.  [default:
-                               WARNING]
-  --ignore-directives TEXT     Comma-separated-list of directives to add to
-                               the ignore list. Can be set in config file.
-  --ignore-roles TEXT          Comma-separated-list of roles to add to the
-                               ignore list. Can be set in config file.
-  --ignore-substitutions TEXT  Comma-separated-list of substitutions to add to
-                               the ignore list. Can be set in config file.
-  --ignore-languages TEXT      Comma-separated-list of languages for code-
-                               blocks to add to the ignore list. The code in
-                               ignored code-blocks will not be checked for
-                               errors. Can be set in config file.
-  --ignore-messages REGEX      A regular expression to match linting issue
-                               messages against to ignore. Can be set in
-                               config file.
-  --version
-  --install-completion         Install completion for the current shell.
-  --show-completion            Show completion for the current shell, to copy
-                               it or customize the installation.
-  --help                       Show this message and exit.
 ```
 
 ### Installation on mega-linter Docker image
