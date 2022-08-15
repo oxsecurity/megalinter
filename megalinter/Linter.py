@@ -71,6 +71,11 @@ class Linter:
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
         self.final_config_file = None
+        # Ignore file name and arg
+        self.ignore_file_name = None
+        self.cli_lint_ignore_arg_name = None
+        self.final_ignore_file = None
+        # Other
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
@@ -252,6 +257,9 @@ class Linter:
             self.config_file = None
             self.config_file_label = None
             self.config_file_error = None
+            self.ignore_file = None
+            self.ignore_file_label = None
+            self.ignore_file_error = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
             self.post_linter_status = (
@@ -337,6 +345,7 @@ class Linter:
             self.start_perf = None
             self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
+            self.remote_ignore_file_to_delete = None
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -391,6 +400,12 @@ class Linter:
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
+        # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
+        if self.cli_lint_ignore_arg_name is not None:
+            if config.exists(self.name + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(self.name + "_IGNORE_FILE")
+            elif config.exists(self.descriptor_id + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(self.descriptor_id + "_IGNORE_FILE")
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.name + "_RULES_PATH")
@@ -468,6 +483,80 @@ class Linter:
                 self.config_file_label = self.config_file.replace(
                     DEFAULT_DOCKER_WORKSPACE_DIR, ""
                 ).replace(self.TEMPLATES_DIR, "")
+
+        # Linter ignore file:
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
+        # 2: repo + ignore_file_name
+        # 3: linter_rules_path + ignore_file_name
+        # 4: workspace root + linter_rules_path + ignore_file_name
+        # 5: mega-linter default rules path + ignore_file_name
+        if (
+            self.ignore_file_name is not None
+            and self.ignore_file_name != "LINTER_DEFAULT"
+        ):
+            if self.linter_rules_path.startswith("http"):
+                if not self.linter_rules_path.endswith("/"):
+                    self.linter_rules_path += "/"
+                remote_ignore_file = self.linter_rules_path + self.ignore_file_name
+                local_ignore_file = self.workspace + os.path.sep + self.ignore_file_name
+                existing_before = os.path.isfile(local_ignore_file)
+                try:
+                    with urllib.request.urlopen(remote_ignore_file) as response, open(
+                        local_ignore_file, "wb"
+                    ) as out_file:
+                        shutil.copyfileobj(response, out_file)
+                        self.ignore_file_label = remote_ignore_file
+                        if existing_before is False:
+                            self.remote_ignore_file_to_delete = local_ignore_file
+                except urllib.error.HTTPError as e:
+                    self.ignore_file_error = (
+                        f"Unable to fetch {remote_ignore_file}\n{str(e)}\n"
+                        f" fallback to repository config or MegaLinter default ignore file"
+                    )
+                except Exception as e:
+                    self.ignore_file_error = (
+                        f"Unable to fetch {remote_ignore_file}\n{str(e)}\n"
+                        f" fallback to repository config or MegaLinter default ignore file"
+                    )
+            # in repo root (already here or fetched by code above)
+            if os.path.isfile(self.workspace + os.path.sep + self.ignore_file_name):
+                self.ignore_file = self.workspace + os.path.sep + self.ignore_file_name
+            # in user repo ./github/linters folder
+            elif os.path.isfile(
+                self.linter_rules_path + os.path.sep + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.linter_rules_path + os.path.sep + self.ignore_file_name
+                )
+            # in workspace root
+            elif os.path.isfile(
+                self.workspace
+                + os.path.sep
+                + self.linter_rules_path
+                + os.path.sep
+                + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.workspace
+                    + os.path.sep
+                    + self.linter_rules_path
+                    + os.path.sep
+                    + self.ignore_file_name
+                )
+            # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
+            elif os.path.isfile(
+                self.default_rules_location + os.path.sep + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.default_rules_location + os.path.sep + self.ignore_file_name
+                )
+            # Set ignore file label if not set by remote rule
+            if self.ignore_file is not None and self.ignore_file_label is None:
+                self.ignore_file_label = self.ignore_file.replace(
+                    DEFAULT_DOCKER_WORKSPACE_DIR, ""
+                ).replace(self.TEMPLATES_DIR, "")
+
         # User override of cli_lint_mode
         if config.exists(self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
@@ -597,6 +686,10 @@ class Linter:
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
+
+        # Delete locally copied remote ignore file if necessary
+        if self.remote_ignore_file_to_delete is not None:
+            os.remove(self.remote_ignore_file_to_delete)
 
         # Run commands defined in descriptor, or overridden by user in configuration
         pre_post_factory.run_linter_post_commands(self.master, self)
@@ -920,9 +1013,11 @@ class Linter:
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
         cmd = [self.cli_executable]
+
         # Add other lint cli arguments if defined
         self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
         cmd += self.cli_lint_extra_args
+
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
@@ -931,9 +1026,11 @@ class Linter:
             cmd[0] = self.cli_executable_fix
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
+
         # Add user-defined extra arguments if defined
         self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
         cmd += self.cli_lint_user_args
+
         # Add config arguments if defined (except for case when no_config_if_fix is True)
         if (
             self.cli_config_arg_name in cmd
@@ -957,13 +1054,19 @@ class Linter:
             # Default config value
             cmd += [self.cli_config_arg_name, self.cli_config_default_value]
             cmd += self.cli_config_extra_args
+
+        # Manage ignore arguments if necessary
+        cmd += self.get_ignore_arguments(cmd)
+
         # Manage SARIF arguments if necessary
         cmd += self.get_sarif_arguments()
+
         # Add other lint cli arguments after other arguments if defined
         self.cli_lint_extra_args_after = self.replace_vars(
             self.cli_lint_extra_args_after
         )
         cmd += self.cli_lint_extra_args_after
+
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
         if self.try_fix is True:
@@ -971,13 +1074,35 @@ class Linter:
                 cmd.remove(arg)
             if "--megalinter-fix-flag" in cmd:
                 cmd.remove("--megalinter-fix-flag")
+
         # Append file in command arguments
         if file is not None:
             cmd += [file]
+
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
             cmd += self.files
         return self.manage_docker_command(cmd)
+
+    # Manage ignore arguments
+    def get_ignore_arguments(self, cmd):
+        ignore_args = []
+        if (
+            self.ignore_file is not None
+            and self.cli_lint_ignore_arg_name is not None
+            and self.cli_lint_ignore_arg_name not in cmd
+            and self.cli_lint_ignore_arg_name not in self.cli_lint_extra_args_after
+        ):
+            self.final_ignore_file = self.ignore_file
+            if self.cli_docker_image is not None:
+                self.final_ignore_file = self.final_ignore_file.replace(
+                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
+                )
+            if self.cli_lint_ignore_arg_name.endswith("="):
+                ignore_args += [self.cli_lint_ignore_arg_name + self.final_ignore_file]
+            elif self.cli_lint_ignore_arg_name != "":
+                ignore_args += [self.cli_lint_ignore_arg_name, self.final_ignore_file]
+        return ignore_args
 
     # Manage SARIF arguments
     def get_sarif_arguments(self):

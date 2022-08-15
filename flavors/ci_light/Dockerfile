@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+FROM zricethezav/gitleaks:v8.10.2 as gitleaks
 #FROM__END
 
 ##################
@@ -98,7 +98,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 WORKDIR /node-deps
 RUN npm install --ignore-scripts \
                 npm-groovy-lint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \

@@ -969,6 +969,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"({linter.linter_rules_ignore_config_url})"
                 "{target=_blank}"
             ]
+            if linter.ignore_file_name is not None:
+                ignore_file = f"TEMPLATES{os.path.sep}{linter.ignore_file_name}"
+                if os.path.isfile(f"{REPO_HOME}{os.path.sep}{ignore_file}"):
+                    linter_doc_md += [
+                        f"  - If custom `{linter.ignore_file_name}` ignore file is not found, "
+                        f"[{linter.ignore_file_name}]({TEMPLATES_URL_ROOT}/{linter.ignore_file_name}){{target=_blank}}"
+                        " will be used"
+                    ]
+                else:
+                    linter_doc_md += [
+                        f"  - You can define a `{linter.ignore_file_name}` file to ignore files and folders"
+                    ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [

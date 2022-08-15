@@ -36,6 +36,7 @@ class CSpellLinter(Linter):
                 "**/node_modules/**",
                 "**/vscode-extension/**",
                 "**/.git/**",
+                "**/.pnpm-lock.json",
                 ".vscode",
                 "package-lock.json",
                 DEFAULT_REPORT_FOLDER_NAME,
@@ -55,12 +56,8 @@ Of course, please correct real typos before :)
         )
 
         # Generate updated .cspell.json for manual update
-        cspell_config_file = (
-            reporter_self.master.github_workspace
-            + os.path.sep
-            + reporter_self.master.config_file_name
-        )
-        if os.path.isfile(cspell_config_file):
+        cspell_config_file = self.final_config_file
+        if cspell_config_file is not None and os.path.isfile(cspell_config_file):
             try:
                 with open(cspell_config_file, "r", encoding="utf-8") as json_file:
                     data = json.load(json_file)

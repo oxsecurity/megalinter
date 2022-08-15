@@ -16,7 +16,7 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+FROM zricethezav/gitleaks:v8.10.2 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -144,6 +144,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'ansible-lint==6.0.2' \
           'cpplint' \
           'cfn-lint' \
+          'djlint' \
           'pylint' \
           'black' \
           'flake8' \
@@ -200,7 +201,7 @@ RUN npm install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
@@ -563,7 +564,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global --version 1.14.5 TSQLLint
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/

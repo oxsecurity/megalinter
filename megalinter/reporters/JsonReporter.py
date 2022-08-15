@@ -8,7 +8,7 @@ import logging
 import os
 
 import jsonpickle
-from megalinter import Reporter, config
+from megalinter import Reporter, config, utils
 
 
 class JsonReporter(Reporter):
@@ -57,7 +57,9 @@ class JsonReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("JSON_REPORTER", "false") == "true":
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif config.get("JSON_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):

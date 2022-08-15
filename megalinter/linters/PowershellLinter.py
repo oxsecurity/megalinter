@@ -20,7 +20,7 @@ class PowershellLinter(Linter):
         pwsh_script = ["Invoke-ScriptAnalyzer -EnableExit"]
         if self.config_file is not None:
             pwsh_script[0] += " -Settings " + self.config_file
-        pwsh_script[0] += " -Path " + file
+        pwsh_script[0] += f" -Path '{file}'"
         cmd = [
             self.cli_executable,
             "-NoProfile",
