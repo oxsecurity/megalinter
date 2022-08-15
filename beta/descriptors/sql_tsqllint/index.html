@@ -5795,7 +5795,7 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
     &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH=&quot;${PATH}:/root/.dotnet/tools:/usr/share/dotnet&quot;
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global --version 1.14.5 TSQLLint
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>

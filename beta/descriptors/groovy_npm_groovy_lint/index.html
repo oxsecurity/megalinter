@@ -5622,7 +5622,7 @@
 <h1 id="npm-groovy-lint"><a href="https://nvuillam.github.io/npm-groovy-lint/" target="blank" title="Visit linter Web Site"><img src="https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6" alt="npm-groovy-lint" height="100px" class="megalinter-logo"></a>npm-groovy-lint <a href="https://github.com/nvuillam/npm-groovy-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/nvuillam/npm-groovy-lint" /></a></h1>
 <h2 id="npm-groovy-lint-documentation">npm-groovy-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>10.0.0</strong></li>
+<li>Version in MegaLinter: <strong>10.0.3</strong></li>
 <li>Visit <a href="https://nvuillam.github.io/npm-groovy-lint/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/nvuillam/npm-groovy-lint#configuration" target="_blank">How to configure npm-groovy-lint rules</a><ul>
 <li>If custom <code>.groovylintrc.json</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json" target="_blank">.groovylintrc.json</a> will be used</li>
@@ -5667,7 +5667,7 @@
 <tr>
 <td>GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS</td>
@@ -5854,14 +5854,14 @@
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>npm-groovy-lint is called one time by identified file (<code>file</code> CLI lint mode)</li>
+<li>npm-groovy-lint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">npm-groovy-lint --path . --files myfile.groovy
+<pre><code class="language-shell">npm-groovy-lint myfile.groovy
 </code></pre>
-<pre><code class="language-shell">npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json
+<pre><code class="language-shell">npm-groovy-lint -c .groovylintrc.json 
 </code></pre>
-<pre><code class="language-shell">npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix
+<pre><code class="language-shell">npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">npm-groovy-lint [options]
