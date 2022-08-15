@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **10.0.0**
+- Version in MegaLinter: **10.0.3**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -25,7 +25,7 @@
 | GROOVY_NPM_GROOVY_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                                          |
+| GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".groovy", ".gvy", ".gradle", ".nf"]`         |
 | GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Jenkinsfile"]`                               |
 | GROOVY_NPM_GROOVY_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -75,20 +75,20 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- npm-groovy-lint is called one time by identified file (`file` CLI lint mode)
+- npm-groovy-lint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
 ```shell
-npm-groovy-lint --path . --files myfile.groovy
+npm-groovy-lint myfile.groovy
 ```
 
 ```shell
-npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json
+npm-groovy-lint -c .groovylintrc.json 
 ```
 
 ```shell
-npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix
+npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy
 ```
 
 
