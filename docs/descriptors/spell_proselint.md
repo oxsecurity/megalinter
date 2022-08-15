@@ -15,6 +15,8 @@ a linter for prose
 
 - Version in MegaLinter: **0.13.0**
 - Visit [Official Web Site](http://proselint.com){target=_blank}
+- See [How to configure proselint rules](https://github.com/amperser/proselint#checks){target=_blank}
+- See [Index of problems detected by proselint](https://github.com/amperser/proselint#checks){target=_blank}
 
 [![proselint - GitHub](https://gh-card.dev/repos/amperser/proselint.svg?fullname=)](https://github.com/amperser/proselint){target=_blank}
 
@@ -73,6 +75,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
+- Activated only if one of these files is found: `.proselintrc, proselint/config.json`
 - File extensions: `.md`, `.txt`
 
 <!-- markdownlint-disable -->
