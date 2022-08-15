@@ -318,7 +318,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global --version 1.14.5 TSQLLint
 
 # dotnet-format installation
 # Next line commented because already managed by another linter
