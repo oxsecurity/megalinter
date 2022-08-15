@@ -64,10 +64,15 @@ linters:
     file_extensions:
       - ".md"
       - ".txt"
+    active_only_if_file_found:
+      - .proselintrc
+      - proselint/config.json
     linter_text: a linter for prose
     linter_url: http://proselint.com
     linter_repo: https://github.com/amperser/proselint
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
+    linter_rules_url: https://github.com/amperser/proselint#checks
+    linter_rules_configuration_url: https://github.com/amperser/proselint#checks
     cli_config_arg_name: --config
     config_file_name: .proselintrc
     cli_lint_mode: list_of_files

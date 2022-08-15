@@ -48,7 +48,7 @@
     "markdownlint": "0.32.1",
     "misspell": "0.3.4",
     "mypy": "0.971",
-    "npm-groovy-lint": "10.0.3",
+    "npm-groovy-lint": "10.1.0",
     "perlcritic": "1.140",
     "php": "7.4.26",
     "phpcs": "3.7.1",
