@@ -385,7 +385,6 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("javascript_good_1.js", output)
         self.assertIn("javascript_bad_1.js", output)
         self.assertIn("Kept [2] files on [2] found files", output)
 
