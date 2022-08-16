@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-GitHub Status reporter
-Post a GitHub status for each linter
+Gitlab Comment reporter
+Post a comment on Gitlab Merge Requests
 """
 import logging
 
