@@ -18,6 +18,8 @@ class TapReporter(Reporter):
         self.report_type = "tap"
         if config.get("OUTPUT_DETAIL", "") == "detailed":
             self.report_type = "detailed"
+        if config.get("TAP_REPORTER_OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
         super().__init__(params)
 
     def manage_activation(self):
