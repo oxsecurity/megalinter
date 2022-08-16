@@ -29,8 +29,8 @@ If you are not using GitHub Actions, you can export `mega-linter.log` and folder
 
 ## Configuration
 
-| Variable                | Description                                      | Default value |
-|-------------------------|--------------------------------------------------|---------------|
-| TAP_REPORTER            | Activates/deactivates reporter                   | `false`        |
-| TAP_REPORTER_OUTPUT_DETAIL | If `detailed`, all files will be in TAP output, else only files with issues will be present | `simple` |
-| TAP_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing tap logs | `tap`         |
+| Variable                   | Description                                                                                 | Default value |
+|----------------------------|---------------------------------------------------------------------------------------------|---------------|
+| TAP_REPORTER               | Activates/deactivates reporter                                                              | `false`       |
+| TAP_REPORTER_OUTPUT_DETAIL | If `detailed`, all files will be in TAP output, else only files with issues will be present | `simple`      |
+| TAP_REPORTER_SUB_FOLDER    | Sub-folder of reports folder containing tap logs                                            | `tap`         |
