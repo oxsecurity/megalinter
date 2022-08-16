@@ -5520,6 +5520,12 @@
 <ul>
 <li>A separate TAP file for each processed linter</li>
 </ul>
+<p><strong>Warning</strong>: When TAP_REPORTER is <code>true</code>:</p>
+<ul>
+<li>Performances: all linters with CLI lint mode <code>list_of_files</code> are switched to <code>file</code> mode, so linter is called ont time per file to analyze</li>
+<li>Scope: all linters with CLI lint mode <code>project</code> are deactivated</li>
+</ul>
+<p>For those reasons... why not having a look at <a href="https://oxsecurity.github.io/megalinter/latest/reporters/SarifReporter/">SARIF reporter</a>, that does not have those issues ?</p>
 <h2 id="usage">Usage</h2>
 <p>Access GitHub action run</p>
 <p><img alt="Screenshot" src="../../assets/images/AccessActionRun.jpg" /></p>
@@ -5527,7 +5533,7 @@
 <p><img alt="Screenshot" src="../../assets/images/TextReporter_1.jpg" /></p>
 <p>Open the downloaded zip file and browse linters TAP reports</p>
 <h3 id="other-ci-tools">Other CI tools</h3>
-<p>If you are not using GitHub Actions, you can export <code>mega-linter.log</code> and folder <code>&lt;WORKSPACE&gt;/report</code></p>
+<p>If you are not using GitHub Actions, you can export <code>mega-linter.log</code> and folder <code>&lt;WORKSPACE&gt;/megalinter-reports</code></p>
 <h2 id="configuration">Configuration</h2>
 <table>
 <thead>
@@ -5541,7 +5547,12 @@
 <tr>
 <td>TAP_REPORTER</td>
 <td>Activates/deactivates reporter</td>
-<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>TAP_REPORTER_OUTPUT_DETAIL</td>
+<td>If <code>detailed</code>, all files will be in TAP output, else only files with issues will be present</td>
+<td><code>simple</code></td>
 </tr>
 <tr>
 <td>TAP_REPORTER_SUB_FOLDER</td>
