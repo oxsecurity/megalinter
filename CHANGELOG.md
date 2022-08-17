@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.9.4 to **1.9.5** on 2022-08-17
   - [checkov](https://www.checkov.io/) from 2.1.129 to **2.1.130** on 2022-08-17
   - [checkov](https://www.checkov.io/) from 2.1.130 to **2.1.132** on 2022-08-17
+  - [djlint](https://djlint.com/) from 1.9.5 to **1.10.0** on 2022-08-17
+  - [checkov](https://www.checkov.io/) from 2.1.132 to **2.1.133** on 2022-08-17
 <!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15
