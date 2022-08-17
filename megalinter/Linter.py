@@ -85,6 +85,7 @@ class Linter:
         self.is_plugin = False
         self.pre_commands = None
         self.post_commands = None
+        self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
         self.cli_docker_image = None
