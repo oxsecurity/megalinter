@@ -19,7 +19,7 @@ linters:
       - "lint"
     cli_lint_extra_args_after:
       - "--path"
-      - "/tmp/lint"
+      - "{{WORKSPACE}}/tmp/lint"
       - "--strict"
     cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
