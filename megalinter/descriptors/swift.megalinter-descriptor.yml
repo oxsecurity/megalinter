@@ -25,7 +25,9 @@ linters:
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
       - "-v"
-      - "{{WORKSPACE}}:`pwd`:rw"
+      - "$(pwd):$(pwd)"
+      - "-w"
+      - "$(pwd)"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: ""
     cli_help_arg_name: "help"
