@@ -8,7 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Update pre-commit hooks from v5 to v6 (#1755).
+- Update pre-commit hooks from v5 to v6 ([#1755](https://github.com/oxsecurity/megalinter/issues/1755)).
+- Fix version in URL in logs produced by reporters
+- Improve documentation for TAP_REPORTER
+
 - Linter versions upgrades
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.1 to **2.4.0** on 2022-08-16
   - [checkov](https://www.checkov.io/) from 2.1.127 to **2.1.129** on 2022-08-16
