@@ -56,14 +56,10 @@ Sample `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/oxsecurity/megalinter
-    rev: v6.6.0 # Git tag specifying the hook, not mega-linter-runner, version
+    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
     hooks:
-      - id: megalinter-incremental # Faster, less thorough
-        stages:
-          - commit
-      - id: megalinter-full # Slower, more thorough
-        stages:
-          - push
+      - id: megalinter # Faster, less thorough, runs pre-commit by default
+      - id: megalinter-all # Slower, more thorough, runs pre-push by default
 ```
 
 See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.

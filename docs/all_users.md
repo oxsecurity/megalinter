@@ -7,6 +7,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![nektos/act - GitHub](https://gh-card.dev/repos/nektos/act.svg?fullname=)](https://github.com/nektos/act){target=_blank}
 [![stepancheg/rust-protobuf - GitHub](https://gh-card.dev/repos/stepancheg/rust-protobuf.svg?fullname=)](https://github.com/stepancheg/rust-protobuf){target=_blank}
 [![IlanCosman/tide - GitHub](https://gh-card.dev/repos/IlanCosman/tide.svg?fullname=)](https://github.com/IlanCosman/tide){target=_blank}
+[![microsoft/code-with-engineering-playbook - GitHub](https://gh-card.dev/repos/microsoft/code-with-engineering-playbook.svg?fullname=)](https://github.com/microsoft/code-with-engineering-playbook){target=_blank}
 [![dorssel/usbipd-win - GitHub](https://gh-card.dev/repos/dorssel/usbipd-win.svg?fullname=)](https://github.com/dorssel/usbipd-win){target=_blank}
 [![flosse/sloc - GitHub](https://gh-card.dev/repos/flosse/sloc.svg?fullname=)](https://github.com/flosse/sloc){target=_blank}
 [![oxsecurity/megalinter - GitHub](https://gh-card.dev/repos/oxsecurity/megalinter.svg?fullname=)](https://github.com/oxsecurity/megalinter){target=_blank}
