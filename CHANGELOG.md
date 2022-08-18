@@ -21,6 +21,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.130 to **2.1.132** on 2022-08-17
   - [djlint](https://djlint.com/) from 1.9.5 to **1.10.0** on 2022-08-17
   - [checkov](https://www.checkov.io/) from 2.1.132 to **2.1.133** on 2022-08-17
+  - [syft](https://github.com/anchore/syft) from 0.53.4 to **0.54.0** on 2022-08-18
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8** on 2022-08-18
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8** on 2022-08-18
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8** on 2022-08-18
+  - [kics](https://www.kics.io) from 1.5.13 to **1.5.14** on 2022-08-18
 <!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15

@@ -847,7 +847,7 @@
             ],
             "title": "Ignore for flavor suggestions",
             "type": "boolean"
-          }, 
+          },
           "install": {
             "$id": "#/properties/linters/items/properties/install",
             "default": {},
