@@ -49,6 +49,7 @@ linters:
     descriptor_flavors:
       - all
       - security
+    ignore_for_flavor_suggestions: true
     linter_text: |
       Use `--ignore-globs` to ignore files and/or folders
     linter_url: https://github.com/microsoft/DevSkim
@@ -102,6 +103,7 @@ linters:
     descriptor_flavors:
       - all
       - security
+    ignore_for_flavor_suggestions: true
     linter_url: https://github.com/Checkmarx/dustilock
     linter_repo: https://github.com/Checkmarx/dustilock
     linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
@@ -308,6 +310,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - security
+    ignore_for_flavor_suggestions: true
     linter_url: https://github.com/anchore/syft
     linter_repo: https://github.com/anchore/syft
     linter_text: |

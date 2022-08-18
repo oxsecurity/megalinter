@@ -837,6 +837,17 @@
             "title": "Default file name for the linter ignore file",
             "type": "string"
           },
+          "ignore_for_flavor_suggestions": {
+            "$id": "#/properties/linters/items/properties/ignore_for_flavor_suggestions",
+            "default": false,
+            "description": "If this property is set to true, this linter will be ignored for flavor suggestions",
+            "examples": [
+              ".eslintignore",
+              ".secretlintignore"
+            ],
+            "title": "Ignore for flavor suggestions",
+            "type": "boolean"
+          }, 
           "install": {
             "$id": "#/properties/linters/items/properties/install",
             "default": {},
