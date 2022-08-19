@@ -11,7 +11,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![dorssel/usbipd-win - GitHub](https://gh-card.dev/repos/dorssel/usbipd-win.svg?fullname=)](https://github.com/dorssel/usbipd-win){target=_blank}
 [![flosse/sloc - GitHub](https://gh-card.dev/repos/flosse/sloc.svg?fullname=)](https://github.com/flosse/sloc){target=_blank}
 [![oxsecurity/megalinter - GitHub](https://gh-card.dev/repos/oxsecurity/megalinter.svg?fullname=)](https://github.com/oxsecurity/megalinter){target=_blank}
-[![k8s-at-home/flux-cluster-template - GitHub](https://gh-card.dev/repos/k8s-at-home/flux-cluster-template.svg?fullname=)](https://github.com/k8s-at-home/flux-cluster-template){target=_blank}
+[![onedr0p/flux-cluster-template - GitHub](https://gh-card.dev/repos/onedr0p/flux-cluster-template.svg?fullname=)](https://github.com/onedr0p/flux-cluster-template){target=_blank}
 [![onedr0p/home-ops - GitHub](https://gh-card.dev/repos/onedr0p/home-ops.svg?fullname=)](https://github.com/onedr0p/home-ops){target=_blank}
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
