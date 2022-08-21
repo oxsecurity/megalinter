@@ -5625,7 +5625,7 @@
 <p><a href="https://github.com/pinterest/ktlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pinterest/ktlint" /></a></p>
 <h2 id="ktlint-documentation">ktlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.46.1</strong></li>
+<li>Version in MegaLinter: <strong>0.47.0</strong></li>
 <li>Visit <a href="https://ktlint.github.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ktlint.github.io/#rules" target="_blank">Index of problems detected by ktlint</a></li>
 </ul>
@@ -5910,9 +5910,14 @@ Flags:
       --stdin           Read file from stdin
   -v, --verbose         Show error codes
       --editorconfig=&lt;editorConfigPath&gt;
-                        Path to .editorconfig
+                        Path to the default '.editorconfig'. A property value
+                          from this file is used only when no '.editorconfig'
+                          file on the path to the source file specifies that
+                          property. Note: up until ktlint 0.46 the property
+                          value in this file used to override values found in '.
+                          editorconfig' files on the path to the source file.
       --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
-      --baseline=&lt;baseline&gt;
+      --baseline=&lt;baselinePath&gt;
                         Defines a baseline file to check against
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
@@ -5930,11 +5935,6 @@ Commands:
                                                             when
                                                             writing/debugging
                                                             rules)
-  applyToIDEA, --apply-to-idea                            Update Intellij IDEA
-                                                            Kotlin codestyle
-                                                            settings (global)
-  applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
-                                                            project settings
   generateEditorConfig                                    EXPERIMENTAL!!!
                                                             Generate kotlin
                                                             style section for '.
