@@ -11,7 +11,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **1.2.1**
+- Version in MegaLinter: **1.3.0**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
   - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -101,6 +101,16 @@ Commands:
   parse     Parse SQL files and just spit out the result.
   rules     Show the current rules in use.
   version   Show the version of sqlfluff.
+
+  Examples:
+
+  sqlfluff lint --dialect postgres .
+
+  sqlfluff lint --dialect postgres --rules L042 .
+
+  sqlfluff fix --dialect sqlite --rules L041,L042 src/queries
+
+  sqlfluff parse --dialect sqlite --templater jinja src/queries/common.sql
 ```
 
 ### Installation on mega-linter Docker image

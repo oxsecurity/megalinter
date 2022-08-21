@@ -40,6 +40,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.7.0 to **6.8.0** on 2022-08-21
   - [stylelint](https://stylelint.io) from 14.10.0 to **14.11.0** on 2022-08-21
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.3 to **8.11.0** on 2022-08-21
+  - [checkov](https://www.checkov.io/) from 2.1.138 to **2.1.139** on 2022-08-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.1 to **1.3.0** on 2022-08-21
 <!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15
