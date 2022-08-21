@@ -16,7 +16,7 @@ FROM cljkondo/clj-kondo:2022.08.03-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.10.3 as gitleaks
+FROM zricethezav/gitleaks:v8.11.0 as gitleaks
 #FROM__END
 
 ##################
