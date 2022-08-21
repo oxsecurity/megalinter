@@ -11,7 +11,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.46.1**
+- Version in MegaLinter: **0.47.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -154,9 +154,14 @@ Flags:
       --stdin           Read file from stdin
   -v, --verbose         Show error codes
       --editorconfig=<editorConfigPath>
-                        Path to .editorconfig
+                        Path to the default '.editorconfig'. A property value
+                          from this file is used only when no '.editorconfig'
+                          file on the path to the source file specifies that
+                          property. Note: up until ktlint 0.46 the property
+                          value in this file used to override values found in '.
+                          editorconfig' files on the path to the source file.
       --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
-      --baseline=<baseline>
+      --baseline=<baselinePath>
                         Defines a baseline file to check against
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
@@ -174,11 +179,6 @@ Commands:
                                                             when
                                                             writing/debugging
                                                             rules)
-  applyToIDEA, --apply-to-idea                            Update Intellij IDEA
-                                                            Kotlin codestyle
-                                                            settings (global)
-  applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
-                                                            project settings
   generateEditorConfig                                    EXPERIMENTAL!!!
                                                             Generate kotlin
                                                             style section for '.

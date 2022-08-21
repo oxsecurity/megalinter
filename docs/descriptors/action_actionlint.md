@@ -6,7 +6,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.6.15**
+- Version in MegaLinter: **1.6.16**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -121,9 +121,9 @@ Flags:
   -oneline
       Use one line per one error. Useful for reading error messages from programs
   -pyflakes string
-      Command name or file path of "pyflakes" external command (default "pyflakes")
+      Command name or file path of "pyflakes" external command. If empty, pyflakes integration will be disabled (default "pyflakes")
   -shellcheck string
-      Command name or file path of "shellcheck" external command (default "shellcheck")
+      Command name or file path of "shellcheck" external command. If empty, shellcheck integration will be disabled (default "shellcheck")
   -stdin-filename string
       File name when reading input from stdin
   -verbose
