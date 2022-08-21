@@ -38,8 +38,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
-[![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
 [![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}

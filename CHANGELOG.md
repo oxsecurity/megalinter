@@ -36,6 +36,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.5 to **0.62.0** on 2022-08-21
   - [ktlint](https://ktlint.github.io) from 0.46.1 to **0.47.0** on 2022-08-21
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.1 to **0.32.2** on 2022-08-21
+  - [checkov](https://www.checkov.io/) from 2.1.137 to **2.1.138** on 2022-08-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.7.0 to **6.8.0** on 2022-08-21
 <!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15
