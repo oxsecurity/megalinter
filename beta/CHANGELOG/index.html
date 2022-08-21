@@ -5415,6 +5415,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v660-2022-08-21" class="md-nav__link">
+    [v6.6.0] - 2022-08-21
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v650-2022-08-15" class="md-nav__link">
     [v6.5.0] - 2022-08-15
   </a>
@@ -6100,6 +6107,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v660-2022-08-21" class="md-nav__link">
+    [v6.6.0] - 2022-08-21
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v650-2022-08-15" class="md-nav__link">
     [v6.5.0] - 2022-08-15
   </a>
@@ -6767,41 +6781,38 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Set DEFAULT_WORKSPACE as git safe directory per default <a href="https://github.com/oxsecurity/megalinter/issues/1766">#1766</a></li>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v660-2022-08-21">[v6.6.0] - 2022-08-21</h2>
+<ul>
+<li>Fix flavors suggestions to ignore linters not relevant for such flavor (<a href="https://github.com/oxsecurity/megalinter/issues/1746">#1746</a>)</li>
 <li>Update pre-commit hooks from v5 to v6 (<a href="https://github.com/oxsecurity/megalinter/issues/1755">#1755</a>).</li>
 <li>Fix version in URL in logs produced by reporters</li>
+<li>Add Makefile linter within python flavor (<a href="https://github.com/oxsecurity/megalinter/issues/1760">#1760</a>)</li>
+<li>Set DEFAULT_WORKSPACE as git safe directory per default <a href="https://github.com/oxsecurity/megalinter/issues/1766">#1766</a></li>
 <li>Improve documentation for TAP_REPORTER</li>
-<li>Fix flavors suggestions to ignore linters not relevant for such flavor (<a href="https://github.com/oxsecurity/megalinter/issues/1746">#1746</a>)</li>
-<li>Add Makefile linter within python flavor</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.3.1 to <strong>2.4.0</strong> on 2022-08-16</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.127 to <strong>2.1.129</strong> on 2022-08-16</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.9.4 to <strong>1.9.5</strong> on 2022-08-17</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.129 to <strong>2.1.130</strong> on 2022-08-17</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.130 to <strong>2.1.132</strong> on 2022-08-17</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.9.5 to <strong>1.10.0</strong> on 2022-08-17</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.132 to <strong>2.1.133</strong> on 2022-08-17</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.53.4 to <strong>0.54.0</strong> on 2022-08-18</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.7 to <strong>2.13.8</strong> on 2022-08-18</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.7 to <strong>2.13.8</strong> on 2022-08-18</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.7 to <strong>2.13.8</strong> on 2022-08-18</li>
-<li><a href="https://www.kics.io">kics</a> from 1.5.13 to <strong>1.5.14</strong> on 2022-08-18</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.10.0 to <strong>1.11.0</strong> on 2022-08-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.133 to <strong>2.1.137</strong> on 2022-08-19</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.6.1 to <strong>6.7.0</strong> on 2022-08-19</li>
-<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.6.15 to <strong>1.6.16</strong> on 2022-08-21</li>
-<li><a href="https://github.com/cpplint/cpplint">cpplint</a> from 1.6.0 to <strong>1.6.1</strong> on 2022-08-21</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.61.5 to <strong>0.62.0</strong> on 2022-08-21</li>
-<li><a href="https://ktlint.github.io">ktlint</a> from 0.46.1 to <strong>0.47.0</strong> on 2022-08-21</li>
-<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.32.1 to <strong>0.32.2</strong> on 2022-08-21</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.137 to <strong>2.1.138</strong> on 2022-08-21</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.7.0 to <strong>6.8.0</strong> on 2022-08-21</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.10.0 to <strong>14.11.0</strong> on 2022-08-21</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.10.3 to <strong>8.11.0</strong> on 2022-08-21</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.138 to <strong>2.1.139</strong> on 2022-08-21</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.2.1 to <strong>1.3.0</strong> on 2022-08-21</li>
+<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.6.15 to <strong>1.6.16</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.61.5 to <strong>0.62.0</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.127 to <strong>2.1.139</strong></li>
+<li><a href="https://github.com/cpplint/cpplint">cpplint</a> from 1.6.0 to <strong>1.6.1</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.6.1 to <strong>6.8.0</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.9.5 to <strong>1.11.0</strong></li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.3.1 to <strong>2.4.0</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.10.3 to <strong>8.11.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.5.13 to <strong>1.5.14</strong></li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.46.1 to <strong>0.47.0</strong></li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.32.1 to <strong>0.32.2</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.7 to <strong>2.13.8</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.7 to <strong>2.13.8</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.7 to <strong>2.13.8</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.2.1 to <strong>1.3.0</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.10.0 to <strong>14.11.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.53.4 to <strong>0.54.0</strong></li>
 </ul>
 </li>
 </ul>
