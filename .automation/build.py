@@ -28,7 +28,7 @@ from megalinter import utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
-    ML_DOC_URL,
+    ML_DOC_URL_BASE,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
     ML_DOCKER_IMAGE_LEGACY_V5,
@@ -46,10 +46,16 @@ if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
+    VERSION = RELEASE_TAG.replace("v", "")
+elif "--version" in sys.argv:
+    VERSION = sys.argv[sys.argv.index("--version") + 1].replace("v", "")
+else:
+    VERSION = "beta"
+
+MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
 
 BRANCH = "main"
 URL_ROOT = ML_REPO_URL + "/tree/" + BRANCH
-MKDOCS_URL_ROOT = ML_DOC_URL
 URL_RAW_ROOT = ML_REPO_URL + "/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
@@ -1451,7 +1457,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
     md_line_all = (
-        f"| {icon_html} | [all]({ML_DOC_URL}/supported-linters/) | "
+        f"| {icon_html} | [all]({MKDOCS_URL_ROOT}/supported-linters/) | "
         f"Default MegaLinter Flavor | {str(linters_number)} | {docker_image_badge} {docker_pulls_badge} |"
     )
     md_table += [md_line_all]

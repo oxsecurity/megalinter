@@ -329,15 +329,15 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
-  - "Badge": "badge.md"
+  - "They use MegaLinter": "all_users.md"
   - "List of linters": "all_linters.md"
-  - "FAQ": "frequently-asked-questions.md"
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
-  - "They use MegaLinter": "all_users.md"
   - "Sponsoring": 'sponsor.md'
+  - "Badge": "badge.md"
   - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
+  - "FAQ": "frequently-asked-questions.md"
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"

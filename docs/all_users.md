@@ -7,10 +7,11 @@ According to posted issues, there are many more private and self-hosted repos us
 [![nektos/act - GitHub](https://gh-card.dev/repos/nektos/act.svg?fullname=)](https://github.com/nektos/act){target=_blank}
 [![stepancheg/rust-protobuf - GitHub](https://gh-card.dev/repos/stepancheg/rust-protobuf.svg?fullname=)](https://github.com/stepancheg/rust-protobuf){target=_blank}
 [![IlanCosman/tide - GitHub](https://gh-card.dev/repos/IlanCosman/tide.svg?fullname=)](https://github.com/IlanCosman/tide){target=_blank}
+[![microsoft/code-with-engineering-playbook - GitHub](https://gh-card.dev/repos/microsoft/code-with-engineering-playbook.svg?fullname=)](https://github.com/microsoft/code-with-engineering-playbook){target=_blank}
 [![dorssel/usbipd-win - GitHub](https://gh-card.dev/repos/dorssel/usbipd-win.svg?fullname=)](https://github.com/dorssel/usbipd-win){target=_blank}
 [![flosse/sloc - GitHub](https://gh-card.dev/repos/flosse/sloc.svg?fullname=)](https://github.com/flosse/sloc){target=_blank}
 [![oxsecurity/megalinter - GitHub](https://gh-card.dev/repos/oxsecurity/megalinter.svg?fullname=)](https://github.com/oxsecurity/megalinter){target=_blank}
-[![k8s-at-home/flux-cluster-template - GitHub](https://gh-card.dev/repos/k8s-at-home/flux-cluster-template.svg?fullname=)](https://github.com/k8s-at-home/flux-cluster-template){target=_blank}
+[![onedr0p/flux-cluster-template - GitHub](https://gh-card.dev/repos/onedr0p/flux-cluster-template.svg?fullname=)](https://github.com/onedr0p/flux-cluster-template){target=_blank}
 [![onedr0p/home-ops - GitHub](https://gh-card.dev/repos/onedr0p/home-ops.svg?fullname=)](https://github.com/onedr0p/home-ops){target=_blank}
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
@@ -38,8 +39,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
-[![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
@@ -51,8 +52,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
-[![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
+[![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![LiveEnhancementSuite/HSModule - GitHub](https://gh-card.dev/repos/LiveEnhancementSuite/HSModule.svg?fullname=)](https://github.com/LiveEnhancementSuite/HSModule){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
 [![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}

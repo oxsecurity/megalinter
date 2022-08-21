@@ -12,9 +12,6 @@ from megalinter.constants import (
 )
 from pytablewriter import MarkdownTableWriter
 
-mega_linter_version = config.get("BUILD_VERSION", "latest")
-DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
-
 
 def build_markdown_summary(reporter_self, action_run_url):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
