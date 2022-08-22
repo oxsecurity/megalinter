@@ -31,7 +31,7 @@ class JavaPmdLinter(Linter):
             with open(temp_list_of_files_for_pmd, "w", encoding="utf-8") as f:
                 f.write("\n".join(self.files))
             file_args = ["--file-list", temp_list_of_files_for_pmd]
-        cmd = [self.cli_executable]
+        cmd = ["/usr/bin/pmd/bin/run.sh"]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add user-defined extra arguments if defined
