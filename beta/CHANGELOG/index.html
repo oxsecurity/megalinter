@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 49 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 50 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -1001,6 +1001,20 @@
     <li class="md-nav__item">
       <a href="../descriptors/java_checkstyle/" class="md-nav__link">
         checkstyle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/java_pmd/" class="md-nav__link">
+        pmd
       </a>
     </li>
   
@@ -6781,6 +6795,10 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Add <a href="https://pmd.github.io/latest/">PMD</a> java linter</li>
+<li>Fix: Properly match <code>files_sub_directory</code> as a prefix instead of partial string matching (<a href="https://github.com/oxsecurity/megalinter/pull/1765">#1765</a>)</li>
+</ul>
+<ul>
 <li>Linter versions upgrades<ul>
 <li><a href="https://www.checkov.io/">checkov</a> from 2.1.139 to <strong>2.1.142</strong> on 2022-08-22</li>
 <li><a href="https://rubocop.org/">rubocop</a> from 1.35.0 to <strong>1.35.1</strong> on 2022-08-22</li>
@@ -6797,7 +6815,6 @@
 <li>Add Makefile linter within python flavor (<a href="https://github.com/oxsecurity/megalinter/issues/1760">#1760</a>)</li>
 <li>Set DEFAULT_WORKSPACE as git safe directory per default <a href="https://github.com/oxsecurity/megalinter/issues/1766">#1766</a></li>
 <li>Improve documentation for TAP_REPORTER</li>
-<li>Fix: Properly match <code>files_sub_directory</code> as a prefix instead of partial string matching</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
