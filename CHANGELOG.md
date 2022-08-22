@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
+  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1** on 2022-08-22
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
@@ -21,23 +23,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Improve documentation for TAP_REPORTER
 
 - Linter versions upgrades
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.15 to **1.6.16**
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.5 to **0.62.0**
-  - [checkov](https://www.checkov.io/) from 2.1.127 to **2.1.139**
-  - [cpplint](https://github.com/cpplint/cpplint) from 1.6.0 to **1.6.1**
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.6.1 to **6.8.0**
-  - [djlint](https://djlint.com/) from 1.9.5 to **1.11.0**
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.1 to **2.4.0**
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.3 to **8.11.0**
-  - [kics](https://www.kics.io) from 1.5.13 to **1.5.14**
-  - [ktlint](https://ktlint.github.io) from 0.46.1 to **0.47.0**
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.1 to **0.32.2**
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.1 to **1.3.0**
-  - [stylelint](https://stylelint.io) from 14.10.0 to **14.11.0**
-  - [syft](https://github.com/anchore/syft) from 0.53.4 to **0.54.0**
+  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
+  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1** on 2022-08-22
 <!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15
