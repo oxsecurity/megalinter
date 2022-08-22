@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Add [PMD](https://pmd.github.io/latest/) java linter
+- Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
@@ -23,7 +24,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add Makefile linter within python flavor ([#1760](https://github.com/oxsecurity/megalinter/issues/1760))
 - Set DEFAULT_WORKSPACE as git safe directory per default [#1766](https://github.com/oxsecurity/megalinter/issues/1766)
 - Improve documentation for TAP_REPORTER
-- Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.15 to **1.6.16**
