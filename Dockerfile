@@ -40,6 +40,7 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
+ARG PMD_VERSION=6.48.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -395,6 +396,14 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
         | cut -d '"' -f 4) \
     && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
         --output /usr/bin/checkstyle
+
+
+# pmd installation
+RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    unzip pmd-bin-${PMD_VERSION}.zip && \
+    rm pmd-bin-${PMD_VERSION}.zip && \
+    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+    chmod +x /usr/bin/pmd/bin/run.sh
 
 
 # ktlint installation
