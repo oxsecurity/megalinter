@@ -7,6 +7,7 @@
 | GO_REVIVE                | oxsecurity/megalinter-only-go_revive:v6                |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-go_revive/v6)         |
 | GROOVY_NPM_GROOVY_LINT   | oxsecurity/megalinter-only-groovy_npm_groovy_lint:v6   |  ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-groovy_npm_groovy_lint/v6)  |
 | JAVA_CHECKSTYLE          | oxsecurity/megalinter-only-java_checkstyle:v6          |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-java_checkstyle/v6)      |
+| JAVA_PMD                 | oxsecurity/megalinter-only-java_pmd:v6                 |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-java_pmd/v6)         |
 | JAVASCRIPT_ES            | oxsecurity/megalinter-only-javascript_es:v6            |      ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-javascript_es/v6)       |
 | JSON_ESLINT_PLUGIN_JSONC | oxsecurity/megalinter-only-json_eslint_plugin_jsonc:v6 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-json_eslint_plugin_jsonc/v6) |
 | JSX_ESLINT               | oxsecurity/megalinter-only-jsx_eslint:v6               |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-jsx_eslint/v6)        |
