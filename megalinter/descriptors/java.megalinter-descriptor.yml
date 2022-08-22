@@ -76,11 +76,11 @@ linters:
     cli_sarif_args:
       - --format
       - sarif
-      - --output
+      - --report-file
       - "{{SARIF_OUTPUT_FILE}}"
     examples:
       - "pmd --rulesets java-pmd-ruleset.xml --dir myfile.java"
-      - "pmd --rulesets java-pmd-ruleset.xml --files-list /tmp/list-off-files-generated-by-megalinter.txt"
+      - "pmd --rulesets java-pmd-ruleset.xml --file-list /tmp/list-off-files-generated-by-megalinter.txt"
       - "pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources"
     install:
       dockerfile:
