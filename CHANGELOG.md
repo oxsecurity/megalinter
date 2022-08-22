@@ -38,7 +38,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.2.1 to **1.3.0**
   - [stylelint](https://stylelint.io) from 14.10.0 to **14.11.0**
   - [syft](https://github.com/anchore/syft) from 0.53.4 to **0.54.0**
-<!-- linter-versions-end -->
 
 ## [v6.5.0] - 2022-08-15
 
