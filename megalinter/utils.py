@@ -115,7 +115,11 @@ def filter_files(
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
         # Skip if file is not in defined files_sub_directory
-        if files_sub_directory and not os.path.normpath(file).startswith(os.path.normpath(os.path.join(prefix or "", files_sub_directory) + os.path.sep)):
+        if files_sub_directory and not os.path.normpath(file).startswith(
+            os.path.normpath(
+                os.path.join(prefix or "", files_sub_directory) + os.path.sep
+            )
+        ):
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false)
