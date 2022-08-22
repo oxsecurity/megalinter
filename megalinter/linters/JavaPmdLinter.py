@@ -55,3 +55,9 @@ class JavaPmdLinter(Linter):
             file_args = ["--file-list", temp_list_of_files_for_pmd]
         cmd += file_args
         return cmd
+
+    def build_version_command(self):
+        return [self.cli_executable, "pmd", "--version"]
+
+    def build_help_command(self):
+        return [self.cli_executable, "pmd", "--help"]
