@@ -108,7 +108,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     unzip pmd-bin-${PMD_VERSION}.zip && \
     rm pmd-bin-${PMD_VERSION}.zip && \
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
-    chmod +x /usr/bin/pmd/run.sh
+    chmod +x /usr/bin/pmd/bin/run.sh
 
 
 #OTHER__END
