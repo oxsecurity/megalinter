@@ -70,12 +70,13 @@ linters:
     linter_rules_inline_disable_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html
     linter_image_url: https://pmd.github.io/img/pmd_logo.png
     cli_lint_mode: list_of_files
+    cli_executable: /usr/bin/pmd/run.sh
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "--rulesets"
     cli_sarif_args:
       - --format
       - sarif
-      - -o
+      - --output
       - "{{SARIF_OUTPUT_FILE}}"
     examples:
       - "pmd --rulesets java-pmd-ruleset.xml --dir myfile.java"
@@ -88,4 +89,5 @@ linters:
           RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
               unzip pmd-bin-${PMD_VERSION}.zip && \
               rm pmd-bin-${PMD_VERSION}.zip && \
-              mv pmd-bin-${PMD_VERSION} /usr/bin/pmd
+              mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+              chmod +x /usr/bin/pmd/run.sh

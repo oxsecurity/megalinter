@@ -402,7 +402,8 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
     unzip pmd-bin-${PMD_VERSION}.zip && \
     rm pmd-bin-${PMD_VERSION}.zip && \
-    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd
+    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+    chmod +x /usr/bin/pmd/run.sh
 
 
 # ktlint installation
