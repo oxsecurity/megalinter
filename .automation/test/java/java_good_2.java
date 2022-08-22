@@ -1,6 +1,9 @@
 package com.dummy.nico;
 
-@SuppressWarnings("checkstyle:hideutilityclassconstructor","PMD.UseUtilityClass")
+@SuppressWarnings({
+  "checkstyle:hideutilityclassconstructor",
+  "PMD.UseUtilityClass"
+})
 public class Application {
 
   /**
