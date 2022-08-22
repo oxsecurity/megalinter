@@ -11,7 +11,7 @@ fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
 #
-if [[ "${WORKSPACE_AS_SAFE_DIR}" != 'false' && "${DEFAULT_WORKSPACE}" && -d "${DEFAULT_WORKSPACE}" ]] ; then
+if [[ "${WORKSPACE_AS_SAFE_DIR}" != 'false' && "${DEFAULT_WORKSPACE}" && -d "${DEFAULT_WORKSPACE}" ]]; then
   echo "Setting git safe.directory DEFAULT_WORKSPACE: ${DEFAULT_WORKSPACE} ..."
   git config --global --add safe.directory "${DEFAULT_WORKSPACE}"
 else
