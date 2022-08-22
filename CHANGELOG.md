@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
+  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1** on 2022-08-22
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
