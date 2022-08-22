@@ -84,7 +84,7 @@ linters:
       - "pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources"
     install:
       dockerfile:
-        - ARG PMD_VERSION=6.48.0 
+        - ARG PMD_VERSION=6.48.0
         - |
           RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
               unzip pmd-bin-${PMD_VERSION}.zip && \
