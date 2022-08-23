@@ -139,7 +139,7 @@ def build_linter(language, linter_name):
 
 
 # Sort groups of linters by speed
-def sort_linters_groups_by_speed(linters_groups: list[list[Linter]]):
+def sort_linters_groups_by_speed(linters_groups):
     # Calculate sum of linter speeds in the group
     linter_groups_speed_points = list(
         map(lambda x: [sum(i.linter_speed for i in x), x], linters_groups)
