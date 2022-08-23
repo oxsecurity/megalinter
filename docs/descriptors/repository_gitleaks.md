@@ -17,17 +17,15 @@
 - Enable gitleaks by adding `REPOSITORY_GITLEAKS` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 - Disable gitleaks by adding `REPOSITORY_GITLEAKS` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
-|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| REPOSITORY_GITLEAKS_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| REPOSITORY_GITLEAKS_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.gitleaks.toml`                                |
-| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable                                        | Description                                                                         | Default value                                   |
+|-------------------------------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`            |                                                 |
+| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                      | None                                            |
+| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                       | None                                            |
+| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.gitleaks.toml`                                |
+| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                        | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                          | `false`                                         |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                    | `0`                                             |
 
 ## MegaLinter Flavours
 
