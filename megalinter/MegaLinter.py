@@ -220,7 +220,7 @@ class Megalinter:
             linter_groups_without_fixes = []
             for linter in active_linters:
                 if linter.apply_fixes is True:
-                    # If the linter can update sources, it must be runned in the same group than
+                    # If the linter can update sources, it must be run in the same group than
                     # other linters that can update the same sources
                     descriptor_active_linters = linters_by_descriptor.get(
                         linter.descriptor_id, []
