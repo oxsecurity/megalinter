@@ -55,14 +55,15 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 bash \
                 go \
+                nodejs \
+                npm \
+                yarn \
                 openjdk11 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
-                npm \
                 nodejs-current \
-                yarn \
                 ruby \
                 ruby-dev \
                 ruby-bundler \
@@ -97,6 +98,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
 RUN npm install --ignore-scripts \
+                jscpd@3.3.26 \
                 npm-groovy-lint \
                 @prantlf/jsonlint \
                 eslint \
