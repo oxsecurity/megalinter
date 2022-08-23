@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1** on 2022-08-22
   - [djlint](https://djlint.com/) from 1.11.0 to **1.11.1** on 2022-08-22
   - [checkov](https://www.checkov.io/) from 2.1.142 to **2.1.145** on 2022-08-22
+  - [checkov](https://www.checkov.io/) from 2.1.145 to **2.1.148** on 2022-08-23
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
