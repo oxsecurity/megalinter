@@ -1151,10 +1151,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             )
         else:
             remove_in_config_schema_file(
-                [
-                    f"{linter.name}_FILE_EXTENSIONS",
-                    f"{linter.name}_FILE_NAMES_REGEX"
-                ]
+                [f"{linter.name}_FILE_EXTENSIONS", f"{linter.name}_FILE_NAMES_REGEX"]
             )
         # Pre/post commands
         linter_doc_md += [
