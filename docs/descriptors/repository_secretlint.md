@@ -26,17 +26,15 @@
 - Enable secretlint by adding `REPOSITORY_SECRETLINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 - Disable secretlint by adding `REPOSITORY_SECRETLINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-| Variable                                          | Description                                                                                                                                                                                  | Default value                                   |
-|---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SECRETLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| REPOSITORY_SECRETLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| REPOSITORY_SECRETLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| REPOSITORY_SECRETLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| REPOSITORY_SECRETLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| REPOSITORY_SECRETLINT_CONFIG_FILE                 | secretlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `.secretlintrc.json`                            |
-| REPOSITORY_SECRETLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SECRETLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable                                          | Description                                                                           | Default value                                   |
+|---------------------------------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_SECRETLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`              |                                                 |
+| REPOSITORY_SECRETLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                        | None                                            |
+| REPOSITORY_SECRETLINT_POST_COMMANDS               | List of bash commands to run after the linter                                         | None                                            |
+| REPOSITORY_SECRETLINT_CONFIG_FILE                 | secretlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.secretlintrc.json`                            |
+| REPOSITORY_SECRETLINT_RULES_PATH                  | Path where to find linter configuration file                                          | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SECRETLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                            | `false`                                         |
+| REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                      | `0`                                             |
 
 ## MegaLinter Flavours
 
