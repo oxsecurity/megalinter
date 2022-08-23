@@ -237,7 +237,9 @@ class Megalinter:
                 linter_groups += [linters]
             linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
             # Add "groups" of 1 linter than can not update sources
-            linter_groups += linter_factory.sort_linters_groups_by_speed(linter_groups_without_fixes)
+            linter_groups += linter_factory.sort_linters_groups_by_speed(
+                linter_groups_without_fixes
+            )
         else:
             # If no fixes are applied, we don't care to run same languages linters at the same time
             for linter in active_linters:
