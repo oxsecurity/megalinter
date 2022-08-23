@@ -1109,15 +1109,55 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_CLI_LINT_MODE",
                 ]
             )
-        # Continue with default vars
+        # File extensions & file names override if not "lint_all_files"
+        if (
+            linter.lint_all_files is False
+            and linter.lint_all_other_linters_files is False
+        ):
+            linter_doc_md += [
+                # FILE_EXTENSIONS
+                f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
+                f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
+                f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
+                # FILE_NAMES_REGEX
+                f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
+                f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
+                f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
+                f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_FILE_EXTENSIONS",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
+                            "type": "array",
+                            "title": f"{linter.name}: Override descriptor/linter matching files extensions",
+                            "examples:": [".py", ".myext"],
+                            "items": {"type": "string"},
+                        },
+                    ],
+                    [
+                        f"{linter.name}_FILE_NAMES_REGEX",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
+                            "type": "array",
+                            "title": f"{linter.name}: Override descriptor/linter matching file name regex",
+                            "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
+                            "items": {"type": "string"},
+                        },
+                    ],
+                ]
+            )
+        else:
+            remove_in_config_schema_file(
+                [
+                    f"{linter.name}_FILE_EXTENSIONS",
+                    f"{linter.name}_FILE_NAMES_REGEX"
+                ]
+            )
+        # Pre/post commands
         linter_doc_md += [
-            f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
-            f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
-            f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
-            f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
-            f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
-            f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
-            f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
             f"| {dump_as_json(linter.pre_commands,'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
@@ -1133,16 +1173,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
                         "examples:": ["--foo", "bar"],
-                        "items": {"type": "string"},
-                    },
-                ],
-                [
-                    f"{linter.name}_FILE_EXTENSIONS",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
-                        "type": "array",
-                        "title": f"{linter.name}: Override descriptor/linter matching files extensions",
-                        "examples:": [".py", ".myext"],
                         "items": {"type": "string"},
                     },
                 ],
@@ -1180,16 +1210,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             ]
                         ],
                         "items": {"$ref": "#/definitions/command_info"},
-                    },
-                ],
-                [
-                    f"{linter.name}_FILE_NAMES_REGEX",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
-                        "type": "array",
-                        "title": f"{linter.name}: Override descriptor/linter matching file name regex",
-                        "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
-                        "items": {"type": "string"},
                     },
                 ],
                 [
