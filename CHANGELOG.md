@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add [PMD](https://pmd.github.io/latest/) java linter
 - Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
 - Match regex without `workspace` and `sub_directory`
+- Remove config variables that are not applicable to linters analyzing all files or all other linters files
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
