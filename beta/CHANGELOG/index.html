@@ -6799,6 +6799,11 @@
 <li>Fix: Properly match <code>files_sub_directory</code> as a prefix instead of partial string matching (<a href="https://github.com/oxsecurity/megalinter/pull/1765">#1765</a>)</li>
 <li>Match regex without <code>workspace</code> and <code>sub_directory</code></li>
 <li>Remove config variables that are not applicable to linters analyzing all files or all other linters files</li>
+<li>Performances improvements<ul>
+<li>When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.</li>
+<li>Define <code>linter_speed</code> of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
