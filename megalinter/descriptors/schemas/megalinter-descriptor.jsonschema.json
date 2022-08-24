@@ -1066,9 +1066,15 @@
           "linter_speed": {
             "$id": "#/properties/linters/items/properties/linter_speed",
             "description": "Average speed of the linter (performances indicator). For 1 (very slow) to 5 (very fast)",
-            "enum": [1,2,3,4,5],
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
             "title": "Speed indicator",
-            "type": "number"            
+            "type": "number"
           },
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",
