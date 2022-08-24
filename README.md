@@ -978,6 +978,7 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 - [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
 - [How to apply security at the source using GitOps](https://dev.to/minwi/how-to-apply-security-at-the-source-using-gitops-21bk){target=_blank}, by [Edu Minguez](https://dev.to/minwi){target=_blank}
 - [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/), by [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk), University Of Sheffield
+- [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 <!-- articles-section-end -->
 
 <!-- frequently-asked-questions-section-start -->
