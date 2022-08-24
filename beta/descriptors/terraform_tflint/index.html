@@ -5622,7 +5622,7 @@
 <h1 id="tflint">tflint <a href="https://github.com/terraform-linters/tflint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/terraform-linters/tflint" /></a></h1>
 <h2 id="tflint-documentation">tflint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.35.0</strong></li>
+<li>Version in MegaLinter: <strong>0.39.3</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md" target="_blank">How to configure tflint rules</a><ul>
 <li>If custom <code>.tflint.hcl</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
@@ -5771,8 +5771,6 @@ Application Options:
       --langserver                                              Start language
                                                                 server
   -f, --format=[default|json|checkstyle|junit|compact|sarif]    Output format
-                                                                (default:
-                                                                default)
   -c, --config=FILE                                             Config file
                                                                 name (default:
                                                                 .tflint.hcl)
@@ -5804,6 +5802,8 @@ Application Options:
                                                                 exit status
                                                                 even if issues
                                                                 found
+      --color                                                   Enable
+                                                                colorized output
       --no-color                                                Disable
                                                                 colorized output
       --loglevel=[trace|debug|info|warn|error]                  Change the
@@ -5818,7 +5818,7 @@ Help Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
+<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 </code></pre>
 
