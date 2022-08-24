@@ -5636,7 +5636,7 @@
 <h1 id="luacheck">luacheck <a href="https://github.com/luarocks/luacheck/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/luarocks/luacheck" /></a></h1>
 <h2 id="luacheck-documentation">luacheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.26.1</strong></li>
+<li>Version in MegaLinter: <strong>1.0.0</strong></li>
 <li>Visit <a href="https://luacheck.readthedocs.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://luacheck.readthedocs.io/en/stable/config.html" target="_blank">How to configure luacheck rules</a><ul>
 <li>If custom <code>.luacheckrc</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc" target="_blank">.luacheckrc</a> will be used</li>
@@ -5832,7 +5832,7 @@
        [--exclude-files &lt;glob&gt; [&lt;glob&gt;] ...]
        [--include-files &lt;glob&gt; [&lt;glob&gt;] ...]
 
-luacheck 0.26.1, a linter and a static analyzer for Lua.
+luacheck 1.0.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -5885,6 +5885,7 @@ Options for configuring allowed globals:
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
                             love - globals added by LÖVE;
+                            playdate - globals added by the Playdate SDK;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,
                             test, and tests subdirectories;
