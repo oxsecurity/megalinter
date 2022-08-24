@@ -20,6 +20,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
 [![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![ruzickap/packer-templates - GitHub](https://gh-card.dev/repos/ruzickap/packer-templates.svg?fullname=)](https://github.com/ruzickap/packer-templates){target=_blank}
+[![OCSInventory-NG/OCSInventory-Server - GitHub](https://gh-card.dev/repos/OCSInventory-NG/OCSInventory-Server.svg?fullname=)](https://github.com/OCSInventory-NG/OCSInventory-Server){target=_blank}
 [![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
