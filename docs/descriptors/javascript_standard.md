@@ -11,7 +11,7 @@
 
 ## standard documentation
 
-- Version in MegaLinter: **15.0.1**
+- Version in MegaLinter: **17.0.0**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
 - See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
