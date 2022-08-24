@@ -21,6 +21,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.145 to **2.1.148** on 2022-08-23
   - [checkov](https://www.checkov.io/) from 2.1.148 to **2.1.149** on 2022-08-24
   - [tflint](https://github.com/terraform-linters/tflint) from 0.35.0 to **0.39.3** on 2022-08-24
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0** on 2022-08-24
+  - [djlint](https://djlint.com/) from 1.11.1 to **1.12.0** on 2022-08-24
+  - [luacheck](https://luacheck.readthedocs.io) from 0.26.1 to **1.0.0** on 2022-08-24
+  - [checkov](https://www.checkov.io/) from 2.1.149 to **2.1.156** on 2022-08-24
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.3 to **5.2.4** on 2022-08-24
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
