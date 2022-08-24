@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.35.0**
+- Version in MegaLinter: **0.39.3**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -79,8 +79,6 @@ Application Options:
       --langserver                                              Start language
                                                                 server
   -f, --format=[default|json|checkstyle|junit|compact|sarif]    Output format
-                                                                (default:
-                                                                default)
   -c, --config=FILE                                             Config file
                                                                 name (default:
                                                                 .tflint.hcl)
@@ -112,6 +110,8 @@ Application Options:
                                                                 exit status
                                                                 even if issues
                                                                 found
+      --color                                                   Enable
+                                                                colorized output
       --no-color                                                Disable
                                                                 colorized output
       --loglevel=[trace|debug|info|warn|error]                  Change the
@@ -127,7 +127,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 

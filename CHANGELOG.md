@@ -19,6 +19,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.11.0 to **1.11.1** on 2022-08-22
   - [checkov](https://www.checkov.io/) from 2.1.142 to **2.1.145** on 2022-08-22
   - [checkov](https://www.checkov.io/) from 2.1.145 to **2.1.148** on 2022-08-23
+  - [checkov](https://www.checkov.io/) from 2.1.148 to **2.1.149** on 2022-08-24
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.35.0 to **0.39.3** on 2022-08-24
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
