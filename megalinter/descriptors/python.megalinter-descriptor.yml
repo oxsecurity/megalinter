@@ -11,6 +11,7 @@ linters:
     name: PYTHON_PYLINT
     linter_url: https://www.pylint.org
     linter_repo: https://github.com/PyCQA/pylint
+    linter_speed: 2
     linter_rules_url: http://pylint-messages.wikidot.com/all-codes
     linter_banner_image_url: https://www.pylint.org/pylint.svg
     linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
@@ -48,6 +49,7 @@ linters:
     is_formatter: true
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
+    linter_speed: 3
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
     linter_rules_configuration_url: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
     config_file_name: pyproject.toml
@@ -93,6 +95,7 @@ linters:
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
     linter_spdx_license: MIT
+    linter_speed: 3
     linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
@@ -122,6 +125,7 @@ linters:
     is_formatter: true
     linter_url: https://pycqa.github.io/isort/
     linter_repo: https://github.com/PyCQA/isort
+    linter_speed: 5
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
     linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files/
     linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments/
@@ -223,6 +227,7 @@ linters:
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
     linter_spdx_license: MIT
+    linter_speed: 1
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
     linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
