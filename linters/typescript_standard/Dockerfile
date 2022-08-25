@@ -81,7 +81,7 @@ RUN npm install npm@latest-6 -g || true && \
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 typescript \
-                standard@15.0.1 \
+                standard@17.0.0 \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser
 #NPM__END
