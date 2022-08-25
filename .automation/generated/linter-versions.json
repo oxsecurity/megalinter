@@ -89,7 +89,7 @@
     "swiftlint": "0.46.5",
     "syft": "0.54.0",
     "tekton-lint": "0.6.0",
-    "terraform-fmt": "1.2.7",
+    "terraform-fmt": "1.2.8",
     "terragrunt": "0.38.7",
     "terrascan": "1.15.2",
     "tflint": "0.39.3",
