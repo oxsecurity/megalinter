@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [luacheck](https://luacheck.readthedocs.io) from 0.26.1 to **1.0.0** on 2022-08-24
   - [checkov](https://www.checkov.io/) from 2.1.149 to **2.1.156** on 2022-08-24
   - [secretlint](https://github.com/secretlint/secretlint) from 5.2.3 to **5.2.4** on 2022-08-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0** on 2022-08-25
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
