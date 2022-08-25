@@ -115,7 +115,7 @@ linters:
     downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - "standard@17.0.0"
     ide:
       atom:
         - name: linter-js-standard
