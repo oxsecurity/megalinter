@@ -32,6 +32,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0** on 2022-08-25
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.7 to **1.2.8** on 2022-08-25
   - [checkov](https://www.checkov.io/) from 2.1.156 to **2.1.157** on 2022-08-25
+  - [checkov](https://www.checkov.io/) from 2.1.157 to **2.1.159** on 2022-08-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.1 to **7.13.0** on 2022-08-25
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
