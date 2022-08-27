@@ -15,7 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Performances improvements
   - When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.
   - Define `linter_speed` of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.
-- Azure Pipelines integration ehancements
+- Azure Pipelines integration enhancements
   - Console reporter: manage collapsible groups for easier display & navigation in job logs
 
 - Linter versions upgrades
