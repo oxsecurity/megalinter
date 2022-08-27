@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.142**
+- Version in MegaLinter: **2.1.160**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -25,17 +25,15 @@
 - Enable checkov by adding `REPOSITORY_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 - Disable checkov by adding `REPOSITORY_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                                                                                                                  | Default value                                   |
-|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| REPOSITORY_CHECKOV_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                              |
-| REPOSITORY_CHECKOV_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| REPOSITORY_CHECKOV_CONFIG_FILE                 | checkov configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                           | `.checkov.yml`                                  |
-| REPOSITORY_CHECKOV_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| Variable                                       | Description                                                                        | Default value                                   |
+|------------------------------------------------|------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`           |                                                 |
+| REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                     | None                                            |
+| REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                      | None                                            |
+| REPOSITORY_CHECKOV_CONFIG_FILE                 | checkov configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.checkov.yml`                                  |
+| REPOSITORY_CHECKOV_RULES_PATH                  | Path where to find linter configuration file                                       | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                         | `false`                                         |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                   | `0`                                             |
 
 ## IDE Integration
 

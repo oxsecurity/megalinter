@@ -97,6 +97,20 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+        file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file = file_with_prefix_and_sub_dir
+
+        if prefix or files_sub_directory:
+            prefix_and_sub_dir = os.path.normpath(
+                os.path.join(prefix or "", files_sub_directory or "") + os.path.sep
+            )
+
+            if file.startswith(prefix_and_sub_dir):
+                file = os.path.relpath(file_with_prefix_and_sub_dir, prefix_and_sub_dir)
+            else:
+                # Skip if file is not in defined files_sub_directory
+                continue
+
         # Skip if file is in ignore list
         if file in ignored_fileset:
             continue
@@ -114,13 +128,6 @@ def filter_files(
         # Skip according to FILTER_REGEX_EXCLUDE
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
-        # Skip if file is not in defined files_sub_directory
-        if files_sub_directory and not os.path.normpath(file).startswith(
-            os.path.normpath(
-                os.path.join(prefix or "", files_sub_directory) + os.path.sep
-            )
-        ):
-            continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false)
         if lint_all_other_linters_files is False:
@@ -136,17 +143,19 @@ def filter_files(
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
         # Skip according to file name regex
-        if file_contains_regex and not file_contains(file, file_contains_regex_object):
+        if file_contains_regex and not file_contains(
+            file_with_prefix_and_sub_dir, file_contains_regex_object
+        ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
-            and file_is_generated(file)
+            and file_is_generated(file_with_prefix_and_sub_dir)
         ):
             continue
 
-        filtered_files.append(file)
+        filtered_files.append(file_with_prefix_and_sub_dir)
 
     return filtered_files
 
