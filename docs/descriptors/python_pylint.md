@@ -11,7 +11,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.14.5**
+- Version in MegaLinter: **2.15.0**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -137,14 +137,17 @@ Main:
                         Files or directories to be skipped. They should be
                         base names, not paths. (default: ('CVS',))
   --ignore-patterns <pattern>[,<pattern>...]
-                        Files or directories matching the regex patterns are
-                        skipped. The regex matches against base names, not
-                        paths. The default value ignores Emacs file locks
-                        (default: (re.compile('^\\.#'),))
+                        Files or directories matching the regular expression
+                        patterns are skipped. The regex matches against base
+                        names, not paths. The default value ignores Emacs file
+                        locks (default: (re.compile('^\\.#'),))
   --ignore-paths <pattern>[,<pattern>...]
-                        Add files or directories matching the regex patterns
-                        to the ignore-list. The regex matches against paths
-                        and can be in Posix or Windows format. (default: [])
+                        Add files or directories matching the regular
+                        expressions patterns to the ignore-list. The regex
+                        matches against paths and can be in Posix or Windows
+                        format. Because '\' represents the directory delimiter
+                        on Windows systems, it can't be used as an escape
+                        character. (default: [])
   --persistent <y or n>
                         Pickle collected data for later comparisons. (default:
                         True)
@@ -152,8 +155,8 @@ Main:
                         List of plugins (as comma separated values of python
                         module names) to load, usually to register additional
                         checkers. (default: ())
-  --fail-under <score>  Specify a score threshold to be exceeded before
-                        program exits with error. (default: 10)
+  --fail-under <score>  Specify a score threshold under which the program will
+                        exit with error. (default: 10)
   --fail-on <msg ids>   Return non-zero exit code if any of these
                         messages/categories are detected, even if score is
                         above --fail-under value. Syntax same as enable.
@@ -480,6 +483,18 @@ Typecheck:
                         List of decorators that change the signature of a
                         decorated function. (default: [])
 
+Method_args:
+  BaseChecker for method_args.
+
+  --timeout-methods <comma separated list>
+                        List of qualified names (i.e., library.method) which
+                        require a timeout parameter e.g.
+                        'requests.api.get,requests.api.post' (default:
+                        ('requests.api.delete', 'requests.api.get',
+                        'requests.api.head', 'requests.api.options',
+                        'requests.api.patch', 'requests.api.post',
+                        'requests.api.put', 'requests.api.request'))
+
 Format:
   Formatting checker.
 
@@ -702,8 +717,8 @@ Variables:
                         'past.builtins', 'future.builtins', 'builtins', 'io'))
   --ignored-argument-names <regexp>
                         Argument names that match this expression will be
-                        ignored. Default to name with leading underscore.
-                        (default: re.compile('_.*|^ignored_|^unused_'))
+                        ignored. (default:
+                        re.compile('_.*|^ignored_|^unused_'))
   --allow-global-unused-variables <y or n>
                         Tells whether unused global variables should be
                         treated as a violation. (default: True)
