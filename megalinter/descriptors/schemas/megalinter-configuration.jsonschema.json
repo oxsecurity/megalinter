@@ -2607,7 +2607,7 @@
     },
     "DOCKERFILE_HADOLINT_CLI_LINT_MODE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
