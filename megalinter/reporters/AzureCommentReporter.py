@@ -29,17 +29,17 @@ class GitlabCommentReporter(Reporter):
 
     def produce_report(self):
         # Post comment on GitHub pull request
-        if config.get("CI_JOB_TOKEN", "") != "":
-            SYSTEM_COLLECTIONURI = os.getenv('SYSTEM_COLLECTIONURI')
-            SYSTEM_PULLREQUEST_PULLREQUESTID = os.getenv('SYSTEM_PULLREQUEST_PULLREQUESTID')
-            SYSTEM_TEAMPROJECT = os.getenv('SYSTEM_TEAMPROJECT')
-            BUILD_REPOSITORY_ID = os.getenv('BUILD_REPOSITORY_ID')
+        if config.get("SYSTEM_ACCESSTOKEN", "") != "":
+            SYSTEM_COLLECTIONURI = config.get('SYSTEM_COLLECTIONURI')
+            SYSTEM_PULLREQUEST_PULLREQUESTID = config.get('SYSTEM_PULLREQUEST_PULLREQUESTID')
+            SYSTEM_TEAMPROJECT = config.get('SYSTEM_TEAMPROJECT')
+            BUILD_REPOSITORY_ID = config.get('BUILD_REPOSITORY_ID')
             url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis/git/repositories/" \
                     f"{BUILD_REPOSITORY_ID}/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" \
                     "/threads?api-version=6.0"
             headers = {
                 "content-type": "application/json",
-                "Authorization": f"BEARER {os.getenv('SYSTEM_ACCESSTOKEN')}"
+                "Authorization": f"BEARER {config.get('SYSTEM_ACCESSTOKEN')}"
             }
             p_r_msg = build_markdown_summary(self, action_run_url)
 
