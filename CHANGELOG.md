@@ -39,6 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.159 to **2.1.160** on 2022-08-27
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.0 to **6.8.1** on 2022-08-27
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.7 to **0.38.8** on 2022-08-27
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.0 to **8.11.2** on 2022-08-27
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
