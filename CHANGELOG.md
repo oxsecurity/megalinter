@@ -34,6 +34,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.156 to **2.1.157** on 2022-08-25
   - [checkov](https://www.checkov.io/) from 2.1.157 to **2.1.159** on 2022-08-25
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.1 to **7.13.0** on 2022-08-25
+  - [eslint](https://eslint.org) from 8.22.0 to **8.23.0** on 2022-08-27
+  - [pylint](https://www.pylint.org) from 2.14.5 to **2.15.0** on 2022-08-27
+  - [checkov](https://www.checkov.io/) from 2.1.159 to **2.1.160** on 2022-08-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.0 to **6.8.1** on 2022-08-27
 <!-- linter-versions-end -->
 
 ## [v6.6.0] - 2022-08-21
