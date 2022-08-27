@@ -26,7 +26,7 @@ class GitlabCommentReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        # Post comment on GitHub pull request
+        # Post comment on Gitlab pull request
         if config.get("CI_JOB_TOKEN", "") != "":
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
