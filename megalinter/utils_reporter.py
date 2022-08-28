@@ -132,6 +132,14 @@ def build_markdown_summary(reporter_self, action_run_url):
                     f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)"
                 )
+        p_r_msg += os.linesep
+    # Link to ox
+    p_r_msg += (
+        os.linesep
+        + "_MegaLinter is graciously provided by [![OX Security]"
+        + "(https://www.ox.security/wp-content/uploads/2022/06/"
+        + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+    )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
