@@ -11,9 +11,8 @@ Requires the following vars sent to docker run:
 - BUILD_REPOSITORY_ID
 """
 import logging
+
 import requests
-
-
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
 

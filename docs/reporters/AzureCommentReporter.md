@@ -38,6 +38,6 @@ Example:
 
 ![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
 
-| Variable                       | Description                                                                                            | Default value            |
-|--------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------|
-| AZURE_COMMENT_REPORTER        | Activates/deactivates reporter                                                                         | true                     |
+| Variable               | Description                    | Default value |
+|------------------------|--------------------------------|---------------|
+| AZURE_COMMENT_REPORTER | Activates/deactivates reporter | true          |
