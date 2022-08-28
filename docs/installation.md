@@ -138,28 +138,42 @@ jobs:
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+Add the following job in your `azure-pipelines.yaml` file
 
 ```yaml
   # Run MegaLinter to detect linting and security issues
-  - job: megalinter
-    displayName: MegaLinter
+  - job: MegaLinter
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        docker pull oxsecurity/megalinter:v6
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v6
-      displayName: 'MegaLinter analysis'
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Pull MegaLinter
 
-    # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Artifact: MegaLinter Report'
-      condition: succeededOrFailed()
-      inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
-        artifactName: MegaLinterReport
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+          -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+          -e CI=true \
+          -e TF_BUILD=true \
+          -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+          -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+          -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+          -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+          -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+          oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport
 ```
+
+To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
 
 ## Jenkins
 
