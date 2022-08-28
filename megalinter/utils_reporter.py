@@ -136,7 +136,7 @@ def build_markdown_summary(reporter_self, action_run_url):
     # Link to ox
     p_r_msg += (
         os.linesep
-        + "_MegaLinter is gracefully provided by [![OX Security]"
+        + "_MegaLinter is graciously provided by [![OX Security]"
         + "(https://www.ox.security/wp-content/uploads/2022/06/"
         + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
     )
