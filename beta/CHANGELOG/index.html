@@ -5443,6 +5443,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v670-2022-08-28" class="md-nav__link">
+    [v6.7.0] - 2022-08-28
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v660-2022-08-21" class="md-nav__link">
     [v6.6.0] - 2022-08-21
   </a>
@@ -6135,6 +6142,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v670-2022-08-28" class="md-nav__link">
+    [v6.7.0] - 2022-08-28
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v660-2022-08-21" class="md-nav__link">
     [v6.6.0] - 2022-08-21
   </a>
@@ -6809,16 +6823,19 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v670-2022-08-28">[v6.7.0] - 2022-08-28</h2>
+<ul>
+<li>Linters<ul>
 <li>Add <a href="https://pmd.github.io/latest/">PMD</a> java linter</li>
-<li>Fix: Properly match <code>files_sub_directory</code> as a prefix instead of partial string matching (<a href="https://github.com/oxsecurity/megalinter/pull/1765">#1765</a>)</li>
-<li>Match regex without <code>workspace</code> and <code>sub_directory</code></li>
-<li>Remove config variables that are not applicable to linters analyzing all files or all other linters files</li>
-<li>Performances improvements<ul>
-<li>When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.</li>
-<li>Define <code>linter_speed</code> of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.</li>
 </ul>
 </li>
-<li>Azure Pipelines integration enhancements<ul>
+</ul>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/devops/pipelines/">Azure Pipelines</a> integration enhancements<ul>
 <li>Update <a href="https://oxsecurity.github.io/megalinter/latest/installation/#azure-pipelines">installation instructions</a></li>
 <li>Console reporter: manage collapsible groups for easier display &amp; navigation in job logs (requires CI=true and TF_BUILD=true sent as env variables)</li>
 <li>Azure comments reporter (see <a href="https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/">documentation</a>)</li>
@@ -6826,35 +6843,40 @@
 </li>
 </ul>
 <ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.139 to <strong>2.1.142</strong> on 2022-08-22</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.35.0 to <strong>1.35.1</strong> on 2022-08-22</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.11.0 to <strong>1.11.1</strong> on 2022-08-22</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.142 to <strong>2.1.145</strong> on 2022-08-22</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.145 to <strong>2.1.148</strong> on 2022-08-23</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.148 to <strong>2.1.149</strong> on 2022-08-24</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.35.0 to <strong>0.39.3</strong> on 2022-08-24</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.48.0 to <strong>1.49.0</strong> on 2022-08-24</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.11.1 to <strong>1.12.0</strong> on 2022-08-24</li>
-<li><a href="https://luacheck.readthedocs.io">luacheck</a> from 0.26.1 to <strong>1.0.0</strong> on 2022-08-24</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.149 to <strong>2.1.156</strong> on 2022-08-24</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.2.3 to <strong>5.2.4</strong> on 2022-08-24</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.62.0 to <strong>0.63.0</strong> on 2022-08-25</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.7 to <strong>1.2.8</strong> on 2022-08-25</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.156 to <strong>2.1.157</strong> on 2022-08-25</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.157 to <strong>2.1.159</strong> on 2022-08-25</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.12.1 to <strong>7.13.0</strong> on 2022-08-25</li>
-<li><a href="https://eslint.org">eslint</a> from 8.22.0 to <strong>8.23.0</strong> on 2022-08-27</li>
-<li><a href="https://www.pylint.org">pylint</a> from 2.14.5 to <strong>2.15.0</strong> on 2022-08-27</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.159 to <strong>2.1.160</strong> on 2022-08-27</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.8.0 to <strong>6.8.1</strong> on 2022-08-27</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.7 to <strong>0.38.8</strong> on 2022-08-27</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.11.0 to <strong>8.11.2</strong> on 2022-08-27</li>
+<li>Performances improvements<ul>
+<li>When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.</li>
+<li>Define <code>linter_speed</code> of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.</li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
+<ul>
+<li>Fixes<ul>
+<li>Fix: Properly match <code>files_sub_directory</code> as a prefix instead of partial string matching (<a href="https://github.com/oxsecurity/megalinter/pull/1765">#1765</a>)</li>
+<li>Match regex without <code>workspace</code> and <code>sub_directory</code></li>
+<li>Remove config variables that are not applicable to linters analyzing all files or all other linters files</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.62.0 to <strong>0.63.0</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.139 to <strong>2.1.160</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.8.0 to <strong>6.8.1</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.11.0 to <strong>1.12.0</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.22.0 to <strong>8.23.0</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.11.0 to <strong>8.11.2</strong></li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.48.0 to <strong>1.49.0</strong></li>
+<li><a href="https://luacheck.readthedocs.io">luacheck</a> from 0.26.1 to <strong>1.0.0</strong></li>
+<li><a href="https://www.pylint.org">pylint</a> from 2.14.5 to <strong>2.15.0</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.35.0 to <strong>1.35.1</strong></li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.2.3 to <strong>5.2.4</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.12.1 to <strong>7.13.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.7 to <strong>1.2.8</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.7 to <strong>0.38.8</strong></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.35.0 to <strong>0.39.3</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v660-2022-08-21">[v6.6.0] - 2022-08-21</h2>
 <ul>
 <li>Fix flavors suggestions to ignore linters not relevant for such flavor (<a href="https://github.com/oxsecurity/megalinter/issues/1746">#1746</a>)</li>
