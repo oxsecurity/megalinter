@@ -34,6 +34,10 @@ Example:
 
   - See <https://docs.microsoft.com/en-US/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#build-validation>
 
+- You must allow **Contribute** and **Contribute to Pull Requests** on your Build Service (Settings -> Repositories -> Select your build service)
+
+![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
+
 | Variable                       | Description                                                                                            | Default value            |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------|
 | AZURE_COMMENT_REPORTER        | Activates/deactivates reporter                                                                         | true                     |

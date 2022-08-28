@@ -76,7 +76,10 @@ class AzureCommentReporter(Reporter):
                 )
             else:
                 logging.warning(
-                    "[Azure Comment Reporter] Error while posting comment\n" + r.reason
+                    "[Azure Comment Reporter] Error while posting comment:"
+                    + r.reason
+                    + "\n"
+                    + f"See https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/"
                 )
         # Not in Azure context
         else:
