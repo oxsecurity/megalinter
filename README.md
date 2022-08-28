@@ -460,15 +460,16 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-          -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-          -e CI=true \
-          -e TF_BUILD=true \
-          -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-          -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-          -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-          -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
-          -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
-          oxsecurity/megalinter:test-nvuillam-azure-comments
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            -e CI=true \
+            -e TF_BUILD=true \
+            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
+            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            oxsecurity/megalinter:test-nvuillam-azure-comments
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
@@ -875,7 +876,7 @@ _The following table does not display docker pulls from [MegaLinter v4 & v5 imag
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                                   | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.7.0/supported-linters/)                                  | Default MegaLinter Flavor                                              |       106        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)                                   | Default MegaLinter Flavor                                              |       106        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/documentation.md#readme) | MegaLinter for documentation projects                                  |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/dotnet.md#readme)               | Optimized for C, C++, C# or VB based projects                          |        54        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
