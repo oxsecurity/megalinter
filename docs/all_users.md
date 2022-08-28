@@ -11,6 +11,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![dorssel/usbipd-win - GitHub](https://gh-card.dev/repos/dorssel/usbipd-win.svg?fullname=)](https://github.com/dorssel/usbipd-win){target=_blank}
 [![flosse/sloc - GitHub](https://gh-card.dev/repos/flosse/sloc.svg?fullname=)](https://github.com/flosse/sloc){target=_blank}
 [![oxsecurity/megalinter - GitHub](https://gh-card.dev/repos/oxsecurity/megalinter.svg?fullname=)](https://github.com/oxsecurity/megalinter){target=_blank}
+[![unixorn/git-extra-commands - GitHub](https://gh-card.dev/repos/unixorn/git-extra-commands.svg?fullname=)](https://github.com/unixorn/git-extra-commands){target=_blank}
 [![onedr0p/flux-cluster-template - GitHub](https://gh-card.dev/repos/onedr0p/flux-cluster-template.svg?fullname=)](https://github.com/onedr0p/flux-cluster-template){target=_blank}
 [![onedr0p/home-ops - GitHub](https://gh-card.dev/repos/onedr0p/home-ops.svg?fullname=)](https://github.com/onedr0p/home-ops){target=_blank}
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
@@ -37,8 +38,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
-[![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
