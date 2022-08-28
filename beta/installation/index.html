@@ -4886,6 +4886,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../reporters/AzureCommentReporter/" class="md-nav__link">
+        Azure Pull Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
         GitHub Status
       </a>
@@ -5773,26 +5787,39 @@ jobs:
 
 <h2 id="azure-pipelines">Azure Pipelines</h2>
 <p>Use the following Azure Pipelines <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema">YAML template</a></p>
-<p>You may activate <a href="https://megalinter.github.io/reporters/FileIoReporter/">File.io reporter</a> or <a href="https://megalinter.github.io/reporters/EmailReporter/">E-mail reporter</a> to access detailed logs and fixed source</p>
+<p>Add the following job in your <code>azure-pipelines.yaml</code> file</p>
 <pre><code class="language-yaml">  # Run MegaLinter to detect linting and security issues
-  - job: megalinter
-    displayName: MegaLinter
+  - job: MegaLinter
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        docker pull oxsecurity/megalinter:v6
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v6
-      displayName: 'MegaLinter analysis'
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Pull MegaLinter
 
-    # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Artifact: MegaLinter Report'
-      condition: succeededOrFailed()
-      inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
-        artifactName: MegaLinterReport
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+          -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+          -e CI=true \
+          -e TF_BUILD=true \
+          -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+          -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+          -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+          -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+          -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+          oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: &quot;$(System.DefaultWorkingDirectory)/megalinter-reports/&quot;
+          artifactName: MegaLinterReport
 </code></pre>
+<p>To benefit from Pull Request comments, please follow <a href="../reporters/AzureCommentReporter/">configuration instructions</a></p>
 <h2 id="jenkins">Jenkins</h2>
 <p>Add the following stage in your Jenkinsfile</p>
 <p>You may activate <a href="https://megalinter.github.io/reporters/FileIoReporter/">File.io reporter</a> or <a href="https://megalinter.github.io/reporters/EmailReporter/">E-mail reporter</a> to access detailed logs and fixed source</p>
