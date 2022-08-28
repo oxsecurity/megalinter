@@ -301,6 +301,7 @@ nav:
       - "Text files": "reporters/TextReporter.md"
       - "GitHub Pull Request comments": "reporters/GitHubCommentReporter.md"
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
+      - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
