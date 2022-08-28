@@ -8,43 +8,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Add [PMD](https://pmd.github.io/latest/) java linter
-- Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
-- Match regex without `workspace` and `sub_directory`
-- Remove config variables that are not applicable to linters analyzing all files or all other linters files
-- Performances improvements
-  - When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.
-  - Define `linter_speed` of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.
-- Azure Pipelines integration enhancements
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.7.0] - 2022-08-28
+
+- Linters
+  - Add [PMD](https://pmd.github.io/latest/) java linter
+
+- [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) integration enhancements
   - Update [installation instructions](https://oxsecurity.github.io/megalinter/latest/installation/#azure-pipelines)
   - Console reporter: manage collapsible groups for easier display & navigation in job logs (requires CI=true and TF_BUILD=true sent as env variables)
   - Azure comments reporter (see [documentation](https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/))
 
+- Performances improvements
+  - When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.
+  - Define `linter_speed` of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.
+
+- Fixes
+  - Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
+  - Match regex without `workspace` and `sub_directory`
+  - Remove config variables that are not applicable to linters analyzing all files or all other linters files
+
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.142** on 2022-08-22
-  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1** on 2022-08-22
-  - [djlint](https://djlint.com/) from 1.11.0 to **1.11.1** on 2022-08-22
-  - [checkov](https://www.checkov.io/) from 2.1.142 to **2.1.145** on 2022-08-22
-  - [checkov](https://www.checkov.io/) from 2.1.145 to **2.1.148** on 2022-08-23
-  - [checkov](https://www.checkov.io/) from 2.1.148 to **2.1.149** on 2022-08-24
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.35.0 to **0.39.3** on 2022-08-24
-  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0** on 2022-08-24
-  - [djlint](https://djlint.com/) from 1.11.1 to **1.12.0** on 2022-08-24
-  - [luacheck](https://luacheck.readthedocs.io) from 0.26.1 to **1.0.0** on 2022-08-24
-  - [checkov](https://www.checkov.io/) from 2.1.149 to **2.1.156** on 2022-08-24
-  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.3 to **5.2.4** on 2022-08-24
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0** on 2022-08-25
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.7 to **1.2.8** on 2022-08-25
-  - [checkov](https://www.checkov.io/) from 2.1.156 to **2.1.157** on 2022-08-25
-  - [checkov](https://www.checkov.io/) from 2.1.157 to **2.1.159** on 2022-08-25
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.1 to **7.13.0** on 2022-08-25
-  - [eslint](https://eslint.org) from 8.22.0 to **8.23.0** on 2022-08-27
-  - [pylint](https://www.pylint.org) from 2.14.5 to **2.15.0** on 2022-08-27
-  - [checkov](https://www.checkov.io/) from 2.1.159 to **2.1.160** on 2022-08-27
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.0 to **6.8.1** on 2022-08-27
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.7 to **0.38.8** on 2022-08-27
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.0 to **8.11.2** on 2022-08-27
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0**
+  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.160**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.0 to **6.8.1**
+  - [djlint](https://djlint.com/) from 1.11.0 to **1.12.0**
+  - [eslint](https://eslint.org) from 8.22.0 to **8.23.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.0 to **8.11.2**
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0**
+  - [luacheck](https://luacheck.readthedocs.io) from 0.26.1 to **1.0.0**
+  - [pylint](https://www.pylint.org) from 2.14.5 to **2.15.0**
+  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1**
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.3 to **5.2.4**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.1 to **7.13.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.7 to **1.2.8**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.7 to **0.38.8**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.35.0 to **0.39.3**
 
 ## [v6.6.0] - 2022-08-21
 
