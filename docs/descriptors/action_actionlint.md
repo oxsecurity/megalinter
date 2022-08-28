@@ -137,6 +137,6 @@ Flags:
 - Dockerfile commands :
 ```dockerfile
 ENV GO111MODULE=on
-RUN go get github.com/rhysd/actionlint/cmd/actionlint
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16
 ```
 

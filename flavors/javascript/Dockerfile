@@ -179,7 +179,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #OTHER__START
 # actionlint installation
 ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16
 
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
