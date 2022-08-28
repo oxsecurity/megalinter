@@ -467,7 +467,7 @@ Add the following job in your `azure-pipelines.yaml` file
             -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
             -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
             -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
-            -e BUILD_BUILD_ID=$(Build.BuildId)
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             oxsecurity/megalinter:test-nvuillam-azure-comments
         displayName: Run MegaLinter
