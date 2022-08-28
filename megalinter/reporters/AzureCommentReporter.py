@@ -20,7 +20,7 @@ from megalinter.pre_post_factory import run_command
 from megalinter.utils_reporter import build_markdown_summary
 
 
-class GitlabCommentReporter(Reporter):
+class AzureCommentReporter(Reporter):
     name = "AZURE_COMMENT"
     scope = "mega-linter"
 
@@ -35,10 +35,21 @@ class GitlabCommentReporter(Reporter):
         if config.get("SYSTEM_ACCESSTOKEN", "") != "":
             SYSTEM_COLLECTIONURI = config.get("SYSTEM_COLLECTIONURI")
             SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
-                "SYSTEM_PULLREQUEST_PULLREQUESTID"
+                "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
             )
+            if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
+                logging.warning(
+                    "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_PULLREQUESTID\n"
+                    + "You may need to configure a build validation policy to make it appear.\n"
+                    + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
+                    + "branch-policies?view=azure-devops&tabs=browser#build-validation"
+                )
             SYSTEM_TEAMPROJECT = config.get("SYSTEM_TEAMPROJECT")
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
+            artifacts_url = (
+                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
+                f"{BUILD_REPOSITORY_ID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+            )
             url = (
                 f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis/git/repositories/"
                 f"{BUILD_REPOSITORY_ID}/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
@@ -48,7 +59,7 @@ class GitlabCommentReporter(Reporter):
                 "content-type": "application/json",
                 "Authorization": f"BEARER {config.get('SYSTEM_ACCESSTOKEN')}",
             }
-            p_r_msg = build_markdown_summary(self, url)
+            p_r_msg = build_markdown_summary(self, artifacts_url)
 
             data = {
                 "comments": [
