@@ -11,12 +11,10 @@ Requires the following vars sent to docker run:
 - BUILD_REPOSITORY_ID
 """
 import logging
-import os
 import requests
 
 
 from megalinter import Reporter, config
-from megalinter.pre_post_factory import run_command
 from megalinter.utils_reporter import build_markdown_summary
 
 
@@ -79,7 +77,7 @@ class AzureCommentReporter(Reporter):
                     "[Azure Comment Reporter] Error while posting comment:"
                     + r.reason
                     + "\n"
-                    + f"See https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/"
+                    + "See https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/"
                 )
         # Not in Azure context
         else:
