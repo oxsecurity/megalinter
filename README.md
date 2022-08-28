@@ -445,28 +445,42 @@ jobs:
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+Add the following job in your `azure-pipelines.yaml` file
 
 ```yaml
   # Run MegaLinter to detect linting and security issues
-  - job: megalinter
-    displayName: MegaLinter
+  - job: MegaLinter
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        docker pull oxsecurity/megalinter:v6
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v6
-      displayName: 'MegaLinter analysis'
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Pull MegaLinter
 
-    # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Artifact: MegaLinter Report'
-      condition: succeededOrFailed()
-      inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
-        artifactName: MegaLinterReport
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+          -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+          -e CI=true \
+          -e TF_BUILD=true \
+          -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+          -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+          -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+          -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+          -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+          oxsecurity/megalinter:test-nvuillam-azure-comments
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport
 ```
+
+To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
 ### Jenkins
 
@@ -832,19 +846,20 @@ Special considerations:
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                                                                                    | Description                                                                                                   | Default                 |
-|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
-| [Text files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
-| [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
-| [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
-| [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)              | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
-| [IDE Configuration](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConfigReporter.md)                    | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
-| [GitHub Status](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                  | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
-| [File.io](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/FileIoReporter.md)                              | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
-| [JSON](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/JsonReporter.md)                                   | Generates a JSON output report file                                                                           | Inactive                |
-| [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)                                 | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
-| [TAP files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TapReporter.md)                               | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
-| [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                             | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
+| Reporter                                                                                                                           | Description                                                                                                   | Default                      |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------|
+| [Text files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TextReporter.md)                                    | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                       |
+| [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)         | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action      |
+| [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)        | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI       |
+| [Azure Pipelines Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if in Azure Pipelines |
+| [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)                     | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                       |
+| [IDE Configuration](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConfigReporter.md)                           | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                       |
+| [GitHub Status](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                         | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action      |
+| [File.io](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/FileIoReporter.md)                                     | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                     |
+| [JSON](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/JsonReporter.md)                                          | Generates a JSON output report file                                                                           | Inactive                     |
+| [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)                                        | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                       |
+| [TAP files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TapReporter.md)                                      | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                       |
+| [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                                    | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                       |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -1143,6 +1158,10 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 - [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
+
+- [Azure Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
+
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/AzureCommentReporter.jpg?raw=true>)
 
 - [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)
