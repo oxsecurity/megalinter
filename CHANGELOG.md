@@ -11,6 +11,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3** on 2022-08-28
   - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.162** on 2022-08-28
+  - [checkov](https://www.checkov.io/) from 2.1.162 to **2.1.165** on 2022-08-30
+  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0** on 2022-08-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0** on 2022-08-30
 <!-- linter-versions-end -->
 
 ## [v6.7.1] - 2022-08-28

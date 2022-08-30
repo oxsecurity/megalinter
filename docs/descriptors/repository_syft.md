@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.54.0**
+- Version in MegaLinter: **0.55.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -113,6 +113,7 @@ Flags:
   -c, --config string              application config file
   -d, --dockerfile string          include dockerfile for upload to Anchore Enterprise
       --exclude stringArray        exclude paths from being scanned using a glob expression
+      --external-sources-enabled   shut off any use of external sources during sbom generation (default false
       --file string                file to write the default report output to (default is STDOUT)
   -h, --help                       help for this command
   -H, --host string                the hostname or URL of the Anchore Enterprise instance to upload to
