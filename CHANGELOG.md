@@ -16,6 +16,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0** on 2022-08-30
   - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1** on 2022-08-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9** on 2022-08-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2** on 2022-08-31
+  - [checkov](https://www.checkov.io/) from 2.1.165 to **2.1.171** on 2022-08-31
 <!-- linter-versions-end -->
 
 ## [v6.7.1] - 2022-08-28
