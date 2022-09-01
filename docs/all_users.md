@@ -29,9 +29,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
 [![nvuillam/npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
-[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
-[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
+[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
+[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![T145/black-mirror - GitHub](https://gh-card.dev/repos/T145/black-mirror.svg?fullname=)](https://github.com/T145/black-mirror){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
@@ -53,7 +53,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
-[![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
+[![rwaltr/home-ops - GitHub](https://gh-card.dev/repos/rwaltr/home-ops.svg?fullname=)](https://github.com/rwaltr/home-ops){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}

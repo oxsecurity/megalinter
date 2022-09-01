@@ -18,6 +18,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9** on 2022-08-30
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2** on 2022-08-31
   - [checkov](https://www.checkov.io/) from 2.1.165 to **2.1.171** on 2022-08-31
+  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.3** on 2022-09-01
+  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0** on 2022-09-01
+  - [checkov](https://www.checkov.io/) from 2.1.171 to **2.1.179** on 2022-09-01
+  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0** on 2022-09-01
+  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15** on 2022-09-01
 <!-- linter-versions-end -->
 
 ## [v6.7.1] - 2022-08-28

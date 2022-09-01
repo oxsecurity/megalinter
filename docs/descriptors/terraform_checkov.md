@@ -15,7 +15,7 @@ You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.171**
+- Version in MegaLinter: **2.1.179**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}

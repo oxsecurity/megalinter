@@ -11,7 +11,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **22.6.0**
+- Version in MegaLinter: **22.8.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -114,8 +114,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (timeit, pypy, time, python, prun,
-                                  python3, capture). Useful for formatting
+                                  magics (pypy, prun, python, time, python3,
+                                  timeit, capture). Useful for formatting
                                   cells with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
@@ -171,8 +171,8 @@ Options:
                                   stdin. Useful to make sure Black will
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
-  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2;
-                                  x>=1]
+  -W, --workers INTEGER RANGE     Number of parallel workers [default: number
+                                  of CPUs in the system]  [x>=1]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
