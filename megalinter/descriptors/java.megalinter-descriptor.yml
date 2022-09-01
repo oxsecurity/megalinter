@@ -32,6 +32,7 @@ linters:
       - sarif
       - -o
       - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_errors_count: "regex_number"
     cli_lint_errors_regex: "Checkstyle ends with ([0-9]+) errors"
     cli_version_extra_args:
       - "-jar"
