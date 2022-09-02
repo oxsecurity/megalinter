@@ -340,6 +340,7 @@ class Linter:
             self.try_fix = False
             self.status = "success"
             self.stdout = None
+            self.stdout_human = None
             self.return_code = 0
             self.number_errors = 0
             self.total_number_errors = 0
