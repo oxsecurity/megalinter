@@ -231,7 +231,7 @@ branding:
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = [
         "COPY entrypoint.sh /entrypoint.sh",
-        "RUN chmod +x entrypoint.sh",
+        "RUN chmod +x entrypoint.sh && apk add rust cargo && cargo install -f sarif-fmt",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -430,7 +430,8 @@ def generate_linter_dockerfiles():
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
-                "    CONFIG_REPORTER=false",
+                "    CONFIG_REPORTER=false \\",
+                "    SARIF_TO_HUMAN=false"
                 "",
                 # "EXPOSE 80",
                 "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
