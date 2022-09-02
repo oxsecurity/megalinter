@@ -174,8 +174,8 @@ ENV ENABLE_LINTERS=JSON_ESLINT_PLUGIN_JSONC \
     GITHUB_COMMENT_REPORTER=false \
     EMAIL_REPORTER=false \
     FILEIO_REPORTER=false \
-    CONFIG_REPORTER=false
-
+    CONFIG_REPORTER=false \
+    SARIF_TO_HUMAN=false
 RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh

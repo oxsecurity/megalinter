@@ -221,6 +221,6 @@ LABEL com.github.actions.name="MegaLinter" \
 
 #EXTRA_DOCKERFILE_LINES__START
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh && apk add rust cargo && cargo install -f sarif-fmt
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

@@ -105,6 +105,8 @@ RUN apk add --update --no-cache \
                 php8-simplexml \
                 composer \
                 dpkg \
+                rust \
+                cargo \
                 nodejs \
                 npm \
                 yarn \
@@ -301,10 +303,6 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 #         | xargs -n 1 wget -O - \
 #         | tar -xzC ${PWSH_DIRECTORY} \
 #     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
-
-# RUST installation
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
@@ -656,6 +654,6 @@ LABEL com.github.actions.name="MegaLinter" \
 
 #EXTRA_DOCKERFILE_LINES__START
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh && apk add rust cargo && cargo install -f sarif-fmt
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
