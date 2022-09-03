@@ -81,7 +81,11 @@ class TextReporter(Reporter):
             status = "✅ [SUCCESS]" if self.master.status == "success" else "❌ [ERROR]"
             text_report_lines += [f"{status} for workspace {workspace_nm}"]
             if self.report_type == "detailed" or self.master.status != "success":
-                stdout = self.master.stdout_human if self.master.stdout_human is not None else self.master.stdout
+                stdout = (
+                    self.master.stdout_human
+                    if self.master.stdout_human is not None
+                    else self.master.stdout
+                )
                 text_report_lines += [f"Linter raw log:\n{stdout}"]
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
