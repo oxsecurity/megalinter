@@ -39,6 +39,7 @@ linters:
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     config_file_name: .hadolint.yaml
     cli_sarif_args:

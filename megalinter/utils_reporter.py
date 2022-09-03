@@ -12,9 +12,6 @@ from megalinter.constants import (
 )
 from pytablewriter import MarkdownTableWriter
 
-mega_linter_version = config.get("BUILD_VERSION", "latest")
-DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
-
 
 def build_markdown_summary(reporter_self, action_run_url):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
@@ -135,6 +132,14 @@ def build_markdown_summary(reporter_self, action_run_url):
                     f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)"
                 )
+        p_r_msg += os.linesep
+    # Link to ox
+    p_r_msg += (
+        os.linesep
+        + "_MegaLinter is graciously provided by [![OX Security]"
+        + "(https://www.ox.security/wp-content/uploads/2022/06/"
+        + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+    )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -159,9 +164,11 @@ def log_section_start(section_key: str, section_title: str):
             return f"::group::{section_title} (expand for details)"
         elif is_gitlab_ci():
             return (
-                f"\\e[0Ksection_start:`{time.time_ns()}`:{section_key}"
-                + f"[collapsed=true]\\r\\e[0K{section_title} (expand for details)"
+                f"\x1b[0Ksection_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
+                + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
             )
+        elif is_azure_pipelines():
+            return f"##[group]{section_title} (expand for details)"
     return section_title
 
 
@@ -170,7 +177,9 @@ def log_section_end(section_key):
         if is_github_actions():
             return "::endgroup::"
         elif is_gitlab_ci():
-            return f"\\e[0Ksection_end:`{time.time_ns()}`:{section_key}\\r\\e[0K"
+            return f"\x1b[0Ksection_end:`{time.time_ns()}`:{section_key}\r\x1b[0K"  # noqa: W605
+        elif is_azure_pipelines():
+            return "##[endgroup]"
     return ""
 
 
@@ -180,3 +189,7 @@ def is_github_actions() -> bool:
 
 def is_gitlab_ci() -> bool:
     return "GITLAB_CI" in os.environ
+
+
+def is_azure_pipelines() -> bool:
+    return "TF_BUILD" in os.environ

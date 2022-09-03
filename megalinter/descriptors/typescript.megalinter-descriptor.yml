@@ -13,7 +13,8 @@ install:
     - typescript
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: TYPESCRIPT_ES
     can_output_sarif: true
     linter_text: |
@@ -41,6 +42,8 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format

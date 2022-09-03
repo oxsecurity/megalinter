@@ -9,9 +9,13 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
 
+TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
+
+You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
+
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.87**
+- Version in MegaLinter: **2.1.179**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -20,8 +24,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -48,11 +52,11 @@ Use checkov in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)       | Default MegaLinter Flavor              |       103        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/latest/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/latest/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)       | Default MegaLinter Flavor              |       106        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/beta/flavors/security/)   | Optimized for security                 |        21        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/beta/flavors/terraform/) | Optimized for TERRAFORM based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -90,8 +94,9 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
                [--prisma-api-url PRISMA_API_URL] [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
-               [-b BRANCH] [--skip-download] [--no-guide]
-               [--skip-suppressions] [--skip-policy-download] [--skip-fixes]
+               [-b BRANCH] [--skip-download] [--use-enforcement-rules]
+               [--no-guide] [--skip-suppressions] [--skip-policy-download]
+               [--skip-fixes]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
@@ -175,15 +180,15 @@ options:
                         HIGH, CRITICAL). If you use a severity, then all
                         checks equal to or above the lowest severity in the
                         list will be included. This option can be combined
-                        with --skip-check. If it is, priority is given to
-                        checks explicitly listed by ID or wildcard over checks
-                        listed by severity. For example, if you use --check
-                        CKV_123 and --skip-check LOW, then CKV_123 will run
-                        even if it is a LOW severity. In the case of a tie
-                        (e.g., --check MEDIUM and --skip-check HIGH for a
-                        medium severity check), then the check will be
-                        skipped. If you use a check ID here along with an API
-                        key, and the check is not part of the BC / PC
+                        with --skip-check. If it is, then the logic is to
+                        first take all checks that match this list, and then
+                        remove all checks that match the skip list. For
+                        example, if you use --check CKV_123 and --skip-check
+                        LOW, then CKV_123 will not run if it is a LOW
+                        severity. Similarly, if you use --check CKV_789
+                        --skip-check MEDIUM, then CKV_789 will run if it is a
+                        HIGH severity. If you use a check ID here along with
+                        an API key, and the check is not part of the BC / PC
                         platform, then the check will still be run (see
                         --include-all-checkov-policies for more info). [env
                         var: CKV_CHECK]
@@ -266,6 +271,26 @@ options:
                         policies and suppressions if using an API token. Note:
                         it will prevent BC platform IDs from being available
                         in Checkov.
+  --use-enforcement-rules
+                        Use the Enforcement rules configured in the platform
+                        for hard / soft fail logic. With this option, the
+                        enforcement rule matching this repo, or the default
+                        rule if there is no match, will determine this
+                        behavior: any check with a severity below the selected
+                        rule's soft-fail threshold will be skipped; any check
+                        with a severity equal to or greater than the rule's
+                        hard-fail threshold will be part of the hard-fail
+                        list, and any check in between will be part of the
+                        soft-fail list. For example, if the given enforcement
+                        rule has a hard-fail value of HIGH and a soft-fail
+                        value of MEDIUM,this is the equivalent of using the
+                        flags `--skip-check LOW --hard-fail-on HIGH`. You can
+                        use --check, --skip-check, --soft-fail, --soft-fail-
+                        on, or --hard-fail-on to override portions of an
+                        enforcement rule. Note, however, that the logic of
+                        applying the --check list and then the --skip-check
+                        list (as described above under --check) still applies
+                        here. Requires a BC or PC platform API key.
   --no-guide            Deprecated - use --skip-download
   --skip-suppressions   Deprecated - use --skip-download
   --skip-policy-download

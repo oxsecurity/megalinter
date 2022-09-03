@@ -106,3 +106,5 @@ site/
 .vscode/settings.json
 
 megalinter-reports/
+
+github_conf/

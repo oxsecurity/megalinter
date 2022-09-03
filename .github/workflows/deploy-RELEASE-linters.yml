@@ -49,6 +49,7 @@ jobs:
             "go_revive",
             "groovy_npm_groovy_lint",
             "java_checkstyle",
+            "java_pmd",
             "javascript_es",
             "json_eslint_plugin_jsonc",
             "jsx_eslint",

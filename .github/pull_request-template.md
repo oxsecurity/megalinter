@@ -17,6 +17,7 @@ Fixes #
 ## Readiness Checklist
 
 ### Author/Contributor
+- [ ] Add entry to the [CHANGELOG](https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md) listing the change and linking to the corresponding issue (if appropriate)
 - [ ] If documentation is needed for this change, has that been included in this pull request
 
 ### Reviewing Maintainer

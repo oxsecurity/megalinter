@@ -750,6 +750,16 @@
             "title": "CLI Lint arguments to remove if fix is activated",
             "type": "array"
           },
+          "cli_lint_ignore_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_lint_ignore_arg_name",
+            "description": "If the linter can use an ignore file, input here the related argument",
+            "examples": [
+              "--secretlintignore",
+              "--ignore-path"
+            ],
+            "title": "Path to ignore file argument name",
+            "type": "string"
+          },
           "cli_lint_mode": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode",
             "default": "file",
@@ -926,6 +936,27 @@
             "description": "List of IDE supporting the linter",
             "title": "IDE Integration",
             "type": "object"
+          },
+          "ignore_file_name": {
+            "$id": "#/properties/linters/items/properties/ignore_file_name",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+              ".eslintignore",
+              ".secretlintignore"
+            ],
+            "title": "Default file name for the linter ignore file",
+            "type": "string"
+          },
+          "ignore_for_flavor_suggestions": {
+            "$id": "#/properties/linters/items/properties/ignore_for_flavor_suggestions",
+            "default": false,
+            "description": "If this property is set to true, this linter will be ignored for flavor suggestions",
+            "examples": [
+              ".eslintignore",
+              ".secretlintignore"
+            ],
+            "title": "Ignore for flavor suggestions",
+            "type": "boolean"
           },
           "install": {
             "$id": "#/properties/linters/items/properties/install",
@@ -1249,6 +1280,19 @@
             "description": "spdx license id of the linter",
             "title": "spdx license",
             "type": "string"
+          },
+          "linter_speed": {
+            "$id": "#/properties/linters/items/properties/linter_speed",
+            "description": "Average speed of the linter (performances indicator). For 1 (very slow) to 5 (very fast)",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "title": "Speed indicator",
+            "type": "number"
           },
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",

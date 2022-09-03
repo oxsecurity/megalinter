@@ -297,6 +297,29 @@ class mega_linter_1_test(unittest.TestCase):
             "Output json file " + expected_output_file + " should exist",
         )
 
+    def test_tap_output_detailed(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "TAP_REPORTER": "true",
+                "TAP_REPORTER_OUTPUT_DETAIL": "detailed",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        expected_output_file = (
+            mega_linter.report_folder
+            + os.path.sep
+            + "tap"
+            + os.path.sep
+            + "mega-linter-JAVASCRIPT_ES.tap"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_output_file),
+            "Output tap file " + expected_output_file + " should exist",
+        )
+
     def test_config_reporter(self):
         mega_linter, output = utilstest.call_mega_linter({"CONFIG_REPORTER": "true"})
         self.assertTrue(
@@ -348,3 +371,33 @@ class mega_linter_1_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("- Number of files analyzed", output)
+
+    def test_list_of_files_sent(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "MEGALINTER_FILES_TO_LINT": "javascript_good_1.js,javascript_bad_1.js",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("javascript_bad_1.js", output)
+        self.assertIn("Kept [2] files on [2] found files", output)
+
+    def test_skip_cli_lint_mode(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+                "SKIP_CLI_LINT_MODES": "list_of_files",
+            }
+        )
+        self.assertIn(
+            "JAVASCRIPT_ES has been skipped because its CLI lint mode", output
+        )

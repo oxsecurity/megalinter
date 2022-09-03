@@ -8,7 +8,7 @@ import os
 import random
 from json.decoder import JSONDecodeError
 
-from megalinter import Linter, Reporter, config
+from megalinter import Linter, Reporter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
@@ -31,7 +31,9 @@ class SarifReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("SARIF_REPORTER", "false") == "true":
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif config.get("SARIF_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):
@@ -212,6 +214,9 @@ class SarifReporter(Reporter):
                                     )
                                 result["locations"][id_location] = location
                         run["results"][id_result] = result
+                else:
+                    # make sure that there is a results entry so GitHub's SARIF validator doesn't cry
+                    run["results"] = []
 
                 # Update run in full list
                 linter_sarif_obj["runs"][id_run] = run
@@ -225,5 +230,9 @@ class SarifReporter(Reporter):
                 location_item["startLine"] = 1
             if "endLine" in location_item and location_item["endLine"] == 0:
                 location_item["endLine"] = 1
+            if "startColumn" in location_item and location_item["startColumn"] == 0:
+                location_item["startColumn"] = 1
+            if "endColumn" in location_item and location_item["endColumn"] == 0:
+                location_item["endColumn"] = 1
             physical_location[location_key] = location_item
         return physical_location

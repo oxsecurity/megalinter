@@ -1,8 +1,11 @@
+from megalinter import config
+
 ML_REPO_OWNER = "oxsecurity"
 ML_REPO_NAME = "megalinter"
 ML_REPO = f"{ML_REPO_OWNER}/{ML_REPO_NAME}"
 ML_REPO_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}"
-ML_DOC_URL = "https://oxsecurity.github.io/megalinter/latest"
+ML_DOC_URL_BASE = "https://oxsecurity.github.io/megalinter/"
+ML_DOC_URL = ML_DOC_URL_BASE + config.get("BUILD_VERSION", "latest").replace("v", "")
 ML_REPO_ISSUES_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}/issues"
 ML_DOC_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/descriptors"
 

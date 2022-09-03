@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+FROM zricethezav/gitleaks:v8.11.2 as gitleaks
 #FROM__END
 
 ##################
@@ -101,6 +101,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
           'ansible-lint==6.0.2' \
           'cpplint' \
+          'djlint' \
           'semgrep' \
           'snakemake' \
           'proselint' \
@@ -129,7 +130,7 @@ RUN npm install --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \
@@ -210,7 +211,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # actionlint installation
 ENV GO111MODULE=on
-RUN go get github.com/rhysd/actionlint/cmd/actionlint
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
@@ -287,6 +288,11 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
@@ -312,7 +318,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global --version 1.14.5 TSQLLint
 
 # dotnet-format installation
 # Next line commented because already managed by another linter
