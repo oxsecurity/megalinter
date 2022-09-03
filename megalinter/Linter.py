@@ -19,7 +19,6 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 import errno
-from genericpath import isfile
 import json
 import logging
 import os
