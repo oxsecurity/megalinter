@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+FROM zricethezav/gitleaks:v8.11.2 as gitleaks
 #FROM__END
 
 ##################
@@ -55,14 +55,15 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 bash \
                 go \
+                nodejs \
+                npm \
+                yarn \
                 openjdk11 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
-                npm \
                 nodejs-current \
-                yarn \
                 ruby \
                 ruby-dev \
                 ruby-bundler \
@@ -97,8 +98,9 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 WORKDIR /node-deps
 RUN npm install --ignore-scripts \
+                jscpd@3.3.26 \
                 npm-groovy-lint \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif \

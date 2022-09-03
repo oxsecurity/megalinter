@@ -6,7 +6,7 @@ import logging
 import os
 
 from megalinter import Reporter, config, utils
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 
 
 class TextReporter(Reporter):
@@ -23,9 +23,11 @@ class TextReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        # Super-Linter legacy variables
         output_format = config.get("OUTPUT_FORMAT", "")
-        if output_format.startswith("text"):
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif output_format.startswith("text"):
+            # Super-Linter legacy variable
             self.is_active = True
         # MegaLinter vars (true by default)
         elif config.get("TEXT_REPORTER", "true") != "true":
@@ -45,7 +47,7 @@ class TextReporter(Reporter):
             lang_lower = self.master.descriptor_id.lower()
             linter_name_lower = self.master.linter_name.lower().replace("-", "_")
             doc_name = f"{lang_lower}_{linter_name_lower}"
-            doc_url = f"{ML_DOC_URL}/descriptors/{doc_name}/"
+            doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{doc_name}/"
         # Header lines
         text_report_lines = [
             f"Results of {self.master.linter_name} linter (version {self.master.get_linter_version()})",

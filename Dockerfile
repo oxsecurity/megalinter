@@ -11,13 +11,13 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.08.03-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.9.0 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
+FROM zricethezav/gitleaks:v8.11.2 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -40,6 +40,7 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
+ARG PMD_VERSION=6.48.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -144,6 +145,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'ansible-lint==6.0.2' \
           'cpplint' \
           'cfn-lint' \
+          'djlint' \
           'pylint' \
           'black' \
           'flake8' \
@@ -200,7 +202,7 @@ RUN npm install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
-                jsonlint \
+                @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
@@ -326,7 +328,7 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
 
 # actionlint installation
 ENV GO111MODULE=on
-RUN go get github.com/rhysd/actionlint/cmd/actionlint
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
@@ -394,6 +396,14 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
         | cut -d '"' -f 4) \
     && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
         --output /usr/bin/checkstyle
+
+
+# pmd installation
+RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    unzip pmd-bin-${PMD_VERSION}.zip && \
+    rm pmd-bin-${PMD_VERSION}.zip && \
+    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+    chmod +x /usr/bin/pmd/bin/run.sh
 
 
 # ktlint installation
@@ -563,7 +573,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global --version 1.14.5 TSQLLint
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/

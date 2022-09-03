@@ -18,6 +18,8 @@ class TapReporter(Reporter):
         self.report_type = "tap"
         if config.get("OUTPUT_DETAIL", "") == "detailed":
             self.report_type = "detailed"
+        if config.get("TAP_REPORTER_OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
         super().__init__(params)
 
     def manage_activation(self):
@@ -29,6 +31,8 @@ class TapReporter(Reporter):
         elif config.get("TAP_REPORTER", "false") == "true":
             self.is_active = True
         else:
+            self.is_active = False
+        if not utils.can_write_report_files(self.master):
             self.is_active = False
         if self.is_active is True:
             # If TAP is active, we must lint file by file to have result file by file in TAP

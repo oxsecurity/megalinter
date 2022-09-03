@@ -12,8 +12,7 @@ file_names_regex:
   - "Jenkinsfile"
 linters:
   # npm-groovy-lint
-  - class: GroovyNpmGroovyLintLinter
-    linter_name: npm-groovy-lint
+  - linter_name: npm-groovy-lint
     can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint
@@ -22,6 +21,7 @@ linters:
     linter_rules_configuration_url: https://github.com/nvuillam/npm-groovy-lint#configuration
     linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
     linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
+    cli_lint_mode: list_of_files
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
       - "--failon"
@@ -32,9 +32,9 @@ linters:
     cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
-      - "npm-groovy-lint --path . --files myfile.groovy"
-      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
-      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
+      - "npm-groovy-lint myfile.groovy"
+      - "npm-groovy-lint -c .groovylintrc.json "
+      - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
     supported_platforms:
       platform:
         - linux/amd64

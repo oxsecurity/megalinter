@@ -6,6 +6,7 @@
     "linters": [
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
+        "COPYPASTE_JSCPD",
         "DOCKERFILE_HADOLINT",
         "ENV_DOTENV_LINTER",
         "GROOVY_NPM_GROOVY_LINT",

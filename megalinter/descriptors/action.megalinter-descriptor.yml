@@ -32,7 +32,8 @@ linters:
         - linux/arm/v6
         - linux/386
         - windows/amd64
+    downgraded_version: true
     install:
       dockerfile:
         - ENV GO111MODULE=on
-        - RUN go get github.com/rhysd/actionlint/cmd/actionlint
+        - RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16

@@ -7,23 +7,6 @@ file_names_regex:
   - "Dockerfile"
 test_folder: docker
 linters:
-  # dockerfilelint
-  - linter_name: dockerfilelint
-    name: DOCKERFILE_DOCKERFILELINT
-    linter_url: https://github.com/replicatedhq/dockerfilelint
-    linter_rules_url: https://github.com/replicatedhq/dockerfilelint#checks-performed
-    linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
-    config_file_name: .dockerfilelintrc
-    cli_config_arg_name: ""
-    examples:
-      - "dockerfilelint Dockerfile"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    install:
-      npm:
-        - dockerfilelint
   # Hadolint
   - linter_name: hadolint
     name: DOCKERFILE_HADOLINT
@@ -39,6 +22,7 @@ linters:
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     config_file_name: .hadolint.yaml
     cli_sarif_args:

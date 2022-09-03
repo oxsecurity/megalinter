@@ -28,7 +28,7 @@ from megalinter import utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
-    ML_DOC_URL,
+    ML_DOC_URL_BASE,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
     ML_DOCKER_IMAGE_LEGACY_V5,
@@ -46,10 +46,16 @@ if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
+    VERSION = RELEASE_TAG.replace("v", "")
+elif "--version" in sys.argv:
+    VERSION = sys.argv[sys.argv.index("--version") + 1].replace("v", "")
+else:
+    VERSION = "beta"
+
+MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
 
 BRANCH = "main"
 URL_ROOT = ML_REPO_URL + "/tree/" + BRANCH
-MKDOCS_URL_ROOT = ML_DOC_URL
 URL_RAW_ROOT = ML_REPO_URL + "/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
@@ -574,7 +580,7 @@ def generate_documentation():
         + "code**, **IAC**, **configuration**, and **scripts** in your repository "
         + "sources, to **ensure all your projects "
         + "sources are clean and formatted** whatever IDE/toolbox is used by "
-        + "their developers, powered by [**OX security**](https://www.ox.security/).\n\n"
+        + "their developers, powered by [**OX security**](https://www.ox.security/?ref=megalinter).\n\n"
         + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
@@ -969,6 +975,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"({linter.linter_rules_ignore_config_url})"
                 "{target=_blank}"
             ]
+            if linter.ignore_file_name is not None:
+                ignore_file = f"TEMPLATES{os.path.sep}{linter.ignore_file_name}"
+                if os.path.isfile(f"{REPO_HOME}{os.path.sep}{ignore_file}"):
+                    linter_doc_md += [
+                        f"  - If custom `{linter.ignore_file_name}` ignore file is not found, "
+                        f"[{linter.ignore_file_name}]({TEMPLATES_URL_ROOT}/{linter.ignore_file_name}){{target=_blank}}"
+                        " will be used"
+                    ]
+                else:
+                    linter_doc_md += [
+                        f"  - You can define a `{linter.ignore_file_name}` file to ignore files and folders"
+                    ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [
@@ -1091,15 +1109,52 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_CLI_LINT_MODE",
                 ]
             )
-        # Continue with default vars
+        # File extensions & file names override if not "lint_all_files"
+        if (
+            linter.lint_all_files is False
+            and linter.lint_all_other_linters_files is False
+        ):
+            linter_doc_md += [
+                # FILE_EXTENSIONS
+                f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
+                f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
+                f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
+                # FILE_NAMES_REGEX
+                f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
+                f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
+                f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
+                f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_FILE_EXTENSIONS",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
+                            "type": "array",
+                            "title": f"{linter.name}: Override descriptor/linter matching files extensions",
+                            "examples:": [".py", ".myext"],
+                            "items": {"type": "string"},
+                        },
+                    ],
+                    [
+                        f"{linter.name}_FILE_NAMES_REGEX",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
+                            "type": "array",
+                            "title": f"{linter.name}: Override descriptor/linter matching file name regex",
+                            "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
+                            "items": {"type": "string"},
+                        },
+                    ],
+                ]
+            )
+        else:
+            remove_in_config_schema_file(
+                [f"{linter.name}_FILE_EXTENSIONS", f"{linter.name}_FILE_NAMES_REGEX"]
+            )
+        # Pre/post commands
         linter_doc_md += [
-            f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
-            f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
-            f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
-            f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
-            f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
-            f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
-            f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
             f"| {dump_as_json(linter.pre_commands,'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
@@ -1115,16 +1170,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
                         "examples:": ["--foo", "bar"],
-                        "items": {"type": "string"},
-                    },
-                ],
-                [
-                    f"{linter.name}_FILE_EXTENSIONS",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
-                        "type": "array",
-                        "title": f"{linter.name}: Override descriptor/linter matching files extensions",
-                        "examples:": [".py", ".myext"],
                         "items": {"type": "string"},
                     },
                 ],
@@ -1162,16 +1207,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             ]
                         ],
                         "items": {"$ref": "#/definitions/command_info"},
-                    },
-                ],
-                [
-                    f"{linter.name}_FILE_NAMES_REGEX",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
-                        "type": "array",
-                        "title": f"{linter.name}: Override descriptor/linter matching file name regex",
-                        "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
-                        "items": {"type": "string"},
                     },
                 ],
                 [
@@ -1439,7 +1474,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
     md_line_all = (
-        f"| {icon_html} | [all]({ML_DOC_URL}/supported-linters/) | "
+        f"| {icon_html} | [all]({MKDOCS_URL_ROOT}/supported-linters/) | "
         f"Default MegaLinter Flavor | {str(linters_number)} | {docker_image_badge} {docker_pulls_badge} |"
     )
     md_table += [md_line_all]
@@ -1569,6 +1604,7 @@ def perform_count_request(docker_image_url):
     r = requests_retry_session().get(docker_image_url)
     resp = r.json()
     flavor_count = resp["pull_count"] or 0
+    logging.info(f"{docker_image_url}: {flavor_count}")
     return flavor_count
 
 
@@ -2010,7 +2046,7 @@ def finalize_doc_build():
         "<!-- header-intro-start -->",
         "<!-- header-intro-end -->",
         "<h2>Verify your code consistency with an open-source tool.<br/>"
-        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX Security</a>.</h2>',
+        + 'Powered by <a href="https://www.ox.security/?ref=megalinter" target="_blank">OX Security</a>.</h2>',
     )
     # Add header badges
     replace_in_file(
