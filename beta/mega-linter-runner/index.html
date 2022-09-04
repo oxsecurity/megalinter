@@ -5674,10 +5674,14 @@
 <p>Sample <code>.pre-commit-config.yaml</code>:</p>
 <pre><code class="language-yaml">repos:
   - repo: https://github.com/oxsecurity/megalinter
-    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
+    rev: v6.8.0 # Git tag specifying the hook, not mega-linter-runner, version
     hooks:
-      - id: megalinter # Faster, less thorough, runs pre-commit by default
-      - id: megalinter-all # Slower, more thorough, runs pre-push by default
+      - id: megalinter-incremental # Faster, less thorough
+        stages:
+          - commit
+      - id: megalinter-full # Slower, more thorough
+        stages:
+          - push
 </code></pre>
 <p>See <a href="../.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a> for more details.</p>
 <h2 id="usage">Usage</h2>
