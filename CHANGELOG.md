@@ -8,29 +8,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.8.0] - 2022-09-04
+
 - Run MegaLinter pre-commit hooks serially (#1826).
 - Replace deprecated StandardJS VS Code extension with the newer official version
 - When SARIF_REPORTER is active, use [sarif-fmt](https://crates.io/crates/sarif-fmt) to convert SARIF into text for console and text reporters ([#1822](https://github.com/oxsecurity/megalinter/issues/1822)).
 - Count checkstyle errors ([#1820](https://github.com/oxsecurity/megalinter/pull/1820))
 
 - Linter versions upgrades
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3** on 2022-08-28
-  - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.162** on 2022-08-28
-  - [checkov](https://www.checkov.io/) from 2.1.162 to **2.1.165** on 2022-08-30
-  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0** on 2022-08-30
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0** on 2022-08-30
-  - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1** on 2022-08-30
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9** on 2022-08-30
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2** on 2022-08-31
-  - [checkov](https://www.checkov.io/) from 2.1.165 to **2.1.171** on 2022-08-31
-  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.3** on 2022-09-01
-  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0** on 2022-09-01
-  - [checkov](https://www.checkov.io/) from 2.1.171 to **2.1.179** on 2022-09-01
-  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0** on 2022-09-01
-  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15** on 2022-09-01
-  - [phpstan](https://phpstan.org/) from 1.8.3 to **1.8.4** on 2022-09-04
-  - [checkov](https://www.checkov.io/) from 2.1.179 to **2.1.182** on 2022-09-04
-<!-- linter-versions-end -->
+  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2**
+  - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.183**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3**
+  - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1**
+  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15**
+  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.4**
+  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0**
+  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9**
 
 ## [v6.7.1] - 2022-08-28
 
