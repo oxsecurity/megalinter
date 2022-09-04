@@ -28,6 +28,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.171 to **2.1.179** on 2022-09-01
   - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0** on 2022-09-01
   - [kics](https://www.kics.io) from 1.5.14 to **1.5.15** on 2022-09-01
+  - [phpstan](https://phpstan.org/) from 1.8.3 to **1.8.4** on 2022-09-04
+  - [checkov](https://www.checkov.io/) from 2.1.179 to **2.1.182** on 2022-09-04
 <!-- linter-versions-end -->
 
 ## [v6.7.1] - 2022-08-28
