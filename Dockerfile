@@ -13,7 +13,6 @@
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.08.03-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.11.2 as gitleaks
@@ -376,7 +375,7 @@ RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sge
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # editorconfig-checker installation
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

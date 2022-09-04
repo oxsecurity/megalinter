@@ -24,5 +24,4 @@ linters:
       - "editorconfig-checker myfile.js"
     install:
       dockerfile:
-        - FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
-        - COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+        - RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
