@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Run MegaLinter pre-commit hooks serially (#1826).
+- Replace deprecated StandardJS VS Code extension with the newer official version
 - When SARIF_REPORTER is active, use [sarif-fmt](https://crates.io/crates/sarif-fmt) to convert SARIF into text for console and text reporters ([#1822](https://github.com/oxsecurity/megalinter/issues/1822)).
 - Count checkstyle errors ([#1820](https://github.com/oxsecurity/megalinter/pull/1820))
 
@@ -1083,7 +1085,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New linter `phplint` to speed-up linting of php files (#1031)
     - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
   - `cpplint`: Use `cli_lint_mode: project` to improve performances
-
 
 - Linter versions upgrades
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
