@@ -231,7 +231,9 @@ branding:
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = [
         "COPY entrypoint.sh /entrypoint.sh",
-        "RUN chmod +x entrypoint.sh",
+        "RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
+        'ENV PATH="/root/.cargo/bin:${PATH}"',
+        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -430,8 +432,8 @@ def generate_linter_dockerfiles():
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
-                "    CONFIG_REPORTER=false",
-                "",
+                "    CONFIG_REPORTER=false \\",
+                "    SARIF_TO_HUMAN=false" "",
                 # "EXPOSE 80",
                 "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",

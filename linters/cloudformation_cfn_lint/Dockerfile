@@ -165,8 +165,8 @@ ENV ENABLE_LINTERS=CLOUDFORMATION_CFN_LINT \
     GITHUB_COMMENT_REPORTER=false \
     EMAIL_REPORTER=false \
     FILEIO_REPORTER=false \
-    CONFIG_REPORTER=false
-
+    CONFIG_REPORTER=false \
+    SARIF_TO_HUMAN=false
 RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh

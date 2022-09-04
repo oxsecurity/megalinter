@@ -10,6 +10,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Run MegaLinter pre-commit hooks serially (#1826).
 - Replace deprecated StandardJS VS Code extension with the newer official version
+- When SARIF_REPORTER is active, use [sarif-fmt](https://crates.io/crates/sarif-fmt) to convert SARIF into text for console and text reporters ([#1822](https://github.com/oxsecurity/megalinter/issues/1822)).
+- Count checkstyle errors ([#1820](https://github.com/oxsecurity/megalinter/pull/1820))
 
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3** on 2022-08-28
