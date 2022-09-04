@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Run MegaLinter pre-commit hooks serially (#1826).
 - Replace deprecated StandardJS VS Code extension with the newer official version
 
 - Linter versions upgrades
