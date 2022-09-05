@@ -4,7 +4,7 @@
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.39.0**
+- Version in MegaLinter: **0.40.0**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file is not found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -94,12 +94,14 @@ protolint lint -fix --config_path .protolintrc.yml myfile.proto
 
 ```shell
 Usage of lint:
+  -auto_disable value
+      mode that the command line automatically disable some of the problems. Available auto_disable are "next" and "this".
   -config_dir_path string
       path/to/the_directory_including_protolint.yaml
   -config_path string
       path/to/protolint.yaml. Note that if both are set, config_dir_path is ignored.
   -fix
-      mode that the command line can automatically fix some of the problems
+      mode that the command line automatically fix some of the problems
   -no-error-on-unmatched-pattern
       exits with 0 when no file is matched
   -output_file string
