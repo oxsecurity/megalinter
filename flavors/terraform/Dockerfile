@@ -178,9 +178,9 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && shellcheck --version \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cargo install shellcheck-sarif
-
 
 # shfmt installation
 COPY --from=shfmt /bin/shfmt /usr/bin/
