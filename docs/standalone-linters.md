@@ -2,6 +2,7 @@
 
 | Linter key               | Docker image                                           |                                                            Size                                                             |
 |:-------------------------|:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------:|
+| BASH_SHELLCHECK          | oxsecurity/megalinter-only-bash_shellcheck:v6          |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-bash_shellcheck/v6)      |
 | CLOUDFORMATION_CFN_LINT  | oxsecurity/megalinter-only-cloudformation_cfn_lint:v6  | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-cloudformation_cfn_lint/v6)  |
 | DOCKERFILE_HADOLINT      | oxsecurity/megalinter-only-dockerfile_hadolint:v6      |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-dockerfile_hadolint/v6)    |
 | GO_REVIVE                | oxsecurity/megalinter-only-go_revive:v6                |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-only-go_revive/v6)         |

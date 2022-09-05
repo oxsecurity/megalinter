@@ -68,6 +68,7 @@ jobs:
         # linters-start
         linter:
           [
+            "bash_shellcheck",
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
             "go_revive",
