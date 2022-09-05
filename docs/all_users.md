@@ -37,11 +37,12 @@ According to posted issues, there are many more private and self-hosted repos us
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
-[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
+[![ahmadnassri/node-glob-promise - GitHub](https://gh-card.dev/repos/ahmadnassri/node-glob-promise.svg?fullname=)](https://github.com/ahmadnassri/node-glob-promise){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
 [![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
@@ -52,9 +53,11 @@ According to posted issues, there are many more private and self-hosted repos us
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
+[![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/home-ops - GitHub](https://gh-card.dev/repos/rwaltr/home-ops.svg?fullname=)](https://github.com/rwaltr/home-ops){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
+[![ahmadnassri/node-nightwatch-accessibility - GitHub](https://gh-card.dev/repos/ahmadnassri/node-nightwatch-accessibility.svg?fullname=)](https://github.com/ahmadnassri/node-nightwatch-accessibility){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![LiveEnhancementSuite/HSModule - GitHub](https://gh-card.dev/repos/LiveEnhancementSuite/HSModule.svg?fullname=)](https://github.com/LiveEnhancementSuite/HSModule){target=_blank}
