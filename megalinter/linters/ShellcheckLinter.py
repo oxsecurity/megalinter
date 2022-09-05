@@ -5,7 +5,9 @@ Use Shellcheck to analyze shell / bash code
 
 import logging
 import subprocess
+
 from megalinter import Linter, utils
+
 
 class ShellcheckLinter(Linter):
 
@@ -23,7 +25,12 @@ class ShellcheckLinter(Linter):
             )
             return_code = process.returncode
             shellcheck_res_sarif = utils.decode_utf8(process.stdout)
-            logging.debug("shellcheck-sarif output" + str(return_code) + "\n" + shellcheck_res_sarif)
+            logging.debug(
+                "shellcheck-sarif output"
+                + str(return_code)
+                + "\n"
+                + shellcheck_res_sarif
+            )
             with open(self.sarif_output_file, "w", encoding="utf-8") as outfile:
                 outfile.write(shellcheck_res_sarif)
         super().manage_sarif_output(return_stdout)
