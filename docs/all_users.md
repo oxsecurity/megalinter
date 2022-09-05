@@ -37,8 +37,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
-[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}

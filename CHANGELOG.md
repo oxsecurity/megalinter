@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
   - [protolint](https://github.com/yoheimuta/protolint) from 0.39.0 to **0.40.0** on 2022-09-05
   - [checkov](https://www.checkov.io/) from 2.1.184 to **2.1.185** on 2022-09-05
+  - [checkov](https://www.checkov.io/) from 2.1.185 to **2.1.188** on 2022-09-05
 <!-- linter-versions-end -->
 
 ## [v6.8.0] - 2022-09-04
