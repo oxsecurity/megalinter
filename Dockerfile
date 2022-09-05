@@ -16,7 +16,7 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.11.2 as gitleaks
+FROM zricethezav/gitleaks:v8.12.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt

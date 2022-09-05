@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.11.2 as gitleaks
+FROM zricethezav/gitleaks:v8.12.0 as gitleaks
 #FROM__END
 
 ##################
