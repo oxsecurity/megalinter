@@ -5650,7 +5650,7 @@
 <h1 id="protolint">protolint <a href="https://github.com/yoheimuta/protolint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/yoheimuta/protolint" /></a></h1>
 <h2 id="protolint-documentation">protolint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.39.0</strong></li>
+<li>Version in MegaLinter: <strong>0.40.0</strong></li>
 <li>Visit <a href="https://github.com/yoheimuta/protolint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/yoheimuta/protolint#rules" target="_blank">How to configure protolint rules</a><ul>
 <li>If custom <code>.protolintrc.yml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml" target="_blank">.protolintrc.yml</a> will be used</li>
@@ -5890,12 +5890,14 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Usage of lint:
+  -auto_disable value
+      mode that the command line automatically disable some of the problems. Available auto_disable are &quot;next&quot; and &quot;this&quot;.
   -config_dir_path string
       path/to/the_directory_including_protolint.yaml
   -config_path string
       path/to/protolint.yaml. Note that if both are set, config_dir_path is ignored.
   -fix
-      mode that the command line can automatically fix some of the problems
+      mode that the command line automatically fix some of the problems
   -no-error-on-unmatched-pattern
       exits with 0 when no file is matched
   -output_file string
