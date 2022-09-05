@@ -353,7 +353,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && shellcheck --version \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     && cargo install shellcheck-sarif
-ENV PATH="/root/.cargo/bin:${PATH}
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 
 # shfmt installation
