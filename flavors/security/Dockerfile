@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.11.2 as gitleaks
+FROM zricethezav/gitleaks:v8.12.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -139,8 +139,11 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
     && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    && shellcheck --version
+    && shellcheck --version \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN cargo install shellcheck-sarif
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
