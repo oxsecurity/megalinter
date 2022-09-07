@@ -342,7 +342,7 @@ def build_dockerfile(
     if len(pip_packages) > 0:
         pip_install_command = (
             "RUN pip3 install --no-cache-dir --upgrade pip pipenv &&"
-            + " pipenv install --skip-lock --quiet \\\n          '"
+            + " PIPENV_NOSPIN=true pipenv install --skip-lock --quiet \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "'"
         )
