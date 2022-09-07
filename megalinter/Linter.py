@@ -991,9 +991,16 @@ class Linter:
             reg = re.compile(reg)
         return reg
 
-    def manage_docker_command(self, command):
+    def complete_command(self, command):
+        # Call python packages with pipenv run
+        if hasattr(self,'install') and 'pip' in self.install:
+            command.insert(0,"pipenv")
+            command.insert(1, "run")
+            return command
+        # Not a docker command
         if self.cli_docker_image is None:
             return command
+        # Docker command
         docker_command = ["docker", "run", "--rm"]
         if hasattr(self, "workspace"):
             volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
@@ -1099,7 +1106,7 @@ class Linter:
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
             cmd += self.files
-        return self.manage_docker_command(cmd)
+        return self.complete_command(cmd)
 
     # Manage ignore arguments
     def get_ignore_arguments(self, cmd):
@@ -1227,14 +1234,14 @@ class Linter:
         cmd += self.cli_version_extra_args
         if self.cli_version_arg_name != "":
             cmd += [self.cli_version_arg_name]
-        return self.manage_docker_command(cmd)
+        return self.complete_command(cmd)
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_help_command(self):
         cmd = [self.cli_executable_help]
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
-        return self.manage_docker_command(cmd)
+        return self.complete_command(cmd)
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic
