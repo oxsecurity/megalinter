@@ -162,6 +162,10 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'yamllint'
 #PIP__END
 
+#PIPVENV__START
+
+#PIPVENV__END
+
 ############################
 # Install NPM dependencies #
 #############################################################################################

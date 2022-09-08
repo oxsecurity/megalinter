@@ -108,3 +108,5 @@ site/
 megalinter-reports/
 
 github_conf/
+
+Pipfile
