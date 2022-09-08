@@ -88,8 +88,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd \
-
+    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd 
 ENV PATH="${PATH}":/venvs/yamllint/bin
 #PIPVENV__END
 

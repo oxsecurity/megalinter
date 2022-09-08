@@ -89,8 +89,7 @@ RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/snakemake" && pushd "/venvs/snakemake" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakemake && deactivate && popd \
     && mkdir -p "/venvs/proselint" && pushd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && popd \
     && mkdir -p "/venvs/sqlfluff" && pushd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && popd \
-    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd \
-
+    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd 
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/snakemake/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
