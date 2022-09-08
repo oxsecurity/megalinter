@@ -112,13 +112,13 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && pushd "/venvs/ansible-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir ansible-lint==6.0.2 && deactivate && popd \
-    && mkdir -p "/venvs/djlint" && pushd "/venvs/djlint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir djlint && deactivate && popd \
-    && mkdir -p "/venvs/semgrep" && pushd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && popd \
-    && mkdir -p "/venvs/snakemake" && pushd "/venvs/snakemake" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakemake && deactivate && popd \
-    && mkdir -p "/venvs/proselint" && pushd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && popd \
-    && mkdir -p "/venvs/sqlfluff" && pushd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && popd \
-    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd 
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir ansible-lint==6.0.2 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../.. 
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/djlint/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 

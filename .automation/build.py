@@ -360,13 +360,13 @@ def build_dockerfile(
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
             pipenv_install_command += (
                 f'    && mkdir -p "/venvs/{pip_linter}" '
-                + f'&& pushd "/venvs/{pip_linter}" '
+                + f'&& cd "/venvs/{pip_linter}" '
                 + "&& virtualenv . "
                 + "&& source bin/activate "
                 + "&& pip3 install --no-cache-dir "
                 + (" ".join(pip_linter_packages))+" "
                 + "&& deactivate "
-                + "&& popd \\\n"
+                + "&& cd ./../.. \\\n"
             )
             env_path_command += f':/venvs/{pip_linter}/bin'
         pipenv_install_command = pipenv_install_command[:-2] # remove last \

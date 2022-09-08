@@ -78,23 +78,23 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && pushd "/venvs/ansible-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir ansible-lint==6.0.2 && deactivate && popd \
-    && mkdir -p "/venvs/cpplint" && pushd "/venvs/cpplint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir cpplint && deactivate && popd \
-    && mkdir -p "/venvs/cfn-lint" && pushd "/venvs/cfn-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir cfn-lint && deactivate && popd \
-    && mkdir -p "/venvs/djlint" && pushd "/venvs/djlint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir djlint && deactivate && popd \
-    && mkdir -p "/venvs/pylint" && pushd "/venvs/pylint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir pylint && deactivate && popd \
-    && mkdir -p "/venvs/black" && pushd "/venvs/black" && virtualenv . && source bin/activate && pip3 install --no-cache-dir black && deactivate && popd \
-    && mkdir -p "/venvs/flake8" && pushd "/venvs/flake8" && virtualenv . && source bin/activate && pip3 install --no-cache-dir flake8 && deactivate && popd \
-    && mkdir -p "/venvs/isort" && pushd "/venvs/isort" && virtualenv . && source bin/activate && pip3 install --no-cache-dir isort black && deactivate && popd \
-    && mkdir -p "/venvs/bandit" && pushd "/venvs/bandit" && virtualenv . && source bin/activate && pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && popd \
-    && mkdir -p "/venvs/mypy" && pushd "/venvs/mypy" && virtualenv . && source bin/activate && pip3 install --no-cache-dir mypy && deactivate && popd \
-    && mkdir -p "/venvs/semgrep" && pushd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && popd \
-    && mkdir -p "/venvs/rst-lint" && pushd "/venvs/rst-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir restructuredtext_lint && deactivate && popd \
-    && mkdir -p "/venvs/rstcheck" && pushd "/venvs/rstcheck" && virtualenv . && source bin/activate && pip3 install --no-cache-dir rstcheck && deactivate && popd \
-    && mkdir -p "/venvs/snakemake" && pushd "/venvs/snakemake" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakemake && deactivate && popd \
-    && mkdir -p "/venvs/proselint" && pushd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && popd \
-    && mkdir -p "/venvs/sqlfluff" && pushd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && popd \
-    && mkdir -p "/venvs/yamllint" && pushd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && popd 
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir ansible-lint==6.0.2 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/pylint" && cd "/venvs/pylint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir pylint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/black" && cd "/venvs/black" && virtualenv . && source bin/activate && pip3 install --no-cache-dir black && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/flake8" && cd "/venvs/flake8" && virtualenv . && source bin/activate && pip3 install --no-cache-dir flake8 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && pip3 install --no-cache-dir isort black && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/mypy" && cd "/venvs/mypy" && virtualenv . && source bin/activate && pip3 install --no-cache-dir mypy && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir restructuredtext_lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && pip3 install --no-cache-dir rstcheck && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../.. 
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/snakemake/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
