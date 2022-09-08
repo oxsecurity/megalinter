@@ -251,6 +251,7 @@ def build_dockerfile(
     apk_packages = []
     npm_packages = []
     pip_packages = []
+    pipvenv_packages = {}
     gem_packages = []
     # Manage docker
     if requires_docker is True:
@@ -285,8 +286,11 @@ def build_dockerfile(
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
+        # Collect python for venvs
+        if "linter_name" in item and "pip" in item["install"]:
+            pipvenv_packages[item["linter_name"]] = item["install"]["pip"]
         # Collect python packages
-        if "pip" in item["install"]:
+        elif "pip" in item["install"]:
             pip_packages += item["install"]["pip"]
         # Collect ruby packages
         if "gem" in item["install"]:
@@ -347,6 +351,31 @@ def build_dockerfile(
             + "'"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
+    # Python packages in venv
+    if len(pipvenv_packages.items()) > 0:
+        pipenv_install_command = (
+            "RUN pip3 install --no-cache-dir --upgrade pip virtualenv \\\n"
+        )
+        env_path_command = 'ENV PATH="${PATH}"'
+        for pip_linter, pip_linter_packages in pipvenv_packages.items():
+            pipenv_install_command += (
+                f'    && mkdir -p "/venvs/{pip_linter}" '
+                + f'&& cd "/venvs/{pip_linter}" '
+                + "&& virtualenv . "
+                + "&& source bin/activate "
+                + "&& pip3 install --no-cache-dir "
+                + (" ".join(pip_linter_packages))
+                + " "
+                + "&& deactivate "
+                + "&& cd ./../.. \\\n"
+            )
+            env_path_command += f":/venvs/{pip_linter}/bin"
+        pipenv_install_command = pipenv_install_command[:-2]  # remove last \
+        pipenv_install_command += "\n" + env_path_command
+        replace_in_file(
+            dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
+        )
+
     # Ruby gem packages
     gem_install_command = ""
     if len(gem_packages) > 0:

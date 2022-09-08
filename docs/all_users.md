@@ -50,8 +50,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
 [![quackduck/secret - GitHub](https://gh-card.dev/repos/quackduck/secret.svg?fullname=)](https://github.com/quackduck/secret){target=_blank}
 [![AlbanAndrieu/ansible-windows - GitHub](https://gh-card.dev/repos/AlbanAndrieu/ansible-windows.svg?fullname=)](https://github.com/AlbanAndrieu/ansible-windows){target=_blank}
-[![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
+[![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
@@ -60,9 +60,11 @@ According to posted issues, there are many more private and self-hosted repos us
 [![ahmadnassri/node-nightwatch-accessibility - GitHub](https://gh-card.dev/repos/ahmadnassri/node-nightwatch-accessibility.svg?fullname=)](https://github.com/ahmadnassri/node-nightwatch-accessibility){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
+[![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![LiveEnhancementSuite/HSModule - GitHub](https://gh-card.dev/repos/LiveEnhancementSuite/HSModule.svg?fullname=)](https://github.com/LiveEnhancementSuite/HSModule){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
 [![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
+[![arbitraryexecution/compound-monitoring - GitHub](https://gh-card.dev/repos/arbitraryexecution/compound-monitoring.svg?fullname=)](https://github.com/arbitraryexecution/compound-monitoring){target=_blank}
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
 [![eresturo/scanadf2docspell - GitHub](https://gh-card.dev/repos/eresturo/scanadf2docspell.svg?fullname=)](https://github.com/eresturo/scanadf2docspell){target=_blank}

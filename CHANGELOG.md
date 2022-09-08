@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Manage SARIF output to [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
+- Create a venv for each python-based linter to avoid issues with dependencies
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
