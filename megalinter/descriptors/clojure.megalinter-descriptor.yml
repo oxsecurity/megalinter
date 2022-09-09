@@ -24,7 +24,6 @@ linters:
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
-    downgraded_version: true
     install:
       dockerfile:
         - FROM cljkondo/clj-kondo:2022.09.08-alpine as clj-kondo
