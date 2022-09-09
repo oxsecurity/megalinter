@@ -372,9 +372,11 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += "\n" + env_path_command
-        replace_in_file(
-            dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
-        )
+    else:
+        pipenv_install_command = ''
+    replace_in_file(
+        dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
+    )
 
     # Ruby gem packages
     gem_install_command = ""
