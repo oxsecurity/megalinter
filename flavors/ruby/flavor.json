@@ -42,6 +42,7 @@
         "REPOSITORY_TRIVY",
         "RUBY_RUBOCOP",
         "SNAKEMAKE_LINT",
+        "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
