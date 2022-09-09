@@ -19,3 +19,6 @@ rule "aws_instance_previous_type" {
   enabled = false
 }
 
+rule "terraform_required_providers" {
+  enabled = false
+}
