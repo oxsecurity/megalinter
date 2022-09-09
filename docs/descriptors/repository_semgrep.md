@@ -17,7 +17,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **0.103.0**
+- Version in MegaLinter: **0.112.1**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -104,6 +104,10 @@ Usage: semgrep [OPTIONS] COMMAND [ARGS]...
 
   To get started quickly, run `semgrep scan --config auto`
 
+  Run `semgrep SUBCOMMAND --help` for more information on each subcommand
+
+  If no subcommand is passed, will run `scan` subcommand by default
+
 Options:
   -h, --help  Show this message and exit.
 
@@ -111,7 +115,7 @@ Commands:
   ci            The recommended way to run semgrep in CI
   login         Obtain and save credentials for semgrep.dev
   logout        Remove locally stored credentials to semgrep.dev
-  lsp           [EXPERIMENTAL] Start the Semgrep LSP server.
+  lsp           [EXPERIMENTAL] Start the Semgrep LSP server
   publish       Upload rule to semgrep.dev
   scan          Run semgrep rules on files
   shouldafound  Report a false negative in this project.

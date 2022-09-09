@@ -17,6 +17,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.184 to **2.1.185** on 2022-09-05
   - [checkov](https://www.checkov.io/) from 2.1.185 to **2.1.188** on 2022-09-05
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.2 to **8.12.0** on 2022-09-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.2 to **0.64.1** on 2022-09-09
+  - [djlint](https://djlint.com/) from 1.12.1 to **1.12.3** on 2022-09-09
+  - [ktlint](https://ktlint.github.io) from 0.47.0 to **0.47.1** on 2022-09-09
+  - [phpstan](https://phpstan.org/) from 1.8.4 to **1.8.5** on 2022-09-09
+  - [pylint](https://www.pylint.org) from 2.15.0 to **2.15.2** on 2022-09-09
+  - [checkov](https://www.checkov.io/) from 2.1.188 to **2.1.201** on 2022-09-09
+  - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1** on 2022-09-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9** on 2022-09-09
 <!-- linter-versions-end -->
 
 ## [v6.8.0] - 2022-09-04
