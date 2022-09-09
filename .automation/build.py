@@ -373,7 +373,7 @@ def build_dockerfile(
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += "\n" + env_path_command
     else:
-        pipenv_install_command = ''
+        pipenv_install_command = ""
     replace_in_file(
         dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
     )
