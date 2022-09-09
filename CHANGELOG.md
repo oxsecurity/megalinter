@@ -11,7 +11,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Manage SARIF output to [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
 - Create a venv for each python-based linter to avoid issues with dependencies
 - Use `list_of_files` Cli lint mode for checkstyle, to have unique SARIF output and improve performances
-- Upgrade base python image to `python:3.10.7-alpine3.15`
 - Reactivate snakefmt
 - Add SARIF output for ansible-lint
 
