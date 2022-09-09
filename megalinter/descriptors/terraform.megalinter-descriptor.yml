@@ -25,7 +25,6 @@ linters:
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
-    downgraded_version: true
     install:
       dockerfile:
         - FROM ghcr.io/terraform-linters/tflint:v0.40.0 as tflint
