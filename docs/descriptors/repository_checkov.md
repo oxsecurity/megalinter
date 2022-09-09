@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.188**
+- Version in MegaLinter: **2.1.201**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -121,6 +121,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-cve-package SKIP_CVE_PACKAGE]
                [--policy-metadata-filter POLICY_METADATA_FILTER]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
+               [--enable-secret-scan-all-files]
+               [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
 
 Infrastructure as code static analysis
 
@@ -361,17 +363,13 @@ options:
                         policy-filters-and-options for information on allowed
                         filters. Format: policy.label=test,cloud.type=aws
   --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
-                        add scan secret for requested files. You can specify
-                        this argument multiple times to add multiple file
-                        types. To scan all types (".tf", ".yml", ".yaml",
-                        ".json", ".template", ".py", ".js", ".properties",
-                        ".pem", ".php", ".xml", ".ts", ".env", "Dockerfile",
-                        ".java", ".rb", ".go", ".cs", ".txt") specify the
-                        argument with `--secrets-scan-file-type all`. default
-                        scan will be for ".tf", ".yml", ".yaml", ".json",
-                        ".template" and exclude "Pipfile.lock", "yarn.lock",
-                        "package-lock.json", "requirements.txt" [env var:
-                        CKV_SECRETS_SCAN_FILE_TYPE]
+                        not in use [env var: CKV_SECRETS_SCAN_FILE_TYPE]
+  --enable-secret-scan-all-files
+                        enable secret scan for all files [env var:
+                        CKV_SECRETS_SCAN_ENABLE_ALL]
+  --black-list-secret-scan BLACK_LIST_SECRET_SCAN
+                        black file list to filter out from the secret scanner
+                        [env var: CKV_SECRETS_SCAN_BLACK_LIST]
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml

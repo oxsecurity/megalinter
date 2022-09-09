@@ -78,18 +78,17 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...
 
  CLI of rstcheck.
- Enabled features: ['Toml']
+ Enabled features: []
  Pass one ore more rst FILES to check. Can be files or directories if
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --config                         PATH   Config file to load. Can be a INI or │
-│                                         TOML file or directory. If a         │
-│                                         directory is passed it will be       │
-│                                         searched for .rstcheck.cfg |         │
-│                                         pyproject.toml | setup.cfg. If       │
-│                                         'NONE' is passed no config file is   │
-│                                         loaded at all.                       │
+│ --config                         PATH   Config file to load. Can be a INI    │
+│                                         file or directory. If a directory is │
+│                                         passed it will be searched for       │
+│                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
+│                                         is passed no config file is loaded   │
+│                                         at all.                              │
 │                                         [default: None]                      │
 │ --warn-unknown-settings                 Log a WARNING for unknown settings   │
 │                                         in config files. Can be hidden via   │
