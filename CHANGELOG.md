@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Manage SARIF output to [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
 - Create a venv for each python-based linter to avoid issues with dependencies
+- Use `list_of_files` Cli lint mode for checkstyle, to have unique SARIF output and improve performances
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
