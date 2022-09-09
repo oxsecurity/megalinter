@@ -53,4 +53,4 @@ linters:
     downgraded_version: true
     install:
       pip:
-        - snakefmt==0.4.4
+        - snakefmt
