@@ -44,6 +44,7 @@ jobs:
         # linters-start
         linter:
           [
+            "ansible_ansible_lint",
             "bash_shellcheck",
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
