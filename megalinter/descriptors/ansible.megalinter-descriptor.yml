@@ -15,6 +15,7 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
+    can_output_sarif: true
     linter_url: https://ansible-lint.readthedocs.io/en/latest/
     linter_repo: https://github.com/ansible/ansible-lint
     linter_rules_url: https://ansible-lint.readthedocs.io/en/latest/default_rules.html
@@ -24,6 +25,9 @@ linters:
     cli_lint_mode: project
     cli_config_extra_args:
       - "-v"
+    cli_sarif_args:
+      - --format
+      - sarif
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Finished with ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
     cli_version_arg_name: "--version"
@@ -32,4 +36,4 @@ linters:
       - "ansible-lint -v -c .ansible-lint"
     install:
       pip:
-        - ansible-lint==6.0.2
+        - ansible-lint
