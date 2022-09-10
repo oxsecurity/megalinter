@@ -21,9 +21,10 @@ class mega_linter_2_fixes_test(unittest.TestCase):
     def test_1_apply_fixes_on_one_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "APPLY_FIXES": "JAVASCRIPT_STANDARD",
+                "APPLY_FIXES": "JAVASCRIPT_PRETTIER",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
+                "JAVASCRIPT_DEFAULT_STYLE": "prettier",
                 "DISABLE_LINTERS": "TERRAFORM_KICS,REPOSITORY_GITLEAKS,REPOSITORY_TRIVY,"
                 "JSON_V8R,YAML_V8R,MARKDOWN_MARKDOWN_LINK_CHECK,TERRAFORM_CHECKOV",
             }
@@ -42,6 +43,7 @@ class mega_linter_2_fixes_test(unittest.TestCase):
                 "APPLY_FIXES": "all",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
+                "JAVASCRIPT_DEFAULT_STYLE": "prettier",
                 "DISABLE_LINTERS": "TERRAFORM_KICS,REPOSITORY_GITLEAKS,REPOSITORY_TRIVY,"
                 "JSON_V8R,YAML_V8R,MARKDOWN_MARKDOWN_LINK_CHECK,TERRAFORM_CHECKOV",
             }
