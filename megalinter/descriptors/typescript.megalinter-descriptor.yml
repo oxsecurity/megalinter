@@ -121,7 +121,7 @@ linters:
     downgraded_version: true
     install:
       npm:
-        - "standard@17.0.0"
+        - standard
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
     ide:
