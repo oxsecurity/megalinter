@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "dummy package.json to allow standard tests to include .automation folder",
+  "standard": {
+    "ignore": ["!.automation/**"]
+  }
+}

@@ -120,6 +120,6 @@ Flags (advanced):
 
 - NPM packages (node.js):
   - [typescript](https://www.npmjs.com/package/typescript)
-  - [standard@15.0.1](https://www.npmjs.com/package/standard)
+  - [standard@17.0.0](https://www.npmjs.com/package/standard)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
