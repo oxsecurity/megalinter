@@ -28,6 +28,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.188 to **2.1.201** on 2022-09-09
   - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1** on 2022-09-09
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9** on 2022-09-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.2 to **6.5.2** on 2022-09-10
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.08.03 to **2022.09.08** on 2022-09-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.0 to **1.3.1** on 2022-09-10
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0** on 2022-09-10
 <!-- linter-versions-end -->
 
 ## [v6.8.0] - 2022-09-04
