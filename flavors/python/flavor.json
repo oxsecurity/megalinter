@@ -40,6 +40,8 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "PYTHON_PYTYPE",
+        "PYTHON_PYRIGHT",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
