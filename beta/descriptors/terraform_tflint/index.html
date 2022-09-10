@@ -5637,7 +5637,7 @@
 <h1 id="tflint">tflint <a href="https://github.com/terraform-linters/tflint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/terraform-linters/tflint" /></a></h1>
 <h2 id="tflint-documentation">tflint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.39.3</strong></li>
+<li>Version in MegaLinter: <strong>0.40.0</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md" target="_blank">How to configure tflint rules</a><ul>
 <li>If custom <code>.tflint.hcl</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
@@ -5754,7 +5754,7 @@
 <td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://oxsecurity.github.io/megalinter/beta/flavors/terraform/">terraform</a></td>
 <td align="left">Optimized for TERRAFORM based projects</td>
-<td align="center">51</td>
+<td align="center">52</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform" /></td>
 </tr>
 </tbody>
@@ -5821,8 +5821,6 @@ Application Options:
                                                                 colorized output
       --no-color                                                Disable
                                                                 colorized output
-      --loglevel=[trace|debug|info|warn|error]                  Change the
-                                                                loglevel
 
 Help Options:
   -h, --help                                                    Show this help
@@ -5833,7 +5831,7 @@ Help Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.39.3 as tflint
+<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.40.0 as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 </code></pre>
 
