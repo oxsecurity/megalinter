@@ -1636,7 +1636,7 @@ def update_docker_pulls_counter():
 def perform_count_request(docker_image_url):
     r = requests_retry_session().get(docker_image_url)
     resp = r.json()
-    flavor_count = resp["pull_count"] or 0
+    flavor_count = resp["pull_count"] if "pull_count" in resp else 0
     logging.info(f"{docker_image_url}: {flavor_count}")
     return flavor_count
 

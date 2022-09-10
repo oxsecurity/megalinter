@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://prettier.io/" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="prettier" height="150px" class="megalinter-banner">
+    <img src="https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg" alt="prettier" height="150px" class="megalinter-banner">
   </a>
 </div>
 
