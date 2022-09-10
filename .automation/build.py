@@ -2087,7 +2087,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.5M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)

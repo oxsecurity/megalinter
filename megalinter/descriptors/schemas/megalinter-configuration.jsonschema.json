@@ -9048,6 +9048,126 @@
       "title": "PYTHON_PYLINT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_PYRIGHT_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_ARGUMENTS",
+      "description": "PYTHON_PYRIGHT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_PYRIGHT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_PYRIGHT: Override default cli lint mode",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_CONFIG_FILE",
+      "default": "pyrightconfig.json",
+      "description": "PYTHON_PYRIGHT: User custom config file name if different from default",
+      "title": "PYTHON_PYRIGHT: Custom config file name",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_DISABLE_ERRORS",
+      "default": false,
+      "title": "PYTHON_PYRIGHT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_PYRIGHT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PYTHON_PYRIGHT_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE",
+      "title": "PYTHON_PYRIGHT: Excluding Regex",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE",
+      "title": "PYTHON_PYRIGHT: Including Regex",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_PYRIGHT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_PYRIGHT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_RULES_PATH": {
+      "$id": "#/properties/PYTHON_PYRIGHT_RULES_PATH",
+      "description": "PYTHON_PYRIGHT: Path where to find linter configuration file",
+      "title": "PYTHON_PYRIGHT: Custom config file path",
+      "type": "string"
+    },
     "RAKU_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RAKU_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for RAKU descriptor",
