@@ -41,7 +41,8 @@ RUN apk add --update --no-cache \
                 ca-certificates \
                 curl \
                 gcc \
-                gitlibffi-dev \
+                git \
+                libffi-dev \
                 make \
                 musl-dev \
                 openssh \
@@ -88,7 +89,6 @@ RUN apk add --update --no-cache \
                 readline-dev \
                 g++ \
                 libc-dev \
-                libffi-dev \
                 libgcc \
                 libxml2-dev \
                 libxml2-utils \
