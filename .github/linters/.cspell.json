@@ -1009,6 +1009,7 @@
         "pyproject",
         "pyreverse",
         "pyright",
+        "pyrightconfig",
         "pytablewriter",
         "pytest",
         "pytype",
