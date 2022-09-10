@@ -13,12 +13,3 @@ class javascript_standard_test(TestCase, LinterTestRoot):
     descriptor_id = "JAVASCRIPT"
     linter_name = "standard"
 
-    def test_include_success(self):
-        utilstest.linter_test_setup(
-            {
-                "additional_test_variables": {
-                    "JAVASCRIPT_STANDARD_ARGUMENTS": ["!.automation"]
-                }
-            }
-        )
-        utilstest.test_linter_success(self.get_linter_instance(), self)

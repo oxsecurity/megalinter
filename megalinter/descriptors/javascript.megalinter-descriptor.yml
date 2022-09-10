@@ -112,7 +112,6 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
         - standard

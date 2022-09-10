@@ -118,7 +118,6 @@ linters:
     examples:
       - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts"
       - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts"
-    downgraded_version: true
     install:
       npm:
         - standard
