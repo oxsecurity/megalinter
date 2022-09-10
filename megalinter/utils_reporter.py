@@ -81,7 +81,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         + log_link(f"**{reporter_self.master.status.upper()}**", action_run_url)
     )
     p_r_msg = (
-        f"## [MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
