@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter import utils
 from megalinter.constants import (
+    DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -248,7 +249,7 @@ def build_dockerfile(
     docker_from = []
     docker_arg = []
     docker_other = []
-    apk_packages = []
+    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -327,6 +328,7 @@ def build_dockerfile(
         apk_install_command = (
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
+            + " && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # NPM packages
