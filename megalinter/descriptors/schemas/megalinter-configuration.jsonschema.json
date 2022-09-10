@@ -164,6 +164,7 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "PYTHON_PYRIGHT",
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
