@@ -646,6 +646,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/python_pyright/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/r/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
@@ -1066,6 +1071,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/checkmake/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/checkov/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
@@ -1102,6 +1112,11 @@
     </url>
     <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/devskim/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/djlint/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1191,6 +1206,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/jsonlint/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/kics/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
@@ -1211,12 +1231,32 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/lintr/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/luacheck/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/markdown-link-check/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/markdown-table-formatter/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/markdownlint/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/misspell/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1241,7 +1281,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/phpcs/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/licenses/phpstan/</loc>
+         <lastmod>2022-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/licenses/pmd/</loc>
          <lastmod>2022-09-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
