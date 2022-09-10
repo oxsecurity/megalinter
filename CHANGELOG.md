@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reactivate snakefmt
 - Add SARIF output for ansible-lint
 - Improve go linters performances
+- Fix broken link to documentation when using v6
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
