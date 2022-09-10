@@ -271,27 +271,27 @@ linters:
         - name: Mypy
           url: https://marketplace.visualstudio.com/items?itemName=matangover.mypy
   # PyType
-  - linter_name: pytype
-    name: PYTHON_PYTYPE
-    linter_text: |
-      Optional static typing checks for python, by Google
+  # - linter_name: pytype
+  #   name: PYTHON_PYTYPE
+  #   linter_text: |
+  #     Optional static typing checks for python, by Google
 
-      If you don't use python static typing, you should disable this linter by adding `- PYTHON_PYTYPE` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
-    linter_url: https://google.github.io/pytype/
-    linter_repo: https://github.com/google/pytype
-    linter_speed: 1
-    linter_rules_inline_disable_url: https://google.github.io/pytype/user_guide.html#silencing-errors
-    cli_lint_mode: list_of_files
-    config_file_name: pytype.cfg
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "Found ([0-9]+) error"
-    test_folder: python_mypy
-    examples:
-      - "pytype myfile.py myfile2.py"
-      - "pytype myfile.py"
-    install:
-      pip:
-        - pytype
+  #     If you don't use python static typing, you should disable this linter by adding `- PYTHON_PYTYPE` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+  #   linter_url: https://google.github.io/pytype/
+  #   linter_repo: https://github.com/google/pytype
+  #   linter_speed: 1
+  #   linter_rules_inline_disable_url: https://google.github.io/pytype/user_guide.html#silencing-errors
+  #   cli_lint_mode: list_of_files
+  #   config_file_name: pytype.cfg
+  #   cli_lint_errors_count: regex_sum
+  #   cli_lint_errors_regex: "Found ([0-9]+) error"
+  #   test_folder: python_mypy
+  #   examples:
+  #     - "pytype myfile.py myfile2.py"
+  #     - "pytype myfile.py"
+  #   install:
+  #     pip:
+  #       - pytype
  # PyRight
   - linter_name: pyright
     name: PYTHON_PYRIGHT
