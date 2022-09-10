@@ -164,7 +164,6 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
-        "PYTHON_PYRIGHT",
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
@@ -3482,7 +3481,7 @@
     },
     "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3609,7 +3608,7 @@
     },
     "GO_REVIVE_CLI_LINT_MODE": {
       "$id": "#/properties/GO_REVIVE_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",

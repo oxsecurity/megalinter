@@ -206,7 +206,7 @@ RUN npm install --ignore-scripts \
                 @babel/core \
                 @babel/eslint-parser \
                 @microsoft/eslint-formatter-sarif \
-                standard@15.0.1 \
+                standard \
                 prettier \
                 @prantlf/jsonlint \
                 eslint-plugin-jsonc \

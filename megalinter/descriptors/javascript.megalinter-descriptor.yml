@@ -112,10 +112,9 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - standard
     ide:
       atom:
         - name: linter-js-standard
@@ -151,7 +150,7 @@ linters:
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
