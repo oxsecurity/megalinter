@@ -12,13 +12,3 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 class typescript_standard_test(TestCase, LinterTestRoot):
     descriptor_id = "TYPESCRIPT"
     linter_name = "standard"
-
-    def test_include_success(self):
-        utilstest.linter_test_setup(
-            {
-                "additional_test_variables": {
-                    "JAVASCRIPT_STANDARD_ARGUMENTS": ["!.automation"]
-                }
-            }
-        )
-        utilstest.test_linter_success(self.get_linter_instance(), self)
