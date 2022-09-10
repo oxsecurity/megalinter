@@ -18,6 +18,7 @@ linters:
     linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
     linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
     config_file_name: .golangci.yml
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "run"
     cli_version_arg_name: "version"
@@ -61,6 +62,7 @@ linters:
     linter_rules_configuration_url: https://revive.run/docs#custom-configuration
     config_file_name: revive.toml
     cli_config_arg_name: "-config"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - -set_exit_status
     cli_sarif_args:
