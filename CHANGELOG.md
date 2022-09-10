@@ -13,6 +13,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Use `list_of_files` Cli lint mode for checkstyle, to have unique SARIF output and improve performances
 - Reactivate snakefmt
 - Add SARIF output for ansible-lint
+- Improve go linters performances
+- Fix broken link to documentation when using v6
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
