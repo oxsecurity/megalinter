@@ -292,7 +292,7 @@ linters:
   #   install:
   #     pip:
   #       - pytype
- # PyRight
+  # PyRight
   - linter_name: pyright
     name: PYTHON_PYRIGHT
     linter_text: |
