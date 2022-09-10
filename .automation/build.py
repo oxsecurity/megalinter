@@ -328,7 +328,7 @@ def build_dockerfile(
         apk_install_command = (
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
-            + " && git config --global core.autocrlf true"
+            + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # NPM packages
