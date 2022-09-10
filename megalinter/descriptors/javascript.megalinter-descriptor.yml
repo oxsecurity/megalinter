@@ -136,8 +136,8 @@ linters:
         - name: StandardFormat
           url: https://packagecontrol.io/packages/StandardFormat
       vscode:
-        - name: vscode-standardjs
-          url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
+        - name: vscode-standard
+          url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
     is_formatter: true

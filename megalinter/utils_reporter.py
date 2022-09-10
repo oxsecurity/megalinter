@@ -1,9 +1,10 @@
 import logging
 import os
+import subprocess
 import time
 import urllib
 
-from megalinter import config
+from megalinter import config, utils
 from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
@@ -193,3 +194,19 @@ def is_gitlab_ci() -> bool:
 
 def is_azure_pipelines() -> bool:
     return "TF_BUILD" in os.environ
+
+
+# Convert SARIF into human readable text
+def convert_sarif_to_human(sarif_in) -> str:
+    sarif_fmt_command = "sarif-fmt"
+    process = subprocess.run(
+        sarif_fmt_command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        input=sarif_in + "\n",
+    )
+    return_code = process.returncode
+    output = utils.decode_utf8(process.stdout)
+    logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
+    return output

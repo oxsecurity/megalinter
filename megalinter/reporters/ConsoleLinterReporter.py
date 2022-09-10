@@ -125,10 +125,15 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(c.red(f"--Error detail:\n{res['stdout']}"))
         # Output stdout if not file by file
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
+            stdout = (
+                self.master.stdout_human
+                if self.master.stdout_human is not None
+                else self.master.stdout
+            )
             if self.master.status != "success":
-                logging.error(f"--Error detail:\n{self.master.stdout}")
+                logging.error(f"--Error detail:\n{stdout}")
             elif self.report_type == "detailed":
-                logging.info(f"--Log detail:\n{self.master.stdout}")
+                logging.info(f"--Log detail:\n{stdout}")
         # Post-commands logs
         if len(self.master.log_lines_post) > 0:
             logging.info("\n".join(self.master.log_lines_post))

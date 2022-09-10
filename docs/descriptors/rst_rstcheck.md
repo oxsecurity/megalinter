@@ -46,7 +46,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor           |       106        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/) | Optimized for PYTHON based projects |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/) | Optimized for PYTHON based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -78,18 +78,17 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...
 
  CLI of rstcheck.
- Enabled features: ['Toml']
+ Enabled features: []
  Pass one ore more rst FILES to check. Can be files or directories if
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --config                         PATH   Config file to load. Can be a INI or │
-│                                         TOML file or directory. If a         │
-│                                         directory is passed it will be       │
-│                                         searched for .rstcheck.cfg |         │
-│                                         pyproject.toml | setup.cfg. If       │
-│                                         'NONE' is passed no config file is   │
-│                                         loaded at all.                       │
+│ --config                         PATH   Config file to load. Can be a INI    │
+│                                         file or directory. If a directory is │
+│                                         passed it will be searched for       │
+│                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
+│                                         is passed no config file is loaded   │
+│                                         at all.                              │
 │                                         [default: None]                      │
 │ --warn-unknown-settings                 Log a WARNING for unknown settings   │
 │                                         in config files. Can be hidden via   │

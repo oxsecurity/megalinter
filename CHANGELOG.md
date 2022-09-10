@@ -8,22 +8,51 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Manage SARIF output to [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
+- Create a venv for each python-based linter to avoid issues with dependencies
+- Use `list_of_files` Cli lint mode for checkstyle, to have unique SARIF output and improve performances
+- Reactivate snakefmt
+- Add SARIF output for ansible-lint
+
 - Linter versions upgrades
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3** on 2022-08-28
-  - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.162** on 2022-08-28
-  - [checkov](https://www.checkov.io/) from 2.1.162 to **2.1.165** on 2022-08-30
-  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0** on 2022-08-30
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0** on 2022-08-30
-  - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1** on 2022-08-30
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9** on 2022-08-30
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2** on 2022-08-31
-  - [checkov](https://www.checkov.io/) from 2.1.165 to **2.1.171** on 2022-08-31
-  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.3** on 2022-09-01
-  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0** on 2022-09-01
-  - [checkov](https://www.checkov.io/) from 2.1.171 to **2.1.179** on 2022-09-01
-  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0** on 2022-09-01
-  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15** on 2022-09-01
+  - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.39.0 to **0.40.0** on 2022-09-05
+  - [checkov](https://www.checkov.io/) from 2.1.184 to **2.1.185** on 2022-09-05
+  - [checkov](https://www.checkov.io/) from 2.1.185 to **2.1.188** on 2022-09-05
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.2 to **8.12.0** on 2022-09-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.2 to **0.64.1** on 2022-09-09
+  - [djlint](https://djlint.com/) from 1.12.1 to **1.12.3** on 2022-09-09
+  - [ktlint](https://ktlint.github.io) from 0.47.0 to **0.47.1** on 2022-09-09
+  - [phpstan](https://phpstan.org/) from 1.8.4 to **1.8.5** on 2022-09-09
+  - [pylint](https://www.pylint.org) from 2.15.0 to **2.15.2** on 2022-09-09
+  - [checkov](https://www.checkov.io/) from 2.1.188 to **2.1.201** on 2022-09-09
+  - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1** on 2022-09-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9** on 2022-09-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.2 to **6.5.2** on 2022-09-10
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.08.03 to **2022.09.08** on 2022-09-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.0 to **1.3.1** on 2022-09-10
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0** on 2022-09-10
 <!-- linter-versions-end -->
+
+## [v6.8.0] - 2022-09-04
+
+- Run MegaLinter pre-commit hooks serially (#1826).
+- Replace deprecated StandardJS VS Code extension with the newer official version
+- When SARIF_REPORTER is active, use [sarif-fmt](https://crates.io/crates/sarif-fmt) to convert SARIF into text for console and text reporters ([#1822](https://github.com/oxsecurity/megalinter/issues/1822)).
+- Count checkstyle errors ([#1820](https://github.com/oxsecurity/megalinter/pull/1820))
+
+- Linter versions upgrades
+  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2**
+  - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.183**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3**
+  - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1**
+  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15**
+  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.4**
+  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0**
+  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9**
 
 ## [v6.7.1] - 2022-08-28
 
@@ -1080,7 +1109,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New linter `phplint` to speed-up linting of php files (#1031)
     - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
   - `cpplint`: Use `cli_lint_mode: project` to improve performances
-
 
 - Linter versions upgrades
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19

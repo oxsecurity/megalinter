@@ -2,6 +2,7 @@
   name: Run MegaLinter (skipping linters that run in project mode)
   entry: npx --
   language: system
+  require_serial: true
   args:
     - mega-linter-runner
     - --containername "megalinter-$(basename "$PWD")"
@@ -31,6 +32,7 @@
   name: Run MegaLinter
   entry: npx --
   language: system
+  require_serial: true
   args:
     - mega-linter-runner
     - --containername "megalinter-all-$(basename "$PWD")"

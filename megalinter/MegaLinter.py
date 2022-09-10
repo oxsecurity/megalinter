@@ -95,6 +95,8 @@ class Megalinter:
             config.get("SHOW_ELAPSED_TIME", "false") == "true"
             or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
         )
+        # In case SARIF is active, convert results into human readable text for logs
+        self.sarif_to_human = config.get("SARIF_TO_HUMAN", "true") == "true"
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
