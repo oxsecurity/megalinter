@@ -270,7 +270,7 @@ linters:
       vscode:
         - name: Mypy
           url: https://marketplace.visualstudio.com/items?itemName=matangover.mypy
-  # PyType
+  # PyType # NV Not working yet, if anyone wants to complete it, please be my guest :)
   # - linter_name: pytype
   #   name: PYTHON_PYTYPE
   #   linter_text: |
@@ -305,9 +305,11 @@ linters:
     linter_banner_image_url: https://github.com/microsoft/pyright/raw/main/docs/img/PyrightLarge.png
     linter_speed: 1
     linter_rules_configuration_url: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+    linter_rules_inline_disable_url: https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls
     cli_lint_mode: list_of_files
+    config_file_name: pyrightconfig.json
     cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "Found ([0-9]+) error"
+    cli_lint_errors_regex: "([0-9]+) errors,"
     test_folder: python_mypy
     examples:
       - "pyright myfile.py myfile2.py"
