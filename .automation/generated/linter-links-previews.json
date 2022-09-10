@@ -319,6 +319,16 @@
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
   },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",
     "image": null,
