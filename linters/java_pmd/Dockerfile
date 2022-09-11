@@ -129,8 +129,8 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Installs python dependencies #
 ################################
 COPY megalinter /megalinter
-RUN python /megalinter/setup.py install \
-    && python /megalinter/setup.py clean --all \
+RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
+    && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
     && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 

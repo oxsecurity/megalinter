@@ -122,8 +122,8 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 # Installs python dependencies #
 ################################
 COPY megalinter /megalinter
-RUN python /megalinter/setup.py install \
-    && python /megalinter/setup.py clean --all \
+RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
+    && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
     && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
