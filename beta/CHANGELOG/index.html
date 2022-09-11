@@ -5457,6 +5457,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v690-2022-09-11" class="md-nav__link">
+    [v6.9.0] - 2022-09-11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v680-2022-09-04" class="md-nav__link">
     [v6.8.0] - 2022-09-04
   </a>
@@ -6170,6 +6177,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v690-2022-09-11" class="md-nav__link">
+    [v6.9.0] - 2022-09-11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v680-2022-09-04" class="md-nav__link">
     [v6.8.0] - 2022-09-04
   </a>
@@ -6866,48 +6880,59 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Manage SARIF output to <a href="https://github.com/koalaman/shellcheck">shellcheck</a> thanks to <a href="https://crates.io/crates/shellcheck-sarif">shellcheck-sarif</a></li>
-<li>Create a venv for each python-based linter to avoid issues with dependencies</li>
-<li>Use <code>list_of_files</code> Cli lint mode for checkstyle, to have unique SARIF output and improve performances</li>
-<li>Reactivate snakefmt</li>
-<li>Manage SARIF output for ansible-lint</li>
-<li>Improve go linters performances</li>
-<li>Fix broken link to documentation when using v6</li>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v690-2022-09-11">[v6.9.0] - 2022-09-11</h2>
+<ul>
+<li>Linters<ul>
 <li>Add python type checker <a href="https://github.com/microsoft/pyright">pyright</a>, by Microsoft</li>
+<li>New linters with available SARIF output for <a href="https://oxsecurity.github.io/megalinter/latest/reporters/SarifReporter/">SARIF Reporter</a><ul>
+<li><a href="https://oxsecurity.github.io/megalinter/latest/descriptors/ansible_ansible_lint/">ansible-lint</a></li>
+<li><a href="https://github.com/koalaman/shellcheck">shellcheck</a> thanks to <a href="https://crates.io/crates/shellcheck-sarif">shellcheck-sarif</a></li>
+</ul>
+</li>
+<li>Use <code>list_of_files</code> Cli lint mode for <a href="https://oxsecurity.github.io/megalinter/latest/descriptors/java_checkstyle/">checkstyle</a>, to have unique SARIF output and improve performances</li>
+<li>Use <code>list_of_files</code> Cli lint mode for <a href="https://oxsecurity.github.io/megalinter/latest/descriptors/go_golangci_lint/">golangci-lint</a> and <a href="https://oxsecurity.github.io/megalinter/latest/descriptors/go_revive/">revive</a>, to improve performances</li>
+<li>Reactivate <a href="https://oxsecurity.github.io/megalinter/latest/descriptors/snakemake_snakefmt/">snakefmt</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Core <ul>
 <li>Improve build performances and docker images sizes (reduce from 117 to 36 layers)<ul>
 <li>Use BUILDKIT</li>
 <li>Join RUN instructions</li>
 <li>Optimize core Dockerfile items</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.183 to <strong>2.1.184</strong> on 2022-09-05</li>
-<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.39.0 to <strong>0.40.0</strong> on 2022-09-05</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.184 to <strong>2.1.185</strong> on 2022-09-05</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.185 to <strong>2.1.188</strong> on 2022-09-05</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.11.2 to <strong>8.12.0</strong> on 2022-09-06</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.63.2 to <strong>0.64.1</strong> on 2022-09-09</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.12.1 to <strong>1.12.3</strong> on 2022-09-09</li>
-<li><a href="https://ktlint.github.io">ktlint</a> from 0.47.0 to <strong>0.47.1</strong> on 2022-09-09</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.8.4 to <strong>1.8.5</strong> on 2022-09-09</li>
-<li><a href="https://www.pylint.org">pylint</a> from 2.15.0 to <strong>2.15.2</strong> on 2022-09-09</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.188 to <strong>2.1.201</strong> on 2022-09-09</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.103.0 to <strong>0.112.1</strong> on 2022-09-09</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.8 to <strong>1.2.9</strong> on 2022-09-09</li>
-<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.0.2 to <strong>6.5.2</strong> on 2022-09-10</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.08.03 to <strong>2022.09.08</strong> on 2022-09-10</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.0 to <strong>1.3.1</strong> on 2022-09-10</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.39.3 to <strong>0.40.0</strong> on 2022-09-10</li>
-<li><a href="https://standardjs.com/">standard</a> from 15.0.1 to <strong>17.0.0</strong> on 2022-09-10</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.49.0 to <strong>1.48.0</strong> on 2022-09-11</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.48.0 to <strong>1.49.0</strong> on 2022-09-11</li>
+<li>Create a venv for each python-based linter to avoid issues with dependencies</li>
+<li>Fix broken link to documentation when using v6</li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.0.2 to <strong>6.5.2</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.63.2 to <strong>0.64.1</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.183 to <strong>2.1.201</strong></li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.08.03 to <strong>2022.09.08</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.12.1 to <strong>1.12.3</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.11.2 to <strong>8.12.0</strong></li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.48.0 to <strong>1.49.0</strong></li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.47.0 to <strong>0.47.1</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.8.4 to <strong>1.8.5</strong></li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.39.0 to <strong>0.40.0</strong></li>
+<li><a href="https://www.pylint.org">pylint</a> from 2.15.0 to <strong>2.15.2</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 0.103.0 to <strong>0.112.1</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.0 to <strong>1.3.1</strong></li>
+<li><a href="https://standardjs.com/">standard</a> from 15.0.1 to <strong>17.0.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.8 to <strong>1.2.9</strong></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.39.3 to <strong>0.40.0</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v680-2022-09-04">[v6.8.0] - 2022-09-04</h2>
 <ul>
 <li>Run MegaLinter pre-commit hooks serially (#1826).</li>
