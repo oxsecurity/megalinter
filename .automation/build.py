@@ -407,11 +407,12 @@ def build_dockerfile(
         rustup_cargo_cmd = " && ".join(rust_commands)
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal \n"
-            + 'ENV PATH="/root/.cargo/bin:${PATH}"\n'
-            + f"RUN {rustup_cargo_cmd} \\\n"
+            + " sh -s -- -y --profile minimal \\\n"
+            + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
+            + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-            + "/root/.cache/sccache /root/.rustup"
+            + "/root/.cache/sccache /root/.rustup\n"
+            + 'ENV PATH="/root/.cargo/bin:${PATH}"'
         )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
