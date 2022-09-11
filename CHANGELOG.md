@@ -8,41 +8,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Manage SARIF output to [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
-- Create a venv for each python-based linter to avoid issues with dependencies
-- Use `list_of_files` Cli lint mode for checkstyle, to have unique SARIF output and improve performances
-- Reactivate snakefmt
-- Manage SARIF output for ansible-lint
-- Improve go linters performances
-- Fix broken link to documentation when using v6
-- Add python type checker [pyright](https://github.com/microsoft/pyright), by Microsoft
-- Improve build performances and docker images sizes (reduce from 117 to 36 layers)
-  - Use BUILDKIT
-  - Join RUN instructions
-  - Optimize core Dockerfile items
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.9.0] - 2022-09-11
+
+- Linters
+  - Add python type checker [pyright](https://github.com/microsoft/pyright), by Microsoft
+  - New linters with available SARIF output for [SARIF Reporter](https://oxsecurity.github.io/megalinter/latest/reporters/SarifReporter/)
+    - [ansible-lint](https://oxsecurity.github.io/megalinter/latest/descriptors/ansible_ansible_lint/)
+    - [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
+  - Use `list_of_files` Cli lint mode for [checkstyle](https://oxsecurity.github.io/megalinter/latest/descriptors/java_checkstyle/), to have unique SARIF output and improve performances
+  - Use `list_of_files` Cli lint mode for [golangci-lint](https://oxsecurity.github.io/megalinter/latest/descriptors/go_golangci_lint/) and [revive](https://oxsecurity.github.io/megalinter/latest/descriptors/go_revive/), to improve performances
+  - Reactivate [snakefmt](https://oxsecurity.github.io/megalinter/latest/descriptors/snakemake_snakefmt/)
+
+- Core 
+  - Improve build performances and docker images sizes (reduce from 117 to 36 layers)
+    - Use BUILDKIT
+    - Join RUN instructions
+    - Optimize core Dockerfile items
+  - Create a venv for each python-based linter to avoid issues with dependencies
+  - Fix broken link to documentation when using v6
 
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.184** on 2022-09-05
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.39.0 to **0.40.0** on 2022-09-05
-  - [checkov](https://www.checkov.io/) from 2.1.184 to **2.1.185** on 2022-09-05
-  - [checkov](https://www.checkov.io/) from 2.1.185 to **2.1.188** on 2022-09-05
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.2 to **8.12.0** on 2022-09-06
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.2 to **0.64.1** on 2022-09-09
-  - [djlint](https://djlint.com/) from 1.12.1 to **1.12.3** on 2022-09-09
-  - [ktlint](https://ktlint.github.io) from 0.47.0 to **0.47.1** on 2022-09-09
-  - [phpstan](https://phpstan.org/) from 1.8.4 to **1.8.5** on 2022-09-09
-  - [pylint](https://www.pylint.org) from 2.15.0 to **2.15.2** on 2022-09-09
-  - [checkov](https://www.checkov.io/) from 2.1.188 to **2.1.201** on 2022-09-09
-  - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1** on 2022-09-09
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9** on 2022-09-09
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.2 to **6.5.2** on 2022-09-10
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.08.03 to **2022.09.08** on 2022-09-10
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.0 to **1.3.1** on 2022-09-10
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0** on 2022-09-10
-  - [standard](https://standardjs.com/) from 15.0.1 to **17.0.0** on 2022-09-10
-  - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.48.0** on 2022-09-11
-  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0** on 2022-09-11
-<!-- linter-versions-end -->
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.2 to **6.5.2**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.2 to **0.64.1**
+  - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.201**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.08.03 to **2022.09.08**
+  - [djlint](https://djlint.com/) from 1.12.1 to **1.12.3**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.2 to **8.12.0**
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0**
+  - [ktlint](https://ktlint.github.io) from 0.47.0 to **0.47.1**
+  - [phpstan](https://phpstan.org/) from 1.8.4 to **1.8.5**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.39.0 to **0.40.0**
+  - [pylint](https://www.pylint.org) from 2.15.0 to **2.15.2**
+  - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.0 to **1.3.1**
+  - [standard](https://standardjs.com/) from 15.0.1 to **17.0.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
 
 ## [v6.8.0] - 2022-09-04
 
