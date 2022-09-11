@@ -400,7 +400,7 @@ def build_dockerfile(
             + " pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + "find . -path '*/__pycache__*' -delete"
+            + "find . -type d -name __pycache__ -exec rm -fr {} \;"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
@@ -424,7 +424,7 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            " \\\n    && find . -path '*/__pycache__*' -delete\n" + env_path_command
+            " \\\n    && find . -type d -name __pycache__ -exec rm -fr {} \;\n" + env_path_command
         )
     else:
         pipenv_install_command = ""

@@ -124,7 +124,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIPVENV__START
 RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && cd ./../..  \
-    && find . -path '*/__pycache__*' -delete
+    && find . -type d -name __pycache__ -exec rm -fr {} \;
 ENV PATH="${PATH}":/venvs/semgrep/bin
 #PIPVENV__END
 
@@ -178,7 +178,7 @@ COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . -type d -name __pycache__ -delete
+    && find . -type d -name __pycache__ -exec rm -fr {} \;
 
 #######################################
 # Copy scripts and rules to container #

@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Use BUILDKIT
     - Join RUN instructions
     - Optimize core Dockerfile items
+    - Clean npm, python and cargo caches
   - Create a venv for each python-based linter to avoid issues with dependencies
   - Fix broken link to documentation when using v6
 

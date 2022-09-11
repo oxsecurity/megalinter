@@ -136,7 +136,7 @@ RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . -path '*/__pycache__*' -delete
+    && find . -type d -name __pycache__ -exec rm -fr {} \;
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/djlint/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -307,7 +307,7 @@ COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . -type d -name __pycache__ -delete
+    && find . -type d -name __pycache__ -exec rm -fr {} \;
 
 #######################################
 # Copy scripts and rules to container #
