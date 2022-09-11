@@ -396,17 +396,17 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade pip &&"
-            + " pip3 install --no-cache-dir --upgrade \\\n          '"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
+            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + "find . -type d -name __pycache__ -exec rm -fr {} \;"
+            + "find . | grep -E \"(/__pycache__$|\.pyc$|\.pyo$)\" | xargs rm -rf"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade pip virtualenv \\\n"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
@@ -415,7 +415,7 @@ def build_dockerfile(
                 + f'&& cd "/venvs/{pip_linter}" '
                 + "&& virtualenv . "
                 + "&& source bin/activate "
-                + "&& pip3 install --no-cache-dir "
+                + "&& PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
@@ -424,7 +424,7 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            " \\\n    && find . -type d -name __pycache__ -exec rm -fr {} \;\n" + env_path_command
+            " \\\n    && find . | grep -E \"(/__pycache__$|\.pyc$|\.pyo$)\" | xargs rm -rf\n" + env_path_command
         )
     else:
         pipenv_install_command = ""
