@@ -107,7 +107,7 @@ RUN apk add --update --no-cache \
 # PATH for golang & python
 ENV GOROOT=/usr/lib/go \
     GOPATH=/go \
-    PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/"
+    # PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/" NV: not working for all packages :/
 # hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
@@ -183,7 +183,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && find . -type d -name __pycache__ -delete
 
 #######################################
 # Copy scripts and rules to container #

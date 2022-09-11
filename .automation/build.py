@@ -237,7 +237,8 @@ branding:
         "COPY entrypoint.sh /entrypoint.sh",
         "RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
         'ENV PATH="/root/.cargo/bin:${PATH}"',
-        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache",
+        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt && "
+        + "rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -398,7 +399,8 @@ def build_dockerfile(
             "RUN pip3 install --no-cache-dir --upgrade pip &&"
             + " pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
-            + "'"
+            + "' && \\\n"
+            + "find . -type d -name __pycache__ -delete"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
@@ -421,7 +423,7 @@ def build_dockerfile(
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
-        pipenv_install_command += "\n" + env_path_command
+        pipenv_install_command += " \\\n    && find . -type d -name __pycache__ -delete\n" + env_path_command
     else:
         pipenv_install_command = ""
     replace_in_file(

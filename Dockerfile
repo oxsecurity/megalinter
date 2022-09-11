@@ -125,7 +125,7 @@ RUN apk add --update --no-cache \
 # PATH for golang & python
 ENV GOROOT=/usr/lib/go \
     GOPATH=/go \
-    PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/"
+    # PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/" NV: not working for all packages :/
 # hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
@@ -159,7 +159,8 @@ RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && pip3 install --no-cache-dir snakefmt && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../.. 
+    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
+    && find . -type d -name __pycache__ -delete
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/pyright/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -616,7 +617,8 @@ ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/ass
 COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && find . -type d -name __pycache__ -delete
 
 #######################################
 # Copy scripts and rules to container #
