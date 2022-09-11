@@ -1809,6 +1809,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5610,6 +5617,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5656,6 +5670,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_PYRIGHT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="pyright-documentation">pyright documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>1.1.270</strong></li>
 <li>Visit <a href="https://google.github.io/pytype/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/configuration.md" target="_blank">How to configure pyright rules</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls" target="_blank">How to disable pyright rules in files</a></li>
@@ -5826,6 +5841,29 @@
 <pre><code class="language-shell">pyright myfile.py myfile2.py
 </code></pre>
 <pre><code class="language-shell">pyright myfile.py
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Usage: pyright [options] files...
+  Options:
+  --createstub &lt;IMPORT&gt;              Create type stub file(s) for import
+  --dependencies                     Emit import dependency information
+  -h,--help                          Show this help message
+  --ignoreexternal                   Ignore external imports for --verifytypes
+  --lib                              Use library code to infer types when stubs are missing
+  --outputjson                       Output results in JSON format
+  -p,--project &lt;FILE OR DIRECTORY&gt;   Use the configuration file at this location
+  --pythonplatform &lt;PLATFORM&gt;        Analyze for a specific platform (Darwin, Linux, Windows)
+  --pythonversion &lt;VERSION&gt;          Analyze for a specific version (3.3, 3.4, etc.)
+  --skipunannotated                  Skip analysis of functions with no type annotations
+  --stats                            Print detailed performance stats
+  -t,--typeshed-path &lt;DIRECTORY&gt;     Use typeshed type stubs at this location
+  -v,--venv-path &lt;DIRECTORY&gt;         Directory that contains virtual environments
+  --verbose                          Emit verbose diagnostics
+  --verifytypes &lt;PACKAGE&gt;            Verify type completeness of a py.typed package
+  --version                          Print Pyright version
+  --warnings                         Use exit code of 1 if warnings are reported
+  -w,--watch                         Continue to run and watch for changes
+
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>

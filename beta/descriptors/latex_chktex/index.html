@@ -5891,7 +5891,7 @@ chktexrc file (~/.chktexrc).
 </ul>
 <pre><code class="language-dockerfile">FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 COPY --from=chktex /usr/bin/chktex /usr/bin/
-RUN cd ~ &amp;&amp; touch .chktexrc
+RUN cd ~ &amp;&amp; touch .chktexrc &amp;&amp; cd /
 </code></pre>
 
 
