@@ -313,8 +313,9 @@ RUN cargo install shellcheck-sarif \
 # Managed with COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # checkov installation
-    && pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov \
+# Next line commented because already managed by another linter
+# RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+#     && pip3 install --no-cache-dir checkov
 
 # kics installation
 # Managed with COPY --from=kics /app/bin/kics /usr/bin/

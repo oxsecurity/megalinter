@@ -249,10 +249,10 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 #     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # VBDOTNET installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -353,15 +353,17 @@ RUN cargo install shellcheck-sarif \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
 
 # tsqllint installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest \
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global --version 1.14.5 TSQLLint \
+    && dotnet tool install --global --version 1.14.5 TSQLLint
 
 # dotnet-format installation
-    && /usr/share/dotnet/dotnet tool install -g dotnet-format
+# Next line commented because already managed by another linter
+# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

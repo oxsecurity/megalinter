@@ -292,10 +292,12 @@ RUN cargo install shellcheck-sarif \
     && sfdx plugins:install @salesforce/sfdx-scanner \
 
 # sfdx-scanner-aura installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-lwc installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \

@@ -272,15 +272,8 @@ def build_dockerfile(
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
             docker_other += [f"# {item_label} installation"]
             for dockerfile_item in item["install"]["dockerfile"]:
-                # Already used item
-                if dockerfile_item in all_dockerfile_items:
-                    dockerfile_item = (
-                        "# Next line commented because already managed by another linter\n"
-                        "# " + "\n# ".join(dockerfile_item.splitlines())
-                    )
-                    docker_other += [dockerfile_item]
                 # FROM
-                elif dockerfile_item.startswith("FROM"):
+                if dockerfile_item.startswith("FROM"):
                     docker_from += [dockerfile_item]
                 # ARG
                 elif dockerfile_item.startswith("ARG"):
@@ -289,13 +282,20 @@ def build_dockerfile(
                 elif dockerfile_item.startswith("COPY"):
                     docker_copy += [dockerfile_item]
                     docker_other += ["# Managed with " + dockerfile_item]
+                # Already used item
+                elif dockerfile_item in all_dockerfile_items:
+                    dockerfile_item = (
+                        "# Next line commented because already managed by another linter\n"
+                        "# " + "\n# ".join(dockerfile_item.splitlines())
+                    )
+                    docker_other += [dockerfile_item]
                 # RUN (start)
                 elif dockerfile_item.startswith("RUN") and is_docker_other_run is False:
                     docker_other += [dockerfile_item]
                     is_docker_other_run = True
                 # RUN (append)
                 elif dockerfile_item.startswith("RUN") and is_docker_other_run is True:
-                    dockerfile_item = dockerfile_item.replace("RUN", "    &&")
+                    dockerfile_item_cmd = dockerfile_item.replace("RUN", "    &&")
                     # Add \ in previous instruction line
                     for index, prev_instruction_line in reversed(
                         list(enumerate(docker_other))
@@ -312,13 +312,13 @@ def build_dockerfile(
                             )
                             docker_other[index] = prev_instruction_line + " \\"
                             break
-                    docker_other += [dockerfile_item]
+                    docker_other += [dockerfile_item_cmd]
                 # Other
                 else:
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
+                all_dockerfile_items += [dockerfile_item]
             docker_other += [""]
-            all_dockerfile_items += [dockerfile_item]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]

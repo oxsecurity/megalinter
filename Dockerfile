@@ -311,34 +311,37 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10 \
 
 # POWERSHELL installation
-    && mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+# Next line commented because already managed by another linter
+# RUN mkdir -p ${PWSH_DIRECTORY} \
+#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#         | grep browser_download_url \
+#         | grep linux-alpine-x64 \
+#         | cut -d '"' -f 4 \
+#         | xargs -n 1 wget -O - \
+#         | tar -xzC ${PWSH_DIRECTORY} \
+#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # RUST installation
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier \
+        chmod +x coursier
+
 
 # VBDOTNET installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -511,9 +514,10 @@ RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cac
     && pip3 install --no-cache-dir checkov \
 
 # devskim installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest \
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
     && dotnet tool install --global Microsoft.CST.DevSkim.CLI \
@@ -547,10 +551,12 @@ RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cac
     && sfdx plugins:install @salesforce/sfdx-scanner \
 
 # sfdx-scanner-aura installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-lwc installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin \
@@ -564,9 +570,10 @@ RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cac
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
 
 # tsqllint installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest \
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
     && dotnet tool install --global --version 1.14.5 TSQLLint \
@@ -595,7 +602,8 @@ ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/ass
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 # dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+# Next line commented because already managed by another linter
+# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 
