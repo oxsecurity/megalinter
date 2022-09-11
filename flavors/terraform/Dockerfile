@@ -113,9 +113,10 @@ RUN apk add --update --no-cache \
     && git config --global core.autocrlf true
 #APK__END
 
-# PATH for golang
+# PATH for golang & python
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
+    GOPATH=/go \
+    PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/"
 # hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
