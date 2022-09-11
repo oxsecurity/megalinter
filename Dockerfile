@@ -457,7 +457,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
-    && luarocks install luacheck
+    && luarocks install luacheck \
     && cd / \
 
 # checkmake installation
