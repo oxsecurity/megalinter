@@ -6874,6 +6874,12 @@
 <li>Improve go linters performances</li>
 <li>Fix broken link to documentation when using v6</li>
 <li>Add python type checker <a href="https://github.com/microsoft/pyright">pyright</a>, by Microsoft</li>
+<li>Improve build performances and docker images sizes (reduce from 117 to 36 layers)<ul>
+<li>Use BUILDKIT</li>
+<li>Join RUN instructions</li>
+<li>Optimize core Dockerfile items</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
