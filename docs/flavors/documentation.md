@@ -1,6 +1,6 @@
 # documentation MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation)
 
 ## Description
@@ -9,8 +9,8 @@ MegaLinter for documentation projects
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/documentation@v6**
-- Docker image: **oxsecurity/megalinter-documentation:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/documentation@beta**
+- Docker image: **oxsecurity/megalinter-documentation:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor documentation`
 
 ## Embedded linters

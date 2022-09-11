@@ -1,6 +1,6 @@
 # security MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for security
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/security@v6**
-- Docker image: **oxsecurity/megalinter-security:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/security@beta**
+- Docker image: **oxsecurity/megalinter-security:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor security`
 
 ## Embedded linters

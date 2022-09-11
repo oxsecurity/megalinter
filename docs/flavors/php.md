@@ -1,6 +1,6 @@
 # php MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for PHP based projects
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/php@v6**
-- Docker image: **oxsecurity/megalinter-php:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/php@beta**
+- Docker image: **oxsecurity/megalinter-php:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor php`
 
 ## Embedded linters

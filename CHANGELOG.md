@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0** on 2022-09-10
   - [standard](https://standardjs.com/) from 15.0.1 to **17.0.0** on 2022-09-10
   - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.48.0** on 2022-09-11
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0** on 2022-09-11
 <!-- linter-versions-end -->
 
 ## [v6.8.0] - 2022-09-04

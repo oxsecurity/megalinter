@@ -1,6 +1,6 @@
 # python MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for PYTHON based projects
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/python@v6**
-- Docker image: **oxsecurity/megalinter-python:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/python@beta**
+- Docker image: **oxsecurity/megalinter-python:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor python`
 
 ## Embedded linters
