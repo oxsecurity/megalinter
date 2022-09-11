@@ -24,3 +24,15 @@ DEFAULT_SARIF_SCHEMA_URI = (
 )
 DEFAULT_SARIF_VERSION = "2.1.0"
 DEFAULT_RELEASE = "v6"
+
+DEFAULT_DOCKERFILE_APK_PACKAGES = [
+    "bash",
+    "ca-certificates",
+    "curl",
+    "gcc",
+    "git",
+    "libffi-dev",
+    "make",
+    "musl-dev",
+    "openssh",
+]

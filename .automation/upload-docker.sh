@@ -315,7 +315,7 @@ BuildImage() {
   ###################
   # Build the image #
   ###################
-  docker build $EXTRA_DOCKER_BUILD_ARGS --no-cache --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${CONTAINER_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
+  DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --no-cache --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${CONTAINER_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
 
   #######################
   # Load the error code #
@@ -340,8 +340,8 @@ BuildImage() {
     # docker tag "${CONTAINER_URL}:${IMAGE_VERSION}" "${CONTAINER_URL}:latest"
 
     # Tag the image with the major tag & latest tag as well
-    docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
-    docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
     # Load the error code #
@@ -377,7 +377,7 @@ BuildImage() {
   ###################
   # Build the image #
   ###################
-  docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITIONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
+  DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITIONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
 
   #######################
   # Load the error code #
@@ -402,8 +402,8 @@ BuildImage() {
     ###################
     # Build the image with latest tags#
     ###################
-    docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
-    docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
     # Load the error code #

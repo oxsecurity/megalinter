@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter import utils
 from megalinter.constants import (
+    DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -247,18 +248,22 @@ def build_dockerfile(
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
+    docker_copy = []
     docker_other = []
-    apk_packages = []
+    all_dockerfile_items = []
+    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
     gem_packages = []
+    is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
             "RUN rc-update add docker boot && rc-service docker start || true"
         ]
+        is_docker_other_run = True
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
@@ -267,18 +272,52 @@ def build_dockerfile(
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
             docker_other += [f"# {item_label} installation"]
             for dockerfile_item in item["install"]["dockerfile"]:
+                # FROM
                 if dockerfile_item.startswith("FROM"):
                     docker_from += [dockerfile_item]
+                # ARG
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
-                elif dockerfile_item in docker_other:
+                # COPY
+                elif dockerfile_item.startswith("COPY"):
+                    docker_copy += [dockerfile_item]
+                    docker_other += ["# Managed with " + dockerfile_item]
+                # Already used item
+                elif dockerfile_item in all_dockerfile_items:
                     dockerfile_item = (
                         "# Next line commented because already managed by another linter\n"
                         "# " + "\n# ".join(dockerfile_item.splitlines())
                     )
                     docker_other += [dockerfile_item]
-                else:
+                # RUN (start)
+                elif dockerfile_item.startswith("RUN") and is_docker_other_run is False:
                     docker_other += [dockerfile_item]
+                    is_docker_other_run = True
+                # RUN (append)
+                elif dockerfile_item.startswith("RUN") and is_docker_other_run is True:
+                    dockerfile_item_cmd = dockerfile_item.replace("RUN", "    &&")
+                    # Add \ in previous instruction line
+                    for index, prev_instruction_line in reversed(
+                        list(enumerate(docker_other))
+                    ):
+                        if (
+                            prev_instruction_line.strip() != ""
+                            and not prev_instruction_line.startswith("#")
+                        ):
+                            # Remove last char if \n
+                            prev_instruction_line = (
+                                prev_instruction_line
+                                if not prev_instruction_line.endswith("\n")
+                                else prev_instruction_line[:-1]
+                            )
+                            docker_other[index] = prev_instruction_line + " \\"
+                            break
+                    docker_other += [dockerfile_item_cmd]
+                # Other
+                else:
+                    is_docker_other_run = False
+                    docker_other += [dockerfile_item]
+                all_dockerfile_items += [dockerfile_item]
             docker_other += [""]
         # Collect python packages
         if "apk" in item["install"]:
@@ -317,6 +356,12 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile,
+        "#COPY__START",
+        "#COPY__END",
+        "\n".join(docker_copy),
+    )
+    replace_in_file(
+        dockerfile,
         "#OTHER__START",
         "#OTHER__END",
         "\n".join(docker_other),
@@ -327,6 +372,7 @@ def build_dockerfile(
         apk_install_command = (
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
+            + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # NPM packages
