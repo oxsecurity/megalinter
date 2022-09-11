@@ -48,10 +48,13 @@ if RELEASE is True:
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
     VERSION = RELEASE_TAG.replace("v", "")
+    VERSION_V = "v" + VERSION
 elif "--version" in sys.argv:
     VERSION = sys.argv[sys.argv.index("--version") + 1].replace("v", "")
+    VERSION_V = "v" + VERSION
 else:
     VERSION = "beta"
+    VERSION_V = VERSION
 
 MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
 
@@ -234,7 +237,8 @@ branding:
         "COPY entrypoint.sh /entrypoint.sh",
         "RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
         'ENV PATH="/root/.cargo/bin:${PATH}"',
-        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt",
+        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt && "
+        + "rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -251,7 +255,7 @@ def build_dockerfile(
     docker_copy = []
     docker_other = []
     all_dockerfile_items = []
-    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES
+    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -380,10 +384,11 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm install --ignore-scripts \\\n                "
+            + "RUN npm --no-cache install --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
-            + "    npm audit fix --audit-level=critical || true\n"
+            + "    npm audit fix --audit-level=critical || true \\\n"
+            + "    && npm cache clean --force || true\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -391,16 +396,18 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade pip &&"
-            + " pip3 install --no-cache-dir --upgrade \\\n          '"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
+            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
-            + "'"
+            + "' && \\\n"
+            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf'
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade pip virtualenv \\\n"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
+            " --no-cache-dir --upgrade pip virtualenv \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
@@ -409,7 +416,7 @@ def build_dockerfile(
                 + f'&& cd "/venvs/{pip_linter}" '
                 + "&& virtualenv . "
                 + "&& source bin/activate "
-                + "&& pip3 install --no-cache-dir "
+                + "&& PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
@@ -417,7 +424,10 @@ def build_dockerfile(
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
-        pipenv_install_command += "\n" + env_path_command
+        pipenv_install_command += (
+            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf\n'
+            + env_path_command
+        )
     else:
         pipenv_install_command = ""
     replace_in_file(
@@ -532,12 +542,10 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = (
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION}"
-            )
+            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION_V}"
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION})"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION_V})"
             )
             linters_md += (
                 f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
@@ -800,11 +808,11 @@ def generate_descriptor_documentation(descriptor):
 
 
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
-    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION}"
-    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION}"
+    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION_V}"
+    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION})"
+        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
     )
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
@@ -1548,7 +1556,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION})"
+    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
@@ -1575,7 +1583,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         docker_image_badge = (
             f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION})"
+            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
         )
         docker_pulls_badge = (
             f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"

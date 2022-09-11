@@ -29,7 +29,7 @@ linters:
       - "cargo clippy"
     install:
       dockerfile:
-        - RUN rustup component add clippy
+        - RUN rustup component add clippy && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
     ide:
       atom:
         - name: Atom IDE Rest

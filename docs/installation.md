@@ -180,7 +180,7 @@ Add the following job in your `azure-pipelines.yaml` file
       vmImage: ubuntu-latest
     steps:
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:test-nvuillam-azure-comments
+      - script: docker pull oxsecurity/megalinter:v6
         displayName: Pull MegaLinter
 
       # Run MegaLinter
