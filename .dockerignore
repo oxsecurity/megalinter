@@ -1,2 +1,4 @@
 .gitignore
 mega-linter-runner
+**/__pycache__
+*.pyc
