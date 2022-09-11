@@ -320,6 +320,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    GitLab CI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure-pipelines" class="md-nav__link">
     Azure Pipelines
   </a>
@@ -329,13 +336,6 @@
         <li class="md-nav__item">
   <a href="#jenkins" class="md-nav__link">
     Jenkins
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
-    GitLab
   </a>
   
 </li>
@@ -5595,6 +5595,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    GitLab CI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure-pipelines" class="md-nav__link">
     Azure Pipelines
   </a>
@@ -5604,13 +5611,6 @@
         <li class="md-nav__item">
   <a href="#jenkins" class="md-nav__link">
     Jenkins
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
-    GitLab
   </a>
   
 </li>
@@ -5681,15 +5681,15 @@
 <li>Run <code>npx mega-linter-runner --upgrade</code> to automatically upgrade your configuration from v4 or v5 to v6 :)</li>
 </ul>
 <h2 id="manual-installation">Manual installation</h2>
-<p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
+<p>The following instructions examples are using latest MegaLinter stable version (<strong>v6</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>GitHub Action: oxsecurity/megalinter@v6</li>
-<li>Docker image: oxsecurity/megalinter:v6</li>
+<li>Docker image: <code>oxsecurity/megalinter:v6</code></li>
+<li>GitHub Action: <code>oxsecurity/megalinter@v6</code></li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
-<li>GitHub Action: oxsecurity/megalinter@beta</li>
-<li>Docker image: oxsecurity/megalinter:beta</li>
+<li>Docker image: <code>oxsecurity/megalinter:beta</code></li>
+<li>GitHub Action: <code>oxsecurity/megalinter@beta</code></li>
 </ul>
 <h2 id="github-action">GitHub Action</h2>
 <ol>
@@ -5800,6 +5800,31 @@ jobs:
 
 </details>
 
+<h2 id="gitlab-ci">GitLab CI</h2>
+<p>Create or update <code>.gitlab-ci.yml</code> file at the root of your repository</p>
+<pre><code class="language-yaml"># MegaLinter GitLab CI job configuration file
+# More info at https://megalinter.github.io/
+
+mega-linter:
+  stage: test
+  # You can override MegaLinter flavor used to have faster performances
+  # More info at https://megalinter.github.io/flavors/
+  image: oxsecurity/megalinter:v6
+  script: [ &quot;true&quot; ] # if script: [&quot;true&quot;] does not work, you may try -&gt;  script: [ &quot;/bin/bash /entrypoint.sh&quot; ]
+  variables:
+    # All available variables are described in documentation
+    # https://megalinter.github.io/configuration/
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - megalinter-reports
+    expire_in: 1 week
+</code></pre>
+<p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables</p>
+<p><img alt="config-gitlab-access-token" src="https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif" /></p>
+<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;" /></p>
 <h2 id="azure-pipelines">Azure Pipelines</h2>
 <p>Use the following Azure Pipelines <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema">YAML template</a></p>
 <p>Add the following job in your <code>azure-pipelines.yaml</code> file</p>
@@ -5858,31 +5883,6 @@ stage('MegaLinter') {
     }
 }
 </code></pre>
-<h2 id="gitlab">GitLab</h2>
-<p>Create or update <code>.gitlab-ci.yml</code> file at the root of your repository</p>
-<pre><code class="language-yaml"># MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
-
-mega-linter:
-  stage: test
-  # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v6
-  script: [ &quot;true&quot; ] # if script: [&quot;true&quot;] does not work, you may try -&gt;  script: [ &quot;/bin/bash /entrypoint.sh&quot; ]
-  variables:
-    # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
-    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-  artifacts:
-    when: always
-    paths:
-      - megalinter-reports
-    expire_in: 1 week
-</code></pre>
-<p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables</p>
-<p><img alt="config-gitlab-access-token" src="https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif" /></p>
-<p><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;" /></p>
 <h2 id="concourse">Concourse</h2>
 <h3 id="pipeline-step">Pipeline step</h3>
 <p>Use the following <code>job.step</code> in your pipeline template</p>
@@ -5978,7 +5978,7 @@ run:
 <p>Example</p>
 <pre><code class="language-shell">npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
-<p>Note: You can also use such command line from your custom CI/CD pipelines</p>
+<p>Note: You can also use such command line in your custom CI/CD pipelines</p>
 <!-- installation-section-end -->
 
 
