@@ -48,10 +48,13 @@ if RELEASE is True:
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
     VERSION = RELEASE_TAG.replace("v", "")
+    VERSION_V = "v" + VERSION
 elif "--version" in sys.argv:
     VERSION = sys.argv[sys.argv.index("--version") + 1].replace("v", "")
+    VERSION_V = "v" + VERSION
 else:
     VERSION = "beta"
+    VERSION_V = VERSION
 
 MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
 
@@ -533,10 +536,10 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION}"
+            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION_V}"
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION})"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION_V})"
             )
             linters_md += (
                 f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
@@ -799,11 +802,11 @@ def generate_descriptor_documentation(descriptor):
 
 
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
-    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION}"
-    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION}"
+    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION_V}"
+    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION})"
+        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
     )
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
@@ -1547,7 +1550,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION})"
+    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
@@ -1574,7 +1577,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         docker_image_badge = (
             f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION})"
+            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
         )
         docker_pulls_badge = (
             f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"
