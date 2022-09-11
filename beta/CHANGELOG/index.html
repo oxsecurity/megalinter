@@ -5457,8 +5457,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#v690-2022-09-11" class="md-nav__link">
-    [v6.9.0] - 2022-09-11
+  <a href="#v691-2022-09-11" class="md-nav__link">
+    [v6.9.1] - 2022-09-11
   </a>
   
 </li>
@@ -6177,8 +6177,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#v690-2022-09-11" class="md-nav__link">
-    [v6.9.0] - 2022-09-11
+  <a href="#v691-2022-09-11" class="md-nav__link">
+    [v6.9.1] - 2022-09-11
   </a>
   
 </li>
@@ -6884,7 +6884,7 @@
 </ul>
 <!-- linter-versions-end -->
 
-<h2 id="v690-2022-09-11">[v6.9.0] - 2022-09-11</h2>
+<h2 id="v691-2022-09-11">[v6.9.1] - 2022-09-11</h2>
 <ul>
 <li>Linters<ul>
 <li>Add python type checker <a href="https://github.com/microsoft/pyright">pyright</a>, by Microsoft</li>
@@ -6900,11 +6900,12 @@
 </li>
 </ul>
 <ul>
-<li>Core <ul>
+<li>Core<ul>
 <li>Improve build performances and docker images sizes (reduce from 117 to 36 layers)<ul>
 <li>Use BUILDKIT</li>
 <li>Join RUN instructions</li>
 <li>Optimize core Dockerfile items</li>
+<li>Clean npm, python and cargo caches</li>
 </ul>
 </li>
 <li>Create a venv for each python-based linter to avoid issues with dependencies</li>
@@ -6933,6 +6934,7 @@
 </ul>
 </li>
 </ul>
+<p><em>Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough.</em></p>
 <h2 id="v680-2022-09-04">[v6.8.0] - 2022-09-04</h2>
 <ul>
 <li>Run MegaLinter pre-commit hooks serially (#1826).</li>
