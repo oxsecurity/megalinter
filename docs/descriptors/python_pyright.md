@@ -15,6 +15,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
+- Version in MegaLinter: **1.1.270**
 - Visit [Official Web Site](https://google.github.io/pytype/){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -85,6 +86,32 @@ pyright myfile.py myfile2.py
 pyright myfile.py
 ```
 
+
+### Help content
+
+```shell
+Usage: pyright [options] files...
+  Options:
+  --createstub <IMPORT>              Create type stub file(s) for import
+  --dependencies                     Emit import dependency information
+  -h,--help                          Show this help message
+  --ignoreexternal                   Ignore external imports for --verifytypes
+  --lib                              Use library code to infer types when stubs are missing
+  --outputjson                       Output results in JSON format
+  -p,--project <FILE OR DIRECTORY>   Use the configuration file at this location
+  --pythonplatform <PLATFORM>        Analyze for a specific platform (Darwin, Linux, Windows)
+  --pythonversion <VERSION>          Analyze for a specific version (3.3, 3.4, etc.)
+  --skipunannotated                  Skip analysis of functions with no type annotations
+  --stats                            Print detailed performance stats
+  -t,--typeshed-path <DIRECTORY>     Use typeshed type stubs at this location
+  -v,--venv-path <DIRECTORY>         Directory that contains virtual environments
+  --verbose                          Emit verbose diagnostics
+  --verifytypes <PACKAGE>            Verify type completeness of a py.typed package
+  --version                          Print Pyright version
+  --warnings                         Use exit code of 1 if warnings are reported
+  -w,--watch                         Continue to run and watch for changes
+
+```
 
 ### Installation on mega-linter Docker image
 

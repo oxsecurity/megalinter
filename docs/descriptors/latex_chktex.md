@@ -151,6 +151,6 @@ chktexrc file (~/.chktexrc).
 ```dockerfile
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 COPY --from=chktex /usr/bin/chktex /usr/bin/
-RUN cd ~ && touch .chktexrc
+RUN cd ~ && touch .chktexrc && cd /
 ```
 
