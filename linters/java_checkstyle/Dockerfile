@@ -187,7 +187,7 @@ COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . -type d -name __pycache__ -exec rm -fr {} \;
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 #######################################
 # Copy scripts and rules to container #

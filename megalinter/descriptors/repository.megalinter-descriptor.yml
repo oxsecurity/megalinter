@@ -38,7 +38,7 @@ linters:
       dockerfile:
         - |
           RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-              && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete
+              && pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
     ide:
       vscode:
         - name: Checkov

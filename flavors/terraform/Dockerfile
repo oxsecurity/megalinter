@@ -288,7 +288,7 @@ RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/
 
 # checkov installation
     && pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete \
+    && pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf \
 
 # gitleaks installation
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -321,7 +321,7 @@ RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/
 # checkov installation
 # Next line commented because already managed by another linter
 # RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-#     && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete
+#     && pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 # kics installation
 # Managed with COPY --from=kics /app/bin/kics /usr/bin/
@@ -338,7 +338,7 @@ COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . -type d -name __pycache__ -exec rm -fr {} \;
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 #######################################
 # Copy scripts and rules to container #
