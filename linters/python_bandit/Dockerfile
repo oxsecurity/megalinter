@@ -124,7 +124,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIPVENV__START
 RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../..  \
-    && find . -type d -name __pycache__ -delete
+    && find . -path '*/__pycache__*' -delete
 ENV PATH="${PATH}":/venvs/bandit/bin
 #PIPVENV__END
 

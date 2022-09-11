@@ -133,7 +133,7 @@ RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && pip3 install --no-cache-dir semgrep && deactivate && cd ./../..  \
-    && find . -type d -name __pycache__ -delete
+    && find . -path '*/__pycache__*' -delete
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cfn-lint/bin:/venvs/bandit/bin:/venvs/semgrep/bin
 #PIPVENV__END
 
@@ -231,7 +231,7 @@ RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/
 
 # checkov installation
     && pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov \
+    && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete \
 
 # devskim installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -275,7 +275,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # checkov installation
 # Next line commented because already managed by another linter
 # RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-#     && pip3 install --no-cache-dir checkov
+#     && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete
 
 # kics installation
 # Managed with COPY --from=kics /app/bin/kics /usr/bin/

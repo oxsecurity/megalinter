@@ -142,7 +142,7 @@ RUN pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . -type d -name __pycache__ -delete
+    && find . -path '*/__pycache__*' -delete
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/djlint/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -340,7 +340,7 @@ RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/
 
 # checkov installation
     && pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov \
+    && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete \
 
 # gitleaks installation
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/

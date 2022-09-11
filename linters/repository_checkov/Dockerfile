@@ -167,7 +167,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # checkov installation
 RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
+    && pip3 install --no-cache-dir checkov && find . -path '*/__pycache__*' -delete
 
 
 #OTHER__END

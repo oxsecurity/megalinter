@@ -11,7 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
-## [v6.9.0] - 2022-09-11
+## [v6.9.1] - 2022-09-11
 
 - Linters
   - Add python type checker [pyright](https://github.com/microsoft/pyright), by Microsoft
@@ -47,6 +47,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [standard](https://standardjs.com/) from 15.0.1 to **17.0.0**
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
+
+_Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough._
 
 ## [v6.8.0] - 2022-09-04
 
