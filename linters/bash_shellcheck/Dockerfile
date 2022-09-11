@@ -106,7 +106,7 @@ RUN apk add --update --no-cache \
 
 # PATH for golang & python
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
+    GOPATH=/go
     # PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/" NV: not working for all packages :/
 # hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
