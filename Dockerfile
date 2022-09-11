@@ -437,6 +437,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+    && rm ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
@@ -446,6 +447,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
+    && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # chktex installation
