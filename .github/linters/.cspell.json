@@ -232,6 +232,7 @@
         "PYLINT",
         "PYRIGHT",
         "PYTEST",
+        "PYTHONDONTWRITEBYTECODE",
         "PYTHONPATH",
         "PYTHONPYCACHEPREFIX",
         "PYTYPE",
