@@ -203,7 +203,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN cargo install shellcheck-sarif \
+RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache \
 
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -335,6 +335,6 @@ LABEL com.github.actions.name="MegaLinter" \
 COPY entrypoint.sh /entrypoint.sh
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN chmod +x entrypoint.sh && cargo install sarif-fmt
+RUN chmod +x entrypoint.sh && cargo install sarif-fmt && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

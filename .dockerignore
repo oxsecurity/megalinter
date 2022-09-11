@@ -13,3 +13,4 @@ pids
 *.pid
 *.seed
 *.pid.lock
+*.log

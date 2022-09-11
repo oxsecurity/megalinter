@@ -373,7 +373,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
 # Next line commented because already managed by another linter
 # ENV PATH="/root/.cargo/bin:${PATH}"
-    && cargo install shellcheck-sarif \
+    && cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
@@ -547,7 +547,7 @@ RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cac
     chmod 644 /usr/local/bin/sarif.tpl \
 
 # clippy installation
-    && rustup component add clippy \
+    && rustup component add clippy && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache \
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
@@ -663,6 +663,6 @@ LABEL com.github.actions.name="MegaLinter" \
 COPY entrypoint.sh /entrypoint.sh
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN chmod +x entrypoint.sh && cargo install sarif-fmt
+RUN chmod +x entrypoint.sh && cargo install sarif-fmt && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

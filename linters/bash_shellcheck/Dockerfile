@@ -174,7 +174,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN cargo install shellcheck-sarif
+RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 
 #OTHER__END
 

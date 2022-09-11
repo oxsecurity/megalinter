@@ -199,7 +199,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN cargo install shellcheck-sarif \
+RUN cargo install shellcheck-sarif && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
@@ -280,6 +280,6 @@ LABEL com.github.actions.name="MegaLinter" \
 COPY entrypoint.sh /entrypoint.sh
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN chmod +x entrypoint.sh && cargo install sarif-fmt
+RUN chmod +x entrypoint.sh && cargo install sarif-fmt && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
