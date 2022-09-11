@@ -296,7 +296,7 @@ def build_dockerfile(
                 # RUN (append)
                 elif dockerfile_item.startswith("RUN") and is_docker_other_run is True:
                     dockerfile_item = dockerfile_item.replace("RUN", "    &&")
-                    ## Add \ in previous instruction line
+                    # Add \ in previous instruction line
                     for index, prev_instruction_line in reversed(
                         list(enumerate(docker_other))
                     ):
