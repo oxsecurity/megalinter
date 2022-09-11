@@ -2,3 +2,14 @@
 mega-linter-runner
 **/__pycache__
 *.pyc
+.git
+.coverage
+.cache
+.env
+.yarn-integrity
+*.tgz
+.npm
+pids
+*.pid
+*.seed
+*.pid.lock
