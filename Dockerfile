@@ -220,7 +220,8 @@ RUN npm install --ignore-scripts \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser && \
-    npm audit fix --audit-level=critical || true
+    npm audit fix --audit-level=critical || true \
+    && npm cache clean --force || true
 WORKDIR /
 
 #NPM__END
@@ -348,7 +349,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 
 # actionlint installation
 ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --cache
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
@@ -406,7 +407,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && golangci-lint --version \
 
 # revive installation
-    && go install github.com/mgechev/revive@latest \
+    && go install github.com/mgechev/revive@latest && go clean --cache \
 
 # checkstyle installation
     && CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \

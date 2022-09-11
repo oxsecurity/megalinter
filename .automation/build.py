@@ -383,8 +383,8 @@ def build_dockerfile(
             + "RUN npm install --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
-            + "    npm audit fix --audit-level=critical || true\n"
-            + "    && npm cache clean --force || true"
+            + "    npm audit fix --audit-level=critical || true \\\n"
+            + "    && npm cache clean --force || true\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
