@@ -416,6 +416,7 @@
         "btxg",
         "bucketname",
         "builtins",
+        "cacache",
         "callout",
         "callouts",
         "callsites",
