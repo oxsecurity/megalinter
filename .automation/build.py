@@ -533,9 +533,7 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = (
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION}"
-            )
+            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION}"
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
                 f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION})"
