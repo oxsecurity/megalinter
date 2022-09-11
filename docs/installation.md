@@ -16,15 +16,15 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ## Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- GitHub Action: oxsecurity/megalinter@v6
-- Docker image: oxsecurity/megalinter:v6
+- Docker image: `oxsecurity/megalinter:v6`
+- GitHub Action: `oxsecurity/megalinter@v6`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- GitHub Action: oxsecurity/megalinter@beta
-- Docker image: oxsecurity/megalinter:beta
+- Docker image: `oxsecurity/megalinter:beta`
+- GitHub Action: `oxsecurity/megalinter@beta`
 
 ## GitHub Action
 
@@ -134,6 +134,39 @@ jobs:
 
 </details>
 
+## GitLab CI
+
+Create or update `.gitlab-ci.yml` file at the root of your repository
+
+```yaml
+# MegaLinter GitLab CI job configuration file
+# More info at https://megalinter.github.io/
+
+mega-linter:
+  stage: test
+  # You can override MegaLinter flavor used to have faster performances
+  # More info at https://megalinter.github.io/flavors/
+  image: oxsecurity/megalinter:v6
+  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+  variables:
+    # All available variables are described in documentation
+    # https://megalinter.github.io/configuration/
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - megalinter-reports
+    expire_in: 1 week
+```
+
+Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+
+![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
+
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+
 ## Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -202,38 +235,6 @@ stage('MegaLinter') {
     }
 }
 ```
-
-## GitLab
-
-Create or update `.gitlab-ci.yml` file at the root of your repository
-
-```yaml
-# MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
-
-mega-linter:
-  stage: test
-  # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v6
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
-  variables:
-    # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
-    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-  artifacts:
-    when: always
-    paths:
-      - megalinter-reports
-    expire_in: 1 week
-```
-
-Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
-
-![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
-
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ## Concourse
 
@@ -351,7 +352,7 @@ Example
 npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
-Note: You can also use such command line from your custom CI/CD pipelines
+Note: You can also use such command line in your custom CI/CD pipelines
 
 
 <!-- installation-section-end -->

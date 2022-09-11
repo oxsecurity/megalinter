@@ -1,6 +1,6 @@
 # go MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for GO based projects
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/go@v6**
-- Docker image: **oxsecurity/megalinter-go:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/go@beta**
+- Docker image: **oxsecurity/megalinter-go:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor go`
 
 ## Embedded linters

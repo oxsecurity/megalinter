@@ -1,6 +1,6 @@
 # java MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for JAVA based projects
 
 ## Usage
 
-- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/java@v6**
-- Docker image: **oxsecurity/megalinter-java:v6**
+- [GitHub Action](https://oxsecurity.github.io/megalinter/beta/installation/#github-action): **oxsecurity/megalinter/flavors/java@beta**
+- Docker image: **oxsecurity/megalinter-java:beta**
 - [mega-linter-runner](https://oxsecurity.github.io/megalinter/beta/mega-linter-runner/): `mega-linter-runner --flavor java`
 
 ## Embedded linters
