@@ -151,7 +151,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm install --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts \
                 jscpd@3.3.26 \
                 stylelint \
                 stylelint-config-standard \

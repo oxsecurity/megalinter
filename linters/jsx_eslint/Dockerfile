@@ -135,7 +135,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm install --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts \
                 eslint \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
