@@ -16,7 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Improve go linters performances
 - Fix broken link to documentation when using v6
 - Add python type checker [pyright](https://github.com/microsoft/pyright), by Microsoft
-- Improve build performances and docker images sizes
+- Improve build performances and docker images sizes (reduce from 117 to 36 layers)
   - Use BUILDKIT
   - Join RUN instructions
   - Optimize core Dockerfile items
