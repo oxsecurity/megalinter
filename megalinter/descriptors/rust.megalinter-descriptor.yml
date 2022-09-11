@@ -14,14 +14,10 @@ linters:
     linter_rules_inline_disable_url: https://github.com/rust-lang/rust-clippy#allowingdenying-lints
     config_file_name: .clippy.toml
     cli_config_arg_name: ""
-    cli_executable: cargo
+    cli_executable: cargo-clippy
     cli_lint_mode: project
-    cli_lint_extra_args:
-      - "clippy"
-    cli_version_extra_args:
-      - "clippy"
     examples:
-      - "cargo clippy"
+      - "cargo-clippy"
     install:
       cargo:
         - clippy
