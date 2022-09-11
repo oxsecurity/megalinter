@@ -46,20 +46,6 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                docker \
-                openrc \
-                go \
-                icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
-                openjdk11 \
-                perl \
-                perl-dev \
                 gnupg \
                 php7 \
                 php7-phar \
@@ -82,25 +68,6 @@ RUN apk add --update --no-cache \
                 php8-simplexml \
                 composer \
                 dpkg \
-                nodejs \
-                npm \
-                yarn \
-                openssl \
-                readline-dev \
-                g++ \
-                libc-dev \
-                libgcc \
-                libxml2-dev \
-                libxml2-utils \
-                linux-headers \
-                R \
-                R-dev \
-                R-doc \
-                nodejs-current \
-                ruby \
-                ruby-dev \
-                ruby-bundler \
-                ruby-rdoc \
     && git config --global core.autocrlf true
 #APK__END
 

@@ -255,7 +255,7 @@ def build_dockerfile(
     docker_copy = []
     docker_other = []
     all_dockerfile_items = []
-    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES
+    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
