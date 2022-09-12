@@ -15,6 +15,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.23.0 to **8.23.1** on 2022-09-12
+  - [djlint](https://djlint.com/) from 1.12.3 to **1.14.0** on 2022-09-12
+  - [checkov](https://www.checkov.io/) from 2.1.201 to **2.1.204** on 2022-09-12
+  - [syft](https://github.com/anchore/syft) from 0.55.0 to **0.56.0** on 2022-09-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.1 to **6.8.2** on 2022-09-12
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.27.1 to **1.28.0** on 2022-09-12
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11

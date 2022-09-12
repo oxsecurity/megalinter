@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.55.0**
+- Version in MegaLinter: **0.56.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -85,11 +85,11 @@ Examples:
 
   Supports the following image sources:
     syft packages yourrepo/yourimage:tag     defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry.
-    syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, or generic filesystem directory
+    syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, SIF container, or generic filesystem directory
 
   You can also explicitly specify the scheme to use:
     syft packages docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
-    syft packages podman:yourrepo/yourimage:tag             explicitly use the Podman daemon
+    syft packages podman:yourrepo/yourimage:tag            explicitly use the Podman daemon
     syft packages registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
     syft packages docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from "docker save"
     syft packages oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
@@ -113,7 +113,6 @@ Flags:
   -c, --config string              application config file
   -d, --dockerfile string          include dockerfile for upload to Anchore Enterprise
       --exclude stringArray        exclude paths from being scanned using a glob expression
-      --external-sources-enabled   shut off any use of external sources during sbom generation (default false
       --file string                file to write the default report output to (default is STDOUT)
   -h, --help                       help for this command
   -H, --host string                the hostname or URL of the Anchore Enterprise instance to upload to
