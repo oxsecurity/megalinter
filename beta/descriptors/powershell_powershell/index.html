@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/descriptors/powershell_powershell/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
     
     
       
@@ -5676,8 +5676,8 @@
 <p><a href="https://github.com/PowerShell/PSScriptAnalyzer" target="_blank"><img alt="PSScriptAnalyzer - GitHub" src="https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable powershell by adding <code>POWERSHELL_POWERSHELL</code> in <a href="https://oxsecurity.github.io/megalinter/6.9.1/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable powershell by adding <code>POWERSHELL_POWERSHELL</code> in <a href="https://oxsecurity.github.io/megalinter/6.9.1/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable powershell by adding <code>POWERSHELL_POWERSHELL</code> in <a href="https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable powershell by adding <code>POWERSHELL_POWERSHELL</code> in <a href="https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -5785,17 +5785,17 @@
 <tbody>
 <tr>
 <td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://oxsecurity.github.io/megalinter/6.9.1/supported-linters/">all</a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
 <td align="center">107</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.9.1" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://oxsecurity.github.io/megalinter/6.9.1/flavors/dotnet/">dotnet</a></td>
+<td align="left"><a href="https://oxsecurity.github.io/megalinter/beta/flavors/dotnet/">dotnet</a></td>
 <td align="left">Optimized for C, C++, C# or VB based projects</td>
 <td align="center">55</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6.9.1" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet" /></td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet" /></td>
 </tr>
 </tbody>
 </table>
@@ -6137,6 +6137,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 ARG PSSA_VERSION='latest'
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 </code></pre>
+
 
 
 
