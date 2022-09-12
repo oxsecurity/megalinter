@@ -394,11 +394,13 @@ def build_dockerfile(
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # cargo packages
     cargo_install_command = ""
+    # keep_rustup = False
     if len(cargo_packages) > 0:
         rust_commands = []
         if "clippy" in cargo_packages:
             cargo_packages.remove("clippy")
             rust_commands += ["rustup component add clippy"]
+            # keep_rustup = True
         if len(cargo_packages) > 0:
             cargo_cmd = "cargo install " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
@@ -407,7 +409,7 @@ def build_dockerfile(
         rustup_cargo_cmd = " && ".join(rust_commands)
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal \\\n"
+            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
             + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
