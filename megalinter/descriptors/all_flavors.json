@@ -525,8 +525,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
-            "KOTLIN",
-            "RUST"
+            "KOTLIN"
         ],
         "label": "Optimized for RUST based projects",
         "linters": [

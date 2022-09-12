@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Docker images size improvements
+  - Remove NPM cache
+  - Remove Cargo cache
+  - Remove rustup when clippy is not embedded in the image
+
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.23.0 to **8.23.1** on 2022-09-12
 <!-- linter-versions-end -->

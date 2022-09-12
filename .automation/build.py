@@ -235,20 +235,29 @@ branding:
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = [
         "COPY entrypoint.sh /entrypoint.sh",
-        "RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
-        'ENV PATH="/root/.cargo/bin:${PATH}"',
-        "RUN chmod +x entrypoint.sh && cargo install sarif-fmt && "
-        + "rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache",
+        "RUN chmod +x entrypoint.sh",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
-        dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+        dockerfile,
+        descriptor_and_linters,
+        requires_docker,
+        flavor,
+        extra_lines,
+        {"cargo": ["sarif-fmt"]},
     )
 
 
 def build_dockerfile(
-    dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+    dockerfile,
+    descriptor_and_linters,
+    requires_docker,
+    flavor,
+    extra_lines,
+    extra_packages=None,
 ):
+    if extra_packages is None:
+        extra_packages = {}
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
@@ -260,6 +269,7 @@ def build_dockerfile(
     pip_packages = []
     pipvenv_packages = {}
     gem_packages = []
+    cargo_packages = [] if "cargo" not in extra_packages else extra_packages["cargo"]
     is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
@@ -336,8 +346,11 @@ def build_dockerfile(
         elif "pip" in item["install"]:
             pip_packages += item["install"]["pip"]
         # Collect ruby packages
-        if "gem" in item["install"]:
+        elif "gem" in item["install"]:
             gem_packages += item["install"]["gem"]
+        # Collect cargo packages (rust)
+        elif "cargo" in item["install"]:
+            cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
         apk_packages += ["npm", "nodejs-current", "yarn"]
@@ -379,6 +392,33 @@ def build_dockerfile(
             + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
+    # cargo packages
+    cargo_install_command = ""
+    keep_rustup = False
+    if len(cargo_packages) > 0:
+        rust_commands = []
+        if "clippy" in cargo_packages:
+            cargo_packages.remove("clippy")
+            rust_commands += ["rustup component add clippy"]
+            keep_rustup = True
+        if len(cargo_packages) > 0:
+            cargo_cmd = "cargo install " + "  ".join(
+                list(dict.fromkeys(cargo_packages))
+            )
+            rust_commands += [cargo_cmd]
+        rustup_cargo_cmd = " && ".join(rust_commands)
+        cargo_install_command = (
+            "RUN curl https://sh.rustup.rs -sSf |"
+            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
+            + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
+            + f"    && {rustup_cargo_cmd} \\\n"
+            + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
+            + "/root/.cache/sccache"
+            + (" /root/.rustup" if keep_rustup is False else "")
+            + "\n"
+            + 'ENV PATH="/root/.cargo/bin:${PATH}"'
+        )
+    replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
     npm_install_command = ""
     if len(npm_packages) > 0:
@@ -388,7 +428,8 @@ def build_dockerfile(
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
-            + "    && npm cache clean --force || true\n"
+            + "    && npm cache clean --force || true \\\n"
+            + "    && rm -rf /root/.npm/_cacache \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -400,7 +441,8 @@ def build_dockerfile(
             + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf'
+            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf \\\n'
+            + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
