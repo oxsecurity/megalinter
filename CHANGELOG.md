@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove NPM cache
   - Remove Cargo cache
   - Remove rustup when clippy is not embedded in the image
+  - Remove npm packages useless files
 
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.23.0 to **8.23.1** on 2022-09-12

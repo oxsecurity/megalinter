@@ -138,7 +138,16 @@ RUN npm --no-cache install --ignore-scripts \
                 tekton-lint && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache 
+    && rm -rf /root/.npm/_cacache \
+    && find . -name "*.d.ts" -delete \
+    && find . -name "*.map" -delete \
+    && find . -name "*.npmignore" -delete \
+    && find . -name "*.travis.yml" -delete \
+    && find . -name "CHANGELOG.md" -delete \
+    && find . -name "README.md" -delete \
+    && find . -name ".package-lock.json" -delete \
+    && find . -name "package-lock.json" -delete \
+    && find . -name "README.md" -delete 
 WORKDIR /
 
 #NPM__END
