@@ -5670,7 +5670,7 @@
 <p>You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.</p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.1.201</strong></li>
+<li>Version in MegaLinter: <strong>2.1.204</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -6103,8 +6103,8 @@ override config file values which override defaults.
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN pip3 install --upgrade --no-cache-dir pip &amp;&amp; pip3 install --upgrade --no-cache-dir setuptools \
-    &amp;&amp; pip3 install --no-cache-dir checkov &amp;&amp; find . | grep -E &quot;(/__pycache__$|\.pyc$|\.pyo$)&quot; | xargs rm -rf
+<pre><code class="language-dockerfile">RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip &amp;&amp; PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
+    &amp;&amp; PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov &amp;&amp; find . | grep -E &quot;(/__pycache__$|\.pyc$|\.pyo$)&quot; | xargs rm -rf
 
 </code></pre>
 

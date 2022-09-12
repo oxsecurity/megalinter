@@ -5960,12 +5960,8 @@
     &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \
     &amp;&amp; wget -qO- &quot;https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz&quot; | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
     &amp;&amp; mv &quot;${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck&quot; /usr/bin/ \
-    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    &amp;&amp; shellcheck --version \
-    &amp;&amp; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
-ENV PATH=&quot;/root/.cargo/bin:${PATH}&quot;
-RUN cargo install shellcheck-sarif &amp;&amp; rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 </code></pre>
 
 
