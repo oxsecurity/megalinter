@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.201**
+- Version in MegaLinter: **2.1.204**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -384,8 +384,8 @@ override config file values which override defaults.
 
 - Dockerfile commands :
 ```dockerfile
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
+    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 ```
 
