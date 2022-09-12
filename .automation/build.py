@@ -394,13 +394,13 @@ def build_dockerfile(
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # cargo packages
     cargo_install_command = ""
-    # keep_rustup = False
+    keep_rustup = False
     if len(cargo_packages) > 0:
         rust_commands = []
         if "clippy" in cargo_packages:
             cargo_packages.remove("clippy")
             rust_commands += ["rustup component add clippy"]
-            # keep_rustup = True
+            keep_rustup = True
         if len(cargo_packages) > 0:
             cargo_cmd = "cargo install " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
@@ -413,7 +413,9 @@ def build_dockerfile(
             + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-            + "/root/.cache/sccache /root/.rustup\n"
+            + "/root/.cache/sccache"
+            + (" /root/.rustup" if keep_rustup is False else "")
+            + "\n"
             + 'ENV PATH="/root/.cargo/bin:${PATH}"'
         )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
