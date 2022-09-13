@@ -896,6 +896,7 @@
         "nowarning",
         "nowrap",
         "noxincludenode",
+        "npmignore",
         "npmrc",
         "nsclean",
         "nunjucks",

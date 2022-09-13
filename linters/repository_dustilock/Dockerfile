@@ -126,7 +126,7 @@ RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
     mkdir -p ${ML_THIRD_PARTY_DIR} && \
     git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
     cd ${ML_THIRD_PARTY_DIR} && \
-    go build && \
+    go build && go clean --cache && \
     chmod +x dustilock && \
     mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
