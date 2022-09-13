@@ -22,7 +22,7 @@ install:
           && find . -name "README.md" -delete \
           && find . -name ".package-lock.json" -delete \
           && find . -name "package-lock.json" -delete \
-          && find . -name "README.md" -delete 
+          && find . -name "README.md" -delete
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -89,7 +89,7 @@ linters:
               && find . -name "README.md" -delete \
               && find . -name ".package-lock.json" -delete \
               && find . -name "package-lock.json" -delete \
-              && find . -name "README.md" -delete 
+              && find . -name "README.md" -delete
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -165,7 +165,7 @@ linters:
               && find . -name "README.md" -delete \
               && find . -name ".package-lock.json" -delete \
               && find . -name "package-lock.json" -delete \
-              && find . -name "README.md" -delete 
+              && find . -name "README.md" -delete
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -232,7 +232,7 @@ linters:
               && find . -name "README.md" -delete \
               && find . -name ".package-lock.json" -delete \
               && find . -name "package-lock.json" -delete \
-              && find . -name "README.md" -delete 
+              && find . -name "README.md" -delete
     ide:
       vscode:
         - name: Salesforce Extension Pack
