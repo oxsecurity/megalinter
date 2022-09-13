@@ -10,7 +10,19 @@ install:
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - RUN echo y|sfdx plugins:install sfdx-hardis
+    - |
+      RUN echo y|sfdx plugins:install sfdx-hardis
+          && npm cache clean --force || true \
+          && rm -rf /root/.npm/_cacache \
+          && find . -name "*.d.ts" -delete \
+          && find . -name "*.map" -delete \
+          && find . -name "*.npmignore" -delete \
+          && find . -name "*.travis.yml" -delete \
+          && find . -name "CHANGELOG.md" -delete \
+          && find . -name "README.md" -delete \
+          && find . -name ".package-lock.json" -delete \
+          && find . -name "package-lock.json" -delete \
+          && find . -name "README.md" -delete 
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -65,7 +77,19 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner 
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache \
+              && find . -name "*.d.ts" -delete \
+              && find . -name "*.map" -delete \
+              && find . -name "*.npmignore" -delete \
+              && find . -name "*.travis.yml" -delete \
+              && find . -name "CHANGELOG.md" -delete \
+              && find . -name "README.md" -delete \
+              && find . -name ".package-lock.json" -delete \
+              && find . -name "package-lock.json" -delete \
+              && find . -name "README.md" -delete 
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -129,7 +153,19 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner 
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache \
+              && find . -name "*.d.ts" -delete \
+              && find . -name "*.map" -delete \
+              && find . -name "*.npmignore" -delete \
+              && find . -name "*.travis.yml" -delete \
+              && find . -name "CHANGELOG.md" -delete \
+              && find . -name "README.md" -delete \
+              && find . -name ".package-lock.json" -delete \
+              && find . -name "package-lock.json" -delete \
+              && find . -name "README.md" -delete 
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -184,7 +220,19 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner 
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache \
+              && find . -name "*.d.ts" -delete \
+              && find . -name "*.map" -delete \
+              && find . -name "*.npmignore" -delete \
+              && find . -name "*.travis.yml" -delete \
+              && find . -name "CHANGELOG.md" -delete \
+              && find . -name "README.md" -delete \
+              && find . -name ".package-lock.json" -delete \
+              && find . -name "package-lock.json" -delete \
+              && find . -name "README.md" -delete 
     ide:
       vscode:
         - name: Salesforce Extension Pack
