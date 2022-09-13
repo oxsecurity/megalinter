@@ -73,4 +73,4 @@ linters:
           url: https://github.com/htmlhint/SublimeLinter-contrib-htmlhint
       vscode:
         - name: vscode-htmlhint
-          url: https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint
+          url: https://marketplace.visualstudio.com/items?itemName=HTMLHint.vscode-htmlhint
