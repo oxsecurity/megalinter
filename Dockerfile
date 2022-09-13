@@ -354,7 +354,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 # ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-    && echo y|sfdx plugins:install sfdx-hardis
+    && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
@@ -577,7 +577,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
     chmod 644 /usr/local/bin/sarif.tpl \
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner 
+    && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
@@ -592,7 +592,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner 
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache \
 #     && find . -name "*.d.ts" -delete \
@@ -607,7 +607,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner 
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache \
 #     && find . -name "*.d.ts" -delete \

@@ -204,7 +204,7 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
@@ -285,7 +285,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --
     chmod 644 /usr/local/bin/sarif.tpl \
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner 
+    && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
@@ -300,7 +300,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner 
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache \
 #     && find . -name "*.d.ts" -delete \
@@ -315,7 +315,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner 
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache \
 #     && find . -name "*.d.ts" -delete \
