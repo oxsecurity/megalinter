@@ -429,7 +429,16 @@ def build_dockerfile(
             + " && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + "    && rm -rf /root/.npm/_cacache \n"
+            + "    && rm -rf /root/.npm/_cacache \\\n"
+            + '    && find . -name "*.d.ts" -delete \\\n'
+            + '    && find . -name "*.map" -delete \\\n'
+            + '    && find . -name "*.npmignore" -delete \\\n'
+            + '    && find . -name "*.travis.yml" -delete \\\n'
+            + '    && find . -name "CHANGELOG.md" -delete \\\n'
+            + '    && find . -name "README.md" -delete \\\n'
+            + '    && find . -name ".package-lock.json" -delete \\\n'
+            + '    && find . -name "package-lock.json" -delete \\\n'
+            + '    && find . -name "README.md" -delete \n'
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)

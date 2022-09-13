@@ -110,7 +110,16 @@ RUN npm --no-cache install --ignore-scripts \
                 @secretlint/secretlint-formatter-sarif && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache 
+    && rm -rf /root/.npm/_cacache \
+    && find . -name "*.d.ts" -delete \
+    && find . -name "*.map" -delete \
+    && find . -name "*.npmignore" -delete \
+    && find . -name "*.travis.yml" -delete \
+    && find . -name "CHANGELOG.md" -delete \
+    && find . -name "README.md" -delete \
+    && find . -name ".package-lock.json" -delete \
+    && find . -name "package-lock.json" -delete \
+    && find . -name "README.md" -delete 
 WORKDIR /
 
 #NPM__END
@@ -213,7 +222,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
     mkdir -p ${ML_THIRD_PARTY_DIR} && \
     git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
     cd ${ML_THIRD_PARTY_DIR} && \
-    go build && \
+    go build && go clean --cache && \
     chmod +x dustilock && \
     mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
