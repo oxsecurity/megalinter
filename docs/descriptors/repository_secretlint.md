@@ -99,7 +99,7 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 
   Options
     --init             setup config file. Create .secretlintrc.json file from your package.json
-    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, json, junit, pretty-error, stylish, tap, unix, table.d, table
+    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, json, junit, pretty-error, stylish, tap, unix, table
     --output           [path:String] output file path that is written of reported result.
     --no-color         disable ANSI-color of output.
     --no-terminalLink  disable terminalLink of output.
