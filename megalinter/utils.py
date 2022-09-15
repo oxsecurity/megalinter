@@ -72,6 +72,7 @@ def filter_files(
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
+    workspace: Optional[str] = "",
     prefix: Optional[str] = None,
 ) -> Sequence[str]:
     file_extensions = set(file_extensions)
@@ -98,6 +99,7 @@ def filter_files(
 
     for file in all_files:
         file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file_with_workspace = os.path.join(workspace, file_with_prefix_and_sub_dir)
         file = file_with_prefix_and_sub_dir
 
         if prefix or files_sub_directory:
@@ -123,10 +125,14 @@ def filter_files(
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
         # Skip according to FILTER_REGEX_INCLUDE
-        if filter_regex_include_object and not filter_regex_include_object.search(file):
+        if filter_regex_include_object and not filter_regex_include_object.search(
+            file_with_workspace
+        ):
             continue
         # Skip according to FILTER_REGEX_EXCLUDE
-        if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
+        if filter_regex_exclude_object and filter_regex_exclude_object.search(
+            file_with_workspace
+        ):
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false)
@@ -142,16 +148,16 @@ def filter_files(
         # Skip according to end of file name
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
-        # Skip according to file name regex
+        # Skip according to file content regex
         if file_contains_regex and not file_contains(
-            file_with_prefix_and_sub_dir, file_contains_regex_object
+            file_with_workspace, file_contains_regex_object
         ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
-            and file_is_generated(file_with_prefix_and_sub_dir)
+            and file_is_generated(file_with_workspace)
         ):
             continue
 

@@ -788,6 +788,7 @@ class Linter:
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
+            workspace=self.workspace
         )
         self.files_number = len(self.files)
         logging.debug(

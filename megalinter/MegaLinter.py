@@ -617,6 +617,7 @@ class Megalinter:
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
             ignore_generated_files=self.ignore_generated_files,
+            workspace=self.workspace
         )
 
         logging.info(
