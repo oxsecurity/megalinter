@@ -101,7 +101,7 @@ def filter_files(
         file_with_workspace = os.path.join(workspace, file_with_prefix_and_sub_dir)
         file = file_with_prefix_and_sub_dir
 
-        # skip file if sub_directory necessary 
+        # skip file if sub_directory necessary
         if files_sub_directory is not None:
             if not file.startswith(files_sub_directory):
                 continue
