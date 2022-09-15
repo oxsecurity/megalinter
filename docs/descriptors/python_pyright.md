@@ -15,7 +15,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.270**
+- Version in MegaLinter: **1.1.271**
 - Visit [Official Web Site](https://google.github.io/pytype/){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
