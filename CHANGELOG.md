@@ -21,8 +21,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.55.0 to **0.56.0** on 2022-09-12
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.1 to **6.8.2** on 2022-09-12
   - [yamllint](https://yamllint.readthedocs.io/) from 1.27.1 to **1.28.0** on 2022-09-12
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.64.1 to **0.65.0** on 2022-09-14
-  - [checkov](https://www.checkov.io/) from 2.1.204 to **2.1.205** on 2022-09-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.64.1 to **0.65.0** on 2022-09-15
+  - [djlint](https://djlint.com/) from 1.14.0 to **1.14.1** on 2022-09-15
+  - [pyright](https://google.github.io/pytype/) from 1.1.270 to **1.1.271** on 2022-09-15
+  - [checkov](https://www.checkov.io/) from 2.1.204 to **2.1.207** on 2022-09-15
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
+  - [kics](https://www.kics.io) from 1.5.15 to **1.6.0** on 2022-09-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.9 to **0.38.10** on 2022-09-15
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11
