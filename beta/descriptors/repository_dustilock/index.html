@@ -5770,7 +5770,7 @@ Arguments:
     mkdir -p ${ML_THIRD_PARTY_DIR} &amp;&amp; \
     git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} &amp;&amp; \
     cd ${ML_THIRD_PARTY_DIR} &amp;&amp; \
-    go build &amp;&amp; \
+    go build &amp;&amp; go clean --cache &amp;&amp; \
     chmod +x dustilock &amp;&amp; \
     mv &quot;${ML_THIRD_PARTY_DIR}/dustilock&quot; /usr/bin/ &amp;&amp; \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete &amp;&amp; \
