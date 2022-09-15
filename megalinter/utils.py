@@ -72,8 +72,7 @@ def filter_files(
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
-    workspace: Optional[str] = "",
-    prefix: str = None,
+    workspace: str = "",
 ) -> Sequence[str]:
     file_extensions = set(file_extensions)
     filter_regex_include_object = (
@@ -102,15 +101,9 @@ def filter_files(
         file_with_workspace = os.path.join(workspace, file_with_prefix_and_sub_dir)
         file = file_with_prefix_and_sub_dir
 
-        if prefix or files_sub_directory:
-            prefix_and_sub_dir = os.path.normpath(
-                os.path.join(prefix or "", files_sub_directory or "") + os.path.sep
-            )
-
-            if file.startswith(prefix_and_sub_dir):
-                file = os.path.relpath(file_with_prefix_and_sub_dir, prefix_and_sub_dir)
-            else:
-                # Skip if file is not in defined files_sub_directory
+        # skip file if sub_directory necessary 
+        if files_sub_directory is not None:
+            if not file.startswith(files_sub_directory):
                 continue
 
         # Skip if file is in ignore list
