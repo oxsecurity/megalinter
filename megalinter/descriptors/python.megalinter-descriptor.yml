@@ -314,9 +314,10 @@ linters:
     examples:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
+    downgraded_version: true
     install:
       pip:
-        - pyright
+        - pyright==1.1.270
     ide:
       emacs:
         - name: LSP-pyright
