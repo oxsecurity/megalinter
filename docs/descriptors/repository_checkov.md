@@ -123,7 +123,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
 
 Infrastructure as code static analysis
 
@@ -371,7 +371,7 @@ options:
   --black-list-secret-scan BLACK_LIST_SECRET_SCAN
                         black file list to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLACK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

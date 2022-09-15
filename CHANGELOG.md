@@ -30,6 +30,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
   - [kics](https://www.kics.io) from 1.5.15 to **1.6.0** on 2022-09-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.9 to **0.38.10** on 2022-09-15
+  - [pyright](https://google.github.io/pytype/) from 1.1.271 to **1.1.270** on 2022-09-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.10 to **0.38.12** on 2022-09-15
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11
