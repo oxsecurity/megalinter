@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.38.10**
+- Version in MegaLinter: **0.38.12**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -116,7 +116,7 @@ GLOBAL OPTIONS:
    terragrunt-use-partial-parse-config-cache    Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided.
 
 VERSION:
-   v0.38.10
+   v0.38.12
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
