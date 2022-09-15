@@ -73,7 +73,7 @@ def filter_files(
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
     workspace: Optional[str] = "",
-    prefix: Optional[str] = None,
+    prefix: str = None,
 ) -> Sequence[str]:
     file_extensions = set(file_extensions)
     filter_regex_include_object = (
