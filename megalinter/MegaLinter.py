@@ -617,7 +617,7 @@ class Megalinter:
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
             ignore_generated_files=self.ignore_generated_files,
-            workspace=self.workspace
+            workspace=self.workspace,
         )
 
         logging.info(
@@ -683,9 +683,12 @@ class Megalinter:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories()
-        for (_dirpath, dirnames, filenames) in os.walk(self.workspace, topdown=True):
+        for (dirpath, dirnames, filenames) in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
-            all_files += sorted(filenames)
+            all_files += [
+                os.path.relpath(os.path.join(dirpath, file), self.workspace)
+                for file in sorted(filenames)
+            ]
         return list(dict.fromkeys(all_files))
 
     def list_git_ignored_files(self):
