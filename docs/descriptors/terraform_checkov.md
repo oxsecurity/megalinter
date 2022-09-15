@@ -15,7 +15,7 @@ You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.204**
+- Version in MegaLinter: **2.1.207**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -110,6 +110,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
+               [--summary-position {bottom,top}]
 
 Infrastructure as code static analysis
 
@@ -357,6 +358,10 @@ options:
   --black-list-secret-scan BLACK_LIST_SECRET_SCAN
                         black file list to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLACK_LIST]
+  --summary-position {bottom,top}
+                        Chose whether the summary will be appended on top
+                        (before the checks results) or on bottom (after check
+                        results), default is on top.
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
