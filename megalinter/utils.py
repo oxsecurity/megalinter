@@ -97,7 +97,7 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
-        file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file_with_prefix_and_sub_dir = os.path.normpath(file).replace(os.sep, '/')
         file_with_workspace = os.path.join(workspace, file_with_prefix_and_sub_dir)
         file = file_with_prefix_and_sub_dir
 

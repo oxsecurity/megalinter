@@ -50,22 +50,20 @@ class utilsTest(unittest.TestCase):
         )
 
     def test_filter_files_with_ignored_files(self):
-        basedir = DEFAULT_DOCKER_WORKSPACE_DIR + "/"
         all_files = [
-            f"{basedir}src/foo.ext",
-            f"{basedir}README.md",
-            f"{basedir}target/foo.ext",
+            "src/foo.ext",
+            "README.md",
+            "target/foo.ext",
         ]
         for (ignored_files, expected) in [
             ([], all_files),
             (["hello"], all_files),
-            (["target/foo.ext"], all_files),
+            (["target/foo.ext2"], all_files),
             (
-                [f"{basedir}target/foo.ext"],
-                [f"{basedir}src/foo.ext", f"{basedir}README.md"],
+                ["target/foo.ext"],
+                ["src/foo.ext", "README.md"],
             ),
-            (["target/**"], all_files),
-            ([f"{basedir}target/**"], [f"{basedir}src/foo.ext", f"{basedir}README.md"]),
+            (["target/**"], ["src/foo.ext", "README.md"]),
             (["foo.ext"], all_files),
         ]:
             filtered_files = utils.filter_files(
@@ -82,19 +80,18 @@ class utilsTest(unittest.TestCase):
             )
 
     def test_filter_files_with_file_extensions(self):
-        basedir = DEFAULT_DOCKER_WORKSPACE_DIR + "/"
         all_files = [
-            f"{basedir}src/foo.ext",
-            f"{basedir}README.md",
-            f"{basedir}LICENSE",
-            f"{basedir}target/foo.ext",
+            "src/foo.ext",
+            "README.md",
+            "LICENSE",
+            "target/foo.ext",
         ]
 
         for (file_extensions, expected) in [
             ([], []),
-            ([".md"], [f"{basedir}README.md"]),
-            ([""], [f"{basedir}LICENSE"]),
-            (["", ".md"], [f"{basedir}LICENSE", f"{basedir}README.md"]),
+            ([".md"], ["README.md"]),
+            ([""], ["LICENSE"]),
+            (["", ".md"], ["LICENSE", "README.md"]),
         ]:
             filtered_files = utils.filter_files(
                 all_files=all_files,
