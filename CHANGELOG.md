@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 0.112.1 to **0.113.0** on 2022-09-16
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.1 to **0.10.2** on 2022-09-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.2 to **6.9.0** on 2022-09-16
+  - [djlint](https://djlint.com/) from 1.14.2 to **1.15.0** on 2022-09-17
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11
