@@ -358,15 +358,6 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete  \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
@@ -581,45 +572,18 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete  \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache \
-#     && find . -name "*.d.ts" -delete \
-#     && find . -name "*.map" -delete \
-#     && find . -name "*.npmignore" -delete \
-#     && find . -name "*.travis.yml" -delete \
-#     && find . -name "CHANGELOG.md" -delete \
-#     && find . -name "README.md" -delete \
-#     && find . -name ".package-lock.json" -delete \
-#     && find . -name "package-lock.json" -delete \
-#     && find . -name "README.md" -delete 
+#     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache \
-#     && find . -name "*.d.ts" -delete \
-#     && find . -name "*.map" -delete \
-#     && find . -name "*.npmignore" -delete \
-#     && find . -name "*.travis.yml" -delete \
-#     && find . -name "CHANGELOG.md" -delete \
-#     && find . -name "README.md" -delete \
-#     && find . -name ".package-lock.json" -delete \
-#     && find . -name "package-lock.json" -delete \
-#     && find . -name "README.md" -delete 
+#     && rm -rf /root/.npm/_cacache
 
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \

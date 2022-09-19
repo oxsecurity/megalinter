@@ -207,16 +207,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete 
+    && rm -rf /root/.npm/_cacache
 
 
 # actionlint installation
@@ -289,45 +280,18 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete  \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache \
-#     && find . -name "*.d.ts" -delete \
-#     && find . -name "*.map" -delete \
-#     && find . -name "*.npmignore" -delete \
-#     && find . -name "*.travis.yml" -delete \
-#     && find . -name "CHANGELOG.md" -delete \
-#     && find . -name "README.md" -delete \
-#     && find . -name ".package-lock.json" -delete \
-#     && find . -name "package-lock.json" -delete \
-#     && find . -name "README.md" -delete 
+#     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache \
-#     && find . -name "*.d.ts" -delete \
-#     && find . -name "*.map" -delete \
-#     && find . -name "*.npmignore" -delete \
-#     && find . -name "*.travis.yml" -delete \
-#     && find . -name "CHANGELOG.md" -delete \
-#     && find . -name "README.md" -delete \
-#     && find . -name ".package-lock.json" -delete \
-#     && find . -name "package-lock.json" -delete \
-#     && find . -name "README.md" -delete 
+#     && rm -rf /root/.npm/_cacache
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
