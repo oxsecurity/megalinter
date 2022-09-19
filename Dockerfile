@@ -60,6 +60,7 @@ RUN apk add --update --no-cache \
                 curl \
                 gcc \
                 git \
+                git-lfs \
                 libffi-dev \
                 make \
                 musl-dev \
