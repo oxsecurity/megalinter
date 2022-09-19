@@ -11,7 +11,7 @@
 
 ## stylelint documentation
 
-- Version in MegaLinter: **14.11.0**
+- Version in MegaLinter: **14.12.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -144,8 +144,9 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
     --ignore-path, -i
 
       Path to a file containing patterns that describe files to ignore. The
-      path can be absolute or relative to process.cwd(). By default, stylelint
-      looks for .stylelintignore in process.cwd().
+      path can be absolute or relative to process.cwd(). You can repeat the
+      option to provide multiple paths. By default, Stylelint looks for
+      .stylelintignore in process.cwd().
 
     --ignore-pattern, --ip
 
