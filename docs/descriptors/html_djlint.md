@@ -23,7 +23,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.14.2**
+- Version in MegaLinter: **1.16.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -126,6 +126,8 @@ Options:
   --format-js               Also format contents of <script> tags.
   --configuration PATH      Path to global configuration file in .djlintrc
                             format
+  --statistics              Count the number of occurrences of each
+                            error/warning code.
   -h, --help                Show this message and exit.
 ```
 
