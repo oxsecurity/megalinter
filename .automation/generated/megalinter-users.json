@@ -1,6 +1,12 @@
 {
     "repositories": [
         {
+            "repo_url": "https://github.com/carpenike/k8s-gitops"
+        },
+        {
+            "repo_url": "https://github.com/xUnholy/k8s-gitops"
+        },
+        {
             "info": {
                 "allow_forking": true,
                 "archive_url": "https://api.github.com/repos/nektos/act/{archive_format}{/ref}",
@@ -6720,8 +6726,8 @@
                 "network_count": 5,
                 "node_id": "MDEwOlJlcG9zaXRvcnk5ODM4ODY4Ng==",
                 "notifications_url": "https://api.github.com/repos/ahmadnassri/node-nightwatch-accessibility/notifications{?since,all,participating}",
-                "open_issues": 4,
-                "open_issues_count": 4,
+                "open_issues": 5,
+                "open_issues_count": 5,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/183195?v=4",
                     "events_url": "https://api.github.com/users/ahmadnassri/events{/privacy}",

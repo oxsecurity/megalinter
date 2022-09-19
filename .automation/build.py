@@ -450,7 +450,7 @@ def build_dockerfile(
             + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf \\\n'
+            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf && \\\n'
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
@@ -476,7 +476,8 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf\n'
+            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
+            + "&& rm -rf /root/.cache\n"
             + env_path_command
         )
     else:

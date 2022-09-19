@@ -96,7 +96,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/djlint/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -205,7 +205,10 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN echo y|sfdx plugins:install sfdx-hardis \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 
 # actionlint installation
 ENV GO111MODULE=on
@@ -275,14 +278,20 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+#     && npm cache clean --force || true \
+#     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+#     && npm cache clean --force || true \
+#     && rm -rf /root/.npm/_cacache
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
