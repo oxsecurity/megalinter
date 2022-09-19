@@ -46,6 +46,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 14.11.0 to **14.12.0** on 2022-09-19
   - [checkov](https://www.checkov.io/) from 2.1.210 to **2.1.212** on 2022-09-19
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.9.0 to **6.9.1** on 2022-09-19
+  - [djlint](https://djlint.com/) from 1.15.0 to **1.16.0** on 2022-09-19
+  - [pylint](https://www.pylint.org) from 2.15.2 to **2.15.3** on 2022-09-19
+  - [checkov](https://www.checkov.io/) from 2.1.212 to **2.1.213** on 2022-09-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.9.1 to **6.10.0** on 2022-09-19
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11
