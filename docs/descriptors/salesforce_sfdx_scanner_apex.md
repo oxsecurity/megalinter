@@ -25,8 +25,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.10.0/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.10.0/configuration/#activation-and-deactivation)
 
 | Variable                                                 | Description                                                                                  | Default value                                   |
 |----------------------------------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -54,10 +54,10 @@ Use sfdx-scanner-apex in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                             | Embedded linters |                                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)         | Default MegaLinter Flavor               |       107        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                             | Embedded linters |                                                                                                                                                                                                Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:----------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.10.0/supported-linters/)         | Default MegaLinter Flavor               |       107        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.10.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/6.10.0/flavors/salesforce/) | Optimized for Salesforce based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6.10.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -403,8 +403,14 @@ use-isnan                                          typescript   Possible Errors 
 # Parent descriptor install
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN echo y|sfdx plugins:install sfdx-hardis \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 # Linter install
-RUN sfdx plugins:install @salesforce/sfdx-scanner
+RUN sfdx plugins:install @salesforce/sfdx-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 ```
 

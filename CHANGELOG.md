@@ -8,49 +8,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Docker images size improvements
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.10.0] - 2022-09-19
+
+- Add [git-lfs](https://git-lfs.github.com/) in Docker image to handle large files in git repositories
+
+- MegaLinter Docker images size improvements
   - Remove NPM cache
   - Remove Cargo cache
   - Remove rustup when clippy is not embedded in the image
   - Remove npm packages useless files
 
-- Add git-lfs in Docker image
-
 - Linter versions upgrades
-  - [eslint](https://eslint.org) from 8.23.0 to **8.23.1** on 2022-09-12
-  - [djlint](https://djlint.com/) from 1.12.3 to **1.14.0** on 2022-09-12
-  - [checkov](https://www.checkov.io/) from 2.1.201 to **2.1.204** on 2022-09-12
-  - [syft](https://github.com/anchore/syft) from 0.55.0 to **0.56.0** on 2022-09-12
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.1 to **6.8.2** on 2022-09-12
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.27.1 to **1.28.0** on 2022-09-12
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.64.1 to **0.65.0** on 2022-09-15
-  - [djlint](https://djlint.com/) from 1.14.0 to **1.14.1** on 2022-09-15
-  - [pyright](https://google.github.io/pytype/) from 1.1.270 to **1.1.271** on 2022-09-15
-  - [checkov](https://www.checkov.io/) from 2.1.204 to **2.1.207** on 2022-09-15
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9** on 2022-09-15
-  - [kics](https://www.kics.io) from 1.5.15 to **1.6.0** on 2022-09-15
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.9 to **0.38.10** on 2022-09-15
-  - [pyright](https://google.github.io/pytype/) from 1.1.271 to **1.1.270** on 2022-09-15
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.10 to **0.38.12** on 2022-09-15
-  - [djlint](https://djlint.com/) from 1.14.1 to **1.14.2** on 2022-09-15
-  - [checkov](https://www.checkov.io/) from 2.1.207 to **2.1.208** on 2022-09-15
-  - [checkov](https://www.checkov.io/) from 2.1.208 to **2.1.209** on 2022-09-15
-  - [checkov](https://www.checkov.io/) from 2.1.209 to **2.1.210** on 2022-09-16
-  - [semgrep](https://semgrep.dev/) from 0.112.1 to **0.113.0** on 2022-09-16
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.1 to **0.10.2** on 2022-09-16
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.2 to **6.9.0** on 2022-09-16
-  - [djlint](https://djlint.com/) from 1.14.2 to **1.15.0** on 2022-09-17
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.5.2 to **6.6.0** on 2022-09-19
-  - [stylelint](https://stylelint.io) from 14.11.0 to **14.12.0** on 2022-09-19
-  - [checkov](https://www.checkov.io/) from 2.1.210 to **2.1.212** on 2022-09-19
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.9.0 to **6.9.1** on 2022-09-19
-  - [djlint](https://djlint.com/) from 1.15.0 to **1.16.0** on 2022-09-19
-  - [pylint](https://www.pylint.org) from 2.15.2 to **2.15.3** on 2022-09-19
-  - [checkov](https://www.checkov.io/) from 2.1.212 to **2.1.213** on 2022-09-19
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.9.1 to **6.10.0** on 2022-09-19
-<!-- linter-versions-end -->
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.5.2 to **6.6.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.64.1 to **0.65.0**
+  - [checkov](https://www.checkov.io/) from 2.1.201 to **2.1.213**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.1 to **6.10.0**
+  - [djlint](https://djlint.com/) from 1.12.3 to **1.16.0**
+  - [eslint](https://eslint.org) from 8.23.0 to **8.23.1**
+  - [kics](https://www.kics.io) from 1.5.15 to **1.6.0**
+  - [pylint](https://www.pylint.org) from 2.15.2 to **2.15.3**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.1 to **0.10.2**
+  - [semgrep](https://semgrep.dev/) from 0.112.1 to **0.113.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [stylelint](https://stylelint.io) from 14.11.0 to **14.12.0**
+  - [syft](https://github.com/anchore/syft) from 0.55.0 to **0.56.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.10 to **0.38.12**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.9 to **0.38.10**
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.27.1 to **1.28.0**
 
 ## [v6.9.1] - 2022-09-11
 

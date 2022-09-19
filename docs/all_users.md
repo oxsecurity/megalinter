@@ -22,12 +22,14 @@ According to posted issues, there are many more private and self-hosted repos us
 [![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![ruzickap/packer-templates - GitHub](https://gh-card.dev/repos/ruzickap/packer-templates.svg?fullname=)](https://github.com/ruzickap/packer-templates){target=_blank}
 [![OCSInventory-NG/OCSInventory-Server - GitHub](https://gh-card.dev/repos/OCSInventory-NG/OCSInventory-Server.svg?fullname=)](https://github.com/OCSInventory-NG/OCSInventory-Server){target=_blank}
+[![xUnholy/k8s-gitops - GitHub](https://gh-card.dev/repos/xUnholy/k8s-gitops.svg?fullname=)](https://github.com/xUnholy/k8s-gitops){target=_blank}
 [![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
 [![toboshii/home-ops - GitHub](https://gh-card.dev/repos/toboshii/home-ops.svg?fullname=)](https://github.com/toboshii/home-ops){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
 [![nvuillam/npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
+[![carpenike/k8s-gitops - GitHub](https://gh-card.dev/repos/carpenike/k8s-gitops.svg?fullname=)](https://github.com/carpenike/k8s-gitops){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
 [![T145/black-mirror - GitHub](https://gh-card.dev/repos/T145/black-mirror.svg?fullname=)](https://github.com/T145/black-mirror){target=_blank}
