@@ -42,6 +42,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.1 to **0.10.2** on 2022-09-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.2 to **6.9.0** on 2022-09-16
   - [djlint](https://djlint.com/) from 1.14.2 to **1.15.0** on 2022-09-17
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.5.2 to **6.6.0** on 2022-09-19
+  - [stylelint](https://stylelint.io) from 14.11.0 to **14.12.0** on 2022-09-19
+  - [checkov](https://www.checkov.io/) from 2.1.210 to **2.1.212** on 2022-09-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.9.0 to **6.9.1** on 2022-09-19
 <!-- linter-versions-end -->
 
 ## [v6.9.1] - 2022-09-11
