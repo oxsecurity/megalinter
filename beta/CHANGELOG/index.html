@@ -5459,6 +5459,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6100-2022-09-19" class="md-nav__link">
+    [v6.10.0] - 2022-09-19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v691-2022-09-11" class="md-nav__link">
     [v6.9.1] - 2022-09-11
   </a>
@@ -6179,6 +6186,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6100-2022-09-19" class="md-nav__link">
+    [v6.10.0] - 2022-09-19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v691-2022-09-11" class="md-nav__link">
     [v6.9.1] - 2022-09-11
   </a>
@@ -6883,7 +6897,16 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Docker images size improvements<ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v6100-2022-09-19">[v6.10.0] - 2022-09-19</h2>
+<ul>
+<li>Add <a href="https://git-lfs.github.com/">git-lfs</a> in Docker image to handle large files in git repositories</li>
+</ul>
+<ul>
+<li>MegaLinter Docker images size improvements<ul>
 <li>Remove NPM cache</li>
 <li>Remove Cargo cache</li>
 <li>Remove rustup when clippy is not embedded in the image</li>
@@ -6892,48 +6915,28 @@
 </li>
 </ul>
 <ul>
-<li>Add git-lfs in Docker image</li>
-</ul>
-<ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://eslint.org">eslint</a> from 8.23.0 to <strong>8.23.1</strong> on 2022-09-12</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.12.3 to <strong>1.14.0</strong> on 2022-09-12</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.201 to <strong>2.1.204</strong> on 2022-09-12</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.55.0 to <strong>0.56.0</strong> on 2022-09-12</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.8.1 to <strong>6.8.2</strong> on 2022-09-12</li>
-<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.27.1 to <strong>1.28.0</strong> on 2022-09-12</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.64.1 to <strong>0.65.0</strong> on 2022-09-15</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.14.0 to <strong>1.14.1</strong> on 2022-09-15</li>
-<li><a href="https://google.github.io/pytype/">pyright</a> from 1.1.270 to <strong>1.1.271</strong> on 2022-09-15</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.204 to <strong>2.1.207</strong> on 2022-09-15</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.8 to <strong>2.13.9</strong> on 2022-09-15</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.8 to <strong>2.13.9</strong> on 2022-09-15</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.8 to <strong>2.13.9</strong> on 2022-09-15</li>
-<li><a href="https://www.kics.io">kics</a> from 1.5.15 to <strong>1.6.0</strong> on 2022-09-15</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.9 to <strong>0.38.10</strong> on 2022-09-15</li>
-<li><a href="https://google.github.io/pytype/">pyright</a> from 1.1.271 to <strong>1.1.270</strong> on 2022-09-15</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.10 to <strong>0.38.12</strong> on 2022-09-15</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.14.1 to <strong>1.14.2</strong> on 2022-09-15</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.207 to <strong>2.1.208</strong> on 2022-09-15</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.208 to <strong>2.1.209</strong> on 2022-09-15</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.209 to <strong>2.1.210</strong> on 2022-09-16</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.112.1 to <strong>0.113.0</strong> on 2022-09-16</li>
-<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.10.1 to <strong>0.10.2</strong> on 2022-09-16</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.8.2 to <strong>6.9.0</strong> on 2022-09-16</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.14.2 to <strong>1.15.0</strong> on 2022-09-17</li>
-<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.5.2 to <strong>6.6.0</strong> on 2022-09-19</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.11.0 to <strong>14.12.0</strong> on 2022-09-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.210 to <strong>2.1.212</strong> on 2022-09-19</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.9.0 to <strong>6.9.1</strong> on 2022-09-19</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.15.0 to <strong>1.16.0</strong> on 2022-09-19</li>
-<li><a href="https://www.pylint.org">pylint</a> from 2.15.2 to <strong>2.15.3</strong> on 2022-09-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.212 to <strong>2.1.213</strong> on 2022-09-19</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.9.1 to <strong>6.10.0</strong> on 2022-09-19</li>
+<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.5.2 to <strong>6.6.0</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.64.1 to <strong>0.65.0</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.201 to <strong>2.1.213</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.8.1 to <strong>6.10.0</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.12.3 to <strong>1.16.0</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.23.0 to <strong>8.23.1</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.5.15 to <strong>1.6.0</strong></li>
+<li><a href="https://www.pylint.org">pylint</a> from 2.15.2 to <strong>2.15.3</strong></li>
+<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.10.1 to <strong>0.10.2</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 0.112.1 to <strong>0.113.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.8 to <strong>2.13.9</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.8 to <strong>2.13.9</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.8 to <strong>2.13.9</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.11.0 to <strong>14.12.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.55.0 to <strong>0.56.0</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.10 to <strong>0.38.12</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.9 to <strong>0.38.10</strong></li>
+<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.27.1 to <strong>1.28.0</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
 <h2 id="v691-2022-09-11">[v6.9.1] - 2022-09-11</h2>
 <ul>
 <li>Linters<ul>

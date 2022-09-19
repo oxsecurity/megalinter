@@ -5654,7 +5654,10 @@
 </ul>
 <pre><code class="language-dockerfile">ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH=&quot;$JAVA_HOME/bin:${PATH}&quot;
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN echo y|sfdx plugins:install sfdx-hardis \
+    &amp;&amp; npm cache clean --force || true \
+    &amp;&amp; rm -rf /root/.npm/_cacache
+
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
