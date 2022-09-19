@@ -14,6 +14,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove rustup when clippy is not embedded in the image
   - Remove npm packages useless files
 
+- Add git-lfs in Docker image
+
 - Linter versions upgrades
   - [eslint](https://eslint.org) from 8.23.0 to **8.23.1** on 2022-09-12
   - [djlint](https://djlint.com/) from 1.12.3 to **1.14.0** on 2022-09-12
