@@ -69,10 +69,11 @@ linters:
     cli_lint_mode: "file"
     cli_lint_extra_args:
       - "-f"
+    cli_version_arg_name: "version"
     linter_name: bicep
     linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
-    linter_version_cache: "0.0.0" # TODO: retrieve bicep linter version
+    version_extract_regex: Bicep CLI version (\\d+)\.(\\d+)\.(\\d+)
     examples:
       - |
         # pwsh 
