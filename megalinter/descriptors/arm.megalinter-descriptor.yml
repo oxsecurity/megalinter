@@ -4,6 +4,7 @@ descriptor_flavors:
   - dotnet
 file_extensions:
   - ".json"
+  - ".bicep"
 file_contains_regex:
   - 'schema\.management\.azure\.com'
 install:
@@ -59,3 +60,36 @@ linters:
       vscode:
         - name: ARMTTKExtension
           url: https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension
+  # Bicep Linter
+  - class: BicepLinter
+    name: ARM_BICEP_LINTER
+    config_file_name: bicepconfig.json
+    cli_help_extra_args:
+      - "--help"
+    cli_lint_mode: "file"
+    cli_lint_extra_args:
+      - "-f"
+    linter_name: bicep
+    linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
+    linter_version_cache: "0.0.0" # TODO: retrieve bicep linter version
+    examples:
+      - |
+        # pwsh 
+        bicep build infra.bicep;
+
+        # Azure CLI 
+        az bicep build infra.bicep
+    install:
+      dockerfile:
+        - ARG BICEP_EXE='bicep'
+        - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+        - ARG BICEP_DIR='/usr/local/bin'
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
+              && chmod +x "${BICEP_EXE}"
+              && sudo mv "${BICEP_EXE}" "${BICEP_DIR}"
+    ide:
+      vscode:
+        - name: VSCode Bicep
+          url: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep
