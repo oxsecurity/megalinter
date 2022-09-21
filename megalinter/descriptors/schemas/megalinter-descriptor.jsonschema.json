@@ -1218,7 +1218,7 @@
             "examples": [
               {
                 "default_value": "false",
-                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
+                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead",
                 "name": "ERROR_ON_MISSING_EXEC_BIT"
               }
             ],
