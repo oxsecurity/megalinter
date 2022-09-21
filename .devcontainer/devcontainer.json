@@ -39,8 +39,8 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-        "github.vscode-pull-request-github", 
-        "rogalmic.bash-debug"
+				"github.vscode-pull-request-github",
+				"rogalmic.bash-debug"
 			]
 		}
 	},
