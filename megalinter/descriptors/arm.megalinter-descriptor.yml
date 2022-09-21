@@ -61,8 +61,7 @@ linters:
         - name: ARMTTKExtension
           url: https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension
   # Bicep Linter
-  - class: BicepLinter
-    name: ARM_BICEP_LINTER
+  - name: ARM_BICEP_LINTER
     config_file_name: bicepconfig.json
     cli_help_extra_args:
       - "--help"
