@@ -15,6 +15,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.213 to **2.1.214** on 2022-09-20
   - [semgrep](https://semgrep.dev/) from 0.113.0 to **0.114.0** on 2022-09-20
   - [syft](https://github.com/anchore/syft) from 0.56.0 to **0.57.0** on 2022-09-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.0 to **6.6.1** on 2022-09-21
+  - [djlint](https://djlint.com/) from 1.16.0 to **1.17.0** on 2022-09-21
+  - [checkov](https://www.checkov.io/) from 2.1.214 to **2.1.219** on 2022-09-21
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.2 to **0.10.3** on 2022-09-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.0 to **6.10.1** on 2022-09-21
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.40.0 to **0.40.1** on 2022-09-21
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
