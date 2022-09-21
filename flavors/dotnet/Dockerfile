@@ -33,6 +33,9 @@ ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ARG BICEP_EXE='bicep'
+ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+ARG BICEP_DIR='/usr/local/bin'
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -263,6 +266,11 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && rm "${ARM_TTK_NAME}" \
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
     && chmod a+x /usr/bin/arm-ttk \
+
+# bicep installation
+    && curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
+    && chmod +x "${BICEP_EXE}"
+    && sudo mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \

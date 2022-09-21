@@ -98,6 +98,7 @@
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
             "ARM_ARM_TTK",
+            "ARM_BICEP_LINTER",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
