@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 from datetime import date, datetime
-from shutil import copyfile
+from shutil import copyfile, which
 from typing import Any
 from urllib import parse as parse_urllib
 
@@ -2762,7 +2762,10 @@ def manage_output_variables():
 def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
     # Call markdown-table-formatter with the list of files
-    format_md_tables_command = ["bash", "format-tables.sh"]
+    if sys.platform == "win32":
+        format_md_tables_command = ["bash", "format-tables.sh"]
+    else:
+        format_md_tables_command = ["./format-tables.sh"]
     cwd = os.getcwd() + "/.automation"
     logging.info("Running command: " + str(format_md_tables_command) + f" in cwd {cwd}")
     process = subprocess.run(
@@ -2772,7 +2775,7 @@ def reformat_markdown_tables():
         universal_newlines=True,
         cwd=cwd,
         shell=True,
-        executable=None if sys.platform == "win32" else "/bin/bash",
+        executable=None if sys.platform == "win32" else which("bash"),
     )
     stdout = utils.decode_utf8(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
