@@ -65,12 +65,13 @@ linters:
     config_file_name: bicepconfig.json
     cli_help_extra_args: --help
     cli_lint_mode: file
-    cli_lint_extra_args: build
+    cli_lint_extra_args: 
+      - "build"
     cli_version_arg_name: --version
     linter_name: bicep
     linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
-    version_extract_regex: Bicep CLI version (\\d+)\.(\\d+)\.(\\d+)
+    version_extract_regex: "Bicep CLI version (\\d+)\.(\\d+)\.(\\d+)"
     examples:
       - |
         # Bicep CLI 
