@@ -268,7 +268,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && chmod a+x /usr/bin/arm-ttk \
 
 # bicep installation
-    && curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 

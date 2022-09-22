@@ -86,7 +86,7 @@ linters:
         - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
         - ARG BICEP_DIR='/usr/local/bin'
         - |
-          RUN curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
+          RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
               && chmod +x "${BICEP_EXE}" \
               && mv "${BICEP_EXE}" "${BICEP_DIR}"
     ide:
