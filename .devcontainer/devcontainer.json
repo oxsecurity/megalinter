@@ -26,10 +26,20 @@
 			},
 			
 			"extensions": [
+				"esbenp.prettier-vscode",
+				"exiasr.hadolint",
+				"foxundermoon.shell-format",
+				"github.vscode-pull-request-github",
+				"hbenl.vscode-test-explorer",
+				"LittleFoxTeam.vscode-python-test-adapter",
+				"mhutchie.git-graph",
+				"matangover.mypy",
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-				"github.vscode-pull-request-github",
-				"rogalmic.bash-debug"
+				"rogalmic.bash-debug",
+				"streetsidesoftware.code-spell-checker",
+				"stylelint.vscode-stylelint",
+				"timonwong.shellcheck"
 			]
 		}
 	},
