@@ -1,156 +1,98 @@
-@description('Specifies region of all resources.')
+@description('Web app name.')
+@minLength(2)
+param webAppName string = 'webApp-${uniqueString(resourceGroup().id)}'
+
+@description('Location for all resources.')
 param location string = resourceGroup().location
 
-@description('Suffix for function app, storage account, and key vault names.')
-param appNameSuffix string = uniqueString(resourceGroup().id)
+@description('Describes plan\'s pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/')
+@allowed([
+  'F1'
+  'D1'
+  'B1'
+  'B2'
+  'B3'
+  'S1'
+  'S2'
+  'S3'
+  'P1'
+  'P2'
+  'P3'
+  'P4'
+])
+param sku string = 'F1'
 
-@description('Key Vault SKU name.')
-param keyVaultSku string = 'Standard'
+@description('The language stack of the app.')
+@allowed([
+  '.net'
+  'php'
+  'node'
+  'html'
+])
+param language string = '.net'
 
-@description('Storage account SKU name.')
-param storageSku string = 'Standard_LRS'
+@description('Optional Git Repo URL, if empty a \'hello world\' app will be deploy from the Azure-Samples repo')
+param repoUrl string = ''
 
-var functionAppName = 'fn-${appNameSuffix}'
-var appServicePlanName = 'FunctionPlan'
-var appInsightsName = 'AppInsights'
-var storageAccountName = 'fnstor${replace(appNameSuffix, '-', '')}'
-var functionNameComputed = 'MyHttpTriggeredFunction'
-var functionRuntime = 'dotnet'
-var keyVaultName = 'kv${replace(appNameSuffix, '-', '')}'
-var functionAppKeySecretName = 'FunctionAppHostKey'
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: storageAccountName
-  location: location
-  sku: {
-    name: storageSku
+var appServicePlanName = 'AppServicePlan-${webAppName}'
+var gitRepoReference = {
+  '.net': 'https://github.com/Azure-Samples/app-service-web-dotnet-get-started'
+  node: 'https://github.com/Azure-Samples/nodejs-docs-hello-world'
+  php: 'https://github.com/Azure-Samples/php-docs-hello-world'
+  html: 'https://github.com/Azure-Samples/html-docs-hello-world'
+}
+var gitRepoUrl = (empty(repoUrl) ? gitRepoReference[language] : repoUrl)
+var configReference = {
+  '.net': {
+    comments: '.Net app. No additional configuration needed.'
   }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-    encryption: {
-      services: {
-        file: {
-          keyType: 'Account'
-          enabled: true
-        }
-        blob: {
-          keyType: 'Account'
-          enabled: true
-        }
+  html: {
+    comments: 'HTML app. No additional configuration needed.'
+  }
+  php: {
+    phpVersion: '7.4'
+  }
+  node: {
+    appSettings: [
+      {
+        name: 'WEBSITE_NODE_DEFAULT_VERSION'
+        value: '12.15.0'
       }
-      keySource: 'Microsoft.Storage'
-    }
-    accessTier: 'Hot'
+    ]
   }
 }
 
-resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appInsightsName
-  location: location
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-    publicNetworkAccessForIngestion: 'Enabled'
-    publicNetworkAccessForQuery: 'Enabled'
-  }
-}
-
-resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
+resource asp 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: appServicePlanName
   location: location
-  kind: 'functionapp'
   sku: {
-    name: 'Y1'
+    name: sku
   }
-  properties: {}
 }
 
-resource functionApp 'Microsoft.Web/sites@2020-12-01' = {
-  name: functionAppName
+resource webApp 'Microsoft.Web/sites@2021-03-01' = {
+  name: webAppName
   location: location
-  kind: 'functionapp'
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
-    serverFarmId: plan.id
-    siteConfig: {
-      appSettings: [
-        {
-          name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(storageAccount.id, storageAccount.apiVersion).keys[0].value}'
-        }
-        {
-          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(storageAccount.id, storageAccount.apiVersion).keys[0].value}'
-        }
-        {
-          name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-          value: appInsights.properties.InstrumentationKey
-        }
-        {
-          name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
-          value: 'InstrumentationKey=${appInsights.properties.InstrumentationKey}'
-        }
-        {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: functionRuntime
-        }
-        {
-          name: 'FUNCTIONS_EXTENSION_VERSION'
-          value: '~3'
-        }
-      ]
-    }
+    siteConfig: union(configReference[language],{
+      minTlsVersion: '1.2'
+      scmMinTlsVersion: '1.2'
+      ftpsState: 'FtpsOnly'
+    })
+    serverFarmId: asp.id
     httpsOnly: true
   }
 }
 
-resource function 'Microsoft.Web/sites/functions@2020-12-01' = {
-  name: '${functionApp.name}/${functionNameComputed}'
+resource gitsource 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
+  parent: webApp
+  name: 'web'
   properties: {
-    config: {
-      disabled: false
-      bindings: [
-        {
-          name: 'req'
-          type: 'httpTrigger'
-          direction: 'in'
-          authLevel: 'function'
-          methods: [
-            'get'
-          ]
-        }
-        {
-          name: '$return'
-          type: 'http'
-          direction: 'out'
-        }
-      ]
-    }
-    files: {
-      'run.csx': loadTextContent('run.csx')
-    }
+    repoUrl: gitRepoUrl
+    branch: 'master'
+    isManualIntegration: true
   }
 }
-
-resource keyVault 'Microsoft.KeyVault/vaults@2019-09-01' = {
-  name: keyVaultName
-  location: location
-  properties: {
-    tenantId: subscription().tenantId
-    sku: {
-      family: 'A'
-      name: keyVaultSku
-    }
-    accessPolicies: []
-  }
-}
-
-resource keyVaultSecret 'Microsoft.KeyVault/vaults/secrets@2019-09-01' = {
-  name: '${keyVault.name}/${functionAppKeySecretName}'
-  properties: {
-    value: listKeys('${functionApp.id}/host/default', functionApp.apiVersion).functionKeys.default
-  }
-}
-
-output functionAppHostName string = functionApp.properties.defaultHostName
-output functionName string = functionNameComputed
