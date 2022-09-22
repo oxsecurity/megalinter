@@ -269,7 +269,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # bicep installation
     && curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
-    && chmod +x "${BICEP_EXE}"
+    && chmod +x "${BICEP_EXE}" \
     && sudo mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # bash-exec installation
