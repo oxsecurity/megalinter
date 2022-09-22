@@ -79,7 +79,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | Option                 | Description                                                                                                        | Default           |
 |------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
-| `--flavor`             | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
+| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
