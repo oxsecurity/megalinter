@@ -74,7 +74,7 @@ def filter_files(
     lint_all_other_linters_files: bool = False,
     prefix: Optional[str] = None,
 ) -> Sequence[str]:
-    file_extensions = set(file_extensions)
+    file_extensions = frozenset(file_extensions)
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
@@ -92,7 +92,7 @@ def filter_files(
     # if each file is check against every ignored_files (it can contain all the files), it's a O(n²) filtering
     # to reduce the execution time and complexity ignored_files is split
     ignored_patterns = list(filter(lambda x: "*" in x, ignored_files or []))
-    ignored_fileset = set(ignored_files or [])
+    ignored_fileset = frozenset(ignored_files or [])
 
     # Filter all files to keep only the ones matching with the current linter
 
