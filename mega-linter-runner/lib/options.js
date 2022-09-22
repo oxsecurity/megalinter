@@ -27,7 +27,7 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v5",
+      default: "v6",
       description: "MegaLinter version",
       example: ["stable", "latest", "v5.9.0"],
     },
@@ -45,8 +45,8 @@ module.exports = optionator({
       type: "String",
       description: "MegaLinter docker image",
       example: [
-        "ghcr.io/megalinter/megalinter:latest",
-        "ghcr.io/megalinter/megalinter:v5",
+        "ghcr.io/oxsecurity/megalinter:latest",
+        "ghcr.io/oxsecurity/megalinter:v5",
         "my-registry.com/mega-linter-python:v5",
       ],
     },
@@ -73,6 +73,11 @@ module.exports = optionator({
       option: "fix",
       type: "Boolean",
       description: "Apply formatters and fixes in linted sources",
+    },
+    {
+      option: "filesonly",
+      type: "Boolean",
+      description: "Do not run linters with project as CLI lint mode",
     },
     {
       option: "json",
@@ -115,6 +120,16 @@ module.exports = optionator({
       alias: "u",
       type: "Boolean",
       description: "Upgrade local repository MegaLinter configuration",
+    },
+    {
+      option: "containername",
+      type: "String",
+      description: "Specify MegaLinter container name",
+    },
+    {
+      option: "remove-container",
+      type: "Boolean",
+      description: "Remove MegaLinter Docker container when done",
     },
   ],
   mutuallyExclusive: [

@@ -26,6 +26,7 @@ GCR_TOKEN="${GCR_TOKEN}"                 # Password to login to GitHub package r
 REGISTRY="${REGISTRY}"                   # What registry to upload | <GCR> or <Docker>
 IMAGE_REPO="${IMAGE_REPO}"               # Image repo to upload the image
 IMAGE_VERSION="${IMAGE_VERSION}"         # Version to tag the image
+ALWAYS_BUILD="${ALWAYS_BUILD}"           # Always build image even if another has been found
 DOCKERFILE_PATH="${DOCKERFILE_PATH}"     # Path to the Dockerfile to be uploaded
 MAJOR_TAG=''                             # Major tag version if we need to update it
 UPDATE_MAJOR_TAG=0                       # Flag to deploy the major tag version as well
@@ -34,6 +35,7 @@ DOCKER_IMAGE_REPO=''                     # Docker tag for the image when created
 GCR_IMAGE_REPO=''                        # Docker tag for the image when created
 FOUND_IMAGE=0                            # Flag for if the image has already been built
 CONTAINER_URL=''                         # Final URL to upload
+SQUASH="${SQUASH}"                       # if true, calls docker build with --squash
 
 ###########################################################
 # Dynamic build variables to pass to container when built #
@@ -43,6 +45,13 @@ BUILD_REVISION=$(git rev-parse --short HEAD)                                    
 BUILD_VERSION=''                                                                     # Current version of the container being built
 ((LOG_TRACE = LOG_DEBUG = LOG_VERBOSE = LOG_NOTICE = LOG_WARN = LOG_ERROR = "true")) # Enable all loging
 export LOG_TRACE LOG_DEBUG LOG_VERBOSE LOG_NOTICE LOG_WARN LOG_ERROR
+
+EXTRA_DOCKER_BUILD_ARGS=""
+# Manage --squash parameter
+if [[ ${SQUASH} == "true" ]]; then
+  EXTRA_DOCKER_BUILD_ARGS="--squash"
+fi
+export EXTRA_DOCKER_BUILD_ARGS
 
 #########################
 # Source Function Files #
@@ -306,7 +315,7 @@ BuildImage() {
   ###################
   # Build the image #
   ###################
-  docker build --no-cache --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${CONTAINER_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
+  DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --no-cache --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${CONTAINER_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
 
   #######################
   # Load the error code #
@@ -331,8 +340,8 @@ BuildImage() {
     # docker tag "${CONTAINER_URL}:${IMAGE_VERSION}" "${CONTAINER_URL}:latest"
 
     # Tag the image with the major tag & latest tag as well
-    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
-    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
     # Load the error code #
@@ -368,7 +377,7 @@ BuildImage() {
   ###################
   # Build the image #
   ###################
-  docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITIONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
+  DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITIONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
 
   #######################
   # Load the error code #
@@ -393,8 +402,8 @@ BuildImage() {
     ###################
     # Build the image with latest tags#
     ###################
-    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
-    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
+    DOCKER_BUILDKIT=1 docker build $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
     # Load the error code #
@@ -606,7 +615,12 @@ ValidateInput
 ###############################
 # Find Image if already built #
 ###############################
-FindBuiltImage
+if [ "$ALWAYS_BUILD" != "force" ]; then
+  FindBuiltImage
+else
+  FOUND_IMAGE=1
+  echo "skip find build image as ALWAYS_BUILD is force"
+fi
 
 ###################
 # Build the image #

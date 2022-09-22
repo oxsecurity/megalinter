@@ -34,6 +34,11 @@
     "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
     "title": "martysweet/cfn-lint"
   },
+  "checkmake": {
+    "description": "experimental linter/analyzer for Makefiles. Contribute to mrtazz/checkmake development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/ef6a33ff4ba9b8f5c2285e94cbbbdd502ccb64f6c18462c0b9eae50d306bbc6e/mrtazz/checkmake",
+    "title": "GitHub - mrtazz/checkmake: experimental linter/analyzer for Makefiles"
+  },
   "checkov": {
     "description": "Prevent cloud misconfigurations during build-time for Terraform, Cloudformation, Kubernetes, Serverless framework and other infrastructure-as-code-languages with Checkov by Bridgecrew.",
     "image": null,
@@ -79,6 +84,16 @@
     "image": "https://repository-images.githubusercontent.com/35726310/78196080-8aee-11ea-8736-5d358571e7db",
     "title": "dart-lang/sdk"
   },
+  "devskim": {
+    "description": "DevSkim is a set of IDE plugins and rules that provide security &quot;linting&quot; capabilities. - GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security &quot...",
+    "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",
+    "title": "GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security \"linting\" capabilities."
+  },
+  "djlint": {
+    "description": "Find common syntax errors, reformat to make your HTML templates shine! Supports django, jinja, nunjucks, twig, handlebars, mustache, golang, and more!",
+    "image": "https://www.djlint.com/static/img/icon.png",
+    "title": "HTML Template Linter and Formatter | djLint"
+  },
   "dockerfilelint": {
     "description": "An opinionated Dockerfile linter. Contribute to replicatedhq/dockerfilelint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/13105802?s=400&v=4",
@@ -93,6 +108,11 @@
     "description": "Home for the dotnet-format command. Contribute to dotnet/format development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/9141961?s=400&v=4",
     "title": "dotnet/format"
+  },
+  "dustilock": {
+    "description": "DustiLock is a tool to find which of your dependencies is susceptible to a Dependency Confusion attack. - GitHub - Checkmarx/dustilock: DustiLock is a tool to find which of your dependencies is sus...",
+    "image": "https://repository-images.githubusercontent.com/338069320/e23e3b0b-48e4-4bf3-a662-9deddcddfbd4",
+    "title": "GitHub - Checkmarx/dustilock: DustiLock is a tool to find which of your dependencies is susceptible to a Dependency Confusion attack."
   },
   "editorconfig-checker": {
     "description": "A tool to verify that your files are in harmony with your .editorconfig - editorconfig-checker/editorconfig-checker",
@@ -124,10 +144,20 @@
     "image": null,
     "title": "Git"
   },
+  "gitleaks": {
+    "description": "Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11 - GitHub - zricethezav/gitleaks: Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11",
+    "image": "https://opengraph.githubassets.com/a84e777c61cc9ba80250c9dddb6fdbdee3791fd5e6e9b40f4e53d91dcad39d5c/zricethezav/gitleaks",
+    "title": "GitHub - zricethezav/gitleaks: Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11"
+  },
   "golangci-lint": {
     "description": "Fast linters Runner for Go. Contribute to golangci/golangci-lint development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4",
     "title": "golangci/golangci-lint"
+  },
+  "goodcheck": {
+    "description": "None",
+    "image": null,
+    "title": "Goodcheck"
   },
   "graphql-schema-linter": {
     "description": "Validate GraphQL schema definitions against a set of rules - cjoudrey/graphql-schema-linter",
@@ -180,9 +210,9 @@
     "title": "instrumenta/kubeval"
   },
   "lintr": {
-    "description": "Static Code Analysis for R. Contribute to jimhester/lintr development by creating an account on GitHub.",
+    "description": "Static Code Analysis for R. Contribute to r-lib/lintr development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
-    "title": "jimhester/lintr"
+    "title": "r-lib/lintr"
   },
   "luacheck": {
     "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
@@ -249,6 +279,11 @@
     "image": "https://avatars3.githubusercontent.com/u/16435710?s=400&v=4",
     "title": "phpstan/phpstan"
   },
+  "pmd": {
+    "description": "PMD is a source code analyzer. It finds unused variables, empty catch blocks, unnecessary object creation, and so forth.",
+    "image": null,
+    "title": "PMD"
+  },
   "powershell": {
     "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
@@ -258,6 +293,11 @@
     "description": "Opinionated Code Formatter",
     "image": "https://prettier.io/icon.png",
     "title": "Prettier \u00b7 Opinionated Code Formatter"
+  },
+  "proselint": {
+    "description": "A linter for prose.",
+    "image": null,
+    "title": "proselint"
   },
   "protolint": {
     "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions.  - yoheimuta/protolint",
@@ -283,6 +323,16 @@
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
+  },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
   },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",
@@ -333,6 +383,11 @@
     "description": "Pluggable linting tool to prevent committing credential. - GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential.",
     "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
     "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
+  },
+  "semgrep": {
+    "description": "None",
+    "image": null,
+    "title": "Semgrep"
   },
   "sfdx-scanner": {
     "description": "",
@@ -404,6 +459,11 @@
     "image": "https://avatars3.githubusercontent.com/u/7575099?s=400&v=4",
     "title": "realm/SwiftLint"
   },
+  "syft": {
+    "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems - GitHub - anchore/syft: CLI tool and library for generating a Software Bill of Materials from...",
+    "image": "https://repository-images.githubusercontent.com/262126497/7821d6d6-735d-4290-a708-d0801649b6e3",
+    "title": "GitHub - anchore/syft: CLI tool and library for generating a Software Bill of Materials from container images and filesystems"
+  },
   "tekton-lint": {
     "description": "Linter for Tekton definitions. Contribute to IBM/tekton-lint development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",
@@ -428,6 +488,11 @@
     "description": "TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12) - terraform-linters/tflint",
     "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
     "title": "terraform-linters/tflint"
+  },
+  "trivy": {
+    "description": "None",
+    "image": null,
+    "title": "Redirecting"
   },
   "tsqllint": {
     "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",

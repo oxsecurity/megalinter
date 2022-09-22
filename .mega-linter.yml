@@ -1,7 +1,7 @@
 # Configuration file for MegaLinter
-# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
+# See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
 
-APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
+APPLY_FIXES: all
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
@@ -14,6 +14,13 @@ DISABLE:
   - TEKTON
 DISABLE_LINTERS:
   - JSON_PRETTIER
+  - REPOSITORY_GITLEAKS
+  - SPELL_PROSELINT
+DISABLE_ERRORS_LINTERS:
+  - PYTHON_BANDIT
+  - PYTHON_PYRIGHT
+  - REPOSITORY_DEVSKIM
+  - REPOSITORY_SEMGREP
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
@@ -24,15 +31,17 @@ BASH_FILTER_REGEX_EXCLUDE: "(lib)"
 MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
-DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 --ignore DL3016 --ignore DL3018 --ignore DL3028 --ignore DL4001 --ignore DL4006 --ignore SC2015 --ignore SC2016 --ignore SC2039 --ignore SC2086 --ignore SC1091"
-PYTHON_BANDIT_DISABLE_ERRORS: true
+DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 --ignore DL3016 --ignore DL3018 --ignore DL3028 --ignore DL3059 --ignore DL4001 --ignore DL4006 --ignore SC2015 --ignore SC2016 --ignore SC2039 --ignore SC2086 --ignore SC1091 --ignore SC3046"
+REPOSITORY_TRIVY_ARGUMENTS:
+  - "--skip-dirs"
+  - ".automation/test"
 SHOW_ELAPSED_TIME: true
-EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
+EMAIL_REPORTER: false
 FILEIO_REPORTER: true
 JSON_REPORTER: true
 GITHUB_STATUS_REPORTER: false
 PLUGINS:
-  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"

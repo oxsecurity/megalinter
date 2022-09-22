@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use lintr to lint R files
-https://github.com/jimhester/lintr
+https://github.com/r-lib/lintr
 """
 import os
 from shutil import copyfile
@@ -19,8 +19,9 @@ class RLinter(Linter):
             copyfile(self.config_file, dir_name + os.path.sep + self.config_file_name)
         # Build command in R format
         r_commands = [
-            f"errors <- lintr::lint('{file}');",
-            "print(errors);",
+            f"lints <- lintr::lint('{file}');",
+            "print(lints);",
+            "errors <- purrr::keep(lints, ~ .type == 'error');",
             "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
         ]
         # Build shell command

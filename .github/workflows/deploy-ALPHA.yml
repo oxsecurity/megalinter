@@ -28,6 +28,7 @@ on:
       - "TEMPLATES/**"
       - ".trivyignore"
       - "**/*.py"
+      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -44,7 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run this on the main repo
-    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     environment: 
       name: alpha
     ##################
@@ -55,9 +56,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.4.0
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       #####################
       # Run Deploy script #
@@ -67,7 +66,7 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
+          IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
@@ -83,7 +82,7 @@ jobs:
           # Set the Env Vars
           GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
           GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
+          IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: GCR
@@ -101,12 +100,13 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/megalinter/megalinter:alpha"
-          format: "table"
-          exit-code: "1"
+          image-ref: "docker.io/oxsecurity/megalinter:alpha"
+          format: 'table'
+          exit-code: '1'
           ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
+          security-checks: vuln
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
           timeout: 5m0s

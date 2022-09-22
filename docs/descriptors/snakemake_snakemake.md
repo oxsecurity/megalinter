@@ -7,17 +7,19 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits)
+
 ## snakemake documentation
 
-- Version in MegaLinter: **7.3.2**
+- Version in MegaLinter: **7.14.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                   | Description                                                                                                                                                                                                         | Default value      |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -38,30 +40,28 @@ Use snakemake in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                   Install                                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [SnakeCharm](https://plugins.jetbrains.com/plugin/11947-snakecharm)                             |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11947"></iframe>                         |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/alping.vscode-snakemake){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [SnakeCharm](https://plugins.jetbrains.com/plugin/11947-snakecharm)                             |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11947"></iframe>                         |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/alping.vscode-snakemake){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                             |        97        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
-|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                 |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        48        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                       |        43        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                     |        43        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                      |        46        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                   |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/)       | Optimized for Salesforce based projects               |        44        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)                 | Optimized for SCALA based projects                    |        42        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/flavors/swift/)                 | Optimized for SWIFT based projects                    |        42        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/)         | Optimized for TERRAFORM based projects                |        47        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                               | Description                                           | Embedded linters |                                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)               | Default MegaLinter Flavor                             |       107        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://oxsecurity.github.io/megalinter/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://oxsecurity.github.io/megalinter/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        55        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://oxsecurity.github.io/megalinter/beta/flavors/go/)                       | Optimized for GO based projects                       |        48        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/beta/flavors/java/)                   | Optimized for JAVA based projects                     |        49        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://oxsecurity.github.io/megalinter/beta/flavors/php/)                     | Optimized for PHP based projects                      |        50        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/)               | Optimized for PYTHON based projects                   |        56        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://oxsecurity.github.io/megalinter/beta/flavors/ruby/)                   | Optimized for RUBY based projects                     |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://oxsecurity.github.io/megalinter/beta/flavors/rust/)                   | Optimized for RUST based projects                     |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/beta/flavors/salesforce/)       | Optimized for Salesforce based projects               |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://oxsecurity.github.io/megalinter/beta/flavors/swift/)                 | Optimized for SWIFT based projects                    |        47        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                |        52        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -74,7 +74,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- snakemake is called one time by identified file
+- snakemake is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -93,13 +93,17 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--max-threads MAX_THREADS]
                  [--set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
+                 [--set-resource-scopes RESOURCE=[global|local]
+                 [RESOURCE=[global|local] ...]]
                  [--default-resources [NAME=INT ...]]
                  [--preemption-default PREEMPTION_DEFAULT]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
                  [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
-                 [--keep-going] [--force] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--keep-going]
+                 [--rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]]
+                 [--force] [--forceall] [--forcerun [TARGET ...]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -124,9 +128,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--delete-all-output] [--delete-temp-output]
                  [--bash-completion] [--keep-incomplete] [--drop-metadata]
                  [--version] [--reason] [--gui [PORT]] [--printshellcmds]
-                 [--debug-dag] [--stats FILE] [--nocolor] [--quiet]
-                 [--print-compilation] [--verbose] [--force-use-threads]
-                 [--allow-ambiguity] [--nolock] [--ignore-incomplete]
+                 [--debug-dag] [--stats FILE] [--nocolor]
+                 [--quiet [{progress,rules,all} ...]] [--print-compilation]
+                 [--verbose] [--force-use-threads] [--allow-ambiguity]
+                 [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
@@ -134,7 +139,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
-                 [-T RESTART_TIMES] [--attempt ATTEMPT]
+                 [-T RETRIES] [--attempt ATTEMPT]
                  [--wrapper-prefix WRAPPER_PREFIX]
                  [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}]
                  [--default-remote-prefix DEFAULT_REMOTE_PREFIX]
@@ -169,7 +174,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
 Snakemake is a Python based language and execution environment for GNU Make-
 like workflows.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 EXECUTION:
@@ -214,9 +219,12 @@ EXECUTION:
   --cores [N], -c [N]   Use at most N CPU cores/jobs in parallel. If N is
                         omitted or 'all', the limit is set to the number of
                         available CPU cores. In case of cluster/cloud
-                        execution, this argument sets the number of total
-                        cores used over all jobs (made available to rules via
-                        workflow.cores). (default: None)
+                        execution, this argument sets the maximum number of
+                        cores requested from the cluster or cloud scheduler.
+                        (See https://snakemake.readthedocs.io/en/stable/snakef
+                        iles/rules.html#resources-remote-execution for more
+                        info)This number is available to rules via
+                        workflow.cores. (default: None)
   --jobs [N], -j [N]    Use at most N CPU cluster/cloud jobs in parallel. For
                         local execution this is an alias for --cores.
                         (default: None)
@@ -227,13 +235,17 @@ EXECUTION:
                         (default: 2)
   --resources [NAME=INT ...], --res [NAME=INT ...]
                         Define additional resources that shall constrain the
-                        scheduling analogously to threads (see above). A
+                        scheduling analogously to --cores (see above). A
                         resource is defined as a name and an integer value.
                         E.g. --resources mem_mb=1000. Rules can use resources
                         by defining the resource keyword, e.g. resources:
                         mem_mb=600. If now two rules require 600 of the
                         resource 'mem_mb' they won't be run in parallel by the
-                        scheduler. (default: None)
+                        scheduler. In cluster/cloud mode, this argument will
+                        also constrain the amount of resources requested from
+                        the server. (See https://snakemake.readthedocs.io/en/s
+                        table/snakefiles/rules.html#resources-remote-execution
+                        for more info) (default: None)
   --set-threads RULE=THREADS [RULE=THREADS ...]
                         Overwrite thread usage of rules. This allows to fine-
                         tune workflow parallelization. In particular, this is
@@ -243,12 +255,13 @@ EXECUTION:
                         positive integer, and RULE has to be the name of the
                         rule. (default: None)
   --max-threads MAX_THREADS
-                        Define a global maximum number of threads for any job.
-                        This can be helpful in a cluster/cloud setting, when
-                        you want to restrict the maximum number of requested
-                        threads without modifying the workflow definition or
-                        overwriting them invidiually with --set-threads.
-                        (default: None)
+                        Define a global maximum number of threads available to
+                        any rule. Rules requesting more threads (via the
+                        threads keyword) will have their values reduced to the
+                        maximum. This can be useful when you want to restrict
+                        the maximum number of threads without modifying the
+                        workflow definition or overwriting rules individually
+                        with --set-threads. (default: None)
   --set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]
                         Overwrite resource usage of rules. This allows to
                         fine-tune workflow resources. In particular, this is
@@ -265,6 +278,20 @@ EXECUTION:
                         positive integer, and NAME has to be the name of the
                         scattergather process defined via a scattergather
                         directive in the workflow. (default: None)
+  --set-resource-scopes RESOURCE=[global|local] [RESOURCE=[global|local] ...]
+                        Overwrite resource scopes. A scope determines how a
+                        constraint is reckoned in cluster execution. With
+                        RESOURCE=local, a constraint applied to RESOURCE using
+                        --resources will be considered the limit for each
+                        group submission. With RESOURCE=global, the constraint
+                        will apply across all groups cumulatively. By default,
+                        only `mem_mb` and `disk_mb` are considered local, all
+                        other resources are global. This may be modified in
+                        the snakefile using the `resource_scopes:` directive.
+                        Note that number of threads, specified via --cores, is
+                        always considered local. (See https://snakemake.readth
+                        edocs.io/en/stable/snakefiles/rules.html#resources-
+                        remote-execution for more info) (default: None)
   --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
@@ -346,6 +373,14 @@ EXECUTION:
                         should be used only as a last resort. (default: False)
   --keep-going, -k      Go on with independent jobs if a job fails. (default:
                         False)
+  --rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]
+                        Define what triggers the rerunning of a job. By
+                        default, all triggers are used, which guarantees that
+                        results are consistent with the workflow code and
+                        configuration. If you rather prefer the traditional
+                        way of just considering file modification dates, use '
+                        --rerun-trigger mtime'. (default: ['mtime', 'params',
+                        'input', 'software-env', 'code'])
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -616,8 +651,8 @@ UTILITIES:
   --version, -v         show program's version number and exit
 
 OUTPUT:
-  --reason, -r          Print the reason for each executed rule. (default:
-                        False)
+  --reason, -r          Print the reason for each executed rule (deprecated,
+                        always true now). (default: False)
   --gui [PORT]          Serve an HTML based user interface to the given
                         network and port e.g. 168.129.10.15:8000. By default
                         Snakemake is only available in the local network
@@ -634,8 +669,11 @@ OUTPUT:
   --stats FILE          Write stats about Snakefile execution in JSON format
                         to the given file. (default: None)
   --nocolor             Do not use a colored output. (default: False)
-  --quiet, -q           Do not output any progress or rule information.
-                        (default: False)
+  --quiet [{progress,rules,all} ...], -q [{progress,rules,all} ...]
+                        Do not output certain information. If used without
+                        arguments, do not output any progress or rule
+                        information. Defining 'all' results in no information
+                        being printed at all. (default: None)
   --print-compilation   Print the python representation of the workflow.
                         (default: False)
   --verbose             Print debugging output. (default: False)
@@ -703,7 +741,7 @@ BEHAVIOR:
   --max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND
                         Maximal number of job status checks per second,
                         default is 10, fractions allowed. (default: 10)
-  -T RESTART_TIMES, --restart-times RESTART_TIMES
+  -T RETRIES, --retries RETRIES, --restart-times RETRIES
                         Number of times to restart failing jobs (defaults to
                         0). (default: 0)
   --attempt ATTEMPT     Internal use only: define the initial value of the
@@ -1014,40 +1052,3 @@ override environment variables which override defaults.
 
 - PIP packages (Python):
   - [snakemake](https://pypi.org/project/snakemake)
-
-### Example success log
-
-```shell
-Results of snakemake linter (version 5.30.1)
-See documentation on https://megalinter.github.io/descriptors/snakemake_snakemake/
------------------------------------------------
-
-[SUCCESS] .automation/test/snakemake/snakemake_good_1.smk
-    Congratulations, your workflow is in a good condition!
-
-```
-
-### Example error log
-
-```shell
-Results of snakemake linter (version 5.30.1)
-See documentation on https://megalinter.github.io/descriptors/snakemake_snakemake/
------------------------------------------------
-
-[ERROR] .automation/test/snakemake/snakemake_bad_1.smk
-    Lints for rule simulation (line 11, .automation/test/snakemake/snakemake_bad_1.smk):
-        * No log directive defined:
-          Without a log directive, all output will be printed to the terminal. In
-          distributed environments, this means that errors are harder to discover.
-          In local environments, output of concurrent jobs will be mixed and become
-          unreadable.
-          Also see:
-          https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#log-files
-        * Specify a conda environment or container for each rule.:
-          This way, the used software for each specific step is documented, and the
-          workflow can be executed on any machine without prerequisites.
-          Also see:
-          https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#integrated-package-management
-          https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#running-jobs-in-containers
-
-```

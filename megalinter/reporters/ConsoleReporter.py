@@ -9,7 +9,8 @@ import urllib
 import chalk as c
 import terminaltables
 from megalinter import Reporter, config
-from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.utils_reporter import log_section_end
 
 
 class ConsoleReporter(Reporter):
@@ -55,7 +56,7 @@ class ConsoleReporter(Reporter):
         logging.info("")
         for table_line in table.table.splitlines():
             logging.info(table_line)
-        logging.info("")
+        logging.info(log_section_end("megalinter-file-listing"))
 
     def produce_report(self):
         table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors"]
@@ -129,7 +130,7 @@ class ConsoleReporter(Reporter):
                     f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
                 )
             else:
-                build_version = os.environ.get("BUILD_VERSION", "v5")
+                build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
                     "v5"
                     if "v5" in build_version

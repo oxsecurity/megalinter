@@ -17,12 +17,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: "12"
       - name: Install dependencies
-        run: cd mega-linter-runner && npm ci && npm link
+        run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
       - name: Run tests
         run: cd mega-linter-runner && npm run test

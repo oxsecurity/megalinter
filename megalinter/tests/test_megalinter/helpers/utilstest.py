@@ -14,10 +14,14 @@ from distutils.dir_util import copy_tree
 
 from git import Repo
 from megalinter import Megalinter, config, utils
+from megalinter.constants import (
+    DEFAULT_DOCKER_WORKSPACE_DIR,
+    DEFAULT_REPORT_FOLDER_NAME,
+)
 
 REPO_HOME = (
-    "/tmp/lint"
-    if os.path.isdir("/tmp/lint")
+    DEFAULT_DOCKER_WORKSPACE_DIR
+    if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
     else os.path.dirname(os.path.abspath(__file__))
     + os.path.sep
     + ".."
@@ -33,6 +37,12 @@ REPO_HOME = (
 # Define env variables before any test case
 def linter_test_setup(params=None):
     for key in [
+        "APPLY_FIXES",
+        "CLEAR_REPORT_FOLDER",
+        "ENABLE",
+        "ENABLE_LINTERS",
+        "DISABLE",
+        "DISABLE_LINTERS",
         "MEGALINTER_CONFIG",
         "EXTENDS",
         "FILTER_REGEX_INCLUDE",
@@ -40,9 +50,16 @@ def linter_test_setup(params=None):
         "IGNORE_GITIGNORED_FILES",
         "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
+        "UPDATED_SOURCES_REPORTER",
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
         "DISABLE_ERRORS",
+        "SARIF_REPORTER",
+        "LOG_FILE",
+        "REPORT_OUTPUT_FOLDER",
+        "OUTPUT_FOLDER",
+        "REPOSITORY_SEMGREP_RULESETS_TYPE",
+        "REPOSITORY_SEMGREP_RULESETS",
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -57,8 +74,8 @@ def linter_test_setup(params=None):
     )
     # Root path of default rules
     root_dir = (
-        "/tmp/lint"
-        if os.path.isdir("/tmp/lint")
+        DEFAULT_DOCKER_WORKSPACE_DIR
+        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
         else os.path.relpath(
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
@@ -73,13 +90,20 @@ def linter_test_setup(params=None):
         )
     config.init_config(workspace)
     # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/megalinter-reports\/")
     # TAP Output deactivated by default
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
     config.set_value("PLUGINS", "")
+    config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
+    config.set_value("CLEAR_REPORT_FOLDER", "true")
+    if params.get("additional_test_variables"):
+        for env_var_key, env_var_value in params.get(
+            "additional_test_variables"
+        ).items():
+            config.set_value(env_var_key, env_var_value)
     # Root path of files to lint
     config.set_value(
         "DEFAULT_WORKSPACE",
@@ -98,7 +122,7 @@ def linter_test_setup(params=None):
 
 
 def print_output(output):
-    if config.exists("OUTPUT_DETAILS") and config.get("OUTPUT_DETAILS") == "detailed":
+    if config.exists("OUTPUT_DETAIL") and config.get("OUTPUT_DETAIL") == "detailed":
         for line in output.splitlines():
             print(line)
 
@@ -125,8 +149,11 @@ def call_mega_linter(env_vars):
 
 
 def test_linter_success(linter, test_self):
-    if linter.disabled is True or "all" in getattr(
-        linter, "descriptor_flavors_exclude", []
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+        # todo: remove when bug is fixed https://github.com/accurics/terrascan/issues/1036
+        or linter.linter_name == "terrascan"
     ):
         raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
@@ -134,7 +161,7 @@ def test_linter_success(linter, test_self):
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
-        workspace = manage_copy_sources(workspace)
+    workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
@@ -142,9 +169,11 @@ def test_linter_success(linter, test_self):
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": r"(good)",
         "TEXT_REPORTER": "true",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
+        "PRINT_ALL_FILES": True,
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
@@ -180,15 +209,17 @@ def test_linter_success(linter, test_self):
 
 
 def test_linter_failure(linter, test_self):
-    if linter.disabled is True or "all" in getattr(
-        linter, "descriptor_flavors_exclude", []
+    if (
+        (linter.disabled is True)
+        or (linter.linter_name in ["dustilock", "syft"])  # ugly
+        or ("all" in getattr(linter, "descriptor_flavors_exclude", []))
     ):
-        raise unittest.SkipTest("Linter has been disabled")
+        raise unittest.SkipTest("Linter or test has been disabled")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
-        workspace = manage_copy_sources(workspace)
+    workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
@@ -201,6 +232,7 @@ def test_linter_failure(linter, test_self):
         "FILTER_REGEX_INCLUDE": r"(bad)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
@@ -271,8 +303,8 @@ def manage_copy_sources(workspace):
 # Copy logs for documentation
 def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     updated_sources_dir = (
-        f"{REPO_HOME}{os.path.sep}report{os.path.sep}updated_dev_sources{os.path.sep}"
-        f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}reports"
+        f"{REPO_HOME}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}updated_dev_sources{os.path.sep}"
+        f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
     )
     target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
         ".log", ".txt"
@@ -303,8 +335,8 @@ def test_get_linter_version(linter, test_self):
     )
     # Write in linter-versions.json
     root_dir = (
-        "/tmp/lint"
-        if os.path.isdir("/tmp/lint")
+        DEFAULT_DOCKER_WORKSPACE_DIR
+        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
         else os.path.relpath(
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
@@ -368,8 +400,8 @@ def test_get_linter_help(linter, test_self):
     )
     # Write in linter-helps.json
     root_dir = (
-        "/tmp/lint"
-        if os.path.isdir("/tmp/lint")
+        DEFAULT_DOCKER_WORKSPACE_DIR
+        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
         else os.path.relpath(
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
@@ -384,7 +416,7 @@ def test_get_linter_help(linter, test_self):
             .replace("\t", "  ")
             .replace("\\r", "")
             .replace("\r", "")
-            .replace(r"(\[..m)", "") # pylint: disable=invalid-character-esc
+            .replace(r"(\[..m)", "")  # pylint: disable=invalid-character-esc
             .replace(r"(\[.m)", "")  # pylint: disable=invalid-character-esc
             .rstrip()
         )
@@ -418,16 +450,16 @@ def test_linter_report_tap(linter, test_self):
         f"expected-{linter.descriptor_id}.tap",
     ] + reports_with_extension
     for file_nm in list(dict.fromkeys(possible_reports)):
-        if os.path.isfile(f"{workspace}{os.path.sep}reports{os.path.sep}{file_nm}"):
-            expected_file_name = (
-                f"{workspace}{os.path.sep}reports{os.path.sep}{file_nm}"
-            )
+        if os.path.isfile(
+            f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
+        ):
+            expected_file_name = f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
     if expected_file_name == "":
         raise unittest.SkipTest(
-            f"Expected report not defined in {workspace}{os.path.sep}reports"
+            f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
         )
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "OUTPUT_FORMAT": "tap",
@@ -486,6 +518,70 @@ def test_linter_report_tap(linter, test_self):
                     f"{str(identical_nb)} TAP lines on the total {str(len(expected_lines))} "
                     f"remain perfectly identical :)"
                 )
+
+
+# Test that the linter provides a SARIF output if it is configured like that
+def test_linter_report_sarif(linter, test_self):
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+        or linter.can_output_sarif is False
+    ):
+        raise unittest.SkipTest("SARIF is not configured for this linter")
+    test_folder = linter.test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    # Call linter
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+    env_vars = {
+        "DEFAULT_WORKSPACE": workspace,
+        "SARIF_REPORTER": "true",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
+        "ENABLE_LINTERS": linter.name,
+        "LOG_LEVEL": "DEBUG",
+        "LOG_FILE": "megalinter.log",
+    }
+    env_vars.update(linter.test_variables)
+    mega_linter, _output = call_mega_linter(env_vars)
+    test_self.assertTrue(
+        len(mega_linter.linters) > 0, "Linters have been created and run"
+    )
+    # Check SARIF file has been produced
+    tmp_sarif_file_name = (
+        f"{tmp_report_folder}{os.path.sep}sarif{os.path.sep}{linter.name}.sarif"
+    )
+    test_self.assertTrue(
+        os.path.isfile(tmp_sarif_file_name),
+        f"SARIF report not found {tmp_sarif_file_name}",
+    )
+    # Check SARIF file contains appropriate format and runs
+    with open(tmp_sarif_file_name, "r", encoding="utf-8") as json_file:
+        sarif_content = json.load(json_file)
+    test_self.assertTrue(
+        "runs" in sarif_content,
+        f'Missing property "runs" in {tmp_sarif_file_name}',
+    )
+    test_self.assertTrue(
+        len(sarif_content["runs"]) > 0,
+        f"Empty runs list in {tmp_sarif_file_name}",
+    )
+    # Check number of errors is ok
+    for linter in mega_linter.linters:
+        if (
+            linter.output_sarif is True
+            and linter.cli_lint_mode != "file"
+            and linter.name
+            not in [
+                "REPOSITORY_DUSTILOCK",
+                "REPOSITORY_SYFT",
+            ]
+        ):
+            test_self.assertTrue(
+                linter.total_number_errors > 1,
+                f"Missing multiple sarif errors in {linter.name}"
+                + f" ({linter.total_number_errors})\n"
+                + f"SARIF:{str(sarif_content)}",
+            )
 
 
 def assert_is_skipped(skipped_item, output, test_self):

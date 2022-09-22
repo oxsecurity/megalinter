@@ -7,26 +7,30 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits)
+
 eslint requires a custom configuration file applicable to your project.
 
 You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.12.0**
+- Version in MegaLinter: **8.23.1**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
+  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://eslint.org/docs/rules/){target=_blank}
 
 [![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/beta/configuration/#apply-fixes)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -49,24 +53,24 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint)                              |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7494"></iframe>                         |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint)                       |                                              [Visit Web Site](https://github.com/roadhump/SublimeLinter-eslint){target=_blank}                                              |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                             |                                                        [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                         |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                             [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint)                              |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7494"></iframe>                         |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint)                       |                                              [Visit Web Site](https://github.com/roadhump/SublimeLinter-eslint){target=_blank}                                              |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                             |                                                        [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                         |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                             [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        97        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                                           | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)         | Default MegaLinter Flavor                             |       107        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -79,7 +83,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint is called once with the list of files as arguments
+- eslint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -178,31 +182,4 @@ Miscellaneous:
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-
-### Example success log
-
-```shell
-Results of eslint linter (version 7.15.0)
-See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
------------------------------------------------
-
-[SUCCESS] .automation/test/typescript/typescript_good_1.ts
-    
-
-```
-
-### Example error log
-
-```shell
-Results of eslint linter (version 7.15.0)
-See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
------------------------------------------------
-
-[ERROR] .automation/test/typescript/typescript_bad_1.ts
-    
-    .automation/test/typescript/typescript_bad_1.ts
-      5:39  error  Parsing error: Unterminated regular expression literal
-    
-    ✖ 1 problem (1 error, 0 warnings)
-
-```
+  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)

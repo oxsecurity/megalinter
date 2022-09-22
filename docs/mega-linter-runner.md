@@ -10,14 +10,14 @@
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?maxAge=2592000)](https://GitHub.com/oxsecurity/megalinter/stargazers/)
 <!-- readme-header-start -->
 
 <!-- readme-header-end -->
 
 This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ## Installation
 
@@ -47,10 +47,31 @@ Example:
 npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+### Pre-commit hook
+
+You can run mega-linter-runner as a [pre-commit](https://pre-commit.com/) hook
+
+Sample `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/oxsecurity/megalinter
+    rev: v6.8.0 # Git tag specifying the hook, not mega-linter-runner, version
+    hooks:
+      - id: megalinter-incremental # Faster, less thorough
+        stages:
+          - commit
+      - id: megalinter-full # Slower, more thorough
+        stages:
+          - push
+```
+
+See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
+
 ## Usage
 
 ```shell
-mega-linter-runner [OPTIONS]
+mega-linter-runner [OPTIONS] [FILES]
 ```
 
 The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
@@ -66,6 +87,8 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
+| `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
+| `--remove-container`   | Remove MegaLinter Docker container when done                                                                       | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
@@ -83,11 +106,15 @@ mega-linter-runner -p myFolder --fix
 mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+```shell
+mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+```
+
 ## Configuration
 
-You can define generate a ready to use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
+![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 <!-- linters-section-start -->
 

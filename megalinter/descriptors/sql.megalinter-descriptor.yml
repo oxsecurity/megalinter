@@ -8,6 +8,7 @@ linters:
   # SQL-LINT
   - linter_name: sql-lint
     linter_url: https://github.com/joereynolds/sql-lint
+    linter_repo: https://github.com/joereynolds/sql-lint
     linter_rules_url: https://github.com/joereynolds/sql-lint#checks
     linter_rules_configuration_url: https://sql-lint.readthedocs.io/en/latest/files/configuration.html
     config_file_name: .sql-config.json
@@ -31,7 +32,11 @@ linters:
     linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
     linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration.html
     config_file_name: .sqlfluff
+    active_only_if_file_found:
+      - .sqlfluff
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "L:(.*)P:(.*)"
     cli_lint_extra_args:
       - lint
     cli_config_arg_name: "--config"
@@ -62,9 +67,24 @@ linters:
     examples:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
+    downgraded_version: true
     install:
+      apk:
+        - icu-libs
+        - libcurl
+        - libintl
+        - libssl1.1
+        - libstdc++
+        - lttng-ust-dev
+        - zlib
+        - zlib-dev
       dockerfile:
-        - RUN dotnet tool install --global TSQLLint
+        - |
+          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+              && chmod +x dotnet-install.sh \
+              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - RUN dotnet tool install --global --version 1.14.5 TSQLLint
     ide:
       vscode:
         - name: TSQL Lint

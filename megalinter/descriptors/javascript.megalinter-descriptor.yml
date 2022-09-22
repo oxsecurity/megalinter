@@ -6,8 +6,10 @@ file_extensions:
   - ".js"
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: JAVASCRIPT_ES
+    can_output_sarif: true
     file_extensions:
       - ".js"
       - ".vue"
@@ -21,6 +23,7 @@ linters:
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
@@ -33,9 +36,16 @@ linters:
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --format
+      - "@microsoft/eslint-formatter-sarif"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
@@ -57,6 +67,7 @@ linters:
         - babel-eslint
         - "@babel/core"
         - "@babel/eslint-parser"
+        - "@microsoft/eslint-formatter-sarif"
     ide:
       atom:
         - name: linter-eslint
@@ -158,10 +169,9 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - standard
     ide:
       atom:
         - name: linter-js-standard
@@ -182,8 +192,8 @@ linters:
         - name: StandardFormat
           url: https://packagecontrol.io/packages/StandardFormat
       vscode:
-        - name: vscode-standardjs
-          url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
+        - name: vscode-standard
+          url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
@@ -197,7 +207,7 @@ linters:
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"

@@ -37,6 +37,7 @@ skip_list:
   - "command-instead-of-module"
   - "yaml"
   - "fqcn-builtins"
+  - "name"
 
 ##################
 # Tags to follow #

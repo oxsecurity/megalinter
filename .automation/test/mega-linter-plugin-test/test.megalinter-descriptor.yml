@@ -1,13 +1,12 @@
 descriptor_id: TEST
 descriptor_type: format
 file_extensions:
-  - ".jsonc"
+  - .jsonc
 linters:
-  # JSONLINT
-  - linter_name: jsonlint
-    linter_url: https://github.com/zaach/jsonlint
-    examples:
-      - "jsonlint myfile.jsonc"
+  - examples:
+      - jsonlint myfile.jsonc
     install:
       dockerfile:
-        - RUN npm install jsonlint -g && echo "This is my test MegaLinter plugin !"
+        - RUN npm install jsonlint -g && echo "This is my test MegaLinter plugin!"
+    linter_name: jsonlint
+    linter_url: https://github.com/zaach/jsonlint

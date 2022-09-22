@@ -1,5 +1,0 @@
-{
-  "retryOn429": true,
-  "retryCount": 10,
-  "ignorePatterns": ["(github\\.com/megalinter/megalinter/tree/main/docs)"]
-}

@@ -7,9 +7,15 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
+
+TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
+
+You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
+
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.995**
+- Version in MegaLinter: **2.1.223**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -18,8 +24,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -40,16 +46,17 @@ Use checkov in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                                                                 Install                                                                                 |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Checkov](https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Bridgecrew.checkov){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Checkov](https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Bridgecrew.checkov){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                       | Description                            | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:---------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)       | Default MegaLinter Flavor              |       107        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/beta/flavors/security/)   | Optimized for security                 |        21        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/beta/flavors/terraform/) | Optimized for TERRAFORM based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -61,7 +68,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- checkov is called one time by identified file
+- checkov is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -77,18 +84,19 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
+               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
-               [--quiet] [--compact]
-               [--framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
-               [--skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
+               [--include-all-checkov-policies] [--quiet] [--compact]
+               [--framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
                [--prisma-api-url PRISMA_API_URL] [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
-               [-b BRANCH] [--skip-download] [--no-guide]
-               [--skip-suppressions] [--skip-policy-download] [--skip-fixes]
+               [-b BRANCH] [--skip-download] [--use-enforcement-rules]
+               [--no-guide] [--skip-suppressions] [--skip-policy-download]
+               [--skip-fixes]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
@@ -96,18 +104,30 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
+               [--output-baseline-as-skipped]
                [--skip-cve-package SKIP_CVE_PACKAGE]
+               [--policy-metadata-filter POLICY_METADATA_FILTER]
+               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
+               [--enable-secret-scan-all-files]
+               [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
+               [--summary-position {bottom,top}]
 
 Infrastructure as code static analysis
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v, --version         version
   -d DIRECTORY, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
   --add-check           Generate a new check via CLI prompt
-  -f FILE, --file FILE  IaC file(can not be used together with --directory)
+  -f FILE, --file FILE  File to scan (can not be used together with
+                        --directory). With this option, Checkov will attempt
+                        to filter the runners based on the file type. For
+                        example, if you specify a ".tf" file, only the
+                        terraform and secrets frameworks will be included. You
+                        can further limit this (e.g., skip secrets) by using
+                        the --skip-framework argument.
   --skip-path SKIP_PATH
                         Path (file or directory) to skip, using regular
                         expression logic, relative to current working
@@ -123,7 +143,7 @@ optional arguments:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
+  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
@@ -133,13 +153,26 @@ optional arguments:
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
-  --quiet               in case of CLI output, display only failed checks
+  --include-all-checkov-policies
+                        When running with an API key, Checkov will omit any
+                        policies that do not exist in the Bridgecrew or Prisma
+                        Cloud platform, except for local custom policies
+                        loaded with the --external-check flags. Use this key
+                        to include policies that only exist in Checkov in the
+                        scan. Note that this will make the local CLI results
+                        different from the results you see in the platform.
+                        Has no effect if you are not using an API key. Use the
+                        --check option to explicitly include checks by ID even
+                        if they are not in the platform, without using this
+                        flag.
+  --quiet               in case of CLI output, display only failed checks.
+                        Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
-  --framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
-                        filter scan to run only on specific infrastructure
-                        code frameworks
-  --skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
-                        filter scan to skip specific infrastructure code
+  --framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
+                        Filter scan to run only on specific infrastructure
+                        code frameworks [env var: CKV_FRAMEWORK]
+  --skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
+                        Filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
   -c CHECK, --check CHECK
@@ -150,14 +183,18 @@ optional arguments:
                         HIGH, CRITICAL). If you use a severity, then all
                         checks equal to or above the lowest severity in the
                         list will be included. This option can be combined
-                        with --skip-check. If it is, priority is given to
-                        checks explicitly listed by ID or wildcard over checks
-                        listed by severity. For example, if you use --check
-                        CKV_123 and --skip-check LOW, then CKV_123 will run
-                        even if it is a LOW severity. In the case of a tie
-                        (e.g., --check MEDIUM and --skip-check HIGH for a
-                        medium severity check), then the check will be
-                        skipped. [env var: CKV_CHECK]
+                        with --skip-check. If it is, then the logic is to
+                        first take all checks that match this list, and then
+                        remove all checks that match the skip list. For
+                        example, if you use --check CKV_123 and --skip-check
+                        LOW, then CKV_123 will not run if it is a LOW
+                        severity. Similarly, if you use --check CKV_789
+                        --skip-check MEDIUM, then CKV_789 will run if it is a
+                        HIGH severity. If you use a check ID here along with
+                        an API key, and the check is not part of the BC / PC
+                        platform, then the check will still be run (see
+                        --include-all-checkov-policies for more info). [env
+                        var: CKV_CHECK]
   --skip-check SKIP_CHECK
                         Checks to skip; any other checks will not be run.
                         Enter one or more items separated by commas. Each item
@@ -237,6 +274,26 @@ optional arguments:
                         policies and suppressions if using an API token. Note:
                         it will prevent BC platform IDs from being available
                         in Checkov.
+  --use-enforcement-rules
+                        Use the Enforcement rules configured in the platform
+                        for hard / soft fail logic. With this option, the
+                        enforcement rule matching this repo, or the default
+                        rule if there is no match, will determine this
+                        behavior: any check with a severity below the selected
+                        rule's soft-fail threshold will be skipped; any check
+                        with a severity equal to or greater than the rule's
+                        hard-fail threshold will be part of the hard-fail
+                        list, and any check in between will be part of the
+                        soft-fail list. For example, if the given enforcement
+                        rule has a hard-fail value of HIGH and a soft-fail
+                        value of MEDIUM,this is the equivalent of using the
+                        flags `--skip-check LOW --hard-fail-on HIGH`. You can
+                        use --check, --skip-check, --soft-fail, --soft-fail-
+                        on, or --hard-fail-on to override portions of an
+                        enforcement rule. Note, however, that the logic of
+                        applying the --check list and then the --skip-check
+                        list (as described above under --check) still applies
+                        here. Requires a BC or PC platform API key.
   --no-guide            Deprecated - use --skip-download
   --skip-suppressions   Deprecated - use --skip-download
   --skip-policy-download
@@ -257,7 +314,8 @@ optional arguments:
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]
   --evaluate-variables EVALUATE_VARIABLES
-                        evaluate the values of variables and locals
+                        evaluate the values of variables and locals [env var:
+                        CKV_EVAL_VARS]
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
                         Custom CA certificate (bundle) file [env var:
                         BC_CA_BUNDLE]
@@ -279,10 +337,31 @@ optional arguments:
                         results with a known baseline. Report will include
                         only failed checks that are new with respect to the
                         provided baseline
+  --output-baseline-as-skipped
+                        output checks that are skipped due to baseline file
+                        presence
   --skip-cve-package SKIP_CVE_PACKAGE
                         filter scan to run on all packages but a specific
                         package identifier (denylist), You can specify this
                         argument multiple times to skip multiple packages
+  --policy-metadata-filter POLICY_METADATA_FILTER
+                        comma separated key:value string to filter policies
+                        based on Prisma Cloud policy metadata. See https://pri
+                        sma.pan.dev/api/cloud/cspm/policy#operation/get-
+                        policy-filters-and-options for information on allowed
+                        filters. Format: policy.label=test,cloud.type=aws
+  --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
+                        not in use [env var: CKV_SECRETS_SCAN_FILE_TYPE]
+  --enable-secret-scan-all-files
+                        enable secret scan for all files [env var:
+                        CKV_SECRETS_SCAN_ENABLE_ALL]
+  --black-list-secret-scan BLACK_LIST_SECRET_SCAN
+                        black file list to filter out from the secret scanner
+                        [env var: CKV_SECRETS_SCAN_BLACK_LIST]
+  --summary-position {bottom,top}
+                        Chose whether the summary will be appended on top
+                        (before the checks results) or on bottom (after check
+                        results), default is on top.
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
@@ -297,8 +376,8 @@ override config file values which override defaults.
 
 - Dockerfile commands :
 ```dockerfile
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
+    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 ```
 

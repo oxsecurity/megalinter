@@ -6,42 +6,794 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
-Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
+
+- Document the `-f` argument to mega-linter-runner ([#1895](https://github.com/oxsecurity/megalinter/issues/1895))
+- Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
+- Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
+- Improve support for devcontainers by using Python base image
+  - Fixed Python version in devcontainer from 3.9 -> 3.10
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.65.1** on 2022-09-20
+  - [checkov](https://www.checkov.io/) from 2.1.213 to **2.1.214** on 2022-09-20
+  - [semgrep](https://semgrep.dev/) from 0.113.0 to **0.114.0** on 2022-09-20
+  - [syft](https://github.com/anchore/syft) from 0.56.0 to **0.57.0** on 2022-09-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.0 to **6.6.1** on 2022-09-21
+  - [djlint](https://djlint.com/) from 1.16.0 to **1.17.0** on 2022-09-21
+  - [checkov](https://www.checkov.io/) from 2.1.214 to **2.1.219** on 2022-09-21
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.2 to **0.10.3** on 2022-09-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.0 to **6.10.1** on 2022-09-21
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.40.0 to **0.40.1** on 2022-09-21
+  - [stylelint](https://stylelint.io) from 14.12.0 to **14.12.1** on 2022-09-21
+  - [djlint](https://djlint.com/) from 1.17.0 to **1.17.1** on 2022-09-21
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.2 to **3.10.3** on 2022-09-21
+  - [checkov](https://www.checkov.io/) from 2.1.219 to **2.1.223** on 2022-09-21
+<!-- linter-versions-end -->
+
+## [v6.10.0] - 2022-09-19
+
+- Add [git-lfs](https://git-lfs.github.com/) in Docker image to handle large files in git repositories
+
+- MegaLinter Docker images size improvements
+  - Remove NPM cache
+  - Remove Cargo cache
+  - Remove rustup when clippy is not embedded in the image
+  - Remove npm packages useless files
+
+- Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.5.2 to **6.6.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.64.1 to **0.65.0**
+  - [checkov](https://www.checkov.io/) from 2.1.201 to **2.1.213**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.1 to **6.10.0**
+  - [djlint](https://djlint.com/) from 1.12.3 to **1.16.0**
+  - [eslint](https://eslint.org) from 8.23.0 to **8.23.1**
+  - [kics](https://www.kics.io) from 1.5.15 to **1.6.0**
+  - [pylint](https://www.pylint.org) from 2.15.2 to **2.15.3**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.1 to **0.10.2**
+  - [semgrep](https://semgrep.dev/) from 0.112.1 to **0.113.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.8 to **2.13.9**
+  - [stylelint](https://stylelint.io) from 14.11.0 to **14.12.0**
+  - [syft](https://github.com/anchore/syft) from 0.55.0 to **0.56.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.10 to **0.38.12**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.9 to **0.38.10**
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.27.1 to **1.28.0**
+
+## [v6.9.1] - 2022-09-11
+
+- Linters
+  - Add python type checker [pyright](https://github.com/microsoft/pyright), by Microsoft
+  - New linters with available SARIF output for [SARIF Reporter](https://oxsecurity.github.io/megalinter/latest/reporters/SarifReporter/)
+    - [ansible-lint](https://oxsecurity.github.io/megalinter/latest/descriptors/ansible_ansible_lint/)
+    - [shellcheck](https://github.com/koalaman/shellcheck) thanks to [shellcheck-sarif](https://crates.io/crates/shellcheck-sarif)
+  - Use `list_of_files` Cli lint mode for [checkstyle](https://oxsecurity.github.io/megalinter/latest/descriptors/java_checkstyle/), to have unique SARIF output and improve performances
+  - Use `list_of_files` Cli lint mode for [golangci-lint](https://oxsecurity.github.io/megalinter/latest/descriptors/go_golangci_lint/) and [revive](https://oxsecurity.github.io/megalinter/latest/descriptors/go_revive/), to improve performances
+  - Reactivate [snakefmt](https://oxsecurity.github.io/megalinter/latest/descriptors/snakemake_snakefmt/)
+
+- Core
+  - Improve build performances and docker images sizes (reduce from 117 to 36 layers)
+    - Use BUILDKIT
+    - Join RUN instructions
+    - Optimize core Dockerfile items
+    - Clean npm, python and cargo caches
+  - Create a venv for each python-based linter to avoid issues with dependencies
+  - Fix broken link to documentation when using v6
+
+- Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.2 to **6.5.2**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.2 to **0.64.1**
+  - [checkov](https://www.checkov.io/) from 2.1.183 to **2.1.201**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.08.03 to **2022.09.08**
+  - [djlint](https://djlint.com/) from 1.12.1 to **1.12.3**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.2 to **8.12.0**
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0**
+  - [ktlint](https://ktlint.github.io) from 0.47.0 to **0.47.1**
+  - [phpstan](https://phpstan.org/) from 1.8.4 to **1.8.5**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.39.0 to **0.40.0**
+  - [pylint](https://www.pylint.org) from 2.15.0 to **2.15.2**
+  - [semgrep](https://semgrep.dev/) from 0.103.0 to **0.112.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.0 to **1.3.1**
+  - [standard](https://standardjs.com/) from 15.0.1 to **17.0.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
+
+_Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough._
+
+## [v6.8.0] - 2022-09-04
+
+- Run MegaLinter pre-commit hooks serially (#1826).
+- Replace deprecated StandardJS VS Code extension with the newer official version
+- When SARIF_REPORTER is active, use [sarif-fmt](https://crates.io/crates/sarif-fmt) to convert SARIF into text for console and text reporters ([#1822](https://github.com/oxsecurity/megalinter/issues/1822)).
+- Count checkstyle errors ([#1820](https://github.com/oxsecurity/megalinter/pull/1820))
+
+- Linter versions upgrades
+  - [black](https://black.readthedocs.io/en/stable/) from 22.6.0 to **22.8.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.63.0 to **0.63.2**
+  - [checkov](https://www.checkov.io/) from 2.1.160 to **2.1.183**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.2 to **10.3.3**
+  - [djlint](https://djlint.com/) from 1.12.0 to **1.12.1**
+  - [kics](https://www.kics.io) from 1.5.14 to **1.5.15**
+  - [phpstan](https://phpstan.org/) from 1.8.2 to **1.8.4**
+  - [rubocop](https://rubocop.org/) from 1.35.1 to **1.36.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.13.0 to **7.14.0**
+  - [syft](https://github.com/anchore/syft) from 0.54.0 to **0.55.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.8 to **0.38.9**
+
+## [v6.7.1] - 2022-08-28
+
+- Fix Azure Comments reporter: Use BuildId to build artifacts url
+- Fix actionlint install command
+
+## [v6.7.0] - 2022-08-28
+
+- Linters
+  - Add [PMD](https://pmd.github.io/latest/) java linter
+
+- [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) integration enhancements
+  - Update [installation instructions](https://oxsecurity.github.io/megalinter/latest/installation/#azure-pipelines)
+  - Console reporter: manage collapsible groups for easier display & navigation in job logs (requires CI=true and TF_BUILD=true sent as env variables)
+  - Azure comments reporter (see [documentation](https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/))
+
+- Performances improvements
+  - When running linters in parallel, run in the same process only the linters from same descriptor and that can update the same sources (to avoid concurrency). Other linters can be run independently.
+  - Define `linter_speed` of linter descriptors (default 3). Can be from 1 (super slow) to 5 (super fast). This is used to optimize the processing order of linters.
+
+- Fixes
+  - Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
+  - Match regex without `workspace` and `sub_directory`
+  - Remove config variables that are not applicable to linters analyzing all files or all other linters files
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0**
+  - [checkov](https://www.checkov.io/) from 2.1.139 to **2.1.160**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.8.0 to **6.8.1**
+  - [djlint](https://djlint.com/) from 1.11.0 to **1.12.0**
+  - [eslint](https://eslint.org) from 8.22.0 to **8.23.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.11.0 to **8.11.2**
+  - [golangci-lint](https://golangci-lint.run/) from 1.48.0 to **1.49.0**
+  - [luacheck](https://luacheck.readthedocs.io) from 0.26.1 to **1.0.0**
+  - [pylint](https://www.pylint.org) from 2.14.5 to **2.15.0**
+  - [rubocop](https://rubocop.org/) from 1.35.0 to **1.35.1**
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.3 to **5.2.4**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.1 to **7.13.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.7 to **1.2.8**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.7 to **0.38.8**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.35.0 to **0.39.3**
+
+## [v6.6.0] - 2022-08-21
+
+- Fix flavors suggestions to ignore linters not relevant for such flavor ([#1746](https://github.com/oxsecurity/megalinter/issues/1746))
+- Update pre-commit hooks from v5 to v6 ([#1755](https://github.com/oxsecurity/megalinter/issues/1755)).
+- Fix version in URL in logs produced by reporters
+- Add Makefile linter within python flavor ([#1760](https://github.com/oxsecurity/megalinter/issues/1760))
+- Set DEFAULT_WORKSPACE as git safe directory per default [#1766](https://github.com/oxsecurity/megalinter/issues/1766)
+- Improve documentation for TAP_REPORTER
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.15 to **1.6.16**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.5 to **0.62.0**
+  - [checkov](https://www.checkov.io/) from 2.1.127 to **2.1.139**
+  - [cpplint](https://github.com/cpplint/cpplint) from 1.6.0 to **1.6.1**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.6.1 to **6.8.0**
+  - [djlint](https://djlint.com/) from 1.9.5 to **1.11.0**
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.1 to **2.4.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.3 to **8.11.0**
+  - [kics](https://www.kics.io) from 1.5.13 to **1.5.14**
+  - [ktlint](https://ktlint.github.io) from 0.46.1 to **0.47.0**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.1 to **0.32.2**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.7 to **2.13.8**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.1 to **1.3.0**
+  - [stylelint](https://stylelint.io) from 14.10.0 to **14.11.0**
+  - [syft](https://github.com/anchore/syft) from 0.53.4 to **0.54.0**
+
+## [v6.5.0] - 2022-08-15
+
+- npm-groovy-lint: Use Cli lint mode `list_of_files` for much better performances
+- Disable proselint by default if .proselintrc file is not found
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.121 to **2.1.127**
+  - [eslint](https://eslint.org) from 8.21.0 to **8.22.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.2 to **8.10.3**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.5.0 to **10.1.0**
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.0.0 to **6.1.0**
+
+## [v6.4.0] - 2022-08-12
+
+- Add REPOSITORY_CHECKOV in all flavors
+
+- New config variables
+  - **MEGALINTER_FILES_TO_LINT**: Comma-separated list of files to analyze. Using this variable will bypass other file listing methods ([#808](https://github.com/oxsecurity/megalinter/issues/808))
+  - **SKIP_CLI_LINT_MODES**: Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.
+
+- mega-linter-runner:
+  - Allow `MEGALINTER_FILES_TO_LINT` to be sent as positional arguments
+  - New argument `--filesonly` that sends `SKIP_CLI_LINT_MODES=project`
+  - Example: `mega-linter-runner --flavor python --release beta --filesonly megalinter/config.py megalinter/flavor_factory.py megalinter/MegaLinter.py`
+
+- Fixes
+  - Fix SARIF when a run is missing a results list ([#1725](https://github.com/oxsecurity/megalinter/issues/1725))
+  - Fix missing quotes for Powershell script analyzer ([#1728](https://github.com/oxsecurity/megalinter/issues/1728))
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.4 to **0.61.5**
+  - [checkov](https://www.checkov.io/) from 2.1.100 to **2.1.121**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.62 to **0.1.63**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.5.0 to **6.6.1**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.10.1 to **8.10.1**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.5 to **7.2.6**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.3 to **0.39.0**
+  - [rubocop](https://rubocop.org/) from 1.33.0 to **1.35.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.12.0 to **7.12.1**
+  - [stylelint](https://stylelint.io) from 14.9.1 to **14.10.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.6 to **1.2.7**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.6 to **0.38.7**
+
+## [v6.3.0] - 2022-08-07
+
+- Linters
+
+  - Add REPOSITORY_CHECKOV to benefit from all checks and not only terraform ones. TERRAFORM_CHECKOV will be deprecated in a next major version
+  - Add [djlint](https://www.djlint.com/) (HTML_DJLINT) to lint HTML files (html, django, jinja, nunjucks, handlebars, golang, angular)
+  - Upgrade jsonlint to use maintained package @prantlf/jsonlint]([<https://www.npmjs.com/package/@prantlf/jsonlint>) + use cli_lint_mode `list_of_files` to improve performances
+
+- Core
+  - Support for automatic removal of Docker container when linting is finished
+  - Fix SARIF when endColumn is 0 ([#1702](https://github.com/oxsecurity/megalinter/issues/1702))
+  - Use dynamic REPORT_FOLDER value for output files for SALESFORCE and COPYPASTE descriptors
+  - Fix collapsible sections in Gitlab console logs
+  - Manage ignore files (like `.secretlintignore` or `.eslintignore`)
+    - Define ignore argument for client in descriptors
+    - Define ignore file name in descriptors (overridable with _IGNORE_FILE_NAME at runtime)
+    - Update documentation generation to take in account this new configuration
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.83 to **2.1.98**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.25 to **2022.08.03**
+  - [eslint](https://eslint.org) from 8.20.0 to **8.21.0**
+  - [flake8](https://flake8.pycqa.org) from 5.0.1 to **5.0.2**
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.2 to **1.48.0**
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 1.6.3 to **11.6.0**
+  - [kics](https://www.kics.io) from 1.5.12 to **1.5.13**
+  - [rubocop](https://rubocop.org/) from 1.32.0 to **1.33.0**
+  - [syft](https://github.com/anchore/syft) from 0.52.0 to **0.53.4**
+
+## [v6.2.1] - 2022-08-01
+
+- Fix blocking bug in MegaLinter v6.2.0 core ([#1684](https://github.com/oxsecurity/megalinter/issues/1684) and [#1685](https://github.com/oxsecurity/megalinter/issues/1685))
+
+- Linter versions upgrades
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.1 to **10.3.2** on 2022-08-01
+  - [flake8](https://flake8.pycqa.org) from 5.0.0 to **5.0.1** on 2022-08-01
+  - [checkov](https://www.checkov.io/) from 2.1.82 to **2.1.83** on 2022-08-01
+
+## [v6.2.0] - 2022-07-31
+
+- Core
+  - Fix mega-linter-runner --install template [(#1662)](https://github.com/oxsecurity/megalinter/issues/1662)
+  - Use `REPORT_OUTPUT_FOLDER: none` to not generate report files
+  - Add info in doc about CLI_LINT_MODE and about how to ignore files when cli_lint_mode is `project`
+  - Fix bug that disables generation of `megalinter.log` file in most cases
+  - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
+  - Remove redundant line separator after generated table [(#1650)](https://github.com/oxsecurity/megalinter/pull/1650)
+  - Avoid flavor suggestion message when only REPOSITORY linters are not found
+
+- Linters
+  - Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
+  - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
+  - Avoid cspell to lint all files. Lint only other linter files [(#1648)](https://github.com/oxsecurity/megalinter/issues/1648)
+  - Fix revive installation command
+  - New default config for gitleaks with `useDefault=true`
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.3 to **0.61.4** on 2022-07-30
+  - [checkov](https://www.checkov.io/) from 2.1.60 to **2.1.61** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.61 to **2.1.63** on 2022-07-20
+  - [checkov](https://www.checkov.io/) from 2.1.63 to **2.1.65** on 2022-07-21
+  - [checkov](https://www.checkov.io/) from 2.1.65 to **2.1.67** on 2022-07-21
+  - [checkov](https://www.checkov.io/) from 2.1.67 to **2.1.68** on 2022-07-23
+  - [checkov](https://www.checkov.io/) from 2.1.68 to **2.1.69** on 2022-07-24
+  - [checkov](https://www.checkov.io/) from 2.1.69 to **2.1.70** on 2022-07-24
+  - [checkov](https://www.checkov.io/) from 2.1.70 to **2.1.74** on 2022-07-25
+  - [checkov](https://www.checkov.io/) from 2.1.74 to **2.1.82** on 2022-07-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.3.0 to **6.4.0** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.4.0 to **6.4.1** on 2022-07-24
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.4.1 to **6.5.0** on 2022-07-30
+  - [flake8](https://flake8.pycqa.org) from 4.0.1 to **5.0.0** on 2022-07-31
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.8.12 to **8.9.0** on 2022-07-30
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.0 to **1.47.1** on 2022-07-19
+  - [golangci-lint](https://golangci-lint.run/) from 1.47.1 to **1.47.2** on 2022-07-21
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.5 to **3.3.26** on 2022-07-19
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.3.0 to **1.4.0** on 2022-07-25
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.0 to **0.32.1** on 2022-07-25
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.961 to **0.971** on 2022-07-19
+  - [phpstan](https://phpstan.org/) from 1.8.1 to **1.8.2** on 2022-07-20
+  - [rubocop](https://rubocop.org/) from 1.31.2 to **1.32.0** on 2022-07-21
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.6 to **2.13.7** on 2022-07-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.6 to **2.13.7** on 2022-07-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.5 to **2.13.6** on 2022-07-21
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.6 to **2.13.7** on 2022-07-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.5 to **7.9.0** on 2022-07-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.9.0 to **7.12.0** on 2022-07-30
+  - [syft](https://github.com/anchore/syft) from 0.51.0 to **0.52.0** on 2022-07-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.5 to **1.2.6** on 2022-07-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.5 to **0.38.6** on 2022-07-24
+
+## [v6.1.0] - 2022-07-19
+
+- Improve console logs by using collapsible sections in GitHub Actions and Gitlab CI (disable by defining `CONSOLE_REPORTER_SECTIONS: false`)
+- Define `CLEAR_REPORT_FOLDER=true` to empty report folder at the beginning of each run ([#1502](https://github.com/oxsecurity/megalinter/issues/1502))
+- Improve SARIF output
+  - Replace CI paths in logs
+  - Add missing required properties so SARIF is [valid](https://sarifweb.azurewebsites.net/Validation)
+  - Add MegaLinter information in SARIF linter runs
+  - Allow to select linters to activate SARIF for, using SARIF_REPORTER_LINTERS
+  - Fix issue when a linter is used in multiple SARIF lint results
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.2 to **0.61.3** on 2022-07-19
+  - [checkov](https://www.checkov.io/) from 2.1.57 to **2.1.59** on 2022-07-18
+  - [checkov](https://www.checkov.io/) from 2.1.59 to **2.1.60** on 2022-07-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.2.3 to **6.3.0** on 2022-07-18
+  - [eslint](https://eslint.org) from 8.19.0 to **8.20.0** on 2022-07-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.46.2 to **1.47.0** on 2022-07-19
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.4.5** on 2022-07-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.1 to **0.32.0** on 2022-07-17
+  - [pylint](https://www.pylint.org) from 2.14.4 to **2.14.5** on 2022-07-18
+
+## [v6.0.5] - 2022-07-16
+
+- Fix mega-linter-runner --upgrade so it also updates report folder to megalinter-reports in GitHub Actions Workflows [#1609](https://github.com/oxsecurity/megalinter/issues/1609)
+- Fix documentation and templates to use `megalinter-reports` folder everywhere
+- Workaround for python-markdown issue <https://github.com/radude/mdx_truly_sane_lists/issues/9>
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.54 to **2.1.56** on 2022-07-15
+  - [checkov](https://www.checkov.io/) from 2.1.56 to **2.1.57** on 2022-07-16
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.8.7 to **8.8.12** on 2022-07-16
+  - [kics](https://www.kics.io) from 1.5.11 to **1.5.12** on 2022-07-16
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.2 to **0.38.3** on 2022-07-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.2.0 to **1.2.1** on 2022-07-16
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.4 to **1.2.5** on 2022-07-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.4 to **0.38.5** on 2022-07-15
+
+## [v6.0.4] - 2022-07-14
+
+- Fix count of errors when using SARIF reporter
+- DevSkim: Ignore megalinter-reports by default [(#1603)](https://github.com/oxsecurity/megalinter/issues/1603)
+- Load JSON when list of objects is defined in an ENV var [(#1605)](https://github.com/oxsecurity/megalinter/issues/1605)
+- AutoFix pre_commands using `npm install` [(1258)](https://github.com/oxsecurity/megalinter/issues/1258)
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.1.43 to **2.1.54** on 2022-07-14
+  - [git_diff](https://git-scm.com) from 2.34.2 to **2.34.4** on 2022-07-14
+  - [phpstan](https://phpstan.org/) from 1.8.0 to **1.8.1** on 2022-07-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.1.0 to **1.2.0** on 2022-07-14
+  - [syft](https://github.com/anchore/syft) from 0.50.0 to **0.51.0** on 2022-07-14
+
+## [v6.0.3] - 2022-07-11
+
+- mega-linter-runner: Update query args when opening OX Security
+- Fix mega-linter-runner doesn't default to v6 for flavors [(1596)](https://github.com/oxsecurity/megalinter/issues/1596)
+
+## [v6.0.0] - 2022-07-10
+
+- Breaking changes: you must run `npx mega-linter-runner --upgrade` to use MegaLinter v6
+
+- Core architecture
+  - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
+    - Correct SARIF files for known format errors
+  - New config variable **DISABLE_LINTERS_ERRORS** to define a list of linters that will be considered as non blocking
+  - Upgrade base docker image to python:3.10.4-alpine3.15
+  - Rename default report folder from `report` to `megalinter-reports`
+  - Display GitHub stars in linters summary table in documentation
+
+- Linters:
+  - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
+  - Add [dustilock](https://github.com/Checkmarx/dustilock) to check for dependency confusion attacks with node and python packages
+  - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+  - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
+  - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
+  - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
+  - Add [trivy](https://github.com/aquasecurity/trivy) security linter
+  - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
+  - Remove **rstfmt** as it is not maintained anymore
+  - SARIF management for:
+    - bandit
+    - checkov
+    - checkstyle
+    - cfn-lint
+    - devskim
+    - eslint
+    - gitleaks
+    - hadolint
+    - ktlint
+    - npm-groovy-lint
+    - psalm
+    - semgrep
+    - secretlint
+    - revive
+    - terrascan
+    - tflint
+    - trivy
+
+- Descriptors:
+  - New flavor **Security**
+  - New descriptor **repository**: contains DevSkim, dustilock, gitleaks, secretlint, semgrep, syft, trivy
+  - Remove CREDENTIALS and GIT descriptors
+
+- mega-linter-runner
+  - `--upgrade` option can now upgrade repos MegaLinter config to v6
+  - Create/update local `.gitignore` file when installing / updating MegaLinter using mega-linter-runner
+  - Propose to test ox.security service
+  - Switch from npm to yarn
+
+- Dev architecture
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
+  - Automate update of CHANGELOG.md after release (beta)
+  - Accelerate internal CI testing performances
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.13 to **1.6.15** on 2022-07-10
+  - [black](https://black.readthedocs.io/en/stable/) from 22.3.0 to **22.6.0** on 2022-07-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.61.1 to **0.61.2** on 2022-07-10
+  - [checkov](https://www.checkov.io/) from 3.9 to **2.1.43** on 2022-07-10
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3 to **10.3.1** on 2022-07-10
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.61 to **0.1.62** on 2022-07-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.2 to **6.2.3** on 2022-07-10
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.3.0 to **2.3.1** on 2022-07-10
+  - [eslint](https://eslint.org) from 8.18.0 to **8.19.0** on 2022-07-10
+  - [git_diff](https://git-scm.com) from 2.30.3 to **2.34.2** on 2022-07-10
+  - [phpstan](https://phpstan.org/) from 1.7.15 to **1.8.0** on 2022-07-10
+  - [pylint](https://www.pylint.org) from 2.14.3 to **2.14.4** on 2022-07-10
+  - [rubocop](https://rubocop.org/) from 1.30.1 to **1.31.2** on 2022-07-10
+  - [secretlint](https://github.com/secretlint/secretlint) from 4.1.0 to **5.2.3** on 2022-07-10
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.3 to **7.8.5** on 2022-07-10
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 5.6.0 to **5.9.2** on 2022-07-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.0.0 to **1.1.0** on 2022-07-10
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.3 to **1.2.4** on 2022-07-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.1 to **0.38.4** on 2022-07-10
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.14.0 to **1.15.2** on 2022-07-10
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.13.0** on 2022-07-10
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.27.1** on 2022-07-10
+
+## [v5.17.0] - 2022-07-10
+
+- Message to propose users to upgrade to v6
+
+## [v5.16.1] - 2022-06-26
+
+- Quick fix release management
+
+## [v5.16.0] - 2022-06-26
+
+- Support for named Docker container.
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.0.1230 to **2.1.0** on 2022-06-23
+  - [checkov](https://www.checkov.io/) from 2.1.0 to **2.1.5** on 2022-06-24
+  - [checkov](https://www.checkov.io/) from 2.1.5 to **2.1.7** on 2022-06-25
+  - [checkov](https://www.checkov.io/) from 2.1.7 to **3.9** on 2022-06-26
+  - [kics](https://www.kics.io) from 1.5.10 to **1.5.11** on 2022-06-23
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.38.1 to **0.38.2** on 2022-06-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.0 to **0.38.1** on 2022-06-23
+
+## [v5.15.0] - 2022-06-23
+
+- [OX Security](https://www.ox.security/?ref=megalinter) branding and [pre-announcement](https://github.com/megalinter/megalinter/issues/1549)
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.61.0 to **0.61.1** on 2022-06-22
+  - [checkov](https://www.checkov.io/) from 2.0.1209 to **2.0.1210** on 2022-06-14
+  - [checkov](https://www.checkov.io/) from 2.0.1210 to **2.0.1212** on 2022-06-15
+  - [checkov](https://www.checkov.io/) from 2.0.1212 to **2.0.1217** on 2022-06-15
+  - [checkov](https://www.checkov.io/) from 2.0.1217 to **2.0.1218** on 2022-06-17
+  - [checkov](https://www.checkov.io/) from 2.0.1218 to **2.0.1219** on 2022-06-19
+  - [checkov](https://www.checkov.io/) from 2.0.1219 to **2.0.1226** on 2022-06-22
+  - [checkov](https://www.checkov.io/) from 2.0.1226 to **2.0.1230** on 2022-06-22
+  - [eslint](https://eslint.org) from 8.17.0 to **8.18.0** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.45.2 to **0.46.0** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.46.0 to **0.46.1** on 2022-06-22
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.2 to **3.7.0** on 2022-06-14
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.0 to **3.7.1** on 2022-06-19
+  - [phpstan](https://phpstan.org/) from 1.7.12 to **1.7.13** on 2022-06-14
+  - [phpstan](https://phpstan.org/) from 1.7.13 to **1.7.14** on 2022-06-15
+  - [phpstan](https://phpstan.org/) from 1.7.14 to **1.7.15** on 2022-06-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.4 to **7.2.5** on 2022-06-22
+  - [prettier](https://prettier.io/) from 2.6.2 to **2.7.0** on 2022-06-15
+  - [prettier](https://prettier.io/) from 2.7.0 to **2.7.1** on 2022-06-17
+  - [pylint](https://www.pylint.org) from 2.14.1 to **2.14.2** on 2022-06-15
+  - [pylint](https://www.pylint.org) from 2.14.2 to **2.14.3** on 2022-06-19
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.0 to **0.6.1** on 2022-06-14
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.2 to **7.8.3** on 2022-06-22
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.19 to **0.0.20** on 2022-06-19
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.20 to **1.0.0** on 2022-06-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.2 to **1.0.0** on 2022-06-19
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.2 to **1.2.3** on 2022-06-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.3 to **0.37.4** on 2022-06-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
+
+## [v5.14.0] - 2022-06-12
+
+- Local plugins support & documentation
+- Update R lintr documentation
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.12 to **1.6.13** on 2022-05-20
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.60.0 to **0.60.1** on 2022-05-20
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.60.1 to **0.61.0** on 2022-06-01
+  - [checkov](https://www.checkov.io/) from 2.0.1141 to **2.0.1143** on 2022-05-17
+  - [checkov](https://www.checkov.io/) from 2.0.1143 to **2.0.1147** on 2022-05-20
+  - [checkov](https://www.checkov.io/) from 2.0.1147 to **2.0.1150** on 2022-05-22
+  - [checkov](https://www.checkov.io/) from 2.0.1150 to **2.0.1158** on 2022-05-24
+  - [checkov](https://www.checkov.io/) from 2.0.1158 to **2.0.1159** on 2022-05-24
+  - [checkov](https://www.checkov.io/) from 2.0.1159 to **2.0.1161** on 2022-05-25
+  - [checkov](https://www.checkov.io/) from 2.0.1161 to **2.0.1162** on 2022-05-27
+  - [checkov](https://www.checkov.io/) from 2.0.1162 to **2.0.1174** on 2022-05-30
+  - [checkov](https://www.checkov.io/) from 2.0.1174 to **2.0.1175** on 2022-05-31
+  - [checkov](https://www.checkov.io/) from 2.0.1175 to **2.0.1177** on 2022-05-31
+  - [checkov](https://www.checkov.io/) from 2.0.1177 to **2.0.1182** on 2022-05-31
+  - [checkov](https://www.checkov.io/) from 2.0.1182 to **2.0.1185** on 2022-06-02
+  - [checkov](https://www.checkov.io/) from 2.0.1185 to **2.0.1188** on 2022-06-03
+  - [checkov](https://www.checkov.io/) from 2.0.1188 to **2.0.1206** on 2022-06-08
+  - [checkov](https://www.checkov.io/) from 2.0.1206 to **2.0.1207** on 2022-06-09
+  - [checkov](https://www.checkov.io/) from 2.0.1207 to **2.0.1209** on 2022-06-10
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.2 to **10.3** on 2022-05-30
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.60 to **0.1.61** on 2022-05-20
+  - [coffeelint](http://www.coffeelint.org) from 5.2.8 to **5.2.9** on 2022-05-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.20.0 to **5.21.0** on 2022-05-20
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.0 to **5.21.1** on 2022-05-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.1 to **6.0.0** on 2022-05-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.0.0 to **6.1.0** on 2022-05-31
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.0 to **6.1.1** on 2022-06-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.1 to **6.1.2** on 2022-06-09
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.2.1 to **2.3.0** on 2022-05-28
+  - [eslint](https://eslint.org) from 8.15.0 to **8.16.0** on 2022-05-21
+  - [eslint](https://eslint.org) from 8.16.0 to **8.17.0** on 2022-06-08
+  - [golangci-lint](https://golangci-lint.run/) from 1.46.1 to **1.46.2** on 2022-05-20
+  - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 3.0.0 to **3.0.1** on 2022-05-22
+  - [kics](https://www.kics.io) from 1.5.8 to **1.5.9** on 2022-05-27
+  - [kics](https://www.kics.io) from 1.5.9 to **1.5.10** on 2022-06-09
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.950 to **0.960** on 2022-05-27
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.960 to **0.961** on 2022-06-08
+  - [phpstan](https://phpstan.org/) from 1.6.8 to **1.6.9** on 2022-05-22
+  - [phpstan](https://phpstan.org/) from 1.6.9 to **1.7.0** on 2022-05-24
+  - [phpstan](https://phpstan.org/) from 1.7.0 to **1.7.1** on 2022-05-24
+  - [phpstan](https://phpstan.org/) from 1.7.1 to **1.7.2** on 2022-05-27
+  - [phpstan](https://phpstan.org/) from 1.7.11 to **1.7.12** on 2022-06-09
+  - [phpstan](https://phpstan.org/) from 1.7.2 to **1.7.3** on 2022-05-30
+  - [phpstan](https://phpstan.org/) from 1.7.3 to **1.7.6** on 2022-05-31
+  - [phpstan](https://phpstan.org/) from 1.7.6 to **1.7.7** on 2022-05-31
+  - [phpstan](https://phpstan.org/) from 1.7.7 to **1.7.8** on 2022-06-02
+  - [phpstan](https://phpstan.org/) from 1.7.8 to **1.7.9** on 2022-06-03
+  - [phpstan](https://phpstan.org/) from 1.7.9 to **1.7.11** on 2022-06-08
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.3 to **7.2.4** on 2022-05-20
+  - [pylint](https://www.pylint.org) from 2.13.9 to **2.14.0** on 2022-06-02
+  - [pylint](https://www.pylint.org) from 2.14.0 to **2.14.1** on 2022-06-08
+  - [rstcheck](https://github.com/myint/rstcheck) from 5.0.0 to **6.0.0** on 2022-06-08
+  - [rubocop](https://rubocop.org/) from 1.29.1 to **1.30.0** on 2022-05-27
+  - [rubocop](https://rubocop.org/) from 1.30.0 to **1.30.1** on 2022-06-08
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.0 to **0.10.1** on 2022-06-10
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.2 to **2.13.4** on 2022-05-27
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.2 to **2.13.4** on 2022-05-27
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.2 to **2.13.4** on 2022-05-27
+  - [shfmt](https://github.com/mvdan/sh) from 3.5.0 to **3.6.0** on 2022-05-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.2 to **7.7.0** on 2022-05-17
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.7.0 to **7.8.0** on 2022-05-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.0 to **7.8.1** on 2022-05-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.1 to **7.8.2** on 2022-06-08
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.1 to **0.13.2** on 2022-05-21
+  - [stylelint](https://stylelint.io) from 14.8.2 to **14.8.3** on 2022-05-22
+  - [stylelint](https://stylelint.io) from 14.8.3 to **14.8.4** on 2022-05-25
+  - [stylelint](https://stylelint.io) from 14.8.4 to **14.8.5** on 2022-05-27
+  - [stylelint](https://stylelint.io) from 14.8.5 to **14.9.0** on 2022-06-09
+  - [stylelint](https://stylelint.io) from 14.9.0 to **14.9.1** on 2022-06-11
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.9 to **1.2.0** on 2022-05-20
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.0 to **1.2.1** on 2022-05-24
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.1 to **1.2.2** on 2022-06-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.1 to **0.37.2** on 2022-06-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.2 to **0.37.3** on 2022-06-12
+
+## [v5.13.0] - 2022-05-15
+
+- Add gherkin-lint in dotnet flavor ([#1435](https://github.com/megalinter/megalinter/issues/1435))
+- Define pre-commit hooks ([#569](https://github.com/megalinter/megalinter/issues/569)).
+- Pin ansible-lint to 6.0.2 to fix pip dependency conflict between jsonschema versions ([#1470](https://github.com/megalinter/megalinter/issues/1470)).
+- Use docker image for editorconfig-checker
+- Update sqlfluff descriptor properties to enable error count([#1460](https://github.com/megalinter/megalinter/issues/1460))
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.59.0 to **0.59.1** on 2022-05-03
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.59.1 to **0.60.0** on 2022-05-14
+  - [checkov](https://www.checkov.io/) from 2.0.1076 to **2.0.1079** on 2022-04-24
+  - [checkov](https://www.checkov.io/) from 2.0.1079 to **2.0.1084** on 2022-04-26
+  - [checkov](https://www.checkov.io/) from 2.0.1084 to **2.0.1088** on 2022-04-28
+  - [checkov](https://www.checkov.io/) from 2.0.1088 to **2.0.1098** on 2022-04-29
+  - [checkov](https://www.checkov.io/) from 2.0.1098 to **2.0.1100** on 2022-04-30
+  - [checkov](https://www.checkov.io/) from 2.0.1100 to **2.0.1102** on 2022-05-02
+  - [checkov](https://www.checkov.io/) from 2.0.1102 to **2.0.1108** on 2022-05-03
+  - [checkov](https://www.checkov.io/) from 2.0.1108 to **2.0.1110** on 2022-05-03
+  - [checkov](https://www.checkov.io/) from 2.0.1110 to **2.0.1113** on 2022-05-05
+  - [checkov](https://www.checkov.io/) from 2.0.1113 to **2.0.1118** on 2022-05-06
+  - [checkov](https://www.checkov.io/) from 2.0.1118 to **2.0.1119** on 2022-05-07
+  - [checkov](https://www.checkov.io/) from 2.0.1119 to **2.0.1120** on 2022-05-08
+  - [checkov](https://www.checkov.io/) from 2.0.1120 to **2.0.1121** on 2022-05-08
+  - [checkov](https://www.checkov.io/) from 2.0.1121 to **2.0.1140** on 2022-05-14
+  - [checkov](https://www.checkov.io/) from 2.0.1140 to **2.0.1141** on 2022-05-15
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.1 to **10.2** on 2022-04-24
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.08 to **2022.04.25** on 2022-04-30
+  - [coffeelint](http://www.coffeelint.org) from 5.2.7 to **5.2.8** on 2022-04-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.7 to **5.20.0** on 2022-05-03
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.5 to **2.4.0** on 2022-05-15
+  - [eslint](https://eslint.org) from 8.14.0 to **8.15.0** on 2022-05-07
+  - [golangci-lint](https://golangci-lint.run/) from 1.45.2 to **1.46.1** on 2022-05-14
+  - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.1 to **2.0.2** on 2022-05-06
+  - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.2 to **3.0.0** on 2022-05-07
+  - [kics](https://www.kics.io) from 1.5.6 to **1.5.7** on 2022-05-03
+  - [kics](https://www.kics.io) from 1.5.7 to **1.5.8** on 2022-05-14
+  - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.0 to **3.10.2** on 2022-05-05
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.942 to **0.950** on 2022-04-28
+  - [phpstan](https://phpstan.org/) from 1.5.7 to **1.6.0** on 2022-04-26
+  - [phpstan](https://phpstan.org/) from 1.6.0 to **1.6.2** on 2022-04-28
+  - [phpstan](https://phpstan.org/) from 1.6.2 to **1.6.3** on 2022-04-29
+  - [phpstan](https://phpstan.org/) from 1.6.3 to **1.6.4** on 2022-05-03
+  - [phpstan](https://phpstan.org/) from 1.6.4 to **1.6.7** on 2022-05-05
+  - [phpstan](https://phpstan.org/) from 1.6.7 to **1.6.8** on 2022-05-14
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.2 to **7.2.3** on 2022-04-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.37.1 to **0.38.1** on 2022-05-03
+  - [psalm](https://psalm.dev) from Psalm.4.x-dev@ to **Psalm.5.x-dev@** on 2022-05-14
+  - [pylint](https://www.pylint.org) from 2.13.7 to **2.13.8** on 2022-05-03
+  - [pylint](https://www.pylint.org) from 2.13.8 to **2.13.9** on 2022-05-14
+  - [rubocop](https://rubocop.org/) from 1.28.1 to **1.28.2** on 2022-04-26
+  - [rubocop](https://rubocop.org/) from 1.28.2 to **1.29.0** on 2022-05-07
+  - [rubocop](https://rubocop.org/) from 1.29.0 to **1.29.1** on 2022-05-14
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.4.0 to **7.5.0** on 2022-04-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.5.0 to **7.6.0** on 2022-05-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.0 to **7.6.1** on 2022-05-05
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.1 to **7.6.2** on 2022-05-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.0 to **0.13.1** on 2022-05-07
+  - [stylelint](https://stylelint.io) from 14.7.1 to **14.8.0** on 2022-04-28
+  - [stylelint](https://stylelint.io) from 14.8.0 to **14.8.1** on 2022-04-30
+  - [stylelint](https://stylelint.io) from 14.8.1 to **14.8.2** on 2022-05-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.10 to **0.37.1** on 2022-05-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.7 to **0.36.8** on 2022-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.8 to **0.36.9** on 2022-04-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.9 to **0.36.10** on 2022-05-06
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 20913 to **20914** on 2022-05-14
+
+## [v5.12.0] - 2022-04-23
+
+- Core
+  - Fix [git upgrade issue](https://github.blog/2022-04-12-git-security-vulnerability-announced/)
+  - New option **FAIL_IF_UPDATED_SOURCES** ([#1389](https://github.com/megalinter/megalinter/issues/1389))
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.11 to **1.6.12** on 2022-04-18
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.4 to **0.59.0** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1047 to **2.0.1050** on 2022-04-11
+  - [checkov](https://www.checkov.io/) from 2.0.1050 to **2.0.1067** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1067 to **2.0.1068** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1068 to **2.0.1076** on 2022-04-22
+  - [coffeelint](http://www.coffeelint.org) from 5.2.5 to **5.2.6** on 2022-04-11
+  - [coffeelint](http://www.coffeelint.org) from 5.2.6 to **5.2.7** on 2022-04-22
+  - [eslint](https://eslint.org) from 8.13.0 to **8.14.0** on 2022-04-23
+  - [git_diff](https://git-scm.com) from 2.30.2 to **2.30.3** on 2022-04-18
+  - [htmlhint](https://htmlhint.com/) from 1.1.3 to **1.1.4** on 2022-04-11
+  - [kics](https://www.kics.io) from 1.5.5 to **1.5.6** on 2022-04-18
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.1 to **9.5.0** on 2022-04-18
+  - [phpstan](https://phpstan.org/) from 1.5.4 to **1.5.6** on 2022-04-18
+  - [phpstan](https://phpstan.org/) from 1.5.6 to **1.5.7** on 2022-04-22
+  - [pylint](https://www.pylint.org) from 2.13.5 to **2.13.7** on 2022-04-22
+  - [rstcheck](https://github.com/myint/rstcheck) from 3.3.1 to **5.0.0** on 2022-04-18
+  - [rubocop](https://rubocop.org/) from 1.27.0 to **1.28.1** on 2022-04-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.8 to **7.4.0** on 2022-04-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.12.0 to **0.13.0** on 2022-04-22
+  - [stylelint](https://stylelint.io) from 14.6.1 to **14.7.1** on 2022-04-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.8 to **1.1.9** on 2022-04-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.6 to **0.36.7** on 2022-04-18
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.34.1 to **0.35.0** on 2022-04-18
+
+## [v5.11.0] - 2022-04-11
 
 - Linters
   - Disable rstfmt as it is neither stable or maintained
+  - markdown-links-check: allow 203 as valid return code
 
 - Fixes
   - Github Comment Reporter: switch to using a hidden HTML comment to mark the comment, with the current workflow and jobid. This is more robust than the old method. ([[#1355](https://github.com/megalinter/megalinter/issues/1355))
+  - Allow to provide CI_ACTION_RUN_URL to build hlink for GitHub Comments reporter messages ([[#1341](https://github.com/megalinter/megalinter/issues/1341))
+  - Display plugin URL in MegaLinter output logs ([[#1340](https://github.com/megalinter/megalinter/issues/1340))
+  - Fix public glibc public key download
+  - Fix `no override and no default toolchain set` when lint rust with clippy via github-action ([#975](https://github.com/megalinter/megalinter/issues/975))
+  - Fix cspell FileNotFound error by creating subdirectories under `report` as required ([#1397](https://github.com/megalinter/megalinter/issues/1397]))
+
+- Doc
+  - Add instructions to upload artifacts when using MegaLinter with Jenkins
 
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
-  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **5.1.16** on 2022-03-22
-  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.3 to **0.58.4** on 2022-03-22
-  - [coffeelint](http://www.coffeelint.org) from 5.2.4 to **5.2.5** on 2022-03-22
-  - [ktlint](https://ktlint.github.io) from 0.45.0 to **0.45.1** on 2022-03-22
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.1 to **7.3.0** on 2022-03-22
-  - [checkov](https://www.checkov.io/) from 2.0.977 to **2.0.980** on 2022-03-22
-  - [rubocop](https://rubocop.org/) from 1.26.0 to **1.26.1** on 2022-03-23
-  - [checkov](https://www.checkov.io/) from 2.0.980 to **2.0.983** on 2022-03-23
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.10 to **1.6.11** on 2022-04-06
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.1 to **6.0.2** on 2022-03-24
+  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **5.1.16** on 2022-03-22
+  - [black](https://black.readthedocs.io/en/stable/) from 22.1.0 to **22.3.0** on 2022-03-30
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.3 to **0.58.4** on 2022-03-22
+  - [checkov](https://www.checkov.io/) from 2.0.1008 to **2.0.1016** on 2022-03-31
+  - [checkov](https://www.checkov.io/) from 2.0.1016 to **2.0.1021** on 2022-03-31
+  - [checkov](https://www.checkov.io/) from 2.0.1021 to **2.0.1024** on 2022-04-01
+  - [checkov](https://www.checkov.io/) from 2.0.1024 to **2.0.1030** on 2022-04-04
+  - [checkov](https://www.checkov.io/) from 2.0.1030 to **2.0.1037** on 2022-04-06
+  - [checkov](https://www.checkov.io/) from 2.0.1037 to **2.0.1045** on 2022-04-09
+  - [checkov](https://www.checkov.io/) from 2.0.1045 to **2.0.1046** on 2022-04-10
+  - [checkov](https://www.checkov.io/) from 2.0.1046 to **2.0.1047** on 2022-04-11
+  - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
+  - [checkov](https://www.checkov.io/) from 2.0.977 to **2.0.980** on 2022-03-22
+  - [checkov](https://www.checkov.io/) from 2.0.980 to **2.0.983** on 2022-03-23
+  - [checkov](https://www.checkov.io/) from 2.0.983 to **2.0.995** on 2022-03-26
+  - [checkov](https://www.checkov.io/) from 2.0.995 to **2.0.999** on 2022-03-27
+  - [checkov](https://www.checkov.io/) from 2.0.999 to **2.0.1008** on 2022-03-30
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.0 to **10.1** on 2022-03-27
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.59 to **0.1.60** on 2022-04-09
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.02.09 to **2022.04.08** on 2022-04-10
+  - [coffeelint](http://www.coffeelint.org) from 5.2.4 to **5.2.5** on 2022-03-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.2 to **5.19.3** on 2022-03-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.3 to **5.19.4** on 2022-04-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.4 to **5.19.5** on 2022-04-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.5 to **5.19.6** on 2022-04-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.6 to **5.19.7** on 2022-04-10
+  - [eslint](https://eslint.org) from 8.11.0 to **8.12.0** on 2022-03-26
+  - [eslint](https://eslint.org) from 8.12.0 to **8.13.0** on 2022-04-09
+  - [golangci-lint](https://golangci-lint.run/) from 1.45.0 to **1.45.2** on 2022-03-26
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.9.1 to **2.9.3** on 2022-03-31
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.9.3 to **2.10.0** on 2022-04-10
+  - [htmlhint](https://htmlhint.com/) from 1.1.2 to **1.1.3** on 2022-03-30
+  - [kics](https://www.kics.io) from 1.5.4 to **1.5.5** on 2022-03-31
+  - [ktlint](https://ktlint.github.io) from 0.45.0 to **0.45.1** on 2022-03-22
+  - [ktlint](https://ktlint.github.io) from 0.45.1 to **0.45.2** on 2022-04-07
+  - [luacheck](https://luacheck.readthedocs.io) from 0.25.0 to **0.26.0** on 2022-03-26
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.941 to **0.942** on 2022-03-26
+  - [phpstan](https://phpstan.org/) from 1.4.10 to **1.5.0** on 2022-03-26
+  - [phpstan](https://phpstan.org/) from 1.5.0 to **1.5.2** on 2022-03-30
+  - [phpstan](https://phpstan.org/) from 1.5.2 to **1.5.3** on 2022-03-31
+  - [phpstan](https://phpstan.org/) from 1.5.3 to **1.5.4** on 2022-04-04
+  - [prettier](https://prettier.io/) from 2.6.0 to **2.6.1** on 2022-03-26
+  - [prettier](https://prettier.io/) from 2.6.1 to **2.6.2** on 2022-04-04
+  - [pylint](https://www.pylint.org) from 2.12.2 to **2.13.1** on 2022-03-26
+  - [pylint](https://www.pylint.org) from 2.13.1 to **2.13.2** on 2022-03-27
+  - [pylint](https://www.pylint.org) from 2.13.2 to **2.13.3** on 2022-03-30
+  - [pylint](https://www.pylint.org) from 2.13.3 to **2.13.4** on 2022-03-31
+  - [pylint](https://www.pylint.org) from 2.13.4 to **2.13.5** on 2022-04-07
+  - [rubocop](https://rubocop.org/) from 1.26.0 to **1.26.1** on 2022-03-23
+  - [rubocop](https://rubocop.org/) from 1.26.1 to **1.27.0** on 2022-04-09
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.34 to **0.10.0** on 2022-04-04
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.0 to **2.13.1** on 2022-03-24
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.0 to **2.13.1** on 2022-03-24
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.0 to **2.13.1** on 2022-03-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.1 to **7.3.0** on 2022-03-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.0 to **7.3.1** on 2022-03-24
-  - [stylelint](https://stylelint.io) from 14.6.0 to **14.6.1** on 2022-03-26
-  - [golangci-lint](https://golangci-lint.run/) from 1.45.0 to **1.45.2** on 2022-03-26
-  - [eslint](https://eslint.org) from 8.11.0 to **8.12.0** on 2022-03-26
-  - [prettier](https://prettier.io/) from 2.6.0 to **2.6.1** on 2022-03-26
-  - [luacheck](https://luacheck.readthedocs.io) from 0.25.0 to **0.26.0** on 2022-03-26
-  - [phpstan](https://phpstan.org/) from 1.4.10 to **1.5.0** on 2022-03-26
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.941 to **0.942** on 2022-03-26
-  - [pylint](https://www.pylint.org) from 2.12.2 to **2.13.1** on 2022-03-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.1 to **7.3.2** on 2022-03-26
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.2 to **5.19.3** on 2022-03-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.2 to **7.3.3** on 2022-03-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.3 to **7.3.4** on 2022-03-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.4 to **7.3.5** on 2022-03-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.5 to **7.3.6** on 2022-04-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.6 to **7.3.7** on 2022-04-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.7 to **7.3.8** on 2022-04-07
   - [sqlfluff](https://www.sqlfluff.com/) from 0.11.1 to **0.11.2** on 2022-03-26
-  - [checkov](https://www.checkov.io/) from 2.0.983 to **2.0.995** on 2022-03-26
-<!-- linter-versions-end -->
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.2 to **0.12.0** on 2022-04-09
+  - [stylelint](https://stylelint.io) from 14.6.0 to **14.6.1** on 2022-03-26
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.7 to **1.1.8** on 2022-04-09
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.2 to **1.14.0** on 2022-04-01
 
 ## [v5.10.0] - 2022-03-20
 
@@ -412,7 +1164,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
-- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Correct some broken links in `README` from `Mega-Linter` to `MegaLinter` (#1030)
 - Docker run -- clean-up containers when exits (#1033)
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
@@ -516,6 +1268,24 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
 - Fix typo error in `.jscpd.json` config file (#986)
 - Deprecate `DEFAULT_BRANCH`, and change its default from `master` to `HEAD` (#915)
+
+- Core architecture
+  - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
+  - Documentation versioning with mike
+  - Allow GithubStatusReporter to work for other CI platforms
+  - Add license info in **List of linters** documentation page
+
+- Linters
+  - Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+  - Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
+  - Upgrade checkov install instructions to use alpine-oriented ones
+  - Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
+  - Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+
+- Bug fixes
+  - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+  - Bypass random CI issue with sql_tsqllint_test test version and test help
+  - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04

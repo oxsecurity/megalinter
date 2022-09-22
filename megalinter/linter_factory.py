@@ -47,6 +47,18 @@ def list_flavor_linters(linters_init_params=None, flavor_id="all"):
     return linters
 
 
+# List unique linter
+def list_linters_by_name(linters_init_params=None, linter_names=[]):
+    all_linters = list_all_linters(linters_init_params)
+    linters = []
+    for linter in all_linters:
+        if linter.name in linter_names:
+            linters += [linter]
+        else:
+            del linter
+    return linters
+
+
 # List all descriptor files (one by language)
 def list_descriptor_files():
     descriptors_dir = get_descriptor_dir()
@@ -124,3 +136,15 @@ def build_linter(language, linter_name):
         len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"
     return linters[0]
+
+
+# Sort groups of linters by speed
+def sort_linters_groups_by_speed(linters_groups):
+    # Calculate sum of linter speeds in the group
+    linter_groups_speed_points = list(
+        map(lambda x: [sum(i.linter_speed for i in x), x], linters_groups)
+    )
+    # Sort by slower to faster
+    linter_groups_speed_points.sort(key=lambda x: x[0])
+    linters_groups = list(map(lambda x: x[1], linter_groups_speed_points))
+    return linters_groups

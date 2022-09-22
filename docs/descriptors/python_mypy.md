@@ -7,24 +7,26 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits)
+
 Optional static typing checks for python
 
-If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+If you don't use python static typing, you should disable this linter by adding `PYTHON_MYPY` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.942**
+- Version in MegaLinter: **0.971**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
-  - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
+  - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
 - See [How to disable mypy rules in files](https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config){target=_blank}
 
 [![mypy - GitHub](https://gh-card.dev/repos/python/mypy.svg?fullname=)](https://github.com/python/mypy){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable mypy by adding `PYTHON_MYPY` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable mypy by adding `PYTHON_MYPY` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable mypy by adding `PYTHON_MYPY` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable mypy by adding `PYTHON_MYPY` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -47,22 +49,22 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                           |                                                                               Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-mypy](https://atom.io/packages/linter-mypy)                                      |                                                [Visit Web Site](https://atom.io/packages/linter-mypy){target=_blank}                                                 |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [Flycheck mypy](https://github.com/lbolla/emacs-flycheck-mypy)                           |                                            [Visit Web Site](https://github.com/lbolla/emacs-flycheck-mypy){target=_blank}                                            |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [mypy-official](https://plugins.jetbrains.com/plugin/13348-mypy-official-/)              |                                     [Visit Web Site](https://plugins.jetbrains.com/plugin/13348-mypy-official-/){target=_blank}                                      |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-mypy](https://github.com/fredcallaway/SublimeLinter-contrib-mypy) |                                     [Visit Web Site](https://github.com/fredcallaway/SublimeLinter-contrib-mypy){target=_blank}                                      |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Ale](https://github.com/dense-analysis/ale)                                             |                                                [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                |
-|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic)                                  |                                             [Visit Web Site](https://github.com/vim-syntastic/syntastic){target=_blank}                                              |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Mypy](https://marketplace.visualstudio.com/items?itemName=matangover.mypy)              | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/matangover.mypy){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-mypy](https://atom.io/packages/linter-mypy)                                      |                                                [Visit Web Site](https://atom.io/packages/linter-mypy){target=_blank}                                                 |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [Flycheck mypy](https://github.com/lbolla/emacs-flycheck-mypy)                           |                                            [Visit Web Site](https://github.com/lbolla/emacs-flycheck-mypy){target=_blank}                                            |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [mypy-official](https://plugins.jetbrains.com/plugin/13348-mypy-official-/)              |                                     [Visit Web Site](https://plugins.jetbrains.com/plugin/13348-mypy-official-/){target=_blank}                                      |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-mypy](https://github.com/fredcallaway/SublimeLinter-contrib-mypy) |                                     [Visit Web Site](https://github.com/fredcallaway/SublimeLinter-contrib-mypy){target=_blank}                                      |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Ale](https://github.com/dense-analysis/ale)                                             |                                                [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic)                                  |                                             [Visit Web Site](https://github.com/vim-syntastic/syntastic){target=_blank}                                              |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Mypy](https://marketplace.visualstudio.com/items?itemName=matangover.mypy)              | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/matangover.mypy){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                 | Description                         | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor           |       107        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/) | Optimized for PYTHON based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -74,7 +76,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- mypy is called once with the list of files as arguments
+- mypy is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -237,6 +239,8 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
+  --strict-concatenate      Make arguments prepended via Concatenate be truly
+                            positional-only (inverse: --no-strict-concatenate)
   --strict                  Strict mode; enables the following flags: --warn-
                             unused-configs, --disallow-any-generics,
                             --disallow-subclassing-any, --disallow-untyped-
@@ -245,7 +249,7 @@ Miscellaneous strictness flags:
                             untyped-decorators, --no-implicit-optional,
                             --warn-redundant-casts, --warn-unused-ignores,
                             --warn-return-any, --no-implicit-reexport,
-                            --strict-equality
+                            --strict-equality, --strict-concatenate
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code

@@ -10,6 +10,7 @@
     "**/.rbenv/**",
     "**/.venv/**",
     "**/report/**",
+    "**/megalinter-reports/**",
     "**/*cache*/**",
     "**/*.json",
     "**/*.yaml",

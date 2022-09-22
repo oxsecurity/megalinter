@@ -9,6 +9,7 @@ linters:
     name: SPELL_MISSPELL
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
+    linter_repo: https://github.com/client9/misspell
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "-error"
@@ -56,3 +57,43 @@ linters:
       vscode:
         - name: Code Spell Checker
           url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+  # PROSELINT
+  - linter_name: proselint
+    name: SPELL_PROSELINT
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".txt"
+    active_only_if_file_found:
+      - .proselintrc
+      - proselint/config.json
+    linter_text: a linter for prose
+    linter_url: http://proselint.com
+    linter_repo: https://github.com/amperser/proselint
+    linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
+    linter_rules_url: https://github.com/amperser/proselint#checks
+    linter_rules_configuration_url: https://github.com/amperser/proselint#checks
+    cli_config_arg_name: --config
+    config_file_name: .proselintrc
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
+    cli_version_arg_name: "-v"
+    examples:
+      - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
+    install:
+      pip:
+        - proselint
+    ide:
+      atom:
+        - name: linter-proselint
+          url: https://atom.io/packages/linter-proselint
+      idea:
+        - name: Proselint
+          url: https://plugins.jetbrains.com/plugin/9854-proselint
+      sublime:
+        - name: SublimeLinter-contrib-proselint
+          url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint
+      vscode:
+        - name: VsCode Proselint
+          url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint

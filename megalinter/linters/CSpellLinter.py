@@ -9,6 +9,7 @@ import os
 import re
 
 from megalinter import Linter, utils
+from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 
 class CSpellLinter(Linter):
@@ -35,9 +36,10 @@ class CSpellLinter(Linter):
                 "**/node_modules/**",
                 "**/vscode-extension/**",
                 "**/.git/**",
+                "**/.pnpm-lock.json",
                 ".vscode",
                 "package-lock.json",
-                "report",
+                DEFAULT_REPORT_FOLDER_NAME,
             ],
             "words": whitelisted_words_clean,
         }
@@ -54,12 +56,8 @@ Of course, please correct real typos before :)
         )
 
         # Generate updated .cspell.json for manual update
-        cspell_config_file = (
-            reporter_self.master.github_workspace
-            + os.path.sep
-            + reporter_self.master.config_file_name
-        )
-        if os.path.isfile(cspell_config_file):
+        cspell_config_file = self.final_config_file
+        if cspell_config_file is not None and os.path.isfile(cspell_config_file):
             try:
                 with open(cspell_config_file, "r", encoding="utf-8") as json_file:
                     data = json.load(json_file)
@@ -79,6 +77,7 @@ Of course, please correct real typos before :)
             + os.path.sep
             + reporter_self.master.config_file_name
         )
+        os.makedirs(os.path.dirname(proposed_cspell_config_file), exist_ok=True)
         with open(proposed_cspell_config_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
         proposed_cspell_config_file = utils.normalize_log_string(

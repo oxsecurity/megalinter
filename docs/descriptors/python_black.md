@@ -7,21 +7,23 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)
+
 ## black documentation
 
-- Version in MegaLinter: **22.1.0**
+- Version in MegaLinter: **22.8.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
-  - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
+  - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
 
 [![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/beta/configuration/#apply-fixes)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -44,22 +46,22 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                              [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                              [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
-|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)   |                         [Visit Web Site](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea){target=_blank}                         |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                              [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                              [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)   |                         [Visit Web Site](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea){target=_blank}                         |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                 | Description                         | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor           |       107        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/) | Optimized for PYTHON based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -71,7 +73,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- black is called once with the list of files as arguments
+- black is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -99,7 +101,7 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
@@ -112,8 +114,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (timeit, time, python, capture,
-                                  python3, pypy, prun). Useful for formatting
+                                  magics (python3, time, python, capture,
+                                  timeit, prun, pypy). Useful for formatting
                                   cells with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
@@ -121,7 +123,7 @@ Options:
                                   Don't use trailing commas as a reason to
                                   split lines.
   --preview                       Enable potentially disruptive style changes
-                                  that will be added to Black's main
+                                  that may be added to Black's main
                                   functionality in the next major release.
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
@@ -137,7 +139,8 @@ Options:
   --required-version TEXT         Require a specific version of Black to be
                                   running (useful for unifying results across
                                   many environments e.g. with a pyproject.toml
-                                  file).
+                                  file). It can be either a major version
+                                  number or an exact version.
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
                                   recursive searches. An empty value means all
@@ -154,7 +157,8 @@ Options:
                                   Exclusions are calculated first, inclusions
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
-                                  |_build|buck-out|build|dist)/]
+                                  |_build|buck-
+                                  out|build|dist|__pypackages__)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the
@@ -167,8 +171,8 @@ Options:
                                   stdin. Useful to make sure Black will
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
-  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2;
-                                  x>=1]
+  -W, --workers INTEGER RANGE     Number of parallel workers [default: number
+                                  of CPUs in the system]  [x>=1]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
@@ -184,30 +188,3 @@ Options:
 
 - PIP packages (Python):
   - [black](https://pypi.org/project/black)
-
-### Example success log
-
-```shell
-Results of black linter (version 19.10)
-See documentation on https://megalinter.github.io/descriptors/python_black/
------------------------------------------------
-
-[SUCCESS] .automation/test/python/python_good_1.py
-    All done! ✨ 🍰 ✨
-    1 file would be left unchanged.
-
-```
-
-### Example error log
-
-```shell
-Results of black linter (version 19.10)
-See documentation on https://megalinter.github.io/descriptors/python_black/
------------------------------------------------
-
-[ERROR] .automation/test/python/python_bad_1.py
-    error: cannot format .automation/test/python/python_bad_1.py: Cannot parse: 15:23: if github_token is None
-    Oh no! 💥 💔 💥
-    1 file would fail to reformat.
-
-```

@@ -31,12 +31,13 @@ import urllib.error
 import urllib.request
 from time import perf_counter
 
-from megalinter import config, pre_post_factory, utils
+import yaml
+from megalinter import config, pre_post_factory, utils, utils_reporter
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
-    DEFAULT_WORKSPACE_DIR = "/tmp/lint/"
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
@@ -54,6 +55,9 @@ class Linter:
         self.disabled = False
         self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
+        self.linter_speed = 3
+        self.can_output_sarif = False
+        self.output_sarif = False
         # ex: https://eslint.org/
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
@@ -68,14 +72,21 @@ class Linter:
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
         self.final_config_file = None
+        # Ignore file name and arg
+        self.ignore_file_name = None
+        self.cli_lint_ignore_arg_name = None
+        self.final_ignore_file = None
+        # Other
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
         self.active_only_if_file_found = []
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
+        self.is_plugin = False
         self.pre_commands = None
         self.post_commands = None
+        self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
         self.cli_docker_image = None
@@ -87,9 +98,13 @@ class Linter:
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
+        self.cli_config_default_value = None
         self.cli_config_extra_args = (
             []
         )  # Extra arguments to send to cli when a config file is used
+        self.cli_sarif_args = []
+        self.sarif_output_file = None
+        self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
@@ -115,6 +130,9 @@ class Linter:
         # If linter --version does not return 0 when it is in success, override. ex: 1
         self.version_command_return_code = 0
 
+        self.log_lines_pre: list(str) = []
+        self.log_lines_post: list(str) = []
+
         self.report_folder = ""
         self.reporters = []
 
@@ -130,10 +148,12 @@ class Linter:
                 "enable_linters": [],
                 "disable_descriptors": [],
                 "disable_linters": [],
+                "disable_errors_linters": [],
                 "post_linter_status": True,
             }
 
         self.is_active = params["default_linter_activation"]
+        # Disable errors
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
@@ -143,11 +163,25 @@ class Linter:
             if config.get("DISABLE_ERRORS", "false") == "true"
             else False
         )
+        # Name
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
-
+        # Sarif enablement
+        self.output_sarif = (
+            params["output_sarif"]
+            if "output_sarif" in params and self.can_output_sarif is True
+            else self.output_sarif
+        )
+        if self.output_sarif is True:
+            # Disable SARIF if linter not in specified linter list
+            sarif_enabled_linters = config.get_list("SARIF_REPORTER_LINTERS", None)
+            if (
+                sarif_enabled_linters is not None
+                and self.name not in sarif_enabled_linters
+            ):
+                self.output_sarif = False
         # Override default executable
         if config.exists(self.name + "_CLI_EXECUTABLE"):
             self.cli_executable = config.get(self.name + "_CLI_EXECUTABLE")
@@ -176,18 +210,22 @@ class Linter:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
             # Manage apply fixes flag on linter
             param_apply_fixes = params.get("apply_fixes", "none")
+            # No fixing config on linter descriptor
             if self.cli_lint_fix_arg_name is None:
                 self.apply_fixes = False
+            # APPLY_FIXES is "all"
             elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True
+            # APPLY_FIXES is a comma-separated list in a single string
             elif (
                 param_apply_fixes != "none"
                 and isinstance(param_apply_fixes, str)
                 and self.name in param_apply_fixes.split(",")
             ):
                 self.apply_fixes = True
+            # APPLY_FIXES is a list of strings
             elif (
                 param_apply_fixes != "none"
                 and isinstance(param_apply_fixes, list)
@@ -196,6 +234,14 @@ class Linter:
                 self.apply_fixes = True
             else:
                 self.apply_fixes = False
+
+            # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
+            # because there are no other linters
+            if (
+                self.lint_all_other_linters_files is True
+                and config.get("SINGLE_LINTER", "") != ""
+            ):
+                self.lint_all_other_linters_files = False
 
             # Config items
             self.linter_rules_path = (
@@ -213,6 +259,9 @@ class Linter:
             self.config_file = None
             self.config_file_label = None
             self.config_file_error = None
+            self.ignore_file = None
+            self.ignore_file_label = None
+            self.ignore_file_error = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
             self.post_linter_status = (
@@ -231,7 +280,7 @@ class Linter:
                 params["report_folder"] if "report_folder" in params else ""
             )
 
-            self.load_config_vars()
+            self.load_config_vars(params)
 
             # Manage sub-directory filter if defined
             if self.files_sub_directory is not None:
@@ -290,6 +339,7 @@ class Linter:
             self.try_fix = False
             self.status = "success"
             self.stdout = None
+            self.stdout_human = None
             self.return_code = 0
             self.number_errors = 0
             self.total_number_errors = 0
@@ -298,6 +348,7 @@ class Linter:
             self.start_perf = None
             self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
+            self.remote_ignore_file_to_delete = None
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -341,7 +392,7 @@ class Linter:
             self.is_active = utils.check_activation_rules(self.activation_rules, self)
 
     # Manage configuration variables
-    def load_config_vars(self):
+    def load_config_vars(self, params):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
         if config.exists(self.name + "_CONFIG_FILE"):
@@ -352,6 +403,12 @@ class Linter:
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
+        # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
+        if self.cli_lint_ignore_arg_name is not None:
+            if config.exists(self.name + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(self.name + "_IGNORE_FILE")
+            elif config.exists(self.descriptor_id + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(self.descriptor_id + "_IGNORE_FILE")
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.name + "_RULES_PATH")
@@ -427,8 +484,82 @@ class Linter:
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
-                    self.DEFAULT_WORKSPACE_DIR, ""
+                    DEFAULT_DOCKER_WORKSPACE_DIR, ""
                 ).replace(self.TEMPLATES_DIR, "")
+
+        # Linter ignore file:
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
+        # 2: repo + ignore_file_name
+        # 3: linter_rules_path + ignore_file_name
+        # 4: workspace root + linter_rules_path + ignore_file_name
+        # 5: mega-linter default rules path + ignore_file_name
+        if (
+            self.ignore_file_name is not None
+            and self.ignore_file_name != "LINTER_DEFAULT"
+        ):
+            if self.linter_rules_path.startswith("http"):
+                if not self.linter_rules_path.endswith("/"):
+                    self.linter_rules_path += "/"
+                remote_ignore_file = self.linter_rules_path + self.ignore_file_name
+                local_ignore_file = self.workspace + os.path.sep + self.ignore_file_name
+                existing_before = os.path.isfile(local_ignore_file)
+                try:
+                    with urllib.request.urlopen(remote_ignore_file) as response, open(
+                        local_ignore_file, "wb"
+                    ) as out_file:
+                        shutil.copyfileobj(response, out_file)
+                        self.ignore_file_label = remote_ignore_file
+                        if existing_before is False:
+                            self.remote_ignore_file_to_delete = local_ignore_file
+                except urllib.error.HTTPError as e:
+                    self.ignore_file_error = (
+                        f"Unable to fetch {remote_ignore_file}\n{str(e)}\n"
+                        f" fallback to repository config or MegaLinter default ignore file"
+                    )
+                except Exception as e:
+                    self.ignore_file_error = (
+                        f"Unable to fetch {remote_ignore_file}\n{str(e)}\n"
+                        f" fallback to repository config or MegaLinter default ignore file"
+                    )
+            # in repo root (already here or fetched by code above)
+            if os.path.isfile(self.workspace + os.path.sep + self.ignore_file_name):
+                self.ignore_file = self.workspace + os.path.sep + self.ignore_file_name
+            # in user repo ./github/linters folder
+            elif os.path.isfile(
+                self.linter_rules_path + os.path.sep + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.linter_rules_path + os.path.sep + self.ignore_file_name
+                )
+            # in workspace root
+            elif os.path.isfile(
+                self.workspace
+                + os.path.sep
+                + self.linter_rules_path
+                + os.path.sep
+                + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.workspace
+                    + os.path.sep
+                    + self.linter_rules_path
+                    + os.path.sep
+                    + self.ignore_file_name
+                )
+            # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
+            elif os.path.isfile(
+                self.default_rules_location + os.path.sep + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.default_rules_location + os.path.sep + self.ignore_file_name
+                )
+            # Set ignore file label if not set by remote rule
+            if self.ignore_file is not None and self.ignore_file_label is None:
+                self.ignore_file_label = self.ignore_file.replace(
+                    DEFAULT_DOCKER_WORKSPACE_DIR, ""
+                ).replace(self.TEMPLATES_DIR, "")
+
         # User override of cli_lint_mode
         if config.exists(self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
@@ -474,6 +605,8 @@ class Linter:
             )
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
+        elif self.name in params["disable_errors_linters"]:
+            self.disable_errors = True
         elif config.get(self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
         elif config.get(self.name + "_DISABLE_ERRORS", "") == "true":
@@ -498,15 +631,16 @@ class Linter:
     # Processes the linter
     def run(self):
         self.start_perf = perf_counter()
+
+        # Initialize linter reports
+        for reporter in self.reporters:
+            reporter.initialize()
+
         # Apply actions defined on Linter class if defined
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
         pre_post_factory.run_linter_pre_commands(self.master, self)
-
-        # Initialize linter reports
-        for reporter in self.reporters:
-            reporter.initialize()
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -556,15 +690,32 @@ class Linter:
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
 
+        # Delete locally copied remote ignore file if necessary
+        if self.remote_ignore_file_to_delete is not None:
+            os.remove(self.remote_ignore_file_to_delete)
+
+        # Run commands defined in descriptor, or overridden by user in configuration
+        pre_post_factory.run_linter_post_commands(self.master, self)
+
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
 
-        # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
-
         return self
+
+    def replace_vars(self, variables):
+        variables_with_replacements = []
+        for txt in variables:
+            if "{{SARIF_OUTPUT_FILE}}" in txt:
+                txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
+            elif "{{REPORT_FOLDER}}" in txt:
+                txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
+            elif "{{WORKSPACE}}" in txt:
+                txt = txt.replace("{{WORKSPACE}}", self.workspace)
+            variables_with_replacements += [txt]
+
+        return variables_with_replacements
 
     def update_files_lint_results(
         self, linted_files, return_code, file_status, stdout, file_errors_number
@@ -632,6 +783,7 @@ class Linter:
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
+            prefix=self.workspace,
         )
         self.files_number = len(self.files)
         logging.debug(
@@ -641,6 +793,11 @@ class Linter:
 
     # lint a single file or whole project
     def process_linter(self, file=None):
+        # Remove previous run SARIF file if necessary
+        if self.sarif_output_file is not None and os.path.isfile(
+            self.sarif_output_file
+        ):
+            os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
@@ -695,8 +852,54 @@ class Linter:
             )
         return_code = process.returncode
         return_stdout = utils.decode_utf8(process.stdout)
+        self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
+
+    def manage_sarif_output(self, return_stdout):
+        sarif_confirmed = False
+        # Move SARIF file if necessary if generated in a fixed place by the linter
+        if (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and self.sarif_output_file is not None
+            and self.sarif_default_output_file is not None
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            linter_sarif_report = (
+                self.sarif_default_output_file
+                if os.path.isfile(self.sarif_default_output_file)
+                else os.path.join(self.workspace, self.sarif_default_output_file)
+            )
+            shutil.move(linter_sarif_report, self.sarif_output_file)
+            sarif_confirmed = True
+            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
+        # Manage case when SARIF output is in stdout (and not generated by the linter)
+        elif (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            sarif_stdout = utils.find_json_in_stdout(return_stdout)
+            if sarif_stdout != "":
+                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
+                    file.write(sarif_stdout)
+                sarif_confirmed = True
+            else:
+                logging.error(
+                    "[Sarif] ERROR: there is no SARIF output file found, and stdout does not contain SARIF"
+                )
+                logging.error("[Sarif] stdout: " + return_stdout)
+        elif (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and os.path.isfile(self.sarif_output_file)
+        ):
+            sarif_confirmed = True
+        # Convert SARIF into human readable text for Console & Text reporters
+        if sarif_confirmed is True and self.master.sarif_to_human is True:
+            with open(self.sarif_output_file, "r", encoding="utf-8") as file:
+                self.stdout_human = utils_reporter.convert_sarif_to_human(file.read())
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
@@ -796,12 +999,14 @@ class Linter:
             volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
                 workspace_value = (
-                    volume_root + "/" + self.workspace.replace("/tmp/lint", "")
+                    volume_root
+                    + "/"
+                    + self.workspace.replace(DEFAULT_DOCKER_WORKSPACE_DIR, "")
                 )
             else:
                 workspace_value = self.workspace
         else:
-            workspace_value = "/tmp/lint"
+            workspace_value = DEFAULT_DOCKER_WORKSPACE_DIR
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
@@ -810,7 +1015,9 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + command  # ["ls", "-A", "/tmp/lint"]
+            command = (
+                docker_command + command
+            )  # ["ls", "-A", DEFAULT_DOCKER_WORKSPACE_DIR]
         return command
 
     ########################################
@@ -821,10 +1028,13 @@ class Linter:
         pass
 
     # Build the CLI command to call to lint a file (can be overridden)
-    def build_lint_command(self, file=None):
+    def build_lint_command(self, file=None) -> list:
         cmd = [self.cli_executable]
+
         # Add other lint cli arguments if defined
+        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
         cmd += self.cli_lint_extra_args
+
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
@@ -833,22 +1043,47 @@ class Linter:
             cmd[0] = self.cli_executable_fix
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
+
         # Add user-defined extra arguments if defined
+        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
         cmd += self.cli_lint_user_args
+
         # Add config arguments if defined (except for case when no_config_if_fix is True)
-        if self.config_file is not None:
+        if (
+            self.cli_config_arg_name in cmd
+            or self.cli_config_arg_name in self.cli_config_extra_args
+        ):
+            # User overridden config within LINTER_NAME_ARGUMENTS
+            cmd += self.cli_config_extra_args
+        elif self.config_file is not None:
+            # Config file
             self.final_config_file = self.config_file
             if self.cli_docker_image is not None:
                 self.final_config_file = self.final_config_file.replace(
-                    self.workspace, "/tmp/lint"
+                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
                 )
             if self.cli_config_arg_name.endswith("="):
                 cmd += [self.cli_config_arg_name + self.final_config_file]
             elif self.cli_config_arg_name != "":
                 cmd += [self.cli_config_arg_name, self.final_config_file]
             cmd += self.cli_config_extra_args
+        elif self.cli_config_default_value is not None:
+            # Default config value
+            cmd += [self.cli_config_arg_name, self.cli_config_default_value]
+            cmd += self.cli_config_extra_args
+
+        # Manage ignore arguments if necessary
+        cmd += self.get_ignore_arguments(cmd)
+
+        # Manage SARIF arguments if necessary
+        cmd += self.get_sarif_arguments()
+
         # Add other lint cli arguments after other arguments if defined
+        self.cli_lint_extra_args_after = self.replace_vars(
+            self.cli_lint_extra_args_after
+        )
         cmd += self.cli_lint_extra_args_after
+
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
         if self.try_fix is True:
@@ -856,19 +1091,102 @@ class Linter:
                 cmd.remove(arg)
             if "--megalinter-fix-flag" in cmd:
                 cmd.remove("--megalinter-fix-flag")
+
         # Append file in command arguments
         if file is not None:
             cmd += [file]
+
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
             cmd += self.files
         return self.manage_docker_command(cmd)
 
+    # Manage ignore arguments
+    def get_ignore_arguments(self, cmd):
+        ignore_args = []
+        if (
+            self.ignore_file is not None
+            and self.cli_lint_ignore_arg_name is not None
+            and self.cli_lint_ignore_arg_name not in cmd
+            and self.cli_lint_ignore_arg_name not in self.cli_lint_extra_args_after
+        ):
+            self.final_ignore_file = self.ignore_file
+            if self.cli_docker_image is not None:
+                self.final_ignore_file = self.final_ignore_file.replace(
+                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
+                )
+            if self.cli_lint_ignore_arg_name.endswith("="):
+                ignore_args += [self.cli_lint_ignore_arg_name + self.final_ignore_file]
+            elif self.cli_lint_ignore_arg_name != "":
+                ignore_args += [self.cli_lint_ignore_arg_name, self.final_ignore_file]
+        return ignore_args
+
+    # Manage SARIF arguments
+    def get_sarif_arguments(self):
+        if self.can_output_sarif is True and self.output_sarif is True:
+            self.sarif_output_file = (
+                self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
+            )
+            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
+            self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
+            return self.cli_sarif_args
+        return []
+
     # Find number of errors in linter stdout log
-    def get_total_number_errors(self, stdout):
+    def get_total_number_errors(self, stdout: str):
         total_errors = 0
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            try:
+                # SARIF is in MegaLinter named file
+                if self.sarif_output_file is not None and os.path.isfile(
+                    self.sarif_output_file
+                ):
+                    with open(
+                        self.sarif_output_file, "r", encoding="utf-8"
+                    ) as sarif_file:
+                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        # SARIF is in default output file
+                elif self.sarif_default_output_file is not None and os.path.isfile(
+                    self.sarif_default_output_file
+                ):
+
+                    with open(
+                        self.sarif_default_output_file, "r", encoding="utf-8"
+                    ) as sarif_file:
+                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        # SARIF is in stdout
+                else:
+                    # SARIF is in stdout
+                    sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                if "results" in sarif_output["runs"][0]:
+                    # Get number of results
+                    total_errors = len(sarif_output["runs"][0]["results"])
+                    # Append number of invocation config notifications (other type of errors, not in result)
+                    if "invocations" in sarif_output["runs"][0]:
+                        for invocation in sarif_output["runs"][0]["invocations"]:
+                            if "toolConfigurationNotifications" in invocation:
+                                total_errors += len(
+                                    invocation["toolConfigurationNotifications"]
+                                )
+                # If we got here, we should have found a number of errors from SARIF output
+                if total_errors == 0:
+                    logging.warning(
+                        "Unable to get total errors from SARIF output.\nSARIF:"
+                        + str(sarif_output)
+                    )
+                return total_errors
+            except Exception as e:
+                total_errors = 1
+                logging.error(
+                    "Error while getting total errors from SARIF output.\nError:"
+                    + str(e)
+                    + "\nstdout: "
+                    + stdout
+                )
+                return total_errors
         # Get number with a single regex.
-        if self.cli_lint_errors_count == "regex_number":
+        elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
             m = re.search(reg, stdout)
             if m:
@@ -890,7 +1208,7 @@ class Linter:
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
-        if self.cli_lint_errors_count is not None:
+        if self.cli_lint_errors_count is not None and self.output_sarif is False:
             logging.warning(
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"

@@ -1,6 +1,6 @@
 # E-mail Reporter
 
-IF you don't use artifacts upload to read MegaLinter reports, you can receive them by e-mail
+If you don't use artifacts upload to read MegaLinter reports, you can receive them by e-mail
 
 ## Usage
 

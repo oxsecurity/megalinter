@@ -1,10 +1,11 @@
+# pyright: reportMissingImports=false
 import json
 import sys
 from os import getenv, path
 from pprint import pprint
 
 import click  # pylint: disable=import-error
-import requests  # pylint: disable=import-error
+import requests  # pylint: disable=import-error 
 from dotenv import load_dotenv  # pylint: disable=import-error
 
 env = load_dotenv()
@@ -188,7 +189,8 @@ def copy_labels(source_repo, target_repo, dry):
             for label in filtered_labels:
                 create_label(target_repo_id, label)
     except Exception as error:
-        sys.exit(error)
+        print(error)
+        sys.exit(1)
 
     print("Done")
 
@@ -196,4 +198,4 @@ def copy_labels(source_repo, target_repo, dry):
 if __name__ == "__main__":
     # Pylint doesn't know that @click.command takes care of injecting the
     # function parameters. Disabling Pylint error.
-    copy_labels()  # pylint: disable=no-value-for-parameter
+    copy_labels()  # type:ignore # pylint: disable=no-value-for-parameter

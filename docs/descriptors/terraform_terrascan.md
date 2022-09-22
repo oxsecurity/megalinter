@@ -3,13 +3,15 @@
 
 <div align="center">
   <a href="https://www.accurics.com/products/terrascan/" target="blank" title="Visit linter Web Site">
-    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px" class="megalinter-banner">
+    <img src="https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png" alt="terrascan" height="150px" class="megalinter-banner">
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits)
+
 ## terrascan documentation
 
-- Version in MegaLinter: **1.13.2**
+- Version in MegaLinter: **1.15.2**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -18,8 +20,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -37,10 +39,11 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                       | Description                            | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------|:---------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)       | Default MegaLinter Flavor              |       107        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/beta/flavors/security/)   | Optimized for security                 |        21        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://oxsecurity.github.io/megalinter/beta/flavors/terraform/) | Optimized for TERRAFORM based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -52,7 +55,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-terrascan is called once on the whole project directory
+terrascan is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using terrascan configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make terrascan analyze only updated files
@@ -70,7 +73,7 @@ terrascan scan -i terraform -t all -f myfile.tf
 Terrascan
 
 Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
-For more information, please visit https://docs.accurics.com
+For more information, please visit https://runterrascan.io/
 
 Usage:
   terrascan [command]
@@ -82,10 +85,12 @@ Available Commands:
   version     Terrascan version
 
 Flags:
-  -c, --config-path string   config file path
-  -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
-  -x, --log-type string      log output type (console, json) (default "console")
-  -o, --output string        output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
+  -c, --config-path string      config file path
+  -l, --log-level string        log level (debug, info, warn, error, panic, fatal) (default "info")
+      --log-output-dir string   directory path to write the log and output files
+  -x, --log-type string         log output type (console, json) (default "console")
+  -o, --output string           output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
+      --temp-dir string         temporary directory path to download remote repository,module and templates
 
 Use "terrascan [command] --help" for more information about a command.
 ```
@@ -94,61 +99,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM accurics/terrascan:latest as terrascan
+FROM tenable/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 
-
-### Example success log
-
-```shell
-Results of terrascan linter (version 1.2.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
------------------------------------------------
-
-[SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
-    results:
-        violations: []
-        count:
-            low: 0
-            medium: 0
-            high: 0
-            total: 0
-
-```
-
-### Example error log
-
-```shell
-Results of terrascan linter (version 1.2.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
------------------------------------------------
-
-[ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf
-    results:
-        violations:
-            - rule_name: instanceWithNoVpc
-              description: Instance should be configured in vpc. AWS VPCs provides the controls to facilitate a formal process for approving and testing all network connections and changes to the firewall and router configurations.
-              rule_id: AWS.Instance.NetworkSecurity.Medium.0506
-              severity: MEDIUM
-              category: Network Security
-              resource_name: instanceWithNoVpc
-              resource_type: aws_instance
-              file: terraform_bad_1.tf
-              line: 1
-            - rule_name: ec2UsingIMDSv1
-              description: EC2 instances should disable IMDS or require IMDSv2
-              rule_id: AC-AWS-NS-IN-M-1172
-              severity: MEDIUM
-              category: Network Security
-              resource_name: instanceWithNoVpc
-              resource_type: aws_instance
-              file: terraform_bad_1.tf
-              line: 1
-        count:
-            low: 0
-            medium: 2
-            high: 0
-            total: 2
-
-```
