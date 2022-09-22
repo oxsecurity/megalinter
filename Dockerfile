@@ -390,7 +390,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # bicep installation
     && curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
     && chmod +x "${BICEP_EXE}" \
-    && sudo mv "${BICEP_EXE}" "${BICEP_DIR}" \
+    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \

@@ -88,7 +88,7 @@ linters:
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO "${BICEP_URI}" \
               && chmod +x "${BICEP_EXE}" \
-              && sudo mv "${BICEP_EXE}" "${BICEP_DIR}"
+              && mv "${BICEP_EXE}" "${BICEP_DIR}"
     ide:
       vscode:
         - name: VSCode Bicep
