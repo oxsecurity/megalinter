@@ -29,6 +29,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.17.0 to **1.17.1** on 2022-09-21
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.2 to **3.10.3** on 2022-09-21
   - [checkov](https://www.checkov.io/) from 2.1.219 to **2.1.223** on 2022-09-21
+  - [djlint](https://djlint.com/) from 1.17.1 to **1.17.2** on 2022-09-22
+  - [checkov](https://www.checkov.io/) from 2.1.223 to **2.1.226** on 2022-09-22
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.63 to **0.1.64** on 2022-09-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.9 to **1.3.0** on 2022-09-22
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
