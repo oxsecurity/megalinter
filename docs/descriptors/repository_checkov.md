@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.219**
+- Version in MegaLinter: **2.1.223**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -123,7 +123,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
 
 Infrastructure as code static analysis
 
@@ -371,7 +371,7 @@ options:
   --black-list-secret-scan BLACK_LIST_SECRET_SCAN
                         black file list to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLACK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

@@ -8,8 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Document the `-f` argument to mega-linter-runner ([#1895](https://github.com/oxsecurity/megalinter/issues/1895))
 - Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
 - Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
+- Improve support for devcontainers by using Python base image
 - Add [bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) linter
 
 - Linter versions upgrades
@@ -23,6 +25,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.2 to **0.10.3** on 2022-09-21
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.0 to **6.10.1** on 2022-09-21
   - [tflint](https://github.com/terraform-linters/tflint) from 0.40.0 to **0.40.1** on 2022-09-21
+  - [stylelint](https://stylelint.io) from 14.12.0 to **14.12.1** on 2022-09-21
+  - [djlint](https://djlint.com/) from 1.17.0 to **1.17.1** on 2022-09-21
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.2 to **3.10.3** on 2022-09-21
+  - [checkov](https://www.checkov.io/) from 2.1.219 to **2.1.223** on 2022-09-21
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
