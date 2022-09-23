@@ -9,13 +9,13 @@ linters:
   # PYLINT
   - linter_name: pylint
     name: PYTHON_PYLINT
-    linter_url: https://www.pylint.org
+    linter_url: https://pylint.pycqa.org
     linter_repo: https://github.com/PyCQA/pylint
     linter_speed: 2
-    linter_rules_url: http://pylint-messages.wikidot.com/all-codes
+    linter_rules_url: https://pylint.pycqa.org/en/latest/user_guide/messages/messages_overview.html
     linter_banner_image_url: https://www.pylint.org/pylint.svg
-    linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
-    linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
+    linter_rules_configuration_url: https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html
+    linter_rules_inline_disable_url: https://pylint.pycqa.org/en/latest/user_guide/messages/message_control.html
     cli_lint_mode: list_of_files
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
