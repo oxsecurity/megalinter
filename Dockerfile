@@ -202,10 +202,9 @@ RUN npm --no-cache install --ignore-scripts \
                 babel-eslint \
                 @babel/core \
                 @babel/eslint-parser \
+                @microsoft/eslint-formatter-sarif \
                 putout \
                 eslint-plugin-putout \
-                standard@15.0.1 \
-                @microsoft/eslint-formatter-sarif \
                 standard \
                 prettier \
                 @prantlf/jsonlint \

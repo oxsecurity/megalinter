@@ -106,7 +106,7 @@ linters:
     linter_url: https://github.com/coderaiser/putout
     linter_repo: https://github.com/coderaiser/putout
     linter_rules_url: https://github.com/coderaiser/putout#-built-in-transformations
-    linter_banner_image_url: https://raw.githubusercontent.com/coderaiser/putout/v23.1.0/images/putout-logo.svg
+    linter_banner_image_url: https://raw.githubusercontent.com/coderaiser/putout/v27.13.0/images/putout-logo.svg
     linter_rules_configuration_url: https://github.com/coderaiser/putout/#-configuration
     active_only_if_file_found:
       - ".putout.json"

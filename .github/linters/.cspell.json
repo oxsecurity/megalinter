@@ -469,6 +469,7 @@
         "codenarcargs",
         "codeql",
         "codestyle",
+        "codeframe",
         "coffeelint",
         "collectd",
         "columnsep",
