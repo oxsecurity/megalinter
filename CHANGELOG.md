@@ -33,6 +33,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.223 to **2.1.226** on 2022-09-22
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.63 to **0.1.64** on 2022-09-22
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.9 to **1.3.0** on 2022-09-22
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.1 to **6.7.0** on 2022-09-25
+  - [eslint](https://eslint.org) from 8.23.1 to **8.24.0** on 2022-09-25
+  - [phpstan](https://phpstan.org/) from 1.8.5 to **1.8.6** on 2022-09-25
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.40.0 to **0.41.0** on 2022-09-25
+  - [checkov](https://www.checkov.io/) from 2.1.226 to **2.1.227** on 2022-09-25
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
