@@ -27,7 +27,7 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.40.1 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
