@@ -38,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.8.5 to **1.8.6** on 2022-09-25
   - [protolint](https://github.com/yoheimuta/protolint) from 0.40.0 to **0.41.0** on 2022-09-25
   - [checkov](https://www.checkov.io/) from 2.1.226 to **2.1.227** on 2022-09-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.3 to **10.3.4** on 2022-09-26
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
