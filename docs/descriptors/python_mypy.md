@@ -15,7 +15,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.971**
+- Version in MegaLinter: **0.981**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -261,6 +261,9 @@ Configuring error messages:
                             context (inverse: --hide-error-context)
   --show-column-numbers     Show column numbers in error messages (inverse:
                             --hide-column-numbers)
+  --show-error-end          Show end line/end column numbers in error
+                            messages. This implies --show-column-numbers
+                            (inverse: --hide-error-end)
   --show-error-codes        Show error codes in error messages (inverse:
                             --hide-error-codes)
   --pretty                  Use visually nicer output in error messages: Use
@@ -299,6 +302,8 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
+  --enable-recursive-aliases
+                            Experimental support for recursive type aliases
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only

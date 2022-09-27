@@ -4,7 +4,7 @@
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.12.0**
+- Version in MegaLinter: **8.13.0**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file is not found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -91,6 +91,7 @@ Available Commands:
   version     display gitleaks version
 
 Flags:
+  -b, --baseline-path string   path to baseline with issues that can be ignored
   -c, --config string          config file path
                                order of precedence:
                                1. --config/-c
@@ -100,6 +101,7 @@ Flags:
       --exit-code int          exit code when leaks have been encountered (default 1)
   -h, --help                   help for gitleaks
   -l, --log-level string       log level (trace, debug, info, warn, error, fatal) (default "info")
+      --no-banner              suppress banner
       --redact                 redact secrets from logs and stdout
   -f, --report-format string   output format (json, csv, sarif) (default "json")
   -r, --report-path string     report file
@@ -113,7 +115,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.12.0 as gitleaks
+FROM zricethezav/gitleaks:v8.13.0 as gitleaks
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 
