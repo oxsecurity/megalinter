@@ -48,6 +48,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.12.0 to **8.13.0** on 2022-09-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.0 to **7.14.1** on 2022-09-27
   - [tflint](https://github.com/terraform-linters/tflint) from 0.40.1 to **0.41.0** on 2022-09-27
+  - [checkov](https://www.checkov.io/) from 2.1.228 to **2.1.229** on 2022-09-27
+  - [semgrep](https://semgrep.dev/) from 0.114.0 to **0.115.0** on 2022-09-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.1 to **7.14.2** on 2022-09-27
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.1 to **1.3.2** on 2022-09-27
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
