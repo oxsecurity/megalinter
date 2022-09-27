@@ -4,7 +4,7 @@
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **11.6.0**
+- Version in MegaLinter: **11.7.0**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -92,6 +92,7 @@ Options:
   -c, --compact                compact error display
   -M, --mode [mode]            set other parsing flags according to a format
                                type (default: "json")
+  -B, --bom                    ignore the leading UTF-8 byte-order mark
   -C, --comments               recognize and ignore JavaScript-style comments
   -S, --single-quoted-strings  support single quotes as string delimiters
   -T, --trailing-commas        ignore trailing commas in objects and arrays
@@ -119,7 +120,7 @@ Options:
   -h, --help                   display help for command
 
 You can use BASH patterns for including and excluding files (only files).
-Patterns are case-sensitive and have to use slashes as a path separators.
+Patterns are case-sensitive and have to use slashes as directory separators.
 A pattern to exclude from processing starts with "!".
 
 Parsing mode can be "cjson" or "json5" to enable other flags automatically.
