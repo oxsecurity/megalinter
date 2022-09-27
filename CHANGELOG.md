@@ -13,6 +13,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
 - Improve support for devcontainers by using Python base image
   - Fixed Python version in devcontainer from 3.9 -> 3.10
+- Add Makefile linter in [java flavor](https://oxsecurity.github.io/megalinter/latest/flavors/java/)
+- Fix build command on linux (thanks a lot to [Edouard Choinière](https://github.com/echoix) for the investigation and solution !)
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.65.1** on 2022-09-20
