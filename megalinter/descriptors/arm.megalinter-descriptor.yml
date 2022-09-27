@@ -2,8 +2,6 @@ descriptor_id: ARM
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
-file_contains_regex:
-  - 'schema\.management\.azure\.com'
 install:
   apk:
     - icu-libs
@@ -29,6 +27,8 @@ linters:
     linter_version_cache: "0.0.0" # TODO: retrieve arm-ttk version
     file_extensions:
       - ".json"
+    file_contains_regex:
+      - 'schema\.management\.azure\.com'
     examples:
       - |
         pwsh -NoProfile -NoLogo -Command "
