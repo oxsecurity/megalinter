@@ -11,7 +11,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.223**
+- Version in MegaLinter: **2.1.228**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -123,7 +123,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
 
 Infrastructure as code static analysis
 
@@ -185,9 +185,11 @@ options:
                         Filter scan to run only on specific infrastructure
                         code frameworks [env var: CKV_FRAMEWORK]
   --skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
-                        Filter scan to skip specific infrastructure code
-                        frameworks. will be included automatically for some
-                        frameworks if system dependencies are missing.
+                        Filter scan to skip specific infrastructure as code
+                        frameworks.This will be included automatically for
+                        some frameworks if system dependencies are missing.
+                        Add multiple frameworks using spaces. For example,
+                        --skip-framework terraform sca_package.
   -c CHECK, --check CHECK
                         Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may
@@ -371,7 +373,7 @@ options:
   --black-list-secret-scan BLACK_LIST_SECRET_SCAN
                         black file list to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLACK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

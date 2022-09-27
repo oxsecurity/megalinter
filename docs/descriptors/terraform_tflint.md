@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.40.1**
+- Version in MegaLinter: **0.41.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -125,7 +125,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.40.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 
