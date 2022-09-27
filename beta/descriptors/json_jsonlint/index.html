@@ -5654,7 +5654,7 @@
 <h1 id="jsonlint">jsonlint <a href="https://github.com/prantlf/jsonlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/prantlf/jsonlint" /></a></h1>
 <h2 id="jsonlint-documentation">jsonlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>11.6.0</strong></li>
+<li>Version in MegaLinter: <strong>11.7.0</strong></li>
 <li>Visit <a href="https://github.com/prantlf/jsonlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/prantlf/jsonlint#configuration" target="_blank">How to configure jsonlint rules</a></li>
 <li>See <a href="https://github.com/prantlf/jsonlint#configuration" target="_blank">Index of problems detected by jsonlint</a></li>
@@ -5882,6 +5882,7 @@ Options:
   -c, --compact                compact error display
   -M, --mode [mode]            set other parsing flags according to a format
                                type (default: &quot;json&quot;)
+  -B, --bom                    ignore the leading UTF-8 byte-order mark
   -C, --comments               recognize and ignore JavaScript-style comments
   -S, --single-quoted-strings  support single quotes as string delimiters
   -T, --trailing-commas        ignore trailing commas in objects and arrays
@@ -5909,7 +5910,7 @@ Options:
   -h, --help                   display help for command
 
 You can use BASH patterns for including and excluding files (only files).
-Patterns are case-sensitive and have to use slashes as a path separators.
+Patterns are case-sensitive and have to use slashes as directory separators.
 A pattern to exclude from processing starts with &quot;!&quot;.
 
 Parsing mode can be &quot;cjson&quot; or &quot;json5&quot; to enable other flags automatically.
