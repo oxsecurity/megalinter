@@ -2,6 +2,10 @@ descriptor_id: ARM
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+file_extensions:
+  - ".json"
+file_contains_regex:
+  - 'schema\.management\.azure\.com'
 install:
   apk:
     - icu-libs
@@ -25,10 +29,6 @@ linters:
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests
     config_file_name: .arm-ttk.psd1
     linter_version_cache: "0.0.0" # TODO: retrieve arm-ttk version
-    file_extensions:
-      - ".json"
-    file_contains_regex:
-      - 'schema\.management\.azure\.com'
     examples:
       - |
         pwsh -NoProfile -NoLogo -Command "
@@ -59,37 +59,3 @@ linters:
       vscode:
         - name: ARMTTKExtension
           url: https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension
-  # Bicep Linter
-  - name: ARM_BICEP_LINTER
-    config_file_name: bicepconfig.json
-    cli_help_arg_name: --help
-    cli_lint_mode: file
-    cli_lint_extra_args: 
-      - "build"
-    cli_version_arg_name: --version
-    file_extensions:
-      - ".bicep"
-    linter_name: bicep
-    linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
-    linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
-    version_extract_regex: "Bicep CLI version (\\d+)\\.(\\d+)\\.(\\d+)"
-    examples:
-      - |
-        # Bicep CLI 
-        bicep build infra.bicep;
-
-        # Azure CLI 
-        az bicep build -f infra.bicep
-    install:
-      dockerfile:
-        - ARG BICEP_EXE='bicep'
-        - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
-        - ARG BICEP_DIR='/usr/local/bin'
-        - |
-          RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
-              && chmod +x "${BICEP_EXE}" \
-              && mv "${BICEP_EXE}" "${BICEP_DIR}"
-    ide:
-      vscode:
-        - name: VSCode Bicep
-          url: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep

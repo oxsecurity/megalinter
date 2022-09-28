@@ -1,0 +1,40 @@
+descriptor_id: BICEP
+descriptor_type: tooling_format
+descriptor_flavors:
+  - dotnet
+linters:
+  - config_file_name: bicepconfig.json
+    cli_help_arg_name: --help
+    cli_lint_mode: file
+    cli_lint_extra_args: 
+      - "build"
+    cli_version_arg_name: --version
+    file_extensions:
+      - ".bicep"
+    linter_name: bicep_linter
+    linter_text: |
+      By default, Bicep linter errors are set as warnings. To customize linter settings,
+      use a `bicepconfig.json` file. For more information, see the [documentation for the Bicep Linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter)
+    linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
+    version_extract_regex: "Bicep CLI version (\\d+)\\.(\\d+)\\.(\\d+)"
+    examples:
+      - |
+        # Bicep CLI 
+        bicep build infra.bicep;
+
+        # Azure CLI 
+        az bicep build -f infra.bicep
+    install:
+      dockerfile:
+        - ARG BICEP_EXE='bicep'
+        - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+        - ARG BICEP_DIR='/usr/local/bin'
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+              && chmod +x "${BICEP_EXE}" \
+              && mv "${BICEP_EXE}" "${BICEP_DIR}"
+    ide:
+      vscode:
+        - name: VSCode Bicep
+          url: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep
