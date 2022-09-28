@@ -387,11 +387,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
     && chmod a+x /usr/bin/arm-ttk \
 
-# bicep installation
-    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
-    && chmod +x "${BICEP_EXE}" \
-    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
-
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec \
@@ -405,6 +400,11 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+
+# bicep_linter installation
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && chmod +x "${BICEP_EXE}" \
+    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # clj-kondo installation
 # Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
