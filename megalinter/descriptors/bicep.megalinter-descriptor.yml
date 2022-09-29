@@ -6,7 +6,7 @@ linters:
   - cli_help_arg_name: --help
     cli_executable: bicep
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "\\.bicep\\(\\d+,\\d+\\) : Error "
+    cli_lint_errors_regex: " : Error "
     cli_lint_extra_args: 
       - "build"
     cli_lint_mode: file
