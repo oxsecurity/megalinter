@@ -5,18 +5,23 @@ descriptor_flavors:
 linters:
   - cli_help_arg_name: --help
     cli_executable: bicep
-    cli_lint_mode: file
+    cli_lint_errors_count: "\\.bicep\\(\\d+,\\d+\\) : Error "
     cli_lint_extra_args: 
       - "build"
+    cli_lint_mode: file
     cli_version_arg_name: --version
     file_extensions:
       - ".bicep"
+    linter_image_url: https://raw.githubusercontent.com/Azure/bicep/main/docs/images/BicepLogoImage.png
     linter_name: bicep_linter
     linter_text: |
       By default, Bicep linter errors are set as warnings. To customize linter settings,
       use a `bicepconfig.json` file. For more information, see the [documentation for the Bicep Linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter)
+    linter_repo: https://github.com/Azure/bicep
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config
+    linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives
+    linter_rules_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
     linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
-    linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
     version_extract_regex: "Bicep CLI version (\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
       - |
