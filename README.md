@@ -444,36 +444,25 @@ jobs:
 
 ### GitLab CI
 
-Create or update `.gitlab-ci.yml` file at the root of your repository
+Since our partnership with [r2devops](https://r2devops.io), you can directly import the job MegaLinter into your `.gitlab-ci.yml` file by including the remote link to the job:
 
 ```yaml
-# MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
+stages :
+  - tests
 
-mega-linter:
-  stage: test
-  # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v6
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
-  variables:
-    # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
-    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-  artifacts:
-    when: always
-    paths:
-      - megalinter-reports
-    expire_in: 1 week
+include :
+  - remote: 'https://api.r2devops.io/job/r/r2devops-bot/mega_linter/latest.yaml'
 ```
+👉 You can set a fixed version by replace `latest` with the version you wanted.   
 
-Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+Here is a video about how to include `mega_linter` job in your GitLab CI with a defined version from [r2devops.io](https://r2devops.io/_/r2devops-bot/mega_linter)
+If you want to customize the job, you can take a look at the [documentation](https://r2devops.io/_/r2devops-bot/mega_linter) and modify variables.
 
-![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
+![Recording 2022-09-27 at 17 35 46](https://user-images.githubusercontent.com/50552672/192571663-fb718b53-ffa6-42e1-bdbc-c9aa765b0ada.gif)
 
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
+By default the job, generates a JUnit output, which can be founded on the `Tests` section inside a Pipeline view on GitLab.
+![image](https://user-images.githubusercontent.com/50552672/191708850-c1422bfe-015c-4105-84f5-5ffbbf6f4bdb.png)
 
 ### Azure Pipelines
 
