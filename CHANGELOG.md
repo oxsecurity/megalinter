@@ -52,6 +52,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 0.114.0 to **0.115.0** on 2022-09-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.1 to **7.14.2** on 2022-09-27
   - [sqlfluff](https://www.sqlfluff.com/) from 1.3.1 to **1.3.2** on 2022-09-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.1 to **0.66.0** on 2022-09-30
+  - [stylelint](https://stylelint.io) from 14.12.1 to **14.13.0** on 2022-09-30
+  - [checkov](https://www.checkov.io/) from 2.1.229 to **2.1.242** on 2022-09-30
+  - [syft](https://github.com/anchore/syft) from 0.57.0 to **0.58.0** on 2022-09-30
+  - [kics](https://www.kics.io) from 1.6.0 to **1.6.1** on 2022-09-30
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.0 to **1.3.1** on 2022-09-30
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
