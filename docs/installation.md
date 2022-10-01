@@ -195,7 +195,7 @@ Add the following job in your `azure-pipelines.yaml` file
             -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
-            oxsecurity/megalinter:test-nvuillam-azure-comments
+            oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
