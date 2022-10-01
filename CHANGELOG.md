@@ -59,6 +59,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.57.0 to **0.58.0** on 2022-09-30
   - [kics](https://www.kics.io) from 1.6.0 to **1.6.1** on 2022-09-30
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.0 to **1.3.1** on 2022-09-30
+  - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10** on 2022-10-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.1 to **6.12.0** on 2022-10-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0** on 2022-10-01
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19

@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.5M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.6M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
