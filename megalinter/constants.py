@@ -31,6 +31,7 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "curl",
     "gcc",
     "git",
+    "git-lfs",
     "libffi-dev",
     "make",
     "musl-dev",

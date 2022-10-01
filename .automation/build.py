@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 from datetime import date, datetime
-from shutil import copyfile
+from shutil import copyfile, which
 from typing import Any
 from urllib import parse as parse_urllib
 
@@ -450,7 +450,7 @@ def build_dockerfile(
             + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf \\\n'
+            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf && \\\n'
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
@@ -476,7 +476,8 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf\n'
+            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
+            + "&& rm -rf /root/.cache\n"
             + env_path_command
         )
     else:
@@ -2761,7 +2762,10 @@ def manage_output_variables():
 def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
     # Call markdown-table-formatter with the list of files
-    format_md_tables_command = ["bash", "format-tables.sh"]
+    if sys.platform == "win32":
+        format_md_tables_command = ["bash", "format-tables.sh"]
+    else:
+        format_md_tables_command = ["./format-tables.sh"]
     cwd = os.getcwd() + "/.automation"
     logging.info("Running command: " + str(format_md_tables_command) + f" in cwd {cwd}")
     process = subprocess.run(
@@ -2771,7 +2775,7 @@ def reformat_markdown_tables():
         universal_newlines=True,
         cwd=cwd,
         shell=True,
-        executable=None if sys.platform == "win32" else "/bin/bash",
+        executable=None if sys.platform == "win32" else which("bash"),
     )
     stdout = utils.decode_utf8(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)

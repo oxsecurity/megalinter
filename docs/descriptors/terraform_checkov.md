@@ -15,7 +15,7 @@ You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.210**
+- Version in MegaLinter: **2.1.242**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -109,8 +109,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--policy-metadata-filter POLICY_METADATA_FILTER]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
-               [--black-list-secret-scan BLACK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
+               [--summary-position {top,bottom}]
 
 Infrastructure as code static analysis
 
@@ -172,9 +172,11 @@ options:
                         Filter scan to run only on specific infrastructure
                         code frameworks [env var: CKV_FRAMEWORK]
   --skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
-                        Filter scan to skip specific infrastructure code
-                        frameworks. will be included automatically for some
-                        frameworks if system dependencies are missing.
+                        Filter scan to skip specific infrastructure as code
+                        frameworks.This will be included automatically for
+                        some frameworks if system dependencies are missing.
+                        Add multiple frameworks using spaces. For example,
+                        --skip-framework terraform sca_package.
   -c CHECK, --check CHECK
                         Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may
@@ -355,10 +357,10 @@ options:
   --enable-secret-scan-all-files
                         enable secret scan for all files [env var:
                         CKV_SECRETS_SCAN_ENABLE_ALL]
-  --black-list-secret-scan BLACK_LIST_SECRET_SCAN
-                        black file list to filter out from the secret scanner
-                        [env var: CKV_SECRETS_SCAN_BLACK_LIST]
-  --summary-position {bottom,top}
+  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
+                        List of files to filter out from the secret scanner
+                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

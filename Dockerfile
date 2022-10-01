@@ -16,8 +16,8 @@ FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.12.0 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.40.0 as tflint
+FROM zricethezav/gitleaks:v8.13.0 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -60,6 +60,7 @@ RUN apk add --update --no-cache \
                 curl \
                 gcc \
                 git \
+                git-lfs \
                 libffi-dev \
                 make \
                 musl-dev \
@@ -160,7 +161,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/pyright/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -355,6 +356,8 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
     && echo y|sfdx plugins:install sfdx-hardis \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
@@ -567,17 +570,23 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+#     && npm cache clean --force || true \
+#     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner
+# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+#     && npm cache clean --force || true \
+#     && rm -rf /root/.npm/_cacache
 
 # scalafix installation
-    && ./coursier install scalafix --quiet --install-dir /usr/bin \
+    && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
