@@ -8,15 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Document the `-f` argument to mega-linter-runner ([#1895](https://github.com/oxsecurity/megalinter/issues/1895))
-- Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
-- Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
-- Improve support for devcontainers by using Python base image
-  - Fixed Python version in devcontainer from 3.9 -> 3.10
-- Add [bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) linter
-- Add Makefile linter in [java flavor](https://oxsecurity.github.io/megalinter/latest/flavors/java/)
-- Fix build command on linux (thanks a lot to [Edouard Choinière](https://github.com/echoix) for the investigation and solution !)
-- Azure Comments reporter - Change status when all tests pass ([#1915](https://github.com/oxsecurity/megalinter/issues/1915))
+- Linters
+  - Add [bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) linter ([#1898](https://github.com/oxsecurity/megalinter/pull/1898))
+  - Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
+  - Add Makefile linter in [java flavor](https://oxsecurity.github.io/megalinter/latest/flavors/java/)
+
+- Core
+  - Improve support for devcontainers by using Python base image
+    - Fixed Python version in devcontainer from 3.9 -> 3.10
+    - Fix build command on linux (thanks a lot to [Edouard Choinière](https://github.com/echoix) for the investigation and solution !)
+  - Azure Comments reporter - Change status when all tests pass ([#1915](https://github.com/oxsecurity/megalinter/issues/1915))
+
+- Doc
+  - Document the `-f` argument to mega-linter-runner ([#1895](https://github.com/oxsecurity/megalinter/issues/1895))
+  - Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.65.1** on 2022-09-20
@@ -63,6 +68,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10** on 2022-10-01
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.1 to **6.12.0** on 2022-10-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0** on 2022-10-01
+  - [checkov](https://www.checkov.io/) from 2.1.242 to **2.1.244** on 2022-10-02
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19

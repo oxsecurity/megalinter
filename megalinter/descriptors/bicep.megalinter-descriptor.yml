@@ -7,7 +7,7 @@ linters:
     cli_executable: bicep
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: " : Error "
-    cli_lint_extra_args: 
+    cli_lint_extra_args:
       - "build"
     cli_lint_mode: file
     cli_version_arg_name: --version
