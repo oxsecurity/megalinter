@@ -5,16 +5,16 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                                | Configuration key              | Status                                                                                                                 |
+|---------------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | [bicep_linter](bicep_bicep_linter.md) | [BICEP](bicep_bicep_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Azure/bicep)](https://github.com/Azure/bicep/commits) |
 
 ## Linted files
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| BICEP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BICEP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                   | Description                   | Default value |
+|----------------------------|-------------------------------|---------------|
+| BICEP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| BICEP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

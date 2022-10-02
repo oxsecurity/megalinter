@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                             | Configuration key              | Status                                                                                                                                   |
+|------------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

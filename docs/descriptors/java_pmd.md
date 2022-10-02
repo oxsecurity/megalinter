@@ -18,29 +18,29 @@
 - Enable pmd by adding `JAVA_PMD` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 - Disable pmd by adding `JAVA_PMD` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JAVA_PMD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| JAVA_PMD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
-| JAVA_PMD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
-| JAVA_PMD_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
-| JAVA_PMD_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".java"]` |
-| JAVA_PMD_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| JAVA_PMD_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| JAVA_PMD_POST_COMMANDS | List of bash commands to run after the linter| None |
-| JAVA_PMD_CONFIG_FILE | pmd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `java-pmd-ruleset.xml` |
-| JAVA_PMD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
-| JAVA_PMD_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| Variable                             | Description                                                                                                                                                                                                         | Default value                                   |
+|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| JAVA_PMD_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| JAVA_PMD_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| JAVA_PMD_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| JAVA_PMD_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
+| JAVA_PMD_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".java"]`                                     |
+| JAVA_PMD_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| JAVA_PMD_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| JAVA_PMD_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| JAVA_PMD_CONFIG_FILE                 | pmd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                      | `java-pmd-ruleset.xml`                          |
+| JAVA_PMD_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| JAVA_PMD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-| <!-- --> | Flavor | Description | Embedded linters | Info |
-| :------: | :----- | :---------- | :--------------: | ---: |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor | 108 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://oxsecurity.github.io/megalinter/beta/flavors/java/) | Optimized for JAVA based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                 | Description                       | Embedded linters |                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor         |       108        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/beta/flavors/java/)     | Optimized for JAVA based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
