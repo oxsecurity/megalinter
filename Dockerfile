@@ -38,6 +38,9 @@ ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ARG BICEP_EXE='bicep'
+ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
 ARG PMD_VERSION=6.48.0
@@ -397,6 +400,11 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+
+# bicep_linter installation
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && chmod +x "${BICEP_EXE}" \
+    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # clj-kondo installation
 # Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/

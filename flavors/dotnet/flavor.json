@@ -16,6 +16,7 @@
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
+        "BICEP_BICEP_LINTER",
         "C_CPPLINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
