@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10** on 2022-10-01
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.1 to **6.12.0** on 2022-10-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0** on 2022-10-01
+  - [checkov](https://www.checkov.io/) from 2.1.242 to **2.1.244** on 2022-10-02
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19
