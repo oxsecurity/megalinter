@@ -42,6 +42,8 @@ var gitRepoReference = {
   php: 'https://github.com/Azure-Samples/php-docs-hello-world'
   html: 'https://github.com/Azure-Samples/html-docs-hello-world'
 }
+var unusedVarThatShouldError2 = ''
+var unusedVarThatShouldError3 = ''
 var gitRepoUrl = (empty(repoUrl) ? gitRepoReference[language] : repoUrl)
 var configReference = {
   '.net': {
