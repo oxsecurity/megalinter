@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.11.0] - 2022-10-02
+
 - Linters
   - Add [bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) linter ([#1898](https://github.com/oxsecurity/megalinter/pull/1898))
   - Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
@@ -24,52 +29,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
 
 - Linter versions upgrades
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.65.1** on 2022-09-20
-  - [checkov](https://www.checkov.io/) from 2.1.213 to **2.1.214** on 2022-09-20
-  - [semgrep](https://semgrep.dev/) from 0.113.0 to **0.114.0** on 2022-09-20
-  - [syft](https://github.com/anchore/syft) from 0.56.0 to **0.57.0** on 2022-09-20
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.0 to **6.6.1** on 2022-09-21
-  - [djlint](https://djlint.com/) from 1.16.0 to **1.17.0** on 2022-09-21
-  - [checkov](https://www.checkov.io/) from 2.1.214 to **2.1.219** on 2022-09-21
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.2 to **0.10.3** on 2022-09-21
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.0 to **6.10.1** on 2022-09-21
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.40.0 to **0.40.1** on 2022-09-21
-  - [stylelint](https://stylelint.io) from 14.12.0 to **14.12.1** on 2022-09-21
-  - [djlint](https://djlint.com/) from 1.17.0 to **1.17.1** on 2022-09-21
-  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.2 to **3.10.3** on 2022-09-21
-  - [checkov](https://www.checkov.io/) from 2.1.219 to **2.1.223** on 2022-09-21
-  - [djlint](https://djlint.com/) from 1.17.1 to **1.17.2** on 2022-09-22
-  - [checkov](https://www.checkov.io/) from 2.1.223 to **2.1.226** on 2022-09-22
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.63 to **0.1.64** on 2022-09-22
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.9 to **1.3.0** on 2022-09-22
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.1 to **6.7.0** on 2022-09-25
-  - [eslint](https://eslint.org) from 8.23.1 to **8.24.0** on 2022-09-25
-  - [phpstan](https://phpstan.org/) from 1.8.5 to **1.8.6** on 2022-09-25
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.40.0 to **0.41.0** on 2022-09-25
-  - [checkov](https://www.checkov.io/) from 2.1.226 to **2.1.227** on 2022-09-25
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.3 to **10.3.4** on 2022-09-26
-  - [djlint](https://djlint.com/) from 1.17.2 to **1.18.0** on 2022-09-27
-  - [jsonlint](https://github.com/prantlf/jsonlint) from 11.6.0 to **11.7.0** on 2022-09-27
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.971 to **0.981** on 2022-09-27
-  - [checkov](https://www.checkov.io/) from 2.1.227 to **2.1.228** on 2022-09-27
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.12.0 to **8.13.0** on 2022-09-27
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.0 to **7.14.1** on 2022-09-27
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.40.1 to **0.41.0** on 2022-09-27
-  - [checkov](https://www.checkov.io/) from 2.1.228 to **2.1.229** on 2022-09-27
-  - [semgrep](https://semgrep.dev/) from 0.114.0 to **0.115.0** on 2022-09-27
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.1 to **7.14.2** on 2022-09-27
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.1 to **1.3.2** on 2022-09-27
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.1 to **0.66.0** on 2022-09-30
-  - [stylelint](https://stylelint.io) from 14.12.1 to **14.13.0** on 2022-09-30
-  - [checkov](https://www.checkov.io/) from 2.1.229 to **2.1.242** on 2022-09-30
-  - [syft](https://github.com/anchore/syft) from 0.57.0 to **0.58.0** on 2022-09-30
-  - [kics](https://www.kics.io) from 1.6.0 to **1.6.1** on 2022-09-30
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.0 to **1.3.1** on 2022-09-30
-  - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10** on 2022-10-01
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.1 to **6.12.0** on 2022-10-01
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0** on 2022-10-01
-  - [checkov](https://www.checkov.io/) from 2.1.242 to **2.1.244** on 2022-10-02
-<!-- linter-versions-end -->
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.6.0 to **6.7.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.66.0**
+  - [checkov](https://www.checkov.io/) from 2.1.213 to **2.1.244**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.3 to **10.3.4**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.63 to **0.1.64**
+  - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.0 to **6.12.0**
+  - [djlint](https://djlint.com/) from 1.16.0 to **1.18.0**
+  - [eslint](https://eslint.org) from 8.23.1 to **8.24.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.12.0 to **8.13.0**
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 11.6.0 to **11.7.0**
+  - [kics](https://www.kics.io) from 1.6.0 to **1.6.1**
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.2 to **3.10.3**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.971 to **0.981**
+  - [phpstan](https://phpstan.org/) from 1.8.5 to **1.8.6**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.40.0 to **0.41.0**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.2 to **0.10.3**
+  - [semgrep](https://semgrep.dev/) from 0.113.0 to **0.115.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.0 to **7.14.2**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.1 to **1.3.2**
+  - [stylelint](https://stylelint.io) from 14.12.0 to **14.13.0**
+  - [syft](https://github.com/anchore/syft) from 0.56.0 to **0.58.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.9 to **1.3.1**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.40.0 to **0.41.0**
 
 ## [v6.10.0] - 2022-09-19
 
