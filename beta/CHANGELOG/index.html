@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/CHANGELOG/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.5">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.80dcb947.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
@@ -5520,6 +5520,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6110-2022-10-02" class="md-nav__link">
+    [v6.11.0] - 2022-10-02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6100-2022-09-19" class="md-nav__link">
     [v6.10.0] - 2022-09-19
   </a>
@@ -6247,6 +6254,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6110-2022-10-02" class="md-nav__link">
+    [v6.11.0] - 2022-10-02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6100-2022-09-19" class="md-nav__link">
     [v6.10.0] - 2022-09-19
   </a>
@@ -6958,6 +6972,15 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Remove <code>no-space-check</code> from MegaLinter default <code>.pylintrc</code> file (<a href="https://github.com/oxsecurity/megalinter/issues/1923">#1923</a>)</li>
+</ul>
+<ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v6110-2022-10-02">[v6.11.0] - 2022-10-02</h2>
+<ul>
 <li>Linters<ul>
 <li>Add <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep</a> linter (<a href="https://github.com/oxsecurity/megalinter/pull/1898">#1898</a>)</li>
 <li>Add quotes to arm-ttk linter command (<a href="https://github.com/oxsecurity/megalinter/issues/1879">#1879</a>)</li>
@@ -6985,56 +7008,34 @@
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.65.0 to <strong>0.65.1</strong> on 2022-09-20</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.213 to <strong>2.1.214</strong> on 2022-09-20</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.113.0 to <strong>0.114.0</strong> on 2022-09-20</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.56.0 to <strong>0.57.0</strong> on 2022-09-20</li>
-<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.6.0 to <strong>6.6.1</strong> on 2022-09-21</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.16.0 to <strong>1.17.0</strong> on 2022-09-21</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.214 to <strong>2.1.219</strong> on 2022-09-21</li>
-<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.10.2 to <strong>0.10.3</strong> on 2022-09-21</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.10.0 to <strong>6.10.1</strong> on 2022-09-21</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.40.0 to <strong>0.40.1</strong> on 2022-09-21</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.12.0 to <strong>14.12.1</strong> on 2022-09-21</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.17.0 to <strong>1.17.1</strong> on 2022-09-21</li>
-<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.10.2 to <strong>3.10.3</strong> on 2022-09-21</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.219 to <strong>2.1.223</strong> on 2022-09-21</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.17.1 to <strong>1.17.2</strong> on 2022-09-22</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.223 to <strong>2.1.226</strong> on 2022-09-22</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.63 to <strong>0.1.64</strong> on 2022-09-22</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.9 to <strong>1.3.0</strong> on 2022-09-22</li>
-<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.6.1 to <strong>6.7.0</strong> on 2022-09-25</li>
-<li><a href="https://eslint.org">eslint</a> from 8.23.1 to <strong>8.24.0</strong> on 2022-09-25</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.8.5 to <strong>1.8.6</strong> on 2022-09-25</li>
-<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.40.0 to <strong>0.41.0</strong> on 2022-09-25</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.226 to <strong>2.1.227</strong> on 2022-09-25</li>
-<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.3.3 to <strong>10.3.4</strong> on 2022-09-26</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.17.2 to <strong>1.18.0</strong> on 2022-09-27</li>
-<li><a href="https://github.com/prantlf/jsonlint">jsonlint</a> from 11.6.0 to <strong>11.7.0</strong> on 2022-09-27</li>
-<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 0.971 to <strong>0.981</strong> on 2022-09-27</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.227 to <strong>2.1.228</strong> on 2022-09-27</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.12.0 to <strong>8.13.0</strong> on 2022-09-27</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.14.0 to <strong>7.14.1</strong> on 2022-09-27</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.40.1 to <strong>0.41.0</strong> on 2022-09-27</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.228 to <strong>2.1.229</strong> on 2022-09-27</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.114.0 to <strong>0.115.0</strong> on 2022-09-27</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.14.1 to <strong>7.14.2</strong> on 2022-09-27</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.1 to <strong>1.3.2</strong> on 2022-09-27</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.65.1 to <strong>0.66.0</strong> on 2022-09-30</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.12.1 to <strong>14.13.0</strong> on 2022-09-30</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.229 to <strong>2.1.242</strong> on 2022-09-30</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.57.0 to <strong>0.58.0</strong> on 2022-09-30</li>
-<li><a href="https://www.kics.io">kics</a> from 1.6.0 to <strong>1.6.1</strong> on 2022-09-30</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.0 to <strong>1.3.1</strong> on 2022-09-30</li>
-<li><a href="http://www.coffeelint.org">coffeelint</a> from 5.2.9 to <strong>5.2.10</strong> on 2022-10-01</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.10.1 to <strong>6.12.0</strong> on 2022-10-01</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.12 to <strong>0.39.0</strong> on 2022-10-01</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.1.242 to <strong>2.1.244</strong> on 2022-10-02</li>
+<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 6.6.0 to <strong>6.7.0</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.65.0 to <strong>0.66.0</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.1.213 to <strong>2.1.244</strong></li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.3.3 to <strong>10.3.4</strong></li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.63 to <strong>0.1.64</strong></li>
+<li><a href="http://www.coffeelint.org">coffeelint</a> from 5.2.9 to <strong>5.2.10</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.10.0 to <strong>6.12.0</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.16.0 to <strong>1.18.0</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.23.1 to <strong>8.24.0</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.12.0 to <strong>8.13.0</strong></li>
+<li><a href="https://github.com/prantlf/jsonlint">jsonlint</a> from 11.6.0 to <strong>11.7.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.0 to <strong>1.6.1</strong></li>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.10.2 to <strong>3.10.3</strong></li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 0.971 to <strong>0.981</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.8.5 to <strong>1.8.6</strong></li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.40.0 to <strong>0.41.0</strong></li>
+<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.10.2 to <strong>0.10.3</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 0.113.0 to <strong>0.115.0</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.14.0 to <strong>7.14.2</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.1 to <strong>1.3.2</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.12.0 to <strong>14.13.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.56.0 to <strong>0.58.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.2.9 to <strong>1.3.1</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.38.12 to <strong>0.39.0</strong></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.40.0 to <strong>0.41.0</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
 <h2 id="v6100-2022-09-19">[v6.10.0] - 2022-09-19</h2>
 <ul>
 <li>Add <a href="https://git-lfs.github.com/">git-lfs</a> in Docker image to handle large files in git repositories</li>
