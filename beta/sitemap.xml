@@ -171,6 +171,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/bicep/</loc>
+         <lastmod>2022-10-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/bicep_bicep_linter/</loc>
+         <lastmod>2022-10-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/c/</loc>
          <lastmod>2022-10-02</lastmod>
          <changefreq>daily</changefreq>
