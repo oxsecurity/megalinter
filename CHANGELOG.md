@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add [bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) linter
 - Add Makefile linter in [java flavor](https://oxsecurity.github.io/megalinter/latest/flavors/java/)
 - Fix build command on linux (thanks a lot to [Edouard Choinière](https://github.com/echoix) for the investigation and solution !)
+- Azure Comments reporter - Change status when all tests pass ([#1915](https://github.com/oxsecurity/megalinter/issues/1915))
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.0 to **0.65.1** on 2022-09-20
@@ -53,6 +54,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 0.114.0 to **0.115.0** on 2022-09-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.1 to **7.14.2** on 2022-09-27
   - [sqlfluff](https://www.sqlfluff.com/) from 1.3.1 to **1.3.2** on 2022-09-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.65.1 to **0.66.0** on 2022-09-30
+  - [stylelint](https://stylelint.io) from 14.12.1 to **14.13.0** on 2022-09-30
+  - [checkov](https://www.checkov.io/) from 2.1.229 to **2.1.242** on 2022-09-30
+  - [syft](https://github.com/anchore/syft) from 0.57.0 to **0.58.0** on 2022-09-30
+  - [kics](https://www.kics.io) from 1.6.0 to **1.6.1** on 2022-09-30
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.0 to **1.3.1** on 2022-09-30
+  - [coffeelint](http://www.coffeelint.org) from 5.2.9 to **5.2.10** on 2022-10-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.10.1 to **6.12.0** on 2022-10-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.12 to **0.39.0** on 2022-10-01
 <!-- linter-versions-end -->
 
 ## [v6.10.0] - 2022-09-19

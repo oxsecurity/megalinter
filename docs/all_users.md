@@ -33,9 +33,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
 [![T145/black-mirror - GitHub](https://gh-card.dev/repos/T145/black-mirror.svg?fullname=)](https://github.com/T145/black-mirror){target=_blank}
-[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
-[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
+[![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
@@ -50,9 +50,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
+[![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![quackduck/secret - GitHub](https://gh-card.dev/repos/quackduck/secret.svg?fullname=)](https://github.com/quackduck/secret){target=_blank}
 [![AlbanAndrieu/ansible-windows - GitHub](https://gh-card.dev/repos/AlbanAndrieu/ansible-windows.svg?fullname=)](https://github.com/AlbanAndrieu/ansible-windows){target=_blank}
-[![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}

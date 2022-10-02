@@ -11,7 +11,7 @@
 
 ## stylelint documentation
 
-- Version in MegaLinter: **14.12.1**
+- Version in MegaLinter: **14.13.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -191,6 +191,16 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       If the directory for the cache does not exist, make sure you add a trailing "/"
       on *nix systems or "\" on Windows. Otherwise the path will be assumed to be a file.
+
+    --cache-strategy              [default: "metadata"]
+
+      Strategy for the cache to use for detecting changed files. Can be either
+      "metadata" or "content".
+
+      The "content" strategy can be useful in cases where the modification time of
+      your files changes even if their contents have not. For example, this can happen
+      during git operations like "git clone" because git does not track file modification
+      time.
 
     --formatter, -f               [default: "string"]
 

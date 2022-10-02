@@ -59,12 +59,12 @@ class AzureCommentReporter(Reporter):
                 "Authorization": f"BEARER {config.get('SYSTEM_ACCESSTOKEN')}",
             }
             p_r_msg = build_markdown_summary(self, artifacts_url)
-
+            comment_status = "fixed" if self.master.return_code == 0 else 1
             data = {
                 "comments": [
                     {"parentCommentId": 0, "content": p_r_msg, "commentType": 1}
                 ],
-                "status": 1,
+                "status": comment_status,
             }
             r = requests.post(url=url, json=data, headers=headers)
             if r.status_code == 200:

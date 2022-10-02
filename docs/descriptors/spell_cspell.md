@@ -7,7 +7,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## cspell documentation
 
-- Version in MegaLinter: **6.10.1**
+- Version in MegaLinter: **6.12.0**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -101,9 +101,9 @@ Commands:
   check [options] <files...>            Spell check file(s) and display the
                                         result. The full file is displayed in
                                         color.
+  suggestions|sug [options] [words...]  Spelling Suggestions for words.
   link                                  Link dictionaries and other settings to
                                         the cspell global config.
-  suggestions|sug [options] [words...]  Spelling Suggestions for words.
   help [command]                        display help for command
 ```
 
