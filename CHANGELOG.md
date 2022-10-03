@@ -8,10 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Remove `no-space-check` from MegaLinter default `.pylintrc` file ([#1923](https://github.com/oxsecurity/megalinter/issues/1923))
-
 - Linter versions upgrades
 <!-- linter-versions-end -->
+
+## [v6.11.1] - 2022-10-03
+
+- Remove `no-space-check` from MegaLinter default `.pylintrc` file ([#1923](https://github.com/oxsecurity/megalinter/issues/1923))
 
 ## [v6.11.0] - 2022-10-02
 

@@ -22,8 +22,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.11.0/configuration/#activation-and-deactivation)
-- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.11.0/configuration/#activation-and-deactivation)
+- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.11.1/configuration/#activation-and-deactivation)
+- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.11.1/configuration/#activation-and-deactivation)
 
 | Variable                                    | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -56,8 +56,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                       | Embedded linters |                                                                                                                                                                                    Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:----------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.11.0/supported-linters/) | Default MegaLinter Flavor         |       108        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.11.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/6.11.0/flavors/java/)     | Optimized for JAVA based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6.11.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.11.1/supported-linters/) | Default MegaLinter Flavor         |       108        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.11.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://oxsecurity.github.io/megalinter/6.11.1/flavors/java/)     | Optimized for JAVA based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6.11.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
