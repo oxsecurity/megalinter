@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.66.1** on 2022-10-04
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.981 to **0.982** on 2022-10-04
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
