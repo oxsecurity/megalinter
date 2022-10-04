@@ -121,7 +121,7 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run"];
-    if (options["remove-container"]) {
+    if (options["removeContainer"]) {
       commandArgs.push("--rm");
     }
     if (options.containername) {
