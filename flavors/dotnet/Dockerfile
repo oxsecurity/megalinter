@@ -257,7 +257,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # actionlint installation
 ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --cache
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
