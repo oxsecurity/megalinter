@@ -6,7 +6,7 @@
 
 - Version in MegaLinter: **0.32.2**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
-- See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
+- See [How to configure markdownlint rules](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
   - If custom `.markdownlint.json` config file is not found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
@@ -122,4 +122,4 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [markdownlint-cli](https://www.npmjs.com/package/markdownlint-cli)
+  - [markdownlint-cli2](https://www.npmjs.com/package/markdownlint-cli2)

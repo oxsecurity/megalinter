@@ -143,7 +143,7 @@ RUN npm --no-cache install --ignore-scripts \
                 v8r \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
-                markdownlint-cli \
+                markdownlint-cli2 \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \

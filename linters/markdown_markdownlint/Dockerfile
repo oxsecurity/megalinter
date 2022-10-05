@@ -80,7 +80,7 @@ RUN npm install npm@latest-6 -g || true && \
 
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                markdownlint-cli
+                markdownlint-cli2
 #NPM__END
 
 # Add node packages to path #
