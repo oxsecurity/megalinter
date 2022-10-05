@@ -11,7 +11,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.14.2**
+- Version in MegaLinter: **7.15.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -162,9 +162,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--google-lifesciences]
                  [--google-lifesciences-regions GOOGLE_LIFESCIENCES_REGIONS [GOOGLE_LIFESCIENCES_REGIONS ...]]
                  [--google-lifesciences-location GOOGLE_LIFESCIENCES_LOCATION]
-                 [--google-lifesciences-keep-cache] [--tes URL] [--use-conda]
-                 [--conda-not-block-search-path-envvars] [--list-conda-envs]
-                 [--conda-prefix DIR] [--conda-cleanup-envs]
+                 [--google-lifesciences-keep-cache] [--flux] [--tes URL]
+                 [--use-conda] [--conda-not-block-search-path-envvars]
+                 [--list-conda-envs] [--conda-prefix DIR]
+                 [--conda-cleanup-envs]
                  [--conda-cleanup-pkgs [{tarballs,cache}]]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-singularity] [--singularity-prefix DIR]
@@ -893,6 +894,10 @@ CLUSTER:
                         native specification. If not given, all DRMAA stdout
                         and stderr files are written to the current working
                         directory. (default: None)
+
+FLUX:
+  --flux                Execute your workflow on a flux cluster. (default:
+                        False)
 
 KUBERNETES:
   --kubernetes [NAMESPACE]

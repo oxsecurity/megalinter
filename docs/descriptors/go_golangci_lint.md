@@ -11,7 +11,7 @@
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.49.0**
+- Version in MegaLinter: **1.50.0**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -89,7 +89,7 @@ golangci-lint run -c .golangci.yml myfile.go
 ### Help content
 
 ```shell
-Smart, fast linters runner. Run it in cloud for every GitHub pull request on https://golangci.com
+Smart, fast linters runner.
 
 Usage:
   golangci-lint [flags]
