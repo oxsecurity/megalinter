@@ -122,7 +122,8 @@ module.exports = optionator({
       description: "Upgrade local repository MegaLinter configuration",
     },
     {
-      option: "containername",
+      option: "container-name",
+      alias: "containername",
       type: "String",
       description: "Specify MegaLinter container name",
     },
