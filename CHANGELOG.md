@@ -12,6 +12,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.66.1** on 2022-10-04
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.981 to **0.982** on 2022-10-04
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.16 to **1.6.20** on 2022-10-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.10.61 to **Bicep.CLI.version.0.11.1** on 2022-10-05
+  - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.50.0** on 2022-10-05
+  - [phpstan](https://phpstan.org/) from 1.8.6 to **1.8.7** on 2022-10-05
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.2 to **7.15.1** on 2022-10-05
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03

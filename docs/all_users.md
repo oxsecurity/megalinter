@@ -17,8 +17,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
 [![awslabs/aws-deployment-framework - GitHub](https://gh-card.dev/repos/awslabs/aws-deployment-framework.svg?fullname=)](https://github.com/awslabs/aws-deployment-framework){target=_blank}
-[![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
+[![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
 [![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![ruzickap/packer-templates - GitHub](https://gh-card.dev/repos/ruzickap/packer-templates.svg?fullname=)](https://github.com/ruzickap/packer-templates){target=_blank}
 [![OCSInventory-NG/OCSInventory-Server - GitHub](https://gh-card.dev/repos/OCSInventory-NG/OCSInventory-Server.svg?fullname=)](https://github.com/OCSInventory-NG/OCSInventory-Server){target=_blank}
@@ -38,8 +38,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
-[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
+[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}

@@ -6,7 +6,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.6.16**
+- Version in MegaLinter: **1.6.20**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -137,6 +137,6 @@ Flags:
 - Dockerfile commands :
 ```dockerfile
 ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --cache
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache
 ```
 
