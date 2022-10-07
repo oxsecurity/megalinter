@@ -480,6 +480,15 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --from=chktex /usr/bin/chktex /usr/bin/
     && cd ~ && touch .chktexrc && cd / \
 
+# mustache installation
+    && ML_THIRD_PARTY_DIR="/third-party/mustache" \
+    && MUSTACHE_VERSION=0.5.3 \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q "https://github.com/breml/logstash-config/releases/download/v${MUSTACHE_VERSION}/mustache_${MUSTACHE_VERSION}_Linux_x86_64.tar.gz" \
+    && tar xf ${ML_THIRD_PARTY_DIR}/mustache_${MUSTACHE_VERSION}_Linux_x86_64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/mustache /usr/local/bin \
+    && rm -rf ${ML_THIRD_PARTY_DIR} \
+
 # luacheck installation
     && wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
     && cd lua-5.3.5 \

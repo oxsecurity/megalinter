@@ -254,6 +254,11 @@
     "image": "https://avatars0.githubusercontent.com/u/217179?s=400&v=4",
     "title": "client9/misspell"
   },
+  "mustache": {
+    "description": "logstash-config provides a parser and abstract syntax tree (AST) for the Logstash config format, written in Go - GitHub - breml/logstash-config: logstash-config provides a parser and abstract synta...",
+    "image": "https://opengraph.githubassets.com/9c84e739d3e8a0a6877e57e1f248c8961b735bfc280f8fed5a237d4338914cab/breml/logstash-config",
+    "title": "GitHub - breml/logstash-config: logstash-config provides a parser and abstract syntax tree (AST) for the Logstash config format, written in Go"
+  },
   "mypy": {
     "description": "Mypy is a static type checker for Python 3 and Python 2.7.",
     "image": null,
