@@ -4,7 +4,7 @@
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.7.0**
+- Version in MegaLinter: **6.8.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
@@ -87,11 +87,11 @@ usage: ansible-lint [-h] [-L | -T]
                     [-q]
                     [-P [{min,basic,moderate,safety,shared,production} ...]]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
-                    [-r RULESDIR] [-R] [--write [WRITE_LIST]] [--show-relpath]
-                    [-t TAGS] [-v] [-x SKIP_LIST] [-w WARN_LIST]
-                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
-                    [--version]
+                    [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
+                    [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
+                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
+                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
+                    [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -125,6 +125,8 @@ options:
                         embedded rules from /venvs/ansible-
                         lint/lib/python3.10/site-packages/ansiblelint/rules
   -R                    Keep default rules when using -r
+  -s, --strict          Return non-zero exit code on warnings as well as
+                        errors
   --write [WRITE_LIST]  Allow ansible-lint to reformat YAML files and run rule
                         transforms (Reformatting YAML files standardizes
                         spacing, quotes, etc. A rule transform can fix or
@@ -150,9 +152,10 @@ options:
                         values
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
-                        config file. Current version default value is:
-                        experimental, jinja[spacing], name[casing],
-                        name[play], role-name
+                        config file. Current version default value is: avoid-
+                        implicit, experimental, fqcn[action], fqcn[redirect],
+                        jinja[spacing], name[casing], name[play], role-name,
+                        warning[empty-playbook]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
