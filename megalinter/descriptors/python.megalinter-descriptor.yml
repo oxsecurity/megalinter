@@ -308,6 +308,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls
     cli_lint_mode: list_of_files
     config_file_name: pyrightconfig.json
+    cli_config_arg_name: -p
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "([0-9]+) errors,"
     test_folder: python_mypy

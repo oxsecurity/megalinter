@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Correct removeContainer casing in runner ([#1917](https://github.com/oxsecurity/megalinter/issues/1917))
+- Use -p argument for pyright custom config file path ([#1946](https://github.com/oxsecurity/megalinter/issues/1946))
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.66.1** on 2022-10-04
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.981 to **0.982** on 2022-10-04
@@ -17,6 +19,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.50.0** on 2022-10-05
   - [phpstan](https://phpstan.org/) from 1.8.6 to **1.8.7** on 2022-10-05
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.2 to **7.15.1** on 2022-10-05
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.7.0 to **6.8.0** on 2022-10-08
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 10.1.0 to **11.0.0** on 2022-10-08
+  - [eslint](https://eslint.org) from 8.24.0 to **8.25.0** on 2022-10-08
+  - [phpstan](https://phpstan.org/) from 1.8.7 to **1.8.8** on 2022-10-08
+  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0** on 2022-10-08
+  - [semgrep](https://semgrep.dev/) from 0.115.0 to **0.116.0** on 2022-10-08
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.1 to **1.3.2** on 2022-10-08
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.0 to **0.39.1** on 2022-10-08
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03

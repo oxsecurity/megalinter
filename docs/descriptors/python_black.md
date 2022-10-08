@@ -11,7 +11,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **22.8.0**
+- Version in MegaLinter: **22.10.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -114,9 +114,10 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (time, timeit, python3, prun, pypy,
-                                  python, capture). Useful for formatting
+                                  magics (pypy, time, python3, capture,
+                                  python, timeit, prun). Useful for formatting
                                   cells with custom python magics.
+  -x, --skip-source-first-line    Skip the first line of the source code.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
   -C, --skip-magic-trailing-comma
@@ -157,7 +158,7 @@ Options:
                                   Exclusions are calculated first, inclusions
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
-                                  |_build|buck-
+                                  |\.ipynb_checkpoints|_build|buck-
                                   out|build|dist|__pypackages__)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
