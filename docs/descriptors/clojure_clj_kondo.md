@@ -133,7 +133,7 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM cljkondo/clj-kondo:2022.09.08-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.10.05-alpine as clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 ```
 
