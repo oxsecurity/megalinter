@@ -2,6 +2,7 @@ descriptor_id: LOGSTASH
 descriptor_type: tooling_format
 file_extensions:
   - ".conf"
+files_sub_directory: logstash
 linters:
   - linter_name: mustache
     linter_spdx_license: Apache-2.0
