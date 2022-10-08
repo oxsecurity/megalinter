@@ -17,6 +17,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.50.0** on 2022-10-05
   - [phpstan](https://phpstan.org/) from 1.8.6 to **1.8.7** on 2022-10-05
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.2 to **7.15.1** on 2022-10-05
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.7.0 to **6.8.0** on 2022-10-08
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 10.1.0 to **11.0.0** on 2022-10-08
+  - [eslint](https://eslint.org) from 8.24.0 to **8.25.0** on 2022-10-08
+  - [phpstan](https://phpstan.org/) from 1.8.7 to **1.8.8** on 2022-10-08
+  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0** on 2022-10-08
+  - [semgrep](https://semgrep.dev/) from 0.115.0 to **0.116.0** on 2022-10-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.1 to **7.15.2** on 2022-10-08
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.1 to **1.3.2** on 2022-10-08
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.0 to **0.39.1** on 2022-10-08
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
