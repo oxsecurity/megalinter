@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Correct removeContainer casing in runner ([#1917](https://github.com/oxsecurity/megalinter/issues/1917))
 - Use -p argument for pyright custom config file path ([#1946](https://github.com/oxsecurity/megalinter/issues/1946))
+- Fix use of TERRAFORM_KICS_ARGUMENTS ([#1947](https://github.com/oxsecurity/megalinter/issues/1947))
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.66.1** on 2022-10-04
@@ -27,6 +28,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 0.115.0 to **0.116.0** on 2022-10-08
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.1 to **1.3.2** on 2022-10-08
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.0 to **0.39.1** on 2022-10-08
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.8.0 to **6.7.0** on 2022-10-08
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.09.08 to **2022.10.05** on 2022-10-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.1 to **7.15.2** on 2022-10-08
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03

@@ -464,8 +464,8 @@
         "                                  input).",
         "  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the",
         "                                  given magic to the list of known python-",
-        "                                  magics (pypy, time, python3, capture,",
-        "                                  python, timeit, prun). Useful for formatting",
+        "                                  magics (python, prun, time, python3, pypy,",
+        "                                  capture, timeit). Useful for formatting",
         "                                  cells with custom python magics.",
         "  -x, --skip-source-first-line    Skip the first line of the source code.",
         "  -S, --skip-string-normalization",
@@ -1111,7 +1111,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2022.09.08",
+        "clj-kondo v2022.10.05",
         "",
         "",
         "Options:",
@@ -1134,7 +1134,7 @@
         "  nearest `.clj-kondo` directory in the current and parent directories.",
         "",
         "  --config <config>: config may be a file or an EDN expression. See",
-        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.09.08/doc/configuration",
+        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.10.05/doc/configuration",
         "",
         "  --config-dir <config-dir>: use this config directory instead of auto-detected",
         "    .clj-kondo dir.",
