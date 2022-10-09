@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Fix invalid Docker container names in .pre-commit-hooks.yaml ([#1932](https://github.com/oxsecurity/megalinter/issues/1932))
 - Correct removeContainer casing in runner ([#1917](https://github.com/oxsecurity/megalinter/issues/1917))
 - Use -p argument for pyright custom config file path ([#1946](https://github.com/oxsecurity/megalinter/issues/1946))
 - Fix use of TERRAFORM_KICS_ARGUMENTS ([#1947](https://github.com/oxsecurity/megalinter/issues/1947))
