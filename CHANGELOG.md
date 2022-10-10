@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.09.08 to **2022.10.05** on 2022-10-08
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.1 to **7.15.2** on 2022-10-08
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.8.0 to **6.7.0** on 2022-10-08
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.20 to **1.6.21** on 2022-10-10
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
