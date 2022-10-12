@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.13.0 as gitleaks
+FROM zricethezav/gitleaks:v8.14.1 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt

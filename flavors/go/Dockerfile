@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.13.0 as gitleaks
+FROM zricethezav/gitleaks:v8.14.1 as gitleaks
 #FROM__END
 
 ##################
@@ -258,6 +258,11 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+
+# checkmake installation
+    && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake \
 
 # protolint installation
 # Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/
