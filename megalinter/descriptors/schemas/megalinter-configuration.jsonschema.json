@@ -13814,7 +13814,7 @@
       "type": "string"
     },
     "VALIDATE_ALL_CODEBASE": {
-      "$id": "#/properties/SHOW_ELAPSED_TIME",
+      "$id": "#/properties/VALIDATE_ALL_CODEBASE",
       "default": true,
       "description": "Will parse the entire repository and find all files to validate across all types. When set to false, only new or edited files will be parsed for validation.",
       "title": "Validate all code base",
