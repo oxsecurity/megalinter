@@ -299,7 +299,7 @@ linters:
       Optional static typing checks for python, by Microsoft
 
       If you don't use python static typing, you should disable this linter by adding `PYTHON_PYRIGHT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
-    linter_url: https://google.github.io/pytype/
+    linter_url: https://github.com/Microsoft/pyright
     linter_rules_url: https://github.com/microsoft/pyright#type-checking-features
     linter_repo: https://github.com/microsoft/pyright
     linter_banner_image_url: https://github.com/microsoft/pyright/raw/main/docs/img/PyrightLarge.png
