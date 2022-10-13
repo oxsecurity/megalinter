@@ -39,6 +39,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.1 to **0.67.0** on 2022-10-11
   - [pylint](https://pylint.pycqa.org) from 2.15.3 to **2.15.4** on 2022-10-11
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.3 to **0.10.4** on 2022-10-11
+  - [djlint](https://djlint.com/) from 1.18.0 to **1.19.0** on 2022-10-13
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.13.0 to **8.14.1** on 2022-10-13
+  - [semgrep](https://semgrep.dev/) from 0.116.0 to **0.117.0** on 2022-10-13
+  - [kics](https://www.kics.io) from 1.6.1 to **1.6.2** on 2022-10-13
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
