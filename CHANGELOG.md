@@ -44,6 +44,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.13.0 to **8.14.1** on 2022-10-13
   - [semgrep](https://semgrep.dev/) from 0.116.0 to **0.117.0** on 2022-10-13
   - [kics](https://www.kics.io) from 1.6.1 to **1.6.2** on 2022-10-13
+  - [djlint](https://djlint.com/) from 1.19.0 to **1.19.1** on 2022-10-14
+  - [phpstan](https://phpstan.org/) from 1.8.8 to **1.8.9** on 2022-10-14
+  - [puppet-lint](http://puppet-lint.com/) from 2.5.2 to **3.0.0** on 2022-10-14
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
