@@ -273,88 +273,52 @@ Messages control:
                         Warning level messages displayed, use "--disable=all
                         --enable=classes --disable=W".
 
-Design:
-  Checker of potential misdesigns.
+Spelling:
+  Check spelling in comments and docstrings.
 
-  --max-args <int>      Maximum number of arguments for function / method.
-                        (default: 5)
-  --max-locals <int>    Maximum number of locals for function / method body.
-                        (default: 15)
-  --max-returns <int>   Maximum number of return / yield for function / method
-                        body. (default: 6)
-  --max-branches <int>  Maximum number of branch for function / method body.
-                        (default: 12)
-  --max-statements <int>
-                        Maximum number of statements in function / method
-                        body. (default: 50)
-  --max-parents <num>   Maximum number of parents for a class (see R0901).
-                        (default: 7)
-  --ignored-parents <comma separated list of class names>
-                        List of qualified class names to ignore when counting
-                        class parents (see R0901) (default: ())
-  --max-attributes <num>
-                        Maximum number of attributes for a class (see R0902).
-                        (default: 7)
-  --min-public-methods <num>
-                        Minimum number of public methods for a class (see
-                        R0903). (default: 2)
-  --max-public-methods <num>
-                        Maximum number of public methods for a class (see
-                        R0904). (default: 20)
-  --max-bool-expr <num>
-                        Maximum number of boolean expressions in an if
-                        statement (see R0916). (default: 5)
-  --exclude-too-few-public-methods <pattern>[,<pattern>...]
-                        List of regular expressions of class ancestor names to
-                        ignore when counting public methods (see R0903)
-                        (default: [])
+  --spelling-dict <dict name>
+                        Spelling dictionary name. Available dictionaries:
+                        none. To make it work, install the 'python-enchant'
+                        package. (default: )
+  --spelling-ignore-words <comma separated words>
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file <path to file>
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words <y or n>
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives <comma separated words>
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
 
-Refactoring:
-  Looks for code which can be refactored.
+Classes:
+  Checker for class nodes.
 
-  --max-nested-blocks <int>
-                        Maximum number of nested blocks for function / method
-                        body (default: 5)
-  --never-returning-functions <members names>
-                        Complete name of functions that never returns. When
-                        checking for inconsistent-return-statements if a never
-                        returning function is called then it will be
-                        considered as an explicit return statement and no
-                        message will be printed. (default: ('sys.exit',
-                        'argparse.parse_error'))
-
-Variables:
-  BaseChecker for variables.
-
-  --init-import <y or n>
-                        Tells whether we should check for unused import in
-                        __init__ files. (default: False)
-  --dummy-variables-rgx <regexp>
-                        A regular expression matching the name of dummy
-                        variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
-                        9]+?$)|dummy|^ignored_|^unused_)
-  --additional-builtins <comma separated list>
-                        List of additional names supposed to be defined in
-                        builtins. Remember that you should avoid defining new
-                        builtins when possible. (default: ())
-  --callbacks <callbacks>
-                        List of strings which can identify a callback function
-                        by name. A callback name must start or end with one of
-                        those strings. (default: ('cb_', '_cb'))
-  --redefining-builtins-modules <comma separated list>
-                        List of qualified module names which can have objects
-                        that can redefine builtins. (default: ('six.moves',
-                        'past.builtins', 'future.builtins', 'builtins', 'io'))
-  --ignored-argument-names <regexp>
-                        Argument names that match this expression will be
-                        ignored. (default:
-                        re.compile('_.*|^ignored_|^unused_'))
-  --allow-global-unused-variables <y or n>
-                        Tells whether unused global variables should be
-                        treated as a violation. (default: True)
-  --allowed-redefined-builtins <comma separated list>
-                        List of names allowed to shadow builtins (default: ())
+  --defining-attr-methods <method names>
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', '__post_init__'))
+  --valid-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('cls',))
+  --exclude-protected <protected access exclusions>
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make'))
+  --check-protected-access-in-special-methods <y or n>
+                        Warn about protected attribute access inside special
+                        methods (default: False)
 
 Logging:
   Checks use of the logging module.
@@ -367,48 +331,6 @@ Logging:
                         The type of string formatting that logging methods do.
                         `old` means using % formatting, `new` is for `{}`
                         formatting. (default: old)
-
-Imports:
-  BaseChecker for import statements.
-
-  --deprecated-modules <modules>
-                        Deprecated modules which should not be used, separated
-                        by a comma. (default: ())
-  --preferred-modules <module:preferred-module>
-                        Couples of modules and preferred modules, separated by
-                        a comma. (default: ())
-  --import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        all (i.e. internal and external) dependencies to the
-                        given file (report RP0402 must not be disabled).
-                        (default: )
-  --ext-import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        external dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --int-import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        internal dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --known-standard-library <modules>
-                        Force import order to recognize a module as part of
-                        the standard compatibility libraries. (default: ())
-  --known-third-party <modules>
-                        Force import order to recognize a module as part of a
-                        third party library. (default: ('enchant',))
-  --allow-any-import-level <modules>
-                        List of modules that can be imported at any level, not
-                        just the top level one. (default: ())
-  --allow-wildcard-with-all <y or n>
-                        Allow wildcard imports from modules that define
-                        __all__. (default: False)
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions <comma-separated class names>
-                        Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
 
 Basic:
   --good-names <names>  Good variable names which should always be accepted,
@@ -535,6 +457,15 @@ Basic:
                         Minimum line length for functions/classes that require
                         docstrings, shorter ones are exempt. (default: -1)
 
+Miscellaneous:
+  BaseChecker for encoding issues.
+
+  --notes <comma separated values>
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx <regexp>  Regular expression of note tags to take in
+                        consideration. (default: )
+
 Format:
   Formatting checker.
 
@@ -563,59 +494,6 @@ Format:
                         Expected format of line ending, e.g. empty (any line
                         ending), LF or CRLF. (default: )
 
-Similarities:
-  Checks for similarities and duplicated code.
-
-  --min-similarity-lines <int>
-                        Minimum lines number of a similarity. (default: 4)
-  --ignore-comments <y or n>
-                        Comments are removed from the similarity computation
-                        (default: True)
-  --ignore-docstrings <y or n>
-                        Docstrings are removed from the similarity computation
-                        (default: True)
-  --ignore-imports <y or n>
-                        Imports are removed from the similarity computation
-                        (default: True)
-  --ignore-signatures <y or n>
-                        Signatures are removed from the similarity computation
-                        (default: True)
-
-Miscellaneous:
-  BaseChecker for encoding issues.
-
-  --notes <comma separated values>
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx <regexp>  Regular expression of note tags to take in
-                        consideration. (default: )
-
-Spelling:
-  Check spelling in comments and docstrings.
-
-  --spelling-dict <dict name>
-                        Spelling dictionary name. Available dictionaries:
-                        none. To make it work, install the 'python-enchant'
-                        package. (default: )
-  --spelling-ignore-words <comma separated words>
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file <path to file>
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words <y or n>
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives <comma separated words>
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
-
 Method_args:
   BaseChecker for method_args.
 
@@ -627,6 +505,70 @@ Method_args:
                         'requests.api.head', 'requests.api.options',
                         'requests.api.patch', 'requests.api.post',
                         'requests.api.put', 'requests.api.request'))
+
+Refactoring:
+  Looks for code which can be refactored.
+
+  --max-nested-blocks <int>
+                        Maximum number of nested blocks for function / method
+                        body (default: 5)
+  --never-returning-functions <members names>
+                        Complete name of functions that never returns. When
+                        checking for inconsistent-return-statements if a never
+                        returning function is called then it will be
+                        considered as an explicit return statement and no
+                        message will be printed. (default: ('sys.exit',
+                        'argparse.parse_error'))
+
+String:
+  Check string literals.
+
+  --check-str-concat-over-line-jumps <y or n>
+                        This flag controls whether the implicit-str-concat
+                        should generate a warning on implicit string
+                        concatenation in sequences defined over several lines.
+                        (default: False)
+  --check-quote-consistency <y or n>
+                        This flag controls whether inconsistent-quotes
+                        generates a warning when the character used as a quote
+                        delimiter is used inconsistently within a module.
+                        (default: False)
+
+Design:
+  Checker of potential misdesigns.
+
+  --max-args <int>      Maximum number of arguments for function / method.
+                        (default: 5)
+  --max-locals <int>    Maximum number of locals for function / method body.
+                        (default: 15)
+  --max-returns <int>   Maximum number of return / yield for function / method
+                        body. (default: 6)
+  --max-branches <int>  Maximum number of branch for function / method body.
+                        (default: 12)
+  --max-statements <int>
+                        Maximum number of statements in function / method
+                        body. (default: 50)
+  --max-parents <num>   Maximum number of parents for a class (see R0901).
+                        (default: 7)
+  --ignored-parents <comma separated list of class names>
+                        List of qualified class names to ignore when counting
+                        class parents (see R0901) (default: ())
+  --max-attributes <num>
+                        Maximum number of attributes for a class (see R0902).
+                        (default: 7)
+  --min-public-methods <num>
+                        Minimum number of public methods for a class (see
+                        R0903). (default: 2)
+  --max-public-methods <num>
+                        Maximum number of public methods for a class (see
+                        R0904). (default: 20)
+  --max-bool-expr <num>
+                        Maximum number of boolean expressions in an if
+                        statement (see R0916). (default: 5)
+  --exclude-too-few-public-methods <pattern>[,<pattern>...]
+                        List of regular expressions of class ancestor names to
+                        ignore when counting public methods (see R0903)
+                        (default: [])
 
 Typecheck:
   Try to find bugs in the code using type inference.
@@ -690,40 +632,98 @@ Typecheck:
                         List of decorators that change the signature of a
                         decorated function. (default: [])
 
-Classes:
-  Checker for class nodes.
+Exceptions:
+  Exception related checks.
 
-  --defining-attr-methods <method names>
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', '__post_init__'))
-  --valid-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
-  --exclude-protected <protected access exclusions>
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make'))
-  --check-protected-access-in-special-methods <y or n>
-                        Warn about protected attribute access inside special
-                        methods (default: False)
+  --overgeneral-exceptions <comma-separated class names>
+                        Exceptions that will emit a warning when caught.
+                        (default: ('BaseException', 'Exception'))
 
-String:
-  Check string literals.
+Variables:
+  BaseChecker for variables.
 
-  --check-str-concat-over-line-jumps <y or n>
-                        This flag controls whether the implicit-str-concat
-                        should generate a warning on implicit string
-                        concatenation in sequences defined over several lines.
-                        (default: False)
-  --check-quote-consistency <y or n>
-                        This flag controls whether inconsistent-quotes
-                        generates a warning when the character used as a quote
-                        delimiter is used inconsistently within a module.
-                        (default: False)
+  --init-import <y or n>
+                        Tells whether we should check for unused import in
+                        __init__ files. (default: False)
+  --dummy-variables-rgx <regexp>
+                        A regular expression matching the name of dummy
+                        variables (i.e. expected to not be used). (default: _+
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
+                        9]+?$)|dummy|^ignored_|^unused_)
+  --additional-builtins <comma separated list>
+                        List of additional names supposed to be defined in
+                        builtins. Remember that you should avoid defining new
+                        builtins when possible. (default: ())
+  --callbacks <callbacks>
+                        List of strings which can identify a callback function
+                        by name. A callback name must start or end with one of
+                        those strings. (default: ('cb_', '_cb'))
+  --redefining-builtins-modules <comma separated list>
+                        List of qualified module names which can have objects
+                        that can redefine builtins. (default: ('six.moves',
+                        'past.builtins', 'future.builtins', 'builtins', 'io'))
+  --ignored-argument-names <regexp>
+                        Argument names that match this expression will be
+                        ignored. (default:
+                        re.compile('_.*|^ignored_|^unused_'))
+  --allow-global-unused-variables <y or n>
+                        Tells whether unused global variables should be
+                        treated as a violation. (default: True)
+  --allowed-redefined-builtins <comma separated list>
+                        List of names allowed to shadow builtins (default: ())
+
+Imports:
+  BaseChecker for import statements.
+
+  --deprecated-modules <modules>
+                        Deprecated modules which should not be used, separated
+                        by a comma. (default: ())
+  --preferred-modules <module:preferred-module>
+                        Couples of modules and preferred modules, separated by
+                        a comma. (default: ())
+  --import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        all (i.e. internal and external) dependencies to the
+                        given file (report RP0402 must not be disabled).
+                        (default: )
+  --ext-import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        external dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --int-import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        internal dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --known-standard-library <modules>
+                        Force import order to recognize a module as part of
+                        the standard compatibility libraries. (default: ())
+  --known-third-party <modules>
+                        Force import order to recognize a module as part of a
+                        third party library. (default: ('enchant',))
+  --allow-any-import-level <modules>
+                        List of modules that can be imported at any level, not
+                        just the top level one. (default: ())
+  --allow-wildcard-with-all <y or n>
+                        Allow wildcard imports from modules that define
+                        __all__. (default: False)
+
+Similarities:
+  Checks for similarities and duplicated code.
+
+  --min-similarity-lines <int>
+                        Minimum lines number of a similarity. (default: 4)
+  --ignore-comments <y or n>
+                        Comments are removed from the similarity computation
+                        (default: True)
+  --ignore-docstrings <y or n>
+                        Docstrings are removed from the similarity computation
+                        (default: True)
+  --ignore-imports <y or n>
+                        Imports are removed from the similarity computation
+                        (default: True)
+  --ignore-signatures <y or n>
+                        Signatures are removed from the similarity computation
+                        (default: True)
 ```
 
 ### Installation on mega-linter Docker image
