@@ -69,7 +69,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -136,7 +136,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -194,7 +194,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:

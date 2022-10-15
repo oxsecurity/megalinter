@@ -277,19 +277,19 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     chmod 644 /usr/local/bin/sarif.tpl \
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+    && sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
