@@ -5732,7 +5732,7 @@
 <p><a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake" /></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.15.2</strong></li>
+<li>Version in MegaLinter: <strong>7.16.0</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=" /></a></p>
@@ -6020,8 +6020,8 @@
                  [--cluster-cancel-nargs CLUSTER_CANCEL_NARGS]
                  [--cluster-sidecar CLUSTER_SIDECAR] [--drmaa-log-dir DIR]
                  [--kubernetes [NAMESPACE]] [--container-image IMAGE]
-                 [--tibanna] [--tibanna-sfn TIBANNA_SFN]
-                 [--precommand PRECOMMAND]
+                 [--k8s-cpu-scalar FLOAT] [--tibanna]
+                 [--tibanna-sfn TIBANNA_SFN] [--precommand PRECOMMAND]
                  [--tibanna-config TIBANNA_CONFIG [TIBANNA_CONFIG ...]]
                  [--google-lifesciences]
                  [--google-lifesciences-regions GOOGLE_LIFESCIENCES_REGIONS [GOOGLE_LIFESCIENCES_REGIONS ...]]
@@ -6783,6 +6783,18 @@ KUBERNETES:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default: None)
+  --k8s-cpu-scalar FLOAT
+                        K8s reserves some proportion of available CPUs for its
+                        own use. So, where an underlying node may have 8 CPUs,
+                        only e.g. 7600 milliCPUs are allocatable to k8s pods
+                        (i.e. snakemake jobs). As 8 &gt; 7.6, k8s can't find a
+                        node with enough CPU resource to run such jobs. This
+                        argument acts as a global scalar on each job's CPU
+                        request, so that e.g. a job whose rule definition asks
+                        for 8 CPUs will request 7600m CPUs from k8s, allowing
+                        it to utilise one entire node. N.B: the job itself
+                        would still see the original value, i.e. as the value
+                        substituted in {threads}. (default: 0.95)
 
 TIBANNA:
   --tibanna             Execute workflow on AWS cloud using Tibanna. This
