@@ -2616,8 +2616,8 @@
                 "network_count": 24,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyODc1MDA0NTY=",
                 "notifications_url": "https://api.github.com/repos/bjw-s/home-ops/notifications{?since,all,participating}",
-                "open_issues": 5,
-                "open_issues_count": 5,
+                "open_issues": 7,
+                "open_issues_count": 7,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/6213398?v=4",
                     "events_url": "https://api.github.com/users/bjw-s/events{/privacy}",

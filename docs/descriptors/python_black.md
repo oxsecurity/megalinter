@@ -114,7 +114,7 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (time, timeit, python3, capture,
+                                  magics (python3, capture, time, timeit,
                                   python, pypy, prun). Useful for formatting
                                   cells with custom python magics.
   -x, --skip-source-first-line    Skip the first line of the source code.
