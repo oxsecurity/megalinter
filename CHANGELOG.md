@@ -48,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.8.8 to **1.8.9** on 2022-10-14
   - [puppet-lint](http://puppet-lint.com/) from 2.5.2 to **3.0.0** on 2022-10-14
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.2 to **7.16.0** on 2022-10-15
+  - [stylelint](https://stylelint.io) from 14.13.0 to **14.14.0** on 2022-10-16
 <!-- linter-versions-end -->
 
 ## [v6.11.1] - 2022-10-03
