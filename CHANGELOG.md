@@ -8,48 +8,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Fix incorrect link to pytype for pyright ([#1967](https://github.com/oxsecurity/megalinter/issues/1967))
-- Deduplicate SHOW_ELAPSED_TIME properties to address v8r error ([#1962](https://github.com/oxsecurity/megalinter/issues/1962))
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.12.0] - 2022-10-16
+
+- Add Makefile linter in go flavor
 - Fix invalid Docker container names in .pre-commit-hooks.yaml ([#1932](https://github.com/oxsecurity/megalinter/issues/1932))
 - Correct removeContainer casing in runner ([#1917](https://github.com/oxsecurity/megalinter/issues/1917))
-- Use -p argument for pyright custom config file path ([#1946](https://github.com/oxsecurity/megalinter/issues/1946))
 - Fix use of TERRAFORM_KICS_ARGUMENTS ([#1947](https://github.com/oxsecurity/megalinter/issues/1947))
-- Add Makefile linter in go flavor
+- Use -p argument for pyright custom config file path ([#1946](https://github.com/oxsecurity/megalinter/issues/1946))
+- Fix incorrect link to pytype for pyright ([#1967](https://github.com/oxsecurity/megalinter/issues/1967))
+- Deduplicate SHOW_ELAPSED_TIME properties to address v8r error ([#1962](https://github.com/oxsecurity/megalinter/issues/1962))
 
 - Linter versions upgrades
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.66.1** on 2022-10-04
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.981 to **0.982** on 2022-10-04
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.16 to **1.6.20** on 2022-10-05
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.10.61 to **Bicep.CLI.version.0.11.1** on 2022-10-05
-  - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.50.0** on 2022-10-05
-  - [phpstan](https://phpstan.org/) from 1.8.6 to **1.8.7** on 2022-10-05
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.2 to **7.15.1** on 2022-10-05
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.7.0 to **6.8.0** on 2022-10-08
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 10.1.0 to **11.0.0** on 2022-10-08
-  - [eslint](https://eslint.org) from 8.24.0 to **8.25.0** on 2022-10-08
-  - [phpstan](https://phpstan.org/) from 1.8.7 to **1.8.8** on 2022-10-08
-  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0** on 2022-10-08
-  - [semgrep](https://semgrep.dev/) from 0.115.0 to **0.116.0** on 2022-10-08
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.1 to **1.3.2** on 2022-10-08
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.0 to **0.39.1** on 2022-10-08
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.8.0 to **6.7.0** on 2022-10-08
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.09.08 to **2022.10.05** on 2022-10-08
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.1 to **7.15.2** on 2022-10-08
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.8.0 to **6.7.0** on 2022-10-08
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.20 to **1.6.21** on 2022-10-10
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.1 to **0.67.0** on 2022-10-11
-  - [pylint](https://pylint.pycqa.org) from 2.15.3 to **2.15.4** on 2022-10-11
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.3 to **0.10.4** on 2022-10-11
-  - [djlint](https://djlint.com/) from 1.18.0 to **1.19.0** on 2022-10-13
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.13.0 to **8.14.1** on 2022-10-13
-  - [semgrep](https://semgrep.dev/) from 0.116.0 to **0.117.0** on 2022-10-13
-  - [kics](https://www.kics.io) from 1.6.1 to **1.6.2** on 2022-10-13
-  - [djlint](https://djlint.com/) from 1.19.0 to **1.19.1** on 2022-10-14
-  - [phpstan](https://phpstan.org/) from 1.8.8 to **1.8.9** on 2022-10-14
-  - [puppet-lint](http://puppet-lint.com/) from 2.5.2 to **3.0.0** on 2022-10-14
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.15.2 to **7.16.0** on 2022-10-15
-  - [stylelint](https://stylelint.io) from 14.13.0 to **14.14.0** on 2022-10-16
-<!-- linter-versions-end -->
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.16 to **1.6.21**
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.7.0 to **6.7.0**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.10.61 to **0.11.1**
+  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0** 
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.67.0**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.09.08 to **2022.10.05**
+  - [djlint](https://djlint.com/) from 1.18.0 to **1.19.1**
+  - [eslint](https://eslint.org) from 8.24.0 to **8.25.0**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.13.0 to **8.14.1**
+  - [golangci-lint](https://golangci-lint.run/) from 1.49.0 to **1.50.0**
+  - [kics](https://www.kics.io) from 1.6.1 to **1.6.2**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.981 to **0.982**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 10.1.0 to **11.0.0**
+  - [phpstan](https://phpstan.org/) from 1.8.6 to **1.8.9**
+  - [puppet-lint](http://puppet-lint.com/) from 2.5.2 to **3.0.0**
+  - [pylint](https://pylint.pycqa.org) from 2.15.3 to **2.15.4**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.3 to **0.10.4**
+  - [semgrep](https://semgrep.dev/) from 0.115.0 to **0.117.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.14.2 to **7.16.0**
+  - [stylelint](https://stylelint.io) from 14.13.0 to **14.14.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.1 to **1.3.2**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.0 to **0.39.1**
 
 ## [v6.11.1] - 2022-10-03
 
