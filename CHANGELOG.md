@@ -27,7 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.16 to **1.6.21**
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.7.0 to **6.7.0**
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.10.61 to **0.11.1**
-  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0** 
+  - [black](https://black.readthedocs.io/en/stable/) from 22.8.0 to **22.10.0**
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.66.0 to **0.67.0**
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.09.08 to **2022.10.05**
   - [djlint](https://djlint.com/) from 1.18.0 to **1.19.1**
