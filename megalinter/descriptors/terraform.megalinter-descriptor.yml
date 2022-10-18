@@ -184,6 +184,7 @@ linters:
     cli_executable: kics
     cli_lint_extra_args:
       - scan
+    cli_lint_extra_args_after:
       - --path
     cli_version_arg_name: "version"
     examples:

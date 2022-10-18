@@ -25,8 +25,7 @@ linters:
     cli_lint_errors_regex: "([0-9]+) \\|"
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
-    downgraded_version: true
     install:
       dockerfile:
         - ENV GO111MODULE=on
-        - RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --cache
+        - RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache

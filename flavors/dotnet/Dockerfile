@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.13.0 as gitleaks
+FROM zricethezav/gitleaks:v8.14.1 as gitleaks
 #FROM__END
 
 ##################
@@ -33,6 +33,9 @@ ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ARG BICEP_EXE='bicep'
+ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+ARG BICEP_DIR='/usr/local/bin'
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -101,7 +104,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
@@ -254,7 +257,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # actionlint installation
 ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.16 && go clean --cache
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
@@ -277,6 +280,11 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+
+# bicep_linter installation
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && chmod +x "${BICEP_EXE}" \
+    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # dotnet-format installation
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \

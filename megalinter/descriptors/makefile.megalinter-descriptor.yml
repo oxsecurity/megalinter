@@ -4,6 +4,7 @@ descriptor_flavors:
   - all # Applicable to CI in any language project
   - ci_light
   - dotnet
+  - go
   - java
   - python
 file_names_regex:

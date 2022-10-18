@@ -43,6 +43,7 @@
         "ANSIBLE",
         "ARM",
         "BASH",
+        "BICEP",
         "C",
         "CLOJURE",
         "CLOUDFORMATION",
@@ -109,6 +110,7 @@
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
+        "BICEP_BICEP_LINTER",
         "C_CPPLINT",
         "CLOJURE_CLJ_KONDO",
         "CLOUDFORMATION_CFN_LINT",
@@ -984,6 +986,123 @@
       },
       "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "BICEP_BICEP_LINTER_ARGUMENTS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_ARGUMENTS",
+      "description": "BICEP_BICEP_LINTER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "BICEP_BICEP_LINTER_CLI_LINT_MODE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "BICEP_BICEP_LINTER: Override default cli lint mode",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_DISABLE_ERRORS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS",
+      "default": false,
+      "title": "BICEP_BICEP_LINTER: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "BICEP_BICEP_LINTER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "BICEP_BICEP_LINTER_FILE_EXTENSIONS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE",
+      "title": "BICEP_BICEP_LINTER: Excluding Regex",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE",
+      "title": "BICEP_BICEP_LINTER: Including Regex",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_POST_COMMANDS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BICEP_BICEP_LINTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_PRE_COMMANDS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BICEP_BICEP_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "BICEP_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/BICEP_FILTER_REGEX_EXCLUDE",
+      "title": "Excluding regex filter for BICEP descriptor",
+      "type": "string"
+    },
+    "BICEP_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/BICEP_FILTER_REGEX_INCLUDE",
+      "title": "Including regex filter for BICEP descriptor",
+      "type": "string"
     },
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
@@ -13695,7 +13814,7 @@
       "type": "string"
     },
     "VALIDATE_ALL_CODEBASE": {
-      "$id": "#/properties/SHOW_ELAPSED_TIME",
+      "$id": "#/properties/VALIDATE_ALL_CODEBASE",
       "default": true,
       "description": "Will parse the entire repository and find all files to validate across all types. When set to false, only new or edited files will be parsed for validation.",
       "title": "Validate all code base",
