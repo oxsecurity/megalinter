@@ -11,6 +11,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Remove default npm-groovy-lint extra arguments ([#1872](https://github.com/oxsecurity/megalinter/issues/1872))
 
 - Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 1.8.9 to **1.8.10** on 2022-10-18
+  - [syft](https://github.com/anchore/syft) from 0.58.0 to **0.59.0** on 2022-10-18
 <!-- linter-versions-end -->
 
 ## [v6.12.0] - 2022-10-16
