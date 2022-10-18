@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 1.8.9 to **1.8.10** on 2022-10-18
   - [syft](https://github.com/anchore/syft) from 0.58.0 to **0.59.0** on 2022-10-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.1 to **0.39.2** on 2022-10-18
 <!-- linter-versions-end -->
 
 ## [v6.12.0] - 2022-10-16
