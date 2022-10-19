@@ -545,6 +545,12 @@
             "title": "CLI executable for linting request",
             "type": "string"
           },
+          "cli_executable_fix": {
+            "$id": "#/properties/linters/items/properties/cli_executable_fix",
+            "description": "Override if different from cli executable used for linting",
+            "title": "CLI executable for fix request",
+            "type": "string"
+          },
           "cli_executable_help": {
             "$id": "#/properties/linters/items/properties/cli_executable_help",
             "description": "Override if different from cli executable used for linting",
@@ -555,12 +561,6 @@
             "$id": "#/properties/linters/items/properties/cli_executable_version",
             "description": "Override if different from cli executable used for linting",
             "title": "CLI executable for version request",
-            "type": "string"
-          },
-          "cli_executable_fix": {
-            "$id": "#/properties/linters/items/properties/cli_executable_fix",
-            "description": "Override if different from cli executable used for linting",
-            "title": "CLI executable for fix request",
             "type": "string"
           },
           "cli_help_arg_name": {
