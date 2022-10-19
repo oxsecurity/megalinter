@@ -24,7 +24,7 @@ linters:
     config_file_name: LINTER_DEFAULT
     cli_executable: markdownlint-cli2
     cli_executable_help: "markdownlint-cli2 | tail -n +4"
-    cli_executable_version: "markdownlint-cli2 --version | head -n1"
+    cli_executable_version: "markdownlint-cli2 | head -n1"
     cli_executable_fix: "markdownlint-cli2-fix"
     cli_lint_errors_count: total_lines
     examples:
