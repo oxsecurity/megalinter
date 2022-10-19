@@ -25,7 +25,7 @@ linters:
     cli_executable: markdownlint-cli2
     cli_executable_version: "markdownlint-cli2 | head -n1"
     cli_executable_fix: "markdownlint-cli2-fix"
-    cli_help_arg_name: ""
+    cli_help_arg_name: "| tail -n +4"
     cli_version_arg_name: ""
     cli_fix_arg_name: ""
     cli_lint_errors_count: total_lines
