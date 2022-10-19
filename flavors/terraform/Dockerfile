@@ -151,7 +151,7 @@ RUN npm --no-cache install --ignore-scripts \
     && find . -name "README.md" -delete \
     && find . -name ".package-lock.json" -delete \
     && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && find . -name "README.md" -delete 
 WORKDIR /
 
 #NPM__END
