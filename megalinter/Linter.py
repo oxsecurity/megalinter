@@ -1231,7 +1231,7 @@ class Linter:
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_help_command(self):
-        cmd = [self.cli_executable_help]
+        cmd = shlex.split(self.cli_executable_help)
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
         return self.manage_docker_command(cmd)
