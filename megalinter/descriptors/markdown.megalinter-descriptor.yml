@@ -29,9 +29,9 @@ linters:
     cli_lint_fix_remove_args: [" "]
     cli_lint_errors_count: total_lines
     examples:
-      - "markdownlint myfile.md"
-      - "markdownlint -c .markdownlint.json myfile.md"
-      - "markdownlint --fix -c .markdownlint.json myfile.md"
+      - "markdownlint-cli2 myfile.md"
+      - "markdownlint-cli2-fix myfile.md"
+      - "markdownlint-cli2-config .markdownlint.json myfile.md"
     install:
       npm:
         - markdownlint-cli2
