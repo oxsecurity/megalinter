@@ -28,6 +28,10 @@ linters:
     cli_lint_fix_arg_name: "-fix"
     cli_lint_fix_remove_args: [" "]
     cli_lint_errors_count: total_lines
+    cli_docker_image: "davidanson/markdownlint-cli2"
+    cli_docker_args:
+      - "-v"
+      - "{{WORKSPACE}}:/tmp/lint:rw"
     examples:
       - "markdownlint-cli2 myfile.md"
       - "markdownlint-cli2-fix myfile.md"
