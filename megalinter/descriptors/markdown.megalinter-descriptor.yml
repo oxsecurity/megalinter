@@ -22,7 +22,10 @@ linters:
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     cli_lint_mode: list_of_files
     config_file_name: .markdownlint.json
-    cli_lint_fix_arg_name: "--fix"
+    cli_help_arg_name: "| tail -n +4"
+    cli_version_arg_name: "| head -n1"
+    cli_lint_fix_arg_name: "-fix"
+    cli_lint_fix_remove_args: [" "]
     cli_lint_errors_count: total_lines
     examples:
       - "markdownlint myfile.md"
