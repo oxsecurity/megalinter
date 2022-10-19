@@ -507,6 +507,7 @@
         "customrules",
         "cyclomatic",
         "dartanalyzer",
+        "davidanson",
         "debugent",
         "decamelize",
         "dedup",
