@@ -151,7 +151,7 @@ ERROR: Docker engine has not been found on your system.
     if ((options._ || []).length > 0) {
       commandArgs.push(
         ...["-e"],
-        `MEGALINTER_FILES_TO_LINT="${options._.join(",")}"`
+        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`
       );
     }
     commandArgs.push(dockerImage);
@@ -162,7 +162,6 @@ ERROR: Docker engine has not been found on your system.
       env: Object.assign({}, process.env),
       stdio: "inherit",
       windowsHide: true,
-      windowsVerbatimArguments: true,
     };
     const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
     // Output json if requested
