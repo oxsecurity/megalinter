@@ -138,7 +138,7 @@ RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sge
 ################################
 # Installs python dependencies #
 ################################
-COPY megalinter /megalinter
+COPY --chown=1000:1000 megalinter /megalinter
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
@@ -147,8 +147,8 @@ RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
 #######################################
 # Copy scripts and rules to container #
 #######################################
-COPY megalinter/descriptors /megalinter-descriptors
-COPY TEMPLATES /action/lib/.automation
+COPY --chown=1000:1000 megalinter/descriptors /megalinter-descriptors
+COPY --chown=1000:1000 TEMPLATES /action/lib/.automation
 
 ###########################
 # Get the build arguments #

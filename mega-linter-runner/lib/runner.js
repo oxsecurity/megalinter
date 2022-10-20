@@ -132,6 +132,8 @@ ERROR: Docker engine has not been found on your system.
     if (options["containerName"]) {
       commandArgs.push(...["--name", options["containerName"]]);
     }
+    commandArgs.push(...["--user", `1000:1000`]);
+    commandArgs.push(...["--tmpfs", "/tmp:rw,exec"]);
     commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
     if (options.fix === true) {

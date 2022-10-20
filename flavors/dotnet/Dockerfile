@@ -391,7 +391,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 ################################
 # Installs python dependencies #
 ################################
-COPY megalinter /megalinter
+COPY --chown=1000:1000 megalinter /megalinter
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
@@ -400,8 +400,8 @@ RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
 #######################################
 # Copy scripts and rules to container #
 #######################################
-COPY megalinter/descriptors /megalinter-descriptors
-COPY TEMPLATES /action/lib/.automation
+COPY --chown=1000:1000 megalinter/descriptors /megalinter-descriptors
+COPY --chown=1000:1000 TEMPLATES /action/lib/.automation
 
 ###########################
 # Get the build arguments #
@@ -440,7 +440,8 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 
 #EXTRA_DOCKERFILE_LINES__START
-COPY entrypoint.sh /entrypoint.sh
+COPY --chown=1000:1000 entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
+USER 1000
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
