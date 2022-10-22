@@ -11,12 +11,12 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.10.05-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
