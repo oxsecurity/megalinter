@@ -1,6 +1,7 @@
 descriptor_id: CLOJURE
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - java
 file_extensions:
   - ".clj"

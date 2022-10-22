@@ -552,7 +552,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+    && dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
