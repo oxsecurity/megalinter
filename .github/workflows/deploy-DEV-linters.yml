@@ -40,7 +40,7 @@ jobs:
         BRANCH_NAME="${GITHUB_REF##*/}"
         TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
         echo "Tag name: ${TAG}"
-        echo "tag=${TAG}" >>$GITHUB_OUTPUT
+        echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
   build:
     # Name the Job
