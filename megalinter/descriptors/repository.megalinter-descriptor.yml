@@ -76,6 +76,7 @@ linters:
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
+    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -92,7 +93,7 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
         - name: VsCode DevSkim
