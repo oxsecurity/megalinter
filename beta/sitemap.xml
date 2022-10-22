@@ -991,6 +991,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/</loc>
+         <lastmod>2022-10-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/flavors/documentation/</loc>
          <lastmod>2022-10-22</lastmod>
          <changefreq>daily</changefreq>
