@@ -177,11 +177,7 @@ ERROR: Docker engine has not been found on your system.
         console.log(JSON.stringify(JSON.parse(jsonRaw)));
       }
     }
-    return {
-      status: spawnRes.status,
-      stdout: spawnRes.stdout,
-      stderr: spawnRes.stderr,
-    };
+    return spawnRes;
   }
 
   isv4(release) {
