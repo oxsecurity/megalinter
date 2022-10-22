@@ -54,6 +54,7 @@ jobs:
         flavor:
           [
             "ci_light",
+            "cupcake",
             "documentation",
             "dotnet",
             "go",
