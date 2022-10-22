@@ -81,9 +81,315 @@ sfdx scanner:run
 ### Help content
 
 ```shell
- ›   Error: Command scanner:run not found.
- ›   Warning: scanner:rule:list is not a sfdx command.
-Did you mean force:auth:list? [y/n]:
+evaluate a selection of rules against a codebase
+
+USAGE
+  $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>]
+    [-f csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
+    [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
+    <integer> | undefined | [-v | --json]] [--normalize-severity] [--verbose]
+    [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -c, --category=<value>
+      categor(ies) of rules to run
+
+  -e, --engine=<value>
+      engine(s) to run
+
+  -f, --format=(csv|html|json|junit|sarif|table|xml)
+      format of results
+
+  -o, --outfile=<value>
+      location of output file
+
+  -r, --ruleset=<value>
+      [deprecated] ruleset(s) of rules to run
+
+  -s, --severity-threshold=<value>
+      throws an error when violations of specific severity (or more severe) are
+      detected, invokes --normalize-severity
+
+  -t, --target=<value>
+      (required) location of source code
+
+  -v, --violations-cause-error
+      [deprecated] throws an error when violations are detected
+
+  --env=<value>
+      JSON-formatted string, overrides ESLint's default environment variables
+
+  --eslintconfig=<value>
+      location of eslintrc config to customize eslint engine
+
+  --json
+      format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
+  L)
+      [default: warn] logging level for this command invocation
+
+  --normalize-severity
+      A normalized severity 1 (high), 2 (moderate), and 3 (low) is returned in
+      addition to the engine specific severity
+
+  --pmdconfig=<value>
+      location of PMD rule reference XML file to customize rule selection
+
+  --tsconfig=<value>
+      location of tsconfig.json file
+
+  --verbose
+      emit additional command output to stdout
+
+DESCRIPTION
+  evaluate a selection of rules against a codebase
+
+EXAMPLES
+  Invoking without specifying any rules causes all rules to be run.
+    E.g., $ sfdx scanner:run --format xml --target "somefile.js"
+      Evaluates all rules against somefile.js.
+    Specifying multiple categories is treated as a logical OR.
+      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category "Design,Best Practices"
+        Evaluates all rules in the Design or Best Practices categories.
+    Categories can be excluded by specifying the negation operator, the values must be enclosed in single quotes.
+      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category '!Design,!Best Practices'
+        Evaluates all rules except those in the Design or Best Practices categories.
+    Wrap globs in quotes.
+      Unix example:    $ sfdx scanner:run --target './**/*.js,!./**/IgnoreMe.js' ...
+      Windows example: > sfdx scanner:run --target ".\**\*.js,!.\**\IgnoreMe.js" ...
+        Evaluate rules against all .js files below the current directory, except for IgnoreMe.js.
+    Specify tsconfig.json if the current working directory does not contain the tsconfig.json that corresponds to the TypeScript files being scanned.
+      E.g., sfdx scanner:run --target "/my-project/**/*.ts" --tsconfig "/my-project/tsconfig.json"
+        Scans the project contained in '/my-project' if the current working directory is another directory.
+    Use --env to override the default ESLint environment variables to add frameworks.
+      E.g., $ sfdx scanner:run --target "somefile.js" --env '{"jasmine": true}'
+        Evaluates rules against somefile.js, including Jasmine in the environment variables.
+    Use --violations-cause-error to throw exit with a non-zero code when violations are found.
+      E.g., $ sfdx scanner:run --target "somefile.js" --violations-cause-error
+        Evaluates rules against somefile.js. If any rules are violated, the exit code will be the severity of the most severe violation.
+    Use --engine to include or exclude engines. Any engine listed will be run, regardless of its current 'disabled' attribute.
+      E.g., $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
+        Evaluates rules against somefile.js, using eslint-lwc and pmd engines.
+    Use --engine to invoke engines that are not enabled by default.
+      E.g, $ sfdx scanner:run --target "/some/dir" --engine cpd
+        Executes CPD engine against known file extensions in "/some/dir". CPD helps detect blocks of code duplication in selected languages.
+    To use PMD with your own rule reference file, use --pmdconfig. Note that rule filters are not applied.
+      E.g, $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
+    To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure that the directory you run the command from has all the NPM dependencies installed.
+      E.g., $ sfdx scanner:run --target "src" --eslintconfig "/home/my/setup/.eslintrc.json"
+    Use --normalize-severity to output a normalized (across all engines) severity (1 [high], 2 [moderate], and 3 [low]) in addition to the engine specific severity (when shown).
+      E.g., $ sfdx scanner:run --target "/some-project/" --format csv --normalize-severity
+    Use --severity-threshold to throw a non-zero exit code when rule violations of a specific severity (or greater) are found. For this example, if there are any rule violations with a severity of 2 or more (which includes 1-high and 2-moderate), the exit code will be equal to the severity of the most severe violation.
+      E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
+
+
+WARNING: We're constantly improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA.
+WARNING: v2.x's End Of Life is approaching.
+         In October 2022, v3.x of the Salesforce Code Analyzer will become the default version,
+         and older versions, including your currently installed version, will no longer be supported.
+         You can manually update to v3.x earlier for a smoother transition.
+WARNING: As of April 27, 2022, v3.x of the Salesforce Code Analyzer is available as an open pilot.
+         To update to v3.x and try out our pilot features, run these commands:
+         > sfdx plugins:uninstall @salesforce/sfdx-scanner
+         > sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot
+NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
+─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
+VfCsrf                                             visualforce  Security          Basic VF                                          pmd
+VfHtmlStyleTagXss                                  visualforce  Security                                                            pmd
+VfUnescapeEl                                       visualforce  Security          Basic VF                                          pmd
+ApexAssertionsShouldIncludeMessage                 apex         Best Practices                                                      pmd
+ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
+ApexUnitTestMethodShouldHaveIsTestAnnotation       apex         Best Practices                                                      pmd
+ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,Default ruleset...,ApexUnit            pmd
+AvoidGlobalModifier                                apex         Best Practices    Style,quickstart,Default ruleset...               pmd
+AvoidLogicInTrigger                                apex         Best Practices    Style,quickstart,Default ruleset...               pmd
+DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
+UnusedLocalVariable                                apex         Best Practices                                                      pmd
+AvoidDebugStatements                               apex         Performance                                                         pmd
+AvoidDmlStatementsInLoops                          apex         Performance       Default ruleset...,Performance                    pmd
+AvoidSoqlInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
+AvoidSoslInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
+EagerlyLoadedDescribeSObjectResult                 apex         Performance                                                         pmd
+OperationWithLimitsInLoop                          apex         Performance       quickstart                                        pmd
+ApexBadCrypto                                      apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexCRUDViolation                                  apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexCSRF                                           apex         Security          Security                                          pmd
+ApexDangerousMethods                               apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexInsecureEndpoint                               apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexOpenRedirect                                   apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSharingViolations                              apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSOQLInjection                                  apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexSuggestUsingNamedCred                          apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexXSSFromEscapeFalse                             apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexXSSFromURLParam                                apex         Security          Security,quickstart,Default ruleset...            pmd
+ClassNamingConventions                             apex         Code Style        Style,quickstart,Default ruleset...               pmd
+IfElseStmtsMustUseBraces                           apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+IfStmtsMustUseBraces                               apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+FieldDeclarationsShouldBeAtStart                   apex         Code Style                                                          pmd
+FieldNamingConventions                             apex         Code Style        quickstart                                        pmd
+ForLoopsMustUseBraces                              apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+FormalParameterNamingConventions                   apex         Code Style        quickstart                                        pmd
+LocalVariableNamingConventions                     apex         Code Style        quickstart                                        pmd
+MethodNamingConventions                            apex         Code Style        Style,quickstart,Default ruleset...               pmd
+OneDeclarationPerLine                              apex         Code Style        quickstart,Default ruleset...                     pmd
+PropertyNamingConventions                          apex         Code Style        quickstart                                        pmd
+VariableNamingConventions                          apex         Code Style        Style,Default ruleset...                          pmd
+WhileLoopsMustUseBraces                            apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+AvoidDeeplyNestedIfStmts                           apex         Design            quickstart,Default ruleset...,Complexity          pmd
+CyclomaticComplexity                               apex         Design            Metrics tempora...,quickstart,Default ruleset...  pmd
+CognitiveComplexity                                apex         Design                                                              pmd
+ExcessiveClassLength                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
+ExcessiveParameterList                             apex         Design            quickstart,Default ruleset...,Complexity          pmd
+ExcessivePublicCount                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
+NcssConstructorCount                               apex         Design            quickstart,Default ruleset...,Complexity          pmd
+NcssMethodCount                                    apex         Design            quickstart,Default ruleset...,Complexity          pmd
+NcssTypeCount                                      apex         Design            quickstart,Default ruleset...,Complexity          pmd
+StdCyclomaticComplexity                            apex         Design            quickstart,Default ruleset...,Complexity          pmd
+TooManyFields                                      apex         Design            quickstart,Default ruleset...,Complexity          pmd
+ApexDoc                                            apex         Documentation     quickstart,Default ruleset...                     pmd
+ApexCSRF                                           apex         Error Prone       quickstart,Default ruleset...                     pmd
+AvoidDirectAccessTriggerMap                        apex         Error Prone       Style,quickstart,Default ruleset...               pmd
+AvoidHardcodingId                                  apex         Error Prone       Style,quickstart,Default ruleset...               pmd
+AvoidNonExistentAnnotations                        apex         Error Prone       quickstart,Default ruleset...                     pmd
+EmptyCatchBlock                                    apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyIfStmt                                        apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyStatementBlock                                apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyTryOrFinallyBlock                             apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+EmptyWhileStmt                                     apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
+MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Style,quickstart,Default ruleset...               pmd
+OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
+TestMethodsMustBeInTestClasses                     apex         Error Prone                                                         pmd
+constructor-super                                  javascript   ECMAScript 6      ECMAScript 6                                      eslint
+for-direction                                      javascript   Possible Errors   Possible Errors                                   eslint
+getter-return                                      javascript   Possible Errors   Possible Errors                                   eslint
+no-async-promise-executor                          javascript   Possible Errors   Possible Errors                                   eslint
+no-case-declarations                               javascript   Best Practices    Best Practices                                    eslint
+no-class-assign                                    javascript   ECMAScript 6      ECMAScript 6                                      eslint
+no-compare-neg-zero                                javascript   Possible Errors   Possible Errors                                   eslint
+no-cond-assign                                     javascript   Possible Errors   Possible Errors                                   eslint
+no-const-assign                                    javascript   ECMAScript 6      ECMAScript 6                                      eslint
+no-constant-condition                              javascript   Possible Errors   Possible Errors                                   eslint
+no-control-regex                                   javascript   Possible Errors   Possible Errors                                   eslint
+no-debugger                                        javascript   Possible Errors   Possible Errors                                   eslint
+no-delete-var                                      javascript   Variables         Variables                                         eslint
+no-dupe-args                                       javascript   Possible Errors   Possible Errors                                   eslint
+no-dupe-class-members                              javascript   ECMAScript 6      ECMAScript 6                                      eslint
+no-dupe-keys                                       javascript   Possible Errors   Possible Errors                                   eslint
+no-duplicate-case                                  javascript   Possible Errors   Possible Errors                                   eslint
+no-empty                                           javascript   Possible Errors   Possible Errors                                   eslint
+no-empty-character-class                           javascript   Possible Errors   Possible Errors                                   eslint
+no-empty-pattern                                   javascript   Best Practices    Best Practices                                    eslint
+no-ex-assign                                       javascript   Possible Errors   Possible Errors                                   eslint
+no-extra-boolean-cast                              javascript   Possible Errors   Possible Errors                                   eslint
+no-extra-semi                                      javascript   Possible Errors   Possible Errors                                   eslint
+no-fallthrough                                     javascript   Best Practices    Best Practices                                    eslint
+no-func-assign                                     javascript   Possible Errors   Possible Errors                                   eslint
+no-global-assign                                   javascript   Best Practices    Best Practices                                    eslint
+no-inner-declarations                              javascript   Possible Errors   Possible Errors                                   eslint
+no-invalid-regexp                                  javascript   Possible Errors   Possible Errors                                   eslint
+no-irregular-whitespace                            javascript   Possible Errors   Possible Errors                                   eslint
+no-misleading-character-class                      javascript   Possible Errors   Possible Errors                                   eslint
+no-mixed-spaces-and-tabs                           javascript   Stylistic Issues  Stylistic Issues                                  eslint
+no-new-symbol                                      javascript   ECMAScript 6      ECMAScript 6                                      eslint
+no-obj-calls                                       javascript   Possible Errors   Possible Errors                                   eslint
+no-octal                                           javascript   Best Practices    Best Practices                                    eslint
+no-prototype-builtins                              javascript   Possible Errors   Possible Errors                                   eslint
+no-redeclare                                       javascript   Best Practices    Best Practices                                    eslint
+no-regex-spaces                                    javascript   Possible Errors   Possible Errors                                   eslint
+no-self-assign                                     javascript   Best Practices    Best Practices                                    eslint
+no-shadow-restricted-names                         javascript   Variables         Variables                                         eslint
+no-sparse-arrays                                   javascript   Possible Errors   Possible Errors                                   eslint
+no-this-before-super                               javascript   ECMAScript 6      ECMAScript 6                                      eslint
+no-undef                                           javascript   Variables         Variables                                         eslint
+no-unexpected-multiline                            javascript   Possible Errors   Possible Errors                                   eslint
+no-unreachable                                     javascript   Possible Errors   Possible Errors                                   eslint
+no-unsafe-finally                                  javascript   Possible Errors   Possible Errors                                   eslint
+no-unsafe-negation                                 javascript   Possible Errors   Possible Errors                                   eslint
+no-unused-labels                                   javascript   Best Practices    Best Practices                                    eslint
+no-unused-vars                                     javascript   Variables         Variables                                         eslint
+no-useless-catch                                   javascript   Best Practices    Best Practices                                    eslint
+no-useless-escape                                  javascript   Best Practices    Best Practices                                    eslint
+no-with                                            javascript   Best Practices    Best Practices                                    eslint
+require-yield                                      javascript   ECMAScript 6      ECMAScript 6                                      eslint
+use-isnan                                          javascript   Possible Errors   Possible Errors                                   eslint
+valid-typeof                                       javascript   Possible Errors   Possible Errors                                   eslint
+constructor-super                                  typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+for-direction                                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-async-promise-executor                          typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-case-declarations                               typescript   Best Practices    Best Practices                                    eslint-typescript
+no-class-assign                                    typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+no-compare-neg-zero                                typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-cond-assign                                     typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-constant-condition                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-control-regex                                   typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-debugger                                        typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-delete-var                                      typescript   Variables         Variables                                         eslint-typescript
+no-duplicate-case                                  typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-empty                                           typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-empty-character-class                           typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-empty-pattern                                   typescript   Best Practices    Best Practices                                    eslint-typescript
+no-ex-assign                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-extra-boolean-cast                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-fallthrough                                     typescript   Best Practices    Best Practices                                    eslint-typescript
+no-func-assign                                     typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-global-assign                                   typescript   Best Practices    Best Practices                                    eslint-typescript
+no-inner-declarations                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-invalid-regexp                                  typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-irregular-whitespace                            typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-misleading-character-class                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-mixed-spaces-and-tabs                           typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+no-obj-calls                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-octal                                           typescript   Best Practices    Best Practices                                    eslint-typescript
+no-prototype-builtins                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-regex-spaces                                    typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-self-assign                                     typescript   Best Practices    Best Practices                                    eslint-typescript
+no-shadow-restricted-names                         typescript   Variables         Variables                                         eslint-typescript
+no-sparse-arrays                                   typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-unexpected-multiline                            typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-unsafe-finally                                  typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-unsafe-negation                                 typescript   Possible Errors   Possible Errors                                   eslint-typescript
+no-unused-labels                                   typescript   Best Practices    Best Practices                                    eslint-typescript
+no-useless-catch                                   typescript   Best Practices    Best Practices                                    eslint-typescript
+no-useless-escape                                  typescript   Best Practices    Best Practices                                    eslint-typescript
+no-var                                             typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+no-with                                            typescript   Best Practices    Best Practices                                    eslint-typescript
+prefer-const                                       typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+prefer-rest-params                                 typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+prefer-spread                                      typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+require-yield                                      typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+use-isnan                                          typescript   Possible Errors   Possible Errors                                   eslint-typescript
+@typescript-eslint/adjacent-overload-signatures    typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/await-thenable                  typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/ban-types                       typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/consistent-type-assertions      typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/explicit-function-return-type   typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+@typescript-eslint/member-delimiter-style          typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+@typescript-eslint/no-array-constructor            typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+@typescript-eslint/no-empty-function               typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-empty-interface              typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-explicit-any                 typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-for-in-array                 typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-inferrable-types             typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-misused-new                  typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-misused-promises             typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-namespace                    typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-non-null-assertion           typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+@typescript-eslint/no-this-alias                   typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-unnecessary-type-assertion   typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/no-unused-vars                  typescript   Variables         Variables                                         eslint-typescript
+@typescript-eslint/no-use-before-define            typescript   Variables         Variables                                         eslint-typescript
+@typescript-eslint/no-var-requires                 typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/prefer-includes                 typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/prefer-namespace-keyword        typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/prefer-regexp-exec              typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/prefer-string-starts-ends-with  typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/require-await                   typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/triple-slash-reference          typescript   Best Practices    Best Practices                                    eslint-typescript
+@typescript-eslint/type-annotation-spacing         typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
+@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript
 ```
 
 ### Installation on mega-linter Docker image
