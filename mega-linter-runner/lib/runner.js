@@ -159,8 +159,6 @@ ERROR: Docker engine has not been found on your system.
     // Call docker run
     console.log(`Command: docker ${commandArgs.join(" ")}`);
     const spawnOptions = {
-      detached: false,
-      cwd: process.cwd(),
       env: Object.assign({}, process.env),
       stdio: "inherit",
       windowsHide: true,
