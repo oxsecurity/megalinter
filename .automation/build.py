@@ -520,7 +520,7 @@ def match_flavor(item, flavor, flavor_info):
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
             and not flavor.endswith("_light")
-            and 'cupcake' not in flavor
+            and "cupcake" not in flavor
             and not is_strict
         ):
             return True
