@@ -7,7 +7,6 @@ import re
 import unittest
 
 from megalinter import utils
-from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
 class utilsTest(unittest.TestCase):
