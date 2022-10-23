@@ -148,7 +148,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install sarif-fmt  shellcheck-sarif \
+    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
