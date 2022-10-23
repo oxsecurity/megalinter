@@ -2757,7 +2757,7 @@ def manage_output_variables():
                 updated_versions = 1
                 break
         if updated_versions == 1:
-            print("::set-output name=has_updated_versions::1")
+            print('"has_updated_versions=1" >>"$GITHUB_OUTPUT"')
 
 
 def reformat_markdown_tables():
