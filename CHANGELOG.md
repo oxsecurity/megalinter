@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.2 to **1.3.3** on 2022-10-22
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.15.2 to **1.16.0** on 2022-10-22
   - [golangci-lint](https://golangci-lint.run/) from 1.50.0 to **1.50.1** on 2022-10-22
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.05 to **2022.10.14** on 2022-10-23
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.14.1 to **8.15.0** on 2022-10-23
 <!-- linter-versions-end -->
 
 ## [v6.12.0] - 2022-10-16
