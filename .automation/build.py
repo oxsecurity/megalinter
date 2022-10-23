@@ -402,7 +402,7 @@ def build_dockerfile(
             rust_commands += ["rustup component add clippy"]
             keep_rustup = True
         if len(cargo_packages) > 0:
-            cargo_cmd = "cargo install " + "  ".join(
+            cargo_cmd = "cargo install --force --locked " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
             )
             rust_commands += [cargo_cmd]
