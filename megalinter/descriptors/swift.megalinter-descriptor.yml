@@ -1,6 +1,7 @@
 descriptor_id: SWIFT
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - swift
 file_extensions:
   - ".swift"

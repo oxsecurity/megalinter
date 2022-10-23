@@ -11,12 +11,12 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.10.05-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -552,7 +552,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+    && dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \

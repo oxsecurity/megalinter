@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -216,7 +216,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \

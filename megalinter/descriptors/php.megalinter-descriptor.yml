@@ -1,6 +1,7 @@
 descriptor_id: PHP
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - php
 file_extensions:
   - ".php"

@@ -1,6 +1,7 @@
 descriptor_id: RUST
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - rust
 file_extensions:
   - ".rs"

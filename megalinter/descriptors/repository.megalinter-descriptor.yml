@@ -3,6 +3,7 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 lint_all_files: true
 linters:
   # CHECKOV
@@ -11,6 +12,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - terraform
       - security
     linter_url: https://www.checkov.io/
@@ -76,6 +78,7 @@ linters:
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
+    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -92,7 +95,7 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
         - name: VsCode DevSkim
@@ -160,6 +163,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
@@ -191,7 +195,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+        - FROM zricethezav/gitleaks:v8.15.0 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -199,6 +203,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
     linter_speed: 2
@@ -227,6 +232,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
@@ -262,6 +268,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - security
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
@@ -347,6 +354,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_text: |
       You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
