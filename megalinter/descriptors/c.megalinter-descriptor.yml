@@ -1,6 +1,7 @@
 descriptor_id: C
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - dotnet
 file_extensions:
   - ".c"

@@ -826,7 +826,7 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
-        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
+        print(f'"has_updated_sources={str(self.has_updated_sources)}" >>"$GITHUB_OUTPUT"')
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()

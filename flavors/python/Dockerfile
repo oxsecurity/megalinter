@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
 #FROM__END
 
 ##################
@@ -156,7 +156,7 @@ RUN npm --no-cache install --ignore-scripts \
     && find . -name "README.md" -delete \
     && find . -name ".package-lock.json" -delete \
     && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete 
+    && find . -name "README.md" -delete
 WORKDIR /
 
 #NPM__END
