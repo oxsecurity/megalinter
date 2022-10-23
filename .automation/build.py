@@ -438,7 +438,7 @@ def build_dockerfile(
             + '    && find . -name "README.md" -delete \\\n'
             + '    && find . -name ".package-lock.json" -delete \\\n'
             + '    && find . -name "package-lock.json" -delete \\\n'
-            + '    && find . -name "README.md" -delete \n'
+            + '    && find . -name "README.md" -delete\n'
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
