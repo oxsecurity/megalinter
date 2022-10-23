@@ -8,31 +8,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.13.0] - 2022-10-24
+
 - New [cupcake flavor](https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/#readme) with 78 instead of 108 linters
 - Don't add literal double quote character to filenames in mega-linter-runner ([#1942](https://github.com/oxsecurity/megalinter/issues/1942)).
 - Remove default npm-groovy-lint extra arguments ([#1872](https://github.com/oxsecurity/megalinter/issues/1872))
 - Replace yaml.load by yaml.safe_load for better security
 
 - Linter versions upgrades
-  - [phpstan](https://phpstan.org/) from 1.8.9 to **1.8.10** on 2022-10-18
-  - [syft](https://github.com/anchore/syft) from 0.58.0 to **0.59.0** on 2022-10-18
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.1 to **0.39.2** on 2022-10-18
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.67.0 to **0.68.1** on 2022-10-22
-  - [djlint](https://djlint.com/) from 1.19.1 to **1.19.2** on 2022-10-22
-  - [eslint](https://eslint.org) from 8.25.0 to **8.26.0** on 2022-10-22
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.6 to **7.2.7** on 2022-10-22
-  - [puppet-lint](http://puppet-lint.com/) from 3.0.0 to **3.0.1** on 2022-10-22
-  - [pylint](https://pylint.pycqa.org) from 2.15.4 to **2.15.5** on 2022-10-22
-  - [git_diff](https://git-scm.com) from 2.34.4 to **2.34.5** on 2022-10-22
-  - [semgrep](https://semgrep.dev/) from 0.117.0 to **0.118.0** on 2022-10-22
-  - [rubocop](https://rubocop.org/) from 1.36.0 to **1.37.0** on 2022-10-22
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.0 to **7.16.1** on 2022-10-22
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.2 to **1.3.3** on 2022-10-22
-  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.15.2 to **1.16.0** on 2022-10-22
-  - [golangci-lint](https://golangci-lint.run/) from 1.50.0 to **1.50.1** on 2022-10-22
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.05 to **2022.10.14** on 2022-10-23
-  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.14.1 to **8.15.0** on 2022-10-23
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.67.0 to **0.68.1**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.05 to **2022.10.14**
+  - [djlint](https://djlint.com/) from 1.19.1 to **1.19.2**
+  - [eslint](https://eslint.org) from 8.25.0 to **8.26.0**
+  - [git_diff](https://git-scm.com) from 2.34.4 to **2.34.5**
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.14.1 to **8.15.0**
+  - [golangci-lint](https://golangci-lint.run/) from 1.50.0 to **1.50.1**
+  - [phpstan](https://phpstan.org/) from 1.8.9 to **1.8.10**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.6 to **7.2.7**
+  - [puppet-lint](http://puppet-lint.com/) from 3.0.0 to **3.0.1**
+  - [pylint](https://pylint.pycqa.org) from 2.15.4 to **2.15.5**
+  - [rubocop](https://rubocop.org/) from 1.36.0 to **1.37.0**
+  - [semgrep](https://semgrep.dev/) from 0.117.0 to **0.118.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.0 to **7.16.1**
+  - [syft](https://github.com/anchore/syft) from 0.58.0 to **0.59.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.2 to **1.3.3**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.1 to **0.39.2**
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.15.2 to **1.16.0**
 
 ## [v6.12.0] - 2022-10-16
 
