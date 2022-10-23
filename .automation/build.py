@@ -133,7 +133,7 @@ def generate_flavor(flavor, flavor_info):
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f)
             if (
                 match_flavor(descriptor, flavor, flavor_info) is True
                 and "install" in descriptor
@@ -538,7 +538,7 @@ def generate_linter_dockerfiles():
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f)
         if "install" in descriptor:
             descriptor_items += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
@@ -2105,8 +2105,8 @@ def validate_own_megalinter_config():
             logging.info("Validating " + os.path.basename(OWN_MEGALINTER_CONFIG_FILE))
             mega_linter_config = descriptor_file1.read()
             jsonschema.validate(
-                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),
-                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                instance=yaml.safe_load(mega_linter_config),
+                schema=yaml.safe_load(descriptor_schema),
             )
 
 
@@ -2122,8 +2122,8 @@ def validate_descriptors():
                 descriptor = descriptor_file1.read()
                 try:
                     jsonschema.validate(
-                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),
-                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                        instance=yaml.safe_load(descriptor),
+                        schema=yaml.safe_load(descriptor_schema),
                     )
                 except jsonschema.exceptions.ValidationError as validation_error:
                     logging.error(
