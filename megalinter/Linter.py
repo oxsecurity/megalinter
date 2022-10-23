@@ -1145,7 +1145,7 @@ class Linter:
                     with open(
                         self.sarif_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
-                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        sarif_output = yaml.safe_load(sarif_file)
                         # SARIF is in default output file
                 elif self.sarif_default_output_file is not None and os.path.isfile(
                     self.sarif_default_output_file
@@ -1154,11 +1154,11 @@ class Linter:
                     with open(
                         self.sarif_default_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
-                        sarif_output = yaml.load(sarif_file, Loader=yaml.FullLoader)
+                        sarif_output = yaml.safe_load(sarif_file)
                         # SARIF is in stdout
                 else:
                     # SARIF is in stdout
-                    sarif_output = yaml.load(stdout, Loader=yaml.FullLoader)
+                    sarif_output = yaml.safe_load(stdout)
                 if "results" in sarif_output["runs"][0]:
                     # Get number of results
                     total_errors = len(sarif_output["runs"][0]["results"])
