@@ -130,7 +130,7 @@ def filter_files(
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
-        if lint_all_other_linters_files is False or file_extensions is not None:
+        if lint_all_other_linters_files is False or len(file_extensions) > 0:
             if file_extension in file_extensions:
                 pass
             elif "*" in file_extensions:
