@@ -15,6 +15,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.12.2** on 2022-10-24
   - [rubocop](https://rubocop.org/) from 1.37.0 to **1.37.1** on 2022-10-24
   - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.26.3** on 2022-10-24
+  - [djlint](https://djlint.com/) from 1.0.3 to **1.19.2** on 2022-10-24
+  - [phpstan](https://phpstan.org/) from 1.8.10 to **1.8.11** on 2022-10-24
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.982** on 2022-10-24
+  - [pylint](https://pylint.pycqa.org) from 2.12.2 to **2.15.5** on 2022-10-24
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
