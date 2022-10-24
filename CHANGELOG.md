@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0** on 2022-10-24
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.931** on 2022-10-24
+  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.12.2** on 2022-10-24
+  - [rubocop](https://rubocop.org/) from 1.37.0 to **1.37.1** on 2022-10-24
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.26.3** on 2022-10-24
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
