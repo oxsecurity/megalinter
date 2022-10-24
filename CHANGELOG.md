@@ -20,6 +20,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.982** on 2022-10-24
   - [pylint](https://pylint.pycqa.org) from 2.12.2 to **2.15.5** on 2022-10-24
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0** on 2022-10-24
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1** on 2022-10-24
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
