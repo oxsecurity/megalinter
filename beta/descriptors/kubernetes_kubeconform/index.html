@@ -5733,7 +5733,7 @@
 <p><code>kubeconform</code> is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than <code>kubeval</code>.</p>
 <h2 id="kubeconform-documentation">kubeconform documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.4.12</strong></li>
+<li>Version in MegaLinter: <strong>0.5.0</strong></li>
 <li>Visit <a href="https://github.com/yannh/kubeconform#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/yannh/kubeconform" target="_blank"><img alt="kubeconform - GitHub" src="https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=" /></a></p>
@@ -5950,8 +5950,8 @@
 <pre><code class="language-shell">Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
   -cache string
       cache schemas downloaded via HTTP to this folder
-  -cpu-prof string
-      debug - log CPU profiling to file
+  -debug
+      print debug information
   -exit-on-error
       immediately stop execution when the first error is encountered
   -h  show help information
@@ -5968,24 +5968,26 @@
   -output string
       output format - json, junit, tap, text (default &quot;text&quot;)
   -reject string
-      comma-separated list of kinds to reject
+      comma-separated list of kinds or GVKs to reject
   -schema-location value
       override schemas location search path (can be specified multiple times)
   -skip string
-      comma-separated list of kinds to ignore
+      comma-separated list of kinds or GVKs to ignore
   -strict
-      disallow additional properties not in schema
+      disallow additional properties not in schema or duplicated keys
   -summary
       print a summary at the end (ignored for junit output)
+  -v  show version information
   -verbose
       print results for all resources (ignored for tap and junit output)
+
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">RUN ML_THIRD_PARTY_DIR=&quot;/third-party/kubeconform&quot; \
-    &amp;&amp; KUBECONFORM_VERSION=v0.4.12 \
+    &amp;&amp; KUBECONFORM_VERSION=v0.5.0 \
     &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \
     &amp;&amp; wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     &amp;&amp; tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
