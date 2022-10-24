@@ -26,7 +26,11 @@ linters:
     cli_executable_fix: "markdownlint-cli2-fix"
     cli_executable_config: "markdownlint-cli2-config"
     cli_help_arg_name: ""
+    cli_help_extra_commands:
+      - "| tail -n +4"
     cli_version_arg_name: ""
+    cli_version_extra_args:
+      - "| head -n1"
     cli_lint_errors_count: total_lines
     examples:
       - "markdownlint-cli2 myfile.md"
