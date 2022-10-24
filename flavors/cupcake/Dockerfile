@@ -16,7 +16,7 @@ FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM zricethezav/gitleaks:v8.15.0 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -354,7 +354,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 
 # kubeconform installation
     && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.4.12 \
+    && KUBECONFORM_VERSION=v0.5.0 \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
