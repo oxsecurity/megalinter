@@ -13,7 +13,7 @@
 
 ## kubeconform documentation
 
-- Version in MegaLinter: **0.4.12**
+- Version in MegaLinter: **0.5.0**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}
@@ -90,8 +90,8 @@ kubeconform -ignore-missing-schemas -skip SomeCRD,AnotherCRD -kubernetes-version
 Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
   -cache string
       cache schemas downloaded via HTTP to this folder
-  -cpu-prof string
-      debug - log CPU profiling to file
+  -debug
+      print debug information
   -exit-on-error
       immediately stop execution when the first error is encountered
   -h  show help information
@@ -108,17 +108,19 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
   -output string
       output format - json, junit, tap, text (default "text")
   -reject string
-      comma-separated list of kinds to reject
+      comma-separated list of kinds or GVKs to reject
   -schema-location value
       override schemas location search path (can be specified multiple times)
   -skip string
-      comma-separated list of kinds to ignore
+      comma-separated list of kinds or GVKs to ignore
   -strict
-      disallow additional properties not in schema
+      disallow additional properties not in schema or duplicated keys
   -summary
       print a summary at the end (ignored for junit output)
+  -v  show version information
   -verbose
       print results for all resources (ignored for tap and junit output)
+
 ```
 
 ### Installation on mega-linter Docker image
@@ -126,7 +128,7 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
 - Dockerfile commands :
 ```dockerfile
 RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.4.12 \
+    && KUBECONFORM_VERSION=v0.5.0 \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
