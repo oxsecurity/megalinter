@@ -5757,7 +5757,7 @@
 <p>For example, define <code>HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.3</strong></li>
+<li>Version in MegaLinter: <strong>1.19.2</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -5989,22 +5989,30 @@
   djLint · HTML template linter and formatter.
 
 Options:
-  --version             Show the version and exit.
-  -e, --extension TEXT  File extension to check [default: html]
-  -i, --ignore TEXT     Codes to ignore. ex: &quot;H014,H017&quot;
-  --reformat            Reformat the file(s).
-  --check               Check formatting on the file(s).
-  --indent INTEGER      Indent spacing. [default: 4]
-  --quiet               Do not print diff when reformatting.
-  --profile TEXT        Enable defaults by template language. ops: django,
-                        jinja, nunjucks, handlebars, golang, angular, html
-                        [default: html]
-  --require-pragma      Only format or lint files that starts with a comment
-                        with the text 'djlint:on'
-  --lint                Lint for common issues. [default option]
-  --use-gitignore       Use .gitignore file to extend excludes.
-  --warn                Return errors as warnings.
-  -h, --help            Show this message and exit.
+  --version                 Show the version and exit.
+  -e, --extension TEXT      File extension to check [default: html]
+  -i, --ignore TEXT         Codes to ignore. ex: &quot;H014,H017&quot;
+  --reformat                Reformat the file(s).
+  --check                   Check formatting on the file(s).
+  --indent INTEGER          Indent spacing. [default: 4]
+  --quiet                   Do not print diff when reformatting.
+  --profile TEXT            Enable defaults by template language. ops: django,
+                            jinja, nunjucks, handlebars, golang, angular, html
+                            [default: html]
+  --require-pragma          Only format or lint files that starts with a
+                            comment with the text 'djlint:on'
+  --lint                    Lint for common issues. [default option]
+  --use-gitignore           Use .gitignore file to extend excludes.
+  --warn                    Return errors as warnings.
+  --preserve-leading-space  Attempt to preserve leading space on text.
+  --preserve-blank-lines    Attempt to preserve blank lines.
+  --format-css              Also format contents of &lt;style&gt; tags.
+  --format-js               Also format contents of &lt;script&gt; tags.
+  --configuration PATH      Path to global configuration file in .djlintrc
+                            format
+  --statistics              Count the number of occurrences of each
+                            error/warning code.
+  -h, --help                Show this message and exit.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>

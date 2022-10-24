@@ -5748,7 +5748,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_MYPY</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="mypy-documentation">mypy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.931</strong></li>
+<li>Version in MegaLinter: <strong>0.982</strong></li>
 <li>Visit <a href="https://mypy.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mypy.readthedocs.io/en/stable/config_file.html" target="_blank">How to configure mypy rules</a><ul>
 <li>If custom <code>.mypy.ini</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini" target="_blank">.mypy.ini</a> will be used</li>
@@ -6089,6 +6089,8 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
+  --strict-concatenate      Make arguments prepended via Concatenate be truly
+                            positional-only (inverse: --no-strict-concatenate)
   --strict                  Strict mode; enables the following flags: --warn-
                             unused-configs, --disallow-any-generics,
                             --disallow-subclassing-any, --disallow-untyped-
@@ -6097,7 +6099,7 @@ Miscellaneous strictness flags:
                             untyped-decorators, --no-implicit-optional,
                             --warn-redundant-casts, --warn-unused-ignores,
                             --warn-return-any, --no-implicit-reexport,
-                            --strict-equality
+                            --strict-equality, --strict-concatenate
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -6109,6 +6111,9 @@ Configuring error messages:
                             context (inverse: --hide-error-context)
   --show-column-numbers     Show column numbers in error messages (inverse:
                             --hide-column-numbers)
+  --show-error-end          Show end line/end column numbers in error
+                            messages. This implies --show-column-numbers
+                            (inverse: --hide-error-end)
   --show-error-codes        Show error codes in error messages (inverse:
                             --hide-error-codes)
   --pretty                  Use visually nicer output in error messages: Use
@@ -6147,6 +6152,8 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
+  --enable-recursive-aliases
+                            Experimental support for recursive type aliases
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only
