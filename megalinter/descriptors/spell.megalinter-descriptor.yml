@@ -3,8 +3,6 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - cupcake
-file_extensions:
-  - "*"
 lint_all_other_linters_files: true
 linters:
   # MISSPELL
