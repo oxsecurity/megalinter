@@ -4,7 +4,7 @@
 
 ## yamllint documentation
 
-- Version in MegaLinter: **1.26.3**
+- Version in MegaLinter: **1.28.0**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
   - If custom `.yamllint.yml` config file is not found, [.yamllint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.yamllint.yml){target=_blank} will be used
