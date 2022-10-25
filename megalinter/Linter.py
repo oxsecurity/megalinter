@@ -96,7 +96,6 @@ class Linter:
         self.cli_executable_fix = None
         self.cli_executable_version = None
         self.cli_executable_help = None
-        self.cli_executable_config = None
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
         self.cli_config_default_value = None
@@ -194,18 +193,8 @@ class Linter:
             self.cli_executable_version = self.cli_executable
         if self.cli_executable_help is None:
             self.cli_executable_help = self.cli_executable
-        if self.cli_executable_config is None:
-            self.cli_executable_config = self.cli_executable
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
-
-        # If config and fix executables both differ from the linter executable,
-        # we cannot use define a configuration file and apply fixes in the same command
-        if (
-            self.cli_executable_fix != self.cli_executable
-            and self.cli_executable_config != self.cli_executable
-        ):
-            self.no_config_if_fix = True
 
         # Apply linter customization via config settings:
         self.file_extensions = config.get_list(
@@ -1063,11 +1052,8 @@ class Linter:
         if (
             self.cli_config_arg_name in cmd
             or self.cli_config_arg_name in self.cli_config_extra_args
-            or self.cli_executable_config != self.cli_executable
-            and (self.no_config_if_fix is False or self.apply_fixes is False)
         ):
             # User overridden config within LINTER_NAME_ARGUMENTS
-            cmd[0] = self.cli_executable_config
             cmd += self.cli_config_extra_args
         elif self.config_file is not None:
             # Config file
