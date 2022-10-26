@@ -48,7 +48,8 @@ linters:
       - "pmd"
       - "--target"
       - '"./**/*"'
-      - "--violations-cause-error"
+      - "--severity-threshold"
+      - "2"
       - "--outfile"
       - "{{REPORT_FOLDER}}/sfdx-scanner-report-apex.csv"
       - "--format"

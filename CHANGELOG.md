@@ -22,6 +22,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0** on 2022-10-24
   - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1** on 2022-10-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.68.1 to **0.69.1** on 2022-10-26
+  - [djlint](https://djlint.com/) from 1.19.2 to **1.19.3** on 2022-10-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
