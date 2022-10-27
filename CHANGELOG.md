@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- New MegaLinter plugin: [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config), by [Yann Jouanique](https://github.com/Yann-J)
+
 - Linter versions upgrades
   - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0** on 2022-10-24
@@ -22,6 +24,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0** on 2022-10-24
   - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1** on 2022-10-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.68.1 to **0.69.1** on 2022-10-26
+  - [djlint](https://djlint.com/) from 1.19.2 to **1.19.3** on 2022-10-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.1 to **7.16.2** on 2022-10-27
+  - [kics](https://www.kics.io) from 1.6.2 to **1.6.3** on 2022-10-27
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
