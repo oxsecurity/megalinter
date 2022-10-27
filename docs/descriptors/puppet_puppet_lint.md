@@ -4,7 +4,7 @@
 
 ## puppet-lint documentation
 
-- Version in MegaLinter: **2.5.2**
+- Version in MegaLinter: **3.0.1**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -110,6 +110,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
                                      %{check}    - The name of the check.
                                      %{message}  - The message.
         --json                       Log output as JSON
+        --sarif                      Log output as SARIF
         --list-checks                List available check names.
 
     Checks:

@@ -3,6 +3,7 @@ descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain XML
   - ci_light
+  - cupcake
 file_extensions:
   - ".xml"
 linters:

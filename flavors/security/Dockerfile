@@ -12,8 +12,8 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.13.0 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -87,7 +87,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../..  \
@@ -120,7 +120,7 @@ RUN npm --no-cache install --ignore-scripts \
     && find . -name "README.md" -delete \
     && find . -name ".package-lock.json" -delete \
     && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete 
+    && find . -name "README.md" -delete
 WORKDIR /
 
 #NPM__END
@@ -148,7 +148,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install sarif-fmt  shellcheck-sarif \
+    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -198,7 +198,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubeconform installation
     && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.4.12 \
+    && KUBECONFORM_VERSION=v0.5.0 \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
@@ -216,7 +216,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \

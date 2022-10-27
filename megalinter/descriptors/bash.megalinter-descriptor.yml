@@ -3,6 +3,7 @@ descriptor_type: language
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 file_extensions:
   - ".sh"
   - ".bash"
@@ -25,6 +26,7 @@ linters:
     name: BASH_EXEC
     descriptor_flavors:
       - all_flavors
+      - cupcake
       - security
     cli_executable_help: bash
     cli_executable_version: bash
@@ -47,6 +49,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors
+      - cupcake
       - ci_light
       - security
     linter_url: https://github.com/koalaman/shellcheck

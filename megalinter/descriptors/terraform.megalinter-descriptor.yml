@@ -1,6 +1,7 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
 descriptor_flavors:
+  - cupcake
   - terraform
 file_extensions:
   - ".tf"
@@ -11,6 +12,7 @@ linters:
     linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://github.com/terraform-linters/tflint
@@ -27,7 +29,7 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -35,6 +37,7 @@ linters:
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.accurics.com/products/terrascan/
@@ -73,6 +76,7 @@ linters:
     file_names_not_ends_with:
       - ".tflint.hcl"
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://terragrunt.gruntwork.io
@@ -172,6 +176,7 @@ linters:
   - linter_name: kics
     name: TERRAFORM_KICS
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.kics.io
@@ -184,6 +189,7 @@ linters:
     cli_executable: kics
     cli_lint_extra_args:
       - scan
+    cli_lint_extra_args_after:
       - --path
     cli_version_arg_name: "version"
     examples:

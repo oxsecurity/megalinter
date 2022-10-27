@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.58.0**
+- Version in MegaLinter: **0.59.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -109,24 +109,18 @@ Available Commands:
   version     show the version
 
 Flags:
-      --catalogers stringArray     enable one or more package catalogers
-  -c, --config string              application config file
-  -d, --dockerfile string          include dockerfile for upload to Anchore Enterprise
-      --exclude stringArray        exclude paths from being scanned using a glob expression
-      --file string                file to write the default report output to (default is STDOUT)
-  -h, --help                       help for this command
-  -H, --host string                the hostname or URL of the Anchore Enterprise instance to upload to
-      --import-timeout uint        set a timeout duration (in seconds) for the upload to Anchore Enterprise (default 30)
-  -o, --output stringArray         report output format, options=[syft-json cyclonedx-xml cyclonedx-json github github-json spdx-tag-value spdx-json table text template] (default [table])
-      --overwrite-existing-image   overwrite an existing image during the upload to Anchore Enterprise
-  -p, --password string            the password to authenticate against Anchore Enterprise
-      --platform string            an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
-  -q, --quiet                      suppress all logging output
-  -s, --scope string               selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
-  -t, --template string            specify the path to a Go template file
-  -u, --username string            the username to authenticate against Anchore Enterprise
-  -v, --verbose count              increase verbosity (-v = info, -vv = debug)
-      --version                    version for this command
+      --catalogers stringArray   enable one or more package catalogers
+  -c, --config string            application config file
+      --exclude stringArray      exclude paths from being scanned using a glob expression
+      --file string              file to write the default report output to (default is STDOUT)
+  -h, --help                     help for this command
+  -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github github-json spdx-tag-value spdx-json table text template] (default [table])
+      --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -q, --quiet                    suppress all logging output
+  -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
+  -t, --template string          specify the path to a Go template file
+  -v, --verbose count            increase verbosity (-v = info, -vv = debug)
+      --version                  version for this command
 
 Use " [command] --help" for more information about a command.
 ```

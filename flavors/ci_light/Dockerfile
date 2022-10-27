@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.13.0 as gitleaks
+FROM zricethezav/gitleaks:v8.15.0 as gitleaks
 #FROM__END
 
 ##################
@@ -124,7 +124,7 @@ RUN npm --no-cache install --ignore-scripts \
     && find . -name "README.md" -delete \
     && find . -name ".package-lock.json" -delete \
     && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete 
+    && find . -name "README.md" -delete
 WORKDIR /
 
 #NPM__END
@@ -154,7 +154,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install sarif-fmt  shellcheck-sarif \
+    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
