@@ -386,7 +386,7 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
@@ -408,7 +408,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |
@@ -972,6 +972,7 @@ PLUGINS:
 
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
 * [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+* [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
 
 
 Submit a PR if you want your plugin to appear here :)
@@ -1094,10 +1095,12 @@ To help, you can also:
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
 - [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [lintr](https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html){target=_blank}
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
 - [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html){target=_blank}
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
 - [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
