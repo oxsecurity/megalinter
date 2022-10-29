@@ -31,6 +31,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.1 to **7.16.2** on 2022-10-27
   - [kics](https://www.kics.io) from 1.6.2 to **1.6.3** on 2022-10-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.2 to **7.17.1** on 2022-10-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.12.0 to **6.13.1** on 2022-10-29
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
