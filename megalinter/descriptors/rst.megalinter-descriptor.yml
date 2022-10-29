@@ -17,7 +17,7 @@ linters:
       pip:
         - restructuredtext_lint
   # rstcheck
-  - linter_name: rstcheck
+  - linter_name: rstcheck   
     linter_url: https://github.com/myint/rstcheck
     linter_repo: https://github.com/myint/rstcheck
     config_file_name: ".rstcheck.cfg"

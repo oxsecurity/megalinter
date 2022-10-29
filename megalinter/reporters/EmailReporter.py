@@ -20,7 +20,7 @@ class EmailReporter(Reporter):
 
     def __init__(self, params=None):
         # Activate email output by default
-        self.is_active = True
+        self.is_active = True  
         self.processing_order = 9
         super().__init__(params)
 
