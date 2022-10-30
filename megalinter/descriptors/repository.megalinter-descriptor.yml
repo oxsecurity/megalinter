@@ -98,7 +98,7 @@ linters:
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
-        - name: VsCode DevSkim
+        - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
 
   # DUSTILOCK
@@ -315,7 +315,7 @@ linters:
         default_value: ""
     ide:
       vscode:
-        - name: VsCode SemGrep
+        - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
   # SYFT
@@ -391,5 +391,5 @@ linters:
               chmod 644 /usr/local/bin/sarif.tpl
     ide:
       vscode:
-        - name: VsCode Trivy
+        - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

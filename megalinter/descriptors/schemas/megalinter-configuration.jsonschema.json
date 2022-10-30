@@ -1525,7 +1525,7 @@
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
-      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VSCode extensions.js config file",
       "title": "Activate local configuration reporter",
       "type": "boolean"
     },

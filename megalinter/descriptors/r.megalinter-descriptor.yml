@@ -55,5 +55,5 @@ linters:
         - name: ale
           url: https://github.com/dense-analysis/ale
       vscode:
-        - name: VsCode R LSP
+        - name: VSCode R LSP
           url: https://marketplace.visualstudio.com/items?itemName=REditorSupport.r

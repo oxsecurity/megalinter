@@ -2355,7 +2355,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
 
 - Documentation
-  - Add Install button for VsCode IDE extensions when available
+  - Add Install button for VSCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
   - Add a new page **All linters** listing all linters and references to MegaLinter in their documentation
   - Add json-schema documentation generation and references
