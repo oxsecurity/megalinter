@@ -30,8 +30,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
 [![nvuillam/npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 [![carpenike/k8s-gitops - GitHub](https://gh-card.dev/repos/carpenike/k8s-gitops.svg?fullname=)](https://github.com/carpenike/k8s-gitops){target=_blank}
-[![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![T145/black-mirror - GitHub](https://gh-card.dev/repos/T145/black-mirror.svg?fullname=)](https://github.com/T145/black-mirror){target=_blank}
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
@@ -56,8 +56,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
-[![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
+[![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/home-ops - GitHub](https://gh-card.dev/repos/rwaltr/home-ops.svg?fullname=)](https://github.com/rwaltr/home-ops){target=_blank}
 [![ahmadnassri/node-nightwatch-accessibility - GitHub](https://gh-card.dev/repos/ahmadnassri/node-nightwatch-accessibility.svg?fullname=)](https://github.com/ahmadnassri/node-nightwatch-accessibility){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}

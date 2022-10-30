@@ -14,12 +14,21 @@ linters:
         variable: MARKDOWN_DEFAULT_STYLE
         expected_value: markdownlint
         default_value: markdownlint
+    linter_text: 
+      Checks for errors in Markdown files, and can also auto-fix some of them.
+      
+
+      [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+
+
+      To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_repo: https://github.com/DavidAnson/markdownlint
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
+    linter_rules_ignore_config_url: https://github.com/igorshubovych/markdownlint-cli#ignoring-files
     cli_lint_mode: list_of_files
     config_file_name: .markdownlint.json
     cli_lint_fix_arg_name: "--fix"

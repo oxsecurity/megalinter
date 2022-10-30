@@ -11683,12 +11683,36 @@
       "title": "SPELL_CSPELL: Maximum number of errors allowed",
       "type": "number"
     },
+    "SPELL_CSPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_CSPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
     "SPELL_CSPELL_FILE_NAME": {
       "$id": "#/properties/SPELL_CSPELL_FILE_NAME",
       "default": ".cspell.json",
       "description": "SPELL_CSPELL: User custom config file name if different from default",
       "title": "SPELL_CSPELL: Custom config file name",
       "type": "string"
+    },
+    "SPELL_CSPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_CSPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
     },
     "SPELL_CSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_CSPELL_FILTER_REGEX_EXCLUDE",
@@ -11788,6 +11812,30 @@
       "default": 0,
       "title": "SPELL_MISSPELL: Maximum number of errors allowed",
       "type": "number"
+    },
+    "SPELL_MISSPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
     },
     "SPELL_MISSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_EXCLUDE",
