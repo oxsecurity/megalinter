@@ -1250,9 +1250,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
             )
         # File extensions & file names override if not "lint_all_files"
-        if (
-            linter.lint_all_files is False
-        ):
+        if linter.lint_all_files is False:
             linter_doc_md += [
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
