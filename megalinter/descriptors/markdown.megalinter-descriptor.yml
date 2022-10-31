@@ -14,9 +14,8 @@ linters:
         variable: MARKDOWN_DEFAULT_STYLE
         expected_value: markdownlint
         default_value: markdownlint
-    linter_text: 
-      Checks for errors in Markdown files, and can also auto-fix some of them.
-      
+    linter_text: Checks for errors in Markdown files, and can also auto-fix some of them.
+
 
       [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
 
