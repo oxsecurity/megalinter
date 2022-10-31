@@ -35,8 +35,8 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
-    variables: 
-      - name: SPELL_CSPELL_ANALYZE_FILE_NAMES 
+    variables:
+      - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
         default_value: "true"
         description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false``
     linter_text: |
