@@ -7030,6 +7030,7 @@
 <ul>
 <li>Replace <code>set-output</code> usage with <code>GITHUB_OUTPUT</code></li>
 <li>New MegaLinter plugin: <a href="https://github.com/one-acre-fund/mega-linter-plugin-logstash">mustache</a>: Plugin to validate <a href="https://www.elastic.co/guide/en/logstash/current/configuration.html">Logstash</a> pipeline definition files using <a href="https://github.com/breml/logstash-config">mustache</a>, by <a href="https://github.com/Yann-J">Yann Jouanique</a></li>
+<li>Correct behavior of <code>EXTENDS</code> (<a href="https://github.com/oxsecurity/megalinter/issues/1516">#1516</a>)</li>
 <li>Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed (<a href="https://github.com/oxsecurity/megalinter/issues/1997">#1997</a>).</li>
 <li>Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) (<a href="https://github.com/oxsecurity/megalinter/issues/2009">#2009</a>)</li>
 <li>Fix flavor suggestion message in reporters</li>
@@ -9800,7 +9801,7 @@
 </ul>
 <ul>
 <li>Documentation<ul>
-<li>Add Install button for VsCode IDE extensions when available</li>
+<li>Add Install button for VSCode IDE extensions when available</li>
 <li>Add Install button for JetBrains IDEs extensions when available</li>
 <li>Add a new page <strong>All linters</strong> listing all linters and references to MegaLinter in their documentation</li>
 <li>Add json-schema documentation generation and references</li>
