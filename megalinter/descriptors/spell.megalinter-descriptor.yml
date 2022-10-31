@@ -103,5 +103,5 @@ linters:
         - name: SublimeLinter-contrib-proselint
           url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint
       vscode:
-        - name: VsCode Proselint
+        - name: VSCode Proselint
           url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint

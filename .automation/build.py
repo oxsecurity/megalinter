@@ -1885,7 +1885,7 @@ def md_ide_install_link(ide, ide_extension):
             item_name = ide_extension["url"].split("/items/", 1)[1]
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
-            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+            return f"[![Install in VSCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
     # JetBrains Idea family editors plugins
     if ide == "idea":
         if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):

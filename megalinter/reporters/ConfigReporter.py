@@ -52,7 +52,7 @@ class ConfigReporter(Reporter):
                         config_log += [
                             f"    - {ide_extension['name']}: {ide_extension['url']}"
                         ]
-                # Get applicable VsCode extensions
+                # Get applicable VSCode extensions
                 vscode_extensions = ide.get("vscode", [])
                 for vscode_extension in vscode_extensions:
                     if "?itemName=" in vscode_extension["url"]:

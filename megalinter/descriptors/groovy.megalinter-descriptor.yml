@@ -40,5 +40,5 @@ linters:
         - npm-groovy-lint
     ide:
       vscode:
-        - name: VsCode Groovy Lint
+        - name: VSCode Groovy Lint
           url: https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint

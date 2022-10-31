@@ -52,5 +52,5 @@ linters:
         - name: ale
           url: https://github.com/w0rp/ale
       vscode:
-        - name: VsCode Ruby Extension
+        - name: VSCode Ruby Extension
           url: https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby
