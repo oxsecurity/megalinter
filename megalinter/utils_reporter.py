@@ -131,7 +131,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 )
                 p_r_msg += (
                     f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
-                    f" ({suggestion['linters_number']} linters)"
+                    f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
         p_r_msg += os.linesep
     # Link to ox
