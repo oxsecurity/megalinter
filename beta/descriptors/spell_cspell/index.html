@@ -5743,6 +5743,7 @@
 <h1 id="cspell"><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell" target="blank" title="Visit linter Web Site"><img src="https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default" alt="cspell" height="100px" class="megalinter-logo"></a>cspell <a href="https://github.com/streetsidesoftware/cspell/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/streetsidesoftware/cspell" /></a></h1>
 <p>MegaLinter generates content of a <code>.cspell.json</code> config file at the end of its TextReporter artifact</p>
 <p>Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !</p>
+<p>If you do not want cspell to analyze the files names, define <code>SPELL_CSPELL_ANALYZE_FILE_NAMES</code> to <code>false</code></p>
 <h2 id="cspell-documentation">cspell documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>6.13.1</strong></li>
@@ -5765,6 +5766,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>SPELL_CSPELL_ANALYZE_FILE_NAMES</td>
+<td>If set to <code>true</code>, MegaLinter will also send file names to cspell for analysis. Disable by defining <code>SPELL_CSPELL_ANALYZE_FILE_NAMES</code> to <code>false`` |</code>true`</td>
+<td></td>
+</tr>
 <tr>
 <td>SPELL_CSPELL_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>

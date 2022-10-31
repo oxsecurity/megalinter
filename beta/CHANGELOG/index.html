@@ -7030,9 +7030,8 @@
 <ul>
 <li>Replace <code>set-output</code> usage with <code>GITHUB_OUTPUT</code></li>
 <li>New MegaLinter plugin: <a href="https://github.com/one-acre-fund/mega-linter-plugin-logstash">mustache</a>: Plugin to validate <a href="https://www.elastic.co/guide/en/logstash/current/configuration.html">Logstash</a> pipeline definition files using <a href="https://github.com/breml/logstash-config">mustache</a>, by <a href="https://github.com/Yann-J">Yann Jouanique</a></li>
-</ul>
-<ul>
 <li>Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed (<a href="https://github.com/oxsecurity/megalinter/issues/1997">#1997</a>).</li>
+<li>Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) (<a href="https://github.com/oxsecurity/megalinter/issues/2009">#2009</a>)</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
