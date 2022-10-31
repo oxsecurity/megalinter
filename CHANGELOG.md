@@ -48,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.1.0 to **11.1.1** on 2022-10-31
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.2 to **6.13.3** on 2022-10-31
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.17.1 to **7.18.0** on 2022-10-31
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.0 to **1.4.1** on 2022-10-31
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
