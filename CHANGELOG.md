@@ -42,6 +42,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 5.2.4 to **5.3.0** on 2022-10-31
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.1 to **6.13.2** on 2022-10-31
   - [sqlfluff](https://www.sqlfluff.com/) from 1.3.2 to **1.4.0** on 2022-10-31
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.69.1 to **0.70.0** on 2022-10-31
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.1.0 to **11.1.1** on 2022-10-31
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.2 to **6.13.3** on 2022-10-31
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
