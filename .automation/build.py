@@ -2756,6 +2756,11 @@ def manage_output_variables():
         if updated_versions == 1:
             if "GITHUB_OUTPUT" in os.environ:
                 github_output_file = os.environ["GITHUB_OUTPUT"]
+                if not os.path.isfile(github_output_file):
+                    github_output_file = github_output_file.replace(
+                        "/home/runner/work/_temp/_runner_file_commands",
+                        "/github/file_commands",
+                    )
                 with open(github_output_file, "a", encoding="utf-8") as output_stream:
                     output_stream.write("has_updated_versions=1\n")
 

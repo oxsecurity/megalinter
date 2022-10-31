@@ -35,9 +35,16 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    variables:
+      - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
+        default_value: "true"
+        description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false``
     linter_text: |
       MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+
       Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+
+      If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
     linter_repo: https://github.com/streetsidesoftware/cspell
     linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default

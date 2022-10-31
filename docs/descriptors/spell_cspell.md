@@ -3,11 +3,14 @@
 # <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell" target="blank" title="Visit linter Web Site"><img src="https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default" alt="cspell" height="100px" class="megalinter-logo"></a>cspell [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits)
 
 MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+
 Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+
+If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
 
 ## cspell documentation
 
-- Version in MegaLinter: **6.13.1**
+- Version in MegaLinter: **6.13.2**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -19,18 +22,21 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 - Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 - Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-| Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SPELL_CSPELL_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| SPELL_CSPELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| SPELL_CSPELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| SPELL_CSPELL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| SPELL_CSPELL_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| SPELL_CSPELL_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| SPELL_CSPELL_CONFIG_FILE                 | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.cspell.json`                                  |
-| SPELL_CSPELL_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| SPELL_CSPELL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SPELL_CSPELL_ANALYZE_FILE_NAMES | If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`` | `true` |
+| SPELL_CSPELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| SPELL_CSPELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| SPELL_CSPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| SPELL_CSPELL_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
+| SPELL_CSPELL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| SPELL_CSPELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| SPELL_CSPELL_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| SPELL_CSPELL_POST_COMMANDS | List of bash commands to run after the linter| None |
+| SPELL_CSPELL_CONFIG_FILE | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cspell.json` |
+| SPELL_CSPELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| SPELL_CSPELL_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## IDE Integration
 
