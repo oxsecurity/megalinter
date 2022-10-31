@@ -14,5 +14,6 @@
 - [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/), by [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk), University Of Sheffield
 - [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 - [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/), by [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/)
+- [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/014_Sharing-GitHub-secrets-with-third-party-actions/), by [Constantin Bosse](https://github.com/cgbosse) and [Stephen Hosom](https://github.com/hosom)
 
 <!-- articles-section-end -->

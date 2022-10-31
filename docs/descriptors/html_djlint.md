@@ -23,7 +23,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.19.2**
+- Version in MegaLinter: **1.19.3**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -56,7 +56,7 @@ Use djlint in your favorite IDE to catch errors before MegaLinter !
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                  |                                                                               Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-djlint](https://packagecontrol.io/packages/SublimeLinter-contrib-djlint) |                                   [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-djlint){target=_blank}                                   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [djlint-vscode](https://marketplace.visualstudio.com/items?itemName=monosans.djlint)            | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/monosans.djlint){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [djlint-vscode](https://marketplace.visualstudio.com/items?itemName=monosans.djlint)            | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/monosans.djlint){target=_blank} |
 
 ## MegaLinter Flavours
 

@@ -52,7 +52,7 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)   |                         [Visit Web Site](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea){target=_blank}                         |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
 
 ## MegaLinter Flavours
 
@@ -115,8 +115,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (python3, prun, python, pypy, timeit,
-                                  capture, time). Useful for formatting cells
+                                  magics (python3, prun, capture, pypy, time,
+                                  timeit, python). Useful for formatting cells
                                   with custom python magics.
   -x, --skip-source-first-line    Skip the first line of the source code.
   -S, --skip-string-normalization

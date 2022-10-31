@@ -386,7 +386,7 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
@@ -408,7 +408,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |
@@ -675,7 +675,7 @@ You can see an example config file in this repo: [**.mega-linter.yml**](https://
 
 Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.github.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
-- VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+- VSCode: You need a VSCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
@@ -696,7 +696,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | [**ENABLE**](#activation-and-deactivation)                 | <!-- -->                                 | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
 | [**ENABLE_LINTERS**](#activation-and-deactivation)         | <!-- -->                                 | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
 | **EXCLUDED_DIRECTORIES**                                   | \[...many values...\]                    | List of excluded directory basenames. They are excluded at any nested level.                                                                                                                               |
-| **EXTENDS**                                                | <!-- -->                                 | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs                                                            |
+| **EXTENDS**                                                | <!-- -->                                 | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs. Later files take precedence.                              |
 | **FAIL_IF_MISSING_LINTER_IN_FLAVOR**                       | `false`                                  | If set to `true`, MegaLinter fails if a linter is missing in the selected flavor                                                                                                                           |
 | **FAIL_IF_UPDATED_SOURCES**                                | `false`                                  | If set to `true`, MegaLinter fails if a linter or formatter has auto-fixed sources, even if there are no errors                                                                                            |
 | [**FILTER_REGEX_EXCLUDE**](#filter-linted-files)           | `none`                                   | Regular expression defining which files will be excluded from linting [(more info)](#filter-linted-files) .ex: `.*src/test.*`)                                                                             |
@@ -972,6 +972,7 @@ PLUGINS:
 
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
 * [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+* [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
 
 
 Submit a PR if you want your plugin to appear here :)
@@ -1004,6 +1005,7 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 - [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/), by [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk), University Of Sheffield
 - [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 - [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/), by [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/)
+- [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/014_Sharing-GitHub-secrets-with-third-party-actions/), by [Constantin Bosse](https://github.com/cgbosse) and [Stephen Hosom](https://github.com/hosom)
 <!-- articles-section-end -->
 
 <!-- frequently-asked-questions-section-start -->
@@ -1094,10 +1096,12 @@ To help, you can also:
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
 - [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [lintr](https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html){target=_blank}
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
 - [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html){target=_blank}
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
 - [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}

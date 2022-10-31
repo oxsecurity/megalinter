@@ -183,7 +183,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install sarif-fmt  shellcheck-sarif \
+    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -249,7 +249,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 
 # kubeconform installation
     && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.4.12 \
+    && KUBECONFORM_VERSION=v0.5.0 \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \

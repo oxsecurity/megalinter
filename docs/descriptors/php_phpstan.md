@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.8.10**
+- Version in MegaLinter: **1.8.11**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -39,7 +39,7 @@ Use phpstan in your favorite IDE to catch errors before MegaLinter !
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                    |                                                                                     Install                                                                                      |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |                          <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                           |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/calsmurf2904.vscode-phpstan){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/calsmurf2904.vscode-phpstan){target=_blank} |
 
 ## MegaLinter Flavours
 

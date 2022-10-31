@@ -11,7 +11,7 @@
 
 ## secretlint documentation
 
-- Version in MegaLinter: **5.2.4**
+- Version in MegaLinter: **5.3.0**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file is not found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used

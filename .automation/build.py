@@ -402,7 +402,7 @@ def build_dockerfile(
             rust_commands += ["rustup component add clippy"]
             keep_rustup = True
         if len(cargo_packages) > 0:
-            cargo_cmd = "cargo install " + "  ".join(
+            cargo_cmd = "cargo install --force --locked " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
             )
             rust_commands += [cargo_cmd]
@@ -1250,10 +1250,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
             )
         # File extensions & file names override if not "lint_all_files"
-        if (
-            linter.lint_all_files is False
-            and linter.lint_all_other_linters_files is False
-        ):
+        if linter.lint_all_files is False:
             linter_doc_md += [
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
@@ -1888,7 +1885,7 @@ def md_ide_install_link(ide, ide_extension):
             item_name = ide_extension["url"].split("/items/", 1)[1]
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
-            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+            return f"[![Install in VSCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
     # JetBrains Idea family editors plugins
     if ide == "idea":
         if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
@@ -2757,7 +2754,15 @@ def manage_output_variables():
                 updated_versions = 1
                 break
         if updated_versions == 1:
-            print("::set-output name=has_updated_versions::1")
+            if "GITHUB_OUTPUT" in os.environ:
+                github_output_file = os.environ["GITHUB_OUTPUT"]
+                if not os.path.isfile(github_output_file):
+                    github_output_file = github_output_file.replace(
+                        "/home/runner/work/_temp/_runner_file_commands",
+                        "/github/file_commands",
+                    )
+                with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                    output_stream.write("has_updated_versions=1\n")
 
 
 def reformat_markdown_tables():

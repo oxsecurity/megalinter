@@ -53,7 +53,7 @@ Use pyright in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [LSP-pyright](https://packagecontrol.io/packages/LSP-pyright)                     |                                             [Visit Web Site](https://packagecontrol.io/packages/LSP-pyright){target=_blank}                                             |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [Ale](https://github.com/dense-analysis/ale)                                      |                                                 [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                  |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [coc-pyright](https://github.com/fannheyward/coc-pyright)                         |                                               [Visit Web Site](https://github.com/fannheyward/coc-pyright){target=_blank}                                               |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [PyRight](https://marketplace.visualstudio.com/items?itemName=ms-pyright.pyright) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-pyright.pyright){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [PyRight](https://marketplace.visualstudio.com/items?itemName=ms-pyright.pyright) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-pyright.pyright){target=_blank} |
 
 ## MegaLinter Flavours
 
@@ -112,7 +112,7 @@ Usage: pyright [options] files...
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
 
-WARNING: there is a new pyright version available (v1.1.270 -> v1.1.276).
+WARNING: there is a new pyright version available (v1.1.270 -> v1.1.277).
 Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 
 ```

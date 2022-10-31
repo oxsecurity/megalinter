@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **11.0.0**
+- Version in MegaLinter: **11.1.1**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -41,7 +41,7 @@ Use npm-groovy-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                               |                                                                                         Install                                                                                         |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/NicolasVuillamy.vscode-groovy-lint){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/NicolasVuillamy.vscode-groovy-lint){target=_blank} |
 
 ## MegaLinter Flavours
 

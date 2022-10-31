@@ -13,7 +13,7 @@
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM zricethezav/gitleaks:v8.15.0 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
 FROM tenable/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -148,7 +148,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install sarif-fmt  shellcheck-sarif \
+    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -198,7 +198,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubeconform installation
     && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.4.12 \
+    && KUBECONFORM_VERSION=v0.5.0 \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \

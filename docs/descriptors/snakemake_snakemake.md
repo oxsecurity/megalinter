@@ -11,7 +11,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.16.1**
+- Version in MegaLinter: **7.18.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -41,7 +41,7 @@ Use snakemake in your favorite IDE to catch errors before MegaLinter !
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                   Install                                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [SnakeCharm](https://plugins.jetbrains.com/plugin/11947-snakecharm)                             |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11947"></iframe>                         |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/alping.vscode-snakemake){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/alping.vscode-snakemake){target=_blank} |
 
 ## MegaLinter Flavours
 
@@ -136,6 +136,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
+                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
                  [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
@@ -733,6 +734,11 @@ BEHAVIOR:
                         Snakefile are used. Note that this is intended
                         primarily for internal use and may lead to unexpected
                         results otherwise. (default: None)
+  --target-jobs TARGET_JOBS [TARGET_JOBS ...]
+                        Target particular jobs by
+                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,... This is meant
+                        for internal use by Snakemake itself only. (default:
+                        None)
   --local-groupid LOCAL_GROUPID
                         Name for local groupid, meant for internal use only.
                         (default: local)
