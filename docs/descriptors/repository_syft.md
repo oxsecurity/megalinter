@@ -13,7 +13,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.59.0**
+- Version in MegaLinter: **0.60.1**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -39,7 +39,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                     | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)     | Default MegaLinter Flavor |       108        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)     | Default MegaLinter Flavor |       109        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://oxsecurity.github.io/megalinter/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
