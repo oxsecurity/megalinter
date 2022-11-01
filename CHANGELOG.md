@@ -53,6 +53,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22** on 2022-11-01
   - [rubocop](https://rubocop.org/) from 1.37.1 to **1.38.0** on 2022-11-01
   - [revive](https://revive.run/) from 0.0.0 to **1.2.4** on 2022-11-01
+  - [syft](https://github.com/anchore/syft) from 0.59.0 to **0.60.1** on 2022-11-01
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.10 to **0.0.11** on 2022-11-01
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
