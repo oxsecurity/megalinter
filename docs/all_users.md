@@ -41,8 +41,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
 [![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
-[![philips-software/amp-embedded-infra-lib - GitHub](https://gh-card.dev/repos/philips-software/amp-embedded-infra-lib.svg?fullname=)](https://github.com/philips-software/amp-embedded-infra-lib){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
+[![philips-software/amp-embedded-infra-lib - GitHub](https://gh-card.dev/repos/philips-software/amp-embedded-infra-lib.svg?fullname=)](https://github.com/philips-software/amp-embedded-infra-lib){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![ahmadnassri/node-glob-promise - GitHub](https://gh-card.dev/repos/ahmadnassri/node-glob-promise.svg?fullname=)](https://github.com/ahmadnassri/node-glob-promise){target=_blank}
