@@ -815,6 +815,8 @@ PRE_COMMANDS:
     cwd: "root"        # Will be run at the root of MegaLinter docker image
   - command: echo "pre-test command has been called"
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+  - command: pip install flake8-cognitive-complexity
+    venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 ```
 
 ### Post-commands
