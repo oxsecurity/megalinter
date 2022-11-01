@@ -14,7 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed ([#1997](https://github.com/oxsecurity/megalinter/issues/1997)).
 - Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) ([#2009](https://github.com/oxsecurity/megalinter/issues/2009))
 - Fix flavor suggestion message in reporters
-
+- Allow PRE_COMMANDS to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
 
 - Linter versions upgrades
   - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
