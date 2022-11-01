@@ -751,6 +751,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/rst_rstfmt/</loc>
+         <lastmod>2022-11-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/ruby/</loc>
          <lastmod>2022-11-01</lastmod>
          <changefreq>daily</changefreq>
