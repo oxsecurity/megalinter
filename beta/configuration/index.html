@@ -5998,6 +5998,8 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
     cwd: &quot;root&quot;        # Will be run at the root of MegaLinter docker image
   - command: echo &quot;pre-test command has been called&quot;
     cwd: &quot;workspace&quot;   # Will be run at the root of the workspace (usually your repository root)
+  - command: pip install flake8-cognitive-complexity
+    venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 </code></pre>
 <h2 id="post-commands">Post-commands</h2>
 <p>MegaLinter can run custom commands after running linters (for example, running additional tests)</p>
