@@ -163,10 +163,8 @@ linters:
     examples:
       - "checkov --file myfile.tf"
     install:
-      dockerfile:
-        - |
-          RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-              && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+      pip:
+        - checkov
     ide:
       vscode:
         - name: Checkov
