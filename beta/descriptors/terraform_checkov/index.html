@@ -5921,7 +5921,7 @@
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations]
 
 Infrastructure as code static analysis
@@ -6172,7 +6172,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -6191,12 +6191,11 @@ override config file values which override defaults.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>Dockerfile commands :</li>
+<li>PIP packages (Python):<ul>
+<li><a href="https://pypi.org/project/checkov">checkov</a></li>
 </ul>
-<pre><code class="language-dockerfile">RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip &amp;&amp; PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-    &amp;&amp; PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov &amp;&amp; find . | grep -E &quot;(/__pycache__$|\.pyc$|\.pyo$)&quot; | xargs rm -rf
-
-</code></pre>
+</li>
+</ul>
 
 
 
