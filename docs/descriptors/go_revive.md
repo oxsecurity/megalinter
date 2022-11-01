@@ -4,6 +4,7 @@
 
 ## revive documentation
 
+- Version in MegaLinter: **1.2.4**
 - Visit [Official Web Site](https://revive.run/){target=_blank}
 - See [How to configure revive rules](https://revive.run/docs#custom-configuration){target=_blank}
 - See [Index of problems detected by revive](https://revive.run/r){target=_blank}
