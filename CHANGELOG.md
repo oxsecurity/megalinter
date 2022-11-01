@@ -51,6 +51,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.0 to **1.4.1** on 2022-10-31
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22** on 2022-11-01
   - [rubocop](https://rubocop.org/) from 1.37.1 to **1.38.0** on 2022-11-01
+  - [revive](https://revive.run/) from 0.0.0 to **1.2.4** on 2022-11-01
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
