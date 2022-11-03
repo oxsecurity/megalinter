@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fix flavor suggestion message in reporters
 - Allow PRE_COMMANDS to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
 - Bring back rstfmt
+- Upgrade base image to python:3.10.4-alpine3.16
 
 - Linter versions upgrades
   - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
