@@ -293,6 +293,8 @@ linters:
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
       - --sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
     cli_lint_errors_count: regex_number
