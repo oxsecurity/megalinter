@@ -5759,7 +5759,7 @@
 use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Bicep.CLI.version.0.11.1</strong></li>
+<li>Version in MegaLinter: <strong>Bicep.CLI.version.0.12.1</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -5901,7 +5901,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.11.1 (030248df55)
+<pre><code class="language-shell">Bicep CLI version 0.12.1 (e43d137c2d)
 
 Usage:
   bicep build [options] &lt;file&gt;
@@ -5922,6 +5922,28 @@ Usage:
       bicep build file.bicep --outdir dir1
       bicep build file.bicep --outfile file.json
       bicep build file.bicep --no-restore
+
+    bicep format [options] &lt;file&gt;
+    Formats a .bicep file.
+
+    Arguments:
+      &lt;file&gt;        The input file
+
+    Options:
+      --outdir &lt;dir&gt;        Saves the output at the specified directory.
+      --outfile &lt;file&gt;      Saves the output as the specified file path.
+      --stdout              Prints the output to stdout.
+      --newline             Set newline char. Valid values are ( Auto | LF | CRLF | CR ).
+      --indentKind          Set indentation kind. Valid values are ( Space | Tab ).
+      --indentSize          Number of spaces to indent with (Only valid with --indentKind set to Space).
+      --insertFinalNewline  Insert a final newline.
+
+    Examples:
+      bicep format file.bicep
+      bicep format file.bicep --stdout
+      bicep format file.bicep --outdir dir1
+      bicep format file.bicep --outfile file.json
+      bicep format file.bicep --indentKind Tab
 
   bicep decompile [options] &lt;file&gt;
     Attempts to decompile a template .json file to .bicep.
@@ -5979,7 +6001,7 @@ Usage:
     Arguments:
       &lt;file&gt;        The input file
 
-  bicep [options]
+ bicep [options]
     Options:
       --version              -v   Shows bicep version information
       --help                 -h   Shows this usage information
