@@ -7,7 +7,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **Bicep.CLI.version.0.11.1**
+- Version in MegaLinter: **Bicep.CLI.version.0.12.1**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -77,7 +77,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.11.1 (030248df55)
+Bicep CLI version 0.12.1 (e43d137c2d)
 
 Usage:
   bicep build [options] <file>
@@ -98,6 +98,28 @@ Usage:
       bicep build file.bicep --outdir dir1
       bicep build file.bicep --outfile file.json
       bicep build file.bicep --no-restore
+
+    bicep format [options] <file>
+    Formats a .bicep file.
+
+    Arguments:
+      <file>        The input file
+
+    Options:
+      --outdir <dir>        Saves the output at the specified directory.
+      --outfile <file>      Saves the output as the specified file path.
+      --stdout              Prints the output to stdout.
+      --newline             Set newline char. Valid values are ( Auto | LF | CRLF | CR ).
+      --indentKind          Set indentation kind. Valid values are ( Space | Tab ).
+      --indentSize          Number of spaces to indent with (Only valid with --indentKind set to Space).
+      --insertFinalNewline  Insert a final newline.
+
+    Examples:
+      bicep format file.bicep
+      bicep format file.bicep --stdout
+      bicep format file.bicep --outdir dir1
+      bicep format file.bicep --outfile file.json
+      bicep format file.bicep --indentKind Tab
 
   bicep decompile [options] <file>
     Attempts to decompile a template .json file to .bicep.
@@ -155,7 +177,7 @@ Usage:
     Arguments:
       <file>        The input file
 
-  bicep [options]
+ bicep [options]
     Options:
       --version              -v   Shows bicep version information
       --help                 -h   Shows this usage information
