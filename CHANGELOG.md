@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fix flavor suggestion message in reporters
 - Allow PRE_COMMANDS to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
 - Bring back rstfmt
+- Fix bicep version regex
 - Upgrade base image to python:3.10.4-alpine3.16
 
 - Linter versions upgrades
@@ -59,6 +60,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.0 to **0.70.1** on 2022-11-03
   - [semgrep](https://semgrep.dev/) from 0.118.0 to **0.120.0** on 2022-11-03
   - [syft](https://github.com/anchore/syft) from 0.60.1 to **0.60.2** on 2022-11-03
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.11.1 to **Bicep.CLI.version.0.12.1** on 2022-11-04
+  - [stylelint](https://stylelint.io) from 14.14.0 to **14.14.1** on 2022-11-04
+  - [djlint](https://djlint.com/) from 1.19.3 to **1.19.4** on 2022-11-04
+  - [phpstan](https://phpstan.org/) from 1.8.11 to **1.9.0** on 2022-11-04
+  - [syft](https://github.com/anchore/syft) from 0.60.2 to **0.60.3** on 2022-11-04
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.64 to **0.1.65** on 2022-11-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.0 to **7.18.1** on 2022-11-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.3 to **6.14.0** on 2022-11-04
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.3 to **1.3.4** on 2022-11-04
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.12.1 to **0.12.1** on 2022-11-04
+  - [phpstan](https://phpstan.org/) from 1.9.0 to **1.9.1** on 2022-11-05
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.2 to **0.40.0** on 2022-11-05
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24
