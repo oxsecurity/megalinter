@@ -61,16 +61,6 @@ RUN apk add --update --no-cache \
                 go \
                 openjdk11 \
                 gnupg \
-                php7 \
-                php7-phar \
-                php7-json \
-                php7-mbstring \
-                php7-xmlwriter \
-                php7-tokenizer \
-                php7-ctype \
-                php7-curl \
-                php7-dom \
-                php7-simplexml \
                 php8 \
                 php8-phar \
                 php8-mbstring \
@@ -273,6 +263,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.15/main php7 php7-phar php7-json php7-mbstring php7-xmlwriter php7-tokenizer php7-ctype php7-curl php7-dom php7-simplexml
 RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
