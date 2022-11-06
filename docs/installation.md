@@ -363,7 +363,7 @@ resources:
       DEFAULT_WORKSPACE: /tmp/lint
    ```
 
-This uses the Drone CI docker runner, so it's needed to install and configure it beforehand on your Drone CI server.
+This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
 
 ## Run MegaLinter locally
 
