@@ -71,6 +71,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.12.1 to **0.12.1** on 2022-11-04
   - [phpstan](https://phpstan.org/) from 1.9.0 to **1.9.1** on 2022-11-05
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.2 to **0.40.0** on 2022-11-05
+  - [eslint](https://eslint.org) from 8.26.0 to **8.27.0** on 2022-11-06
 <!-- linter-versions-end -->
 
 ## [v6.13.0] - 2022-10-24

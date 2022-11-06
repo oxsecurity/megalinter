@@ -29,8 +29,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
 [![nvuillam/npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
-[![carpenike/k8s-gitops - GitHub](https://gh-card.dev/repos/carpenike/k8s-gitops.svg?fullname=)](https://github.com/carpenike/k8s-gitops){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
+[![carpenike/k8s-gitops - GitHub](https://gh-card.dev/repos/carpenike/k8s-gitops.svg?fullname=)](https://github.com/carpenike/k8s-gitops){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
 [![T145/black-mirror - GitHub](https://gh-card.dev/repos/T145/black-mirror.svg?fullname=)](https://github.com/T145/black-mirror){target=_blank}
 [![cbg-ethz/V-pipe - GitHub](https://gh-card.dev/repos/cbg-ethz/V-pipe.svg?fullname=)](https://github.com/cbg-ethz/V-pipe){target=_blank}
