@@ -143,6 +143,17 @@ ERROR: Docker engine has not been found on your system.
         commandArgs.push(...["-e", envVarEqualsValue]);
       }
     }
+    // Files only
+    if (options.filesonly === true) {
+      commandArgs.push(...["-e", "SKIP_CLI_LINT_MODES=project"]);
+    }
+    // list of files
+    if ((options._ || []).length > 0) {
+      commandArgs.push(
+        ...["-e"],
+        `MEGALINTER_FILES_TO_LINT="${options._.join(",")}"`
+      );
+    }
     commandArgs.push(dockerImage);
 
     // Call docker run

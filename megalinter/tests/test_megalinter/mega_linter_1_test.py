@@ -348,3 +348,34 @@ class mega_linter_1_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("- Number of files analyzed", output)
+
+    def test_list_of_files_sent(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "MEGALINTER_FILES_TO_LINT": "javascript_good_1.js,javascript_bad_1.js",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("javascript_good_1.js", output)
+        self.assertIn("javascript_bad_1.js", output)
+        self.assertIn("Kept [2] files on [2] found files", output)
+
+    def test_skip_cli_lint_mode(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+                "SKIP_CLI_LINT_MODES": "list_of_files",
+            }
+        )
+        self.assertIn(
+            "JAVASCRIPT_ES has been skipped because its CLI lint mode", output
+        )

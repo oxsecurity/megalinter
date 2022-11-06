@@ -20,7 +20,9 @@ class UpdatedSourcesReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("UPDATED_SOURCES_REPORTER", "true") != "true":
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif config.get("UPDATED_SOURCES_REPORTER", "true") != "true":
             self.is_active = False
 
     def produce_report(self):

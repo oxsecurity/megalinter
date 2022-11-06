@@ -54,8 +54,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                             | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       104        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor               |       105        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/latest/flavors/salesforce/) | Optimized for Salesforce based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -86,42 +86,43 @@ sfdx scanner:run
 evaluate a selection of rules against a codebase
 
 USAGE
-  $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>] [-f
-  csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
-  [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
-  <integer> |  | [-v | --json]] [--normalize-severity] [--verbose] [--loglevel
-  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+  $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>]
+    [-f csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
+    [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
+    <integer> | undefined | [-v | --json]] [--normalize-severity] [--verbose]
+    [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
-OPTIONS
-  -c, --category=category
+FLAGS
+  -c, --category=<value>
       categor(ies) of rules to run
 
-  -e, --engine=engine
+  -e, --engine=<value>
       engine(s) to run
 
   -f, --format=(csv|html|json|junit|sarif|table|xml)
       format of results
 
-  -o, --outfile=outfile
+  -o, --outfile=<value>
       location of output file
 
-  -r, --ruleset=ruleset
+  -r, --ruleset=<value>
       [deprecated] ruleset(s) of rules to run
 
-  -s, --severity-threshold=severity-threshold
+  -s, --severity-threshold=<value>
       throws an error when violations of specific severity (or more severe) are
       detected, invokes --normalize-severity
 
-  -t, --target=target
+  -t, --target=<value>
       (required) location of source code
 
   -v, --violations-cause-error
       [deprecated] throws an error when violations are detected
 
-  --env=env
+  --env=<value>
       JSON-formatted string, overrides ESLint's default environment variables
 
-  --eslintconfig=eslintconfig
+  --eslintconfig=<value>
       location of eslintrc config to customize eslint engine
 
   --json
@@ -135,87 +136,54 @@ OPTIONS
       A normalized severity 1 (high), 2 (moderate), and 3 (low) is returned in
       addition to the engine specific severity
 
-  --pmdconfig=pmdconfig
+  --pmdconfig=<value>
       location of PMD rule reference XML file to customize rule selection
 
-  --tsconfig=tsconfig
+  --tsconfig=<value>
       location of tsconfig.json file
 
   --verbose
       emit additional command output to stdout
 
-EXAMPLE
+DESCRIPTION
+  evaluate a selection of rules against a codebase
+
+EXAMPLES
   Invoking without specifying any rules causes all rules to be run.
     E.g., $ sfdx scanner:run --format xml --target "somefile.js"
       Evaluates all rules against somefile.js.
-
     Specifying multiple categories is treated as a logical OR.
-      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category
-  "Design,Best Practices"
+      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category "Design,Best Practices"
         Evaluates all rules in the Design or Best Practices categories.
-
-    Categories can be excluded by specifying the negation operator, the values
-  must be enclosed in single quotes.
-      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category
-  '!Design,!Best Practices'
+    Categories can be excluded by specifying the negation operator, the values must be enclosed in single quotes.
+      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category '!Design,!Best Practices'
         Evaluates all rules except those in the Design or Best Practices categories.
-
     Wrap globs in quotes.
       Unix example:    $ sfdx scanner:run --target './**/*.js,!./**/IgnoreMe.js' ...
       Windows example: > sfdx scanner:run --target ".\**\*.js,!.\**\IgnoreMe.js" ...
-        Evaluate rules against all .js files below the current directory, except for
-  IgnoreMe.js.
-
-    Specify tsconfig.json if the current working directory does not contain the
-  tsconfig.json that corresponds to the TypeScript files being scanned.
-      E.g., sfdx scanner:run --target "/my-project/**/*.ts" --tsconfig
-  "/my-project/tsconfig.json"
-        Scans the project contained in '/my-project' if the current working directory
-  is another directory.
-
-    Use --env to override the default ESLint environment variables to add
-  frameworks.
+        Evaluate rules against all .js files below the current directory, except for IgnoreMe.js.
+    Specify tsconfig.json if the current working directory does not contain the tsconfig.json that corresponds to the TypeScript files being scanned.
+      E.g., sfdx scanner:run --target "/my-project/**/*.ts" --tsconfig "/my-project/tsconfig.json"
+        Scans the project contained in '/my-project' if the current working directory is another directory.
+    Use --env to override the default ESLint environment variables to add frameworks.
       E.g., $ sfdx scanner:run --target "somefile.js" --env '{"jasmine": true}'
-        Evaluates rules against somefile.js, including Jasmine in the environment
-  variables.
-
-    Use --violations-cause-error to throw exit with a non-zero code when
-  violations are found.
+        Evaluates rules against somefile.js, including Jasmine in the environment variables.
+    Use --violations-cause-error to throw exit with a non-zero code when violations are found.
       E.g., $ sfdx scanner:run --target "somefile.js" --violations-cause-error
-        Evaluates rules against somefile.js. If any rules are violated, the exit code
-  will be the severity of the most severe violation.
-
-    Use --engine to include or exclude engines. Any engine listed will be run,
-  regardless of its current 'disabled' attribute.
+        Evaluates rules against somefile.js. If any rules are violated, the exit code will be the severity of the most severe violation.
+    Use --engine to include or exclude engines. Any engine listed will be run, regardless of its current 'disabled' attribute.
       E.g., $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
         Evaluates rules against somefile.js, using eslint-lwc and pmd engines.
-
     Use --engine to invoke engines that are not enabled by default.
       E.g, $ sfdx scanner:run --target "/some/dir" --engine cpd
-        Executes CPD engine against known file extensions in "/some/dir". CPD helps
-  detect blocks of code duplication in selected languages.
-
-    To use PMD with your own rule reference file, use --pmdconfig. Note that rule
-  filters are not applied.
+        Executes CPD engine against known file extensions in "/some/dir". CPD helps detect blocks of code duplication in selected languages.
+    To use PMD with your own rule reference file, use --pmdconfig. Note that rule filters are not applied.
       E.g, $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
-
-    To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure
-   that the directory you run the command from has all the NPM dependencies
-  installed.
-      E.g., $ sfdx scanner:run --target "src" --eslintconfig
-  "/home/my/setup/.eslintrc.json"
-
-    Use --normalize-severity to output a normalized (across all engines) severity
-  (1 [high], 2 [moderate], and 3 [low]) in addition to the engine specific
-  severity (when shown).
-      E.g., $ sfdx scanner:run --target "/some-project/" --format csv
-  --normalize-severity
-
-    Use --severity-threshold to throw a non-zero exit code when rule violations of
-   a specific severity (or greater) are found. For this example, if there are
-  any rule violations with a severity of 2 or more (which includes 1-high and
-  2-moderate), the exit code will be equal to the severity of the most severe
-  violation.
+    To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure that the directory you run the command from has all the NPM dependencies installed.
+      E.g., $ sfdx scanner:run --target "src" --eslintconfig "/home/my/setup/.eslintrc.json"
+    Use --normalize-severity to output a normalized (across all engines) severity (1 [high], 2 [moderate], and 3 [low]) in addition to the engine specific severity (when shown).
+      E.g., $ sfdx scanner:run --target "/some-project/" --format csv --normalize-severity
+    Use --severity-threshold to throw a non-zero exit code when rule violations of a specific severity (or greater) are found. For this example, if there are any rule violations with a severity of 2 or more (which includes 1-high and 2-moderate), the exit code will be equal to the severity of the most severe violation.
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
@@ -233,66 +201,66 @@ VfCsrf                                             visualforce  Security        
 VfHtmlStyleTagXss                                  visualforce  Security                                                            pmd
 VfUnescapeEl                                       visualforce  Security          Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                 apex         Best Practices                                                      pmd
-ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
+ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    Default ruleset...,ApexUnit,quickstart            pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation       apex         Best Practices                                                      pmd
-ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    quickstart,ApexUnit,Default ruleset...            pmd
-AvoidGlobalModifier                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
-AvoidLogicInTrigger                                apex         Best Practices    quickstart,Default ruleset...,Style               pmd
+ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    Default ruleset...,ApexUnit,quickstart            pmd
+AvoidGlobalModifier                                apex         Best Practices    Default ruleset...,Style,quickstart               pmd
+AvoidLogicInTrigger                                apex         Best Practices    Default ruleset...,Style,quickstart               pmd
 DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
 UnusedLocalVariable                                apex         Best Practices                                                      pmd
 AvoidDebugStatements                               apex         Performance                                                         pmd
-AvoidDmlStatementsInLoops                          apex         Performance       Performance,Default ruleset...                    pmd
-AvoidSoqlInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
-AvoidSoslInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
+AvoidDmlStatementsInLoops                          apex         Performance       Default ruleset...,Performance                    pmd
+AvoidSoqlInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
+AvoidSoslInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
 EagerlyLoadedDescribeSObjectResult                 apex         Performance                                                         pmd
 OperationWithLimitsInLoop                          apex         Performance       quickstart                                        pmd
-ApexBadCrypto                                      apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexCRUDViolation                                  apex         Security          Security,quickstart,Default ruleset...            pmd
+ApexBadCrypto                                      apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexCRUDViolation                                  apex         Security          Default ruleset...,Security,quickstart            pmd
 ApexCSRF                                           apex         Security          Security                                          pmd
-ApexDangerousMethods                               apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexInsecureEndpoint                               apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexOpenRedirect                                   apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexSharingViolations                              apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexSOQLInjection                                  apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexSuggestUsingNamedCred                          apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexXSSFromEscapeFalse                             apex         Security          Security,quickstart,Default ruleset...            pmd
-ApexXSSFromURLParam                                apex         Security          Security,quickstart,Default ruleset...            pmd
-ClassNamingConventions                             apex         Code Style        quickstart,Default ruleset...,Style               pmd
-IfElseStmtsMustUseBraces                           apex         Code Style        quickstart,Default ruleset...,Braces              pmd
-IfStmtsMustUseBraces                               apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+ApexDangerousMethods                               apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexInsecureEndpoint                               apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexOpenRedirect                                   apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexSharingViolations                              apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexSOQLInjection                                  apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexSuggestUsingNamedCred                          apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexXSSFromEscapeFalse                             apex         Security          Default ruleset...,Security,quickstart            pmd
+ApexXSSFromURLParam                                apex         Security          Default ruleset...,Security,quickstart            pmd
+ClassNamingConventions                             apex         Code Style        Default ruleset...,Style,quickstart               pmd
+IfElseStmtsMustUseBraces                           apex         Code Style        Braces,Default ruleset...,quickstart              pmd
+IfStmtsMustUseBraces                               apex         Code Style        Braces,Default ruleset...,quickstart              pmd
 FieldDeclarationsShouldBeAtStart                   apex         Code Style                                                          pmd
 FieldNamingConventions                             apex         Code Style        quickstart                                        pmd
-ForLoopsMustUseBraces                              apex         Code Style        quickstart,Default ruleset...,Braces              pmd
+ForLoopsMustUseBraces                              apex         Code Style        Braces,Default ruleset...,quickstart              pmd
 FormalParameterNamingConventions                   apex         Code Style        quickstart                                        pmd
 LocalVariableNamingConventions                     apex         Code Style        quickstart                                        pmd
-MethodNamingConventions                            apex         Code Style        quickstart,Default ruleset...,Style               pmd
-OneDeclarationPerLine                              apex         Code Style        quickstart,Default ruleset...                     pmd
+MethodNamingConventions                            apex         Code Style        Default ruleset...,Style,quickstart               pmd
+OneDeclarationPerLine                              apex         Code Style        Default ruleset...,quickstart                     pmd
 PropertyNamingConventions                          apex         Code Style        quickstart                                        pmd
 VariableNamingConventions                          apex         Code Style        Default ruleset...,Style                          pmd
-WhileLoopsMustUseBraces                            apex         Code Style        quickstart,Default ruleset...,Braces              pmd
-AvoidDeeplyNestedIfStmts                           apex         Design            Complexity,quickstart,Default ruleset...          pmd
-CyclomaticComplexity                               apex         Design            quickstart,Default ruleset...,Metrics tempora...  pmd
+WhileLoopsMustUseBraces                            apex         Code Style        Braces,Default ruleset...,quickstart              pmd
+AvoidDeeplyNestedIfStmts                           apex         Design            Default ruleset...,Complexity,quickstart          pmd
+CyclomaticComplexity                               apex         Design            Default ruleset...,Metrics tempora...,quickstart  pmd
 CognitiveComplexity                                apex         Design                                                              pmd
-ExcessiveClassLength                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
-ExcessiveParameterList                             apex         Design            Complexity,quickstart,Default ruleset...          pmd
-ExcessivePublicCount                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
-NcssConstructorCount                               apex         Design            Complexity,quickstart,Default ruleset...          pmd
-NcssMethodCount                                    apex         Design            Complexity,quickstart,Default ruleset...          pmd
-NcssTypeCount                                      apex         Design            Complexity,quickstart,Default ruleset...          pmd
-StdCyclomaticComplexity                            apex         Design            Complexity,quickstart,Default ruleset...          pmd
-TooManyFields                                      apex         Design            Complexity,quickstart,Default ruleset...          pmd
-ApexDoc                                            apex         Documentation     quickstart,Default ruleset...                     pmd
-ApexCSRF                                           apex         Error Prone       quickstart,Default ruleset...                     pmd
-AvoidDirectAccessTriggerMap                        apex         Error Prone       quickstart,Default ruleset...,Style               pmd
-AvoidHardcodingId                                  apex         Error Prone       quickstart,Default ruleset...,Style               pmd
-AvoidNonExistentAnnotations                        apex         Error Prone       quickstart,Default ruleset...                     pmd
-EmptyCatchBlock                                    apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
-EmptyIfStmt                                        apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
-EmptyStatementBlock                                apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
-EmptyTryOrFinallyBlock                             apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
-EmptyWhileStmt                                     apex         Error Prone       quickstart,Default ruleset...,Empty Code          pmd
+ExcessiveClassLength                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+ExcessiveParameterList                             apex         Design            Default ruleset...,Complexity,quickstart          pmd
+ExcessivePublicCount                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssConstructorCount                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssMethodCount                                    apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssTypeCount                                      apex         Design            Default ruleset...,Complexity,quickstart          pmd
+StdCyclomaticComplexity                            apex         Design            Default ruleset...,Complexity,quickstart          pmd
+TooManyFields                                      apex         Design            Default ruleset...,Complexity,quickstart          pmd
+ApexDoc                                            apex         Documentation     Default ruleset...,quickstart                     pmd
+ApexCSRF                                           apex         Error Prone       Default ruleset...,quickstart                     pmd
+AvoidDirectAccessTriggerMap                        apex         Error Prone       Default ruleset...,Style,quickstart               pmd
+AvoidHardcodingId                                  apex         Error Prone       Default ruleset...,Style,quickstart               pmd
+AvoidNonExistentAnnotations                        apex         Error Prone       Default ruleset...,quickstart                     pmd
+EmptyCatchBlock                                    apex         Error Prone       Empty Code,Default ruleset...,quickstart          pmd
+EmptyIfStmt                                        apex         Error Prone       Empty Code,Default ruleset...,quickstart          pmd
+EmptyStatementBlock                                apex         Error Prone       Empty Code,Default ruleset...,quickstart          pmd
+EmptyTryOrFinallyBlock                             apex         Error Prone       Empty Code,Default ruleset...,quickstart          pmd
+EmptyWhileStmt                                     apex         Error Prone       Empty Code,Default ruleset...,quickstart          pmd
 InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
-MethodWithSameNameAsEnclosingClass                 apex         Error Prone       quickstart,Default ruleset...,Style               pmd
+MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Default ruleset...,Style,quickstart               pmd
 OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
 TestMethodsMustBeInTestClasses                     apex         Error Prone                                                         pmd
 constructor-super                                  javascript   ECMAScript 6      ECMAScript 6                                      eslint

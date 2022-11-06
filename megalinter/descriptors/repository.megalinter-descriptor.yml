@@ -10,6 +10,7 @@ linters:
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
       - terraform
       - security
     linter_url: https://www.checkov.io/
@@ -183,7 +184,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.9.0 as gitleaks
+        - FROM zricethezav/gitleaks:v8.10.2 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -228,6 +229,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
     config_file_name: .secretlintrc.json
     cli_config_arg_name: "--secretlintrc"
+    ignore_file_name: .secretlintignore
+    cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
     cli_lint_extra_args_after:
       - "**/*"
@@ -268,6 +271,7 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: --config
     cli_config_default_value: auto
+    ignore_file_name: .semgrepignore
     cli_lint_extra_args:
       - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:

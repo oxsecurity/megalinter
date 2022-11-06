@@ -127,6 +127,7 @@
         "GO_REVIVE",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
+        "HTML_DJLINT",
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
         "JAVASCRIPT_ES",
@@ -4006,6 +4007,113 @@
       "title": "GROOVY_NPM_GROOVY_LINT: Custom config file path",
       "type": "string"
     },
+    "HTML_DJLINT_ARGUMENTS": {
+      "$id": "#/properties/HTML_DJLINT_ARGUMENTS",
+      "description": "HTML_DJLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_DJLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "HTML_DJLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/HTML_DJLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "HTML_DJLINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "HTML_DJLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/HTML_DJLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "HTML_DJLINT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "HTML_DJLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "HTML_DJLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/HTML_DJLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_DJLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "HTML_DJLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/HTML_DJLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_DJLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "HTML_DJLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/HTML_DJLINT_FILTER_REGEX_EXCLUDE",
+      "title": "HTML_DJLINT: Excluding Regex",
+      "type": "string"
+    },
+    "HTML_DJLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/HTML_DJLINT_FILTER_REGEX_INCLUDE",
+      "title": "HTML_DJLINT: Including Regex",
+      "type": "string"
+    },
+    "HTML_DJLINT_POST_COMMANDS": {
+      "$id": "#/properties/HTML_DJLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "HTML_DJLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "HTML_DJLINT_PRE_COMMANDS": {
+      "$id": "#/properties/HTML_DJLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "HTML_DJLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "HTML_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/HTML_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for HTML descriptor",
@@ -4825,13 +4933,20 @@
     },
     "JSON_JSONLINT_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_JSONLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
         "project"
       ],
       "title": "JSON_JSONLINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "JSON_JSONLINT_CONFIG_FILE": {
+      "$id": "#/properties/JSON_JSONLINT_CONFIG_FILE",
+      "default": ".jsonlintrc",
+      "description": "JSON_JSONLINT: User custom config file name if different from default",
+      "title": "JSON_JSONLINT: Custom config file name",
       "type": "string"
     },
     "JSON_JSONLINT_DISABLE_ERRORS": {
@@ -4913,6 +5028,12 @@
       },
       "title": "JSON_JSONLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "JSON_JSONLINT_RULES_PATH": {
+      "$id": "#/properties/JSON_JSONLINT_RULES_PATH",
+      "description": "JSON_JSONLINT: Path where to find linter configuration file",
+      "title": "JSON_JSONLINT: Custom config file path",
+      "type": "string"
     },
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
@@ -6642,6 +6763,21 @@
       "description": "MARKDOWN_REMARK_LINT: Path where to find linter configuration file",
       "title": "MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string"
+    },
+    "MEGALINTER_FILES_TO_LINT": {
+      "$id": "#/properties/MEGALINTER_FILES_TO_LINT",
+      "description": "Comma-separated list of files to analyze. Using this variable will bypass other file listing methods",
+      "examples:": [
+        [
+          "myfile1.js",
+          "path/to/myfile2.js"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "List of files to analyze",
+      "type": "array"
     },
     "MULTI_STATUS": {
       "$id": "#/properties/MULTI_STATUS",
@@ -11212,6 +11348,25 @@
       "description": "Displays all linters that mega-linter could run but didn't",
       "title": "Show skipped Linters",
       "type": "boolean"
+    },
+    "SKIP_CLI_LINT_MODES": {
+      "$id": "#/properties/SKIP_CLI_LINT_MODES",
+      "description": "Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: \"file,project\"). Available values: file,cli_lint_mode,project",
+      "examples:": [
+        [
+          "file",
+          "project"
+        ]
+      ],
+      "items": {
+        "enum": [
+          "file",
+          "list_of_files",
+          "project"
+        ]
+      },
+      "title": "List of CLI lint modes to skip",
+      "type": "array"
     },
     "SNAKEMAKE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SNAKEMAKE_FILTER_REGEX_EXCLUDE",
