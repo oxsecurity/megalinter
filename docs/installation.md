@@ -10,21 +10,21 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-## Upgrade from MegaLinter v4
+## Upgrade to MegaLinter v6
 
-- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
+- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration from v4 or v5 to v6 :)
 
 ## Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- GitHub Action: oxsecurity/megalinter@v6
-- Docker image: oxsecurity/megalinter:v6
+- Docker image: `oxsecurity/megalinter:v6`
+- GitHub Action: `oxsecurity/megalinter@v6`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- GitHub Action: oxsecurity/megalinter@beta
-- Docker image: oxsecurity/megalinter:beta
+- Docker image: `oxsecurity/megalinter:beta`
+- GitHub Action: `oxsecurity/megalinter@beta`
 
 ## GitHub Action
 
@@ -75,10 +75,10 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
 
       # MegaLinter
       - name: MegaLinter
@@ -97,7 +97,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |
@@ -134,61 +134,7 @@ jobs:
 
 </details>
 
-## Azure Pipelines
-
-Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
-
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
-
-```yaml
-  # Run MegaLinter to detect linting and security issues
-  - job: megalinter
-    displayName: MegaLinter
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - script: |
-        docker pull oxsecurity/megalinter:v6
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v6
-      displayName: 'MegaLinter analysis'
-
-    # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Artifact: MegaLinter Report'
-      condition: succeededOrFailed()
-      inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/megalinter-reports/'
-        artifactName: MegaLinterReport
-```
-
-## Jenkins
-
-Add the following stage in your Jenkinsfile
-
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
-
-```groovy
-// Lint with MegaLinter: https://megalinter.github.io/
-stage('MegaLinter') {
-    agent {
-        docker {
-            image 'oxsecurity/megalinter:v5'
-            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
-            reuseNode true
-        }
-    }
-    steps {
-        sh '/entrypoint.sh'
-    }
-    post {
-        always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
-        }
-    }
-}
-```
-
-## GitLab
+## GitLab CI
 
 Create or update `.gitlab-ci.yml` file at the root of your repository
 
@@ -200,7 +146,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v5
+  image: oxsecurity/megalinter:v6
   script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -219,6 +165,76 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+
+## Azure Pipelines
+
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
+
+Add the following job in your `azure-pipelines.yaml` file
+
+```yaml
+  # Run MegaLinter to detect linting and security issues
+  - job: MegaLinter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:v6
+        displayName: Pull MegaLinter
+
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            -e CI=true \
+            -e TF_BUILD=true \
+            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
+            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            oxsecurity/megalinter:v6
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport
+```
+
+To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
+
+## Jenkins
+
+Add the following stage in your Jenkinsfile
+
+You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+
+```groovy
+// Lint with MegaLinter: https://megalinter.github.io/
+stage('MegaLinter') {
+    agent {
+        docker {
+            image 'oxsecurity/megalinter:v6'
+            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            reuseNode true
+        }
+    }
+    steps {
+        sh '/entrypoint.sh'
+    }
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+        }
+    }
+}
+```
 
 ## Concourse
 
@@ -336,7 +352,7 @@ Example
 npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
-Note: You can also use such command line from your custom CI/CD pipelines
+Note: You can also use such command line in your custom CI/CD pipelines
 
 
 <!-- installation-section-end -->

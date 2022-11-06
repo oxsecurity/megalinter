@@ -24,5 +24,5 @@ linters:
         - puppet-lint
     ide:
       vscode:
-        - name: Puppet VsCode Extension
+        - name: Puppet VSCode Extension
           url: https://puppet-vscode.github.io/docs/features/linting/

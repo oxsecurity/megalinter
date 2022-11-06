@@ -2,6 +2,7 @@ descriptor_id: ACTION
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - cupcake
 files_sub_directory: .github/workflows
 file_extensions:
   - ".yml"
@@ -28,4 +29,4 @@ linters:
     install:
       dockerfile:
         - ENV GO111MODULE=on
-        - RUN go get github.com/rhysd/actionlint/cmd/actionlint
+        - RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache

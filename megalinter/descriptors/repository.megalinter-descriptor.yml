@@ -3,6 +3,7 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 lint_all_files: true
 linters:
   # CHECKOV
@@ -11,10 +12,12 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - terraform
       - security
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
+    linter_speed: 2
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
     linter_rules_configuration_url: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
     linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
@@ -34,10 +37,8 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
-      dockerfile:
-        - |
-          RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-              && pip3 install --no-cache-dir checkov
+      pip:
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -49,10 +50,12 @@ linters:
     descriptor_flavors:
       - all
       - security
+    ignore_for_flavor_suggestions: true
     linter_text: |
       Use `--ignore-globs` to ignore files and/or folders
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
+    linter_speed: 1
     linter_rules_configuration_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
@@ -73,6 +76,7 @@ linters:
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
+    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -89,10 +93,10 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
-        - name: VsCode DevSkim
+        - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
 
   # DUSTILOCK
@@ -102,6 +106,7 @@ linters:
     descriptor_flavors:
       - all
       - security
+    ignore_for_flavor_suggestions: true
     linter_url: https://github.com/Checkmarx/dustilock
     linter_repo: https://github.com/Checkmarx/dustilock
     linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
@@ -123,10 +128,11 @@ linters:
               mkdir -p ${ML_THIRD_PARTY_DIR} && \
               git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
               cd ${ML_THIRD_PARTY_DIR} && \
-              go build && \
+              go build && go clean --cache && \
               chmod +x dustilock && \
               mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
-              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
+              cd /
 
   # GIT_DIFF
   - linter_name: git_diff
@@ -135,6 +141,7 @@ linters:
     linter_text: Git diff checks for git conflicts markers in files
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
+    linter_speed: 5
     linter_spdx_license: LGPL-2.1
     linter_megalinter_ref_url: never
     cli_config_arg_name: ""
@@ -154,9 +161,11 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
+    linter_speed: 1
     linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
     linter_rules_ignore_config_url: https://github.com/zricethezav/gitleaks#configuration
     config_file_name: .gitleaks.toml
@@ -184,7 +193,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.10.2 as gitleaks
+        - FROM zricethezav/gitleaks:v8.15.0 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -192,8 +201,10 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
+    linter_speed: 2
     linter_rules_url: https://sider.github.io/goodcheck/docs/rules
     linter_rules_configuration_url: https://sider.github.io/goodcheck/docs/configuration
     active_only_if_file_found:
@@ -219,6 +230,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
@@ -254,9 +266,11 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - security
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
+    linter_speed: 1
     linter_text: |
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
@@ -279,6 +293,8 @@ linters:
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
       - --sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
     cli_lint_errors_count: regex_number
@@ -299,7 +315,7 @@ linters:
         default_value: ""
     ide:
       vscode:
-        - name: VsCode SemGrep
+        - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
   # SYFT
@@ -308,6 +324,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - security
+    ignore_for_flavor_suggestions: true
     linter_url: https://github.com/anchore/syft
     linter_repo: https://github.com/anchore/syft
     linter_text: |
@@ -337,11 +354,13 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_text: |
       You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
+    linter_speed: 2
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories
@@ -372,5 +391,5 @@ linters:
               chmod 644 /usr/local/bin/sarif.tpl
     ide:
       vscode:
-        - name: VsCode Trivy
+        - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

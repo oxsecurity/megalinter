@@ -44,11 +44,14 @@ jobs:
         # linters-start
         linter:
           [
+            "ansible_ansible_lint",
+            "bash_shellcheck",
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
             "go_revive",
             "groovy_npm_groovy_lint",
             "java_checkstyle",
+            "java_pmd",
             "javascript_es",
             "json_eslint_plugin_jsonc",
             "jsx_eslint",
@@ -81,8 +84,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       #####################
       # Run Deploy script #

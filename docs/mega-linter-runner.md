@@ -56,10 +56,14 @@ Sample `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/oxsecurity/megalinter
-    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
+    rev: v6.8.0 # Git tag specifying the hook, not mega-linter-runner, version
     hooks:
-      - id: megalinter # Faster, less thorough, runs pre-commit by default
-      - id: megalinter-all # Slower, more thorough, runs pre-push by default
+      - id: megalinter-incremental # Faster, less thorough
+        stages:
+          - commit
+      - id: megalinter-full # Slower, more thorough
+        stages:
+          - push
 ```
 
 See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
@@ -75,7 +79,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | Option                 | Description                                                                                                        | Default           |
 |------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
-| `--flavor`             | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
+| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
@@ -83,7 +87,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
-| `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
+| `--container-name`     | Specify MegaLinter container name                                                                                  | <!-- -->          |
 | `--remove-container`   | Remove MegaLinter Docker container when done                                                                       | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_

@@ -30,7 +30,7 @@ jobs:
     if: github.actor == 'dependabot[bot]' && github.repository == 'oxsecurity/megalinter'
     steps:
       - name: Wait for CI/CT/CD to succeed
-        uses: fountainhead/action-wait-for-check@v1.0.0
+        uses: fountainhead/action-wait-for-check@v1.1.0
         id: wait-for-build
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -38,7 +38,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Wait for CI/CT/CD to succeed pt2
-        uses: fountainhead/action-wait-for-check@v1.0.0
+        uses: fountainhead/action-wait-for-check@v1.1.0
         id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

@@ -72,8 +72,9 @@ def filter_files(
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
+    prefix: Optional[str] = None,
 ) -> Sequence[str]:
-    file_extensions = set(file_extensions)
+    file_extensions = frozenset(file_extensions)
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
@@ -91,11 +92,25 @@ def filter_files(
     # if each file is check against every ignored_files (it can contain all the files), it's a O(n²) filtering
     # to reduce the execution time and complexity ignored_files is split
     ignored_patterns = list(filter(lambda x: "*" in x, ignored_files or []))
-    ignored_fileset = set(ignored_files or [])
+    ignored_fileset = frozenset(ignored_files or [])
 
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+        file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file = file_with_prefix_and_sub_dir
+
+        if prefix or files_sub_directory:
+            prefix_and_sub_dir = os.path.normpath(
+                os.path.join(prefix or "", files_sub_directory or "") + os.path.sep
+            )
+
+            if file.startswith(prefix_and_sub_dir):
+                file = os.path.relpath(file_with_prefix_and_sub_dir, prefix_and_sub_dir)
+            else:
+                # Skip if file is not in defined files_sub_directory
+                continue
+
         # Skip if file is in ignore list
         if file in ignored_fileset:
             continue
@@ -113,12 +128,9 @@ def filter_files(
         # Skip according to FILTER_REGEX_EXCLUDE
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
-        # Skip if file is not in defined files_sub_directory
-        if files_sub_directory and files_sub_directory not in file:
-            continue
 
-        # Skip according to file extension (only if lint_all_other_linter_files is false)
-        if lint_all_other_linters_files is False:
+        # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
+        if lint_all_other_linters_files is False or len(file_extensions) > 0:
             if file_extension in file_extensions:
                 pass
             elif "*" in file_extensions:
@@ -131,17 +143,19 @@ def filter_files(
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
         # Skip according to file name regex
-        if file_contains_regex and not file_contains(file, file_contains_regex_object):
+        if file_contains_regex and not file_contains(
+            file_with_prefix_and_sub_dir, file_contains_regex_object
+        ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
-            and file_is_generated(file)
+            and file_is_generated(file_with_prefix_and_sub_dir)
         ):
             continue
 
-        filtered_files.append(file)
+        filtered_files.append(file_with_prefix_and_sub_dir)
 
     return filtered_files
 

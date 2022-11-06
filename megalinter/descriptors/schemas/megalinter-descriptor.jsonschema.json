@@ -42,6 +42,7 @@
         "all_flavors",
         "all",
         "ci_light",
+        "cupcake",
         "documentation",
         "dotnet",
         "go",
@@ -264,6 +265,16 @@
             "type": "string"
           },
           "title": "List of APK packages (Linux)",
+          "type": "array"
+        },
+        "cargo": {
+          "$id": "#/properties/install/properties/cargo",
+          "description": "Cargo packages identifiers (with or without version)",
+          "items": {
+            "$id": "#/properties/install/properties/cargo/items",
+            "type": "string"
+          },
+          "title": "List of Cargo packages (Rust)",
           "type": "array"
         },
         "dockerfile": {
@@ -837,6 +848,17 @@
             "title": "Default file name for the linter ignore file",
             "type": "string"
           },
+          "ignore_for_flavor_suggestions": {
+            "$id": "#/properties/linters/items/properties/ignore_for_flavor_suggestions",
+            "default": false,
+            "description": "If this property is set to true, this linter will be ignored for flavor suggestions",
+            "examples": [
+              ".eslintignore",
+              ".secretlintignore"
+            ],
+            "title": "Ignore for flavor suggestions",
+            "type": "boolean"
+          },
           "install": {
             "$id": "#/properties/linters/items/properties/install",
             "default": {},
@@ -875,6 +897,22 @@
                   "type": "string"
                 },
                 "title": "List of APK packages (Linux)",
+                "type": "array"
+              },
+              "cargo": {
+                "$id": "#/properties/linters/items/properties/install/properties/cargo",
+                "description": "Cargo packages identifiers (with or without version)",
+                "examples": [
+                  [
+                    "clippy",
+                    "sarif-fmt"
+                  ]
+                ],
+                "items": {
+                  "$id": "#/properties/linters/items/properties/install/properties/cargo/items",
+                  "type": "string"
+                },
+                "title": "List of Cargo packages (Rust)",
                 "type": "array"
               },
               "dockerfile": {
@@ -1052,6 +1090,19 @@
             "title": "spdx license",
             "type": "string"
           },
+          "linter_speed": {
+            "$id": "#/properties/linters/items/properties/linter_speed",
+            "description": "Average speed of the linter (performances indicator). For 1 (very slow) to 5 (very fast)",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "title": "Speed indicator",
+            "type": "number"
+          },
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",
             "title": "Additional text for MegaLinter online documentation",
@@ -1168,7 +1219,7 @@
             "examples": [
               {
                 "default_value": "false",
-                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
+                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead",
                 "name": "ERROR_ON_MISSING_EXEC_BIT"
               }
             ],

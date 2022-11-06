@@ -5,14 +5,15 @@
 
 ## Linters
 
-| Linter                     | Configuration key                 | Status                                                                                                                   |
-|----------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| [pylint](python_pylint.md) | [PYTHON_PYLINT](python_pylint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/pylint)](https://github.com/PyCQA/pylint/commits) |
-| [black](python_black.md)   | [PYTHON_BLACK](python_black.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)       |
-| [flake8](python_flake8.md) | [PYTHON_FLAKE8](python_flake8.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/flake8)](https://github.com/PyCQA/flake8/commits) |
-| [isort](python_isort.md)   | [PYTHON_ISORT](python_isort.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits)   |
-| [bandit](python_bandit.md) | [PYTHON_BANDIT](python_bandit.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) |
-| [mypy](python_mypy.md)     | [PYTHON_MYPY](python_mypy.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits)   |
+| Linter                       | Configuration key                   | Status                                                                                                                             |
+|------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [pylint](python_pylint.md)   | [PYTHON_PYLINT](python_pylint.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/pylint)](https://github.com/PyCQA/pylint/commits)           |
+| [black](python_black.md)     | [PYTHON_BLACK](python_black.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)                 |
+| [flake8](python_flake8.md)   | [PYTHON_FLAKE8](python_flake8.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/flake8)](https://github.com/PyCQA/flake8/commits)           |
+| [isort](python_isort.md)     | [PYTHON_ISORT](python_isort.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits)             |
+| [bandit](python_bandit.md)   | [PYTHON_BANDIT](python_bandit.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits)           |
+| [mypy](python_mypy.md)       | [PYTHON_MYPY](python_mypy.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits)             |
+| [pyright](python_pyright.md) | [PYTHON_PYRIGHT](python_pyright.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) |
 
 ## Linted files
 

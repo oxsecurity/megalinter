@@ -44,6 +44,7 @@ def list_megalinter_flavors():
         "ci_light": {
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
+        "cupcake": {"label": "MegaLinter for the most commonly used languages"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
         "go": {"label": "Optimized for GO based projects"},
@@ -120,7 +121,10 @@ def get_megalinter_flavor_suggestions(active_linters):
     for flavor_id, flavor_info in all_flavors.items():
         match = True
         for active_linter in active_linters:
-            if active_linter.name not in flavor_info["linters"]:
+            if (
+                active_linter.name not in flavor_info["linters"]
+                and active_linter.ignore_for_flavor_suggestions is False
+            ):
                 match = False
                 break
         if match is True:
@@ -136,8 +140,13 @@ def get_megalinter_flavor_suggestions(active_linters):
             matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
         )
     # Propose user to request a new flavor for the list of linters
-    active_linter_names = map(lambda linter: linter.name, active_linters)
-    return ["new", active_linter_names]
+
+    new_flavor_linters = filter(
+        lambda linter: linter.ignore_for_flavor_suggestions is False,
+        active_linters,
+    )
+    new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
+    return ["new", new_flavor_linters_names]
 
 
 def are_all_repository_linters(linter_names: list[str]) -> bool:

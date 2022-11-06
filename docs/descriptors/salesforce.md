@@ -29,7 +29,10 @@
 ```dockerfile
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN echo y|sfdx plugins:install sfdx-hardis \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 ```
 
 - APK packages (Linux):

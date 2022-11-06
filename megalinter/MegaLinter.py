@@ -95,6 +95,8 @@ class Megalinter:
             config.get("SHOW_ELAPSED_TIME", "false") == "true"
             or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
         )
+        # In case SARIF is active, convert results into human readable text for logs
+        self.sarif_to_human = config.get("SARIF_TO_HUMAN", "true") == "true"
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -163,7 +165,7 @@ class Megalinter:
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
-            self.process_linters_serial(active_linters, linters_do_fixes)
+            self.process_linters_serial(active_linters)
 
         # Update main MegaLinter status according to results of linters run
         for linter in self.linters:
@@ -208,7 +210,7 @@ class Megalinter:
         self.check_results()
 
     # noinspection PyMethodMayBeStatic
-    def process_linters_serial(self, active_linters, _linters_do_fixes):
+    def process_linters_serial(self, active_linters):
         for linter in active_linters:
             linter.run()
 
@@ -217,18 +219,34 @@ class Megalinter:
         if linters_do_fixes is True:
             # Group linters by descriptor, to avoid different linters to update files at the same time
             linters_by_descriptor = {}
+            linter_groups_without_fixes = []
             for linter in active_linters:
-                descriptor_active_linters = linters_by_descriptor.get(
-                    linter.descriptor_id, []
-                )
-                descriptor_active_linters += [linter]
-                linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
+                if linter.apply_fixes is True:
+                    # If the linter can update sources, it must be run in the same group than
+                    # other linters that can update the same sources
+                    descriptor_active_linters = linters_by_descriptor.get(
+                        linter.descriptor_id, []
+                    )
+                    descriptor_active_linters += [linter]
+                    linters_by_descriptor[
+                        linter.descriptor_id
+                    ] = descriptor_active_linters
+                else:
+                    # If the linter can not updates sources, no need to run it in the same group
+                    linter_groups_without_fixes += [[linter]]
+            # Add groups of linters that can update sources
             for _descriptor_id, linters in linters_by_descriptor.items():
                 linter_groups += [linters]
+            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
+            # Add "groups" of 1 linter than can not update sources
+            linter_groups += linter_factory.sort_linters_groups_by_speed(
+                linter_groups_without_fixes
+            )
         else:
             # If no fixes are applied, we don't care to run same languages linters at the same time
             for linter in active_linters:
                 linter_groups += [[linter]]
+            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
         # Execute linters in asynchronous pool to improve overall performances
         install_mp_handler()
         pool = mp.Pool(mp.cpu_count())
@@ -545,12 +563,13 @@ class Megalinter:
         logging.debug(
             "All found files before filtering:" + utils.format_bullet_list(all_files)
         )
-        # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
-        if len(self.file_extensions) > 0:
+        # Filter files according to file_extensions, file_names_regex,
+        # filter_regex_include, and filter_regex_exclude
+        if self.file_extensions:
             logging.info(
                 "- File extensions: " + ", ".join(sorted(self.file_extensions))
             )
-        if len(self.file_names_regex) > 0:
+        if self.file_names_regex:
             logging.info(
                 "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
             )
@@ -803,7 +822,12 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
-        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
+        if "GITHUB_OUTPUT" in os.environ:
+            github_output_file = os.environ["GITHUB_OUTPUT"]
+            with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                output_stream.write(
+                    f"has_updated_sources={str(self.has_updated_sources)}\n"
+                )
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()

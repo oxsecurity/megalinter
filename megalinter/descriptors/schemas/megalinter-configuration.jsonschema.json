@@ -31,6 +31,14 @@
           ],
           "title": "Folder where to run the command",
           "type": "string"
+        },
+        "venv": {
+          "examples": [
+            "pylint",
+            "flake8"
+          ],
+          "title": "Python virtual env identifier",
+          "type": "string"
         }
       },
       "required": [],
@@ -43,6 +51,7 @@
         "ANSIBLE",
         "ARM",
         "BASH",
+        "BICEP",
         "C",
         "CLOJURE",
         "CLOUDFORMATION",
@@ -109,6 +118,7 @@
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
+        "BICEP_BICEP_LINTER",
         "C_CPPLINT",
         "CLOJURE_CLJ_KONDO",
         "CLOUDFORMATION_CFN_LINT",
@@ -130,6 +140,7 @@
         "HTML_DJLINT",
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
+        "JAVA_PMD",
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
         "JAVASCRIPT_PRETTIER",
@@ -163,6 +174,7 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "PYTHON_PYRIGHT",
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
@@ -177,6 +189,7 @@
         "REPOSITORY_TRIVY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
+        "RST_RSTFMT",
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
         "SALESFORCE_SFDX_SCANNER_APEX",
@@ -983,6 +996,123 @@
       "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "BICEP_BICEP_LINTER_ARGUMENTS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_ARGUMENTS",
+      "description": "BICEP_BICEP_LINTER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "BICEP_BICEP_LINTER_CLI_LINT_MODE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "BICEP_BICEP_LINTER: Override default cli lint mode",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_DISABLE_ERRORS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS",
+      "default": false,
+      "title": "BICEP_BICEP_LINTER: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "BICEP_BICEP_LINTER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "BICEP_BICEP_LINTER_FILE_EXTENSIONS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE",
+      "title": "BICEP_BICEP_LINTER: Excluding Regex",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE",
+      "title": "BICEP_BICEP_LINTER: Including Regex",
+      "type": "string"
+    },
+    "BICEP_BICEP_LINTER_POST_COMMANDS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BICEP_BICEP_LINTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_PRE_COMMANDS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BICEP_BICEP_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "BICEP_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/BICEP_FILTER_REGEX_EXCLUDE",
+      "title": "Excluding regex filter for BICEP descriptor",
+      "type": "string"
+    },
+    "BICEP_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/BICEP_FILTER_REGEX_INCLUDE",
+      "title": "Including regex filter for BICEP descriptor",
+      "type": "string"
+    },
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
       "default": false,
@@ -1404,7 +1534,7 @@
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
-      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VSCode extensions.js config file",
       "title": "Activate local configuration reporter",
       "type": "boolean"
     },
@@ -1473,36 +1603,12 @@
       "title": "COPYPASTE_JSCPD: Maximum number of errors allowed",
       "type": "number"
     },
-    "COPYPASTE_JSCPD_FILE_EXTENSIONS": {
-      "$id": "#/properties/COPYPASTE_JSCPD_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "COPYPASTE_JSCPD: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
     "COPYPASTE_JSCPD_FILE_NAME": {
       "$id": "#/properties/COPYPASTE_JSCPD_FILE_NAME",
       "default": ".jscpd.json",
       "description": "COPYPASTE_JSCPD: User custom config file name if different from default",
       "title": "COPYPASTE_JSCPD: Custom config file name",
       "type": "string"
-    },
-    "COPYPASTE_JSCPD_FILE_NAMES_REGEX": {
-      "$id": "#/properties/COPYPASTE_JSCPD_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "COPYPASTE_JSCPD: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "$id": "#/properties/COPYPASTE_JSCPD_POST_COMMANDS",
@@ -2630,7 +2736,7 @@
     },
     "DOCKERFILE_HADOLINT_CLI_LINT_MODE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3504,7 +3610,7 @@
     },
     "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3631,7 +3737,7 @@
     },
     "GO_REVIVE_CLI_LINT_MODE": {
       "$id": "#/properties/GO_REVIVE_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3898,7 +4004,7 @@
     },
     "GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -4659,7 +4765,7 @@
     },
     "JAVA_CHECKSTYLE_CLI_LINT_MODE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -4776,6 +4882,126 @@
     "JAVA_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVA_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for JAVA descriptor",
+      "type": "string"
+    },
+    "JAVA_PMD_ARGUMENTS": {
+      "$id": "#/properties/JAVA_PMD_ARGUMENTS",
+      "description": "JAVA_PMD: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_PMD: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "JAVA_PMD_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVA_PMD_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JAVA_PMD: Override default cli lint mode",
+      "type": "string"
+    },
+    "JAVA_PMD_CONFIG_FILE": {
+      "$id": "#/properties/JAVA_PMD_CONFIG_FILE",
+      "default": "java-pmd-ruleset.xml",
+      "description": "JAVA_PMD: User custom config file name if different from default",
+      "title": "JAVA_PMD: Custom config file name",
+      "type": "string"
+    },
+    "JAVA_PMD_DISABLE_ERRORS": {
+      "$id": "#/properties/JAVA_PMD_DISABLE_ERRORS",
+      "default": false,
+      "title": "JAVA_PMD: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JAVA_PMD: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "JAVA_PMD_FILE_EXTENSIONS": {
+      "$id": "#/properties/JAVA_PMD_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_PMD: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "JAVA_PMD_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JAVA_PMD_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_PMD: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "JAVA_PMD_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JAVA_PMD_FILTER_REGEX_EXCLUDE",
+      "title": "JAVA_PMD: Excluding Regex",
+      "type": "string"
+    },
+    "JAVA_PMD_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JAVA_PMD_FILTER_REGEX_INCLUDE",
+      "title": "JAVA_PMD: Including Regex",
+      "type": "string"
+    },
+    "JAVA_PMD_POST_COMMANDS": {
+      "$id": "#/properties/JAVA_PMD_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVA_PMD: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JAVA_PMD_PRE_COMMANDS": {
+      "$id": "#/properties/JAVA_PMD_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVA_PMD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "JAVA_PMD_RULES_PATH": {
+      "$id": "#/properties/JAVA_PMD_RULES_PATH",
+      "description": "JAVA_PMD: Path where to find linter configuration file",
+      "title": "JAVA_PMD: Custom config file path",
       "type": "string"
     },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
@@ -8950,6 +9176,126 @@
       "title": "PYTHON_PYLINT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_PYRIGHT_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_ARGUMENTS",
+      "description": "PYTHON_PYRIGHT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_PYRIGHT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_PYRIGHT: Override default cli lint mode",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_CONFIG_FILE",
+      "default": "pyrightconfig.json",
+      "description": "PYTHON_PYRIGHT: User custom config file name if different from default",
+      "title": "PYTHON_PYRIGHT: Custom config file name",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_DISABLE_ERRORS",
+      "default": false,
+      "title": "PYTHON_PYRIGHT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_PYRIGHT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PYTHON_PYRIGHT_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE",
+      "title": "PYTHON_PYRIGHT: Excluding Regex",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE",
+      "title": "PYTHON_PYRIGHT: Including Regex",
+      "type": "string"
+    },
+    "PYTHON_PYRIGHT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_PYRIGHT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_PYRIGHT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PYTHON_PYRIGHT_RULES_PATH": {
+      "$id": "#/properties/PYTHON_PYRIGHT_RULES_PATH",
+      "description": "PYTHON_PYRIGHT: Path where to find linter configuration file",
+      "title": "PYTHON_PYRIGHT: Custom config file path",
+      "type": "string"
+    },
     "RAKU_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RAKU_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for RAKU descriptor",
@@ -9129,30 +9475,6 @@
       "title": "REPOSITORY_CHECKOV: Maximum number of errors allowed",
       "type": "number"
     },
-    "REPOSITORY_CHECKOV_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_CHECKOV_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_CHECKOV: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_CHECKOV_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_CHECKOV_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_CHECKOV: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "REPOSITORY_CHECKOV_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_POST_COMMANDS",
       "examples": [
@@ -9221,30 +9543,6 @@
       "title": "REPOSITORY_DEVSKIM: Maximum number of errors allowed",
       "type": "number"
     },
-    "REPOSITORY_DEVSKIM_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_DEVSKIM_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_DEVSKIM: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_DEVSKIM_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_DEVSKIM_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_DEVSKIM: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "REPOSITORY_DEVSKIM_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_POST_COMMANDS",
       "examples": [
@@ -9306,30 +9604,6 @@
       "default": 0,
       "title": "REPOSITORY_DUSTILOCK: Maximum number of errors allowed",
       "type": "number"
-    },
-    "REPOSITORY_DUSTILOCK_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_DUSTILOCK: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_DUSTILOCK_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_DUSTILOCK: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_POST_COMMANDS",
@@ -9410,30 +9684,6 @@
       "title": "REPOSITORY_GITLEAKS: Maximum number of errors allowed",
       "type": "number"
     },
-    "REPOSITORY_GITLEAKS_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_GITLEAKS_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GITLEAKS: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_GITLEAKS_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_GITLEAKS_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GITLEAKS: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_POST_COMMANDS",
       "examples": [
@@ -9501,30 +9751,6 @@
       "default": 0,
       "title": "REPOSITORY_GIT_DIFF: Maximum number of errors allowed",
       "type": "number"
-    },
-    "REPOSITORY_GIT_DIFF_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_GIT_DIFF_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GIT_DIFF: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_GIT_DIFF_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_GIT_DIFF_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GIT_DIFF: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "REPOSITORY_GIT_DIFF_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_POST_COMMANDS",
@@ -9594,30 +9820,6 @@
       "default": 0,
       "title": "REPOSITORY_GOODCHECK: Maximum number of errors allowed",
       "type": "number"
-    },
-    "REPOSITORY_GOODCHECK_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_GOODCHECK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GOODCHECK: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_GOODCHECK_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_GOODCHECK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_GOODCHECK: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "REPOSITORY_GOODCHECK_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_POST_COMMANDS",
@@ -9694,30 +9896,6 @@
       "title": "REPOSITORY_SECRETLINT: Maximum number of errors allowed",
       "type": "number"
     },
-    "REPOSITORY_SECRETLINT_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_SECRETLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SECRETLINT: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_SECRETLINT_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_SECRETLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SECRETLINT: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "REPOSITORY_SECRETLINT_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_POST_COMMANDS",
       "examples": [
@@ -9785,30 +9963,6 @@
       "default": 0,
       "title": "REPOSITORY_SEMGREP: Maximum number of errors allowed",
       "type": "number"
-    },
-    "REPOSITORY_SEMGREP_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_SEMGREP_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SEMGREP: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_SEMGREP_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_SEMGREP_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SEMGREP: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "REPOSITORY_SEMGREP_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_POST_COMMANDS",
@@ -9879,30 +10033,6 @@
       "title": "REPOSITORY_SYFT: Maximum number of errors allowed",
       "type": "number"
     },
-    "REPOSITORY_SYFT_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_SYFT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SYFT: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_SYFT_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_SYFT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_SYFT: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "REPOSITORY_SYFT_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SYFT_POST_COMMANDS",
       "examples": [
@@ -9970,30 +10100,6 @@
       "default": 0,
       "title": "REPOSITORY_TRIVY: Maximum number of errors allowed",
       "type": "number"
-    },
-    "REPOSITORY_TRIVY_FILE_EXTENSIONS": {
-      "$id": "#/properties/REPOSITORY_TRIVY_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_TRIVY: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "REPOSITORY_TRIVY_FILE_NAMES_REGEX": {
-      "$id": "#/properties/REPOSITORY_TRIVY_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "REPOSITORY_TRIVY: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "REPOSITORY_TRIVY_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_TRIVY_POST_COMMANDS",
@@ -10827,30 +10933,6 @@
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
       "type": "number"
     },
-    "SALESFORCE_SFDX_SCANNER_APEX_FILE_EXTENSIONS": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "SALESFORCE_SFDX_SCANNER_APEX_FILE_NAMES_REGEX": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching file name regex",
-      "type": "array"
-    },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
       "examples": [
@@ -10947,30 +11029,6 @@
       "default": 0,
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
       "type": "number"
-    },
-    "SALESFORCE_SFDX_SCANNER_AURA_FILE_EXTENSIONS": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "SALESFORCE_SFDX_SCANNER_AURA_FILE_NAMES_REGEX": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
@@ -11104,30 +11162,6 @@
       "default": 0,
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
       "type": "number"
-    },
-    "SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching files extensions",
-      "type": "array"
-    },
-    "SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching file name regex",
-      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
@@ -13837,7 +13871,7 @@
       "type": "string"
     },
     "VALIDATE_ALL_CODEBASE": {
-      "$id": "#/properties/SHOW_ELAPSED_TIME",
+      "$id": "#/properties/VALIDATE_ALL_CODEBASE",
       "default": true,
       "description": "Will parse the entire repository and find all files to validate across all types. When set to false, only new or edited files will be parsed for validation.",
       "title": "Validate all code base",

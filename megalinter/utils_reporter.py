@@ -1,9 +1,10 @@
 import logging
 import os
+import subprocess
 import time
 import urllib
 
-from megalinter import config
+from megalinter import config, utils
 from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
@@ -11,9 +12,6 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
 )
 from pytablewriter import MarkdownTableWriter
-
-mega_linter_version = config.get("BUILD_VERSION", "latest")
-DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 
 def build_markdown_summary(reporter_self, action_run_url):
@@ -83,7 +81,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         + log_link(f"**{reporter_self.master.status.upper()}**", action_run_url)
     )
     p_r_msg = (
-        f"## [MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
@@ -133,8 +131,16 @@ def build_markdown_summary(reporter_self, action_run_url):
                 )
                 p_r_msg += (
                     f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
-                    f" ({suggestion['linters_number']} linters)"
+                    f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
+        p_r_msg += os.linesep
+    # Link to ox
+    p_r_msg += (
+        os.linesep
+        + "_MegaLinter is graciously provided by [![OX Security]"
+        + "(https://www.ox.security/wp-content/uploads/2022/06/"
+        + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+    )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -162,6 +168,8 @@ def log_section_start(section_key: str, section_title: str):
                 f"\x1b[0Ksection_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
                 + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
             )
+        elif is_azure_pipelines():
+            return f"##[group]{section_title} (expand for details)"
     return section_title
 
 
@@ -171,6 +179,8 @@ def log_section_end(section_key):
             return "::endgroup::"
         elif is_gitlab_ci():
             return f"\x1b[0Ksection_end:`{time.time_ns()}`:{section_key}\r\x1b[0K"  # noqa: W605
+        elif is_azure_pipelines():
+            return "##[endgroup]"
     return ""
 
 
@@ -180,3 +190,23 @@ def is_github_actions() -> bool:
 
 def is_gitlab_ci() -> bool:
     return "GITLAB_CI" in os.environ
+
+
+def is_azure_pipelines() -> bool:
+    return "TF_BUILD" in os.environ
+
+
+# Convert SARIF into human readable text
+def convert_sarif_to_human(sarif_in) -> str:
+    sarif_fmt_command = "sarif-fmt"
+    process = subprocess.run(
+        sarif_fmt_command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        input=sarif_in + "\n",
+    )
+    return_code = process.returncode
+    output = utils.decode_utf8(process.stdout)
+    logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
+    return output

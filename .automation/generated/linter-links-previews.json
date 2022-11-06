@@ -24,6 +24,16 @@
     "image": null,
     "title": "The GNU Bourne-Again Shell"
   },
+  "bicep": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
+  "bicep_linter": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
   "black": {
     "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
@@ -318,6 +328,16 @@
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
+  },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
   },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",

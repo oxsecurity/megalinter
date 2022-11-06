@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.63**
+- Version in MegaLinter: **0.1.65**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -14,8 +14,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.14.0/configuration/#activation-and-deactivation)
+- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.14.0/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                  | Default value                                   |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -41,10 +41,11 @@ Use clippy in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                       | Embedded linters |                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor         |       105        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://oxsecurity.github.io/megalinter/latest/flavors/rust/)     | Optimized for RUST based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                     | Description                                     | Embedded linters |                                                                                                                                                                                          Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------|:------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.14.0/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/6.14.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://oxsecurity.github.io/megalinter/6.14.0/flavors/rust/)       | Optimized for RUST based projects               |        47        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
 
 ## Behind the scenes
 
@@ -64,62 +65,40 @@ clippy is called once on the whole project directory (`project` CLI lint mode)
 ### Example calls
 
 ```shell
-cargo clippy
+cargo-clippy
 ```
 
 
 ### Help content
 
 ```shell
-Rust's package manager
+Checks a package to catch common mistakes and improve your Rust code.
 
-USAGE:
-    cargo [+toolchain] [OPTIONS] [SUBCOMMAND]
+Usage:
+    cargo clippy [options] [--] [<opts>...]
 
-OPTIONS:
-    -V, --version               Print version info and exit
-        --list                  List installed commands
-        --explain <CODE>        Run `rustc --explain CODE`
-    -v, --verbose               Use verbose output (-vv very verbose/build.rs output)
-    -q, --quiet                 Do not print cargo log messages
-        --color <WHEN>          Coloring: auto, always, never
-        --frozen                Require Cargo.lock and cache are up to date
-        --locked                Require Cargo.lock is up to date
-        --offline               Run without accessing the network
-        --config <KEY=VALUE>    Override a configuration value
-    -Z <FLAG>                   Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for
-                                details
-    -h, --help                  Print help information
+Common options:
+    --no-deps                Run Clippy only on the given crate, without linting the dependencies
+    --fix                    Automatically apply lint suggestions. This flag implies `--no-deps`
+    -h, --help               Print this message
+    -V, --version            Print version info and exit
+    --explain LINT           Print the documentation for a given lint
 
-Some common cargo commands are (see all commands with --list):
-    build, b    Compile the current package
-    check, c    Analyze the current package and report errors, but don't build object files
-    clean       Remove the target directory
-    doc, d      Build this package's and its dependencies' documentation
-    new         Create a new cargo package
-    init        Create a new cargo package in an existing directory
-    add         Add dependencies to a manifest file
-    run, r      Run a binary or example of the local package
-    test, t     Run the tests
-    bench       Run the benchmarks
-    update      Update dependencies listed in Cargo.lock
-    search      Search registry for crates
-    publish     Package and upload this package to the registry
-    install     Install a Rust binary. Default location is $HOME/.cargo/bin
-    uninstall   Uninstall a Rust binary
+Other options are the same as `cargo check`.
 
-See 'cargo help <command>' for more information on a specific command.
+To allow or deny a lint from the command line you can use `cargo clippy --`
+with:
+
+    -W --warn OPT       Set lint warnings
+    -A --allow OPT      Set lint allowed
+    -D --deny OPT       Set lint denied
+    -F --forbid OPT     Set lint forbidden
+
+You can use tool lints to allow or deny lints from your code, eg.:
+
+    #[allow(clippy::needless_lifetimes)]
 
 ```
 
 ### Installation on mega-linter Docker image
-
-- Dockerfile commands :
-```dockerfile
-# Parent descriptor install
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-# Linter install
-RUN rustup component add clippy
-```
 

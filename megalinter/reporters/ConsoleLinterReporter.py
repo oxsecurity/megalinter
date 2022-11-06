@@ -6,11 +6,8 @@ import logging
 
 import chalk as c
 from megalinter import Reporter, config, utils
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 from megalinter.utils_reporter import log_section_end, log_section_start
-
-mega_linter_version = config.get("BUILD_VERSION", "latest")
-DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 
 class ConsoleLinterReporter(Reporter):
@@ -42,7 +39,7 @@ class ConsoleLinterReporter(Reporter):
             )
         else:
             linter_doc_url = (
-                f"{DOCS_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
+                f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
                 f"{self.master.linter_name.lower().replace('-', '_')}"
             )
         # Output linter status
@@ -128,10 +125,15 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(c.red(f"--Error detail:\n{res['stdout']}"))
         # Output stdout if not file by file
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
+            stdout = (
+                self.master.stdout_human
+                if self.master.stdout_human is not None
+                else self.master.stdout
+            )
             if self.master.status != "success":
-                logging.error(f"--Error detail:\n{self.master.stdout}")
+                logging.error(f"--Error detail:\n{stdout}")
             elif self.report_type == "detailed":
-                logging.info(f"--Log detail:\n{self.master.stdout}")
+                logging.info(f"--Log detail:\n{stdout}")
         # Post-commands logs
         if len(self.master.log_lines_post) > 0:
             logging.info("\n".join(self.master.log_lines_post))

@@ -1,6 +1,7 @@
 descriptor_id: JAVASCRIPT
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - javascript
 file_extensions:
   - ".js"
@@ -112,10 +113,9 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - standard
     ide:
       atom:
         - name: linter-js-standard
@@ -136,8 +136,8 @@ linters:
         - name: StandardFormat
           url: https://packagecontrol.io/packages/StandardFormat
       vscode:
-        - name: vscode-standardjs
-          url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
+        - name: vscode-standard
+          url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
@@ -151,7 +151,7 @@ linters:
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"

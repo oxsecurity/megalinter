@@ -37,4 +37,4 @@ linters:
       - "scalafix --config .scalafix.conf myfile.scala" # Fix
     install:
       dockerfile:
-        - RUN ./coursier install scalafix --quiet --install-dir /usr/bin
+        - RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache

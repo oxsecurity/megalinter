@@ -3,7 +3,11 @@ descriptor_type: language
 descriptor_flavors:
   - all # Applicable to CI in any language project
   - ci_light
+  - cupcake
   - dotnet
+  - go
+  - java
+  - python
 file_names_regex:
   - "Makefile"
 test_folder: makefile

@@ -3,6 +3,7 @@ descriptor_type: language
 descriptor_flavors:
   - all_flavors # Jenkinsfile are written in groovy so can be found in any language project
   - ci_light # Jenkinsfile are written in groovy so can be found in any language project
+  - cupcake
 file_extensions:
   - ".groovy"
   - ".gvy"
@@ -23,9 +24,6 @@ linters:
     linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
     cli_lint_mode: list_of_files
     config_file_name: .groovylintrc.json
-    cli_lint_extra_args:
-      - "--failon"
-      - "info"
     cli_sarif_args:
       - --output
       - sarif
@@ -42,5 +40,5 @@ linters:
         - npm-groovy-lint
     ide:
       vscode:
-        - name: VsCode Groovy Lint
+        - name: VSCode Groovy Lint
           url: https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint

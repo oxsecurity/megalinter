@@ -8,6 +8,7 @@
 | Linter                           | Configuration key          | Status                                                                                                                                     |
 |----------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits) |
+| [pmd](java_pmd.md)               | [JAVA](java_pmd.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/pmd/pmd)](https://github.com/pmd/pmd/commits)                             |
 
 ## Linted files
 
