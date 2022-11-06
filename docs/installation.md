@@ -367,10 +367,9 @@ This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/ove
 
 ## Run MegaLinter locally
 
- [](https://npmjs.org/package/mega-linter-runner)
-
-[](https://npmjs.org/package/mega-linter-runner)
-[](https://npmjs.org/package/mega-linter-runner)
+[![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
 You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
@@ -383,5 +382,6 @@ npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML'
 ```
 
 Note: You can also use such command line in your custom CI/CD pipelines
+
 
 <!-- installation-section-end -->
