@@ -592,7 +592,7 @@
                 "releases_url": "https://api.github.com/repos/dorssel/usbipd-win/releases{/id}",
                 "size": 1498,
                 "ssh_url": "git@github.com:dorssel/usbipd-win.git",
-                "stargazers_count": 1369,
+                "stargazers_count": 1370,
                 "stargazers_url": "https://api.github.com/repos/dorssel/usbipd-win/stargazers",
                 "statuses_url": "https://api.github.com/repos/dorssel/usbipd-win/statuses/{sha}",
                 "subscribers_count": 31,
@@ -613,15 +613,15 @@
                     "wsl2"
                 ],
                 "trees_url": "https://api.github.com/repos/dorssel/usbipd-win/git/trees{/sha}",
-                "updated_at": "2022-11-06T05:35:32Z",
+                "updated_at": "2022-11-06T09:34:49Z",
                 "url": "https://api.github.com/repos/dorssel/usbipd-win",
                 "visibility": "public",
-                "watchers": 1369,
-                "watchers_count": 1369,
+                "watchers": 1370,
+                "watchers_count": 1370,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/dorssel/usbipd-win",
-            "stargazers": 1369
+            "stargazers": 1370
         },
         {
             "info": {
@@ -729,9 +729,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-11-05T18:40:56Z",
+                "pushed_at": "2022-11-06T10:01:32Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 269254,
+                "size": 269604,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 916,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
@@ -2525,7 +2525,7 @@
                 "releases_url": "https://api.github.com/repos/leosuncin/nest-auth-example/releases{/id}",
                 "size": 6746,
                 "ssh_url": "git@github.com:leosuncin/nest-auth-example.git",
-                "stargazers_count": 203,
+                "stargazers_count": 204,
                 "stargazers_url": "https://api.github.com/repos/leosuncin/nest-auth-example/stargazers",
                 "statuses_url": "https://api.github.com/repos/leosuncin/nest-auth-example/statuses/{sha}",
                 "subscribers_count": 4,
@@ -2544,15 +2544,15 @@
                     "typescript"
                 ],
                 "trees_url": "https://api.github.com/repos/leosuncin/nest-auth-example/git/trees{/sha}",
-                "updated_at": "2022-10-18T12:05:26Z",
+                "updated_at": "2022-11-06T09:02:48Z",
                 "url": "https://api.github.com/repos/leosuncin/nest-auth-example",
                 "visibility": "public",
-                "watchers": 203,
-                "watchers_count": 203,
+                "watchers": 204,
+                "watchers_count": 204,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/leosuncin/nest-auth-example",
-            "stargazers": 203
+            "stargazers": 204
         },
         {
             "info": {
@@ -2640,9 +2640,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-11-05T10:08:12Z",
+                "pushed_at": "2022-11-06T09:47:33Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 32562,
+                "size": 32566,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 197,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -4181,7 +4181,7 @@
                 "pulls_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/pulls{/number}",
                 "pushed_at": "2022-11-06T07:46:53Z",
                 "releases_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/releases{/id}",
-                "size": 9485,
+                "size": 9486,
                 "ssh_url": "git@github.com:oasisprotocol/oasis-wallet-web.git",
                 "stargazers_count": 79,
                 "stargazers_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/stargazers",
@@ -6873,11 +6873,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/rwaltr/home-ops/pulls{/number}",
-                "pushed_at": "2022-10-29T23:18:59Z",
+                "pushed_at": "2022-11-05T12:27:28Z",
                 "releases_url": "https://api.github.com/repos/rwaltr/home-ops/releases{/id}",
-                "size": 1829,
+                "size": 1837,
                 "ssh_url": "git@github.com:rwaltr/home-ops.git",
-                "stargazers_count": 24,
+                "stargazers_count": 25,
                 "stargazers_url": "https://api.github.com/repos/rwaltr/home-ops/stargazers",
                 "statuses_url": "https://api.github.com/repos/rwaltr/home-ops/statuses/{sha}",
                 "subscribers_count": 3,
@@ -6897,15 +6897,15 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/rwaltr/home-ops/git/trees{/sha}",
-                "updated_at": "2022-10-29T15:58:18Z",
+                "updated_at": "2022-10-31T17:34:01Z",
                 "url": "https://api.github.com/repos/rwaltr/home-ops",
                 "visibility": "public",
-                "watchers": 24,
-                "watchers_count": 24,
+                "watchers": 25,
+                "watchers_count": 25,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/rwaltr/infra",
-            "stargazers": 24
+            "stargazers": 25
         },
         {
             "info": {
@@ -6993,9 +6993,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ahmadnassri/node-nightwatch-accessibility/pulls{/number}",
-                "pushed_at": "2022-10-28T14:11:32Z",
+                "pushed_at": "2022-11-02T14:05:41Z",
                 "releases_url": "https://api.github.com/repos/ahmadnassri/node-nightwatch-accessibility/releases{/id}",
-                "size": 852,
+                "size": 847,
                 "ssh_url": "git@github.com:ahmadnassri/node-nightwatch-accessibility.git",
                 "stargazers_count": 17,
                 "stargazers_url": "https://api.github.com/repos/ahmadnassri/node-nightwatch-accessibility/stargazers",

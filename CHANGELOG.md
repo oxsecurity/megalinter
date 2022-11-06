@@ -8,71 +8,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Replace `set-output` usage with `GITHUB_OUTPUT`
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.14.0] - 2022-06-11
+
+- Core
+  - Replace `set-output` usage with `GITHUB_OUTPUT` to handle [Github deprecation notice](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
+  - Allow [PRE_COMMANDS](https://oxsecurity.github.io/megalinter/latest/configuration/#pre-commands) to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
+  - Correct behavior of `EXTENDS` property in `.megalinter.yml` config file ([#1516](https://github.com/oxsecurity/megalinter/issues/1516))
+  - Fix flavor suggestion message in reporters
+
 - New MegaLinter plugin: [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config), by [Yann Jouanique](https://github.com/Yann-J)
-- Correct behavior of `EXTENDS` ([#1516](https://github.com/oxsecurity/megalinter/issues/1516))
-- Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed ([#1997](https://github.com/oxsecurity/megalinter/issues/1997)).
-- Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) ([#2009](https://github.com/oxsecurity/megalinter/issues/2009))
-- Fix flavor suggestion message in reporters
-- Allow PRE_COMMANDS to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
-- Bring back rstfmt
-- Fix bicep version regex
+
+- Linters
+  - Bring back [rstfmt](https://oxsecurity.github.io/megalinter/latest/descriptors/rst_rstfmt/) RestructuredText formatter
+  - Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed ([#1997](https://github.com/oxsecurity/megalinter/issues/1997)).
+  - Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) ([#2009](https://github.com/oxsecurity/megalinter/issues/2009))
+  - Fix bicep version regex
 
 - Linter versions upgrades
-  - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0** on 2022-10-24
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.931** on 2022-10-24
-  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.12.2** on 2022-10-24
-  - [rubocop](https://rubocop.org/) from 1.37.0 to **1.37.1** on 2022-10-24
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.26.3** on 2022-10-24
-  - [djlint](https://djlint.com/) from 1.0.3 to **1.19.2** on 2022-10-24
-  - [phpstan](https://phpstan.org/) from 1.8.10 to **1.8.11** on 2022-10-24
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.982** on 2022-10-24
-  - [pylint](https://pylint.pycqa.org) from 2.12.2 to **2.15.5** on 2022-10-24
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0** on 2022-10-24
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1** on 2022-10-24
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.68.1 to **0.69.1** on 2022-10-26
-  - [djlint](https://djlint.com/) from 1.19.2 to **1.19.3** on 2022-10-26
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2** on 2022-10-26
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.1 to **7.16.2** on 2022-10-27
-  - [kics](https://www.kics.io) from 1.6.2 to **1.6.3** on 2022-10-27
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.2 to **7.17.1** on 2022-10-29
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.12.0 to **6.13.1** on 2022-10-29
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.0.0 to **11.1.0** on 2022-10-31
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.4 to **10.4** on 2022-10-31
-  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.4 to **5.3.0** on 2022-10-31
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.1 to **6.13.2** on 2022-10-31
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.2 to **1.4.0** on 2022-10-31
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.69.1 to **0.70.0** on 2022-10-31
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.1.0 to **11.1.1** on 2022-10-31
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.2 to **6.13.3** on 2022-10-31
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.17.1 to **7.18.0** on 2022-10-31
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.0 to **1.4.1** on 2022-10-31
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22** on 2022-11-01
-  - [rubocop](https://rubocop.org/) from 1.37.1 to **1.38.0** on 2022-11-01
-  - [revive](https://revive.run/) from 0.0.0 to **1.2.4** on 2022-11-01
-  - [syft](https://github.com/anchore/syft) from 0.59.0 to **0.60.1** on 2022-11-01
-  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.10 to **0.0.11** on 2022-11-01
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.0 to **0.70.1** on 2022-11-03
-  - [semgrep](https://semgrep.dev/) from 0.118.0 to **0.120.0** on 2022-11-03
-  - [syft](https://github.com/anchore/syft) from 0.60.1 to **0.60.2** on 2022-11-03
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.11.1 to **Bicep.CLI.version.0.12.1** on 2022-11-04
-  - [stylelint](https://stylelint.io) from 14.14.0 to **14.14.1** on 2022-11-04
-  - [djlint](https://djlint.com/) from 1.19.3 to **1.19.4** on 2022-11-04
-  - [phpstan](https://phpstan.org/) from 1.8.11 to **1.9.0** on 2022-11-04
-  - [syft](https://github.com/anchore/syft) from 0.60.2 to **0.60.3** on 2022-11-04
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.64 to **0.1.65** on 2022-11-04
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.0 to **7.18.1** on 2022-11-04
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.13.3 to **6.14.0** on 2022-11-04
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.3 to **1.3.4** on 2022-11-04
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from Bicep.CLI.version.0.12.1 to **0.12.1** on 2022-11-04
-  - [phpstan](https://phpstan.org/) from 1.9.0 to **1.9.1** on 2022-11-05
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.2 to **0.40.0** on 2022-11-05
-  - [eslint](https://eslint.org) from 8.26.0 to **8.27.0** on 2022-11-06
-<!-- linter-versions-end -->
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.11.1 to to **0.12.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.68.1 to **0.70.1**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.4 to **10.4**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.64 to **0.1.65**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.12.0 to **6.14.0**
+  - [djlint](https://djlint.com/) from 1.19.2 to **1.19.4**
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0**
+  - [eslint](https://eslint.org) from 8.26.0 to **8.27.0**
+  - [kics](https://www.kics.io) from 1.6.2 to **1.6.3**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.0.0 to **11.1.1**
+  - [phpstan](https://phpstan.org/) from 1.8.10 to **1.9.1**
+  - [revive](https://revive.run/) from 0.0.0 to **1.2.4**
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.10 to **0.0.11**
+  - [rubocop](https://rubocop.org/) from 1.37.0 to **1.38.0**
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.4 to **5.3.0**
+  - [semgrep](https://semgrep.dev/) from 0.118.0 to **0.120.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.1 to **7.18.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.2 to **1.4.1**
+  - [stylelint](https://stylelint.io) from 14.14.0 to **14.14.1**
+  - [syft](https://github.com/anchore/syft) from 0.59.0 to **0.60.3**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.3 to **1.3.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.2 to **0.40.0**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1**
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.26.3**
 
 ## [v6.13.0] - 2022-10-24
 
