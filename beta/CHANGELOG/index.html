@@ -5548,6 +5548,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6140-2022-06-11" class="md-nav__link">
+    [v6.14.0] - 2022-06-11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6130-2022-10-24" class="md-nav__link">
     [v6.13.0] - 2022-10-24
   </a>
@@ -6303,6 +6310,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6140-2022-06-11" class="md-nav__link">
+    [v6.14.0] - 2022-06-11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6130-2022-10-24" class="md-nav__link">
     [v6.13.0] - 2022-10-24
   </a>
@@ -7042,76 +7056,66 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Replace <code>set-output</code> usage with <code>GITHUB_OUTPUT</code></li>
-<li>New MegaLinter plugin: <a href="https://github.com/one-acre-fund/mega-linter-plugin-logstash">mustache</a>: Plugin to validate <a href="https://www.elastic.co/guide/en/logstash/current/configuration.html">Logstash</a> pipeline definition files using <a href="https://github.com/breml/logstash-config">mustache</a>, by <a href="https://github.com/Yann-J">Yann Jouanique</a></li>
-<li>Correct behavior of <code>EXTENDS</code> (<a href="https://github.com/oxsecurity/megalinter/issues/1516">#1516</a>)</li>
-<li>Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed (<a href="https://github.com/oxsecurity/megalinter/issues/1997">#1997</a>).</li>
-<li>Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) (<a href="https://github.com/oxsecurity/megalinter/issues/2009">#2009</a>)</li>
-<li>Fix flavor suggestion message in reporters</li>
-<li>Allow PRE_COMMANDS to be defined within a python venv (<a href="https://github.com/oxsecurity/megalinter/issues/2017">#2017</a>)</li>
-<li>Bring back rstfmt</li>
-<li>Fix bicep version regex</li>
-</ul>
-<ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://djlint.com/">djlint</a> from 1.19.2 to <strong>1.0.3</strong> on 2022-10-24</li>
-<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.4.0 to <strong>2.5.0</strong> on 2022-10-24</li>
-<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 0.982 to <strong>0.931</strong> on 2022-10-24</li>
-<li><a href="https://pylint.pycqa.org">pylint</a> from 2.15.5 to <strong>2.12.2</strong> on 2022-10-24</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.37.0 to <strong>1.37.1</strong> on 2022-10-24</li>
-<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.28.0 to <strong>1.26.3</strong> on 2022-10-24</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.0.3 to <strong>1.19.2</strong> on 2022-10-24</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.8.10 to <strong>1.8.11</strong> on 2022-10-24</li>
-<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 0.931 to <strong>0.982</strong> on 2022-10-24</li>
-<li><a href="https://pylint.pycqa.org">pylint</a> from 2.12.2 to <strong>2.15.5</strong> on 2022-10-24</li>
-<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.26.3 to <strong>1.28.0</strong> on 2022-10-24</li>
-<li><a href="https://github.com/yannh/kubeconform">kubeconform</a> from 0.4.12 to <strong>0.5.0</strong> on 2022-10-24</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.41.0 to <strong>0.42.1</strong> on 2022-10-24</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.68.1 to <strong>0.69.1</strong> on 2022-10-26</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.19.2 to <strong>1.19.3</strong> on 2022-10-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.9 to <strong>3.6.2</strong> on 2022-10-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.9 to <strong>3.6.2</strong> on 2022-10-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.9 to <strong>3.6.2</strong> on 2022-10-26</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.16.1 to <strong>7.16.2</strong> on 2022-10-27</li>
-<li><a href="https://www.kics.io">kics</a> from 1.6.2 to <strong>1.6.3</strong> on 2022-10-27</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.16.2 to <strong>7.17.1</strong> on 2022-10-29</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.12.0 to <strong>6.13.1</strong> on 2022-10-29</li>
-<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 11.0.0 to <strong>11.1.0</strong> on 2022-10-31</li>
-<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.3.4 to <strong>10.4</strong> on 2022-10-31</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.2.4 to <strong>5.3.0</strong> on 2022-10-31</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.13.1 to <strong>6.13.2</strong> on 2022-10-31</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.2 to <strong>1.4.0</strong> on 2022-10-31</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.69.1 to <strong>0.70.0</strong> on 2022-10-31</li>
-<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 11.1.0 to <strong>11.1.1</strong> on 2022-10-31</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.13.2 to <strong>6.13.3</strong> on 2022-10-31</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.17.1 to <strong>7.18.0</strong> on 2022-10-31</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.4.0 to <strong>1.4.1</strong> on 2022-10-31</li>
-<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.6.21 to <strong>1.6.22</strong> on 2022-11-01</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.37.1 to <strong>1.38.0</strong> on 2022-11-01</li>
-<li><a href="https://revive.run/">revive</a> from 0.0.0 to <strong>1.2.4</strong> on 2022-11-01</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.59.0 to <strong>0.60.1</strong> on 2022-11-01</li>
-<li><a href="https://github.com/dzhu/rstfmt">rstfmt</a> from 0.0.10 to <strong>0.0.11</strong> on 2022-11-01</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.70.0 to <strong>0.70.1</strong> on 2022-11-03</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.118.0 to <strong>0.120.0</strong> on 2022-11-03</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.60.1 to <strong>0.60.2</strong> on 2022-11-03</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from Bicep.CLI.version.0.11.1 to <strong>Bicep.CLI.version.0.12.1</strong> on 2022-11-04</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.14.0 to <strong>14.14.1</strong> on 2022-11-04</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.19.3 to <strong>1.19.4</strong> on 2022-11-04</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.8.11 to <strong>1.9.0</strong> on 2022-11-04</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.60.2 to <strong>0.60.3</strong> on 2022-11-04</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.64 to <strong>0.1.65</strong> on 2022-11-04</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.18.0 to <strong>7.18.1</strong> on 2022-11-04</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.13.3 to <strong>6.14.0</strong> on 2022-11-04</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.3 to <strong>1.3.4</strong> on 2022-11-04</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from Bicep.CLI.version.0.12.1 to <strong>0.12.1</strong> on 2022-11-04</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.9.0 to <strong>1.9.1</strong> on 2022-11-05</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.39.2 to <strong>0.40.0</strong> on 2022-11-05</li>
-<li><a href="https://eslint.org">eslint</a> from 8.26.0 to <strong>8.27.0</strong> on 2022-11-06</li>
-</ul>
-</li>
+<li>Linter versions upgrades</li>
 </ul>
 <!-- linter-versions-end -->
 
+<h2 id="v6140-2022-06-11">[v6.14.0] - 2022-06-11</h2>
+<ul>
+<li>Core<ul>
+<li>Replace <code>set-output</code> usage with <code>GITHUB_OUTPUT</code> to handle <a href="https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/">Github deprecation notice</a></li>
+<li>Allow <a href="https://oxsecurity.github.io/megalinter/latest/configuration/#pre-commands">PRE_COMMANDS</a> to be defined within a python venv (<a href="https://github.com/oxsecurity/megalinter/issues/2017">#2017</a>)</li>
+<li>Correct behavior of <code>EXTENDS</code> property in <code>.megalinter.yml</code> config file (<a href="https://github.com/oxsecurity/megalinter/issues/1516">#1516</a>)</li>
+<li>Fix flavor suggestion message in reporters</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>New MegaLinter plugin: <a href="https://github.com/one-acre-fund/mega-linter-plugin-logstash">mustache</a>: Plugin to validate <a href="https://www.elastic.co/guide/en/logstash/current/configuration.html">Logstash</a> pipeline definition files using <a href="https://github.com/breml/logstash-config">mustache</a>, by <a href="https://github.com/Yann-J">Yann Jouanique</a></li>
+</ul>
+<ul>
+<li>Linters<ul>
+<li>Bring back <a href="https://oxsecurity.github.io/megalinter/latest/descriptors/rst_rstfmt/">rstfmt</a> RestructuredText formatter</li>
+<li>Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed (<a href="https://github.com/oxsecurity/megalinter/issues/1997">#1997</a>).</li>
+<li>Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) (<a href="https://github.com/oxsecurity/megalinter/issues/2009">#2009</a>)</li>
+<li>Fix bicep version regex</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.6.21 to <strong>1.6.22</strong></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.11.1 to to <strong>0.12.1</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.68.1 to <strong>0.70.1</strong></li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.3.4 to <strong>10.4</strong></li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.64 to <strong>0.1.65</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.12.0 to <strong>6.14.0</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.19.2 to <strong>1.19.4</strong></li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.4.0 to <strong>2.5.0</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.26.0 to <strong>8.27.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.2 to <strong>1.6.3</strong></li>
+<li><a href="https://github.com/yannh/kubeconform">kubeconform</a> from 0.4.12 to <strong>0.5.0</strong></li>
+<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 11.0.0 to <strong>11.1.1</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.8.10 to <strong>1.9.1</strong></li>
+<li><a href="https://revive.run/">revive</a> from 0.0.0 to <strong>1.2.4</strong></li>
+<li><a href="https://github.com/dzhu/rstfmt">rstfmt</a> from 0.0.10 to <strong>0.0.11</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.37.0 to <strong>1.38.0</strong></li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.2.4 to <strong>5.3.0</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 0.118.0 to <strong>0.120.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.13.9 to <strong>3.6.2</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.13.9 to <strong>3.6.2</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.13.9 to <strong>3.6.2</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.16.1 to <strong>7.18.1</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.3.2 to <strong>1.4.1</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.14.0 to <strong>14.14.1</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.59.0 to <strong>0.60.3</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.3 to <strong>1.3.4</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.39.2 to <strong>0.40.0</strong></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.41.0 to <strong>0.42.1</strong></li>
+<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.26.3 to <strong>1.26.3</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v6130-2022-10-24">[v6.13.0] - 2022-10-24</h2>
 <ul>
 <li>New <a href="https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/#readme">cupcake flavor</a> with 78 instead of 108 linters</li>
