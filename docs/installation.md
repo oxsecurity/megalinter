@@ -343,7 +343,7 @@ resources:
 1. Create a `.drone.yml` file on the root directory of your repository
 
 2. Copy and paste the following template:
-   
+
 ```yaml
 kind: pipeline
 type: docker
