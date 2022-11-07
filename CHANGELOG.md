@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11** on 2022-11-07
   - [djlint](https://djlint.com/) from 1.19.4 to **1.19.5** on 2022-11-07
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.1** on 2022-11-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.71.0** on 2022-11-07
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.990** on 2022-11-07
 <!-- linter-versions-end -->
 
 

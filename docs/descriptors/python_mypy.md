@@ -15,7 +15,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.982**
+- Version in MegaLinter: **0.990**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -117,6 +117,11 @@ command line flags. For more details, see:
 
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
+options:
+  --enable-incomplete-feature FEATURE
+                            Enable support of incomplete/experimental features
+                            for early preview
+
 Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
@@ -137,8 +142,8 @@ Config file:
 Import discovery:
   Configure how imports are discovered and followed.
 
-  --namespace-packages      Support namespace packages (PEP 420, __init__.py-
-                            less) (inverse: --no-namespace-packages)
+  --no-namespace-packages   Support namespace packages (PEP 420, __init__.py-
+                            less) (inverse: --namespace-packages)
   --ignore-missing-imports  Silently ignore imports of missing modules
   --follow-imports {normal,silent,skip,error}
                             How to treat imports (default normal)
@@ -210,8 +215,8 @@ None and Optional handling:
   https://mypy.readthedocs.io/en/stable/kinds_of_types.html#no-strict-
   optional
 
-  --no-implicit-optional    Don't assume arguments with default values of None
-                            are Optional (inverse: --implicit-optional)
+  --implicit-optional       Assume arguments with default values of None are
+                            Optional (inverse: --no-implicit-optional)
   --no-strict-optional      Disable strict Optional checks (inverse: --strict-
                             optional)
 
@@ -247,10 +252,10 @@ Miscellaneous strictness flags:
                             --disallow-subclassing-any, --disallow-untyped-
                             calls, --disallow-untyped-defs, --disallow-
                             incomplete-defs, --check-untyped-defs, --disallow-
-                            untyped-decorators, --no-implicit-optional,
-                            --warn-redundant-casts, --warn-unused-ignores,
-                            --warn-return-any, --no-implicit-reexport,
-                            --strict-equality, --strict-concatenate
+                            untyped-decorators, --warn-redundant-casts,
+                            --warn-unused-ignores, --warn-return-any, --no-
+                            implicit-reexport, --strict-equality, --strict-
+                            concatenate
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -265,8 +270,8 @@ Configuring error messages:
   --show-error-end          Show end line/end column numbers in error
                             messages. This implies --show-column-numbers
                             (inverse: --hide-error-end)
-  --show-error-codes        Show error codes in error messages (inverse:
-                            --hide-error-codes)
+  --hide-error-codes        Hide error codes in error messages (inverse:
+                            --show-error-codes)
   --pretty                  Use visually nicer output in error messages: Use
                             soft word wrap, show source code snippets, and
                             show error location markers (inverse: --no-pretty)
@@ -303,8 +308,9 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
-  --enable-recursive-aliases
-                            Experimental support for recursive type aliases
+  --disable-recursive-aliases
+                            Disable experimental support for recursive type
+                            aliases
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only
