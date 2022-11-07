@@ -661,12 +661,10 @@ resources:
    type: docker
    name: MegaLinter
    
-   
    workspace:
      path: /tmp/lint
    
    steps: 
-   
    
    - name: megalinter
      image: oxsecurity/megalinter:v6
