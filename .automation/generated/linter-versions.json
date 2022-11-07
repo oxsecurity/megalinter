@@ -13,7 +13,7 @@
     "chktex": "1.7.6",
     "clippy": "0.1.65",
     "clj-kondo": "2022.10.14",
-    "coffeelint": "5.2.10",
+    "coffeelint": "5.2.11",
     "cpplint": "1.6.1",
     "cspell": "6.14.0",
     "dartanalyzer": "0.0.0",
