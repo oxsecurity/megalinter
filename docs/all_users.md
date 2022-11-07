@@ -70,6 +70,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
 [![eresturo/scanadf2docspell - GitHub](https://gh-card.dev/repos/eresturo/scanadf2docspell.svg?fullname=)](https://github.com/eresturo/scanadf2docspell){target=_blank}
+[![lars-reimann/api-editor - GitHub](https://gh-card.dev/repos/lars-reimann/api-editor.svg?fullname=)](https://github.com/lars-reimann/api-editor){target=_blank}
 [![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
 [![Qarj/WebImblaze - GitHub](https://gh-card.dev/repos/Qarj/WebImblaze.svg?fullname=)](https://github.com/Qarj/WebImblaze){target=_blank}
 [![llaville/php-compatinfo-db - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo-db.svg?fullname=)](https://github.com/llaville/php-compatinfo-db){target=_blank}
