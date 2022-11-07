@@ -370,6 +370,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#drone-ci" class="md-nav__link">
+    Drone CI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-megalinter-locally" class="md-nav__link">
     Run MegaLinter locally
   </a>
@@ -5734,6 +5741,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#drone-ci" class="md-nav__link">
+    Drone CI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-megalinter-locally" class="md-nav__link">
     Run MegaLinter locally
   </a>
@@ -6061,6 +6075,31 @@ run:
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
 </code></pre>
+<h2 id="drone-ci">Drone CI</h2>
+<p><strong>Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue <a href="https://github.com/oxsecurity/megalinter/issues/2047">#2047</a>).</strong></p>
+<ol>
+<li>
+<p>Create a <code>.drone.yml</code> file on the root directory of your repository</p>
+</li>
+<li>
+<p>Copy and paste the following template:</p>
+</li>
+</ol>
+<pre><code class="language-yaml">kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+</code></pre>
+<p>This uses the <a href="https://docs.drone.io/pipeline/docker/overview/">Drone CI docker runner</a>, so it's needed to install and configure it beforehand on your Drone CI server.</p>
 <h2 id="run-megalinter-locally">Run MegaLinter locally</h2>
 <p><a href="https://npmjs.org/package/mega-linter-runner"><img alt="Version" src="https://img.shields.io/npm/v/mega-linter-runner.svg" /></a>
 <a href="https://npmjs.org/package/mega-linter-runner"><img alt="Downloads/week" src="https://img.shields.io/npm/dw/mega-linter-runner.svg" /></a>
