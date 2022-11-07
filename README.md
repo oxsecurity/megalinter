@@ -91,6 +91,7 @@ _Github PR reporter_
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
+    - [Drone CI](#drone-ci)
     - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
@@ -647,6 +648,32 @@ resources:
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
 ```
+
+### Drone CI
+
+**Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
+
+1. Create a `.drone.yml` file on the root directory of your repository
+
+2. Copy and paste the following template:
+   
+```yaml
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+```
+
+This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
 
 ### Run MegaLinter locally
 
