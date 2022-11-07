@@ -59,7 +59,7 @@
     "powershell": "7.2.7",
     "prettier": "2.7.1",
     "proselint": "0.13.0",
-    "protolint": "0.41.0",
+    "protolint": "0.42.0",
     "psalm": "Psalm.5.x-dev@",
     "puppet-lint": "3.0.1",
     "pylint": "2.15.5",

@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6328,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 29135,
+                "stargazers_count": 29139,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 123,
@@ -127,15 +127,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-11-06T22:40:45Z",
+                "updated_at": "2022-11-07T00:08:38Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 29135,
-                "watchers_count": 29135,
+                "watchers": 29139,
+                "watchers_count": 29139,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 29135
+            "stargazers": 29139
         },
         {
             "info": {
@@ -592,7 +592,7 @@
                 "releases_url": "https://api.github.com/repos/dorssel/usbipd-win/releases{/id}",
                 "size": 1498,
                 "ssh_url": "git@github.com:dorssel/usbipd-win.git",
-                "stargazers_count": 1371,
+                "stargazers_count": 1372,
                 "stargazers_url": "https://api.github.com/repos/dorssel/usbipd-win/stargazers",
                 "statuses_url": "https://api.github.com/repos/dorssel/usbipd-win/statuses/{sha}",
                 "subscribers_count": 31,
@@ -613,15 +613,15 @@
                     "wsl2"
                 ],
                 "trees_url": "https://api.github.com/repos/dorssel/usbipd-win/git/trees{/sha}",
-                "updated_at": "2022-11-06T10:09:29Z",
+                "updated_at": "2022-11-07T00:59:57Z",
                 "url": "https://api.github.com/repos/dorssel/usbipd-win",
                 "visibility": "public",
-                "watchers": 1371,
-                "watchers_count": 1371,
+                "watchers": 1372,
+                "watchers_count": 1372,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/dorssel/usbipd-win",
-            "stargazers": 1371
+            "stargazers": 1372
         },
         {
             "info": {
@@ -685,8 +685,8 @@
                 "network_count": 135,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 48,
-                "open_issues_count": 48,
+                "open_issues": 49,
+                "open_issues_count": 49,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -729,9 +729,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-11-06T20:16:04Z",
+                "pushed_at": "2022-11-06T23:52:58Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 273789,
+                "size": 273433,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
                 "stargazers_count": 917,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
@@ -5888,9 +5888,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
-                "pushed_at": "2022-11-06T23:13:49Z",
+                "pushed_at": "2022-11-06T23:16:10Z",
                 "releases_url": "https://api.github.com/repos/jr0dd/home-ops/releases{/id}",
-                "size": 5796,
+                "size": 5806,
                 "ssh_url": "git@github.com:jr0dd/home-ops.git",
                 "stargazers_count": 35,
                 "stargazers_url": "https://api.github.com/repos/jr0dd/home-ops/stargazers",
