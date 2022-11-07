@@ -9,8 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
-- Initial Drone CI documentation
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.41.0 to **0.42.0** on 2022-11-07
+  - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11** on 2022-11-07
 <!-- linter-versions-end -->
+- Initial Drone CI documentation
 
 ## [v6.14.0] - 2022-06-11
 
