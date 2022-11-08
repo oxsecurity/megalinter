@@ -17,7 +17,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **0.120.0**
+- Version in MegaLinter: **0.121.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}

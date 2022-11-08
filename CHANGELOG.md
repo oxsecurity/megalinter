@@ -17,6 +17,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.1** on 2022-11-07
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.71.0** on 2022-11-07
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.990** on 2022-11-07
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40** on 2022-11-08
+  - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.121.0** on 2022-11-08
 <!-- linter-versions-end -->
 
 
