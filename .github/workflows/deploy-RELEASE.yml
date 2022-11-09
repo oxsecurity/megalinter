@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     # Only run on main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
-    environment: 
+    environment:
       name: latest
     ##################
     # Load all steps #
@@ -48,8 +48,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
@@ -100,20 +98,6 @@ jobs:
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
-      ##############################################
-      # Check Docker image security with Trivy #
-      ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}"
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
-
   deploy_doc:
     runs-on: ubuntu-latest
     needs: build
@@ -125,20 +109,22 @@ jobs:
       - name: Get release version
         id: version
         run: |
-          echo "::set-output name=cversion::$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
-          echo "::set-output name=ctag::$(git describe --tags --match='v*' --abbrev=0)"
-          echo "::set-output name=pversion::$(git describe --abbrev=0 --match='v*' --tags $(git rev-list --tags --skip=1 --max-count=1) | cut -c2-)"
-          echo "::set-output name=ptag::$(git describe --abbrev=0 --match='v*' --tags $(git rev-list --tags --skip=1 --max-count=1))"
+          {
+            echo "cversion=$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
+            echo "ctag=$(git describe --tags --match='v*' --abbrev=0)"
+            echo "pversion=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)" | cut -c2-)"
+            echo "ptag=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)")"
+          } >>"$GITHUB_OUTPUT"
       - name: Print tags
         run: |
           echo "prev tag ${{ steps.version.outputs.ptag }}"
           echo "curr tag ${{ steps.version.outputs.ctag }}"
           echo "prev ver ${{ steps.version.outputs.pversion }}"
           echo "curr ver ${{ steps.version.outputs.cversion }}"
-      - uses: actions/setup-python@v3.1.2
+      - uses: actions/setup-python@v4.3.0
         with:
           python-version: 3.x
-      - run: pip install mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
+      - run: pip install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
       - run: |

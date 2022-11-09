@@ -38,6 +38,7 @@ REPO_HOME = (
 def linter_test_setup(params=None):
     for key in [
         "APPLY_FIXES",
+        "CLEAR_REPORT_FOLDER",
         "ENABLE",
         "ENABLE_LINTERS",
         "DISABLE",
@@ -55,6 +56,8 @@ def linter_test_setup(params=None):
         "DISABLE_ERRORS",
         "SARIF_REPORTER",
         "LOG_FILE",
+        "REPORT_OUTPUT_FOLDER",
+        "OUTPUT_FOLDER",
         "REPOSITORY_SEMGREP_RULESETS_TYPE",
         "REPOSITORY_SEMGREP_RULESETS",
     ]:
@@ -95,6 +98,7 @@ def linter_test_setup(params=None):
     config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
+    config.set_value("CLEAR_REPORT_FOLDER", "true")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
             "additional_test_variables"
@@ -118,7 +122,7 @@ def linter_test_setup(params=None):
 
 
 def print_output(output):
-    if config.exists("OUTPUT_DETAILS") and config.get("OUTPUT_DETAILS") == "detailed":
+    if config.exists("OUTPUT_DETAIL") and config.get("OUTPUT_DETAIL") == "detailed":
         for line in output.splitlines():
             print(line)
 
@@ -157,7 +161,7 @@ def test_linter_success(linter, test_self):
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
-        workspace = manage_copy_sources(workspace)
+    workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
@@ -215,7 +219,7 @@ def test_linter_failure(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
-        workspace = manage_copy_sources(workspace)
+    workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
@@ -455,7 +459,7 @@ def test_linter_report_tap(linter, test_self):
             f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
         )
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "OUTPUT_FORMAT": "tap",
@@ -528,7 +532,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
-    tmp_report_folder = tempfile.gettempdir()
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "SARIF_REPORTER": "true",
@@ -561,6 +565,23 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
+    # Check number of errors is ok
+    for linter in mega_linter.linters:
+        if (
+            linter.output_sarif is True
+            and linter.cli_lint_mode != "file"
+            and linter.name
+            not in [
+                "REPOSITORY_DUSTILOCK",
+                "REPOSITORY_SYFT",
+            ]
+        ):
+            test_self.assertTrue(
+                linter.total_number_errors > 1,
+                f"Missing multiple sarif errors in {linter.name}"
+                + f" ({linter.total_number_errors})\n"
+                + f"SARIF:{str(sarif_content)}",
+            )
 
 
 def assert_is_skipped(skipped_item, output, test_self):

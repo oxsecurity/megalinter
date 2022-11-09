@@ -8,6 +8,7 @@ import argparse
 import logging
 import multiprocessing as mp
 import os
+import shutil
 import sys
 
 import chalk as c
@@ -26,6 +27,7 @@ from megalinter.constants import (
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
 )
+from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
 
 
@@ -54,7 +56,7 @@ class Megalinter:
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
-        self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
+        self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
         self.initialize_logger()
         self.manage_upgrade_message()
@@ -93,6 +95,8 @@ class Megalinter:
             config.get("SHOW_ELAPSED_TIME", "false") == "true"
             or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
         )
+        # In case SARIF is active, convert results into human readable text for logs
+        self.sarif_to_human = config.get("SARIF_TO_HUMAN", "true") == "true"
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -118,6 +122,7 @@ class Megalinter:
         self.compute_file_extensions()
         # Load MegaLinter reporters
         self.load_reporters()
+        logging.info(log_section_end("megalinter-init"))
 
     # Collect files, run linters on them and write reports
     def run(self):
@@ -130,6 +135,12 @@ class Megalinter:
             return
 
         # Collect files for each identified linter
+        logging.info(
+            log_section_start(
+                "megalinter-file-listing",
+                "MegaLinter now collects the files to analyse",
+            )
+        )
         self.collect_files()
 
         # Process linters serial or parallel according to configuration
@@ -154,7 +165,7 @@ class Megalinter:
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
-            self.process_linters_serial(active_linters, linters_do_fixes)
+            self.process_linters_serial(active_linters)
 
         # Update main MegaLinter status according to results of linters run
         for linter in self.linters:
@@ -199,7 +210,7 @@ class Megalinter:
         self.check_results()
 
     # noinspection PyMethodMayBeStatic
-    def process_linters_serial(self, active_linters, _linters_do_fixes):
+    def process_linters_serial(self, active_linters):
         for linter in active_linters:
             linter.run()
 
@@ -208,18 +219,34 @@ class Megalinter:
         if linters_do_fixes is True:
             # Group linters by descriptor, to avoid different linters to update files at the same time
             linters_by_descriptor = {}
+            linter_groups_without_fixes = []
             for linter in active_linters:
-                descriptor_active_linters = linters_by_descriptor.get(
-                    linter.descriptor_id, []
-                )
-                descriptor_active_linters += [linter]
-                linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
+                if linter.apply_fixes is True:
+                    # If the linter can update sources, it must be run in the same group than
+                    # other linters that can update the same sources
+                    descriptor_active_linters = linters_by_descriptor.get(
+                        linter.descriptor_id, []
+                    )
+                    descriptor_active_linters += [linter]
+                    linters_by_descriptor[
+                        linter.descriptor_id
+                    ] = descriptor_active_linters
+                else:
+                    # If the linter can not updates sources, no need to run it in the same group
+                    linter_groups_without_fixes += [[linter]]
+            # Add groups of linters that can update sources
             for _descriptor_id, linters in linters_by_descriptor.items():
                 linter_groups += [linters]
+            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
+            # Add "groups" of 1 linter than can not update sources
+            linter_groups += linter_factory.sort_linters_groups_by_speed(
+                linter_groups_without_fixes
+            )
         else:
             # If no fixes are applied, we don't care to run same languages linters at the same time
             for linter in active_linters:
                 linter_groups += [[linter]]
+            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
         # Execute linters in asynchronous pool to improve overall performances
         install_mp_handler()
         pool = mp.Pool(mp.cpu_count())
@@ -448,15 +475,25 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
-        # Remove inactive or disabled linters
+        # Remove inactive, disabled or skipped linters
+        skip_cli_lint_modes = config.get_list("SKIP_CLI_LINT_MODES", [])
         for linter in all_linters:
             linter.master = self
-            if linter.is_active is False or linter.disabled is True:
+            if (
+                linter.is_active is False
+                or linter.disabled is True
+                or linter.cli_lint_mode in skip_cli_lint_modes
+            ):
                 skipped_linters += [linter.name]
                 if linter.disabled is True:
                     logging.warning(
                         f"{linter.name} has been temporary disabled in MegaLinter, please use a "
                         "previous MegaLinter version or wait for the next one !"
+                    )
+                if linter.cli_lint_mode in skip_cli_lint_modes:
+                    logging.info(
+                        f"{linter.name} has been skipped because its CLI lint mode"
+                        " {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
                     )
                 continue
             self.linters += [linter]
@@ -492,7 +529,23 @@ class Megalinter:
     # Collect list of files matching extensions and regex
     def collect_files(self):
         # Collect not filtered list of files
-        if self.validate_all_code_base is False:
+        files_to_lint = config.get_list("MEGALINTER_FILES_TO_LINT", [])
+        if len(files_to_lint) > 0:
+            # Files sent as input parameter
+            all_files = list()
+            for file_to_lint in files_to_lint:
+                if os.path.isfile(self.workspace + os.path.sep + file_to_lint):
+                    all_files += [self.workspace + os.path.sep + file_to_lint]
+                else:
+                    logging.warning(
+                        "[File listing] Input file "
+                        + self.workspace
+                        + os.path.sep
+                        + file_to_lint
+                        + " not found"
+                    )
+        elif self.validate_all_code_base is False:
+            # List files using git diff
             try:
                 all_files = self.list_files_git_diff()
             except git.InvalidGitRepositoryError as git_err:
@@ -503,18 +556,20 @@ class Megalinter:
                 all_files = self.list_files_all()
                 self.validate_all_code_base = True
         else:
+            # List all files
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
 
         logging.debug(
             "All found files before filtering:" + utils.format_bullet_list(all_files)
         )
-        # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
-        if len(self.file_extensions) > 0:
+        # Filter files according to file_extensions, file_names_regex,
+        # filter_regex_include, and filter_regex_exclude
+        if self.file_extensions:
             logging.info(
                 "- File extensions: " + ", ".join(sorted(self.file_extensions))
             )
-        if len(self.file_names_regex) > 0:
+        if self.file_names_regex:
             logging.info(
                 "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
             )
@@ -675,8 +730,18 @@ class Megalinter:
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
+        # Do not initialize reports if report folder is none or false
+        if not utils.can_write_report_files(self):
+            return
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)
+        # Clear report folder if requested
+        if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
+            logging.info(
+                f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
+            )
+            shutil.rmtree(self.report_folder, ignore_errors=True)
+            os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
@@ -697,10 +762,7 @@ class Megalinter:
         log_file = (
             self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
         )
-        if (
-            config.get("LOG_FILE", "") == "none"
-            or config.get("PARALLEL", "true") == "true"
-        ):
+        if config.get("LOG_FILE", "") == "none":
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
@@ -728,7 +790,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("MegaLinter"))
+        logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -743,6 +805,7 @@ class Megalinter:
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
+        logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
         if os.environ.get("GITHUB_REPOSITORY", "") != "":
             logging.info(
                 "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
@@ -759,7 +822,12 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
-        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
+        if "GITHUB_OUTPUT" in os.environ:
+            github_output_file = os.environ["GITHUB_OUTPUT"]
+            with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                output_stream.write(
+                    f"has_updated_sources={str(self.has_updated_sources)}\n"
+                )
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()

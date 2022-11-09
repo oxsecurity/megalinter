@@ -15,6 +15,8 @@ PRE_COMMANDS:
     cwd: "root"
   - command: echo "pre-test command has been called"
     cwd: "workspace"
+  - command: pip install flake8-cognitive-complexity
+    venv: flake8
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"

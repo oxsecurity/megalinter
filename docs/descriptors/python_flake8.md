@@ -4,7 +4,7 @@
 
 ## flake8 documentation
 
-- Version in MegaLinter: **4.0.1**
+- Version in MegaLinter: **5.0.4**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file is not found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -15,8 +15,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -47,10 +47,11 @@ Use flake8 in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor           |       101        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -62,7 +63,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- flake8 is called once with the list of files as arguments
+- flake8 is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -99,17 +100,26 @@ options:
                         config source. This will cause Flake8 to ignore all
                         other configuration files.
   --isolated            Ignore all configuration files.
+  --enable-extensions ENABLE_EXTENSIONS
+                        Enable plugins and extensions that are otherwise
+                        disabled by default
+  --require-plugins REQUIRE_PLUGINS
+                        Require specific plugins to be installed before
+                        running
   --version             show program's version number and exit
   -q, --quiet           Report only file names, or nothing. This option is
                         repeatable.
-  --count               Print total number of errors and warnings to standard
-                        error and set the exit code to 1 if total is not
-                        empty.
-  --diff                Report changes only within line number ranges in the
-                        unified diff provided on standard in by the user.
+  --color {auto,always,never}
+                        Whether to use color in output. Defaults to `auto`.
+  --count               Print total number of errors to standard output and
+                        set the exit code to 1 if total is not empty.
+  --diff                (DEPRECATED) Report changes only within line number
+                        ranges in the unified diff provided on standard in by
+                        the user.
   --exclude patterns    Comma-separated list of files or directories to
                         exclude. (Default: ['.svn', 'CVS', '.bzr', '.hg',
-                        '.git', '__pycache__', '.tox', '.eggs', '*.egg'])
+                        '.git', '__pycache__', '.tox', '.nox', '.eggs',
+                        '*.egg'])
   --extend-exclude patterns
                         Comma-separated list of files or directories to add to
                         the list of excluded ones.
@@ -122,13 +132,12 @@ options:
   --format format       Format errors according to the chosen formatter.
   --hang-closing        Hang closing bracket instead of matching indentation
                         of opening bracket's line.
-  --ignore errors       Comma-separated list of errors and warnings to ignore
-                        (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E704', 'W504', 'E123', 'E121', 'W503',
-                        'E226', 'E126', 'E24'])
+  --ignore errors       Comma-separated list of error codes to ignore (or
+                        skip). For example, ``--ignore=E4,E51,W234``.
+                        (Default: E121,E123,E126,E226,E24,E704,W503,W504)
   --extend-ignore errors
-                        Comma-separated list of errors and warnings to add to
-                        the list of ignored ones. For example, ``--extend-
+                        Comma-separated list of error codes to add to the list
+                        of ignored ones. For example, ``--extend-
                         ignore=E4,E51,W234``.
   --per-file-ignores PER_FILE_IGNORES
                         A pairing of filenames and violation codes that
@@ -142,21 +151,18 @@ options:
   --max-doc-length n    Maximum allowed doc line length for the entirety of
                         this run. (Default: None)
   --indent-size n       Number of spaces used for indentation (Default: 4)
-  --select errors       Comma-separated list of errors and warnings to enable.
-                        For example, ``--select=E4,E51,W234``. (Default: ['E',
-                        'F', 'W', 'C90'])
+  --select errors       Comma-separated list of error codes to enable. For
+                        example, ``--select=E4,E51,W234``. (Default:
+                        E,F,W,C90)
   --extend-select errors
-                        Comma-separated list of errors and warnings to add to
-                        the list of selected ones. For example, ``--extend-
+                        Comma-separated list of error codes to add to the list
+                        of selected ones. For example, ``--extend-
                         select=E4,E51,W234``.
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.
   --no-show-source      Negate --show-source
-  --statistics          Count errors and warnings.
-  --enable-extensions ENABLE_EXTENSIONS
-                        Enable plugins and extensions that are otherwise
-                        disabled by default
+  --statistics          Count errors.
   --exit-zero           Exit with status code "0" even if there are errors.
   -j JOBS, --jobs JOBS  Number of subprocesses to use to run checks in
                         parallel. This is ignored on Windows. The default,
@@ -179,7 +185,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.9.1, pyflakes: 2.5.0
 ```
 
 ### Installation on mega-linter Docker image

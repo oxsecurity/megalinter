@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
 
       # MegaLinter
       - name: MegaLinter
@@ -40,14 +40,14 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://oxsecurity.github.io/megalinter/configuration/
-          VALIDATE_ALL_CODEBASE: <%= VALIDATE_ALL_CODE_BASE_GHA %>
+          VALIDATE_ALL_CODEBASE: <%- VALIDATE_ALL_CODE_BASE_GHA %>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |

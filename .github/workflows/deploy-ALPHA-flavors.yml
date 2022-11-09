@@ -77,8 +77,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       #####################
       # Run Deploy script #
@@ -113,6 +111,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
+          security-checks: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 5m0s

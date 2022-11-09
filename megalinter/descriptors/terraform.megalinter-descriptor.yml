@@ -1,6 +1,7 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
 descriptor_flavors:
+  - cupcake
   - terraform
 file_extensions:
   - ".tf"
@@ -11,6 +12,7 @@ linters:
     linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://github.com/terraform-linters/tflint
@@ -25,10 +27,9 @@ linters:
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
-    downgraded_version: true
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -36,6 +37,7 @@ linters:
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.accurics.com/products/terrascan/
@@ -74,6 +76,7 @@ linters:
     file_names_not_ends_with:
       - ".tflint.hcl"
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://terragrunt.gruntwork.io
@@ -136,12 +139,16 @@ linters:
     test_folder: terraform_fmt
     version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"
   # CHECKOV
-  - linter_name: checkov
+  - linter_name: checkov #TODONEXT: disable
     name: TERRAFORM_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
       - terraform
       - security
+    linter_text: |
+      TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
+
+      You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
@@ -156,10 +163,8 @@ linters:
     examples:
       - "checkov --file myfile.tf"
     install:
-      dockerfile:
-        - |
-          RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-              && pip3 install --no-cache-dir checkov
+      pip:
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -169,6 +174,7 @@ linters:
   - linter_name: kics
     name: TERRAFORM_KICS
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.kics.io
@@ -181,6 +187,7 @@ linters:
     cli_executable: kics
     cli_lint_extra_args:
       - scan
+    cli_lint_extra_args_after:
       - --path
     cli_version_arg_name: "version"
     examples:

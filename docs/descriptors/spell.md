@@ -5,15 +5,13 @@
 
 ## Linters
 
-| Linter                        | Configuration key                   | Status                                                                                                                                             |
-|-------------------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| [misspell](spell_misspell.md) | [SPELL_MISSPELL](spell_misspell.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/client9/misspell)](https://github.com/client9/misspell/commits)                   |
-| [cspell](spell_cspell.md)     | [SPELL_CSPELL](spell_cspell.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) |
+| Linter                          | Configuration key                     | Status                                                                                                                                             |
+|---------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| [misspell](spell_misspell.md)   | [SPELL_MISSPELL](spell_misspell.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/client9/misspell)](https://github.com/client9/misspell/commits)                   |
+| [cspell](spell_cspell.md)       | [SPELL_CSPELL](spell_cspell.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) |
+| [proselint](spell_proselint.md) | [SPELL_PROSELINT](spell_proselint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits)               |
 
 ## Linted files
-
-- File extensions:
-  - `*`
 
 ## Configuration in MegaLinter
 

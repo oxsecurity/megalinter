@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 48 languages, 21 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 51 languages, 23 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -96,6 +96,7 @@ nav:
           - "JAVA":
               - "All JAVA linters": "descriptors/java.md"
               - "checkstyle": "descriptors/java_checkstyle.md"
+              - "pmd": "descriptors/java_pmd.md"
           - "JAVASCRIPT":
               - "All JAVASCRIPT linters": "descriptors/javascript.md"
               - "eslint": "descriptors/javascript_eslint.md"
@@ -110,6 +111,9 @@ nav:
           - "LUA":
               - "All LUA linters": "descriptors/lua.md"
               - "luacheck": "descriptors/lua_luacheck.md"
+          - "MAKEFILE":
+              - "All MAKEFILE linters": "descriptors/makefile.md"
+              - "checkmake": "descriptors/makefile_checkmake.md"
           - "PERL":
               - "All PERL linters": "descriptors/perl.md"
               - "perlcritic": "descriptors/perl_perlcritic.md"
@@ -130,6 +134,7 @@ nav:
               - "isort": "descriptors/python_isort.md"
               - "bandit": "descriptors/python_bandit.md"
               - "mypy": "descriptors/python_mypy.md"
+              - "pyright": "descriptors/python_pyright.md"
           - "R":
               - "All R linters": "descriptors/r.md"
               - "lintr": "descriptors/r_lintr.md"
@@ -185,6 +190,7 @@ nav:
               - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
           - "HTML":
               - "All HTML linters": "descriptors/html.md"
+              - "djlint": "descriptors/html_djlint.md"
               - "htmlhint": "descriptors/html_htmlhint.md"
           - "JSON":
               - "All JSON linters": "descriptors/json.md"
@@ -208,6 +214,7 @@ nav:
               - "All RST linters": "descriptors/rst.md"
               - "rst-lint": "descriptors/rst_rst_lint.md"
               - "rstcheck": "descriptors/rst_rstcheck.md"
+              - "rstfmt": "descriptors/rst_rstfmt.md"
           - "XML":
               - "All XML linters": "descriptors/xml.md"
               - "xmllint": "descriptors/xml_xmllint.md"
@@ -229,6 +236,9 @@ nav:
           - "ARM":
               - "All ARM linters": "descriptors/arm.md"
               - "arm-ttk": "descriptors/arm_arm_ttk.md"
+          - "BICEP":
+              - "All BICEP linters": "descriptors/bicep.md"
+              - "bicep_linter": "descriptors/bicep_bicep_linter.md"
           - "CLOUDFORMATION":
               - "All CLOUDFORMATION linters": "descriptors/cloudformation.md"
               - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
@@ -275,6 +285,7 @@ nav:
               - "jscpd": "descriptors/copypaste_jscpd.md"
           - "REPOSITORY":
               - "All REPOSITORY linters": "descriptors/repository.md"
+              - "checkov": "descriptors/repository_checkov.md"
               - "devskim": "descriptors/repository_devskim.md"
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
@@ -288,12 +299,14 @@ nav:
               - "All SPELL linters": "descriptors/spell.md"
               - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
+              - "proselint": "descriptors/spell_proselint.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
       - "GitHub Pull Request comments": "reporters/GitHubCommentReporter.md"
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
+      - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
@@ -307,6 +320,7 @@ nav:
       - "All flavors": "flavors.md"
       # flavors-start
       - "ci_light": "flavors/ci_light.md"
+      - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
       - "go": "flavors/go.md"
@@ -323,15 +337,15 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
-  - "Badge": "badge.md"
+  - "They use MegaLinter": "all_users.md"
   - "List of linters": "all_linters.md"
-  - "FAQ": "frequently-asked-questions.md"
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
-  - "They use MegaLinter": "all_users.md"
   - "Sponsoring": 'sponsor.md'
+  - "Badge": "badge.md"
   - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
+  - "FAQ": "frequently-asked-questions.md"
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"

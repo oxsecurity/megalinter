@@ -4,7 +4,7 @@
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.1.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -13,8 +13,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -37,16 +37,17 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                  |                                                                                    Install                                                                                     |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor           |       101        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/latest/flavors/python/) | Optimized for PYTHON based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -58,7 +59,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rstcheck is called one time by identified file
+- rstcheck is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -74,52 +75,70 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ### Help content
 
 ```shell
-Usage: rstcheck [OPTIONS] FILES...
 
-  CLI of rstcheck.
+ Usage: rstcheck [OPTIONS] FILES...
 
-  Enabled features: ['Toml']
+ CLI of rstcheck.
+ Enabled features: []
+ Pass one ore more rst FILES to check. Can be files or directories if
+ --recursive is passed too. Pass "-" if you want to read from stdin.
 
-  Pass one ore more rst FILES to check. Can be files or directories if
-  --recursive is passed too. Pass "-" if you want to read from stdin.
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --config                         PATH   Config file to load. Can be a INI    │
+│                                         file or directory. If a directory is │
+│                                         passed it will be searched for       │
+│                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
+│                                         is passed no config file is loaded   │
+│                                         at all.                              │
+│                                         [default: None]                      │
+│ --warn-unknown-settings                 Log a WARNING for unknown settings   │
+│                                         in config files. Can be hidden via   │
+│                                         --log-level.                         │
+│ --recursive              -r             Recursively search passed            │
+│                                         directories for RST files to check.  │
+│ --report-level                   LEVEL  The report level of the linting      │
+│                                         issues found. Valid levels are: INFO │
+│                                         | WARNING | ERROR | SEVERE | NONE.   │
+│                                         Defaults to INFO. Can be set in      │
+│                                         config file.                         │
+│                                         [default: None]                      │
+│ --log-level                      LEVEL  The log level of the application for │
+│                                         information that is not a linting    │
+│                                         issue. Valid levels are: DEBUG |     │
+│                                         INFO | WARNING | ERROR | CRITICAL.   │
+│                                         Defaults to WARNING.                 │
+│                                         [default: WARNING]                   │
+│ --ignore-directives              TEXT   Comma-separated-list of directives   │
+│                                         to add to the ignore list. Can be    │
+│                                         set in config file.                  │
+│                                         [default: None]                      │
+│ --ignore-roles                   TEXT   Comma-separated-list of roles to add │
+│                                         to the ignore list. Can be set in    │
+│                                         config file.                         │
+│                                         [default: None]                      │
+│ --ignore-substitutions           TEXT   Comma-separated-list of              │
+│                                         substitutions to add to the ignore   │
+│                                         list. Can be set in config file.     │
+│                                         [default: None]                      │
+│ --ignore-languages               TEXT   Comma-separated-list of languages    │
+│                                         for code-blocks to add to the ignore │
+│                                         list. The code in ignored            │
+│                                         code-blocks will not be checked for  │
+│                                         errors. Can be set in config file.   │
+│                                         [default: None]                      │
+│ --ignore-messages                REGEX  A regular expression to match        │
+│                                         linting issue messages against to    │
+│                                         ignore. Can be set in config file.   │
+│                                         [default: None]                      │
+│ --version                                                                    │
+│ --install-completion                    Install completion for the current   │
+│                                         shell.                               │
+│ --show-completion                       Show completion for the current      │
+│                                         shell, to copy it or customize the   │
+│                                         installation.                        │
+│ --help                                  Show this message and exit.          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
-Options:
-  --config PATH                Config file to load. Can be a INI or TOML file
-                               or directory. If a directory is passed it will
-                               be searched for .rstcheck.cfg | pyproject.toml
-                               | setup.cfg. If 'NONE' is passed no config file
-                               is loaded at all.
-  --warn-unknown-settings      Log a WARNING for unknown settings in config
-                               files. Can be hidden via --log-level.
-  -r, --recursive              Recursively search passed directories for RST
-                               files to check.
-  --report-level LEVEL         The report level of the linting issues found.
-                               Valid levels are: INFO | WARNING | ERROR |
-                               SEVERE | NONE. Defaults to INFO. Can be set in
-                               config file.
-  --log-level LEVEL            The log level of the application for
-                               information that is not a linting issue. Valid
-                               levels are: DEBUG | INFO | WARNING | ERROR |
-                               CRITICAL. Defaults to WARNING.  [default:
-                               WARNING]
-  --ignore-directives TEXT     Comma-separated-list of directives to add to
-                               the ignore list. Can be set in config file.
-  --ignore-roles TEXT          Comma-separated-list of roles to add to the
-                               ignore list. Can be set in config file.
-  --ignore-substitutions TEXT  Comma-separated-list of substitutions to add to
-                               the ignore list. Can be set in config file.
-  --ignore-languages TEXT      Comma-separated-list of languages for code-
-                               blocks to add to the ignore list. The code in
-                               ignored code-blocks will not be checked for
-                               errors. Can be set in config file.
-  --ignore-messages REGEX      A regular expression to match linting issue
-                               messages against to ignore. Can be set in
-                               config file.
-  --version
-  --install-completion         Install completion for the current shell.
-  --show-completion            Show completion for the current shell, to copy
-                               it or customize the installation.
-  --help                       Show this message and exit.
 ```
 
 ### Installation on mega-linter Docker image

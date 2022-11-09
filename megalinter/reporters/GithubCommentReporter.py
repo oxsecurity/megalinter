@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-GitHub Status reporter
-Post a GitHub status for each linter
+GitHub Comment reporter
+Post a comment on Github Pull Requests
 """
 import logging
 import os
@@ -9,11 +9,8 @@ import re
 
 import github
 from megalinter import Reporter, config
-from megalinter.constants import ML_DOC_URL, ML_REPO_URL
+from megalinter.constants import ML_REPO_URL
 from megalinter.utils_reporter import build_markdown_summary
-
-mega_linter_version = config.get("BUILD_VERSION", "latest")
-DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 
 class GithubCommentReporter(Reporter):
@@ -93,7 +90,7 @@ class GithubCommentReporter(Reporter):
             m = re.compile("refs/pull/(\\d+)/merge").match(ref)
             if m is not None:
                 pr_id = m.group(1)
-                logging.info(f"Identified PR#{pr_id} from environment")
+                logging.debug(f"Identified PR#{pr_id} from environment")
                 try:
                     pr_list = [repo.get_pull(int(pr_id))]
                 except Exception as e:

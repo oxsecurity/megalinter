@@ -1,6 +1,7 @@
 descriptor_id: PHP
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - php
 file_extensions:
   - ".php"
@@ -145,7 +146,7 @@ linters:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
       vscode:
-        - name: Psalm VsCode Plugin
+        - name: Psalm VSCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter              | Configuration key | Status |
-|---------------------|-------------------|--------|
-| [lintr](r_lintr.md) | [R](r_lintr.md)   |        |
+| Linter              | Configuration key | Status                                                                                                                 |
+|---------------------|-------------------|------------------------------------------------------------------------------------------------------------------------|
+| [lintr](r_lintr.md) | [R](r_lintr.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/r-lib/lintr)](https://github.com/r-lib/lintr/commits) |
 
 ## Linted files
 

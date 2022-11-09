@@ -10,6 +10,14 @@ if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
 fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
+#
+if [[ "${WORKSPACE_AS_SAFE_DIR}" != 'false' && "${DEFAULT_WORKSPACE}" && -d "${DEFAULT_WORKSPACE}" ]]; then
+  echo "Setting git safe.directory DEFAULT_WORKSPACE: ${DEFAULT_WORKSPACE} ..."
+  git config --global --add safe.directory "${DEFAULT_WORKSPACE}"
+else
+  echo "Skipped setting git safe.directory DEFAULT_WORKSPACE: ${DEFAULT_WORKSPACE} ..."
+fi
+
 if [ -z ${GITHUB_WORKSPACE+x} ]; then
   echo "Setting git safe.directory default: /github/workspace ..."
   git config --global --add safe.directory /github/workspace
@@ -17,6 +25,7 @@ else
   echo "Setting git safe.directory GITHUB_WORKSPACE: $GITHUB_WORKSPACE ..."
   git config --global --add safe.directory "$GITHUB_WORKSPACE"
 fi
+
 echo "Setting git safe.directory to /tmp/lint ..."
 git config --global --add safe.directory /tmp/lint
 
@@ -29,7 +38,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --ignore-installed mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
+  pip3 install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview
   cd /tmp/lint || exit 1
   chmod +x build.sh
   bash build.sh --doc

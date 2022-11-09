@@ -8,7 +8,7 @@ from pathlib import Path
 from shutil import copyfile
 
 import commentjson
-from megalinter import Reporter, config
+from megalinter import Reporter, config, utils
 
 
 class ConfigReporter(Reporter):
@@ -22,7 +22,9 @@ class ConfigReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("CONFIG_REPORTER", "true") == "false":
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif config.get("CONFIG_REPORTER", "true") == "false":
             self.is_active = False
 
     def produce_report(self):
@@ -50,7 +52,7 @@ class ConfigReporter(Reporter):
                         config_log += [
                             f"    - {ide_extension['name']}: {ide_extension['url']}"
                         ]
-                # Get applicable VsCode extensions
+                # Get applicable VSCode extensions
                 vscode_extensions = ide.get("vscode", [])
                 for vscode_extension in vscode_extensions:
                     if "?itemName=" in vscode_extension["url"]:

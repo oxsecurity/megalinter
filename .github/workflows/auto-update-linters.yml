@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - "main"
-      - "AutoUpdate"
+      - "auto-update"
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
@@ -37,9 +37,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          # Full git history is needed to get a proper list of changed files within `mega-linter`
-          fetch-depth: 0
 
       ########################
       # Get the current date #
@@ -52,7 +49,7 @@ jobs:
       ###################################
       - name: Build image
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       #####################################
@@ -61,8 +58,13 @@ jobs:
       - name: Collect latest versions and help
         id: compute_versions
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${GITHUB_SHA}
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${GITHUB_SHA}
         timeout-minutes: 20
+
+      # Format markdown tables
+      - name: Format Markdown tables
+        id: format-md-tables
+        run: npx --yes markdown-table-formatter@latest --verbose "./**/*.md" || true
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
@@ -72,7 +74,7 @@ jobs:
           name: MegaLinter reports
           path: |
             docs
-            report
+            megalinter-reports
 
       # Create pull request if there are updates
       - name: Create Pull Request

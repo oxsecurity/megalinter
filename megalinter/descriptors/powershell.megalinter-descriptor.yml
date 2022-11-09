@@ -49,5 +49,5 @@ linters:
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:
-        - name: VsCode PowerShell extension
+        - name: VSCode PowerShell extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell

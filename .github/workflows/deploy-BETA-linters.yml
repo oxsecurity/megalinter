@@ -68,17 +68,21 @@ jobs:
         # linters-start
         linter:
           [
+            "ansible_ansible_lint",
+            "bash_shellcheck",
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
             "go_revive",
             "groovy_npm_groovy_lint",
             "java_checkstyle",
+            "java_pmd",
             "javascript_es",
             "json_eslint_plugin_jsonc",
             "jsx_eslint",
             "kotlin_ktlint",
             "php_psalm",
             "python_bandit",
+            "repository_checkov",
             "repository_devskim",
             "repository_dustilock",
             "repository_gitleaks",
@@ -104,8 +108,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       #####################
       # Run Deploy script #
@@ -143,7 +145,7 @@ jobs:
         run: |
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:beta
         timeout-minutes: 30
 
       ##############################################
@@ -156,6 +158,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
+          security-checks: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

@@ -2,9 +2,8 @@ descriptor_id: SPELL
 descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - cupcake
 lint_all_other_linters_files: true
-file_extensions:
-  - "*"
 linters:
   # MISSPELL
   - linter_name: misspell
@@ -36,9 +35,16 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    variables:
+      - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
+        default_value: "true"
+        description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_text: |
       MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+
       Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+
+      If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
     linter_repo: https://github.com/streetsidesoftware/cspell
     linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
@@ -59,3 +65,43 @@ linters:
       vscode:
         - name: Code Spell Checker
           url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+  # PROSELINT
+  - linter_name: proselint
+    name: SPELL_PROSELINT
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".txt"
+    active_only_if_file_found:
+      - .proselintrc
+      - proselint/config.json
+    linter_text: a linter for prose
+    linter_url: http://proselint.com
+    linter_repo: https://github.com/amperser/proselint
+    linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
+    linter_rules_url: https://github.com/amperser/proselint#checks
+    linter_rules_configuration_url: https://github.com/amperser/proselint#checks
+    cli_config_arg_name: --config
+    config_file_name: .proselintrc
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
+    cli_version_arg_name: "-v"
+    examples:
+      - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
+    install:
+      pip:
+        - proselint
+    ide:
+      atom:
+        - name: linter-proselint
+          url: https://atom.io/packages/linter-proselint
+      idea:
+        - name: Proselint
+          url: https://plugins.jetbrains.com/plugin/9854-proselint
+      sublime:
+        - name: SublimeLinter-contrib-proselint
+          url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint
+      vscode:
+        - name: VSCode Proselint
+          url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint

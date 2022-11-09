@@ -1,0 +1,31 @@
+descriptor_id: MAKEFILE
+descriptor_type: language
+descriptor_flavors:
+  - all # Applicable to CI in any language project
+  - ci_light
+  - cupcake
+  - dotnet
+  - go
+  - java
+  - python
+file_names_regex:
+  - "Makefile"
+test_folder: makefile
+linters:
+  # Checkmake
+  - linter_name: checkmake
+    name: MAKEFILE_CHECKMAKE
+    linter_url: https://github.com/mrtazz/checkmake
+    linter_repo: https://github.com/mrtazz/checkmake
+    linter_rules_configuration_url: https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini
+    cli_config_arg_name: "--config"
+    config_file_name: .checkmake.ini
+    examples:
+      - "checkmake Makefile"
+      - "checkmake --config .checkmake.ini Makefile"
+    install:
+      dockerfile:
+        - |
+          RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+              && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+              && chmod 755 /usr/local/bin/checkmake

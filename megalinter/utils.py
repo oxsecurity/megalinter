@@ -53,7 +53,7 @@ def get_excluded_directories():
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get("REPORT_OUTPUT_FOLDER", "report"),
+        config.get("REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
     excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
     excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
@@ -72,8 +72,9 @@ def filter_files(
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
+    prefix: Optional[str] = None,
 ) -> Sequence[str]:
-    file_extensions = set(file_extensions)
+    file_extensions = frozenset(file_extensions)
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
@@ -91,15 +92,29 @@ def filter_files(
     # if each file is check against every ignored_files (it can contain all the files), it's a O(n²) filtering
     # to reduce the execution time and complexity ignored_files is split
     ignored_patterns = list(filter(lambda x: "*" in x, ignored_files or []))
-    ignored_fileset = set(ignored_files or [])
+    ignored_fileset = frozenset(ignored_files or [])
 
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+        file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file = file_with_prefix_and_sub_dir
 
+        if prefix or files_sub_directory:
+            prefix_and_sub_dir = os.path.normpath(
+                os.path.join(prefix or "", files_sub_directory or "") + os.path.sep
+            )
+
+            if file.startswith(prefix_and_sub_dir):
+                file = os.path.relpath(file_with_prefix_and_sub_dir, prefix_and_sub_dir)
+            else:
+                # Skip if file is not in defined files_sub_directory
+                continue
+
+        # Skip if file is in ignore list
         if file in ignored_fileset:
             continue
-
+        # Skip if file is in ignored patterns
         if ignored_patterns and any(
             fnmatch(file, pattern) for pattern in ignored_patterns
         ):
@@ -107,17 +122,15 @@ def filter_files(
 
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
-
+        # Skip according to FILTER_REGEX_INCLUDE
         if filter_regex_include_object and not filter_regex_include_object.search(file):
             continue
-
+        # Skip according to FILTER_REGEX_EXCLUDE
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
 
-        if files_sub_directory and files_sub_directory not in file:
-            continue
-
-        if not lint_all_other_linters_files:
+        # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
+        if lint_all_other_linters_files is False or len(file_extensions) > 0:
             if file_extension in file_extensions:
                 pass
             elif "*" in file_extensions:
@@ -126,21 +139,23 @@ def filter_files(
                 pass
             else:
                 continue
-
+        # Skip according to end of file name
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
-
-        if file_contains_regex and not file_contains(file, file_contains_regex_object):
+        # Skip according to file name regex
+        if file_contains_regex and not file_contains(
+            file_with_prefix_and_sub_dir, file_contains_regex_object
+        ):
             continue
-
+        # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
-            and file_is_generated(file)
+            and file_is_generated(file_with_prefix_and_sub_dir)
         ):
             continue
 
-        filtered_files.append(file)
+        filtered_files.append(file_with_prefix_and_sub_dir)
 
     return filtered_files
 
@@ -286,3 +301,22 @@ def truncate_json_from_line(line: str):
     if start_pos > -1 and end_pos > -1:
         return line[start_pos : end_pos + 1]  # noqa: E203
     return ""
+
+
+def get_current_test_name(full_name=False):
+    current_name = os.environ.get("PYTEST_CURRENT_TEST", None)
+    if current_name is not None:
+        if full_name is True:
+            return current_name
+        else:
+            return current_name.split(":")[-1].split(" ")[0]
+    return ""
+
+
+def can_write_report_files(megalinter_instance) -> bool:
+    if (
+        megalinter_instance.report_folder == "none"
+        or megalinter_instance.report_folder == "false"
+    ):
+        return False
+    return True

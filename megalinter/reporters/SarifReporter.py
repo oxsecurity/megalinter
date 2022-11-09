@@ -8,13 +8,15 @@ import os
 import random
 from json.decoder import JSONDecodeError
 
-from megalinter import Reporter, config
+from megalinter import Linter, Reporter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
     ML_DOC_URL,
 )
+from megalinter.utils import normalize_log_string
+from megalinter.utils_reporter import get_linter_doc_url
 
 
 class SarifReporter(Reporter):
@@ -29,7 +31,9 @@ class SarifReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("SARIF_REPORTER", "false") == "true":
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif config.get("SARIF_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):
@@ -86,7 +90,7 @@ class SarifReporter(Reporter):
                         logging.error(str(e))
                 if load_ok is True:
                     # fix sarif file
-                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
+                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj, linter)
                     # append to global megalinter sarif run
                     sarif_obj["runs"] += linter_sarif_obj["runs"]
                     # Delete linter SARIF file if LOG_FILE=none
@@ -95,6 +99,8 @@ class SarifReporter(Reporter):
                     ):
                         os.remove(linter.sarif_output_file)
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
+        # Remove workspace prefix from file names
+        result_json = normalize_log_string(result_json)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             "SARIF_REPORTER_FILE_NAME", DEFAULT_SARIF_REPORT_FILE_NAME
@@ -126,10 +132,51 @@ class SarifReporter(Reporter):
 
     # Some SARIF linter output contain errors (like references to line 0)
     # We must correct them so SARIF is valid
-    def fix_sarif(self, linter_sarif_obj):
+    def fix_sarif(self, linter_sarif_obj, linter: Linter):
         # browse runs
         if "runs" in linter_sarif_obj:
             for id_run, run in enumerate(linter_sarif_obj["runs"]):
+
+                # Add MegaLinter info
+                run_properties = run["properties"] if "properties" in run else {}
+                run_properties["megalinter"] = {
+                    "linterKey": linter.name,
+                    "docUrl": get_linter_doc_url(linter),
+                    "linterVersion": linter.get_linter_version(),
+                }
+                run["properties"] = run_properties
+
+                # Update linter name in case there are duplicates
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "name" in run["tool"]["driver"]
+                    and linter.master.megalinter_flavor
+                    != "none"  # single linter image case
+                ):
+                    run["tool"]["driver"]["name"] = (
+                        run["tool"]["driver"]["name"]
+                        + " (MegaLinter "
+                        + linter.name
+                        + ")"
+                    )
+
+                # fix missing informationUri
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "informationUri" not in run["tool"]["driver"]
+                ):
+                    run["tool"]["driver"]["informationUri"] = get_linter_doc_url(linter)
+
+                # fix missing version
+                if (
+                    "tool" in run
+                    and "driver" in run["tool"]
+                    and "version" not in run["tool"]["driver"]
+                ):
+                    run["tool"]["driver"]["version"] = linter.get_linter_version()
+
                 # fix duplicate rules property
                 if (
                     "tool" in run
@@ -137,7 +184,7 @@ class SarifReporter(Reporter):
                     and "rules" in run["tool"]["driver"]
                 ):
                     rules = run["tool"]["driver"]["rules"]
-                    rules_updated = []
+                    rules_updated: list = []
                     for rule in rules:
                         # If duplicate id, update duplicate items ids with a random value
                         if "id" in rule and any(
@@ -151,6 +198,7 @@ class SarifReporter(Reporter):
                             )
                         rules_updated += [rule]
                     run["tool"]["driver"]["rules"] = rules_updated
+
                 # fix results property
                 if "results" in run:
                     # browse run results
@@ -166,6 +214,11 @@ class SarifReporter(Reporter):
                                     )
                                 result["locations"][id_location] = location
                         run["results"][id_result] = result
+                else:
+                    # make sure that there is a results entry so GitHub's SARIF validator doesn't cry
+                    run["results"] = []
+
+                # Update run in full list
                 linter_sarif_obj["runs"][id_run] = run
         return linter_sarif_obj
 
@@ -177,5 +230,9 @@ class SarifReporter(Reporter):
                 location_item["startLine"] = 1
             if "endLine" in location_item and location_item["endLine"] == 0:
                 location_item["endLine"] = 1
+            if "startColumn" in location_item and location_item["startColumn"] == 0:
+                location_item["startColumn"] = 1
+            if "endColumn" in location_item and location_item["endColumn"] == 0:
+                location_item["endColumn"] = 1
             physical_location[location_key] = location_item
         return physical_location

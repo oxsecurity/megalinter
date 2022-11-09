@@ -10,21 +10,21 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-## Upgrade from MegaLinter v4
+## Upgrade to MegaLinter v6
 
-- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
+- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration from v4 or v5 to v6 :)
 
 ## Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- GitHub Action: oxsecurity/megalinter@v5
-- Docker image: oxsecurity/megalinter:v5
+- Docker image: `oxsecurity/megalinter:v6`
+- GitHub Action: `oxsecurity/megalinter@v6`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- GitHub Action: oxsecurity/megalinter@beta
-- Docker image: oxsecurity/megalinter:beta
+- Docker image: `oxsecurity/megalinter:beta`
+- GitHub Action: `oxsecurity/megalinter@beta`
 
 ## GitHub Action
 
@@ -75,17 +75,17 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
 
       # MegaLinter
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: oxsecurity/megalinter@v5
+        uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
@@ -97,7 +97,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |
@@ -134,32 +134,80 @@ jobs:
 
 </details>
 
+## GitLab CI
+
+Create or update `.gitlab-ci.yml` file at the root of your repository
+
+```yaml
+# MegaLinter GitLab CI job configuration file
+# More info at https://megalinter.github.io/
+
+mega-linter:
+  stage: test
+  # You can override MegaLinter flavor used to have faster performances
+  # More info at https://megalinter.github.io/flavors/
+  image: oxsecurity/megalinter:v6
+  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+  variables:
+    # All available variables are described in documentation
+    # https://megalinter.github.io/configuration/
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - megalinter-reports
+    expire_in: 1 week
+```
+
+Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+
+![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
+
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+
 ## Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+Add the following job in your `azure-pipelines.yaml` file
 
 ```yaml
   # Run MegaLinter to detect linting and security issues
-  - job: megalinter
-    displayName: MegaLinter
+  - job: MegaLinter
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        docker pull oxsecurity/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) oxsecurity/megalinter:v5
-      displayName: 'MegaLinter analysis'
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:v6
+        displayName: Pull MegaLinter
 
-    # Publish the Anchore report as an artifact to Azure Pipelines
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: MegaLinter Report'
-      condition: succeededOrFailed()
-      inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
-        ArtifactName: MegaLinterReport
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            -e CI=true \
+            -e TF_BUILD=true \
+            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
+            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            oxsecurity/megalinter:v6
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport
 ```
+
+To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
 
 ## Jenkins
 
@@ -172,7 +220,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v5'
+            image 'oxsecurity/megalinter:v6'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -182,43 +230,11 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,report/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
         }
     }
 }
 ```
-
-## GitLab
-
-Create or update `.gitlab-ci.yml` file at the root of your repository
-
-```yaml
-# MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
-
-mega-linter:
-  stage: test
-  # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
-  image: oxsecurity/megalinter:v5
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
-  variables:
-    # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
-    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-  artifacts:
-    when: always
-    paths:
-      - report
-    expire_in: 1 week
-```
-
-Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
-
-![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
-
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ## Concourse
 
@@ -241,7 +257,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v5
+              tag: v6
           inputs:
             - name: repo
           run:
@@ -276,7 +292,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v5
+    tag: v6
 
 inputs:
 - name: repo
@@ -284,7 +300,7 @@ inputs:
 # uncomment this if you want reports as task output
 # output:
 # - name: reports
-#   path: repo/report
+#   path: repo/megalinter-reports
 
 run:
   path: bash
@@ -320,6 +336,32 @@ resources:
         #   VALIDATE_ALL_CODEBASE: true
 ```
 
+## Drone CI
+
+**Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
+
+1. Create a `.drone.yml` file on the root directory of your repository
+
+2. Copy and paste the following template:
+
+```yaml
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+```
+
+This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
+
 ## Run MegaLinter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
@@ -336,7 +378,7 @@ Example
 npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
-Note: You can also use such command line from your custom CI/CD pipelines
+Note: You can also use such command line in your custom CI/CD pipelines
 
 
 <!-- installation-section-end -->

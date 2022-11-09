@@ -264,6 +264,17 @@ jobs:
         test: "megalinter/megalinter/flavors/python",
         testRes: "oxsecurity/megalinter/flavors/python",
       },
+      // GitHub Action report folder
+      {
+        regex: /Mega-Linter reports(.*)\n(.*)path:(.*)\n(.*)report/gm,
+        replacement: "Mega-Linter reports$1\n$2path:$3\n$4megalinter-reports",
+        test: `      name: Mega-Linter reports
+        path: |
+          report`,
+        testRes: `      name: Mega-Linter reports
+        path: |
+          megalinter-reports`,
+      },
       // Docker image flavors
       {
         regex: /megalinter\/megalinter-([a-z]*):v5\.(.*)/gm,

@@ -4,7 +4,7 @@
 
 ## luacheck documentation
 
-- Version in MegaLinter: **0.26.1**
+- Version in MegaLinter: **1.0.0**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -15,8 +15,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -44,15 +44,15 @@ Use luacheck in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#lua)                                |                                             [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#lua){target=_blank}                                             |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-luacheck](https://packagecontrol.io/packages/SublimeLinter-luacheck)             |                                          [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-luacheck){target=_blank}                                           |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [Syntastic](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck)                  |                                      [Visit Web Site](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck){target=_blank}                                       |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-luacheck](https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dwenegar.vscode-luacheck){target=_blank} |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-luacheck](https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dwenegar.vscode-luacheck){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/) | Default MegaLinter Flavor |       101        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                 | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor |       109        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- luacheck is called one time by identified file
+- luacheck is called one time by identified file (`file` CLI lint mode)
 
 ### Example calls
 
@@ -101,7 +101,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 0.26.1, a linter and a static analyzer for Lua.
+luacheck 1.0.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -154,6 +154,7 @@ Options for configuring allowed globals:
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
                             love - globals added by LÖVE;
+                            playdate - globals added by the Playdate SDK;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,
                             test, and tests subdirectories;
@@ -278,7 +279,8 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
-    && luarocks install luacheck
+    && luarocks install luacheck \
+    && cd /
 
 ```
 

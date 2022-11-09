@@ -1,6 +1,7 @@
 descriptor_id: CLOJURE
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - java
 file_extensions:
   - ".clj"
@@ -24,10 +25,9 @@ linters:
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
-    downgraded_version: true
     install:
       dockerfile:
-        - FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
+        - FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
         - COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
     ide:
       atom:

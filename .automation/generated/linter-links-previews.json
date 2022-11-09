@@ -24,6 +24,16 @@
     "image": null,
     "title": "The GNU Bourne-Again Shell"
   },
+  "bicep": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
+  "bicep_linter": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
   "black": {
     "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
@@ -33,6 +43,11 @@
     "description": "A CloudFormation JSON and YAML Validator. Contribute to martysweet/cfn-lint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
     "title": "martysweet/cfn-lint"
+  },
+  "checkmake": {
+    "description": "experimental linter/analyzer for Makefiles. Contribute to mrtazz/checkmake development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/ef6a33ff4ba9b8f5c2285e94cbbbdd502ccb64f6c18462c0b9eae50d306bbc6e/mrtazz/checkmake",
+    "title": "GitHub - mrtazz/checkmake: experimental linter/analyzer for Makefiles"
   },
   "checkov": {
     "description": "Prevent cloud misconfigurations during build-time for Terraform, Cloudformation, Kubernetes, Serverless framework and other infrastructure-as-code-languages with Checkov by Bridgecrew.",
@@ -83,6 +98,11 @@
     "description": "DevSkim is a set of IDE plugins and rules that provide security &quot;linting&quot; capabilities. - GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security &quot...",
     "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",
     "title": "GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security \"linting\" capabilities."
+  },
+  "djlint": {
+    "description": "Find common syntax errors, reformat to make your HTML templates shine! Supports django, jinja, nunjucks, twig, handlebars, mustache, golang, and more!",
+    "image": "https://www.djlint.com/static/img/icon.png",
+    "title": "HTML Template Linter and Formatter | djLint"
   },
   "dockerfilelint": {
     "description": "An opinionated Dockerfile linter. Contribute to replicatedhq/dockerfilelint development by creating an account on GitHub.",
@@ -284,6 +304,11 @@
     "image": "https://prettier.io/icon.png",
     "title": "Prettier \u00b7 Opinionated Code Formatter"
   },
+  "proselint": {
+    "description": "A linter for prose.",
+    "image": null,
+    "title": "proselint"
+  },
   "protolint": {
     "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions.  - yoheimuta/protolint",
     "image": "https://avatars1.githubusercontent.com/u/1223268?s=400&v=4",
@@ -303,6 +328,16 @@
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
+  },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
   },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",

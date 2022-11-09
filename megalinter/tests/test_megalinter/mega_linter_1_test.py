@@ -41,7 +41,7 @@ class mega_linter_1_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         utilstest.assert_is_skipped("JAVASCRIPT_ES", output, self)
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [standard", output)
 
     def test_disable_linter_legacy(self):
@@ -52,7 +52,7 @@ class mega_linter_1_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         utilstest.assert_is_skipped("JAVASCRIPT_ES", output, self)
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [standard", output)
 
     def test_enable_only_one_linter(self):
@@ -62,7 +62,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         utilstest.assert_is_skipped("JAVASCRIPT_STANDARD", output, self)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -74,7 +74,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         utilstest.assert_is_skipped("JAVASCRIPT_STANDARD", output, self)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -84,7 +84,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn("Using [standard", output)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -96,7 +96,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn("Using [standard", output)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -134,7 +134,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
@@ -149,7 +149,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
             f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
@@ -169,7 +169,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
             f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
@@ -188,7 +188,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn(
             "Unable to fetch https://raw.githubusercontent.com/notexisting/wesh",
             output,
@@ -207,7 +207,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
     def test_general_include_exclude(self):
@@ -221,7 +221,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
 
     def test_custom_config_on_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -237,7 +237,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
 
     def test_user_arguments_on_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -253,7 +253,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("### Processed [JAVASCRIPT] files", output)
+        self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("--debug --env-info", output)
 
     def test_alpaca(self):
@@ -295,6 +295,29 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             os.path.isfile(expected_output_file),
             "Output json file " + expected_output_file + " should exist",
+        )
+
+    def test_tap_output_detailed(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "TAP_REPORTER": "true",
+                "TAP_REPORTER_OUTPUT_DETAIL": "detailed",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        expected_output_file = (
+            mega_linter.report_folder
+            + os.path.sep
+            + "tap"
+            + os.path.sep
+            + "mega-linter-JAVASCRIPT_ES.tap"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_output_file),
+            "Output tap file " + expected_output_file + " should exist",
         )
 
     def test_config_reporter(self):
@@ -348,3 +371,33 @@ class mega_linter_1_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("- Number of files analyzed", output)
+
+    def test_list_of_files_sent(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "MEGALINTER_FILES_TO_LINT": "javascript_good_1.js,javascript_bad_1.js",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("javascript_bad_1.js", output)
+        self.assertIn("Kept [2] files on [2] found files", output)
+
+    def test_skip_cli_lint_mode(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+                "SKIP_CLI_LINT_MODES": "list_of_files",
+            }
+        )
+        self.assertIn(
+            "JAVASCRIPT_ES has been skipped because its CLI lint mode", output
+        )

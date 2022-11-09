@@ -27,7 +27,7 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v5",
+      default: "v6",
       description: "MegaLinter version",
       example: ["stable", "latest", "v5.9.0"],
     },
@@ -75,6 +75,11 @@ module.exports = optionator({
       description: "Apply formatters and fixes in linted sources",
     },
     {
+      option: "filesonly",
+      type: "Boolean",
+      description: "Do not run linters with project as CLI lint mode",
+    },
+    {
       option: "json",
       alias: "j",
       type: "Boolean",
@@ -117,9 +122,15 @@ module.exports = optionator({
       description: "Upgrade local repository MegaLinter configuration",
     },
     {
-      option: "containername",
+      option: "container-name",
+      alias: "containername",
       type: "String",
       description: "Specify MegaLinter container name",
+    },
+    {
+      option: "remove-container",
+      type: "Boolean",
+      description: "Remove MegaLinter Docker container when done",
     },
   ],
   mutuallyExclusive: [

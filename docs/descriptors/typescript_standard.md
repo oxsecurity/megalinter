@@ -11,7 +11,7 @@
 
 ## standard documentation
 
-- Version in MegaLinter: **15.0.1**
+- Version in MegaLinter: **17.0.0**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
 - See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
@@ -19,10 +19,10 @@
 
 ## Configuration in MegaLinter
 
-- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
-- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/latest/configuration/#activation-and-deactivation)
+- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/latest/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/beta/configuration/#apply-fixes)
 
 | Variable                                        | Description                                                                                                                                                                                                         | Default value      |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -51,16 +51,17 @@ Use standard in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/)         | [Visit Web Site](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/){target=_blank} |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |     [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-standard){target=_blank}     |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [StandardFormat](https://packagecontrol.io/packages/StandardFormat)                                 |             [Visit Web Site](https://packagecontrol.io/packages/StandardFormat){target=_blank}             |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |                             [Visit Web Site](vscode-standardjs){target=_blank}                             |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard](vscode-standard)     |                              [Visit Web Site](vscode-standard){target=_blank}                              |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                           | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/latest/supported-linters/)         | Default MegaLinter Flavor                             |       101        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/latest/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                                           | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)         | Default MegaLinter Flavor                             |       109        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages       |        79        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://oxsecurity.github.io/megalinter/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -72,7 +73,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- standard is called once with the list of files as arguments
+- standard is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
@@ -96,19 +97,19 @@ Usage:
     If FILES is omitted, all JavaScript source files (*.js, *.jsx, *.mjs, *.cjs)
     in the current working directory are checked, recursively.
 
-    Certain paths (node_modules/, coverage/, vendor/, *.min.js, bundle.js, and
+    Certain paths (node_modules/, coverage/, vendor/, *.min.js, and
     files/folders that begin with '.' like .git/) are automatically ignored.
 
     Paths in a project's root .gitignore file are also automatically ignored.
 
 Flags:
         --fix       Automatically fix problems
-    -v, --verbose   Show rule names for errors (to ignore specific rules)
         --version   Show current version
     -h, --help      Show usage information
 
 Flags (advanced):
         --stdin     Read file text from stdin
+        --ext       Specify JavaScript file extensions
         --global    Declare global variable
         --plugin    Use custom eslint plugin
         --env       Use custom eslint environment
@@ -120,6 +121,6 @@ Flags (advanced):
 
 - NPM packages (node.js):
   - [typescript](https://www.npmjs.com/package/typescript)
-  - [standard@15.0.1](https://www.npmjs.com/package/standard)
+  - [standard](https://www.npmjs.com/package/standard)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)

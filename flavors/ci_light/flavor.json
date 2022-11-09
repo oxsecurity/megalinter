@@ -6,6 +6,7 @@
     "linters": [
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
+        "COPYPASTE_JSCPD",
         "DOCKERFILE_HADOLINT",
         "ENV_DOTENV_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
@@ -13,6 +14,7 @@
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSON_PRETTIER",
+        "MAKEFILE_CHECKMAKE",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GOODCHECK",

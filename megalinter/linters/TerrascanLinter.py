@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Use TfLint to lint terraform files
-https://github.com/terraform-linters/tflint
+Use Terrascan to lint terraform files
+https://github.com/tenable/terrascan
 """
 import logging
 
@@ -15,7 +15,7 @@ class TerrascanLinter(megalinter.Linter):
         # Build pre-command
         terrascan_init_command = "terrascan"
         if self.config_file is not None:
-            terrascan_init_command += f" --config {self.config_file}"
+            terrascan_init_command += f" --config-path {self.config_file}"
         logging.debug("terrascan before_lint_files: " + terrascan_init_command)
         # Add to pre-commands
         terrascan_pre_command = {

@@ -56,8 +56,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
@@ -111,8 +109,8 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:beta
-        timeout-minutes: 30
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:beta
+        timeout-minutes: 60
 
       # Free disk space
       - name: Free Disk space
@@ -124,13 +122,14 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "docker.io/oxsecurity/megalinter:beta"
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
+#      - name: Run Trivy vulnerability scanner
+#        uses: aquasecurity/trivy-action@master
+#        with:
+#          image-ref: "docker.io/oxsecurity/megalinter:beta"
+#          format: 'table'
+#          exit-code: '1'
+#          ignore-unfixed: true
+#          security-checks: vuln
+#          vuln-type: 'os,library'
+#          severity: 'CRITICAL,HIGH'
+#          timeout: 10m0s

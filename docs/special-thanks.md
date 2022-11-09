@@ -16,12 +16,13 @@
 
 ## Sites referring to MegaLinter
 
-### Global
+### Web Sites
 
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 - [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
+- [abhith.net](https://www.abhith.net/recommended/){target=_blank}
 
 ### Linters
 
@@ -38,9 +39,12 @@
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
 - [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [lintr](https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html){target=_blank}
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
+- [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html){target=_blank}
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
 - [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
