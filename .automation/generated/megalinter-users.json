@@ -1,6 +1,24 @@
 {
     "repositories": [
         {
+            "repo_url": "https://github.com/d-eathrow/anonymousland"
+        },
+        {
+            "repo_url": "https://github.com/iggy/terrarific"
+        },
+        {
+            "repo_url": "https://github.com/AliceO2Group/Run3Analysisvalidation"
+        },
+        {
+            "repo_url": "https://github.com/rasa/law-scraper"
+        },
+        {
+            "repo_url": "https://github.com/Odilio/microservice-spring-hexa-kotin"
+        },
+        {
+            "repo_url": "https://github.com/ahmadnassri/node-oas-fastify"
+        },
+        {
             "info": {
                 "allow_forking": true,
                 "archive_url": "https://api.github.com/repos/nektos/act/{archive_format}{/ref}",
