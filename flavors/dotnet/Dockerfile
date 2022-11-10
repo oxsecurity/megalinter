@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.0 as gitleaks
@@ -238,15 +238,16 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN mkdir -p ${PWSH_DIRECTORY} \
-#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-#         | grep browser_download_url \
-#         | grep linux-alpine-x64 \
-#         | cut -d '"' -f 4 \
-#         | xargs -n 1 wget -O - \
-#         | tar -xzC ${PWSH_DIRECTORY} \
-#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+RUN mkdir -p ${PWSH_DIRECTORY} \
+    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
+
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter

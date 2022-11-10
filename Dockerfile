@@ -12,7 +12,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
-FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
@@ -345,15 +345,15 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10 \
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN mkdir -p ${PWSH_DIRECTORY} \
-#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-#         | grep browser_download_url \
-#         | grep linux-alpine-x64 \
-#         | cut -d '"' -f 4 \
-#         | xargs -n 1 wget -O - \
-#         | tar -xzC ${PWSH_DIRECTORY} \
-#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && mkdir -p ${PWSH_DIRECTORY} \
+    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh \
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
