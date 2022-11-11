@@ -19,6 +19,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.990** on 2022-11-07
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40** on 2022-11-08
   - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.121.0** on 2022-11-08
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.10.0 to **2.12.0** on 2022-11-11
+  - [djlint](https://djlint.com/) from 1.19.5 to **1.19.7** on 2022-11-11
+  - [phpstan](https://phpstan.org/) from 1.9.1 to **1.9.2** on 2022-11-11
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.7 to **7.3.0** on 2022-11-11
+  - [semgrep](https://semgrep.dev/) from 0.121.0 to **0.121.2** on 2022-11-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.1 to **0.7.0** on 2022-11-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2** on 2022-11-11
+  - [kics](https://www.kics.io) from 1.6.3 to **1.6.4** on 2022-11-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.1** on 2022-11-11
 <!-- linter-versions-end -->
 
 
