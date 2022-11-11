@@ -80,6 +80,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![janderssonse/gradle-versions-filter-plugin - GitHub](https://gh-card.dev/repos/janderssonse/gradle-versions-filter-plugin.svg?fullname=)](https://github.com/janderssonse/gradle-versions-filter-plugin){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![AliceO2Group/O2Physics - GitHub](https://gh-card.dev/repos/AliceO2Group/O2Physics.svg?fullname=)](https://github.com/AliceO2Group/O2Physics){target=_blank}
+[![ahmadnassri/node-oas-fastify - GitHub](https://gh-card.dev/repos/ahmadnassri/node-oas-fastify.svg?fullname=)](https://github.com/ahmadnassri/node-oas-fastify){target=_blank}
 [![chgl/kube-powertools - GitHub](https://gh-card.dev/repos/chgl/kube-powertools.svg?fullname=)](https://github.com/chgl/kube-powertools){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}
@@ -89,13 +90,17 @@ According to posted issues, there are many more private and self-hosted repos us
 [![practicalli/clojure-web-services - GitHub](https://gh-card.dev/repos/practicalli/clojure-web-services.svg?fullname=)](https://github.com/practicalli/clojure-web-services){target=_blank}
 [![nvuillam/njre - GitHub](https://gh-card.dev/repos/nvuillam/njre.svg?fullname=)](https://github.com/nvuillam/njre){target=_blank}
 [![QuantumPL/bib - GitHub](https://gh-card.dev/repos/QuantumPL/bib.svg?fullname=)](https://github.com/QuantumPL/bib){target=_blank}
+[![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
 [![dochang/bumplus - GitHub](https://gh-card.dev/repos/dochang/bumplus.svg?fullname=)](https://github.com/dochang/bumplus){target=_blank}
 [![ADFC-Hamburg/adfc-ansible - GitHub](https://gh-card.dev/repos/ADFC-Hamburg/adfc-ansible.svg?fullname=)](https://github.com/ADFC-Hamburg/adfc-ansible){target=_blank}
 [![jokay/docker-prune - GitHub](https://gh-card.dev/repos/jokay/docker-prune.svg?fullname=)](https://github.com/jokay/docker-prune){target=_blank}
+[![AliceO2Group/Run3Analysisvalidation - GitHub](https://gh-card.dev/repos/AliceO2Group/Run3Analysisvalidation.svg?fullname=)](https://github.com/AliceO2Group/Run3Analysisvalidation){target=_blank}
+[![Odilio/microservice-spring-hexa-kotin - GitHub](https://gh-card.dev/repos/Odilio/microservice-spring-hexa-kotin.svg?fullname=)](https://github.com/Odilio/microservice-spring-hexa-kotin){target=_blank}
 [![theodore-s-beers/muqawwim - GitHub](https://gh-card.dev/repos/theodore-s-beers/muqawwim.svg?fullname=)](https://github.com/theodore-s-beers/muqawwim){target=_blank}
 [![AlbanAndrieu/jenkins-pipeline-scripts - GitHub](https://gh-card.dev/repos/AlbanAndrieu/jenkins-pipeline-scripts.svg?fullname=)](https://github.com/AlbanAndrieu/jenkins-pipeline-scripts){target=_blank}
 [![tusharshahrs/pulumi-home - GitHub](https://gh-card.dev/repos/tusharshahrs/pulumi-home.svg?fullname=)](https://github.com/tusharshahrs/pulumi-home){target=_blank}
 [![nvuillam/node-sarif-builder - GitHub](https://gh-card.dev/repos/nvuillam/node-sarif-builder.svg?fullname=)](https://github.com/nvuillam/node-sarif-builder){target=_blank}
+[![d-eathrow/anonymousland - GitHub](https://gh-card.dev/repos/d-eathrow/anonymousland.svg?fullname=)](https://github.com/d-eathrow/anonymousland){target=_blank}
 [![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
 [![Eknah/Forradia - GitHub](https://gh-card.dev/repos/Eknah/Forradia.svg?fullname=)](https://github.com/Eknah/Forradia){target=_blank}
 [![Neragin/cx-bot - GitHub](https://gh-card.dev/repos/Neragin/cx-bot.svg?fullname=)](https://github.com/Neragin/cx-bot){target=_blank}
@@ -105,6 +110,7 @@ According to posted issues, there are many more private and self-hosted repos us
 [![bsrodrigs/terraform-aws-fully-connected-vpn - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-fully-connected-vpn.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn){target=_blank}
 [![MTUCI-VR/shooter-project - GitHub](https://gh-card.dev/repos/MTUCI-VR/shooter-project.svg?fullname=)](https://github.com/MTUCI-VR/shooter-project){target=_blank}
 [![lpmatos/docker-crypto-miner - GitHub](https://gh-card.dev/repos/lpmatos/docker-crypto-miner.svg?fullname=)](https://github.com/lpmatos/docker-crypto-miner){target=_blank}
+[![rasa/law-scraper - GitHub](https://gh-card.dev/repos/rasa/law-scraper.svg?fullname=)](https://github.com/rasa/law-scraper){target=_blank}
 [![tonic-team/tonic.site - GitHub](https://gh-card.dev/repos/tonic-team/tonic.site.svg?fullname=)](https://github.com/tonic-team/tonic.site){target=_blank}
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}
 [![ewencluley/final-curtain - GitHub](https://gh-card.dev/repos/ewencluley/final-curtain.svg?fullname=)](https://github.com/ewencluley/final-curtain){target=_blank}

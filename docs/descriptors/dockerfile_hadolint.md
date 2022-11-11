@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in MegaLinter: **2.10.0**
+- Version in MegaLinter: **2.12.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
@@ -101,6 +101,7 @@ Usage: hadolint [-v|--version] [-c|--config FILENAME] [DOCKERFILE...]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
                 [--strict-labels] [--disable-ignore-pragma]
                 [-t|--failure-threshold THRESHOLD]
+
   Lint Dockerfile for errors and best practices
 
 Available options:
@@ -148,7 +149,7 @@ Available options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 
