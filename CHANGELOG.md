@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2** on 2022-11-11
   - [kics](https://www.kics.io) from 1.6.3 to **1.6.4** on 2022-11-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.1** on 2022-11-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.1 to **0.40.2** on 2022-11-11
 <!-- linter-versions-end -->
 
 
