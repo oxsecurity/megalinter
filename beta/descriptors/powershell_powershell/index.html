@@ -5757,7 +5757,7 @@
 <h1 id="powershell"><a href="https://github.com/PowerShell/PSScriptAnalyzer" target="blank" title="Visit linter Web Site"><img src="https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png" alt="powershell" height="100px" class="megalinter-logo"></a>powershell <a href="https://github.com/PowerShell/PSScriptAnalyzer/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer" /></a></h1>
 <h2 id="powershell-documentation">powershell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.2.7</strong></li>
+<li>Version in MegaLinter: <strong>7.3.0</strong></li>
 <li>Visit <a href="https://github.com/PowerShell/PSScriptAnalyzer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PowerShell/PSScriptAnalyzer#explicit" target="_blank">How to configure powershell rules</a><ul>
 <li>If custom <code>.powershell-psscriptanalyzer.psd1</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.powershell-psscriptanalyzer.psd1" target="_blank">.powershell-psscriptanalyzer.psd1</a> will be used</li>
@@ -5912,12 +5912,14 @@
 Usage: pwsh[.exe] [-Login] [[-File] &lt;filePath&gt; [args]]
                   [-Command { - | &lt;script-block&gt; [-args &lt;arg-array&gt;]
                                 | &lt;string&gt; [&lt;CommandParameters&gt;] } ]
-                  [-ConfigurationName &lt;string&gt;] [-CustomPipeName &lt;string&gt;]
-                  [-EncodedCommand &lt;Base64EncodedCommand&gt;]
+                  [-ConfigurationName &lt;string&gt;] [-ConfigurationFile &lt;filePath&gt;]
+                  [-CustomPipeName &lt;string&gt;] [-EncodedCommand &lt;Base64EncodedCommand&gt;]
                   [-ExecutionPolicy &lt;ExecutionPolicy&gt;] [-InputFormat {Text | XML}]
                   [-Interactive] [-MTA] [-NoExit] [-NoLogo] [-NonInteractive] [-NoProfile]
-                  [-OutputFormat {Text | XML}] [-SettingsFile &lt;filePath&gt;] [-SSHServerMode] [-STA]
-                  [-Version] [-WindowStyle &lt;style&gt;] [-WorkingDirectory &lt;directoryPath&gt;]
+                  [-NoProfileLoadTime] [-OutputFormat {Text | XML}]
+                  [-SettingsFile &lt;filePath&gt;] [-SSHServerMode] [-STA]
+                  [-Version] [-WindowStyle &lt;style&gt;]
+                  [-WorkingDirectory &lt;directoryPath&gt;]
 
        pwsh[.exe] -h | -Help | -? | /?
 
@@ -6052,6 +6054,14 @@ All parameters are case-insensitive.
 
     Example: &quot;pwsh -ConfigurationName AdminRoles&quot;
 
+-ConfigurationFile
+
+    Specifies a session configuration (.pssc) file path. The configuration
+    contained in the configuration file will be applied to the PowerShell
+    session.
+
+    Example: &quot;pwsh -ConfigurationFile &quot;C:\ProgramData\PowerShell\MyConfig.pssc&quot;
+
 -CustomPipeName
 
     Specifies the name to use for an additional IPC server (named pipe) used
@@ -6143,7 +6153,7 @@ All parameters are case-insensitive.
 
 -NoLogo | -nol
 
-    Hides the copyright banner at startup of interactive sessions.
+    Hides the banner text at startup of interactive sessions.
 
 -NonInteractive | -noni
 
@@ -6154,6 +6164,11 @@ All parameters are case-insensitive.
 -NoProfile | -nop
 
     Does not load the PowerShell profiles.
+
+-NoProfileLoadTime
+
+    Hides the PowerShell profile load time text shown at startup when the load
+    time exceeds 500 milliseconds.
 
 -OutputFormat | -o | -of
 
@@ -6223,7 +6238,8 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | cut -d '&quot;' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    &amp;&amp; ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    &amp;&amp; ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    &amp;&amp; chmod +x /usr/bin/pwsh
 
 # Linter install
 ARG PSSA_VERSION='latest'

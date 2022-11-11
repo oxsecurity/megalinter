@@ -5752,7 +5752,8 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | cut -d '&quot;' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    &amp;&amp; ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    &amp;&amp; ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    &amp;&amp; chmod +x /usr/bin/pwsh
 
 </code></pre>
 <ul>
