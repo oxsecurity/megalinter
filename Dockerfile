@@ -11,7 +11,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.11.02-alpine as clj-kondo
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
