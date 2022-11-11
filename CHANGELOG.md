@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.6.3 to **1.6.4** on 2022-11-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.1** on 2022-11-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.1 to **0.40.2** on 2022-11-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.1 to **6.14.2** on 2022-11-11
 <!-- linter-versions-end -->
 
 
