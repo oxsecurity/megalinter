@@ -4,7 +4,7 @@
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.1.0**
+- Version in MegaLinter: **6.1.1**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -131,11 +131,6 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         ignore. Can be set in config file.   │
 │                                         [default: None]                      │
 │ --version                                                                    │
-│ --install-completion                    Install completion for the current   │
-│                                         shell.                               │
-│ --show-completion                       Show completion for the current      │
-│                                         shell, to copy it or customize the   │
-│                                         installation.                        │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
