@@ -2319,7 +2319,6 @@ def generate_json_schema_enums():
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
         "PHP_BUILTIN",
-        "RST_RSTFMT",
     ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
