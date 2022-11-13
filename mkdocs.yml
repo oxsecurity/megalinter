@@ -337,7 +337,7 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
-  - "They use MegaLinter": "all_users.md"
+  - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"
