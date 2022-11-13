@@ -68,7 +68,7 @@
     "remark-lint": "14.0.2",
     "revive": "1.2.4",
     "rst-lint": "1.4.0",
-    "rstcheck": "6.1.0",
+    "rstcheck": "6.1.1",
     "rstfmt": "0.0.11",
     "rubocop": "1.38.0",
     "scalafix": "0.10.4",

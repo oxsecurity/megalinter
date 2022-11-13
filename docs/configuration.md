@@ -68,7 +68,7 @@ MegaLinter have all linters enabled by default, but allows to enable only some, 
 - If `ENABLE_LINTERS` is set, only listed linters will be processed
 - If `DISABLE` is set, the linters in the listed descriptors will be skipped
 - If `DISABLE_LINTERS` is set, the listed linters will be skipped
-- If `DISABLE_ERRORS_LINTERS` is set, the linter linters will be run, but if errors are found, they will be considered as non blocking
+- If `DISABLE_ERRORS_LINTERS` is set, the listed linters will be run, but if errors are found, they will be considered as non blocking
 
 Examples:
 
