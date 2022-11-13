@@ -38,7 +38,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info>=0.2.0
+  pip3 install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info >=0.2.0
   cd /tmp/lint || exit 1
   chmod +x build.sh
   bash build.sh --doc --dependents
