@@ -2849,17 +2849,8 @@ def update_dependents_info():
         "--sort",
         "stars",
     ]
-    logging.info("Running command: " + str(command))
-    process = subprocess.run(
-        command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        universal_newlines=True,
-        shell=True,
-        executable=None if sys.platform == "win32" else which("bash"),
-    )
-    stdout = utils.decode_utf8(process.stdout)
-    logging.info(f"Updating dependents infos result: ({process.returncode})\n" + stdout)
+    logging.info("Running command: " + " ".join(command))
+    os.system(" ".join(command))
 
 
 if __name__ == "__main__":
