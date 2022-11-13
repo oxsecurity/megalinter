@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.1 to **6.14.2** on 2022-11-11
   - [rstcheck](https://github.com/myint/rstcheck) from 6.1.0 to **6.1.1** on 2022-11-13
   - [stylelint](https://stylelint.io) from 14.14.1 to **14.15.0** on 2022-11-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2** on 2022-11-13
 <!-- linter-versions-end -->
 
 
