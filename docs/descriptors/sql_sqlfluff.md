@@ -11,7 +11,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **1.4.1**
+- Version in MegaLinter: **1.4.2**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
   - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -100,6 +100,7 @@ Commands:
   fix       Fix SQL files.
   lint      Lint SQL files via passing a list of files or using stdin.
   parse     Parse SQL files and just spit out the result.
+  render    Render SQL files and just spit out the result.
   rules     Show the current rules in use.
   version   Show the version of sqlfluff.
 
