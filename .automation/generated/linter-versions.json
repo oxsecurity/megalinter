@@ -85,7 +85,7 @@
     "snakemake": "7.18.2",
     "spectral": "5.9.2",
     "sql-lint": "1.0.0",
-    "sqlfluff": "1.4.1",
+    "sqlfluff": "1.4.2",
     "standard": "17.0.0",
     "stylelint": "14.15.0",
     "swiftlint": "0.46.5",
