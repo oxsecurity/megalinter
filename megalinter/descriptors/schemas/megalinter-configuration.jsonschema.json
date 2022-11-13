@@ -224,8 +224,7 @@
         "CREDENTIALS_SECRETLINT",
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
-        "PHP_BUILTIN",
-        "RST_RSTFMT"
+        "PHP_BUILTIN"
       ],
       "type": "string"
     }

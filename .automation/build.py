@@ -42,6 +42,7 @@ from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
+UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
@@ -2194,6 +2195,7 @@ def finalize_doc_build():
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.7M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
@@ -2318,7 +2320,6 @@ def generate_json_schema_enums():
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
         "PHP_BUILTIN",
-        "RST_RSTFMT",
     ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2836,6 +2837,31 @@ def generate_version():
     repo.create_tag(RELEASE_TAG)
 
 
+def update_dependents_info():
+    logging.info("Updating dependents info...")
+    command = [
+        "github-dependents-info",
+        "--repo",
+        "oxsecurity/megalinter",
+        "--markdownfile",
+        "./docs/used-by-stats.md",
+        "--verbose",
+        "--sort",
+        "stars",
+    ]
+    logging.info("Running command: " + str(command))
+    process = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+        shell=True,
+        executable=None if sys.platform == "win32" else which("bash"),
+    )
+    stdout = utils.decode_utf8(process.stdout)
+    logging.info(f"Updating dependents infos result: ({process.returncode})\n" + stdout)
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -2855,6 +2881,8 @@ if __name__ == "__main__":
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
+    if UPDATE_DEPENDENTS is True:
+        update_dependents_info()
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
