@@ -121,6 +121,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://oxsecurity.github.io/megalinter/beta/used-by-stats/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://oxsecurity.github.io/megalinter/beta/descriptors/action/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
