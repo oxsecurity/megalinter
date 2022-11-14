@@ -2845,6 +2845,8 @@ def update_dependents_info():
         "oxsecurity/megalinter",
         "--markdownfile",
         "./docs/used-by-stats.md",
+        "--badgemarkdownfile",
+        "README.md",
         "--verbose",
         "--sort",
         "stars",
