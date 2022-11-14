@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2** on 2022-11-13
   - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0** on 2022-11-14
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.49.0** on 2022-11-14
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.0 to **0.49.1** on 2022-11-14
 <!-- linter-versions-end -->
 
 
