@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.0 as gitleaks
@@ -107,6 +107,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt && deactivate && cd ./../.. \
@@ -114,7 +115,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
     && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/djlint/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -237,15 +238,16 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN mkdir -p ${PWSH_DIRECTORY} \
-#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-#         | grep browser_download_url \
-#         | grep linux-alpine-x64 \
-#         | cut -d '"' -f 4 \
-#         | xargs -n 1 wget -O - \
-#         | tar -xzC ${PWSH_DIRECTORY} \
-#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+RUN mkdir -p ${PWSH_DIRECTORY} \
+    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
+
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
@@ -332,10 +334,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # protolint installation
 # Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/
-
-# checkov installation
-    && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf \
 
 # gitleaks installation
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/

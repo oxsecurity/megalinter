@@ -71,6 +71,7 @@ def init_config(workspace=None):
         )
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
+        combined_config = {}
         extends = runtime_config["EXTENDS"]
         if isinstance(extends, str):
             extends = extends.split(",")
@@ -80,8 +81,10 @@ def init_config(workspace=None):
                 r.status_code == 200
             ), f"Unable to retrieve EXTENDS config file {config_file_name}"
             extends_config_data = yaml.safe_load(r.content)
-            runtime_config.update(extends_config_data)
+            combined_config.update(extends_config_data)
             CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
+        combined_config.update(runtime_config)
+        runtime_config = combined_config
     # Print & set config in cache
     print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)

@@ -75,7 +75,7 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
@@ -97,7 +97,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |
@@ -335,6 +335,32 @@ resources:
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
 ```
+
+## Drone CI
+
+**Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
+
+1. Create a `.drone.yml` file on the root directory of your repository
+
+2. Copy and paste the following template:
+
+```yaml
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+```
+
+This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
 
 ## Run MegaLinter locally
 

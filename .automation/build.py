@@ -42,6 +42,7 @@ from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
+UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
@@ -1250,10 +1251,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
             )
         # File extensions & file names override if not "lint_all_files"
-        if (
-            linter.lint_all_files is False
-            and linter.lint_all_other_linters_files is False
-        ):
+        if linter.lint_all_files is False:
             linter_doc_md += [
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
@@ -1888,7 +1886,7 @@ def md_ide_install_link(ide, ide_extension):
             item_name = ide_extension["url"].split("/items/", 1)[1]
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
-            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+            return f"[![Install in VSCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
     # JetBrains Idea family editors plugins
     if ide == "idea":
         if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
@@ -2194,9 +2192,10 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.6M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.7M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
@@ -2321,7 +2320,6 @@ def generate_json_schema_enums():
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
         "PHP_BUILTIN",
-        "RST_RSTFMT",
     ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2757,7 +2755,15 @@ def manage_output_variables():
                 updated_versions = 1
                 break
         if updated_versions == 1:
-            print("::set-output name=has_updated_versions::1")
+            if "GITHUB_OUTPUT" in os.environ:
+                github_output_file = os.environ["GITHUB_OUTPUT"]
+                if not os.path.isfile(github_output_file):
+                    github_output_file = github_output_file.replace(
+                        "/home/runner/work/_temp/_runner_file_commands",
+                        "/github/file_commands",
+                    )
+                with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                    output_stream.write("has_updated_versions=1\n")
 
 
 def reformat_markdown_tables():
@@ -2831,6 +2837,24 @@ def generate_version():
     repo.create_tag(RELEASE_TAG)
 
 
+def update_dependents_info():
+    logging.info("Updating dependents info...")
+    command = [
+        "github-dependents-info",
+        "--repo",
+        "oxsecurity/megalinter",
+        "--markdownfile",
+        "./docs/used-by-stats.md",
+        "--badgemarkdownfile",
+        "README.md",
+        "--verbose",
+        "--sort",
+        "stars",
+    ]
+    logging.info("Running command: " + " ".join(command))
+    os.system(" ".join(command))
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -2850,6 +2874,8 @@ if __name__ == "__main__":
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
+    if UPDATE_DEPENDENTS is True:
+        update_dependents_info()
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()

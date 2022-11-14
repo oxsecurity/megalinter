@@ -4,7 +4,7 @@
 
 ## powershell documentation
 
-- Version in MegaLinter: **7.2.7**
+- Version in MegaLinter: **7.3.0**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit){target=_blank}
   - If custom `.powershell-psscriptanalyzer.psd1` config file is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
@@ -38,7 +38,7 @@ Use powershell in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                          |                                                                                  Install                                                                                  |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [![Install in VsCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.PowerShell){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.PowerShell){target=_blank} |
 
 ## MegaLinter Flavours
 
@@ -46,7 +46,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                 | Description                                   | Embedded linters |                                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:----------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor                     |       108        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/) | Default MegaLinter Flavor                     |       109        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://oxsecurity.github.io/megalinter/beta/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
@@ -79,12 +79,14 @@ pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Settings .p
 Usage: pwsh[.exe] [-Login] [[-File] <filePath> [args]]
                   [-Command { - | <script-block> [-args <arg-array>]
                                 | <string> [<CommandParameters>] } ]
-                  [-ConfigurationName <string>] [-CustomPipeName <string>]
-                  [-EncodedCommand <Base64EncodedCommand>]
+                  [-ConfigurationName <string>] [-ConfigurationFile <filePath>]
+                  [-CustomPipeName <string>] [-EncodedCommand <Base64EncodedCommand>]
                   [-ExecutionPolicy <ExecutionPolicy>] [-InputFormat {Text | XML}]
                   [-Interactive] [-MTA] [-NoExit] [-NoLogo] [-NonInteractive] [-NoProfile]
-                  [-OutputFormat {Text | XML}] [-SettingsFile <filePath>] [-SSHServerMode] [-STA]
-                  [-Version] [-WindowStyle <style>] [-WorkingDirectory <directoryPath>]
+                  [-NoProfileLoadTime] [-OutputFormat {Text | XML}]
+                  [-SettingsFile <filePath>] [-SSHServerMode] [-STA]
+                  [-Version] [-WindowStyle <style>]
+                  [-WorkingDirectory <directoryPath>]
 
        pwsh[.exe] -h | -Help | -? | /?
 
@@ -219,6 +221,14 @@ All parameters are case-insensitive.
 
     Example: "pwsh -ConfigurationName AdminRoles"
 
+-ConfigurationFile
+
+    Specifies a session configuration (.pssc) file path. The configuration
+    contained in the configuration file will be applied to the PowerShell
+    session.
+
+    Example: "pwsh -ConfigurationFile "C:\ProgramData\PowerShell\MyConfig.pssc"
+
 -CustomPipeName
 
     Specifies the name to use for an additional IPC server (named pipe) used
@@ -310,7 +320,7 @@ All parameters are case-insensitive.
 
 -NoLogo | -nol
 
-    Hides the copyright banner at startup of interactive sessions.
+    Hides the banner text at startup of interactive sessions.
 
 -NonInteractive | -noni
 
@@ -321,6 +331,11 @@ All parameters are case-insensitive.
 -NoProfile | -nop
 
     Does not load the PowerShell profiles.
+
+-NoProfileLoadTime
+
+    Hides the PowerShell profile load time text shown at startup when the load
+    time exceeds 500 milliseconds.
 
 -OutputFormat | -o | -of
 
@@ -391,7 +406,8 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
 
 # Linter install
 ARG PSSA_VERSION='latest'

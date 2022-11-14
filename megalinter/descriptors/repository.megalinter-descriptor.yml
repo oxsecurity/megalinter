@@ -37,10 +37,8 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
-      dockerfile:
-        - |
-          RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-              && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+      pip:
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -98,7 +96,7 @@ linters:
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
-        - name: VsCode DevSkim
+        - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
 
   # DUSTILOCK
@@ -295,6 +293,8 @@ linters:
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
       - --sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
     cli_lint_errors_count: regex_number
@@ -315,7 +315,7 @@ linters:
         default_value: ""
     ide:
       vscode:
-        - name: VsCode SemGrep
+        - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
   # SYFT
@@ -391,5 +391,5 @@ linters:
               chmod 644 /usr/local/bin/sarif.tpl
     ide:
       vscode:
-        - name: VsCode Trivy
+        - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

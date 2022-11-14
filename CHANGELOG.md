@@ -9,19 +9,84 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Use `markdownlint-cli2` instead of `markdownlint-cli`
+- Initial Drone CI documentation
+- Automatically generate "Used by" markdown documentation with [github-dependents-info](https://github.com/nvuillam/github-dependents-info)
+
 - Linter versions upgrades
-  - [djlint](https://djlint.com/) from 1.19.2 to **1.0.3** on 2022-10-24
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0** on 2022-10-24
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.931** on 2022-10-24
-  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.12.2** on 2022-10-24
-  - [rubocop](https://rubocop.org/) from 1.37.0 to **1.37.1** on 2022-10-24
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.26.3** on 2022-10-24
-  - [djlint](https://djlint.com/) from 1.0.3 to **1.19.2** on 2022-10-24
-  - [phpstan](https://phpstan.org/) from 1.8.10 to **1.8.11** on 2022-10-24
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.982** on 2022-10-24
-  - [pylint](https://pylint.pycqa.org) from 2.12.2 to **2.15.5** on 2022-10-24
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.28.0** on 2022-10-24
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.41.0 to **0.42.0** on 2022-11-07
+  - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11** on 2022-11-07
+  - [djlint](https://djlint.com/) from 1.19.4 to **1.19.5** on 2022-11-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.1** on 2022-11-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.71.0** on 2022-11-07
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.990** on 2022-11-07
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40** on 2022-11-08
+  - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.121.0** on 2022-11-08
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.10.0 to **2.12.0** on 2022-11-11
+  - [djlint](https://djlint.com/) from 1.19.5 to **1.19.7** on 2022-11-11
+  - [phpstan](https://phpstan.org/) from 1.9.1 to **1.9.2** on 2022-11-11
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.7 to **7.3.0** on 2022-11-11
+  - [semgrep](https://semgrep.dev/) from 0.121.0 to **0.121.2** on 2022-11-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.1 to **0.7.0** on 2022-11-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2** on 2022-11-11
+  - [kics](https://www.kics.io) from 1.6.3 to **1.6.4** on 2022-11-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.1** on 2022-11-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.1 to **0.40.2** on 2022-11-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.1 to **6.14.2** on 2022-11-11
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.0 to **6.1.1** on 2022-11-13
+  - [stylelint](https://stylelint.io) from 14.14.1 to **14.15.0** on 2022-11-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2** on 2022-11-13
+  - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0** on 2022-11-14
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.49.0** on 2022-11-14
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.0 to **0.49.1** on 2022-11-14
 <!-- linter-versions-end -->
+
+
+## [v6.14.0] - 2022-06-11
+
+- Core
+  - Replace `set-output` usage with `GITHUB_OUTPUT` to handle [Github deprecation notice](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
+  - Allow [PRE_COMMANDS](https://oxsecurity.github.io/megalinter/latest/configuration/#pre-commands) to be defined within a python venv ([#2017](https://github.com/oxsecurity/megalinter/issues/2017))
+  - Correct behavior of `EXTENDS` property in `.megalinter.yml` config file ([#1516](https://github.com/oxsecurity/megalinter/issues/1516))
+  - Fix flavor suggestion message in reporters
+
+- New MegaLinter plugin: [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config), by [Yann Jouanique](https://github.com/Yann-J)
+
+- Linters
+  - Bring back [rstfmt](https://oxsecurity.github.io/megalinter/latest/descriptors/rst_rstfmt/) RestructuredText formatter
+  - Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed ([#1997](https://github.com/oxsecurity/megalinter/issues/1997)).
+  - Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) ([#2009](https://github.com/oxsecurity/megalinter/issues/2009))
+  - Fix bicep version regex
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.11.1 to to **0.12.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.68.1 to **0.70.1**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.3.4 to **10.4**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.64 to **0.1.65**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.12.0 to **6.14.0**
+  - [djlint](https://djlint.com/) from 1.19.2 to **1.19.4**
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.4.0 to **2.5.0**
+  - [eslint](https://eslint.org) from 8.26.0 to **8.27.0**
+  - [kics](https://www.kics.io) from 1.6.2 to **1.6.3**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.4.12 to **0.5.0**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.0.0 to **11.1.1**
+  - [phpstan](https://phpstan.org/) from 1.8.10 to **1.9.1**
+  - [revive](https://revive.run/) from 0.0.0 to **1.2.4**
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.10 to **0.0.11**
+  - [rubocop](https://rubocop.org/) from 1.37.0 to **1.38.0**
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.2.4 to **5.3.0**
+  - [semgrep](https://semgrep.dev/) from 0.118.0 to **0.120.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.9 to **3.6.2**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.16.1 to **7.18.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.3.2 to **1.4.1**
+  - [stylelint](https://stylelint.io) from 14.14.0 to **14.14.1**
+  - [syft](https://github.com/anchore/syft) from 0.59.0 to **0.60.3**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.3 to **1.3.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.39.2 to **0.40.0**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.41.0 to **0.42.1**
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.3 to **1.26.3**
 
 ## [v6.13.0] - 2022-10-24
 
@@ -2340,7 +2405,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
 
 - Documentation
-  - Add Install button for VsCode IDE extensions when available
+  - Add Install button for VSCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
   - Add a new page **All linters** listing all linters and references to MegaLinter in their documentation
   - Add json-schema documentation generation and references

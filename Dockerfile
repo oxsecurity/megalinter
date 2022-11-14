@@ -12,7 +12,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
-FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
@@ -156,16 +156,18 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
     && mkdir -p "/venvs/mypy" && cd "/venvs/mypy" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir mypy && deactivate && cd ./../.. \
     && mkdir -p "/venvs/pyright" && cd "/venvs/pyright" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pyright==1.1.270 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir restructuredtext_lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstcheck && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/rstfmt" && cd "/venvs/rstfmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstfmt && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
     && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/pyright/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/pyright/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -343,15 +345,15 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10 \
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN mkdir -p ${PWSH_DIRECTORY} \
-#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-#         | grep browser_download_url \
-#         | grep linux-alpine-x64 \
-#         | cut -d '"' -f 4 \
-#         | xargs -n 1 wget -O - \
-#         | tar -xzC ${PWSH_DIRECTORY} \
-#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && mkdir -p ${PWSH_DIRECTORY} \
+    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh \
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
@@ -541,10 +543,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
-# checkov installation
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf \
-
 # devskim installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -552,7 +550,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
@@ -624,11 +622,6 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHO
 
 # terraform-fmt installation
 # Managed with COPY --from=terragrunt /bin/terraform /usr/bin/
-
-# checkov installation
-# Next line commented because already managed by another linter
-# RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-#     && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 
 # kics installation
 # Managed with COPY --from=kics /app/bin/kics /usr/bin/

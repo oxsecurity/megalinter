@@ -27,7 +27,8 @@ install:
               | cut -d '"' -f 4 \
               | xargs -n 1 wget -O - \
               | tar -xzC ${PWSH_DIRECTORY} \
-          && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+          && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+          && chmod +x /usr/bin/pwsh
 linters:
   # Internal powershell linter
   - class: PowershellLinter
@@ -49,5 +50,5 @@ linters:
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:
-        - name: VsCode PowerShell extension
+        - name: VSCode PowerShell extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell

@@ -91,10 +91,18 @@ def run_command(command_info, log_key, mega_linter, linter=None):
 
 
 def complete_command(command_info):
+    # NPM dependencies case
     if command_info["command"].startswith("npm install") or command_info[
         "command"
     ].startswith("npm i"):
         command_info["command"] = "cd /node-deps && " + command_info["command"]
+    # Pip dependencies case
+    elif command_info.get("venv", None) is not None:
+        venv = command_info.get("venv")
+        cmd = command_info["command"]
+        command_info[
+            "command"
+        ] = f"cd /venvs/{venv} && source bin/activate && {cmd} && deactivate"
     return command_info
 
 
