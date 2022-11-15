@@ -37,6 +37,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0** on 2022-11-14
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.49.0** on 2022-11-14
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.0 to **0.49.1** on 2022-11-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.71.0 to **0.71.1** on 2022-11-15
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.990 to **0.991** on 2022-11-15
 <!-- linter-versions-end -->
 
 
