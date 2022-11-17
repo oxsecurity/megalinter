@@ -74,7 +74,7 @@
     "scalafix": "0.10.4",
     "scss-lint": "0.59.0",
     "secretlint": "5.3.0",
-    "semgrep": "0.121.2",
+    "semgrep": "0.122.0",
     "sfdx-scanner": "2.8.0",
     "sfdx-scanner-apex": "3.6.2",
     "sfdx-scanner-aura": "3.6.2",
