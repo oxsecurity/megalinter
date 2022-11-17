@@ -3,23 +3,23 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=1698&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1224&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=474&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=47125&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=47144&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                          | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                         | 29412 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                         | 29420 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                             |  2246 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                               |  1652 |
-| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                             |  1439 |
-| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                         |  1398 |
-| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                   |   930 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                               |  1654 |
+| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                             |  1440 |
+| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                         |  1399 |
+| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                   |   931 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                       |   914 |
-| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                         |   824 |
-| [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template)                                                                                   |   812 |
+| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                         |   825 |
+| [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template)                                                                                   |   813 |
 | [onedr0p/home-ops](https://github.com/onedr0p/home-ops)                                                                                                             |   676 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                         |   590 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                       |   538 |
-| [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                             |   508 |
+| [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                             |   509 |
 | [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn)                                                                                     |   422 |
 | [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                               |   357 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                           |   341 |
