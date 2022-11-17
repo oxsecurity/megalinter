@@ -15,7 +15,7 @@
     "clj-kondo": "2022.10.14",
     "coffeelint": "5.2.11",
     "cpplint": "1.6.1",
-    "cspell": "6.14.2",
+    "cspell": "6.14.3",
     "dartanalyzer": "0.0.0",
     "devskim": "0.6.9",
     "djlint": "1.19.7",
