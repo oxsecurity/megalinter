@@ -46,6 +46,7 @@ linters:
     test_folder: repository_checkov
   # DEVSKIM
   - linter_name: devskim
+    name: REPOSITORY_DEVSKIM
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -102,6 +103,7 @@ linters:
   # DUSTILOCK
   - class: DustilockLinter
     linter_name: dustilock
+    name: REPOSITORY_DUSTILOCK
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -136,6 +138,7 @@ linters:
 
   # GIT_DIFF
   - linter_name: git_diff
+    name: REPOSITORY_GIT_DIFF
     lint_all_files: true
     test_folder: git_diff
     linter_text: Git diff checks for git conflicts markers in files
@@ -157,6 +160,7 @@ linters:
   # GITLEAKS
   - class: GitleaksLinter
     linter_name: gitleaks
+    name: REPOSITORY_GITLEAKS
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -198,6 +202,7 @@ linters:
 
   # GOODCHECK
   - linter_name: goodcheck
+    name: REPOSITORY_GOODCHECK
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -226,6 +231,7 @@ linters:
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint
+    name: REPOSITORY_SECRETLINT
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -263,6 +269,7 @@ linters:
   # SEMGREP
   - class: SemgrepLinter
     linter_name: semgrep
+    name: REPOSITORY_SEMGREP
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -321,6 +328,7 @@ linters:
   # SYFT
   - class: SyftLinter
     linter_name: syft
+    name: REPOSITORY_SYFT
     can_output_sarif: true
     descriptor_flavors:
       - security
@@ -350,6 +358,7 @@ linters:
 
   # TRIVY
   - linter_name: trivy
+    name: REPOSITORY_TRIVY
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
