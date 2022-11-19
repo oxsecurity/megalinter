@@ -11,7 +11,7 @@
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.3.4**
+- Version in MegaLinter: **1.3.5**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}

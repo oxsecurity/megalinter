@@ -11,7 +11,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.15.5**
+- Version in MegaLinter: **2.15.6**
 - Visit [Official Web Site](https://pylint.pycqa.org){target=_blank}
 - See [How to configure pylint rules](https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used

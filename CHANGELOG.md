@@ -42,6 +42,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.990 to **0.991** on 2022-11-15
   - [semgrep](https://semgrep.dev/) from 0.121.2 to **0.122.0** on 2022-11-17
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.2 to **6.14.3** on 2022-11-17
+  - [eslint](https://eslint.org) from 8.27.0 to **8.28.0** on 2022-11-19
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.42.0 to **0.42.2** on 2022-11-19
+  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.15.6** on 2022-11-19
+  - [syft](https://github.com/anchore/syft) from 0.60.3 to **0.62.0** on 2022-11-19
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.1 to **0.50.0** on 2022-11-19
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.4 to **1.3.5** on 2022-11-19
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0** on 2022-11-19
 <!-- linter-versions-end -->
 
 

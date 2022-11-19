@@ -4,7 +4,7 @@
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.49.1**
+- Version in MegaLinter: **0.50.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
@@ -96,7 +96,8 @@ SUBCOMMANDS:
   analyze                 Run analysis rules
   docs                    Open SwiftLint documentation website in the default
                           web browser
-  generate-docs           Generates markdown documentation for all rules
+  generate-docs           Generates markdown documentation for selected group
+                          of rules
   lint (default)          Print lint warnings and errors
   rules                   Display the list of rules and their identifiers
   version                 Display the current version of SwiftLint
