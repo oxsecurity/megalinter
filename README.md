@@ -94,6 +94,7 @@ _Github PR reporter_
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
     - [Drone CI](#drone-ci)
+    - [Docker container](#docker)
     - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
@@ -676,6 +677,19 @@ steps:
 ```
 
 This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
+
+### Docker container
+
+You can also run megalinter with its Docker container, just execute this command:
+
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/tmp/lint:rw oxsecurity/megalinter:v6`
+
+**No extra arguments are needed,** however, megalinter will lint all of the files inside the `/tmp/lint` folder, so it may be needed to configure your tool of choice to use the `/tmp/lint` folder as workspace.
+This can also be changed:
+
+*Example:*
+
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/example/folder:rw oxsecurity/megalinter:v6`
 
 ### Run MegaLinter locally
 
