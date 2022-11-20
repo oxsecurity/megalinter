@@ -42,3 +42,4 @@ Example:
 | Variable               | Description                    | Default value |
 |------------------------|--------------------------------|---------------|
 | AZURE_COMMENT_REPORTER | Activates/deactivates reporter | true          |
+| AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments links to target Build and not artifacts page | `artifacts` |
