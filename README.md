@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1702&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1710&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -1052,6 +1052,7 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 - [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 - [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/), by [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/)
 - [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/014_Sharing-GitHub-secrets-with-third-party-actions/), by [Constantin Bosse](https://github.com/cgbosse) and [Stephen Hosom](https://github.com/hosom)
+- [Make Clojure tasks simple and consistent](https://practical.li/blog/posts/make-clojure-tasks-simple-and-consistent/), by [Practicalli](https://twitter.com/practical_li)
 <!-- articles-section-end -->
 
 <!-- frequently-asked-questions-section-start -->
