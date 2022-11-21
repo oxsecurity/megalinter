@@ -40,7 +40,7 @@ jobs:
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     # Set max build time for the job
-    timeout-minutes: 90
+    timeout-minutes: 120
     ##################
     # Load all steps #
     ##################
@@ -167,7 +167,7 @@ jobs:
             fi
           fi
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
-        timeout-minutes: 60
+        timeout-minutes: 90
 
       #####################################
       # Run Linter against ALL code base  #
