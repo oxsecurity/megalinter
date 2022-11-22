@@ -49,6 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.1 to **0.50.0** on 2022-11-19
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.4 to **1.3.5** on 2022-11-19
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0** on 2022-11-19
+  - [syft](https://github.com/anchore/syft) from 0.62.0 to **0.62.1** on 2022-11-22
 <!-- linter-versions-end -->
 
 

@@ -1,13 +1,13 @@
 # Dependents stats for oxsecurity/megalinter
 
 [![](https://img.shields.io/static/v1?label=Used%20by&message=1712&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1228&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=484&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=47457&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1224&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=488&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=47459&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                          | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                         | 29543 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                         | 29546 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                             |  2250 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                               |  1661 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                             |  1445 |
@@ -41,7 +41,7 @@
 | [cbg-ethz/V-pipe](https://github.com/cbg-ethz/V-pipe)                                                                                                               |    96 |
 | [practicalli/spacemacs](https://github.com/practicalli/spacemacs)                                                                                                   |    89 |
 | [Luzkan/smells](https://github.com/Luzkan/smells)                                                                                                                   |    89 |
-| [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                 |    81 |
+| [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                 |    82 |
 | [telstra/open-kilda](https://github.com/telstra/open-kilda)                                                                                                         |    71 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                     |    69 |
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                       |    66 |
@@ -96,13 +96,13 @@
 | [haraldkoch/kochhaus-home](https://github.com/haraldkoch/kochhaus-home)                                                                                             |    13 |
 | [eresturo/scanadf2docspell](https://github.com/eresturo/scanadf2docspell)                                                                                           |    12 |
 | [ahmadnassri/docker-vscode-server](https://github.com/ahmadnassri/docker-vscode-server)                                                                             |    12 |
+| [ahmadnassri/action-terraform-report](https://github.com/ahmadnassri/action-terraform-report)                                                                       |    12 |
 | [unixorn/jira-commands](https://github.com/unixorn/jira-commands)                                                                                                   |    11 |
 | [GSA/site-scanning-engine](https://github.com/GSA/site-scanning-engine)                                                                                             |    11 |
 | [dochang/mb-url](https://github.com/dochang/mb-url)                                                                                                                 |    11 |
 | [jokay/docker-ccu-historian](https://github.com/jokay/docker-ccu-historian)                                                                                         |    11 |
 | [chgl/kube-powertools](https://github.com/chgl/kube-powertools)                                                                                                     |    11 |
 | [ahmadnassri/node-oas-request](https://github.com/ahmadnassri/node-oas-request)                                                                                     |    11 |
-| [ahmadnassri/action-terraform-report](https://github.com/ahmadnassri/action-terraform-report)                                                                       |    11 |
 | [nvuillam/markdown-table-formatter](https://github.com/nvuillam/markdown-table-formatter)                                                                           |    10 |
 | [Qarj/WebImblaze](https://github.com/Qarj/WebImblaze)                                                                                                               |    10 |
 | [llaville/php-compatinfo-db](https://github.com/llaville/php-compatinfo-db)                                                                                         |    10 |
@@ -243,7 +243,6 @@
 | [lucacalcaterra/kube-home-flux-2](https://github.com/lucacalcaterra/kube-home-flux-2)                                                                               |     2 |
 | [Euvaz/GitOps-Home](https://github.com/Euvaz/GitOps-Home)                                                                                                           |     2 |
 | [remkolems/flux-cluster-k3s-ubuntu-template](https://github.com/remkolems/flux-cluster-k3s-ubuntu-template)                                                         |     2 |
-| [wesley-dean/hsc](https://github.com/wesley-dean/hsc)                                                                                                               |     2 |
 | [ashokm/dotfiles](https://github.com/ashokm/dotfiles)                                                                                                               |     2 |
 | [bjw-s/esphome-config](https://github.com/bjw-s/esphome-config)                                                                                                     |     2 |
 | [MRDGH2821/dpaste-ts](https://github.com/MRDGH2821/dpaste-ts)                                                                                                       |     2 |
@@ -1092,8 +1091,6 @@
 | [AlexBigO/O2Physics_old](https://github.com/AlexBigO/O2Physics_old)                                                                                                 |     0 |
 | [vyas-n/vyas-n](https://github.com/vyas-n/vyas-n)                                                                                                                   |     0 |
 | [Jasstkn/gcloud-helmfile](https://github.com/Jasstkn/gcloud-helmfile)                                                                                               |     0 |
-| [ly4e/kali-gui-container-image](https://github.com/ly4e/kali-gui-container-image)                                                                                   |     0 |
-| [ly4e/prelude-operator-headless](https://github.com/ly4e/prelude-operator-headless)                                                                                 |     0 |
 | [ankita-nema/ValidationAndHook](https://github.com/ankita-nema/ValidationAndHook)                                                                                   |     0 |
 | [ankita-nema/SampleWebhook](https://github.com/ankita-nema/SampleWebhook)                                                                                           |     0 |
 | [MRDGH2821/MRDGH2821](https://github.com/MRDGH2821/MRDGH2821)                                                                                                       |     0 |

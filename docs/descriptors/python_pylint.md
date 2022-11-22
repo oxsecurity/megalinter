@@ -274,6 +274,81 @@ Messages control:
                         Warning level messages displayed, use "--disable=all
                         --enable=classes --disable=W".
 
+String:
+  Check string literals.
+
+  --check-str-concat-over-line-jumps <y or n>
+                        This flag controls whether the implicit-str-concat
+                        should generate a warning on implicit string
+                        concatenation in sequences defined over several lines.
+                        (default: False)
+  --check-quote-consistency <y or n>
+                        This flag controls whether inconsistent-quotes
+                        generates a warning when the character used as a quote
+                        delimiter is used inconsistently within a module.
+                        (default: False)
+
+Exceptions:
+  Exception related checks.
+
+  --overgeneral-exceptions <comma-separated class names>
+                        Exceptions that will emit a warning when caught.
+                        (default: ('BaseException', 'Exception'))
+
+Spelling:
+  Check spelling in comments and docstrings.
+
+  --spelling-dict <dict name>
+                        Spelling dictionary name. Available dictionaries:
+                        none. To make it work, install the 'python-enchant'
+                        package. (default: )
+  --spelling-ignore-words <comma separated words>
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file <path to file>
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words <y or n>
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives <comma separated words>
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
+
+Format:
+  Formatting checker.
+
+  --max-line-length <int>
+                        Maximum number of characters on a single line.
+                        (default: 100)
+  --ignore-long-lines <regexp>
+                        Regexp for a line that is allowed to be longer than
+                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
+  --single-line-if-stmt <y or n>
+                        Allow the body of an if to be on the same line as the
+                        test if there is no else. (default: False)
+  --single-line-class-stmt <y or n>
+                        Allow the body of a class to be on the same line as
+                        the declaration if body contains single statement.
+                        (default: False)
+  --max-module-lines <int>
+                        Maximum number of lines in a module. (default: 1000)
+  --indent-string <string>
+                        String used as indentation unit. This is usually " "
+                        (4 spaces) or "  " (1 tab). (default: )
+  --indent-after-paren <int>
+                        Number of spaces of indent required inside a hanging
+                        or continued line. (default: 4)
+  --expected-line-ending-format <empty or LF or CRLF>
+                        Expected format of line ending, e.g. empty (any line
+                        ending), LF or CRLF. (default: )
+
 Basic:
   --good-names <names>  Good variable names which should always be accepted,
                         separated by a comma. (default: ('i', 'j', 'k', 'ex',
@@ -399,6 +474,54 @@ Basic:
                         Minimum line length for functions/classes that require
                         docstrings, shorter ones are exempt. (default: -1)
 
+Design:
+  Checker of potential misdesigns.
+
+  --max-args <int>      Maximum number of arguments for function / method.
+                        (default: 5)
+  --max-locals <int>    Maximum number of locals for function / method body.
+                        (default: 15)
+  --max-returns <int>   Maximum number of return / yield for function / method
+                        body. (default: 6)
+  --max-branches <int>  Maximum number of branch for function / method body.
+                        (default: 12)
+  --max-statements <int>
+                        Maximum number of statements in function / method
+                        body. (default: 50)
+  --max-parents <num>   Maximum number of parents for a class (see R0901).
+                        (default: 7)
+  --ignored-parents <comma separated list of class names>
+                        List of qualified class names to ignore when counting
+                        class parents (see R0901) (default: ())
+  --max-attributes <num>
+                        Maximum number of attributes for a class (see R0902).
+                        (default: 7)
+  --min-public-methods <num>
+                        Minimum number of public methods for a class (see
+                        R0903). (default: 2)
+  --max-public-methods <num>
+                        Maximum number of public methods for a class (see
+                        R0904). (default: 20)
+  --max-bool-expr <num>
+                        Maximum number of boolean expressions in an if
+                        statement (see R0916). (default: 5)
+  --exclude-too-few-public-methods <pattern>[,<pattern>...]
+                        List of regular expressions of class ancestor names to
+                        ignore when counting public methods (see R0903)
+                        (default: [])
+
+Method_args:
+  BaseChecker for method_args.
+
+  --timeout-methods <comma separated list>
+                        List of qualified names (i.e., library.method) which
+                        require a timeout parameter e.g.
+                        'requests.api.get,requests.api.post' (default:
+                        ('requests.api.delete', 'requests.api.get',
+                        'requests.api.head', 'requests.api.options',
+                        'requests.api.patch', 'requests.api.post',
+                        'requests.api.put', 'requests.api.request'))
+
 Typecheck:
   Try to find bugs in the code using type inference.
 
@@ -461,6 +584,27 @@ Typecheck:
                         List of decorators that change the signature of a
                         decorated function. (default: [])
 
+Classes:
+  Checker for class nodes.
+
+  --defining-attr-methods <method names>
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', '__post_init__'))
+  --valid-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('cls',))
+  --exclude-protected <protected access exclusions>
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make'))
+  --check-protected-access-in-special-methods <y or n>
+                        Warn about protected attribute access inside special
+                        methods (default: False)
+
 Logging:
   Checks use of the logging module.
 
@@ -472,6 +616,24 @@ Logging:
                         The type of string formatting that logging methods do.
                         `old` means using % formatting, `new` is for `{}`
                         formatting. (default: old)
+
+Similarities:
+  Checks for similarities and duplicated code.
+
+  --min-similarity-lines <int>
+                        Minimum lines number of a similarity. (default: 4)
+  --ignore-comments <y or n>
+                        Comments are removed from the similarity computation
+                        (default: True)
+  --ignore-docstrings <y or n>
+                        Docstrings are removed from the similarity computation
+                        (default: True)
+  --ignore-imports <y or n>
+                        Imports are removed from the similarity computation
+                        (default: True)
+  --ignore-signatures <y or n>
+                        Signatures are removed from the similarity computation
+                        (default: True)
 
 Imports:
   BaseChecker for import statements.
@@ -508,6 +670,15 @@ Imports:
                         Allow wildcard imports from modules that define
                         __all__. (default: False)
 
+Miscellaneous:
+  BaseChecker for encoding issues.
+
+  --notes <comma separated values>
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx <regexp>  Regular expression of note tags to take in
+                        consideration. (default: )
+
 Variables:
   BaseChecker for variables.
 
@@ -541,70 +712,6 @@ Variables:
   --allowed-redefined-builtins <comma separated list>
                         List of names allowed to shadow builtins (default: ())
 
-Design:
-  Checker of potential misdesigns.
-
-  --max-args <int>      Maximum number of arguments for function / method.
-                        (default: 5)
-  --max-locals <int>    Maximum number of locals for function / method body.
-                        (default: 15)
-  --max-returns <int>   Maximum number of return / yield for function / method
-                        body. (default: 6)
-  --max-branches <int>  Maximum number of branch for function / method body.
-                        (default: 12)
-  --max-statements <int>
-                        Maximum number of statements in function / method
-                        body. (default: 50)
-  --max-parents <num>   Maximum number of parents for a class (see R0901).
-                        (default: 7)
-  --ignored-parents <comma separated list of class names>
-                        List of qualified class names to ignore when counting
-                        class parents (see R0901) (default: ())
-  --max-attributes <num>
-                        Maximum number of attributes for a class (see R0902).
-                        (default: 7)
-  --min-public-methods <num>
-                        Minimum number of public methods for a class (see
-                        R0903). (default: 2)
-  --max-public-methods <num>
-                        Maximum number of public methods for a class (see
-                        R0904). (default: 20)
-  --max-bool-expr <num>
-                        Maximum number of boolean expressions in an if
-                        statement (see R0916). (default: 5)
-  --exclude-too-few-public-methods <pattern>[,<pattern>...]
-                        List of regular expressions of class ancestor names to
-                        ignore when counting public methods (see R0903)
-                        (default: [])
-
-Format:
-  Formatting checker.
-
-  --max-line-length <int>
-                        Maximum number of characters on a single line.
-                        (default: 100)
-  --ignore-long-lines <regexp>
-                        Regexp for a line that is allowed to be longer than
-                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
-  --single-line-if-stmt <y or n>
-                        Allow the body of an if to be on the same line as the
-                        test if there is no else. (default: False)
-  --single-line-class-stmt <y or n>
-                        Allow the body of a class to be on the same line as
-                        the declaration if body contains single statement.
-                        (default: False)
-  --max-module-lines <int>
-                        Maximum number of lines in a module. (default: 1000)
-  --indent-string <string>
-                        String used as indentation unit. This is usually " "
-                        (4 spaces) or "  " (1 tab). (default: )
-  --indent-after-paren <int>
-                        Number of spaces of indent required inside a hanging
-                        or continued line. (default: 4)
-  --expected-line-ending-format <empty or LF or CRLF>
-                        Expected format of line ending, e.g. empty (any line
-                        ending), LF or CRLF. (default: )
-
 Refactoring:
   Looks for code which can be refactored.
 
@@ -618,113 +725,6 @@ Refactoring:
                         considered as an explicit return statement and no
                         message will be printed. (default: ('sys.exit',
                         'argparse.parse_error'))
-
-String:
-  Check string literals.
-
-  --check-str-concat-over-line-jumps <y or n>
-                        This flag controls whether the implicit-str-concat
-                        should generate a warning on implicit string
-                        concatenation in sequences defined over several lines.
-                        (default: False)
-  --check-quote-consistency <y or n>
-                        This flag controls whether inconsistent-quotes
-                        generates a warning when the character used as a quote
-                        delimiter is used inconsistently within a module.
-                        (default: False)
-
-Method_args:
-  BaseChecker for method_args.
-
-  --timeout-methods <comma separated list>
-                        List of qualified names (i.e., library.method) which
-                        require a timeout parameter e.g.
-                        'requests.api.get,requests.api.post' (default:
-                        ('requests.api.delete', 'requests.api.get',
-                        'requests.api.head', 'requests.api.options',
-                        'requests.api.patch', 'requests.api.post',
-                        'requests.api.put', 'requests.api.request'))
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions <comma-separated class names>
-                        Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
-
-Spelling:
-  Check spelling in comments and docstrings.
-
-  --spelling-dict <dict name>
-                        Spelling dictionary name. Available dictionaries:
-                        none. To make it work, install the 'python-enchant'
-                        package. (default: )
-  --spelling-ignore-words <comma separated words>
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file <path to file>
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words <y or n>
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives <comma separated words>
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
-
-Classes:
-  Checker for class nodes.
-
-  --defining-attr-methods <method names>
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', '__post_init__'))
-  --valid-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
-  --exclude-protected <protected access exclusions>
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make'))
-  --check-protected-access-in-special-methods <y or n>
-                        Warn about protected attribute access inside special
-                        methods (default: False)
-
-Similarities:
-  Checks for similarities and duplicated code.
-
-  --min-similarity-lines <int>
-                        Minimum lines number of a similarity. (default: 4)
-  --ignore-comments <y or n>
-                        Comments are removed from the similarity computation
-                        (default: True)
-  --ignore-docstrings <y or n>
-                        Docstrings are removed from the similarity computation
-                        (default: True)
-  --ignore-imports <y or n>
-                        Imports are removed from the similarity computation
-                        (default: True)
-  --ignore-signatures <y or n>
-                        Signatures are removed from the similarity computation
-                        (default: True)
-
-Miscellaneous:
-  BaseChecker for encoding issues.
-
-  --notes <comma separated values>
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx <regexp>  Regular expression of note tags to take in
-                        consideration. (default: )
 ```
 
 ### Installation on mega-linter Docker image
