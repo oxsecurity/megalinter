@@ -51,6 +51,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0** on 2022-11-19
   - [syft](https://github.com/anchore/syft) from 0.62.0 to **0.62.1** on 2022-11-22
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.71.1 to **0.72.0** on 2022-11-23
+  - [prettier](https://prettier.io/) from 2.7.1 to **2.8.0** on 2022-11-23
 <!-- linter-versions-end -->
 
 
