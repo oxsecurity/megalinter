@@ -8,16 +8,23 @@
   </noscript>
   <script>
     window.onload = function () {
+      if (window.location.href === "https://megalinter.io") {
+        const redirectLocation = "https://megalinter.io/latest/" ;
+        document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+        window.location.href = redirectLocation;
+        return ;
+      }
+      /*
       if (window.location.href === "https://oxsecurity.github.io/megalinter") {
           const redirectLocation = "https://oxsecurity.github.io/megalinter/latest/" ;
           document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
           window.location.href = redirectLocation;
           return ;
-      }
+      } */
       const defaultVersion = 'latest' ;
       const redirectLocation = window.location.href.replace(
-          "oxsecurity.github.io/megalinter/",
-          "oxsecurity.github.io/megalinter/" + defaultVersion +"/"
+          "megalinter.io/",
+          "megalinter.io/" + defaultVersion +"/"
       );
       document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
       window.location.href = redirectLocation;

@@ -9,13 +9,13 @@
         window.onload = function () {
             const defaultVersion = 'latest' ;
             const destination = window.location.href;
-            if (window.location.href.includes("oxsecurity.github.io/megalinter/" + defaultVersion)){
+            if (window.location.href.includes("megalinter.io/" + defaultVersion)){
                 return ;
             }
-            else if (window.location.href.includes("oxsecurity.github.io/megalinter/")) {
+            else if (window.location.href.includes("megalinter.io/")) {
                 const redirectLocation = window.location.href.replace(
-                    "oxsecurity.github.io/megalinter/",
-                    "oxsecurity.github.io/megalinter/" + defaultVersion + "/"
+                    "megalinter.io/",
+                    "megalinter.io/" + defaultVersion + "/"
                 );
                 document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
                 window.location.href = redirectLocation;
