@@ -53,6 +53,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.71.1 to **0.72.0** on 2022-11-23
   - [prettier](https://prettier.io/) from 2.7.1 to **2.8.0** on 2022-11-23
   - [kics](https://www.kics.io) from 1.6.4 to **1.6.5** on 2022-11-23
+  - [psalm](https://psalm.dev) from Psalm.5.x-dev@ to **Psalm.4.x-dev@** on 2022-11-23
+  - [flake8](https://flake8.pycqa.org) from 5.0.4 to **6.0.0** on 2022-11-23
 <!-- linter-versions-end -->
 
 
