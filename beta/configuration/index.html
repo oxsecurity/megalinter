@@ -12,7 +12,7 @@
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://oxsecurity.github.io/megalinter/beta/configuration/">
+        <link rel="canonical" href="https://megalinter.io/beta/configuration/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="MegaLinter" />
 <meta property="og:type" content="object" />
 <meta property="og:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
-<meta property="og:url" content="https://oxsecurity.github.io/megalinter" /><meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally. - megalint..." />
+<meta property="og:url" content="https://megalinter.io" /><meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally. - megalint..." />
 
   </head>
   
@@ -6023,13 +6023,13 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
     cwd: &quot;workspace&quot;   # Will be run at the root of the workspace (usually your repository root)
 </code></pre>
 <h2 id="cli-lint-mode">CLI lint mode</h2>
-<p>Each linter has a lint mode by default, visible in its MegaLinter documentation (<a href="https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed">example</a>):</p>
+<p>Each linter has a lint mode by default, visible in its MegaLinter documentation (<a href="https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed">example</a>):</p>
 <ul>
 <li><code>list_of_files</code>: All files are sent in single call to the linter</li>
 <li><code>project</code>: The linter is called from the root of the project, without specifying any file name</li>
 <li><code>file</code>: The linter is called once by file (so the performances may not be very good)</li>
 </ul>
-<p>You can override the CLI_LINT_MODE by using configuration variable for each linter (see <a href="https://oxsecurity.github.io/megalinter/supported-linters/">linters documentation</a>)</p>
+<p>You can override the CLI_LINT_MODE by using configuration variable for each linter (see <a href="https://megalinter.io/supported-linters/">linters documentation</a>)</p>
 <ul>
 <li>Linters with <code>project</code> default lint mode can not be overridden to <code>list_of_files</code> or <code>file</code></li>
 </ul>
