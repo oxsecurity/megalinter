@@ -11,7 +11,7 @@
 
 ## prettier documentation
 
-- Version in MegaLinter: **2.7.1**
+- Version in MegaLinter: **2.8.0**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#yaml){target=_blank}
@@ -208,6 +208,7 @@ Other options:
 
   --cache                  Only format changed files. Cannot use with --stdin-filepath.
                            Defaults to false.
+  --cache-location <path>  Path to the cache file.
   --cache-strategy <metadata|content>
                            Strategy for the cache to use for detecting changed files.
   --no-color               Do not colorize error messages.

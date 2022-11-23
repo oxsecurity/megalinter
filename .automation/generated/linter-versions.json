@@ -57,7 +57,7 @@
     "phpstan": "1.9.2",
     "pmd": "6.48.0",
     "powershell": "7.3.0",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
     "proselint": "0.13.0",
     "protolint": "0.42.2",
     "psalm": "Psalm.5.x-dev@",
