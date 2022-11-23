@@ -84,7 +84,7 @@ class AzureCommentReporter(Reporter):
                     "[Azure Comment Reporter] Error while posting comment:"
                     + r.reason
                     + "\n"
-                    + "See https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/"
+                    + "See https://megalinter.io/latest/reporters/AzureCommentReporter/"
                 )
         # Not in Azure context
         else:

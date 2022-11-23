@@ -143,7 +143,7 @@ When you don't know what option to select, please use default values`
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://oxsecurity.github.io/megalinter/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.io/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
@@ -237,7 +237,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#jenkins"
     );
   }
 
@@ -261,7 +261,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#gitlab"
     );
   }
 
