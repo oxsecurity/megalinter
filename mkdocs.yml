@@ -1,6 +1,6 @@
 ---
 site_name: MegaLinter by OX Security
-site_url: https://oxsecurity.github.io/megalinter
+site_url: https://megalinter.io
 repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
