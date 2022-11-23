@@ -376,7 +376,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
 
 # psalm installation
-    && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
+    && phive --no-progress install psalm@^4.30.0 -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
 
 # phplint installation
     && composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
