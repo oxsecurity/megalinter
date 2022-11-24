@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Upgrade to dotnet 6.0 + `list_of_files` for dotnet-format CLI lint mode to improve performances (requires `.csproj` or `.vbproj` in the repo)
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
@@ -63,8 +65,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add the SPELL_*_FILE_EXTENSIONS parameter for each SPELL type linter. If set, it will use this value to filter instead of the default behavior which is to parse the files of all other linters executed ([#1997](https://github.com/oxsecurity/megalinter/issues/1997)).
   - Allow cspell to also analyze file names (new variable SPELL_CSPELL_ANALYZE_FILE_NAMES) ([#2009](https://github.com/oxsecurity/megalinter/issues/2009))
   - Fix bicep version regex
-
-- Upgrade to dotnet 6.0 + `list_of_files` for dotnet-format CLI lint mode to improve performances (requires `.csproj` or `.vbproj` in the repo)
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.21 to **1.6.22**
