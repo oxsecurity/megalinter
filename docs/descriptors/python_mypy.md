@@ -15,7 +15,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.982**
+- Version in MegaLinter: **0.991**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -25,8 +25,8 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## Configuration in MegaLinter
 
-- Enable mypy by adding `PYTHON_MYPY` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.14.0/configuration/#activation-and-deactivation)
-- Disable mypy by adding `PYTHON_MYPY` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/6.14.0/configuration/#activation-and-deactivation)
+- Enable mypy by adding `PYTHON_MYPY` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable mypy by adding `PYTHON_MYPY` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -61,11 +61,11 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                     | Description                                     | Embedded linters |                                                                                                                                                                                          Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------|:------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/6.14.0/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/6.14.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/6.14.0/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6.14.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -117,6 +117,11 @@ command line flags. For more details, see:
 
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
+options:
+  --enable-incomplete-feature FEATURE
+                            Enable support of incomplete/experimental features
+                            for early preview
+
 Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
@@ -137,8 +142,8 @@ Config file:
 Import discovery:
   Configure how imports are discovered and followed.
 
-  --namespace-packages      Support namespace packages (PEP 420, __init__.py-
-                            less) (inverse: --no-namespace-packages)
+  --no-namespace-packages   Support namespace packages (PEP 420, __init__.py-
+                            less) (inverse: --namespace-packages)
   --ignore-missing-imports  Silently ignore imports of missing modules
   --follow-imports {normal,silent,skip,error}
                             How to treat imports (default normal)
@@ -210,8 +215,8 @@ None and Optional handling:
   https://mypy.readthedocs.io/en/stable/kinds_of_types.html#no-strict-
   optional
 
-  --no-implicit-optional    Don't assume arguments with default values of None
-                            are Optional (inverse: --implicit-optional)
+  --implicit-optional       Assume arguments with default values of None are
+                            Optional (inverse: --no-implicit-optional)
   --no-strict-optional      Disable strict Optional checks (inverse: --strict-
                             optional)
 
@@ -247,10 +252,10 @@ Miscellaneous strictness flags:
                             --disallow-subclassing-any, --disallow-untyped-
                             calls, --disallow-untyped-defs, --disallow-
                             incomplete-defs, --check-untyped-defs, --disallow-
-                            untyped-decorators, --no-implicit-optional,
-                            --warn-redundant-casts, --warn-unused-ignores,
-                            --warn-return-any, --no-implicit-reexport,
-                            --strict-equality, --strict-concatenate
+                            untyped-decorators, --warn-redundant-casts,
+                            --warn-unused-ignores, --warn-return-any, --no-
+                            implicit-reexport, --strict-equality, --strict-
+                            concatenate
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -265,8 +270,8 @@ Configuring error messages:
   --show-error-end          Show end line/end column numbers in error
                             messages. This implies --show-column-numbers
                             (inverse: --hide-error-end)
-  --show-error-codes        Show error codes in error messages (inverse:
-                            --hide-error-codes)
+  --hide-error-codes        Hide error codes in error messages (inverse:
+                            --show-error-codes)
   --pretty                  Use visually nicer output in error messages: Use
                             soft word wrap, show source code snippets, and
                             show error location markers (inverse: --no-pretty)
@@ -303,8 +308,9 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
-  --enable-recursive-aliases
-                            Experimental support for recursive type aliases
+  --disable-recursive-aliases
+                            Disable experimental support for recursive type
+                            aliases
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only

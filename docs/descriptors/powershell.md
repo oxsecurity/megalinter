@@ -43,7 +43,8 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
 
 ```
 

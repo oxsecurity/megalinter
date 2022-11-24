@@ -224,8 +224,7 @@
         "CREDENTIALS_SECRETLINT",
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
-        "PHP_BUILTIN",
-        "RST_RSTFMT"
+        "PHP_BUILTIN"
       ],
       "type": "string"
     }
@@ -663,6 +662,23 @@
     "ARM_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ARM_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for ARM descriptor",
+      "type": "string"
+    },
+    "AZURE_COMMENT_REPORTER": {
+      "$id": "#/properties/AZURE_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts MegaLinter results summary in the comments of the related pull request (if existing)",
+      "title": "Activate Azure PR Comments reporter",
+      "type": "boolean"
+    },
+    "AZURE_COMMENT_REPORTER_LINKS_TYPE": {
+      "$id": "#/properties/AZURE_COMMENT_REPORTER_LINKS_TYPE",
+      "default": "artifacts",
+      "enum": [
+        "artifacts",
+        "build"
+      ],
+      "title": "Type of hyperlinks in Azure PR Comments (artifacts or build)",
       "type": "string"
     },
     "BASH_EXEC_ARGUMENTS": {

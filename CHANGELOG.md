@@ -11,7 +11,44 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
-## [v6.14.0] - 2022-06-11
+## [v6.15.0] - 2022-11-23
+
+- Switch to <https://megalinter.io>
+- Initial Drone CI documentation
+- Automatically generate "Used by" markdown documentation with [github-dependents-info](https://github.com/nvuillam/github-dependents-info)
+- Add Docker container documentation
+
+- Linter versions upgrades
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.72.0**
+  - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.3**
+  - [djlint](https://djlint.com/) from 1.19.4 to **1.19.7**
+  - [eslint](https://eslint.org) from 8.27.0 to **8.28.0**
+  - [flake8](https://flake8.pycqa.org) from 5.0.4 to **6.0.0**
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.10.0 to **2.12.0**
+  - [kics](https://www.kics.io) from 1.6.3 to **1.6.5**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.991**
+  - [phpstan](https://phpstan.org/) from 1.9.1 to **1.9.2**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.7 to **7.3.0**
+  - [prettier](https://prettier.io/) from 2.7.1 to **2.8.0**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.41.0 to **0.42.2**
+  - [psalm](https://psalm.dev) from Psalm.5.x-dev@ to **Psalm.4.x-dev@**
+  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.15.6**
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.0 to **6.1.1**
+  - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0**
+  - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.122.0**
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.1 to **0.7.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2**
+  - [stylelint](https://stylelint.io) from 14.14.1 to **14.15.0**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.50.0**
+  - [syft](https://github.com/anchore/syft) from 0.60.3 to **0.62.1**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.4 to **1.3.5**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.2**
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0**
+
+## [v6.14.0] - 2022-11-06
 
 - Core
   - Replace `set-output` usage with `GITHUB_OUTPUT` to handle [Github deprecation notice](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)

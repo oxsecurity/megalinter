@@ -15,5 +15,6 @@
 - [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 - [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/), by [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/)
 - [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/014_Sharing-GitHub-secrets-with-third-party-actions/), by [Constantin Bosse](https://github.com/cgbosse) and [Stephen Hosom](https://github.com/hosom)
+- [Make Clojure tasks simple and consistent](https://practical.li/blog/posts/make-clojure-tasks-simple-and-consistent/), by [Practicalli](https://twitter.com/practical_li)
 
 <!-- articles-section-end -->

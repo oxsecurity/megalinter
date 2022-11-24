@@ -7,6 +7,7 @@
         "**/package-lock.json",
         "**/licenses/*.md",
         "**/all_users.md",
+        "**/used-by-stats.md",
         "lib",
         "report",
         ".vscode"
@@ -251,6 +252,7 @@
         "Picatic",
         "Pluggable",
         "Positionals",
+        "Practicalli",
         "Proselint",
         "Protolint",
         "Pylint",
