@@ -606,7 +606,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global --version 1.14.5 TSQLLint \
+    && dotnet tool install --global TSQLLint \
 
 # tflint installation
 # Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
