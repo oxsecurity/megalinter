@@ -213,7 +213,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version latest \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
