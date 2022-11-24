@@ -547,7 +547,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version latest \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
