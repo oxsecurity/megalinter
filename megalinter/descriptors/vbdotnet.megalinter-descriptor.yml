@@ -35,7 +35,7 @@ linters:
     cli_executable: dotnet
     cli_lint_extra_args:
       - "format"
-      - "{{WORKSPACE}}"
+      - ".{{WORKSPACE}}"
       - "--verify-no-changes"
       - "--exclude"
       - "/"
