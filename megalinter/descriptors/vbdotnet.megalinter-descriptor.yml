@@ -37,6 +37,8 @@ linters:
       - "format"
       - ".{{WORKSPACE}}"
       - "--verify-no-changes"
+      - "--verbosity"
+      - "detailed"
       - "--exclude"
       - "/"
       - "--include"
