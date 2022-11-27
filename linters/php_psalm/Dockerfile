@@ -159,7 +159,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && update-alternatives --install /usr/bin/php php /usr/bin/php8 10 \
 
 # psalm installation
-    && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+    && phive --no-progress install psalm@^4.30.0 -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
 #OTHER__END
@@ -209,9 +209,9 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.revision=$BUILD_REVISION \
       org.opencontainers.image.version=$BUILD_VERSION \
       org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.url="https://oxsecurity.github.io/megalinter" \
+      org.opencontainers.image.url="https://megalinter.io" \
       org.opencontainers.image.source="https://github.com/oxsecurity/megalinter" \
-      org.opencontainers.image.documentation="https://oxsecurity.github.io/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 

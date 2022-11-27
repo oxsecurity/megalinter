@@ -167,13 +167,13 @@ POST_COMMANDS:
 
 ## CLI lint mode
 
-Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
+Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
 
 - `list_of_files`: All files are sent in single call to the linter
 - `project`: The linter is called from the root of the project, without specifying any file name
 - `file`: The linter is called once by file (so the performances may not be very good)
 
-You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://oxsecurity.github.io/megalinter/supported-linters/))
+You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://megalinter.io/supported-linters/))
 
 - Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
 

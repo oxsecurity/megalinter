@@ -2847,9 +2847,10 @@ def update_dependents_info():
         "./docs/used-by-stats.md",
         "--badgemarkdownfile",
         "README.md",
-        "--verbose",
+        "--mergepackages",
         "--sort",
         "stars",
+        "--verbose",
     ]
     logging.info("Running command: " + " ".join(command))
     os.system(" ".join(command))
