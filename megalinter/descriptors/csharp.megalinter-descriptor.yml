@@ -32,7 +32,9 @@ linters:
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     pre_commands:
-        - command: set -x
+        - command: ls
+          cwd: "/"
+        - command: dotnet format --version
           cwd: "root"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
@@ -42,8 +44,6 @@ linters:
       - "--verify-no-changes"
       - "--verbosity"
       - "detailed"
-      #- "--exclude"
-      #- "/"
       - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
