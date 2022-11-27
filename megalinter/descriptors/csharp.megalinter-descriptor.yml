@@ -37,6 +37,8 @@ linters:
       - "format"
       - "{{WORKSPACE}}"
       - "--verify-no-changes"
+      - "-v"
+      - "d"
       - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
