@@ -31,6 +31,12 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    pre_commands:
+      - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs
+        cwd: "/"
+    pre_commands:
+      - command: dotnet format /tmp/lint/.automation/test/csharp/csharp_project.csproj --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs
+        cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
