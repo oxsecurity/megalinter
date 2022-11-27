@@ -31,32 +31,17 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-    pre_commands:
-      - command: ls /tmp/lint/.automation/test/csharp
-        cwd: "/"
-      - command: echo "$(</tmp/lint/.automation/test/csharp/csharp_bad_01.cs)"
-        cwd: "/"
-      - command: echo "$(</tmp/lint/.editorconfig)"
-        cwd: "/"
-      - command: echo "$(</tmp/lint/.automation/test/csharp/obj/Debug/net6.0/csharp_project.GeneratedMSBuildEditorConfig.editorconfig)"
-        cwd: "/"
-      - command: echo "$(</usr/share/dotnet/sdk/6.0.403/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_6_default.editorconfig)"
-        cwd: "/"
-      - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs
-        cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
       - "format"
       - "{{WORKSPACE}}"
       - "--verify-no-changes"
-      - "--verbosity"
-      - "detailed"
       - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
       - "--verify-no-changes"
     linter_version_cache: "000"
     examples:
-      - "dotnet format --verify-no-changes --exclude / --include myfile.cs myfile2.cs"
-      - "dotnet format --exclude / --include myfile.cs myfile2.cs" # Fix
+      - "dotnet format --verify-no-changes --include myfile.cs myfile2.cs"
+      - "dotnet format --include myfile.cs myfile2.cs" # Fix

@@ -31,24 +31,17 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-    pre_commands:
-      - command: ls /tmp/lint/.automation/test/vbdotnet
-        cwd: "/"
-      - command: dotnet format whitespace /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d
-        cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
       - "format"
       - "{{WORKSPACE}}"
       - "--verify-no-changes"
-      - "--verbosity"
-      - "detailed"
       - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround to allow fix
     cli_lint_fix_remove_args:
       - "--verify-no-changes"
     linter_version_cache: "000"
     examples:
-      - "dotnet format --verify-no-changes --exclude / --include myfile.vb myfile2.vb"
-      - "dotnet format --exclude / --include myfile.vb myfile2.vb"
+      - "dotnet format --verify-no-changes --include myfile.vb myfile2.vb"
+      - "dotnet format --include myfile.vb myfile2.vb"
