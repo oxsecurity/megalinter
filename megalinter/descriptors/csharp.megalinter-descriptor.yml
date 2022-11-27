@@ -34,7 +34,9 @@ linters:
     pre_commands:
       - command: ls /tmp/lint/.automation/test/csharp
         cwd: "/"
-      - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include ./tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs
+      - command: echo "$(</tmp/lint/.automation/test/csharp/csharp_bad_01.cs)"
+        cwd: "/"
+      - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs
         cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
