@@ -32,14 +32,10 @@ linters:
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     pre_commands:
-      - command: set -x
-        cwd: "/"
-      - command: ls
-        cwd: "root"
       - command: ls /tmp/lint/.automation/test/vbdotnet
         cwd: "/"
-      - command: dotnet format /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d
-        cwd: "root"
+      - command: dotnet format /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d --include /tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_1.vb
+        cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
