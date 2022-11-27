@@ -36,6 +36,12 @@ linters:
         cwd: "/"
       - command: echo "$(</tmp/lint/.automation/test/csharp/csharp_bad_01.cs)"
         cwd: "/"
+      - command: echo "$(</tmp/lint/.editorconfig)"
+        cwd: "/"
+      - command: echo "$(</tmp/lint/.automation/test/csharp/obj/Debug/net6.0/csharp_project.GeneratedMSBuildEditorConfig.editorconfig)"
+        cwd: "/"
+      - command: echo "$(</usr/share/dotnet/sdk/6.0.403/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_6_default.editorconfig)"
+        cwd: "/"
       - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs
         cwd: "/"
     cli_lint_mode: list_of_files
