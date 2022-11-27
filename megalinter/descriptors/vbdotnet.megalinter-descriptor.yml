@@ -34,7 +34,7 @@ linters:
     pre_commands:
       - command: ls /tmp/lint/.automation/test/vbdotnet
         cwd: "/"
-      - command: dotnet format /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d --include /tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_1.vb
+      - command: dotnet format ./tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d --include ./tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_1.vb
         cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
