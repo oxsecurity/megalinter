@@ -32,9 +32,13 @@ linters:
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     pre_commands:
-      - command: ls 
+      - command: set -x
         cwd: "/"
-      - command: dotnet format --version
+      - command: ls
+        cwd: "/"
+      - command: ls /tmp/lint/.automation/test/csharp
+        cwd: "/"
+      - command: dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d
         cwd: "root"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
