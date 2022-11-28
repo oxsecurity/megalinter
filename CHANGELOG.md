@@ -12,6 +12,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.0 to **0.50.1** on 2022-11-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.2 to **0.41.0** on 2022-11-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.0 to **0.72.1** on 2022-11-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.4 to **10.5.0** on 2022-11-28
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
