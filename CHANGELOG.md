@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.2 to **0.41.0** on 2022-11-26
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.0 to **0.72.1** on 2022-11-28
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.4 to **10.5.0** on 2022-11-28
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.14 to **2022.11.02**
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
