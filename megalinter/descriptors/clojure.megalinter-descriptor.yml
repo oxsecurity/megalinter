@@ -41,3 +41,26 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo
         - name: Clojure lint
           url: https://github.com/marcomorain/clojure-lint
+
+    # cljstyle
+  - linter_name: cljstyle
+    linter_url: https://github.com/greglook/cljstyle
+    linter_repo: https://github.com/greglook/cljstyle
+    linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
+    # linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
+    linter_rules_configuration_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
+    linter_rules_inline_disable_url: https://github.com/greglook/cljstyle#ignoring-forms
+    linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
+    config_file_name: .cljstyle
+    examples:
+      - "cljstyle check"
+      - "cljstyle fix"
+      - "clj-kondo fix myfile.clj path/to/myfile.clj"
+    install:
+      dockerfile:
+        - FROM abogoyavlensky/cljstyle:0.15.0 as cljstyle
+        - COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
+    ide:
+      emacs:
+        - name: cljstyle-mode
+          url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs

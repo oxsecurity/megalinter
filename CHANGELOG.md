@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linters
+  - [#2115](https://github.com/oxsecurity/megalinter/pull/2115) Add cljstyle to Clojure linters
+
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.0 to **0.50.1** on 2022-11-26
