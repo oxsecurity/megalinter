@@ -34,8 +34,7 @@ linters:
     pre_commands:
       - command: dotnet format whitespace /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d --include /tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_02.cs /tmp/lint/.automation/test/vbdotnet/vbdotnet_good_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_good_02.cs
         cwd: "/"
-    pre_commands:
-      - command: dotnet format style /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_02.cs  /tmp/lint/.automation/test/vbdotnet/vbdotnet_good_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_good_02.cs
+      - command: dotnet format style /tmp/lint/.automation/test/vbdotnet --verify-no-changes -v d --include /tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_bad_02.cs  /tmp/lint/.automation/test/vbdotnet/vbdotnet_good_01.cs ./tmp/lint/.automation/test/vbdotnet/vbdotnet_good_02.cs
         cwd: "/"
     cli_lint_mode: list_of_files
     cli_executable: dotnet
