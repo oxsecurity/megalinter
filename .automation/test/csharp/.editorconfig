@@ -8,7 +8,7 @@ root = true
 
 # Indentation and spacing
 indent_size = 4
-indent_style = space
+indent_style = tab
 tab_width = 4
 
 # New line preferences
