@@ -121,6 +121,7 @@
         "BICEP_BICEP_LINTER",
         "C_CPPLINT",
         "CLOJURE_CLJ_KONDO",
+        "CLOJURE_CLJSTYLE",
         "CLOUDFORMATION_CFN_LINT",
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",

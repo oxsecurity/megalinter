@@ -12,6 +12,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
+FROM abogoyavlensky/cljstyle:0.15.0 as cljstyle
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
@@ -290,6 +291,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --from=chktex /usr/bin/chktex /usr/bin/
@@ -410,6 +412,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # clj-kondo installation
 # Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+
+# cljstyle installation
+# Managed with COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
 
 # dotnet-format installation
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \

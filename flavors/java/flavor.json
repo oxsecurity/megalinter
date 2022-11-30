@@ -13,6 +13,7 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "CLOJURE_CLJ_KONDO",
+        "CLOJURE_CLJSTYLE",
         "COPYPASTE_JSCPD",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",

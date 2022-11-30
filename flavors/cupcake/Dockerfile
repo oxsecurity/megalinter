@@ -13,6 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
+FROM abogoyavlensky/cljstyle:0.15.0 as cljstyle
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM zricethezav/gitleaks:v8.15.0 as gitleaks
@@ -252,6 +253,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -308,6 +310,9 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 
 # clj-kondo installation
 # Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+
+# cljstyle installation
+# Managed with COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
 
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
