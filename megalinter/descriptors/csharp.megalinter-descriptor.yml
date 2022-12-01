@@ -19,7 +19,7 @@ install:
     - |
       RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
           && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 7.0 -version latest
     - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 linters:
   # DOTNET FORMAT
@@ -31,40 +31,15 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-    pre_commands:
-      - command: dotnet --version
-        cwd: "/"
-      - command: dotnet --info
-        cwd: "/"
-      - command: dotnet format --version
-        cwd: "/"
-      - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs tmp/lint/.automation/test/csharp/csharp_good_03.cs ~/tmp/lint/.automation/test/csharp/csharp_good_04.cs
-        cwd: "/"
-      - command: set -x;dotnet format ./tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs tmp/lint/.automation/test/csharp/csharp_good_03.cs ~/tmp/lint/.automation/test/csharp/csharp_good_04.cs
-        cwd: "/"
-      - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include *.*
-        cwd: "/"
-      - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/*.*
-        cwd: "/"
-      - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/*.cs
-        cwd: "/"
-      - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d
-        cwd: "/"
-      - command: echo $PATH
-        cwd: "/"
-    cli_lint_mode: list_of_files
     cli_executable: dotnet
     cli_lint_extra_args:
       - "format"
       - "{{WORKSPACE}}"
       - "--verify-no-changes"
-      - "-v"
-      - "d"
-      - "--include"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
       - "--verify-no-changes"
     linter_version_cache: "000"
     examples:
-      - "dotnet format --verify-no-changes --include myfile.cs myfile2.cs"
-      - "dotnet format --include myfile.cs myfile2.cs" # Fix
+      - "dotnet format {{WORKSPACE}} --verify-no-changes"
+      - "dotnet format {{WORKSPACE}}" # Fix

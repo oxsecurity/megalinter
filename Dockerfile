@@ -321,7 +321,7 @@ RUN rc-update add docker boot && rc-service docker start || true \
 # CSHARP installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 7.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -373,7 +373,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 7.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
