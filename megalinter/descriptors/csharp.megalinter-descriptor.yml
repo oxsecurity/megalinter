@@ -32,6 +32,10 @@ linters:
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     pre_commands:
+      - command: dotnet --version
+        cwd: "/"
+      - command: dotnet format --version
+        cwd: "/"
       - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs tmp/lint/.automation/test/csharp/csharp_good_03.cs ~/tmp/lint/.automation/test/csharp/csharp_good_04.cs
         cwd: "/"
       - command: set -x;dotnet format ./tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs tmp/lint/.automation/test/csharp/csharp_good_03.cs ~/tmp/lint/.automation/test/csharp/csharp_good_04.cs
