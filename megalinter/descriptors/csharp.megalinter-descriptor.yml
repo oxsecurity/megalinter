@@ -34,6 +34,8 @@ linters:
     pre_commands:
       - command: dotnet --version
         cwd: "/"
+      - command: dotnet --info
+        cwd: "/"
       - command: dotnet format --version
         cwd: "/"
       - command: set -x;dotnet format /tmp/lint/.automation/test/csharp --verify-no-changes -v d --include /tmp/lint/.automation/test/csharp/csharp_bad_01.cs ./tmp/lint/.automation/test/csharp/csharp_bad_02.cs tmp/lint/.automation/test/csharp/csharp_good_03.cs ~/tmp/lint/.automation/test/csharp/csharp_good_04.cs
