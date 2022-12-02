@@ -23,7 +23,6 @@ class DotnetFormatLinter(Linter):
             ]
 
         else:
-            return super().build_lint_command(None)
             # cli_lint_mode = list_of_files or project
             dotnet_format_command = " ".join(super().build_lint_command(None))
             commands = [
