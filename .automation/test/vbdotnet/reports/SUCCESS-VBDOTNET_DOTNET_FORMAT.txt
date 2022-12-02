@@ -2,5 +2,19 @@ Results of dotnet-format linter (version 000)
 See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
-[SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb      
+❌ [ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,4): error WHITESPACE: Fix whitespace formatting. Insert '\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(5,7): error WHITESPACE: Fix whitespace formatting. Insert '\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(4,4): error WHITESPACE: Fix whitespace formatting. Insert '\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(5,7): error WHITESPACE: Fix whitespace formatting. Insert '\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+
+❌ [ERROR] .automation/test/vbdotnet/vbdotnet_bad_2.vb
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,4): error WHITESPACE: Fix whitespace formatting. Insert '\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_1.vb(5,7): error WHITESPACE: Fix whitespace formatting. Insert '\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(4,4): error WHITESPACE: Fix whitespace formatting. Insert '\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(4,20): error WHITESPACE: Fix whitespace formatting. Delete 2 characters. [.automation/test/vbdotnet/vb_projecty.vbproj]
+    .automation/test/vbdotnet/vbdotnet_bad_2.vb(5,7): error WHITESPACE: Fix whitespace formatting. Insert '\s\s'. [.automation/test/vbdotnet/vb_projecty.vbproj]
 
