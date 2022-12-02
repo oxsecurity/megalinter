@@ -31,7 +31,7 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-     pre_commands:
+    pre_commands:
       - command: dotnet --version
         cwd: "/"
       - command: dotnet --info
