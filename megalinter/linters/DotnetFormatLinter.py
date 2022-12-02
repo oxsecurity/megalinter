@@ -29,4 +29,4 @@ class DotnetFormatLinter(Linter):
                 dotnet_format_command + " | tee /dev/tty2 2>&1",
                 'exit "${PIPESTATUS[0]}"',
             ]
-         return " && ".join(commands)
+        return " && ".join(commands)
