@@ -1,4 +1,4 @@
-Results of dotnet-format linter (version 6.3.322007)
+Results of dotnet-format linter (version 000)
 See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
