@@ -19,7 +19,7 @@ install:
     - |
       RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
           && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 7.0 -version latest
+          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
     - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 linters:
   # DOTNET FORMAT
@@ -31,13 +31,6 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-    pre_commands:
-      - command: dotnet --version
-        cwd: "/"
-      - command: dotnet --info
-        cwd: "/"
-      - command: dotnet format --version
-        cwd: "/"
     cli_executable: dotnet
     cli_lint_extra_args:
       - "format"
