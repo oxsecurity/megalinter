@@ -3,8 +3,6 @@
 Use dotnet-format to lint CSharp files
 """
 
-import os.path
-
 from megalinter import Linter
 
 
