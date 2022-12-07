@@ -56,9 +56,9 @@ According to posted issues, there are many more private and self-hosted repos us
 [![AlbanAndrieu/ansible-windows - GitHub](https://gh-card.dev/repos/AlbanAndrieu/ansible-windows.svg?fullname=)](https://github.com/AlbanAndrieu/ansible-windows){target=_blank}
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
-[![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
 [![rwaltr/home-ops - GitHub](https://gh-card.dev/repos/rwaltr/home-ops.svg?fullname=)](https://github.com/rwaltr/home-ops){target=_blank}
+[![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
 [![ahmadnassri/node-nightwatch-accessibility - GitHub](https://gh-card.dev/repos/ahmadnassri/node-nightwatch-accessibility.svg?fullname=)](https://github.com/ahmadnassri/node-nightwatch-accessibility){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
