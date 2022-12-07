@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.6.2**
+- Version in MegaLinter: **3.7.1**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file is not found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -201,6 +201,7 @@ VfHtmlStyleTagXss                                       visualforce  Security   
 VfUnescapeEl                                            visualforce  Security               Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                      apex         Best Practices                                                           pmd
 ApexUnitTestClassShouldHaveAsserts                      apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
+ApexUnitTestClassShouldHaveRunAs                        apex         Best Practices         quickstart                                        pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation            apex         Best Practices                                                           pmd
 ApexUnitTestShouldNotUseSeeAllDataTrue                  apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
 AvoidGlobalModifier                                     apex         Best Practices         Style,Default ruleset...,quickstart               pmd

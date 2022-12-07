@@ -112,7 +112,7 @@ Usage: pyright [options] files...
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
 
-WARNING: there is a new pyright version available (v1.1.270 -> v1.1.281).
+WARNING: there is a new pyright version available (v1.1.270 -> v1.1.282).
 Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 
 ```
