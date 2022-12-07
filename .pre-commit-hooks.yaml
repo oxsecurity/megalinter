@@ -6,7 +6,7 @@
   args:
     - mega-linter-runner
     - --containername 
-    - "'megalinter-incremental'"
+    - "megalinter-incremental"
     - --remove-container
     - --fix
     - --env
