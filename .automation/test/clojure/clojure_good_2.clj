@@ -3,37 +3,21 @@
 ;; --------------------------------------------------
 
 
-(ns practicalli.gameboard.service
+(ns clojure-good-2
   "Fraud API service component lifecycle management"
   (:gen-class)
   (:require
-   ;; Application dependencies
-   [practicalli.gameboard.router :as router]
-   [practicalli.gameboard.environment :as environment]
-
-   ;; System dependencies
-   [org.httpkit.server :as http-server]
-   [integrant.core :as ig]
-   [com.brunobonacci.mulog :as mulog]))
+    [com.brunobonacci.mulog :as mulog]
+    [integrant.core :as ig]
+    ;; System dependencies
+    [org.httpkit.server :as http-server]
+    [practicalli.gameboard.environment :as environment]
+    ;; Application dependencies
+    [practicalli.gameboard.router :as router]))
 
 
 ;; --------------------------------------------------
 ;; Configure and start application components
-
-;; Start mulog publisher for the given publisher type, i.e. console, cloud-watch
-#_{:clj-kondo/ignore [:unused-binding]}
-(defmethod ig/init-key ::log-publish
-  [_ {:keys [mulog] :as config}]
-  (mulog/log ::log-publish-component :publisher-config mulog :local-time (java.time.LocalDateTime/now))
-  (let [publisher (mulog/start-publisher! mulog)]
-    publisher))
-
-;; Connection values for Relational Database
-;; return hash-map of connection values: endpoint, access-key, secret-key
-(defmethod ig/init-key ::relational-store
-  [_ {:keys [connection] :as config}]
-  (mulog/log ::persistence-component :connection connection :local-time (java.time.LocalDateTime/now))
-  config)
 
 ;; Configure environment for router application, e.g. database connection details, etc.
 (defmethod ig/init-key ::router
@@ -57,21 +41,11 @@
   (http-server-instance))
 
 
-;; Shutdown Log publishing
-(defmethod ig/halt-key! ::log-publish
-  [_ publisher]
-  (mulog/log ::log-publish-component-shutdown :publisher-object publisher :local-time (java.time.LocalDateTime/now))
-  ;; Pause so final messages have chance to be published
-  (Thread/sleep 250)
-  ;; Call publisher again to stop publishing
-  (publisher))
-
-
 (defn stop
   "Stop service using Integrant halt!"
   [system]
   (mulog/log ::http-server-sigterm :system system :local-time (java.time.LocalDateTime/now))
-  ;; (println "Shutdown of Practicalli Gameboard service via Integrant")
+  ;; (println "Shutdown of Practicalli service via Integrant")
   (ig/halt! system))
 
 
@@ -92,7 +66,7 @@
 
         ;; Add keys to every event / publish profile use to start the service
         _ (mulog/set-global-context!
-           {:app-name "Practicalli Gameboard Service" :version  "0.1.0" :env profile})
+            {:app-name "Practicalli Service" :version  "0.1.0" :env profile})
 
         system (ig/init (environment/aero-prep profile))
 

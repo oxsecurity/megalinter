@@ -1,37 +1,57 @@
-#_{:clj-kondo/ignore [:namespace-name-mismatch]}
-(ns foo
+(ns clojure-good-1
   (:require
-   [clojure.string :as str]))
+    [clojure.string :as string]))
+
 
 (butlast [1 2 3])
 
-(str/join "" "")
+(string/join "" "")
 
-(defn foo-fn [x]
-    (let [y (fn [] (inc x))]
-        (y)))
+
+(defn calculation
+  [x]
+  (let [y (fn [] (inc x))]
+    (y)))
+
 
 (letfn
- [(f [g] (h g))
-  (h [i] (f i))])
+  [(f [g] (h g))
+   (h [i] (f i))])
 
-(defn foo [] 1)
-(inc (foo))
+
+(defn incremetal
+  []
+  1)
+
+
+(inc (incremetal))
 
 (Thread/sleep 1000 1)
 
+
 ;; Here we switch to another namespace and require the previous:
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
-(ns bar (:require [foo :as f]))
 
-(f/foo-fn 1)
+
+(ns bar
+  (:require
+    [clojure-good-1 :as good]))
+
+
+(good/calculation 1)
 
 {:a 1 :b 2}
 #{1 2}
 {:a 1 :b 2}
 
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
-(ns bar-test (:require [clojure.test :as t]))
 
-(t/deftest my-tests
-  (t/is (odd? (inc 1))))
+
+(ns bar-test
+  (:require
+    [clojure.test :refer [deftest is testing]]))
+
+
+(deftest oddity-test
+  (testing "Is something odd?"
+    (is (odd? (inc 1)))))

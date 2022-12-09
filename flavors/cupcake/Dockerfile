@@ -83,6 +83,8 @@ RUN apk add --update --no-cache \
                 php8-simplexml \
                 composer \
                 dpkg \
+                zlib \
+                zlib-dev \
                 nodejs \
                 npm \
                 yarn \

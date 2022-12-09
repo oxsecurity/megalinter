@@ -57,6 +57,12 @@ linters:
       - "cljstyle fix"
       - "clj-kondo fix myfile.clj path/to/myfile.clj"
     install:
+      # Add compression library for cljstyle fix
+      apk:
+        - zlib
+        - zlib-dev
+      # https://github.com/abogoyavlensky/docker/blob/master/cljstyle/Dockerfile
+      # TODO: create practicalli/cljstyle docker image that works with megalinter
       dockerfile:
         - FROM abogoyavlensky/cljstyle:0.15.0 as cljstyle
         - COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/

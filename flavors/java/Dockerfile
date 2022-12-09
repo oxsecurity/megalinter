@@ -56,6 +56,8 @@ RUN apk add --update --no-cache \
                 openssh \
                 go \
                 openjdk11 \
+                zlib \
+                zlib-dev \
                 nodejs \
                 npm \
                 yarn \
