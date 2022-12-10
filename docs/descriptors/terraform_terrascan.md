@@ -100,7 +100,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM tenable/terrascan:latest as terrascan
+FROM tenable/terrascan:1.16.0 as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 

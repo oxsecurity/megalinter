@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **3.6.2**
+- Version in MegaLinter: **3.7.1**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -197,6 +197,7 @@ VfHtmlStyleTagXss                                       visualforce  Security   
 VfUnescapeEl                                            visualforce  Security               Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                      apex         Best Practices                                                           pmd
 ApexUnitTestClassShouldHaveAsserts                      apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
+ApexUnitTestClassShouldHaveRunAs                        apex         Best Practices         quickstart                                        pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation            apex         Best Practices                                                           pmd
 ApexUnitTestShouldNotUseSeeAllDataTrue                  apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
 AvoidGlobalModifier                                     apex         Best Practices         Style,Default ruleset...,quickstart               pmd

@@ -16,6 +16,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.2 to **0.41.0** on 2022-11-26
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.0 to **0.72.1** on 2022-11-28
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.4 to **10.5.0** on 2022-11-28
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.40 to **0.13.1** on 2022-12-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.1 to **0.72.2** on 2022-12-07
+  - [stylelint](https://stylelint.io) from 14.15.0 to **14.16.0** on 2022-12-07
+  - [eslint](https://eslint.org) from 8.28.0 to **8.29.0** on 2022-12-07
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.140 to **1.144** on 2022-12-07
+  - [pylint](https://pylint.pycqa.org) from 2.15.6 to **2.15.8** on 2022-12-07
+  - [semgrep](https://semgrep.dev/) from 0.122.0 to **1.1.0** on 2022-12-07
+  - [syft](https://github.com/anchore/syft) from 0.62.1 to **0.62.3** on 2022-12-07
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.15.0 to **6.17.0** on 2022-12-07
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.5 to **1.3.6** on 2022-12-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.41.0 to **0.42.3** on 2022-12-07
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
