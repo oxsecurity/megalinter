@@ -11,7 +11,7 @@
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.17.0**
+- Version in MegaLinter: **1.16.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}

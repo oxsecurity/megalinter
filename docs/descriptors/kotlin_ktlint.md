@@ -11,7 +11,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.47.1**
+- Version in MegaLinter: **0.48.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -134,8 +134,10 @@ Flags:
       --color           Make output colorful
       --color-name=<colorName>
                         Customize the output color
-      --debug           Turn on debug output
-      --trace           Turn on trace output
+      --debug           Turn on debug output. Deprecated, use
+                          '--log-level=debug' instead.
+      --trace           Turn on trace output. Deprecated, use
+                          '--log-level=trace' instead.
       --disabled_rules=<disabledRules>
                         Comma-separated list of rules to globally disable. To
                           disable standard ktlint rule-set use
@@ -144,16 +146,23 @@ Flags:
       --limit=<limit>   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
                           dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=<reporters>
+      --reporter=<reporterJarPaths>
                         A reporter to use (built-in: plain (default), plain?
-                          group_by_file, json, sarif, checkstyle, html). To use
-                          a third-party reporter specify a path to a JAR file
-                          on the filesystem via ',artifact=' option. To
-                          override reporter output, use ',output=' option.
-  -R, --ruleset=<rulesetJarFiles>
+                          group_by_file, plain-summary, json, sarif,
+                          checkstyle, html). To use a third-party reporter
+                          specify a path to a JAR file on the filesystem via ',
+                          artifact=' option. To override reporter output, use ',
+                          output=' option.
+  -R, --ruleset=<rulesetJarPaths>
                         A path to a JAR file containing additional ruleset(s)
       --stdin           Read file from stdin
-  -v, --verbose         Show error codes
+      --patterns-from-stdin[=<stdinDelimiter>]
+                        Read additional patterns to check/format from stdin.
+                          Patterns are delimited by the given argument.
+                          (default is newline) If the argument is an empty
+                          string, the NUL byte is used.
+  -v, --verbose         Show error codes. Deprecated, use '--log-level=info'
+                          instead.
       --editorconfig=<editorConfigPath>
                         Path to the default '.editorconfig'. A property value
                           from this file is used only when no '.editorconfig'
@@ -164,6 +173,9 @@ Flags:
       --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
       --baseline=<baselinePath>
                         Defines a baseline file to check against
+  -l, --log-level=<minLogLevel>
+                        Defines the minimum log level (trace, debug, info,
+                          warn, error) or none to suppress all logging
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
 Commands:

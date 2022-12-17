@@ -28,6 +28,26 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.15.0 to **6.17.0** on 2022-12-07
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.5 to **1.3.6** on 2022-12-07
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.41.0 to **0.42.3** on 2022-12-07
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.8.0 to **0.9.0** on 2022-12-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.2 to **0.72.5** on 2022-12-17
+  - [djlint](https://djlint.com/) from 1.19.7 to **1.19.9** on 2022-12-17
+  - [eslint](https://eslint.org) from 8.29.0 to **8.30.0** on 2022-12-17
+  - [prettier](https://prettier.io/) from 2.8.0 to **2.8.1** on 2022-12-17
+  - [v8r](https://github.com/chris48s/v8r) from 0.13.0 to **0.13.1** on 2022-12-17
+  - [ktlint](https://ktlint.github.io) from 0.47.1 to **0.48.0** on 2022-12-17
+  - [phpstan](https://phpstan.org/) from 1.9.2 to **1.9.3** on 2022-12-17
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.0 to **7.3.1** on 2022-12-17
+  - [black](https://black.readthedocs.io/en/stable/) from 22.10.0 to **22.12.0** on 2022-12-17
+  - [isort](https://pycqa.github.io/isort/) from 5.10.1 to **5.11.2** on 2022-12-17
+  - [semgrep](https://semgrep.dev/) from 1.1.0 to **1.2.1** on 2022-12-17
+  - [syft](https://github.com/anchore/syft) from 0.62.3 to **0.63.0** on 2022-12-17
+  - [rubocop](https://rubocop.org/) from 1.39.0 to **1.40.0** on 2022-12-17
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.65 to **0.1.66** on 2022-12-17
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.2 to **7.19.1** on 2022-12-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.2 to **1.4.4** on 2022-12-17
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.1 to **0.50.3** on 2022-12-17
+  - [kics](https://www.kics.io) from 1.6.5 to **1.6.6** on 2022-12-17
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.17.0 to **1.16.0** on 2022-12-17
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
