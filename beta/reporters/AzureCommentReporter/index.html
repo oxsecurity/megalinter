@@ -5632,7 +5632,7 @@
 <p><img alt="Screenshot" src="../../assets/images/AzureCommentReporter.jpg" /></p>
 <h2 id="configuration">Configuration</h2>
 <ul>
-<li>The following variables must be sent to docker run command</li>
+<li>The following variables must be sent to the docker run command</li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-yaml">      - script: |
@@ -5643,7 +5643,7 @@
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
             -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e SYSTEM_TEAMPROJECT=&quot;$(System.TeamProject)&quot; \
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             oxsecurity/megalinter:v6
@@ -5677,7 +5677,7 @@
 </tr>
 <tr>
 <td>AZURE_COMMENT_REPORTER_LINKS_TYPE</td>
-<td>Set to <code>build</code> if you want comments links to target Build and not artifacts page</td>
+<td>Set to <code>build</code> if you want comments linking to target Build and not artifacts page</td>
 <td><code>artifacts</code></td>
 </tr>
 </tbody>
