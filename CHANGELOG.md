@@ -55,6 +55,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phplint](https://github.com/overtrue/phplint) from 3.0 to **5.3** on 2022-12-18
   - [psalm](https://psalm.dev) from Psalm.4.x-dev@ to **Psalm.dev-master@** on 2022-12-18
   - [git_diff](https://git-scm.com) from 2.34.5 to **2.36.3** on 2022-12-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.14 to **2022.12.10** on 2022-12-18
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.0 to **8.15.2** on 2022-12-18
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0** on 2022-12-18
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
