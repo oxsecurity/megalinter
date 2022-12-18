@@ -276,6 +276,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # actionlint installation
 ENV GO111MODULE=on

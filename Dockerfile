@@ -331,10 +331,12 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # POWERSHELL installation
-    && mkdir -p ${PWSH_DIRECTORY} \
+RUN mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
         | grep linux-alpine-x64 \

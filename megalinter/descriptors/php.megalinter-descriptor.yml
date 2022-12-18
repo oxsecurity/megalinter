@@ -33,6 +33,7 @@ install:
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    - ENV PATH="/root/.composer/vendor/bin:$PATH"
 linters:
   # PHPCS
   - linter_name: phpcs
