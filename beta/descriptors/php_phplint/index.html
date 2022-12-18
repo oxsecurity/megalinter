@@ -5743,7 +5743,7 @@
 <h1 id="phplint">phplint <a href="https://github.com/overtrue/phplint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/overtrue/phplint" /></a></h1>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.0</strong></li>
+<li>Version in MegaLinter: <strong>5.3</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.phplint.yml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
 </ul>
@@ -5928,16 +5928,12 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \
     &amp;&amp; rm phive.phar.asc \
-    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
+ENV PATH=&quot;/root/.composer/vendor/bin:$PATH&quot;
 # Linter install
-RUN composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
+RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     &amp;&amp; composer global config bin-dir --absolute
-
-RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
-    &amp;&amp; chmod +x phplint.phar \
-    &amp;&amp; mv phplint.phar /usr/local/bin/phplint
 
 </code></pre>
 

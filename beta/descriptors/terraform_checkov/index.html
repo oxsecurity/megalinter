@@ -5935,7 +5935,7 @@
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations]
 
 Infrastructure as code static analysis
@@ -6186,7 +6186,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -6206,6 +6206,7 @@ override config file values which override defaults.
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>PIP packages (Python):<ul>
+<li><a href="https://pypi.org/project/packaging==21.3">packaging==21.3</a></li>
 <li><a href="https://pypi.org/project/checkov">checkov</a></li>
 </ul>
 </li>
