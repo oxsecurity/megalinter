@@ -11,7 +11,7 @@
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.4.x-dev@**
+- Version in MegaLinter: **Psalm.dev-master@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -172,8 +172,8 @@ Output:
 
     --output-format=console
         Changes the output format.
-        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube, github,
-                           phpstorm, codeclimate
+        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube,
+                           github, phpstorm, codeclimate, by-issue-level
 
     --no-progress
         Disable the progress indicator
@@ -266,11 +266,11 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
-RUN phive --no-progress install psalm@^4.30.0 -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 ```
 

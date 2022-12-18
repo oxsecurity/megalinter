@@ -52,6 +52,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.1 to **0.50.3** on 2022-12-18
   - [kics](https://www.kics.io) from 1.6.5 to **1.6.6** on 2022-12-18
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.17.0 to **1.16.0** on 2022-12-18
+  - [phplint](https://github.com/overtrue/phplint) from 3.0 to **5.3** on 2022-12-18
+  - [psalm](https://psalm.dev) from Psalm.4.x-dev@ to **Psalm.dev-master@** on 2022-12-18
+  - [git_diff](https://git-scm.com) from 2.34.5 to **2.36.3** on 2022-12-18
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
