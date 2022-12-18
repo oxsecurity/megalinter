@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **3.6.2**
+- Version in MegaLinter: **3.7.1**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -24,8 +24,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                                | Description                                                                                 | Default value                                   |
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -50,10 +50,10 @@ Use sfdx-scanner-lwc in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                         | Description                             | Embedded linters |                                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)         | Default MegaLinter Flavor               |       109        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://oxsecurity.github.io/megalinter/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       109        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -84,7 +84,7 @@ sfdx scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>]
+  $ sfdx scanner run -t <array> [-c <array>] [-r <array>] [-e <array>]
     [-f csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
     [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
     <integer> | --json] [--normalize-severity] [--verbose-violations]
@@ -145,49 +145,8 @@ FLAGS
   --verbose-violations
       return retire-js violation message details
 
-DESCRIPTION
-  scan a codebase with a selection of rules
-
-EXAMPLES
-  This example evaluates all rules against somefile.js.
-  Invoking code analyzer without specifying any rules causes all rules to be run.
-    $ sfdx scanner:run --format xml --target "somefile.js"
-  This example evaluates all rules in the Design and Best Practices categories.
-  When you specify multiple categories or rulesets, the results are combined with a logical OR.
-    $ sfdx scanner:run --format xml --target "somefile.js" --
-  This example evaluates all rules except those in the Design or Best Practices categories.
-  Exclude categories by specifying the negation operator and enclosing the values in single quotes.
-    $ sfdx scanner:run --format xml --target "somefile.js" --category '!Design,!Best Practices'
-  Wrap globs in quotes. These examples evaluate rules against all .js files in the current directory, except for IgnoreMe.js.
-  Unix example:
-    $ sfdx scanner:run --target './**/*.js,!./**/IgnoreMe.js' ...
-  Windows example:
-    $ sfdx scanner:run --target ".\**\*.js,!.\**\IgnoreMe.js" ...
-  This example scans the project contained in '/my-project' if the current working directory is another directory.
-  Specify tsconfig.json if the current working directory does not contain the tsconfig.json that corresponds to the TypeScript files being scanned.
-    $ sfdx scanner:run --target "/my-project/**/*.ts" --tsconfig "/my-project/tsconfig.json"
-  This example evaluates rules against somefile.js, including Jasmine in the environment variables.
-  Uses --env to override the default ESLint environment variables to add frameworks.
-    $ sfdx scanner:run --target "somefile.js" --env '{"jasmine": true}'
-  This example evaluates rules aginst somefile.js using eslint-lwc and pmd engines.
-  Use --engine to include or exclude engines. Any engine listed will be run, regardless of its current 'disabled' attribute.
-    $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
-  This example executes CPD engine against known file extensions in "/some/dir". CPD helps detect blocks of code duplication in selected languages.
-  Use --engine to invoke engines that are not enabled by default.
-    $ sfdx scanner:run --target "/some/dir" --engine cpd
-  This example executes rules defined in pmd_rule_ref.xml against the files in 'src'.
-  To use PMD with your own rule reference file, use --pmdconfig. Note that rule filters are not applied.
-    $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
-  This example uses a custom config to scan the files in 'src'.
-  To use ESLint with your own .eslintrc.json file, use --eslintconfig. Make sure that the directory you run the command from has all the NPM dependencies installed.
-    $ sfdx scanner:run --target "src" --eslintconfig "/home/my/setup/.eslintrc.json"
-  This example uses --normalize-severity to output normalized severity and engine-specific severity across all engines. Normalized severity is: 1 (high), 2 (moderate), and 3 (low).
-    $ sfdx scanner:run --target "/some-project/" --format csv --normalize-severity
-  This example uses --severity-threshold to throw a non-zero exit code when rule violations of normalized severity 2 or greater are found. If any violations with the specified severity (or greater) are found, the exit code equals the severity of the most severe violation.
-    $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
-
 COMMANDS
-  scanner:run:dfa  scan codebase with all DFA rules
+  scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
 NAME                                                    LANGUAGES    CATEGORIES             RULESETS [DEP]                                    ENGINE
@@ -197,6 +156,7 @@ VfHtmlStyleTagXss                                       visualforce  Security   
 VfUnescapeEl                                            visualforce  Security               Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                      apex         Best Practices                                                           pmd
 ApexUnitTestClassShouldHaveAsserts                      apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
+ApexUnitTestClassShouldHaveRunAs                        apex         Best Practices         quickstart                                        pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation            apex         Best Practices                                                           pmd
 ApexUnitTestShouldNotUseSeeAllDataTrue                  apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
 AvoidGlobalModifier                                     apex         Best Practices         Style,Default ruleset...,quickstart               pmd

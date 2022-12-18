@@ -9,51 +9,96 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core: Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))
+- Upgrade to alpine 3.16
+- Disable php7 & upgrade php8 tp php81
+
+- Linter versions upgrades
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.0 to **0.50.1** on 2022-11-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.2 to **0.41.0** on 2022-11-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.0 to **0.72.1** on 2022-11-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.4 to **10.5.0** on 2022-11-28
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.40 to **0.13.1** on 2022-12-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.1 to **0.72.2** on 2022-12-07
+  - [stylelint](https://stylelint.io) from 14.15.0 to **14.16.0** on 2022-12-07
+  - [eslint](https://eslint.org) from 8.28.0 to **8.29.0** on 2022-12-07
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.140 to **1.144** on 2022-12-07
+  - [pylint](https://pylint.pycqa.org) from 2.15.6 to **2.15.8** on 2022-12-07
+  - [semgrep](https://semgrep.dev/) from 0.122.0 to **1.1.0** on 2022-12-07
+  - [syft](https://github.com/anchore/syft) from 0.62.1 to **0.62.3** on 2022-12-07
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.6.2 to **3.7.1** on 2022-12-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.15.0 to **6.17.0** on 2022-12-07
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.5 to **1.3.6** on 2022-12-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.41.0 to **0.42.3** on 2022-12-07
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.8.0 to **0.9.0** on 2022-12-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.2 to **0.72.5** on 2022-12-18
+  - [djlint](https://djlint.com/) from 1.19.7 to **1.19.9** on 2022-12-18
+  - [eslint](https://eslint.org) from 8.29.0 to **8.30.0** on 2022-12-18
+  - [prettier](https://prettier.io/) from 2.8.0 to **2.8.1** on 2022-12-18
+  - [v8r](https://github.com/chris48s/v8r) from 0.13.0 to **0.13.1** on 2022-12-18
+  - [ktlint](https://ktlint.github.io) from 0.47.1 to **0.48.0** on 2022-12-18
+  - [phpstan](https://phpstan.org/) from 1.9.2 to **1.9.4** on 2022-12-18
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.0 to **7.3.1** on 2022-12-18
+  - [black](https://black.readthedocs.io/en/stable/) from 22.10.0 to **22.12.0** on 2022-12-18
+  - [isort](https://pycqa.github.io/isort/) from 5.10.1 to **5.11.3** on 2022-12-18
+  - [pylint](https://pylint.pycqa.org) from 2.15.8 to **2.15.9** on 2022-12-18
+  - [semgrep](https://semgrep.dev/) from 1.1.0 to **1.2.1** on 2022-12-18
+  - [syft](https://github.com/anchore/syft) from 0.62.3 to **0.63.0** on 2022-12-18
+  - [rubocop](https://rubocop.org/) from 1.39.0 to **1.40.0** on 2022-12-18
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.65 to **0.1.66** on 2022-12-18
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.2 to **7.19.1** on 2022-12-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.2 to **1.4.4** on 2022-12-18
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.1 to **0.50.3** on 2022-12-18
+  - [kics](https://www.kics.io) from 1.6.5 to **1.6.6** on 2022-12-18
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.17.0 to **1.16.0** on 2022-12-18
+  - [phplint](https://github.com/overtrue/phplint) from 3.0 to **5.3** on 2022-12-18
+  - [psalm](https://psalm.dev) from Psalm.4.x-dev@ to **Psalm.dev-master@** on 2022-12-18
+  - [git_diff](https://git-scm.com) from 2.34.5 to **2.36.3** on 2022-12-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.14 to **2022.12.10** on 2022-12-18
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.0 to **8.15.2** on 2022-12-18
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0** on 2022-12-18
+<!-- linter-versions-end -->
+
+## [v6.15.0] - 2022-11-23
+
+- Switch to <https://megalinter.io>
 - Initial Drone CI documentation
 - Automatically generate "Used by" markdown documentation with [github-dependents-info](https://github.com/nvuillam/github-dependents-info)
 - Add Docker container documentation
 
 - Linter versions upgrades
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.41.0 to **0.42.0** on 2022-11-07
-  - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11** on 2022-11-07
-  - [djlint](https://djlint.com/) from 1.19.4 to **1.19.5** on 2022-11-07
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.1** on 2022-11-07
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.71.0** on 2022-11-07
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.990** on 2022-11-07
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40** on 2022-11-08
-  - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.121.0** on 2022-11-08
-  - [hadolint](https://github.com/hadolint/hadolint) from 2.10.0 to **2.12.0** on 2022-11-11
-  - [djlint](https://djlint.com/) from 1.19.5 to **1.19.7** on 2022-11-11
-  - [phpstan](https://phpstan.org/) from 1.9.1 to **1.9.2** on 2022-11-11
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.7 to **7.3.0** on 2022-11-11
-  - [semgrep](https://semgrep.dev/) from 0.121.0 to **0.121.2** on 2022-11-11
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.1 to **0.7.0** on 2022-11-11
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2** on 2022-11-11
-  - [kics](https://www.kics.io) from 1.6.3 to **1.6.4** on 2022-11-11
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.1** on 2022-11-11
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.1 to **0.40.2** on 2022-11-11
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.1 to **6.14.2** on 2022-11-11
-  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.0 to **6.1.1** on 2022-11-13
-  - [stylelint](https://stylelint.io) from 14.14.1 to **14.15.0** on 2022-11-13
-  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2** on 2022-11-13
-  - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0** on 2022-11-14
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.49.0** on 2022-11-14
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.0 to **0.49.1** on 2022-11-14
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.71.0 to **0.71.1** on 2022-11-15
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.990 to **0.991** on 2022-11-15
-  - [semgrep](https://semgrep.dev/) from 0.121.2 to **0.122.0** on 2022-11-17
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.2 to **6.14.3** on 2022-11-17
-  - [eslint](https://eslint.org) from 8.27.0 to **8.28.0** on 2022-11-19
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.42.0 to **0.42.2** on 2022-11-19
-  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.15.6** on 2022-11-19
-  - [syft](https://github.com/anchore/syft) from 0.60.3 to **0.62.0** on 2022-11-19
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.49.1 to **0.50.0** on 2022-11-19
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.4 to **1.3.5** on 2022-11-19
-  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0** on 2022-11-19
-<!-- linter-versions-end -->
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.12.1 to **0.12.40**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.70.1 to **0.72.0**
+  - [coffeelint](http://www.coffeelint.org) from 5.2.10 to **5.2.11**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.0 to **6.14.3**
+  - [djlint](https://djlint.com/) from 1.19.4 to **1.19.7**
+  - [eslint](https://eslint.org) from 8.27.0 to **8.28.0**
+  - [flake8](https://flake8.pycqa.org) from 5.0.4 to **6.0.0**
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.10.0 to **2.12.0**
+  - [kics](https://www.kics.io) from 1.6.3 to **1.6.5**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.982 to **0.991**
+  - [phpstan](https://phpstan.org/) from 1.9.1 to **1.9.2**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.7 to **7.3.0**
+  - [prettier](https://prettier.io/) from 2.7.1 to **2.8.0**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.41.0 to **0.42.2**
+  - [psalm](https://psalm.dev) from Psalm.5.x-dev@ to **Psalm.4.x-dev@**
+  - [pylint](https://pylint.pycqa.org) from 2.15.5 to **2.15.6**
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.0 to **6.1.1**
+  - [rubocop](https://rubocop.org/) from 1.38.0 to **1.39.0**
+  - [semgrep](https://semgrep.dev/) from 0.120.0 to **0.122.0**
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.1 to **0.7.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.18.1 to **7.18.2**
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.1 to **1.4.2**
+  - [stylelint](https://stylelint.io) from 14.14.1 to **14.15.0**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.5 to **0.50.0**
+  - [syft](https://github.com/anchore/syft) from 0.60.3 to **0.62.1**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.4 to **1.3.5**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.0 to **0.40.2**
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.17.0**
 
-
-## [v6.14.0] - 2022-06-11
+## [v6.14.0] - 2022-11-06
 
 - Core
   - Replace `set-output` usage with `GITHUB_OUTPUT` to handle [Github deprecation notice](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)

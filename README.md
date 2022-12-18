@@ -17,13 +17,13 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.7M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.8M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1712&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1822&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -508,7 +508,7 @@ Add the following job in your `azure-pipelines.yaml` file
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
             -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             oxsecurity/megalinter:v6
@@ -877,13 +877,13 @@ POST_COMMANDS:
 
 ### CLI lint mode
 
-Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://oxsecurity.github.io/megalinter/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
+Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
 
 - `list_of_files`: All files are sent in single call to the linter
 - `project`: The linter is called from the root of the project, without specifying any file name
 - `file`: The linter is called once by file (so the performances may not be very good)
 
-You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://oxsecurity.github.io/megalinter/supported-linters/))
+You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://megalinter.io/supported-linters/))
 
 - Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
 
@@ -928,7 +928,7 @@ _The following table does not display docker pulls from [MegaLinter v4 & v5 imag
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                                   | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)                                   | Default MegaLinter Flavor                                              |       109        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)                                                     | Default MegaLinter Flavor                                              |       109        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/cupcake.md#readme)             | MegaLinter for the most commonly used languages                        |        79        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/documentation.md#readme) | MegaLinter for documentation projects                                  |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |

@@ -11,7 +11,7 @@
 
 ## isort documentation
 
-- Version in MegaLinter: **5.10.1**
+- Version in MegaLinter: **5.11.3**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -21,10 +21,10 @@
 
 ## Configuration in MegaLinter
 
-- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
-- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](https://oxsecurity.github.io/megalinter/beta/configuration/#activation-and-deactivation)
+- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://oxsecurity.github.io/megalinter/beta/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -59,11 +59,11 @@ Use isort in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                   | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://oxsecurity.github.io/megalinter/beta/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://oxsecurity.github.io/megalinter/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://oxsecurity.github.io/megalinter/beta/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       109        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        79        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -100,10 +100,10 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-c] [--ws] [--sp SETTINGS_PATH] [--cr CONFIG_ROOT]
              [--resolve-all-configs] [--profile PROFILE] [--old-finders]
              [-j [JOBS]] [--ac] [--interactive] [--format-error FORMAT_ERROR]
-             [--format-success FORMAT_SUCCESS] [--filter-files] [-s SKIP]
-             [--extend-skip EXTEND_SKIP] [--sg SKIP_GLOB]
-             [--extend-skip-glob EXTEND_SKIP_GLOB] [--gitignore]
-             [--ext SUPPORTED_EXTENSIONS]
+             [--format-success FORMAT_SUCCESS] [--sort-reexports]
+             [--filter-files] [-s SKIP] [--extend-skip EXTEND_SKIP]
+             [--sg SKIP_GLOB] [--extend-skip-glob EXTEND_SKIP_GLOB]
+             [--gitignore] [--ext SUPPORTED_EXTENSIONS]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dont-follow-links]
              [--filename FILENAME] [--allow-root] [-a ADD_IMPORTS] [--append]
              [--af] [--rm REMOVE_IMPORTS] [--float-to-top]
@@ -118,7 +118,8 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [--case-sensitive] [--remove-redundant-aliases] [--honor-noqa]
              [--treat-comment-as-code TREAT_COMMENTS_AS_CODE]
              [--treat-all-comment-as-code] [--formatter FORMATTER] [--color]
-             [--ext-format EXT_FORMAT] [--star-first] [--sd DEFAULT_SECTION]
+             [--ext-format EXT_FORMAT] [--star-first]
+             [--split-on-trailing-comma] [--sd DEFAULT_SECTION]
              [--only-sections] [--ds] [--fas] [--fss] [--hcss] [--srss]
              [--fass] [-t FORCE_TO_TOP] [--combine-straight-imports]
              [--nlb NO_LINES_BEFORE] [--src SRC_PATHS]
@@ -127,7 +128,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-f KNOWN_FUTURE_LIBRARY] [-o KNOWN_THIRD_PARTY]
              [-p KNOWN_FIRST_PARTY] [--known-local-folder KNOWN_LOCAL_FOLDER]
              [--virtual-env VIRTUAL_ENV] [--conda-env CONDA_ENV]
-             [--py {all,2,27,3,310,35,36,37,38,39,auto}]
+             [--py {all,2,27,3,310,311,36,37,38,39,auto}]
              [files ...]
 
 Sort Python import definitions alphabetically within logical sections. Run
@@ -191,7 +192,8 @@ general options:
                         Use the old deprecated finder logic that relies on
                         environment introspection magic.
   -j [JOBS], --jobs [JOBS]
-                        Number of files to process in parallel.
+                        Number of files to process in parallel. Negative value
+                        means use number of CPUs.
   --ac, --atomic        Ensures the output doesn't save if the resulting file
                         contains syntax errors.
   --interactive         Tells isort to apply changes interactively.
@@ -199,6 +201,8 @@ general options:
                         Override the format used to print errors.
   --format-success FORMAT_SUCCESS
                         Override the format used to print success.
+  --sort-reexports      Automatically sort all re-exports (module level
+                        __all__ collections)
 
 target options:
   files                 One or more Python source files that need their
@@ -372,6 +376,9 @@ general output options:
                         extensions formatting rules.
   --star-first          Forces star imports above others to avoid overriding
                         directly imported variables.
+  --split-on-trailing-comma
+                        Split imports list followed by a trailing comma into
+                        VERTICAL_HANGING_INDENT mode
 
 section output options:
   --sd DEFAULT_SECTION, --section-default DEFAULT_SECTION
@@ -451,7 +458,7 @@ section output options:
   --conda-env CONDA_ENV
                         Conda environment to use for determining whether a
                         package is third-party
-  --py {all,2,27,3,310,35,36,37,38,39,auto}, --python-version {all,2,27,3,310,35,36,37,38,39,auto}
+  --py {all,2,27,3,310,311,36,37,38,39,auto}, --python-version {all,2,27,3,310,311,36,37,38,39,auto}
                         Tells isort to set the known standard library based on
                         the specified Python version. Default is to assume any
                         Python 3 version could be the target, and use a union
