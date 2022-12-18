@@ -253,6 +253,11 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
+# checkmake installation
+    && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake \
+
 # protolint installation
 # Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 

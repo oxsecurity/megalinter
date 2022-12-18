@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Upgrade to alpine 3.16
 - Disable php7 & upgrade php8 tp php81
+- Add Makefile linters to documentation flavor
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
