@@ -233,7 +233,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
     && curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 \
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0 \
 
 # tflint installation
 # Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
