@@ -14,7 +14,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.29.0**
+- Version in MegaLinter: **8.30.0**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -115,26 +115,26 @@ Basic configuration:
   --parser-options Object         Specify parser options
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
-Specifying rules and plugins:
+Specify Rules and Plugins:
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
   --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
-Fixing problems:
+Fix Problems:
   --fix                           Automatically fix problems
   --fix-dry-run                   Automatically fix problems without saving the changes to the file system
   --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
-Ignoring files:
+Ignore Files:
   --ignore-path path::String      Specify path of ignore file
   --no-ignore                     Disable use of ignore files and patterns
   --ignore-pattern [String]       Pattern of files to ignore (in addition to those in .eslintignore)
 
-Using stdin:
+Use stdin:
   --stdin                         Lint code provided on <STDIN> - default: false
   --stdin-filename String         Specify filename to process STDIN as
 
-Handling warnings:
+Handle Warnings:
   --quiet                         Report errors only - default: false
   --max-warnings Int              Number of warnings to trigger nonzero exit code - default: -1
 

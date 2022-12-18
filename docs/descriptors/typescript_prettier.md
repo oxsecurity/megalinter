@@ -11,7 +11,7 @@
 
 ## prettier documentation
 
-- Version in MegaLinter: **2.8.0**
+- Version in MegaLinter: **2.8.1**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
