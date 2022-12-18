@@ -5760,7 +5760,7 @@
 <p><a href="https://github.com/pinterest/ktlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pinterest/ktlint" /></a></p>
 <h2 id="ktlint-documentation">ktlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.47.1</strong></li>
+<li>Version in MegaLinter: <strong>0.48.0</strong></li>
 <li>Visit <a href="https://ktlint.github.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ktlint.github.io/#rules" target="_blank">Index of problems detected by ktlint</a></li>
 </ul>
@@ -6031,8 +6031,10 @@ Flags:
       --color           Make output colorful
       --color-name=&lt;colorName&gt;
                         Customize the output color
-      --debug           Turn on debug output
-      --trace           Turn on trace output
+      --debug           Turn on debug output. Deprecated, use
+                          '--log-level=debug' instead.
+      --trace           Turn on trace output. Deprecated, use
+                          '--log-level=trace' instead.
       --disabled_rules=&lt;disabledRules&gt;
                         Comma-separated list of rules to globally disable. To
                           disable standard ktlint rule-set use
@@ -6041,16 +6043,23 @@ Flags:
       --limit=&lt;limit&gt;   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
                           dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=&lt;reporters&gt;
+      --reporter=&lt;reporterJarPaths&gt;
                         A reporter to use (built-in: plain (default), plain?
-                          group_by_file, json, sarif, checkstyle, html). To use
-                          a third-party reporter specify a path to a JAR file
-                          on the filesystem via ',artifact=' option. To
-                          override reporter output, use ',output=' option.
-  -R, --ruleset=&lt;rulesetJarFiles&gt;
+                          group_by_file, plain-summary, json, sarif,
+                          checkstyle, html). To use a third-party reporter
+                          specify a path to a JAR file on the filesystem via ',
+                          artifact=' option. To override reporter output, use ',
+                          output=' option.
+  -R, --ruleset=&lt;rulesetJarPaths&gt;
                         A path to a JAR file containing additional ruleset(s)
       --stdin           Read file from stdin
-  -v, --verbose         Show error codes
+      --patterns-from-stdin[=&lt;stdinDelimiter&gt;]
+                        Read additional patterns to check/format from stdin.
+                          Patterns are delimited by the given argument.
+                          (default is newline) If the argument is an empty
+                          string, the NUL byte is used.
+  -v, --verbose         Show error codes. Deprecated, use '--log-level=info'
+                          instead.
       --editorconfig=&lt;editorConfigPath&gt;
                         Path to the default '.editorconfig'. A property value
                           from this file is used only when no '.editorconfig'
@@ -6061,6 +6070,9 @@ Flags:
       --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
       --baseline=&lt;baselinePath&gt;
                         Defines a baseline file to check against
+  -l, --log-level=&lt;minLogLevel&gt;
+                        Defines the minimum log level (trace, debug, info,
+                          warn, error) or none to suppress all logging
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
 Commands:

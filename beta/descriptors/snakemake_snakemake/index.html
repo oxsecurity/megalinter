@@ -5760,7 +5760,7 @@
 <p><a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake" /></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.18.2</strong></li>
+<li>Version in MegaLinter: <strong>7.19.1</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=" /></a></p>
@@ -6040,7 +6040,7 @@
                  [--overwrite-shellcmd OVERWRITE_SHELLCMD] [--debug]
                  [--runtime-profile FILE] [--mode {0,1,2}]
                  [--show-failed-logs] [--log-handler-script FILE]
-                 [--log-service {none,slack,wms}]
+                 [--log-service {none,slack,wms}] [--slurm]
                  [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]
                  [--cluster-config FILE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
@@ -6120,7 +6120,8 @@ EXECUTION:
                         info)This number is available to rules via
                         workflow.cores. (default: None)
   --jobs [N], -j [N]    Use at most N CPU cluster/cloud jobs in parallel. For
-                        local execution this is an alias for --cores.
+                        local execution this is an alias for --cores. Note:
+                        Set to 'unlimited' in case, this does not play a role.
                         (default: None)
   --local-cores N       In cluster/cloud mode, use at most N cores of the host
                         machine in parallel (default: number of CPU cores of
@@ -6190,13 +6191,17 @@ EXECUTION:
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
-                        allowed (e.g. '2*input.size_mb').When specifying this
-                        without any arguments (--default-resources), it
-                        defines 'mem_mb=max(2*input.size_mb, 1000)'
-                        'disk_mb=max(2*input.size_mb, 1000)' i.e., default
+                        allowed (e.g. '2*input.size_mb'). The inputsize is the
+                        sum of the sizes of all input files of a rule. By
+                        default, Snakemake assumes a default for mem_mb,
+                        disk_mb, and tmpdir (see below). This option allows to
+                        add further defaults (e.g. account and partition for
+                        slurm) or to overwrite these default values. The
+                        defaults are 'mem_mb=max(2*input.size_mb, 1000)',
+                        'disk_mb=max(2*input.size_mb, 1000)' (i.e., default
                         disk and mem usage is twice the input file size but at
-                        least 1GB.In addition, the system temporary directory
-                        (as given by $TMPDIR, $TEMP, or $TMP) is used for the
+                        least 1GB), and the system temporary directory (as
+                        given by $TMPDIR, $TEMP, or $TMP) is used for the
                         tmpdir resource. The tmpdir resource is automatically
                         used by shell commands, scripts and wrappers to store
                         temporary data (as it is mirrored into $TMPDIR, $TEMP,
@@ -6704,6 +6709,18 @@ BEHAVIOR:
                         output.Snakemake will notify the service on errors and
                         completed execution.Currently slack and workflow
                         management system (wms) are supported. (default: None)
+
+SLURM:
+  --slurm               Execute snakemake rules as SLURM batch jobs according
+                        to their 'resources' definition. SLRUM resources as
+                        'partition', 'ntasks', 'cpus', etc. need to be defined
+                        per rule within the 'resources' definition. Note, that
+                        memory can only be defined as 'mem_mb' or
+                        'mem_mb_per_cpu' as analoguous to the SLURM 'mem' and
+                        'mem-per-cpu' flags to sbatch, respectively. Here, the
+                        unit is always 'MiB'. In addition '--
+                        default_resources' should contain the SLURM account.
+                        (default: False)
 
 CLUSTER:
   --cluster CMD         Execute snakemake rules with the given submit command,

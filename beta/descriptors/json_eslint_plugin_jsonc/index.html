@@ -6086,26 +6086,26 @@ Basic configuration:
   --parser-options Object         Specify parser options
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
-Specifying rules and plugins:
+Specify Rules and Plugins:
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
   --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
-Fixing problems:
+Fix Problems:
   --fix                           Automatically fix problems
   --fix-dry-run                   Automatically fix problems without saving the changes to the file system
   --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
-Ignoring files:
+Ignore Files:
   --ignore-path path::String      Specify path of ignore file
   --no-ignore                     Disable use of ignore files and patterns
   --ignore-pattern [String]       Pattern of files to ignore (in addition to those in .eslintignore)
 
-Using stdin:
+Use stdin:
   --stdin                         Lint code provided on &lt;STDIN&gt; - default: false
   --stdin-filename String         Specify filename to process STDIN as
 
-Handling warnings:
+Handle Warnings:
   --quiet                         Report errors only - default: false
   --max-warnings Int              Number of warnings to trigger nonzero exit code - default: -1
 
