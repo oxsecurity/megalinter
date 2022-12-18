@@ -339,9 +339,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 && \
-    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl && \
-    chmod 644 /usr/local/bin/sarif.tpl \
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 \
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
