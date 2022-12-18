@@ -4,7 +4,7 @@
 
 ## shellcheck documentation
 
-- Version in MegaLinter: **0.8.0**
+- Version in MegaLinter: **0.9.0**
 - Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme){target=_blank}
 - See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore){target=_blank}
 - See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code){target=_blank}
