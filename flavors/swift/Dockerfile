@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.15.0 as gitleaks
+FROM zricethezav/gitleaks:v8.15.2 as gitleaks
 #FROM__END
 
 ##################
