@@ -691,8 +691,8 @@
                 "network_count": 147,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 62,
-                "open_issues_count": 62,
+                "open_issues": 64,
+                "open_issues_count": 64,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -1213,8 +1213,8 @@
                 "network_count": 115,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyMzA5OTk4MjY=",
                 "notifications_url": "https://api.github.com/repos/onedr0p/home-ops/notifications{?since,all,participating}",
-                "open_issues": 4,
-                "open_issues_count": 4,
+                "open_issues": 7,
+                "open_issues_count": 7,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/213795?v=4",
                     "events_url": "https://api.github.com/users/onedr0p/events{/privacy}",
@@ -3638,7 +3638,7 @@
                 "releases_url": "https://api.github.com/repos/T145/black-mirror/releases{/id}",
                 "size": 87262,
                 "ssh_url": "git@github.com:T145/black-mirror.git",
-                "stargazers_count": 110,
+                "stargazers_count": 109,
                 "stargazers_url": "https://api.github.com/repos/T145/black-mirror/stargazers",
                 "statuses_url": "https://api.github.com/repos/T145/black-mirror/statuses/{sha}",
                 "subscribers_count": 3,
@@ -3672,12 +3672,12 @@
                 "updated_at": "2022-12-17T10:29:18Z",
                 "url": "https://api.github.com/repos/T145/black-mirror",
                 "visibility": "public",
-                "watchers": 110,
-                "watchers_count": 110,
+                "watchers": 109,
+                "watchers_count": 109,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/T145/black-mirror",
-            "stargazers": 110
+            "stargazers": 109
         },
         {
             "info": {
