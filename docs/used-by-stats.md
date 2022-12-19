@@ -1,17 +1,17 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1822&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1279&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=543&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=51099&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1830&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1286&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=544&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=51123&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 32911 |
-| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2276 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1690 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 32920 |
+| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2277 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1692 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1500 |
-| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1471 |
+| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1472 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |   971 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   917 |
 | [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template)                                                                                               |   845 |
@@ -55,7 +55,7 @@
 | [ahmadnassri/node-glob-promise](https://github.com/ahmadnassri/node-glob-promise)                                                                                               |    50 |
 | [llaville/umlwriter](https://github.com/llaville/umlwriter)                                                                                                                     |    49 |
 | [stepancheg/rust-tls-api](https://github.com/stepancheg/rust-tls-api)                                                                                                           |    44 |
-| [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    42 |
+| [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    43 |
 | [nvuillam/sfdx-essentials](https://github.com/nvuillam/sfdx-essentials)                                                                                                         |    42 |
 | [jr0dd/home-ops](https://github.com/jr0dd/home-ops)                                                                                                                             |    36 |
 | [hardisgroupcom/sfdx-hardis](https://github.com/hardisgroupcom/sfdx-hardis)                                                                                                     |    34 |
@@ -130,6 +130,7 @@
 | [nujiak/recce](https://github.com/nujiak/recce)                                                                                                                                 |     7 |
 | [ChristopherHX/act](https://github.com/ChristopherHX/act)                                                                                                                       |     7 |
 | [victory-sokolov/dotfiles](https://github.com/victory-sokolov/dotfiles)                                                                                                         |     7 |
+| [jackbayliss/mission-chief-bot-jsons](https://github.com/jackbayliss/mission-chief-bot-jsons)                                                                                   |     7 |
 | [mimmi20/browscap-helper](https://github.com/mimmi20/browscap-helper)                                                                                                           |     7 |
 | [RickCoxDev/home-cluster](https://github.com/RickCoxDev/home-cluster)                                                                                                           |     7 |
 | [leosuncin/nest-api-example](https://github.com/leosuncin/nest-api-example)                                                                                                     |     7 |
@@ -332,6 +333,7 @@
 | [SobolevYuri/scanner_repoC](https://github.com/SobolevYuri/scanner_repoC)                                                                                                       |     1 |
 | [matejkosiarcik/matejkosiarcik.com](https://github.com/matejkosiarcik/matejkosiarcik.com)                                                                                       |     1 |
 | [matejkosiarcik/dotfiles](https://github.com/matejkosiarcik/dotfiles)                                                                                                           |     1 |
+| [tobst96/mission-chief-bot-jsons](https://github.com/tobst96/mission-chief-bot-jsons)                                                                                           |     1 |
 | [Luzkan/FamilyBudget](https://github.com/Luzkan/FamilyBudget)                                                                                                                   |     1 |
 | [nvuillam/sfdx-hardis](https://github.com/nvuillam/sfdx-hardis)                                                                                                                 |     1 |
 | [uah-ams/uah-ams-website](https://github.com/uah-ams/uah-ams-website)                                                                                                           |     1 |
@@ -956,6 +958,11 @@
 | [AdirSamara/repoC](https://github.com/AdirSamara/repoC)                                                                                                                         |     0 |
 | [AdirSamara/repoB](https://github.com/AdirSamara/repoB)                                                                                                                         |     0 |
 | [AdirSamara/repoA](https://github.com/AdirSamara/repoA)                                                                                                                         |     0 |
+| [despatcherbot/despatcher-bot-jsons](https://github.com/despatcherbot/despatcher-bot-jsons)                                                                                     |     0 |
+| [NotoriousBims/mission-chief-bot-jsons](https://github.com/NotoriousBims/mission-chief-bot-jsons)                                                                               |     0 |
+| [hywmongous/golang-template](https://github.com/hywmongous/golang-template)                                                                                                     |     0 |
+| [aurochsen/mission-chief-bot-jsons](https://github.com/aurochsen/mission-chief-bot-jsons)                                                                                       |     0 |
+| [Jasstkn/gcloud-helmfile](https://github.com/Jasstkn/gcloud-helmfile)                                                                                                           |     0 |
 | [mariomurillo/ecommerce-exercise](https://github.com/mariomurillo/ecommerce-exercise)                                                                                           |     0 |
 | [evg-tso/sample-donkey-api](https://github.com/evg-tso/sample-donkey-api)                                                                                                       |     0 |
 | [buberdds/oasis-wallet-web](https://github.com/buberdds/oasis-wallet-web)                                                                                                       |     0 |
@@ -1115,7 +1122,6 @@
 | [mrtolkien/cluster-old](https://github.com/mrtolkien/cluster-old)                                                                                                               |     0 |
 | [AlexBigO/O2Physics_old](https://github.com/AlexBigO/O2Physics_old)                                                                                                             |     0 |
 | [vyas-n/vyas-n](https://github.com/vyas-n/vyas-n)                                                                                                                               |     0 |
-| [Jasstkn/gcloud-helmfile](https://github.com/Jasstkn/gcloud-helmfile)                                                                                                           |     0 |
 | [ly4e/kali-gui-container-image](https://github.com/ly4e/kali-gui-container-image)                                                                                               |     0 |
 | [ly4e/prelude-operator-headless](https://github.com/ly4e/prelude-operator-headless)                                                                                             |     0 |
 | [ankita-nema/ValidationAndHook](https://github.com/ankita-nema/ValidationAndHook)                                                                                               |     0 |

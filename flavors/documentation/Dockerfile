@@ -253,6 +253,11 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
+# checkmake installation
+    && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
+    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake \
+
 # protolint installation
 # Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
@@ -260,9 +265,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 && \
-    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl && \
-    chmod 644 /usr/local/bin/sarif.tpl \
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0 \
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
