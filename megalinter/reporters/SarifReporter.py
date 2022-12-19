@@ -221,11 +221,22 @@ class SarifReporter(Reporter):
                 # Update run in full list
                 linter_sarif_obj["runs"][id_run] = run
         return linter_sarif_obj
+    
+    # If DEFAULT_WORKSPACE is set, don't add that to the SARIF-report prefix
+    def fix_default_workspace_prefix(self, artifactLocation):
+        default_workspace = config.get("DEFAULT_WORKSPACE", "")
+        if default_workspace:
+            if artifactLocation["uri"].startswith(default_workspace):
+                artifactLocation["uri"] = artifactLocation["uri"].replace(default_workspace,"",1)
+        return artifactLocation["uri"]
 
     # Replace startLine and endLine in region or contextRegion
     def fix_sarif_physical_location(self, physical_location):
+        
         for location_key in physical_location.keys():
             location_item = physical_location[location_key]
+            if "uri" in location_item and location_key == "artifactLocation":
+                location_item["uri"] = self.fix_default_workspace_prefix(location_item)
             if "startLine" in location_item and location_item["startLine"] == 0:
                 location_item["startLine"] = 1
             if "endLine" in location_item and location_item["endLine"] == 0:
