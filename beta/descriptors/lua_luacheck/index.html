@@ -5757,7 +5757,7 @@
 <h1 id="luacheck">luacheck <a href="https://github.com/luarocks/luacheck/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/luarocks/luacheck" /></a></h1>
 <h2 id="luacheck-documentation">luacheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.0</strong></li>
+<li>Version in MegaLinter: <strong>1.1.0</strong></li>
 <li>Visit <a href="https://luacheck.readthedocs.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://luacheck.readthedocs.io/en/stable/config.html" target="_blank">How to configure luacheck rules</a><ul>
 <li>If custom <code>.luacheckrc</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc" target="_blank">.luacheckrc</a> will be used</li>
@@ -5947,13 +5947,14 @@
        [--no-color] [-v] &lt;file&gt; [&lt;file&gt;] ...
        ([--cache [&lt;cache&gt;]] | [--no-cache])
        [--ignore &lt;patt&gt; [&lt;patt&gt;] ...] [--enable &lt;patt&gt; [&lt;patt&gt;] ...]
-       [--only &lt;patt&gt; [&lt;patt&gt;] ...] [--globals [&lt;name&gt;] ...]
-       [--read-globals [&lt;name&gt;] ...] [--new-globals [&lt;name&gt;] ...]
-       [--new-read-globals [&lt;name&gt;] ...] [--not-globals [&lt;name&gt;] ...]
+       [--only &lt;patt&gt; [&lt;patt&gt;] ...] [--operators &lt;patt&gt; [&lt;patt&gt;] ...]
+       [--globals [&lt;name&gt;] ...] [--read-globals [&lt;name&gt;] ...]
+       [--new-globals [&lt;name&gt;] ...] [--new-read-globals [&lt;name&gt;] ...]
+       [--not-globals [&lt;name&gt;] ...]
        [--exclude-files &lt;glob&gt; [&lt;glob&gt;] ...]
        [--include-files &lt;glob&gt; [&lt;glob&gt;] ...]
 
-luacheck 1.0.0, a linter and a static analyzer for Lua.
+luacheck 1.1.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -5986,6 +5987,8 @@ Options for filtering warnings:
    --only &lt;patt&gt; [&lt;patt&gt;] ...,
        -o &lt;patt&gt; [&lt;patt&gt;] ...
                          Filter out warnings not matching these patterns.
+   --operators &lt;patt&gt; [&lt;patt&gt;] ...
+                         Allow compound operators matching patterns
 
 Options for configuring allowed globals:
    --std &lt;std&gt;           Set standard globals, default is max. &lt;std&gt; can be one
