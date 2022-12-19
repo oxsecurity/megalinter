@@ -14,7 +14,6 @@ from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 
 class CSpellLinter(Linter):
-
     def __init__(self, params=None, linter_config=None):
         self.temp_file_name = None
         super().__init__(params, linter_config)
