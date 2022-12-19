@@ -60,6 +60,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.0 to **8.15.2** on 2022-12-18
   - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0** on 2022-12-18
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0** on 2022-12-19
+  - [luacheck](https://luacheck.readthedocs.io) from 1.0.0 to **1.1.0** on 2022-12-19
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.4 to **1.4.5** on 2022-12-19
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23

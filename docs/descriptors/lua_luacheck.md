@@ -4,7 +4,7 @@
 
 ## luacheck documentation
 
-- Version in MegaLinter: **1.0.0**
+- Version in MegaLinter: **1.1.0**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -95,13 +95,14 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--no-color] [-v] <file> [<file>] ...
        ([--cache [<cache>]] | [--no-cache])
        [--ignore <patt> [<patt>] ...] [--enable <patt> [<patt>] ...]
-       [--only <patt> [<patt>] ...] [--globals [<name>] ...]
-       [--read-globals [<name>] ...] [--new-globals [<name>] ...]
-       [--new-read-globals [<name>] ...] [--not-globals [<name>] ...]
+       [--only <patt> [<patt>] ...] [--operators <patt> [<patt>] ...]
+       [--globals [<name>] ...] [--read-globals [<name>] ...]
+       [--new-globals [<name>] ...] [--new-read-globals [<name>] ...]
+       [--not-globals [<name>] ...]
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 1.0.0, a linter and a static analyzer for Lua.
+luacheck 1.1.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -134,6 +135,8 @@ Options for filtering warnings:
    --only <patt> [<patt>] ...,
        -o <patt> [<patt>] ...
                          Filter out warnings not matching these patterns.
+   --operators <patt> [<patt>] ...
+                         Allow compound operators matching patterns
 
 Options for configuring allowed globals:
    --std <std>           Set standard globals, default is max. <std> can be one
