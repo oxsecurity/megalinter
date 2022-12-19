@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.10.14 to **2022.12.10** on 2022-12-18
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.0 to **8.15.2** on 2022-12-18
   - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0** on 2022-12-18
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0** on 2022-12-19
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
