@@ -459,7 +459,9 @@ def build_dockerfile(
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
             "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir --upgrade pip virtualenv \\\n"
+            " --no-cache-dir --upgrade pip &&"
+            " PYTHONDONTWRITEBYTECODE=1 pip3 install"
+            " --no-cache-dir --upgrade setuptools virtualenv \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
