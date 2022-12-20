@@ -362,7 +362,7 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png
-    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.35/docs/references/cli/fs/
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.35/docs/references/customization/config-file/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.35/docs/secret/examples/#skip-directories
     cli_lint_mode: project
     config_file_name: trivy.yaml
