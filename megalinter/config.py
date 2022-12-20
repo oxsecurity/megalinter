@@ -76,11 +76,14 @@ def init_config(workspace=None):
         if isinstance(extends, str):
             extends = extends.split(",")
         for extends_item in extends:
-            r = requests.get(extends_item, allow_redirects=True)
-            assert (
-                r.status_code == 200
-            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
-            extends_config_data = yaml.safe_load(r.content)
+            if extends_item.startswith("http"):
+                r = requests.get(extends_item, allow_redirects=True)
+                assert (
+                    r.status_code == 200
+                ), f"Unable to retrieve EXTENDS config file {config_file_name}"
+                extends_config_data = yaml.safe_load(r.content)
+            else:
+                extends_config_data = yaml.safe_load(extends_item)
             combined_config.update(extends_config_data)
             CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
         combined_config.update(runtime_config)
