@@ -12,6 +12,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Upgrade to alpine 3.16
 - Disable php7 & upgrade php8 tp php81
 - Add Makefile linters to documentation flavor
+- Fixes
+  - CSpell file name linting does not use (custom) CSpell configuration ([#2058](https://github.com/oxsecurity/megalinter/issues/2058))
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
@@ -61,6 +63,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.0 to **8.15.2** on 2022-12-18
   - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0** on 2022-12-18
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0** on 2022-12-19
+  - [luacheck](https://luacheck.readthedocs.io) from 1.0.0 to **1.1.0** on 2022-12-19
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.4 to **1.4.5** on 2022-12-19
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.7.0 to **0.8.0** on 2022-12-20
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
