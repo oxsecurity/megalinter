@@ -217,3 +217,20 @@ linters:
       vscode:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  # npm-package-json-lint
+  - linter_name: npm-package-json-lint
+    linter_url: https://npmpackagejsonlint.org/
+    linter_repo: https://github.com/tclindner/npm-package-json-lint
+    linter_rules_url: https://npmpackagejsonlint.org/docs/rules
+    linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: --configFile
+    config_file_name: .npmpackagejsonlintrc.json
+    cli_lint_extra_args:
+      - --quiet
+    ignore_file_name: .npmpackagejsonlintignore
+    examples:
+      - "npmPkgJsonLint ./package1 ./package2"
+    install:
+      npm:
+        - "npm-package-json-lint"
