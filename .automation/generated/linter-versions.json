@@ -81,7 +81,7 @@
     "sfdx-scanner-lwc": "3.7.1",
     "shellcheck": "0.9.0",
     "shfmt": "3.6.0",
-    "snakefmt": "0.7.0",
+    "snakefmt": "0.8.0",
     "snakemake": "7.19.1",
     "spectral": "5.9.2",
     "sql-lint": "1.0.0",

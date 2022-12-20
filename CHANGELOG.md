@@ -64,6 +64,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0** on 2022-12-19
   - [luacheck](https://luacheck.readthedocs.io) from 1.0.0 to **1.1.0** on 2022-12-19
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.4 to **1.4.5** on 2022-12-19
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.7.0 to **0.8.0** on 2022-12-20
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
