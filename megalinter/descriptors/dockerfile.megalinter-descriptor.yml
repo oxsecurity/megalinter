@@ -3,6 +3,7 @@ descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 file_names_regex:
   - "Dockerfile"
 test_folder: docker
@@ -14,6 +15,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/hadolint/hadolint
     linter_repo: https://github.com/hadolint/hadolint
@@ -33,7 +35,7 @@ linters:
       - "hadolint --config .hadolint.yml Dockerfile"
     install:
       dockerfile:
-        - FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+        - FROM hadolint/hadolint:v2.12.0-alpine as hadolint
         - COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
       atom:

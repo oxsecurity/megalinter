@@ -49,7 +49,7 @@ class config_test(unittest.TestCase):
         remote_config = self.test_folder + "base.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         config.init_config()
-        self.assertEqual("(extension1)", config.get("FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("(extension2)", config.get("FILTER_REGEX_EXCLUDE"))
         self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
 

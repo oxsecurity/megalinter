@@ -3,6 +3,7 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 lint_all_files: true
 linters:
   # CHECKOV
@@ -11,6 +12,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - terraform
       - security
     linter_url: https://www.checkov.io/
@@ -35,10 +37,9 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
-      dockerfile:
-        - |
-          RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-              && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+      pip:
+        - packaging==21.3
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -76,6 +77,7 @@ linters:
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
+    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -92,10 +94,10 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
     ide:
       vscode:
-        - name: VsCode DevSkim
+        - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
 
   # DUSTILOCK
@@ -160,6 +162,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
@@ -191,7 +194,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.14.1 as gitleaks
+        - FROM zricethezav/gitleaks:v8.15.2 as gitleaks
         - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -199,6 +202,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
     linter_speed: 2
@@ -227,6 +231,7 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
@@ -262,6 +267,7 @@ linters:
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
+      - cupcake
       - security
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
@@ -288,6 +294,8 @@ linters:
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
       - --sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
     cli_lint_errors_count: regex_number
@@ -308,7 +316,7 @@ linters:
         default_value: ""
     ide:
       vscode:
-        - name: VsCode SemGrep
+        - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
   # SYFT
@@ -347,21 +355,22 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_text: |
-      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
-    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
-    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/
-    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories
+    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories
     cli_lint_mode: project
+    config_file_name: trivy.yaml
+    cli_config_arg_name: --config
     cli_sarif_args:
       - --format
-      - template
-      - --template
-      - "@/usr/local/bin/sarif.tpl"
+      - sarif
       - -o
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
@@ -375,13 +384,12 @@ linters:
     test_folder: trivy
     examples:
       - "trivy fs --security-checks vuln,config ."
+    downgraded_version: true
     install:
       dockerfile:
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 && \
-              wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl && \
-              chmod 644 /usr/local/bin/sarif.tpl
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0
     ide:
       vscode:
-        - name: VsCode Trivy
+        - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

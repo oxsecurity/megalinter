@@ -31,6 +31,14 @@
           ],
           "title": "Folder where to run the command",
           "type": "string"
+        },
+        "venv": {
+          "examples": [
+            "pylint",
+            "flake8"
+          ],
+          "title": "Python virtual env identifier",
+          "type": "string"
         }
       },
       "required": [],
@@ -181,6 +189,7 @@
         "REPOSITORY_TRIVY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
+        "RST_RSTFMT",
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
         "SALESFORCE_SFDX_SCANNER_APEX",
@@ -215,8 +224,7 @@
         "CREDENTIALS_SECRETLINT",
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
-        "PHP_BUILTIN",
-        "RST_RSTFMT"
+        "PHP_BUILTIN"
       ],
       "type": "string"
     }
@@ -654,6 +662,23 @@
     "ARM_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ARM_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for ARM descriptor",
+      "type": "string"
+    },
+    "AZURE_COMMENT_REPORTER": {
+      "$id": "#/properties/AZURE_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts MegaLinter results summary in the comments of the related pull request (if existing)",
+      "title": "Activate Azure PR Comments reporter",
+      "type": "boolean"
+    },
+    "AZURE_COMMENT_REPORTER_LINKS_TYPE": {
+      "$id": "#/properties/AZURE_COMMENT_REPORTER_LINKS_TYPE",
+      "default": "artifacts",
+      "enum": [
+        "artifacts",
+        "build"
+      ],
+      "title": "Type of hyperlinks in Azure PR Comments (artifacts or build)",
       "type": "string"
     },
     "BASH_EXEC_ARGUMENTS": {
@@ -1525,7 +1550,7 @@
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
-      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VSCode extensions.js config file",
       "title": "Activate local configuration reporter",
       "type": "boolean"
     },
@@ -9431,6 +9456,17 @@
       "title": "Output folder",
       "type": "string"
     },
+    "REPORTERS_MARKDOWN_TYPE" : {
+      "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
+      "default": "advanced",
+      "description": "Define simple if you do not to have external images in PR/MR comments",
+      "enum": [
+        "simple",
+        "advanced"
+      ],
+      "title": "Reporters Markdown type",
+      "type": "string"
+    },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to add in linter CLI call",
@@ -11683,12 +11719,36 @@
       "title": "SPELL_CSPELL: Maximum number of errors allowed",
       "type": "number"
     },
+    "SPELL_CSPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_CSPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
     "SPELL_CSPELL_FILE_NAME": {
       "$id": "#/properties/SPELL_CSPELL_FILE_NAME",
       "default": ".cspell.json",
       "description": "SPELL_CSPELL: User custom config file name if different from default",
       "title": "SPELL_CSPELL: Custom config file name",
       "type": "string"
+    },
+    "SPELL_CSPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_CSPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
     },
     "SPELL_CSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_CSPELL_FILTER_REGEX_EXCLUDE",
@@ -11788,6 +11848,30 @@
       "default": 0,
       "title": "SPELL_MISSPELL: Maximum number of errors allowed",
       "type": "number"
+    },
+    "SPELL_MISSPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
     },
     "SPELL_MISSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_EXCLUDE",

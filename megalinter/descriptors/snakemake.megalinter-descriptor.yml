@@ -26,7 +26,7 @@ linters:
         - name: SnakeCharm
           url: https://plugins.jetbrains.com/plugin/11947-snakecharm
       vscode:
-        - name: VsCode SnakeMake
+        - name: VSCode SnakeMake
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt

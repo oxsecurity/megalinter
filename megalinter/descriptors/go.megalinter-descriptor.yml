@@ -1,6 +1,7 @@
 descriptor_id: GO
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - go
 file_extensions:
   - ".go"
@@ -69,8 +70,8 @@ linters:
       - -formatter
       - sarif
     cli_help_arg_name: "-help"
+    cli_version_arg_name: "-version"
     help_command_return_code: 0
-    linter_version_cache: "0.0.0"
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"

@@ -1,6 +1,7 @@
 descriptor_id: PYTHON
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - python
 file_extensions:
   - ".py"
@@ -87,7 +88,7 @@ linters:
         - name: sublack
           url: https://github.com/jgirardet/sublack
       vscode:
-        - name: VsCode Python Extension
+        - name: VSCode Python Extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
   # FLAKE8
   - linter_name: flake8
@@ -169,7 +170,7 @@ linters:
         - name: vim-isort
           url: https://github.com/fisadev/vim-isort#installation
       vscode:
-        - name: VsCode Python Extension
+        - name: VSCode Python Extension
           url: https://github.com/Microsoft/vscode-python
   # BANDIT
   - linter_name: bandit

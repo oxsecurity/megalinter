@@ -42,6 +42,7 @@
         "all_flavors",
         "all",
         "ci_light",
+        "cupcake",
         "documentation",
         "dotnet",
         "go",

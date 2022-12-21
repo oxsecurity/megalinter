@@ -1,6 +1,7 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
 descriptor_flavors:
+  - cupcake
   - terraform
 file_extensions:
   - ".tf"
@@ -11,6 +12,7 @@ linters:
     linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://github.com/terraform-linters/tflint
@@ -27,7 +29,7 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.41.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.43.0 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -35,6 +37,7 @@ linters:
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.accurics.com/products/terrascan/
@@ -63,7 +66,7 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM tenable/terrascan:latest as terrascan
+        - FROM tenable/terrascan:1.16.0 as terrascan
         - COPY --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
@@ -73,6 +76,7 @@ linters:
     file_names_not_ends_with:
       - ".tflint.hcl"
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://terragrunt.gruntwork.io
@@ -159,10 +163,9 @@ linters:
     examples:
       - "checkov --file myfile.tf"
     install:
-      dockerfile:
-        - |
-          RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir pip && PYTHONDONTWRITEBYTECODE=1 pip3 install --upgrade --no-cache-dir setuptools \
-              && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+      pip:
+        - packaging==21.3
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -172,6 +175,7 @@ linters:
   - linter_name: kics
     name: TERRAFORM_KICS
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://www.kics.io

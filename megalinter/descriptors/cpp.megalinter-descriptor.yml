@@ -2,6 +2,7 @@ descriptor_id: CPP
 descriptor_label: "C++"
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - dotnet
 file_extensions:
   - ".cpp"

@@ -11,7 +11,7 @@ Click on **MegaLinter-reports** artifact from the main job log to view or downlo
 
 ## Configuration
 
-- The following variables must be sent to docker run command
+- The following variables must be sent to the docker run command
 
 Example:
 
@@ -24,7 +24,7 @@ Example:
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
             -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
+            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             oxsecurity/megalinter:v6
@@ -39,6 +39,8 @@ Example:
 
 ![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
 
-| Variable               | Description                    | Default value |
-|------------------------|--------------------------------|---------------|
-| AZURE_COMMENT_REPORTER | Activates/deactivates reporter | true          |
+| Variable                          | Description                                                                        | Default value |
+|-----------------------------------|------------------------------------------------------------------------------------|---------------|
+| AZURE_COMMENT_REPORTER            | Activates/deactivates reporter                                                     | true          |
+| AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
+| REPORTERS_MARKDOWN_TYPE           | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
