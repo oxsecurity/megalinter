@@ -13,7 +13,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add Makefile linters to documentation flavor
 - Fixes
   - CSpell file name linting does not use (custom) CSpell configuration ([#2058](https://github.com/oxsecurity/megalinter/issues/2058))
-  
+  - HTML email not rendering correctly ([#2120](https://github.com/oxsecurity/megalinter/issues/2120)). Set `REPORTERS_MARKDOWN_TYPE` to `simple` to avoid external images in PR/MR markdown comments.
+
 - Linters
   - Add [npm-package-json-lint](https://github.com/tclindner/npm-package-json-lint) linter
 
@@ -69,6 +70,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.4 to **1.4.5** on 2022-12-19
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.7.0 to **0.8.0** on 2022-12-20
   - [rubocop](https://rubocop.org/) from 1.40.0 to **1.41.0** on 2022-12-20
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.17.0 to **6.18.0** on 2022-12-21
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
