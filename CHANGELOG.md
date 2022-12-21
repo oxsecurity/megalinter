@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.4 to **1.4.5** on 2022-12-19
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.7.0 to **0.8.0** on 2022-12-20
   - [rubocop](https://rubocop.org/) from 1.40.0 to **1.41.0** on 2022-12-20
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.17.0 to **6.18.0** on 2022-12-21
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
