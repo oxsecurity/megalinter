@@ -3,20 +3,20 @@
 
 <div align="center">
   <a href="https://aquasecurity.github.io/trivy/" target="blank" title="Visit linter Web Site">
-    <img src="https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png" alt="trivy" height="150px" class="megalinter-banner">
+    <img src="https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png" alt="trivy" height="150px" class="megalinter-banner">
   </a>
 </div>
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)
 
-You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
+You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
 
 ## trivy documentation
 
 - Version in MegaLinter: **0.35.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
-- See [How to configure trivy rules](https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/){target=_blank}
-- See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories){target=_blank}
+- See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/){target=_blank}
+- See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories){target=_blank}
 
 [![trivy - GitHub](https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=)](https://github.com/aquasecurity/trivy){target=_blank}
 
@@ -25,13 +25,15 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 - Enable trivy by adding `REPOSITORY_TRIVY` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable trivy by adding `REPOSITORY_TRIVY` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                     | Description                                                              | Default value |
-|----------------------------------------------|--------------------------------------------------------------------------|---------------|
-| REPOSITORY_TRIVY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_TRIVY_PRE_COMMANDS                | List of bash commands to run before the linter                           | None          |
-| REPOSITORY_TRIVY_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
-| REPOSITORY_TRIVY_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
-| REPOSITORY_TRIVY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
+| Variable                                     | Description                                                                      | Default value                                   |
+|----------------------------------------------|----------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_TRIVY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`         |                                                 |
+| REPOSITORY_TRIVY_PRE_COMMANDS                | List of bash commands to run before the linter                                   | None                                            |
+| REPOSITORY_TRIVY_POST_COMMANDS               | List of bash commands to run after the linter                                    | None                                            |
+| REPOSITORY_TRIVY_CONFIG_FILE                 | trivy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `trivy.yaml`                                    |
+| REPOSITORY_TRIVY_RULES_PATH                  | Path where to find linter configuration file                                     | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_TRIVY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                       | `false`                                         |
+| REPOSITORY_TRIVY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                 | `0`                                             |
 
 ## IDE Integration
 
