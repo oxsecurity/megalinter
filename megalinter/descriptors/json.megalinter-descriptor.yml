@@ -224,6 +224,7 @@ linters:
     linter_rules_url: https://npmpackagejsonlint.org/docs/rules
     linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
     cli_lint_mode: list_of_files
+    cli_executable: npmPkgJsonLint
     cli_config_arg_name: --configFile
     config_file_name: .npmpackagejsonlintrc.json
     cli_lint_extra_args:
