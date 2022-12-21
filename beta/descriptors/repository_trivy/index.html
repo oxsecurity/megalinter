@@ -5753,18 +5753,18 @@
 
 <div align="center">
   <a href="https://aquasecurity.github.io/trivy/" target="blank" title="Visit linter Web Site">
-    <img src="https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png" alt="trivy" height="150px" class="megalinter-banner">
+    <img src="https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png" alt="trivy" height="150px" class="megalinter-banner">
   </a>
 </div>
 
 <p><a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy" /></a></p>
-<p>You can ignore a list of errors by defining a <a href="https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids">.trivyignore file</a></p>
+<p>You can ignore a list of errors by defining a <a href="https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids">.trivyignore file</a></p>
 <h2 id="trivy-documentation">trivy documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.35.0</strong></li>
 <li>Visit <a href="https://aquasecurity.github.io/trivy/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/" target="_blank">How to configure trivy rules</a></li>
-<li>See <a href="https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories" target="_blank">How to ignore files and directories with trivy</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/" target="_blank">How to configure trivy rules</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories" target="_blank">How to ignore files and directories with trivy</a></li>
 </ul>
 <p><a href="https://github.com/aquasecurity/trivy" target="_blank"><img alt="trivy - GitHub" src="https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
@@ -5795,6 +5795,16 @@
 <td>REPOSITORY_TRIVY_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_CONFIG_FILE</td>
+<td>trivy configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>trivy.yaml</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
 <td>REPOSITORY_TRIVY_DISABLE_ERRORS</td>
