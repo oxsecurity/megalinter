@@ -230,6 +230,8 @@ linters:
     cli_lint_extra_args:
       - --quiet
     ignore_file_name: .npmpackagejsonlintignore
+    cli_help_arg_name: --help
+    test_folder: npm_package_json_lint
     examples:
       - "npmPkgJsonLint ./package1 ./package2"
     install:
