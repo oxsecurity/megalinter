@@ -9456,6 +9456,17 @@
       "title": "Output folder",
       "type": "string"
     },
+    "REPORTERS_MARKDOWN_TYPE" : {
+      "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
+      "default": "advanced",
+      "description": "Define simple if you do not to have external images in PR/MR comments",
+      "enum": [
+        "simple",
+        "advanced"
+      ],
+      "title": "Reporters Markdown type",
+      "type": "string"
+    },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to add in linter CLI call",
