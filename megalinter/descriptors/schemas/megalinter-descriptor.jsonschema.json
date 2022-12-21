@@ -815,6 +815,22 @@
             "title": "Filter on end of file name",
             "type": "array"
           },
+          "file_names_regex": {
+            "$id": "#/properties/linters/items/file_names_regex",
+            "default": [],
+            "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
+            "examples": [
+              [
+                "Dockerfile(-.+)?",
+                "Jenkinsfile"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "File name regex filters",
+            "type": "array"
+          },
           "files_sub_directory": {
             "$id": "#/properties/linters/items/files_sub_directory",
             "description": "Set when a linter only lints a sub-directory",
