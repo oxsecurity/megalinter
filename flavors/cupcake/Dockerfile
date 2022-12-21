@@ -178,6 +178,8 @@ RUN npm --no-cache install --ignore-scripts \
                 @prantlf/jsonlint \
                 eslint-plugin-jsonc \
                 v8r \
+                npm-package-json-lint \
+                npm-package-json-lint-config-default \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \

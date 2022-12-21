@@ -234,3 +234,4 @@ linters:
     install:
       npm:
         - "npm-package-json-lint"
+        - "npm-package-json-lint-config-default"
