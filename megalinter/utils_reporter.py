@@ -24,7 +24,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             status = (
                 "✅"
                 if linter.status == "success" and linter.return_code == 0
-                else ":warning:"
+                else "⚠️"
                 if linter.status != "success" and linter.return_code == 0
                 else "❌"
             )
@@ -71,7 +71,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else ":warning:"
+        else "⚠️"
         if reporter_self.master.status == "warning"
         else "❌"
     )
