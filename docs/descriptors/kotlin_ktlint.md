@@ -11,7 +11,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.47.1**
+- Version in MegaLinter: **0.48.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -54,7 +54,7 @@ This linter is available in the following flavours
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                             |       109        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages       |        79        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        56        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                       |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                     |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
@@ -134,8 +134,10 @@ Flags:
       --color           Make output colorful
       --color-name=<colorName>
                         Customize the output color
-      --debug           Turn on debug output
-      --trace           Turn on trace output
+      --debug           Turn on debug output. Deprecated, use
+                          '--log-level=debug' instead.
+      --trace           Turn on trace output. Deprecated, use
+                          '--log-level=trace' instead.
       --disabled_rules=<disabledRules>
                         Comma-separated list of rules to globally disable. To
                           disable standard ktlint rule-set use
@@ -144,16 +146,23 @@ Flags:
       --limit=<limit>   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
                           dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=<reporters>
+      --reporter=<reporterJarPaths>
                         A reporter to use (built-in: plain (default), plain?
-                          group_by_file, json, sarif, checkstyle, html). To use
-                          a third-party reporter specify a path to a JAR file
-                          on the filesystem via ',artifact=' option. To
-                          override reporter output, use ',output=' option.
-  -R, --ruleset=<rulesetJarFiles>
+                          group_by_file, plain-summary, json, sarif,
+                          checkstyle, html). To use a third-party reporter
+                          specify a path to a JAR file on the filesystem via ',
+                          artifact=' option. To override reporter output, use ',
+                          output=' option.
+  -R, --ruleset=<rulesetJarPaths>
                         A path to a JAR file containing additional ruleset(s)
       --stdin           Read file from stdin
-  -v, --verbose         Show error codes
+      --patterns-from-stdin[=<stdinDelimiter>]
+                        Read additional patterns to check/format from stdin.
+                          Patterns are delimited by the given argument.
+                          (default is newline) If the argument is an empty
+                          string, the NUL byte is used.
+  -v, --verbose         Show error codes. Deprecated, use '--log-level=info'
+                          instead.
       --editorconfig=<editorConfigPath>
                         Path to the default '.editorconfig'. A property value
                           from this file is used only when no '.editorconfig'
@@ -164,6 +173,9 @@ Flags:
       --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
       --baseline=<baselinePath>
                         Defines a baseline file to check against
+  -l, --log-level=<minLogLevel>
+                        Defines the minimum log level (trace, debug, info,
+                          warn, error) or none to suppress all logging
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
 Commands:

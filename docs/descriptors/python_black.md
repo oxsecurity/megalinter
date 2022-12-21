@@ -11,7 +11,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **22.10.0**
+- Version in MegaLinter: **22.12.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -115,9 +115,9 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (prun, timeit, pypy, python, python3,
-                                  capture, time). Useful for formatting cells
-                                  with custom python magics.
+                                  magics (time, capture, timeit, prun,
+                                  python3, pypy, python). Useful for
+                                  formatting cells with custom python magics.
   -x, --skip-source-first-line    Skip the first line of the source code.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.

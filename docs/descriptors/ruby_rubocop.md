@@ -11,7 +11,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.39.0**
+- Version in MegaLinter: **1.41.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -236,6 +236,13 @@ Config Generation:
                                      exclude-limit. Default is false.
         --[no-]auto-gen-timestamp    Include the date and time when the --auto-gen-config
                                      was run in the file it generates. Default is true.
+        --[no-]auto-gen-enforced-style
+                                     Add a setting to the TODO configuration file to enforce
+                                     the style used, rather than a per-file exclusion
+                                     if one style is used in all files for cop with
+                                     EnforcedStyle as a configurable option
+                                     when the --auto-gen-config was run
+                                     in the file it generates. Default is true.
 
 Additional Modes:
     -L, --list-target-files          List all files RuboCop will inspect.

@@ -13,7 +13,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.29.2**
+- Version in MegaLinter: **0.35.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories){target=_blank}
@@ -50,7 +50,7 @@ This linter is available in the following flavours
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       109        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/beta/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        79        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        56        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
@@ -89,45 +89,61 @@ trivy fs --security-checks vuln,config .
 ### Help content
 
 ```shell
-NAME:
-   trivy - Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets
+Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets
 
-USAGE:
-   trivy [global options] command [command options] target
+Usage:
+  trivy [global flags] command [flags] target
+  trivy [command]
 
-VERSION:
-   0.29.2
+Examples:
+  # Scan a container image
+  $ trivy image python:3.4-alpine
 
-COMMANDS:
-   image, i          scan an image
-   filesystem, fs    scan local filesystem for language-specific dependencies and config files
-   rootfs            scan rootfs
-   repository, repo  scan remote repository
-   server, s         server mode
-   config, conf      scan config files
-   plugin, p         manage plugins
-   module, m         manage modules
-   kubernetes, k8s   scan kubernetes vulnerabilities, secrets and misconfigurations
-   sbom              generate SBOM for an artifact
-   version           print the version
-   help, h           Shows a list of commands or help for one command
+  # Scan a container image from a tar archive
+  $ trivy image --input ruby-3.1.tar
 
-GLOBAL OPTIONS:
-   --cache-dir value  cache directory (default: "/root/.cache/trivy") [$TRIVY_CACHE_DIR]
-   --debug, -d        debug mode (default: false) [$TRIVY_DEBUG]
-   --help, -h         show help (default: false)
-   --quiet, -q        suppress progress bar and log output (default: false) [$TRIVY_QUIET]
-   --version, -v      print the version (default: false)
+  # Scan local filesystem
+  $ trivy fs .
 
+  # Run in server mode
+  $ trivy server
+
+Available Commands:
+  aws         [EXPERIMENTAL] Scan AWS account
+  config      Scan config files for misconfigurations
+  filesystem  Scan local filesystem
+  help        Help about any command
+  image       Scan a container image
+  kubernetes  [EXPERIMENTAL] Scan kubernetes cluster
+  module      Manage modules
+  plugin      Manage plugins
+  repository  Scan a remote repository
+  rootfs      Scan rootfs
+  sbom        Scan SBOM for vulnerabilities
+  server      Server mode
+  version     Print the version
+  vm          [EXPERIMENTAL] Scan a virtual machine image
+
+Flags:
+      --cache-dir string          cache directory (default "/root/.cache/trivy")
+  -c, --config string             config path (default "trivy.yaml")
+  -d, --debug                     debug mode
+  -f, --format string             version format (json)
+      --generate-default-config   write the default config to trivy-default.yaml
+  -h, --help                      help for trivy
+      --insecure                  allow insecure server connections when using TLS
+  -q, --quiet                     suppress progress bar and log output
+      --timeout duration          timeout (default 5m0s)
+  -v, --version                   show version
+
+Use "trivy [command] --help" for more information about a command.
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.29.2 && \
-    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/714b5ca2460363e082d42a8d933c7a0cb7eff7a8/contrib/sarif.tpl && \
-    chmod 644 /usr/local/bin/sarif.tpl
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0
 
 ```
 

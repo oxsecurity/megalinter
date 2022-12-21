@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.9.2**
+- Version in MegaLinter: **1.9.4**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -133,9 +133,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
 RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 

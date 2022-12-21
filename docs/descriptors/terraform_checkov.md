@@ -382,4 +382,5 @@ override config file values which override defaults.
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
+  - [packaging==21.3](https://pypi.org/project/packaging==21.3)
   - [checkov](https://pypi.org/project/checkov)

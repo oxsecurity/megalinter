@@ -42,31 +42,21 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 - APK packages (Linux):
   - [gnupg](https://pkgs.alpinelinux.org/packages?branch=edge&name=gnupg)
-  - [php7](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7)
-  - [php7-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-phar)
-  - [php7-json](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-json)
-  - [php7-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-mbstring)
-  - [php7-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-xmlwriter)
-  - [php7-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-tokenizer)
-  - [php7-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-ctype)
-  - [php7-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-curl)
-  - [php7-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-dom)
-  - [php7-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-simplexml)
-  - [php8](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8)
-  - [php8-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-phar)
-  - [php8-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-mbstring)
-  - [php8-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-xmlwriter)
-  - [php8-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-tokenizer)
-  - [php8-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-ctype)
-  - [php8-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-curl)
-  - [php8-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-dom)
-  - [php8-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php8-simplexml)
+  - [php81](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81)
+  - [php81-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-phar)
+  - [php81-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-mbstring)
+  - [php81-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-xmlwriter)
+  - [php81-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-tokenizer)
+  - [php81-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-ctype)
+  - [php81-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-curl)
+  - [php81-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-dom)
+  - [php81-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-simplexml)
   - [composer](https://pkgs.alpinelinux.org/packages?branch=edge&name=composer)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)

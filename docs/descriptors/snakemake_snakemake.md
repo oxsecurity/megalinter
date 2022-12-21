@@ -11,7 +11,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.18.2**
+- Version in MegaLinter: **7.19.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -50,7 +50,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                           | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                             |       109        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        56        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                       |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                     |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
@@ -148,7 +148,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--overwrite-shellcmd OVERWRITE_SHELLCMD] [--debug]
                  [--runtime-profile FILE] [--mode {0,1,2}]
                  [--show-failed-logs] [--log-handler-script FILE]
-                 [--log-service {none,slack,wms}]
+                 [--log-service {none,slack,wms}] [--slurm]
                  [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]
                  [--cluster-config FILE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
@@ -228,7 +228,8 @@ EXECUTION:
                         info)This number is available to rules via
                         workflow.cores. (default: None)
   --jobs [N], -j [N]    Use at most N CPU cluster/cloud jobs in parallel. For
-                        local execution this is an alias for --cores.
+                        local execution this is an alias for --cores. Note:
+                        Set to 'unlimited' in case, this does not play a role.
                         (default: None)
   --local-cores N       In cluster/cloud mode, use at most N cores of the host
                         machine in parallel (default: number of CPU cores of
@@ -298,13 +299,17 @@ EXECUTION:
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
-                        allowed (e.g. '2*input.size_mb').When specifying this
-                        without any arguments (--default-resources), it
-                        defines 'mem_mb=max(2*input.size_mb, 1000)'
-                        'disk_mb=max(2*input.size_mb, 1000)' i.e., default
+                        allowed (e.g. '2*input.size_mb'). The inputsize is the
+                        sum of the sizes of all input files of a rule. By
+                        default, Snakemake assumes a default for mem_mb,
+                        disk_mb, and tmpdir (see below). This option allows to
+                        add further defaults (e.g. account and partition for
+                        slurm) or to overwrite these default values. The
+                        defaults are 'mem_mb=max(2*input.size_mb, 1000)',
+                        'disk_mb=max(2*input.size_mb, 1000)' (i.e., default
                         disk and mem usage is twice the input file size but at
-                        least 1GB.In addition, the system temporary directory
-                        (as given by $TMPDIR, $TEMP, or $TMP) is used for the
+                        least 1GB), and the system temporary directory (as
+                        given by $TMPDIR, $TEMP, or $TMP) is used for the
                         tmpdir resource. The tmpdir resource is automatically
                         used by shell commands, scripts and wrappers to store
                         temporary data (as it is mirrored into $TMPDIR, $TEMP,
@@ -812,6 +817,18 @@ BEHAVIOR:
                         output.Snakemake will notify the service on errors and
                         completed execution.Currently slack and workflow
                         management system (wms) are supported. (default: None)
+
+SLURM:
+  --slurm               Execute snakemake rules as SLURM batch jobs according
+                        to their 'resources' definition. SLRUM resources as
+                        'partition', 'ntasks', 'cpus', etc. need to be defined
+                        per rule within the 'resources' definition. Note, that
+                        memory can only be defined as 'mem_mb' or
+                        'mem_mb_per_cpu' as analoguous to the SLURM 'mem' and
+                        'mem-per-cpu' flags to sbatch, respectively. Here, the
+                        unit is always 'MiB'. In addition '--
+                        default_resources' should contain the SLURM account.
+                        (default: False)
 
 CLUSTER:
   --cluster CMD         Execute snakemake rules with the given submit command,
