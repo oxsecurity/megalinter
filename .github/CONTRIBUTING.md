@@ -85,7 +85,7 @@ Each linter must:
 - Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.py` and it will generate all the rest !
+Then run `bash build.sh` and it will generate all the rest !
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)
@@ -95,6 +95,11 @@ Then run `bash build.py` and it will generate all the rest !
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
 
+### Execute the tests locally (Visual Studio Code)
+
+1. Install [Test Explorer UI](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer) extension
+2. Install [Python Test Explorer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=LittleFoxTeam.vscode-python-test-adapter) extension
+3. Execute or debug tests via the side menu
 
 ### CI/CT/CD
 
