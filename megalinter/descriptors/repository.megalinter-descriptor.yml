@@ -39,7 +39,7 @@ linters:
     install:
       pip:
       # - packaging==21.3 # disable: not necessary anymore
-        - checkov
+        - checkov>=2.2.180
     ide:
       vscode:
         - name: Checkov
