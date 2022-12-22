@@ -23,24 +23,24 @@ Builds a SBOM (Software Build Of Materials) from your repository
 - Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                     | Default value                                   |
-|---------------------------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`        |                                                 |
-| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                  | None                                            |
-| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                   | None                                            |
-| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.syft.yaml`                                    |
-| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                    | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                      | `false`                                         |
-| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| REPOSITORY_SYFT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_SYFT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| REPOSITORY_SYFT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| REPOSITORY_SYFT_CONFIG_FILE | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.syft.yaml` |
+| REPOSITORY_SYFT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SYFT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       109        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 110 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security | 21 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 

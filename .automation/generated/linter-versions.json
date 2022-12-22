@@ -50,6 +50,7 @@
     "misspell": "0.3.4",
     "mypy": "0.991",
     "npm-groovy-lint": "11.1.1",
+    "npm-package-json-lint": "6.4.0",
     "perlcritic": "1.146",
     "php": "7.4.26",
     "phpcs": "3.7.1",

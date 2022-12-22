@@ -5,12 +5,12 @@
 
 ## Linters
 
-| Linter                    | Configuration key             | Status                                                                                                                                             |
-|---------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| [phpcs](php_phpcs.md)     | [PHP_PHPCS](php_phpcs.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/squizlabs/PHP_CodeSniffer)](https://github.com/squizlabs/PHP_CodeSniffer/commits) |
-| [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/phpstan/phpstan)](https://github.com/phpstan/phpstan/commits)                     |
-| [psalm](php_psalm.md)     | [PHP_PSALM](php_psalm.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits)                             |
-| [phplint](php_phplint.md) | [PHP](php_phplint.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/overtrue/phplint)](https://github.com/overtrue/phplint/commits)                   |
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
+| [phpcs](php_phpcs.md) | [PHP_PHPCS](php_phpcs.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/squizlabs/PHP_CodeSniffer)](https://github.com/squizlabs/PHP_CodeSniffer/commits) |
+| [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/phpstan/phpstan)](https://github.com/phpstan/phpstan/commits) |
+| [psalm](php_psalm.md) | [PHP_PSALM](php_psalm.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) |
+| [phplint](php_phplint.md) | [PHP](php_phplint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/overtrue/phplint)](https://github.com/overtrue/phplint/commits) |
 
 ## Linted files
 
@@ -19,10 +19,10 @@
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes
