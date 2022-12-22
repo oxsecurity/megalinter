@@ -223,6 +223,11 @@ linters:
     linter_repo: https://github.com/tclindner/npm-package-json-lint
     linter_rules_url: https://npmpackagejsonlint.org/docs/rules
     linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
+    descriptor_flavors:
+      - dotnet
+      - cupcake
+      - javascript
+      - salesforce
     cli_lint_mode: project
     cli_lint_extra_args_after:
       - "."
