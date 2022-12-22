@@ -1,15 +1,15 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1873&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1310&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=563&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1874&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1309&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=565&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=50401&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33272 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33273 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2282 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1699 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1698 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1511 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1482 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |   973 |
@@ -24,7 +24,7 @@
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   284 |
 | [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   273 |
 | [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   271 |
-| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   219 |
+| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   220 |
 | [bjw-s/home-ops](https://github.com/bjw-s/home-ops)                                                                                                                             |   217 |
 | [OCSInventory-NG/OCSInventory-ocsreports](https://github.com/OCSInventory-NG/OCSInventory-ocsreports)                                                                           |   188 |
 | [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   186 |
@@ -91,11 +91,11 @@
 | [coolguy1771/home-ops](https://github.com/coolguy1771/home-ops)                                                                                                                 |    15 |
 | [MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes](https://github.com/MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes)                                             |    14 |
 | [LiveEnhancementSuite/HSModule](https://github.com/LiveEnhancementSuite/HSModule)                                                                                               |    14 |
+| [Marx2/homelab](https://github.com/Marx2/homelab)                                                                                                                               |    14 |
 | [ahmadnassri/node-april-fools](https://github.com/ahmadnassri/node-april-fools)                                                                                                 |    14 |
 | [ahmadnassri/action-terraform-report](https://github.com/ahmadnassri/action-terraform-report)                                                                                   |    14 |
 | [gmoon/s3proxy](https://github.com/gmoon/s3proxy)                                                                                                                               |    13 |
 | [janderssonse/gradle-versions-filter-plugin](https://github.com/janderssonse/gradle-versions-filter-plugin)                                                                     |    13 |
-| [Marx2/homelab](https://github.com/Marx2/homelab)                                                                                                                               |    13 |
 | [Programming-Simplified-Community/Social-Coder](https://github.com/Programming-Simplified-Community/Social-Coder)                                                               |    13 |
 | [unixorn/jira-commands](https://github.com/unixorn/jira-commands)                                                                                                               |    12 |
 | [eresturo/scanadf2docspell](https://github.com/eresturo/scanadf2docspell)                                                                                                       |    12 |
@@ -189,6 +189,7 @@
 | [ergho/homelab-ops](https://github.com/ergho/homelab-ops)                                                                                                                       |     4 |
 | [jokay/docker-php-fpm-ext](https://github.com/jokay/docker-php-fpm-ext)                                                                                                         |     4 |
 | [alb-dev/home-ops](https://github.com/alb-dev/home-ops)                                                                                                                         |     4 |
+| [osfanbuff63/action-workflows](https://github.com/osfanbuff63/action-workflows)                                                                                                 |     4 |
 | [ahmadnassri/template-template](https://github.com/ahmadnassri/template-template)                                                                                               |     4 |
 | [ahmadnassri/action-github-registry-npm-proxy](https://github.com/ahmadnassri/action-github-registry-npm-proxy)                                                                 |     4 |
 | [Emiller88/home-ops](https://github.com/Emiller88/home-ops)                                                                                                                     |     4 |
@@ -215,7 +216,6 @@
 | [miracum/vfps](https://github.com/miracum/vfps)                                                                                                                                 |     3 |
 | [snoopy82481/home_cluster](https://github.com/snoopy82481/home_cluster)                                                                                                         |     3 |
 | [MrMarble/home-ops](https://github.com/MrMarble/home-ops)                                                                                                                       |     3 |
-| [osfanbuff63/action-workflows](https://github.com/osfanbuff63/action-workflows)                                                                                                 |     3 |
 | [ahmadnassri/action-google-cloud-sql-proxy](https://github.com/ahmadnassri/action-google-cloud-sql-proxy)                                                                       |     3 |
 | [Euvaz/GitOps-Home](https://github.com/Euvaz/GitOps-Home)                                                                                                                       |     3 |
 | [brandonmcclure/friendly-chainsaw](https://github.com/brandonmcclure/friendly-chainsaw)                                                                                         |     3 |
@@ -1093,7 +1093,6 @@
 | [lucacalcaterra/kube-oci-flux](https://github.com/lucacalcaterra/kube-oci-flux)                                                                                                 |     0 |
 | [xitobuh/flux-cluster](https://github.com/xitobuh/flux-cluster)                                                                                                                 |     0 |
 | [ahmadnassri/action-changed-files](https://github.com/ahmadnassri/action-changed-files)                                                                                         |     0 |
-| [bh2754/k8s-flux-template](https://github.com/bh2754/k8s-flux-template)                                                                                                         |     0 |
 | [ahmadnassri/action-dotenv](https://github.com/ahmadnassri/action-dotenv)                                                                                                       |     0 |
 | [csacca/home-ops](https://github.com/csacca/home-ops)                                                                                                                           |     0 |
 | [oliversalzburg/no-flux-given](https://github.com/oliversalzburg/no-flux-given)                                                                                                 |     0 |
