@@ -19,7 +19,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 ### Get Artifacts on GitLab CI
 
-- Access GitLabel CI job page
+- Access GitLab CI job page
 
 ![Screenshot](../assets/images/TextReporter_gitlab_1.jpg)
 
