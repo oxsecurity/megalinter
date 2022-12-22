@@ -1,7 +1,7 @@
 "use strict";
 const Generator = require("yeoman-generator");
 const { asciiArt } = require("../../lib/ascii");
-const { OxSecuritySetup } = require("../../lib/ox-setup");
+const { OXSecuritySetup } = require("../../lib/ox-setup");
 
 module.exports = class extends Generator {
   prompting() {
@@ -159,7 +159,7 @@ When you don't know what option to select, please use default values`
     this._manageGitIgnore();
     // Process linking to ox.security service
     if (this.props.ox === true) {
-      new OxSecuritySetup().run();
+      new OXSecuritySetup().run();
     }
   }
 

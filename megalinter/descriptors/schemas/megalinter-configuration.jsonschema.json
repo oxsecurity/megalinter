@@ -10117,6 +10117,13 @@
         "string"
       ]
     },
+    "REPOSITORY_TRIVY_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CONFIG_FILE",
+      "default": "trivy.yaml",
+      "description": "REPOSITORY_TRIVY: User custom config file name if different from default",
+      "title": "REPOSITORY_TRIVY: Custom config file name",
+      "type": "string"
+    },
     "REPOSITORY_TRIVY_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_TRIVY_DISABLE_ERRORS",
       "default": false,
@@ -10162,6 +10169,12 @@
       },
       "title": "REPOSITORY_TRIVY: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_TRIVY_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_TRIVY_RULES_PATH",
+      "description": "REPOSITORY_TRIVY: Path where to find linter configuration file",
+      "title": "REPOSITORY_TRIVY: Custom config file path",
+      "type": "string"
     },
     "RST_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_FILTER_REGEX_EXCLUDE",

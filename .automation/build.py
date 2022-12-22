@@ -721,7 +721,7 @@ def generate_documentation():
         + "code**, **IAC**, **configuration**, and **scripts** in your repository "
         + "sources, to **ensure all your projects "
         + "sources are clean and formatted** whatever IDE/toolbox is used by "
-        + "their developers, powered by [**OX security**](https://www.ox.security/?ref=megalinter).\n\n"
+        + "their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
         + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
