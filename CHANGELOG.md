@@ -74,6 +74,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.17.0 to **6.18.0** on 2022-12-21
   - [isort](https://pycqa.github.io/isort/) from 5.11.3 to **5.11.4** on 2022-12-21
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.144 to **1.146** on 2022-12-22
+  - [rubocop](https://rubocop.org/) from 1.41.0 to **1.41.1** on 2022-12-22
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
