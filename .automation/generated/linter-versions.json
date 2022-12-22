@@ -53,7 +53,7 @@
     "perlcritic": "1.146",
     "php": "7.4.26",
     "phpcs": "3.7.1",
-    "phplint": "5.3",
+    "phplint": "5.4",
     "phpstan": "1.9.4",
     "pmd": "6.48.0",
     "powershell": "7.3.1",
