@@ -12,7 +12,7 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter, by [![Ox Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
+## MegaLinter, by [![OX Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1869&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1871&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -32,7 +32,7 @@
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**Ox Security**](https://www.ox.security/?ref=megalinter).
+MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).
 
 Supporting [**51** languages](#languages), [**23** formats](#formats), [**21** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
@@ -1042,7 +1042,7 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 ## Articles
 
 - [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
-- [MegaLinter sells his soul and joins Ox Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
+- [MegaLinter sells his soul and joins OX Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
 - [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter){target=_blank}, by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Node.js Coding Standard Tools with MegaLinter on Gitlab CI](https://javascript.plainenglish.io/node-js-coding-standard-tools-with-megalinter-on-gitlab-ci-a43b55915811){target=_blank}, by [Albion Bame](https://www.linkedin.com/in/albion-bame/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/){target=_blank}, by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}

@@ -721,7 +721,7 @@ def generate_documentation():
         + "code**, **IAC**, **configuration**, and **scripts** in your repository "
         + "sources, to **ensure all your projects "
         + "sources are clean and formatted** whatever IDE/toolbox is used by "
-        + "their developers, powered by [**Ox Security**](https://www.ox.security/?ref=megalinter).\n\n"
+        + "their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
         + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
@@ -2184,7 +2184,7 @@ def finalize_doc_build():
         "<!-- header-intro-start -->",
         "<!-- header-intro-end -->",
         "<h2>Verify your code consistency with an open-source tool.<br/>"
-        + 'Powered by <a href="https://www.ox.security/?ref=megalinter" target="_blank">Ox Security</a>.</h2>',
+        + 'Powered by <a href="https://www.ox.security/?ref=megalinter" target="_blank">OX Security</a>.</h2>',
     )
     # Add header badges
     replace_in_file(
