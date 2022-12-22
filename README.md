@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1863&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1872&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -32,7 +32,7 @@
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/?ref=megalinter).
+MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).
 
 Supporting [**51** languages](#languages), [**23** formats](#formats), [**21** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 

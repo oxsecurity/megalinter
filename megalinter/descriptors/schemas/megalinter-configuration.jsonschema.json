@@ -9449,14 +9449,7 @@
       "title": "RAKU_RAKU: Custom config file path",
       "type": "string"
     },
-    "REPORT_OUTPUT_FOLDER": {
-      "$id": "#/properties/REPORT_OUTPUT_FOLDER",
-      "default": "report",
-      "description": "The location where the output reporting will be generated to",
-      "title": "Output folder",
-      "type": "string"
-    },
-    "REPORTERS_MARKDOWN_TYPE" : {
+    "REPORTERS_MARKDOWN_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
       "default": "advanced",
       "description": "Define simple if you do not to have external images in PR/MR comments",
@@ -9465,6 +9458,13 @@
         "advanced"
       ],
       "title": "Reporters Markdown type",
+      "type": "string"
+    },
+    "REPORT_OUTPUT_FOLDER": {
+      "$id": "#/properties/REPORT_OUTPUT_FOLDER",
+      "default": "report",
+      "description": "The location where the output reporting will be generated to",
+      "title": "Output folder",
       "type": "string"
     },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
@@ -10116,6 +10116,13 @@
         "string"
       ]
     },
+    "REPOSITORY_TRIVY_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CONFIG_FILE",
+      "default": "trivy.yaml",
+      "description": "REPOSITORY_TRIVY: User custom config file name if different from default",
+      "title": "REPOSITORY_TRIVY: Custom config file name",
+      "type": "string"
+    },
     "REPOSITORY_TRIVY_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_TRIVY_DISABLE_ERRORS",
       "default": false,
@@ -10161,6 +10168,12 @@
       },
       "title": "REPOSITORY_TRIVY: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_TRIVY_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_TRIVY_RULES_PATH",
+      "description": "REPOSITORY_TRIVY: Path where to find linter configuration file",
+      "title": "REPOSITORY_TRIVY: Custom config file path",
+      "type": "string"
     },
     "RST_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_FILTER_REGEX_EXCLUDE",

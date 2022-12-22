@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - CSpell file name linting does not use (custom) CSpell configuration ([#2058](https://github.com/oxsecurity/megalinter/issues/2058))
   - HTML email not rendering correctly ([#2120](https://github.com/oxsecurity/megalinter/issues/2120)). Set `REPORTERS_MARKDOWN_TYPE` to `simple` to avoid external images in PR/MR markdown comments.
+  - Fix branding to use the correct 'OX Security' name
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
@@ -68,6 +69,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.7.0 to **0.8.0** on 2022-12-20
   - [rubocop](https://rubocop.org/) from 1.40.0 to **1.41.0** on 2022-12-20
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.17.0 to **6.18.0** on 2022-12-21
+  - [isort](https://pycqa.github.io/isort/) from 5.11.3 to **5.11.4** on 2022-12-21
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.144 to **1.146** on 2022-12-22
+  - [rubocop](https://rubocop.org/) from 1.41.0 to **1.41.1** on 2022-12-22
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
