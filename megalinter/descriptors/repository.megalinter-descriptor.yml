@@ -358,14 +358,16 @@ linters:
       - cupcake
       - security
     linter_text: |
-      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/v0.21.1/vulnerability/examples/filter/#by-vulnerability-ids)
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
-    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
-    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/references/cli/fs/
-    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/v0.30.4/docs/secret/examples/#skip-directories
+    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories
     cli_lint_mode: project
+    config_file_name: trivy.yaml
+    cli_config_arg_name: --config
     cli_sarif_args:
       - --format
       - sarif
