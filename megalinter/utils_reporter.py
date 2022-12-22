@@ -138,13 +138,13 @@ def build_markdown_summary(reporter_self, action_run_url):
     if config.get("REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
         p_r_msg += (
             os.linesep
-            + "MegaLinter is graciously provided by [OX Security]"
+            + "MegaLinter is graciously provided by [Ox Security]"
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
         p_r_msg += (
             os.linesep
-            + "_MegaLinter is graciously provided by [![OX Security]"
+            + "_MegaLinter is graciously provided by [![Ox Security]"
             + "(https://www.ox.security/wp-content/uploads/2022/06/"
             + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
         )

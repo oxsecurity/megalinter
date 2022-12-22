@@ -124,7 +124,7 @@ When you don't know what option to select, please use default values`
         type: "confirm",
         name: "ox",
         message:
-          "Do you want to connect to OX Security to secure your repository ?",
+          "Do you want to connect to Ox Security to secure your repository ?",
         default: false,
       },
     ];

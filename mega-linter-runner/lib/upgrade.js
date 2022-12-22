@@ -382,8 +382,8 @@ jobs:
       name: "ox",
       message: c.blueBright(
         `MegaLinter is now part of ${c.green(
-          "OX Security"
-        )}.\nDo you want to connect to OX Security to secure your repository ?`
+          "Ox Security"
+        )}.\nDo you want to connect to Ox Security to secure your repository ?`
       ),
       type: "confirm",
       initial: false,
