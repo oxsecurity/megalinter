@@ -5,7 +5,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const c = require("chalk");
 const prompts = require("prompts");
-const { OxSecuritySetup } = require("./ox-setup");
+const { OXSecuritySetup } = require("./ox-setup");
 const { asciiArt } = require("./ascii");
 
 class MegaLinterUpgrader {
@@ -378,18 +378,18 @@ jobs:
     );
     console.log("");
     // Propose to try ox service
-    const promptsOxRes = await prompts({
+    const promptsOXRes = await prompts({
       name: "ox",
       message: c.blueBright(
         `MegaLinter is now part of ${c.green(
-          "Ox Security"
-        )}.\nDo you want to connect to Ox Security to secure your repository ?`
+          "OX Security"
+        )}.\nDo you want to connect to OX Security to secure your repository ?`
       ),
       type: "confirm",
       initial: false,
     });
-    if (promptsOxRes.ox === true) {
-      new OxSecuritySetup().run();
+    if (promptsOXRes.ox === true) {
+      new OXSecuritySetup().run();
     }
   }
 
