@@ -2,7 +2,7 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
 <!-- header-intro-start -->
-<h2>Verify your code consistency with an open-source tool.<br/>Powered by <a href="https://www.ox.security/?ref=megalinter" target="_blank">OX Security</a>.</h2>
+<h2>Verify your code consistency with an open-source tool.<br/>Powered by <a href="https://www.ox.security/?ref=megalinter" target="_blank">Ox Security</a>.</h2>
 <!-- header-intro-end -->
 
 <!-- header-logo-start -->
@@ -26,7 +26,7 @@
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/?ref=megalinter).
+MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**Ox Security**](https://www.ox.security/?ref=megalinter).
 
 Supporting [**51** languages](supported-linters.md#languages), [**23** formats](supported-linters.md#formats), [**21** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 

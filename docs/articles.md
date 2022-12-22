@@ -5,7 +5,7 @@
 # Articles
 
 - [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
-- [MegaLinter sells his soul and joins OX Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
+- [MegaLinter sells his soul and joins Ox Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
 - [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter){target=_blank}, by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Node.js Coding Standard Tools with MegaLinter on Gitlab CI](https://javascript.plainenglish.io/node-js-coding-standard-tools-with-megalinter-on-gitlab-ci-a43b55915811){target=_blank}, by [Albion Bame](https://www.linkedin.com/in/albion-bame/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/){target=_blank}, by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
