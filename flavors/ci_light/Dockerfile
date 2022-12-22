@@ -110,8 +110,6 @@ RUN npm --no-cache install --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
-                npm-package-json-lint \
-                npm-package-json-lint-config-default \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif && \
