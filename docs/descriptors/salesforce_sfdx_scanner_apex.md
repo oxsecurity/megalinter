@@ -28,36 +28,36 @@ See more details in [Help](#help-content)
 - Enable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE | sfdx-scanner-apex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `apex-pmd-ruleset.xml` |
-| SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files | `force-app` |
+| Variable                                                 | Description                                                                                  | Default value                                   |
+|----------------------------------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                     |                                                 |
+| SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS                | List of bash commands to run before the linter                                               | None                                            |
+| SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS               | List of bash commands to run after the linter                                                | None                                            |
+| SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE                 | sfdx-scanner-apex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `apex-pmd-ruleset.xml`                          |
+| SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH                  | Path where to find linter configuration file                                                 | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                   | `false`                                         |
+| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                             | `0`                                             |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                        | `force-app`                                     |
 
 ## IDE Integration
 
 Use sfdx-scanner-apex in your favorite IDE to catch errors before MegaLinter !
 
-| <!-- --> | IDE | Extension Name | Install |
-| :--: | ----------------- | -------------- | :------: |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin) | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [pmd-emacs](https://github.com/pmd/pmd-emacs/) | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe> |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
+|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                                  |                                                                                       Install                                                                                       |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 |                                                     [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                      |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  |                                                         [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                          |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             |                            <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                             |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-| <!-- --> | Flavor | Description | Embedded linters | Info |
-| :------: | :----- | :---------- | :--------------: | ---: |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 110 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       110        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
