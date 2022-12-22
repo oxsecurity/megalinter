@@ -264,6 +264,11 @@
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
     "title": "nvuillam/npm-groovy-lint"
   },
+  "npm-package-json-lint": {
+    "description": "A configurable linter for package.json files",
+    "image": null,
+    "title": "npm-package-json-lint | npm-package-json-lint"
+  },
   "perlcritic": {
     "description": "Critique Perl source code for best-practices.",
     "image": null,

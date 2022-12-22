@@ -16,6 +16,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - HTML email not rendering correctly ([#2120](https://github.com/oxsecurity/megalinter/issues/2120)). Set `REPORTERS_MARKDOWN_TYPE` to `simple` to avoid external images in PR/MR markdown comments.
   - Fix branding to use the correct 'OX Security' name
 
+- Linters
+  - Add [npm-package-json-lint](https://github.com/tclindner/npm-package-json-lint) linter
+
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.14.3 to **6.15.0** on 2022-11-26
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.0 to **0.50.1** on 2022-11-26
