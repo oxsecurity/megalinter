@@ -148,6 +148,7 @@
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSON_PRETTIER",
+        "JSON_NPM_PACKAGE_JSON_LINT",
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
@@ -9449,14 +9450,7 @@
       "title": "RAKU_RAKU: Custom config file path",
       "type": "string"
     },
-    "REPORT_OUTPUT_FOLDER": {
-      "$id": "#/properties/REPORT_OUTPUT_FOLDER",
-      "default": "report",
-      "description": "The location where the output reporting will be generated to",
-      "title": "Output folder",
-      "type": "string"
-    },
-    "REPORTERS_MARKDOWN_TYPE" : {
+    "REPORTERS_MARKDOWN_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
       "default": "advanced",
       "description": "Define simple if you do not to have external images in PR/MR comments",
@@ -9465,6 +9459,13 @@
         "advanced"
       ],
       "title": "Reporters Markdown type",
+      "type": "string"
+    },
+    "REPORT_OUTPUT_FOLDER": {
+      "$id": "#/properties/REPORT_OUTPUT_FOLDER",
+      "default": "report",
+      "description": "The location where the output reporting will be generated to",
+      "title": "Output folder",
       "type": "string"
     },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
