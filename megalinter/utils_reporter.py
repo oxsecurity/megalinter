@@ -88,11 +88,11 @@ def build_markdown_summary(reporter_self, action_run_url):
     p_r_msg += table_content + os.linesep
     if action_run_url != "":
         p_r_msg += (
-            "See errors details in [artifact MegaLinter reports on "
-            f"CI Job page]({action_run_url})" + os.linesep
+            "See detailed report in [MegaLinter reports"
+            f"]({action_run_url})" + os.linesep
         )
     else:
-        p_r_msg += "See errors details in MegaLinter reports" + os.linesep
+        p_r_msg += "See detailed report in MegaLinter reports" + os.linesep
     if reporter_self.master.validate_all_code_base is False:
         p_r_msg += (
             "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
