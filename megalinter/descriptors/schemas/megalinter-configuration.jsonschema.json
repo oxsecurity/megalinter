@@ -11786,6 +11786,13 @@
             "title": "SNAKEMAKE_SNAKEFMT: Custom config file path",
             "type": "string"
         },
+        "SPELL_CSPELL_ANALYZE_FILE_NAMES": {
+            "$id": "#/properties/SPELL_CSPELL_ANALYZE_FILE_NAMES",
+            "default": false,
+            "description": "If set to true, MegaLinter will also send file names to cspell for analysis.",
+            "title": "SPELL_CSPELL: Analyze file names",
+            "type": "boolean"
+        },
         "SPELL_CSPELL_ARGUMENTS": {
             "$id": "#/properties/SPELL_CSPELL_ARGUMENTS",
             "description": "SPELL_CSPELL: User custom arguments to add in linter CLI call",
