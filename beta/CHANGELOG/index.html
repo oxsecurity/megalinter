@@ -7084,80 +7084,83 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Upgrade to alpine 3.16</li>
-<li>Disable php7 &amp; upgrade php8 tp php81</li>
-<li>Add Makefile linters to documentation flavor</li>
-<li>Fixes<ul>
-<li>CSpell file name linting does not use (custom) CSpell configuration (<a href="https://github.com/oxsecurity/megalinter/issues/2058">#2058</a>)</li>
-<li>HTML email not rendering correctly (<a href="https://github.com/oxsecurity/megalinter/issues/2120">#2120</a>). Set <code>REPORTERS_MARKDOWN_TYPE</code> to <code>simple</code> to avoid external images in PR/MR markdown comments.</li>
-<li>Fix branding to use the correct 'OX Security' name</li>
+<li>New linters<ul>
+<li>Add <a href="https://github.com/tclindner/npm-package-json-lint">npm-package-json-lint</a> linter, by @bdovaz (<a href="https://github.com/oxsecurity/megalinter/pull/2150">#2150</a>)</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Linters<ul>
-<li>Add <a href="https://github.com/tclindner/npm-package-json-lint">npm-package-json-lint</a> linter</li>
+<li>Evolutions<ul>
+<li>Upgrade to alpine 3.16</li>
+<li>Disable php7 &amp; upgrade php8 to php81</li>
+<li>Add Makefile linters to documentation flavor</li>
+<li>PowershellLinter autofix capability, by @bdovaz (<a href="https://github.com/oxsecurity/megalinter/pull/2175">#2175</a>)</li>
+<li>Allow local files with EXTENDS configuration, by @bdovaz (<a href="https://github.com/oxsecurity/megalinter/pull/2151">#2151</a>)</li>
+<li>Add Trivy config file parameters, by @bdovaz (<a href="https://github.com/oxsecurity/megalinter/pull/2154">#2154</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes<ul>
+<li>Change reporter text for better UX, by @ashokm (<a href="https://github.com/oxsecurity/megalinter/pull/2168">#2168</a>)</li>
+<li>Remove workspace prefix from aggregate sarif report, by @janderssonse (<a href="https://github.com/oxsecurity/megalinter/pull/2119">#2119</a>)</li>
+<li>CSpell file name linting does not use (custom) CSpell configuration (<a href="https://github.com/oxsecurity/megalinter/issues/2058">#2058</a>)</li>
+<li>HTML email not rendering correctly (<a href="https://github.com/oxsecurity/megalinter/issues/2120">#2120</a>). Set <code>REPORTERS_MARKDOWN_TYPE</code> to <code>simple</code> to avoid external images in PR/MR markdown comments.</li>
+<li>mega-linter-runner: Fix Value for container-name of type String required, by @AlbanAndrieu (<a href="https://github.com/oxsecurity/megalinter/pull/2123">#2123</a></li>
+<li>Use warning emoji in reporters, by @ashokm (<a href="https://github.com/oxsecurity/megalinter/pull/2156">#2156</a>)</li>
+<li>Fix branding to use the correct 'OX Security' name, by @ashokm</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Doc<ul>
+<li>Enclose System.TeamProject in Azure Pipelines, by @ashokm (<a href="https://github.com/oxsecurity/megalinter/pull/2131">#2131</a>)</li>
+<li>Better contributing docs, by @bdovaz (<a href="https://github.com/oxsecurity/megalinter/pull/2162">#2162</a>)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.14.3 to <strong>6.15.0</strong> on 2022-11-26</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.50.0 to <strong>0.50.1</strong> on 2022-11-26</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.40.2 to <strong>0.41.0</strong> on 2022-11-26</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.0 to <strong>0.72.1</strong> on 2022-11-28</li>
-<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.4 to <strong>10.5.0</strong> on 2022-11-28</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.12.40 to <strong>0.13.1</strong> on 2022-12-07</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.1 to <strong>0.72.2</strong> on 2022-12-07</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.15.0 to <strong>14.16.0</strong> on 2022-12-07</li>
-<li><a href="https://eslint.org">eslint</a> from 8.28.0 to <strong>8.29.0</strong> on 2022-12-07</li>
-<li><a href="https://metacpan.org/pod/Perl::Critic">perlcritic</a> from 1.140 to <strong>1.144</strong> on 2022-12-07</li>
-<li><a href="https://pylint.pycqa.org">pylint</a> from 2.15.6 to <strong>2.15.8</strong> on 2022-12-07</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 0.122.0 to <strong>1.1.0</strong> on 2022-12-07</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.62.1 to <strong>0.62.3</strong> on 2022-12-07</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.6.2 to <strong>3.7.1</strong> on 2022-12-07</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.6.2 to <strong>3.7.1</strong> on 2022-12-07</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.6.2 to <strong>3.7.1</strong> on 2022-12-07</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.15.0 to <strong>6.17.0</strong> on 2022-12-07</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.5 to <strong>1.3.6</strong> on 2022-12-07</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.41.0 to <strong>0.42.3</strong> on 2022-12-07</li>
-<li><a href="https://github.com/koalaman/shellcheck">shellcheck</a> from 0.8.0 to <strong>0.9.0</strong> on 2022-12-18</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.2 to <strong>0.72.5</strong> on 2022-12-18</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.19.7 to <strong>1.19.9</strong> on 2022-12-18</li>
-<li><a href="https://eslint.org">eslint</a> from 8.29.0 to <strong>8.30.0</strong> on 2022-12-18</li>
-<li><a href="https://prettier.io/">prettier</a> from 2.8.0 to <strong>2.8.1</strong> on 2022-12-18</li>
-<li><a href="https://github.com/chris48s/v8r">v8r</a> from 0.13.0 to <strong>0.13.1</strong> on 2022-12-18</li>
-<li><a href="https://ktlint.github.io">ktlint</a> from 0.47.1 to <strong>0.48.0</strong> on 2022-12-18</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.9.2 to <strong>1.9.4</strong> on 2022-12-18</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.3.0 to <strong>7.3.1</strong> on 2022-12-18</li>
-<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 22.10.0 to <strong>22.12.0</strong> on 2022-12-18</li>
-<li><a href="https://pycqa.github.io/isort/">isort</a> from 5.10.1 to <strong>5.11.3</strong> on 2022-12-18</li>
-<li><a href="https://pylint.pycqa.org">pylint</a> from 2.15.8 to <strong>2.15.9</strong> on 2022-12-18</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.1.0 to <strong>1.2.1</strong> on 2022-12-18</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.62.3 to <strong>0.63.0</strong> on 2022-12-18</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.39.0 to <strong>1.40.0</strong> on 2022-12-18</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.65 to <strong>0.1.66</strong> on 2022-12-18</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.18.2 to <strong>7.19.1</strong> on 2022-12-18</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.4.2 to <strong>1.4.4</strong> on 2022-12-18</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.50.1 to <strong>0.50.3</strong> on 2022-12-18</li>
-<li><a href="https://www.kics.io">kics</a> from 1.6.5 to <strong>1.6.6</strong> on 2022-12-18</li>
-<li><a href="https://www.accurics.com/products/terrascan/">terrascan</a> from 1.17.0 to <strong>1.16.0</strong> on 2022-12-18</li>
-<li><a href="https://github.com/overtrue/phplint">phplint</a> from 3.0 to <strong>5.3</strong> on 2022-12-18</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.4.x-dev@ to <strong>Psalm.dev-master@</strong> on 2022-12-18</li>
-<li><a href="https://git-scm.com">git_diff</a> from 2.34.5 to <strong>2.36.3</strong> on 2022-12-18</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.10.14 to <strong>2022.12.10</strong> on 2022-12-18</li>
-<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.15.0 to <strong>8.15.2</strong> on 2022-12-18</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.42.1 to <strong>0.43.0</strong> on 2022-12-18</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.29.2 to <strong>0.35.0</strong> on 2022-12-19</li>
-<li><a href="https://luacheck.readthedocs.io">luacheck</a> from 1.0.0 to <strong>1.1.0</strong> on 2022-12-19</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.4.4 to <strong>1.4.5</strong> on 2022-12-19</li>
-<li><a href="https://github.com/snakemake/snakefmt">snakefmt</a> from 0.7.0 to <strong>0.8.0</strong> on 2022-12-20</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.40.0 to <strong>1.41.0</strong> on 2022-12-20</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.17.0 to <strong>6.18.0</strong> on 2022-12-21</li>
-<li><a href="https://pycqa.github.io/isort/">isort</a> from 5.11.3 to <strong>5.11.4</strong> on 2022-12-21</li>
-<li><a href="https://metacpan.org/pod/Perl::Critic">perlcritic</a> from 1.144 to <strong>1.146</strong> on 2022-12-22</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.41.0 to <strong>1.41.1</strong> on 2022-12-22</li>
-<li><a href="https://github.com/overtrue/phplint">phplint</a> from 5.3 to <strong>5.4</strong> on 2022-12-22</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.12.40 to <strong>0.13.1</strong></li>
+<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 22.10.0 to <strong>22.12.0</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.0 to <strong>0.72.5</strong></li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.4 to <strong>10.5.0</strong></li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.65 to <strong>0.1.66</strong></li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.10.14 to <strong>2022.12.10</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.14.3 to <strong>6.18.0</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.19.7 to <strong>1.19.9</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.28.0 to <strong>8.29.0</strong> to <strong>8.30.0</strong></li>
+<li><a href="https://git-scm.com">git_diff</a> from 2.34.5 to <strong>2.36.3</strong></li>
+<li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.15.0 to <strong>8.15.2</strong></li>
+<li><a href="https://pycqa.github.io/isort/">isort</a> from 5.10.1 to <strong>5.11.4</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.5 to <strong>1.6.6</strong></li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.47.1 to <strong>0.48.0</strong></li>
+<li><a href="https://luacheck.readthedocs.io">luacheck</a> from 1.0.0 to <strong>1.1.0</strong></li>
+<li><a href="https://metacpan.org/pod/Perl::Critic">perlcritic</a> from 1.140 to <strong>1.146</strong></li>
+<li><a href="https://github.com/overtrue/phplint">phplint</a> from 3.0 to <strong>5.4</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.9.2 to <strong>1.9.4</strong></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.3.0 to <strong>7.3.1</strong></li>
+<li><a href="https://prettier.io/">prettier</a> from 2.8.0 to <strong>2.8.1</strong></li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.4.x-dev@ to <strong>Psalm.dev-master@</strong></li>
+<li><a href="https://pylint.pycqa.org">pylint</a> from 2.15.6 to <strong>2.15.9</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.39.0 to <strong>1.41.1</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 0.122.0 to <strong>1.2.1</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.6.2 to <strong>3.7.1</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.6.2 to <strong>3.7.1</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.6.2 to <strong>3.7.1</strong></li>
+<li><a href="https://github.com/koalaman/shellcheck">shellcheck</a> from 0.8.0 to <strong>0.9.0</strong></li>
+<li><a href="https://github.com/snakemake/snakefmt">snakefmt</a> from 0.7.0 to <strong>0.8.0</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.18.2 to <strong>7.19.1</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 1.4.2 to <strong>1.4.5</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.15.0 to <strong>14.16.0</strong></li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.50.0 to <strong>0.50.3</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.62.1 to <strong>0.63.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.5 to <strong>1.3.6</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.40.2 to <strong>0.42.3</strong></li>
+<li><a href="https://www.accurics.com/products/terrascan/">terrascan</a> from 1.17.0 to <strong>1.16.0</strong></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.42.1 to <strong>0.43.0</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.29.2 to <strong>0.35.0</strong></li>
+<li><a href="https://github.com/chris48s/v8r">v8r</a> from 0.13.0 to <strong>0.13.1</strong></li>
 </ul>
 </li>
 </ul>
