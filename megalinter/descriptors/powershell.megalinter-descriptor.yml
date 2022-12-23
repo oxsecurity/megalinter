@@ -39,6 +39,7 @@ linters:
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-psscriptanalyzer.psd1
+    cli_lint_fix_arg_name: "-Fix"
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1"'
