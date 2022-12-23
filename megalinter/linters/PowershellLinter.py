@@ -28,7 +28,7 @@ class PowershellLinter(Linter):
         if self.linter_name == "powershell":
             pwsh_script[0] += f" -Path '{file}'"
         elif self.linter_name == "powershell_formatter":
-            pwsh_script[0] += f" -ScriptDefinition (Get-Content '{file}') > '{file}'"
+            pwsh_script[0] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) > '{file}'"
 
         if self.linter_name == "powershell" and self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
             pwsh_script[0] +=  f" {self.cli_lint_fix_arg_name}"
