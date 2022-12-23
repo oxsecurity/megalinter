@@ -22,7 +22,7 @@ class PowershellLinter(Linter):
             pwsh_script[0] += " -Settings " + self.config_file
         pwsh_script[0] += f" -Path '{file}'"
         if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
-            pwsh_script[0] +=  f" {self.cli_lint_fix_arg_name}"
+            pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
         cmd = [
             self.cli_executable,
             "-NoProfile",
