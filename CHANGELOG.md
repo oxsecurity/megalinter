@@ -73,6 +73,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0**
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0**
   - [v8r](https://github.com/chris48s/v8r) from 0.13.0 to **0.13.1**
+  - [syft](https://github.com/anchore/syft) from 0.63.0 to **0.64.0** on 2022-12-23
 <!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
