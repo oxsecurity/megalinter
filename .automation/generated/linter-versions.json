@@ -20,7 +20,7 @@
     "devskim": "0.6.9",
     "djlint": "1.19.9",
     "dockerfilelint": "1.8.0",
-    "dotenv-linter": "3.2.0",
+    "dotenv-linter": "3.3.0",
     "dotnet-format": "000",
     "dustilock": "0.0.0",
     "editorconfig-checker": "2.4.0",
