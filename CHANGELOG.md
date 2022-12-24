@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.2.0 to **3.3.0** on 2022-12-24
 <!-- linter-versions-end -->
 
 ## [v6.16.0] - 2022-12-24
