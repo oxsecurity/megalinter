@@ -64,8 +64,8 @@ linters:
     config_file_name: .powershell-psscriptanalyzer.psd1
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
-      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition write-host"'
-      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -Settings .powershell-psscriptanalyzer.psd1 -ScriptDefinition write-host"'
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -Settings .powershell-psscriptanalyzer.psd1 -ScriptDefinition ''write-host Hello World''"'
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:

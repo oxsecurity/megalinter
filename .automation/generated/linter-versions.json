@@ -58,6 +58,7 @@
     "phpstan": "1.9.4",
     "pmd": "6.48.0",
     "powershell": "7.3.1",
+    "powershell_formatter": "5.1.22621",
     "prettier": "2.8.1",
     "proselint": "0.13.0",
     "protolint": "0.42.2",
