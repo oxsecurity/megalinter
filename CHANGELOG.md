@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.2.0 to **3.3.0** on 2022-12-24
+<!-- linter-versions-end -->
+
+## [v6.16.0] - 2022-12-24
+
 - New linters
   - Add [npm-package-json-lint](https://github.com/tclindner/npm-package-json-lint) linter, by @bdovaz ([#2150](https://github.com/oxsecurity/megalinter/pull/2150))
 
@@ -66,14 +72,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.2 to **1.4.5**
   - [stylelint](https://stylelint.io) from 14.15.0 to **14.16.0**
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.0 to **0.50.3**
-  - [syft](https://github.com/anchore/syft) from 0.62.1 to **0.63.0**
+  - [syft](https://github.com/anchore/syft) from 0.62.1 to **0.64.0**
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.5 to **1.3.6**
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.40.2 to **0.42.3**
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.17.0 to **1.16.0**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.42.1 to **0.43.0**
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.29.2 to **0.35.0**
   - [v8r](https://github.com/chris48s/v8r) from 0.13.0 to **0.13.1**
-<!-- linter-versions-end -->
 
 ## [v6.15.0] - 2022-11-23
 
