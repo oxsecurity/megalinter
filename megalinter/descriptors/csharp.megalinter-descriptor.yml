@@ -45,3 +45,33 @@ linters:
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+  # CSharpier
+  - linter_name: csharpier
+    is_formatter: true
+    linter_url: https://csharpier.com/
+    linter_repo: https://github.com/belav/csharpier
+    linter_image_url: https://csharpier.com/img/logo.svg
+    linter_rules_configuration_url: https://csharpier.com/docs/Configuration
+    linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    config_file_name: .csharpierrc.json
+    ignore_file_name: .csharpierignore
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_remove_args:
+      - "--check"
+    examples:
+      - "dotnet csharpier --check myfile.cs"
+      - "dotnet csharpier myfile.cs" # Fix
+    install:
+      dockerfile:
+        - RUN /usr/share/dotnet/dotnet tool install -g csharpier
+    ide:
+      rider:
+        - name: csharpier
+          url: https://plugins.jetbrains.com/plugin/18243-csharpier
+      visual_studio:
+        - name: CSharpier
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.CSharpier
+      vscode:
+        - name: csharpier-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode

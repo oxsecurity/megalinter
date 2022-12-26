@@ -21,6 +21,7 @@
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
         "CSHARP_DOTNET_FORMAT",
+        "CSHARP_CSHARPIER",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_HADOLINT",

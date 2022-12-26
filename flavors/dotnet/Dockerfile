@@ -293,6 +293,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # dotnet-format installation
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \
 
+# csharpier installation
+    && /usr/share/dotnet/dotnet tool install -g csharpier \
+
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
