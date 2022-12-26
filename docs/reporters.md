@@ -6,8 +6,8 @@
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                                   | Description                                                                                                   | Default                      |
-|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------|
+| Reporter                                                                                                                           | Description                                                                                                   | Default                      |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------|
 | [Text files](reporters/TextReporter.md)                                    | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                       |
 | [SARIF (beta)](reporters/SarifReporter.md)                                 | Generates an aggregated SARIF output file                                                                     | Inactive                     |
 | [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)         | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action      |

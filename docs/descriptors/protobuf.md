@@ -9,8 +9,8 @@ description: protolint is available to analyze PROTOBUF files in MegaLinter
 
 ## Linters
 
-| Linter                             | Configuration key                 | Status                                                                                                                                 |
-|------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [protolint](protobuf_protolint.md) | [PROTOBUF](protobuf_protolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/commits) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: protolint is available to analyze PROTOBUF files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

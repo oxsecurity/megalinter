@@ -10,6 +10,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [dotenv-linter](https://dotenv-linter.github.io/) from 3.2.0 to **3.3.0** on 2022-12-24
+  - [djlint](https://djlint.com/) from 1.19.9 to **1.19.10** on 2022-12-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 5.1.22621 to **7.3.1** on 2022-12-26
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.43.0 to **0.44.0** on 2022-12-26
 <!-- linter-versions-end -->
 
 ## [v6.16.0] - 2022-12-24
