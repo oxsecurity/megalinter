@@ -130,7 +130,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.43.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.44.0 as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 
