@@ -223,6 +223,7 @@ linters:
     linter_repo: https://github.com/tclindner/npm-package-json-lint
     linter_rules_url: https://npmpackagejsonlint.org/docs/rules
     linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
+    linter_rules_ignore_config_url: https://npmpackagejsonlint.org/docs/ignore
     linter_image_url: https://npmpackagejsonlint.org/img/logo.svg
     linter_megalinter_ref_url: https://github.com/tclindner/npm-package-json-lint/pull/915
     descriptor_flavors:
