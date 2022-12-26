@@ -1,3 +1,7 @@
+---
+title: php flavor in MegaLinter
+description: php flavor is an optimized MegaLinter with only linters related to php projects
+---
 # php MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta)

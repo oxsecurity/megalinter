@@ -84,7 +84,7 @@ repos:
           - push
 ```
 
-See [`.pre-commit-hooks.yaml`](../.pre-commit-hooks.yaml) for more details.
+See [`.pre-commit-hooks.yaml`](https://github.com/oxsecurity/megalinter/blob/main/.pre-commit-hooks.yaml) for more details.
 
 ## Usage
 

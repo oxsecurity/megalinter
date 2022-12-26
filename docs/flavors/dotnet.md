@@ -1,3 +1,7 @@
+---
+title: dotnet flavor in MegaLinter
+description: dotnet flavor is an optimized MegaLinter with only linters related to dotnet projects
+---
 # dotnet MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta)

@@ -1,3 +1,7 @@
+---
+title: java flavor in MegaLinter
+description: java flavor is an optimized MegaLinter with only linters related to java projects
+---
 # java MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta)
