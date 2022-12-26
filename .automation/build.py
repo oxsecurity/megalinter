@@ -881,6 +881,11 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
+        "---",
+        f"title: {flavor_id} flavor in MegaLinter",
+        f"description: {flavor_id} flavor is an optimized MegaLinter with "
+        f"only linters related to {flavor_id} projects",
+        "---",
         f"# {flavor_id} MegaLinter Flavor",
         "",
         docker_image_badge,
