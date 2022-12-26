@@ -770,11 +770,11 @@ def generate_descriptor_documentation(descriptor):
     linter_names = [
         linter.get("linter_name") for linter in descriptor.get("linters", [])
     ]
-    logging.info(linter_names)
+    is_are = "is" if len(linter_names) == 1 else "are"
     descriptor_md = [
         "---",
         f"title: {descriptor.get('descriptor_id')} linters in MegaLinter",
-        f"description: {', '.join(linter_names)} are available to analyze "
+        f"description: {', '.join(linter_names)} {is_are} available to analyze "
         f"{descriptor.get('descriptor_id')} files in MegaLinter",
         "---",
         "<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->",
