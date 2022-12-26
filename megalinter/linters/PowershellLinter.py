@@ -17,12 +17,21 @@ class PowershellLinter(Linter):
 
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
-        pwsh_script = ["Invoke-ScriptAnalyzer -EnableExit"]
+        if self.linter_name == "powershell":
+            pwsh_script = ["Invoke-ScriptAnalyzer -EnableExit"]
+        elif self.linter_name == "powershell_formatter":
+            pwsh_script = ["Invoke-Formatter"]
+
         if self.config_file is not None:
             pwsh_script[0] += " -Settings " + self.config_file
-        pwsh_script[0] += f" -Path '{file}'"
-        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
-            pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
+
+        if self.linter_name == "powershell":
+            pwsh_script[0] += f" -Path '{file}'"
+        elif self.linter_name == "powershell_formatter":
+            pwsh_script[0] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) > '{file}'"
+
+        if self.linter_name == "powershell" and self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+            pwsh_script[0] +=  f" {self.cli_lint_fix_arg_name}"
         cmd = [
             self.cli_executable,
             "-NoProfile",
