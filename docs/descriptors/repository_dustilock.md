@@ -24,22 +24,22 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 - Enable dustilock by adding `REPOSITORY_DUSTILOCK` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable dustilock by adding `REPOSITORY_DUSTILOCK` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| REPOSITORY_DUSTILOCK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| REPOSITORY_DUSTILOCK_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| REPOSITORY_DUSTILOCK_POST_COMMANDS | List of bash commands to run after the linter| None |
-| REPOSITORY_DUSTILOCK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| Variable                                         | Description                                                              | Default value |
+|--------------------------------------------------|--------------------------------------------------------------------------|---------------|
+| REPOSITORY_DUSTILOCK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |               |
+| REPOSITORY_DUSTILOCK_PRE_COMMANDS                | List of bash commands to run before the linter                           | None          |
+| REPOSITORY_DUSTILOCK_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
+| REPOSITORY_DUSTILOCK_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
+| REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-| <!-- --> | Flavor | Description | Embedded linters | Info |
-| :------: | :----- | :---------- | :--------------: | ---: |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 111 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a> | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security | 21 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       111        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 

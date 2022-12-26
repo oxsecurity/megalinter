@@ -9,10 +9,10 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) |
-| [snakefmt](snakemake_snakefmt.md) | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/commits) |
+| Linter                              | Configuration key                           | Status                                                                                                                                 |
+|-------------------------------------|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md)    | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) |
+| [snakefmt](snakemake_snakefmt.md)   | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/commits)   |
 
 ## Linted files
 
@@ -24,8 +24,8 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                       | Description                   | Default value |
+|--------------------------------|-------------------------------|---------------|
+| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
