@@ -1,3 +1,7 @@
+---
+title: swift flavor in MegaLinter
+description: swift flavor is an optimized MegaLinter with only linters related to swift projects
+---
 # swift MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta)

@@ -1,3 +1,7 @@
+---
+title: cupcake flavor in MegaLinter
+description: cupcake flavor is an optimized MegaLinter with only linters related to cupcake projects
+---
 # cupcake MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta)

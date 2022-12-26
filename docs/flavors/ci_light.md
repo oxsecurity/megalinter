@@ -1,3 +1,7 @@
+---
+title: ci_light flavor in MegaLinter
+description: ci_light flavor is an optimized MegaLinter with only linters related to ci_light projects
+---
 # ci_light MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta)

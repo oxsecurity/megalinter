@@ -1,3 +1,7 @@
+---
+title: security flavor in MegaLinter
+description: security flavor is an optimized MegaLinter with only linters related to security projects
+---
 # security MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta)

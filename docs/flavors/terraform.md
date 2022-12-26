@@ -1,3 +1,7 @@
+---
+title: terraform flavor in MegaLinter
+description: terraform flavor is an optimized MegaLinter with only linters related to terraform projects
+---
 # terraform MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta)

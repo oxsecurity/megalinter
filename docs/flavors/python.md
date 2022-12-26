@@ -1,3 +1,7 @@
+---
+title: python flavor in MegaLinter
+description: python flavor is an optimized MegaLinter with only linters related to python projects
+---
 # python MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta)

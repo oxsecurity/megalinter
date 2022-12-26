@@ -1,3 +1,7 @@
+---
+title: go flavor in MegaLinter
+description: go flavor is an optimized MegaLinter with only linters related to go projects
+---
 # go MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta)
