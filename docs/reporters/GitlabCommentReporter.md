@@ -1,7 +1,11 @@
+---
+title: Gitlab Merge Request Comments Reporter for MegaLinter
+description: Posts MegaLinter SAST results summary in the comments of the related Gitlab Merge Request (if existing)
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # Gitlab Comment Reporter
 
-Posts Mega-Linter results summary in the comments of the related merge request (if existing)
+Posts MegaLinter results summary in the comments of the related Gitlab merge request (if existing)
 
 ## Usage
 

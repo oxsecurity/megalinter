@@ -91,6 +91,12 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-end -->
 
 <!-- supported-linters-section-start -->
+<!-- markdown-headers
+---
+title: List of the 100+ supported linters embedded in MegaLinter
+description: Full list of all linters for all languages and formats that are available in MegaLinter
+---
+-->
 ## Supported Linters
 
 All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions

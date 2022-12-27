@@ -1983,13 +1983,43 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
+    # Detect markdown headers if in replacement
+    header_content = None
+    header_matches = re.findall(
+        r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL
+    )
+    if header_matches and len(header_matches) > 0:
+        # Get text between markdown-headers tag
+        header_content = header_matches[0]
+        content = re.sub(
+            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
+        )[1:]
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+    # Add / replace header if necessary
+    if header_content is not None:
+        existing_header_matches = re.findall(
+            r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL
+        )
+        if (
+            existing_header_matches
+            and len(existing_header_matches) > 0
+            and file_content.startswith("---")
+        ):
+            file_content = re.sub(
+                r"---\n.*?\n---",
+                header_content,
+                file_content,
+                1,
+                re.MULTILINE | re.DOTALL,
+            )
+        else:
+            file_content = header_content + "\n" + file_content
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2060,7 +2090,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)

@@ -1,3 +1,7 @@
+---
+title: Azure Pipelines Reporter for MegaLinter
+description: Posts MegaLinter SAST results summary in the comments of the related Azure Pipelines pull request (if existing)
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # Azure Comment Reporter
 

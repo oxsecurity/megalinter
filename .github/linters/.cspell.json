@@ -278,6 +278,7 @@
         "Rscript",
         "Rubo",
         "Rubocop",
+        "SAST",
         "SBOM",
         "SCALAFIX",
         "SCATTERITEMS",
