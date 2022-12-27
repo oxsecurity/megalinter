@@ -17,10 +17,10 @@ misspell detects and corrects commonly misspelled english words
 
 ## Configuration in MegaLinter
 
-- Enable misspell by adding `SPELL_MISSPELL` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable misspell by adding `SPELL_MISSPELL` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable misspell by adding `SPELL_MISSPELL` in ENABLE_LINTERS variable
+- Disable misspell by adding `SPELL_MISSPELL` in DISABLE_LINTERS variable
 
-- Enable **auto-fixes** by adding `SPELL_MISSPELL` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `SPELL_MISSPELL` in APPLY_FIXES variable
 
 | Variable                                   | Description                                                                                                                                                                                                         | Default value      |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
