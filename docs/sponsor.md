@@ -1,3 +1,7 @@
+---
+title: Sponsoring MegaLinter
+description: Help MegaLinter open-source by sponsoring it
+---
 # Sponsoring
 
 I maintain MegaLinter as a hobby, but when I'm not working on my [job as Hardis Group SFDC CTO](https://www.linkedin.com/in/nicolas-vuillamy/), I also have other hobbys like tasting good beers :)

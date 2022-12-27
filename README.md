@@ -923,7 +923,7 @@ Special considerations:
 <!-- markdown-headers
 ---
 title: MegaLinter Reporters Guide
-description: List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON...
+description: "List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON..."
 ---
 -->
 ## Reporters
