@@ -111,7 +111,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6466,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 33361,
+                "stargazers_count": 33371,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 140,
@@ -128,15 +128,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-12-26T18:53:09Z",
+                "updated_at": "2022-12-27T00:10:41Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 33361,
-                "watchers_count": 33361,
+                "watchers": 33371,
+                "watchers_count": 33371,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 33361
+            "stargazers": 33371
         },
         {
             "info": {
@@ -318,8 +318,8 @@
                 "network_count": 69,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyNTIzNTE5NjA=",
                 "notifications_url": "https://api.github.com/repos/IlanCosman/tide/notifications{?since,all,participating}",
-                "open_issues": 28,
-                "open_issues_count": 28,
+                "open_issues": 29,
+                "open_issues_count": 29,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/6318351?v=4",
                     "events_url": "https://api.github.com/users/IlanCosman/events{/privacy}",
@@ -346,7 +346,7 @@
                 "releases_url": "https://api.github.com/repos/IlanCosman/tide/releases{/id}",
                 "size": 6421,
                 "ssh_url": "git@github.com:IlanCosman/tide.git",
-                "stargazers_count": 1704,
+                "stargazers_count": 1705,
                 "stargazers_url": "https://api.github.com/repos/IlanCosman/tide/stargazers",
                 "statuses_url": "https://api.github.com/repos/IlanCosman/tide/statuses/{sha}",
                 "subscribers_count": 11,
@@ -363,15 +363,15 @@
                     "prompt"
                 ],
                 "trees_url": "https://api.github.com/repos/IlanCosman/tide/git/trees{/sha}",
-                "updated_at": "2022-12-26T08:04:12Z",
+                "updated_at": "2022-12-26T21:06:50Z",
                 "url": "https://api.github.com/repos/IlanCosman/tide",
                 "visibility": "public",
-                "watchers": 1704,
-                "watchers_count": 1704,
+                "watchers": 1705,
+                "watchers_count": 1705,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/IlanCosman/tide",
-            "stargazers": 1704
+            "stargazers": 1705
         },
         {
             "info": {
@@ -460,9 +460,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/dorssel/usbipd-win/pulls{/number}",
-                "pushed_at": "2022-12-21T01:04:16Z",
+                "pushed_at": "2022-12-26T22:07:06Z",
                 "releases_url": "https://api.github.com/repos/dorssel/usbipd-win/releases{/id}",
-                "size": 1750,
+                "size": 1751,
                 "ssh_url": "git@github.com:dorssel/usbipd-win.git",
                 "stargazers_count": 1522,
                 "stargazers_url": "https://api.github.com/repos/dorssel/usbipd-win/stargazers",
@@ -691,8 +691,8 @@
                 "network_count": 146,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 55,
-                "open_issues_count": 55,
+                "open_issues": 56,
+                "open_issues_count": 56,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -735,11 +735,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-12-26T18:55:42Z",
+                "pushed_at": "2022-12-26T23:15:13Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 299384,
+                "size": 297842,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
-                "stargazers_count": 977,
+                "stargazers_count": 982,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
                 "statuses_url": "https://api.github.com/repos/oxsecurity/megalinter/statuses/{sha}",
                 "subscribers_count": 7,
@@ -767,15 +767,15 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/oxsecurity/megalinter/git/trees{/sha}",
-                "updated_at": "2022-12-26T17:08:18Z",
+                "updated_at": "2022-12-26T20:50:22Z",
                 "url": "https://api.github.com/repos/oxsecurity/megalinter",
                 "visibility": "public",
-                "watchers": 977,
-                "watchers_count": 977,
+                "watchers": 982,
+                "watchers_count": 982,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/oxsecurity/megalinter",
-            "stargazers": 977
+            "stargazers": 982
         },
         {
             "info": {
@@ -988,7 +988,7 @@
                 "releases_url": "https://api.github.com/repos/onedr0p/flux-cluster-template/releases{/id}",
                 "size": 1163,
                 "ssh_url": "git@github.com:onedr0p/flux-cluster-template.git",
-                "stargazers_count": 853,
+                "stargazers_count": 854,
                 "stargazers_url": "https://api.github.com/repos/onedr0p/flux-cluster-template/stargazers",
                 "statuses_url": "https://api.github.com/repos/onedr0p/flux-cluster-template/statuses/{sha}",
                 "subscribers_count": 20,
@@ -1013,15 +1013,15 @@
                     "traefik"
                 ],
                 "trees_url": "https://api.github.com/repos/onedr0p/flux-cluster-template/git/trees{/sha}",
-                "updated_at": "2022-12-24T20:16:43Z",
+                "updated_at": "2022-12-26T23:16:42Z",
                 "url": "https://api.github.com/repos/onedr0p/flux-cluster-template",
                 "visibility": "public",
-                "watchers": 853,
-                "watchers_count": 853,
+                "watchers": 854,
+                "watchers_count": 854,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/k8s-at-home/flux-cluster-template",
-            "stargazers": 853
+            "stargazers": 854
         },
         {
             "info": {
@@ -1237,9 +1237,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-12-26T18:37:14Z",
+                "pushed_at": "2022-12-27T00:25:24Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
-                "size": 30246,
+                "size": 30257,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
                 "stargazers_count": 732,
                 "stargazers_url": "https://api.github.com/repos/onedr0p/home-ops/stargazers",
@@ -1707,8 +1707,8 @@
                 "downloads_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/downloads",
                 "events_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/events",
                 "fork": false,
-                "forks": 1777,
-                "forks_count": 1777,
+                "forks": 1778,
+                "forks_count": 1778,
                 "forks_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/forks",
                 "full_name": "KelvinTegelaar/CIPP",
                 "git_commits_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/git/commits{/sha}",
@@ -1744,11 +1744,11 @@
                 "milestones_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/milestones{/number}",
                 "mirror_url": null,
                 "name": "CIPP",
-                "network_count": 1777,
+                "network_count": 1778,
                 "node_id": "R_kgDOGNiHEA",
                 "notifications_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/notifications{?since,all,participating}",
-                "open_issues": 6,
-                "open_issues_count": 6,
+                "open_issues": 5,
+                "open_issues_count": 5,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/49186168?v=4",
                     "events_url": "https://api.github.com/users/KelvinTegelaar/events{/privacy}",
@@ -1771,9 +1771,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/pulls{/number}",
-                "pushed_at": "2022-12-21T12:49:34Z",
+                "pushed_at": "2022-12-26T21:35:10Z",
                 "releases_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/releases{/id}",
-                "size": 68668,
+                "size": 68510,
                 "ssh_url": "git@github.com:KelvinTegelaar/CIPP.git",
                 "stargazers_count": 463,
                 "stargazers_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/stargazers",
@@ -2764,10 +2764,10 @@
                 "releases_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/releases{/id}",
                 "size": 81,
                 "ssh_url": "git@github.com:meichthys/foss_photo_libraries.git",
-                "stargazers_count": 187,
+                "stargazers_count": 188,
                 "stargazers_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/stargazers",
                 "statuses_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/statuses/{sha}",
-                "subscribers_count": 7,
+                "subscribers_count": 8,
                 "subscribers_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/subscribers",
                 "subscription_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/subscription",
                 "svn_url": "https://github.com/meichthys/foss_photo_libraries",
@@ -2783,15 +2783,15 @@
                     "photos"
                 ],
                 "trees_url": "https://api.github.com/repos/meichthys/foss_photo_libraries/git/trees{/sha}",
-                "updated_at": "2022-12-26T17:16:44Z",
+                "updated_at": "2022-12-26T19:14:55Z",
                 "url": "https://api.github.com/repos/meichthys/foss_photo_libraries",
                 "visibility": "public",
-                "watchers": 187,
-                "watchers_count": 187,
+                "watchers": 188,
+                "watchers_count": 188,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/meichthys/foss_photo_libraries",
-            "stargazers": 187
+            "stargazers": 188
         },
         {
             "info": {
@@ -4479,7 +4479,7 @@
                 "pulls_url": "https://api.github.com/repos/telstra/open-kilda/pulls{/number}",
                 "pushed_at": "2022-12-26T18:11:53Z",
                 "releases_url": "https://api.github.com/repos/telstra/open-kilda/releases{/id}",
-                "size": 300248,
+                "size": 300262,
                 "ssh_url": "git@github.com:telstra/open-kilda.git",
                 "stargazers_count": 70,
                 "stargazers_url": "https://api.github.com/repos/telstra/open-kilda/stargazers",
