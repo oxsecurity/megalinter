@@ -9,11 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
-  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.2.0 to **3.3.0** on 2022-12-24
-  - [djlint](https://djlint.com/) from 1.19.9 to **1.19.10** on 2022-12-27
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 5.1.22621 to **7.3.1** on 2022-12-27
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.43.0 to **0.44.0** on 2022-12-27
 <!-- linter-versions-end -->
+
+## [v6.17.0] - 2022-12-27
+
+- New linters
+  - Add PowerShell formatter, by @bdovaz ([#2176](https://github.com/oxsecurity/megalinter/pull/2176)) 
+
+- Documentation
+  - Improve meta tags in HTML documentation
+  - Clarify how npm-package-json-lint files can be ignored, by @bdovaz ([#2184](https://github.com/oxsecurity/megalinter/pull/2184))
+
+- Linter versions upgrades
+  - [djlint](https://djlint.com/) from 1.19.9 to **1.19.10**
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.2.0 to **3.3.0**
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 5.1.22621 to **7.3.1**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.43.0 to **0.44.0**
 
 ## [v6.16.0] - 2022-12-24
 

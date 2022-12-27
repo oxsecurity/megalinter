@@ -15,10 +15,10 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 
 ## Configuration in MegaLinter
 
-- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://megalinter.io/6.17.0/configuration/#activation-and-deactivation)
+- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://megalinter.io/6.17.0/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://megalinter.io/6.17.0/configuration/#apply-fixes)
 
 | Variable                                           | Description                                                                                                                                                                                                         | Default value      |
 |----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -37,10 +37,10 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description                                   | Embedded linters |                                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor                     |       111        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                        Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.17.0/supported-linters/) | Default MegaLinter Flavor                     |       111        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.17.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/6.17.0/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6.17.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
 
