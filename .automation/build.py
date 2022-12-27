@@ -2245,7 +2245,7 @@ def finalize_doc_build():
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.8M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
-[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
