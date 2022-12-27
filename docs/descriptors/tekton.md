@@ -9,8 +9,8 @@ description: tekton-lint is available to analyze TEKTON files in MegaLinter
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                               | Configuration key               | Status                                                                                                                         |
+|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/IBM/tekton-lint)](https://github.com/IBM/tekton-lint/commits) |
 
 ## Linted files
@@ -24,8 +24,8 @@ description: tekton-lint is available to analyze TEKTON files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
