@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Generates a folder IDE-config located in report folder that contains configuration files used by MegaLinter so they can be reused locally">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 52 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
       
       
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://megalinter.io/beta/reporters/ConfigReporter/">
+        <link rel="canonical" href="https://megalinter.io/beta/licenses/powershell_formatter/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Linters Configuration Files Reporter for MegaLinter - MegaLinter by OX Security</title>
+        <title>Powershell formatter - MegaLinter by OX Security</title>
       
     
     
@@ -61,13 +61,15 @@
 <meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
 <meta name="twitter:site" content="@nvuillam" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Linters Configuration Files Reporter for MegaLinter" />
-<meta name="twitter:description" content="Generates a folder IDE-config located in report folder that contains configuration files used by MegaLinter so they can be reused locally" />
+<meta name="twitter:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta name="twitter:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally. - megalint..." />
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally. - megalint..." />
 <meta property="og:site_name" content="MegaLinter" />
-<meta property="og:title" content="Linters Configuration Files Reporter for MegaLinter" />
-<meta property="og:description" content="Generates a folder IDE-config located in report folder that contains configuration files used by MegaLinter so they can be reused locally" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:url" content="https://megalinter.io" />
+<meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally. - megalint..." />
 
 
 
@@ -87,11 +89,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#ide-configuration-reporter" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -125,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linters Configuration Files Reporter for MegaLinter
+              Powershell formatter
             
           </span>
         </div>
@@ -4808,14 +4805,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       
       
@@ -4838,7 +4833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../reporters/" class="md-nav__link">
         All reporters
       </a>
     </li>
@@ -4852,7 +4847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../TextReporter/" class="md-nav__link">
+      <a href="../../reporters/TextReporter/" class="md-nav__link">
         Text files
       </a>
     </li>
@@ -4866,7 +4861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GitHubCommentReporter/" class="md-nav__link">
+      <a href="../../reporters/GitHubCommentReporter/" class="md-nav__link">
         GitHub Pull Request comments
       </a>
     </li>
@@ -4880,7 +4875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GitlabCommentReporter/" class="md-nav__link">
+      <a href="../../reporters/GitlabCommentReporter/" class="md-nav__link">
         Gitlab Merge Request comments
       </a>
     </li>
@@ -4894,7 +4889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AzureCommentReporter/" class="md-nav__link">
+      <a href="../../reporters/AzureCommentReporter/" class="md-nav__link">
         Azure Pull Request comments
       </a>
     </li>
@@ -4908,7 +4903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GitHubStatusReporter/" class="md-nav__link">
+      <a href="../../reporters/GitHubStatusReporter/" class="md-nav__link">
         GitHub Status
       </a>
     </li>
@@ -4922,7 +4917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SarifReporter/" class="md-nav__link">
+      <a href="../../reporters/SarifReporter/" class="md-nav__link">
         SARIF Reporter
       </a>
     </li>
@@ -4936,7 +4931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../UpdatedSourcesReporter/" class="md-nav__link">
+      <a href="../../reporters/UpdatedSourcesReporter/" class="md-nav__link">
         Updated sources
       </a>
     </li>
@@ -4950,7 +4945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../EmailReporter/" class="md-nav__link">
+      <a href="../../reporters/EmailReporter/" class="md-nav__link">
         E-mail
       </a>
     </li>
@@ -4964,7 +4959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FileIoReporter/" class="md-nav__link">
+      <a href="../../reporters/FileIoReporter/" class="md-nav__link">
         File.io
       </a>
     </li>
@@ -4976,59 +4971,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          IDE Configuration
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reporters/ConfigReporter/" class="md-nav__link">
         IDE Configuration
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5040,7 +4987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../TapReporter/" class="md-nav__link">
+      <a href="../../reporters/TapReporter/" class="md-nav__link">
         TAP files
       </a>
     </li>
@@ -5054,7 +5001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ConsoleReporter/" class="md-nav__link">
+      <a href="../../reporters/ConsoleReporter/" class="md-nav__link">
         Console
       </a>
     </li>
@@ -5068,7 +5015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JsonReporter/" class="md-nav__link">
+      <a href="../../reporters/JsonReporter/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -5613,30 +5560,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -5650,53 +5573,31 @@
                 
                   
 
-  <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConfigReporter.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/licenses/powershell_formatter.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="ide-configuration-reporter">IDE Configuration Reporter</h1>
-<p>Generates a folder <strong>IDE-config</strong> located in report folder.</p>
-<p>It contains:</p>
-<ul>
-<li>All default MegaLinter configuration files used during the linting</li>
-<li>Updated <code>.vscode/extensions.json</code> containing VsCode extensions corresponding to the linters used during MegaLinter run</li>
-</ul>
-<p>This reporter <strong>activated by default</strong>.</p>
-<p><img alt="Screenshot" src="../../assets/images/ConfigReporter_1.jpg" /></p>
-<p><img alt="Screenshot" src="../../assets/images/ConfigReporter_2.jpg" /></p>
-<p><img alt="Screenshot" src="../../assets/images/ConfigReporter_3.jpg" /></p>
-<h2 id="usage">Usage</h2>
-<ul>
-<li>Copy the content of <code>report/IDE-config</code> at the root of your repository<ul>
-<li><em>You can copy all IDE_Config folder, or select config files and IDE extensions recommendations that you are interested into</em></li>
-</ul>
-</li>
-<li>Restart your IDE</li>
-</ul>
-<h2 id="configuration">Configuration</h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CONFIG_REPORTER</td>
-<td>Activates/deactivates reporter</td>
-<td>true</td>
-</tr>
-<tr>
-<td>CONFIG_REPORTER_SUB_FOLDER</td>
-<td>Output folder for IDE configuration files within report folder</td>
-<td><code>IDE-config</code></td>
-</tr>
-</tbody>
-</table>
+  <h1>Powershell formatter</h1>
+
+<p>The MIT License (MIT)</p>
+<p>Copyright (c) 2015 Microsoft Corporation.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
 
 
 
@@ -5712,42 +5613,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../FileIoReporter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: File.io" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              File.io
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../TapReporter/" class="md-footer__link md-footer__link--next" aria-label="Next: TAP files" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              TAP files
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

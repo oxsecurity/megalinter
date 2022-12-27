@@ -1096,6 +1096,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/bicep_linter/</loc>
+         <lastmod>2022-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/black/</loc>
          <lastmod>2022-12-27</lastmod>
          <changefreq>daily</changefreq>
@@ -1306,6 +1311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/npm-package-json-lint/</loc>
+         <lastmod>2022-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/perlcritic/</loc>
          <lastmod>2022-12-27</lastmod>
          <changefreq>daily</changefreq>
@@ -1331,7 +1341,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/powershell/</loc>
+         <lastmod>2022-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/powershell_formatter/</loc>
+         <lastmod>2022-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/prettier/</loc>
+         <lastmod>2022-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/proselint/</loc>
          <lastmod>2022-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
