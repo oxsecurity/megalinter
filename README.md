@@ -162,6 +162,12 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
+<!-- markdown-headers
+---
+- title: Quick Start with MegaLinter
+- description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
+---
+-->
 ## Quick Start
 
 - Run `npx mega-linter-runner --install` to generate configuration files (you need [node.js](https://nodejs.org/en/) to be installed)
@@ -179,6 +185,12 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-end -->
 
 <!-- supported-linters-section-start -->
+<!-- markdown-headers
+---
+- title: List of the 100+ supported linters embedded in MegaLinter
+- description: Full list of all linters for all languages and formats that are available in MegaLinter
+---
+-->
 ## Supported Linters
 
 All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions
@@ -320,6 +332,12 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 <!-- supported-linters-section-end -->
 
 <!-- installation-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter installation Guide
+- description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
+---
+-->
 ## Installation
 
 ### Assisted installation
@@ -714,6 +732,12 @@ Note: You can also use such command line in your custom CI/CD pipelines
 <!-- installation-section-end -->
 
 <!-- configuration-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter configuration Guide
+- description: List of all configuration variables that can be used to customize the use of MegaLinter (activation, filtering, auto-update, pre-post commands...)
+---
+-->
 ## Configuration
 
 MegaLinter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
@@ -896,6 +920,12 @@ Special considerations:
 <!-- configuration-section-end -->
 
 <!-- reporters-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter Reporters Guide
+- description: List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON...
+---
+-->
 ## Reporters
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
@@ -918,6 +948,12 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter Flavors for better performances
+- description: Use one of the numerous MegaLinter flavors to run MegaLinter even faster with only the linters you need
+---
+-->
 ## Flavors
 
 To improve run performances, we generate **Flavored MegaLinter images** containing only the list of linters related to a project type
@@ -953,6 +989,12 @@ If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalint
 <!-- flavors-section-end -->
 
 <!-- badge-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter Badges
+- description: Show that your repositories are cleaned and secured with MegaLinter with a badge
+---
+-->
 ## Badge
 
 You can show MegaLinter status with a badge in your repository README
@@ -995,6 +1037,12 @@ _Note:_ IF you did not use `MegaLinter` as GitHub Action name, please read [GitH
 <!-- badge-section-end -->
 
 <!-- plugins-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter plugins
+- description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick and mustache
+---
+-->
 ## Plugins
 
 For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
@@ -1041,6 +1089,12 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 <!-- plugins-section-end -->
 
 <!-- articles-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter Articles Reference
+- description: List of all known articles, blog posts and videos that talk about MegaLinter usage
+---
+-->
 ## Articles
 
 - [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
@@ -1058,6 +1112,12 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 <!-- articles-section-end -->
 
 <!-- frequently-asked-questions-section-start -->
+<!-- markdown-headers
+---
+- title: Frequently Asked Questions about MegaLinter
+- description: List of recurrent questions about MegaLinter
+---
+-->
 ## Frequently Asked Questions
 
 > My repo CI already have linters and they are perfectly working, so why do I need MegaLinter ?
@@ -1094,6 +1154,12 @@ The core architecture does the following:
 <!-- frequently-asked-questions-section-end -->
 
 <!-- how-to-contribute-section-start -->
+<!-- markdown-headers
+---
+- title: MegaLinter Contributing Guide
+- description: Help MegaLinter by starring the repo, post issues and Pull Requests, or even sponsor the author
+---
+-->
 ## How to contribute
 
 Contributions to MegaLinter are very welcome, the more we are, the stronger MegaLinter is !
@@ -1108,6 +1174,12 @@ To help, you can also:
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
+<!-- markdown-headers
+---
+- title: Special Thanks from MegaLinter
+- description: List of all contributors, websites and linters that help MegaLinter to grow and be better everyday
+---
+-->
 ## Special thanks
 
 ### Contributors
@@ -1176,6 +1248,12 @@ Even if I disagree with their decision to remain in bash, the core team has alwa
 <!-- license-section-end -->
 
 <!-- mega-linter-vs-super-linter-section-start -->
+<!-- markdown-headers
+---
+- title: Compare MegaLinter and SuperLinter
+- description: Detailed differences between MegaLinter and SuperLinter (performances, reporters, architecture...)
+---
+-->
 ## MegaLinter vs Super-Linter
 
 The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
