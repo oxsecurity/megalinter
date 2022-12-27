@@ -46,7 +46,8 @@ linters:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
   # CSharpier
-  - linter_name: csharpier
+  - class: DotnetLinter
+    linter_name: csharpier
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
