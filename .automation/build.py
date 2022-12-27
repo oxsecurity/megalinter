@@ -1992,7 +1992,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         # Get text between markdown-headers tag
         header_content = header_matches[0]
         content = re.sub(
-            r"<!-- markdown-headers\n.*?\n-->", "", content, 0, re.MULTILINE | re.DOTALL
+            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
         )[1:]
     # Replace the target string
     if add_new_line is True:
@@ -2000,7 +2000,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Add / replace header if necessary
     if header_content is not None:
         existing_header_matches = re.findall(
@@ -2015,7 +2015,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
                 r"---\n.*?\n---",
                 header_content,
                 file_content,
-                0,
+                1,
                 re.MULTILINE | re.DOTALL,
             )
         else:
@@ -2090,7 +2090,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2924,15 +2924,15 @@ if __name__ == "__main__":
     # noinspection PyTypeChecker
     collect_linter_previews()
     generate_json_schema_enums()
-    # validate_descriptors()
+    validate_descriptors()
     if UPDATE_DEPENDENTS is True:
         update_dependents_info()
-    # generate_all_flavors()
-    # generate_linter_dockerfiles()
-    # generate_linter_test_classes()
+    generate_all_flavors()
+    generate_linter_dockerfiles()
+    generate_linter_test_classes()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
-        # refresh_users_info()
+        refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
         generate_documentation_all_users()
