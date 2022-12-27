@@ -1983,6 +1983,13 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
+    # Detect markdown headers if in replacement
+    header_content = None
+    header_matches = re.findall(r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL)
+    if header_matches and len(header_matches) > 0:
+        # Get text between markdown-headers tag
+        header_content = header_matches[0]
+        content = re.sub(r"(<!-- markdown-headers.*-->)", "", content, 0, re.MULTILINE | re.DOTALL)
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
@@ -1990,6 +1997,13 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
     file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    # Add / replace header if necessary
+    if header_content is not None:
+        existing_header_matches = re.findall(r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL)
+        if existing_header_matches and len(existing_header_matches) > 0:
+            file_content = re.sub(r"---\n.*\n---", header_content, file_content, re.DOTALL)
+        else:
+            file_content = header_content + "\n" + file_content
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2894,15 +2908,15 @@ if __name__ == "__main__":
     # noinspection PyTypeChecker
     collect_linter_previews()
     generate_json_schema_enums()
-    validate_descriptors()
+    # validate_descriptors()
     if UPDATE_DEPENDENTS is True:
         update_dependents_info()
-    generate_all_flavors()
-    generate_linter_dockerfiles()
-    generate_linter_test_classes()
+    # generate_all_flavors()
+    # generate_linter_dockerfiles()
+    # generate_linter_test_classes()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
-        refresh_users_info()
+        # refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
         generate_documentation_all_users()
