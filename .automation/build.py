@@ -1985,11 +1985,11 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         file_content = file.read()
     # Detect markdown headers if in replacement
     header_content = None
-    header_matches = re.findall(r"<!-- markdown-headers\n(.*)\n?-->", content, re.MULTILINE | re.DOTALL)
+    header_matches = re.findall(r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL)
     if header_matches and len(header_matches) > 0:
         # Get text between markdown-headers tag
         header_content = header_matches[0]
-        content = re.sub(r"(<!-- markdown-headers.*?-->)", "", content, 0, re.MULTILINE | re.DOTALL)
+        content = re.sub(r"<!-- markdown-headers\n.*\n-->", "", content, 0, re.MULTILINE | re.DOTALL)[1:]
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
@@ -1999,9 +1999,9 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     file_content = re.sub(regex, replacement, file_content, re.DOTALL)
     # Add / replace header if necessary
     if header_content is not None:
-        existing_header_matches = re.findall(r"---\n(.*)\n?---", file_content, re.MULTILINE | re.DOTALL)
+        existing_header_matches = re.findall(r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL)
         if existing_header_matches and len(existing_header_matches) > 0:
-            file_content = re.sub(r"---\n.*\n?---", header_content, file_content, re.DOTALL)
+            file_content = re.sub(r"---\n.*\n---", header_content, file_content, re.DOTALL)
         else:
             file_content = header_content + "\n" + file_content
     # Write the file out again
