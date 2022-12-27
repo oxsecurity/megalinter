@@ -164,8 +164,8 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-start -->
 <!-- markdown-headers
 ---
-- title: Quick Start with MegaLinter
-- description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
+title: Quick Start with MegaLinter
+description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
 ---
 -->
 ## Quick Start
@@ -187,8 +187,8 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- supported-linters-section-start -->
 <!-- markdown-headers
 ---
-- title: List of the 100+ supported linters embedded in MegaLinter
-- description: Full list of all linters for all languages and formats that are available in MegaLinter
+title: List of the 100+ supported linters embedded in MegaLinter
+description: Full list of all linters for all languages and formats that are available in MegaLinter
 ---
 -->
 ## Supported Linters
@@ -334,8 +334,8 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 <!-- installation-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter installation Guide
-- description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
+title: MegaLinter installation Guide
+description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
 ---
 -->
 ## Installation
@@ -734,8 +734,8 @@ Note: You can also use such command line in your custom CI/CD pipelines
 <!-- configuration-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter configuration Guide
-- description: List of all configuration variables that can be used to customize the use of MegaLinter (activation, filtering, auto-update, pre-post commands...)
+title: MegaLinter configuration Guide
+description: List of all configuration variables that can be used to customize the use of MegaLinter (activation, filtering, auto-update, pre-post commands...)
 ---
 -->
 ## Configuration
@@ -922,8 +922,8 @@ Special considerations:
 <!-- reporters-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter Reporters Guide
-- description: List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON...
+title: MegaLinter Reporters Guide
+description: List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON...
 ---
 -->
 ## Reporters
@@ -950,8 +950,8 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 <!-- flavors-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter Flavors for better performances
-- description: Use one of the numerous MegaLinter flavors to run MegaLinter even faster with only the linters you need
+title: MegaLinter Flavors for better performances
+description: Use one of the numerous MegaLinter flavors to run MegaLinter even faster with only the linters you need
 ---
 -->
 ## Flavors
@@ -991,8 +991,8 @@ If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalint
 <!-- badge-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter Badges
-- description: Show that your repositories are cleaned and secured with MegaLinter with a badge
+title: MegaLinter Badges
+description: Show that your repositories are cleaned and secured with MegaLinter with a badge
 ---
 -->
 ## Badge
@@ -1039,8 +1039,8 @@ _Note:_ IF you did not use `MegaLinter` as GitHub Action name, please read [GitH
 <!-- plugins-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter plugins
-- description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick and mustache
+title: MegaLinter plugins
+description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick and mustache
 ---
 -->
 ## Plugins
@@ -1091,8 +1091,8 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 <!-- articles-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter Articles Reference
-- description: List of all known articles, blog posts and videos that talk about MegaLinter usage
+title: MegaLinter Articles Reference
+description: List of all known articles, blog posts and videos that talk about MegaLinter usage
 ---
 -->
 ## Articles
@@ -1114,8 +1114,8 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 <!-- frequently-asked-questions-section-start -->
 <!-- markdown-headers
 ---
-- title: Frequently Asked Questions about MegaLinter
-- description: List of recurrent questions about MegaLinter
+title: Frequently Asked Questions about MegaLinter
+description: List of recurrent questions about MegaLinter
 ---
 -->
 ## Frequently Asked Questions
@@ -1156,8 +1156,8 @@ The core architecture does the following:
 <!-- how-to-contribute-section-start -->
 <!-- markdown-headers
 ---
-- title: MegaLinter Contributing Guide
-- description: Help MegaLinter by starring the repo, post issues and Pull Requests, or even sponsor the author
+title: MegaLinter Contributing Guide
+description: Help MegaLinter by starring the repo, post issues and Pull Requests, or even sponsor the author
 ---
 -->
 ## How to contribute
@@ -1176,8 +1176,8 @@ To help, you can also:
 <!-- special-thanks-section-start -->
 <!-- markdown-headers
 ---
-- title: Special Thanks from MegaLinter
-- description: List of all contributors, websites and linters that help MegaLinter to grow and be better everyday
+title: Special Thanks from MegaLinter
+description: List of all contributors, websites and linters that help MegaLinter to grow and be better everyday
 ---
 -->
 ## Special thanks
@@ -1250,8 +1250,8 @@ Even if I disagree with their decision to remain in bash, the core team has alwa
 <!-- mega-linter-vs-super-linter-section-start -->
 <!-- markdown-headers
 ---
-- title: Compare MegaLinter and SuperLinter
-- description: Detailed differences between MegaLinter and SuperLinter (performances, reporters, architecture...)
+title: Compare MegaLinter and SuperLinter
+description: Detailed differences between MegaLinter and SuperLinter (performances, reporters, architecture...)
 ---
 -->
 ## MegaLinter vs Super-Linter
