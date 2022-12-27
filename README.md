@@ -334,7 +334,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 <!-- installation-section-start -->
 <!-- markdown-headers
 ---
-title: MegaLinter installation Guide
+title: MegaLinter Installation Guide
 description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
 ---
 -->
