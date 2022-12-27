@@ -9,11 +9,11 @@ description: rst-lint, rstcheck, rstfmt are available to analyze RST files in Me
 
 ## Linters
 
-| Linter                      | Configuration key      | Status                                                                                                                                                       |
-|-----------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/commits) |
-| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits)                                 |
-| [rstfmt](rst_rstfmt.md)     | [RST](rst_rstfmt.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/dzhu/rstfmt)](https://github.com/dzhu/rstfmt/commits)                                       |
+| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits) |
+| [rstfmt](rst_rstfmt.md) | [RST](rst_rstfmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dzhu/rstfmt)](https://github.com/dzhu/rstfmt/commits) |
 
 ## Linted files
 
@@ -22,8 +22,8 @@ description: rst-lint, rstcheck, rstfmt are available to analyze RST files in Me
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
