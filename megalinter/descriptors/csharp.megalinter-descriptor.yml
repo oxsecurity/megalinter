@@ -54,7 +54,6 @@ linters:
     linter_image_url: https://csharpier.com/img/logo.svg
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
-    config_file_name: .csharpierrc.json
     ignore_file_name: .csharpierignore
     cli_lint_extra_args:
       - "--check"
