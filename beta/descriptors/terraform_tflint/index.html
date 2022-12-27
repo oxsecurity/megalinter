@@ -1587,6 +1587,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../powershell_powershell_formatter/" class="md-nav__link">
+        powershell_formatter
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -5761,7 +5775,7 @@
 <h1 id="tflint">tflint <a href="https://github.com/terraform-linters/tflint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/terraform-linters/tflint" /></a></h1>
 <h2 id="tflint-documentation">tflint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.43.0</strong></li>
+<li>Version in MegaLinter: <strong>0.44.0</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md" target="_blank">How to configure tflint rules</a><ul>
 <li>If custom <code>.tflint.hcl</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
@@ -5864,7 +5878,7 @@
 <td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">110</td>
+<td align="center">111</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></td>
 </tr>
 <tr>
@@ -5944,6 +5958,16 @@ Application Options:
       --var='foo=bar'                                           Set a Terraform
                                                                 variable
       --module                                                  Inspect modules
+      --chdir=DIR                                               Switch to a
+                                                                different
+                                                                working
+                                                                directory
+                                                                before
+                                                                executing the
+                                                                command
+      --recursive                                               Run command in
+                                                                each directory
+                                                                recursively
       --force                                                   Return zero
                                                                 exit status
                                                                 even if issues
