@@ -770,11 +770,11 @@ def generate_descriptor_documentation(descriptor):
     linter_names = [
         linter.get("linter_name") for linter in descriptor.get("linters", [])
     ]
-    logging.info(linter_names)
+    is_are = "is" if len(linter_names) == 1 else "are"
     descriptor_md = [
         "---",
         f"title: {descriptor.get('descriptor_id')} linters in MegaLinter",
-        f"description: {', '.join(linter_names)} are available to analyze "
+        f"description: {', '.join(linter_names)} {is_are} available to analyze "
         f"{descriptor.get('descriptor_id')} files in MegaLinter",
         "---",
         "<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->",
@@ -881,6 +881,11 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
+        "---",
+        f"title: {flavor_id} flavor in MegaLinter",
+        f"description: {flavor_id} flavor is an optimized MegaLinter with "
+        f"only linters related to {flavor_id} projects",
+        "---",
         f"# {flavor_id} MegaLinter Flavor",
         "",
         docker_image_badge,
