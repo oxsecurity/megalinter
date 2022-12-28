@@ -59,6 +59,7 @@ linters:
       - "--check"
     cli_lint_fix_remove_args:
       - "--check"
+    test_folder: csharp_csharpier
     examples:
       - "dotnet csharpier --check myfile.cs"
       - "dotnet csharpier myfile.cs" # Fix
