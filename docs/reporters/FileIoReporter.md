@@ -1,3 +1,7 @@
+---
+title: file.io Reporter for MegaLinter
+description: If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io
+---
 # File.io Reporter
 
 If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io

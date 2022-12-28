@@ -1,3 +1,7 @@
+---
+title: Email Reporter for MegaLinter
+description: If you don't use artifacts upload to read MegaLinter reports, you can receive them by e-mail
+---
 # E-mail Reporter
 
 If you don't use artifacts upload to read MegaLinter reports, you can receive them by e-mail

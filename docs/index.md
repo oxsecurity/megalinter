@@ -20,7 +20,7 @@
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.8M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
-[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
 <!-- mega-linter-badges-end -->
@@ -91,6 +91,12 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-end -->
 
 <!-- supported-linters-section-start -->
+<!-- markdown-headers
+---
+title: List of the 100+ supported linters embedded in MegaLinter
+description: Full list of all linters for all languages and formats that are available in MegaLinter
+---
+-->
 ## Supported Linters
 
 All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions
