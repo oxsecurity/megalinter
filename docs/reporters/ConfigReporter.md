@@ -1,3 +1,7 @@
+---
+title: Linters Configuration Files Reporter for MegaLinter
+description: Generates a folder IDE-config located in report folder that contains configuration files used by MegaLinter so they can be reused locally
+---
 # IDE Configuration Reporter
 
 Generates a folder **IDE-config** located in report folder.

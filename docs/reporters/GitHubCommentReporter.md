@@ -1,3 +1,7 @@
+---
+title: GitHub Pull Request Comments Reporter for MegaLinter
+description: Posts MegaLinter SAST results summary in the comments of the related GitHub Pull Request (if existing)
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # GitHub Comment Reporter
 

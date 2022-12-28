@@ -40,8 +40,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![Azure/ARO-RP - GitHub](https://gh-card.dev/repos/Azure/ARO-RP.svg?fullname=)](https://github.com/Azure/ARO-RP){target=_blank}
 [![telstra/open-kilda - GitHub](https://gh-card.dev/repos/telstra/open-kilda.svg?fullname=)](https://github.com/telstra/open-kilda){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
-[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![philips-software/amp-embedded-infra-lib - GitHub](https://gh-card.dev/repos/philips-software/amp-embedded-infra-lib.svg?fullname=)](https://github.com/philips-software/amp-embedded-infra-lib){target=_blank}
+[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![auricom/home-ops - GitHub](https://gh-card.dev/repos/auricom/home-ops.svg?fullname=)](https://github.com/auricom/home-ops){target=_blank}
 [![catthehacker/docker_images - GitHub](https://gh-card.dev/repos/catthehacker/docker_images.svg?fullname=)](https://github.com/catthehacker/docker_images){target=_blank}
 [![unixorn/warhol.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/warhol.plugin.zsh.svg?fullname=)](https://github.com/unixorn/warhol.plugin.zsh){target=_blank}
@@ -60,12 +60,12 @@ According to posted issues, there are many more private and self-hosted repos us
 [![rwaltr/home-ops - GitHub](https://gh-card.dev/repos/rwaltr/home-ops.svg?fullname=)](https://github.com/rwaltr/home-ops){target=_blank}
 [![ahmadnassri/node-pretty-exceptions - GitHub](https://gh-card.dev/repos/ahmadnassri/node-pretty-exceptions.svg?fullname=)](https://github.com/ahmadnassri/node-pretty-exceptions){target=_blank}
 [![ahmadnassri/node-nightwatch-accessibility - GitHub](https://gh-card.dev/repos/ahmadnassri/node-nightwatch-accessibility.svg?fullname=)](https://github.com/ahmadnassri/node-nightwatch-accessibility){target=_blank}
+[![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
 [![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![LiveEnhancementSuite/HSModule - GitHub](https://gh-card.dev/repos/LiveEnhancementSuite/HSModule.svg?fullname=)](https://github.com/LiveEnhancementSuite/HSModule){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
-[![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
 [![arbitraryexecution/compound-monitoring - GitHub](https://gh-card.dev/repos/arbitraryexecution/compound-monitoring.svg?fullname=)](https://github.com/arbitraryexecution/compound-monitoring){target=_blank}
 [![practicalli/clojurescript - GitHub](https://gh-card.dev/repos/practicalli/clojurescript.svg?fullname=)](https://github.com/practicalli/clojurescript){target=_blank}
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
@@ -84,10 +84,10 @@ According to posted issues, there are many more private and self-hosted repos us
 [![chgl/kube-powertools - GitHub](https://gh-card.dev/repos/chgl/kube-powertools.svg?fullname=)](https://github.com/chgl/kube-powertools){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}
+[![practicalli/clojure-web-services - GitHub](https://gh-card.dev/repos/practicalli/clojure-web-services.svg?fullname=)](https://github.com/practicalli/clojure-web-services){target=_blank}
 [![xenedium/xecours - GitHub](https://gh-card.dev/repos/xenedium/xecours.svg?fullname=)](https://github.com/xenedium/xecours){target=_blank}
 [![nujiak/recce - GitHub](https://gh-card.dev/repos/nujiak/recce.svg?fullname=)](https://github.com/nujiak/recce){target=_blank}
 [![curedao/docs - GitHub](https://gh-card.dev/repos/curedao/docs.svg?fullname=)](https://github.com/curedao/docs){target=_blank}
-[![practicalli/clojure-web-services - GitHub](https://gh-card.dev/repos/practicalli/clojure-web-services.svg?fullname=)](https://github.com/practicalli/clojure-web-services){target=_blank}
 [![nvuillam/njre - GitHub](https://gh-card.dev/repos/nvuillam/njre.svg?fullname=)](https://github.com/nvuillam/njre){target=_blank}
 [![QuantumPL/bib - GitHub](https://gh-card.dev/repos/QuantumPL/bib.svg?fullname=)](https://github.com/QuantumPL/bib){target=_blank}
 [![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
