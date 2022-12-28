@@ -1,6 +1,10 @@
+---
+title: Text Reporter for MegaLinter
+description: Generate SAST results as text logs for each linter
+---
 # Text Reporter
 
-Posts a pack of text logs , zipped as a GitHub Action artifact
+Generate text logs for each linter
 
 - General execution log `mega-linter.log` (same as [ConsoleReporter](ConsoleReporter.md) log)
 - A separate log file for each processed linter

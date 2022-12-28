@@ -1983,13 +1983,43 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
+    # Detect markdown headers if in replacement
+    header_content = None
+    header_matches = re.findall(
+        r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL
+    )
+    if header_matches and len(header_matches) > 0:
+        # Get text between markdown-headers tag
+        header_content = header_matches[0]
+        content = re.sub(
+            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
+        )[1:]
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+    # Add / replace header if necessary
+    if header_content is not None:
+        existing_header_matches = re.findall(
+            r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL
+        )
+        if (
+            existing_header_matches
+            and len(existing_header_matches) > 0
+            and file_content.startswith("---")
+        ):
+            file_content = re.sub(
+                r"---\n.*?\n---",
+                header_content,
+                file_content,
+                1,
+                re.MULTILINE | re.DOTALL,
+            )
+        else:
+            file_content = header_content + "\n" + file_content
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2060,7 +2090,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2215,7 +2245,7 @@ def finalize_doc_build():
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.8M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
-[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
