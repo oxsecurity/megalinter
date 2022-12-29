@@ -84,6 +84,11 @@
     "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",
     "title": "cpplint/cpplint"
   },
+  "csharpier": {
+    "description": "An Opinionated Code Formatter.",
+    "image": null,
+    "title": "CSharpier"
+  },
   "cspell": {
     "description": "A Spell Checker for Code! Contribute to streetsidesoftware/cspell development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/50543896?s=400&v=4",

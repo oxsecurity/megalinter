@@ -8,13 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- New linters
+  - Add [CSharpier](https://csharpier.com/) linter
+
 - Linter versions upgrades
+  - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
+  - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1** on 2022-12-29
+  - [phplint](https://github.com/overtrue/phplint) from 5.4 to **5.5** on 2022-12-29
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
 
 - New linters
-  - Add PowerShell formatter, by @bdovaz ([#2176](https://github.com/oxsecurity/megalinter/pull/2176)) 
+  - Add PowerShell formatter, by @bdovaz ([#2176](https://github.com/oxsecurity/megalinter/pull/2176))
 
 - Documentation
   - Improve meta tags in HTML documentation
