@@ -1,6 +1,7 @@
 descriptor_id: JAVA
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - java
 file_extensions:
   - ".java"
@@ -28,6 +29,7 @@ linters:
     linter_megalinter_ref_url: https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools
     config_file_name: sun_checks.xml
     cli_executable: java
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"

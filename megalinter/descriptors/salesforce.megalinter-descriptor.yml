@@ -22,7 +22,10 @@ install:
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - RUN echo y|sfdx plugins:install sfdx-hardis
+    - |
+      RUN echo y|sfdx plugins:install sfdx-hardis \
+          && npm cache clean --force || true \
+          && rm -rf /root/.npm/_cacache
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -57,7 +60,8 @@ linters:
       - "pmd"
       - "--target"
       - '"./**/*"'
-      - "--violations-cause-error"
+      - "--severity-threshold"
+      - "2"
       - "--outfile"
       - "{{REPORT_FOLDER}}/sfdx-scanner-report-apex.csv"
       - "--format"
@@ -81,7 +85,10 @@ linters:
         - linux/arm64
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -149,7 +156,10 @@ linters:
         - linux/arm64
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -208,7 +218,10 @@ linters:
         - linux/arm64
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack

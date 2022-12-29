@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 from datetime import date, datetime
-from shutil import copyfile
+from shutil import copyfile, which
 from typing import Any
 from urllib import parse as parse_urllib
 
@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter import utils
 from megalinter.constants import (
+    DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -41,16 +42,20 @@ from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
+UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
     VERSION = RELEASE_TAG.replace("v", "")
+    VERSION_V = "v" + VERSION
 elif "--version" in sys.argv:
     VERSION = sys.argv[sys.argv.index("--version") + 1].replace("v", "")
+    VERSION_V = "v" + VERSION
 else:
     VERSION = "beta"
+    VERSION_V = VERSION
 
 MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
 
@@ -129,7 +134,7 @@ def generate_flavor(flavor, flavor_info):
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f)
             if (
                 match_flavor(descriptor, flavor, flavor_info) is True
                 and "install" in descriptor
@@ -235,27 +240,45 @@ branding:
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
-        dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+        dockerfile,
+        descriptor_and_linters,
+        requires_docker,
+        flavor,
+        extra_lines,
+        {"cargo": ["sarif-fmt"]},
     )
 
 
 def build_dockerfile(
-    dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+    dockerfile,
+    descriptor_and_linters,
+    requires_docker,
+    flavor,
+    extra_lines,
+    extra_packages=None,
 ):
+    if extra_packages is None:
+        extra_packages = {}
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
+    docker_copy = []
     docker_other = []
-    apk_packages = []
+    all_dockerfile_items = []
+    apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
+    pipvenv_packages = {}
     gem_packages = []
+    cargo_packages = [] if "cargo" not in extra_packages else extra_packages["cargo"]
+    is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
             "RUN rc-update add docker boot && rc-service docker start || true"
         ]
+        is_docker_other_run = True
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
@@ -264,18 +287,52 @@ def build_dockerfile(
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
             docker_other += [f"# {item_label} installation"]
             for dockerfile_item in item["install"]["dockerfile"]:
+                # FROM
                 if dockerfile_item.startswith("FROM"):
                     docker_from += [dockerfile_item]
+                # ARG
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
-                elif dockerfile_item in docker_other:
+                # COPY
+                elif dockerfile_item.startswith("COPY"):
+                    docker_copy += [dockerfile_item]
+                    docker_other += ["# Managed with " + dockerfile_item]
+                # Already used item
+                elif dockerfile_item in all_dockerfile_items:
                     dockerfile_item = (
                         "# Next line commented because already managed by another linter\n"
                         "# " + "\n# ".join(dockerfile_item.splitlines())
                     )
                     docker_other += [dockerfile_item]
-                else:
+                # RUN (start)
+                elif dockerfile_item.startswith("RUN") and is_docker_other_run is False:
                     docker_other += [dockerfile_item]
+                    is_docker_other_run = True
+                # RUN (append)
+                elif dockerfile_item.startswith("RUN") and is_docker_other_run is True:
+                    dockerfile_item_cmd = dockerfile_item.replace("RUN", "    &&")
+                    # Add \ in previous instruction line
+                    for index, prev_instruction_line in reversed(
+                        list(enumerate(docker_other))
+                    ):
+                        if (
+                            prev_instruction_line.strip() != ""
+                            and not prev_instruction_line.startswith("#")
+                        ):
+                            # Remove last char if \n
+                            prev_instruction_line = (
+                                prev_instruction_line
+                                if not prev_instruction_line.endswith("\n")
+                                else prev_instruction_line[:-1]
+                            )
+                            docker_other[index] = prev_instruction_line + " \\"
+                            break
+                    docker_other += [dockerfile_item_cmd]
+                # Other
+                else:
+                    is_docker_other_run = False
+                    docker_other += [dockerfile_item]
+                all_dockerfile_items += [dockerfile_item]
             docker_other += [""]
         # Collect python packages
         if "apk" in item["install"]:
@@ -283,12 +340,18 @@ def build_dockerfile(
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
+        # Collect python for venvs
+        if "linter_name" in item and "pip" in item["install"]:
+            pipvenv_packages[item["linter_name"]] = item["install"]["pip"]
         # Collect python packages
-        if "pip" in item["install"]:
+        elif "pip" in item["install"]:
             pip_packages += item["install"]["pip"]
         # Collect ruby packages
-        if "gem" in item["install"]:
+        elif "gem" in item["install"]:
             gem_packages += item["install"]["gem"]
+        # Collect cargo packages (rust)
+        elif "cargo" in item["install"]:
+            cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
         apk_packages += ["npm", "nodejs-current", "yarn"]
@@ -311,6 +374,12 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile,
+        "#COPY__START",
+        "#COPY__END",
+        "\n".join(docker_copy),
+    )
+    replace_in_file(
+        dockerfile,
         "#OTHER__START",
         "#OTHER__END",
         "\n".join(docker_other),
@@ -321,17 +390,56 @@ def build_dockerfile(
         apk_install_command = (
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
+            + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
+    # cargo packages
+    cargo_install_command = ""
+    keep_rustup = False
+    if len(cargo_packages) > 0:
+        rust_commands = []
+        if "clippy" in cargo_packages:
+            cargo_packages.remove("clippy")
+            rust_commands += ["rustup component add clippy"]
+            keep_rustup = True
+        if len(cargo_packages) > 0:
+            cargo_cmd = "cargo install --force --locked " + "  ".join(
+                list(dict.fromkeys(cargo_packages))
+            )
+            rust_commands += [cargo_cmd]
+        rustup_cargo_cmd = " && ".join(rust_commands)
+        cargo_install_command = (
+            "RUN curl https://sh.rustup.rs -sSf |"
+            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
+            + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
+            + f"    && {rustup_cargo_cmd} \\\n"
+            + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
+            + "/root/.cache/sccache"
+            + (" /root/.rustup" if keep_rustup is False else "")
+            + "\n"
+            + 'ENV PATH="/root/.cargo/bin:${PATH}"'
+        )
+    replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
     npm_install_command = ""
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm install --ignore-scripts \\\n                "
+            + "RUN npm --no-cache install --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
-            + "    npm audit fix --audit-level=critical || true\n"
+            + "    npm audit fix --audit-level=critical || true \\\n"
+            + "    && npm cache clean --force || true \\\n"
+            + "    && rm -rf /root/.npm/_cacache \\\n"
+            + '    && find . -name "*.d.ts" -delete \\\n'
+            + '    && find . -name "*.map" -delete \\\n'
+            + '    && find . -name "*.npmignore" -delete \\\n'
+            + '    && find . -name "*.travis.yml" -delete \\\n'
+            + '    && find . -name "CHANGELOG.md" -delete \\\n'
+            + '    && find . -name "README.md" -delete \\\n'
+            + '    && find . -name ".package-lock.json" -delete \\\n'
+            + '    && find . -name "package-lock.json" -delete \\\n'
+            + '    && find . -name "README.md" -delete\n'
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -339,12 +447,46 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade pip &&"
-            + " pip3 install --no-cache-dir --upgrade \\\n          '"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
+            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
-            + "'"
+            + "' && \\\n"
+            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf && \\\n'
+            + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
+    # Python packages in venv
+    if len(pipvenv_packages.items()) > 0:
+        pipenv_install_command = (
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
+            " --no-cache-dir --upgrade pip virtualenv \\\n"
+        )
+        env_path_command = 'ENV PATH="${PATH}"'
+        for pip_linter, pip_linter_packages in pipvenv_packages.items():
+            pipenv_install_command += (
+                f'    && mkdir -p "/venvs/{pip_linter}" '
+                + f'&& cd "/venvs/{pip_linter}" '
+                + "&& virtualenv . "
+                + "&& source bin/activate "
+                + "&& PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir "
+                + (" ".join(pip_linter_packages))
+                + " "
+                + "&& deactivate "
+                + "&& cd ./../.. \\\n"
+            )
+            env_path_command += f":/venvs/{pip_linter}/bin"
+        pipenv_install_command = pipenv_install_command[:-2]  # remove last \
+        pipenv_install_command += (
+            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
+            + "&& rm -rf /root/.cache\n"
+            + env_path_command
+        )
+    else:
+        pipenv_install_command = ""
+    replace_in_file(
+        dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
+    )
+
     # Ruby gem packages
     gem_install_command = ""
     if len(gem_packages) > 0:
@@ -379,6 +521,7 @@ def match_flavor(item, flavor, flavor_info):
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
             and not flavor.endswith("_light")
+            and "cupcake" not in flavor
             and not is_strict
         ):
             return True
@@ -396,7 +539,7 @@ def generate_linter_dockerfiles():
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+            descriptor = yaml.safe_load(f)
         if "install" in descriptor:
             descriptor_items += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
@@ -430,8 +573,8 @@ def generate_linter_dockerfiles():
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
-                "    CONFIG_REPORTER=false",
-                "",
+                "    CONFIG_REPORTER=false \\",
+                "    SARIF_TO_HUMAN=false" "",
                 # "EXPOSE 80",
                 "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",
@@ -453,12 +596,10 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = (
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{DEFAULT_RELEASE}"
-            )
+            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{VERSION_V}"
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{DEFAULT_RELEASE})"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION_V})"
             )
             linters_md += (
                 f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
@@ -580,7 +721,7 @@ def generate_documentation():
         + "code**, **IAC**, **configuration**, and **scripts** in your repository "
         + "sources, to **ensure all your projects "
         + "sources are clean and formatted** whatever IDE/toolbox is used by "
-        + "their developers, powered by [**OX security**](https://www.ox.security/?ref=megalinter).\n\n"
+        + "their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
         + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
@@ -626,7 +767,16 @@ def generate_documentation():
 def generate_descriptor_documentation(descriptor):
     descriptor_file = f"{descriptor.get('descriptor_id').lower()}.yml"
     descriptor_url = f"{URL_ROOT}/megalinter/descriptors/{descriptor_file}"
+    linter_names = [
+        linter.get("linter_name") for linter in descriptor.get("linters", [])
+    ]
+    is_are = "is" if len(linter_names) == 1 else "are"
     descriptor_md = [
+        "---",
+        f"title: {descriptor.get('descriptor_id')} linters in MegaLinter",
+        f"description: {', '.join(linter_names)} {is_are} available to analyze "
+        f"{descriptor.get('descriptor_id')} files in MegaLinter",
+        "---",
         "<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->",
         f"<!-- {'@'}generated by .automation/build.py, please do not update manually -->",
         f"<!-- Instead, update descriptor file at {descriptor_url} -->",
@@ -721,16 +871,21 @@ def generate_descriptor_documentation(descriptor):
 
 
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
-    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{DEFAULT_RELEASE}"
-    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{DEFAULT_RELEASE}"
+    flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION_V}"
+    flavor_docker_image = f"{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-        f"{ML_DOCKER_IMAGE}-{flavor_id}/{DEFAULT_RELEASE})"
+        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
     )
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
+        "---",
+        f"title: {flavor_id} flavor in MegaLinter",
+        f"description: {flavor_id} flavor is an optimized MegaLinter with "
+        f"only linters related to {flavor_id} projects",
+        "---",
         f"# {flavor_id} MegaLinter Flavor",
         "",
         docker_image_badge,
@@ -860,6 +1015,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         # Build individual linter doc
         linter_doc_md = [
+            "---",
+            f"title: {linter.linter_name} configuration in MegaLinter",
+            f"description: How to use {linter.linter_name} (configure, "
+            "ignore files, ignore errors, help & version documentations)"
+            f" to analyze {linter.descriptor_id} files",
+            "---",
             "<!-- markdownlint-disable MD033 MD041 -->",
             f"<!-- {'@'}generated by .automation/build.py, please do not update manually -->",
         ]
@@ -1110,10 +1271,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
             )
         # File extensions & file names override if not "lint_all_files"
-        if (
-            linter.lint_all_files is False
-            and linter.lint_all_other_linters_files is False
-        ):
+        if linter.lint_all_files is False:
             linter_doc_md += [
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
@@ -1469,7 +1627,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{DEFAULT_RELEASE})"
+    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
@@ -1496,7 +1654,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         docker_image_badge = (
             f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-            f"{ML_DOCKER_IMAGE}-{flavor_id}/{DEFAULT_RELEASE})"
+            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
         )
         docker_pulls_badge = (
             f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"
@@ -1603,7 +1761,7 @@ def update_docker_pulls_counter():
 def perform_count_request(docker_image_url):
     r = requests_retry_session().get(docker_image_url)
     resp = r.json()
-    flavor_count = resp["pull_count"] or 0
+    flavor_count = resp["pull_count"] if "pull_count" in resp else 0
     logging.info(f"{docker_image_url}: {flavor_count}")
     return flavor_count
 
@@ -1748,7 +1906,7 @@ def md_ide_install_link(ide, ide_extension):
             item_name = ide_extension["url"].split("/items/", 1)[1]
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
-            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+            return f"[![Install in VSCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
     # JetBrains Idea family editors plugins
     if ide == "idea":
         if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
@@ -1825,13 +1983,43 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
+    # Detect markdown headers if in replacement
+    header_content = None
+    header_matches = re.findall(
+        r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL
+    )
+    if header_matches and len(header_matches) > 0:
+        # Get text between markdown-headers tag
+        header_content = header_matches[0]
+        content = re.sub(
+            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
+        )[1:]
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+    # Add / replace header if necessary
+    if header_content is not None:
+        existing_header_matches = re.findall(
+            r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL
+        )
+        if (
+            existing_header_matches
+            and len(existing_header_matches) > 0
+            and file_content.startswith("---")
+        ):
+            file_content = re.sub(
+                r"---\n.*?\n---",
+                header_content,
+                file_content,
+                1,
+                re.MULTILINE | re.DOTALL,
+            )
+        else:
+            file_content = header_content + "\n" + file_content
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -1902,7 +2090,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -1965,8 +2153,8 @@ def validate_own_megalinter_config():
             logging.info("Validating " + os.path.basename(OWN_MEGALINTER_CONFIG_FILE))
             mega_linter_config = descriptor_file1.read()
             jsonschema.validate(
-                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),
-                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                instance=yaml.safe_load(mega_linter_config),
+                schema=yaml.safe_load(descriptor_schema),
             )
 
 
@@ -1982,8 +2170,8 @@ def validate_descriptors():
                 descriptor = descriptor_file1.read()
                 try:
                     jsonschema.validate(
-                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),
-                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+                        instance=yaml.safe_load(descriptor),
+                        schema=yaml.safe_load(descriptor_schema),
                     )
                 except jsonschema.exceptions.ValidationError as validation_error:
                     logging.error(
@@ -2054,9 +2242,10 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.8M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
@@ -2181,7 +2370,6 @@ def generate_json_schema_enums():
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
         "PHP_BUILTIN",
-        "RST_RSTFMT",
     ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2617,13 +2805,24 @@ def manage_output_variables():
                 updated_versions = 1
                 break
         if updated_versions == 1:
-            print("::set-output name=has_updated_versions::1")
+            if "GITHUB_OUTPUT" in os.environ:
+                github_output_file = os.environ["GITHUB_OUTPUT"]
+                if not os.path.isfile(github_output_file):
+                    github_output_file = github_output_file.replace(
+                        "/home/runner/work/_temp/_runner_file_commands",
+                        "/github/file_commands",
+                    )
+                with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                    output_stream.write("has_updated_versions=1\n")
 
 
 def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
     # Call markdown-table-formatter with the list of files
-    format_md_tables_command = ["bash", "format-tables.sh"]
+    if sys.platform == "win32":
+        format_md_tables_command = ["bash", "format-tables.sh"]
+    else:
+        format_md_tables_command = ["./format-tables.sh"]
     cwd = os.getcwd() + "/.automation"
     logging.info("Running command: " + str(format_md_tables_command) + f" in cwd {cwd}")
     process = subprocess.run(
@@ -2633,7 +2832,7 @@ def reformat_markdown_tables():
         universal_newlines=True,
         cwd=cwd,
         shell=True,
-        executable=None if sys.platform == "win32" else "/bin/bash",
+        executable=None if sys.platform == "win32" else which("bash"),
     )
     stdout = utils.decode_utf8(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
@@ -2688,6 +2887,25 @@ def generate_version():
     repo.create_tag(RELEASE_TAG)
 
 
+def update_dependents_info():
+    logging.info("Updating dependents info...")
+    command = [
+        "github-dependents-info",
+        "--repo",
+        "oxsecurity/megalinter",
+        "--markdownfile",
+        "./docs/used-by-stats.md",
+        "--badgemarkdownfile",
+        "README.md",
+        "--mergepackages",
+        "--sort",
+        "stars",
+        "--verbose",
+    ]
+    logging.info("Running command: " + " ".join(command))
+    os.system(" ".join(command))
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -2707,10 +2925,13 @@ if __name__ == "__main__":
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
+    if UPDATE_DEPENDENTS is True:
+        update_dependents_info()
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
     if UPDATE_DOC is True:
+        logging.info("Running documentation generators...")
         refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()

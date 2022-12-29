@@ -1,6 +1,6 @@
 ---
 # MegaLinter GitHub Action configuration file
-# More info at https://oxsecurity.github.io/megalinter
+# More info at https://megalinter.io
 name: MegaLinter
 
 on:
@@ -29,17 +29,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
 
       # MegaLinter
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://oxsecurity.github.io/megalinter/flavors/
+        # More info at https://megalinter.io/flavors/
         uses: <%= GITHUB_ACTION_NAME %>@<%= GITHUB_ACTION_VERSION %>
         env:
           # All available variables are described in documentation
-          # https://oxsecurity.github.io/megalinter/configuration/
+          # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: <%- VALIDATE_ALL_CODE_BASE_GHA %>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -47,7 +47,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
           path: |

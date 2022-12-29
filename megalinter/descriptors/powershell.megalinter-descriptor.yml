@@ -10,7 +10,7 @@ file_extensions:
   - ".pssc"
   - ".psrc"
   - ".cdxml"
-# Reference: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7
+# Reference: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux
 # Slightly modified to always retrieve latest stable Powershell version
 # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
 supported_platforms:
@@ -35,7 +35,8 @@ install:
             | cut -d '"' -f 4 \
             | xargs -n 1 wget -O - \
             | tar -xzC ${PWSH_DIRECTORY} \
-        && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+        && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+        && chmod +x /usr/bin/pwsh
 linters:
   # Internal powershell linter
   - class: PowershellLinter
@@ -43,9 +44,10 @@ linters:
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
-    linter_rules_configuration_url: https://github.com/PowerShell/PSScriptAnalyzer#explicit
-    linter_rules_inline_disable_url: https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
+    linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-psscriptanalyzer.psd1
+    cli_lint_fix_arg_name: "-Fix"
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1"'
@@ -61,5 +63,29 @@ linters:
         - linux/arm64
     ide:
       vscode:
-        - name: VsCode PowerShell extension
+        - name: VSCode PowerShell extension
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
+  # Internal powershell linter
+  - class: PowershellLinter
+    linter_name: powershell_formatter
+    is_formatter: true
+    linter_url: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
+    linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
+    config_file_name: .powershell-psscriptanalyzer.psd1
+    test_folder: powershell_formatter
+    version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
+    examples:
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -Settings .powershell-psscriptanalyzer.psd1 -ScriptDefinition ''write-host Hello World''"'
+    # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
+    install:
+      dockerfile:
+        - ARG PSSA_VERSION='latest'
+        - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    ide:
+      vscode:
+        - name: VSCode PowerShell extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell

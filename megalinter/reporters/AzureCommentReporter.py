@@ -45,10 +45,16 @@ class AzureCommentReporter(Reporter):
             SYSTEM_TEAMPROJECT = config.get("SYSTEM_TEAMPROJECT")
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
             BUILD_BUILD_ID = config.get("BUILD_BUILD_ID")
-            artifacts_url = (
-                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
-                f"{BUILD_BUILD_ID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+            AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
+                "AZURE_COMMENT_REPORTER_LINKS_TYPE", "artifacts"
             )
+            if AZURE_COMMENT_REPORTER_LINKS_TYPE == "artifacts":
+                artifacts_url = (
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
+                    f"{BUILD_BUILD_ID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+                )
+            else:
+                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILD_ID}"
             url = (
                 f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis/git/repositories/"
                 f"{BUILD_REPOSITORY_ID}/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
@@ -59,12 +65,12 @@ class AzureCommentReporter(Reporter):
                 "Authorization": f"BEARER {config.get('SYSTEM_ACCESSTOKEN')}",
             }
             p_r_msg = build_markdown_summary(self, artifacts_url)
-
+            comment_status = "fixed" if self.master.return_code == 0 else 1
             data = {
                 "comments": [
                     {"parentCommentId": 0, "content": p_r_msg, "commentType": 1}
                 ],
-                "status": 1,
+                "status": comment_status,
             }
             r = requests.post(url=url, json=data, headers=headers)
             if r.status_code == 200:
@@ -78,7 +84,7 @@ class AzureCommentReporter(Reporter):
                     "[Azure Comment Reporter] Error while posting comment:"
                     + r.reason
                     + "\n"
-                    + "See https://oxsecurity.github.io/megalinter/latest/reporters/AzureCommentReporter/"
+                    + "See https://megalinter.io/latest/reporters/AzureCommentReporter/"
                 )
         # Not in Azure context
         else:

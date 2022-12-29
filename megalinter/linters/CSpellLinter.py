@@ -7,12 +7,46 @@ import json
 import logging
 import os
 import re
+import uuid
 
-from megalinter import Linter, utils
+from megalinter import Linter, config, utils
 from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 
 class CSpellLinter(Linter):
+    def __init__(self, params=None, linter_config=None):
+        self.temp_file_name = None
+        super().__init__(params, linter_config)
+
+    def build_lint_command(self, file=None) -> list:
+        # Create temp file with files segments
+        if (
+            self.cli_lint_mode == "list_of_files"
+            and self.files is not None
+            and len(self.files) > 0
+            and config.get("SPELL_CSPELL_ANALYZE_FILE_NAMES", "true") == "true"
+        ):
+            file_names_txt = ""
+            for file_path in self.files:
+                file_path = re.sub("[^0-9a-zA-Z]+", " ", os.path.splitext(file_path)[0])
+                file_names_txt += file_path + "\n"
+            self.temp_file_name = (
+                self.workspace
+                + os.path.sep
+                + str(uuid.uuid4())
+                + "-megalinter_file_names_cspell.txt"
+            )
+            with open(self.temp_file_name, "w", encoding="utf-8") as f:
+                f.write(file_names_txt)
+            self.files += [self.temp_file_name]
+        return super().build_lint_command(file)
+
+    # Remove temp file with file names if existing
+    def execute_lint_command(self, command):
+        res = super().execute_lint_command(command)
+        if self.temp_file_name is not None:
+            os.remove(self.temp_file_name)
+        return res
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic

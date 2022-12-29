@@ -2,9 +2,11 @@
   name: Run MegaLinter (skipping linters that run in project mode)
   entry: npx --
   language: system
+  require_serial: true
   args:
     - mega-linter-runner
-    - --containername "megalinter-$(basename "$PWD")"
+    - --containername
+    - "megalinter-incremental"
     - --remove-container
     - --fix
     - --env
@@ -15,8 +17,8 @@
     - "'LOG_LEVEL=warning'"
     - --filesonly
   description: >
-    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage
-    and https://oxsecurity.github.io/megalinter/latest/configuration/ if you
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
     wish to override the default arguments. mega-linter-runner is specified as
     an argument so that you may override the version (e.g.,
     mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and
@@ -31,9 +33,10 @@
   name: Run MegaLinter
   entry: npx --
   language: system
+  require_serial: true
   args:
     - mega-linter-runner
-    - --containername "megalinter-all-$(basename "$PWD")"
+    - --containername megalinter-full
     - --remove-container
     - --fix
     - --env
@@ -43,8 +46,8 @@
     - --env
     - "'LOG_LEVEL=warning'"
   description: >
-    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage
-    and https://oxsecurity.github.io/megalinter/latest/configuration/ if you
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
     wish to override the default arguments. mega-linter-runner is specified as
     an argument so that you may override the version (e.g.,
     mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and

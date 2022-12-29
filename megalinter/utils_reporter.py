@@ -1,9 +1,10 @@
 import logging
 import os
+import subprocess
 import time
 import urllib
 
-from megalinter import config
+from megalinter import config, utils
 from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
@@ -23,7 +24,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             status = (
                 "✅"
                 if linter.status == "success" and linter.return_code == 0
-                else ":warning:"
+                else "⚠️"
                 if linter.status != "success" and linter.return_code == 0
                 else "❌"
             )
@@ -40,7 +41,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 found = "yes"
                 nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 errors_cell = (
-                    log_link(f"**{linter.total_number_errors}**", action_run_url)
+                    log_link(f"{linter.total_number_errors}", action_run_url)
                     if linter.number_errors > 0
                     else "no"
                 )
@@ -48,7 +49,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             else:
                 found = str(len(linter.files))
                 errors_cell = (
-                    log_link(f"**{linter.total_number_errors}**", action_run_url)
+                    log_link(f"{linter.total_number_errors}", action_run_url)
                     if linter.number_errors > 0
                     else linter.number_errors
                 )
@@ -70,28 +71,28 @@ def build_markdown_summary(reporter_self, action_run_url):
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else ":warning:"
+        else "⚠️"
         if reporter_self.master.status == "warning"
         else "❌"
     )
     status_with_href = (
         status
         + " "
-        + log_link(f"**{reporter_self.master.status.upper()}**", action_run_url)
+        + log_link(f"{reporter_self.master.status.upper()}", action_run_url)
     )
     p_r_msg = (
-        f"## [MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
     p_r_msg += table_content + os.linesep
     if action_run_url != "":
         p_r_msg += (
-            "See errors details in [**artifact MegaLinter reports** on "
-            f"CI Job page]({action_run_url})" + os.linesep
+            "See detailed report in [MegaLinter reports"
+            f"]({action_run_url})" + os.linesep
         )
     else:
-        p_r_msg += "See errors details in MegaLinter reports" + os.linesep
+        p_r_msg += "See detailed report in MegaLinter reports" + os.linesep
     if reporter_self.master.validate_all_code_base is False:
         p_r_msg += (
             "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
@@ -115,7 +116,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
                 f"&body={urllib.parse.quote(body)}"
             )
-            p_r_msg += f"- [**Click here to request the new flavor**]({new_flavor_url})"
+            p_r_msg += f"- [Click here to request the new flavor]({new_flavor_url})"
         else:
             p_r_msg += (
                 os.linesep
@@ -129,17 +130,24 @@ def build_markdown_summary(reporter_self, action_run_url):
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )
                 p_r_msg += (
-                    f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
-                    f" ({suggestion['linters_number']} linters)"
+                    f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
+                    f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
         p_r_msg += os.linesep
     # Link to ox
-    p_r_msg += (
-        os.linesep
-        + "_MegaLinter is graciously provided by [![OX Security]"
-        + "(https://www.ox.security/wp-content/uploads/2022/06/"
-        + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
-    )
+    if config.get("REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
+        p_r_msg += (
+            os.linesep
+            + "MegaLinter is graciously provided by [OX Security]"
+            + "(https://www.ox.security/?ref=megalinter)"
+        )
+    else:
+        p_r_msg += (
+            os.linesep
+            + "_MegaLinter is graciously provided by [![OX Security]"
+            + "(https://www.ox.security/wp-content/uploads/2022/06/"
+            + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+        )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -193,3 +201,19 @@ def is_gitlab_ci() -> bool:
 
 def is_azure_pipelines() -> bool:
     return "TF_BUILD" in os.environ
+
+
+# Convert SARIF into human readable text
+def convert_sarif_to_human(sarif_in) -> str:
+    sarif_fmt_command = "sarif-fmt"
+    process = subprocess.run(
+        sarif_fmt_command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        input=sarif_in + "\n",
+    )
+    return_code = process.returncode
+    output = utils.decode_utf8(process.stdout)
+    logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
+    return output

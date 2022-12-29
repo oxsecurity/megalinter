@@ -29,7 +29,7 @@ jobs:
 
   prepare:
     name: Prepare matrix
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.image_tag.outputs.tag }}
     steps:
@@ -40,7 +40,7 @@ jobs:
         BRANCH_NAME="${GITHUB_REF##*/}"
         TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
         echo "Tag name: ${TAG}"
-        echo "::set-output name=tag::${TAG}"
+        echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
   build:
     # Name the Job
@@ -55,6 +55,8 @@ jobs:
         # linters-start
         linter:
           [
+            "ansible_ansible_lint",
+            "bash_shellcheck",
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
             "go_revive",
@@ -99,8 +101,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       #####################
       # Run Deploy script #

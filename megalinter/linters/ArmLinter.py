@@ -19,10 +19,10 @@ class ArmLinter(Linter):
                 '${config} = $(Import-PowerShellDataFile -Path "'
                 + self.config_file
                 + '") ;',
-                "Test-AzTemplate @config -TemplatePath " + file + " ;",
+                f"Test-AzTemplate @config -TemplatePath '{file}' ;",
             ]
         else:
-            pwsh_script += ["Test-AzTemplate -TemplatePath " + file + " ;"]
+            pwsh_script += [f"Test-AzTemplate -TemplatePath '{file}' ;"]
         pwsh_script += ["if (${Error}.Count) {exit 1}"]
         cmd = [
             ("powershell" if sys.platform == "win32" else "pwsh"),

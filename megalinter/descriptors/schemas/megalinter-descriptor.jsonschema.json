@@ -42,6 +42,7 @@
         "all_flavors",
         "all",
         "ci_light",
+        "cupcake",
         "documentation",
         "dotnet",
         "go",
@@ -264,6 +265,16 @@
             "type": "string"
           },
           "title": "List of APK packages (Linux)",
+          "type": "array"
+        },
+        "cargo": {
+          "$id": "#/properties/install/properties/cargo",
+          "description": "Cargo packages identifiers (with or without version)",
+          "items": {
+            "$id": "#/properties/install/properties/cargo/items",
+            "type": "string"
+          },
+          "title": "List of Cargo packages (Rust)",
           "type": "array"
         },
         "dockerfile": {
@@ -914,6 +925,22 @@
             "title": "Filter on end of file name",
             "type": "array"
           },
+          "file_names_regex": {
+            "$id": "#/properties/linters/items/file_names_regex",
+            "default": [],
+            "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
+            "examples": [
+              [
+                "Dockerfile(-.+)?",
+                "Jenkinsfile"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "File name regex filters",
+            "type": "array"
+          },
           "files_sub_directory": {
             "$id": "#/properties/linters/items/files_sub_directory",
             "description": "Set when a linter only lints a sub-directory",
@@ -996,6 +1023,22 @@
                   "type": "string"
                 },
                 "title": "List of APK packages (Linux)",
+                "type": "array"
+              },
+              "cargo": {
+                "$id": "#/properties/linters/items/properties/install/properties/cargo",
+                "description": "Cargo packages identifiers (with or without version)",
+                "examples": [
+                  [
+                    "clippy",
+                    "sarif-fmt"
+                  ]
+                ],
+                "items": {
+                  "$id": "#/properties/linters/items/properties/install/properties/cargo/items",
+                  "type": "string"
+                },
+                "title": "List of Cargo packages (Rust)",
                 "type": "array"
               },
               "dockerfile": {
@@ -1410,7 +1453,7 @@
             "examples": [
               {
                 "default_value": "false",
-                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
+                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead",
                 "name": "ERROR_ON_MISSING_EXEC_BIT"
               }
             ],

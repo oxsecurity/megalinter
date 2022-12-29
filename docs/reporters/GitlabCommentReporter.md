@@ -1,7 +1,11 @@
+---
+title: Gitlab Merge Request Comments Reporter for MegaLinter
+description: Posts MegaLinter SAST results summary in the comments of the related Gitlab Merge Request (if existing)
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # Gitlab Comment Reporter
 
-Posts Mega-Linter results summary in the comments of the related merge request (if existing)
+Posts MegaLinter results summary in the comments of the related Gitlab merge request (if existing)
 
 ## Usage
 
@@ -24,6 +28,7 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 | GITLAB_ACCESS_TOKEN_MEGALINTER | Must contain a Gitlab private access token defined with api access                                     | <!-- -->                 |
 | GITLAB_CUSTOM_CERTIFICATE      | SSL certificate value to connect to Gitlab                                                             | <!-- -->                 |
 | GITLAB_CERTIFICATE_PATH        | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS) | <!-- -->                 |
+| REPORTERS_MARKDOWN_TYPE        | Set to `simple` to avoid external images in generated markdown                                         | `advanced`               |
 
 ## Special Thanks
 

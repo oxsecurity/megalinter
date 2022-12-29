@@ -95,6 +95,8 @@ class Megalinter:
             config.get("SHOW_ELAPSED_TIME", "false") == "true"
             or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
         )
+        # In case SARIF is active, convert results into human readable text for logs
+        self.sarif_to_human = config.get("SARIF_TO_HUMAN", "true") == "true"
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -183,7 +185,9 @@ class Megalinter:
                 self.has_updated_sources = 1
 
         # Sort linters before reports production
-        self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
+        self.linters = sorted(
+            self.linters, key=lambda lamb: (lamb.descriptor_id, lamb.name)
+        )
 
         # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
@@ -502,7 +506,7 @@ class Megalinter:
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
         # Sort linters by language and linter_name
         self.linters = sorted(
-            self.linters, key=lambda l: (l.processing_order, l.descriptor_id)
+            self.linters, key=lambda lamb: (lamb.processing_order, lamb.descriptor_id)
         )
 
     # List all reporters, then instantiate each of them
@@ -561,12 +565,13 @@ class Megalinter:
         logging.debug(
             "All found files before filtering:" + utils.format_bullet_list(all_files)
         )
-        # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
-        if len(self.file_extensions) > 0:
+        # Filter files according to file_extensions, file_names_regex,
+        # filter_regex_include, and filter_regex_exclude
+        if self.file_extensions:
             logging.info(
                 "- File extensions: " + ", ".join(sorted(self.file_extensions))
             )
-        if len(self.file_names_regex) > 0:
+        if self.file_names_regex:
             logging.info(
                 "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
             )
@@ -819,7 +824,12 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
-        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
+        if "GITHUB_OUTPUT" in os.environ:
+            github_output_file = os.environ["GITHUB_OUTPUT"]
+            with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                output_stream.write(
+                    f"has_updated_sources={str(self.has_updated_sources)}\n"
+                )
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()

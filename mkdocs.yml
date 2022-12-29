@@ -1,13 +1,13 @@
 ---
 site_name: MegaLinter by OX Security
-site_url: https://oxsecurity.github.io/megalinter
+site_url: https://megalinter.io
 repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 50 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 53 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
-copyright: Copyright &copy; 2022 <a href="https://www.ox.security/" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
+copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
   name: material
   font: 
@@ -83,6 +83,7 @@ nav:
           - "C# (CSHARP)":
               - "All C# (CSHARP) linters": "descriptors/csharp.md"
               - "dotnet-format": "descriptors/csharp_dotnet_format.md"
+              - "csharpier": "descriptors/csharp_csharpier.md"
           - "DART":
               - "All DART linters": "descriptors/dart.md"
               - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
@@ -126,6 +127,7 @@ nav:
           - "POWERSHELL":
               - "All POWERSHELL linters": "descriptors/powershell.md"
               - "powershell": "descriptors/powershell_powershell.md"
+              - "powershell_formatter": "descriptors/powershell_powershell_formatter.md"
           - "PYTHON":
               - "All PYTHON linters": "descriptors/python.md"
               - "pylint": "descriptors/python_pylint.md"
@@ -134,6 +136,7 @@ nav:
               - "isort": "descriptors/python_isort.md"
               - "bandit": "descriptors/python_bandit.md"
               - "mypy": "descriptors/python_mypy.md"
+              - "pyright": "descriptors/python_pyright.md"
           - "R":
               - "All R linters": "descriptors/r.md"
               - "lintr": "descriptors/r_lintr.md"
@@ -197,6 +200,7 @@ nav:
               - "eslint-plugin-jsonc": "descriptors/json_eslint_plugin_jsonc.md"
               - "v8r": "descriptors/json_v8r.md"
               - "prettier": "descriptors/json_prettier.md"
+              - "npm-package-json-lint": "descriptors/json_npm_package_json_lint.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
@@ -213,6 +217,7 @@ nav:
               - "All RST linters": "descriptors/rst.md"
               - "rst-lint": "descriptors/rst_rst_lint.md"
               - "rstcheck": "descriptors/rst_rstcheck.md"
+              - "rstfmt": "descriptors/rst_rstfmt.md"
           - "XML":
               - "All XML linters": "descriptors/xml.md"
               - "xmllint": "descriptors/xml_xmllint.md"
@@ -234,6 +239,9 @@ nav:
           - "ARM":
               - "All ARM linters": "descriptors/arm.md"
               - "arm-ttk": "descriptors/arm_arm_ttk.md"
+          - "BICEP":
+              - "All BICEP linters": "descriptors/bicep.md"
+              - "bicep_linter": "descriptors/bicep_bicep_linter.md"
           - "CLOUDFORMATION":
               - "All CLOUDFORMATION linters": "descriptors/cloudformation.md"
               - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
@@ -315,6 +323,7 @@ nav:
       - "All flavors": "flavors.md"
       # flavors-start
       - "ci_light": "flavors/ci_light.md"
+      - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
       - "go": "flavors/go.md"
@@ -331,7 +340,7 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
-  - "They use MegaLinter": "all_users.md"
+  - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
   - "Plugins": "plugins.md"
   - "Articles": "articles.md"

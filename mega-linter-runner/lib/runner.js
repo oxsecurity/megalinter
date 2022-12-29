@@ -121,11 +121,11 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run"];
-    if (options["remove-container"]) {
+    if (options["removeContainer"]) {
       commandArgs.push("--rm");
     }
-    if (options.containername) {
-      commandArgs.push(...["--name", options.containername]);
+    if (options["containerName"]) {
+      commandArgs.push(...["--name", options["containerName"]]);
     }
     commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
@@ -151,7 +151,7 @@ ERROR: Docker engine has not been found on your system.
     if ((options._ || []).length > 0) {
       commandArgs.push(
         ...["-e"],
-        `MEGALINTER_FILES_TO_LINT="${options._.join(",")}"`
+        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`
       );
     }
     commandArgs.push(dockerImage);
@@ -159,12 +159,9 @@ ERROR: Docker engine has not been found on your system.
     // Call docker run
     console.log(`Command: docker ${commandArgs.join(" ")}`);
     const spawnOptions = {
-      detached: false,
-      cwd: process.cwd(),
       env: Object.assign({}, process.env),
       stdio: "inherit",
       windowsHide: true,
-      windowsVerbatimArguments: true,
     };
     const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
     // Output json if requested
@@ -179,11 +176,7 @@ ERROR: Docker engine has not been found on your system.
         console.log(JSON.stringify(JSON.parse(jsonRaw)));
       }
     }
-    return {
-      status: spawnRes.status,
-      stdout: spawnRes.stdout,
-      stderr: spawnRes.stderr,
-    };
+    return spawnRes;
   }
 
   isv4(release) {

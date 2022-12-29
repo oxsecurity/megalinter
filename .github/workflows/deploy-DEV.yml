@@ -50,15 +50,12 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          # Full git history is needed to get a proper list of changed files within `mega-linter`
-          fetch-depth: 0
 
       ########################
       # Get the current date #
       ########################
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >>"$GITHUB_ENV"
 
       ########################
       # Build image tag name #
@@ -69,7 +66,7 @@ jobs:
           BRANCH_NAME="${GITHUB_REF##*/}"
           TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
           echo "Tag name: ${TAG}"
-          echo "::set-output name=tag::${TAG}"
+          echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
       ###################################
       # Build image locally for testing #
@@ -88,7 +85,7 @@ jobs:
              MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
              echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
           fi
-          docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+          DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       ##########################
@@ -120,7 +117,7 @@ jobs:
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 90
 
       ####################################
@@ -213,15 +210,15 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      
-#      - name: Run Trivy vulnerability scanner
-#        uses: aquasecurity/trivy-action@master
-#        with:
-#          image-ref: "docker.io/oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
-#          format: 'table'
-#          exit-code: '1'
-#          ignore-unfixed: true
-#          security-checks: vuln
-#          vuln-type: 'os,library'
-#          severity: 'CRITICAL,HIGH'
-#          timeout: 10m0s
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "docker.io/oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          security-checks: vuln
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          timeout: 10m0s

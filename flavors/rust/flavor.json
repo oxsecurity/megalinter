@@ -2,8 +2,7 @@
     "descriptors": [
         "ACTION",
         "BASH",
-        "KOTLIN",
-        "RUST"
+        "KOTLIN"
     ],
     "label": "Optimized for RUST based projects",
     "linters": [
@@ -43,6 +42,7 @@
         "REPOSITORY_TRIVY",
         "RUST_CLIPPY",
         "SNAKEMAKE_LINT",
+        "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",

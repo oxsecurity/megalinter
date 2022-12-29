@@ -74,7 +74,7 @@ def filter_files(
     lint_all_other_linters_files: bool = False,
     prefix: Optional[str] = None,
 ) -> Sequence[str]:
-    file_extensions = set(file_extensions)
+    file_extensions = frozenset(file_extensions)
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
@@ -92,7 +92,7 @@ def filter_files(
     # if each file is check against every ignored_files (it can contain all the files), it's a O(n²) filtering
     # to reduce the execution time and complexity ignored_files is split
     ignored_patterns = list(filter(lambda x: "*" in x, ignored_files or []))
-    ignored_fileset = set(ignored_files or [])
+    ignored_fileset = frozenset(ignored_files or [])
 
     # Filter all files to keep only the ones matching with the current linter
 
@@ -129,8 +129,8 @@ def filter_files(
         if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
             continue
 
-        # Skip according to file extension (only if lint_all_other_linter_files is false)
-        if lint_all_other_linters_files is False:
+        # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
+        if lint_all_other_linters_files is False or len(file_extensions) > 0:
             if file_extension in file_extensions:
                 pass
             elif "*" in file_extensions:

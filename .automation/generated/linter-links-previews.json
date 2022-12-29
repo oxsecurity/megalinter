@@ -24,6 +24,16 @@
     "image": null,
     "title": "The GNU Bourne-Again Shell"
   },
+  "bicep": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
+  "bicep_linter": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
   "black": {
     "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
@@ -73,6 +83,11 @@
     "description": "Static code checker for C++. Contribute to cpplint/cpplint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",
     "title": "cpplint/cpplint"
+  },
+  "csharpier": {
+    "description": "An Opinionated Code Formatter.",
+    "image": null,
+    "title": "CSharpier"
   },
   "cspell": {
     "description": "A Spell Checker for Code! Contribute to streetsidesoftware/cspell development by creating an account on GitHub.",
@@ -254,6 +269,11 @@
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
     "title": "nvuillam/npm-groovy-lint"
   },
+  "npm-package-json-lint": {
+    "description": "A configurable linter for package.json files",
+    "image": null,
+    "title": "npm-package-json-lint | npm-package-json-lint"
+  },
   "perlcritic": {
     "description": "Critique Perl source code for best-practices.",
     "image": null,
@@ -289,6 +309,11 @@
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
     "title": "PowerShell/PSScriptAnalyzer"
   },
+  "powershell_formatter": {
+    "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
+    "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
+    "title": "GitHub - PowerShell/PSScriptAnalyzer: Download ScriptAnalyzer from PowerShellGallery"
+  },
   "prettier": {
     "description": "Opinionated Code Formatter",
     "image": "https://prettier.io/icon.png",
@@ -318,6 +343,16 @@
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
+  },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
   },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",

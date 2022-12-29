@@ -1,6 +1,7 @@
 descriptor_id: CLOUDFORMATION
 descriptor_type: tooling_format
 descriptor_flavors:
+  - cupcake
   - security
 file_extensions:
   - ".yml"
