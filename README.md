@@ -336,7 +336,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 <!-- markdown-headers
 ---
 title: MegaLinter Installation Guide
-description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
+description: How to install MegaLinter on GitHub Actions, Gitlab CI, Azure Pipelines, Jenkins, Concourse, Drone CI or to run locally
 ---
 -->
 ## Installation
@@ -1098,13 +1098,13 @@ description: List of all known articles, blog posts and videos that talk about M
 -->
 ## Articles
 
-- [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
-- [MegaLinter sells his soul and joins OX Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}, by [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}
-- [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter){target=_blank}, by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
-- [Node.js Coding Standard Tools with MegaLinter on Gitlab CI](https://javascript.plainenglish.io/node-js-coding-standard-tools-with-megalinter-on-gitlab-ci-a43b55915811){target=_blank}, by [Albion Bame](https://www.linkedin.com/in/albion-bame/){target=_blank}
-- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/){target=_blank}, by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
-- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
-- [How to apply security at the source using GitOps](https://dev.to/minwi/how-to-apply-security-at-the-source-using-gitops-21bk){target=_blank}, by [Edu Minguez](https://dev.to/minwi){target=_blank}
+- [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1), by [Nicolas Vuillamy](https://nvuillam.github.io)
+- [MegaLinter sells his soul and joins OX Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628), by [Nicolas Vuillamy](https://nvuillam.github.io)
+- [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/)
+- [Node.js Coding Standard Tools with MegaLinter on Gitlab CI](https://javascript.plainenglish.io/node-js-coding-standard-tools-with-megalinter-on-gitlab-ci-a43b55915811), by [Albion Bame](https://www.linkedin.com/in/albion-bame/)
+- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/)
+- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d), by [Nicolai Antiferov](https://nklya.medium.com/)
+- [How to apply security at the source using GitOps](https://dev.to/minwi/how-to-apply-security-at-the-source-using-gitops-21bk), by [Edu Minguez](https://dev.to/minwi)
 - [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/), by [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk), University Of Sheffield
 - [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070), by [Simone de Gijt](https://github.com/SimonedeGijt)
 - [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/), by [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/)
@@ -1171,7 +1171,7 @@ To help, you can also:
 - [:star: star the repository](https://github.com/oxsecurity/megalinter/stargazers)
 - [:beer: offer a beer !](https://github.com/sponsors/nvuillam)
 - [report problems and request new features](https://github.com/oxsecurity/megalinter/issues)
-- [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.github.io/&via=nvuillam){target=_blank}
+- [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.github.io/&via=nvuillam)
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
@@ -1197,38 +1197,38 @@ description: List of all contributors, websites and linters that help MegaLinter
 
 #### Web Sites
 
-- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
-- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
-- [schemastore.org](https://www.schemastore.org/json/){target=_blank}
-- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
-- [abhith.net](https://www.abhith.net/recommended/){target=_blank}
+- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter)
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
+- [schemastore.org](https://www.schemastore.org/json/)
+- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/)
+- [abhith.net](https://www.abhith.net/recommended/)
 
 #### Linters
 
 <!-- referring-linters-start -->
-- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
-- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
-- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
-- [djlint](https://djlint.com/docs/integrations/#megalinter){target=_blank}
-- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
-- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
-- [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
-- [eslint-plugin-jsonc](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
-- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
-- [htmlhint](https://htmlhint.com/docs/user-guide/integrations/task-runner){target=_blank}
-- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
-- [kics](https://docs.kics.io/latest/integrations/){target=_blank}
-- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
-- [lintr](https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html){target=_blank}
-- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
-- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
-- [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html){target=_blank}
-- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
-- [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
-- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
-- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
-- [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
-- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines){target=_blank}
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
+- [djlint](https://djlint.com/docs/integrations/#megalinter)
+- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter)
+- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter)
+- [eslint](https://eslint.org/docs/user-guide/integrations#source-control)
+- [eslint-plugin-jsonc](https://eslint.org/docs/user-guide/integrations#source-control)
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
+- [htmlhint](https://htmlhint.com/docs/user-guide/integrations/task-runner)
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)
+- [kics](https://docs.kics.io/latest/integrations/)
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration)
+- [lintr](https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html)
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
+- [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html)
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
+- [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter)
+- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration)
+- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools)
+- [secretlint](https://github.com/secretlint/secretlint#mega-linter)
+- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines)
 <!-- referring-linters-end -->
 
 ### Open-source teams
@@ -1237,9 +1237,9 @@ MegaLinter obviously would not exist without its linters and libraries, so many 
 
 ### Super-Linter team
 
-MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
+MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
 <!-- special-thanks-section-end -->
 
 <!-- license-section-start -->
