@@ -9,12 +9,12 @@ description: jsonlint, eslint-plugin-jsonc, v8r, prettier, npm-package-json-lint
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/prantlf/jsonlint)](https://github.com/prantlf/jsonlint/commits) |
-| [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md) | [JSON](json_eslint_plugin_jsonc.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) |
-| [v8r](json_v8r.md) | [JSON](json_v8r.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits) |
-| [prettier](json_prettier.md) | [JSON](json_prettier.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) |
+| Linter                                                 | Configuration key                     | Status                                                                                                                                                         |
+|--------------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [jsonlint](json_jsonlint.md)                           | [JSON](json_jsonlint.md)              | [![GitHub last commit](https://img.shields.io/github/last-commit/prantlf/jsonlint)](https://github.com/prantlf/jsonlint/commits)                               |
+| [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md)     | [JSON](json_eslint_plugin_jsonc.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits)     |
+| [v8r](json_v8r.md)                                     | [JSON](json_v8r.md)                   | [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits)                                       |
+| [prettier](json_prettier.md)                           | [JSON](json_prettier.md)              | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)                             |
 | [npm-package-json-lint](json_npm_package_json_lint.md) | [JSON](json_npm_package_json_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tclindner/npm-package-json-lint)](https://github.com/tclindner/npm-package-json-lint/commits) |
 
 ## Linted files
@@ -24,8 +24,8 @@ description: jsonlint, eslint-plugin-jsonc, v8r, prettier, npm-package-json-lint
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

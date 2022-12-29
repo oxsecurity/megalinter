@@ -9,11 +9,11 @@ description: eslint, standard, prettier are available to analyze JAVASCRIPT file
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits) |
+| Linter                             | Configuration key                             | Status                                                                                                                             |
+|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [eslint](javascript_eslint.md)     | [JAVASCRIPT_ES](javascript_eslint.md)         | [![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits)         |
 | [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) |
-| [prettier](javascript_prettier.md) | [JAVASCRIPT](javascript_prettier.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) |
+| [prettier](javascript_prettier.md) | [JAVASCRIPT](javascript_prettier.md)          | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) |
 
 ## Linted files
 
@@ -22,8 +22,8 @@ description: eslint, standard, prettier are available to analyze JAVASCRIPT file
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

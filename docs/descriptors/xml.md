@@ -9,9 +9,9 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |  |
+| Linter                    | Configuration key     | Status |
+|---------------------------|-----------------------|--------|
+| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |        |
 
 ## Linted files
 
@@ -20,8 +20,8 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

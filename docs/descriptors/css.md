@@ -9,10 +9,10 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
+| Linter                        | Configuration key                 | Status                                                                                                                                 |
+|-------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) |
-| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits) |
+| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits)             |
 
 ## Linted files
 
@@ -23,8 +23,8 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

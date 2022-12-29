@@ -9,9 +9,9 @@ description: chktex is available to analyze LATEX files in MegaLinter
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |  |
+| Linter                    | Configuration key        | Status |
+|---------------------------|--------------------------|--------|
+| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |        |
 
 ## Linted files
 
@@ -20,8 +20,8 @@ description: chktex is available to analyze LATEX files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                   | Description                   | Default value |
+|----------------------------|-------------------------------|---------------|
+| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

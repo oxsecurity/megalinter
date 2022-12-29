@@ -9,11 +9,11 @@ description: markdownlint, remark-lint, markdown-link-check, markdown-table-form
 
 ## Linters
 
-| Linter | Configuration key | Status |
-| ------ | ----------------- | ------ |
-| [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/DavidAnson/markdownlint)](https://github.com/DavidAnson/markdownlint/commits) |
-| [remark-lint](markdown_remark_lint.md) | [MARKDOWN](markdown_remark_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/remarkjs/remark-lint)](https://github.com/remarkjs/remark-lint/commits) |
-| [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tcort/markdown-link-check)](https://github.com/tcort/markdown-link-check/commits) |
+| Linter                                                           | Configuration key                                | Status                                                                                                                                                             |
+|------------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [markdownlint](markdown_markdownlint.md)                         | [MARKDOWN](markdown_markdownlint.md)             | [![GitHub last commit](https://img.shields.io/github/last-commit/DavidAnson/markdownlint)](https://github.com/DavidAnson/markdownlint/commits)                     |
+| [remark-lint](markdown_remark_lint.md)                           | [MARKDOWN](markdown_remark_lint.md)              | [![GitHub last commit](https://img.shields.io/github/last-commit/remarkjs/remark-lint)](https://github.com/remarkjs/remark-lint/commits)                           |
+| [markdown-link-check](markdown_markdown_link_check.md)           | [MARKDOWN](markdown_markdown_link_check.md)      | [![GitHub last commit](https://img.shields.io/github/last-commit/tcort/markdown-link-check)](https://github.com/tcort/markdown-link-check/commits)                 |
 | [markdown-table-formatter](markdown_markdown_table_formatter.md) | [MARKDOWN](markdown_markdown_table_formatter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/nvuillam/markdown-table-formatter)](https://github.com/nvuillam/markdown-table-formatter/commits) |
 
 ## Linted files
@@ -23,8 +23,8 @@ description: markdownlint, remark-lint, markdown-link-check, markdown-table-form
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                      | Description                   | Default value |
+|-------------------------------|-------------------------------|---------------|
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
