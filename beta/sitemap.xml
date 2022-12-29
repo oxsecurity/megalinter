@@ -261,6 +261,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/csharp_csharpier/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/csharp_dotnet_format/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
