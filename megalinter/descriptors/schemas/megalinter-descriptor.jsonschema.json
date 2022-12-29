@@ -332,116 +332,6 @@
       "title": "Installation requirements",
       "type": "object"
     },
-    "supported_platforms": {
-      "$id": "#/properties/supported_platforms",
-      "description": "Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the install of this descriptor, and optionally overrides install instructions for a specific platform. Uses the same [architecture naming conventions as Docker](https://docs.docker.com/desktop/multi-arch/).",
-      "properties": {
-        "platform": {
-          "$id": "#/properties/supported_platforms/properties/platform",
-          "description": "The list of target platforms (OS/CPU architecture/CPU Variant) that this descriptor supports.",
-          "default": [
-            "linux/amd64"
-          ],
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
-            "enum": [
-              "linux/amd64",
-              "linux/arm64",
-              "linux/arm/v7",
-              "linux/arm/v6",
-              "linux/arm/v5",
-              "linux/386",
-              "linux/mips64le",
-              "linux/ppc64le",
-              "linux/riscv64",
-              "linux/s390x",
-              "windows/amd64"
-            ],
-            "title": "Target platform",
-            "default": "linux/amd64"
-          },
-          "examples": [
-            [
-              "linux/amd64",
-              "linux/arm64"
-            ],
-            [
-              "linux/amd64"
-            ]
-          ],
-          "type": "array",
-          "title": "List of target platforms"
-        },
-        "install_override": {
-          "$id": "#/properties/supported_platforms/properties/install_override",
-          "description": "Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the descriptor's install instructions given in the `install` node for this target platform only.",
-          "items": {
-            "properties": {
-              "platform": {
-                "$id": "#/properties/supported_platforms/properties/install_override/items/properties/platform",
-                "description": "Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.",
-                "$ref": "#/properties/supported_platforms/properties/platform/items",
-                "default": "linux/arm64",
-                "type": "string",
-                "examples": []
-              },
-              "install": {
-                "$id": "#/properties/supported_platforms/properties/install_override/items/properties/install",
-                "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to use the descriptor's linters.\nThese special installation steps replace the instructions in the descriptor's [`install`](#install) node when using this target platform pair only.",
-                "$ref": "#/properties/install"
-              }
-            },
-            "type": "object",
-            "required": [
-              "platform",
-              "install"
-            ]
-          },
-          "title": "Installation requirements override",
-          "type": "array"
-        }
-      },
-      "default": {
-        "platform": [
-          "linux/amd64"
-        ]
-      },
-      "examples": [
-        {
-          "platform": [
-            "linux/amd64",
-            "linux/arm64"
-          ]
-        },
-        {
-          "platform": [
-            "linux/amd64"
-          ]
-        },
-        {
-          "platform": [
-            "linux/amd64",
-            "linux/arm64"
-          ],
-          "install_override": [
-            {
-              "platform": "linux/arm64",
-              "install": {
-                "dockerfile": [
-                  "ARG PWSH_VERSION='latest'",
-                  "ARG PWSH_DIRECTORY='/opt/microsoft/powershell'",
-                  "RUN mkdir -p ${PWSH_DIRECTORY} \\\n    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \\\n        | grep browser_download_url \\\n        | grep linux-arm64 \\\n        | cut -d '\"' -f 4 \\\n        | xargs -n 1 wget -O - \\\n        | tar -xzC ${PWSH_DIRECTORY} \\\n    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh\n"
-                ]
-              }
-            }
-          ]
-        }
-      ],
-      "title": "Supported platforms",
-      "type": "object"
-    },
     "lint_all_files": {
       "$id": "#/properties/lint_all_files",
       "default": false,
@@ -1110,114 +1000,6 @@
             "title": "Installation requirements",
             "type": "object"
           },
-          "supported_platforms": {
-            "$id": "#/properties/linters/items/properties/supported_platforms",
-            "description": "Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the linters, and optionally overrides install instructions for a specific platform. Uses the same [architecture naming conventions as Docker](https://docs.docker.com/desktop/multi-arch/).",
-            "properties": {
-              "platform": {
-                "$id": "#/properties/linters/items/properties/supported_platforms/properties/platform",
-                "description": "The list of target platforms (OS/CPU architecture/CPU Variant) that this linter supports.",
-                "default": [
-                  "linux/amd64"
-                ],
-                "uniqueItems": true,
-                "items": {
-                  "type": "string",
-                  "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
-                  "enum": [
-                    "linux/amd64",
-                    "linux/arm64",
-                    "linux/arm/v7",
-                    "linux/arm/v6",
-                    "linux/arm/v5",
-                    "linux/386",
-                    "linux/mips64le",
-                    "linux/ppc64le",
-                    "linux/riscv64",
-                    "linux/s390x",
-                    "windows/amd64"
-                  ],
-                  "title": "Target platform",
-                  "default": "linux/amd64"
-                },
-                "examples": [
-                  [
-                    "linux/amd64",
-                    "linux/arm64"
-                  ],
-                  [
-                    "linux/amd64"
-                  ]
-                ],
-                "type": "array",
-                "title": "List of target platforms"
-              },
-              "install_override": {
-                "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override",
-                "description": "Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the linter's install instructions given in the `install` node for this target platform only.",
-                "items": {
-                  "properties": {
-                    "platform": {
-                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/platform",
-                      "description": "Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.",
-                      "$ref": "#/properties/linters/items/properties/supported_platforms/properties/platform/items",
-                      "default": "linux/arm64",
-                      "type": "string",
-                      "examples": []
-                    },
-                    "install": {
-                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/install",
-                      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter.\nThese special installation steps replace the instructions in the [`linters` > `install`](#linters_items_install) node when using this target platform pair only.",
-                      "$ref": "#/properties/linters/items/properties/install"
-                    }
-                  },
-                  "type": "object",
-                  "required": [
-                    "platform",
-                    "install"
-                  ]
-                },
-                "title": "Installation requirements override",
-                "type": "array"
-              }
-            },
-            "default": {
-              "platform": [
-                "linux/amd64"
-              ]
-            },
-            "examples": [
-              {
-                "platform": [
-                  "linux/amd64",
-                  "linux/arm64"
-                ]
-              },
-              {
-                "platform": [
-                  "linux/amd64"
-                ]
-              },
-              {
-                "platform": [
-                  "linux/amd64",
-                  "linux/arm64"
-                ],
-                "install_override": [
-                  {
-                    "platform": "linux/arm64",
-                    "install": {
-                      "dockerfile": [
-                        "RUN ML_THIRD_PARTY_DIR=\"/third-party/shellcheck\" \\\n    && mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    && wget -qO- \"https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    && mv \"${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\" /usr/bin/ \\\n    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \\\n    && shellcheck --version\n"
-                      ]
-                    }
-                  }
-                ]
-              }
-            ],
-            "title": "Supported platforms",
-            "type": "object"
-          },
           "is_formatter": {
             "$id": "#/properties/linters/items/properties/is_formatter",
             "default": false,
@@ -1424,6 +1206,114 @@
             "title": "SARIF default output file",
             "type": "string"
           },
+          "supported_platforms": {
+            "$id": "#/properties/linters/items/properties/supported_platforms",
+            "default": {
+              "platform": [
+                "linux/amd64"
+              ]
+            },
+            "description": "Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the linters, and optionally overrides install instructions for a specific platform. Uses the same [architecture naming conventions as Docker](https://docs.docker.com/desktop/multi-arch/).",
+            "examples": [
+              {
+                "platform": [
+                  "linux/amd64",
+                  "linux/arm64"
+                ]
+              },
+              {
+                "platform": [
+                  "linux/amd64"
+                ]
+              },
+              {
+                "install_override": [
+                  {
+                    "install": {
+                      "dockerfile": [
+                        "RUN ML_THIRD_PARTY_DIR=\"/third-party/shellcheck\" \\\n    && mkdir -p ${ML_THIRD_PARTY_DIR} \\\n    && wget -qO- \"https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz\" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \\\n    && mv \"${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck\" /usr/bin/ \\\n    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \\\n    && shellcheck --version\n"
+                      ]
+                    },
+                    "platform": "linux/arm64"
+                  }
+                ],
+                "platform": [
+                  "linux/amd64",
+                  "linux/arm64"
+                ]
+              }
+            ],
+            "properties": {
+              "install_override": {
+                "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override",
+                "description": "Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the linter's install instructions given in the `install` node for this target platform only.",
+                "items": {
+                  "properties": {
+                    "install": {
+                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/install",
+                      "$ref": "#/properties/linters/items/properties/install",
+                      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter.\nThese special installation steps replace the instructions in the [`linters` > `install`](#linters_items_install) node when using this target platform pair only."
+                    },
+                    "platform": {
+                      "$id": "#/properties/linters/items/properties/supported_platforms/properties/install_override/items/properties/platform",
+                      "$ref": "#/properties/linters/items/properties/supported_platforms/properties/platform/items",
+                      "default": "linux/arm64",
+                      "description": "Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.",
+                      "examples": [],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "platform",
+                    "install"
+                  ],
+                  "type": "object"
+                },
+                "title": "Installation requirements override",
+                "type": "array"
+              },
+              "platform": {
+                "$id": "#/properties/linters/items/properties/supported_platforms/properties/platform",
+                "default": [
+                  "linux/amd64"
+                ],
+                "description": "The list of target platforms (OS/CPU architecture/CPU Variant) that this linter supports.",
+                "examples": [
+                  [
+                    "linux/amd64",
+                    "linux/arm64"
+                  ],
+                  [
+                    "linux/amd64"
+                  ]
+                ],
+                "items": {
+                  "default": "linux/amd64",
+                  "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
+                  "enum": [
+                    "linux/amd64",
+                    "linux/arm64",
+                    "linux/arm/v7",
+                    "linux/arm/v6",
+                    "linux/arm/v5",
+                    "linux/386",
+                    "linux/mips64le",
+                    "linux/ppc64le",
+                    "linux/riscv64",
+                    "linux/s390x",
+                    "windows/amd64"
+                  ],
+                  "title": "Target platform",
+                  "type": "string"
+                },
+                "title": "List of target platforms",
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "title": "Supported platforms",
+            "type": "object"
+          },
           "test_folder": {
             "$id": "#/properties/linters/items/test_folder",
             "description": "Test folder containing _good_ and _bad_ files, if different from parent descriptor test_folder",
@@ -1499,6 +1389,116 @@
       ],
       "title": "Descriptor processing order",
       "type": "number"
+    },
+    "supported_platforms": {
+      "$id": "#/properties/supported_platforms",
+      "default": {
+        "platform": [
+          "linux/amd64"
+        ]
+      },
+      "description": "Specifies the supported target platforms (OS, CPU architecture, CPU variant) for the install of this descriptor, and optionally overrides install instructions for a specific platform. Uses the same [architecture naming conventions as Docker](https://docs.docker.com/desktop/multi-arch/).",
+      "examples": [
+        {
+          "platform": [
+            "linux/amd64",
+            "linux/arm64"
+          ]
+        },
+        {
+          "platform": [
+            "linux/amd64"
+          ]
+        },
+        {
+          "install_override": [
+            {
+              "install": {
+                "dockerfile": [
+                  "ARG PWSH_VERSION='latest'",
+                  "ARG PWSH_DIRECTORY='/opt/microsoft/powershell'",
+                  "RUN mkdir -p ${PWSH_DIRECTORY} \\\n    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \\\n        | grep browser_download_url \\\n        | grep linux-arm64 \\\n        | cut -d '\"' -f 4 \\\n        | xargs -n 1 wget -O - \\\n        | tar -xzC ${PWSH_DIRECTORY} \\\n    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh\n"
+                ]
+              },
+              "platform": "linux/arm64"
+            }
+          ],
+          "platform": [
+            "linux/amd64",
+            "linux/arm64"
+          ]
+        }
+      ],
+      "properties": {
+        "install_override": {
+          "$id": "#/properties/supported_platforms/properties/install_override",
+          "description": "Defines special installation steps for a specific platform (OS/CPU architecture/CPU variant), replacing the descriptor's install instructions given in the `install` node for this target platform only.",
+          "items": {
+            "properties": {
+              "install": {
+                "$id": "#/properties/supported_platforms/properties/install_override/items/properties/install",
+                "$ref": "#/properties/install",
+                "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to use the descriptor's linters.\nThese special installation steps replace the instructions in the descriptor's [`install`](#install) node when using this target platform pair only."
+              },
+              "platform": {
+                "$id": "#/properties/supported_platforms/properties/install_override/items/properties/platform",
+                "$ref": "#/properties/supported_platforms/properties/platform/items",
+                "default": "linux/arm64",
+                "description": "Target platform (OS/CPU architecture/CPU variant) to define special installation steps for.",
+                "examples": [],
+                "type": "string"
+              }
+            },
+            "required": [
+              "platform",
+              "install"
+            ],
+            "type": "object"
+          },
+          "title": "Installation requirements override",
+          "type": "array"
+        },
+        "platform": {
+          "$id": "#/properties/supported_platforms/properties/platform",
+          "default": [
+            "linux/amd64"
+          ],
+          "description": "The list of target platforms (OS/CPU architecture/CPU Variant) that this descriptor supports.",
+          "examples": [
+            [
+              "linux/amd64",
+              "linux/arm64"
+            ],
+            [
+              "linux/amd64"
+            ]
+          ],
+          "items": {
+            "default": "linux/amd64",
+            "description": "Target platforms [available to use on Docker](https://github.com/docker-library/bashbrew/blob/master/architecture/oci-platform.go#L16-L29).\n***Please note that Megalinter does not support all Docker's platforms.***",
+            "enum": [
+              "linux/amd64",
+              "linux/arm64",
+              "linux/arm/v7",
+              "linux/arm/v6",
+              "linux/arm/v5",
+              "linux/386",
+              "linux/mips64le",
+              "linux/ppc64le",
+              "linux/riscv64",
+              "linux/s390x",
+              "windows/amd64"
+            ],
+            "title": "Target platform",
+            "type": "string"
+          },
+          "title": "List of target platforms",
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "title": "Supported platforms",
+      "type": "object"
     },
     "test_folder": {
       "$id": "#/properties/test_folder",
