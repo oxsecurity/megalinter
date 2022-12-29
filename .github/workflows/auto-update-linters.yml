@@ -38,6 +38,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      #######################
+      # Docker Buildx setup #
+      #######################
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       ########################
       # Get the current date #
       ########################
@@ -49,7 +58,7 @@ jobs:
       ###################################
       - name: Build image
         shell: bash
-        run: DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       #####################################
