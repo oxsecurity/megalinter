@@ -16,6 +16,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1** on 2022-12-29
   - [phplint](https://github.com/overtrue/phplint) from 5.4 to **5.5** on 2022-12-29
 <!-- linter-versions-end -->
+- Drone CI enhancements
+  - Config generator tool now supports Drone CI
+  - Added information about how to change trigger rules for Drone CI workflow
 
 ## [v6.17.0] - 2022-12-27
 
