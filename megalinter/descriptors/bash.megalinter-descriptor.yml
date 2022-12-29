@@ -37,9 +37,6 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
-        - linux/arm/v7
-        - linux/386
-        - linux/ppc64le
     install:
       dockerfile:
         - |
@@ -76,11 +73,6 @@ linters:
     cli_lint_errors_regex: "In .* line .*:.*\\n"
     examples:
       - "shellcheck --color=auto --external-sources myfile.sh"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-        - linux/arm/v6
     install:
       cargo:
         - shellcheck-sarif
@@ -134,17 +126,14 @@ linters:
     examples:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-        - linux/arm/v7
-        - linux/386
-        - linux/ppc64le
     install:
       dockerfile:
         - FROM mvdan/shfmt:latest-alpine as shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: format-shell
