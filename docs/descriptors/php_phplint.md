@@ -8,7 +8,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **5.4**
+- Version in MegaLinter: **5.5**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
   - If custom `.phplint.yml` config file is not found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
@@ -19,30 +19,30 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 - Enable phplint by adding `PHP_PHPLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable phplint by adding `PHP_PHPLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PHP_PHPLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| PHP_PHPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| PHP_PHPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| PHP_PHPLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PHP_PHPLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".php"]`                                      |
-| PHP_PHPLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| PHP_PHPLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| PHP_PHPLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PHP_PHPLINT_CONFIG_FILE                 | phplint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `.phplint.yml`                                  |
-| PHP_PHPLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| PHP_PHPLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| PHP_PHPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PHP_PHPLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_PHPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| PHP_PHPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| PHP_PHPLINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
+| PHP_PHPLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".php"]` |
+| PHP_PHPLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PHP_PHPLINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| PHP_PHPLINT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| PHP_PHPLINT_CONFIG_FILE | phplint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.phplint.yml` |
+| PHP_PHPLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| PHP_PHPLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| PHP_PHPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       111        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        80        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        50        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 112 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a> | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages | 80 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://megalinter.io/beta/flavors/php/) | Optimized for PHP based projects | 50 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -85,22 +85,22 @@ Usage:
   phplint [options] [--] [<path>...]
 
 Arguments:
-  path                               Path to file or directory to lint
+  path                               Path to file or directory to lint.
 
 Options:
       --exclude=EXCLUDE              Path to file or directory to exclude from linting (multiple values allowed)
-      --extensions=EXTENSIONS        Check only files with selected extensions [default: ["php"]]
-  -j, --jobs=JOBS                    Number of paralleled jobs to run [default: 5]
-  -c, --configuration=CONFIGURATION  Read configuration from config file [default: ".phplint.yml"]
-      --no-configuration             Ignore default configuration file (.phplint.yml)
-      --no-cache                     Ignore cached data
-      --cache[=CACHE]                Path to the cache file [default: ".phplint-cache"]
-      --no-progress                  Hide the progress output
-      --json[=JSON]                  Path to store JSON results
-      --xml[=XML]                    Path to store JUnit XML results
-  -w, --warning                      Also show warnings
+      --extensions=EXTENSIONS        Check only files with selected extensions (default: php)
+  -j, --jobs=JOBS                    Number of parraled jobs to run (default: 5)
+  -c, --configuration=CONFIGURATION  Read configuration from config file (default: ./.phplint.yml).
+      --no-configuration             Ignore default configuration file (default: ./.phplint.yml).
+      --no-cache                     Ignore cached data.
+      --cache=CACHE                  Path to the cache file.
+      --no-progress                  Hide the progress output.
+      --json[=JSON]                  Path to store JSON results.
+      --xml[=XML]                    Path to store JUnit XML results.
+  -w, --warning                      Also show warnings.
   -q, --quiet                        Do not output any message
-      --no-files-exit-code           Throw error if no files processed
+      --no-files-exit-code           Throw error if no files processed.
   -h, --help                         Display help for the given command. When no command is given display help for the list command
   -V, --version                      Display this application version
       --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output

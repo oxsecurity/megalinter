@@ -9,10 +9,10 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Linters
 
-| Linter                       | Configuration key        | Status                                                                                                                                                 |
-|------------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [djlint](html_djlint.md)     | [HTML](html_djlint.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) |
-| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/commits)                     |
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
+| [djlint](html_djlint.md) | [HTML](html_djlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) |
+| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/commits) |
 
 ## Linted files
 
@@ -22,8 +22,8 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

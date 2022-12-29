@@ -9,9 +9,9 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Linters
 
-| Linter                                                     | Configuration key                                | Status                                                                                                                                                 |
-|------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [powershell](powershell_powershell.md)                     | [POWERSHELL](powershell_powershell.md)           | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
+| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
 | [powershell_formatter](powershell_powershell_formatter.md) | [POWERSHELL](powershell_powershell_formatter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
 
 ## Linted files
@@ -27,10 +27,10 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

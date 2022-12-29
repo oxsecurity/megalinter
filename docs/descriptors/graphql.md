@@ -9,8 +9,8 @@ description: graphql-schema-linter is available to analyze GRAPHQL files in Mega
 
 ## Linters
 
-| Linter                                                    | Configuration key                                                 | Status                                                                                                                                                       |
-|-----------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/commits) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: graphql-schema-linter is available to analyze GRAPHQL files in Mega
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

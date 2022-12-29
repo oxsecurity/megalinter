@@ -9,8 +9,8 @@ description: dartanalyzer is available to analyze DART files in MegaLinter
 
 ## Linters
 
-| Linter                               | Configuration key            | Status                                                                                                                     |
-|--------------------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: dartanalyzer is available to analyze DART files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

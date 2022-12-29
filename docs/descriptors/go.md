@@ -9,10 +9,10 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 
 ## Linters
 
-| Linter                               | Configuration key         | Status                                                                                                                                       |
-|--------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) |
-| [revive](go_revive.md)               | [GO](go_revive.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits)                 |
+| [revive](go_revive.md) | [GO](go_revive.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits) |
 
 ## Linted files
 
@@ -21,10 +21,10 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 
 ## Configuration in MegaLinter
 
-| Variable                | Description                   | Default value |
-|-------------------------|-------------------------------|---------------|
-| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

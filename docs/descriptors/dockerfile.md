@@ -9,8 +9,8 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Linters
 
-| Linter                             | Configuration key                             | Status                                                                                                                             |
-|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

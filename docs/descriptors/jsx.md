@@ -9,8 +9,8 @@ description: eslint is available to analyze JSX files in MegaLinter
 
 ## Linters
 
-| Linter                  | Configuration key    | Status                                                                                                                                                     |
-|-------------------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Configuration key | Status |
+| ------ | ----------------- | ------ |
 | [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: eslint is available to analyze JSX files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
