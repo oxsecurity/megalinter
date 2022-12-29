@@ -85,6 +85,7 @@ linters:
       cargo:
         - shellcheck-sarif
       dockerfile:
+        - ARG TARGETPLATFORM
         - |
           RUN case ${TARGETPLATFORM} in \
                 "linux/amd64")  SHELLCHECK_ARCH=x86_64   ;; \
