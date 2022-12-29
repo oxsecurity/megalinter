@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
 <!-- linter-versions-end -->
+- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links. 
 
 ## [v6.17.0] - 2022-12-27
 
