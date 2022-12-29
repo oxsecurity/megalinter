@@ -338,15 +338,19 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # POWERSHELL installation
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    && chmod +x /usr/bin/pwsh \
+RUN case ${TARGETPLATFORM} in \
+      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+    esac \
+  && mkdir -p ${PWSH_DIRECTORY} \
+  && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+      | grep browser_download_url \
+      | grep linux-${POWERSHELL_ARCH} \
+      | cut -d '"' -f 4 \
+      | xargs -n 1 wget -O - \
+      | tar -xzC ${PWSH_DIRECTORY} \
+  && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+  && chmod +x /usr/bin/pwsh \
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
@@ -387,11 +391,16 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && chmod +x /usr/bin/bash-exec \
 
 # shellcheck installation
-    && ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
-    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")  SHELLCHECK_ARCH=x86_64   ;; \
+      "linux/arm64")  SHELLCHECK_ARCH=aarch64  ;; \
+      "linux/arm/v6") SHELLCHECK_ARCH=armv6hf  ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.${SHELLCHECK_ARCH}.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+  && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
@@ -411,13 +420,18 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0 \
 
 # dartanalyzer installation
-    && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
-    && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
-    && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
-    && chmod +x dart-sdk/bin/dart* \
-    && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
-    && rm -r dart-sdk/ \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")  DART_ARCH=x64   ;; \
+      "linux/arm64")  DART_ARCH=arm64 ;; \
+      "linux/arm/v7") DART_ARCH=arm   ;; \
+    esac \
+  && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+  && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
+  && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
+  && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+  && chmod +x dart-sdk/bin/dart* \
+  && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
+  && rm -r dart-sdk/ \
 
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -456,23 +470,35 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     mv "ktlint" /usr/bin/ \
 
 # kubeval installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")   KUBEVAL_ARCH=linux-amd64   ;; \
+      "linux/386")     KUBEVAL_ARCH=linux-386     ;; \
+      "windows/amd64") KUBEVAL_ARCH=windows-amd64 ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-${KUBEVAL_ARCH}.tar.gz \
+  && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+  && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+  && rm ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.5.0 \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")   KUBECONFORM_ARCH=linux-amd64   ;; \
+      "linux/arm64")   KUBECONFORM_ARCH=linux-arm64   ;; \
+      "linux/arm/v6")  KUBECONFORM_ARCH=linux-armv6   ;; \
+      "linux/386")     KUBECONFORM_ARCH=linux-386     ;; \
+      "windows/amd64") KUBECONFORM_ARCH=windows-amd64 ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
+  && KUBECONFORM_VERSION=v0.4.12 \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-${KUBECONFORM_ARCH}.tar.gz \
+  && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-${KUBECONFORM_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+  && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
+  && rm ${ML_THIRD_PARTY_DIR}/kubeconform-${KUBECONFORM_ARCH}.tar.gz \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # chktex installation
 # Managed with COPY --from=chktex /usr/bin/chktex /usr/bin/

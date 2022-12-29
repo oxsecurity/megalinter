@@ -240,15 +240,19 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # POWERSHELL installation
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    && chmod +x /usr/bin/pwsh
+RUN case ${TARGETPLATFORM} in \
+      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+    esac \
+  && mkdir -p ${PWSH_DIRECTORY} \
+  && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+      | grep browser_download_url \
+      | grep linux-${POWERSHELL_ARCH} \
+      | cut -d '"' -f 4 \
+      | xargs -n 1 wget -O - \
+      | tar -xzC ${PWSH_DIRECTORY} \
+  && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+  && chmod +x /usr/bin/pwsh
 
 
 # VBDOTNET installation
@@ -276,11 +280,16 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && chmod +x /usr/bin/bash-exec \
 
 # shellcheck installation
-    && ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
-    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")  SHELLCHECK_ARCH=x86_64   ;; \
+      "linux/arm64")  SHELLCHECK_ARCH=aarch64  ;; \
+      "linux/arm/v6") SHELLCHECK_ARCH=armv6hf  ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.${SHELLCHECK_ARCH}.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+  && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # shfmt installation
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
@@ -311,23 +320,35 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     mv "ktlint" /usr/bin/ \
 
 # kubeval installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")   KUBEVAL_ARCH=linux-amd64   ;; \
+      "linux/386")     KUBEVAL_ARCH=linux-386     ;; \
+      "windows/amd64") KUBEVAL_ARCH=windows-amd64 ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-${KUBEVAL_ARCH}.tar.gz \
+  && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+  && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+  && rm ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.5.0 \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && case ${TARGETPLATFORM} in \
+      "linux/amd64")   KUBECONFORM_ARCH=linux-amd64   ;; \
+      "linux/arm64")   KUBECONFORM_ARCH=linux-arm64   ;; \
+      "linux/arm/v6")  KUBECONFORM_ARCH=linux-armv6   ;; \
+      "linux/386")     KUBECONFORM_ARCH=linux-386     ;; \
+      "windows/amd64") KUBECONFORM_ARCH=windows-amd64 ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
+  && KUBECONFORM_VERSION=v0.4.12 \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-${KUBECONFORM_ARCH}.tar.gz \
+  && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-${KUBECONFORM_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+  && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
+  && rm ${ML_THIRD_PARTY_DIR}/kubeconform-${KUBECONFORM_ARCH}.tar.gz \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # checkmake installation
     && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \

@@ -126,11 +126,16 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 #OTHER__START
 # shellcheck installation
-RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
-    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+RUN case ${TARGETPLATFORM} in \
+      "linux/amd64")  SHELLCHECK_ARCH=x86_64   ;; \
+      "linux/arm64")  SHELLCHECK_ARCH=aarch64  ;; \
+      "linux/arm/v6") SHELLCHECK_ARCH=armv6hf  ;; \
+    esac \
+  && ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+  && mkdir -p ${ML_THIRD_PARTY_DIR} \
+  && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.${SHELLCHECK_ARCH}.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+  && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 
 #OTHER__END
