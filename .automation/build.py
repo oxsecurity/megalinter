@@ -954,12 +954,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         "| :---: | ----------------- | -------------- | ------------ | :-----:  |",
     ]
     descriptor_linters = linters_by_type[type1]
-    prev_lang = ""
     for linter in descriptor_linters:
         lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
-        if prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
-        ):
+        if os.path.isfile(REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/{linter.descriptor_id.lower()}.ico",
                 "",
@@ -967,9 +964,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 descriptor_label,
                 32,
             )
-        elif prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/default.ico"
-        ):
+        elif os.path.isfile(REPO_ICONS + "/default.ico"):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/default.ico",
                 "",
@@ -980,12 +975,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             icon_html = "<!-- -->"
         descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
-        descriptor_id_cell = (
-            f"[{descriptor_label}]({descriptor_url})"
-            if prev_lang != linter.descriptor_id
-            else ""
-        )
-        prev_lang = linter.descriptor_id
+        descriptor_id_cell = f"[{descriptor_label}]({descriptor_url})"
         # Build extra badges
         md_extras = []
         repo = get_github_repo(linter)
