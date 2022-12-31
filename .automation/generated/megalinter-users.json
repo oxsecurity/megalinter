@@ -111,7 +111,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6466,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 33466,
+                "stargazers_count": 33467,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 139,
@@ -128,15 +128,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-12-31T06:37:28Z",
+                "updated_at": "2022-12-31T08:08:54Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 33466,
-                "watchers_count": 33466,
+                "watchers": 33467,
+                "watchers_count": 33467,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 33466
+            "stargazers": 33467
         },
         {
             "info": {
@@ -735,7 +735,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2022-12-30T15:06:00Z",
+                "pushed_at": "2022-12-31T07:15:01Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
                 "size": 305244,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
@@ -2402,7 +2402,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/xUnholy/k8s-gitops/pulls{/number}",
-                "pushed_at": "2022-12-30T23:06:32Z",
+                "pushed_at": "2022-12-31T07:38:18Z",
                 "releases_url": "https://api.github.com/repos/xUnholy/k8s-gitops/releases{/id}",
                 "size": 7685,
                 "ssh_url": "git@github.com:xUnholy/k8s-gitops.git",
@@ -2642,7 +2642,7 @@
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
                 "pushed_at": "2022-12-31T07:03:04Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 32202,
+                "size": 32205,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 223,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
