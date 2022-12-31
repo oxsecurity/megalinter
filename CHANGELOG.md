@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
   - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1** on 2022-12-29
   - [phplint](https://github.com/overtrue/phplint) from 5.4 to **5.5** on 2022-12-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.18.0 to **6.18.1** on 2022-12-30
+  - [eslint](https://eslint.org) from 8.30.0 to **8.31.0** on 2022-12-31
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
