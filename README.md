@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1887&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1894&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -1188,10 +1188,7 @@ description: List of all contributors, websites and linters that help MegaLinter
 <a href="https://github.com/oxsecurity/megalinter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
-<br/>
-<a href="https://cauldron.io/project/5222">
-  <img src="https://cauldron.io/project/5222/stats.svg" />
-</a>
+
 
 ### Sites referring to MegaLinter
 
@@ -1202,6 +1199,7 @@ description: List of all contributors, websites and linters that help MegaLinter
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 - [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 - [abhith.net](https://www.abhith.net/recommended/){target=_blank}
+- [iac-analyzers.dev/](https://iac-analyzers.dev/)
 
 #### Linters
 
