@@ -58,7 +58,7 @@ jobs:
       ###################################
       - name: Build image
         shell: bash
-        run: docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} . --load | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       #####################################
