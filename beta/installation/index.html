@@ -378,6 +378,19 @@
     Drone CI
   </a>
   
+    <nav class="md-nav" aria-label="Drone CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-adjusting-trigger-rules" class="md-nav__link">
+    (Optional) Adjusting trigger rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5798,6 +5811,19 @@
     Drone CI
   </a>
   
+    <nav class="md-nav" aria-label="Drone CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-adjusting-trigger-rules" class="md-nav__link">
+    (Optional) Adjusting trigger rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6160,6 +6186,27 @@ steps:
     DEFAULT_WORKSPACE: /tmp/lint
 </code></pre>
 <p>This uses the <a href="https://docs.drone.io/pipeline/docker/overview/">Drone CI docker runner</a>, so it's needed to install and configure it beforehand on your Drone CI server.</p>
+<h3 id="optional-adjusting-trigger-rules">(Optional) Adjusting trigger rules</h3>
+<p>The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can <em>optionally</em> change this behavior by changing the trigger. For example:</p>
+<pre><code class="language-yaml">kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+
+trigger:
+  event:
+  - push
+</code></pre>
+<p>The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, <a href="https://docs.drone.io/pipeline/triggers/">click here</a>.</p>
 <h2 id="docker-container">Docker container</h2>
 <p>You can also run megalinter with its Docker container, just execute this command:</p>
 <p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/tmp/lint:rw oxsecurity/megalinter:v6</code></p>

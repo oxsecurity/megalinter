@@ -6077,8 +6077,10 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 </ul>
 <p>You can override the CLI_LINT_MODE by using configuration variable for each linter (see <a href="https://megalinter.io/supported-linters/">linters documentation</a>)</p>
 <ul>
+<li>Linters with <code>file</code> default lint mode can not be overridden to <code>list_of_files</code></li>
 <li>Linters with <code>project</code> default lint mode can not be overridden to <code>list_of_files</code> or <code>file</code></li>
 </ul>
+<p>Allowing <code>file</code> or <code>list_of_files</code> to be overridden to <code>project</code> is mostly for workarounds, for example with linters that have a problem to find their config file when the current folder is not the repo root.</p>
 <p>Special considerations:</p>
 <ul>
 <li>As list of files is not sent to the linter command, linters using <code>project</code> lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it is awaited by the linter (for example with a <code>.secretlintignore</code> file for secretlint)</li>

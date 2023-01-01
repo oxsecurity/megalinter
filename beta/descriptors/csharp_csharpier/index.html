@@ -5844,7 +5844,7 @@
 <tr>
 <td>CSHARP_CSHARPIER_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>CSHARP_CSHARPIER_FILE_EXTENSIONS</td>
@@ -5948,12 +5948,12 @@
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>csharpier is called one time by identified file (<code>file</code> CLI lint mode)</li>
+<li>csharpier is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">dotnet csharpier --check myfile.cs
+<pre><code class="language-shell">dotnet csharpier --check myfile.cs myfile2.cs
 </code></pre>
-<pre><code class="language-shell">dotnet csharpier myfile.cs
+<pre><code class="language-shell">dotnet csharpier myfile.cs myfile2.cs
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">dotnet-csharpier
