@@ -366,6 +366,32 @@ steps:
 
 This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
 
+### (Optional) Adjusting trigger rules
+
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can *optionally* change this behavior by changing the trigger. For example:
+
+```yaml
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+    
+trigger:
+  event:
+  - push
+```
+
+The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
+
 ## Docker container
 
 You can also run megalinter with its Docker container, just execute this command:

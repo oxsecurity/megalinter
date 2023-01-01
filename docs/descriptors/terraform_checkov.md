@@ -13,9 +13,13 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
 
-TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
-
-You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
+> This linter has been deprecated.
+>
+> TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
+>
+> You should disable checkov by adding it in DISABLE_LINTERS property.
+>
+> It will be maintained at least until the next major release.
 
 ## checkov documentation
 
