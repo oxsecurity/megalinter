@@ -32,8 +32,7 @@ PLUGINS:
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
 * [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
 * [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-* [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links exist and working.
-
+* [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
 
 Submit a PR if you want your plugin to appear here :)
 

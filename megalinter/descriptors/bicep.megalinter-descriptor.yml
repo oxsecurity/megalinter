@@ -9,7 +9,6 @@ linters:
     cli_lint_errors_regex: " : Error "
     cli_lint_extra_args:
       - "build"
-    cli_lint_mode: file
     cli_version_arg_name: --version
     file_extensions:
       - ".bicep"
