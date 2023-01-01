@@ -11,7 +11,7 @@ module.exports = class extends Generator {
 When you don't know what option to select, please use default values`
     );
 
-    const prompts = [
+    const initialPrompts = [
       {
         type: "list",
         name: "flavor",
@@ -51,7 +51,9 @@ When you don't know what option to select, please use default values`
           { name: "Azure Pipelines", value: "azure" },
           { name: "Other, I will install workflow manually", value: "other" },
         ],
-      },
+    ];
+
+const prompts = [
       {
         type: "confirm",
         name: "copyPaste",
@@ -130,12 +132,102 @@ When you don't know what option to select, please use default values`
       },
     ];
 
-    return this.prompt(prompts).then((props) => {
-      this.props = props;
-      this._computeValues();
-    });
-  }
+const droneCIprompts = [
+      {
+        type: "confirm",
+        name: "copyPaste",
+        message: "Do you want to detect excessive copy-pastes ?",
+        default: true,
+      },
+      {
+        type: "confirm",
+        name: "spellingMistakes",
+        message: "Do you want to detect spelling mistakes ?",
+        default: true,
+      },
+      {
+        type: "list",
+        name: "version",
+        message: "Which MegaLinter version do you want to use ?",
+        default: "v6",
+        choices: [
+          { name: "v6 (Latest official release)", value: "v6" },
+          {
+            name: "Beta (main branch of MegaLinter repository)",
+            value: "beta",
+          },
+        ],
+      },
+      {
+        type: "list",
+        name: "defaultBranch",
+        message: "What is the name of your repository default branch ?",
+        default: "main",
+        choices: [
+          { name: "master", value: "master" },
+          { name: "main", value: "main" },
+        ],
+      },
+      {
+        type: "list",
+        name: "validateAllCodeBase",
+        message:
+          "Do you want MegaLinter to validate all source code or only updated one ?",
+        default: "all",
+        choices: [
+          { name: "Validate all sources", value: "all" },
+          {
+            name: "Validate only sources diff with master/main branch",
+            value: "diff",
+          },
+        ],
+      },
+    /*  {
+        type: "confirm",
+        name: "applyFixes",
+        message:
+          "Do you want to automatically apply formatting and auto-fixes (--fix option of linters) ?",
+        default: true,
+      }, */
+      {
+        type: "confirm",
+        name: "fileIoReporter",
+        message:
+          "Do you want MegaLinter to upload reports on file.io ? (report is deleted after being downloaded once)",
+        default: false,
+      },
+      {
+        type: "confirm",
+        name: "elapsedTime",
+        message: "Do you want to see elapsed time by linter in logs ?",
+        default: true,
+      },
+      {
+     /*   type: "confirm",
+        name: "ox",
+        message:
+          "Do you want to connect to OX Security to secure your repository ?",
+        default: false,
+      }, */
+    ];
 
+    this.prompt(initialPrompts);
+
+    switch (ci) {
+        case "droneCI":
+            return this.prompt(droneCIprompts).then((props) => {
+              this.props = props;
+              this._computeValues();
+              break;
+        });
+        default:
+            return this.prompt(prompts).then((props) => {
+              this.props = props;
+              this._computeValues();
+              break;
+        });
+      }
+}
   writing() {
     // Generate workflow config
     this._generateGitHubAction();
