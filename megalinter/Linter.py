@@ -571,7 +571,7 @@ class Linter:
                 )
             elif (
                 cli_lint_mode_descriptor == "file"
-                and (cli_lint_mode_config == "list_of_files" or cli_lint_mode_config == "project")
+                and cli_lint_mode_config == "list_of_files"
             ):
                 raise KeyError(
                     f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
