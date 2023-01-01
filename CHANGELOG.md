@@ -15,10 +15,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
   - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1** on 2022-12-29
   - [phplint](https://github.com/overtrue/phplint) from 5.4 to **5.5** on 2022-12-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.18.0 to **6.18.1** on 2022-12-30
+  - [eslint](https://eslint.org) from 8.30.0 to **8.31.0** on 2022-12-31
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.5.0 to **10.6.0** on 2023-01-01
 <!-- linter-versions-end -->
 - Drone CI enhancements
   - Config generator tool now supports Drone CI
   - Added information about how to change trigger rules for Drone CI workflow
+- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links. 
 
 ## [v6.17.0] - 2022-12-27
 
