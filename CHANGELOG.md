@@ -19,6 +19,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.30.0 to **8.31.0** on 2022-12-31
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.5.0 to **10.6.0** on 2023-01-01
 <!-- linter-versions-end -->
+- Drone CI enhancements
+  - Config generator tool now supports Drone CI
+  - Added information about how to change trigger rules for Drone CI workflow
 - New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links. 
 
 ## [v6.17.0] - 2022-12-27
