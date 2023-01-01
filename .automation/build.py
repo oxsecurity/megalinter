@@ -1237,13 +1237,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             enum = ["file"]
 
             cli_lint_mode_doc_md = f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
-            cli_lint_mode_doc_md += f"- `file`: Calls the linter for each file<br/>"
+            cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
 
             if linter.cli_lint_mode == "list_of_files":
                 enum += ["list_of_files", "project"]
 
                 cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-                cli_lint_mode_doc_md += f"- `project`: Call the linter from the root of the project"
+                cli_lint_mode_doc_md += "- `project`: Call the linter from the root of the project"
 
             cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
 
