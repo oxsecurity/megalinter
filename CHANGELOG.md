@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.18.0 to **6.18.1** on 2022-12-30
   - [eslint](https://eslint.org) from 8.30.0 to **8.31.0** on 2022-12-31
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.5.0 to **10.6.0** on 2023-01-01
+  - [secretlint](https://github.com/secretlint/secretlint) from 5.3.0 to **6.0.1** on 2023-01-02
+  - [rubocop](https://rubocop.org/) from 1.41.1 to **1.42.0** on 2023-01-02
 <!-- linter-versions-end -->
 - Drone CI enhancements
   - Config generator tool now supports Drone CI
