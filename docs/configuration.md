@@ -179,7 +179,10 @@ Each linter has a lint mode by default, visible in its MegaLinter documentation 
 
 You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://megalinter.io/supported-linters/))
 
+- Linters with `file` default lint mode can not be overridden to `list_of_files`
 - Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
+
+Allowing `file` or `list_of_files` to be overridden to `project` is mostly for workarounds, for example with linters that have a problem to find their config file when the current folder is not the repo root.
 
 Special considerations:
 

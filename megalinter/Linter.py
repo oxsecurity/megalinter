@@ -574,7 +574,7 @@ class Linter:
                 and cli_lint_mode_config == "list_of_files"
             ):
                 raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode with list_of_files, "
+                    f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
                     "as it can process files only one by one. If you think it could be done, post an issue :)"
                 )
             self.cli_lint_mode = cli_lint_mode_config
