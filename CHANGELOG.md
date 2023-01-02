@@ -10,6 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [CSharpier](https://csharpier.com/) linter
+- Drone CI enhancements
+  - Config generator tool now supports Drone CI
+  - Added information about how to change trigger rules for Drone CI workflow
+- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
 
 - Linter versions upgrades
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
@@ -21,10 +25,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 5.3.0 to **6.0.1** on 2023-01-02
   - [rubocop](https://rubocop.org/) from 1.41.1 to **1.42.0** on 2023-01-02
 <!-- linter-versions-end -->
-- Drone CI enhancements
-  - Config generator tool now supports Drone CI
-  - Added information about how to change trigger rules for Drone CI workflow
-- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
 
 ## [v6.17.0] - 2022-12-27
 
