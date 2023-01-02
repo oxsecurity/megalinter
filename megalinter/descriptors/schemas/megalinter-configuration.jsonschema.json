@@ -1913,7 +1913,7 @@
     },
     "CSHARP_CSHARPIER_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_LINT_MODE",
-      "default": "list_of_files",
+      "default": "file",
       "enum": [
         "file",
         "list_of_files",
