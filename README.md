@@ -701,7 +701,7 @@ This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/ove
 
 #### (Optional) Adjusting trigger rules
 
-The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can *optionally* change this behavior by changing the trigger. For example:
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can _optionally_ change this behavior by changing the trigger. For example:
 
 ```yaml
 kind: pipeline
