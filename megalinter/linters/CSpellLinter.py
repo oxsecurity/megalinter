@@ -52,7 +52,7 @@ class CSpellLinter(Linter):
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, reporter_self):
         # Collect detected words from logs
-        if self.stdout is None:
+        if self.stdout is None or not utils.can_write_report_files(self.master):
             return []
         whitelisted_words = []
         for log_line in self.stdout.split("\n"):
