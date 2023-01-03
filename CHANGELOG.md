@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.5.0 to **10.6.0** on 2023-01-01
   - [secretlint](https://github.com/secretlint/secretlint) from 5.3.0 to **6.0.1** on 2023-01-02
   - [rubocop](https://rubocop.org/) from 1.41.1 to **1.42.0** on 2023-01-02
+  - [phpstan](https://phpstan.org/) from 1.9.4 to **1.9.5** on 2023-01-02
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
