@@ -739,11 +739,11 @@ class Megalinter:
         os.makedirs(self.report_folder, exist_ok=True)
         # Clear report folder if requested
         if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
-                logging.info(
-                    f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
-                )
-                shutil.rmtree(self.report_folder, ignore_errors=True)
-                os.makedirs(self.report_folder, exist_ok=True)
+            logging.info(
+                f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
+            )
+            shutil.rmtree(self.report_folder, ignore_errors=True)
+            os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
@@ -762,7 +762,9 @@ class Megalinter:
             else logging.INFO
         )
 
-        if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(self):
+        if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
+            self
+        ):
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
@@ -774,7 +776,9 @@ class Megalinter:
             )
         else:
             log_file = (
-                self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
+                self.report_folder
+                + os.path.sep
+                + config.get("LOG_FILE", "megalinter.log")
             )
             # Log console output in a file
             if not os.path.isdir(os.path.dirname(log_file)):
