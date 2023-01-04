@@ -25,6 +25,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 5.3.0 to **6.0.1** on 2023-01-02
   - [rubocop](https://rubocop.org/) from 1.41.1 to **1.42.0** on 2023-01-02
   - [phpstan](https://phpstan.org/) from 1.9.4 to **1.9.5** on 2023-01-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.5 to **0.72.6** on 2023-01-04
+  - [ktlint](https://ktlint.github.io) from 0.48.0 to **0.48.1** on 2023-01-04
+  - [phpstan](https://phpstan.org/) from 1.9.5 to **1.9.6** on 2023-01-04
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.0.1 to **6.0.2** on 2023-01-04
+  - [kics](https://www.kics.io) from 1.6.6 to **1.6.7** on 2023-01-04
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
