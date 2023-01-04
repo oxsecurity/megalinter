@@ -21,7 +21,7 @@
         <link rel="next" href="../salesforce_sfdx_scanner_aura/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.1">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3bd4f189.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f56500e0.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
@@ -5808,7 +5808,7 @@
 <p><strong>Workaround: Restricted to PMD</strong></p>
 <h2 id="sfdx-scanner-apex-documentation">sfdx-scanner-apex documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.7.1</strong></li>
+<li>Version in MegaLinter: <strong>3.8.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html" target="_blank">How to configure sfdx-scanner-apex rules</a><ul>
 <li>If custom <code>apex-pmd-ruleset.xml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml" target="_blank">apex-pmd-ruleset.xml</a> will be used</li>
@@ -5962,10 +5962,10 @@
 <pre><code class="language-shell">scan a codebase with a selection of rules
 
 USAGE
-  $ sfdx scanner run -t &lt;array&gt; [-c &lt;array&gt;] [-r &lt;array&gt;] [-e &lt;array&gt;]
-    [-f csv|html|json|junit|sarif|table|xml] [-o &lt;string&gt;] [--tsconfig &lt;string&gt;]
-    [--eslintconfig &lt;string&gt;] [--pmdconfig &lt;string&gt;] [--env &lt;string&gt;] [-s
-    &lt;integer&gt; | --json] [--normalize-severity] [--verbose-violations]
+  $ sfdx scanner run -t &lt;array&gt; [-f csv|html|json|junit|sarif|table|xml]
+    [-o &lt;string&gt;] [-s &lt;integer&gt; | --json] [--normalize-severity] [-p &lt;array&gt;]
+    [-c &lt;array&gt;] [-r &lt;array&gt;] [-e &lt;array&gt;] [--tsconfig &lt;string&gt;] [--eslintconfig
+    &lt;string&gt;] [--pmdconfig &lt;string&gt;] [--env &lt;string&gt;] [--verbose-violations]
     [--verbose] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -5981,6 +5981,9 @@ FLAGS
 
   -o, --outfile=&lt;value&gt;
       write output to a file
+
+  -p, --projectdir=&lt;value&gt;
+      provide root directory of project
 
   -r, --ruleset=&lt;value&gt;
       [deprecated] rulesets to run
@@ -6241,6 +6244,7 @@ use-isnan                                               typescript   problem    
 @typescript-eslint/unbound-method                       typescript   problem                problem                                           eslint-typescript
 insecure-bundled-dependencies                           javascript   Insecure Dependencies                                                    retire-js
 ApexFlsViolationRule                                    apex         Security                                                                 sfge
+UnusedMethodRule                                        apex         Performance                                                              sfge
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
