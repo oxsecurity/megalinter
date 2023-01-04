@@ -9,9 +9,9 @@ description: puppet-lint is available to analyze PUPPET files in MegaLinter
 
 ## Linters
 
-| Linter                               | Configuration key               | Status                                                                                                                               |
-|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rodjek/puppet-lint)](https://github.com/rodjek/puppet-lint/commits) |
+| Linter                               | Configuration key               | Additional                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rodjek/puppet-lint)](https://github.com/rodjek/puppet-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/rodjek/puppet-lint?cacheSeconds=3600)](https://github.com/rodjek/puppet-lint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 

@@ -11,7 +11,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits) [![GitHub stars](https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600)](https://github.com/editorconfig-checker/editorconfig-checker)
 
 ## editorconfig-checker documentation
 

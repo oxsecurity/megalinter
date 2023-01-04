@@ -9,9 +9,9 @@ description: swiftlint is available to analyze SWIFT files in MegaLinter
 
 ## Linters
 
-| Linter                          | Configuration key           | Status                                                                                                                         |
-|---------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) |
+| Linter                          | Configuration key           | Additional                                                                                                                                                                                                                                                                                                      |
+|---------------------------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?cacheSeconds=3600)](https://github.com/realm/SwiftLint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 

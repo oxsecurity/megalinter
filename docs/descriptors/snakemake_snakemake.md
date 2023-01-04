@@ -11,7 +11,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake)
 
 ## snakemake documentation
 

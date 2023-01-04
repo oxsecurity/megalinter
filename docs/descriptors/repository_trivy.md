@@ -11,7 +11,7 @@ description: How to use trivy (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
 

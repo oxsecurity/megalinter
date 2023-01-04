@@ -9,10 +9,10 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Linters
 
-| Linter                           | Configuration key          | Status                                                                                                                                     |
-|----------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits) |
-| [pmd](java_pmd.md)               | [JAVA](java_pmd.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/pmd/pmd)](https://github.com/pmd/pmd/commits)                             |
+| Linter                           | Configuration key          | Additional                                                                                                                                                                                                                                                                                                                           |
+|----------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits) [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [pmd](java_pmd.md)               | [JAVA](java_pmd.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/pmd/pmd)](https://github.com/pmd/pmd/commits) [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange)                                                         |
 
 ## Linted files
 

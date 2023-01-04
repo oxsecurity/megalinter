@@ -11,7 +11,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) [![GitHub stars](https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600)](https://github.com/dart-lang/sdk)
 
 ## dartanalyzer documentation
 

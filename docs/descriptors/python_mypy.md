@@ -11,7 +11,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)
 
 Optional static typing checks for python
 

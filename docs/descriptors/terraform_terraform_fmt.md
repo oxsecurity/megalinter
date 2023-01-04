@@ -11,7 +11,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits) [![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow)
 
 ## terraform-fmt documentation
 

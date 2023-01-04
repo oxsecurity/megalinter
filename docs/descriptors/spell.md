@@ -9,11 +9,11 @@ description: misspell, cspell, proselint are available to analyze SPELL files in
 
 ## Linters
 
-| Linter                          | Configuration key                     | Status                                                                                                                                             |
-|---------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| [misspell](spell_misspell.md)   | [SPELL_MISSPELL](spell_misspell.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/client9/misspell)](https://github.com/client9/misspell/commits)                   |
-| [cspell](spell_cspell.md)       | [SPELL_CSPELL](spell_cspell.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) |
-| [proselint](spell_proselint.md) | [SPELL_PROSELINT](spell_proselint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits)               |
+| Linter                          | Configuration key                     | Additional                                                                                                                                                                                                                                                                                                          |
+|---------------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [misspell](spell_misspell.md)   | [SPELL_MISSPELL](spell_misspell.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/client9/misspell)](https://github.com/client9/misspell/commits) [![GitHub stars](https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600)](https://github.com/client9/misspell) ![autofix](https://shields.io/badge/-autofix-green) |
+| [cspell](spell_cspell.md)       | [SPELL_CSPELL](spell_cspell.md)       | [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell)                 |
+| [proselint](spell_proselint.md) | [SPELL_PROSELINT](spell_proselint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits) [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)                                             |
 
 ## Linted files
 

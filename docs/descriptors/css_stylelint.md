@@ -11,7 +11,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green)
 
 ## stylelint documentation
 

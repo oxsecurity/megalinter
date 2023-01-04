@@ -9,9 +9,9 @@ description: dartanalyzer is available to analyze DART files in MegaLinter
 
 ## Linters
 
-| Linter                               | Configuration key            | Status                                                                                                                     |
-|--------------------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) |
+| Linter                               | Configuration key            | Additional                                                                                                                                                                                                                                          |
+|--------------------------------------|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) [![GitHub stars](https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600)](https://github.com/dart-lang/sdk) |
 
 ## Linted files
 

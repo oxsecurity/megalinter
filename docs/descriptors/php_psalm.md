@@ -11,7 +11,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 ## psalm documentation
 

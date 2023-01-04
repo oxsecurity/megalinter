@@ -9,9 +9,9 @@ description: coffeelint is available to analyze COFFEE files in MegaLinter
 
 ## Linters
 
-| Linter                             | Configuration key              | Status                                                                                                                                   |
-|------------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) |
+| Linter                             | Configuration key              | Additional                                                                                                                                                                                                                                                                      |
+|------------------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) [![GitHub stars](https://img.shields.io/github/stars/clutchski/coffeelint?cacheSeconds=3600)](https://github.com/clutchski/coffeelint) |
 
 ## Linted files
 

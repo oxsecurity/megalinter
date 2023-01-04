@@ -11,7 +11,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 ## cfn-lint documentation
 

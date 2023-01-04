@@ -11,7 +11,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits) [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)
 
 ## black documentation
 

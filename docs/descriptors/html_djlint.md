@@ -11,7 +11,7 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) [![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint)
 
 DjLint can analyse multiple formats of HTML:
 

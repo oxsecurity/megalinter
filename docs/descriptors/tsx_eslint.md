@@ -11,7 +11,7 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 eslint requires a custom configuration file applicable to your project.
 

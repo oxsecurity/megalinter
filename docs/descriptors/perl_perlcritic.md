@@ -11,7 +11,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) [![GitHub stars](https://img.shields.io/github/stars/Perl-Critic/Perl-Critic?cacheSeconds=3600)](https://github.com/Perl-Critic/Perl-Critic)
 
 ## perlcritic documentation
 

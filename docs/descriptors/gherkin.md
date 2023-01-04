@@ -9,9 +9,9 @@ description: gherkin-lint is available to analyze GHERKIN files in MegaLinter
 
 ## Linters
 
-| Linter                                  | Configuration key                  | Status                                                                                                                                   |
-|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/vsiakka/gherkin-lint)](https://github.com/vsiakka/gherkin-lint/commits) |
+| Linter                                  | Configuration key                  | Additional                                                                                                                                                                                                                                                                      |
+|-----------------------------------------|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/vsiakka/gherkin-lint)](https://github.com/vsiakka/gherkin-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/vsiakka/gherkin-lint?cacheSeconds=3600)](https://github.com/vsiakka/gherkin-lint) |
 
 ## Linted files
 

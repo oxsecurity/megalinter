@@ -11,7 +11,7 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 bandit checks for security risks
 

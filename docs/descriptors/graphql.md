@@ -9,9 +9,9 @@ description: graphql-schema-linter is available to analyze GRAPHQL files in Mega
 
 ## Linters
 
-| Linter                                                    | Configuration key                                                 | Status                                                                                                                                                       |
-|-----------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/commits) |
+| Linter                                                    | Configuration key                                                 | Additional                                                                                                                                                                                                                                                                                                              |
+|-----------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/commits) [![GitHub stars](https://img.shields.io/github/stars/cjoudrey/graphql-schema-linter?cacheSeconds=3600)](https://github.com/cjoudrey/graphql-schema-linter) |
 
 ## Linted files
 

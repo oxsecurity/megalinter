@@ -11,7 +11,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits) [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo)
 
 ## clj-kondo documentation
 

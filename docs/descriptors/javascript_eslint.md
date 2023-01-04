@@ -11,7 +11,7 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits) [![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 eslint requires a custom configuration file applicable to your project.
 

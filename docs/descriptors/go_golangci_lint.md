@@ -11,7 +11,7 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint)
 
 ## golangci-lint documentation
 

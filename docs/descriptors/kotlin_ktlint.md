@@ -11,7 +11,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) [![GitHub stars](https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600)](https://github.com/pinterest/ktlint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 ## ktlint documentation
 

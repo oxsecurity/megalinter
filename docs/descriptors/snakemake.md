@@ -9,10 +9,10 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Linters
 
-| Linter                              | Configuration key                           | Status                                                                                                                                 |
-|-------------------------------------|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md)    | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) |
-| [snakefmt](snakemake_snakefmt.md)   | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/commits)   |
+| Linter                              | Configuration key                           | Additional                                                                                                                                                                                                                                                                                                                    |
+|-------------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md)    | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake)                                                   |
+| [snakefmt](snakemake_snakefmt.md)   | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/commits) [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakefmt?cacheSeconds=3600)](https://github.com/snakemake/snakefmt) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 

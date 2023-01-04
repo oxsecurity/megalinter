@@ -11,7 +11,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics)
 
 ## kics documentation
 

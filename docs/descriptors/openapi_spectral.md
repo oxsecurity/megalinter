@@ -11,7 +11,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral)
 
 ## spectral documentation
 

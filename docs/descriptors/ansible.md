@@ -9,9 +9,9 @@ description: ansible-lint is available to analyze ANSIBLE files in MegaLinter
 
 ## Linters
 
-| Linter                                  | Configuration key                  | Status                                                                                                                                   |
-|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/commits) |
+| Linter                                  | Configuration key                  | Additional                                                                                                                                                                                                                                                                                                                       |
+|-----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600)](https://github.com/ansible/ansible-lint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

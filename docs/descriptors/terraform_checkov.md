@@ -11,7 +11,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
+![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 > This linter has been deprecated.
 >

@@ -11,7 +11,7 @@ description: How to use standard (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) [![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green)
 
 ## standard documentation
 

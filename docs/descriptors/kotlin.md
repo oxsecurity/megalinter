@@ -9,9 +9,9 @@ description: ktlint is available to analyze KOTLIN files in MegaLinter
 
 ## Linters
 
-| Linter                     | Configuration key          | Status                                                                                                                           |
-|----------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) |
+| Linter                     | Configuration key          | Additional                                                                                                                                                                                                                                                                                                                                                           |
+|----------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) [![GitHub stars](https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600)](https://github.com/pinterest/ktlint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

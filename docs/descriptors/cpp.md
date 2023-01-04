@@ -9,9 +9,9 @@ description: cpplint is available to analyze CPP files in MegaLinter
 
 ## Linters
 
-| Linter                    | Configuration key             | Status                                                                                                                         |
-|---------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [cpplint](cpp_cpplint.md) | [CPP_CPPLINT](cpp_cpplint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) |
+| Linter                    | Configuration key             | Additional                                                                                                                                                                                                                                                  |
+|---------------------------|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [cpplint](cpp_cpplint.md) | [CPP_CPPLINT](cpp_cpplint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) |
 
 ## Linted files
 

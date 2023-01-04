@@ -9,11 +9,11 @@ description: sql-lint, sqlfluff, tsqllint are available to analyze SQL files in 
 
 ## Linters
 
-| Linter                      | Configuration key      | Status                                                                                                                                   |
-|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/joereynolds/sql-lint)](https://github.com/joereynolds/sql-lint/commits) |
-| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits)       |
-| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits)       |
+| Linter                      | Configuration key      | Additional                                                                                                                                                                                                                                                                      |
+|-----------------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/joereynolds/sql-lint)](https://github.com/joereynolds/sql-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/joereynolds/sql-lint?cacheSeconds=3600)](https://github.com/joereynolds/sql-lint) |
+| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff)             |
+| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits) [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint)             |
 
 ## Linted files
 

@@ -11,7 +11,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)
 
 Optional static typing checks for python, by Microsoft
 

@@ -9,10 +9,10 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 
 ## Linters
 
-| Linter                               | Configuration key         | Status                                                                                                                                       |
-|--------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) |
-| [revive](go_revive.md)               | [GO](go_revive.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits)                 |
+| Linter                               | Configuration key         | Additional                                                                                                                                                                                                                                                                                               |
+|--------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint)                  |
+| [revive](go_revive.md)               | [GO](go_revive.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits) [![GitHub stars](https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600)](https://github.com/mgechev/revive) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

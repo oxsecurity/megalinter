@@ -11,7 +11,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits) [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 ## checkstyle documentation
 

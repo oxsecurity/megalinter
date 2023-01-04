@@ -11,7 +11,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/pylint)](https://github.com/PyCQA/pylint/commits)
+[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/pylint)](https://github.com/PyCQA/pylint/commits) [![GitHub stars](https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600)](https://github.com/PyCQA/pylint)
 
 ## pylint documentation
 
