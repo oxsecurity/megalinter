@@ -403,8 +403,8 @@ BuildImage() {
     ###################
     # Build the image with latest tags#
     ###################
-    docker buildx build --platform "${DOCKER_BUILD_PLATFORMS}" $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" --load --squash .  2>&1
-    docker buildx build --platform "${DOCKER_BUILD_PLATFORMS}" $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" --load --squash .  2>&1
+    docker buildx build --platform "${DOCKER_BUILD_PLATFORMS}" $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" --load --squash . 2>&1
+    docker buildx build --platform "${DOCKER_BUILD_PLATFORMS}" $EXTRA_DOCKER_BUILD_ARGS --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" --load --squash . 2>&1
 
     #######################
     # Load the error code #
