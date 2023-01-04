@@ -79,6 +79,7 @@ class Linter:
         # Other
         self.files_sub_directory = None
         self.file_contains_regex = []
+        self.file_contains_regex_extensions = []
         self.file_names_not_ends_with = []
         self.active_only_if_file_found = []
         self.lint_all_files = False
@@ -764,6 +765,7 @@ class Linter:
             "file_names_regex": self.file_names_regex,
             "file_names_not_ends_with": self.file_names_not_ends_with,
             "file_contains_regex": self.file_contains_regex,
+            "file_contains_regex_extensions": self.file_contains_regex_extensions,
         }
         logging.debug("[Filters] " + str(log_object))
 
@@ -781,6 +783,7 @@ class Linter:
             ignore_generated_files=False,  # This filter is applied at MegaLinter level
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
+            file_contains_regex_extensions=self.file_contains_regex_extensions,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
             prefix=self.workspace,
