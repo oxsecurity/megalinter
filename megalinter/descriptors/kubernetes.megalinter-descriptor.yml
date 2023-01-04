@@ -17,6 +17,8 @@ linters:
   # KUBEVAL
   - linter_name: kubeval
     name: KUBERNETES_KUBEVAL
+    deprecated: true
+    deprecated_description: Kubeval project is no longer maintained, you should use KUBERNETES_KUBECONFORM.
     linter_url: https://www.kubeval.com/
     linter_repo: https://github.com/instrumenta/kubeval
     linter_spdx_license: Apache-2.0

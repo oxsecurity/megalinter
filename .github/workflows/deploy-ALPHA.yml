@@ -69,6 +69,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
@@ -85,6 +86,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: GCR
         shell: bash
         run: .automation/upload-docker.sh

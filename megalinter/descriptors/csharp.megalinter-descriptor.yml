@@ -55,14 +55,15 @@ linters:
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
     ignore_file_name: .csharpierignore
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_remove_args:
       - "--check"
     test_folder: csharp_csharpier
     examples:
-      - "dotnet csharpier --check myfile.cs"
-      - "dotnet csharpier myfile.cs" # Fix
+      - "dotnet csharpier --check myfile.cs myfile2.cs"
+      - "dotnet csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0

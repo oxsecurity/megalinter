@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1894&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1908&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -699,6 +699,32 @@ steps:
 
 This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
 
+#### (Optional) Adjusting trigger rules
+
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can _optionally_ change this behavior by changing the trigger. For example:
+
+```yaml
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps: 
+
+- name: megalinter
+  image: oxsecurity/megalinter:v6
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+    
+trigger:
+  event:
+  - push
+```
+
+The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
+
 ### Docker container
 
 You can also run megalinter with its Docker container, just execute this command:
@@ -790,7 +816,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | [**PRE_COMMANDS**](#pre-commands)                          | \[\]                                     | Custom bash commands to run before linters                                                                                                                                                                 |
 | **PRINT_ALPACA**                                           | `true`                                   | Enable printing alpaca image to console                                                                                                                                                                    |
 | **PRINT_ALL_FILES**                                        | `false`                                  | Display all files analyzed by the linter instead of only the number                                                                                                                                        |
-| **REPORT_OUTPUT_FOLDER**                                   | `${GITHUB_WORKSPACE}/megalinter-reports` | Directory for generating report files. Send `none` to not generate reports                                                                                                                                 |
+| **REPORT_OUTPUT_FOLDER**                                   | `${GITHUB_WORKSPACE}/megalinter-reports` | Directory for generating report files. Set to `none` to not generate reports                                                                                                                               |
 | **SHOW_ELAPSED_TIME**                                      | `false`                                  | Displays elapsed time in reports                                                                                                                                                                           |
 | **SHOW_SKIPPED_LINTERS**                                   | `true`                                   | Displays all disabled linters mega-linter could have run                                                                                                                                                   |
 | **SKIP_CLI_LINT_MODES**                                    | \[\]                                     | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                              |
@@ -912,7 +938,10 @@ Each linter has a lint mode by default, visible in its MegaLinter documentation 
 
 You can override the CLI_LINT_MODE by using configuration variable for each linter (see [linters documentation](https://megalinter.io/supported-linters/))
 
+- Linters with `file` default lint mode can not be overridden to `list_of_files`
 - Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
+
+Allowing `file` or `list_of_files` to be overridden to `project` is mostly for workarounds, for example with linters that have a problem to find their config file when the current folder is not the repo root.
 
 Special considerations:
 
@@ -1041,7 +1070,7 @@ _Note:_ IF you did not use `MegaLinter` as GitHub Action name, please read [GitH
 <!-- markdown-headers
 ---
 title: MegaLinter plugins
-description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick and mustache
+description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick, mustache and linkcheck
 ---
 -->
 ## Plugins
@@ -1070,7 +1099,7 @@ PLUGINS:
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
 * [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
 * [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-
+* [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
 
 Submit a PR if you want your plugin to appear here :)
 

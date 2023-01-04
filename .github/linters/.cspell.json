@@ -52,6 +52,7 @@
         "Braintree",
         "Breporters",
         "Bubley",
+        "buildx",
         "CHECKMAKE",
         "CHECKOV",
         "CHECKSTYLE",
@@ -1350,6 +1351,7 @@
         "\u03f0linters",
         "\u04bbcoffeescript",
         "\u0636clojure",
-        "\u077bcbad"
+        "\u077bcbad",
+        "linkcheck"
     ]
 }

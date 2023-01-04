@@ -1055,6 +1055,28 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += [f"# {linter.linter_name} {badge}"]
 
         # Indicate that a linter is disabled in this version
+        if hasattr(linter, "deprecated") and linter.deprecated is True:
+            linter_doc_md += [""]
+            linter_doc_md += ["> This linter has been deprecated.", ">"]
+
+            if (
+                hasattr(linter, "deprecated_description")
+                and linter.deprecated_description
+            ):
+                linter_doc_md += [
+                    "> ".join(
+                        ("> " + linter.deprecated_description.lstrip()).splitlines(True)
+                    ),
+                    ">",
+                ]
+
+            linter_doc_md += [
+                f"> You should disable {linter.linter_name} by adding it in DISABLE_LINTERS property.",
+                ">",
+                "> It will be maintained at least until the next major release.",
+            ]
+
+        # Indicate that a linter is disabled in this version
         if hasattr(linter, "disabled") and linter.disabled is True:
             linter_doc_md += [""]
             linter_doc_md += [
@@ -1234,12 +1256,25 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             )
         # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
         if linter.cli_lint_mode != "project":
-            linter_doc_md += [
+            cli_lint_mode_doc_md = (
                 f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
-                f"- `file`: Calls the linter for each file<br/>"
-                "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-                f"- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
-            ]
+            )
+            cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
+
+            if linter.cli_lint_mode == "file":
+                enum = ["file", "project"]
+            else:
+                enum = ["file", "list_of_files", "project"]
+
+                cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+
+            cli_lint_mode_doc_md += (
+                "- `project`: Call the linter from the root of the project"
+            )
+            cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
+
+            linter_doc_md += [cli_lint_mode_doc_md]
+
             add_in_config_schema_file(
                 [
                     [
@@ -1249,7 +1284,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "type": "string",
                             "title": f"{linter.name}: Override default cli lint mode",
                             "default": linter.cli_lint_mode,
-                            "enum": ["file", "list_of_files", "project"],
+                            "enum": enum,
                         },
                     ]
                 ]
