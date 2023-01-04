@@ -18,7 +18,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **3.7.1**
+- Version in MegaLinter: **3.8.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -88,10 +88,10 @@ sfdx scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sfdx scanner run -t <array> [-c <array>] [-r <array>] [-e <array>]
-    [-f csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
-    [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
-    <integer> | --json] [--normalize-severity] [--verbose-violations]
+  $ sfdx scanner run -t <array> [-f csv|html|json|junit|sarif|table|xml]
+    [-o <string>] [-s <integer> | --json] [--normalize-severity] [-p <array>]
+    [-c <array>] [-r <array>] [-e <array>] [--tsconfig <string>] [--eslintconfig
+    <string>] [--pmdconfig <string>] [--env <string>] [--verbose-violations]
     [--verbose] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -107,6 +107,9 @@ FLAGS
 
   -o, --outfile=<value>
       write output to a file
+
+  -p, --projectdir=<value>
+      provide root directory of project
 
   -r, --ruleset=<value>
       [deprecated] rulesets to run
@@ -367,6 +370,7 @@ use-isnan                                               typescript   problem    
 @typescript-eslint/unbound-method                       typescript   problem                problem                                           eslint-typescript
 insecure-bundled-dependencies                           javascript   Insecure Dependencies                                                    retire-js
 ApexFlsViolationRule                                    apex         Security                                                                 sfge
+UnusedMethodRule                                        apex         Performance                                                              sfge
 ```
 
 ### Installation on mega-linter Docker image
