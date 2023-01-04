@@ -23,8 +23,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![ruzickap/packer-templates - GitHub](https://gh-card.dev/repos/ruzickap/packer-templates.svg?fullname=)](https://github.com/ruzickap/packer-templates){target=_blank}
 [![OCSInventory-NG/OCSInventory-Server - GitHub](https://gh-card.dev/repos/OCSInventory-NG/OCSInventory-Server.svg?fullname=)](https://github.com/OCSInventory-NG/OCSInventory-Server){target=_blank}
 [![xUnholy/k8s-gitops - GitHub](https://gh-card.dev/repos/xUnholy/k8s-gitops.svg?fullname=)](https://github.com/xUnholy/k8s-gitops){target=_blank}
-[![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
+[![leosuncin/nest-auth-example - GitHub](https://gh-card.dev/repos/leosuncin/nest-auth-example.svg?fullname=)](https://github.com/leosuncin/nest-auth-example){target=_blank}
 [![meichthys/foss_photo_libraries - GitHub](https://gh-card.dev/repos/meichthys/foss_photo_libraries.svg?fullname=)](https://github.com/meichthys/foss_photo_libraries){target=_blank}
 [![toboshii/home-ops - GitHub](https://gh-card.dev/repos/toboshii/home-ops.svg?fullname=)](https://github.com/toboshii/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}

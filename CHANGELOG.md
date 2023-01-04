@@ -30,6 +30,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.9.5 to **1.9.6** on 2023-01-04
   - [secretlint](https://github.com/secretlint/secretlint) from 6.0.1 to **6.0.2** on 2023-01-04
   - [kics](https://www.kics.io) from 1.6.6 to **1.6.7** on 2023-01-04
+  - [djlint](https://djlint.com/) from 1.19.10 to **1.19.11** on 2023-01-04
+  - [syft](https://github.com/anchore/syft) from 0.64.0 to **0.65.0** on 2023-01-04
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
