@@ -5,8 +5,8 @@ file_extensions:
   - ".pm"
   - ".t"
   - ""
-file_contains_regex_extensions: 
-  - "" 
+file_contains_regex_extensions:
+  - ""
 file_contains_regex:
   - "#!/usr/bin/env perl"
   - "#!/usr/bin/perl"
