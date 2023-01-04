@@ -51,6 +51,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      #######################
+      # Docker Buildx setup #
+      #######################
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       ########################
       # Get the current date #
       ########################
@@ -85,7 +94,7 @@ jobs:
              MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
              echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
           fi
-          DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+          docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} --load . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       ##########################
@@ -100,6 +109,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
           DOCKERFILE_PATH: Dockerfile-quick
+          DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh || true
@@ -117,7 +127,7 @@ jobs:
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
         shell: bash
-        run: DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} --load . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 90
 
       ####################################
@@ -138,6 +148,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter
           IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
           DOCKERFILE_PATH: Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh

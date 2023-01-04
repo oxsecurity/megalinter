@@ -551,7 +551,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "ARM_ARM_TTK: Override default cli lint mode",
@@ -705,7 +704,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "BASH_EXEC: Override default cli lint mode",
@@ -1036,7 +1034,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "BICEP_BICEP_LINTER: Override default cli lint mode",
@@ -1160,7 +1157,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CLOJURE_CLJ_KONDO: Override default cli lint mode",
@@ -1434,7 +1430,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "COFFEE_COFFEELINT: Override default cli lint mode",
@@ -1913,7 +1908,7 @@
     },
     "CSHARP_CSHARPIER_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -2023,7 +2018,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
@@ -2150,7 +2144,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CSS_SCSS_LINT: Override default cli lint mode",
@@ -2521,7 +2514,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "DART_DARTANALYZER: Override default cli lint mode",
@@ -3209,7 +3201,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "ENV_DOTENV_LINTER: Override default cli lint mode",
@@ -3435,7 +3426,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "GHERKIN_GHERKIN_LINT: Override default cli lint mode",
@@ -3996,7 +3986,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default cli lint mode",
@@ -5899,7 +5888,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "KOTLIN_KTLINT: Override default cli lint mode",
@@ -6134,7 +6122,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "KUBERNETES_KUBEVAL: Override default cli lint mode",
@@ -6247,7 +6234,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "LATEX_CHKTEX: Override default cli lint mode",
@@ -6425,7 +6411,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "LUA_LUACHECK: Override default cli lint mode",
@@ -6552,7 +6537,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "MAKEFILE_CHECKMAKE: Override default cli lint mode",
@@ -7116,7 +7100,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "MARKDOWN_REMARK_LINT: Override default cli lint mode",
@@ -7268,7 +7251,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "OPENAPI_SPECTRAL: Override default cli lint mode",
@@ -7432,7 +7414,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PERL_PERLCRITIC: Override default cli lint mode",
@@ -8226,7 +8207,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "POWERSHELL_POWERSHELL: Override default cli lint mode",
@@ -8313,7 +8293,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Override default cli lint mode",
@@ -8520,7 +8499,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PROTOBUF_PROTOLINT: Override default cli lint mode",
@@ -8657,7 +8635,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PUPPET_PUPPET_LINT: Override default cli lint mode",
@@ -9672,7 +9649,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RAKU_RAKU: Override default cli lint mode",
@@ -10535,7 +10511,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RSTCHECK: Override default cli lint mode",
@@ -10662,7 +10637,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RSTFMT: Override default cli lint mode",
@@ -10769,7 +10743,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RST_LINT: Override default cli lint mode",
@@ -10886,7 +10859,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RUBY_RUBOCOP: Override default cli lint mode",
@@ -11139,7 +11111,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "R_LINTR: Override default cli lint mode",
@@ -11632,7 +11603,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SCALA_SCALAFIX: Override default cli lint mode",
@@ -11802,7 +11772,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SNAKEMAKE_LINT: Override default cli lint mode",
@@ -11909,7 +11878,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SNAKEMAKE_SNAKEFMT: Override default cli lint mode",
@@ -12537,7 +12505,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SQL_SQL_LINT: Override default cli lint mode",
@@ -12917,7 +12884,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TEKTON_TEKTON_LINT: Override default cli lint mode",
@@ -13044,7 +13010,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_CHECKOV: Override default cli lint mode",
@@ -13161,7 +13126,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_KICS: Override default cli lint mode",
@@ -13268,7 +13232,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TERRAFORM_FMT: Override default cli lint mode",
@@ -13375,7 +13338,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TERRAGRUNT: Override default cli lint mode",
@@ -13601,7 +13563,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TFLINT: Override default cli lint mode",
@@ -14274,7 +14235,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",

@@ -716,6 +716,20 @@
             "title": "Default file name for the linter configuration file",
             "type": "string"
           },
+          "deprecated": {
+            "$id": "#/properties/linters/items/properties/deprecated",
+            "default": false,
+            "description": "Shows if the linter is deprecated.",
+            "title": "Is the linter deprecated?",
+            "type": "boolean"
+          },
+          "deprecated_description": {
+            "$id": "#/properties/linters/items/properties/deprecated_description",
+            "default": "",
+            "description": "Displays information on why it is deprecated and whether an alternative is available.",
+            "title": "Description of the deprecated linter",
+            "type": "string"
+          },
           "descriptor_flavors": {
             "$id": "#/properties/linters/items/properties/descriptor_flavors",
             "default": [],

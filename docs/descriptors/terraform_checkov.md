@@ -13,9 +13,13 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
 
-TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
-
-You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
+> This linter has been deprecated.
+>
+> TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
+>
+> You should disable checkov by adding it in DISABLE_LINTERS property.
+>
+> It will be maintained at least until the next major release.
 
 ## checkov documentation
 
@@ -31,18 +35,18 @@ You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
 - Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                      | Description                                                                                                                                                                                                         | Default value      |
-|-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| TERRAFORM_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
-| TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
-| TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
-| TERRAFORM_CHECKOV_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`             |
-| TERRAFORM_CHECKOV_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".tf"]`          |
-| TERRAFORM_CHECKOV_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
-| TERRAFORM_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
-| TERRAFORM_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
-| TERRAFORM_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
-| TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| Variable                                      | Description                                                                                                                                                                                  | Default value      |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| TERRAFORM_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
+| TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
+| TERRAFORM_CHECKOV_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
+| TERRAFORM_CHECKOV_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`          |
+| TERRAFORM_CHECKOV_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TERRAFORM_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
+| TERRAFORM_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
+| TERRAFORM_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
 
 ## IDE Integration
 
@@ -114,7 +118,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations]
 
 Infrastructure as code static analysis
@@ -365,7 +369,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

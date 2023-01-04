@@ -26,7 +26,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 | CSHARP_CSHARPIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
 | CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
 | CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
-| CSHARP_CSHARPIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`             |
+| CSHARP_CSHARPIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`    |
 | CSHARP_CSHARPIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".cs"]`          |
 | CSHARP_CSHARPIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
 | CSHARP_CSHARPIER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
@@ -63,16 +63,16 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- csharpier is called one time by identified file (`file` CLI lint mode)
+- csharpier is called once with the list of files as arguments (`list_of_files` CLI lint mode)
 
 ### Example calls
 
 ```shell
-dotnet csharpier --check myfile.cs
+dotnet csharpier --check myfile.cs myfile2.cs
 ```
 
 ```shell
-dotnet csharpier myfile.cs
+dotnet csharpier myfile.cs myfile2.cs
 ```
 
 
