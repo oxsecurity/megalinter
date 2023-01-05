@@ -29,7 +29,7 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.42.1 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.44.0 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -142,13 +142,11 @@ linters:
   - linter_name: checkov #TODONEXT: disable
     name: TERRAFORM_CHECKOV
     can_output_sarif: true
+    deprecated: true
+    deprecated_description: TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
     descriptor_flavors:
       - terraform
       - security
-    linter_text: |
-      TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
-
-      You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
@@ -164,6 +162,7 @@ linters:
       - "checkov --file myfile.tf"
     install:
       pip:
+        - packaging==21.3
         - checkov
     ide:
       vscode:

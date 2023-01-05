@@ -761,10 +761,10 @@ class Megalinter:
             if logging_level_key in logging_level_list
             else logging.INFO
         )
-        log_file = (
-            self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
-        )
-        if config.get("LOG_FILE", "") == "none":
+
+        if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
+            self
+        ):
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
@@ -775,6 +775,11 @@ class Megalinter:
                 ],
             )
         else:
+            log_file = (
+                self.report_folder
+                + os.path.sep
+                + config.get("LOG_FILE", "megalinter.log")
+            )
             # Log console output in a file
             if not os.path.isdir(os.path.dirname(log_file)):
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)

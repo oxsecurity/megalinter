@@ -1,6 +1,8 @@
 {
   "private": true,
+  "name": "dummy.package",
   "description": "dummy package.json to allow standard tests to include .automation folder",
+  "version": "1.0.0",
   "standard": {
     "ignore": ["!.automation/**"]
   }

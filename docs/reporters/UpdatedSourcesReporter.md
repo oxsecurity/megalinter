@@ -1,3 +1,7 @@
+---
+title: Updated Sources Reporter for MegaLinter
+description: Posts a pack of files containing only the source files fixed by linters. Can be applied automatically or manually extracted in the repository root.
+---
 # Updated Sources Reporter
 
 Posts a **pack** of files containing **only the source files fixed by linters**

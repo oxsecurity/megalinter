@@ -217,3 +217,37 @@ linters:
       vscode:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  # npm-package-json-lint
+  - linter_name: npm-package-json-lint
+    linter_url: https://npmpackagejsonlint.org/
+    linter_repo: https://github.com/tclindner/npm-package-json-lint
+    linter_rules_url: https://npmpackagejsonlint.org/docs/rules
+    linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
+    linter_rules_ignore_config_url: https://npmpackagejsonlint.org/docs/ignore
+    linter_image_url: https://npmpackagejsonlint.org/img/logo.svg
+    linter_megalinter_ref_url: https://github.com/tclindner/npm-package-json-lint/pull/915
+    descriptor_flavors:
+      - cupcake
+      - dotnet
+      - javascript
+      - salesforce
+    file_names_regex:
+      - "package\\.json"
+    cli_lint_mode: project
+    cli_executable: npmPkgJsonLint
+    cli_config_arg_name: --configFile
+    config_file_name: .npmpackagejsonlintrc.json
+    ignore_file_name: .npmpackagejsonlintignore
+    cli_lint_extra_args:
+      - --quiet
+    cli_lint_extra_args_after:
+      - "."
+    cli_help_arg_name: --help
+    test_folder: npm_package_json_lint
+    examples:
+      - "npmPkgJsonLint ."
+      - "npmPkgJsonLint --configFile .npmpackagejsonlintrc.json ."
+    install:
+      npm:
+        - "npm-package-json-lint"
+        - "npm-package-json-lint-config-default"

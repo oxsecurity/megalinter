@@ -84,6 +84,11 @@
     "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",
     "title": "cpplint/cpplint"
   },
+  "csharpier": {
+    "description": "An Opinionated Code Formatter.",
+    "image": null,
+    "title": "CSharpier"
+  },
   "cspell": {
     "description": "A Spell Checker for Code! Contribute to streetsidesoftware/cspell development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/50543896?s=400&v=4",
@@ -264,6 +269,11 @@
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
     "title": "nvuillam/npm-groovy-lint"
   },
+  "npm-package-json-lint": {
+    "description": "A configurable linter for package.json files",
+    "image": null,
+    "title": "npm-package-json-lint | npm-package-json-lint"
+  },
   "perlcritic": {
     "description": "Critique Perl source code for best-practices.",
     "image": null,
@@ -298,6 +308,11 @@
     "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
     "title": "PowerShell/PSScriptAnalyzer"
+  },
+  "powershell_formatter": {
+    "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
+    "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
+    "title": "GitHub - PowerShell/PSScriptAnalyzer: Download ScriptAnalyzer from PowerShellGallery"
   },
   "prettier": {
     "description": "Opinionated Code Formatter",

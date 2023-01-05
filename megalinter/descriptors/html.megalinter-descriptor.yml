@@ -27,6 +27,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png
     linter_rules_configuration_url: https://djlint.com/docs/configuration/
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
+    linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "found ([0-9]+) errors"

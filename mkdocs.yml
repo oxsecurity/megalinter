@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 51 languages, 23 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 53 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -83,6 +83,7 @@ nav:
           - "C# (CSHARP)":
               - "All C# (CSHARP) linters": "descriptors/csharp.md"
               - "dotnet-format": "descriptors/csharp_dotnet_format.md"
+              - "csharpier": "descriptors/csharp_csharpier.md"
           - "DART":
               - "All DART linters": "descriptors/dart.md"
               - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
@@ -126,6 +127,7 @@ nav:
           - "POWERSHELL":
               - "All POWERSHELL linters": "descriptors/powershell.md"
               - "powershell": "descriptors/powershell_powershell.md"
+              - "powershell_formatter": "descriptors/powershell_powershell_formatter.md"
           - "PYTHON":
               - "All PYTHON linters": "descriptors/python.md"
               - "pylint": "descriptors/python_pylint.md"
@@ -198,6 +200,7 @@ nav:
               - "eslint-plugin-jsonc": "descriptors/json_eslint_plugin_jsonc.md"
               - "v8r": "descriptors/json_v8r.md"
               - "prettier": "descriptors/json_prettier.md"
+              - "npm-package-json-lint": "descriptors/json_npm_package_json_lint.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
