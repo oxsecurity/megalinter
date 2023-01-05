@@ -10,10 +10,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [CSharpier](https://csharpier.com/) linter
+- New MegaLinter plugins
+  - [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
+  - [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
 - Drone CI enhancements
   - Config generator tool now supports Drone CI
   - Added information about how to change trigger rules for Drone CI workflow
-- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
+
+- Fix perl linter skipping files
 
 - Linter versions upgrades
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
@@ -35,6 +39,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
+  - [phpstan](https://phpstan.org/) from 1.9.6 to **1.9.7** on 2023-01-05
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.5.0 to **2.6.0** on 2023-01-05
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
