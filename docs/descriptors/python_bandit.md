@@ -11,7 +11,7 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/bandit?sort=semver)](https://github.com/PyCQA/bandit/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/contributors/)
 
 bandit checks for security risks
 

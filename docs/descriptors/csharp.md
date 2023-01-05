@@ -9,10 +9,10 @@ description: dotnet-format, csharpier are available to analyze CSHARP files in M
 
 ## Linters
 
-| Linter                                   | Configuration key                 | Additional                                                                                                                                                                                                                                                                                                        |
-|------------------------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/format)](https://github.com/dotnet/format/commits) [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow)         |
-| [csharpier](csharp_csharpier.md)         | [CSHARP](csharp_csharpier.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/belav/csharpier)](https://github.com/belav/csharpier/commits) [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
+| Linter                                            | Additional                                                                                                                                                                         |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [dotnet-format (CSHARP)](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow)     |
+| [csharpier (CSHARP)](csharp_csharpier.md)         | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 

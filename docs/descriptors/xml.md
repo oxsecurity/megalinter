@@ -9,9 +9,9 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 ## Linters
 
-| Linter                    | Configuration key     | Additional |
-|---------------------------|-----------------------|------------|
-| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |            |
+| Linter                          | Additional |
+|---------------------------------|------------|
+| [xmllint (XML)](xml_xmllint.md) |            |
 
 ## Linted files
 

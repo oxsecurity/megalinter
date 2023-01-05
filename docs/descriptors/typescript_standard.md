@@ -11,7 +11,7 @@ description: How to use standard (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) [![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green)
+[![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/standard/standard?sort=semver)](https://github.com/standard/standard/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/standard/standard)](https://github.com/standard/standard/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/standard/standard)](https://github.com/standard/standard/graphs/contributors/)
 
 ## standard documentation
 

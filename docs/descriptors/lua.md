@@ -9,9 +9,9 @@ description: luacheck is available to analyze LUA files in MegaLinter
 
 ## Linters
 
-| Linter                      | Configuration key      | Additional                                                                                                                                                                                                                                                          |
-|-----------------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/luarocks/luacheck)](https://github.com/luarocks/luacheck/commits) [![GitHub stars](https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600)](https://github.com/luarocks/luacheck) |
+| Linter                            | Additional                                                                                                                       |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| [luacheck (LUA)](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600)](https://github.com/luarocks/luacheck) |
 
 ## Linted files
 

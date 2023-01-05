@@ -9,9 +9,9 @@ description: lintr is available to analyze R files in MegaLinter
 
 ## Linters
 
-| Linter              | Configuration key | Additional                                                                                                                                                                                                                                  |
-|---------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [lintr](r_lintr.md) | [R](r_lintr.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/r-lib/lintr)](https://github.com/r-lib/lintr/commits) [![GitHub stars](https://img.shields.io/github/stars/r-lib/lintr?cacheSeconds=3600)](https://github.com/r-lib/lintr) |
+| Linter                  | Additional                                                                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------|
+| [lintr (R)](r_lintr.md) | [![GitHub stars](https://img.shields.io/github/stars/r-lib/lintr?cacheSeconds=3600)](https://github.com/r-lib/lintr) |
 
 ## Linted files
 

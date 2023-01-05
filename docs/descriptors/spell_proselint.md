@@ -11,7 +11,7 @@ description: How to use proselint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits) [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)
+[![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/amperser/proselint?sort=semver)](https://github.com/amperser/proselint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/amperser/proselint)](https://github.com/amperser/proselint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/amperser/proselint)](https://github.com/amperser/proselint/graphs/contributors/)
 
 a linter for prose
 

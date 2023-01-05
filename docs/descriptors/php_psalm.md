@@ -11,7 +11,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/vimeo/psalm?sort=semver)](https://github.com/vimeo/psalm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/contributors/)
 
 ## psalm documentation
 

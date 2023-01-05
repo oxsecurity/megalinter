@@ -9,11 +9,11 @@ description: prettier, yamllint, v8r are available to analyze YAML files in Mega
 
 ## Linters
 
-| Linter                       | Configuration key        | Additional                                                                                                                                                                                                                                                                                                                |
-|------------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [prettier](yaml_prettier.md) | [YAML](yaml_prettier.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
-| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/commits) [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint)                                           |
-| [v8r](yaml_v8r.md)           | [YAML](yaml_v8r.md)      | [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits) [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                           |
+| Linter                              | Additional                                                                                                                                                                             |
+|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [prettier (YAML)](yaml_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
+| [yamllint (YAML)](yaml_yamllint.md) | [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint)                                                 |
+| [v8r (YAML)](yaml_v8r.md)           | [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                 |
 
 ## Linted files
 

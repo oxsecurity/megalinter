@@ -11,7 +11,7 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits) [![GitHub stars](https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600)](https://github.com/returntocorp/semgrep) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600)](https://github.com/returntocorp/semgrep) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/returntocorp/semgrep?sort=semver)](https://github.com/returntocorp/semgrep/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/contributors/)
 
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
 

@@ -11,7 +11,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aws-cloudformation/cfn-lint?sort=semver)](https://github.com/aws-cloudformation/cfn-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/graphs/contributors/)
 
 ## cfn-lint documentation
 

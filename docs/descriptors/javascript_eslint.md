@@ -11,7 +11,7 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits) [![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/eslint/eslint?sort=semver)](https://github.com/eslint/eslint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/eslint/eslint)](https://github.com/eslint/eslint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/eslint/eslint)](https://github.com/eslint/eslint/graphs/contributors/)
 
 eslint requires a custom configuration file applicable to your project.
 

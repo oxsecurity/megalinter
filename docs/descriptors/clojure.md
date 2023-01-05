@@ -9,9 +9,9 @@ description: clj-kondo is available to analyze CLOJURE files in MegaLinter
 
 ## Linters
 
-| Linter                            | Configuration key               | Additional                                                                                                                                                                                                                                                              |
-|-----------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits) [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) |
+| Linter                                      | Additional                                                                                                                         |
+|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [clj-kondo (CLOJURE)](clojure_clj_kondo.md) | [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) |
 
 ## Linted files
 

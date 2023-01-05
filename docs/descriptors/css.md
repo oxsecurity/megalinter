@@ -9,10 +9,10 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 
 ## Linters
 
-| Linter                        | Configuration key                 | Additional                                                                                                                                                                                                                                                                                                                      |
-|-------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
-| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits) [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)                                                                             |
+| Linter                                        | Additional                                                                                                                                                                               |
+|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [stylelint (CSS_STYLELINT)](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
+| [scss-lint (CSS_SCSS_LINT)](css_scss_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)                                                                 |
 
 ## Linted files
 

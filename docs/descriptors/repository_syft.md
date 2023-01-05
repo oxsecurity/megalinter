@@ -11,7 +11,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits) [![GitHub stars](https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600)](https://github.com/anchore/syft) ![sarif](https://shields.io/badge/-SARIF-orange)
+[![GitHub stars](https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600)](https://github.com/anchore/syft) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/syft?sort=semver)](https://github.com/anchore/syft/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/syft)](https://github.com/anchore/syft/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/syft)](https://github.com/anchore/syft/graphs/contributors/)
 
 Builds a SBOM (Software Build Of Materials) from your repository
 
