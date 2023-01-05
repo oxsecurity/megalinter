@@ -408,7 +408,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0 \
+    && /usr/share/dotnet/dotnet tool install -g csharpier \
 
 # dartanalyzer installation
     && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
