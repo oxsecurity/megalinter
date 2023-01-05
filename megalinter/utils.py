@@ -70,6 +70,7 @@ def filter_files(
     ignore_generated_files: Optional[bool] = False,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
+    file_contains_regex_extensions: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
     prefix: Optional[str] = None,
@@ -142,9 +143,24 @@ def filter_files(
         # Skip according to end of file name
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
-        # Skip according to file name regex
-        if file_contains_regex and not file_contains(
-            file_with_prefix_and_sub_dir, file_contains_regex_object
+        # Skip according to file contains regex
+        if (
+            file_contains_regex
+            and (
+                (
+                    # no defined file extension to check file content
+                    file_contains_regex_extensions is None
+                    or len(file_contains_regex_extensions) == 0
+                )
+                or (
+                    # check file extension
+                    file_extension
+                    in file_contains_regex_extensions
+                )
+            )
+            and not file_contains(
+                file_with_prefix_and_sub_dir, file_contains_regex_object
+            )
         ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
