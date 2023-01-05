@@ -10,10 +10,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [CSharpier](https://csharpier.com/) linter
+- New MegaLinter plugins
+  - [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
+  - [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
 - Drone CI enhancements
   - Config generator tool now supports Drone CI
   - Added information about how to change trigger rules for Drone CI workflow
-- New MegaLinter plugin: [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links.
+
 - Fix perl linter skipping files
 
 - Linter versions upgrades
