@@ -791,8 +791,8 @@ def generate_descriptor_documentation(descriptor):
     descriptor_md += [
         "## Linters",
         "",
-        "| Linter | Configuration key | Additional |",
-        "| ------ | ----------------- | ---------- |",
+        "| Linter | Additional |",
+        "| ------ | ---------- |",
     ]
     for linter in descriptor.get("linters", []):
         linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
@@ -800,8 +800,7 @@ def generate_descriptor_documentation(descriptor):
         badges = get_badges(linter)
         md_extra = " ".join(badges)
         descriptor_md += [
-            f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
-            f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
+            f"| [{linter.get('linter_name')} ({linter.get('name', descriptor.get('descriptor_id'))})]({doc_url(linter_doc_url)}) |"
             f" {md_extra} |"
         ]
 
@@ -951,8 +950,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Additional  |",
-        "| :---: | ----------------- | -------------- | ------------ | :-----:  |",
+        f"| <!-- --> | {col_header} | Linter | Additional  |",
+        "| :---: | ----------------- | -------------- | :-----:  |",
     ]
     descriptor_linters = linters_by_type[type1]
     for linter in descriptor_linters:
@@ -986,12 +985,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         )
         # Build md table line
         linters_tables_md += [
-            f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
-            f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
-            f"| [{linter.name}]({doc_url(linter_doc_url)})"
-            f"| {md_extra} |"
+            f"| {icon_html} <!-- linter-icon --> | "
+            f"{descriptor_id_cell} | "
+            f"[{linter.linter_name} ({linter.name})]({doc_url(linter_doc_url)}) | "
+            f"{md_extra} |"
         ]
-
+        individual_badges = get_badges(linter, show_last_release=True, show_last_commit=True, show_commits_activity=True, show_contributors=True)
+        md_individual_extra = " ".join(individual_badges)
         # Build individual linter doc
         linter_doc_md = [
             "---",
@@ -1017,7 +1017,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     "center",
                     150,
                 ),
-                "\n" + md_extra,
+                "\n" + md_individual_extra,
             ]
         # Text + image as title
         elif (
@@ -1033,14 +1033,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     100,
                 )
                 + linter.linter_name
-                + " "
-                + md_extra
+                + "\n"
+                + md_individual_extra
             ]
         # Text as title
-        elif md_extra == "":
+        elif md_individual_extra == "":
             linter_doc_md += [f"# {linter.linter_name}"]
         else:
-            linter_doc_md += [f"# {linter.linter_name} {md_extra}"]
+            linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
         # Indicate that a linter is disabled in this version
         if hasattr(linter, "deprecated") and linter.deprecated is True:
@@ -2712,15 +2712,15 @@ def generate_documentation_all_users():
         file.write("\n".join(linter_doc_md) + "\n")
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
-def get_badges(linter):
+def get_badges(linter, show_last_release=False, show_last_commit=False, show_commits_activity=False, show_contributors=False):
     badges = []
+    repo = get_github_repo(linter)
+
     if (
         (hasattr(linter, "get") and linter.get("deprecated") is True) or
         (hasattr(linter, "deprecated") and linter.deprecated is True)
     ):
         badges += ["![deprecated](https://shields.io/badge/-deprecated-red)"]
-    badges += [get_repository_badge_url(linter)]
-    repo = get_github_repo(linter)
     if repo is not None:
         badges += [
             f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
@@ -2741,47 +2741,28 @@ def get_badges(linter):
         (hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True)
     ):
         badges += ["![sarif](https://shields.io/badge/-SARIF-orange)"]
+
+    if show_last_release and repo is not None:
+        badges += [
+            f"[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/{repo}?sort=semver)]"
+            f"(https://github.com/{repo}/releases)"
+        ]
+    if show_last_commit and repo is not None:
+        badges += [
+            f"[![GitHub last commit](https://img.shields.io/github/last-commit/{repo})]"
+            f"(https://github.com/{repo}/commits)"
+        ]
+    if show_commits_activity and repo is not None:
+        badges += [
+            f"[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/{repo})]"
+            f"(https://github.com/{repo}/graphs/commit-activity/)"
+        ]
+    if show_contributors and repo is not None:
+        badges += [
+            f"[![GitHub contributors](https://img.shields.io/github/contributors/{repo})]"
+            f"(https://github.com/{repo}/graphs/contributors/)"
+        ]
     return badges
-
-# https://shields.io/category/activity
-def get_repository_badge_url(linter):
-    repo_url = None
-
-    if (
-        hasattr(linter, "get")
-        and linter.get("linter_repo") is not None
-        and "github" in linter.get("linter_repo")
-    ):
-        repo_url = linter.get("linter_repo")
-    elif (
-        hasattr(linter, "get")
-        and linter.get("linter_url") is not None
-        and "github" in linter.get("linter_url")
-    ):
-        repo_url = linter.get("linter_url")
-    elif (
-        hasattr(linter, "linter_repo")
-        and linter.linter_repo is not None
-        and "github" in linter.linter_repo
-    ):
-        repo_url = linter.linter_repo
-    elif (
-        hasattr(linter, "linter_url")
-        and linter.linter_url is not None
-        and "github" in linter.linter_url
-    ):
-        repo_url = linter.linter_url
-
-    badge = ""
-
-    if repo_url is not None:
-        match = re.search(r"https://github\.com/(.*)/(.*)", repo_url)
-
-        badge_url = f"https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)}"
-        badge = f"[![GitHub last commit]({badge_url})]({repo_url}/commits)"
-
-    return badge
-
 
 # get github repo info using api
 def get_github_repo_info(repo):
