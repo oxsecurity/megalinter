@@ -19,6 +19,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fix perl linter skipping files
 
+- Upgrade to dotnet 6.0, dotnet-format requires `.sln`, `.csproj` or `.vbproj` in the repo
+
 - Linter versions upgrades
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
   - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1** on 2022-12-29
