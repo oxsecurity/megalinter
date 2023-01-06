@@ -344,18 +344,20 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     mv "ktlint" /usr/bin/ \
 
 # kubeval installation
-    && case ${TARGETPLATFORM} in \
-      "linux/amd64")   KUBEVAL_ARCH=linux-amd64   ;; \
-      "linux/386")     KUBEVAL_ARCH=linux-386     ;; \
-      "windows/amd64") KUBEVAL_ARCH=windows-amd64 ;; \
-    esac \
-  && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-  && mkdir -p ${ML_THIRD_PARTY_DIR} \
-  && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-${KUBEVAL_ARCH}.tar.gz \
-  && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-  && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-  && rm ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz \
-  && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && if [ "$TARGETPLATFORM" = "linux/amd64" ] || [ "$TARGETPLATFORM" = "linux/386" ] || [ "$TARGETPLATFORM" = "windows/amd64" ]; then \
+         case ${TARGETPLATFORM} in \
+           "linux/amd64")   KUBEVAL_ARCH=linux-amd64   ;; \
+           "linux/386")     KUBEVAL_ARCH=linux-386     ;; \
+           "windows/amd64") KUBEVAL_ARCH=windows-amd64 ;; \
+         esac \
+         && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
+         && mkdir -p ${ML_THIRD_PARTY_DIR} \
+         && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-${KUBEVAL_ARCH}.tar.gz \
+         && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+         && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+         && rm ${ML_THIRD_PARTY_DIR}/kubeval-${KUBEVAL_ARCH}.tar.gz \
+         && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete; \
+    fi \
 
 # kubeconform installation
     && case ${TARGETPLATFORM} in \
@@ -399,12 +401,14 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0 \
 
 # misspell installation
-    && ML_THIRD_PARTY_DIR="/third-party/misspell" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
+    && if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+         ML_THIRD_PARTY_DIR="/third-party/misspell" \
+         && mkdir -p ${ML_THIRD_PARTY_DIR} \
+         && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+         && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
+         && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+         && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete; \
+    fi \
 
 # tflint installation
 # Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
