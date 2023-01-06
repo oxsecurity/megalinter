@@ -800,8 +800,9 @@ def generate_descriptor_documentation(descriptor):
         badges = get_badges(linter)
         md_extra = " ".join(badges)
         descriptor_md += [
-            f"| [{linter.get('linter_name')} ({linter.get('name', descriptor.get('descriptor_id'))})]({doc_url(linter_doc_url)}) |"
-            f" {md_extra} |"
+            f"| [{linter.get('linter_name')} ({linter.get('name', descriptor.get('descriptor_id'))})]"
+            f"({doc_url(linter_doc_url)}) "
+            f"| {md_extra} |"
         ]
 
     # Criteria used by the descriptor to identify files to lint
