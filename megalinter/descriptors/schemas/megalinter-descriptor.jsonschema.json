@@ -169,6 +169,22 @@
       "title": "File content regex filters",
       "type": "array"
     },
+    "file_contains_regex_extensions": {
+      "$id": "#/properties/file_contains_regex_extensions",
+      "default": [],
+      "description": "If file_contains_regex is set, use this property to filter extensions of the files that will be checked",
+      "examples": [
+        [
+          "",
+          ".json"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "File contain regex extensions filters",
+      "type": "array"
+    },
     "file_extensions": {
       "$id": "#/properties/file_extensions",
       "default": [],
