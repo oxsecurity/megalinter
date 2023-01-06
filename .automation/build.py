@@ -917,7 +917,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
                 continue
         line = line.replace(
             DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors"
-        ).replace(".md#readme", "/")
+        ).replace(".md#readme", "/").replace(".md", "/")
         filtered_table_md += [line]
     flavor_doc_md += filtered_table_md
     # Write MD file
@@ -988,7 +988,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linters_tables_md += [
             f"| {icon_html} <!-- linter-icon --> | "
             f"{descriptor_id_cell} | "
-            f"[{linter.linter_name} ({linter.name})]({doc_url(linter_doc_url)}) | "
+            f"[**{linter.linter_name}**]({doc_url(linter_doc_url)})<br/>"
+            f"[_{linter.name}_]({doc_url(linter_doc_url)}) | "
             f"{md_extra} |"
         ]
         individual_badges = get_badges(linter, show_last_release=True, show_last_commit=True, show_commits_activity=True, show_contributors=True)
@@ -1681,7 +1682,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         if replace_link is True:
             md_line = md_line.replace(
                 DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors"
-            ).replace(".md#readme", "/")
+            ).replace(".md#readme", "/").replace(".md", "/")
         md_table += [md_line]
     return md_table
 
@@ -1869,7 +1870,9 @@ def get_install_md(item):
 
 
 def doc_url(href):
-    if href.startswith("https://github") and "#" not in href:
+    if "/descriptors/" in href and "#" not in href:
+        return href
+    elif href.startswith("https://github") and "#" not in href:
         return href + "#readme"
     return href
 
