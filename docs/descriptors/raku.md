@@ -9,9 +9,9 @@ description: raku is available to analyze RAKU files in MegaLinter
 
 ## Linters
 
-| Linter               | Configuration key    | Status                                                                                                                     |
-|----------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------|
-| [raku](raku_raku.md) | [RAKU](raku_raku.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rakudo/rakudo)](https://github.com/rakudo/rakudo/commits) |
+| Linter                      | Additional                                                                                                               |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| [raku (RAKU)](raku_raku.md) | [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo) |
 
 ## Linted files
 

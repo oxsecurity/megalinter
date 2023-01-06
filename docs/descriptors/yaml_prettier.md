@@ -11,7 +11,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)
+[![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
 ## prettier documentation
 

@@ -11,7 +11,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits)
+[![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rubocop-hq/rubocop?sort=semver)](https://github.com/rubocop-hq/rubocop/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/contributors/)
 
 ## rubocop documentation
 

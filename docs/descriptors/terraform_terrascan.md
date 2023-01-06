@@ -11,7 +11,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits)
+[![GitHub stars](https://img.shields.io/github/stars/accurics/terrascan?cacheSeconds=3600)](https://github.com/accurics/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/accurics/terrascan?sort=semver)](https://github.com/accurics/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/accurics/terrascan)](https://github.com/accurics/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/accurics/terrascan)](https://github.com/accurics/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/accurics/terrascan)](https://github.com/accurics/terrascan/graphs/contributors/)
 
 ## terrascan documentation
 

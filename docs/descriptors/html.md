@@ -9,10 +9,10 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Linters
 
-| Linter                       | Configuration key        | Status                                                                                                                                                 |
-|------------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [djlint](html_djlint.md)     | [HTML](html_djlint.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) |
-| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/commits)                     |
+| Linter                              | Additional                                                                                                                                           |
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [djlint (HTML)](html_djlint.md)     | [![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) |
+| [htmlhint (HTML)](html_htmlhint.md) | [![GitHub stars](https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600)](https://github.com/htmlhint/HTMLHint)                     |
 
 ## Linted files
 

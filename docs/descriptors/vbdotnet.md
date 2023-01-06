@@ -9,9 +9,9 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 ## Linters
 
-| Linter                                     | Configuration key                     | Status                                                                                                                     |
-|--------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| [dotnet-format](vbdotnet_dotnet_format.md) | [VBDOTNET](vbdotnet_dotnet_format.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/format)](https://github.com/dotnet/format/commits) |
+| Linter                                                | Additional                                                                                                                                                                     |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [dotnet-format (VBDOTNET)](vbdotnet_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 

@@ -11,7 +11,7 @@ description: How to use jscpd (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits)
+[![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kucherenko/jscpd?sort=semver)](https://github.com/kucherenko/jscpd/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/contributors/)
 
 JSCPD browses all files of your repository to detect excessive copy-pastes
 

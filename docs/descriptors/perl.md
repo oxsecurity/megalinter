@@ -9,9 +9,9 @@ description: perlcritic is available to analyze PERL files in MegaLinter
 
 ## Linters
 
-| Linter                           | Configuration key          | Status                                                                                                                                         |
-|----------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) |
+| Linter                                  | Additional                                                                                                                                   |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| [perlcritic (PERL)](perl_perlcritic.md) | [![GitHub stars](https://img.shields.io/github/stars/Perl-Critic/Perl-Critic?cacheSeconds=3600)](https://github.com/Perl-Critic/Perl-Critic) |
 
 ## Linted files
 

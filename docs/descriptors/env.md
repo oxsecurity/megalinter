@@ -9,9 +9,9 @@ description: dotenv-linter is available to analyze ENV files in MegaLinter
 
 ## Linters
 
-| Linter                                | Configuration key           | Status                                                                                                                                                 |
-|---------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [dotenv-linter](env_dotenv_linter.md) | [ENV](env_dotenv_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/commits) |
+| Linter                                      | Additional                                                                                                                                                                                               |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [dotenv-linter (ENV)](env_dotenv_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/dotenv-linter/dotenv-linter?cacheSeconds=3600)](https://github.com/dotenv-linter/dotenv-linter) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 

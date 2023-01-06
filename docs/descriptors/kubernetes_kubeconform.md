@@ -11,7 +11,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits)
+[![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannh/kubeconform?sort=semver)](https://github.com/yannh/kubeconform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/contributors/)
 
 `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
 
