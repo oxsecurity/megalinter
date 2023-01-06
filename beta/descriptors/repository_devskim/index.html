@@ -5804,7 +5804,7 @@
 <p>Use <code>--ignore-globs</code> to ignore files and/or folders</p>
 <h2 id="devskim-documentation">devskim documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.6.9</strong></li>
+<li>Version in MegaLinter: <strong>0.7.101</strong></li>
 <li>Visit <a href="https://github.com/microsoft/DevSkim#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/DevSkim/wiki/Analyze-Command" target="_blank">How to configure devskim rules</a></li>
 <li>See <a href="https://github.com/microsoft/DevSkim/wiki/Analyze-Command" target="_blank">How to ignore files and directories with devskim</a></li>
@@ -5919,7 +5919,7 @@
 <pre><code class="language-shell">devskim analyze --file-format sarif .
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Microsoft DevSkim Command Line Interface 0.6.9+456d78fa02
+<pre><code class="language-shell">Microsoft DevSkim Command Line Interface 0.7.101+7d74268320
 
 Usage: devskim [options] [command]
 
@@ -5943,10 +5943,10 @@ Use &quot;devskim [command] --help&quot; for more information about a command.
 </ul>
 <pre><code class="language-dockerfile">RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     &amp;&amp; chmod +x dotnet-install.sh \
-    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH=&quot;${PATH}:/root/.dotnet/tools:/usr/share/dotnet&quot;
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
