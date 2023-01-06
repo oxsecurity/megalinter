@@ -9,10 +9,10 @@ description: kubeval, kubeconform are available to analyze KUBERNETES files in M
 
 ## Linters
 
-| Linter                                                            | Additional                                                                                                                                                                                   |
-|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [kubeval (KUBERNETES_KUBEVAL)](kubernetes_kubeval.md)             | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval) |
-| [kubeconform (KUBERNETES_KUBECONFORM)](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)                                                             |
+| Linter                                                                                                 | Additional                                                                                                                                                                                   |
+|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**kubeval**](kubernetes_kubeval.md)<br/>[_KUBERNETES_KUBEVAL_](kubernetes_kubeval.md)                 | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval) |
+| [**kubeconform**](kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)                                                             |
 
 ## Linted files
 

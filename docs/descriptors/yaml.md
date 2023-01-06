@@ -9,11 +9,11 @@ description: prettier, yamllint, v8r are available to analyze YAML files in Mega
 
 ## Linters
 
-| Linter                              | Additional                                                                                                                                                                             |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [prettier (YAML)](yaml_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
-| [yamllint (YAML)](yaml_yamllint.md) | [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint)                                                 |
-| [v8r (YAML)](yaml_v8r.md)           | [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                 |
+| Linter                                                                   | Additional                                                                                                                                                                             |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**prettier**](yaml_prettier.md)<br/>[_YAML_PRETTIER_](yaml_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**yamllint**](yaml_yamllint.md)<br/>[_YAML_YAMLLINT_](yaml_yamllint.md) | [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint)                                                 |
+| [**v8r**](yaml_v8r.md)<br/>[_YAML_V8R_](yaml_v8r.md)                     | [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                 |
 
 ## Linted files
 

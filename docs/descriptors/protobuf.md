@@ -9,9 +9,9 @@ description: protolint is available to analyze PROTOBUF files in MegaLinter
 
 ## Linters
 
-| Linter                                        | Additional                                                                                                                                                                               |
-|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [protolint (PROTOBUF)](protobuf_protolint.md) | [![GitHub stars](https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600)](https://github.com/yoheimuta/protolint) ![autofix](https://shields.io/badge/-autofix-green) |
+| Linter                                                                                   | Additional                                                                                                                                                                               |
+|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**protolint**](protobuf_protolint.md)<br/>[_PROTOBUF_PROTOLINT_](protobuf_protolint.md) | [![GitHub stars](https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600)](https://github.com/yoheimuta/protolint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 

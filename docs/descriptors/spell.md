@@ -9,11 +9,11 @@ description: misspell, cspell, proselint are available to analyze SPELL files in
 
 ## Linters
 
-| Linter                                            | Additional                                                                                                                                                                         |
-|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [misspell (SPELL_MISSPELL)](spell_misspell.md)    | [![GitHub stars](https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600)](https://github.com/client9/misspell) ![autofix](https://shields.io/badge/-autofix-green) |
-| [cspell (SPELL_CSPELL)](spell_cspell.md)          | [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell)                                   |
-| [proselint (SPELL_PROSELINT)](spell_proselint.md) | [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)                                                 |
+| Linter                                                                          | Additional                                                                                                                                                                         |
+|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**misspell**](spell_misspell.md)<br/>[_SPELL_MISSPELL_](spell_misspell.md)     | [![GitHub stars](https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600)](https://github.com/client9/misspell) ![autofix](https://shields.io/badge/-autofix-green) |
+| [**cspell**](spell_cspell.md)<br/>[_SPELL_CSPELL_](spell_cspell.md)             | [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell)                                   |
+| [**proselint**](spell_proselint.md)<br/>[_SPELL_PROSELINT_](spell_proselint.md) | [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)                                                 |
 
 ## Linted files
 

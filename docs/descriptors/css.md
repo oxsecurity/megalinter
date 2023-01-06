@@ -9,10 +9,10 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 
 ## Linters
 
-| Linter                                        | Additional                                                                                                                                                                               |
-|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [stylelint (CSS_STYLELINT)](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
-| [scss-lint (CSS_SCSS_LINT)](css_scss_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)                                                                 |
+| Linter                                                                    | Additional                                                                                                                                                                               |
+|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**stylelint**](css_stylelint.md)<br/>[_CSS_STYLELINT_](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
+| [**scss-lint**](css_scss_lint.md)<br/>[_CSS_SCSS_LINT_](css_scss_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)                                                                 |
 
 ## Linted files
 

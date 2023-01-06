@@ -9,9 +9,9 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 
 ## Linters
 
-| Linter                          | Additional                                                                                                               |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| [arm-ttk (ARM)](arm_arm_ttk.md) | [![GitHub stars](https://img.shields.io/github/stars/Azure/arm-ttk?cacheSeconds=3600)](https://github.com/Azure/arm-ttk) |
+| Linter                                                            | Additional                                                                                                               |
+|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| [**arm-ttk**](arm_arm_ttk.md)<br/>[_ARM_ARM_TTK_](arm_arm_ttk.md) | [![GitHub stars](https://img.shields.io/github/stars/Azure/arm-ttk?cacheSeconds=3600)](https://github.com/Azure/arm-ttk) |
 
 ## Linted files
 

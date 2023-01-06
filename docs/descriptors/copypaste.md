@@ -9,9 +9,9 @@ description: jscpd is available to analyze COPYPASTE files in MegaLinter
 
 ## Linters
 
-| Linter                                  | Additional                                                                                                                     |
-|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [jscpd (COPYPASTE)](copypaste_jscpd.md) | [![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) |
+| Linter                                                                      | Additional                                                                                                                     |
+|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [**jscpd**](copypaste_jscpd.md)<br/>[_COPYPASTE_JSCPD_](copypaste_jscpd.md) | [![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) |
 
 ## Linted files
 

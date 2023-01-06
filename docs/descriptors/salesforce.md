@@ -9,11 +9,11 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc are availabl
 
 ## Linters
 
-| Linter                                                                              | Additional                                                                                                                                     |
-|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sfdx-scanner-apex (SALESFORCE_SFDX_SCANNER_APEX)](salesforce_sfdx_scanner_apex.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
-| [sfdx-scanner-aura (SALESFORCE_SFDX_SCANNER_AURA)](salesforce_sfdx_scanner_aura.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
-| [sfdx-scanner-lwc (SALESFORCE_SFDX_SCANNER_LWC)](salesforce_sfdx_scanner_lwc.md)    | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
+| Linter                                                                                                                         | Additional                                                                                                                                     |
+|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
+| [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
+| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md)     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
 
 ## Linted files
 

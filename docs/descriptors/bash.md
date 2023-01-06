@@ -9,11 +9,11 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 
 ## Linters
 
-| Linter                                             | Additional                                                                                                                                                                            |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [bash-exec (BASH_EXEC)](bash_bash_exec.md)         |                                                                                                                                                                                       |
-| [shellcheck (BASH_SHELLCHECK)](bash_shellcheck.md) | [![GitHub stars](https://img.shields.io/github/stars/koalaman/shellcheck?cacheSeconds=3600)](https://github.com/koalaman/shellcheck) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [shfmt (BASH_SHFMT)](bash_shfmt.md)                | [![GitHub stars](https://img.shields.io/github/stars/mvdan/sh?cacheSeconds=3600)](https://github.com/mvdan/sh) ![formatter](https://shields.io/badge/-format-yellow)                  |
+| Linter                                                                           | Additional                                                                                                                                                                            |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**bash-exec**](bash_bash_exec.md)<br/>[_BASH_EXEC_](bash_bash_exec.md)          |                                                                                                                                                                                       |
+| [**shellcheck**](bash_shellcheck.md)<br/>[_BASH_SHELLCHECK_](bash_shellcheck.md) | [![GitHub stars](https://img.shields.io/github/stars/koalaman/shellcheck?cacheSeconds=3600)](https://github.com/koalaman/shellcheck) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**shfmt**](bash_shfmt.md)<br/>[_BASH_SHFMT_](bash_shfmt.md)                     | [![GitHub stars](https://img.shields.io/github/stars/mvdan/sh?cacheSeconds=3600)](https://github.com/mvdan/sh) ![formatter](https://shields.io/badge/-format-yellow)                  |
 
 ## Linted files
 

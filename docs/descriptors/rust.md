@@ -9,9 +9,9 @@ description: clippy is available to analyze RUST files in MegaLinter
 
 ## Linters
 
-| Linter                          | Additional                                                                                                                               |
-|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [clippy (RUST)](rust_clippy.md) | [![GitHub stars](https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600)](https://github.com/rust-lang/rust-clippy) |
+| Linter                                                           | Additional                                                                                                                               |
+|------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [**clippy**](rust_clippy.md)<br/>[_RUST_CLIPPY_](rust_clippy.md) | [![GitHub stars](https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600)](https://github.com/rust-lang/rust-clippy) |
 
 ## Linted files
 

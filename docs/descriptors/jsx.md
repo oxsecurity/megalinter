@@ -9,9 +9,9 @@ description: eslint is available to analyze JSX files in MegaLinter
 
 ## Linters
 
-| Linter                        | Additional                                                                                                                                                                                                                                                    |
-|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [eslint (JSX)](jsx_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter                                                        | Additional                                                                                                                                                                                                                                                    |
+|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**eslint**](jsx_eslint.md)<br/>[_JSX_ESLINT_](jsx_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

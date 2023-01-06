@@ -9,15 +9,15 @@ description: pylint, black, flake8, isort, bandit, mypy, pyright are available t
 
 ## Linters
 
-| Linter                                        | Additional                                                                                                                                                                 |
-|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [pylint (PYTHON_PYLINT)](python_pylint.md)    | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600)](https://github.com/PyCQA/pylint)                                                     |
-| [black (PYTHON_BLACK)](python_black.md)       | [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)     |
-| [flake8 (PYTHON_FLAKE8)](python_flake8.md)    | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8)                                                     |
-| [isort (PYTHON_ISORT)](python_isort.md)       | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) |
-| [bandit (PYTHON_BANDIT)](python_bandit.md)    | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)    |
-| [mypy (PYTHON_MYPY)](python_mypy.md)          | [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                       |
-| [pyright (PYTHON_PYRIGHT)](python_pyright.md) | [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)                                           |
+| Linter                                                                     | Additional                                                                                                                                                                 |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**pylint**](python_pylint.md)<br/>[_PYTHON_PYLINT_](python_pylint.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600)](https://github.com/PyCQA/pylint)                                                     |
+| [**black**](python_black.md)<br/>[_PYTHON_BLACK_](python_black.md)         | [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)     |
+| [**flake8**](python_flake8.md)<br/>[_PYTHON_FLAKE8_](python_flake8.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8)                                                     |
+| [**isort**](python_isort.md)<br/>[_PYTHON_ISORT_](python_isort.md)         | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**bandit**](python_bandit.md)<br/>[_PYTHON_BANDIT_](python_bandit.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)    |
+| [**mypy**](python_mypy.md)<br/>[_PYTHON_MYPY_](python_mypy.md)             | [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                       |
+| [**pyright**](python_pyright.md)<br/>[_PYTHON_PYRIGHT_](python_pyright.md) | [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)                                           |
 
 ## Linted files
 

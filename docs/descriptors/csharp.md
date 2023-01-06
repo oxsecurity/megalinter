@@ -9,10 +9,10 @@ description: dotnet-format, csharpier are available to analyze CSHARP files in M
 
 ## Linters
 
-| Linter                                            | Additional                                                                                                                                                                         |
-|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [dotnet-format (CSHARP)](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow)     |
-| [csharpier (CSHARP)](csharp_csharpier.md)         | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
+| Linter                                                                                             | Additional                                                                                                                                                                         |
+|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**dotnet-format**](csharp_dotnet_format.md)<br/>[_CSHARP_DOTNET_FORMAT_](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow)     |
+| [**csharpier**](csharp_csharpier.md)<br/>[_CSHARP_CSHARPIER_](csharp_csharpier.md)                 | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 

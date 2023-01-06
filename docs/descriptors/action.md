@@ -9,9 +9,9 @@ description: actionlint is available to analyze ACTION files in MegaLinter
 
 ## Linters
 
-| Linter                                      | Additional                                                                                                                     |
-|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [actionlint (ACTION)](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) |
+| Linter                                                                                 | Additional                                                                                                                     |
+|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) |
 
 ## Linted files
 

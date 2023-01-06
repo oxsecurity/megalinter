@@ -9,10 +9,10 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Linters
 
-| Linter                                  | Additional                                                                                                                                                                                |
-|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [checkstyle (JAVA)](java_checkstyle.md) | [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [pmd (JAVA)](java_pmd.md)               | [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
+| Linter                                                                           | Additional                                                                                                                                                                                |
+|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**checkstyle**](java_checkstyle.md)<br/>[_JAVA_CHECKSTYLE_](java_checkstyle.md) | [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**pmd**](java_pmd.md)<br/>[_JAVA_PMD_](java_pmd.md)                             | [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
 
 ## Linted files
 

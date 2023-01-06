@@ -799,9 +799,16 @@ def generate_descriptor_documentation(descriptor):
         linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
         badges = get_badges(linter)
         md_extra = " ".join(badges)
+        linter_key = linter.get("name", "")
+        if linter_key == "":
+            linter_key = (
+                descriptor.get("descriptor_id")
+                + "_"
+                + linter.get("linter_name").upper().replace("-", "_")
+            )
         descriptor_md += [
-            f"| [{linter.get('linter_name')} ({linter.get('name', descriptor.get('descriptor_id'))})]"
-            f"({doc_url(linter_doc_url)}) "
+            f"| [**{linter.get('linter_name')}**]({doc_url(linter_doc_url)})<br/>"
+            f"[_{linter_key}_]({doc_url(linter_doc_url)}) "
             f"| {md_extra} |"
         ]
 
@@ -915,9 +922,11 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
                     break
             if match is False:
                 continue
-        line = line.replace(
-            DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors"
-        ).replace(".md#readme", "/").replace(".md", "/")
+        line = (
+            line.replace(DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors")
+            .replace(".md#readme", "/")
+            .replace(".md", "/")
+        )
         filtered_table_md += [line]
     flavor_doc_md += filtered_table_md
     # Write MD file
@@ -992,7 +1001,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"[_{linter.name}_]({doc_url(linter_doc_url)}) | "
             f"{md_extra} |"
         ]
-        individual_badges = get_badges(linter, show_last_release=True, show_last_commit=True, show_commits_activity=True, show_contributors=True)
+        individual_badges = get_badges(
+            linter,
+            show_last_release=True,
+            show_last_commit=True,
+            show_commits_activity=True,
+            show_contributors=True,
+        )
         md_individual_extra = " ".join(individual_badges)
         # Build individual linter doc
         linter_doc_md = [
@@ -1680,9 +1695,11 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
             f" {flavor['label']} | {str(linters_number)} | {docker_image_badge} {docker_pulls_badge} |"
         )
         if replace_link is True:
-            md_line = md_line.replace(
-                DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors"
-            ).replace(".md#readme", "/").replace(".md", "/")
+            md_line = (
+                md_line.replace(DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors")
+                .replace(".md#readme", "/")
+                .replace(".md", "/")
+            )
         md_table += [md_line]
     return md_table
 
@@ -2716,13 +2733,19 @@ def generate_documentation_all_users():
         file.write("\n".join(linter_doc_md) + "\n")
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
-def get_badges(linter, show_last_release=False, show_last_commit=False, show_commits_activity=False, show_contributors=False):
+
+def get_badges(
+    linter,
+    show_last_release=False,
+    show_last_commit=False,
+    show_commits_activity=False,
+    show_contributors=False,
+):
     badges = []
     repo = get_github_repo(linter)
 
-    if (
-        (hasattr(linter, "get") and linter.get("deprecated") is True) or
-        (hasattr(linter, "deprecated") and linter.deprecated is True)
+    if (hasattr(linter, "get") and linter.get("deprecated") is True) or (
+        hasattr(linter, "deprecated") and linter.deprecated is True
     ):
         badges += ["![deprecated](https://shields.io/badge/-deprecated-red)"]
     if repo is not None:
@@ -2730,19 +2753,19 @@ def get_badges(linter, show_last_release=False, show_last_commit=False, show_com
             f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
             f"(https://github.com/{repo})"
         ]
-    if (
-        (hasattr(linter, "get") and linter.get("is_formatter") is True) or
-        (hasattr(linter, "is_formatter") and linter.is_formatter is True)
+    if (hasattr(linter, "get") and linter.get("is_formatter") is True) or (
+        hasattr(linter, "is_formatter") and linter.is_formatter is True
     ):
         badges += ["![formatter](https://shields.io/badge/-format-yellow)"]
     elif (
-        (hasattr(linter, "get") and linter.get("cli_lint_fix_arg_name") is not None) or 
-        (hasattr(linter, "cli_lint_fix_arg_name") and linter.cli_lint_fix_arg_name is not None)
+        hasattr(linter, "get") and linter.get("cli_lint_fix_arg_name") is not None
+    ) or (
+        hasattr(linter, "cli_lint_fix_arg_name")
+        and linter.cli_lint_fix_arg_name is not None
     ):
         badges += ["![autofix](https://shields.io/badge/-autofix-green)"]
-    if (
-        (hasattr(linter, "get") and linter.get("can_output_sarif") is True) or
-        (hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True)
+    if (hasattr(linter, "get") and linter.get("can_output_sarif") is True) or (
+        hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True
     ):
         badges += ["![sarif](https://shields.io/badge/-SARIF-orange)"]
 
@@ -2767,6 +2790,7 @@ def get_badges(linter, show_last_release=False, show_last_commit=False, show_com
             f"(https://github.com/{repo}/graphs/contributors/)"
         ]
     return badges
+
 
 # get github repo info using api
 def get_github_repo_info(repo):

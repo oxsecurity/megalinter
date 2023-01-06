@@ -9,9 +9,9 @@ description: rubocop is available to analyze RUBY files in MegaLinter
 
 ## Linters
 
-| Linter                            | Additional                                                                                                                                                                             |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [rubocop (RUBY)](ruby_rubocop.md) | [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) |
+| Linter                                                               | Additional                                                                                                                                                                             |
+|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**rubocop**](ruby_rubocop.md)<br/>[_RUBY_RUBOCOP_](ruby_rubocop.md) | [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 
