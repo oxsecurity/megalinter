@@ -313,7 +313,7 @@ RUN rc-update add docker boot && rc-service docker start || true \
 # CSHARP installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -366,7 +366,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -408,7 +408,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0 \
+    && /usr/share/dotnet/dotnet tool install -g csharpier \
 
 # dartanalyzer installation
     && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
@@ -544,10 +544,10 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
@@ -601,10 +601,10 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global --version 1.14.5 TSQLLint \
+    && dotnet tool install --global TSQLLint \
 
 # tflint installation
 # Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -623,10 +623,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
     && mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
-
-# dotnet-format installation
-# Next line commented because already managed by another linter
-# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 
