@@ -43,6 +43,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0** on 2023-01-04
   - [phpstan](https://phpstan.org/) from 1.9.6 to **1.9.7** on 2023-01-05
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.5.0 to **2.6.0** on 2023-01-05
+  - [csharpier](https://csharpier.com/) from 0.16.0 to **0.21.0** on 2023-01-06
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.6.9 to **0.7.101** on 2023-01-06
+  - [semgrep](https://semgrep.dev/) from 1.2.1 to **1.3.0** on 2023-01-06
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.5.0 to **1.15.1.0** on 2023-01-06
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27

@@ -8,7 +8,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.16.0**
+- Version in MegaLinter: **0.21.0**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -89,6 +89,7 @@ Arguments:
 
 Options:
   --check                Check that files are formatted. Will not write any changes.
+  --no-cache             Bypass the cache to determine if a file needs to be formatted.
   --fast                 Skip comparing syntax tree of formatted file to original file to validate changes.
   --skip-write           Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
   --write-stdout         Write the results of formatting any files to stdout.
@@ -105,10 +106,10 @@ Options:
 # Parent descriptor install
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 # Linter install
-RUN /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0
+RUN /usr/share/dotnet/dotnet tool install -g csharpier
 ```
 
