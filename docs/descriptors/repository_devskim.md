@@ -11,7 +11,7 @@ Use `--ignore-globs` to ignore files and/or folders
 
 ## devskim documentation
 
-- Version in MegaLinter: **0.6.9**
+- Version in MegaLinter: **0.7.101**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -77,7 +77,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-Microsoft DevSkim Command Line Interface 0.6.9+456d78fa02
+Microsoft DevSkim Command Line Interface 0.7.101+7d74268320
 
 Usage: devskim [options] [command]
 
@@ -102,10 +102,10 @@ Use "devskim [command] --help" for more information about a command.
 ```dockerfile
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```
 
 - APK packages (Linux):

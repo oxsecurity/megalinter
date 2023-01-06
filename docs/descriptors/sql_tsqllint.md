@@ -9,7 +9,7 @@ description: How to use tsqllint (configure, ignore files, ignore errors, help &
 
 ## tsqllint documentation
 
-- Version in MegaLinter: **1.14.5.0**
+- Version in MegaLinter: **1.15.1.0**
 - Visit [Official Web Site](https://github.com/tsqllint/tsqllint#readme){target=_blank}
 - See [How to configure tsqllint rules](https://github.com/tsqllint/tsqllint#rule-configuration){target=_blank}
 - See [How to disable tsqllint rules in files](https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments){target=_blank}
@@ -86,8 +86,12 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
   -c, --config          Used to specify a .tsqllintrc file path other than the
                         default
+  -g, --ignorelist      Used to specify a .tsqllintignore file path other than
+                        the default
   -f, --force           Used to force generation of default config file when
                         one already exists
+  -x, --fix             Used to fix some of the common linting errors if
+                        possible
   -i, --init            Generate default .tsqllintrc config file
   -p, --print-config    Print path to config file
   -l, --list-plugins    List the loaded plugins
@@ -102,10 +106,10 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 ```dockerfile
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global --version 1.14.5 TSQLLint
+RUN dotnet tool install --global TSQLLint
 ```
 
 - APK packages (Linux):
