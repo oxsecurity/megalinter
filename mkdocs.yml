@@ -340,10 +340,10 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
+  - "They talk about MegaLinter": "articles.md"
   - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
   - "Plugins": "plugins.md"
-  - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
   - "Badge": "badge.md"
