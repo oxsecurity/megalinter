@@ -917,7 +917,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         if "<!-- linter-icon -->" in line:
             match = False
             for linter_name in flavor["linters"]:
-                if f"[{linter_name}]" in line:
+                if f"{linter_name}" in line:
                     match = True
                     break
             if match is False:
