@@ -5596,6 +5596,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6180-2023-01-07" class="md-nav__link">
+    [v6.18.0] - 2023-01-07
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6170-2022-12-27" class="md-nav__link">
     [v6.17.0] - 2022-12-27
   </a>
@@ -6379,6 +6386,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6180-2023-01-07" class="md-nav__link">
+    [v6.18.0] - 2023-01-07
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v6170-2022-12-27" class="md-nav__link">
     [v6.17.0] - 2022-12-27
   </a>
@@ -7145,57 +7159,75 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v6180-2023-01-07">[v6.18.0] - 2023-01-07</h2>
+<ul>
 <li>New linters<ul>
-<li>Add <a href="https://csharpier.com/">CSharpier</a> linter</li>
+<li>Add <a href="https://csharpier.com/">CSharpier</a> linter, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/2185">#2185</a> and <a href="https://github.com/oxsecurity/megalinter/pull/2198">#2198</a></li>
 </ul>
 </li>
-<li>New MegaLinter plugins<ul>
-<li><a href="https://github.com/shiranr/linkcheck">linkcheck</a>: Plugin to check and validate Markdown links.</li>
-<li><a href="https://github.com/ssc-services/mega-linter-plugin-salt">salt-lint</a>: Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.</li>
+</ul>
+<ul>
+<li>Core<ul>
+<li>Upgrade to dotnet 6.0, by @lexstatic in <a href="https://github.com/oxsecurity/megalinter/pull/1680">#1680</a><ul>
+<li>dotnet-format requires <code>.sln</code>, <code>.csproj</code> or <code>.vbproj</code> in the repo</li>
 </ul>
 </li>
-<li>Drone CI enhancements<ul>
+<li>Switch to docker buildx, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/2199">#2199</a></li>
+<li>Drone CI enhancements, by @NebulaOnion in <a href="https://github.com/oxsecurity/megalinter/pull/2195">#2195</a><ul>
 <li>Config generator tool now supports Drone CI</li>
 <li>Added information about how to change trigger rules for Drone CI workflow</li>
 </ul>
 </li>
-<li>Fix perl linter skipping files</li>
-<li>Upgrade to dotnet 6.0, dotnet-format requires <code>.sln</code>, <code>.csproj</code> or <code>.vbproj</code> in the repo</li>
-<li>New article talking about MegaLinter: <a href="https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/">Writing documentation as a champ in engineering teams</a>, by <a href="https://github.com/gijsreyn">Gijs Reijn</a></li>
-</ul>
-<ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.21.0 to <strong>0.16.0</strong> on 2022-12-29</li>
-<li><a href="https://stylelint.io">stylelint</a> from 14.16.0 to <strong>14.16.1</strong> on 2022-12-29</li>
-<li><a href="https://github.com/overtrue/phplint">phplint</a> from 5.4 to <strong>5.5</strong> on 2022-12-29</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.18.0 to <strong>6.18.1</strong> on 2022-12-30</li>
-<li><a href="https://eslint.org">eslint</a> from 8.30.0 to <strong>8.31.0</strong> on 2022-12-31</li>
-<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.5.0 to <strong>10.6.0</strong> on 2023-01-01</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.3.0 to <strong>6.0.1</strong> on 2023-01-02</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.41.1 to <strong>1.42.0</strong> on 2023-01-02</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.9.4 to <strong>1.9.5</strong> on 2023-01-02</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.5 to <strong>0.72.6</strong> on 2023-01-04</li>
-<li><a href="https://ktlint.github.io">ktlint</a> from 0.48.0 to <strong>0.48.1</strong> on 2023-01-04</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.9.5 to <strong>1.9.6</strong> on 2023-01-04</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 6.0.1 to <strong>6.0.2</strong> on 2023-01-04</li>
-<li><a href="https://www.kics.io">kics</a> from 1.6.6 to <strong>1.6.7</strong> on 2023-01-04</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.19.10 to <strong>1.19.11</strong> on 2023-01-04</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.64.0 to <strong>0.65.0</strong> on 2023-01-04</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.7.1 to <strong>3.8.0</strong> on 2023-01-04</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.7.1 to <strong>3.8.0</strong> on 2023-01-04</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.7.1 to <strong>3.8.0</strong> on 2023-01-04</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.9.6 to <strong>1.9.7</strong> on 2023-01-05</li>
-<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.5.0 to <strong>2.6.0</strong> on 2023-01-05</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.16.0 to <strong>0.21.0</strong> on 2023-01-06</li>
-<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 0.6.9 to <strong>0.7.101</strong> on 2023-01-06</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.2.1 to <strong>1.3.0</strong> on 2023-01-06</li>
-<li><a href="https://github.com/tsqllint/tsqllint">tsqllint</a> from 1.14.5.0 to <strong>1.15.1.0</strong> on 2023-01-06</li>
-<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.32.2 to <strong>0.33.0</strong> on 2023-01-07</li>
+<li>Unify the drawing of badges in documentation, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/2220">#2220</a></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
+<ul>
+<li>Fixes<ul>
+<li>Do not write output files if REPORT_OUTPUT_FOLDER is none</li>
+<li>Fix Perl linter skipping files</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>New MegaLinter plugins<ul>
+<li><a href="https://github.com/shiranr/linkcheck">linkcheck</a>: Plugin to check and validate Markdown links, by @shiranr</li>
+<li><a href="https://github.com/ssc-services/mega-linter-plugin-salt">salt-lint</a>: Checks Salt State files (SLS) for best practices and behavior that could potentially be improved, by @grimmjo</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>New article talking about MegaLinter: <a href="https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/">Writing documentation as a champ in engineering teams</a>, by @gijsreyn</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.72.5 to <strong>0.72.6</strong></li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.5.0 to <strong>10.6.0</strong></li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.16.0 to <strong>0.21.0</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.18.0 to <strong>6.18.1</strong></li>
+<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 0.6.9 to <strong>0.7.101</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.19.10 to <strong>1.19.11</strong></li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.5.0 to <strong>2.6.0</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.30.0 to <strong>8.31.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.6 to <strong>1.6.7</strong></li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.48.0 to <strong>0.48.1</strong></li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.32.2 to <strong>0.33.0</strong></li>
+<li><a href="https://github.com/overtrue/phplint">phplint</a> from 5.4 to <strong>5.5</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.9.4 to <strong>1.9.7</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.41.1 to <strong>1.42.0</strong></li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 5.3.0 to <strong>6.0.2</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.2.1 to <strong>1.3.0</strong> on 2023-01-06</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner</a> from 3.7.1 to <strong>3.8.0</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.16.0 to <strong>14.16.1</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.64.0 to <strong>0.65.0</strong></li>
+<li><a href="https://github.com/tsqllint/tsqllint">tsqllint</a> from 1.14.5.0 to <strong>1.15.1.0</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v6170-2022-12-27">[v6.17.0] - 2022-12-27</h2>
 <ul>
 <li>New linters<ul>
