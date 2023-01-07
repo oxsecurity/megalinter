@@ -18,7 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Added information about how to change trigger rules for Drone CI workflow
 - Fix perl linter skipping files
 - Upgrade to dotnet 6.0, dotnet-format requires `.sln`, `.csproj` or `.vbproj` in the repo
-- New article talking about MegaLinter: [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/), by [Gijs Reijn](https://github.com/gijsreyn) 
+- New article talking about MegaLinter: [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/), by [Gijs Reijn](https://github.com/gijsreyn)
 
 - Linter versions upgrades
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.16.0** on 2022-12-29
@@ -46,6 +46,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 0.6.9 to **0.7.101** on 2023-01-06
   - [semgrep](https://semgrep.dev/) from 1.2.1 to **1.3.0** on 2023-01-06
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.5.0 to **1.15.1.0** on 2023-01-06
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.32.2 to **0.33.0** on 2023-01-07
 <!-- linter-versions-end -->
 
 ## [v6.17.0] - 2022-12-27
