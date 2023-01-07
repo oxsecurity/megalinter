@@ -40,7 +40,7 @@ jobs:
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     # Set max build time for the job
-    timeout-minutes: 90
+    timeout-minutes: 120
     ##################
     # Load all steps #
     ##################
