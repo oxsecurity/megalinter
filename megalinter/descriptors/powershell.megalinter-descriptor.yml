@@ -53,7 +53,7 @@ linters:
       vscode:
         - name: VSCode PowerShell extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
-  # Internal powershell linter
+  # Internal powershell formatter
   - class: PowershellLinter
     linter_name: powershell_formatter
     is_formatter: true
@@ -62,7 +62,7 @@ linters:
     linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
-    config_file_name: .powershell-psscriptanalyzer.psd1
+    config_file_name: .powershell-formatter.psd1
     test_folder: powershell_formatter
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
