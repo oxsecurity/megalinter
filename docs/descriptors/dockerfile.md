@@ -9,9 +9,9 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Linters
 
-| Linter                             | Configuration key                             | Status                                                                                                                             |
-|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits) |
+| Linter                                                                                     | Additional                                                                                                                                                                        |
+|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**hadolint**](dockerfile_hadolint.md)<br/>[_DOCKERFILE_HADOLINT_](dockerfile_hadolint.md) | [![GitHub stars](https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600)](https://github.com/hadolint/hadolint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

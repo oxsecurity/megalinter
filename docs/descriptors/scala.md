@@ -9,9 +9,9 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 ## Linters
 
-| Linter                        | Configuration key          | Status                                                                                                                                   |
-|-------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/commits) |
+| Linter                                                                      | Additional                                                                                                                             |
+|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [**scalafix**](scala_scalafix.md)<br/>[_SCALA_SCALAFIX_](scala_scalafix.md) | [![GitHub stars](https://img.shields.io/github/stars/scalacenter/scalafix?cacheSeconds=3600)](https://github.com/scalacenter/scalafix) |
 
 ## Linted files
 

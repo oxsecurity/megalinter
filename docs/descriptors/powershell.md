@@ -9,10 +9,10 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Linters
 
-| Linter                                                     | Configuration key                                | Status                                                                                                                                                 |
-|------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [powershell](powershell_powershell.md)                     | [POWERSHELL](powershell_powershell.md)           | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
-| [powershell_formatter](powershell_powershell_formatter.md) | [POWERSHELL](powershell_powershell_formatter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) |
+| Linter                                                                                                                                     | Additional                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**powershell**](powershell_powershell.md)<br/>[_POWERSHELL_POWERSHELL_](powershell_powershell.md)                                         | [![GitHub stars](https://img.shields.io/github/stars/PowerShell/PSScriptAnalyzer?cacheSeconds=3600)](https://github.com/PowerShell/PSScriptAnalyzer) ![autofix](https://shields.io/badge/-autofix-green)   |
+| [**powershell_formatter**](powershell_powershell_formatter.md)<br/>[_POWERSHELL_POWERSHELL_FORMATTER_](powershell_powershell_formatter.md) | [![GitHub stars](https://img.shields.io/github/stars/PowerShell/PSScriptAnalyzer?cacheSeconds=3600)](https://github.com/PowerShell/PSScriptAnalyzer) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 

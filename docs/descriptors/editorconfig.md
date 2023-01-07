@@ -9,9 +9,9 @@ description: editorconfig-checker is available to analyze EDITORCONFIG files in 
 
 ## Linters
 
-| Linter                                                       | Configuration key                                    | Status                                                                                                                                                                             |
-|--------------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits) |
+| Linter                                                                                                                                           | Additional                                                                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**editorconfig-checker**](editorconfig_editorconfig_checker.md)<br/>[_EDITORCONFIG_EDITORCONFIG_CHECKER_](editorconfig_editorconfig_checker.md) | [![GitHub stars](https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600)](https://github.com/editorconfig-checker/editorconfig-checker) |
 
 ## Linted files
 

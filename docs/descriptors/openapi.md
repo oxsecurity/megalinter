@@ -9,9 +9,9 @@ description: spectral is available to analyze OPENAPI files in MegaLinter
 
 ## Linters
 
-| Linter                          | Configuration key              | Status                                                                                                                                   |
-|---------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) |
+| Linter                                                                            | Additional                                                                                                                             |
+|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [**spectral**](openapi_spectral.md)<br/>[_OPENAPI_SPECTRAL_](openapi_spectral.md) | [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) |
 
 ## Linted files
 

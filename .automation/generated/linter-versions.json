@@ -47,7 +47,7 @@
     "luacheck": "1.1.0",
     "markdown-link-check": "3.10.3",
     "markdown-table-formatter": "1.4.0",
-    "markdownlint": "0.32.2",
+    "markdownlint": "0.33.0",
     "misspell": "0.3.4",
     "mypy": "0.991",
     "npm-groovy-lint": "11.1.1",

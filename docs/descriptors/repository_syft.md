@@ -11,7 +11,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits)
+[![GitHub stars](https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600)](https://github.com/anchore/syft) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/syft?sort=semver)](https://github.com/anchore/syft/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/syft)](https://github.com/anchore/syft/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/syft)](https://github.com/anchore/syft/graphs/contributors/)
 
 Builds a SBOM (Software Build Of Materials) from your repository
 
@@ -24,8 +24,8 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## Configuration in MegaLinter
 
-- Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/6.18.0/configuration/#activation-and-deactivation)
+- Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/6.18.0/configuration/#activation-and-deactivation)
 
 | Variable                                    | Description                                                                     | Default value                                   |
 |---------------------------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|
@@ -41,10 +41,10 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       112        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                     | Description               | Embedded linters |                                                                                                                                                                                            Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:--------------------------|:----------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.18.0/supported-linters/)     | Default MegaLinter Flavor |       112        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.18.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/6.18.0/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6.18.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
