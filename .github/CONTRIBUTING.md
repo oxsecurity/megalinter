@@ -80,7 +80,7 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 
 ### Improve documentation
 
-Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](../.automation/build.py)
+Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
 
 In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you will have to run at least 2 commands.
 
