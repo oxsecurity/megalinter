@@ -83,7 +83,7 @@ def init_config(workspace=None):
                 ), f"Unable to retrieve EXTENDS config file {config_file_name}"
                 extends_config_data = yaml.safe_load(r.content)
             else:
-                with open(extends_item, "r", encoding="utf-8") as f:
+                with open(workspace + os.path.sep + extends_item, "r", encoding="utf-8") as f:
                     extends_config_data = yaml.safe_load(f)
             combined_config.update(extends_config_data)
             CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"

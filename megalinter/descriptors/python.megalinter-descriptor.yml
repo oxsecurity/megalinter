@@ -32,6 +32,7 @@ linters:
     install:
       pip:
         - pylint
+        - typing-extensions
     ide:
       eclipse:
         - name: PyLint

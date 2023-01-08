@@ -11,17 +11,17 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **000**
+- Version in MegaLinter: **6.0.404**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://megalinter.io/6.18.0/configuration/#activation-and-deactivation)
-- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://megalinter.io/6.18.0/configuration/#activation-and-deactivation)
+- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://megalinter.io/6.18.0/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                           | Description                                                                                                                                                                                  | Default value      |
 |----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -40,10 +40,10 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                        Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.18.0/supported-linters/) | Default MegaLinter Flavor                     |       112        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.18.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/6.18.0/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6.18.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description                                   | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor                     |       112        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -71,65 +71,37 @@ dotnet format {{WORKSPACE}}
 ### Help content
 
 ```shell
-Usage: dotnet [runtime-options] [path-to-application] [arguments]
+Description:
+  Formats code to match editorconfig settings.
 
-Execute a .NET application.
+Usage:
+  dotnet-format [<The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>] [command] [options]
 
-runtime-options:
-  --additionalprobingpath <path>   Path containing probing policy and assemblies to probe for.
-  --additional-deps <path>         Path to additional deps.json file.
-  --depsfile                       Path to <application>.deps.json file.
-  --fx-version <version>           Version of the installed Shared Framework to use to run the application.
-  --roll-forward <setting>         Roll forward to framework version  (LatestPatch, Minor, LatestMinor, Major, LatestMajor, Disable).
-  --runtimeconfig                  Path to <application>.runtimeconfig.json file.
+Arguments:
+  <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one. [default: /]
 
-path-to-application:
-  The path to an application .dll file to execute.
+Options:
+  --diagnostics <diagnostics>                                              A space separated list of diagnostic ids to use as a filter when fixing code style or 3rd party issues. []
+  --exclude-diagnostics <exclude-diagnostics>                              A space separated list of diagnostic ids to ignore when fixing code style or 3rd party issues. []
+  --severity <error|info|warn>                                             The severity of diagnostics to fix. Allowed values are info, warn, and error.
+  --no-restore                                                             Doesn't execute an implicit restore before formatting.
+  --verify-no-changes                                                      Verify no formatting changes would be performed. Terminates with a non-zero exit code if any files would have been formatted.
+  --include <include>                                                      A list of relative file or folder paths to include in formatting. All files are formatted if empty. []
+  --exclude <exclude>                                                      A list of relative file or folder paths to exclude from formatting. []
+  --include-generated                                                      Format files generated by the SDK.
+  -v, --verbosity <d|detailed|diag|diagnostic|m|minimal|n|normal|q|quiet>  Set the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]
+  --binarylog <binary-log-path>                                            Log all project or solution load information to a binary log file.
+  --report <report-path>                                                   Accepts a file path which if provided will produce a json report in the given directory.
+  --version                                                                Show version information
+  -?, -h, --help                                                           Show help and usage information
 
-Usage: dotnet [sdk-options] [command] [command-options] [arguments]
 
-Execute a .NET SDK command.
+Commands:
+  whitespace <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  Run whitespace formatting. [default: /]
+  style <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>       Run code style analyzers and apply fixes. [default: /]
+  analyzers <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>   Run 3rd party analyzers and apply fixes. [default: /]
 
-sdk-options:
-  -d|--diagnostics  Enable diagnostic output.
-  -h|--help         Show command line help.
-  --info            Display .NET information.
-  --list-runtimes   Display the installed runtimes.
-  --list-sdks       Display the installed SDKs.
-  --version         Display .NET SDK version in use.
 
-SDK commands:
-  add               Add a package or reference to a .NET project.
-  build             Build a .NET project.
-  build-server      Interact with servers started by a build.
-  clean             Clean build outputs of a .NET project.
-  format            Apply style preferences to a project or solution.
-  help              Show command line help.
-  list              List project references of a .NET project.
-  msbuild           Run Microsoft Build Engine (MSBuild) commands.
-  new               Create a new .NET project or file.
-  nuget             Provides additional NuGet commands.
-  pack              Create a NuGet package.
-  publish           Publish a .NET project for deployment.
-  remove            Remove a package or reference from a .NET project.
-  restore           Restore dependencies specified in a .NET project.
-  run               Build and run a .NET project output.
-  sdk               Manage .NET SDK installation.
-  sln               Modify Visual Studio solution files.
-  store             Store the specified assemblies in the runtime package store.
-  test              Run unit tests using the test runner specified in a .NET project.
-  tool              Install or manage tools that extend the .NET experience.
-  vstest            Run Microsoft Test Engine (VSTest) commands.
-  workload          Manage optional workloads.
-
-Additional commands from bundled tools:
-  dev-certs         Create and manage development certificates.
-  fsi               Start F# Interactive / execute F# scripts.
-  sql-cache         SQL Server cache command-line tools.
-  user-secrets      Manage development user secrets.
-  watch             Start a file watcher that runs a command when files change.
-
-Run 'dotnet [command] --help' for more information on a command.
 ```
 
 ### Installation on mega-linter Docker image

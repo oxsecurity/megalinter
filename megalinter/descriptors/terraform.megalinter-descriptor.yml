@@ -33,7 +33,7 @@ linters:
         - linux/arm64
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.44.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.44.1 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
