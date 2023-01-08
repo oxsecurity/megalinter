@@ -1,3 +1,1 @@
 EXTENDS: base-error.local.mega-linter.yml
-FILTER_REGEX_INCLUDE: "(local)"
-SHOW_ELAPSED_TIME: false
