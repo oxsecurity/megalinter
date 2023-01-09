@@ -17,6 +17,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.146 to **1.148** on 2023-01-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.0 to **0.44.1** on 2023-01-07
   - [phpstan](https://phpstan.org/) from 1.9.7 to **1.9.8** on 2023-01-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.6 to **0.72.7** on 2023-01-09
+  - [pylint](https://pylint.pycqa.org) from 2.15.9 to **2.15.10** on 2023-01-09
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
