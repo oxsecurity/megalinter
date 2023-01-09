@@ -30,7 +30,7 @@ class PowershellLinter(Linter):
         elif self.linter_name == "powershell_formatter":
             pwsh_script[
                 0
-            ] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) > '{file}'"
+            ] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) | Out-File '{file}' -Encoding utf8 -NoNewline"
 
         if (
             self.linter_name == "powershell"
