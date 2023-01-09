@@ -13,6 +13,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
+- See [Index of problems detected by powershell_formatter](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules){target=_blank}
 
 [![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank}
 
