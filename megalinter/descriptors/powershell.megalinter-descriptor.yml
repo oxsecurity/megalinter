@@ -57,6 +57,10 @@ linters:
   # Internal powershell formatter
   - class: PowershellLinter
     linter_name: powershell_formatter
+    variables:
+      - name: POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING
+        default_value: "utf8"
+        description: "`-Encoding` to be used when writing content to the file"
     is_formatter: true
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer

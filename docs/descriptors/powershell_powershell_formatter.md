@@ -12,6 +12,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 - Version in MegaLinter: **7.3.1**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
+  - If custom `.powershell-formatter.psd1` config file is not found, [.powershell-formatter.psd1](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.powershell-formatter.psd1){target=_blank} will be used
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
 - See [Index of problems detected by powershell_formatter](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules){target=_blank}
 
@@ -24,6 +25,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 
 | Variable                                                    | Description                                                                                                                                                                                  | Default value                                                       |
 |-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING             | `-Encoding` to be used when writing content to the file                                                                                                                                      | `utf8`                                                              |
 | POWERSHELL_POWERSHELL_FORMATTER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                                     |
 | POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                                                  |
 | POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                                     |
