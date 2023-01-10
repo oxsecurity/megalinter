@@ -82,9 +82,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      #####################
-      # Run Deploy script #
-      #####################
+      ###################################
+      # Run Deploy script for Dockerhub #
+      ###################################
       - name: Deploy beta image to DockerHub
         env:
           # Set the Env Vars
@@ -95,6 +95,22 @@ jobs:
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      ###################################################
+      # Run Deploy script for GitHub Container Registry #
+      ###################################################
+      - name: Deploy beta image to GitHub Container Registry
+        env:
+          # Set the Env Vars
+          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
+          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
+          IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
+          IMAGE_VERSION: beta
+          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
+          REGISTRY: GCR
         shell: bash
         run: .automation/upload-docker.sh
 
