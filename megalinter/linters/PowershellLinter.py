@@ -5,7 +5,7 @@ https://github.com/PowerShell/PSScriptAnalyzer
 """
 import sys
 
-from megalinter import Linter
+from megalinter import Linter, config
 
 
 class PowershellLinter(Linter):
@@ -28,9 +28,11 @@ class PowershellLinter(Linter):
         if self.linter_name == "powershell":
             pwsh_script[0] += f" -Path '{file}'"
         elif self.linter_name == "powershell_formatter":
+            file_encoding = config.get("POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING", "utf8")
+
             pwsh_script[
                 0
-            ] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) | Out-File '{file}' -Encoding utf8 -NoNewline"
+            ] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) | Out-File '{file}' -Encoding {file_encoding} -NoNewline"
 
         if (
             self.linter_name == "powershell"
