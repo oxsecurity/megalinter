@@ -30,9 +30,8 @@ class PowershellLinter(Linter):
         elif self.linter_name == "powershell_formatter":
             file_encoding = config.get("POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING", "utf8")
 
-            pwsh_script[
-                0
-            ] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw) | Out-File '{file}' -Encoding {file_encoding} -NoNewline"
+            pwsh_script[0] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw)"
+            pwsh_script[0] += f" | Out-File '{file}' -Encoding {file_encoding} -NoNewline"
 
         if (
             self.linter_name == "powershell"
