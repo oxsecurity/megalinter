@@ -23,8 +23,8 @@
                 "downloads_url": "https://api.github.com/repos/nektos/act/downloads",
                 "events_url": "https://api.github.com/repos/nektos/act/events",
                 "fork": false,
-                "forks": 850,
-                "forks_count": 850,
+                "forks": 851,
+                "forks_count": 851,
                 "forks_url": "https://api.github.com/repos/nektos/act/forks",
                 "full_name": "nektos/act",
                 "git_commits_url": "https://api.github.com/repos/nektos/act/git/commits{/sha}",
@@ -60,11 +60,11 @@
                 "milestones_url": "https://api.github.com/repos/nektos/act/milestones{/number}",
                 "mirror_url": null,
                 "name": "act",
-                "network_count": 850,
+                "network_count": 851,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxNjM4ODMyNzk=",
                 "notifications_url": "https://api.github.com/repos/nektos/act/notifications{?since,all,participating}",
-                "open_issues": 95,
-                "open_issues_count": 95,
+                "open_issues": 97,
+                "open_issues_count": 97,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/3813618?v=4",
                     "events_url": "https://api.github.com/users/nektos/events{/privacy}",
@@ -107,11 +107,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nektos/act/pulls{/number}",
-                "pushed_at": "2023-01-05T09:31:47Z",
+                "pushed_at": "2023-01-09T02:03:17Z",
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
-                "size": 6565,
+                "size": 6426,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 33688,
+                "stargazers_count": 33711,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 138,
@@ -128,15 +128,15 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2023-01-09T00:49:26Z",
+                "updated_at": "2023-01-09T23:04:29Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 33688,
-                "watchers_count": 33688,
+                "watchers": 33711,
+                "watchers_count": 33711,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 33688
+            "stargazers": 33711
         },
         {
             "info": {
@@ -229,7 +229,7 @@
                 "releases_url": "https://api.github.com/repos/stepancheg/rust-protobuf/releases{/id}",
                 "size": 55963,
                 "ssh_url": "git@github.com:stepancheg/rust-protobuf.git",
-                "stargazers_count": 2300,
+                "stargazers_count": 2301,
                 "stargazers_url": "https://api.github.com/repos/stepancheg/rust-protobuf/stargazers",
                 "statuses_url": "https://api.github.com/repos/stepancheg/rust-protobuf/statuses/{sha}",
                 "subscribers_count": 21,
@@ -245,15 +245,15 @@
                     "serialization"
                 ],
                 "trees_url": "https://api.github.com/repos/stepancheg/rust-protobuf/git/trees{/sha}",
-                "updated_at": "2023-01-08T22:43:44Z",
+                "updated_at": "2023-01-09T11:26:43Z",
                 "url": "https://api.github.com/repos/stepancheg/rust-protobuf",
                 "visibility": "public",
-                "watchers": 2300,
-                "watchers_count": 2300,
+                "watchers": 2301,
+                "watchers_count": 2301,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/stepancheg/rust-protobuf",
-            "stargazers": 2300
+            "stargazers": 2301
         },
         {
             "info": {
@@ -464,7 +464,7 @@
                 "releases_url": "https://api.github.com/repos/dorssel/usbipd-win/releases{/id}",
                 "size": 1759,
                 "ssh_url": "git@github.com:dorssel/usbipd-win.git",
-                "stargazers_count": 1552,
+                "stargazers_count": 1557,
                 "stargazers_url": "https://api.github.com/repos/dorssel/usbipd-win/stargazers",
                 "statuses_url": "https://api.github.com/repos/dorssel/usbipd-win/statuses/{sha}",
                 "subscribers_count": 30,
@@ -485,15 +485,15 @@
                     "wsl2"
                 ],
                 "trees_url": "https://api.github.com/repos/dorssel/usbipd-win/git/trees{/sha}",
-                "updated_at": "2023-01-08T15:59:55Z",
+                "updated_at": "2023-01-09T21:49:00Z",
                 "url": "https://api.github.com/repos/dorssel/usbipd-win",
                 "visibility": "public",
-                "watchers": 1552,
-                "watchers_count": 1552,
+                "watchers": 1557,
+                "watchers_count": 1557,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/dorssel/usbipd-win",
-            "stargazers": 1552
+            "stargazers": 1557
         },
         {
             "info": {
@@ -606,10 +606,10 @@
                 "releases_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/releases{/id}",
                 "size": 52551,
                 "ssh_url": "git@github.com:microsoft/code-with-engineering-playbook.git",
-                "stargazers_count": 1499,
+                "stargazers_count": 1500,
                 "stargazers_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/stargazers",
                 "statuses_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/statuses/{sha}",
-                "subscribers_count": 2338,
+                "subscribers_count": 2337,
                 "subscribers_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/subscribers",
                 "subscription_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/subscription",
                 "svn_url": "https://github.com/microsoft/code-with-engineering-playbook",
@@ -618,15 +618,15 @@
                 "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook/git/trees{/sha}",
-                "updated_at": "2023-01-08T20:10:08Z",
+                "updated_at": "2023-01-09T03:36:49Z",
                 "url": "https://api.github.com/repos/microsoft/code-with-engineering-playbook",
                 "visibility": "public",
-                "watchers": 1499,
-                "watchers_count": 1499,
+                "watchers": 1500,
+                "watchers_count": 1500,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/microsoft/code-with-engineering-playbook",
-            "stargazers": 1499
+            "stargazers": 1500
         },
         {
             "info": {
@@ -691,8 +691,8 @@
                 "network_count": 148,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/oxsecurity/megalinter/notifications{?since,all,participating}",
-                "open_issues": 49,
-                "open_issues_count": 49,
+                "open_issues": 52,
+                "open_issues_count": 52,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/89921661?v=4",
                     "events_url": "https://api.github.com/users/oxsecurity/events{/privacy}",
@@ -735,11 +735,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oxsecurity/megalinter/pulls{/number}",
-                "pushed_at": "2023-01-08T18:51:14Z",
+                "pushed_at": "2023-01-09T19:33:57Z",
                 "releases_url": "https://api.github.com/repos/oxsecurity/megalinter/releases{/id}",
-                "size": 317678,
+                "size": 317755,
                 "ssh_url": "git@github.com:oxsecurity/megalinter.git",
-                "stargazers_count": 1008,
+                "stargazers_count": 1011,
                 "stargazers_url": "https://api.github.com/repos/oxsecurity/megalinter/stargazers",
                 "statuses_url": "https://api.github.com/repos/oxsecurity/megalinter/statuses/{sha}",
                 "subscribers_count": 8,
@@ -767,15 +767,15 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/oxsecurity/megalinter/git/trees{/sha}",
-                "updated_at": "2023-01-07T14:47:53Z",
+                "updated_at": "2023-01-09T18:40:20Z",
                 "url": "https://api.github.com/repos/oxsecurity/megalinter",
                 "visibility": "public",
-                "watchers": 1008,
-                "watchers_count": 1008,
+                "watchers": 1011,
+                "watchers_count": 1011,
                 "web_commit_signoff_required": false
             },
             "repo_url": "https://github.com/oxsecurity/megalinter",
-            "stargazers": 1008
+            "stargazers": 1011
         },
         {
             "info": {
