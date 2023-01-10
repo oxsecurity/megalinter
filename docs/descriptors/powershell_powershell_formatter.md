@@ -12,7 +12,9 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 - Version in MegaLinter: **7.3.1**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
+  - If custom `.powershell-formatter.psd1` config file is not found, [.powershell-formatter.psd1](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.powershell-formatter.psd1){target=_blank} will be used
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
+- See [Index of problems detected by powershell_formatter](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules){target=_blank}
 
 [![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank}
 

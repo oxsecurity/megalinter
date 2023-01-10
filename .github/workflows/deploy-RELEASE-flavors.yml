@@ -87,6 +87,22 @@ jobs:
         shell: bash
         run: .automation/upload-docker.sh
 
+      ###################################################
+      # Run Deploy script for GitHub Container Registry #
+      ###################################################
+      - name: Deploy Release image to GitHub Container Registry
+        env:
+          # Set the Env Vars
+          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
+          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
+          IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
+          IMAGE_VERSION: ${{ github.event.release.tag_name }}
+          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
+          REGISTRY: GCR
+        shell: bash
+        run: .automation/upload-docker.sh
+
       # Free disk space
       - name: Free Disk space
         shell: bash
@@ -108,4 +124,3 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
-
