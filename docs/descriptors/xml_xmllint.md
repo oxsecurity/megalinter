@@ -7,6 +7,8 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 # xmllint
 ![autofix](https://shields.io/badge/-autofix-green)
 
+To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
+
 ## xmllint documentation
 
 - Version in MegaLinter: **20914**

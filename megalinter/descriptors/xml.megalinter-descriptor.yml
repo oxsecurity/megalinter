@@ -10,6 +10,8 @@ linters:
   # XML LINT
   - class: XmlLintLinter
     linter_name: xmllint
+    linter_text: |
+      To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
     variables:
       - name: XML_XMLLINT_AUTOFORMAT
         default_value: "false"
