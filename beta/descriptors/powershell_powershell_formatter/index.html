@@ -5872,7 +5872,10 @@
 <ul>
 <li>Version in MegaLinter: <strong>7.3.1</strong></li>
 <li>Visit <a href="https://github.com/PowerShell/PSScriptAnalyzer#readme" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit" target="_blank">How to configure powershell_formatter rules</a></li>
+<li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit" target="_blank">How to configure powershell_formatter rules</a><ul>
+<li>If custom <code>.powershell-formatter.psd1</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.powershell-formatter.psd1" target="_blank">.powershell-formatter.psd1</a> will be used</li>
+</ul>
+</li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules" target="_blank">How to disable powershell_formatter rules in files</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules" target="_blank">Index of problems detected by powershell_formatter</a></li>
 </ul>
@@ -5891,6 +5894,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING</td>
+<td><code>-Encoding</code> to be used when writing content to the file</td>
+<td><code>utf8</code></td>
+</tr>
 <tr>
 <td>POWERSHELL_POWERSHELL_FORMATTER_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
