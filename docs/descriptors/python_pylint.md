@@ -735,3 +735,4 @@ Classes:
 
 - PIP packages (Python):
   - [pylint](https://pypi.org/project/pylint)
+  - [typing-extensions](https://pypi.org/project/typing-extensions)
