@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Core
+  - Deploy additional Docker images to GitHub Container Registry, by @lars-reimann in [#2117](https://github.com/oxsecurity/megalinter/pull/2117)
+
 - Fixes
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
 
@@ -16,6 +19,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 000 to **6.0.404** on 2023-01-07
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.146 to **1.148** on 2023-01-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.0 to **0.44.1** on 2023-01-07
+  - [phpstan](https://phpstan.org/) from 1.9.7 to **1.9.8** on 2023-01-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.6 to **0.72.7** on 2023-01-09
+  - [pylint](https://pylint.pycqa.org) from 2.15.9 to **2.15.10** on 2023-01-09
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
