@@ -22,6 +22,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.9.7 to **1.9.8** on 2023-01-09
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.6 to **0.72.7** on 2023-01-09
   - [pylint](https://pylint.pycqa.org) from 2.15.9 to **2.15.10** on 2023-01-09
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.404 to **6.0.405** on 2023-01-11
+  - [phpstan](https://phpstan.org/) from 1.9.8 to **1.9.9** on 2023-01-11
+  - [rubocop](https://rubocop.org/) from 1.42.0 to **1.43.0** on 2023-01-11
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.29.0** on 2023-01-11
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07

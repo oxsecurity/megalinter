@@ -483,9 +483,9 @@
         "                                  input).",
         "  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the",
         "                                  given magic to the list of known python-",
-        "                                  magics (prun, python, time, timeit, pypy,",
-        "                                  python3, capture). Useful for formatting",
-        "                                  cells with custom python magics.",
+        "                                  magics (python3, prun, time, timeit,",
+        "                                  capture, python, pypy). Useful for",
+        "                                  formatting cells with custom python magics.",
         "  -x, --skip-source-first-line    Skip the first line of the source code.",
         "  -S, --skip-string-normalization",
         "                                  Don't normalize string quotes or prefixes.",
@@ -5514,7 +5514,7 @@
         "  --warnings                         Use exit code of 1 if warnings are reported",
         "  -w,--watch                         Continue to run and watch for changes",
         "",
-        "WARNING: there is a new pyright version available (v1.1.270 -> v1.1.287).",
+        "WARNING: there is a new pyright version available (v1.1.270 -> v1.1.288).",
         "Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`",
         ""
     ],
@@ -9153,7 +9153,7 @@
         "Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2"
     ],
     "yamllint": [
-        "usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]",
+        "usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA] [--list-files]",
         "                [-f {parsable,standard,colored,github,auto}] [-s]",
         "                [--no-warnings] [-v]",
         "                [FILE_OR_DIR ...]",
@@ -9172,6 +9172,7 @@
         "                        path to a custom configuration",
         "  -d CONFIG_DATA, --config-data CONFIG_DATA",
         "                        custom configuration (as YAML source)",
+        "  --list-files          list files to lint and exit",
         "  -f {parsable,standard,colored,github,auto}, --format {parsable,standard,colored,github,auto}",
         "                        format for parsing output",
         "  -s, --strict          return non-zero exit code on warnings as well as",

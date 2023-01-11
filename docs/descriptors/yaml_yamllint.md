@@ -9,7 +9,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 
 ## yamllint documentation
 
-- Version in MegaLinter: **1.28.0**
+- Version in MegaLinter: **1.29.0**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
   - If custom `.yamllint.yml` config file is not found, [.yamllint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.yamllint.yml){target=_blank} will be used
@@ -94,7 +94,7 @@ yamllint -c .yamllint.yml myfile.yaml
 ### Help content
 
 ```shell
-usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]
+usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA] [--list-files]
                 [-f {parsable,standard,colored,github,auto}] [-s]
                 [--no-warnings] [-v]
                 [FILE_OR_DIR ...]
@@ -113,6 +113,7 @@ options:
                         path to a custom configuration
   -d CONFIG_DATA, --config-data CONFIG_DATA
                         custom configuration (as YAML source)
+  --list-files          list files to lint and exit
   -f {parsable,standard,colored,github,auto}, --format {parsable,standard,colored,github,auto}
                         format for parsing output
   -s, --strict          return non-zero exit code on warnings as well as
