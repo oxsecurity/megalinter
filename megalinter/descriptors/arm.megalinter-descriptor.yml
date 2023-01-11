@@ -47,10 +47,6 @@ linters:
             Test-AzTemplate @config -TemplatePath myfile.json;
             if (${Error}.Count) {exit 1}
             "
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - ARG ARM_TTK_NAME='master.zip'
@@ -63,6 +59,10 @@ linters:
               && rm "${ARM_TTK_NAME}" \
               && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
               && chmod a+x /usr/bin/arm-ttk
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: ARMTTKExtension
