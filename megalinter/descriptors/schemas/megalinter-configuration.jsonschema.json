@@ -8300,7 +8300,7 @@
     },
     "POWERSHELL_POWERSHELL_FORMATTER_CONFIG_FILE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CONFIG_FILE",
-      "default": ".powershell-psscriptanalyzer.psd1",
+      "default": ".powershell-formatter.psd1",
       "description": "POWERSHELL_POWERSHELL_FORMATTER: User custom config file name if different from default",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Custom config file name",
       "type": "string"

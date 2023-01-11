@@ -85,9 +85,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      #####################
-      # Run Deploy script #
-      #####################
+      ###################################
+      # Run Deploy script for Dockerhub #
+      ###################################
       - name: Deploy ${{ github.event.release.tag_name }} image to DockerHub
         env:
           # Set the Env Vars
@@ -98,6 +98,23 @@ jobs:
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           DOCKER_BUILD_PLATFORMS: linux/amd64
           REGISTRY: Docker
+          ALWAYS_BUILD: force
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      ###################################################
+      # Run Deploy script for GitHub Container Registry #
+      ###################################################
+      - name: Deploy ${{ github.event.release.tag_name }} image to GitHub Container Registry
+        env:
+          # Set the Env Vars
+          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
+          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
+          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
+          IMAGE_VERSION: "${{ github.event.release.tag_name }}"
+          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
+          DOCKER_BUILD_PLATFORMS: linux/amd64
+          REGISTRY: GCR
           ALWAYS_BUILD: force
         shell: bash
         run: .automation/upload-docker.sh

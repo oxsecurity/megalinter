@@ -49,7 +49,15 @@ class config_test(unittest.TestCase):
     def test_local_config_extends_success(self):
         local_config = "local.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = local_config
-        config.init_config(REPO_HOME_DEFAULT + os.path.sep + ".automation" + os.path.sep + "test" + os.path.sep + "mega-linter-config-test")
+        config.init_config(
+            REPO_HOME_DEFAULT
+            + os.path.sep
+            + ".automation"
+            + os.path.sep
+            + "test"
+            + os.path.sep
+            + "mega-linter-config-test"
+        )
         self.assertEqual("(local)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("false", config.get("SHOW_ELAPSED_TIME"))
 
@@ -57,7 +65,15 @@ class config_test(unittest.TestCase):
         local_config = "local-error.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = local_config
         try:
-            config.init_config(REPO_HOME_DEFAULT + os.path.sep + ".automation" + os.path.sep + "test" + os.path.sep + "mega-linter-config-test")
+            config.init_config(
+                REPO_HOME_DEFAULT
+                + os.path.sep
+                + ".automation"
+                + os.path.sep
+                + "test"
+                + os.path.sep
+                + "mega-linter-config-test"
+            )
         except Exception as e:
             self.assertIn("No such file or directory", str(e))
 

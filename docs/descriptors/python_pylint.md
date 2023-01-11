@@ -15,7 +15,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.15.9**
+- Version in MegaLinter: **2.15.10**
 - Visit [Official Web Site](https://pylint.pycqa.org){target=_blank}
 - See [How to configure pylint rules](https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -735,3 +735,4 @@ Classes:
 
 - PIP packages (Python):
   - [pylint](https://pypi.org/project/pylint)
+  - [typing-extensions](https://pypi.org/project/typing-extensions)
