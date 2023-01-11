@@ -22,7 +22,7 @@
     "djlint": "1.19.11",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.3.0",
-    "dotnet-format": "6.0.404",
+    "dotnet-format": "6.0.405",
     "dustilock": "0.0.0",
     "editorconfig-checker": "2.4.0",
     "eslint": "8.31.0",
@@ -56,7 +56,7 @@
     "php": "7.4.26",
     "phpcs": "3.7.1",
     "phplint": "5.5",
-    "phpstan": "1.9.8",
+    "phpstan": "1.9.9",
     "pmd": "6.48.0",
     "powershell": "7.3.1",
     "powershell_formatter": "7.3.1",
@@ -73,7 +73,7 @@
     "rst-lint": "1.4.0",
     "rstcheck": "6.1.1",
     "rstfmt": "0.0.11",
-    "rubocop": "1.42.0",
+    "rubocop": "1.43.0",
     "scalafix": "0.10.4",
     "scss-lint": "0.59.0",
     "secretlint": "6.0.2",
@@ -102,5 +102,5 @@
     "tsqllint": "1.15.1.0",
     "v8r": "0.13.1",
     "xmllint": "20914",
-    "yamllint": "1.28.0"
+    "yamllint": "1.29.0"
 }
