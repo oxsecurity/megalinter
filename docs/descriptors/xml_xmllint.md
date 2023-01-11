@@ -7,6 +7,8 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 # xmllint
 ![autofix](https://shields.io/badge/-autofix-green)
 
+To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
+
 ## xmllint documentation
 
 - Version in MegaLinter: **20914**
@@ -22,6 +24,8 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| XML_XMLLINT_AUTOFORMAT                  | If set to `true`, it will reformat and reindent the output                                                                                                                                                          | `false`            |
+| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | `  `               |
 | XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
 | XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
 | XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
@@ -71,6 +75,10 @@ This linter is available in the following flavours
 
 ```shell
 xmllint myfile.xml
+```
+
+```shell
+xmllint --format myfile.xml --output myfile.xml
 ```
 
 
