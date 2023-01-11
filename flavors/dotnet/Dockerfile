@@ -224,14 +224,20 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+RUN case ${TARGETPLATFORM} in \
+      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+      "linux/arm/v7") POWERSHELL_ARCH=arm32      ;; \
+    esac \
+  && mkdir -p ${PWSH_DIRECTORY} \
+  && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+      | grep browser_download_url \
+      | grep linux-${POWERSHELL_ARCH} \
+      | cut -d '"' -f 4 \
+      | xargs -n 1 wget -O - \
+      | tar -xzC ${PWSH_DIRECTORY} \
+  && chmod +x /usr/bin/pwsh \
+  && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
 
 # CSHARP installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -241,20 +247,21 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # POWERSHELL installation
-RUN case ${TARGETPLATFORM} in \
-      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
-    esac \
-  && mkdir -p ${PWSH_DIRECTORY} \
-  && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-      | grep browser_download_url \
-      | grep linux-${POWERSHELL_ARCH} \
-      | cut -d '"' -f 4 \
-      | xargs -n 1 wget -O - \
-      | tar -xzC ${PWSH_DIRECTORY} \
-  && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-  && chmod +x /usr/bin/pwsh
-
+# Next line commented because already managed by another linter
+# RUN case ${TARGETPLATFORM} in \
+#       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+#       "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+#       "linux/arm/v7") POWERSHELL_ARCH=arm32      ;; \
+#     esac \
+#   && mkdir -p ${PWSH_DIRECTORY} \
+#   && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#       | grep browser_download_url \
+#       | grep linux-${POWERSHELL_ARCH} \
+#       | cut -d '"' -f 4 \
+#       | xargs -n 1 wget -O - \
+#       | tar -xzC ${PWSH_DIRECTORY} \
+#   && chmod +x /usr/bin/pwsh \
+#   && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
