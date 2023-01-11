@@ -82,7 +82,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
           IMAGE_VERSION: ${{ github.event.release.tag_name }}
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
+          DOCKER_BUILD_PLATFORMS: linux/amd64,linux/arm64
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
@@ -98,7 +98,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
           IMAGE_VERSION: ${{ github.event.release.tag_name }}
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
+          DOCKER_BUILD_PLATFORMS: linux/amd64,linux/arm64
           REGISTRY: GCR
         shell: bash
         run: .automation/upload-docker.sh

@@ -96,7 +96,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
           IMAGE_VERSION: "${{ github.event.release.tag_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
+          DOCKER_BUILD_PLATFORMS: linux/amd64,linux/arm64
           REGISTRY: Docker
           ALWAYS_BUILD: force
         shell: bash
@@ -113,7 +113,7 @@ jobs:
           IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
           IMAGE_VERSION: "${{ github.event.release.tag_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
+          DOCKER_BUILD_PLATFORMS: linux/amd64,linux/arm64
           REGISTRY: GCR
           ALWAYS_BUILD: force
         shell: bash
