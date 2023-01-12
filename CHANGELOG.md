@@ -26,6 +26,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.9.8 to **1.9.9** on 2023-01-11
   - [rubocop](https://rubocop.org/) from 1.42.0 to **1.43.0** on 2023-01-11
   - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.29.0** on 2023-01-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.7 to **0.72.8** on 2023-01-12
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.7.101 to **0.7.103** on 2023-01-12
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07

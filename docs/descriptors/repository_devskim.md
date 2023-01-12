@@ -11,7 +11,7 @@ Use `--ignore-globs` to ignore files and/or folders
 
 ## devskim documentation
 
-- Version in MegaLinter: **0.7.101**
+- Version in MegaLinter: **0.7.103**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -77,7 +77,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-Microsoft DevSkim Command Line Interface 0.7.101+7d74268320
+Microsoft DevSkim Command Line Interface 0.7.103+b904d13828
 
 Usage: devskim [options] [command]
 
