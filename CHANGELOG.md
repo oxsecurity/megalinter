@@ -15,7 +15,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
 
 - Linter versions upgrades
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.7.0 to **6.10.2** on 2023-01-13
   - [prettier](https://prettier.io/) from 2.8.1 to **2.8.2** on 2023-01-07
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 000 to **6.0.404** on 2023-01-07
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.146 to **1.148** on 2023-01-07
@@ -29,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.29.0** on 2023-01-11
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.7 to **0.72.8** on 2023-01-12
   - [devskim](https://github.com/microsoft/DevSkim) from 0.7.101 to **0.7.103** on 2023-01-12
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.7.0 to **6.10.2** on 2023-01-13
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
