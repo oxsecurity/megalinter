@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
 
 - Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.7.0 to **6.10.2** on 2023-01-13
   - [prettier](https://prettier.io/) from 2.8.1 to **2.8.2** on 2023-01-07
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 000 to **6.0.404** on 2023-01-07
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.146 to **1.148** on 2023-01-07
@@ -51,7 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New MegaLinter plugins
   - [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links, by @shiranr
   - [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved, by @grimmjo
-  
+
 - New article talking about MegaLinter: [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/), by @gijsreyn
 
 - Linter versions upgrades
