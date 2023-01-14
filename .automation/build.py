@@ -2998,7 +2998,7 @@ if __name__ == "__main__":
         refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
-        # generate_documentation_all_users() # deprecated since no we use github-dependents-info
+        # generate_documentation_all_users() # deprecated since now we use github-dependents-info
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
