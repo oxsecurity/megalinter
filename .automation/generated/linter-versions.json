@@ -60,7 +60,7 @@
     "pmd": "6.48.0",
     "powershell": "7.3.1",
     "powershell_formatter": "7.3.1",
-    "prettier": "2.8.2",
+    "prettier": "2.8.3",
     "proselint": "0.13.0",
     "protolint": "0.42.2",
     "psalm": "Psalm.dev-master@",
