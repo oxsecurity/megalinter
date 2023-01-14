@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.7 to **0.72.8** on 2023-01-12
   - [devskim](https://github.com/microsoft/DevSkim) from 0.7.101 to **0.7.103** on 2023-01-12
   - [phpstan](https://phpstan.org/) from 1.9.9 to **1.9.11** on 2023-01-12
+  - [syft](https://github.com/anchore/syft) from 0.65.0 to **0.66.1** on 2023-01-14
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
