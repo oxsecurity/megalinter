@@ -1,18 +1,19 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1939&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1333&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=606&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=45542&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1942&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1334&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=608&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=45576&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33906 |
-| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2306 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33915 |
+| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2307 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1739 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1571 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1507 |
-| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1024 |
+| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1027 |
+| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |   977 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   921 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   843 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   610 |
@@ -26,7 +27,7 @@
 | [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   276 |
 | [bjw-s/home-ops](https://github.com/bjw-s/home-ops)                                                                                                                             |   230 |
 | [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   228 |
-| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   200 |
+| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   201 |
 | [OCSInventory-NG/OCSInventory-ocsreports](https://github.com/OCSInventory-NG/OCSInventory-ocsreports)                                                                           |   192 |
 | [pantheon-systems/documentation](https://github.com/pantheon-systems/documentation)                                                                                             |   180 |
 | [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   152 |
@@ -162,6 +163,7 @@
 | [GiorgioAresu/homelab-gitops](https://github.com/GiorgioAresu/homelab-gitops)                                                                                                   |     6 |
 | [elraro/home-ops](https://github.com/elraro/home-ops)                                                                                                                           |     6 |
 | [unixorn/gitlike-commands](https://github.com/unixorn/gitlike-commands)                                                                                                         |     6 |
+| [axelrindle/github-version-checker](https://github.com/axelrindle/github-version-checker)                                                                                       |     6 |
 | [jokay/docker-loxone-backup](https://github.com/jokay/docker-loxone-backup)                                                                                                     |     6 |
 | [ishioni/homelab-ops](https://github.com/ishioni/homelab-ops)                                                                                                                   |     6 |
 | [proinsias/proinsias.github.io](https://github.com/proinsias/proinsias.github.io)                                                                                               |     6 |
@@ -1042,7 +1044,6 @@
 | [ShadowsZD/github_actions](https://github.com/ShadowsZD/github_actions)                                                                                                         |     0 |
 | [HealthDataInsight/way_of_working](https://github.com/HealthDataInsight/way_of_working)                                                                                         |     0 |
 | [Doonga/greyrock-ops](https://github.com/Doonga/greyrock-ops)                                                                                                                   |     0 |
-| [MoyaF/blog-backend](https://github.com/MoyaF/blog-backend)                                                                                                                     |     0 |
 | [brettinternet/brettinternet.github.io](https://github.com/brettinternet/brettinternet.github.io)                                                                               |     0 |
 | [Caprico85/node-red-contrib-google-smarthome](https://github.com/Caprico85/node-red-contrib-google-smarthome)                                                                   |     0 |
 | [sg70/hm-homebridge-addon](https://github.com/sg70/hm-homebridge-addon)                                                                                                         |     0 |
