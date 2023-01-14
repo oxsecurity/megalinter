@@ -6275,11 +6275,11 @@ trigger:
 <p>The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, <a href="https://docs.drone.io/pipeline/triggers/">click here</a>.</p>
 <h2 id="docker-container">Docker container</h2>
 <p>You can also run megalinter with its Docker container, just execute this command:</p>
-<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/tmp/lint:rw oxsecurity/megalinter:v6</code></p>
+<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v6</code></p>
 <p><strong>No extra arguments are needed,</strong> however, megalinter will lint all of the files inside the <code>/tmp/lint</code> folder, so it may be needed to configure your tool of choice to use the <code>/tmp/lint</code> folder as workspace.
 This can also be changed:</p>
 <p><em>Example:</em></p>
-<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/example/folder:rw oxsecurity/megalinter:v6</code></p>
+<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6</code></p>
 <h2 id="run-megalinter-locally">Run MegaLinter locally</h2>
 <p><a href="https://npmjs.org/package/mega-linter-runner"><img alt="Version" src="https://img.shields.io/npm/v/mega-linter-runner.svg" /></a>
 <a href="https://npmjs.org/package/mega-linter-runner"><img alt="Downloads/week" src="https://img.shields.io/npm/dw/mega-linter-runner.svg" /></a>
