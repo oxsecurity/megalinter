@@ -2548,8 +2548,10 @@ def generate_documentation_all_linters():
                 if "GITHUB_TOKEN" in os.environ:
                     github_token = os.environ["GITHUB_TOKEN"]
                     api_github_headers["authorization"] = f"Bearer {github_token}"
-                    use_github_token =" (with GITHUB_TOKEN)"
-                logging.info(f"Getting license info for {api_github_url}" + use_github_token)
+                    use_github_token = " (with GITHUB_TOKEN)"
+                logging.info(
+                    f"Getting license info for {api_github_url}" + use_github_token
+                )
                 try:
                     session = requests_retry_session()
                     r = session.get(api_github_url, headers=api_github_headers)
