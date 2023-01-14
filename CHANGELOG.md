@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.9.9 to **1.9.11** on 2023-01-12
   - [syft](https://github.com/anchore/syft) from 0.65.0 to **0.66.1** on 2023-01-14
   - [prettier](https://prettier.io/) from 2.8.2 to **2.8.3** on 2023-01-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.12.10 to **2023.01.12** on 2023-01-14
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
