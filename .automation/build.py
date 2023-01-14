@@ -44,6 +44,8 @@ RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
+IS_LATEST = "--latest" in sys.argv
+# Release args management
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
@@ -56,8 +58,14 @@ elif "--version" in sys.argv:
 else:
     VERSION = "beta"
     VERSION_V = VERSION
+# latest management
+if IS_LATEST is True:
+    VERSION_URL_SEGMENT = "latest"
+else:
+    VERSION_URL_SEGMENT = VERSION
 
-MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
+
+MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION_URL_SEGMENT
 
 BRANCH = "main"
 URL_ROOT = ML_REPO_URL + "/tree/" + BRANCH
@@ -1887,7 +1895,12 @@ def get_install_md(item):
 
 
 def doc_url(href):
-    if "/descriptors/" in href and "#" not in href:
+    if (
+        "/descriptors/" in href
+        or "/flavors/" in href
+        or "/licenses/" in href
+        or "/reporters/" in href
+    ) and "#" not in href:
         return href
     elif href.startswith("https://github") and "#" not in href:
         return href + "#readme"
@@ -2995,7 +3008,7 @@ if __name__ == "__main__":
     generate_linter_test_classes()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
-        refresh_users_info()
+        # refresh_users_info() # deprecated since now we use github-dependents-info
         generate_documentation()
         generate_documentation_all_linters()
         # generate_documentation_all_users() # deprecated since now we use github-dependents-info
