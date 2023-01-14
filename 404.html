@@ -7,16 +7,27 @@
 
     <script>
         window.onload = function () {
-            const defaultVersion = 'latest' ;
+            const defaultVersion = 'latest';
             const destination = window.location.href;
-            if (window.location.href.includes("megalinter.io/" + defaultVersion)){
-                return ;
+            if (window.location.href.includes("megalinter.io/" + defaultVersion)) {
+                return;
             }
             else if (window.location.href.includes("megalinter.io/")) {
-                const redirectLocation = window.location.href.replace(
-                    "megalinter.io/",
-                    "megalinter.io/" + defaultVersion + "/"
-                );
+                const semverRegex = /\d+\.\d+\.\d+/;
+                let redirectLocation = ""
+                const match = window.location.href.match(semverRegex);
+                if (match) {
+                    redirectLocation = window.location.href.replace(
+                        "megalinter.io/" + match[0] + "/",
+                        "megalinter.io/" + defaultVersion + "/"
+                    );
+                }
+                else {
+                    redirectLocation = window.location.href.replace(
+                        "megalinter.io/",
+                        "megalinter.io/" + defaultVersion + "/"
+                    );
+                }
                 document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
                 window.location.href = redirectLocation;
             }
