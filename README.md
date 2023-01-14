@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1930&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1938&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -729,14 +729,14 @@ The workflow above should only trigger on push, not on any other situation. For 
 
 You can also run megalinter with its Docker container, just execute this command:
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/tmp/lint:rw oxsecurity/megalinter:v6`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v6`
 
 **No extra arguments are needed,** however, megalinter will lint all of the files inside the `/tmp/lint` folder, so it may be needed to configure your tool of choice to use the `/tmp/lint` folder as workspace.
 This can also be changed:
 
 _Example:_
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(PWD):/example/folder:rw oxsecurity/megalinter:v6`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6`
 
 ### Run MegaLinter locally
 
