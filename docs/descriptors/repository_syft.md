@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.65.0**
+- Version in MegaLinter: **0.66.1**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -104,8 +104,8 @@ Examples:
 
 
 Available Commands:
-  attest      Generate a package SBOM as an attestation for the given [SOURCE] container image
-  completion  Generate a shell completion for Syft (listing local docker images)
+  attest      Generate an SBOM as an attestation for the given [SOURCE] container image
+  completion  Generate the autocompletion script for the specified shell
   convert     Convert between SBOM formats
   help        Help about any command
   login       Log in to a registry
