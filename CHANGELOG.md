@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Deploy additional Docker images to GitHub Container Registry, by @lars-reimann in [#2117](https://github.com/oxsecurity/megalinter/pull/2117)
+  - Build: Disable generate_documentation_all_users as we use github-dependents-info
 
 - Fixes
   - Change name of config file for powershell formatter to avoid collision with powershell linter config

@@ -2544,10 +2544,12 @@ def generate_documentation_all_linters():
                 repo = linter.linter_repo.split("https://github.com/", 1)[1]
                 api_github_url = f"https://api.github.com/repos/{repo}"
                 api_github_headers = {"content-type": "application/json"}
+                use_github_token = ""
                 if "GITHUB_TOKEN" in os.environ:
                     github_token = os.environ["GITHUB_TOKEN"]
                     api_github_headers["authorization"] = f"Bearer {github_token}"
-                logging.info(f"Getting license info for {api_github_url}")
+                    use_github_token =" (with GITHUB_TOKEN)"
+                logging.info(f"Getting license info for {api_github_url}" + use_github_token)
                 try:
                     session = requests_retry_session()
                     r = session.get(api_github_url, headers=api_github_headers)
@@ -2994,7 +2996,7 @@ if __name__ == "__main__":
         refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
-        generate_documentation_all_users()
+        # generate_documentation_all_users() # deprecated since no we use github-dependents-info
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
