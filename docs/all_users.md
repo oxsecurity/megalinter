@@ -50,8 +50,8 @@ According to posted issues, there are many more private and self-hosted repos us
 [![stepancheg/rust-tls-api - GitHub](https://gh-card.dev/repos/stepancheg/rust-tls-api.svg?fullname=)](https://github.com/stepancheg/rust-tls-api){target=_blank}
 [![practicalli/clojure - GitHub](https://gh-card.dev/repos/practicalli/clojure.svg?fullname=)](https://github.com/practicalli/clojure){target=_blank}
 [![nvuillam/sfdx-essentials - GitHub](https://gh-card.dev/repos/nvuillam/sfdx-essentials.svg?fullname=)](https://github.com/nvuillam/sfdx-essentials){target=_blank}
-[![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
+[![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
 [![0dragosh/homelab - GitHub](https://gh-card.dev/repos/0dragosh/homelab.svg?fullname=)](https://github.com/0dragosh/homelab){target=_blank}
 [![quackduck/secret - GitHub](https://gh-card.dev/repos/quackduck/secret.svg?fullname=)](https://github.com/quackduck/secret){target=_blank}
 [![AlbanAndrieu/ansible-windows - GitHub](https://gh-card.dev/repos/AlbanAndrieu/ansible-windows.svg?fullname=)](https://github.com/AlbanAndrieu/ansible-windows){target=_blank}
