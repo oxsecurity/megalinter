@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import regex
 from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
@@ -296,47 +297,48 @@ def format_bullet_list(files):
 
 
 def find_json_in_stdout(stdout: str):
-    found_json = ""
-    # Whole stdout is json
-    if stdout.startswith("{"):
-        found_json = truncate_json_from_line(stdout)
-        if found_json != "":
-            return found_json
+    # Try using full stdout
+    found_json = truncate_json_from_string(stdout)
+    if found_json != "":
+        sarif_json = extract_sarif_json(found_json)
+        if sarif_json != "":
+            return sarif_json
     # Try to find a json single line within stdout
     stdout_lines = stdout.splitlines()
     stdout_lines.reverse()  # start from last lines
     for line in stdout_lines:
-        if line.startswith("{"):
-            json_only = truncate_json_from_line(line)
-            if json_only != "":
-                json_obj = json.loads(json_only)
-                found_json = json.dumps(json_obj, indent=4)
-                break
-    # Try to find indented json within stdout
-    if found_json == "":
-        json_text = ""
-        json_start = False
-        for line in stdout.splitlines():
-            if json_start:
-                json_text += line
-            elif line.strip().startswith("{"):
-                json_text = line
-                json_start = True
-        if json_start is True:
-            try:
-                json_obj = json.loads(json_text)
-                found_json = json.dumps(json_obj, indent=4)
-            except json.decoder.JSONDecodeError:
-                found_json = ""
-    return found_json
-
-
-def truncate_json_from_line(line: str):
-    start_pos = line.find("{")
-    end_pos = line.rfind("}")
-    if start_pos > -1 and end_pos > -1:
-        return line[start_pos : end_pos + 1]  # noqa: E203
+        if line.strip().startswith("{"):
+            json_unique_line = truncate_json_from_string(line)
+            sarif_json = extract_sarif_json(json_unique_line)
+            if sarif_json != "":
+                return sarif_json
+    # Try using regex
+    pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
+    json_regex_results = pattern.findall(stdout)
+    for json_regex_result in json_regex_results:
+        sarif_json = extract_sarif_json(json_regex_result)
+        if sarif_json != "":
+            return sarif_json
+    # SARIF json not found in stdout
     return ""
+
+
+def truncate_json_from_string(string_with_json_inside: str):
+    start_pos = string_with_json_inside.find("{")
+    end_pos = string_with_json_inside.rfind("}")
+    if start_pos > -1 and end_pos > -1:
+        return string_with_json_inside[start_pos : end_pos + 1]  # noqa: E203
+    return ""
+
+
+def extract_sarif_json(json_text: str):
+    try:
+        json_obj = json.loads(json_text)
+        if "runs" in json_obj:
+            sarif_json = json.dumps(json_obj, indent=4)
+    except json.decoder.JSONDecodeError:
+        sarif_json = ""
+    return sarif_json
 
 
 def get_current_test_name(full_name=False):
