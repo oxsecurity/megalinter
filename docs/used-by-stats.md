@@ -1,21 +1,21 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=1942&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1334&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=1943&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1335&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=608&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=45576&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=45600&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33915 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 33926 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2307 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1739 |
-| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1571 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1741 |
+| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1573 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1507 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1027 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |   977 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   921 |
-| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   843 |
+| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   844 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   610 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   552 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   523 |
@@ -395,6 +395,7 @@
 | [xitobuh/flux-cluster](https://github.com/xitobuh/flux-cluster)                                                                                                                 |     1 |
 | [sja/k8s-home](https://github.com/sja/k8s-home)                                                                                                                                 |     1 |
 | [onidemon37/home-ops](https://github.com/onidemon37/home-ops)                                                                                                                   |     1 |
+| [aumer-amr/lab](https://github.com/aumer-amr/lab)                                                                                                                               |     1 |
 | [ahmadnassri/action-npm-global-path](https://github.com/ahmadnassri/action-npm-global-path)                                                                                     |     1 |
 | [ahmadnassri/action-metadata](https://github.com/ahmadnassri/action-metadata)                                                                                                   |     1 |
 | [ahmadnassri/template-action-composite](https://github.com/ahmadnassri/template-action-composite)                                                                               |     1 |
@@ -1040,6 +1041,7 @@
 | [rciam/simplesamlphp-module-assurance](https://github.com/rciam/simplesamlphp-module-assurance)                                                                                 |     0 |
 | [rciam/simplesamlphp-module-userid](https://github.com/rciam/simplesamlphp-module-userid)                                                                                       |     0 |
 | [Teasel-Ian/terraform](https://github.com/Teasel-Ian/terraform)                                                                                                                 |     0 |
+| [wadoon/key-playground](https://github.com/wadoon/key-playground)                                                                                                               |     0 |
 | [proinsias/whoareyou](https://github.com/proinsias/whoareyou)                                                                                                                   |     0 |
 | [ShadowsZD/github_actions](https://github.com/ShadowsZD/github_actions)                                                                                                         |     0 |
 | [HealthDataInsight/way_of_working](https://github.com/HealthDataInsight/way_of_working)                                                                                         |     0 |
@@ -1115,7 +1117,6 @@
 | [funkel1989/kube-v1](https://github.com/funkel1989/kube-v1)                                                                                                                     |     0 |
 | [Roguito/flux-cluster-template](https://github.com/Roguito/flux-cluster-template)                                                                                               |     0 |
 | [ahmadnassri/docker-unifi-api-browser](https://github.com/ahmadnassri/docker-unifi-api-browser)                                                                                 |     0 |
-| [aumer-amr/lab](https://github.com/aumer-amr/lab)                                                                                                                               |     0 |
 | [asujata/home-ops](https://github.com/asujata/home-ops)                                                                                                                         |     0 |
 | [ahmadnassri/docker-rapidoc-server](https://github.com/ahmadnassri/docker-rapidoc-server)                                                                                       |     0 |
 | [deathbreakfast/test](https://github.com/deathbreakfast/test)                                                                                                                   |     0 |
