@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import importlib
+import json
 import logging
 import os
 import re
@@ -295,19 +296,38 @@ def format_bullet_list(files):
 
 
 def find_json_in_stdout(stdout: str):
+    found_json = ""
     # Whole stdout is json
     if stdout.startswith("{"):
-        return truncate_json_from_line(stdout)
-    # Try to find a json line within stdout
-    found_json = ""
+        found_json = truncate_json_from_line(stdout)
+        if found_json != "":
+            return found_json
+    # Try to find a json single line within stdout
     stdout_lines = stdout.splitlines()
     stdout_lines.reverse()  # start from last lines
     for line in stdout_lines:
         if line.startswith("{"):
             json_only = truncate_json_from_line(line)
             if json_only != "":
-                found_json = json_only
+                json_obj = json.loads(json_only)
+                found_json = json.dumps(json_obj, indent=4)
                 break
+    # Try to find indented json within stdout
+    if found_json == "":
+        json_text = ""
+        json_start = False
+        for line in stdout.splitlines():
+            if json_start:
+                json_text += line
+            elif line.strip().startswith("{"):
+                json_text = line
+                json_start = True
+        if json_start is True:
+            try:
+                json_obj = json.loads(json_text)
+                found_json = json.dumps(json_obj, indent=4)
+            except json.decoder.JSONDecodeError:
+                found_json = ""
     return found_json
 
 
