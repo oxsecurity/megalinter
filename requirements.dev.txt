@@ -12,6 +12,7 @@ pytest-timeout
 pytest-xdist
 python-gitlab
 pyyaml
+regex
 requests
 terminaltables
 webpreview

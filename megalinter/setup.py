@@ -19,6 +19,7 @@ setup(
         "commentjson",
         "pytablewriter",
         "pyyaml",
+        "regex",
         "requests",
         "terminaltables",
         "importlib-metadata>=3.10"
