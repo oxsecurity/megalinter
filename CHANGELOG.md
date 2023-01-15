@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
+  - Enhance find SARIF json in stdout output
 
 - Linter versions upgrades
   - [prettier](https://prettier.io/) from 2.8.1 to **2.8.2** on 2023-01-07
