@@ -9,11 +9,11 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.7.0**
-- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
-- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
-- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
-- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
+- Version in MegaLinter: **6.10.2**
+- Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
+- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
+- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
+- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/rules/){target=_blank}
 
 [![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint){target=_blank}
 
@@ -88,16 +88,17 @@ ansible-lint -v -c .ansible-lint
 ### Help content
 
 ```shell
-usage: ansible-lint [-h] [-L | -T]
+WARNING: PATH altered to expand ~ in it. Read https://stackoverflow.com/a/44704799/99834 and correct your system configuration.
+usage: ansible-lint [-h] [-P | -L | -T]
                     [-f {rich,plain,md,json,codeclimate,quiet,pep8,sarif,docs}]
                     [-q]
-                    [-P [{min,basic,moderate,safety,shared,production} ...]]
+                    [--profile {min,basic,moderate,safety,shared,production}]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
-                    [-r RULESDIR] [-R] [--write [WRITE_LIST]] [--show-relpath]
-                    [-t TAGS] [-v] [-x SKIP_LIST] [-w WARN_LIST]
-                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
-                    [--version]
+                    [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
+                    [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
+                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
+                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
+                    [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -106,6 +107,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
+  -P, --list-profiles   List all profiles, no formatting options available.
   -L, --list-rules      List all the rules. For listing rules only the
                         following formats for argument -f are supported:
                         {plain, rich, md}
@@ -116,13 +118,12 @@ options:
                         stdout formatting, json being an alias for
                         codeclimate. (default: rich)
   -q                    quieter, reduce verbosity, can be specified twice.
-  -P [{min,basic,moderate,safety,shared,production} ...], --profile [{min,basic,moderate,safety,shared,production} ...]
-                        Specify which rules profile to be used, or displays
-                        available profiles when no argument is given.
+  --profile {min,basic,moderate,safety,shared,production}
+                        Specify which rules profile to be used.
   -p, --parseable       parseable output, same as '-f pep8'
-  --progressive         Return success if it detects a reduction in number of
-                        violations compared with previous git commit. This
-                        feature works only in git repositories.
+  --progressive         Return success if number of violations compared
+                        withprevious git commit has not increased. This
+                        feature worksonly in git repositories.
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on
                         location of configuration file.
@@ -131,6 +132,8 @@ options:
                         embedded rules from /venvs/ansible-
                         lint/lib/python3.10/site-packages/ansiblelint/rules
   -R                    Keep default rules when using -r
+  -s, --strict          Return non-zero exit code on warnings as well as
+                        errors
   --write [WRITE_LIST]  Allow ansible-lint to reformat YAML files and run rule
                         transforms (Reformatting YAML files standardizes
                         spacing, quotes, etc. A rule transform can fix or
@@ -156,9 +159,11 @@ options:
                         values
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
-                        config file. Current version default value is:
-                        experimental, jinja[spacing], name[casing],
-                        name[play], role-name
+                        config file. Current version default value is: avoid-
+                        implicit, experimental, fqcn[action], fqcn[redirect],
+                        jinja[spacing], name[casing], name[play],
+                        name[prefix], role-name, warning[empty-playbook],
+                        role-name[path]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
@@ -176,4 +181,4 @@ options:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [ansible-lint==6.7.0](https://pypi.org/project/ansible-lint==6.7.0)
+  - [ansible-lint](https://pypi.org/project/ansible-lint)
