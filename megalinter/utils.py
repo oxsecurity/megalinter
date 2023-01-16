@@ -5,11 +5,11 @@ import json
 import logging
 import os
 import re
-import regex
 from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
 import git
+import regex
 from megalinter import config
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
