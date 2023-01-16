@@ -9,9 +9,9 @@ description: tekton-lint is available to analyze TEKTON files in MegaLinter
 
 ## Linters
 
-| Linter                               | Configuration key               | Status                                                                                                                         |
-|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/IBM/tekton-lint)](https://github.com/IBM/tekton-lint/commits) |
+| Linter                                                                                     | Additional                                                                                                                   |
+|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [**tekton-lint**](tekton_tekton_lint.md)<br/>[_TEKTON_TEKTON_LINT_](tekton_tekton_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/IBM/tekton-lint?cacheSeconds=3600)](https://github.com/IBM/tekton-lint) |
 
 ## Linted files
 

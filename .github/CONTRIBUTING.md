@@ -78,6 +78,30 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 - Create a branch with a name that identifies the user and nature of the changes (similar to `user/branch-purpose`)
 - Open a pull request
 
+### Improve documentation
+
+Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
+
+In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you will have to run at least 2 commands.
+
+Command to execute (only one time):
+
+```bash
+pip install --upgrade "markdown==3.3.7" mike mkdocs-material mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+```
+
+Command to run every time you want to bring up the server:
+
+```bash
+mkdocs serve
+```
+
+By default it listens on `http://127.0.0.1:8000/`.
+
+Every time a change is made to a `.md` file it will automatically update if the server is up.
+
+Once you think everything is correct run `bash build.sh --doc` and it will generate all the rest!
+
 ### Add a new linter
 
 Each linter must:
@@ -85,7 +109,7 @@ Each linter must:
 - Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.sh` and it will generate all the rest !
+Then run `bash build.sh` and it will generate all the rest!
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)

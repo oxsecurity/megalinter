@@ -11,7 +11,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits)
+[![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver)](https://github.com/sqlfluff/sqlfluff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/contributors/)
 
 ## sqlfluff documentation
 

@@ -52,7 +52,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v3.1.1
+      - uses: actions/setup-node@v3.6.0
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
@@ -123,7 +123,7 @@ jobs:
           echo "curr tag ${{ steps.version.outputs.ctag }}"
           echo "prev ver ${{ steps.version.outputs.pversion }}"
           echo "curr ver ${{ steps.version.outputs.cversion }}"
-      - uses: actions/setup-python@v4.3.0
+      - uses: actions/setup-python@v4.5.0
         with:
           python-version: 3.x
       - run: pip install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview

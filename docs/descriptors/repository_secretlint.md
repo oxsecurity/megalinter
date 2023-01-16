@@ -11,7 +11,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits)
+[![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
 
 ## secretlint documentation
 

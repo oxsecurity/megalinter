@@ -9,9 +9,9 @@ description: cfn-lint is available to analyze CLOUDFORMATION files in MegaLinter
 
 ## Linters
 
-| Linter                                 | Configuration key                            | Status                                                                                                                                                 |
-|----------------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) |
+| Linter                                                                                                 | Additional                                                                                                                                                                                            |
+|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**cfn-lint**](cloudformation_cfn_lint.md)<br/>[_CLOUDFORMATION_CFN_LINT_](cloudformation_cfn_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

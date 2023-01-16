@@ -11,13 +11,13 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.12.10-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2023.01.12-alpine as clj-kondo
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.2 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.44.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.44.1 as tflint
 FROM tenable/terrascan:1.16.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -135,11 +135,11 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/pylint" && cd "/venvs/pylint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pylint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/pylint" && cd "/venvs/pylint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pylint typing-extensions && deactivate && cd ./../.. \
     && mkdir -p "/venvs/black" && cd "/venvs/black" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black && deactivate && cd ./../.. \
     && mkdir -p "/venvs/flake8" && cd "/venvs/flake8" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir flake8 && deactivate && cd ./../.. \
     && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir isort black && deactivate && cd ./../.. \
@@ -313,7 +313,7 @@ RUN rc-update add docker boot && rc-service docker start || true \
 # CSHARP installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -366,7 +366,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -408,7 +408,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0 \
+    && /usr/share/dotnet/dotnet tool install -g csharpier \
 
 # dartanalyzer installation
     && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
@@ -544,10 +544,10 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \
@@ -601,10 +601,10 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global --version 1.14.5 TSQLLint \
+    && dotnet tool install --global TSQLLint \
 
 # tflint installation
 # Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -623,10 +623,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
     && mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
-
-# dotnet-format installation
-# Next line commented because already managed by another linter
-# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

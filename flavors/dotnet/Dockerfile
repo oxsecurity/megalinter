@@ -104,7 +104,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==21.3 checkov && deactivate && cd ./../.. \
@@ -235,7 +235,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # CSHARP installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -255,7 +255,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -294,7 +294,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && /usr/share/dotnet/dotnet tool install -g dotnet-format \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier --version 0.16.0 \
+    && /usr/share/dotnet/dotnet tool install -g csharpier \
 
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -362,14 +362,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 #     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global --version 1.14.5 TSQLLint
-
-# dotnet-format installation
-# Next line commented because already managed by another linter
-# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+    && dotnet tool install --global TSQLLint
 
 #OTHER__END
 

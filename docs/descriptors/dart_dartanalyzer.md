@@ -11,7 +11,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits)
+[![GitHub stars](https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600)](https://github.com/dart-lang/sdk) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dart-lang/sdk?sort=semver)](https://github.com/dart-lang/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/contributors/)
 
 ## dartanalyzer documentation
 

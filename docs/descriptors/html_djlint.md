@@ -11,7 +11,7 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits)
+[![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Riverside-Healthcare/djlint?sort=semver)](https://github.com/Riverside-Healthcare/djlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/contributors/)
 
 DjLint can analyse multiple formats of HTML:
 
@@ -27,7 +27,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.19.10**
+- Version in MegaLinter: **1.19.11**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}

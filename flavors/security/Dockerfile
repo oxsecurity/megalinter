@@ -13,7 +13,7 @@
 #FROM__START
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM zricethezav/gitleaks:v8.15.2 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.44.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.44.1 as tflint
 FROM tenable/terrascan:1.16.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -87,7 +87,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==6.7.0 && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==21.3 checkov && deactivate && cd ./../.. \
@@ -210,10 +210,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # devskim installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.6.9 \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
     && ML_THIRD_PARTY_DIR=/download/dustilock && \

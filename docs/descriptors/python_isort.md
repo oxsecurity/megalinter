@@ -11,7 +11,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits)
+[![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/isort?sort=semver)](https://github.com/PyCQA/isort/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/contributors/)
 
 ## isort documentation
 

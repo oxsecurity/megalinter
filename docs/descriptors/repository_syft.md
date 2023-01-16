@@ -11,13 +11,13 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits)
+[![GitHub stars](https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600)](https://github.com/anchore/syft) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/syft?sort=semver)](https://github.com/anchore/syft/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/syft)](https://github.com/anchore/syft/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/syft)](https://github.com/anchore/syft/graphs/contributors/)
 
 Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.64.0**
+- Version in MegaLinter: **0.66.1**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -104,8 +104,8 @@ Examples:
 
 
 Available Commands:
-  attest      Generate a package SBOM as an attestation for the given [SOURCE] container image
-  completion  Generate a shell completion for Syft (listing local docker images)
+  attest      Generate an SBOM as an attestation for the given [SOURCE] container image
+  completion  Generate the autocompletion script for the specified shell
   convert     Convert between SBOM formats
   help        Help about any command
   login       Log in to a registry

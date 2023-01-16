@@ -11,7 +11,7 @@ description: How to use scss-lint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits)
+[![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sds/scss-lint?sort=semver)](https://github.com/sds/scss-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/contributors/)
 
 ## scss-lint documentation
 

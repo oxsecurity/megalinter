@@ -11,11 +11,11 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits)
+[![GitHub stars](https://img.shields.io/github/stars/Perl-Critic/Perl-Critic?cacheSeconds=3600)](https://github.com/Perl-Critic/Perl-Critic) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Perl-Critic/Perl-Critic?sort=semver)](https://github.com/Perl-Critic/Perl-Critic/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/graphs/contributors/)
 
 ## perlcritic documentation
 
-- Version in MegaLinter: **1.146**
+- Version in MegaLinter: **1.148**
 - Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic){target=_blank}
 - See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION){target=_blank}
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}

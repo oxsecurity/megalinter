@@ -11,7 +11,7 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/commits)
+[![GitHub stars](https://img.shields.io/github/stars/dotenv-linter/dotenv-linter?cacheSeconds=3600)](https://github.com/dotenv-linter/dotenv-linter) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dotenv-linter/dotenv-linter?sort=semver)](https://github.com/dotenv-linter/dotenv-linter/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/graphs/contributors/)
 
 ## dotenv-linter documentation
 

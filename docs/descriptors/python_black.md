@@ -11,7 +11,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits)
+[![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/psf/black?sort=semver)](https://github.com/psf/black/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/psf/black)](https://github.com/psf/black/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/psf/black)](https://github.com/psf/black/graphs/contributors/)
 
 ## black documentation
 
@@ -119,7 +119,7 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (prun, python, capture, timeit, pypy,
+                                  magics (pypy, timeit, prun, python, capture,
                                   time, python3). Useful for formatting cells
                                   with custom python magics.
   -x, --skip-source-first-line    Skip the first line of the source code.

@@ -11,14 +11,14 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits)
+[![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannickcr/eslint-plugin-react?sort=semver)](https://github.com/yannickcr/eslint-plugin-react/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/contributors/)
 
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.31.0**
+- Version in MegaLinter: **8.32.0**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}

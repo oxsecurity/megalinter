@@ -9,9 +9,9 @@ description: checkmake is available to analyze MAKEFILE files in MegaLinter
 
 ## Linters
 
-| Linter                             | Configuration key                           | Status                                                                                                                           |
-|------------------------------------|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [checkmake](makefile_checkmake.md) | [MAKEFILE_CHECKMAKE](makefile_checkmake.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/mrtazz/checkmake)](https://github.com/mrtazz/checkmake/commits) |
+| Linter                                                                                   | Additional                                                                                                                     |
+|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [**checkmake**](makefile_checkmake.md)<br/>[_MAKEFILE_CHECKMAKE_](makefile_checkmake.md) | [![GitHub stars](https://img.shields.io/github/stars/mrtazz/checkmake?cacheSeconds=3600)](https://github.com/mrtazz/checkmake) |
 
 ## Linted files
 

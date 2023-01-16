@@ -11,7 +11,7 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits)
+[![GitHub stars](https://img.shields.io/github/stars/Checkmarx/dustilock?cacheSeconds=3600)](https://github.com/Checkmarx/dustilock) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Checkmarx/dustilock?sort=semver)](https://github.com/Checkmarx/dustilock/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/graphs/contributors/)
 
 ## dustilock documentation
 

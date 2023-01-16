@@ -11,11 +11,11 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits)
+[![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
 ## prettier documentation
 
-- Version in MegaLinter: **2.8.1**
+- Version in MegaLinter: **2.8.3**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#yaml){target=_blank}

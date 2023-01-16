@@ -9,10 +9,10 @@ description: dotnet-format, csharpier are available to analyze CSHARP files in M
 
 ## Linters
 
-| Linter                                   | Configuration key                 | Status                                                                                                                         |
-|------------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/format)](https://github.com/dotnet/format/commits)     |
-| [csharpier](csharp_csharpier.md)         | [CSHARP](csharp_csharpier.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/belav/csharpier)](https://github.com/belav/csharpier/commits) |
+| Linter                                                                                             | Additional                                                                                                                                                                         |
+|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**dotnet-format**](csharp_dotnet_format.md)<br/>[_CSHARP_DOTNET_FORMAT_](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow)     |
+| [**csharpier**](csharp_csharpier.md)<br/>[_CSHARP_CSHARPIER_](csharp_csharpier.md)                 | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -35,7 +35,7 @@ description: dotnet-format, csharpier are available to analyze CSHARP files in M
 ```dockerfile
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 ```

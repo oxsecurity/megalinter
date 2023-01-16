@@ -11,11 +11,11 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits)
+[![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rubocop-hq/rubocop?sort=semver)](https://github.com/rubocop-hq/rubocop/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/contributors/)
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.42.0**
+- Version in MegaLinter: **1.43.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
