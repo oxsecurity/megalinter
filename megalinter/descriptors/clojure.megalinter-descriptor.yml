@@ -31,7 +31,7 @@ linters:
         - windows/amd64
     install:
       dockerfile:
-        - FROM cljkondo/clj-kondo:2022.12.10-alpine as clj-kondo
+        - FROM cljkondo/clj-kondo:2023.01.12-alpine as clj-kondo
         - COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
     ide:
       atom:

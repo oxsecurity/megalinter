@@ -10,9 +10,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Deploy additional Docker images to GitHub Container Registry, by @lars-reimann in [#2117](https://github.com/oxsecurity/megalinter/pull/2117)
+  - Build: Disable generate_documentation_all_users as we use github-dependents-info
 
 - Fixes
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
+  - Enhance find SARIF json in stdout output
 
 - Linter versions upgrades
   - [prettier](https://prettier.io/) from 2.8.1 to **2.8.2** on 2023-01-07
@@ -22,6 +24,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.9.7 to **1.9.8** on 2023-01-09
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.6 to **0.72.7** on 2023-01-09
   - [pylint](https://pylint.pycqa.org) from 2.15.9 to **2.15.10** on 2023-01-09
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.404 to **6.0.405** on 2023-01-11
+  - [phpstan](https://phpstan.org/) from 1.9.8 to **1.9.9** on 2023-01-11
+  - [rubocop](https://rubocop.org/) from 1.42.0 to **1.43.0** on 2023-01-11
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.28.0 to **1.29.0** on 2023-01-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.7 to **0.72.8** on 2023-01-12
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.7.101 to **0.7.103** on 2023-01-12
+  - [phpstan](https://phpstan.org/) from 1.9.9 to **1.9.11** on 2023-01-12
+  - [syft](https://github.com/anchore/syft) from 0.65.0 to **0.66.1** on 2023-01-14
+  - [prettier](https://prettier.io/) from 2.8.2 to **2.8.3** on 2023-01-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.12.10 to **2023.01.12** on 2023-01-14
+  - [eslint](https://eslint.org) from 8.31.0 to **8.32.0** on 2023-01-15
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.7.0 to **6.10.2** on 2023-01-16
+  - [csharpier](https://csharpier.com/) from 0.21.0 to **0.22.0** on 2023-01-16
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
@@ -45,7 +60,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New MegaLinter plugins
   - [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links, by @shiranr
   - [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved, by @grimmjo
-  
+
 - New article talking about MegaLinter: [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/), by @gijsreyn
 
 - Linter versions upgrades
