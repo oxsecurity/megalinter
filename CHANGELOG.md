@@ -16,6 +16,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
   - Enhance find SARIF json in stdout output
 
+- Documentation
+  - Configure jsonschema documentation formatting (see [Descriptor schema](https://megalinter.io/latest/json-schemas/descriptor.html), [Configuration schema](https://megalinter.io/latest/json-schemas/configuration.html)), by @echoix in [#2270](https://github.com/oxsecurity/megalinter/pull/2270)
+
 - Linter versions upgrades
   - [prettier](https://prettier.io/) from 2.8.1 to **2.8.2** on 2023-01-07
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 000 to **6.0.404** on 2023-01-07
