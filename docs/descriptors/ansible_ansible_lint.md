@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.10.2**
+- Version in MegaLinter: **6.11.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -174,7 +174,8 @@ options:
   -c CONFIG_FILE, --config-file CONFIG_FILE
                         Specify configuration file to use. By default it will
                         look for '.ansible-lint' or '.config/ansible-lint.yml'
-  --offline             Disable installation of requirements.yml
+  --offline             Disable installation of requirements.yml and schema
+                        refreshing
   --version
 ```
 
