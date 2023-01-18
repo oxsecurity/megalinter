@@ -40,6 +40,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.31.0 to **8.32.0** on 2023-01-15
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.7.0 to **6.10.2** on 2023-01-16
   - [csharpier](https://csharpier.com/) from 0.21.0 to **0.22.0** on 2023-01-16
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.10.2 to **6.11.0** on 2023-01-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.8 to **0.72.9** on 2023-01-18
+  - [csharpier](https://csharpier.com/) from 0.22.0 to **0.22.1** on 2023-01-18
+  - [phpstan](https://phpstan.org/) from 1.9.11 to **1.9.12** on 2023-01-18
+  - [git_diff](https://git-scm.com) from 2.36.3 to **2.36.4** on 2023-01-18
+  - [syft](https://github.com/anchore/syft) from 0.66.1 to **0.66.2** on 2023-01-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.18.1 to **6.19.2** on 2023-01-18
+  - [kics](https://www.kics.io) from 1.6.7 to **1.6.8** on 2023-01-18
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
