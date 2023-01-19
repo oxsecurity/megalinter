@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.19.1**
+- Version in MegaLinter: **7.20.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -824,7 +824,7 @@ BEHAVIOR:
 
 SLURM:
   --slurm               Execute snakemake rules as SLURM batch jobs according
-                        to their 'resources' definition. SLRUM resources as
+                        to their 'resources' definition. SLURM resources as
                         'partition', 'ntasks', 'cpus', etc. need to be defined
                         per rule within the 'resources' definition. Note, that
                         memory can only be defined as 'mem_mb' or

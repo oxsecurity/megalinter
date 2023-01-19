@@ -48,6 +48,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.66.1 to **0.66.2** on 2023-01-18
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.18.1 to **6.19.2** on 2023-01-18
   - [kics](https://www.kics.io) from 1.6.7 to **1.6.8** on 2023-01-18
+  - [phpstan](https://phpstan.org/) from 1.9.12 to **1.9.13** on 2023-01-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.19.1 to **7.20.0** on 2023-01-19
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
