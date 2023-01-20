@@ -84,28 +84,29 @@ def check_active_linters_match_flavor(active_linters):
     missing_linters = []
     for active_linter in active_linters:
         if active_linter.name not in flavor_linters:
-            missing_linters.append(active_linter.name)
             active_linter.is_active = False
+            # Ignore linters that shouldn't trigger failure when missing.
+            if not active_linter.name.startswith("REPOSITORY"):
+                missing_linters.append(active_linter.name)
+
     # Manage cases where linters are missing in flavor
     if len(missing_linters) > 0:
-        # Do not warn/stop if missing linters are repository ones (mostly OX.security related)
-        if not are_all_repository_linters(missing_linters):
-            missing_linters_str = ",".join(missing_linters)
-            logging.warning(
-                f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
-                "As they are not available in this docker image, they will not be processed\n"
-                "To solve this problem, please either: \n"
-                f"- use default flavor {ML_REPO}\n"
-                "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
-                "located in your root directory\n"
-                "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
+        missing_linters_str = ",".join(missing_linters)
+        logging.warning(
+            f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
+            "As they are not available in this docker image, they will not be processed\n"
+            "To solve this problem, please either: \n"
+            f"- use default flavor {ML_REPO}\n"
+            "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
+            "located in your root directory\n"
+            "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
+        )
+        # Stop the process if user wanted so in case of missing linters
+        if config.get("FAIL_IF_MISSING_LINTER_IN_FLAVOR", "") == "true":
+            logging.error(
+                'Missing linter and FAIL_IF_MISSING_LINTER_IN_FLAVOR has been set to "true": Stop run'
             )
-            # Stop the process if user wanted so in case of missing linters
-            if config.get("FAIL_IF_MISSING_LINTER_IN_FLAVOR", "") == "true":
-                logging.error(
-                    'Missing linter and FAIL_IF_MISSING_LINTER_IN_FLAVOR has been set to "true": Stop run'
-                )
-                sys.exit(84)
+            sys.exit(84)
         return False
     # All good !
     return True
@@ -147,13 +148,3 @@ def get_megalinter_flavor_suggestions(active_linters):
     )
     new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
     return ["new", new_flavor_linters_names]
-
-
-def are_all_repository_linters(linter_names: list[str]) -> bool:
-    if len(linter_names) == 0:
-        return False
-    result = True
-    for linter_name in linter_names:
-        if not linter_name.startswith("REPOSITORY"):
-            result = False
-    return result
