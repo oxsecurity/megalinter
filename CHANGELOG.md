@@ -17,6 +17,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Enhance find SARIF json in stdout output
   - Pass --show-context, --show-suggestions, and --no-must-find-files to CSpell for friendlier UX
     by @Kurt-von-Laven in [#2275](https://github.com/oxsecurity/megalinter/pull/2275).
+  - Only run npm-package-json-lint when package.json is present by @Kurt-von-Laven in
+    [#2280](https://github.com/oxsecurity/megalinter/pull/2280).
 
 - Documentation
   - Configure jsonschema documentation formatting (see [Descriptor schema](https://megalinter.io/latest/json-schemas/descriptor.html), [Configuration schema](https://megalinter.io/latest/json-schemas/configuration.html)), by @echoix in [#2270](https://github.com/oxsecurity/megalinter/pull/2270)

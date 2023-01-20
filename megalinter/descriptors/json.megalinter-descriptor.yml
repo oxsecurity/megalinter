@@ -233,6 +233,8 @@ linters:
       - salesforce
     file_names_regex:
       - "package\\.json"
+    active_only_if_file_found:
+      - "package.json"
     cli_lint_mode: project
     cli_executable: npmPkgJsonLint
     cli_config_arg_name: --configFile
