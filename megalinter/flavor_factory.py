@@ -95,7 +95,7 @@ def check_active_linters_match_flavor(active_linters):
     missing_linters_str = ",".join(missing_linters)
     logging.warning(
         f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
-        "As they are not available in this docker image, they will not be processed\n"
+        "As they are not available in this Docker image, they will not be processed\n"
         "To solve this problem, please either: \n"
         f"- use default flavor {ML_REPO}\n"
         "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
