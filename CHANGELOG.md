@@ -16,7 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Change name of config file for powershell formatter to avoid collision with powershell linter config
   - Enhance find SARIF json in stdout output
   - Pass --show-context, --show-suggestions, and --no-must-find-files to CSpell for friendlier UX
-    by @Kurt-von-Laven in [#2271](https://github.com/oxsecurity/megalinter/issues/2271).
+    by @Kurt-von-Laven in [#2275](https://github.com/oxsecurity/megalinter/pull/2275).
 
 - Documentation
   - Configure jsonschema documentation formatting (see [Descriptor schema](https://megalinter.io/latest/json-schemas/descriptor.html), [Configuration schema](https://megalinter.io/latest/json-schemas/configuration.html)), by @echoix in [#2270](https://github.com/oxsecurity/megalinter/pull/2270)
