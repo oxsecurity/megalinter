@@ -7,7 +7,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 <div align="center">
   <a href="https://github.com/anchore/syft#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg" alt="syft" height="150px" class="megalinter-banner">
+    <img src="https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png" alt="syft" height="150px" class="megalinter-banner">
   </a>
 </div>
 
