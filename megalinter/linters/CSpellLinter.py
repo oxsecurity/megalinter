@@ -19,6 +19,11 @@ class CSpellLinter(Linter):
         super().__init__(params, linter_config)
 
     def build_lint_command(self, file=None) -> list:
+        self.cli_lint_extra_args += [
+            "--show-context",
+            "--show-suggestions",
+            "--no-must-find-files",
+        ]
         # Create temp file with files segments
         if (
             self.cli_lint_mode == "list_of_files"
