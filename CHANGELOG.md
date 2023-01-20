@@ -50,6 +50,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.6.7 to **1.6.8** on 2023-01-18
   - [phpstan](https://phpstan.org/) from 1.9.12 to **1.9.13** on 2023-01-19
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.19.1 to **7.20.0** on 2023-01-19
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.22 to **1.6.23** on 2023-01-20
+  - [djlint](https://djlint.com/) from 1.19.11 to **1.19.12** on 2023-01-20
+  - [phpstan](https://phpstan.org/) from 1.9.13 to **1.9.14** on 2023-01-20
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.1.0 to **1.15.3.0** on 2023-01-20
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07

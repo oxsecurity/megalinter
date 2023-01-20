@@ -1,5 +1,5 @@
 {
-    "actionlint": "1.6.22",
+    "actionlint": "1.6.23",
     "ansible-lint": "6.11.0",
     "arm-ttk": "0.0.0",
     "bandit": "1.7.4",
@@ -19,7 +19,7 @@
     "cspell": "6.19.2",
     "dartanalyzer": "0.0.0",
     "devskim": "0.7.103",
-    "djlint": "1.19.11",
+    "djlint": "1.19.12",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.3.0",
     "dotnet-format": "6.0.405",
@@ -56,7 +56,7 @@
     "php": "7.4.26",
     "phpcs": "3.7.1",
     "phplint": "5.5",
-    "phpstan": "1.9.13",
+    "phpstan": "1.9.14",
     "pmd": "6.48.0",
     "powershell": "7.3.1",
     "powershell_formatter": "7.3.1",
@@ -99,7 +99,7 @@
     "terrascan": "1.16.0",
     "tflint": "0.44.1",
     "trivy": "0.35.0",
-    "tsqllint": "1.15.1.0",
+    "tsqllint": "1.15.3.0",
     "v8r": "0.13.1",
     "xmllint": "20914",
     "yamllint": "1.29.0"
