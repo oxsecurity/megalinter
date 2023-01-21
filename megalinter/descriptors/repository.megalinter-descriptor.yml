@@ -330,7 +330,7 @@ linters:
     linter_repo: https://github.com/anchore/syft
     linter_text: |
       Builds a SBOM (Software Build Of Materials) from your repository
-    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
     cli_lint_mode: project
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
