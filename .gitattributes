@@ -4,3 +4,6 @@
 
 .automation/generated/flavor-stats.json linguist-generated=true
 .automation/generated/linter-helps.json linguist-generated=true
+docs/descriptors/python_black.md linguist-generated=true
+docs/descriptors/repository_checkov.md linguist-generated=true
+docs/descriptors/terraform_checkov.md linguist-generated=true
