@@ -56,6 +56,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.19.11 to **1.19.12** on 2023-01-20
   - [phpstan](https://phpstan.org/) from 1.9.13 to **1.9.14** on 2023-01-20
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.1.0 to **1.15.3.0** on 2023-01-20
+  - [semgrep](https://semgrep.dev/) from 1.3.0 to **1.5.1** on 2023-01-21
+  - [syft](https://github.com/anchore/syft) from 0.66.2 to **0.68.0** on 2023-01-21
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
