@@ -1096,6 +1096,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/arm-ttk/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/bandit/</loc>
          <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
@@ -1142,6 +1147,16 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/coffeelint/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/cpplint/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/csharpier/</loc>
          <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1332,6 +1347,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/phpcs/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/phplint/</loc>
          <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>

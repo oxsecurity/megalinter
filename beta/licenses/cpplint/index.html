@@ -6,26 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How to use syft (configure, ignore files, ignore errors, help & version documentations) to analyze REPOSITORY files">
+        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 53 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !">
       
       
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://megalinter.io/beta/descriptors/repository_syft/">
+        <link rel="canonical" href="https://megalinter.io/beta/licenses/cpplint/">
       
       
-        <link rel="prev" href="../repository_semgrep/">
-      
-      
-        <link rel="next" href="../repository_trivy/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
     
     
       
-        <title>syft configuration in MegaLinter - MegaLinter by OX Security</title>
+        <title>Cpplint - MegaLinter by OX Security</title>
       
     
     
@@ -59,16 +55,19 @@
     
 
 
+<meta property="description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
 <meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
 <meta name="twitter:site" content="@nvuillam" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="syft configuration in MegaLinter" />
-<meta name="twitter:description" content="How to use syft (configure, ignore files, ignore errors, help & version documentations) to analyze REPOSITORY files" />
+<meta name="twitter:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta name="twitter:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
 <meta property="og:site_name" content="MegaLinter" />
-<meta property="og:title" content="syft configuration in MegaLinter" />
-<meta property="og:description" content="How to use syft (configure, ignore files, ignore errors, help & version documentations) to analyze REPOSITORY files" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:url" content="https://megalinter.io" />
+<meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
 
 
 
@@ -88,11 +87,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#syft-documentation" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -126,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              syft configuration in MegaLinter
+              Cpplint
             
           </span>
         </div>
@@ -293,20 +287,18 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
-        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="true">
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
           Linters
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -406,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash/" class="md-nav__link">
+      <a href="../../descriptors/bash/" class="md-nav__link">
         All BASH linters
       </a>
     </li>
@@ -420,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_bash_exec/" class="md-nav__link">
+      <a href="../../descriptors/bash_bash_exec/" class="md-nav__link">
         bash-exec
       </a>
     </li>
@@ -434,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_shellcheck/" class="md-nav__link">
+      <a href="../../descriptors/bash_shellcheck/" class="md-nav__link">
         shellcheck
       </a>
     </li>
@@ -448,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_shfmt/" class="md-nav__link">
+      <a href="../../descriptors/bash_shfmt/" class="md-nav__link">
         shfmt
       </a>
     </li>
@@ -496,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c/" class="md-nav__link">
+      <a href="../../descriptors/c/" class="md-nav__link">
         All C linters
       </a>
     </li>
@@ -510,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c_cpplint/" class="md-nav__link">
+      <a href="../../descriptors/c_cpplint/" class="md-nav__link">
         cpplint
       </a>
     </li>
@@ -558,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clojure/" class="md-nav__link">
+      <a href="../../descriptors/clojure/" class="md-nav__link">
         All CLOJURE linters
       </a>
     </li>
@@ -572,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clojure_clj_kondo/" class="md-nav__link">
+      <a href="../../descriptors/clojure_clj_kondo/" class="md-nav__link">
         clj-kondo
       </a>
     </li>
@@ -620,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../coffee/" class="md-nav__link">
+      <a href="../../descriptors/coffee/" class="md-nav__link">
         All COFFEE linters
       </a>
     </li>
@@ -634,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../coffee_coffeelint/" class="md-nav__link">
+      <a href="../../descriptors/coffee_coffeelint/" class="md-nav__link">
         coffeelint
       </a>
     </li>
@@ -682,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp/" class="md-nav__link">
+      <a href="../../descriptors/cpp/" class="md-nav__link">
         All C++ (CPP) linters
       </a>
     </li>
@@ -696,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp_cpplint/" class="md-nav__link">
+      <a href="../../descriptors/cpp_cpplint/" class="md-nav__link">
         cpplint
       </a>
     </li>
@@ -744,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp/" class="md-nav__link">
+      <a href="../../descriptors/csharp/" class="md-nav__link">
         All C# (CSHARP) linters
       </a>
     </li>
@@ -758,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp_dotnet_format/" class="md-nav__link">
+      <a href="../../descriptors/csharp_dotnet_format/" class="md-nav__link">
         dotnet-format
       </a>
     </li>
@@ -772,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp_csharpier/" class="md-nav__link">
+      <a href="../../descriptors/csharp_csharpier/" class="md-nav__link">
         csharpier
       </a>
     </li>
@@ -820,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dart/" class="md-nav__link">
+      <a href="../../descriptors/dart/" class="md-nav__link">
         All DART linters
       </a>
     </li>
@@ -834,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dart_dartanalyzer/" class="md-nav__link">
+      <a href="../../descriptors/dart_dartanalyzer/" class="md-nav__link">
         dartanalyzer
       </a>
     </li>
@@ -882,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go/" class="md-nav__link">
+      <a href="../../descriptors/go/" class="md-nav__link">
         All GO linters
       </a>
     </li>
@@ -896,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go_golangci_lint/" class="md-nav__link">
+      <a href="../../descriptors/go_golangci_lint/" class="md-nav__link">
         golangci-lint
       </a>
     </li>
@@ -910,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go_revive/" class="md-nav__link">
+      <a href="../../descriptors/go_revive/" class="md-nav__link">
         revive
       </a>
     </li>
@@ -958,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../groovy/" class="md-nav__link">
+      <a href="../../descriptors/groovy/" class="md-nav__link">
         All GROOVY linters
       </a>
     </li>
@@ -972,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../groovy_npm_groovy_lint/" class="md-nav__link">
+      <a href="../../descriptors/groovy_npm_groovy_lint/" class="md-nav__link">
         npm-groovy-lint
       </a>
     </li>
@@ -1020,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../../descriptors/java/" class="md-nav__link">
         All JAVA linters
       </a>
     </li>
@@ -1034,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java_checkstyle/" class="md-nav__link">
+      <a href="../../descriptors/java_checkstyle/" class="md-nav__link">
         checkstyle
       </a>
     </li>
@@ -1048,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java_pmd/" class="md-nav__link">
+      <a href="../../descriptors/java_pmd/" class="md-nav__link">
         pmd
       </a>
     </li>
@@ -1096,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript/" class="md-nav__link">
+      <a href="../../descriptors/javascript/" class="md-nav__link">
         All JAVASCRIPT linters
       </a>
     </li>
@@ -1110,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_eslint/" class="md-nav__link">
+      <a href="../../descriptors/javascript_eslint/" class="md-nav__link">
         eslint
       </a>
     </li>
@@ -1124,7 +1116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_standard/" class="md-nav__link">
+      <a href="../../descriptors/javascript_standard/" class="md-nav__link">
         standard
       </a>
     </li>
@@ -1138,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_prettier/" class="md-nav__link">
+      <a href="../../descriptors/javascript_prettier/" class="md-nav__link">
         prettier
       </a>
     </li>
@@ -1186,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jsx/" class="md-nav__link">
+      <a href="../../descriptors/jsx/" class="md-nav__link">
         All JSX linters
       </a>
     </li>
@@ -1200,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jsx_eslint/" class="md-nav__link">
+      <a href="../../descriptors/jsx_eslint/" class="md-nav__link">
         eslint
       </a>
     </li>
@@ -1248,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kotlin/" class="md-nav__link">
+      <a href="../../descriptors/kotlin/" class="md-nav__link">
         All KOTLIN linters
       </a>
     </li>
@@ -1262,7 +1254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kotlin_ktlint/" class="md-nav__link">
+      <a href="../../descriptors/kotlin_ktlint/" class="md-nav__link">
         ktlint
       </a>
     </li>
@@ -1310,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lua/" class="md-nav__link">
+      <a href="../../descriptors/lua/" class="md-nav__link">
         All LUA linters
       </a>
     </li>
@@ -1324,7 +1316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lua_luacheck/" class="md-nav__link">
+      <a href="../../descriptors/lua_luacheck/" class="md-nav__link">
         luacheck
       </a>
     </li>
@@ -1372,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../makefile/" class="md-nav__link">
+      <a href="../../descriptors/makefile/" class="md-nav__link">
         All MAKEFILE linters
       </a>
     </li>
@@ -1386,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../makefile_checkmake/" class="md-nav__link">
+      <a href="../../descriptors/makefile_checkmake/" class="md-nav__link">
         checkmake
       </a>
     </li>
@@ -1434,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perl/" class="md-nav__link">
+      <a href="../../descriptors/perl/" class="md-nav__link">
         All PERL linters
       </a>
     </li>
@@ -1448,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perl_perlcritic/" class="md-nav__link">
+      <a href="../../descriptors/perl_perlcritic/" class="md-nav__link">
         perlcritic
       </a>
     </li>
@@ -1496,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php/" class="md-nav__link">
+      <a href="../../descriptors/php/" class="md-nav__link">
         All PHP linters
       </a>
     </li>
@@ -1510,7 +1502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phpcs/" class="md-nav__link">
+      <a href="../../descriptors/php_phpcs/" class="md-nav__link">
         phpcs
       </a>
     </li>
@@ -1524,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phpstan/" class="md-nav__link">
+      <a href="../../descriptors/php_phpstan/" class="md-nav__link">
         phpstan
       </a>
     </li>
@@ -1538,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_psalm/" class="md-nav__link">
+      <a href="../../descriptors/php_psalm/" class="md-nav__link">
         psalm
       </a>
     </li>
@@ -1552,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phplint/" class="md-nav__link">
+      <a href="../../descriptors/php_phplint/" class="md-nav__link">
         phplint
       </a>
     </li>
@@ -1600,7 +1592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell/" class="md-nav__link">
+      <a href="../../descriptors/powershell/" class="md-nav__link">
         All POWERSHELL linters
       </a>
     </li>
@@ -1614,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell_powershell/" class="md-nav__link">
+      <a href="../../descriptors/powershell_powershell/" class="md-nav__link">
         powershell
       </a>
     </li>
@@ -1628,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell_powershell_formatter/" class="md-nav__link">
+      <a href="../../descriptors/powershell_powershell_formatter/" class="md-nav__link">
         powershell_formatter
       </a>
     </li>
@@ -1676,7 +1668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../descriptors/python/" class="md-nav__link">
         All PYTHON linters
       </a>
     </li>
@@ -1690,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_pylint/" class="md-nav__link">
+      <a href="../../descriptors/python_pylint/" class="md-nav__link">
         pylint
       </a>
     </li>
@@ -1704,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_black/" class="md-nav__link">
+      <a href="../../descriptors/python_black/" class="md-nav__link">
         black
       </a>
     </li>
@@ -1718,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_flake8/" class="md-nav__link">
+      <a href="../../descriptors/python_flake8/" class="md-nav__link">
         flake8
       </a>
     </li>
@@ -1732,7 +1724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_isort/" class="md-nav__link">
+      <a href="../../descriptors/python_isort/" class="md-nav__link">
         isort
       </a>
     </li>
@@ -1746,7 +1738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_bandit/" class="md-nav__link">
+      <a href="../../descriptors/python_bandit/" class="md-nav__link">
         bandit
       </a>
     </li>
@@ -1760,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_mypy/" class="md-nav__link">
+      <a href="../../descriptors/python_mypy/" class="md-nav__link">
         mypy
       </a>
     </li>
@@ -1774,7 +1766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_pyright/" class="md-nav__link">
+      <a href="../../descriptors/python_pyright/" class="md-nav__link">
         pyright
       </a>
     </li>
@@ -1822,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r/" class="md-nav__link">
+      <a href="../../descriptors/r/" class="md-nav__link">
         All R linters
       </a>
     </li>
@@ -1836,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r_lintr/" class="md-nav__link">
+      <a href="../../descriptors/r_lintr/" class="md-nav__link">
         lintr
       </a>
     </li>
@@ -1884,7 +1876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raku/" class="md-nav__link">
+      <a href="../../descriptors/raku/" class="md-nav__link">
         All RAKU linters
       </a>
     </li>
@@ -1898,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raku_raku/" class="md-nav__link">
+      <a href="../../descriptors/raku_raku/" class="md-nav__link">
         raku
       </a>
     </li>
@@ -1946,7 +1938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ruby/" class="md-nav__link">
+      <a href="../../descriptors/ruby/" class="md-nav__link">
         All RUBY linters
       </a>
     </li>
@@ -1960,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ruby_rubocop/" class="md-nav__link">
+      <a href="../../descriptors/ruby_rubocop/" class="md-nav__link">
         rubocop
       </a>
     </li>
@@ -2008,7 +2000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rust/" class="md-nav__link">
+      <a href="../../descriptors/rust/" class="md-nav__link">
         All RUST linters
       </a>
     </li>
@@ -2022,7 +2014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rust_clippy/" class="md-nav__link">
+      <a href="../../descriptors/rust_clippy/" class="md-nav__link">
         clippy
       </a>
     </li>
@@ -2070,7 +2062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce/" class="md-nav__link">
+      <a href="../../descriptors/salesforce/" class="md-nav__link">
         All SALESFORCE linters
       </a>
     </li>
@@ -2084,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_sfdx_scanner_apex/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_sfdx_scanner_apex/" class="md-nav__link">
         sfdx-scanner-apex
       </a>
     </li>
@@ -2098,7 +2090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_sfdx_scanner_aura/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_sfdx_scanner_aura/" class="md-nav__link">
         sfdx-scanner-aura
       </a>
     </li>
@@ -2112,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_sfdx_scanner_lwc/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_sfdx_scanner_lwc/" class="md-nav__link">
         sfdx-scanner-lwc
       </a>
     </li>
@@ -2160,7 +2152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scala/" class="md-nav__link">
+      <a href="../../descriptors/scala/" class="md-nav__link">
         All SCALA linters
       </a>
     </li>
@@ -2174,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scala_scalafix/" class="md-nav__link">
+      <a href="../../descriptors/scala_scalafix/" class="md-nav__link">
         scalafix
       </a>
     </li>
@@ -2222,7 +2214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql/" class="md-nav__link">
+      <a href="../../descriptors/sql/" class="md-nav__link">
         All SQL linters
       </a>
     </li>
@@ -2236,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql_sql_lint/" class="md-nav__link">
+      <a href="../../descriptors/sql_sql_lint/" class="md-nav__link">
         sql-lint
       </a>
     </li>
@@ -2250,7 +2242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql_sqlfluff/" class="md-nav__link">
+      <a href="../../descriptors/sql_sqlfluff/" class="md-nav__link">
         sqlfluff
       </a>
     </li>
@@ -2264,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql_tsqllint/" class="md-nav__link">
+      <a href="../../descriptors/sql_tsqllint/" class="md-nav__link">
         tsqllint
       </a>
     </li>
@@ -2312,7 +2304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../swift/" class="md-nav__link">
+      <a href="../../descriptors/swift/" class="md-nav__link">
         All SWIFT linters
       </a>
     </li>
@@ -2326,7 +2318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../swift_swiftlint/" class="md-nav__link">
+      <a href="../../descriptors/swift_swiftlint/" class="md-nav__link">
         swiftlint
       </a>
     </li>
@@ -2374,7 +2366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tsx/" class="md-nav__link">
+      <a href="../../descriptors/tsx/" class="md-nav__link">
         All TSX linters
       </a>
     </li>
@@ -2388,7 +2380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tsx_eslint/" class="md-nav__link">
+      <a href="../../descriptors/tsx_eslint/" class="md-nav__link">
         eslint
       </a>
     </li>
@@ -2436,7 +2428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript/" class="md-nav__link">
+      <a href="../../descriptors/typescript/" class="md-nav__link">
         All TYPESCRIPT linters
       </a>
     </li>
@@ -2450,7 +2442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_eslint/" class="md-nav__link">
+      <a href="../../descriptors/typescript_eslint/" class="md-nav__link">
         eslint
       </a>
     </li>
@@ -2464,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_standard/" class="md-nav__link">
+      <a href="../../descriptors/typescript_standard/" class="md-nav__link">
         standard
       </a>
     </li>
@@ -2478,7 +2470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_prettier/" class="md-nav__link">
+      <a href="../../descriptors/typescript_prettier/" class="md-nav__link">
         prettier
       </a>
     </li>
@@ -2526,7 +2518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vbdotnet/" class="md-nav__link">
+      <a href="../../descriptors/vbdotnet/" class="md-nav__link">
         All Visual Basic .NET (VBDOTNET) linters
       </a>
     </li>
@@ -2540,7 +2532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vbdotnet_dotnet_format/" class="md-nav__link">
+      <a href="../../descriptors/vbdotnet_dotnet_format/" class="md-nav__link">
         dotnet-format
       </a>
     </li>
@@ -2636,7 +2628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css/" class="md-nav__link">
+      <a href="../../descriptors/css/" class="md-nav__link">
         All CSS linters
       </a>
     </li>
@@ -2650,7 +2642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css_stylelint/" class="md-nav__link">
+      <a href="../../descriptors/css_stylelint/" class="md-nav__link">
         stylelint
       </a>
     </li>
@@ -2664,7 +2656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css_scss_lint/" class="md-nav__link">
+      <a href="../../descriptors/css_scss_lint/" class="md-nav__link">
         scss-lint
       </a>
     </li>
@@ -2712,7 +2704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../env/" class="md-nav__link">
+      <a href="../../descriptors/env/" class="md-nav__link">
         All ENV linters
       </a>
     </li>
@@ -2726,7 +2718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../env_dotenv_linter/" class="md-nav__link">
+      <a href="../../descriptors/env_dotenv_linter/" class="md-nav__link">
         dotenv-linter
       </a>
     </li>
@@ -2774,7 +2766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphql/" class="md-nav__link">
+      <a href="../../descriptors/graphql/" class="md-nav__link">
         All GRAPHQL linters
       </a>
     </li>
@@ -2788,7 +2780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphql_graphql_schema_linter/" class="md-nav__link">
+      <a href="../../descriptors/graphql_graphql_schema_linter/" class="md-nav__link">
         graphql-schema-linter
       </a>
     </li>
@@ -2836,7 +2828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html/" class="md-nav__link">
+      <a href="../../descriptors/html/" class="md-nav__link">
         All HTML linters
       </a>
     </li>
@@ -2850,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html_djlint/" class="md-nav__link">
+      <a href="../../descriptors/html_djlint/" class="md-nav__link">
         djlint
       </a>
     </li>
@@ -2864,7 +2856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html_htmlhint/" class="md-nav__link">
+      <a href="../../descriptors/html_htmlhint/" class="md-nav__link">
         htmlhint
       </a>
     </li>
@@ -2912,7 +2904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json/" class="md-nav__link">
+      <a href="../../descriptors/json/" class="md-nav__link">
         All JSON linters
       </a>
     </li>
@@ -2926,7 +2918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_jsonlint/" class="md-nav__link">
+      <a href="../../descriptors/json_jsonlint/" class="md-nav__link">
         jsonlint
       </a>
     </li>
@@ -2940,7 +2932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_eslint_plugin_jsonc/" class="md-nav__link">
+      <a href="../../descriptors/json_eslint_plugin_jsonc/" class="md-nav__link">
         eslint-plugin-jsonc
       </a>
     </li>
@@ -2954,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_v8r/" class="md-nav__link">
+      <a href="../../descriptors/json_v8r/" class="md-nav__link">
         v8r
       </a>
     </li>
@@ -2968,7 +2960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_prettier/" class="md-nav__link">
+      <a href="../../descriptors/json_prettier/" class="md-nav__link">
         prettier
       </a>
     </li>
@@ -2982,7 +2974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_npm_package_json_lint/" class="md-nav__link">
+      <a href="../../descriptors/json_npm_package_json_lint/" class="md-nav__link">
         npm-package-json-lint
       </a>
     </li>
@@ -3030,7 +3022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../latex/" class="md-nav__link">
+      <a href="../../descriptors/latex/" class="md-nav__link">
         All LATEX linters
       </a>
     </li>
@@ -3044,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../latex_chktex/" class="md-nav__link">
+      <a href="../../descriptors/latex_chktex/" class="md-nav__link">
         chktex
       </a>
     </li>
@@ -3092,7 +3084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown/" class="md-nav__link">
+      <a href="../../descriptors/markdown/" class="md-nav__link">
         All MARKDOWN linters
       </a>
     </li>
@@ -3106,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_markdownlint/" class="md-nav__link">
+      <a href="../../descriptors/markdown_markdownlint/" class="md-nav__link">
         markdownlint
       </a>
     </li>
@@ -3120,7 +3112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_remark_lint/" class="md-nav__link">
+      <a href="../../descriptors/markdown_remark_lint/" class="md-nav__link">
         remark-lint
       </a>
     </li>
@@ -3134,7 +3126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_markdown_link_check/" class="md-nav__link">
+      <a href="../../descriptors/markdown_markdown_link_check/" class="md-nav__link">
         markdown-link-check
       </a>
     </li>
@@ -3148,7 +3140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_markdown_table_formatter/" class="md-nav__link">
+      <a href="../../descriptors/markdown_markdown_table_formatter/" class="md-nav__link">
         markdown-table-formatter
       </a>
     </li>
@@ -3196,7 +3188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protobuf/" class="md-nav__link">
+      <a href="../../descriptors/protobuf/" class="md-nav__link">
         All PROTOBUF linters
       </a>
     </li>
@@ -3210,7 +3202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protobuf_protolint/" class="md-nav__link">
+      <a href="../../descriptors/protobuf_protolint/" class="md-nav__link">
         protolint
       </a>
     </li>
@@ -3258,7 +3250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst/" class="md-nav__link">
+      <a href="../../descriptors/rst/" class="md-nav__link">
         All RST linters
       </a>
     </li>
@@ -3272,7 +3264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rst_lint/" class="md-nav__link">
+      <a href="../../descriptors/rst_rst_lint/" class="md-nav__link">
         rst-lint
       </a>
     </li>
@@ -3286,7 +3278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rstcheck/" class="md-nav__link">
+      <a href="../../descriptors/rst_rstcheck/" class="md-nav__link">
         rstcheck
       </a>
     </li>
@@ -3300,7 +3292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rstfmt/" class="md-nav__link">
+      <a href="../../descriptors/rst_rstfmt/" class="md-nav__link">
         rstfmt
       </a>
     </li>
@@ -3348,7 +3340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xml/" class="md-nav__link">
+      <a href="../../descriptors/xml/" class="md-nav__link">
         All XML linters
       </a>
     </li>
@@ -3362,7 +3354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xml_xmllint/" class="md-nav__link">
+      <a href="../../descriptors/xml_xmllint/" class="md-nav__link">
         xmllint
       </a>
     </li>
@@ -3410,7 +3402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml/" class="md-nav__link">
+      <a href="../../descriptors/yaml/" class="md-nav__link">
         All YAML linters
       </a>
     </li>
@@ -3424,7 +3416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_prettier/" class="md-nav__link">
+      <a href="../../descriptors/yaml_prettier/" class="md-nav__link">
         prettier
       </a>
     </li>
@@ -3438,7 +3430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_yamllint/" class="md-nav__link">
+      <a href="../../descriptors/yaml_yamllint/" class="md-nav__link">
         yamllint
       </a>
     </li>
@@ -3452,7 +3444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_v8r/" class="md-nav__link">
+      <a href="../../descriptors/yaml_v8r/" class="md-nav__link">
         v8r
       </a>
     </li>
@@ -3548,7 +3540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../action/" class="md-nav__link">
+      <a href="../../descriptors/action/" class="md-nav__link">
         All ACTION linters
       </a>
     </li>
@@ -3562,7 +3554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../action_actionlint/" class="md-nav__link">
+      <a href="../../descriptors/action_actionlint/" class="md-nav__link">
         actionlint
       </a>
     </li>
@@ -3610,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible/" class="md-nav__link">
+      <a href="../../descriptors/ansible/" class="md-nav__link">
         All ANSIBLE linters
       </a>
     </li>
@@ -3624,7 +3616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible_ansible_lint/" class="md-nav__link">
+      <a href="../../descriptors/ansible_ansible_lint/" class="md-nav__link">
         ansible-lint
       </a>
     </li>
@@ -3672,7 +3664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arm/" class="md-nav__link">
+      <a href="../../descriptors/arm/" class="md-nav__link">
         All ARM linters
       </a>
     </li>
@@ -3686,7 +3678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arm_arm_ttk/" class="md-nav__link">
+      <a href="../../descriptors/arm_arm_ttk/" class="md-nav__link">
         arm-ttk
       </a>
     </li>
@@ -3734,7 +3726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bicep/" class="md-nav__link">
+      <a href="../../descriptors/bicep/" class="md-nav__link">
         All BICEP linters
       </a>
     </li>
@@ -3748,7 +3740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bicep_bicep_linter/" class="md-nav__link">
+      <a href="../../descriptors/bicep_bicep_linter/" class="md-nav__link">
         bicep_linter
       </a>
     </li>
@@ -3796,7 +3788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation/" class="md-nav__link">
+      <a href="../../descriptors/cloudformation/" class="md-nav__link">
         All CLOUDFORMATION linters
       </a>
     </li>
@@ -3810,7 +3802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation_cfn_lint/" class="md-nav__link">
+      <a href="../../descriptors/cloudformation_cfn_lint/" class="md-nav__link">
         cfn-lint
       </a>
     </li>
@@ -3858,7 +3850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dockerfile/" class="md-nav__link">
+      <a href="../../descriptors/dockerfile/" class="md-nav__link">
         All DOCKERFILE linters
       </a>
     </li>
@@ -3872,7 +3864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dockerfile_hadolint/" class="md-nav__link">
+      <a href="../../descriptors/dockerfile_hadolint/" class="md-nav__link">
         hadolint
       </a>
     </li>
@@ -3920,7 +3912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../editorconfig/" class="md-nav__link">
+      <a href="../../descriptors/editorconfig/" class="md-nav__link">
         All EDITORCONFIG linters
       </a>
     </li>
@@ -3934,7 +3926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../editorconfig_editorconfig_checker/" class="md-nav__link">
+      <a href="../../descriptors/editorconfig_editorconfig_checker/" class="md-nav__link">
         editorconfig-checker
       </a>
     </li>
@@ -3982,7 +3974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gherkin/" class="md-nav__link">
+      <a href="../../descriptors/gherkin/" class="md-nav__link">
         All GHERKIN linters
       </a>
     </li>
@@ -3996,7 +3988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gherkin_gherkin_lint/" class="md-nav__link">
+      <a href="../../descriptors/gherkin_gherkin_lint/" class="md-nav__link">
         gherkin-lint
       </a>
     </li>
@@ -4044,7 +4036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes/" class="md-nav__link">
         All KUBERNETES linters
       </a>
     </li>
@@ -4058,7 +4050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes_kubeval/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes_kubeval/" class="md-nav__link">
         kubeval
       </a>
     </li>
@@ -4072,7 +4064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes_kubeconform/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes_kubeconform/" class="md-nav__link">
         kubeconform
       </a>
     </li>
@@ -4120,7 +4112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openapi/" class="md-nav__link">
+      <a href="../../descriptors/openapi/" class="md-nav__link">
         All OPENAPI linters
       </a>
     </li>
@@ -4134,7 +4126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openapi_spectral/" class="md-nav__link">
+      <a href="../../descriptors/openapi_spectral/" class="md-nav__link">
         spectral
       </a>
     </li>
@@ -4182,7 +4174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../puppet/" class="md-nav__link">
+      <a href="../../descriptors/puppet/" class="md-nav__link">
         All PUPPET linters
       </a>
     </li>
@@ -4196,7 +4188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../puppet_puppet_lint/" class="md-nav__link">
+      <a href="../../descriptors/puppet_puppet_lint/" class="md-nav__link">
         puppet-lint
       </a>
     </li>
@@ -4244,7 +4236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake/" class="md-nav__link">
+      <a href="../../descriptors/snakemake/" class="md-nav__link">
         All SNAKEMAKE linters
       </a>
     </li>
@@ -4258,7 +4250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake_snakemake/" class="md-nav__link">
+      <a href="../../descriptors/snakemake_snakemake/" class="md-nav__link">
         snakemake
       </a>
     </li>
@@ -4272,7 +4264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake_snakefmt/" class="md-nav__link">
+      <a href="../../descriptors/snakemake_snakefmt/" class="md-nav__link">
         snakefmt
       </a>
     </li>
@@ -4320,7 +4312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tekton/" class="md-nav__link">
+      <a href="../../descriptors/tekton/" class="md-nav__link">
         All TEKTON linters
       </a>
     </li>
@@ -4334,7 +4326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tekton_tekton_lint/" class="md-nav__link">
+      <a href="../../descriptors/tekton_tekton_lint/" class="md-nav__link">
         tekton-lint
       </a>
     </li>
@@ -4382,7 +4374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform/" class="md-nav__link">
+      <a href="../../descriptors/terraform/" class="md-nav__link">
         All TERRAFORM linters
       </a>
     </li>
@@ -4396,7 +4388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_tflint/" class="md-nav__link">
+      <a href="../../descriptors/terraform_tflint/" class="md-nav__link">
         tflint
       </a>
     </li>
@@ -4410,7 +4402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_terrascan/" class="md-nav__link">
+      <a href="../../descriptors/terraform_terrascan/" class="md-nav__link">
         terrascan
       </a>
     </li>
@@ -4424,7 +4416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_terragrunt/" class="md-nav__link">
+      <a href="../../descriptors/terraform_terragrunt/" class="md-nav__link">
         terragrunt
       </a>
     </li>
@@ -4438,7 +4430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_terraform_fmt/" class="md-nav__link">
+      <a href="../../descriptors/terraform_terraform_fmt/" class="md-nav__link">
         terraform-fmt
       </a>
     </li>
@@ -4452,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_checkov/" class="md-nav__link">
+      <a href="../../descriptors/terraform_checkov/" class="md-nav__link">
         checkov
       </a>
     </li>
@@ -4466,7 +4458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_kics/" class="md-nav__link">
+      <a href="../../descriptors/terraform_kics/" class="md-nav__link">
         kics
       </a>
     </li>
@@ -4492,20 +4484,18 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" checked>
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
       
       
       
-        <label class="md-nav__link" for="__nav_5_5" tabindex="0" aria-expanded="true">
+        <label class="md-nav__link" for="__nav_5_5" tabindex="0" aria-expanded="false">
           Other checks
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -4564,7 +4554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copypaste/" class="md-nav__link">
+      <a href="../../descriptors/copypaste/" class="md-nav__link">
         All COPYPASTE linters
       </a>
     </li>
@@ -4578,7 +4568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copypaste_jscpd/" class="md-nav__link">
+      <a href="../../descriptors/copypaste_jscpd/" class="md-nav__link">
         jscpd
       </a>
     </li>
@@ -4597,20 +4587,18 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_5_3" type="checkbox" id="__nav_5_5_3" checked>
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_5_3" type="checkbox" id="__nav_5_5_3" >
       
       
       
-        <label class="md-nav__link" for="__nav_5_5_3" tabindex="0" aria-expanded="true">
+        <label class="md-nav__link" for="__nav_5_5_3" tabindex="0" aria-expanded="false">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -4628,7 +4616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../descriptors/repository/" class="md-nav__link">
         All REPOSITORY linters
       </a>
     </li>
@@ -4642,7 +4630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_checkov/" class="md-nav__link">
+      <a href="../../descriptors/repository_checkov/" class="md-nav__link">
         checkov
       </a>
     </li>
@@ -4656,7 +4644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_devskim/" class="md-nav__link">
+      <a href="../../descriptors/repository_devskim/" class="md-nav__link">
         devskim
       </a>
     </li>
@@ -4670,7 +4658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_dustilock/" class="md-nav__link">
+      <a href="../../descriptors/repository_dustilock/" class="md-nav__link">
         dustilock
       </a>
     </li>
@@ -4684,7 +4672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_git_diff/" class="md-nav__link">
+      <a href="../../descriptors/repository_git_diff/" class="md-nav__link">
         git_diff
       </a>
     </li>
@@ -4698,7 +4686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_gitleaks/" class="md-nav__link">
+      <a href="../../descriptors/repository_gitleaks/" class="md-nav__link">
         gitleaks
       </a>
     </li>
@@ -4712,7 +4700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_goodcheck/" class="md-nav__link">
+      <a href="../../descriptors/repository_goodcheck/" class="md-nav__link">
         goodcheck
       </a>
     </li>
@@ -4726,7 +4714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_secretlint/" class="md-nav__link">
+      <a href="../../descriptors/repository_secretlint/" class="md-nav__link">
         secretlint
       </a>
     </li>
@@ -4740,7 +4728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_semgrep/" class="md-nav__link">
+      <a href="../../descriptors/repository_semgrep/" class="md-nav__link">
         semgrep
       </a>
     </li>
@@ -4752,110 +4740,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          syft
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../descriptors/repository_syft/" class="md-nav__link">
         syft
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#syft-documentation" class="md-nav__link">
-    syft documentation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
-    Configuration in MegaLinter
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#megalinter-flavours" class="md-nav__link">
-    MegaLinter Flavours
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#behind-the-scenes" class="md-nav__link">
-    Behind the scenes
-  </a>
-  
-    <nav class="md-nav" aria-label="Behind the scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-are-identified-applicable-files" class="md-nav__link">
-    How are identified applicable files
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-the-linting-is-performed" class="md-nav__link">
-    How the linting is performed
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-calls" class="md-nav__link">
-    Example calls
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#help-content" class="md-nav__link">
-    Help content
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
-    Installation on mega-linter Docker image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4867,7 +4756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_trivy/" class="md-nav__link">
+      <a href="../../descriptors/repository_trivy/" class="md-nav__link">
         trivy
       </a>
     </li>
@@ -4915,7 +4804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell/" class="md-nav__link">
+      <a href="../../descriptors/spell/" class="md-nav__link">
         All SPELL linters
       </a>
     </li>
@@ -4929,7 +4818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_misspell/" class="md-nav__link">
+      <a href="../../descriptors/spell_misspell/" class="md-nav__link">
         misspell
       </a>
     </li>
@@ -4943,7 +4832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_cspell/" class="md-nav__link">
+      <a href="../../descriptors/spell_cspell/" class="md-nav__link">
         cspell
       </a>
     </li>
@@ -4957,7 +4846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_proselint/" class="md-nav__link">
+      <a href="../../descriptors/spell_proselint/" class="md-nav__link">
         proselint
       </a>
     </li>
@@ -5750,83 +5639,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#syft-documentation" class="md-nav__link">
-    syft documentation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
-    Configuration in MegaLinter
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#megalinter-flavours" class="md-nav__link">
-    MegaLinter Flavours
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#behind-the-scenes" class="md-nav__link">
-    Behind the scenes
-  </a>
-  
-    <nav class="md-nav" aria-label="Behind the scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-are-identified-applicable-files" class="md-nav__link">
-    How are identified applicable files
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-the-linting-is-performed" class="md-nav__link">
-    How the linting is performed
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-calls" class="md-nav__link">
-    Example calls
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#help-content" class="md-nav__link">
-    Help content
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
-    Installation on mega-linter Docker image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -5844,186 +5656,30 @@
 
 
 
-  <h1>syft</h1>
-
-<!-- markdownlint-disable MD033 MD041 -->
-<!-- @generated by .automation/build.py, please do not update manually -->
-
-<div align="center">
-  <a href="https://github.com/anchore/syft#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png" alt="syft" height="150px" class="megalinter-banner">
-  </a>
-</div>
-
-<p><a href="https://github.com/anchore/syft"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600" /></a> <img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /> <a href="https://github.com/anchore/syft/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/anchore/syft?sort=semver" /></a> <a href="https://github.com/anchore/syft/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anchore/syft" /></a> <a href="https://github.com/anchore/syft/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/anchore/syft" /></a> <a href="https://github.com/anchore/syft/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/anchore/syft" /></a></p>
-<p>Builds a SBOM (Software Build Of Materials) from your repository</p>
-<h2 id="syft-documentation">syft documentation</h2>
-<ul>
-<li>Version in MegaLinter: <strong>0.68.0</strong></li>
-<li>Visit <a href="https://github.com/anchore/syft#readme" target="_blank">Official Web Site</a></li>
-</ul>
-<p><a href="https://github.com/anchore/syft" target="_blank"><img alt="syft - GitHub" src="https://gh-card.dev/repos/anchore/syft.svg?fullname=" /></a></p>
-<h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
-<ul>
-<li>Enable syft by adding <code>REPOSITORY_SYFT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable syft by adding <code>REPOSITORY_SYFT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>REPOSITORY_SYFT_ARGUMENTS</td>
-<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
-<td></td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_PRE_COMMANDS</td>
-<td>List of bash commands to run before the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_POST_COMMANDS</td>
-<td>List of bash commands to run after the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_CONFIG_FILE</td>
-<td>syft configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.syft.yaml</code></td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_RULES_PATH</td>
-<td>Path where to find linter configuration file</td>
-<td>Workspace folder, then MegaLinter default rules</td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_DISABLE_ERRORS</td>
-<td>Run linter but consider errors as warnings</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td>REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN</td>
-<td>Maximum number of errors allowed</td>
-<td><code>0</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
-<p>This linter is available in the following flavours</p>
-<table>
-<thead>
-<tr>
-<th align="center"><!-- --></th>
-<th align="left">Flavor</th>
-<th align="left">Description</th>
-<th align="center">Embedded linters</th>
-<th align="right">Info</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
-<td align="left">Default MegaLinter Flavor</td>
-<td align="center">112</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></td>
-</tr>
-<tr>
-<td align="center"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a></td>
-<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
-<td align="left">Optimized for security</td>
-<td align="center">21</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security" /></td>
-</tr>
-</tbody>
-</table>
-<h2 id="behind-the-scenes">Behind the scenes</h2>
-<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
-<ul>
-<li>If this linter is active, all files will always be linted</li>
-</ul>
-<!-- markdownlint-disable -->
-<!-- /* cSpell:disable */ -->
-<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
-<p>syft is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
-<ul>
-<li>filtering can not be done using MegaLinter configuration variables,it must be done using syft configuration or ignore file (if existing)</li>
-<li><code>VALIDATE_ALL_CODEBASE: false</code> does not make syft analyze only updated files</li>
-</ul>
-<h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">syft /tmp/lint
-</code></pre>
-<h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
-
-Usage:
-   [flags]
-   [command]
-
-Examples:
-  syft packages alpine:latest                                a summary of discovered packages
-  syft packages alpine:latest -o json                        show all possible cataloging details
-  syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
-  syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
-  syft packages alpine:latest -o spdx                        show a SPDX 2.2 Tag-Value formatted SBOM
-  syft packages alpine:latest -o spdx-json                   show a SPDX 2.2 JSON formatted SBOM
-  syft packages alpine:latest -vv                            show verbose debug information
-  syft packages alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
-
-  Supports the following image sources:
-    syft packages yourrepo/yourimage:tag     defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry.
-    syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, SIF container, or generic filesystem directory
-
-  You can also explicitly specify the scheme to use:
-    syft packages docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
-    syft packages podman:yourrepo/yourimage:tag            explicitly use the Podman daemon
-    syft packages registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
-    syft packages docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from &quot;docker save&quot;
-    syft packages oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
-    syft packages oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
-    syft packages singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
-    syft packages dir:path/to/yourproject                  read directly from a path on disk (any directory)
-    syft packages file:path/to/yourproject/file            read directly from a path on disk (any single file)
-
-
-Available Commands:
-  attest      Generate an SBOM as an attestation for the given [SOURCE] container image
-  completion  Generate the autocompletion script for the specified shell
-  convert     Convert between SBOM formats
-  help        Help about any command
-  login       Log in to a registry
-  packages    Generate a package SBOM
-  version     show the version
-
-Flags:
-      --catalogers stringArray   enable one or more package catalogers
-  -c, --config string            application config file
-      --exclude stringArray      exclude paths from being scanned using a glob expression
-      --file string              file to write the default report output to (default is STDOUT)
-  -h, --help                     help for this command
-      --name string              set the name of the target being analyzed
-  -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github github-json spdx-tag-value spdx-json table text template] (default [table])
-      --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
-  -q, --quiet                    suppress all logging output
-  -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default &quot;Squashed&quot;)
-  -t, --template string          specify the path to a Go template file
-  -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for this command
-
-Use &quot; [command] --help&quot; for more information about a command.
-</code></pre>
-<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
-<ul>
-<li>Dockerfile commands :</li>
-</ul>
-<pre><code class="language-dockerfile">RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-</code></pre>
+<p>cpplint.py and its corresponding unit tests are Copyright (C) 2009 Google Inc.</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:</p>
+<p>* Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google Inc. nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.</p>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
 
 
@@ -6040,42 +5696,6 @@ Use &quot; [command] --help&quot; for more information about a command.
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../repository_semgrep/" class="md-footer__link md-footer__link--prev" aria-label="Previous: semgrep" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                semgrep
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../repository_trivy/" class="md-footer__link md-footer__link--next" aria-label="Next: trivy" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                trivy
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
