@@ -58,6 +58,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.1.0 to **1.15.3.0** on 2023-01-20
   - [semgrep](https://semgrep.dev/) from 1.3.0 to **1.5.1** on 2023-01-21
   - [syft](https://github.com/anchore/syft) from 0.66.2 to **0.68.0** on 2023-01-21
+  - [djlint](https://djlint.com/) from 1.19.12 to **1.19.13** on 2023-01-24
+  - [ktlint](https://ktlint.github.io) from 0.48.1 to **0.48.2** on 2023-01-24
+  - [psalm](https://psalm.dev) from Psalm.dev-master@ to **Psalm.5.6.0@** on 2023-01-24
+  - [rubocop](https://rubocop.org/) from 1.43.0 to **1.44.0** on 2023-01-24
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07

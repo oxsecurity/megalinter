@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.dev-master@**
+- Version in MegaLinter: **Psalm.5.6.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -244,8 +244,8 @@ Miscellaneous:
     --generate-stubs=PATH
         Generate stubs for the project and dump the file in the given path
 
-    --shepherd[=host]
-        Send data to Shepherd, Psalm’s GitHub integration tool.
+    --shepherd[=endpoint]
+        Send analysis statistics to Shepherd (shepherd.dev) or your server.
 
     --alter
         Run Psalter
