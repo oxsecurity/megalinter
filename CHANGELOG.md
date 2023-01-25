@@ -62,6 +62,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 0.48.1 to **0.48.2** on 2023-01-24
   - [psalm](https://psalm.dev) from Psalm.dev-master@ to **Psalm.5.6.0@** on 2023-01-24
   - [rubocop](https://rubocop.org/) from 1.43.0 to **1.44.0** on 2023-01-24
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.1 to **7.3.2** on 2023-01-25
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.1 to **7.3.2** on 2023-01-25
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
