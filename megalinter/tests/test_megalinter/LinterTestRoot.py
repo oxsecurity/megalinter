@@ -2,6 +2,8 @@
 """
 Unit tests for Linter class (and sub-classes)
 """
+import os
+
 from typing import Optional
 
 from megalinter import linter_factory
@@ -20,6 +22,7 @@ class LinterTestRoot:
                 "disable_descriptors": [],
                 "disable_linters": [],
                 "disable_errors_linters": [],
+                "github_workspace": os.getcwd(),
                 "post_linter_status": True,
             })
 

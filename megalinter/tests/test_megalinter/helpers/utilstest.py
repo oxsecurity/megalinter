@@ -623,13 +623,13 @@ def test_linter_format_fix(linter, test_self):
     
     file_map = {}
 
-    for file in os.listdir(workspace):
-        full_file = os.path.join(workspace, file)
-        if os.path.isfile(full_file) is False or "fix" not in full_file:
+    for file_name in os.listdir(workspace):
+        file = os.path.join(workspace, file_name)
+        if os.path.isfile(file) is False or "fix" not in file:
             continue
-        with open(full_file, "r", encoding="utf-8") as f_expected:
+        with open(file, "r", encoding="utf-8") as f_expected:
             content_expected = f_expected.read()
-            file_map[full_file] = content_expected
+            file_map[file] = content_expected
 
     linter_name = linter.linter_name
     env_vars = {
@@ -678,14 +678,14 @@ def test_linter_format_fix(linter, test_self):
     repo = git.Repo(linter.github_workspace)
 
     # Check files content
-    for full_file in file_map:
-        with open(full_file, "r", encoding="utf-8") as f_produced:
-            content_expected = file_map[full_file]
+    for file in file_map:
+        with open(file, "r", encoding="utf-8") as f_produced:
+            content_expected = file_map[file]
             content_produced = f_produced.read()
             diffs = [
                 li
                 for li in difflib.ndiff(content_expected, content_produced)
                 if li[0] != " "
             ]
-            assert (len(list(diffs))) > 0, f"No changes in the {full_file} file"
-            repo.index.checkout([full_file], force=True)
+            assert (len(list(diffs))) > 0, f"No changes in the {file} file"
+        repo.index.checkout([os.path.join(linter.github_workspace, file)], force=True)
