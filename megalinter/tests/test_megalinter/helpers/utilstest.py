@@ -1,5 +1,6 @@
 import contextlib
 import difflib
+import git
 import io
 import json
 import logging
@@ -604,3 +605,87 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
         test_self.assertTrue(updated, f"{file_name} has been updated")
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
+
+def test_linter_format_fix(linter, test_self):
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+    ):
+        raise unittest.SkipTest("Linter has been disabled")
+    test_folder = linter.test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    # Special cases when files must be copied in a temp directory before being linted
+    if os.path.isdir(workspace + os.path.sep + "fix"):
+        workspace = workspace + os.path.sep + "fix"
+    workspace = manage_copy_sources(workspace)
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+    assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    
+    file_map = {}
+
+    for file in os.listdir(workspace):
+        full_file = os.path.join(workspace, file)
+        if os.path.isfile(full_file) is False or "fix" not in full_file:
+            continue
+        with open(full_file, "r", encoding="utf-8") as f_expected:
+            content_expected = f_expected.read()
+            file_map[full_file] = content_expected
+
+    linter_name = linter.linter_name
+    env_vars = {
+        "APPLY_FIXES": linter.name,
+        "DEFAULT_WORKSPACE": workspace,
+        "FILTER_REGEX_INCLUDE": r"(fix)",
+        "TEXT_REPORTER": "true",
+        "UPDATED_SOURCES_REPORTER": "false",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
+        "LOG_LEVEL": "DEBUG",
+        "ENABLE_LINTERS": linter.name,
+        "PRINT_ALL_FILES": True,
+    }
+    if linter.lint_all_other_linters_files is not False:
+        env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
+    env_vars.update(linter.test_variables)
+    mega_linter, output = call_mega_linter(env_vars)
+    test_self.assertTrue(
+        len(mega_linter.linters) > 0, "Linters have been created and run"
+    )
+    # Check console output
+    if linter.cli_lint_mode == "file":
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
+            test_self.assertRegex(
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
+            )
+        else:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*fix.* - SUCCESS")
+    else:
+        test_self.assertRegex(
+            output,
+            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
+        )
+    # Check text reporter output log
+    report_file_name = f"SUCCESS-{linter.name}.log"
+    text_report_file = (
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
+        f"{os.path.sep}{report_file_name}"
+    )
+    test_self.assertTrue(
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
+    )
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+    repo = git.Repo(linter.github_workspace)
+
+    # Check files content
+    for full_file in file_map:
+        with open(full_file, "r", encoding="utf-8") as f_produced:
+            content_expected = file_map[full_file]
+            content_produced = f_produced.read()
+            diffs = [
+                li
+                for li in difflib.ndiff(content_expected, content_produced)
+                if li[0] != " "
+            ]
+            assert (len(list(diffs))) > 0, f"No changes in the {full_file} file"
+            repo.index.checkout([full_file], force=True)
