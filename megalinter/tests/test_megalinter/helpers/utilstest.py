@@ -618,7 +618,6 @@ def test_linter_format_fix(linter, test_self):
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "fix"):
         workspace = workspace + os.path.sep + "fix"
-    workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     
