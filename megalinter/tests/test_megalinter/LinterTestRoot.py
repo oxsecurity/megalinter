@@ -6,7 +6,7 @@ import os
 
 from typing import Optional
 
-from megalinter import linter_factory
+from megalinter import config, linter_factory
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -70,4 +70,8 @@ class LinterTestRoot:
 
     def test_format_fix(self):
         utilstest.linter_test_setup()
+
+        if self.linter_name == 'prettier':
+            config.set_value("JAVASCRIPT_DEFAULT_STYLE", "prettier")
+        
         utilstest.test_linter_format_fix(self.get_linter_instance(), self)
