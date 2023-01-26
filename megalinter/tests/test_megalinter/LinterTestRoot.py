@@ -71,7 +71,13 @@ class LinterTestRoot:
     def test_format_fix(self):
         utilstest.linter_test_setup()
 
+        linter=self.get_linter_instance()
+
         if self.linter_name == 'prettier':
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "prettier")
         
-        utilstest.test_linter_format_fix(self.get_linter_instance(), self)
+        if self.linter_name == 'standard':
+            config.set_value("JAVASCRIPT_DEFAULT_STYLE", "standard")
+            config.set_value("JAVASCRIPT_STANDARD_ARGUMENTS", config.get("DEFAULT_WORKSPACE").replace("\\", "/") + f"/{linter.test_folder}/*_fix_*.js")
+
+        utilstest.test_linter_format_fix(linter, self)

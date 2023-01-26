@@ -1,3 +1,4 @@
-/* eslint capitalized-comments: ["error", "always"] */
-
-// lowercase comment
+function hello (name) {
+console.log('hi', name)
+}
+hello('test')
