@@ -131,7 +131,9 @@ def build_linter(language, linter_name, linter_init_params=None):
     assert os.path.isfile(
         language_descriptor_file
     ), f"Unable to find {language_descriptor_file}"
-    linters = build_descriptor_linters(language_descriptor_file, linter_init_params, [linter_name])
+    linters = build_descriptor_linters(
+        language_descriptor_file, linter_init_params, [linter_name]
+    )
     assert (
         len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"

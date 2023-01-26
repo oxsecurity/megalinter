@@ -3,7 +3,6 @@
 Unit tests for Linter class (and sub-classes)
 """
 import os
-
 from typing import Optional
 
 from megalinter import config, linter_factory
@@ -15,7 +14,10 @@ class LinterTestRoot:
     linter_name: Optional[str] = None
 
     def get_linter_instance(self):
-        return linter_factory.build_linter(self.descriptor_id, self.linter_name, {
+        return linter_factory.build_linter(
+            self.descriptor_id,
+            self.linter_name,
+            {
                 "default_linter_activation": True,
                 "enable_descriptors": [],
                 "enable_linters": [],
@@ -24,7 +26,8 @@ class LinterTestRoot:
                 "disable_errors_linters": [],
                 "github_workspace": os.getcwd(),
                 "post_linter_status": True,
-            })
+            },
+        )
 
     def test_success(self):
         utilstest.linter_test_setup()
@@ -71,15 +74,19 @@ class LinterTestRoot:
     def test_format_fix(self):
         utilstest.linter_test_setup()
 
-        if self.linter_name == 'prettier':
+        if self.linter_name == "prettier":
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "prettier")
-        
-        if self.linter_name == 'standard':
+
+        if self.linter_name == "standard":
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "standard")
 
-        linter=self.get_linter_instance()
+        linter = self.get_linter_instance()
 
-        if self.linter_name == 'standard':
-            config.set_value("JAVASCRIPT_STANDARD_ARGUMENTS", config.get("DEFAULT_WORKSPACE").replace("\\", "/") + f"/{linter.test_folder}/*_fix_*.js")
+        if self.linter_name == "standard":
+            config.set_value(
+                "JAVASCRIPT_STANDARD_ARGUMENTS",
+                config.get("DEFAULT_WORKSPACE").replace("\\", "/")
+                + f"/{linter.test_folder}/*_fix_*.js",
+            )
 
         utilstest.test_linter_format_fix(linter, self)

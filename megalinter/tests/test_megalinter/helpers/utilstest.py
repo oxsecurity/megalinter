@@ -1,6 +1,5 @@
 import contextlib
 import difflib
-import git
 import io
 import json
 import logging
@@ -13,6 +12,7 @@ import uuid
 from datetime import datetime
 from distutils.dir_util import copy_tree
 
+import git
 from git import Repo
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
@@ -606,6 +606,7 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
 
+
 def test_linter_format_fix(linter, test_self):
     if (
         linter.disabled is True
@@ -620,7 +621,7 @@ def test_linter_format_fix(linter, test_self):
         workspace = workspace + os.path.sep + "fix"
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
-    
+
     file_map = {}
 
     for file_name in os.listdir(workspace):
