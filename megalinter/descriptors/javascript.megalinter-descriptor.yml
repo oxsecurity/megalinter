@@ -110,6 +110,7 @@ linters:
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
+    test_folder: javascript_standard
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
