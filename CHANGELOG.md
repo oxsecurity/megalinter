@@ -64,6 +64,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.43.0 to **1.44.0** on 2023-01-24
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.1 to **7.3.2** on 2023-01-25
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.1 to **7.3.2** on 2023-01-25
+  - [revive](https://revive.run/) from 1.2.4 to **1.2.5** on 2023-01-27
+  - [syft](https://github.com/anchore/syft) from 0.68.0 to **0.68.1** on 2023-01-27
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.11 to **0.0.12** on 2023-01-27
+  - [rubocop](https://rubocop.org/) from 1.44.0 to **1.44.1** on 2023-01-27
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.66 to **0.1.67** on 2023-01-27
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
