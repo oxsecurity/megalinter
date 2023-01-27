@@ -15,7 +15,7 @@
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?maxAge=2592000)](https://GitHub.com/oxsecurity/megalinter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.9M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.0M-blue)](https://megalinter.github.io/flavors/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.github.io)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
