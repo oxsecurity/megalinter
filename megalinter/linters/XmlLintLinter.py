@@ -21,7 +21,7 @@ class XmlLintLinter(Linter):
             if self.cli_lint_mode == "file":
                 os.environ["XMLLINT_INDENT"] = config.get("XML_XMLLINT_INDENT", "  ")
 
-                cmd += f" {self.cli_lint_fix_arg_name} --output {file}"
+                cmd += ["--output", f"{file}"]
             else:
                 raise KeyError(
                     f"You can not apply_fixes with cli_lint_mode {self.cli_lint_mode}"
