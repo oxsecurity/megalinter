@@ -80,6 +80,10 @@ class LinterTestRoot:
         if self.linter_name == "standard":
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "standard")
 
+        if self.linter_name == "xmllint":
+            config.set_value("XML_XMLLINT_AUTOFORMAT", "true")
+            config.set_value("XML_XMLLINT_CLI_LINT_MODE", "file")
+
         linter = self.get_linter_instance()
 
         if self.linter_name == "standard":
