@@ -12,7 +12,6 @@ import uuid
 from datetime import datetime
 from distutils.dir_util import copy_tree
 
-import git
 from git import InvalidGitRepositoryError, Repo
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
@@ -594,7 +593,7 @@ def assert_is_skipped(skipped_item, output, test_self):
 
 
 def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(REPO_HOME)
+    repo = Repo(os.path.realpath(REPO_HOME))
     changed_files = [item.a_path for item in repo.index.diff(None)]
     logging.info("Updated files (git):\n" + "\n".join(changed_files))
     updated = False
@@ -676,12 +675,7 @@ def test_linter_format_fix(linter, test_self):
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
-    repo = None
-
-    try:
-        repo = git.Repo(linter.github_workspace)
-    except InvalidGitRepositoryError:  # Only the repository exists locally, not inside the container
-        pass
+    repo = Repo(os.path.realpath(REPO_HOME))
 
     # Check files content
     for file in file_map:
@@ -695,7 +689,6 @@ def test_linter_format_fix(linter, test_self):
             ]
             assert (len(list(diffs))) > 0, f"No changes in the {file} file"
 
-        if repo is not None:
-            repo.index.checkout(
-                [os.path.join(linter.github_workspace, file)], force=True
-            )
+        repo.index.checkout(
+            [os.path.join(linter.github_workspace, file)], force=True
+        )
