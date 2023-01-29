@@ -2,7 +2,6 @@
 """
 Unit tests for Linter class (and sub-classes)
 """
-import os
 from typing import Optional
 
 from megalinter import config, linter_factory
