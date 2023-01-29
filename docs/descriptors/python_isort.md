@@ -15,7 +15,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 ## isort documentation
 
-- Version in MegaLinter: **5.11.4**
+- Version in MegaLinter: **5.12.0**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -104,10 +104,10 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-c] [--ws] [--sp SETTINGS_PATH] [--cr CONFIG_ROOT]
              [--resolve-all-configs] [--profile PROFILE] [--old-finders]
              [-j [JOBS]] [--ac] [--interactive] [--format-error FORMAT_ERROR]
-             [--format-success FORMAT_SUCCESS] [--sort-reexports]
-             [--filter-files] [-s SKIP] [--extend-skip EXTEND_SKIP]
-             [--sg SKIP_GLOB] [--extend-skip-glob EXTEND_SKIP_GLOB]
-             [--gitignore] [--ext SUPPORTED_EXTENSIONS]
+             [--format-success FORMAT_SUCCESS] [--srx] [--filter-files]
+             [-s SKIP] [--extend-skip EXTEND_SKIP] [--sg SKIP_GLOB]
+             [--extend-skip-glob EXTEND_SKIP_GLOB] [--gitignore]
+             [--ext SUPPORTED_EXTENSIONS]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dont-follow-links]
              [--filename FILENAME] [--allow-root] [-a ADD_IMPORTS] [--append]
              [--af] [--rm REMOVE_IMPORTS] [--float-to-top]
@@ -205,7 +205,8 @@ general options:
                         Override the format used to print errors.
   --format-success FORMAT_SUCCESS
                         Override the format used to print success.
-  --sort-reexports      Automatically sort all re-exports (module level
+  --srx, --sort-reexports
+                        Automatically sort all re-exports (module level
                         __all__ collections)
 
 target options:

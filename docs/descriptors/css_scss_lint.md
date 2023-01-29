@@ -15,7 +15,7 @@ description: How to use scss-lint (configure, ignore files, ignore errors, help 
 
 ## scss-lint documentation
 
-- Version in MegaLinter: **0.59.0**
+- Version in MegaLinter: **0.60.0**
 - Visit [Official Web Site](https://github.com/sds/scss-lint#readme){target=_blank}
 - See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration){target=_blank}
 - See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}

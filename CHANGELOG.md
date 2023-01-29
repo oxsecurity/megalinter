@@ -69,6 +69,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.11 to **0.0.12** on 2023-01-27
   - [rubocop](https://rubocop.org/) from 1.44.0 to **1.44.1** on 2023-01-27
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.66 to **0.1.67** on 2023-01-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.9 to **0.72.10** on 2023-01-28
+  - [scss-lint](https://github.com/sds/scss-lint) from 0.59.0 to **0.60.0** on 2023-01-28
+  - [v8r](https://github.com/chris48s/v8r) from 0.13.1 to **0.14.0** on 2023-01-28
+  - [isort](https://pycqa.github.io/isort/) from 5.11.4 to **5.12.0** on 2023-01-28
+  - [semgrep](https://semgrep.dev/) from 1.5.1 to **1.6.0** on 2023-01-28
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
