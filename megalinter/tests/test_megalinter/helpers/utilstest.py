@@ -13,7 +13,7 @@ from datetime import datetime
 from distutils.dir_util import copy_tree
 
 import git
-from git import Repo, InvalidGitRepositoryError
+from git import InvalidGitRepositoryError, Repo
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
@@ -680,7 +680,7 @@ def test_linter_format_fix(linter, test_self):
 
     try:
         repo = git.Repo(linter.github_workspace)
-    except InvalidGitRepositoryError: # Only the repository exists locally, not inside the container
+    except InvalidGitRepositoryError:  # Only the repository exists locally, not inside the container
         pass
 
     # Check files content
@@ -696,4 +696,6 @@ def test_linter_format_fix(linter, test_self):
             assert (len(list(diffs))) > 0, f"No changes in the {file} file"
 
         if repo is not None:
-            repo.index.checkout([os.path.join(linter.github_workspace, file)], force=True)
+            repo.index.checkout(
+                [os.path.join(linter.github_workspace, file)], force=True
+            )

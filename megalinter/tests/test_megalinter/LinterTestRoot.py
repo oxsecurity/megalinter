@@ -23,7 +23,7 @@ class LinterTestRoot:
                 "disable_descriptors": [],
                 "disable_linters": [],
                 "disable_errors_linters": [],
-                "github_workspace": '.',
+                "github_workspace": ".",
                 "post_linter_status": True,
             },
         )
