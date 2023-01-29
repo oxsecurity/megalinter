@@ -45,7 +45,10 @@ linters:
     install:
       dockerfile:
         - |
-          RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
+          RUN CHECKSTYLE_LATEST=$(curl -s \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+              https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
                   | grep browser_download_url \
                   | grep ".jar" \
                   | cut -d '"' -f 4) \

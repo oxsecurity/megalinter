@@ -127,7 +127,10 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation
-RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
+RUN CHECKSTYLE_LATEST=$(curl -s \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
         | grep browser_download_url \
         | grep ".jar" \
         | cut -d '"' -f 4) \

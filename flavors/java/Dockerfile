@@ -239,7 +239,10 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 
 # checkstyle installation
-    && CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
+    && CHECKSTYLE_LATEST=$(curl -s \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
         | grep browser_download_url \
         | grep ".jar" \
         | cut -d '"' -f 4) \

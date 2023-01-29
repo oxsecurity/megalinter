@@ -302,7 +302,10 @@ COPY --from=kics /app/bin/assets /opt/kics/assets/
 RUN rc-update add docker boot && rc-service docker start || true \
 # ARM installation
     && mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+    && curl --retry 5 --retry-delay 5 -s \
+       -H "Accept: application/vnd.github+json" \
+       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
         | grep linux-alpine-x64 \
         | cut -d '"' -f 4 \
@@ -339,7 +342,10 @@ ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # POWERSHELL installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+    && curl --retry 5 --retry-delay 5 -s \
+       -H "Accept: application/vnd.github+json" \
+       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
         | grep linux-alpine-x64 \
         | cut -d '"' -f 4 \
@@ -433,7 +439,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && go install github.com/mgechev/revive@latest && go clean --cache \
 
 # checkstyle installation
-    && CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
+    && CHECKSTYLE_LATEST=$(curl -s \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
         | grep browser_download_url \
         | grep ".jar" \
         | cut -d '"' -f 4) \
