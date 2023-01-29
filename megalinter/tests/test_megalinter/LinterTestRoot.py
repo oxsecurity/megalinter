@@ -92,4 +92,11 @@ class LinterTestRoot:
                 + f"/{linter.test_folder}/*_fix_*.js",
             )
 
+        if self.linter_name == "eslint-plugin-jsonc":
+            config.set_value(
+                "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
+                config.get("DEFAULT_WORKSPACE").replace("\\", "/")
+                + f"/{linter.test_folder}/*_fix_*.json",
+            )
+
         utilstest.test_linter_format_fix(linter, self)
