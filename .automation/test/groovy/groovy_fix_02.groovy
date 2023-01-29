@@ -1,5 +1,5 @@
 /* groovylint-disable ClassNameSameAsFilename, CompileStatic, JavaIoPackageAccess */
-class Example {
+class Example{
 
     static void main(String[] args) {
         File file = new File('E:/Example.txt')
