@@ -689,4 +689,6 @@ def test_linter_format_fix(linter, test_self):
             ]
             assert (len(list(diffs))) > 0, f"No changes in the {file} file"
 
-        repo.index.checkout([os.path.join(os.path.realpath(REPO_HOME), file)], force=True)
+        repo.index.checkout(
+            [os.path.join(os.path.realpath(REPO_HOME), file)], force=True
+        )
