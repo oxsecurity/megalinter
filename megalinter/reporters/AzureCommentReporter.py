@@ -12,7 +12,7 @@ Requires the following vars sent to docker run:
 - BUILD_REPOSITORY_ID
 """
 import logging
-
+import urllib.parse
 import requests
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
@@ -42,7 +42,7 @@ class AzureCommentReporter(Reporter):
                     + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
-            SYSTEM_TEAMPROJECT = config.get("SYSTEM_TEAMPROJECT")
+            SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
             BUILD_BUILD_ID = config.get("BUILD_BUILD_ID")
             AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
