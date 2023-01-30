@@ -3020,6 +3020,33 @@ def update_dependents_info():
     logging.info("Running command: " + " ".join(command))
     os.system(" ".join(command))
 
+def update_workflows_linters():
+    descriptors, _ = list_descriptors_for_build()
+
+    linters = ""
+
+    for descriptor in descriptors:
+        for linter in descriptor['linters']:
+            if 'name' in linter:
+                name = linter['name'].lower()
+            else:
+                lang_lower = descriptor['descriptor_id'].lower()
+                linter_name_lower = linter['linter_name'].lower().replace("-", "_")
+                name = f"{lang_lower}_{linter_name_lower}"
+
+            linters += f"            \"{name}\",\n"
+
+    update_workflow_linters('.github/workflows/deploy-DEV-linters.yml', linters)
+    update_workflow_linters('.github/workflows/deploy-BETA-linters.yml', linters)
+    update_workflow_linters('.github/workflows/deploy-RELEASE-linters.yml', linters)
+
+def update_workflow_linters(file_path, linters):
+    with open(file_path, "r", encoding="utf-8") as f:
+        file_content = f.read()
+        file_content = re.sub(r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])", rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3", file_content)
+
+    with open(file_path, "w") as f:
+        f.write(file_content)
 
 if __name__ == "__main__":
     try:
@@ -3040,6 +3067,7 @@ if __name__ == "__main__":
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
+    update_workflows_linters()
     if UPDATE_DEPENDENTS is True:
         update_dependents_info()
     generate_all_flavors()
