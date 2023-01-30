@@ -13,6 +13,7 @@ Requires the following vars sent to docker run:
 """
 import logging
 import urllib.parse
+
 import requests
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
