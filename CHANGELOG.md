@@ -77,6 +77,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [isort](https://pycqa.github.io/isort/) from 5.11.4 to **5.12.0** on 2023-01-28
   - [semgrep](https://semgrep.dev/) from 1.5.1 to **1.6.0** on 2023-01-28
   - [eslint](https://eslint.org) from 8.32.0 to **8.33.0** on 2023-01-29
+  - [syft](https://github.com/anchore/syft) from 0.68.1 to **0.69.0** on 2023-01-31
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
