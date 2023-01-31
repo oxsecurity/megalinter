@@ -15,7 +15,10 @@
     "mega-linter-runner": "lib/index.js"
   },
   "scripts": {
-    "test": "mocha \"test/**/*.test.js\""
+    "test": "mocha \"test/**/*.test.js\"",
+    "test:cli": "mocha test/megalinter-cli.test.js",
+    "test:module": "mocha test/megalinter-module.test.js",
+    "test:upgrade": "mocha test/megalinter-upgrade.test.js"
   },
   "keywords": [
     "mega-linter",
