@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import date, datetime
@@ -554,6 +555,9 @@ def match_flavor(item, flavor, flavor_info):
 
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
+    # Remove all the contents of LINTERS_DIR beforehand so that the result is deterministic
+    shutil.rmtree(os.path.realpath(LINTERS_DIR))
+    os.makedirs(os.path.realpath(LINTERS_DIR))
     # Browse descriptors
     linters_md = "# Standalone linter docker images\n\n"
     linters_md += "| Linter key | Docker image | Size |\n"
@@ -572,8 +576,8 @@ def generate_linter_dockerfiles():
         # Browse descriptor linters
         for linter in descriptor_linters:
             # Do not build standalone linter if it does not manage SARIF
-            if linter.can_output_sarif is False:
-                continue
+            #if linter.can_output_sarif is False:
+            #    continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -3028,6 +3032,9 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
+            #if "can_output_sarif" not in linter or linter["can_output_sarif"] is False:
+            #    continue
+
             if "name" in linter:
                 name = linter["name"].lower()
             else:
@@ -3074,12 +3081,12 @@ if __name__ == "__main__":
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
-    update_workflows_linters()
     if UPDATE_DEPENDENTS is True:
         update_dependents_info()
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
+    update_workflows_linters()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
         # refresh_users_info() # deprecated since now we use github-dependents-info
