@@ -76,7 +76,7 @@ class LinterTestRoot:
         if self.linter_name == "prettier":
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "prettier")
 
-        if self.linter_name == "standard":
+        if self.descriptor_id == "JAVASCRIPT" and self.linter_name == "standard":
             config.set_value("JAVASCRIPT_DEFAULT_STYLE", "standard")
 
         if self.linter_name == "xmllint":
@@ -85,11 +85,18 @@ class LinterTestRoot:
 
         linter = self.get_linter_instance()
 
-        if self.linter_name == "standard":
+        if self.descriptor_id == "JAVASCRIPT" and self.linter_name == "standard":
             config.set_value(
                 "JAVASCRIPT_STANDARD_ARGUMENTS",
                 config.get("DEFAULT_WORKSPACE").replace("\\", "/")
                 + f"/{linter.test_folder}/*_fix_*.js",
+            )
+
+        if self.descriptor_id == "TYPESCRIPT" and self.linter_name == "standard":
+            config.set_value(
+                "TYPESCRIPT_STANDARD_ARGUMENTS",
+                config.get("DEFAULT_WORKSPACE").replace("\\", "/")
+                + f"/{linter.test_folder}/*_fix_*.ts",
             )
 
         if self.linter_name == "eslint-plugin-jsonc":
