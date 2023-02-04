@@ -15,7 +15,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.15.10**
+- Version in MegaLinter: **2.16.1**
 - Visit [Official Web Site](https://pylint.pycqa.org){target=_blank}
 - See [How to configure pylint rules](https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -150,9 +150,9 @@ Main:
                         Add files or directories matching the regular
                         expressions patterns to the ignore-list. The regex
                         matches against paths and can be in Posix or Windows
-                        format. Because '\' represents the directory delimiter
-                        on Windows systems, it can't be used as an escape
-                        character. (default: [])
+                        format. Because '\\' represents the directory
+                        delimiter on Windows systems, it can't be used as an
+                        escape character. (default: [])
   --persistent <y or n>
                         Pickle collected data for later comparisons. (default:
                         True)
@@ -218,6 +218,10 @@ Main:
                         means that the block might have code that exists only
                         in one or another interpreter, leading to false
                         positives when analysed. (default: False)
+  --clear-cache-post-run <y or n>
+                        Clear in-memory caches upon conclusion of linting.
+                        Useful if running pylint in a server-like mode.
+                        (default: False)
 
 Reports:
   Options related to output formatting and reporting
@@ -360,7 +364,8 @@ Exceptions:
 
   --overgeneral-exceptions <comma-separated class names>
                         Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
+                        (default: ('builtins.BaseException',
+                        'builtins.Exception'))
 
 Imports:
   BaseChecker for import statements.
@@ -396,6 +401,9 @@ Imports:
   --allow-wildcard-with-all <y or n>
                         Allow wildcard imports from modules that define
                         __all__. (default: False)
+  --allow-reexport-from-package <y or n>
+                        Allow explicit reexports by alias from a package
+                        __init__. (default: False)
 
 Logging:
   Checks use of the logging module.
@@ -561,7 +569,7 @@ Classes:
                         method. (default: ('cls',))
   --valid-metaclass-classmethod-first-arg <argument names>
                         List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
+                        metaclass class method. (default: ('mcs',))
   --exclude-protected <protected access exclusions>
                         List of member names, which should be excluded from
                         the protected access warning. (default: ('_asdict',

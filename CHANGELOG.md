@@ -80,6 +80,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.68.1 to **0.69.0** on 2023-01-31
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.01.12 to **2023.01.20** on 2023-01-31
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.2 to **8.15.3** on 2023-01-31
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.11.0 to **6.12.1** on 2023-02-04
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.13.1 to **0.14.6** on 2023-02-04
+  - [golangci-lint](https://golangci-lint.run/) from 1.50.1 to **1.51.0** on 2023-02-04
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.6.0 to **10.7.0** on 2023-02-04
+  - [black](https://black.readthedocs.io/en/stable/) from 22.12.0 to **23.1.0** on 2023-02-04
+  - [pylint](https://pylint.pycqa.org) from 2.15.10 to **2.16.1** on 2023-02-04
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.7.103 to **0.7.104** on 2023-02-04
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.0.2 to **6.2.0** on 2023-02-04
+  - [semgrep](https://semgrep.dev/) from 1.6.0 to **1.9.0** on 2023-02-04
+  - [syft](https://github.com/anchore/syft) from 0.69.0 to **0.70.0** on 2023-02-04
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.0 to **0.8.1** on 2023-02-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.20.0 to **7.21.0** on 2023-02-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.19.2 to **6.21.0** on 2023-02-04
+  - [kics](https://www.kics.io) from 1.6.8 to **1.6.9** on 2023-02-04
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.6 to **1.3.7** on 2023-02-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.42.3 to **0.43.2** on 2023-02-04
 <!-- linter-versions-end -->
 
 ## [v6.18.0] - 2023-01-07
