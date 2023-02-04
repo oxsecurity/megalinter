@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
     
     
       
@@ -7235,10 +7235,8 @@
 <li>Fixes<ul>
 <li>Change name of config file for powershell formatter to avoid collision with powershell linter config</li>
 <li>Enhance find SARIF json in stdout output</li>
-<li>Pass --show-context, --show-suggestions, and --no-must-find-files to CSpell for friendlier UX
-  by @Kurt-von-Laven in <a href="https://github.com/oxsecurity/megalinter/pull/2275">#2275</a>.</li>
-<li>Only run npm-package-json-lint when package.json is present by @Kurt-von-Laven in
-  <a href="https://github.com/oxsecurity/megalinter/pull/2280">#2280</a>.</li>
+<li>Pass --show-context, --show-suggestions, and --no-must-find-files to CSpell for friendlier UX, by @Kurt-von-Laven in <a href="https://github.com/oxsecurity/megalinter/pull/2275">#2275</a>.</li>
+<li>Only run npm-package-json-lint when package.json is present, by @Kurt-von-Laven in <a href="https://github.com/oxsecurity/megalinter/pull/2280">#2280</a>.</li>
 </ul>
 </li>
 </ul>
@@ -7306,6 +7304,22 @@
 <li><a href="https://github.com/anchore/syft">syft</a> from 0.68.1 to <strong>0.69.0</strong> on 2023-01-31</li>
 <li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2023.01.12 to <strong>2023.01.20</strong> on 2023-01-31</li>
 <li><a href="https://github.com/zricethezav/gitleaks">gitleaks</a> from 8.15.2 to <strong>8.15.3</strong> on 2023-01-31</li>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 6.11.0 to <strong>6.12.1</strong> on 2023-02-04</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.13.1 to <strong>0.14.6</strong> on 2023-02-04</li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.50.1 to <strong>1.51.0</strong> on 2023-02-04</li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.6.0 to <strong>10.7.0</strong> on 2023-02-04</li>
+<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 22.12.0 to <strong>23.1.0</strong> on 2023-02-04</li>
+<li><a href="https://pylint.pycqa.org">pylint</a> from 2.15.10 to <strong>2.16.1</strong> on 2023-02-04</li>
+<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 0.7.103 to <strong>0.7.104</strong> on 2023-02-04</li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 6.0.2 to <strong>6.2.0</strong> on 2023-02-04</li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.6.0 to <strong>1.9.0</strong> on 2023-02-04</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.69.0 to <strong>0.70.0</strong> on 2023-02-04</li>
+<li><a href="https://github.com/snakemake/snakefmt">snakefmt</a> from 0.8.0 to <strong>0.8.1</strong> on 2023-02-04</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.20.0 to <strong>7.21.0</strong> on 2023-02-04</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.19.2 to <strong>6.21.0</strong> on 2023-02-04</li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.8 to <strong>1.6.9</strong> on 2023-02-04</li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.3.6 to <strong>1.3.7</strong> on 2023-02-04</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.42.3 to <strong>0.43.2</strong> on 2023-02-04</li>
 </ul>
 </li>
 </ul>
@@ -10741,6 +10755,8 @@
   
     
     
+    
+    
       
       
     
@@ -10748,6 +10764,8 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
+    
+    
     
     
       
@@ -10759,6 +10777,8 @@
   
     
     
+    
+    
       
       
     
@@ -10768,6 +10788,8 @@
   
     
     
+    
+    
       
       
     
@@ -10775,6 +10797,8 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
     </a>
   
+    
+    
     
     
       
@@ -10798,7 +10822,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a00a7c5e.min.js"></script>
+      <script src="../assets/javascripts/bundle.6df46069.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

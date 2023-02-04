@@ -21,7 +21,7 @@
         <link rel="next" href="../python_black/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
     
     
       
@@ -5872,7 +5872,7 @@
 <p><a href="https://github.com/PyCQA/pylint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600" /></a> <a href="https://github.com/PyCQA/pylint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PyCQA/pylint?sort=semver" /></a> <a href="https://github.com/PyCQA/pylint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PyCQA/pylint" /></a> <a href="https://github.com/PyCQA/pylint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PyCQA/pylint" /></a> <a href="https://github.com/PyCQA/pylint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PyCQA/pylint" /></a></p>
 <h2 id="pylint-documentation">pylint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.15.10</strong></li>
+<li>Version in MegaLinter: <strong>2.16.1</strong></li>
 <li>Visit <a href="https://pylint.pycqa.org" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html" target="_blank">How to configure pylint rules</a><ul>
 <li>If custom <code>.pylintrc</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc" target="_blank">.pylintrc</a> will be used</li>
@@ -6113,9 +6113,9 @@ Main:
                         Add files or directories matching the regular
                         expressions patterns to the ignore-list. The regex
                         matches against paths and can be in Posix or Windows
-                        format. Because '\' represents the directory delimiter
-                        on Windows systems, it can't be used as an escape
-                        character. (default: [])
+                        format. Because '\\' represents the directory
+                        delimiter on Windows systems, it can't be used as an
+                        escape character. (default: [])
   --persistent &lt;y or n&gt;
                         Pickle collected data for later comparisons. (default:
                         True)
@@ -6181,6 +6181,10 @@ Main:
                         means that the block might have code that exists only
                         in one or another interpreter, leading to false
                         positives when analysed. (default: False)
+  --clear-cache-post-run &lt;y or n&gt;
+                        Clear in-memory caches upon conclusion of linting.
+                        Useful if running pylint in a server-like mode.
+                        (default: False)
 
 Reports:
   Options related to output formatting and reporting
@@ -6323,7 +6327,8 @@ Exceptions:
 
   --overgeneral-exceptions &lt;comma-separated class names&gt;
                         Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
+                        (default: ('builtins.BaseException',
+                        'builtins.Exception'))
 
 Imports:
   BaseChecker for import statements.
@@ -6359,6 +6364,9 @@ Imports:
   --allow-wildcard-with-all &lt;y or n&gt;
                         Allow wildcard imports from modules that define
                         __all__. (default: False)
+  --allow-reexport-from-package &lt;y or n&gt;
+                        Allow explicit reexports by alias from a package
+                        __init__. (default: False)
 
 Logging:
   Checks use of the logging module.
@@ -6524,7 +6532,7 @@ Classes:
                         method. (default: ('cls',))
   --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
                         List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
+                        metaclass class method. (default: ('mcs',))
   --exclude-protected &lt;protected access exclusions&gt;
                         List of member names, which should be excluded from
                         the protected access warning. (default: ('_asdict',
@@ -6770,6 +6778,8 @@ String:
   
     
     
+    
+    
       
       
     
@@ -6777,6 +6787,8 @@ String:
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
+    
+    
     
     
       
@@ -6788,6 +6800,8 @@ String:
   
     
     
+    
+    
       
       
     
@@ -6797,6 +6811,8 @@ String:
   
     
     
+    
+    
       
       
     
@@ -6804,6 +6820,8 @@ String:
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
     </a>
   
+    
+    
     
     
       
@@ -6827,7 +6845,7 @@ String:
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a00a7c5e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6df46069.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
