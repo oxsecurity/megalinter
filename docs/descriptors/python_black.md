@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **22.12.0**
+- Version in MegaLinter: **23.1.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -108,8 +108,11 @@ Options:
                                   [default: 88]
   -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311]
                                   Python versions that should be supported by
-                                  Black's output. [default: per-file auto-
-                                  detection]
+                                  Black's output. By default, Black will try
+                                  to infer this from the project metadata in
+                                  pyproject.toml. If this does not yield
+                                  conclusive results, Black will use per-file
+                                  auto-detection.
   --pyi                           Format all input files like typing stubs
                                   regardless of file extension (useful when
                                   piping source on standard input).
@@ -119,9 +122,9 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (prun, python3, python, pypy, timeit,
-                                  capture, time). Useful for formatting cells
-                                  with custom python magics.
+                                  magics (capture, prun, pypy, python,
+                                  python3, time, timeit). Useful for
+                                  formatting cells with custom python magics.
   -x, --skip-source-first-line    Skip the first line of the source code.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.

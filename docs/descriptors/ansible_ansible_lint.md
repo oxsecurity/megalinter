@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.11.0**
+- Version in MegaLinter: **6.12.1**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -90,8 +90,8 @@ ansible-lint -v -c .ansible-lint
 ```shell
 WARNING: PATH altered to expand ~ in it. Read https://stackoverflow.com/a/44704799/99834 and correct your system configuration.
 usage: ansible-lint [-h] [-P | -L | -T]
-                    [-f {rich,plain,md,json,codeclimate,quiet,pep8,sarif,docs}]
-                    [-q]
+                    [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}]
+                    [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
                     [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
@@ -110,20 +110,22 @@ options:
   -P, --list-profiles   List all profiles, no formatting options available.
   -L, --list-rules      List all the rules. For listing rules only the
                         following formats for argument -f are supported:
-                        {plain, rich, md}
+                        {brief, full, md} with 'brief' as default.
   -T, --list-tags       List all the tags and the rules they cover. Increase
                         the verbosity level with `-v` to include 'opt-in' tag
                         and its rules.
-  -f {rich,plain,md,json,codeclimate,quiet,pep8,sarif,docs}, --format {rich,plain,md,json,codeclimate,quiet,pep8,sarif,docs}
+  -f {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}
                         stdout formatting, json being an alias for
-                        codeclimate. (default: rich)
+                        codeclimate. (default: None)
+  --sarif-file SARIF_FILE
+                        SARIF output file
   -q                    quieter, reduce verbosity, can be specified twice.
   --profile {min,basic,moderate,safety,shared,production}
                         Specify which rules profile to be used.
   -p, --parseable       parseable output, same as '-f pep8'
-  --progressive         Return success if number of violations compared
-                        withprevious git commit has not increased. This
-                        feature worksonly in git repositories.
+  --progressive         Return success if number of violations compared with
+                        previous git commit has not increased. This feature
+                        works only in git repositories.
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on
                         location of configuration file.
@@ -156,7 +158,7 @@ options:
   -v                    Increase verbosity level (-vv for more)
   -x SKIP_LIST, --skip-list SKIP_LIST
                         only check rules whose id/tags do not match these
-                        values
+                        values. e.g: --skip-list=name,run-once
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
                         config file. Current version default value is: avoid-

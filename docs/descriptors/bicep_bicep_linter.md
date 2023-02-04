@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.13.1**
+- Version in MegaLinter: **0.14.6**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -82,7 +82,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.13.1 (e3ac80d678)
+Bicep CLI version 0.14.6 (f1dae160cd)
 
 Usage:
   bicep build [options] <file>
@@ -172,9 +172,13 @@ Usage:
       <file>        The input file (can be a Bicep file or an ARM template file)
       <ref>         The module reference
 
+    Options:
+      --documentationUri  Module documentation uri
+
     Examples:
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1
+      bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md
 
   bicep restore <file>
     Restores external modules from the specified Bicep file to the local module cache.
