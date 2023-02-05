@@ -3,10 +3,7 @@
 Use Protolint to analyze protobuf files
 """
 
-import logging
-import subprocess
-
-from megalinter import Linter, utils
+from megalinter import Linter
 
 
 class ProtolintLinter(Linter):
