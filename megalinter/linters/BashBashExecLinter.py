@@ -7,7 +7,6 @@ import megalinter
 
 
 class BashBashExecLinter(megalinter.Linter):
-
     # To execute before linting files
     def before_lint_files(self):
         if megalinter.config.get("ERROR_ON_MISSING_EXEC_BIT", "false") == "true":

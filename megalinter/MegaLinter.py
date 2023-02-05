@@ -40,7 +40,6 @@ def run_linters(linters):
 
 # Main MegaLinter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
-
     # Constructor: Load global config, linters & compute file extensions
     def __init__(self, params=None):
         if params is None:
@@ -126,7 +125,6 @@ class Megalinter:
 
     # Collect files, run linters on them and write reports
     def run(self):
-
         # Manage case where we only want to return standalone linter version
         if self.linter_version_only is True:
             standalone_linter = self.linters[0]
@@ -685,7 +683,7 @@ class Megalinter:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories()
-        for (dirpath, dirnames, filenames) in os.walk(self.workspace, topdown=True):
+        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
             all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
         return all_files

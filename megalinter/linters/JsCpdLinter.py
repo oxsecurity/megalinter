@@ -10,7 +10,6 @@ from megalinter import Linter
 
 
 class JsCpdLinter(Linter):
-
     # Perform additional actions and provide additional details in text reporter logs
     def complete_text_reporter_report(self, reporter_self):
         if self.status == "success":
