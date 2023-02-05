@@ -627,7 +627,10 @@ def test_linter_format_fix(linter, test_self):
     for file in glob.iglob("{workspace}/**/*", recursive=True):
         file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(file_name)
-        if len(linter.file_extensions) > 0 and file_extension not in linter.file_extensions:
+        if (
+            len(linter.file_extensions) > 0
+            and file_extension not in linter.file_extensions
+        ):
             continue
         elif "fix" not in file_name:
             continue

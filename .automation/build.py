@@ -576,7 +576,7 @@ def generate_linter_dockerfiles():
         # Browse descriptor linters
         for linter in descriptor_linters:
             # Do not build standalone linter if it does not manage SARIF
-            #if linter.can_output_sarif is False:
+            # if linter.can_output_sarif is False:
             #    continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
@@ -3032,7 +3032,7 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
-            #if "can_output_sarif" not in linter or linter["can_output_sarif"] is False:
+            # if "can_output_sarif" not in linter or linter["can_output_sarif"] is False:
             #    continue
 
             if "name" in linter:
