@@ -6,7 +6,7 @@
 //  Copyright © 2019 Suyeol Jeon. All rights reserved.
 //
 
-import SwiftUI
+import SwiftUI             
 
 struct Task: Equatable, Hashable, Codable, Identifiable {
   let id: UUID
