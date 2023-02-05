@@ -7,7 +7,6 @@ from megalinter import Linter
 
 
 class EslintLinter(Linter):
-
     # Remove --no-ignore if there are arguments about ignoring stuff
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)

@@ -44,9 +44,6 @@ linters:
     examples:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
-    install:
-      dockerfile:
-        - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
   # CSharpier
   - class: DotnetLinter
     linter_name: csharpier

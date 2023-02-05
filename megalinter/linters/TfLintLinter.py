@@ -9,7 +9,6 @@ import megalinter
 
 
 class TfLintLinter(megalinter.Linter):
-
     # To execute before linting files
     def before_lint_files(self):
         # Build pre-command

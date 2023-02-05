@@ -136,7 +136,6 @@ class SarifReporter(Reporter):
         # browse runs
         if "runs" in linter_sarif_obj:
             for id_run, run in enumerate(linter_sarif_obj["runs"]):
-
                 # Add MegaLinter info
                 run_properties = run["properties"] if "properties" in run else {}
                 run_properties["megalinter"] = {
@@ -234,7 +233,6 @@ class SarifReporter(Reporter):
 
     # Replace startLine and endLine in region or contextRegion
     def fix_sarif_physical_location(self, physical_location):
-
         for location_key in physical_location.keys():
             location_item = physical_location[location_key]
             if "uri" in location_item and location_key == "artifactLocation":

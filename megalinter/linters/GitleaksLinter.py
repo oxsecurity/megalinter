@@ -8,7 +8,6 @@ from megalinter.utils import is_git_repo
 
 
 class GitleaksLinter(Linter):
-
     # Manage presence of --no-git in command line
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
