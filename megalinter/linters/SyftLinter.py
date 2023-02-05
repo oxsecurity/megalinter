@@ -16,7 +16,6 @@ from megalinter.constants import (
 
 
 class SyftLinter(Linter):
-
     # Get syft json output and build SARIF output from it
     def manage_sarif_output(self, _return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:

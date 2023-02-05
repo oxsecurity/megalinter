@@ -1153,7 +1153,6 @@ class Linter:
                 elif self.sarif_default_output_file is not None and os.path.isfile(
                     self.sarif_default_output_file
                 ):
-
                     with open(
                         self.sarif_default_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
