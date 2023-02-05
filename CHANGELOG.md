@@ -21,24 +21,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Build: Disable generate_documentation_all_users as we use github-dependents-info
 
 - Evolutions
-  - Support xmllint autofix, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2244 (requires definition of `XML_XMLLINT_AUTOFORMAT: true`)
+  - Support xmllint autofix, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2244> (requires definition of `XML_XMLLINT_AUTOFORMAT: true`)
 
 - Fixes
-  - Change name of config file for powershell formatter to avoid collision with powershell linter config, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2231
+  - Change name of config file for powershell formatter to avoid collision with powershell linter config, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2231>
   - Enhance find SARIF json in stdout output
   - Pass --show-context, --show-suggestions, and --no-must-find-files to CSpell for friendlier UX, by @Kurt-von-Laven in [#2275](https://github.com/oxsecurity/megalinter/pull/2275).
   - Only run npm-package-json-lint when package.json is present, by @Kurt-von-Laven in [#2280](https://github.com/oxsecurity/megalinter/pull/2280).
-  - Fix local files with extends, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2236
-  - Remove downgrading of ansible-lint, by @gotit96 in https://github.com/oxsecurity/megalinter/pull/2257
-  - Tag some automatically updated files as generated files, by @echoix in https://github.com/oxsecurity/megalinter/pull/2285
-  - Fix Sarif Reporter in Azure Devops with space in project name, by @EtienneDeneuve in https://github.com/oxsecurity/megalinter/pull/2301
+  - Fix local files with extends, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2236>
+  - Remove downgrading of ansible-lint, by @gotit96 in <https://github.com/oxsecurity/megalinter/pull/2257>
+  - Tag some automatically updated files as generated files, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2285>
+  - Fix Sarif Reporter in Azure Devops with space in project name, by @EtienneDeneuve in <https://github.com/oxsecurity/megalinter/pull/2301>
 
 - Documentation
   - Configure jsonschema documentation formatting (see [Descriptor schema](https://megalinter.io/latest/json-schemas/descriptor.html), [Configuration schema](https://megalinter.io/latest/json-schemas/configuration.html)), by @echoix in [#2270](https://github.com/oxsecurity/megalinter/pull/2270)
-  - Update CONTRIBUTING.md and add documentation improvements hints, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2228
-  - Add Powershell linters rules url, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2242
-  - Fix syft logo, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/2282
-  - Fix docker run documentation, by @davidjeddy in https://github.com/oxsecurity/megalinter/pull/2258
+  - Update CONTRIBUTING.md and add documentation improvements hints, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2228>
+  - Add Powershell linters rules url, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2242>
+  - Fix syft logo, by @pjungermann in <https://github.com/oxsecurity/megalinter/pull/2282>
+  - Fix docker run documentation, by @davidjeddy in <https://github.com/oxsecurity/megalinter/pull/2258>
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.22 to **1.6.23**

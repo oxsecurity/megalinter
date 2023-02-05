@@ -7,7 +7,6 @@ from megalinter import Linter
 
 
 class DotnetFormatLinter(Linter):
-
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
         # cli_lint_mode = list_of_files or project

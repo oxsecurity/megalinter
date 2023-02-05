@@ -56,7 +56,7 @@ class utilsTest(unittest.TestCase):
             f"{basedir}README.md",
             f"{basedir}target/foo.ext",
         ]
-        for (ignored_files, expected) in [
+        for ignored_files, expected in [
             ([], all_files),
             (["hello"], all_files),
             (["target/foo.ext"], all_files),
@@ -90,7 +90,7 @@ class utilsTest(unittest.TestCase):
             f"{basedir}target/foo.ext",
         ]
 
-        for (file_extensions, expected) in [
+        for file_extensions, expected in [
             ([], []),
             ([".md"], [f"{basedir}README.md"]),
             ([""], [f"{basedir}LICENSE"]),
