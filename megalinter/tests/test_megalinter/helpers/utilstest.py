@@ -1,5 +1,6 @@
 import contextlib
 import difflib
+import glob
 import io
 import json
 import logging
@@ -623,10 +624,14 @@ def test_linter_format_fix(linter, test_self):
 
     file_map = {}
 
-    for file_name in os.listdir(workspace):
-        file = os.path.join(workspace, file_name)
-        if os.path.isfile(file) is False or "fix" not in file:
+    for file in glob.iglob("{workspace}/**/*", recursive=True):
+        file_name = os.path.basename(file)
+        _, file_extension = os.path.splitext(file_name)
+        if len(linter.file_extensions) > 0 and file_extension not in linter.file_extensions:
             continue
+        elif "fix" not in file_name:
+            continue
+
         with open(file, "r", encoding="utf-8") as f_expected:
             content_expected = f_expected.read()
             file_map[file] = content_expected
