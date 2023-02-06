@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import shutil
 import sys
+from itertools import cycle
 
 import chalk as c
 import git
@@ -140,15 +141,11 @@ class Megalinter:
             )
         )
         self.collect_files()
-
         # Process linters serial or parallel according to configuration
-        active_linters = []
-        linters_do_fixes = False
-        for linter in self.linters:
-            if linter.is_active is True:
-                active_linters += [linter]
-                if linter.apply_fixes is True:
-                    linters_do_fixes = True
+        active_linters = filter(lambda x: x.is_active, self.linters)
+        linters_do_fixes = any(linter.apply_fixes for linter in active_linters)
+
+        active_linters = self.filter_linters_by_array_index(active_linters)
 
         # Initialize reports
         for reporter in self.reporters:
@@ -208,6 +205,57 @@ class Megalinter:
         self.before_exit()
         # Manage return code
         self.check_results()
+
+    def determine_array_dimensions(self):
+        array_index_vars = (
+            # native Megalinter vars
+            (
+                config.get("MEGALINTER_ARRAY_INDEX", 0),
+                config.get("MEGALINTER_ARRAY_SIZE", 0),
+            ),
+
+            # Gitlab CI ref: https://docs.gitlab.com/ee/ci/yaml/#parallel
+            (
+                # Gitlab indexes are 1-based
+                int(config.get("CI_NODE_INDEX", 0)) - 1,
+                config.get("CI_NODE_TOTAL", 0),
+            ),
+
+            # CircleCI ref: https://circleci.com/docs/parallelism-faster-jobs/#using-environment-variables-to-split-tests
+            (
+                config.get("CIRCLE_NODE_INDEX", 0),
+                config.get("CIRCLE_NODE_TOTAL", 0),
+            ),
+
+            # SLURM ref: https://slurm.schedmd.com/job_array.html#env_vars
+            (
+                config.get("SLURM_ARRAY_TASK_ID", 0),
+                config.get("SLURM_ARRAY_TASK_COUNT", 0),
+            ),
+        )
+
+        for index_var, size_var in array_index_vars:
+            # the size vars will always be unset or non-zero
+            if size_var:
+                break
+        else:
+            # Set defaults so that the net result is one list containing all the selected linters
+            index_var, size_var = (0, 1)
+
+        return int(index_var), int(size_var)
+
+    def filter_linters_by_array_index(self, linters):
+        # create an empty list for each worker in the array
+        worker_buckets = [[] for _ in range(self.array_size)]
+
+        # round robin through the buckets, dropping linters in each bucket.
+        # Assuming the input list is sorted by resource consumption, this will
+        # evenly distribute the most intensive amoung all the workers
+        queue = cycle(worker_buckets)
+        for linter in linters:
+            next(queue).append(linter)
+
+        return [linter for linter in worker_buckets[self.array_index]]
 
     # noinspection PyMethodMayBeStatic
     def process_linters_serial(self, active_linters):
