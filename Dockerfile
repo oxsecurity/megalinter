@@ -41,8 +41,8 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
-ARG DART_VERSION='2.19.1'
-ARG GLIBC_VERSION='2.35-r0'
+ARG DART_VERSION='2.8.4'
+ARG GLIBC_VERSION='2.34-r0'
 ARG PMD_VERSION=6.48.0
 ARG PSSA_VERSION='latest'
 #ARG__END

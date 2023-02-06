@@ -20,12 +20,13 @@ linters:
     examples:
       - "dartanalyzer --fatal-infos --fatal-warnings myfile.dart"
       - "dartanalyzer --fatal-infos --fatal-warnings --options analysis_options.yml myfile.dart"
+    downgraded_version: true
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
       dockerfile:
-        - ARG DART_VERSION='2.19.1'
-        - ARG GLIBC_VERSION='2.35-r0'
+        - ARG DART_VERSION='2.8.4'
+        - ARG GLIBC_VERSION='2.34-r0'
         - |
           RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
               && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
