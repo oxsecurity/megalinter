@@ -1,0 +1,3 @@
+EXTENDS: local.mega-linter.yml
+DEFAULT_BRANCH: dev
+LOG_LEVEL: DEBUG
