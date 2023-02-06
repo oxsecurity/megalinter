@@ -176,7 +176,7 @@ def test_linter_success(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": True,
     }
-    if linter.descriptor_id == 'SPELL':
+    if linter.descriptor_id == "SPELL":
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
@@ -191,7 +191,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != 'SPELL': # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -238,7 +238,7 @@ def test_linter_failure(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
     }
-    if linter.descriptor_id == 'SPELL':
+    if linter.descriptor_id == "SPELL":
         env_vars_failure["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
@@ -258,7 +258,7 @@ def test_linter_failure(linter, test_self):
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
-    elif linter.descriptor_id != 'SPELL': # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
@@ -266,13 +266,9 @@ def test_linter_failure(linter, test_self):
 
     mega_linter_linter = None
 
-    if (
-        len(mega_linter.linters) == 1
-    ):
+    if len(mega_linter.linters) == 1:
         mega_linter_linter = mega_linter.linters[0]
-    elif (
-        len(mega_linter.linters) == 2 # SPELL linters have 2 linters at a time
-    ):
+    elif len(mega_linter.linters) == 2:  # SPELL linters have 2 linters at a time
         mega_linter_linter = mega_linter.linters[1]
 
     # Check text reporter output log
@@ -663,7 +659,7 @@ def test_linter_format_fix(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": True,
     }
-    if linter.descriptor_id == 'SPELL':
+    if linter.descriptor_id == "SPELL":
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
