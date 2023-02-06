@@ -1,37 +1,37 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2011&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1368&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=643&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=48869&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2015&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1367&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=648&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=48878&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 34583 |
-| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2325 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1781 |
-| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1622 |
-| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1530 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 34615 |
+| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2326 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1787 |
+| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1626 |
+| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1534 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1060 |
-| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1004 |
+| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1006 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   922 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   849 |
-| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   615 |
+| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   616 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   559 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   529 |
 | [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn)                                                                                                 |   445 |
-| [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   385 |
+| [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   389 |
 | [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   360 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                                       |   358 |
 | [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   290 |
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   289 |
-| [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   276 |
-| [bjw-s/home-ops](https://github.com/bjw-s/home-ops)                                                                                                                             |   247 |
-| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   237 |
-| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   232 |
-| [OCSInventory-NG/OCSInventory-ocsreports](https://github.com/OCSInventory-NG/OCSInventory-ocsreports)                                                                           |   192 |
+| [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   277 |
+| [bjw-s/home-ops](https://github.com/bjw-s/home-ops)                                                                                                                             |   250 |
+| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   241 |
+| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   233 |
+| [OCSInventory-NG/OCSInventory-ocsreports](https://github.com/OCSInventory-NG/OCSInventory-ocsreports)                                                                           |   193 |
 | [pantheon-systems/documentation](https://github.com/pantheon-systems/documentation)                                                                                             |   179 |
-| [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   157 |
+| [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   158 |
 | [unixorn/tumult.plugin.zsh](https://github.com/unixorn/tumult.plugin.zsh)                                                                                                       |   146 |
 | [unixorn/fzf-zsh-plugin](https://github.com/unixorn/fzf-zsh-plugin)                                                                                                             |   136 |
 | [nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                                                                                                         |   135 |
@@ -47,14 +47,13 @@
 | [unixorn/lima-xbar-plugin](https://github.com/unixorn/lima-xbar-plugin)                                                                                                         |    74 |
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                                   |    71 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                                 |    70 |
-| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    66 |
-| [catthehacker/docker_images](https://github.com/catthehacker/docker_images)                                                                                                     |    59 |
+| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    67 |
 | [unixorn/warhol.plugin.zsh](https://github.com/unixorn/warhol.plugin.zsh)                                                                                                       |    55 |
 | [nvuillam/vscode-groovy-lint](https://github.com/nvuillam/vscode-groovy-lint)                                                                                                   |    54 |
 | [ahmadnassri/node-glob-promise](https://github.com/ahmadnassri/node-glob-promise)                                                                                               |    52 |
 | [llaville/umlwriter](https://github.com/llaville/umlwriter)                                                                                                                     |    50 |
 | [stepancheg/rust-tls-api](https://github.com/stepancheg/rust-tls-api)                                                                                                           |    46 |
-| [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    44 |
+| [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    45 |
 | [szinn/k8s-homelab](https://github.com/szinn/k8s-homelab)                                                                                                                       |    43 |
 | [nvuillam/sfdx-essentials](https://github.com/nvuillam/sfdx-essentials)                                                                                                         |    42 |
 | [hardisgroupcom/sfdx-hardis](https://github.com/hardisgroupcom/sfdx-hardis)                                                                                                     |    39 |
@@ -70,7 +69,7 @@
 | [ahmadnassri/node-api-problem](https://github.com/ahmadnassri/node-api-problem)                                                                                                 |    26 |
 | [nvuillam/node-java-caller](https://github.com/nvuillam/node-java-caller)                                                                                                       |    25 |
 | [leosuncin/nest-typeorm-custom-repository](https://github.com/leosuncin/nest-typeorm-custom-repository)                                                                         |    25 |
-| [unixorn/docker-helpers.zshplugin](https://github.com/unixorn/docker-helpers.zshplugin)                                                                                         |    24 |
+| [unixorn/docker-helpers.zshplugin](https://github.com/unixorn/docker-helpers.zshplugin)                                                                                         |    25 |
 | [Amplitude-Developer-Docs/amplitude-dev-center](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center)                                                               |    23 |
 | [kitos9112/k8s-home](https://github.com/kitos9112/k8s-home)                                                                                                                     |    23 |
 | [Azure/benchpress](https://github.com/Azure/benchpress)                                                                                                                         |    23 |
@@ -199,6 +198,7 @@
 | [bsrodrigs/terraform-aws-selfconfig-cgw](https://github.com/bsrodrigs/terraform-aws-selfconfig-cgw)                                                                             |     4 |
 | [GoogleCloudPlatform/apigee-samples](https://github.com/GoogleCloudPlatform/apigee-samples)                                                                                     |     4 |
 | [mimmi20/monolog-streamformatter](https://github.com/mimmi20/monolog-streamformatter)                                                                                           |     4 |
+| [Doonga/greyrock-ops](https://github.com/Doonga/greyrock-ops)                                                                                                                   |     4 |
 | [ashokm/dotfiles](https://github.com/ashokm/dotfiles)                                                                                                                           |     4 |
 | [ergho/homelab-ops](https://github.com/ergho/homelab-ops)                                                                                                                       |     4 |
 | [osnabrugge/home-cluster](https://github.com/osnabrugge/home-cluster)                                                                                                           |     4 |
@@ -228,7 +228,6 @@
 | [actinia-org/actinia-stac-plugin](https://github.com/actinia-org/actinia-stac-plugin)                                                                                           |     3 |
 | [nvuillam/nvuillam](https://github.com/nvuillam/nvuillam)                                                                                                                       |     3 |
 | [cbg-ethz/SARS-CoV-2_Analysis](https://github.com/cbg-ethz/SARS-CoV-2_Analysis)                                                                                                 |     3 |
-| [Doonga/greyrock-ops](https://github.com/Doonga/greyrock-ops)                                                                                                                   |     3 |
 | [brettinternet/slides](https://github.com/brettinternet/slides)                                                                                                                 |     3 |
 | [Stormcargo/k8s-gitops](https://github.com/Stormcargo/k8s-gitops)                                                                                                               |     3 |
 | [MrMarble/home-ops](https://github.com/MrMarble/home-ops)                                                                                                                       |     3 |
@@ -326,7 +325,6 @@
 | [dschveninger/megalinter-plugins](https://github.com/dschveninger/megalinter-plugins)                                                                                           |     1 |
 | [atlascloud/packages](https://github.com/atlascloud/packages)                                                                                                                   |     1 |
 | [ZauberNerd/act](https://github.com/ZauberNerd/act)                                                                                                                             |     1 |
-| [practicalli/gitbook-template](https://github.com/practicalli/gitbook-template)                                                                                                 |     1 |
 | [paroda/clojure-deps-edn](https://github.com/paroda/clojure-deps-edn)                                                                                                           |     1 |
 | [Iryna-Slynko/split-bill](https://github.com/Iryna-Slynko/split-bill)                                                                                                           |     1 |
 | [ToppleTheNun/commitlint-config-nx-scopes](https://github.com/ToppleTheNun/commitlint-config-nx-scopes)                                                                         |     1 |
@@ -437,6 +435,7 @@
 | [growthatco/growthatpkgs](https://github.com/growthatco/growthatpkgs)                                                                                                           |     0 |
 | [ci-monk/rust-intro](https://github.com/ci-monk/rust-intro)                                                                                                                     |     0 |
 | [pgraverdy/actions-templates](https://github.com/pgraverdy/actions-templates)                                                                                                   |     0 |
+| [FaserF/Winget-AutoUpdate](https://github.com/FaserF/Winget-AutoUpdate)                                                                                                         |     0 |
 | [leongwc/helm-vulnerable](https://github.com/leongwc/helm-vulnerable)                                                                                                           |     0 |
 | [shsingh/secureCodeBox](https://github.com/shsingh/secureCodeBox)                                                                                                               |     0 |
 | [ruzickap/raw-photo-tools-container](https://github.com/ruzickap/raw-photo-tools-container)                                                                                     |     0 |
@@ -556,6 +555,7 @@
 | [holyjak/clojure-deps-edn](https://github.com/holyjak/clojure-deps-edn)                                                                                                         |     0 |
 | [jdhorwitz/clojure-deps-edn](https://github.com/jdhorwitz/clojure-deps-edn)                                                                                                     |     0 |
 | [jeffp42ker/clojure-deps-edn](https://github.com/jeffp42ker/clojure-deps-edn)                                                                                                   |     0 |
+| [minhdnck/posting-app-backend](https://github.com/minhdnck/posting-app-backend)                                                                                                 |     0 |
 | [Sploofie/biolast](https://github.com/Sploofie/biolast)                                                                                                                         |     0 |
 | [ToppleTheNun/nx-plugins](https://github.com/ToppleTheNun/nx-plugins)                                                                                                           |     0 |
 | [thongdk8/test-nestjs](https://github.com/thongdk8/test-nestjs)                                                                                                                 |     0 |
@@ -575,7 +575,6 @@
 | [armensano/prime-nestjs](https://github.com/armensano/prime-nestjs)                                                                                                             |     0 |
 | [OmidBadkoubeh/yellow-dolphin](https://github.com/OmidBadkoubeh/yellow-dolphin)                                                                                                 |     0 |
 | [datj9/prime-nestjs-boilerplate](https://github.com/datj9/prime-nestjs-boilerplate)                                                                                             |     0 |
-| [danielsherret/CIPP](https://github.com/danielsherret/CIPP)                                                                                                                     |     0 |
 | [genuinetech/CIPP](https://github.com/genuinetech/CIPP)                                                                                                                         |     0 |
 | [jsmithb117/tax-router-redux](https://github.com/jsmithb117/tax-router-redux)                                                                                                   |     0 |
 | [Moneem4/t7d_authentication](https://github.com/Moneem4/t7d_authentication)                                                                                                     |     0 |
@@ -1055,6 +1054,7 @@
 | [rciam/simplesamlphp-module-assurance](https://github.com/rciam/simplesamlphp-module-assurance)                                                                                 |     0 |
 | [rciam/simplesamlphp-module-userid](https://github.com/rciam/simplesamlphp-module-userid)                                                                                       |     0 |
 | [Teasel-Ian/terraform](https://github.com/Teasel-Ian/terraform)                                                                                                                 |     0 |
+| [Caprico85/node-red-contrib-google-smarthome](https://github.com/Caprico85/node-red-contrib-google-smarthome)                                                                   |     0 |
 | [WagnerJacqueline/allure-aks-upload-action](https://github.com/WagnerJacqueline/allure-aks-upload-action)                                                                       |     0 |
 | [TestingGitVinoth/AzureDevops](https://github.com/TestingGitVinoth/AzureDevops)                                                                                                 |     0 |
 | [yeaung276/sarif-annotator](https://github.com/yeaung276/sarif-annotator)                                                                                                       |     0 |
@@ -1066,7 +1066,6 @@
 | [proinsias/whoareyou](https://github.com/proinsias/whoareyou)                                                                                                                   |     0 |
 | [ShadowsZD/github_actions](https://github.com/ShadowsZD/github_actions)                                                                                                         |     0 |
 | [brettinternet/brettinternet.github.io](https://github.com/brettinternet/brettinternet.github.io)                                                                               |     0 |
-| [Caprico85/node-red-contrib-google-smarthome](https://github.com/Caprico85/node-red-contrib-google-smarthome)                                                                   |     0 |
 | [sg70/hm-homebridge-addon](https://github.com/sg70/hm-homebridge-addon)                                                                                                         |     0 |
 | [CrazyKamel/k3s-cluster](https://github.com/CrazyKamel/k3s-cluster)                                                                                                             |     0 |
 | [proinsias/homebrew-drivers-old](https://github.com/proinsias/homebrew-drivers-old)                                                                                             |     0 |
@@ -1074,7 +1073,6 @@
 | [alexvannoy/flux-cluster-template](https://github.com/alexvannoy/flux-cluster-template)                                                                                         |     0 |
 | [litepupp/ppm-image-tools](https://github.com/litepupp/ppm-image-tools)                                                                                                         |     0 |
 | [swapneshkhade/O2Physics2](https://github.com/swapneshkhade/O2Physics2)                                                                                                         |     0 |
-| [dandocmando/flux-cluster-template](https://github.com/dandocmando/flux-cluster-template)                                                                                       |     0 |
 | [soulwhisper/gitops-flux-cluster-arch](https://github.com/soulwhisper/gitops-flux-cluster-arch)                                                                                 |     0 |
 | [ADeane6/flux-cluster](https://github.com/ADeane6/flux-cluster)                                                                                                                 |     0 |
 | [tas-2022-2/pet-project-thiagofurlan](https://github.com/tas-2022-2/pet-project-thiagofurlan)                                                                                   |     0 |
@@ -1220,6 +1218,7 @@
 | [iot-defcon/newrelic-python-agent](https://github.com/iot-defcon/newrelic-python-agent)                                                                                         |     0 |
 | [tdido/megalinter-test](https://github.com/tdido/megalinter-test)                                                                                                               |     0 |
 | [jleiby3/test-actions](https://github.com/jleiby3/test-actions)                                                                                                                 |     0 |
+| [pippiio/aws-static-website](https://github.com/pippiio/aws-static-website)                                                                                                     |     0 |
 | [pippiio/aws-dns](https://github.com/pippiio/aws-dns)                                                                                                                           |     0 |
 | [pippiio/aws-organization](https://github.com/pippiio/aws-organization)                                                                                                         |     0 |
 | [ahmadnassri/template-terraform](https://github.com/ahmadnassri/template-terraform)                                                                                             |     0 |
