@@ -72,29 +72,34 @@ def init_config(workspace=None):
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
         combined_config = {}
-        extends = runtime_config["EXTENDS"]
-        if isinstance(extends, str):
-            extends = extends.split(",")
-        for extends_item in extends:
-            if extends_item.startswith("http"):
-                r = requests.get(extends_item, allow_redirects=True)
-                assert (
-                    r.status_code == 200
-                ), f"Unable to retrieve EXTENDS config file {config_file_name}"
-                extends_config_data = yaml.safe_load(r.content)
-            else:
-                with open(
-                    workspace + os.path.sep + extends_item, "r", encoding="utf-8"
-                ) as f:
-                    extends_config_data = yaml.safe_load(f)
-            combined_config.update(extends_config_data)
-            CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
-        combined_config.update(runtime_config)
+        CONFIG_SOURCE = combine_config(workspace, config_file_name, runtime_config, combined_config, CONFIG_SOURCE)
         runtime_config = combined_config
     # Print & set config in cache
     print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
 
+def combine_config(workspace, config_file_name, config, combined_config, config_source):
+    extends = config["EXTENDS"]
+    if isinstance(extends, str):
+        extends = extends.split(",")
+    for extends_item in extends:
+        if extends_item.startswith("http"):
+            r = requests.get(extends_item, allow_redirects=True)
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
+            extends_config_data = yaml.safe_load(r.content)
+        else:
+            with open(
+                workspace + os.path.sep + extends_item, "r", encoding="utf-8"
+            ) as f:
+                extends_config_data = yaml.safe_load(f)
+        combined_config.update(extends_config_data)
+        config_source += f"\n[config] - extends from: {extends_item}"
+        if "EXTENDS" in extends_config_data:
+            combine_config(workspace, extends_item, extends_config_data, combined_config, config_source)
+    combined_config.update(config)
+    return config_source
 
 def get_config():
     global CONFIG_DATA
