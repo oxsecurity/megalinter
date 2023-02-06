@@ -12,6 +12,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade base docker image from python:3.10.4-alpine3.16 to python:3.11.1-alpine3.17
 
 - Linter versions upgrades
+  - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.21.0 to **6.22.0** on 2023-02-06
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

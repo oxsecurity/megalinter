@@ -50,7 +50,6 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                go \
                 nodejs \
                 npm \
                 yarn \
