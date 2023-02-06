@@ -72,11 +72,14 @@ def init_config(workspace=None):
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
         combined_config = {}
-        CONFIG_SOURCE = combine_config(workspace, config_file_name, runtime_config, combined_config, CONFIG_SOURCE)
+        CONFIG_SOURCE = combine_config(
+            workspace, config_file_name, runtime_config, combined_config, CONFIG_SOURCE
+        )
         runtime_config = combined_config
     # Print & set config in cache
     print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
+
 
 def combine_config(workspace, config_file_name, config, combined_config, config_source):
     extends = config["EXTENDS"]
@@ -97,9 +100,16 @@ def combine_config(workspace, config_file_name, config, combined_config, config_
         combined_config.update(extends_config_data)
         config_source += f"\n[config] - extends from: {extends_item}"
         if "EXTENDS" in extends_config_data:
-            combine_config(workspace, extends_item, extends_config_data, combined_config, config_source)
+            combine_config(
+                workspace,
+                extends_item,
+                extends_config_data,
+                combined_config,
+                config_source,
+            )
     combined_config.update(config)
     return config_source
+
 
 def get_config():
     global CONFIG_DATA
