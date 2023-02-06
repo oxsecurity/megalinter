@@ -662,9 +662,7 @@ def generate_linter_dockerfiles():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
-    test_linters_root = (
-        f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
-    )
+    test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
 
     # Remove all the contents of test_linters_root beforehand so that the result is deterministic
     shutil.rmtree(os.path.realpath(test_linters_root))
@@ -694,9 +692,7 @@ class {linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
-        test_class_file_name = (
-            f"{test_linters_root}/{linter_name_lower}_test.py"
-        )
+        test_class_file_name = f"{test_linters_root}/{linter_name_lower}_test.py"
         if not os.path.isfile(test_class_file_name):
             file = open(
                 test_class_file_name,
