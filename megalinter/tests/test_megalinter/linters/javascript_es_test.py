@@ -9,6 +9,6 @@ from unittest import TestCase
 from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
-class javascript_eslint_test(TestCase, LinterTestRoot):
+class javascript_es_test(TestCase, LinterTestRoot):
     descriptor_id = "JAVASCRIPT"
     linter_name = "eslint"

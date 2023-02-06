@@ -662,10 +662,23 @@ def generate_linter_dockerfiles():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
+    test_linters_root = (
+        f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
+    )
+
+    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+    shutil.rmtree(os.path.realpath(test_linters_root))
+    os.makedirs(os.path.realpath(test_linters_root))
+
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
+        if linter.name is not None:
+            linter_name = linter.name
+        else:
+            lang_lower = linter.descriptor_id.lower()
+            linter_name = f"{lang_lower}_{linter.linter_name}"
+
+        linter_name_lower = linter_name.lower().replace("-", "_")
         test_class_code = f"""# !/usr/bin/env python3
 \"\"\"
 Unit tests for {linter.descriptor_id} linter {linter.linter_name}
@@ -677,13 +690,12 @@ from unittest import TestCase
 from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
-class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
+class {linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
         test_class_file_name = (
-            f"{REPO_HOME}/megalinter/tests/test_megalinter/"
-            + f"linters/{lang_lower}_{linter_name_lower}_test.py"
+            f"{test_linters_root}/{linter_name_lower}_test.py"
         )
         if not os.path.isfile(test_class_file_name):
             file = open(
