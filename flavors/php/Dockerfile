@@ -215,7 +215,8 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #############################################################################################
 #OTHER__START
 # PHP installation
-RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
@@ -282,13 +283,13 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # phpcs installation
-    && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192 \
+    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192 \
 
 # phpstan installation
-    && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
+    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
 
 # psalm installation
-    && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
+    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
 
 # phplint installation
     && composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
