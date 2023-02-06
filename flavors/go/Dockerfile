@@ -14,6 +14,7 @@
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM ghcr.io/mgechev/revive:1.2.5 as revive
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 #FROM__END
@@ -194,6 +195,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --from=revive /usr/bin/revive /usr/bin/revive
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
@@ -234,7 +236,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && golangci-lint --version \
 
 # revive installation
-    && go install github.com/mgechev/revive@latest && go clean --cache \
+# Managed with COPY --from=revive /usr/bin/revive /usr/bin/revive
 
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \

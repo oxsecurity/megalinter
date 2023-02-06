@@ -6,9 +6,6 @@ descriptor_flavors:
 file_extensions:
   - ".go"
 test_folder: golang
-install:
-  apk:
-    - go
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
@@ -77,7 +74,8 @@ linters:
       - "revive -config myfile.go"
     install:
       dockerfile:
-        - RUN go install github.com/mgechev/revive@latest && go clean --cache
+        - FROM ghcr.io/mgechev/revive:1.2.5 as revive
+        - COPY --from=revive /usr/bin/revive /usr/bin/revive
     ide:
       atom:
         - name: linter-revive

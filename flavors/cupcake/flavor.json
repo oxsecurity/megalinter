@@ -2,7 +2,6 @@
     "descriptors": [
         "ACTION",
         "BASH",
-        "GO",
         "JAVA",
         "KOTLIN",
         "PHP",

@@ -31,7 +31,6 @@
         "descriptors": [
             "ACTION",
             "BASH",
-            "GO",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -255,7 +254,6 @@
         "descriptors": [
             "ACTION",
             "BASH",
-            "GO",
             "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
