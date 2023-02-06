@@ -19,6 +19,7 @@ FROM koalaman/shellcheck:v0.9.0 as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 #FROM__END
@@ -205,6 +206,7 @@ COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --from=checkmake /checkmake /usr/bin/checkmake
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
@@ -291,9 +293,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # checkmake installation
-    && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
-    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
-    && chmod 755 /usr/local/bin/checkmake \
+# Managed with COPY --from=checkmake /checkmake /usr/bin/checkmake
 
 # protolint installation
 # Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/

@@ -14,6 +14,7 @@
 FROM koalaman/shellcheck:v0.9.0 as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+FROM mrtazz/checkmake:latest as checkmake
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 #FROM__END
 
@@ -169,6 +170,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --from=checkmake /checkmake /usr/bin/checkmake
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
 
@@ -189,9 +191,7 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 
 # checkmake installation
-    && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
-    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
-    && chmod 755 /usr/local/bin/checkmake \
+# Managed with COPY --from=checkmake /checkmake /usr/bin/checkmake
 
 # gitleaks installation
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
