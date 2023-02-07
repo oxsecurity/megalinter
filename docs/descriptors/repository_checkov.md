@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.1.244**
+- Version in MegaLinter: **2.2.341**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -98,15 +98,15 @@ checkov --directory . --output --sarif
 ### Help content
 
 ```shell
-usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
+usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}]
+               [-o {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
-               [--framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
-               [--skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
+               [--framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -129,13 +129,16 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
                [--summary-position {top,bottom}]
-               [--skip-resources-without-violations]
+               [--skip-resources-without-violations] [--deep-analysis]
+               [--no-fail-on-crash] [--mask MASK]
 
 Infrastructure as code static analysis
 
 options:
   -h, --help            show this help message and exit
   -v, --version         version
+  --support             Enable debug logs and upload the logs to the server.
+                        Requires a Bridgecrew or Prisma Cloud API key.
   -d DIRECTORY, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
@@ -162,13 +165,15 @@ options:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif,csv}
+  -o {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}, --output {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
-                        Name for output file. The first selected output via
-                        output flag will be saved to the file (default output
-                        is cli)
+                        Name of the output folder to save the chosen output
+                        formats. Advanced usage: By using -o cli -o junitxml
+                        --output-file-path console,results.xml the CLI output
+                        will be printed to the console and the JunitXML output
+                        to the file results.xml.
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
@@ -187,10 +192,10 @@ options:
   --quiet               in case of CLI output, display only failed checks.
                         Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
-  --framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
+  --framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
                         Filter scan to run only on specific infrastructure
                         code frameworks [env var: CKV_FRAMEWORK]
-  --skip-framework {bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,circleci_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
+  --skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
                         Filter scan to skip specific infrastructure as code
                         frameworks.This will be included automatically for
                         some frameworks if system dependencies are missing.
@@ -280,7 +285,7 @@ options:
                         --bc-api-key to be a Prisma Cloud Access Key in the
                         following format: <access_key_id>::<secret_key> [env
                         var: PRISMA_API_URL]
-  --docker-image DOCKER_IMAGE
+  --docker-image DOCKER_IMAGE, --image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
   --dockerfile-path DOCKERFILE_PATH
@@ -387,6 +392,16 @@ options:
                         exclude extra resources (resources without violations)
                         from report output [env var:
                         CKV_SKIP_RESOURCES_WITHOUT_VIOLATIONS]
+  --deep-analysis       Enable combine tf graph and rf plan graph
+  --no-fail-on-crash    Return exit code 0 instead of 2 [env var:
+                        CKV_NO_FAIL_ON_CRASH]
+  --mask MASK           List of <resource_type>:<variable> OR <variable> only.
+                        Each entry in the list will be used formasking the
+                        desired attribute for resource (or for all resources,
+                        if no resource given).Notice: one entry can contain
+                        several variables, seperated with a comma. For
+                        example:<resource_type>:<variable1>,<variable2> OR
+                        <variable1>,<variable2>
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml

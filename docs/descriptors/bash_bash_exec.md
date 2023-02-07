@@ -12,7 +12,7 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 
 ## bash-exec documentation
 
-- Version in MegaLinter: **5.1.16**
+- Version in MegaLinter: **5.2.15**
 - Visit [Official Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank}
 
 ## Configuration in MegaLinter
@@ -78,7 +78,7 @@ bash-exec myfile.sh
 ### Help content
 
 ```shell
-GNU bash, version 5.1.16(1)-release-(x86_64-alpine-linux-musl)
+GNU bash, version 5.2.15(1)-release-(x86_64-alpine-linux-musl)
 Usage:  bash [GNU long option] [option] ...
   bash [GNU long option] [option] script-file ...
 GNU long options:
@@ -100,7 +100,7 @@ GNU long options:
   --version
 Shell options:
   -ilrsD or -c command or -O shopt_option    (invocation only)
-  -abefhkmnptuvxBCHP or -o option
+  -abefhkmnptuvxBCEHPT or -o option
 Type `bash -c "help set"' for more information about shell options.
 Type `bash -c help' for more information about shell builtin commands.
 Use the `bashbug' command to report bugs.

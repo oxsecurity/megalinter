@@ -204,7 +204,7 @@ Main:
   --py-version <py_version>
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 10))
+                        pylint. (default: (3, 11))
   --ignored-modules <module names>
                         List of module names for which member attributes
                         should not be checked (useful for modules/projects

@@ -14,6 +14,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.21.0 to **6.22.0** on 2023-02-06
+  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.16 to **5.2.15** on 2023-02-07
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.991 to **1.0.0** on 2023-02-07
+  - [checkov](https://www.checkov.io/) from 2.1.244 to **2.2.341** on 2023-02-07
+  - [git_diff](https://git-scm.com) from 2.36.4 to **2.38.3** on 2023-02-07
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 20914 to **21003** on 2023-02-07
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

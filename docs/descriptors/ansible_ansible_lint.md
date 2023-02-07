@@ -132,7 +132,7 @@ options:
   -r RULESDIR, --rules-dir RULESDIR
                         Specify custom rule directories. Add -R to keep using
                         embedded rules from /venvs/ansible-
-                        lint/lib/python3.10/site-packages/ansiblelint/rules
+                        lint/lib/python3.11/site-packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   -s, --strict          Return non-zero exit code on warnings as well as
                         errors
