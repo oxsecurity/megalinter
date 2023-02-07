@@ -375,7 +375,7 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
       - fs
-      - --security-checks
+      - --scanners
       - vuln,config
       - --exit-code
       - "1"
@@ -383,7 +383,7 @@ linters:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --security-checks vuln,config ."
+      - "trivy fs --scanners vuln,config ."
     downgraded_version: true
     install:
       dockerfile:

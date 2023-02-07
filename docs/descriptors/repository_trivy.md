@@ -88,7 +88,7 @@ trivy is called once on the whole project directory (`project` CLI lint mode)
 ### Example calls
 
 ```shell
-trivy fs --security-checks vuln,config .
+trivy fs --scanners vuln,config .
 ```
 
 
