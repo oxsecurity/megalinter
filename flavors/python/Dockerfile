@@ -275,7 +275,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0 \
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.37.1 \
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
