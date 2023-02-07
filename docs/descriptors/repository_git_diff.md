@@ -11,7 +11,7 @@ Git diff checks for git conflicts markers in files
 
 ## git_diff documentation
 
-- Version in MegaLinter: **2.36.4**
+- Version in MegaLinter: **2.38.3**
 - Visit [Official Web Site](https://git-scm.com){target=_blank}
 
 [![git - GitHub](https://gh-card.dev/repos/git/git.svg?fullname=)](https://github.com/git/git){target=_blank}
@@ -76,7 +76,7 @@ git diff --check
 ### Help content
 
 ```shell
-usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
            [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]

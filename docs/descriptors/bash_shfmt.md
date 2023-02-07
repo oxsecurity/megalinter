@@ -142,6 +142,3 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 COPY --from=shfmt /bin/shfmt /usr/bin/
 ```
 
-- APK packages (Linux):
-  - [bash](https://pkgs.alpinelinux.org/packages?branch=edge&name=bash)
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)
