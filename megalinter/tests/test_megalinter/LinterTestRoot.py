@@ -30,13 +30,42 @@ class LinterTestRoot:
 
     def test_success(self):
         utilstest.linter_test_setup()
+        if self.linter_name == "misspell":
+            config.set_value(
+                "SPELL_MISSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "cspell":
+            config.set_value(
+                "SPELL_CSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "proselint":
+            config.set_value(
+                "SPELL_PROSELINT_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
         linter = self.get_linter_instance()
         linter.pre_test()
         utilstest.test_linter_success(linter, self)
         linter.post_test()
-
     def test_failure(self):
         utilstest.linter_test_setup()
+        if self.linter_name == "misspell":
+            config.set_value(
+                "SPELL_MISSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "cspell":
+            config.set_value(
+                "SPELL_CSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "proselint":
+            config.set_value(
+                "SPELL_PROSELINT_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
         linter = self.get_linter_instance()
         linter.pre_test()
         utilstest.test_linter_failure(linter, self)
@@ -104,6 +133,22 @@ class LinterTestRoot:
                 "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
                 config.get("DEFAULT_WORKSPACE").replace("\\", "/")
                 + f"/{linter.test_folder}/*_fix_*.json",
+            )
+        
+        if self.linter_name == "misspell":
+            config.set_value(
+                "SPELL_MISSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "cspell":
+            config.set_value(
+                "SPELL_CSPELL_FILE_EXTENSIONS",
+                [".js", ".md"]
+            )
+        if self.linter_name == "proselint":
+            config.set_value(
+                "SPELL_PROSELINT_FILE_EXTENSIONS",
+                [".js", ".md"]
             )
 
         utilstest.test_linter_format_fix(linter, self)

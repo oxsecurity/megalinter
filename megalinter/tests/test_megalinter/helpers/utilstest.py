@@ -176,8 +176,6 @@ def test_linter_success(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": True,
     }
-    if linter.descriptor_id == "SPELL":
-        env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
@@ -238,8 +236,6 @@ def test_linter_failure(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
     }
-    if linter.descriptor_id == "SPELL":
-        env_vars_failure["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
     # Check linter run
@@ -659,8 +655,6 @@ def test_linter_format_fix(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": True,
     }
-    if linter.descriptor_id == "SPELL":
-        env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
