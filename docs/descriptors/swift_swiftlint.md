@@ -82,7 +82,7 @@ docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint
 ```
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
 ```
 
 
