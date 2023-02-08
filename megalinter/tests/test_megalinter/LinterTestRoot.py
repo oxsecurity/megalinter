@@ -111,24 +111,15 @@ class LinterTestRoot:
                 config.get("DEFAULT_WORKSPACE").replace("\\", "/")
                 + f"/{linter.test_folder}/*_fix_*.json",
             )
-        
+
         self.set_spell_config_values()
 
         utilstest.test_linter_format_fix(linter, self)
 
     def set_spell_config_values(self):
         if self.linter_name == "misspell":
-            config.set_value(
-                "SPELL_MISSPELL_FILE_EXTENSIONS",
-                [".js", ".md"]
-            )
+            config.set_value("SPELL_MISSPELL_FILE_EXTENSIONS", [".js", ".md"])
         if self.linter_name == "cspell":
-            config.set_value(
-                "SPELL_CSPELL_FILE_EXTENSIONS",
-                [".js", ".md"]
-            )
+            config.set_value("SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"])
         if self.linter_name == "proselint":
-            config.set_value(
-                "SPELL_PROSELINT_FILE_EXTENSIONS",
-                [".js", ".md"]
-            )
+            config.set_value("SPELL_PROSELINT_FILE_EXTENSIONS", [".js", ".md"])
