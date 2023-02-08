@@ -641,9 +641,7 @@ def test_linter_format_fix(linter, test_self):
             file_map[file] = content_expected
 
     if len(file_map) == 0:
-        raise Exception(
-            f"[test] No files found in: {workspace}"
-        )
+        raise Exception(f"[test] No files found in: {workspace}")
 
     linter_name = linter.linter_name
     env_vars = {
