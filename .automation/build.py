@@ -1015,6 +1015,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             show_last_commit=True,
             show_commits_activity=True,
             show_contributors=True,
+            show_downgraded_version=True,
         )
         md_individual_extra = " ".join(individual_badges)
         # Build individual linter doc
@@ -2757,6 +2758,7 @@ def get_badges(
     show_last_commit=False,
     show_commits_activity=False,
     show_contributors=False,
+    show_downgraded_version=False,
 ):
     badges = []
     repo = get_github_repo(linter)
@@ -2765,6 +2767,14 @@ def get_badges(
         hasattr(linter, "deprecated") and linter.deprecated is True
     ):
         badges += ["![deprecated](https://shields.io/badge/-deprecated-red)"]
+    if (
+        show_downgraded_version
+        and (hasattr(linter, "get") and linter.get("downgraded_version") is True)
+        or (hasattr(linter, "downgraded_version") and linter.downgraded_version is True)
+    ):
+        badges += [
+            "![downgraded version](https://shields.io/badge/-downgraded%20version-orange)"
+        ]
     if repo is not None:
         badges += [
             f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
