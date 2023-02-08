@@ -164,4 +164,4 @@ Options:
   - [npm](https://pkgs.alpinelinux.org/packages?branch=edge&name=npm)
   - [yarn](https://pkgs.alpinelinux.org/packages?branch=edge&name=yarn)
 - NPM packages (node.js):
-  - [jscpd@3.3.26](https://www.npmjs.com/package/jscpd)
+  - [jscpd](https://www.npmjs.com/package/jscpd)
