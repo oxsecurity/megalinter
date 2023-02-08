@@ -260,12 +260,7 @@ def test_linter_failure(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
         )
 
-    mega_linter_linter = None
-
-    if len(mega_linter.linters) == 1:
-        mega_linter_linter = mega_linter.linters[0]
-    elif len(mega_linter.linters) == 2:  # SPELL linters have 2 linters at a time
-        mega_linter_linter = mega_linter.linters[1]
+    mega_linter_linter = mega_linter.linters[0]
 
     # Check text reporter output log
     if mega_linter_linter.disable_errors is True:
