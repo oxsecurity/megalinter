@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.44.1**
+- Version in MegaLinter: **1.45.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -166,6 +166,7 @@ Server Options:
         --start-server               Start server process.
         --stop-server                Stop server process.
         --server-status              Show server status.
+        --no-detach                  Run the server process in the foreground.
 
 Output Options:
     -f, --format FORMATTER           Choose an output formatter. This option
@@ -265,6 +266,10 @@ General Options:
         --[no-]color                 Force color output on or off.
     -v, --version                    Display version.
     -V, --verbose-version            Display verbose version.
+
+Profiling Options:
+        --profile                    Profile rubocop
+        --memory                     Profile rubocop memory usage
 ```
 
 ### Installation on mega-linter Docker image

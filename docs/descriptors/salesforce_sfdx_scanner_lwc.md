@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **3.8.0**
+- Version in MegaLinter: **3.9.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -157,221 +157,222 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-NAME                                                    LANGUAGES    CATEGORIES             RULESETS [DEP]                                    ENGINE
-──────────────────────────────────────────────────────  ───────────  ─────────────────────  ────────────────────────────────────────────────  ─────────────────
-VfCsrf                                                  visualforce  Security               Basic VF                                          pmd
-VfHtmlStyleTagXss                                       visualforce  Security                                                                 pmd
-VfUnescapeEl                                            visualforce  Security               Basic VF                                          pmd
-ApexAssertionsShouldIncludeMessage                      apex         Best Practices                                                           pmd
-ApexUnitTestClassShouldHaveAsserts                      apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
-ApexUnitTestClassShouldHaveRunAs                        apex         Best Practices         quickstart                                        pmd
-ApexUnitTestMethodShouldHaveIsTestAnnotation            apex         Best Practices                                                           pmd
-ApexUnitTestShouldNotUseSeeAllDataTrue                  apex         Best Practices         Default ruleset...,quickstart,ApexUnit            pmd
-AvoidGlobalModifier                                     apex         Best Practices         Style,Default ruleset...,quickstart               pmd
-AvoidLogicInTrigger                                     apex         Best Practices         Style,Default ruleset...,quickstart               pmd
-DebugsShouldUseLoggingLevel                             apex         Best Practices         quickstart                                        pmd
-UnusedLocalVariable                                     apex         Best Practices                                                           pmd
-AvoidDebugStatements                                    apex         Performance                                                              pmd
-AvoidDmlStatementsInLoops                               apex         Performance            Default ruleset...,Performance                    pmd
-AvoidSoqlInLoops                                        apex         Performance            Default ruleset...,Performance                    pmd
-AvoidSoslInLoops                                        apex         Performance            Default ruleset...,Performance                    pmd
-EagerlyLoadedDescribeSObjectResult                      apex         Performance                                                              pmd
-OperationWithLimitsInLoop                               apex         Performance            quickstart                                        pmd
-ApexBadCrypto                                           apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexCRUDViolation                                       apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexCSRF                                                apex         Security               Security                                          pmd
-ApexDangerousMethods                                    apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexInsecureEndpoint                                    apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexOpenRedirect                                        apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexSharingViolations                                   apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexSOQLInjection                                       apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexSuggestUsingNamedCred                               apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexXSSFromEscapeFalse                                  apex         Security               Security,Default ruleset...,quickstart            pmd
-ApexXSSFromURLParam                                     apex         Security               Security,Default ruleset...,quickstart            pmd
-ClassNamingConventions                                  apex         Code Style             Style,Default ruleset...,quickstart               pmd
-IfElseStmtsMustUseBraces                                apex         Code Style             Braces,Default ruleset...,quickstart              pmd
-IfStmtsMustUseBraces                                    apex         Code Style             Braces,Default ruleset...,quickstart              pmd
-FieldDeclarationsShouldBeAtStart                        apex         Code Style                                                               pmd
-FieldNamingConventions                                  apex         Code Style             quickstart                                        pmd
-ForLoopsMustUseBraces                                   apex         Code Style             Braces,Default ruleset...,quickstart              pmd
-FormalParameterNamingConventions                        apex         Code Style             quickstart                                        pmd
-LocalVariableNamingConventions                          apex         Code Style             quickstart                                        pmd
-MethodNamingConventions                                 apex         Code Style             Style,Default ruleset...,quickstart               pmd
-OneDeclarationPerLine                                   apex         Code Style             Default ruleset...,quickstart                     pmd
-PropertyNamingConventions                               apex         Code Style             quickstart                                        pmd
-VariableNamingConventions                               apex         Code Style             Style,Default ruleset...                          pmd
-WhileLoopsMustUseBraces                                 apex         Code Style             Braces,Default ruleset...,quickstart              pmd
-AvoidDeeplyNestedIfStmts                                apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-CyclomaticComplexity                                    apex         Design                 Default ruleset...,quickstart,Metrics tempora...  pmd
-CognitiveComplexity                                     apex         Design                                                                   pmd
-ExcessiveClassLength                                    apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-ExcessiveParameterList                                  apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-ExcessivePublicCount                                    apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-NcssConstructorCount                                    apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-NcssMethodCount                                         apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-NcssTypeCount                                           apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-StdCyclomaticComplexity                                 apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-TooManyFields                                           apex         Design                 Complexity,Default ruleset...,quickstart          pmd
-ApexDoc                                                 apex         Documentation          Default ruleset...,quickstart                     pmd
-ApexCSRF                                                apex         Error Prone            Default ruleset...,quickstart                     pmd
-AvoidDirectAccessTriggerMap                             apex         Error Prone            Style,Default ruleset...,quickstart               pmd
-AvoidHardcodingId                                       apex         Error Prone            Style,Default ruleset...,quickstart               pmd
-AvoidNonExistentAnnotations                             apex         Error Prone            Default ruleset...,quickstart                     pmd
-EmptyCatchBlock                                         apex         Error Prone            Empty Code,Default ruleset...,quickstart          pmd
-EmptyIfStmt                                             apex         Error Prone            Empty Code,Default ruleset...,quickstart          pmd
-EmptyStatementBlock                                     apex         Error Prone            Empty Code,Default ruleset...,quickstart          pmd
-EmptyTryOrFinallyBlock                                  apex         Error Prone            Empty Code,Default ruleset...,quickstart          pmd
-EmptyWhileStmt                                          apex         Error Prone            Empty Code,Default ruleset...,quickstart          pmd
-InaccessibleAuraEnabledGetter                           apex         Error Prone                                                              pmd
-MethodWithSameNameAsEnclosingClass                      apex         Error Prone            Style,Default ruleset...,quickstart               pmd
-OverrideBothEqualsAndHashcode                           apex         Error Prone                                                              pmd
-TestMethodsMustBeInTestClasses                          apex         Error Prone                                                              pmd
-constructor-super                                       javascript   problem                problem                                           eslint
-for-direction                                           javascript   problem                problem                                           eslint
-getter-return                                           javascript   problem                problem                                           eslint
-no-async-promise-executor                               javascript   problem                problem                                           eslint
-no-case-declarations                                    javascript   suggestion             suggestion                                        eslint
-no-class-assign                                         javascript   problem                problem                                           eslint
-no-compare-neg-zero                                     javascript   problem                problem                                           eslint
-no-cond-assign                                          javascript   problem                problem                                           eslint
-no-const-assign                                         javascript   problem                problem                                           eslint
-no-constant-condition                                   javascript   problem                problem                                           eslint
-no-control-regex                                        javascript   problem                problem                                           eslint
-no-debugger                                             javascript   problem                problem                                           eslint
-no-delete-var                                           javascript   suggestion             suggestion                                        eslint
-no-dupe-args                                            javascript   problem                problem                                           eslint
-no-dupe-class-members                                   javascript   problem                problem                                           eslint
-no-dupe-else-if                                         javascript   problem                problem                                           eslint
-no-dupe-keys                                            javascript   problem                problem                                           eslint
-no-duplicate-case                                       javascript   problem                problem                                           eslint
-no-empty                                                javascript   suggestion             suggestion                                        eslint
-no-empty-character-class                                javascript   problem                problem                                           eslint
-no-empty-pattern                                        javascript   problem                problem                                           eslint
-no-ex-assign                                            javascript   problem                problem                                           eslint
-no-extra-boolean-cast                                   javascript   suggestion             suggestion                                        eslint
-no-extra-semi                                           javascript   suggestion             suggestion                                        eslint
-no-fallthrough                                          javascript   problem                problem                                           eslint
-no-func-assign                                          javascript   problem                problem                                           eslint
-no-global-assign                                        javascript   suggestion             suggestion                                        eslint
-no-import-assign                                        javascript   problem                problem                                           eslint
-no-inner-declarations                                   javascript   problem                problem                                           eslint
-no-invalid-regexp                                       javascript   problem                problem                                           eslint
-no-irregular-whitespace                                 javascript   problem                problem                                           eslint
-no-loss-of-precision                                    javascript   problem                problem                                           eslint
-no-misleading-character-class                           javascript   problem                problem                                           eslint
-no-mixed-spaces-and-tabs                                javascript   layout                 layout                                            eslint
-no-new-symbol                                           javascript   problem                problem                                           eslint
-no-nonoctal-decimal-escape                              javascript   suggestion             suggestion                                        eslint
-no-obj-calls                                            javascript   problem                problem                                           eslint
-no-octal                                                javascript   suggestion             suggestion                                        eslint
-no-prototype-builtins                                   javascript   problem                problem                                           eslint
-no-redeclare                                            javascript   suggestion             suggestion                                        eslint
-no-regex-spaces                                         javascript   suggestion             suggestion                                        eslint
-no-self-assign                                          javascript   problem                problem                                           eslint
-no-setter-return                                        javascript   problem                problem                                           eslint
-no-shadow-restricted-names                              javascript   suggestion             suggestion                                        eslint
-no-sparse-arrays                                        javascript   problem                problem                                           eslint
-no-this-before-super                                    javascript   problem                problem                                           eslint
-no-undef                                                javascript   problem                problem                                           eslint
-no-unexpected-multiline                                 javascript   problem                problem                                           eslint
-no-unreachable                                          javascript   problem                problem                                           eslint
-no-unsafe-finally                                       javascript   problem                problem                                           eslint
-no-unsafe-negation                                      javascript   problem                problem                                           eslint
-no-unsafe-optional-chaining                             javascript   problem                problem                                           eslint
-no-unused-labels                                        javascript   suggestion             suggestion                                        eslint
-no-unused-vars                                          javascript   problem                problem                                           eslint
-no-useless-backreference                                javascript   problem                problem                                           eslint
-no-useless-catch                                        javascript   suggestion             suggestion                                        eslint
-no-useless-escape                                       javascript   suggestion             suggestion                                        eslint
-no-with                                                 javascript   suggestion             suggestion                                        eslint
-require-yield                                           javascript   suggestion             suggestion                                        eslint
-use-isnan                                               javascript   problem                problem                                           eslint
-valid-typeof                                            javascript   problem                problem                                           eslint
-for-direction                                           typescript   problem                problem                                           eslint-typescript
-no-async-promise-executor                               typescript   problem                problem                                           eslint-typescript
-no-case-declarations                                    typescript   suggestion             suggestion                                        eslint-typescript
-no-class-assign                                         typescript   problem                problem                                           eslint-typescript
-no-compare-neg-zero                                     typescript   problem                problem                                           eslint-typescript
-no-cond-assign                                          typescript   problem                problem                                           eslint-typescript
-no-constant-condition                                   typescript   problem                problem                                           eslint-typescript
-no-control-regex                                        typescript   problem                problem                                           eslint-typescript
-no-debugger                                             typescript   problem                problem                                           eslint-typescript
-no-delete-var                                           typescript   suggestion             suggestion                                        eslint-typescript
-no-dupe-else-if                                         typescript   problem                problem                                           eslint-typescript
-no-duplicate-case                                       typescript   problem                problem                                           eslint-typescript
-no-empty                                                typescript   suggestion             suggestion                                        eslint-typescript
-no-empty-character-class                                typescript   problem                problem                                           eslint-typescript
-no-empty-pattern                                        typescript   problem                problem                                           eslint-typescript
-no-ex-assign                                            typescript   problem                problem                                           eslint-typescript
-no-extra-boolean-cast                                   typescript   suggestion             suggestion                                        eslint-typescript
-no-fallthrough                                          typescript   problem                problem                                           eslint-typescript
-no-global-assign                                        typescript   suggestion             suggestion                                        eslint-typescript
-no-inner-declarations                                   typescript   problem                problem                                           eslint-typescript
-no-invalid-regexp                                       typescript   problem                problem                                           eslint-typescript
-no-irregular-whitespace                                 typescript   problem                problem                                           eslint-typescript
-no-misleading-character-class                           typescript   problem                problem                                           eslint-typescript
-no-mixed-spaces-and-tabs                                typescript   layout                 layout                                            eslint-typescript
-no-nonoctal-decimal-escape                              typescript   suggestion             suggestion                                        eslint-typescript
-no-octal                                                typescript   suggestion             suggestion                                        eslint-typescript
-no-prototype-builtins                                   typescript   problem                problem                                           eslint-typescript
-no-regex-spaces                                         typescript   suggestion             suggestion                                        eslint-typescript
-no-self-assign                                          typescript   problem                problem                                           eslint-typescript
-no-shadow-restricted-names                              typescript   suggestion             suggestion                                        eslint-typescript
-no-sparse-arrays                                        typescript   problem                problem                                           eslint-typescript
-no-unexpected-multiline                                 typescript   problem                problem                                           eslint-typescript
-no-unsafe-finally                                       typescript   problem                problem                                           eslint-typescript
-no-unsafe-optional-chaining                             typescript   problem                problem                                           eslint-typescript
-no-unused-labels                                        typescript   suggestion             suggestion                                        eslint-typescript
-no-useless-backreference                                typescript   problem                problem                                           eslint-typescript
-no-useless-catch                                        typescript   suggestion             suggestion                                        eslint-typescript
-no-useless-escape                                       typescript   suggestion             suggestion                                        eslint-typescript
-no-var                                                  typescript   suggestion             suggestion                                        eslint-typescript
-no-with                                                 typescript   suggestion             suggestion                                        eslint-typescript
-prefer-const                                            typescript   suggestion             suggestion                                        eslint-typescript
-prefer-rest-params                                      typescript   suggestion             suggestion                                        eslint-typescript
-prefer-spread                                           typescript   suggestion             suggestion                                        eslint-typescript
-require-yield                                           typescript   suggestion             suggestion                                        eslint-typescript
-use-isnan                                               typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/adjacent-overload-signatures         typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/await-thenable                       typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/ban-ts-comment                       typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/ban-types                            typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-array-constructor                 typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-empty-function                    typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-empty-interface                   typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-explicit-any                      typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-extra-non-null-assertion          typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-extra-semi                        typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-floating-promises                 typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-for-in-array                      typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-implied-eval                      typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-inferrable-types                  typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-loss-of-precision                 typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-misused-new                       typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-misused-promises                  typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-namespace                         typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-non-null-asserted-optional-chain  typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-non-null-assertion                typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-this-alias                        typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-unnecessary-type-assertion        typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-unnecessary-type-constraint       typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/no-unsafe-argument                   typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-unsafe-assignment                 typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-unsafe-call                       typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-unsafe-member-access              typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-unsafe-return                     typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-unused-vars                       typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/no-var-requires                      typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/prefer-as-const                      typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/prefer-namespace-keyword             typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/require-await                        typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/restrict-plus-operands               typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/restrict-template-expressions        typescript   problem                problem                                           eslint-typescript
-@typescript-eslint/triple-slash-reference               typescript   suggestion             suggestion                                        eslint-typescript
-@typescript-eslint/unbound-method                       typescript   problem                problem                                           eslint-typescript
-insecure-bundled-dependencies                           javascript   Insecure Dependencies                                                    retire-js
-ApexFlsViolationRule                                    apex         Security                                                                 sfge
-UnusedMethodRule                                        apex         Performance                                                              sfge
+ NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA
+ ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ──────
+ VfCsrf                                                 visualforce Security              Basic VF                                         pmd               N
+ VfHtmlStyleTagXss                                      visualforce Security                                                               pmd               N
+ VfUnescapeEl                                           visualforce Security              Basic VF                                         pmd               N
+ ApexAssertionsShouldIncludeMessage                     apex        Best Practices                                                         pmd               N
+ ApexUnitTestClassShouldHaveAsserts                     apex        Best Practices        Default ruleset...,quickstart,ApexUnit           pmd               N
+ ApexUnitTestClassShouldHaveRunAs                       apex        Best Practices        quickstart                                       pmd               N
+ ApexUnitTestMethodShouldHaveIsTestAnnotation           apex        Best Practices                                                         pmd               N
+ ApexUnitTestShouldNotUseSeeAllDataTrue                 apex        Best Practices        Default ruleset...,quickstart,ApexUnit           pmd               N
+ AvoidGlobalModifier                                    apex        Best Practices        Style,Default ruleset...,quickstart              pmd               N
+ AvoidLogicInTrigger                                    apex        Best Practices        Style,Default ruleset...,quickstart              pmd               N
+ DebugsShouldUseLoggingLevel                            apex        Best Practices        quickstart                                       pmd               N
+ UnusedLocalVariable                                    apex        Best Practices                                                         pmd               N
+ AvoidDebugStatements                                   apex        Performance                                                            pmd               N
+ AvoidDmlStatementsInLoops                              apex        Performance           Default ruleset...,Performance                   pmd               N
+ AvoidSoqlInLoops                                       apex        Performance           Default ruleset...,Performance                   pmd               N
+ AvoidSoslInLoops                                       apex        Performance           Default ruleset...,Performance                   pmd               N
+ EagerlyLoadedDescribeSObjectResult                     apex        Performance                                                            pmd               N
+ OperationWithLimitsInLoop                              apex        Performance           quickstart                                       pmd               N
+ ApexBadCrypto                                          apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexCRUDViolation                                      apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexCSRF                                               apex        Security              Security                                         pmd               N
+ ApexDangerousMethods                                   apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexInsecureEndpoint                                   apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexOpenRedirect                                       apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSharingViolations                                  apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSOQLInjection                                      apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSuggestUsingNamedCred                              apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexXSSFromEscapeFalse                                 apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexXSSFromURLParam                                    apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ClassNamingConventions                                 apex        Code Style            Style,Default ruleset...,quickstart              pmd               N
+ IfElseStmtsMustUseBraces                               apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
+ IfStmtsMustUseBraces                                   apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
+ FieldDeclarationsShouldBeAtStart                       apex        Code Style                                                             pmd               N
+ FieldNamingConventions                                 apex        Code Style            quickstart                                       pmd               N
+ ForLoopsMustUseBraces                                  apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
+ FormalParameterNamingConventions                       apex        Code Style            quickstart                                       pmd               N
+ LocalVariableNamingConventions                         apex        Code Style            quickstart                                       pmd               N
+ MethodNamingConventions                                apex        Code Style            Style,Default ruleset...,quickstart              pmd               N
+ OneDeclarationPerLine                                  apex        Code Style            Default ruleset...,quickstart                    pmd               N
+ PropertyNamingConventions                              apex        Code Style            quickstart                                       pmd               N
+ VariableNamingConventions                              apex        Code Style            Style,Default ruleset...                         pmd               N
+ WhileLoopsMustUseBraces                                apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
+ AvoidDeeplyNestedIfStmts                               apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ CyclomaticComplexity                                   apex        Design                Default ruleset...,quickstart,Metrics tempora... pmd               N
+ CognitiveComplexity                                    apex        Design                                                                 pmd               N
+ ExcessiveClassLength                                   apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ ExcessiveParameterList                                 apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ ExcessivePublicCount                                   apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ NcssConstructorCount                                   apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ NcssMethodCount                                        apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ NcssTypeCount                                          apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ StdCyclomaticComplexity                                apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ TooManyFields                                          apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
+ ApexDoc                                                apex        Documentation         Default ruleset...,quickstart                    pmd               N
+ ApexCSRF                                               apex        Error Prone           Default ruleset...,quickstart                    pmd               N
+ AvoidDirectAccessTriggerMap                            apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
+ AvoidHardcodingId                                      apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
+ AvoidNonExistentAnnotations                            apex        Error Prone           Default ruleset...,quickstart                    pmd               N
+ EmptyCatchBlock                                        apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyIfStmt                                            apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyStatementBlock                                    apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyTryOrFinallyBlock                                 apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyWhileStmt                                         apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ InaccessibleAuraEnabledGetter                          apex        Error Prone                                                            pmd               N
+ MethodWithSameNameAsEnclosingClass                     apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
+ OverrideBothEqualsAndHashcode                          apex        Error Prone                                                            pmd               N
+ TestMethodsMustBeInTestClasses                         apex        Error Prone                                                            pmd               N
+ constructor-super                                      javascript  problem               problem                                          eslint            N
+ for-direction                                          javascript  problem               problem                                          eslint            N
+ getter-return                                          javascript  problem               problem                                          eslint            N
+ no-async-promise-executor                              javascript  problem               problem                                          eslint            N
+ no-case-declarations                                   javascript  suggestion            suggestion                                       eslint            N
+ no-class-assign                                        javascript  problem               problem                                          eslint            N
+ no-compare-neg-zero                                    javascript  problem               problem                                          eslint            N
+ no-cond-assign                                         javascript  problem               problem                                          eslint            N
+ no-const-assign                                        javascript  problem               problem                                          eslint            N
+ no-constant-condition                                  javascript  problem               problem                                          eslint            N
+ no-control-regex                                       javascript  problem               problem                                          eslint            N
+ no-debugger                                            javascript  problem               problem                                          eslint            N
+ no-delete-var                                          javascript  suggestion            suggestion                                       eslint            N
+ no-dupe-args                                           javascript  problem               problem                                          eslint            N
+ no-dupe-class-members                                  javascript  problem               problem                                          eslint            N
+ no-dupe-else-if                                        javascript  problem               problem                                          eslint            N
+ no-dupe-keys                                           javascript  problem               problem                                          eslint            N
+ no-duplicate-case                                      javascript  problem               problem                                          eslint            N
+ no-empty                                               javascript  suggestion            suggestion                                       eslint            N
+ no-empty-character-class                               javascript  problem               problem                                          eslint            N
+ no-empty-pattern                                       javascript  problem               problem                                          eslint            N
+ no-ex-assign                                           javascript  problem               problem                                          eslint            N
+ no-extra-boolean-cast                                  javascript  suggestion            suggestion                                       eslint            N
+ no-extra-semi                                          javascript  suggestion            suggestion                                       eslint            N
+ no-fallthrough                                         javascript  problem               problem                                          eslint            N
+ no-func-assign                                         javascript  problem               problem                                          eslint            N
+ no-global-assign                                       javascript  suggestion            suggestion                                       eslint            N
+ no-import-assign                                       javascript  problem               problem                                          eslint            N
+ no-inner-declarations                                  javascript  problem               problem                                          eslint            N
+ no-invalid-regexp                                      javascript  problem               problem                                          eslint            N
+ no-irregular-whitespace                                javascript  problem               problem                                          eslint            N
+ no-loss-of-precision                                   javascript  problem               problem                                          eslint            N
+ no-misleading-character-class                          javascript  problem               problem                                          eslint            N
+ no-mixed-spaces-and-tabs                               javascript  layout                layout                                           eslint            N
+ no-new-symbol                                          javascript  problem               problem                                          eslint            N
+ no-nonoctal-decimal-escape                             javascript  suggestion            suggestion                                       eslint            N
+ no-obj-calls                                           javascript  problem               problem                                          eslint            N
+ no-octal                                               javascript  suggestion            suggestion                                       eslint            N
+ no-prototype-builtins                                  javascript  problem               problem                                          eslint            N
+ no-redeclare                                           javascript  suggestion            suggestion                                       eslint            N
+ no-regex-spaces                                        javascript  suggestion            suggestion                                       eslint            N
+ no-self-assign                                         javascript  problem               problem                                          eslint            N
+ no-setter-return                                       javascript  problem               problem                                          eslint            N
+ no-shadow-restricted-names                             javascript  suggestion            suggestion                                       eslint            N
+ no-sparse-arrays                                       javascript  problem               problem                                          eslint            N
+ no-this-before-super                                   javascript  problem               problem                                          eslint            N
+ no-undef                                               javascript  problem               problem                                          eslint            N
+ no-unexpected-multiline                                javascript  problem               problem                                          eslint            N
+ no-unreachable                                         javascript  problem               problem                                          eslint            N
+ no-unsafe-finally                                      javascript  problem               problem                                          eslint            N
+ no-unsafe-negation                                     javascript  problem               problem                                          eslint            N
+ no-unsafe-optional-chaining                            javascript  problem               problem                                          eslint            N
+ no-unused-labels                                       javascript  suggestion            suggestion                                       eslint            N
+ no-unused-vars                                         javascript  problem               problem                                          eslint            N
+ no-useless-backreference                               javascript  problem               problem                                          eslint            N
+ no-useless-catch                                       javascript  suggestion            suggestion                                       eslint            N
+ no-useless-escape                                      javascript  suggestion            suggestion                                       eslint            N
+ no-with                                                javascript  suggestion            suggestion                                       eslint            N
+ require-yield                                          javascript  suggestion            suggestion                                       eslint            N
+ use-isnan                                              javascript  problem               problem                                          eslint            N
+ valid-typeof                                           javascript  problem               problem                                          eslint            N
+ for-direction                                          typescript  problem               problem                                          eslint-typescript N
+ no-async-promise-executor                              typescript  problem               problem                                          eslint-typescript N
+ no-case-declarations                                   typescript  suggestion            suggestion                                       eslint-typescript N
+ no-class-assign                                        typescript  problem               problem                                          eslint-typescript N
+ no-compare-neg-zero                                    typescript  problem               problem                                          eslint-typescript N
+ no-cond-assign                                         typescript  problem               problem                                          eslint-typescript N
+ no-constant-condition                                  typescript  problem               problem                                          eslint-typescript N
+ no-control-regex                                       typescript  problem               problem                                          eslint-typescript N
+ no-debugger                                            typescript  problem               problem                                          eslint-typescript N
+ no-delete-var                                          typescript  suggestion            suggestion                                       eslint-typescript N
+ no-dupe-else-if                                        typescript  problem               problem                                          eslint-typescript N
+ no-duplicate-case                                      typescript  problem               problem                                          eslint-typescript N
+ no-empty                                               typescript  suggestion            suggestion                                       eslint-typescript N
+ no-empty-character-class                               typescript  problem               problem                                          eslint-typescript N
+ no-empty-pattern                                       typescript  problem               problem                                          eslint-typescript N
+ no-ex-assign                                           typescript  problem               problem                                          eslint-typescript N
+ no-extra-boolean-cast                                  typescript  suggestion            suggestion                                       eslint-typescript N
+ no-fallthrough                                         typescript  problem               problem                                          eslint-typescript N
+ no-global-assign                                       typescript  suggestion            suggestion                                       eslint-typescript N
+ no-inner-declarations                                  typescript  problem               problem                                          eslint-typescript N
+ no-invalid-regexp                                      typescript  problem               problem                                          eslint-typescript N
+ no-irregular-whitespace                                typescript  problem               problem                                          eslint-typescript N
+ no-misleading-character-class                          typescript  problem               problem                                          eslint-typescript N
+ no-mixed-spaces-and-tabs                               typescript  layout                layout                                           eslint-typescript N
+ no-nonoctal-decimal-escape                             typescript  suggestion            suggestion                                       eslint-typescript N
+ no-octal                                               typescript  suggestion            suggestion                                       eslint-typescript N
+ no-prototype-builtins                                  typescript  problem               problem                                          eslint-typescript N
+ no-regex-spaces                                        typescript  suggestion            suggestion                                       eslint-typescript N
+ no-self-assign                                         typescript  problem               problem                                          eslint-typescript N
+ no-shadow-restricted-names                             typescript  suggestion            suggestion                                       eslint-typescript N
+ no-sparse-arrays                                       typescript  problem               problem                                          eslint-typescript N
+ no-unexpected-multiline                                typescript  problem               problem                                          eslint-typescript N
+ no-unsafe-finally                                      typescript  problem               problem                                          eslint-typescript N
+ no-unsafe-optional-chaining                            typescript  problem               problem                                          eslint-typescript N
+ no-unused-labels                                       typescript  suggestion            suggestion                                       eslint-typescript N
+ no-useless-backreference                               typescript  problem               problem                                          eslint-typescript N
+ no-useless-catch                                       typescript  suggestion            suggestion                                       eslint-typescript N
+ no-useless-escape                                      typescript  suggestion            suggestion                                       eslint-typescript N
+ no-var                                                 typescript  suggestion            suggestion                                       eslint-typescript N
+ no-with                                                typescript  suggestion            suggestion                                       eslint-typescript N
+ prefer-const                                           typescript  suggestion            suggestion                                       eslint-typescript N
+ prefer-rest-params                                     typescript  suggestion            suggestion                                       eslint-typescript N
+ prefer-spread                                          typescript  suggestion            suggestion                                       eslint-typescript N
+ require-yield                                          typescript  suggestion            suggestion                                       eslint-typescript N
+ use-isnan                                              typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/adjacent-overload-signatures        typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/await-thenable                      typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/ban-ts-comment                      typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/ban-types                           typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-array-constructor                typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-empty-function                   typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-empty-interface                  typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-explicit-any                     typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-extra-non-null-assertion         typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-extra-semi                       typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-floating-promises                typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-for-in-array                     typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-implied-eval                     typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-inferrable-types                 typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-loss-of-precision                typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-misused-new                      typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-misused-promises                 typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-namespace                        typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-non-null-asserted-optional-chain typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-non-null-assertion               typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-this-alias                       typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-unnecessary-type-assertion       typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-unnecessary-type-constraint      typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/no-unsafe-argument                  typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-unsafe-assignment                typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-unsafe-call                      typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-unsafe-member-access             typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-unsafe-return                    typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-unused-vars                      typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/no-var-requires                     typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/prefer-as-const                     typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/prefer-namespace-keyword            typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/require-await                       typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/restrict-plus-operands              typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/restrict-template-expressions       typescript  problem               problem                                          eslint-typescript N
+ @typescript-eslint/triple-slash-reference              typescript  suggestion            suggestion                                       eslint-typescript N
+ @typescript-eslint/unbound-method                      typescript  problem               problem                                          eslint-typescript N
+ insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N
+ ApexFlsViolationRule                                   apex        Security                                                               sfge              Y
+ UnusedMethodRule                                       apex        Performance                                                            sfge              N
+ UnimplementedTypeRule                                  apex        Performance                                                            sfge              N
 ```
 
 ### Installation on mega-linter Docker image
