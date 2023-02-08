@@ -384,11 +384,10 @@ linters:
     test_folder: trivy
     examples:
       - "trivy fs --scanners vuln,config ."
-    downgraded_version: true
     install:
       dockerfile:
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.37.1
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
     ide:
       vscode:
         - name: VSCode Trivy
