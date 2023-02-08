@@ -5,10 +5,7 @@
   require_serial: true
   args:
     - mega-linter-runner
-    - --containername
-    - "megalinter-incremental"
-    - --remove-container
-    - --fix
+    - --containername=megalinter-incremental
     - --env
     - "'APPLY_FIXES=all'"
     - --env
@@ -16,6 +13,8 @@
     - --env
     - "'LOG_LEVEL=warning'"
     - --filesonly
+    - --fix
+    - --remove-container
   description: >
     See https://megalinter.io/latest/mega-linter-runner/#usage
     and https://megalinter.io/latest/configuration/ if you
@@ -36,15 +35,15 @@
   require_serial: true
   args:
     - mega-linter-runner
-    - --containername megalinter-full
-    - --remove-container
-    - --fix
+    - --containername=megalinter-full
     - --env
     - "'APPLY_FIXES=all'"
     - --env
     - "'CLEAR_REPORT_FOLDER=true'"
     - --env
     - "'LOG_LEVEL=warning'"
+    - --fix
+    - --remove-container
   description: >
     See https://megalinter.io/latest/mega-linter-runner/#usage
     and https://megalinter.io/latest/configuration/ if you
