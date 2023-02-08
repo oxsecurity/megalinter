@@ -375,7 +375,7 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
       - fs
-      - --security-checks
+      - --scanners
       - vuln,config
       - --exit-code
       - "1"
@@ -383,12 +383,12 @@ linters:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --security-checks vuln,config ."
+      - "trivy fs --scanners vuln,config ."
     downgraded_version: true
     install:
       dockerfile:
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.37.1
     ide:
       vscode:
         - name: VSCode Trivy

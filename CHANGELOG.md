@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.1.244 to **2.2.341** on 2023-02-07
   - [git_diff](https://git-scm.com) from 2.36.4 to **2.38.3** on 2023-02-07
   - [xmllint](http://xmlsoft.org/xmllint.html) from 20914 to **21003** on 2023-02-07
+  - [trivy](https://aquasecurity.github.io/trivy/) from v0.35.0 to **v0.37.1** on 2023-02-07
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
