@@ -623,7 +623,9 @@ def test_linter_format_fix(linter, test_self):
 
     file_map = {}
 
-    for file in glob.iglob("{workspace}/**/*", recursive=True):
+    search_glob_pattern = workspace.replace("\\", "/") + "/**/*"
+
+    for file in glob.iglob(search_glob_pattern, recursive=True):
         file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(file_name)
         if (
@@ -637,6 +639,11 @@ def test_linter_format_fix(linter, test_self):
         with open(file, "r", encoding="utf-8") as f_expected:
             content_expected = f_expected.read()
             file_map[file] = content_expected
+
+    if len(file_map) == 0:
+        raise Exception(
+            f"[test] No files found in: {workspace}"
+        )
 
     linter_name = linter.linter_name
     env_vars = {
