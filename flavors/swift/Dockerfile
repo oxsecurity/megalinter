@@ -132,7 +132,7 @@ RUN npm --no-cache install --ignore-scripts \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
-                @stoplight/spectral@5.6.0 \
+                @stoplight/spectral \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
