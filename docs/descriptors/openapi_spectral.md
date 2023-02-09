@@ -11,11 +11,11 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stoplightio/spectral?sort=semver)](https://github.com/stoplightio/spectral/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stoplightio/spectral?sort=semver)](https://github.com/stoplightio/spectral/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/contributors/)
 
 ## spectral documentation
 
-- Version in MegaLinter: **5.9.2**
+- Version in MegaLinter: **6.5.0**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
   - If custom `.openapirc.yml` config file is not found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
@@ -107,24 +107,23 @@ Positionals:
   documents  Location of JSON/YAML documents. Can be either a file, a glob or fetchable resource(s) on the web.  [array] [default: []]
 
 Options:
-  --version                    Show version number  [boolean]
-  --help                       Show help  [boolean]
-  --encoding, -e               text encoding to use  [string] [default: "utf8"]
-  --format, -f                 formatter to use for outputting results  [string] [choices: "json", "stylish", "junit", "html", "text", "teamcity"] [default: "stylish"]
-  --output, -o                 output to a file instead of stdout  [string]
-  --resolver                   path to custom json-ref-resolver instance  [string]
-  --ruleset, -r                path/URL to a ruleset file  [string]
-  --skip-rule, -s              ignore certain rules if they are causing trouble  [string]
-  --fail-severity, -F          results of this level or above will trigger a failure exit code  [string] [choices: "error", "warn", "info", "hint"] [default: "error"]
-  --display-only-failures, -D  only output results equal to or greater than --fail-severity  [boolean] [default: false]
-  --ignore-unknown-format      do not warn about unmatched formats  [boolean] [default: false]
-  --show-unmatched-globs       show unmatched glob patterns  [deprecated: use --fail-on-unmatched-globs] [boolean] [default: false]
-  --fail-on-unmatched-globs    fail on unmatched glob patterns  [boolean] [default: false]
-  --verbose, -v                increase verbosity  [boolean]
-  --quiet, -q                  no logging - output only  [boolean]
+      --version                  Show version number  [boolean]
+      --help                     Show help  [boolean]
+  -e, --encoding                 text encoding to use  [string] [choices: "utf8", "ascii", "utf-8", "utf16le", "ucs2", "ucs-2", "base64", "latin1"] [default: "utf8"]
+  -f, --format                   formatters to use for outputting results, more than one can be given joining them with a comma  [string] [choices: "json", "stylish", "junit", "html", "text", "teamcity", "pretty"] [default: "stylish"]
+  -o, --output                   where to output results, can be a single file name, multiple "output.<format>" or missing to print to stdout  [string]
+      --stdin-filepath           path to a file to pretend that stdin comes from  [string]
+      --resolver                 path to custom json-ref-resolver instance  [string]
+  -r, --ruleset                  path/URL to a ruleset file  [string]
+  -F, --fail-severity            results of this level or above will trigger a failure exit code  [string] [choices: "error", "warn", "info", "hint"] [default: "error"]
+  -D, --display-only-failures    only output results equal to or greater than --fail-severity  [boolean] [default: false]
+      --ignore-unknown-format    do not warn about unmatched formats  [boolean] [default: false]
+      --fail-on-unmatched-globs  fail on unmatched glob patterns  [boolean] [default: false]
+  -v, --verbose                  increase verbosity  [boolean]
+  -q, --quiet                    no logging - output only  [boolean]
 ```
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [@stoplight/spectral@5.6.0](https://www.npmjs.com/package/@stoplight/spectral)
+  - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)

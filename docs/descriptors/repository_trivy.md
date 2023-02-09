@@ -11,7 +11,7 @@ description: How to use trivy (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver)](https://github.com/aquasecurity/trivy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver)](https://github.com/aquasecurity/trivy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/contributors/)
 
 You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
 
@@ -149,7 +149,7 @@ Use "trivy [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.37.1
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 ```
 

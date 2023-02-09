@@ -29,6 +29,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.8.0 to **3.9.0** on 2023-02-08
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.8.0 to **3.9.0** on 2023-02-08
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.8.0 to **3.9.0** on 2023-02-08
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.14.6 to **0.14.46** on 2023-02-09
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 5.9.2 to **6.5.0** on 2023-02-09
+  - [checkov](https://www.checkov.io/) from 2.2.355 to **2.2.356** on 2023-02-09
+  - [semgrep](https://semgrep.dev/) from 1.9.0 to **1.10.0** on 2023-02-09
+  - [rubocop](https://rubocop.org/) from 1.45.0 to **1.45.1** on 2023-02-09
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
