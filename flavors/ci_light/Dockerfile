@@ -101,7 +101,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts \
-                jscpd@3.3.26 \
+                jscpd \
                 npm-groovy-lint \
                 @prantlf/jsonlint \
                 eslint \

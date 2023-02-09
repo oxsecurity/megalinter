@@ -42,8 +42,8 @@ linters:
       - "console,html"
       - "--output"
       - "{{REPORT_FOLDER}}/copy-paste/"
-    #      - "--exitCode" # uncomment when jscpd > 3.4.0
-    #      - "1"
+      - "--exitCode"
+      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
@@ -51,11 +51,10 @@ linters:
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
-    downgraded_version: true
     install:
       apk:
         - nodejs
         - npm
         - yarn
       npm:
-        - jscpd@3.3.26
+        - jscpd

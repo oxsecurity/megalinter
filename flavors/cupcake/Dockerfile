@@ -140,7 +140,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts \
                 typescript \
-                jscpd@3.3.26 \
+                jscpd \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \

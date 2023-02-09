@@ -174,7 +174,7 @@ RUN npm --no-cache install --ignore-scripts \
                 sfdx-cli \
                 typescript \
                 @coffeelint/cli \
-                jscpd@3.3.26 \
+                jscpd \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
