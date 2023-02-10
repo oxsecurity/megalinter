@@ -76,16 +76,16 @@ Disabled until find a way to run with default options
         assert(stdout, "stdout is set");
     })
 */
+  const params = [
+    "--path",
+    "./..",
+    "--release",
+    release,
+    "-e",
+    '"ENABLE=YAML"',
+  ];
 
   it("(CLI) run on own code base", async () => {
-    const params = [
-      "--path",
-      "./..",
-      "--release",
-      release,
-      "-e",
-      '"ENABLE=YAML"',
-    ];
     if (nodockerpull) {
       params.push("--nodockerpull");
     }
@@ -97,15 +97,7 @@ Disabled until find a way to run with default options
   }).timeout(600000);
 
   it("(CLI) run on own code base with json output", async () => {
-    const params = [
-      "--path",
-      "./..",
-      "--release",
-      release,
-      "-e",
-      '"ENABLE=YAML"',
-      "--json",
-    ];
+    params.push("--json");
     if (nodockerpull) {
       params.push("--nodockerpull");
     }
