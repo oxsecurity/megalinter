@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 "use strict";
+/* jscpd:ignore-start */
 const assert = require("assert");
 const childProcess = require("child_process");
 const util = require("util");
@@ -108,3 +109,4 @@ Disabled until find a way to run with default options
     assert(stdout, "stdout is set");
   }).timeout(600000);
 });
+/* jscpd:ignore-end */
