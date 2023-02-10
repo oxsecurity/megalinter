@@ -17,6 +17,10 @@
 ###########
 # Globals #
 ###########
+
+echo "upload-docker.sh NOT SUPPOSED TO BE USED ANYMORE :)"
+exit 1
+
 GITHUB_WORKSPACE="${GITHUB_WORKSPACE}"             # GitHub Workspace
 GITHUB_REPOSITORY="${GITHUB_REPOSITORY}"           # GitHub Org/Repo passed from system
 DOCKER_USERNAME="${DOCKER_USERNAME}"               # Username to login to DockerHub
