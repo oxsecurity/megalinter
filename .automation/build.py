@@ -1911,6 +1911,7 @@ def get_install_md(item):
         )
     return linter_doc_md
 
+
 def doc_url(href):
     if (
         "/descriptors/" in href
@@ -2029,23 +2030,26 @@ def merge_install_attr(item):
             else:
                 item["install"][elt] = elt_val + item["install"][elt]
 
+
 def md_package_list(package_list, type, indent, start_url):
     res = []
     for package_id_v in package_list:
         package_id = package_id_v
         package_version = ""
 
-        if type == "npm" and package_id.count("@") == 2: # npm specific version
+        if type == "npm" and package_id.count("@") == 2:  # npm specific version
             package_id_split = package_id.split("@")
             package_id = "@" + package_id_split[1]
             package_version = "/v/" + package_id_split[2]
-        elif type == "pip" and "==" in package_id_v: # py specific version
+        elif type == "pip" and "==" in package_id_v:  # py specific version
             package_id = package_id_v.split("==")[0]
             package_version = "/" + package_id_v.split("==")[1]
         elif type == "gem":
-            gem_match=re.match(r"(.*)\s-v\s(.*)", package_id_v) # gem specific version
+            gem_match = re.match(
+                r"(.*)\s-v\s(.*)", package_id_v
+            )  # gem specific version
 
-            if gem_match: # gem specific version
+            if gem_match:  # gem specific version
                 package_id = gem_match.group(1)
                 package_version = "/versions/" + gem_match.group(2)
         res += [f"{indent}- [{package_id_v}]({start_url}{package_id}{package_version})"]
