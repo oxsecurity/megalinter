@@ -1890,26 +1890,26 @@ def get_install_md(item):
         linter_doc_md += ["- APK packages (Linux):"]
         linter_doc_md += md_package_list(
             item["install"]["apk"],
+            "apk",
             "  ",
             "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
         linter_doc_md += md_package_list(
-            item["install"]["npm"], "  ", "https://www.npmjs.com/package/"
+            item["install"]["npm"], "npm", "  ", "https://www.npmjs.com/package/"
         )
     if "pip" in item["install"]:
         linter_doc_md += ["- PIP packages (Python):"]
         linter_doc_md += md_package_list(
-            item["install"]["pip"], "  ", "https://pypi.org/project/"
+            item["install"]["pip"], "pip", "  ", "https://pypi.org/project/"
         )
     if "gem" in item["install"]:
         linter_doc_md += ["- GEM packages (Ruby) :"]
         linter_doc_md += md_package_list(
-            item["install"]["gem"], "  ", "https://rubygems.org/gems/"
+            item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
-
 
 def doc_url(href):
     if (
@@ -2029,17 +2029,26 @@ def merge_install_attr(item):
             else:
                 item["install"][elt] = elt_val + item["install"][elt]
 
-
-def md_package_list(package_list, indent, start_url):
+def md_package_list(package_list, type, indent, start_url):
     res = []
     for package_id_v in package_list:
-        if package_id_v.startswith("@"):
-            package_id = package_id_v
-            if package_id.count("@") == 2:
-                package_id = "@" + package_id.split("@")[1]
-        else:
-            package_id = package_id_v.split("@")[0].split(":")[0]
-        res += [f"{indent}- [{package_id_v}]({start_url}{package_id})"]
+        package_id = package_id_v
+        package_version = ""
+
+        if type == "npm" and package_id.count("@") == 2: # npm specific version
+            package_id_split = package_id.split("@")
+            package_id = "@" + package_id_split[1]
+            package_version = "/v/" + package_id_split[2]
+        elif type == "pip" and "==" in package_id_v: # py specific version
+            package_id = package_id_v.split("==")[0]
+            package_version = "/" + package_id_v.split("==")[1]
+        elif type == "gem":
+            gem_match=re.match(r"(.*)\s-v\s(.*)", package_id_v) # gem specific version
+
+            if gem_match: # gem specific version
+                package_id = gem_match.group(1)
+                package_version = "/versions/" + gem_match.group(2)
+        res += [f"{indent}- [{package_id_v}]({start_url}{package_id}{package_version})"]
     return res
 
 
