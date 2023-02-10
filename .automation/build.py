@@ -433,7 +433,7 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --ignore-scripts \\\n                "
+            + "RUN npm --no-cache install --force --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
