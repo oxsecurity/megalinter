@@ -124,4 +124,4 @@ Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [pyright==1.1.270](https://pypi.org/project/pyright==1.1.270)
+  - [pyright==1.1.270](https://pypi.org/project/pyright/1.1.270)
