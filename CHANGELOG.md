@@ -18,6 +18,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
 
+- Fixes
+  - Generate correct urls for packages with fixed versions, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2339>
+
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.21.0 to **6.22.0** on 2023-02-06
