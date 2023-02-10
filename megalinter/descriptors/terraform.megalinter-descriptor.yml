@@ -160,10 +160,9 @@ linters:
       - "--file"
     examples:
       - "checkov --file myfile.tf"
-    downgraded_version: true
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
