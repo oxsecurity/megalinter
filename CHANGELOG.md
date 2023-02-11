@@ -10,7 +10,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Upgrade base docker image from python:3.10.4-alpine3.16 to python:3.11.1-alpine3.17
+
+- CI
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
+  - Authenticate to GitHub API during docker build to avoid reaching limits
+
+- Fixes
+  - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06
@@ -45,6 +51,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.70.0 to **0.71.0** on 2023-02-11
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.1 to **0.37.2** on 2023-02-11
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.7 to **1.3.8** on 2023-02-11
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.5.0 to **6.6.0** on 2023-02-11
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0** on 2023-02-11
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

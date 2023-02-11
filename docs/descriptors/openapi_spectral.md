@@ -15,7 +15,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 ## spectral documentation
 
-- Version in MegaLinter: **6.5.0**
+- Version in MegaLinter: **6.6.0**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
   - If custom `.openapirc.yml` config file is not found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
@@ -126,4 +126,4 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)
+  - [@stoplight/spectral-cli](https://www.npmjs.com/package/@stoplight/spectral-cli)
