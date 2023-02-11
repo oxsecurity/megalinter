@@ -109,65 +109,45 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      ###################################
-      # Run Deploy script for Dockerhub #
-      ###################################
-      - name: Deploy Beta image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: beta
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
-      - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ needs.prepare.outputs.unique_docker_image_name }}"
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: Docker
-          ALWAYS_BUILD: force
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      ###################################################
-      # Run Deploy script for GitHub Container Registry #
-      ###################################################
-      - name: Deploy Beta image to GitHub Container Registry
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: beta
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: GCR
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to GitHub Container Registry
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ needs.prepare.outputs.unique_docker_image_name }}"
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: GCR
-          ALWAYS_BUILD: force
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: linters/${{ matrix.linter }}/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.sha }}
+          load: true
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+            oxsecurity/megalinter-only-${{ matrix.linter }}:{{ needs.prepare.outputs.unique_docker_image_name }}
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:{{ needs.prepare.outputs.unique_docker_image_name }}
 
       #####################################
       # Run Linter test cases #

@@ -123,7 +123,7 @@ jobs:
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.sha }}
           load: true
-          push: false
+          push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
