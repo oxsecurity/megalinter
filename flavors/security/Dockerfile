@@ -14,7 +14,7 @@
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.44.1 as tflint
-FROM tenable/terrascan:1.16.0 as terrascan
+FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
 #FROM__END
