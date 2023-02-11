@@ -85,20 +85,14 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
-                npm-groovy-lint && \
+RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
+    npm --no-cache install --force --ignore-scripts \
+                npm-groovy-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && npm prune --production \
+    && node-prune \
+    && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
 #NPM__END

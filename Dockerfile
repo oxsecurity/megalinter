@@ -170,7 +170,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
+RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
+    npm --no-cache install --force --ignore-scripts \
                 sfdx-cli \
                 typescript \
                 @coffeelint/cli \
@@ -219,19 +220,12 @@ RUN npm --no-cache install --force --ignore-scripts \
                 tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser && \
+                @typescript-eslint/parser    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && npm prune --production \
+    && node-prune \
+    && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
 #NPM__END
@@ -355,7 +349,10 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
     && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
+    && npm prune --production \
     && rm -rf /root/.npm/_cacache \
+    && curl -sf https://gobinaries.com/tj/node-prune | sh \
+    && node-prune \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
@@ -568,20 +565,29 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
+  && npm cache clean --force || true \
+  && npm prune --production \
+  && rm -rf /root/.npm/_cacache \
+  && curl -sf https://gobinaries.com/tj/node-prune | sh \
+  && node-prune \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache
+#   && npm cache clean --force || true \
+#   && npm prune --production \
+#   && rm -rf /root/.npm/_cacache \
+#   && curl -sf https://gobinaries.com/tj/node-prune | sh \
+#   && node-prune
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#     && npm cache clean --force || true \
-#     && rm -rf /root/.npm/_cacache
+#   && npm cache clean --force || true \
+#   && npm prune --production \
+#   && rm -rf /root/.npm/_cacache \
+#   && curl -sf https://gobinaries.com/tj/node-prune | sh \
+#   && node-prune
 
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
