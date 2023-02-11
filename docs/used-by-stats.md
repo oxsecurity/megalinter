@@ -3,16 +3,16 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=2030&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1376&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=654&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=51041&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=51052&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 34805 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 34813 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2330 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1797 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1647 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1543 |
-| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1069 |
+| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1070 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1013 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   922 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   850 |
@@ -20,7 +20,7 @@
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   563 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   528 |
 | [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn)                                                                                                 |   449 |
-| [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   391 |
+| [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   392 |
 | [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   360 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                                       |   359 |
 | [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   291 |
@@ -105,7 +105,7 @@
 | [Marx2/homelab](https://github.com/Marx2/homelab)                                                                                                                               |    13 |
 | [jokay/docker-ccu-historian](https://github.com/jokay/docker-ccu-historian)                                                                                                     |    13 |
 | [5ire-org/5ire-faucet](https://github.com/5ire-org/5ire-faucet)                                                                                                                 |    12 |
-| [tyriis/flux.k3s.cluster](https://github.com/tyriis/flux.k3s.cluster)                                                                                                           |    12 |
+| [tyriis/home-ops](https://github.com/tyriis/home-ops)                                                                                                                           |    12 |
 | [sierrafoxtrot/srecord](https://github.com/sierrafoxtrot/srecord)                                                                                                               |    12 |
 | [ahmadnassri/node-oas-request](https://github.com/ahmadnassri/node-oas-request)                                                                                                 |    12 |
 | [eresturo/scanadf2docspell](https://github.com/eresturo/scanadf2docspell)                                                                                                       |    11 |

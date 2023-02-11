@@ -114,7 +114,9 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
+    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \

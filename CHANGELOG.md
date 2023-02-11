@@ -53,6 +53,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.7 to **1.3.8** on 2023-02-11
   - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.5.0 to **6.6.0** on 2023-02-11
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0** on 2023-02-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.22.0 to **6.23.0** on 2023-02-11
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
