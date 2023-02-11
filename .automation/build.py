@@ -434,7 +434,7 @@ def build_dockerfile(
         npm_install_command = (
             "WORKDIR /node-deps\n"
             + "RUN curl -sf https://gobinaries.com/tj/node-prune | sh \\\n"
-            + "    npm --no-cache install --force --ignore-scripts \\\n                "
+            + "    && npm --no-cache install --force --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + "    && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"

@@ -85,7 +85,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
-    npm --no-cache install --force --ignore-scripts \
+    && npm --no-cache install --force --ignore-scripts \
                 typescript \
                 eslint \
                 eslint-config-airbnb \

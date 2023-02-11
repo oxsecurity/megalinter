@@ -86,7 +86,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
-    npm --no-cache install --force --ignore-scripts \
+    && npm --no-cache install --force --ignore-scripts \
                 npm-groovy-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
