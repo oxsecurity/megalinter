@@ -164,7 +164,9 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
+    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
@@ -179,7 +181,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
-RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 ```
 
