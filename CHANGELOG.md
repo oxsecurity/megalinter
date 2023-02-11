@@ -35,6 +35,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.2.355 to **2.2.356** on 2023-02-09
   - [semgrep](https://semgrep.dev/) from 1.9.0 to **1.10.0** on 2023-02-09
   - [rubocop](https://rubocop.org/) from 1.45.0 to **1.45.1** on 2023-02-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.12.1 to **6.12.2** on 2023-02-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.10 to **0.73.1** on 2023-02-11
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.5.3** on 2023-02-11
+  - [eslint](https://eslint.org) from 8.33.0 to **8.34.0** on 2023-02-11
+  - [checkov](https://www.checkov.io/) from 2.2.356 to **2.3.3** on 2023-02-11
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.2.0 to **6.2.3** on 2023-02-11
+  - [semgrep](https://semgrep.dev/) from 1.10.0 to **1.11.0** on 2023-02-11
+  - [syft](https://github.com/anchore/syft) from 0.70.0 to **0.71.0** on 2023-02-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.1 to **0.37.2** on 2023-02-11
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.7 to **1.3.8** on 2023-02-11
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
