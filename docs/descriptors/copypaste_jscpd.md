@@ -11,7 +11,7 @@ description: How to use jscpd (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kucherenko/jscpd?sort=semver)](https://github.com/kucherenko/jscpd/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kucherenko/jscpd?sort=semver)](https://github.com/kucherenko/jscpd/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/contributors/)
 
 JSCPD browses all files of your repository to detect excessive copy-pastes
 
@@ -34,7 +34,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **3.3.26**
+- Version in MegaLinter: **3.5.3**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file is not found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -127,6 +127,7 @@ Options:
                              <path>)
   -i, --ignore [string]      glob pattern for files what should be excluded
                              from duplication detection
+  --ignore-pattern [string]  Ignore code blocks matching the regexp patterns
   -r, --reporters [string]   reporters or list of reporters separated with
                              comma to use (Default is time,console)
   -o, --output [string]      reporters to use (Default is ./report/)
@@ -154,6 +155,8 @@ Options:
   --list                     show list of total supported formats
   --skipLocal                skip duplicates in local folders, just detect
                              cross folders duplications
+  --exitCode [number]        exit code to use when code duplications are
+                             detected
   -h, --help                 display help for command
 ```
 
