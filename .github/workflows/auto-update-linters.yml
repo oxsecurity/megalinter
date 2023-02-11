@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: linters/${{ matrix.linter }}/Dockerfile
+          file: Dockerfile
           platforms: linux/amd64
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}

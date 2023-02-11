@@ -150,7 +150,7 @@ jobs:
       ####################################
       # Build image (full for main repo) #
       ####################################
-      - name: Build MegaLinter Dockre Image (full from main repo) & push
+      - name: Build MegaLinter Docker Image (full from main repo) & push
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
