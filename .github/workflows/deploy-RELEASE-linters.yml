@@ -105,8 +105,10 @@ jobs:
           dst: |
             docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v6
             docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v6
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
 
       #####################################
       # Run Linter test cases #
