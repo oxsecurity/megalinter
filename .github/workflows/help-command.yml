@@ -1,5 +1,6 @@
 name: help-command
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [help-command]
 jobs:
