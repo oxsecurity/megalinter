@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v3
+        id: scd
         with:
           token: ${{ secrets.PAT }}
           commands: |
