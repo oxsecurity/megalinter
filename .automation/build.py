@@ -312,6 +312,11 @@ def build_dockerfile(
                         "# " + "\n# ".join(dockerfile_item.splitlines())
                     )
                     docker_other += [dockerfile_item]
+                # RUN (standalone with GITHUB_TOKEN)
+                elif dockerfile_item.startswith("RUN") and "GITHUB_TOKEN" in dockerfile_item:
+                    dockerfile_item_cmd = dockerfile_item.replace("RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN ")
+                    docker_other += [dockerfile_item_cmd]
+                    is_docker_other_run = False
                 # RUN (start)
                 elif dockerfile_item.startswith("RUN") and is_docker_other_run is False:
                     docker_other += [dockerfile_item]
