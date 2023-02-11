@@ -306,15 +306,26 @@ def build_dockerfile(
                     docker_copy += [dockerfile_item]
                     docker_other += ["# Managed with " + dockerfile_item]
                 # Already used item
-                elif dockerfile_item in all_dockerfile_items:
+                elif (
+                    dockerfile_item in all_dockerfile_items
+                    or dockerfile_item.replace(
+                        "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                    )
+                    in all_dockerfile_items
+                ):
                     dockerfile_item = (
                         "# Next line commented because already managed by another linter\n"
                         "# " + "\n# ".join(dockerfile_item.splitlines())
                     )
                     docker_other += [dockerfile_item]
                 # RUN (standalone with GITHUB_TOKEN)
-                elif dockerfile_item.startswith("RUN") and "GITHUB_TOKEN" in dockerfile_item:
-                    dockerfile_item_cmd = dockerfile_item.replace("RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN ")
+                elif (
+                    dockerfile_item.startswith("RUN")
+                    and "GITHUB_TOKEN" in dockerfile_item
+                ):
+                    dockerfile_item_cmd = dockerfile_item.replace(
+                        "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                    )
                     docker_other += [dockerfile_item_cmd]
                     is_docker_other_run = False
                 # RUN (start)
