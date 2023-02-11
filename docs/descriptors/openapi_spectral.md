@@ -126,4 +126,4 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)
+  - [@stoplight/spectral-cli](https://www.npmjs.com/package/@stoplight/spectral-cli)
