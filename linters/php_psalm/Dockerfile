@@ -134,7 +134,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # PHP installation
-RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
@@ -151,7 +152,7 @@ RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # psalm installation
-RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
 #OTHER__END

@@ -21,7 +21,8 @@ install:
     - dpkg
   dockerfile:
     - |
-      RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+      RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+          && export GITHUB_AUTH_TOKEN \
           && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
           && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
           && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
@@ -53,7 +54,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
     ide:
       atom:
         - name: linter-phpcs
@@ -97,7 +98,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -131,7 +132,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
     ide:
       idea:
         - name: PHPStan / Psalm / Generics

@@ -265,7 +265,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
-RUN export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
@@ -363,13 +364,13 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && chmod 755 /usr/local/bin/checkmake \
 
 # phpcs installation
-    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192 \
+    && GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192 \
 
 # phpstan installation
-    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
+    && GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
 
 # psalm installation
-    && export GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
+    && GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
 
 # phplint installation
     && composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
