@@ -56,9 +56,22 @@ jobs:
       ###################################
       # Build image locally for testing #
       ###################################
-      - name: Build image
-        shell: bash
-        run: docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:auto_update_${GITHUB_SHA} --load . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+      - name: Build MegaLinter Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=auto_update_${{ github.sha }}
+            BUILD_VERSION=auto_update_${{ github.sha }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter:auto_update_${{ github.sha }}
         timeout-minutes: 60
 
       #####################################

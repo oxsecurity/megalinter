@@ -379,6 +379,7 @@
         "agentlib",
         "agentpath",
         "airbnb",
+        "akhilerm",
         "alignat",
         "alnum",
         "analyse",
@@ -1097,6 +1098,7 @@
         "repositoryformatversion",
         "reqparse",
         "reqs",
+        "retagging",
         "retrocompatibility",
         "returncode",
         "returnrules",
@@ -1366,11 +1368,6 @@
         "\u03f0linters",
         "\u04bbcoffeescript",
         "\u0636clojure",
-        "\u077bcbad",
-        "Deneuve",
-        "Etienne",
-        "davidjeddy",
-        "gotit",
-        "pjungermann"
+        "\u077bcbad"
     ]
 }

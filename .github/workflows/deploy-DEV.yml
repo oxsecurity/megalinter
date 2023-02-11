@@ -77,47 +77,51 @@ jobs:
           echo "Tag name: ${TAG}"
           echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        if: |
+          (
+          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+          (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
+          )
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       ###################################
       # Build image locally for testing #
       ###################################
-      - name: Build image (quick)
+      - name: Build MegaLinter Docker Image (quick)
         if: "contains(github.event.head_commit.message, 'quick build')"
         id: docker_build_quick
-        shell: bash
-        run: |
-          function docker_tag_exists() {
-              echo "Checking existence of https://hub.docker.com/v2/repositories/$1/tags/$2"
-              curl --silent -f -lSL https://hub.docker.com/v2/repositories/$1/tags/$2 > /dev/null
-          }
-          MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
-          if docker_tag_exists oxsecurity/megalinter ${{steps.image_tag.outputs.tag}}; then
-             MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
-             echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
-          fi
-          docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} --load . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
-        timeout-minutes: 60
-
-      ##########################
-      # Push quick build image #
-      ##########################
-      - name: Push quickly built image
-        if: "contains(github.event.head_commit.message, 'quick build push')"
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
-          DOCKERFILE_PATH: Dockerfile-quick
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh || true
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile-quick
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.sha }}
+            MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+        timeout-minutes: 90
 
       #######################################
       # Build image (full for forked repos) #
       #######################################
-      - name: Build image (full from forks)
+      - name: Build MegaLinter Docker Image (full from forks)
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
@@ -126,14 +130,27 @@ jobs:
           &&
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
-        shell: bash
-        run: docker buildx build --platform linux/amd64 --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} --load . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.sha }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 90
 
       ####################################
       # Build image (full for main repo) #
       ####################################
-      - name: Build image (full from main repo) & push
+      - name: Build MegaLinter Docker Image (full from main repo) & push
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
@@ -141,17 +158,21 @@ jobs:
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
-          DOCKERFILE_PATH: Dockerfile
-          DOCKER_BUILD_PLATFORMS: linux/amd64
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.sha }}
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
 
       # Free disk space
       - name: Free Disk space
