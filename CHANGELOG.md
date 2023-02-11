@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Upgrade base docker image from python:3.10.4-alpine3.16 to python:3.11.1-alpine3.17
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
+  - Use node-prune to decrease docker image sizes
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06

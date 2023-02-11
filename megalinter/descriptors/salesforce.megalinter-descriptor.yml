@@ -13,7 +13,10 @@ install:
     - |
       RUN echo y|sfdx plugins:install sfdx-hardis \
           && npm cache clean --force || true \
-          && rm -rf /root/.npm/_cacache
+          && npm prune --production \
+          && rm -rf /root/.npm/_cacache \
+          && curl -sf https://gobinaries.com/tj/node-prune | sh \
+          && node-prune
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -71,8 +74,11 @@ linters:
       dockerfile:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
-              && rm -rf /root/.npm/_cacache
+            && npm cache clean --force || true \
+            && npm prune --production \
+            && rm -rf /root/.npm/_cacache \
+            && curl -sf https://gobinaries.com/tj/node-prune | sh \
+            && node-prune
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -138,8 +144,11 @@ linters:
       dockerfile:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
-              && rm -rf /root/.npm/_cacache
+            && npm cache clean --force || true \
+            && npm prune --production \
+            && rm -rf /root/.npm/_cacache \
+            && curl -sf https://gobinaries.com/tj/node-prune | sh \
+            && node-prune
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -196,8 +205,11 @@ linters:
       dockerfile:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
-              && rm -rf /root/.npm/_cacache
+            && npm cache clean --force || true \
+            && npm prune --production \
+            && rm -rf /root/.npm/_cacache \
+            && curl -sf https://gobinaries.com/tj/node-prune | sh \
+            && node-prune
     ide:
       vscode:
         - name: Salesforce Extension Pack

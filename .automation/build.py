@@ -433,21 +433,15 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --force --ignore-scripts \\\n                "
+            + "RUN curl -sf https://gobinaries.com/tj/node-prune | sh \\\n"
+            + "    npm --no-cache install --force --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
-            + " && \\\n"
+            + "    && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + "    && rm -rf /root/.npm/_cacache \\\n"
-            + '    && find . -name "*.d.ts" -delete \\\n'
-            + '    && find . -name "*.map" -delete \\\n'
-            + '    && find . -name "*.npmignore" -delete \\\n'
-            + '    && find . -name "*.travis.yml" -delete \\\n'
-            + '    && find . -name "CHANGELOG.md" -delete \\\n'
-            + '    && find . -name "README.md" -delete \\\n'
-            + '    && find . -name ".package-lock.json" -delete \\\n'
-            + '    && find . -name "package-lock.json" -delete \\\n'
-            + '    && find . -name "README.md" -delete\n'
+            + "    && npm prune --production \\\n"
+            + "    && node-prune \\\n"
+            + "    && rm -rf /root/.npm/_cacache \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
