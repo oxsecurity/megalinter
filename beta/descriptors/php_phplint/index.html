@@ -6030,7 +6030,9 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
-RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+RUN GITHUB_AUTH_TOKEN=&quot;$(cat /run/secrets/GITHUB_TOKEN)&quot; \
+    &amp;&amp; export GITHUB_AUTH_TOKEN \
+    &amp;&amp; wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     &amp;&amp; PHAR_KEY_ID=&quot;0x9D8A98B29B2D5D79&quot; \
     &amp;&amp; ( gpg --keyserver keyserver.pgp.com --recv-keys &quot;$PHAR_KEY_ID&quot; \
