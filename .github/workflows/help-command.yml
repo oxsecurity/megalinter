@@ -1,0 +1,22 @@
+name: help-command
+on:
+  repository_dispatch:
+    types: [help-command]
+jobs:
+  help:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.ACTIONS_BOT_TOKEN }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          body: |
+            > Command | Description
+            > --- | ---
+            > /hello-world | Receive a greeting from the world
+            > /ping [\<args\> ...] | Echos back a list of arguments
+            > /hello-world-local | Receive a greeting from the world (local execution)
+            > /ping-local [\<args\> ...] | Echos back a list of arguments (local execution)
+          reaction-type: hooray
