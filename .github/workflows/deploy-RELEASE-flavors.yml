@@ -91,8 +91,10 @@ jobs:
           dst: |
             docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v6
             docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+            docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v6
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
 
       # Free disk space
       - name: Free Disk space

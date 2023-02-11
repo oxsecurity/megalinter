@@ -81,8 +81,10 @@ jobs:
           dst: |
             docker.io/oxsecurity/megalinter:v6
             docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
+            docker.io/oxsecurity/megalinter:latest
             ghcr.io/oxsecurity/megalinter:v6
             ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter:latest
 
       # Free disk space
       - name: Free Disk space
