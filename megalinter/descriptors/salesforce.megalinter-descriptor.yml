@@ -15,7 +15,7 @@ install:
           && npm cache clean --force || true \
           && rm -rf /root/.npm/_cacache \
           && curl -sf https://gobinaries.com/tj/node-prune | sh \
-          && node-prune
+          && node-prune --verbose
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -76,7 +76,7 @@ linters:
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
             && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune
+            && node-prune --verbose
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -145,7 +145,7 @@ linters:
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
             && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune
+            && node-prune --verbose
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -205,7 +205,7 @@ linters:
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
             && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune
+            && node-prune --verbose
     ide:
       vscode:
         - name: Salesforce Extension Pack
