@@ -143,7 +143,6 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npm prune --production \
     && node-prune \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
@@ -204,7 +203,6 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && npm prune --production \
     && rm -rf /root/.npm/_cacache \
     && curl -sf https://gobinaries.com/tj/node-prune | sh \
     && node-prune
@@ -273,7 +271,6 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
   && npm cache clean --force || true \
-  && npm prune --production \
   && rm -rf /root/.npm/_cacache \
   && curl -sf https://gobinaries.com/tj/node-prune | sh \
   && node-prune \
@@ -282,7 +279,6 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
-#   && npm prune --production \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
 #   && node-prune
@@ -291,7 +287,6 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
-#   && npm prune --production \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
 #   && node-prune

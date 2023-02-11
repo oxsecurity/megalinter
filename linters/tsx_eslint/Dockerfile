@@ -101,7 +101,6 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 @microsoft/eslint-formatter-sarif    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npm prune --production \
     && node-prune \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /

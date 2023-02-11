@@ -223,7 +223,6 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 @typescript-eslint/parser    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npm prune --production \
     && node-prune \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
@@ -349,7 +348,6 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
     && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && npm prune --production \
     && rm -rf /root/.npm/_cacache \
     && curl -sf https://gobinaries.com/tj/node-prune | sh \
     && node-prune \
@@ -566,7 +564,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
   && npm cache clean --force || true \
-  && npm prune --production \
   && rm -rf /root/.npm/_cacache \
   && curl -sf https://gobinaries.com/tj/node-prune | sh \
   && node-prune \
@@ -575,7 +572,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
-#   && npm prune --production \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
 #   && node-prune
@@ -584,7 +580,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
-#   && npm prune --production \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
 #   && node-prune

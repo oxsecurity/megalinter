@@ -439,7 +439,6 @@ def build_dockerfile(
             + "    && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + "    && npm prune --production \\\n"
             + "    && node-prune \\\n"
             + "    && rm -rf /root/.npm/_cacache \n"
             + "WORKDIR /\n"
