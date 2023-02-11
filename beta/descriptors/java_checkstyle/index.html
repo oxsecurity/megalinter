@@ -6147,7 +6147,10 @@ To specify an argument for a long option, you can use --&lt;name&gt;=&lt;value&g
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH=&quot;$JAVA_HOME/bin:${PATH}&quot;
 # Linter install
-RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
+RUN CHECKSTYLE_LATEST=$(curl -s \
+    -H &quot;Accept: application/vnd.github+json&quot; \
+    -H &quot;Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)&quot; \
+    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
         | grep browser_download_url \
         | grep &quot;.jar&quot; \
         | cut -d '&quot;' -f 4) \

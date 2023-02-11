@@ -6351,7 +6351,10 @@ All parameters are case-insensitive.
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
 RUN mkdir -p ${PWSH_DIRECTORY} \
-    &amp;&amp; curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+    &amp;&amp; curl --retry 5 --retry-delay 5 -s \
+       -H &quot;Accept: application/vnd.github+json&quot; \
+       -H &quot;Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)&quot; \
+       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
         | grep linux-alpine-x64 \
         | cut -d '&quot;' -f 4 \
