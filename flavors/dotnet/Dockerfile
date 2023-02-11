@@ -151,7 +151,7 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
-                @stoplight/spectral \
+                @stoplight/spectral-cli \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
