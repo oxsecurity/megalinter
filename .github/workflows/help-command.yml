@@ -10,7 +10,7 @@ jobs:
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          token: ${{ secrets.ACTIONS_BOT_TOKEN }}
+          token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           body: |
