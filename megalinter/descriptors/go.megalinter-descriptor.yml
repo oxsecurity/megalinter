@@ -77,7 +77,9 @@ linters:
       - "revive -config myfile.go"
     install:
       dockerfile:
-        - RUN go install github.com/mgechev/revive@latest && go clean --cache
+        - |
+          RUN go install github.com/mgechev/revive@latest && go clean --cache
+          # Comment 1
     ide:
       atom:
         - name: linter-revive

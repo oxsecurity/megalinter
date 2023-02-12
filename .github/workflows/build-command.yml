@@ -66,7 +66,7 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
-      - name: Check if changes was made
+      - name: Check if changes were made
         id: check-changes
         run: |
           git diff --quiet && git diff --staged --quiet
