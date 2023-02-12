@@ -13,7 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
+FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.44.1 as tflint
