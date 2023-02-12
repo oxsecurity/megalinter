@@ -80,8 +80,11 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+         # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+        #  issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             [Command run output][1]
 
