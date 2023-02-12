@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Use Raku to lint raku files
-https://raku.org/
+Use Pyright to lint py files
+https://github.com/Microsoft/pyright/
 """
 import os
 
