@@ -68,7 +68,8 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          comment-id: ${{ github.event.inputs.comment-id }}
           reaction-type: hooray
 
       - name: Create URL to the run output
