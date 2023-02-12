@@ -49,4 +49,5 @@ jobs:
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             Hello @${{ github.event.inputs.actor }}!
+            This is from a branch
             [Click here to see the command run output](${{ steps.vars.outputs.run-url }})
