@@ -265,7 +265,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
-RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
+    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
@@ -363,19 +365,23 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # checkmake installation
     && ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
     && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
-    && chmod 755 /usr/local/bin/checkmake \
+    && chmod 755 /usr/local/bin/checkmake
+
 
 # phpcs installation
-    && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192 \
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+
 
 # phpstan installation
-    && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720 \
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+
 
 # psalm installation
-    && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5 \
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+
 
 # phplint installation
-    && composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
+RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && composer global config bin-dir --absolute \
 
 # gitleaks installation

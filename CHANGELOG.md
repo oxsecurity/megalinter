@@ -54,6 +54,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.5.0 to **6.6.0** on 2023-02-11
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0** on 2023-02-11
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.4.0 to **2.7.0** on 2022-02-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.22.0 to **6.23.0** on 2023-02-11
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
