@@ -111,8 +111,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
-    && npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --force --ignore-scripts \
                 sfdx-cli \
                 jscpd \
                 stylelint \
@@ -143,7 +142,7 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && node-prune --exclude "**/.bin/**" --verbose\
+    && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
@@ -203,9 +202,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
+    && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
     && rm -rf /root/.npm/_cacache \
-    && curl -sf https://gobinaries.com/tj/node-prune | sh \
-    && node-prune --exclude "**/.bin/**" --verbose
 
 
 # actionlint installation
@@ -272,24 +270,21 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && sfdx plugins:install @salesforce/sfdx-scanner \
   && npm cache clean --force || true \
   && rm -rf /root/.npm/_cacache \
-  && curl -sf https://gobinaries.com/tj/node-prune | sh \
-  && node-prune --exclude "**/.bin/**" --verbose \
+  && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
-#   && curl -sf https://gobinaries.com/tj/node-prune | sh \
-#   && node-prune --exclude "**/.bin/**" --verbose
+#   && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
-#   && curl -sf https://gobinaries.com/tj/node-prune | sh \
-#   && node-prune --exclude "**/.bin/**" --verbose
+#   && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \

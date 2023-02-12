@@ -138,8 +138,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
-    && npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --force --ignore-scripts \
                 typescript \
                 jscpd \
                 stylelint \
@@ -186,7 +185,7 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 @typescript-eslint/parser    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && node-prune --exclude "**/.bin/**" --verbose\
+    && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 

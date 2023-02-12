@@ -13,9 +13,8 @@ install:
     - |
       RUN echo y|sfdx plugins:install sfdx-hardis \
           && npm cache clean --force || true \
+          && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
           && rm -rf /root/.npm/_cacache \
-          && curl -sf https://gobinaries.com/tj/node-prune | sh \
-          && node-prune --exclude "**/.bin/**" --verbose
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -75,8 +74,7 @@ linters:
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
-            && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune --exclude "**/.bin/**" --verbose
+            && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -144,8 +142,7 @@ linters:
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
-            && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune --exclude "**/.bin/**" --verbose
+            && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -204,8 +201,7 @@ linters:
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
             && rm -rf /root/.npm/_cacache \
-            && curl -sf https://gobinaries.com/tj/node-prune | sh \
-            && node-prune --exclude "**/.bin/**" --verbose
+            && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
     ide:
       vscode:
         - name: Salesforce Extension Pack
