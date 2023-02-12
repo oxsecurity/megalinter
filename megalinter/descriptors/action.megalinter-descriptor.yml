@@ -29,9 +29,9 @@ linters:
         - py3-pyflakes
       dockerfile:
         - |
-          FROM rhysd/actionlint:1.6.23 as actionlint
+          FROM rhysd/actionlint:latest as actionlint
           # shellcheck is a dependency for actionlint
-          FROM koalaman/shellcheck:v0.9.0 as shellcheck
+          FROM koalaman/shellcheck:stable as shellcheck
         - |
           COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint

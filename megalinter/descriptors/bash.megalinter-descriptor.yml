@@ -74,7 +74,7 @@ linters:
         - shellcheck-sarif
       dockerfile:
         # Also update shellcheck version in action.megalinter-descriptor.yml
-        - FROM koalaman/shellcheck:v0.9.0 as shellcheck
+        - FROM koalaman/shellcheck:stable as shellcheck
         - COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
       atom:
