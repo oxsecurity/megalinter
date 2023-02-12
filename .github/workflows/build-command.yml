@@ -31,6 +31,7 @@ jobs:
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             > [Command run output](${{ steps.vars.outputs.run-url }})
@@ -100,6 +101,7 @@ jobs:
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             > Build command workflow completed updating files.
