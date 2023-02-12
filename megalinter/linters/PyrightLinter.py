@@ -5,7 +5,7 @@ https://github.com/Microsoft/pyright/
 """
 import os
 
-from megalinter import Linter, utils
+from megalinter import Linter
 
 
 class PyrightLinter(Linter):
@@ -14,7 +14,7 @@ class PyrightLinter(Linter):
         # By default pyright ignores files starting with "." so we override this behavior
         # to work with the .automation folder
         with open(
-            os.path.join(utils.REPO_HOME_DEFAULT, "pyproject.toml"),
+            os.path.join(os.getcwd(), "pyproject.toml"),
             "w",
             encoding="utf-8",
         ) as f:
@@ -27,4 +27,4 @@ exclude = [
             )
 
     def post_test(self):
-        os.remove(os.path.join(utils.REPO_HOME_DEFAULT, "pyproject.toml"))
+        os.remove(os.path.join(os.getcwd(), "pyproject.toml"))
