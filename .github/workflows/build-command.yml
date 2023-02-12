@@ -33,9 +33,9 @@ jobs:
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
+            > [Command run output](${{ steps.vars.outputs.run-url }})
             > Build command workflow started.
-            > [Command run output][1]
-            [1]: ${{ steps.vars.outputs.run-url }}
+            > Installing dependencies
       - name: Dump the client payload context
         env:
           PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
@@ -71,7 +71,6 @@ jobs:
         run: |
           git diff --quiet && git diff --staged --quiet
           echo "has-changes=$(git diff --quiet && git diff --staged --quiet)" >> $GITHUB_OUTPUT
-
       # Commit changes to the PR branch
       - name: Commit changes to the PR branch
         if: steps.check-changes.outputs.has-changes == '1'
