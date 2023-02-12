@@ -1242,3 +1242,9 @@ class Linter:
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, _reporter_self):
         return []
+
+    def pre_test(self):
+        pass
+
+    def post_test(self):
+        pass
