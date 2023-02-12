@@ -13,7 +13,6 @@ install:
     - |
       RUN echo y|sfdx plugins:install sfdx-hardis \
           && npm cache clean --force || true \
-          && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/sfdx-scanner/**" && rm -rf ~/.npm/_npx \
           && rm -rf /root/.npm/_cacache
   # Salesforce DX
   npm:
@@ -73,8 +72,7 @@ linters:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache \
-            && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/sfdx-scanner/**" && rm -rf ~/.npm/_npx
+            && rm -rf /root/.npm/_cacache
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -141,8 +139,7 @@ linters:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache \
-            && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/sfdx-scanner/**" && rm -rf ~/.npm/_npx
+            && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -200,8 +197,7 @@ linters:
         - |
           RUN sfdx plugins:install @salesforce/sfdx-scanner \
             && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache \
-            && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/sfdx-scanner/**" && rm -rf ~/.npm/_npx
+            && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack
