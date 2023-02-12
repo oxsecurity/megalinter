@@ -234,7 +234,8 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && golangci-lint --version \
 
 # revive installation
-    && go install github.com/mgechev/revive@latest && go clean --cache \
+    && go install github.com/mgechev/revive@latest && go clean --cache
+# Comment 1 \
 
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \

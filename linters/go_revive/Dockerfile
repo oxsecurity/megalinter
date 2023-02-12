@@ -124,6 +124,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # revive installation
 RUN go install github.com/mgechev/revive@latest && go clean --cache
+# Comment 1
+
 
 #OTHER__END
 

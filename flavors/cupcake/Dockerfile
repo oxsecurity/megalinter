@@ -318,6 +318,8 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 
 # revive installation
     && go install github.com/mgechev/revive@latest && go clean --cache
+# Comment 1
+
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
