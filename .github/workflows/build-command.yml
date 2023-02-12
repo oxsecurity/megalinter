@@ -90,9 +90,6 @@ jobs:
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
-          ## These are if we want to use repository_dispatch (default)
-          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -106,10 +103,6 @@ jobs:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-          ## These are if we want to use repository_dispatch (default)
-          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             > Build command workflow completed updating files.
       - name: Create final comment no updated files
