@@ -20,6 +20,22 @@ jobs:
   build-sh:
     runs-on: ubuntu-latest
     steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            > Build command workflow started.
+            > [Command run output][1]
+            > [1]: ${{ steps.vars.outputs.run-url }}
       - name: Dump the client payload context
         env:
           PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
@@ -35,27 +51,20 @@ jobs:
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version: 3.11.1 # optional
-          # File containing the Python version to use. Example: .python-version
-          # python-version-file: # optional
           # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
           cache: pip # optional
-          # The target architecture (x86, x64) of the Python or PyPy interpreter.
-          # architecture: # optional
-          # Set this option if you want the action to check for the latest available version that satisfies the version spec.
-          # check-latest: # optional
-          # The token used to authenticate when fetching Python distributions from https://github.com/actions/python-versions. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
-          # token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
-          # Used to specify the path to dependency files. Supports wildcards or a list of file names for caching multiple dependencies.
-          # cache-dependency-path: # optional
-          # Set this option if you want the action to update environment variables.
-          # update-environment: # optional, default is true
       - run: pip install -r requirements.dev.txt
       - name: Run build script
         run: ./build.sh
-      # - name: Check if changes was made
-      #   run: git diff --quiet && git diff --staged --quiet
+      - name: Check if changes was made
+        id: check-changes
+        run: |
+          git diff --quiet && git diff --staged --quiet
+          echo "has-changes=$(git diff --quiet && git diff --staged --quiet)" >> $GITHUB_OUTPUT
+
       # Commit changes to the PR branch
       - name: Commit changes to the PR branch
+        if: steps.check-changes.outputs.has-changes == '1'
         run: |
           # Make changes to commit here
           #
@@ -67,25 +76,37 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
           reaction-type: hooray
-
-      - name: Create URL to the run output
-        id: vars
-        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
-
-      - name: Create comment
+      - name: Create final comment updated files
+        if: steps.check-changes.outputs.has-changes == '1'
         uses: peter-evans/create-or-update-comment@v2
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-         # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-        #  issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
-            [Command run output][1]
-
-            [1]: ${{ steps.vars.outputs.run-url }}
+            > Build command workflow completed updating files.
+            > [Command run output][1]
+            > [1]: ${{ steps.vars.outputs.run-url }}
+      - name: Create final comment no updated files
+        if: steps.check-changes.outputs.has-changes != '1'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            > Build command workflow completed without updating files.
+            > [Command run output][1]
+            > [1]: ${{ steps.vars.outputs.run-url }}
