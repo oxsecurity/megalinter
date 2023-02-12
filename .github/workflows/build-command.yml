@@ -52,6 +52,8 @@ jobs:
       - run: pip install -r requirements.dev.txt
       - name: Run build script
         run: ./build.sh
+      # - name: Check if changes was made
+      #   run: git diff --quiet && git diff --staged --quiet
       # Commit changes to the PR branch
       - name: Commit changes to the PR branch
         run: |
@@ -59,9 +61,8 @@ jobs:
           #
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -am "[build-command] Update generated files"
+          git diff --quiet && git diff --staged --quiet || (git commit -am "[build-command] Update generated files")
           git push
-
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v2
         with:
