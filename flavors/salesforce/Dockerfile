@@ -143,7 +143,7 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && node-prune --verbose\
+    && node-prune --exclude **/.bin/** --verbose\
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
@@ -205,7 +205,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && curl -sf https://gobinaries.com/tj/node-prune | sh \
-    && node-prune --verbose
+    && node-prune --exclude **/.bin/** --verbose
 
 
 # actionlint installation
@@ -273,7 +273,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
   && npm cache clean --force || true \
   && rm -rf /root/.npm/_cacache \
   && curl -sf https://gobinaries.com/tj/node-prune | sh \
-  && node-prune --verbose \
+  && node-prune --exclude **/.bin/** --verbose \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
@@ -281,7 +281,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
-#   && node-prune --verbose
+#   && node-prune --exclude **/.bin/** --verbose
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
@@ -289,7 +289,7 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
 #   && curl -sf https://gobinaries.com/tj/node-prune | sh \
-#   && node-prune --verbose
+#   && node-prune --exclude **/.bin/** --verbose
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
