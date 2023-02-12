@@ -141,7 +141,7 @@ RUN npm --no-cache install --force --ignore-scripts \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
