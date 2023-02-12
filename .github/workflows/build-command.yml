@@ -69,7 +69,8 @@ jobs:
       - name: Check if changes was made
         id: check-changes
         run: |
-          HAS_CHANGES=git diff --quiet && git diff --staged --quiet
+          git diff --quiet && git diff --staged --quiet
+          HAS_CHANGES=$?
           echo "has-changes=$(git diff --quiet && git diff --staged --quiet)" >> $GITHUB_OUTPUT
           echo "$HAS_CHANGES
       # Commit changes to the PR branch
