@@ -23,19 +23,18 @@ jobs:
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-#           token: ${{ secrets.PAT }}
-#           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-#           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          # token: ${{ secrets.PAT }}
+          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             > Command | Description
             > --- | ---
-            > /hello-world | Receive a greeting from the world
-            > /ping [\<args\> ...] | Echos back a list of arguments
-            > /hello-world-local | Receive a greeting from the world (local execution)
-            > /ping-local [\<args\> ...] | Echos back a list of arguments (local execution)
+            > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+            > /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+            > /help [\<args\> ...] | Echos back a list of arguments
           reaction-type: hooray
       - name: Create URL to the run output
         id: vars
@@ -44,7 +43,8 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-#           token: ${{ secrets.PAT }}
+          # token: ${{ secrets.PAT }}
+          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           repository: ${{ github.event.inputs.repository }}
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
