@@ -441,8 +441,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # revive installation
     && go install github.com/mgechev/revive@latest && go clean --cache
-# Comment 1
-
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
