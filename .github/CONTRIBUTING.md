@@ -78,6 +78,11 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 - Create a branch with a name that identifies the user and nature of the changes (similar to `user/branch-purpose`)
 - Open a pull request
 
+### Update Dockerfile base image
+
+1. `/Dockerfile` file has to be updated
+2. Run `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+
 ### Improve documentation
 
 Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
