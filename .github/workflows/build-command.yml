@@ -1,0 +1,66 @@
+name: build-command
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'The repository from which the slash command was dispatched'
+        required: true
+      comment-id:
+        description: 'The comment-id of the slash command'
+        required: true
+      issue-number:
+       description: 'The issue number in which the slash command was made'
+       required: true
+      actor:
+       description: 'The user who executed the slash command'
+       required: true
+  repository_dispatch:
+    types: [build-command]
+jobs:
+  fixPr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump the client payload context
+        env:
+          PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
+        run: echo "$PAYLOAD_CONTEXT"
+      # Checkout the pull request branch
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+      - name: Run build script
+        run: ./build.sh
+      # Commit changes to the PR branch
+      - name: Commit changes to the PR branch
+        run: |
+          # Make changes to commit here
+          #
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am "[build-command] Update generated files"
+          git push
+
+      - name: Add reaction
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reaction-type: hooray
+
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            [Command run output][1]
+
+            [1]: ${{ steps.vars.outputs.run-url }}
