@@ -11,7 +11,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
 
 ## checkov documentation
 
@@ -415,5 +415,5 @@ override config file values which override defaults.
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [packaging==21.3](https://pypi.org/project/packaging==21.3)
+  - [packaging==21.3](https://pypi.org/project/packaging/21.3)
   - [checkov](https://pypi.org/project/checkov)

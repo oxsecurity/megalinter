@@ -162,7 +162,7 @@ linters:
       - "checkov --file myfile.tf"
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
