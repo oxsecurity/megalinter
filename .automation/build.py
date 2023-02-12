@@ -445,6 +445,16 @@ def build_dockerfile(
         )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
+    clean_modules_exclude_list = [
+        "**/.bin/**",  # CLIs
+        "**/reprism/languages/**",  # jscpd
+        "**/eslint-config-standard/**",  # standardjs
+        "**/models/doc/**",  # markdown-table-formatter
+        "**/sfdx-scanner/**",  # sfdx-scanner
+    ]
+    clean_modules_exclude_str = ""
+    for clean_exclude in clean_modules_exclude_list:
+        clean_modules_exclude_str += f'--exclude "{clean_exclude}" '
     npm_install_command = ""
     if len(npm_packages) > 0:
         npm_install_command = (
@@ -454,7 +464,7 @@ def build_dockerfile(
             + "    && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + '    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \\\n'
+            + f"    && npx --yes clean-modules --yes {clean_modules_exclude_str} && rm -rf ~/.npm/_npx \\\n"
             + "    && rm -rf /root/.npm/_cacache \n"
             + "WORKDIR /\n"
         )

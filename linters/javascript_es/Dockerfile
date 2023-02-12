@@ -101,7 +101,7 @@ RUN npm --no-cache install --force --ignore-scripts \
                 @microsoft/eslint-formatter-sarif    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/reprism/languages/**" --exclude "**/eslint-config-standard/**" --exclude "**/models/doc/**" --exclude "**/sfdx-scanner/**"  && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 

@@ -142,7 +142,7 @@ RUN npm --no-cache install --force --ignore-scripts \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/reprism/languages/**" --exclude "**/eslint-config-standard/**" --exclude "**/models/doc/**" --exclude "**/sfdx-scanner/**"  && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
@@ -202,7 +202,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude **/sfdx-scanner/** && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache
 
 
@@ -270,21 +270,21 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
     && sfdx plugins:install @salesforce/sfdx-scanner \
   && npm cache clean --force || true \
   && rm -rf /root/.npm/_cacache \
-  && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
+  && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude **/sfdx-scanner/** && rm -rf ~/.npm/_npx \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
-#   && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
+#   && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude **/sfdx-scanner/** && rm -rf ~/.npm/_npx
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #   && npm cache clean --force || true \
 #   && rm -rf /root/.npm/_cacache \
-#   && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
+#   && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude **/sfdx-scanner/** && rm -rf ~/.npm/_npx
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
