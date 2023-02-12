@@ -71,7 +71,7 @@ jobs:
         run: |
           git diff --quiet && git diff --staged --quiet
           HAS_CHANGES=$?
-          echo "has-changes=$(git diff --quiet && git diff --staged --quiet)" >> $GITHUB_OUTPUT
+          echo "has-changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
           echo "$HAS_CHANGES"
       # Commit changes to the PR branch
       - name: Commit changes to the PR branch
