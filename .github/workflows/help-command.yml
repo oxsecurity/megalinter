@@ -36,18 +36,3 @@ jobs:
             > /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
             > /help [\<args\> ...] | Echos back a list of arguments
           reaction-type: hooray
-      - name: Create URL to the run output
-        id: vars
-        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
-
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          # token: ${{ secrets.PAT }}
-          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          repository: ${{ github.event.inputs.repository }}
-          issue-number: ${{ github.event.inputs.issue-number }}
-          body: |
-            Hello @${{ github.event.inputs.actor }}!
-            This is from a branch
-            [Click here to see the command run output](${{ steps.vars.outputs.run-url }})
