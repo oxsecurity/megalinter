@@ -455,7 +455,7 @@ def build_dockerfile(
             + "    && \\\n"
             + "    npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + "    && node-prune --exclude **/.bin/** --verbose\\\n"
+            + "    && node-prune --exclude \"**/.bin/**\" --verbose\\\n"
             + "    && rm -rf /root/.npm/_cacache \n"
             + "WORKDIR /\n"
         )

@@ -144,7 +144,7 @@ RUN curl -sf https://gobinaries.com/tj/node-prune | sh \
                 tekton-lint    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && node-prune --exclude **/.bin/** --verbose\
+    && node-prune --exclude "**/.bin/**" --verbose\
     && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
