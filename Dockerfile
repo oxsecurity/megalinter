@@ -358,7 +358,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
-    && rm -rf /root/.npm/_cacache \ \
+    && rm -rf /root/.npm/_cacache \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \

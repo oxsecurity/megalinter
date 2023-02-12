@@ -203,7 +203,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && npx --yes clean-modules --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
-    && rm -rf /root/.npm/_cacache \
+    && rm -rf /root/.npm/_cacache
 
 
 # actionlint installation

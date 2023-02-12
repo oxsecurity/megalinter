@@ -14,7 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
   - Authenticate to GitHub API during docker build to avoid reaching limits
-  - Use node-prune to decrease docker image sizes
+  - Use [clean-modules](https://github.com/duniul/clean-modules) to decrease docker image sizes
 
 - Fixes
   - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
