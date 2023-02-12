@@ -35,7 +35,6 @@ jobs:
           body: |
             > Build command workflow started.
             > [Command run output][1]
-            
             [1]: ${{ steps.vars.outputs.run-url }}
       - name: Dump the client payload context
         env:
@@ -55,8 +54,6 @@ jobs:
           # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
           cache: pip # optional
       - run: pip install -r requirements.dev.txt
-      - name: Run build script
-        run: ./build.sh
       - name: Create comment starting build.sh
         if: steps.check-changes.outputs.has-changes != '1'
         uses: peter-evans/create-or-update-comment@v2
@@ -67,6 +64,8 @@ jobs:
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             > Running script `./build.sh`
+      - name: Run build script
+        run: ./build.sh
       - name: Check if changes was made
         id: check-changes
         run: |
