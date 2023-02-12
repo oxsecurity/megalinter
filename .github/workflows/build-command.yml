@@ -71,12 +71,11 @@ jobs:
         run: |
           git diff --quiet && git diff --staged --quiet
           echo "has-changes=$(git diff --quiet && git diff --staged --quiet)" >> $GITHUB_OUTPUT
+          echo "$(git diff --quiet && git diff --staged --quiet)"
       # Commit changes to the PR branch
       - name: Commit changes to the PR branch
         if: steps.check-changes.outputs.has-changes == '1'
         run: |
-          # Make changes to commit here
-          #
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git diff --quiet && git diff --staged --quiet || (git commit -am "[build-command] Update generated files")
