@@ -38,7 +38,7 @@ linters:
       - "checkov --directory . --output --sarif"
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
