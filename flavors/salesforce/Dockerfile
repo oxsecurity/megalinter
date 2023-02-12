@@ -202,7 +202,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" && rm -rf ~/.npm/_npx \
     && rm -rf /root/.npm/_cacache
 
 
