@@ -17,7 +17,7 @@ on:
   repository_dispatch:
     types: [build-command]
 jobs:
-  fixPr:
+  build-sh:
     runs-on: ubuntu-latest
     steps:
       - name: Dump the client payload context
