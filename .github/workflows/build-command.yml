@@ -26,10 +26,12 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v2
         with:
+          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
+          ## These are if we want to use repository_dispatch (default)
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
@@ -59,6 +61,7 @@ jobs:
         if: steps.check-changes.outputs.has-changes != '1'
         uses: peter-evans/create-or-update-comment@v2
         with:
+          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -85,7 +88,9 @@ jobs:
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v2
         with:
+          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
+          ## These are if we want to use repository_dispatch (default)
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           repository: ${{ github.event.inputs.repository }}
@@ -96,10 +101,12 @@ jobs:
         if: steps.check-changes.outputs.has-changes == '1'
         uses: peter-evans/create-or-update-comment@v2
         with:
+          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
+          ## These are if we want to use repository_dispatch (default)
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
@@ -109,6 +116,7 @@ jobs:
         if: steps.check-changes.outputs.has-changes != '1'
         uses: peter-evans/create-or-update-comment@v2
         with:
+          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
