@@ -8,12 +8,12 @@ on:
       comment-id:
         description: 'The comment-id of the slash command'
         required: true
-      # issue-number:
-      #   description: 'The issue number in which the slash command was made'
-      #   required: true
-      # actor:
-      #   description: 'The user who executed the slash command'
-      #   required: true
+      issue-number:
+       description: 'The issue number in which the slash command was made'
+       required: true
+      actor:
+       description: 'The user who executed the slash command'
+       required: true
   repository_dispatch:
     types: [help-command]
 jobs:
@@ -23,10 +23,12 @@ jobs:
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          token: ${{ secrets.PAT }}
-          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          # issue-number: ${{ github.event.inputs.issue-number }}
+#           token: ${{ secrets.PAT }}
+#           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+#           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             > Command | Description
             > --- | ---
@@ -35,3 +37,16 @@ jobs:
             > /hello-world-local | Receive a greeting from the world (local execution)
             > /ping-local [\<args\> ...] | Echos back a list of arguments (local execution)
           reaction-type: hooray
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+#           token: ${{ secrets.PAT }}
+          repository: ${{ github.event.inputs.repository }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            Hello @${{ github.event.inputs.actor }}!
+            [Click here to see the command run output](${{ steps.vars.outputs.run-url }})
