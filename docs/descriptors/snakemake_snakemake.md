@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.21.0**
+- Version in MegaLinter: **7.22.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -174,7 +174,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--conda-cleanup-pkgs [{tarballs,cache}]]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-singularity] [--singularity-prefix DIR]
-                 [--singularity-args ARGS] [--use-envmodules]
+                 [--singularity-args ARGS] [--cleanup-containers]
+                 [--use-envmodules]
                  [target ...]
 
 Snakemake is a Python based language and execution environment for GNU Make-
@@ -923,8 +924,10 @@ CLUSTER:
                         directory. (default: None)
 
 FLUX:
-  --flux                Execute your workflow on a flux cluster. (default:
-                        False)
+  --flux                Execute your workflow on a flux cluster. Flux can work
+                        with both a shared network filesystem (like NFS) or
+                        without. If you don't have a shared filesystem,
+                        additionally specify --no-shared-fs. (default: False)
 
 KUBERNETES:
   --kubernetes [NAMESPACE]
@@ -1079,6 +1082,8 @@ SINGULARITY:
                         directory, or as an absolute path. (default: None)
   --singularity-args ARGS
                         Pass additional args to singularity. (default: )
+  --cleanup-containers  Remove unused (singularity) containers (default:
+                        False)
 
 ENVIRONMENT MODULES:
   --use-envmodules      If defined in the rule, run job within the given

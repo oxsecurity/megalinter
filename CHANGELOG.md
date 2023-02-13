@@ -60,6 +60,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.22.0 to **6.23.0** on 2023-02-11
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.4.0 to **2.7.0** on 2023-02-12
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.0 to **6.23.1** on 2023-02-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.270 to **1.1.293** on 2023-02-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.21.0 to **7.22.0** on 2023-02-13
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

@@ -11,7 +11,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
 
 Optional static typing checks for python, by Microsoft
 
@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.270**
+- Version in MegaLinter: **1.1.293**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -102,6 +102,7 @@ Usage: pyright [options] files...
   -h,--help                          Show this help message
   --ignoreexternal                   Ignore external imports for --verifytypes
   --lib                              Use library code to infer types when stubs are missing
+  --level <LEVEL>                    Minimum diagnostic level (error or warning)
   --outputjson                       Output results in JSON format
   -p,--project <FILE OR DIRECTORY>   Use the configuration file at this location
   --pythonplatform <PLATFORM>        Analyze for a specific platform (Darwin, Linux, Windows)
@@ -115,9 +116,6 @@ Usage: pyright [options] files...
   --version                          Print Pyright version
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
-
-WARNING: there is a new pyright version available (v1.1.270 -> v1.1.293).
-Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 
 ```
 
