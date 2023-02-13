@@ -1,4 +1,5 @@
-# MEGA-LINTER FLAVOR [java]: Optimized for JAVA based projects
+# syntax=docker/dockerfile:1
+# MEGALINTER FLAVOR [java]: Optimized for JAVA based projects
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -195,17 +196,17 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #COPY__START
-COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --from=checkmake /checkmake /usr/bin/checkmake
-COPY --from=protolint /usr/local/bin/protolint /usr/bin/
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
+COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -217,9 +218,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # actionlint installation
-# Managed with COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 
 # bash-exec installation
@@ -227,10 +228,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && chmod +x /usr/bin/bash-exec \
 
 # shellcheck installation
-# Managed with COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 # shfmt installation
-# Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 
 # clj-kondo installation
     && curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
@@ -238,10 +239,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./install-clj-kondo \
 
 # hadolint installation
-# Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # editorconfig-checker installation
-# Managed with COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
@@ -290,13 +291,13 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # checkmake installation
-# Managed with COPY --from=checkmake /checkmake /usr/bin/checkmake
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # protolint installation
-# Managed with COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+# Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # gitleaks installation
-# Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \

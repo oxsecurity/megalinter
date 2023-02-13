@@ -33,4 +33,4 @@ linters:
         - make
       dockerfile:
         - FROM mrtazz/checkmake:latest as checkmake
-        - COPY --from=checkmake /checkmake /usr/bin/checkmake
+        - COPY --link --from=checkmake /checkmake /usr/bin/checkmake

@@ -1,4 +1,5 @@
-# MEGA-LINTER FLAVOR [cupcake]: MegaLinter for the most commonly used languages
+# syntax=docker/dockerfile:1
+# MEGALINTER FLAVOR [cupcake]: MegaLinter for the most commonly used languages
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -251,22 +252,22 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #COPY__START
-COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --from=revive /usr/bin/revive /usr/bin/revive
-COPY --from=checkmake /checkmake /usr/bin/checkmake
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
-COPY --from=tflint /usr/local/bin/tflint /usr/bin/
-COPY --from=terrascan /go/bin/terrascan /usr/bin/
-COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-COPY --from=terragrunt /bin/terraform /usr/bin/
-COPY --from=kics /app/bin/kics /usr/bin/
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
+COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+COPY --link --from=terragrunt /bin/terraform /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
 #COPY__END
 
@@ -298,9 +299,9 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # actionlint installation
-# Managed with COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 
 # bash-exec installation
@@ -308,10 +309,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && chmod +x /usr/bin/bash-exec \
 
 # shellcheck installation
-# Managed with COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 # shfmt installation
-# Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 
 # clj-kondo installation
     && curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
@@ -319,10 +320,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./install-clj-kondo \
 
 # hadolint installation
-# Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # editorconfig-checker installation
-# Managed with COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
@@ -332,7 +333,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && golangci-lint --version \
 
 # revive installation
-# Managed with COPY --from=revive /usr/bin/revive /usr/bin/revive
+# Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
@@ -378,7 +379,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # checkmake installation
-# Managed with COPY --from=checkmake /checkmake /usr/bin/checkmake
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
@@ -397,7 +398,7 @@ RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && composer global config bin-dir --absolute \
 
 # gitleaks installation
-# Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
@@ -411,19 +412,19 @@ RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
 
 # tflint installation
-# Managed with COPY --from=tflint /usr/local/bin/tflint /usr/bin/
+# Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 
 # terrascan installation
-# Managed with COPY --from=terrascan /go/bin/terrascan /usr/bin/
+# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 
 # terragrunt installation
-# Managed with COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+# Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 # terraform-fmt installation
-# Managed with COPY --from=terragrunt /bin/terraform /usr/bin/
+# Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 
 # kics installation
-# Managed with COPY --from=kics /app/bin/kics /usr/bin/
+# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
     && mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/

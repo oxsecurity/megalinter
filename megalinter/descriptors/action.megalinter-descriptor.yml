@@ -33,6 +33,6 @@ linters:
           # shellcheck is a dependency for actionlint and the FROM command may be safely repeated in a Dockerfile
           FROM koalaman/shellcheck:stable as shellcheck
         - |
-          COPY --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+          COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
-          COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+          COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck

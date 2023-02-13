@@ -127,7 +127,7 @@ linters:
         - |
           FROM golang:alpine as dustilock
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
-        - COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
+        - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
   - linter_name: git_diff
@@ -189,7 +189,7 @@ linters:
     install:
       dockerfile:
         - FROM zricethezav/gitleaks:v8.15.3 as gitleaks
-        - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+        - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
   - linter_name: goodcheck

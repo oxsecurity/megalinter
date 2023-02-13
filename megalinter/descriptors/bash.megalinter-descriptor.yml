@@ -75,7 +75,7 @@ linters:
       dockerfile:
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - FROM koalaman/shellcheck:stable as shellcheck
-        - COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+        - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
       atom:
         - name: linter-shellcheck
@@ -121,7 +121,7 @@ linters:
     install:
       dockerfile:
         - FROM mvdan/shfmt:latest-alpine as shfmt
-        - COPY --from=shfmt /bin/shfmt /usr/bin/
+        - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:
         - name: format-shell

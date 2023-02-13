@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -111,7 +112,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=terrascan /go/bin/terrascan /usr/bin/
+COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -119,7 +120,7 @@ COPY --from=terrascan /go/bin/terrascan /usr/bin/
 #############################################################################################
 #OTHER__START
 # terrascan installation
-# Managed with COPY --from=terrascan /go/bin/terrascan /usr/bin/
+# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 
 #OTHER__END
 

@@ -1,4 +1,5 @@
-# MEGA-LINTER FLAVOR [ci_light]: Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
+# syntax=docker/dockerfile:1
+# MEGALINTER FLAVOR [ci_light]: Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -164,11 +165,11 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #COPY__START
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --from=checkmake /checkmake /usr/bin/checkmake
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -176,22 +177,22 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #############################################################################################
 #OTHER__START
 # shellcheck installation
-# Managed with COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 # shfmt installation
-# Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 
 # hadolint installation
-# Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 
 # checkmake installation
-# Managed with COPY --from=checkmake /checkmake /usr/bin/checkmake
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # gitleaks installation
-# Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin

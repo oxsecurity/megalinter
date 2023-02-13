@@ -212,8 +212,13 @@ branding:
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
         flavor_label = flavor_info["label"]
-        comment = f"# MEGA-LINTER FLAVOR [{flavor}]: {flavor_label}"
+        comment = f"# MEGALINTER FLAVOR [{flavor}]: {flavor_label}"
         with open(dockerfile, "r+", encoding="utf-8") as f:
+            first_line = f.readline().rstrip()
+            if first_line.startswith("# syntax="):
+                comment = f"{first_line}\n{comment}" 
+            else:
+                f.seek(0)
             content = f.read()
             f.seek(0)
             f.truncate()

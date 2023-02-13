@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -113,7 +114,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
+COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 #COPY__END
 
 #############################################################################################
@@ -121,7 +122,7 @@ COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 #############################################################################################
 #OTHER__START
 # dustilock installation
-# Managed with COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
+# Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
 #OTHER__END
 

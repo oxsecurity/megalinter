@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -115,7 +116,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #COPY__START
-COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #COPY__END
 
 #############################################################################################
@@ -123,7 +124,7 @@ COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #############################################################################################
 #OTHER__START
 # shellcheck installation
-# Managed with COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 #OTHER__END
 

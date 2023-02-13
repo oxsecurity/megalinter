@@ -76,14 +76,14 @@ linters:
       dockerfile:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 as revive" is available, use
         # - FROM ghcr.io/mgechev/revive:1.2.5 as revive
-        # - COPY --from=revive /usr/bin/revive /usr/bin/revive
+        # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |
           FROM golang:1.19-alpine as revive
           ## The golang image used as a builder is a temporary workaround 
           ## for the released revive binaries not returning version numbers (devel). 
           ## The install command should then be what is commented in the go.megalinter-descriptor.yml
           RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-        - COPY --from=revive /usr/bin/revive /usr/bin/revive
+        - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     ide:
       atom:
         - name: linter-revive

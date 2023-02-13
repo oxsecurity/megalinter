@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -116,7 +117,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=revive /usr/bin/revive /usr/bin/revive
+COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 #COPY__END
 
 #############################################################################################
@@ -124,7 +125,7 @@ COPY --from=revive /usr/bin/revive /usr/bin/revive
 #############################################################################################
 #OTHER__START
 # revive installation
-# Managed with COPY --from=revive /usr/bin/revive /usr/bin/revive
+# Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
 #OTHER__END
 
