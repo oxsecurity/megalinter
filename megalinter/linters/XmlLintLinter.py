@@ -27,3 +27,7 @@ class XmlLintLinter(Linter):
                     f"You can not apply_fixes with cli_lint_mode {self.cli_lint_mode}"
                 )
         return cmd
+
+    def pre_test(self):
+        config.set_value("XML_XMLLINT_AUTOFORMAT", "true")
+        config.set_value("XML_XMLLINT_CLI_LINT_MODE", "file")

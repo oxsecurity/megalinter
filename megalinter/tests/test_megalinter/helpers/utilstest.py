@@ -633,7 +633,7 @@ def test_linter_format_fix(linter, test_self):
             and file_extension not in linter.file_extensions
         ):
             continue
-        elif "fix" not in file_name:
+        elif "_fix_" not in file_name:
             continue
 
         with open(file, "r", encoding="utf-8") as f_expected:

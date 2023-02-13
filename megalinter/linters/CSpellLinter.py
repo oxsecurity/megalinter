@@ -129,3 +129,6 @@ Of course, please correct real typos before :)
             ]
         )
         return additional_report.splitlines()
+
+    def pre_test(self):
+        config.set_value("SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"])

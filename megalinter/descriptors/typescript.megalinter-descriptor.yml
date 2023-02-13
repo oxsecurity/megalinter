@@ -98,7 +98,8 @@ linters:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
-  - linter_name: standard
+  - class: TypeScriptStandardLinter
+    linter_name: standard
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
