@@ -25,7 +25,7 @@ linters:
       - "checkmake Makefile"
       - "checkmake --config .checkmake.ini Makefile"
     install:
-      # make is included in the mrtazz/checkmake:latest image 
+      # make is included in the mrtazz/checkmake:latest image
       # (DIGEST:sha256:eb6919b20b22d1701a976856e4a224627df0a74b118246101fb6cf5c2e03049f)
       # It may not be a real dependency, like their pandoc mention in the README,
       # that is not included in the docker image they provide.

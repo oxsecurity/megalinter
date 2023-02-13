@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
-# shellcheck is a dependency for actionlint and the FROM command may me safely repeated in a Dockerfile
+# shellcheck is a dependency for actionlint and the FROM command may be safely repeated in a Dockerfile
 FROM koalaman/shellcheck:stable as shellcheck
 
 FROM koalaman/shellcheck:stable as shellcheck
