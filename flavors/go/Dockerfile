@@ -23,7 +23,7 @@ FROM golang:1.19-alpine as revive
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN go install github.com/mgechev/revive@latest
+RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
@@ -211,7 +211,7 @@ COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --from=revive /go/bin/revive /usr/bin/revive
+COPY --from=revive /usr/bin/revive /usr/bin/revive
 COPY --from=checkmake /checkmake /usr/bin/checkmake
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -251,7 +251,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && golangci-lint --version \
 
 # revive installation
-# Managed with COPY --from=revive /go/bin/revive /usr/bin/revive
+# Managed with COPY --from=revive /usr/bin/revive /usr/bin/revive
 
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
