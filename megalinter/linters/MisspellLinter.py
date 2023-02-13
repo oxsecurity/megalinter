@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Use Misspell to fix ommonly misspelled English words
+Use Misspell to fix commonly misspelled English words
 https://github.com/client9/misspell
 """
 from megalinter import config, Linter
