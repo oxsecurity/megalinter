@@ -13,6 +13,9 @@
 #FROM__START
 FROM koalaman/shellcheck:stable as shellcheck
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+FROM golang:alpine as dustilock
+RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
@@ -62,7 +65,6 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
-                go \
                 npm \
                 nodejs-current \
                 yarn \
@@ -164,6 +166,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
@@ -214,15 +217,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
-    && ML_THIRD_PARTY_DIR=/download/dustilock && \
-    mkdir -p ${ML_THIRD_PARTY_DIR} && \
-    git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
-    cd ${ML_THIRD_PARTY_DIR} && \
-    go build && go clean --cache && \
-    chmod +x dustilock && \
-    mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
-    find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
-    cd / \
+# Managed with COPY --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
 # gitleaks installation
 # Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
