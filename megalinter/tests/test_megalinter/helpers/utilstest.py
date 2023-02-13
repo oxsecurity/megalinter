@@ -703,6 +703,7 @@ def test_linter_format_fix(linter, test_self):
             [os.path.join(os.path.realpath(REPO_HOME), file)], force=True
         )
 
+
 def write_eslintignore():
     # The file must be in the root of the repository so we create it temporarily for the test.
     # By default eslint ignores files starting with "." so we override this behavior
@@ -713,6 +714,7 @@ def write_eslintignore():
         encoding="utf-8",
     ) as f:
         f.write("!.automation")
+
 
 def delete_eslintignore():
     os.remove(os.path.join(os.getcwd(), ".eslintignore"))

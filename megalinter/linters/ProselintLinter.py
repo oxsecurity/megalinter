@@ -3,7 +3,7 @@
 Use Proselint to check spell in files
 https://github.com/amperser/proselint
 """
-from megalinter import config, Linter
+from megalinter import Linter, config
 
 
 class ProselintLinter(Linter):

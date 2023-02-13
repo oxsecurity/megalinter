@@ -3,7 +3,7 @@
 Use Misspell to fix commonly misspelled English words
 https://github.com/client9/misspell
 """
-from megalinter import config, Linter
+from megalinter import Linter, config
 
 
 class MisspellLinter(Linter):
