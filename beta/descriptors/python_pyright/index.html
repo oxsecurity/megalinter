@@ -5869,12 +5869,12 @@
   </a>
 </div>
 
-<p><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange" /> <a href="https://github.com/microsoft/pyright"><img alt="GitHub stars" src="https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600" /></a> <a href="https://github.com/microsoft/pyright/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/microsoft/pyright?sort=semver" /></a> <a href="https://github.com/microsoft/pyright/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/microsoft/pyright" /></a> <a href="https://github.com/microsoft/pyright/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/microsoft/pyright" /></a> <a href="https://github.com/microsoft/pyright/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/microsoft/pyright" /></a></p>
+<p><a href="https://github.com/microsoft/pyright"><img alt="GitHub stars" src="https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600" /></a> <a href="https://github.com/microsoft/pyright/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/microsoft/pyright?sort=semver" /></a> <a href="https://github.com/microsoft/pyright/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/microsoft/pyright" /></a> <a href="https://github.com/microsoft/pyright/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/microsoft/pyright" /></a> <a href="https://github.com/microsoft/pyright/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/microsoft/pyright" /></a></p>
 <p>Optional static typing checks for python, by Microsoft</p>
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_PYRIGHT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="pyright-documentation">pyright documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.1.270</strong></li>
+<li>Version in MegaLinter: <strong>1.1.293</strong></li>
 <li>Visit <a href="https://github.com/Microsoft/pyright#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/configuration.md" target="_blank">How to configure pyright rules</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls" target="_blank">How to disable pyright rules in files</a></li>
@@ -6061,6 +6061,7 @@
   -h,--help                          Show this help message
   --ignoreexternal                   Ignore external imports for --verifytypes
   --lib                              Use library code to infer types when stubs are missing
+  --level &lt;LEVEL&gt;                    Minimum diagnostic level (error or warning)
   --outputjson                       Output results in JSON format
   -p,--project &lt;FILE OR DIRECTORY&gt;   Use the configuration file at this location
   --pythonplatform &lt;PLATFORM&gt;        Analyze for a specific platform (Darwin, Linux, Windows)
@@ -6074,9 +6075,6 @@
   --version                          Print Pyright version
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
-
-WARNING: there is a new pyright version available (v1.1.270 -&gt; v1.1.293).
-Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
