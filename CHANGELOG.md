@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.1 to **6.24.0** on 2023-02-13
   - [kics](https://www.kics.io) from 1.6.9 to **1.6.10** on 2023-02-13
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0** on 2023-02-13
+  - [semgrep](https://semgrep.dev/) from 1.11.0 to **1.12.0** on 2023-02-14
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
