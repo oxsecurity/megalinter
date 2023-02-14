@@ -6,7 +6,8 @@ file_extensions:
   - ".proto"
 linters:
   # Protolint
-  - linter_name: protolint
+  - class: ProtolintLinter
+    linter_name: protolint
     linter_url: https://github.com/yoheimuta/protolint
     linter_repo: https://github.com/yoheimuta/protolint
     linter_rules_url: https://github.com/yoheimuta/protolint#rules
