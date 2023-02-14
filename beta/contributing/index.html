@@ -5679,6 +5679,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#execute-linter-tests-inside-the-container" class="md-nav__link">
+    Execute linter tests inside the container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cictcd" class="md-nav__link">
     CI/CT/CD
   </a>
@@ -5828,6 +5835,13 @@
           <li class="md-nav__item">
   <a href="#execute-the-tests-locally-visual-studio-code" class="md-nav__link">
     Execute the tests locally (Visual Studio Code)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-linter-tests-inside-the-container" class="md-nav__link">
+    Execute linter tests inside the container
   </a>
   
 </li>
@@ -5986,6 +6000,23 @@ INFO    -  Documentation built in 9.76 seconds
 <li>Install <a href="https://marketplace.visualstudio.com/items?itemName=LittleFoxTeam.vscode-python-test-adapter">Python Test Explorer for Visual Studio Code</a> extension</li>
 <li>Execute or debug tests via the side menu</li>
 </ol>
+<h3 id="execute-linter-tests-inside-the-container">Execute linter tests inside the container</h3>
+<p>If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.</p>
+<p>When running them, you may encounter several problems:
+* It is not installed on the machine locally and you do not want to install it.
+* The OS does not allow the installation of the linter because it is not cross-platform.
+* The behavior between running it on the local machine (host) and the container is different.</p>
+<p>For those cases, it is important to have the possibility to run the tests inside the container. To do so:
+1. Run <code>bash build.sh</code> to update the Dockerfile files of each linter.
+2. Execute the following commands in a <strong>*.sh</strong> script. Example:</p>
+<pre><code class="language-bash">docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
+TEST_KEYWORDS_TO_USE=&quot;spell_misspell&quot;
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS=&quot;${TEST_KEYWORDS_TO_USE}&quot; -e MEGALINTER_VOLUME_ROOT=&quot;.&quot; -v &quot;/var/run/docker.sock:/var/run/docker.sock:rw&quot; -v $(pwd):/tmp/lint spell_misspell
+</code></pre>
+<p>In the above example, it builds the <strong>misspell</strong> linter image and then runs its tests. To do the same for another linter you would have to:
+1. Change the path to the Dockerfile to the appropriate Dockerfile
+2. Change the <strong>tag</strong> in the 2 places (docker buildx build and docker run)
+3. Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that is responsible for finding the tests of the particular linter</p>
 <h3 id="cictcd">CI/CT/CD</h3>
 <p>The <strong>MegaLinter</strong> has <em>CI/CT/CD</em> configured utilizing <strong>GitHub</strong> Actions.</p>
 <ul>

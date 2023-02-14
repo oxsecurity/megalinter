@@ -6035,7 +6035,7 @@
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
 </code></pre>
-<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict
+<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">OVERVIEW: A tool to enforce Swift style and conventions.
