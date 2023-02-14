@@ -1,10 +1,11 @@
 /**
  * Multi-line comment
  */
+ a { -webkit-transform: scale(1); }
 
 .selector-1,
 .selector-2,
-.selector-3[type="text"]{
+.selector-3[type="text"] {
   background: linear-gradient(#fff, rgba(0 0 0 80%));
   box-sizing: border-box;
   display: block;
@@ -17,6 +18,14 @@
   top: calc(calc(1em * 2) / 3);
 }
 
-.selector-x { width: 10%; }
-.selector-y { width: 20%; }
-.selector-z { width: 30%; }
+.selector-x {
+  width: 10%;
+}
+
+.selector-y {
+  width: 20%;
+}
+
+.selector-z {
+  width: 30%;
+}
