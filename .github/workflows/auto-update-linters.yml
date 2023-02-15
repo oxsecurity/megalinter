@@ -75,7 +75,7 @@ jobs:
         timeout-minutes: 60
 
       #####################################
-      # Run Linter against Test code base #
+      # Collect linters versions & help    #
       #####################################
       - name: Collect latest versions and help
         id: compute_versions
