@@ -45,7 +45,6 @@ jobs:
   build:
     # Name the Job
     name: Deploy Docker Image - DEV - Linters
-  #  if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     needs: prepare
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
