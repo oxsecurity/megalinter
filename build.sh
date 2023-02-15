@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eu
 
-git config core.filemode false
-
 PYTHONPATH=.
 export PYTHONPATH
 if type python3 >/dev/null 2>/dev/null; then

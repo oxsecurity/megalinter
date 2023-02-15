@@ -46,6 +46,8 @@ UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
+DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+
 # Release args management
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
@@ -556,8 +558,8 @@ def match_flavor(item, flavor, flavor_info):
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
     # Remove all the contents of LINTERS_DIR beforehand so that the result is deterministic
-    shutil.rmtree(os.path.realpath(LINTERS_DIR))
-    os.makedirs(os.path.realpath(LINTERS_DIR))
+    if DELETE_DOCKERFILES is True:
+        shutil.rmtree(os.path.realpath(LINTERS_DIR))
     # Browse descriptors
     linters_md = "# Standalone linter docker images\n\n"
     linters_md += "| Linter key | Docker image | Size |\n"
