@@ -22,7 +22,7 @@ on:
 # Set the Job #
 ###############
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
+  group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
@@ -207,7 +207,6 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
             oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
-        #  ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
 
       #####################################
       # Run Linter test cases #
