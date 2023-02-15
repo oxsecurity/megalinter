@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import date, datetime
@@ -45,6 +46,8 @@ UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
+DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+
 # Release args management
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
@@ -556,6 +559,9 @@ def match_flavor(item, flavor, flavor_info):
 
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
+    # Remove all the contents of LINTERS_DIR beforehand so that the result is deterministic
+    if DELETE_DOCKERFILES is True:
+        shutil.rmtree(os.path.realpath(LINTERS_DIR))
     # Browse descriptors
     linters_md = "# Standalone linter docker images\n\n"
     linters_md += "| Linter key | Docker image | Size |\n"
@@ -573,9 +579,6 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
-            # Do not build standalone linter if it does not manage SARIF
-            if linter.can_output_sarif is False:
-                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -660,10 +663,21 @@ def generate_linter_dockerfiles():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
+    test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
+
+    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+    shutil.rmtree(os.path.realpath(test_linters_root))
+    os.makedirs(os.path.realpath(test_linters_root))
+
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
+        if linter.name is not None:
+            linter_name = linter.name
+        else:
+            lang_lower = linter.descriptor_id.lower()
+            linter_name = f"{lang_lower}_{linter.linter_name}"
+
+        linter_name_lower = linter_name.lower().replace("-", "_")
         test_class_code = f"""# !/usr/bin/env python3
 \"\"\"
 Unit tests for {linter.descriptor_id} linter {linter.linter_name}
@@ -675,14 +689,11 @@ from unittest import TestCase
 from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
-class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
+class {linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
-        test_class_file_name = (
-            f"{REPO_HOME}/megalinter/tests/test_megalinter/"
-            + f"linters/{lang_lower}_{linter_name_lower}_test.py"
-        )
+        test_class_file_name = f"{test_linters_root}/{linter_name_lower}_test.py"
         if not os.path.isfile(test_class_file_name):
             file = open(
                 test_class_file_name,
@@ -3023,6 +3034,40 @@ def update_dependents_info():
     os.system(" ".join(command))
 
 
+def update_workflows_linters():
+    descriptors, _ = list_descriptors_for_build()
+
+    linters = ""
+
+    for descriptor in descriptors:
+        for linter in descriptor["linters"]:
+            if "name" in linter:
+                name = linter["name"].lower()
+            else:
+                lang_lower = descriptor["descriptor_id"].lower()
+                linter_name_lower = linter["linter_name"].lower().replace("-", "_")
+                name = f"{lang_lower}_{linter_name_lower}"
+
+            linters += f'            "{name}",\n'
+
+    update_workflow_linters(".github/workflows/deploy-DEV-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-BETA-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-RELEASE-linters.yml", linters)
+
+
+def update_workflow_linters(file_path, linters):
+    with open(file_path, "r", encoding="utf-8") as f:
+        file_content = f.read()
+        file_content = re.sub(
+            r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
+            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            file_content,
+        )
+
+    with open(file_path, "w") as f:
+        f.write(file_content)
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -3047,6 +3092,7 @@ if __name__ == "__main__":
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
+    update_workflows_linters()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
         # refresh_users_info() # deprecated since now we use github-dependents-info

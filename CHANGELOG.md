@@ -10,6 +10,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Upgrade base docker image from python:3.10.4-alpine3.16 to python:3.11.1-alpine3.17
+  - Build: remove folder contents before generating Dockerfile files for each linter in generate_linter_dockerfiles(), by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Build: remove folder contents before generating test classes for each linter in generate_linter_test_classes(), by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Build: automatically update the linter list used in the matrix of several of the workflows, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: create a testing architecture for format/autofix linters, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: create or adapt input files for format/autofix tests, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: created specific test folders for linters that need them because they cannot share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+
+- Fixes
+  - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Removed the default **powershell** templates TEMPLATES/.powershell-formatter.psd1 and TEMPLATES/.powershell-psscriptanalyzer.psd1. Having these templates caused all rules to be ignored as the settings are not incremental but absolute, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **dotnet format** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Created **BicepLinter** class to add **DOTNET_SYSTEM_GLOBALIZATION_INVARIANT** environment variable to avoid problems with ICU packages, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Modified **npm-groovy-lint** descriptor to add **--failon** parameter to only fail with error and not info which is the default value, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **powershell formatter** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Created **ProtolintLinter** class to fix the problem that returns exit code 1 when it encounters a problem to correct even though it corrects it correctly, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Concatenate **--output** parameter correctly to **xmllint** linter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+
+- Documentation
+  - Change **swiftlint** example that did not correctly reflect the **--fix** parameter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Change in TSX **eslint** descriptor the urls as they were not correct, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Change in TYPESCRIPT **eslint** descriptor the urls as they were not correct, by @bdovaz on [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
 
 - CI
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
@@ -59,6 +80,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0** on 2023-02-11
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.4.0 to **2.7.0** on 2022-02-11
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.22.0 to **6.23.0** on 2023-02-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.0 to **6.23.1** on 2023-02-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.270 to **1.1.293** on 2023-02-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.21.0 to **7.22.0** on 2023-02-13
+  - [pylint](https://pylint.pycqa.org) from 2.16.1 to **2.16.2** on 2023-02-13
+  - [checkov](https://www.checkov.io/) from 2.3.3 to **2.3.7** on 2023-02-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.1 to **6.24.0** on 2023-02-13
+  - [kics](https://www.kics.io) from 1.6.9 to **1.6.10** on 2023-02-13
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0** on 2023-02-13
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

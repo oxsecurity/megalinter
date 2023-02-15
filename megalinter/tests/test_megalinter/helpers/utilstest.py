@@ -1,5 +1,6 @@
 import contextlib
 import difflib
+import glob
 import io
 import json
 import logging
@@ -175,8 +176,6 @@ def test_linter_success(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": True,
     }
-    if linter.lint_all_other_linters_files is not False:
-        env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
@@ -190,7 +189,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    else:
+    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -237,8 +236,6 @@ def test_linter_failure(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
     }
-    if linter.lint_all_other_linters_files is not False:
-        env_vars_failure["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
     # Check linter run
@@ -257,13 +254,16 @@ def test_linter_failure(linter, test_self):
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
-    else:
+    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
         )
+
+    mega_linter_linter = mega_linter.linters[0]
+
     # Check text reporter output log
-    if mega_linter.linters[0].disable_errors is True:
+    if mega_linter_linter.disable_errors is True:
         report_file_name = f"WARNING-{linter.name}.log"
     else:
         report_file_name = f"ERROR-{linter.name}.log"
@@ -278,14 +278,14 @@ def test_linter_failure(linter, test_self):
 
     # Check if number of errors is correctly generated
     if (
-        mega_linter.linters[0].cli_lint_errors_count is not None
-        and mega_linter.linters[0].linter_name != "mypy"  # ugly
+        mega_linter_linter.cli_lint_errors_count is not None
+        and mega_linter_linter.linter_name != "mypy"  # ugly
     ):
         test_self.assertTrue(
-            mega_linter.linters[0].total_number_errors > 1,
+            mega_linter_linter.total_number_errors > 1,
             "Unable to count number of errors from logs with count method "
-            + f"{mega_linter.linters[0].cli_lint_errors_count} and "
-            + f"regex {mega_linter.linters[0].cli_lint_errors_regex}",
+            + f"{mega_linter_linter.cli_lint_errors_count} and "
+            + f"regex {mega_linter_linter.cli_lint_errors_regex}",
         )
 
     # Copy error logs in documentation
@@ -593,7 +593,7 @@ def assert_is_skipped(skipped_item, output, test_self):
 
 
 def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(REPO_HOME)
+    repo = Repo(os.path.realpath(REPO_HOME))
     changed_files = [item.a_path for item in repo.index.diff(None)]
     logging.info("Updated files (git):\n" + "\n".join(changed_files))
     updated = False
@@ -604,3 +604,117 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
         test_self.assertTrue(updated, f"{file_name} has been updated")
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
+
+
+def test_linter_format_fix(linter, test_self):
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+        or (linter.is_formatter is False and linter.cli_lint_fix_arg_name is None)
+    ):
+        raise unittest.SkipTest("Linter does not format and cannot apply fixes")
+    test_folder = linter.test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    # Special cases when files must be copied in a temp directory before being linted
+    if os.path.isdir(workspace + os.path.sep + "fix"):
+        workspace = workspace + os.path.sep + "fix"
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+    assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+
+    file_map = {}
+
+    search_glob_pattern = workspace.replace("\\", "/") + "/**/*"
+
+    for file in glob.iglob(search_glob_pattern, recursive=True):
+        file_name = os.path.basename(file)
+        _, file_extension = os.path.splitext(file_name)
+        if (
+            len(linter.file_extensions) > 0
+            and file_extension not in linter.file_extensions
+        ):
+            continue
+        elif "_fix_" not in file_name:
+            continue
+
+        with open(file, "r", encoding="utf-8") as f_expected:
+            content_expected = f_expected.read()
+            file_map[file] = content_expected
+
+    if len(file_map) == 0:
+        raise Exception(f"[test] No files found in: {workspace}")
+
+    linter_name = linter.linter_name
+    env_vars = {
+        "APPLY_FIXES": linter.name,
+        "DEFAULT_WORKSPACE": workspace,
+        "FILTER_REGEX_INCLUDE": r"(fix)",
+        "TEXT_REPORTER": "true",
+        "UPDATED_SOURCES_REPORTER": "false",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
+        "LOG_LEVEL": "DEBUG",
+        "ENABLE_LINTERS": linter.name,
+        "PRINT_ALL_FILES": True,
+    }
+    env_vars.update(linter.test_variables)
+    mega_linter, output = call_mega_linter(env_vars)
+    test_self.assertTrue(
+        len(mega_linter.linters) > 0, "Linters have been created and run"
+    )
+    # Check console output
+    if linter.cli_lint_mode == "file":
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
+            test_self.assertRegex(
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
+            )
+        else:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*fix.* - SUCCESS")
+    else:
+        test_self.assertRegex(
+            output,
+            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
+        )
+    # Check text reporter output log
+    report_file_name = f"SUCCESS-{linter.name}.log"
+    text_report_file = (
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
+        f"{os.path.sep}{report_file_name}"
+    )
+    test_self.assertTrue(
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
+    )
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+    repo = Repo(os.path.realpath(REPO_HOME))
+
+    # Check files content
+    for file in file_map:
+        with open(file, "r", encoding="utf-8") as f_produced:
+            content_expected = file_map[file]
+            content_produced = f_produced.read()
+            diffs = [
+                li
+                for li in difflib.ndiff(content_expected, content_produced)
+                if li[0] != " "
+            ]
+            assert (len(list(diffs))) > 0, f"No changes in the {file} file"
+
+        repo.index.checkout(
+            [os.path.join(os.path.realpath(REPO_HOME), file)], force=True
+        )
+
+
+def write_eslintignore():
+    # The file must be in the root of the repository so we create it temporarily for the test.
+    # By default eslint ignores files starting with "." so we override this behavior
+    # to work with the .automation folder
+    with open(
+        os.path.join(os.getcwd(), ".eslintignore"),
+        "w",
+        encoding="utf-8",
+    ) as f:
+        f.write("!.automation")
+
+
+def delete_eslintignore():
+    os.remove(os.path.join(os.getcwd(), ".eslintignore"))

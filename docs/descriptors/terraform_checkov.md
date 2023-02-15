@@ -11,7 +11,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-![deprecated](https://shields.io/badge/-deprecated-red) ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
+![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
 
 > This linter has been deprecated.
 >
@@ -23,7 +23,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.3**
+- Version in MegaLinter: **2.3.7**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -118,7 +118,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK]
 
@@ -374,7 +374,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -405,5 +405,5 @@ override config file values which override defaults.
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [packaging==21.3](https://pypi.org/project/packaging/21.3)
+  - [packaging](https://pypi.org/project/packaging)
   - [checkov](https://pypi.org/project/checkov)

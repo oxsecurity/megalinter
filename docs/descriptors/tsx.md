@@ -9,9 +9,9 @@ description: eslint is available to analyze TSX files in MegaLinter
 
 ## Linters
 
-| Linter                                                        | Additional                                                                                                                                                                                                                                                    |
-|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**eslint**](tsx_eslint.md)<br/>[_TSX_ESLINT_](tsx_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter                                                        | Additional                                                                                                                                                                                                                                                      |
+|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**eslint**](tsx_eslint.md)<br/>[_TSX_ESLINT_](tsx_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/jsx-eslint/eslint-plugin-react?cacheSeconds=3600)](https://github.com/jsx-eslint/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

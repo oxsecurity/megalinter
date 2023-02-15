@@ -6,7 +6,8 @@ descriptor_flavors:
 lint_all_other_linters_files: true
 linters:
   # MISSPELL
-  - linter_name: misspell
+  - class: MisspellLinter
+    linter_name: misspell
     name: SPELL_MISSPELL
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
@@ -66,7 +67,8 @@ linters:
         - name: Code Spell Checker
           url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
   # PROSELINT
-  - linter_name: proselint
+  - class: ProselintLinter
+    linter_name: proselint
     name: SPELL_PROSELINT
     lint_all_other_linters_files: false
     file_extensions:
