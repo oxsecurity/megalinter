@@ -27,7 +27,7 @@ on:
 # Set the Job #
 ###############
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
+  group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
