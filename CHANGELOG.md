@@ -87,6 +87,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.1 to **6.24.0** on 2023-02-13
   - [kics](https://www.kics.io) from 1.6.9 to **1.6.10** on 2023-02-13
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0** on 2023-02-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.12.2 to **6.13.0** on 2023-02-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.405 to **6.0.406** on 2023-02-16
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.293 to **1.1.294** on 2023-02-16
+  - [checkov](https://www.checkov.io/) from 2.3.7 to **2.3.18** on 2023-02-16
+  - [git_diff](https://git-scm.com) from 2.38.3 to **2.38.4** on 2023-02-16
+  - [semgrep](https://semgrep.dev/) from 1.11.0 to **1.12.0** on 2023-02-16
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.2 to **0.37.3** on 2023-02-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.24.0 to **6.26.1** on 2023-02-16
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

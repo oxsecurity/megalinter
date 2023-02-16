@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.12.2**
+- Version in MegaLinter: **6.13.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -96,9 +96,10 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
                     [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
                     [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
-                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [--offline] [--version]
+                    [--generate-ignore] [-w WARN_LIST]
+                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
+                    [--version]
                     [lintables ...]
 
 positional arguments:
@@ -159,13 +160,13 @@ options:
   -x SKIP_LIST, --skip-list SKIP_LIST
                         only check rules whose id/tags do not match these
                         values. e.g: --skip-list=name,run-once
+  --generate-ignore     Generate a text file '.ansible-lint-ignore' that
+                        ignores all found violations. Each line contains
+                        filename and rule id separated by a space.
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
-                        config file. Current version default value is: avoid-
-                        implicit, experimental, fqcn[action], fqcn[redirect],
-                        jinja[spacing], name[casing], name[play],
-                        name[prefix], role-name, warning[empty-playbook],
-                        role-name[path]
+                        config file. Current version default value is:
+                        experimental, jinja[spacing]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
