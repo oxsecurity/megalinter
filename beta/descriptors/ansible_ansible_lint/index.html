@@ -5856,7 +5856,7 @@
 <p><a href="https://github.com/ansible/ansible-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600" /></a> <img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /> <a href="https://github.com/ansible/ansible-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/ansible/ansible-lint?sort=semver" /></a> <a href="https://github.com/ansible/ansible-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ansible/ansible-lint" /></a> <a href="https://github.com/ansible/ansible-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/ansible/ansible-lint" /></a> <a href="https://github.com/ansible/ansible-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/ansible/ansible-lint" /></a></p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.12.2</strong></li>
+<li>Version in MegaLinter: <strong>6.13.0</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives" target="_blank">How to disable ansible-lint rules in files</a></li>
@@ -6078,9 +6078,10 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
                     [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
                     [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
-                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [--offline] [--version]
+                    [--generate-ignore] [-w WARN_LIST]
+                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
+                    [--version]
                     [lintables ...]
 
 positional arguments:
@@ -6141,13 +6142,13 @@ options:
   -x SKIP_LIST, --skip-list SKIP_LIST
                         only check rules whose id/tags do not match these
                         values. e.g: --skip-list=name,run-once
+  --generate-ignore     Generate a text file '.ansible-lint-ignore' that
+                        ignores all found violations. Each line contains
+                        filename and rule id separated by a space.
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
-                        config file. Current version default value is: avoid-
-                        implicit, experimental, fqcn[action], fqcn[redirect],
-                        jinja[spacing], name[casing], name[play],
-                        name[prefix], role-name, warning[empty-playbook],
-                        role-name[path]
+                        config file. Current version default value is:
+                        experimental, jinja[spacing]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
