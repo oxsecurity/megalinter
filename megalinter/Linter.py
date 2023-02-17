@@ -32,7 +32,7 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-from megalinter import config, pre_post_factory, utils, utils_reporter
+from megalinter import config, pre_post_factory, utils, utils_sarif, utils_reporter
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
@@ -108,7 +108,8 @@ class Linter:
         self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
-        self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
+        # Name of the cli argument to send in case of APPLY_FIXES required by user
+        self.cli_lint_fix_arg_name = None
         self.cli_lint_fix_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -177,7 +178,8 @@ class Linter:
         )
         if self.output_sarif is True:
             # Disable SARIF if linter not in specified linter list
-            sarif_enabled_linters = config.get_list("SARIF_REPORTER_LINTERS", None)
+            sarif_enabled_linters = config.get_list(
+                "SARIF_REPORTER_LINTERS", None)
             if (
                 sarif_enabled_linters is not None
                 and self.name not in sarif_enabled_linters
@@ -216,7 +218,8 @@ class Linter:
                 self.apply_fixes = False
             # APPLY_FIXES is "all"
             elif param_apply_fixes == "all" or (
-                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+                isinstance(param_apply_fixes,
+                           bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True
             # APPLY_FIXES is a comma-separated list in a single string
@@ -390,7 +393,8 @@ class Linter:
             self.is_active = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
-            self.is_active = utils.check_activation_rules(self.activation_rules, self)
+            self.is_active = utils.check_activation_rules(
+                self.activation_rules, self)
 
     # Manage configuration variables
     def load_config_vars(self, params):
@@ -399,22 +403,26 @@ class Linter:
         if config.exists(self.name + "_CONFIG_FILE"):
             self.config_file_name = config.get(self.name + "_CONFIG_FILE")
         elif config.exists(self.descriptor_id + "_CONFIG_FILE"):
-            self.config_file_name = config.get(self.descriptor_id + "_CONFIG_FILE")
+            self.config_file_name = config.get(
+                self.descriptor_id + "_CONFIG_FILE")
         elif config.exists(self.name + "_FILE_NAME"):
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
-            self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
+            self.config_file_name = config.get(
+                self.descriptor_id + "_FILE_NAME")
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
             if config.exists(self.name + "_IGNORE_FILE"):
                 self.ignore_file_name = config.get(self.name + "_IGNORE_FILE")
             elif config.exists(self.descriptor_id + "_IGNORE_FILE"):
-                self.ignore_file_name = config.get(self.descriptor_id + "_IGNORE_FILE")
+                self.ignore_file_name = config.get(
+                    self.descriptor_id + "_IGNORE_FILE")
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.name + "_RULES_PATH")
         elif config.exists(self.descriptor_id + "_RULES_PATH"):
-            self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
+            self.linter_rules_path = config.get(
+                self.descriptor_id + "_RULES_PATH")
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
@@ -582,14 +590,16 @@ class Linter:
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = config.get(self.name + "_FILTER_REGEX_INCLUDE")
+            self.filter_regex_include = config.get(
+                self.name + "_FILTER_REGEX_INCLUDE")
         elif config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get(
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
         # User arguments from config
         if config.get(self.name + "_ARGUMENTS", "") != "":
-            self.cli_lint_user_args = config.get_list_args(self.name + "_ARGUMENTS")
+            self.cli_lint_user_args = config.get_list_args(
+                self.name + "_ARGUMENTS")
 
         # Get PRE_COMMANDS overridden by user
         if config.get(self.name + "_PRE_COMMANDS", "") != "":
@@ -618,7 +628,8 @@ class Linter:
             self.disable_errors = True
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
         if config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get(self.name + "_FILTER_REGEX_EXCLUDE")
+            self.filter_regex_exclude = config.get(
+                self.name + "_FILTER_REGEX_EXCLUDE")
         elif config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = config.get(
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
@@ -671,10 +682,12 @@ class Linter:
                 self.status = "warning" if self.disable_errors is True else "error"
                 self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
-                self.total_number_errors += self.get_total_number_errors(stdout)
+                self.total_number_errors += self.get_total_number_errors(
+                    stdout)
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
-                self.update_files_lint_results(self.files, None, None, None, None)
+                self.update_files_lint_results(
+                    self.files, None, None, None, None)
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -709,7 +722,8 @@ class Linter:
         variables_with_replacements = []
         for txt in variables:
             if "{{SARIF_OUTPUT_FILE}}" in txt:
-                txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
+                txt = txt.replace("{{SARIF_OUTPUT_FILE}}",
+                                  self.sarif_output_file)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
             elif "{{WORKSPACE}}" in txt:
@@ -748,7 +762,8 @@ class Linter:
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):
-        reporter_init_params = {"master": self, "report_folder": self.report_folder}
+        reporter_init_params = {"master": self,
+                                "report_folder": self.report_folder}
         self.reporters = utils.list_active_reporters_for_scope(
             "linter", reporter_init_params
         )
@@ -874,9 +889,19 @@ class Linter:
                 if os.path.isfile(self.sarif_default_output_file)
                 else os.path.join(self.workspace, self.sarif_default_output_file)
             )
-            shutil.move(linter_sarif_report, self.sarif_output_file)
-            sarif_confirmed = True
-            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
+
+            # Check that a sarif report really exists before moving it etc)
+            if os.path.isfile(linter_sarif_report):
+                shutil.move(linter_sarif_report, self.sarif_output_file)
+                sarif_confirmed = True
+                logging.debug(
+                    f"Moved {linter_sarif_report} to {self.sarif_output_file}"
+                )
+            else:
+                logging.debug(
+                    f"Could not find {linter_sarif_report} (linter sarif output error?)"
+                )
+                sarif_confirmed = False
         # Manage case when SARIF output is in stdout (and not generated by the linter)
         elif (
             self.can_output_sarif is True
@@ -899,10 +924,15 @@ class Linter:
             and os.path.isfile(self.sarif_output_file)
         ):
             sarif_confirmed = True
+
+        if sarif_confirmed is True:
+            utils_sarif.normalize_sarif_files(self)
+
         # Convert SARIF into human readable text for Console & Text reporters
         if sarif_confirmed is True and self.master.sarif_to_human is True:
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
-                self.stdout_human = utils_reporter.convert_sarif_to_human(file.read())
+                self.stdout_human = utils_reporter.convert_sarif_to_human(
+                    file.read())
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
@@ -933,9 +963,11 @@ class Linter:
             )
             return_code = process.returncode
             output = utils.decode_utf8(process.stdout)
-            logging.debug("Linter version result: " + str(return_code) + " " + output)
+            logging.debug("Linter version result: " +
+                          str(return_code) + " " + output)
         except FileNotFoundError:
-            logging.warning("Unable to call command [" + " ".join(command) + "]")
+            logging.warning(
+                "Unable to call command [" + " ".join(command) + "]")
             return_code = 666
             output = "ERROR"
 
@@ -944,7 +976,8 @@ class Linter:
                 "Unable to get version for linter [" + self.linter_name + "]"
             )
             logging.warning(
-                " ".join(command) + f" returned output: ({str(return_code)}) " + output
+                " ".join(command) +
+                f" returned output: ({str(return_code)}) " + output
             )
             return "ERROR"
         else:
@@ -972,16 +1005,20 @@ class Linter:
                 )
                 return_code = process.returncode
                 output += utils.decode_utf8(process.stdout)
-                logging.debug("Linter help result: " + str(return_code) + " " + output)
+                logging.debug("Linter help result: " +
+                              str(return_code) + " " + output)
             except FileNotFoundError:
-                logging.warning("Unable to call command [" + " ".join(command) + "]")
+                logging.warning(
+                    "Unable to call command [" + " ".join(command) + "]")
                 return_code = 666
                 output += "ERROR"
                 break
 
         if return_code != self.help_command_return_code or output.strip() == "":
-            logging.warning("Unable to get help for linter [" + self.linter_name + "]")
-            logging.warning(f"{str(command)} returned output: ({return_code}) {output}")
+            logging.warning(
+                "Unable to get help for linter [" + self.linter_name + "]")
+            logging.warning(
+                f"{str(command)} returned output: ({return_code}) {output}")
             return "ERROR"
         else:
             return output
@@ -1119,9 +1156,11 @@ class Linter:
                     self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
                 )
             if self.cli_lint_ignore_arg_name.endswith("="):
-                ignore_args += [self.cli_lint_ignore_arg_name + self.final_ignore_file]
+                ignore_args += [self.cli_lint_ignore_arg_name +
+                                self.final_ignore_file]
             elif self.cli_lint_ignore_arg_name != "":
-                ignore_args += [self.cli_lint_ignore_arg_name, self.final_ignore_file]
+                ignore_args += [self.cli_lint_ignore_arg_name,
+                                self.final_ignore_file]
         return ignore_args
 
     # Manage SARIF arguments
