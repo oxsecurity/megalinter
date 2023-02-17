@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Test: create a testing architecture for format/autofix linters, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: create or adapt input files for format/autofix tests, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: created specific test folders for linters that need them because they cannot share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added rubocop-rake RubyGem for linting Rake files with RuboCop
 
 - Fixes
   - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
@@ -88,6 +89,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.1 to **6.24.0** on 2023-02-13
   - [kics](https://www.kics.io) from 1.6.9 to **1.6.10** on 2023-02-13
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0** on 2023-02-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.12.2 to **6.13.0** on 2023-02-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.405 to **6.0.406** on 2023-02-16
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.293 to **1.1.294** on 2023-02-16
+  - [checkov](https://www.checkov.io/) from 2.3.7 to **2.3.18** on 2023-02-16
+  - [git_diff](https://git-scm.com) from 2.38.3 to **2.38.4** on 2023-02-16
+  - [semgrep](https://semgrep.dev/) from 1.11.0 to **1.12.0** on 2023-02-16
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.2 to **0.37.3** on 2023-02-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.24.0 to **6.26.1** on 2023-02-16
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.01.20 to **2023.02.17** on 2023-02-17
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.13.0 to **6.13.1** on 2023-02-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.73.1 to **0.73.2** on 2023-02-17
+  - [phpstan](https://phpstan.org/) from 1.9.17 to **1.9.18** on 2023-02-17
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.0 to **1.0.1** on 2023-02-17
+  - [checkov](https://www.checkov.io/) from 2.3.18 to **2.3.22** on 2023-02-17
+  - [semgrep](https://semgrep.dev/) from 1.12.0 to **1.12.1** on 2023-02-17
+  - [syft](https://github.com/anchore/syft) from 0.71.0 to **0.72.0** on 2023-02-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.1 to **6.26.3** on 2023-02-17
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.8 to **1.3.9** on 2023-02-17
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

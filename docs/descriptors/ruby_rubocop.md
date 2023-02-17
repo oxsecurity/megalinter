@@ -279,4 +279,5 @@ Profiling Options:
   - [rubocop-github](https://rubygems.org/gems/rubocop-github)
   - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
   - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
+  - [rubocop-rake](https://rubygems.org/gems/rubocop-rake)
   - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)
