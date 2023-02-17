@@ -1165,7 +1165,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2023.01.20",
+        "clj-kondo v2023.02.17",
         "",
         "",
         "Options:",
@@ -1188,7 +1188,7 @@
         "  nearest `.clj-kondo` directory in the current and parent directories.",
         "",
         "  --config <config>: config may be a file or an EDN expression. See",
-        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.01.20/doc/configuration",
+        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.02.17/doc/configuration",
         "",
         "  --config-dir <config-dir>: use this config directory instead of auto-detected",
         "    .clj-kondo dir.",

@@ -12,7 +12,6 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2023.01.20-alpine as clj-kondo
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
@@ -193,7 +192,6 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 #COPY__START
 COPY --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
@@ -227,7 +225,9 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 # Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
 
 # clj-kondo installation
-# Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+    && curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+    && chmod +x install-clj-kondo \
+    && ./install-clj-kondo \
 
 # hadolint installation
 # Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
