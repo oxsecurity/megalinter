@@ -95,6 +95,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.11.0 to **1.12.0** on 2023-02-16
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.2 to **0.37.3** on 2023-02-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.24.0 to **6.26.1** on 2023-02-16
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.01.20 to **2023.02.17** on 2023-02-17
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

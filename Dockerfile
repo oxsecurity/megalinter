@@ -11,7 +11,6 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2023.01.20-alpine as clj-kondo
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
@@ -281,7 +280,6 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 #COPY__START
 COPY --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --from=chktex /usr/bin/chktex /usr/bin/
@@ -412,7 +410,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # clj-kondo installation
-# Managed with COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+    && curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+    && chmod +x install-clj-kondo \
+    && ./install-clj-kondo \
 
 # csharpier installation
     && /usr/share/dotnet/dotnet tool install -g csharpier \
