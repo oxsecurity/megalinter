@@ -218,6 +218,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
           rubocop-github \
           rubocop-performance \
           rubocop-rails \
+          rubocop-rake \
           rubocop-rspec
 #GEM__END
 

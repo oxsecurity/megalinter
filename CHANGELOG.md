@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Test: create a testing architecture for format/autofix linters, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: create or adapt input files for format/autofix tests, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: created specific test folders for linters that need them because they cannot share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added rubocop-rake RubyGem for linting Rake files with RuboCop
 
 - Fixes
   - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
