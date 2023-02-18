@@ -453,6 +453,8 @@ def build_dockerfile(
         "**/reprism/languages/**",  # jscpd
         "**/eslint-config-standard/**",  # standardjs
         "**/models/doc/**",  # markdown-table-formatter
+        "**/sfdx/**",  # sfdx
+        "**salesforce**",  # sfdx
         "**/sfdx-scanner/**",  # sfdx-scanner
     ]
     clean_modules_exclude_str = ""
