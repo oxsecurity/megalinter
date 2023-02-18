@@ -355,8 +355,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
@@ -578,20 +576,14 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
-  && npm cache clean --force || true \
-  && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#   && npm cache clean --force || true \
-#   && rm -rf /root/.npm/_cacache
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#   && npm cache clean --force || true \
-#   && rm -rf /root/.npm/_cacache
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \

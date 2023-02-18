@@ -11,9 +11,7 @@ install:
     - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |
-      RUN echo y|sfdx plugins:install sfdx-hardis \
-          && npm cache clean --force || true \
-          && rm -rf /root/.npm/_cacache
+      RUN echo y|sfdx plugins:install sfdx-hardis
   # Salesforce DX
   npm:
     - sfdx-cli
@@ -70,9 +68,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-            && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache
+          RUN sfdx plugins:install @salesforce/sfdx-scanner
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -137,9 +133,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-            && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache
+          RUN sfdx plugins:install @salesforce/sfdx-scanner
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -195,9 +189,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-            && npm cache clean --force || true \
-            && rm -rf /root/.npm/_cacache
+          RUN sfdx plugins:install @salesforce/sfdx-scanner
     ide:
       vscode:
         - name: Salesforce Extension Pack

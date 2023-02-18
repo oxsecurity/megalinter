@@ -86,19 +86,11 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --force --ignore-scripts \
-                sfdx-cli && \
+                sfdx-cli    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/reprism/languages/**" --exclude "**/eslint-config-standard/**" --exclude "**/models/doc/**" --exclude "**/sfdx-scanner/**"  && rm -rf ~/.npm/_npx \
+    && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
 #NPM__END
@@ -145,13 +137,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache
+    && sfdx plugins:install @salesforce/sfdx-scanner
 
 
 #OTHER__END

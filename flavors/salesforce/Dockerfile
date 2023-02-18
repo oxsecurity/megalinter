@@ -200,9 +200,7 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache
+RUN echo y|sfdx plugins:install sfdx-hardis
 
 
 # actionlint installation
@@ -267,20 +265,14 @@ RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --c
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
-  && npm cache clean --force || true \
-  && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#   && npm cache clean --force || true \
-#   && rm -rf /root/.npm/_cacache
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
-#   && npm cache clean --force || true \
-#   && rm -rf /root/.npm/_cacache
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \

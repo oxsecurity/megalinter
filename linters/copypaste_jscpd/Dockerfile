@@ -86,19 +86,11 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --force --ignore-scripts \
-                jscpd && \
+                jscpd    && \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && npx --yes clean-modules --yes --exclude "**/.bin/**" --exclude "**/reprism/languages/**" --exclude "**/eslint-config-standard/**" --exclude "**/models/doc/**" --exclude "**/sfdx-scanner/**"  && rm -rf ~/.npm/_npx \
+    && rm -rf /root/.npm/_cacache 
 WORKDIR /
 
 #NPM__END
