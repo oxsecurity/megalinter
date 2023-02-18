@@ -57,6 +57,22 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
+Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:
+```
+/build
+```
+
+Available commands can be listed with the help command by posting the following comment:
+```
+/help
+```
+Which returns:
+> Command | Description
+> --- | ---
+> /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+> /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+> /help | Returns this help message
+
 ### Without write access
 
 1. [Fork][fork] and clone the repository
