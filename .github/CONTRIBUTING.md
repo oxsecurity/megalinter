@@ -58,12 +58,12 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
 Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:
-```
+```text
 /build
 ```
 
 Available commands can be listed with the help command by posting the following comment:
-```
+```text
 /help
 ```
 Which returns:
