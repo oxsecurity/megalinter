@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=kics /app/bin/kics /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
 #COPY__END
 
@@ -123,7 +124,7 @@ COPY --from=kics /app/bin/assets /opt/kics/assets/
 #############################################################################################
 #OTHER__START
 # kics installation
-# Managed with COPY --from=kics /app/bin/kics /usr/bin/
+# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/

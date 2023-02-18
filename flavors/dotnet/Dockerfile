@@ -77,7 +77,6 @@ RUN apk add --update --no-cache \
                 zlib-dev \
                 openjdk11 \
                 py3-pyflakes \
-                go \
                 nodejs \
                 npm \
                 yarn \

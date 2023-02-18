@@ -60,7 +60,6 @@ RUN apk add --update --no-cache \
                 openssh \
                 openjdk11 \
                 py3-pyflakes \
-                go \
                 nodejs \
                 npm \
                 yarn \

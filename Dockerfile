@@ -109,7 +109,6 @@ RUN apk add --update --no-cache \
                 composer \
                 dpkg \
                 py3-pyflakes \
-                go \
                 nodejs \
                 npm \
                 yarn \
@@ -461,7 +460,8 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version \
+    && golangci-lint --version
+
 
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive

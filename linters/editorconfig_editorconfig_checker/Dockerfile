@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #############################################################################################
 #OTHER__START
 # editorconfig-checker installation
-# Managed with COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 #OTHER__END
 

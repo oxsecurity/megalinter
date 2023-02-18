@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -47,7 +48,6 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                go \
     && git config --global core.autocrlf true
 #APK__END
 
