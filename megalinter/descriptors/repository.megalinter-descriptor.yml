@@ -122,8 +122,8 @@ linters:
       - "dustilock"
     install:
       dockerfile:
-          # The golang image used as a builder is a temporary workaround 
-          # Dustilock is not released as a binary or container
+        # The golang image used as a builder is a temporary workaround
+        # Dustilock is not released as a binary or container
         - |
           FROM golang:alpine as dustilock
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
