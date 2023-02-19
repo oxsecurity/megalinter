@@ -12,9 +12,10 @@ from megalinter.utils import REPO_HOME_DEFAULT
 
 
 class config_test(unittest.TestCase):
+    branch = os.environ.get("GITHUB_REF_NAME", "main")
     test_folder = (
         f"https://raw.githubusercontent.com/{ML_REPO}/"
-        "main/.automation/test/mega-linter-config-test/"
+        f"{branch}/.automation/test/mega-linter-config-test/"
     )
 
     def setUp(self):
@@ -33,7 +34,7 @@ class config_test(unittest.TestCase):
         config.delete()
 
     def test_remote_config_success(self):
-        remote_config = self.test_folder + "custom.mega-linter.yml"
+        remote_config = self.test_folder + "remote/custom.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         config.init_config()
         self.assertEqual("(custom)", config.get("FILTER_REGEX_INCLUDE"))
@@ -44,7 +45,7 @@ class config_test(unittest.TestCase):
             os.environ["MEGALINTER_CONFIG"] = remote_config
             config.init_config()
         except Exception as e:
-            self.assertIn("http", str(e))
+            self.assertRegex(str(e), r"Unable to retrieve config file https://.*/\.automation/test/mega-linter-config-test/custom\.mega-linter-not-existing\.yml")
 
     def test_local_config_extends_success(self):
         local_config = "local.mega-linter.yml"
@@ -72,6 +73,8 @@ class config_test(unittest.TestCase):
             + "test"
             + os.path.sep
             + "mega-linter-config-test"
+            + os.path.sep
+            + "local_extends_recurse"
         )
         self.assertEqual("(local)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("false", config.get("SHOW_ELAPSED_TIME"))
@@ -95,7 +98,7 @@ class config_test(unittest.TestCase):
             self.assertIn("No such file or directory", str(e))
 
     def test_remote_config_extends_success(self):
-        remote_config = self.test_folder + "base.mega-linter.yml"
+        remote_config = self.test_folder + "remote_extends/base.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         config.init_config()
         self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
@@ -103,7 +106,7 @@ class config_test(unittest.TestCase):
         self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
 
     def test_remote_config_extends_success_2(self):
-        remote_config = self.test_folder + "base2.mega-linter.yml"
+        remote_config = self.test_folder + "remote_extends_2/base2.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         config.init_config()
         self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
@@ -111,13 +114,33 @@ class config_test(unittest.TestCase):
         self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
 
     def test_remote_config_extends_error(self):
-        remote_config = self.test_folder + "base-error.mega-linter.yml"
+        remote_config = self.test_folder + "remote_extends_error/base-error.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         try:
             os.environ["MEGALINTER_CONFIG"] = remote_config
             config.init_config()
         except Exception as e:
-            self.assertIn("http", str(e))
+            self.assertRegex(str(e), r"Unable to retrieve config file https://.*/\.automation/test/mega-linter-config-test/remote_extends_error/base-error\.mega-linter\.yml")
+
+    def test_local_remote_config_extends_success(self):
+        local_config = "local.remote.mega-linter.yml"
+        os.environ["MEGALINTER_CONFIG"] = local_config
+        config.init_config(
+            REPO_HOME_DEFAULT
+            + os.path.sep
+            + ".automation"
+            + os.path.sep
+            + "test"
+            + os.path.sep
+            + "mega-linter-config-test"
+            + os.path.sep
+            + "local_remote_extends"
+        )
+        self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(extension2)", config.get("FILTER_REGEX_EXCLUDE"))
+        self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
+        self.assertEqual("dev", config.get("DEFAULT_BRANCH"))
+        self.assertEqual("DEBUG", config.get("LOG_LEVEL"))
 
     def test_list_of_obj_as_env_var(self):
         os.environ[
