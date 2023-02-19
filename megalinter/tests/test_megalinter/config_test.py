@@ -122,7 +122,7 @@ class config_test(unittest.TestCase):
         except Exception as e:
             self.assertRegex(str(e), r"Unable to retrieve config file https://.*/\.automation/test/mega-linter-config-test/remote_extends_error/base-error\.mega-linter\.yml")
 
-    def test_local_remote_config_extends_success(self):
+    def test_local_remote_config_extends_recurse_success(self):
         local_config = "local.remote.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = local_config
         config.init_config(
@@ -134,7 +134,7 @@ class config_test(unittest.TestCase):
             + os.path.sep
             + "mega-linter-config-test"
             + os.path.sep
-            + "local_remote_extends"
+            + "local_remote_extends_recurse"
         )
         self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("(extension2)", config.get("FILTER_REGEX_EXCLUDE"))
