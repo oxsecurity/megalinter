@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #############################################################################################
 #OTHER__START
 # terragrunt installation
-# Managed with COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+# Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 #OTHER__END
 
