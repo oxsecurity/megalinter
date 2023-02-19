@@ -14,9 +14,18 @@
 name: "Build & Deploy - DEV linters"
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore:
+      - main
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
   pull_request:
     branches-ignore: []
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
 
 ###############
 # Set the Job #
