@@ -5940,6 +5940,37 @@ INFO    -  Documentation built in 9.76 seconds
 <li>Push and <a href="https://github.com/oxsecurity/megalinter/compare">submit a pull request</a></li>
 <li>Pat yourself on the back and wait for your pull request to be reviewed and merged.</li>
 </ol>
+<p>Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:</p>
+<pre><code class="language-text">/build
+</code></pre>
+<p>Available commands can be listed with the help command by posting the following comment:</p>
+<pre><code class="language-text">/help
+</code></pre>
+<p>Which returns:</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/build</td>
+<td>Updates the Dockerfile, documentation, and other files from the yml descriptors</td>
+</tr>
+<tr>
+<td>/build [ref=...]</td>
+<td>Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.</td>
+</tr>
+<tr>
+<td>/help</td>
+<td>Returns this help message</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
 <h3 id="without-write-access">Without write access</h3>
 <ol>
 <li><a href="https://github.com/oxsecurity/megalinter/fork">Fork</a> and clone the repository</li>
