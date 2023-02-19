@@ -106,6 +106,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.71.0 to **0.72.0** on 2023-02-17
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.1 to **6.26.3** on 2023-02-17
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.8 to **1.3.9** on 2023-02-17
+  - [checkov](https://www.checkov.io/) from 2.3.22 to **2.3.23** on 2023-02-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.22.0 to **7.23.0** on 2023-02-19
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
