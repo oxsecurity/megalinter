@@ -112,6 +112,7 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
+                go \
                 openssl \
                 readline-dev \
                 g++ \

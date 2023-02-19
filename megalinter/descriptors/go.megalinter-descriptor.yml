@@ -25,6 +25,8 @@ linters:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
     install:
+      apk:
+        - go
       dockerfile:
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
