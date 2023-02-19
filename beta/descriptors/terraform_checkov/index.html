@@ -5877,7 +5877,7 @@
 </blockquote>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.23</strong></li>
+<li>Version in MegaLinter: <strong>2.3.24</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -6052,7 +6052,7 @@
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
                [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
-               [--no-fail-on-crash] [--mask MASK]
+               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
 
 Infrastructure as code static analysis
 
@@ -6324,6 +6324,8 @@ options:
                         several variables, seperated with a comma. For
                         example:&lt;resource_type&gt;:&lt;variable1&gt;,&lt;variable2&gt; OR
                         &lt;variable1&gt;,&lt;variable2&gt;
+  --scan-secrets-history
+                        will scan the history of commits for secrets
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
