@@ -108,6 +108,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.8 to **1.3.9** on 2023-02-17
   - [checkov](https://www.checkov.io/) from 2.3.22 to **2.3.23** on 2023-02-19
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.22.0 to **7.23.0** on 2023-02-19
+  - [psalm](https://psalm.dev) from Psalm.5.6.0@ to **Psalm.5.7.0@** on 2023-02-19
+  - [checkov](https://www.checkov.io/) from 2.3.23 to **2.3.24** on 2023-02-19
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
