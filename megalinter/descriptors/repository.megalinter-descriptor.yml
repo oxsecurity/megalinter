@@ -38,7 +38,7 @@ linters:
       - "checkov --directory . --output --sarif"
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
@@ -116,24 +116,18 @@ linters:
       - --recursive
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(error )"
-    linter_version_cache: "0.0.0"
+    linter_version_cache: "1.2.0"
     test_folder: dustilock
     examples:
       - "dustilock"
     install:
-      apk:
-        - go
       dockerfile:
+          # The golang image used as a builder is a temporary workaround 
+          # Dustilock is not released as a binary or container
         - |
-          RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
-              mkdir -p ${ML_THIRD_PARTY_DIR} && \
-              git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
-              cd ${ML_THIRD_PARTY_DIR} && \
-              go build && go clean --cache && \
-              chmod +x dustilock && \
-              mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
-              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
-              cd /
+          FROM golang:alpine as dustilock
+          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+        - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
   - linter_name: git_diff
@@ -195,7 +189,7 @@ linters:
     install:
       dockerfile:
         - FROM zricethezav/gitleaks:v8.15.3 as gitleaks
-        - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+        - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
   - linter_name: goodcheck

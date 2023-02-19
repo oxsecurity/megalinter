@@ -73,6 +73,7 @@ linters:
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-formatter.psd1
     test_folder: powershell_formatter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PowershellLinter class behavior
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'

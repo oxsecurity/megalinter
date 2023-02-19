@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -16,7 +17,7 @@ FROM zricethezav/gitleaks:v8.15.3 as gitleaks
 ##################
 # Get base image #
 ##################
-FROM python:3.11.1-alpine3.17
+FROM python:3.11.2-alpine3.17
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #############################################################################################
 #OTHER__START
 # gitleaks installation
-# Managed with COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 #OTHER__END
 

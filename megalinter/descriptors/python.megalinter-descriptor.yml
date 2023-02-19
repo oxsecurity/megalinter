@@ -295,7 +295,8 @@ linters:
   #     pip:
   #       - pytype
   # PyRight
-  - linter_name: pyright
+  - class: PyrightLinter
+    linter_name: pyright
     name: PYTHON_PYRIGHT
     linter_text: |
       Optional static typing checks for python, by Microsoft
@@ -317,10 +318,9 @@ linters:
     examples:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
-    downgraded_version: true
     install:
       pip:
-        - pyright==1.1.270
+        - pyright
     ide:
       emacs:
         - name: LSP-pyright

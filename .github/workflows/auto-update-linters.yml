@@ -57,7 +57,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
@@ -75,7 +75,7 @@ jobs:
         timeout-minutes: 60
 
       #####################################
-      # Run Linter against Test code base #
+      # Collect linters versions & help    #
       #####################################
       - name: Collect latest versions and help
         id: compute_versions

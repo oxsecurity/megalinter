@@ -10,14 +10,40 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Upgrade base docker image from python:3.10.4-alpine3.16 to python:3.11.1-alpine3.17
+  - Build: remove folder contents before generating Dockerfile files for each linter in generate_linter_dockerfiles(), by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Build: remove folder contents before generating test classes for each linter in generate_linter_test_classes(), by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Build: automatically update the linter list used in the matrix of several of the workflows, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: create a testing architecture for format/autofix linters, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: create or adapt input files for format/autofix tests, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: created specific test folders for linters that need them because they cannot share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added rubocop-rake RubyGem for linting Rake files with RuboCop
+
+- Fixes
+  - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Removed the default **powershell** templates TEMPLATES/.powershell-formatter.psd1 and TEMPLATES/.powershell-psscriptanalyzer.psd1. Having these templates caused all rules to be ignored as the settings are not incremental but absolute, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **dotnet format** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Created **BicepLinter** class to add **DOTNET_SYSTEM_GLOBALIZATION_INVARIANT** environment variable to avoid problems with ICU packages, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Modified **npm-groovy-lint** descriptor to add **--failon** parameter to only fail with error and not info which is the default value, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **powershell formatter** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Created **ProtolintLinter** class to fix the problem that returns exit code 1 when it encounters a problem to correct even though it corrects it correctly, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Concatenate **--output** parameter correctly to **xmllint** linter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+
+- Documentation
+  - Change **swiftlint** example that did not correctly reflect the **--fix** parameter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Change in TSX **eslint** descriptor the urls as they were not correct, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Change in TYPESCRIPT **eslint** descriptor the urls as they were not correct, by @bdovaz on [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
 
 - CI
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
   - Authenticate to GitHub API during docker build to avoid reaching limits
-  - Create a slash PR bot to run `./build.sh` command manually on PRs
+  - Remove apk go package install in images where possible to decrease image sizes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2318>
+  - Create a slash PR bot to run `./build.sh` command manually on PRs, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2353>
 
 - Fixes
   - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
+
+- Fixes
+  - Generate correct urls for packages with fixed versions, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2339>
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.51.0 to **1.51.1** on 2023-02-06
@@ -56,6 +82,37 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0** on 2023-02-11
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.4.0 to **2.7.0** on 2022-02-11
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.22.0 to **6.23.0** on 2023-02-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.0 to **6.23.1** on 2023-02-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.270 to **1.1.293** on 2023-02-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.21.0 to **7.22.0** on 2023-02-13
+  - [pylint](https://pylint.pycqa.org) from 2.16.1 to **2.16.2** on 2023-02-13
+  - [checkov](https://www.checkov.io/) from 2.3.3 to **2.3.7** on 2023-02-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.23.1 to **6.24.0** on 2023-02-13
+  - [kics](https://www.kics.io) from 1.6.9 to **1.6.10** on 2023-02-13
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0** on 2023-02-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.12.2 to **6.13.0** on 2023-02-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.405 to **6.0.406** on 2023-02-16
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.293 to **1.1.294** on 2023-02-16
+  - [checkov](https://www.checkov.io/) from 2.3.7 to **2.3.18** on 2023-02-16
+  - [git_diff](https://git-scm.com) from 2.38.3 to **2.38.4** on 2023-02-16
+  - [semgrep](https://semgrep.dev/) from 1.11.0 to **1.12.0** on 2023-02-16
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.2 to **0.37.3** on 2023-02-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.24.0 to **6.26.1** on 2023-02-16
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.01.20 to **2023.02.17** on 2023-02-17
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.13.0 to **6.13.1** on 2023-02-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.73.1 to **0.73.2** on 2023-02-17
+  - [phpstan](https://phpstan.org/) from 1.9.17 to **1.9.18** on 2023-02-17
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.0 to **1.0.1** on 2023-02-17
+  - [checkov](https://www.checkov.io/) from 2.3.18 to **2.3.22** on 2023-02-17
+  - [semgrep](https://semgrep.dev/) from 1.12.0 to **1.12.1** on 2023-02-17
+  - [syft](https://github.com/anchore/syft) from 0.71.0 to **0.72.0** on 2023-02-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.1 to **6.26.3** on 2023-02-17
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.8 to **1.3.9** on 2023-02-17
+  - [checkov](https://www.checkov.io/) from 2.3.22 to **2.3.23** on 2023-02-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.22.0 to **7.23.0** on 2023-02-19
+  - [psalm](https://psalm.dev) from Psalm.5.6.0@ to **Psalm.5.7.0@** on 2023-02-19
+  - [checkov](https://www.checkov.io/) from 2.3.23 to **2.3.24** on 2023-02-19
+  - [checkov](https://www.checkov.io/) from 2.3.24 to **2.3.26** on 2023-02-19
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

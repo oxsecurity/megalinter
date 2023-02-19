@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import date, datetime
@@ -45,6 +46,8 @@ UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
+DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+
 # Release args management
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
@@ -209,8 +212,13 @@ branding:
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
         flavor_label = flavor_info["label"]
-        comment = f"# MEGA-LINTER FLAVOR [{flavor}]: {flavor_label}"
+        comment = f"# MEGALINTER FLAVOR [{flavor}]: {flavor_label}"
         with open(dockerfile, "r+", encoding="utf-8") as f:
+            first_line = f.readline().rstrip()
+            if first_line.startswith("# syntax="):
+                comment = f"{first_line}\n{comment}"
+            else:
+                f.seek(0)
             content = f.read()
             f.seek(0)
             f.truncate()
@@ -297,14 +305,27 @@ def build_dockerfile(
             for dockerfile_item in item["install"]["dockerfile"]:
                 # FROM
                 if dockerfile_item.startswith("FROM"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next FROM line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_from += [dockerfile_item]
                 # ARG
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next COPY line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_copy += [dockerfile_item]
-                    docker_other += ["# Managed with " + dockerfile_item]
+                    docker_other += [
+                        "# Managed with "
+                        + "\n#              ".join(dockerfile_item.splitlines())
+                    ]
                 # Already used item
                 elif (
                     dockerfile_item in all_dockerfile_items
@@ -554,6 +575,9 @@ def match_flavor(item, flavor, flavor_info):
 
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
+    # Remove all the contents of LINTERS_DIR beforehand so that the result is deterministic
+    if DELETE_DOCKERFILES is True:
+        shutil.rmtree(os.path.realpath(LINTERS_DIR))
     # Browse descriptors
     linters_md = "# Standalone linter docker images\n\n"
     linters_md += "| Linter key | Docker image | Size |\n"
@@ -571,9 +595,6 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
-            # Do not build standalone linter if it does not manage SARIF
-            if linter.can_output_sarif is False:
-                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -658,10 +679,21 @@ def generate_linter_dockerfiles():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
+    test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
+
+    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+    shutil.rmtree(os.path.realpath(test_linters_root))
+    os.makedirs(os.path.realpath(test_linters_root))
+
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
+        if linter.name is not None:
+            linter_name = linter.name
+        else:
+            lang_lower = linter.descriptor_id.lower()
+            linter_name = f"{lang_lower}_{linter.linter_name}"
+
+        linter_name_lower = linter_name.lower().replace("-", "_")
         test_class_code = f"""# !/usr/bin/env python3
 \"\"\"
 Unit tests for {linter.descriptor_id} linter {linter.linter_name}
@@ -673,14 +705,11 @@ from unittest import TestCase
 from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
-class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
+class {linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
-        test_class_file_name = (
-            f"{REPO_HOME}/megalinter/tests/test_megalinter/"
-            + f"linters/{lang_lower}_{linter_name_lower}_test.py"
-        )
+        test_class_file_name = f"{test_linters_root}/{linter_name_lower}_test.py"
         if not os.path.isfile(test_class_file_name):
             file = open(
                 test_class_file_name,
@@ -1890,23 +1919,24 @@ def get_install_md(item):
         linter_doc_md += ["- APK packages (Linux):"]
         linter_doc_md += md_package_list(
             item["install"]["apk"],
+            "apk",
             "  ",
             "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
         linter_doc_md += md_package_list(
-            item["install"]["npm"], "  ", "https://www.npmjs.com/package/"
+            item["install"]["npm"], "npm", "  ", "https://www.npmjs.com/package/"
         )
     if "pip" in item["install"]:
         linter_doc_md += ["- PIP packages (Python):"]
         linter_doc_md += md_package_list(
-            item["install"]["pip"], "  ", "https://pypi.org/project/"
+            item["install"]["pip"], "pip", "  ", "https://pypi.org/project/"
         )
     if "gem" in item["install"]:
         linter_doc_md += ["- GEM packages (Ruby) :"]
         linter_doc_md += md_package_list(
-            item["install"]["gem"], "  ", "https://rubygems.org/gems/"
+            item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
 
@@ -2030,16 +2060,28 @@ def merge_install_attr(item):
                 item["install"][elt] = elt_val + item["install"][elt]
 
 
-def md_package_list(package_list, indent, start_url):
+def md_package_list(package_list, type, indent, start_url):
     res = []
     for package_id_v in package_list:
-        if package_id_v.startswith("@"):
-            package_id = package_id_v
-            if package_id.count("@") == 2:
-                package_id = "@" + package_id.split("@")[1]
-        else:
-            package_id = package_id_v.split("@")[0].split(":")[0]
-        res += [f"{indent}- [{package_id_v}]({start_url}{package_id})"]
+        package_id = package_id_v
+        package_version = ""
+
+        if type == "npm" and package_id.count("@") == 2:  # npm specific version
+            package_id_split = package_id.split("@")
+            package_id = "@" + package_id_split[1]
+            package_version = "/v/" + package_id_split[2]
+        elif type == "pip" and "==" in package_id_v:  # py specific version
+            package_id = package_id_v.split("==")[0]
+            package_version = "/" + package_id_v.split("==")[1]
+        elif type == "gem":
+            gem_match = re.match(
+                r"(.*)\s-v\s(.*)", package_id_v
+            )  # gem specific version
+
+            if gem_match:  # gem specific version
+                package_id = gem_match.group(1)
+                package_version = "/versions/" + gem_match.group(2)
+        res += [f"{indent}- [{package_id_v}]({start_url}{package_id}{package_version})"]
     return res
 
 
@@ -3008,6 +3050,40 @@ def update_dependents_info():
     os.system(" ".join(command))
 
 
+def update_workflows_linters():
+    descriptors, _ = list_descriptors_for_build()
+
+    linters = ""
+
+    for descriptor in descriptors:
+        for linter in descriptor["linters"]:
+            if "name" in linter:
+                name = linter["name"].lower()
+            else:
+                lang_lower = descriptor["descriptor_id"].lower()
+                linter_name_lower = linter["linter_name"].lower().replace("-", "_")
+                name = f"{lang_lower}_{linter_name_lower}"
+
+            linters += f'            "{name}",\n'
+
+    update_workflow_linters(".github/workflows/deploy-DEV-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-BETA-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-RELEASE-linters.yml", linters)
+
+
+def update_workflow_linters(file_path, linters):
+    with open(file_path, "r", encoding="utf-8") as f:
+        file_content = f.read()
+        file_content = re.sub(
+            r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
+            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            file_content,
+        )
+
+    with open(file_path, "w") as f:
+        f.write(file_content)
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -3032,6 +3108,7 @@ if __name__ == "__main__":
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
+    update_workflows_linters()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators...")
         # refresh_users_info() # deprecated since now we use github-dependents-info
