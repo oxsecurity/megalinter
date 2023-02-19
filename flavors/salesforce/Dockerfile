@@ -213,7 +213,8 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis
+RUN npm i sfdx-cli -g && \
+    echo y|sfdx plugins:install sfdx-hardis \
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint

@@ -383,7 +383,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 # ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
+RUN npm i sfdx-cli -g && \
+    echo y|sfdx plugins:install sfdx-hardis \
 
 # SCALA installation
     && curl -fLo coursier https://git.io/coursier-cli && \
