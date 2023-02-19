@@ -13,10 +13,11 @@
 #############################################################################################
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
-# shellcheck is a dependency for actionlint and the FROM command may be safely repeated in a Dockerfile
-FROM koalaman/shellcheck:stable as shellcheck
+# shellcheck is a dependency for actionlint
 
 FROM koalaman/shellcheck:stable as shellcheck
+# Next FROM line commented because already managed by another linter
+# FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
@@ -211,9 +212,10 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Next COPY line commented because already managed by another linter
+# COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
@@ -245,16 +247,16 @@ ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-# shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
+#              # shellcheck is a dependency for actionlint
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec \
 
 # shellcheck installation
-# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 # shfmt installation
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/

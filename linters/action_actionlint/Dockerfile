@@ -12,9 +12,9 @@
 #############################################################################################
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
-# shellcheck is a dependency for actionlint and the FROM command may be safely repeated in a Dockerfile
-FROM koalaman/shellcheck:stable as shellcheck
+# shellcheck is a dependency for actionlint
 
+FROM koalaman/shellcheck:stable as shellcheck
 #FROM__END
 
 ##################
@@ -121,8 +121,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #COPY__START
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #COPY__END
 
 #############################################################################################
@@ -131,9 +131,8 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #OTHER__START
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-# shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
+#              # shellcheck is a dependency for actionlint
+# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 #OTHER__END
 

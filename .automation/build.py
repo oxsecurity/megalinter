@@ -216,7 +216,7 @@ branding:
         with open(dockerfile, "r+", encoding="utf-8") as f:
             first_line = f.readline().rstrip()
             if first_line.startswith("# syntax="):
-                comment = f"{first_line}\n{comment}" 
+                comment = f"{first_line}\n{comment}"
             else:
                 f.seek(0)
             content = f.read()
@@ -305,14 +305,27 @@ def build_dockerfile(
             for dockerfile_item in item["install"]["dockerfile"]:
                 # FROM
                 if dockerfile_item.startswith("FROM"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next FROM line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_from += [dockerfile_item]
                 # ARG
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next COPY line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_copy += [dockerfile_item]
-                    docker_other += ["# Managed with " + dockerfile_item]
+                    docker_other += [
+                        "# Managed with "
+                        + "\n#              ".join(dockerfile_item.splitlines())
+                    ]
                 # Already used item
                 elif (
                     dockerfile_item in all_dockerfile_items
