@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.22**
+- Version in MegaLinter: **2.3.24**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -130,7 +130,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
                [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
-               [--no-fail-on-crash] [--mask MASK]
+               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
 
 Infrastructure as code static analysis
 
@@ -402,6 +402,8 @@ options:
                         several variables, seperated with a comma. For
                         example:<resource_type>:<variable1>,<variable2> OR
                         <variable1>,<variable2>
+  --scan-secrets-history
+                        will scan the history of commits for secrets
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml

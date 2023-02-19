@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=terragrunt /bin/terraform /usr/bin/
+COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 #OTHER__START
 # terraform-fmt installation
-# Managed with COPY --from=terragrunt /bin/terraform /usr/bin/
+# Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 
 #OTHER__END
 

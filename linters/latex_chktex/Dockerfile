@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=chktex /usr/bin/chktex /usr/bin/
+COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=chktex /usr/bin/chktex /usr/bin/
 #############################################################################################
 #OTHER__START
 # chktex installation
-# Managed with COPY --from=chktex /usr/bin/chktex /usr/bin/
+# Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
 
 #OTHER__END

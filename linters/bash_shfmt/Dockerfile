@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=shfmt /bin/shfmt /usr/bin/
 #############################################################################################
 #OTHER__START
 # shfmt installation
-# Managed with COPY --from=shfmt /bin/shfmt /usr/bin/
+# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 
 #OTHER__END
 

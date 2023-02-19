@@ -29,9 +29,7 @@
     },
     "cupcake": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -123,7 +121,6 @@
     },
     "documentation": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -180,7 +177,6 @@
     },
     "dotnet": {
         "descriptors": [
-            "ACTION",
             "ARM",
             "BASH",
             "CSHARP",
@@ -253,9 +249,7 @@
     },
     "go": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
@@ -313,7 +307,6 @@
     },
     "java": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "JAVA",
             "KOTLIN"
@@ -374,7 +367,6 @@
     },
     "javascript": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "TYPESCRIPT"
@@ -441,7 +433,6 @@
     },
     "php": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "PHP"
@@ -502,7 +493,6 @@
     },
     "python": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -569,7 +559,6 @@
     },
     "ruby": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -626,7 +615,6 @@
     },
     "rust": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -683,7 +671,6 @@
     },
     "salesforce": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "SALESFORCE"
@@ -771,7 +758,6 @@
     },
     "swift": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -828,7 +814,6 @@
     },
     "terraform": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],

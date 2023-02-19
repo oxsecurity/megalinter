@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ###########################################
 ###########################################
 ## Dockerfile to run MegaLinter ##
@@ -114,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 #COPY__END
 
 #############################################################################################
@@ -122,7 +123,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 #############################################################################################
 #OTHER__START
 # hadolint installation
-# Managed with COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 #OTHER__END
 
