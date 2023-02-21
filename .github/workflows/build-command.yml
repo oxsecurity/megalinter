@@ -62,7 +62,6 @@ jobs:
           cache: pip # optional
       - run: pip install -r requirements.dev.txt
       - name: Create comment starting build.sh
-        if: steps.check-changes.outputs.has-changes != '1'
         uses: peter-evans/create-or-update-comment@v2
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
@@ -76,14 +75,13 @@ jobs:
         run: ./build.sh
       - name: Check if changes were made
         id: check-changes
-        run: |
-          git diff --quiet && git diff --staged --quiet
-          HAS_CHANGES=$?
-          echo "has-changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
-          echo "$HAS_CHANGES"
-      # Commit changes to the PR branch
+        run: git diff --exit-code
+        # https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---exit-code
+        # Make the program exit with codes similar to diff(1). That is, it exits with 1 if there were differences and 0 means no differences.
+        # 0 is success (no difference), non-zero (like 1) is failure (differences)
+        continue-on-error: true
       - name: Commit changes to the PR branch
-        if: steps.check-changes.outputs.has-changes == '1'
+        if: steps.check-changes.outputs.outcome == "failure"
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -99,7 +97,7 @@ jobs:
           issue-number: ${{ github.event.inputs.issue-number }}
           reaction-type: hooray
       - name: Create final comment updated files
-        if: steps.check-changes.outputs.has-changes == '1'
+        if: steps.check-changes.outputs.outcome == "failure"
         uses: peter-evans/create-or-update-comment@v2
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
@@ -110,7 +108,7 @@ jobs:
           body: |
             > Build command workflow completed updating files.
       - name: Create final comment no updated files
-        if: steps.check-changes.outputs.has-changes != '1'
+        if: steps.check-changes.outputs.outcome == "success"
         uses: peter-evans/create-or-update-comment@v2
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
