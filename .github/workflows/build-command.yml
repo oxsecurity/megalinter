@@ -1,23 +1,23 @@
 name: build-command
 on:
   workflow_dispatch:
-    # checkov:skip=CKV_GHA_7:We are only triggering these workflows by users with write access manually, it is expected. 
-    # Error was: 
-    # The build output cannot be affected by user parameters other than the build entry point and the top-level source location. 
-    # GitHub Actions workflow_dispatch inputs MUST be empty. 
+    # checkov:skip=CKV_GHA_7:We are only triggering these workflows by users with write access manually, it is expected.
+    # Error was:
+    # The build output cannot be affected by user parameters other than the build entry point and the top-level source location.
+    # GitHub Actions workflow_dispatch inputs MUST be empty.
     inputs:
       repository:
-        description: 'The repository from which the slash command was dispatched'
+        description: "The repository from which the slash command was dispatched"
         required: true
       comment-id:
-        description: 'The comment-id of the slash command'
+        description: "The comment-id of the slash command"
         required: true
       issue-number:
-       description: 'The issue number in which the slash command was made'
-       required: true
+        description: "The issue number in which the slash command was made"
+        required: true
       actor:
-       description: 'The user who executed the slash command'
-       required: true
+        description: "The user who executed the slash command"
+        required: true
   repository_dispatch:
     types: [build-command]
 jobs:
