@@ -9,7 +9,6 @@ import re
 import unittest
 
 from git import Repo
-
 from megalinter import config
 from megalinter.constants import ML_REPO
 from megalinter.tests.test_megalinter.helpers import utilstest
@@ -54,11 +53,14 @@ class config_test(unittest.TestCase):
             os.environ["MEGALINTER_CONFIG"] = remote_config
             config.init_config()
         except Exception as e:
-            self.assertRegex(str(e), (
-                "Unable to retrieve config file "
-                r"https://.*/\.automation/test/mega-linter-config-test/"
-                r"custom\.mega-linter-not-existing\.yml"
-            ))
+            self.assertRegex(
+                str(e),
+                (
+                    "Unable to retrieve config file "
+                    r"https://.*/\.automation/test/mega-linter-config-test/"
+                    r"custom\.mega-linter-not-existing\.yml"
+                ),
+            )
         finally:
             self.restore_branch_in_input_files(changed_files)
 
@@ -143,17 +145,22 @@ class config_test(unittest.TestCase):
 
     def test_remote_config_extends_error(self):
         changed_files = self.replace_branch_in_input_files()
-        remote_config = self.test_folder + "remote_extends_error/base-error.mega-linter.yml"
+        remote_config = (
+            self.test_folder + "remote_extends_error/base-error.mega-linter.yml"
+        )
         os.environ["MEGALINTER_CONFIG"] = remote_config
         try:
             os.environ["MEGALINTER_CONFIG"] = remote_config
             config.init_config()
         except Exception as e:
-            self.assertRegex(str(e), (
-                "Unable to retrieve EXTENDS config file "
-                r"https://.*/\.automation/test/mega-linter-config-test/"
-                r"remote_extends_error/base-error\.mega-linter\.yml"
-            ))
+            self.assertRegex(
+                str(e),
+                (
+                    "Unable to retrieve EXTENDS config file "
+                    r"https://.*/\.automation/test/mega-linter-config-test/"
+                    r"remote_extends_error/base-error\.mega-linter\.yml"
+                ),
+            )
         finally:
             self.restore_branch_in_input_files(changed_files)
 
@@ -207,7 +214,7 @@ class config_test(unittest.TestCase):
 
         for file in glob.iglob(search_glob_pattern, recursive=True):
             file_name = os.path.basename(file)
-            if (".yml" not in file_name):
+            if ".yml" not in file_name:
                 continue
 
             match = False
@@ -216,11 +223,7 @@ class config_test(unittest.TestCase):
                 file_content = f.read()
 
                 if re.search(regex, file_content):
-                    file_content = re.sub(
-                        regex,
-                        rf"\1{branch}\3",
-                        file_content
-                    )
+                    file_content = re.sub(regex, rf"\1{branch}\3", file_content)
 
                     match = True
 
