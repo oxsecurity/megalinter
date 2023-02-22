@@ -15,6 +15,7 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 
 ## dustilock documentation
 
+- Version in MegaLinter: **1.2.0**
 - Visit [Official Web Site](https://github.com/Checkmarx/dustilock#readme){target=_blank}
 
 [![dustilock - GitHub](https://gh-card.dev/repos/Checkmarx/dustilock.svg?fullname=)](https://github.com/Checkmarx/dustilock){target=_blank}
@@ -86,17 +87,9 @@ Arguments:
 
 - Dockerfile commands :
 ```dockerfile
-RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
-    mkdir -p ${ML_THIRD_PARTY_DIR} && \
-    git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
-    cd ${ML_THIRD_PARTY_DIR} && \
-    go build && go clean --cache && \
-    chmod +x dustilock && \
-    mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
-    find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
-    cd /
+FROM golang:alpine as dustilock
+RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
+COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 ```
 
-- APK packages (Linux):
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)

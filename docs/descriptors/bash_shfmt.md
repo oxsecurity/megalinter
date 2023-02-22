@@ -139,6 +139,6 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 - Dockerfile commands :
 ```dockerfile
 FROM mvdan/shfmt:latest-alpine as shfmt
-COPY --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
 ```
 

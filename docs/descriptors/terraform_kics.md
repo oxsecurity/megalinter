@@ -105,7 +105,7 @@ Use "kics [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 FROM checkmarx/kics:alpine as kics
-COPY --from=kics /app/bin/kics /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 COPY --from=kics /app/bin/assets /opt/kics/assets/

@@ -142,7 +142,15 @@ Flags:
 
 - Dockerfile commands :
 ```dockerfile
-ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache
+FROM rhysd/actionlint:latest as actionlint
+# shellcheck is a dependency for actionlint
+
+FROM koalaman/shellcheck:stable as shellcheck
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# shellcheck is a dependency for actionlint
+
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 
+- APK packages (Linux):
+  - [py3-pyflakes](https://pkgs.alpinelinux.org/packages?branch=edge&name=py3-pyflakes)

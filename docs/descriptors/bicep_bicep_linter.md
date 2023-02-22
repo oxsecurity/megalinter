@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.14.46**
+- Version in MegaLinter: **0.14.85**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -82,7 +82,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.14.46 (ef2ceb1a0e)
+Bicep CLI version 0.14.85 (f4a4d485ba)
 
 Usage:
   bicep build [options] <file>
@@ -192,6 +192,27 @@ Usage:
       --help                 -h   Shows this usage information
       --license                   Prints license information
       --third-party-notices       Prints third-party notices
+
+
+  bicep build-params <file>
+    Builds .bicepparam file.
+
+    Arguments:
+      <file>        The input Bicepparam file
+
+    Options:
+      --bicep-file <file> Verifies if the bicep file reference in the params file using declaration matches the specified file path.
+      --outfile-params <file>  Saves the param output as the specified file path.
+      --outfile-bicep <file>  Saves the bicep output as the specified file path.
+      --stdout          Prints the output to stdout.
+      --no-restore      Builds the bicep file without restoring external modules.
+
+    Examples:
+      bicep build-params params.bicepparam
+      bicep build-params params.bicepparam --stdout
+      bicep build-params params.bicepparam --outfile-params otherParams.json --outfile-bicep otherMain.json
+      bicep build-params params.bicepparam --no-restore
+
 
 ```
 
