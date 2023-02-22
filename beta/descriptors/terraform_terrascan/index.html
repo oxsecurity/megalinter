@@ -6013,7 +6013,7 @@ Use &quot;terrascan [command] --help&quot; for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">FROM tenable/terrascan:1.18.0 as terrascan
-COPY --from=terrascan /go/bin/terrascan /usr/bin/
+COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 </code></pre>
 
 

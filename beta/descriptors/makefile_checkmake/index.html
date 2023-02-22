@@ -5855,7 +5855,7 @@
 <p><a href="https://github.com/mrtazz/checkmake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/mrtazz/checkmake?cacheSeconds=3600" /></a> <a href="https://github.com/mrtazz/checkmake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/mrtazz/checkmake?sort=semver" /></a> <a href="https://github.com/mrtazz/checkmake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mrtazz/checkmake" /></a> <a href="https://github.com/mrtazz/checkmake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/mrtazz/checkmake" /></a> <a href="https://github.com/mrtazz/checkmake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mrtazz/checkmake" /></a></p>
 <h2 id="checkmake-documentation">checkmake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.2.1</strong></li>
+<li>Version in MegaLinter: <strong>0.2.0</strong></li>
 <li>Visit <a href="https://github.com/mrtazz/checkmake#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini" target="_blank">How to configure checkmake rules</a></li>
 </ul>
@@ -6044,11 +6044,15 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
-    &amp;&amp; wget -q &quot;https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64&quot; -O /usr/local/bin/checkmake \
-    &amp;&amp; chmod 755 /usr/local/bin/checkmake
-
+<pre><code class="language-dockerfile">FROM mrtazz/checkmake:latest as checkmake
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 </code></pre>
+<ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=make">make</a></li>
+</ul>
+</li>
+</ul>
 
 
 

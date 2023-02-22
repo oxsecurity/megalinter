@@ -6058,7 +6058,7 @@ AUTHOR(S):
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">FROM alpine/terragrunt:latest as terragrunt
-COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 </code></pre>
 
 

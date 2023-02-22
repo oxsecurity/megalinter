@@ -5857,6 +5857,7 @@
 <p><a href="https://github.com/Checkmarx/dustilock"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Checkmarx/dustilock?cacheSeconds=3600" /></a> <img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /> <a href="https://github.com/Checkmarx/dustilock/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Checkmarx/dustilock?sort=semver" /></a> <a href="https://github.com/Checkmarx/dustilock/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Checkmarx/dustilock" /></a> <a href="https://github.com/Checkmarx/dustilock/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/Checkmarx/dustilock" /></a> <a href="https://github.com/Checkmarx/dustilock/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Checkmarx/dustilock" /></a></p>
 <h2 id="dustilock-documentation">dustilock documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>1.2.0</strong></li>
 <li>Visit <a href="https://github.com/Checkmarx/dustilock#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/Checkmarx/dustilock" target="_blank"><img alt="dustilock - GitHub" src="https://gh-card.dev/repos/Checkmarx/dustilock.svg?fullname=" /></a></p>
@@ -5966,23 +5967,11 @@ Arguments:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN ML_THIRD_PARTY_DIR=/download/dustilock &amp;&amp; \
-    mkdir -p ${ML_THIRD_PARTY_DIR} &amp;&amp; \
-    git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} &amp;&amp; \
-    cd ${ML_THIRD_PARTY_DIR} &amp;&amp; \
-    go build &amp;&amp; go clean --cache &amp;&amp; \
-    chmod +x dustilock &amp;&amp; \
-    mv &quot;${ML_THIRD_PARTY_DIR}/dustilock&quot; /usr/bin/ &amp;&amp; \
-    find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete &amp;&amp; \
-    cd /
+<pre><code class="language-dockerfile">FROM golang:alpine as dustilock
+RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
+COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 </code></pre>
-<ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=go">go</a></li>
-</ul>
-</li>
-</ul>
 
 
 

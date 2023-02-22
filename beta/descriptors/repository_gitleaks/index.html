@@ -6099,7 +6099,7 @@ Use &quot;gitleaks [command] --help&quot; for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">FROM zricethezav/gitleaks:v8.15.3 as gitleaks
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 </code></pre>
 
 

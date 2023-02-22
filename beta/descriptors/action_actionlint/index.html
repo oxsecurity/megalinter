@@ -6130,9 +6130,21 @@ Flags:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">ENV GO111MODULE=on
-RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest &amp;&amp; go clean --cache
+<pre><code class="language-dockerfile">FROM rhysd/actionlint:latest as actionlint
+# shellcheck is a dependency for actionlint
+
+FROM koalaman/shellcheck:stable as shellcheck
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# shellcheck is a dependency for actionlint
+
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 </code></pre>
+<ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=py3-pyflakes">py3-pyflakes</a></li>
+</ul>
+</li>
+</ul>
 
 
 

@@ -5871,7 +5871,7 @@
 use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.14.46</strong></li>
+<li>Version in MegaLinter: <strong>0.14.85</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -6013,7 +6013,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.14.46 (ef2ceb1a0e)
+<pre><code class="language-shell">Bicep CLI version 0.14.85 (f4a4d485ba)
 
 Usage:
   bicep build [options] &lt;file&gt;
@@ -6123,6 +6123,27 @@ Usage:
       --help                 -h   Shows this usage information
       --license                   Prints license information
       --third-party-notices       Prints third-party notices
+
+
+  bicep build-params &lt;file&gt;
+    Builds .bicepparam file.
+
+    Arguments:
+      &lt;file&gt;        The input Bicepparam file
+
+    Options:
+      --bicep-file &lt;file&gt; Verifies if the bicep file reference in the params file using declaration matches the specified file path.
+      --outfile-params &lt;file&gt;  Saves the param output as the specified file path.
+      --outfile-bicep &lt;file&gt;  Saves the bicep output as the specified file path.
+      --stdout          Prints the output to stdout.
+      --no-restore      Builds the bicep file without restoring external modules.
+
+    Examples:
+      bicep build-params params.bicepparam
+      bicep build-params params.bicepparam --stdout
+      bicep build-params params.bicepparam --outfile-params otherParams.json --outfile-bicep otherMain.json
+      bicep build-params params.bicepparam --no-restore
+
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
