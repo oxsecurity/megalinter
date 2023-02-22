@@ -155,6 +155,6 @@ Available options:
 - Dockerfile commands :
 ```dockerfile
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 

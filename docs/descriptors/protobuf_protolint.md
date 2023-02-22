@@ -123,6 +123,6 @@ Usage of lint:
 - Dockerfile commands :
 ```dockerfile
 FROM yoheimuta/protolint:latest as protolint
-COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 ```
 

@@ -123,6 +123,6 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 FROM zricethezav/gitleaks:v8.15.3 as gitleaks
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

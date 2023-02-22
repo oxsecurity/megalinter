@@ -154,7 +154,7 @@ chktexrc file (~/.chktexrc).
 - Dockerfile commands :
 ```dockerfile
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
-COPY --from=chktex /usr/bin/chktex /usr/bin/
+COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
 ```
 

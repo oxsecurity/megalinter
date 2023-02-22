@@ -113,6 +113,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.5.6.0@ to **Psalm.5.7.0@** on 2023-02-19
   - [checkov](https://www.checkov.io/) from 2.3.23 to **2.3.24** on 2023-02-19
   - [checkov](https://www.checkov.io/) from 2.3.24 to **2.3.26** on 2023-02-19
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.14.46 to **0.14.85** on 2023-02-22
+  - [golangci-lint](https://golangci-lint.run/) from 1.51.1 to **1.51.2** on 2023-02-22
+  - [djlint](https://djlint.com/) from 1.19.14 to **1.19.15** on 2023-02-22
+  - [checkmake](https://github.com/mrtazz/checkmake) from 0.2.1 to **0.2.0** on 2023-02-22
+  - [phpstan](https://phpstan.org/) from 1.9.18 to **1.10.1** on 2023-02-22
+  - [psalm](https://psalm.dev) from Psalm.5.7.0@ to **Psalm.5.7.5@** on 2023-02-22
+  - [checkov](https://www.checkov.io/) from 2.3.26 to **2.3.33** on 2023-02-22
+  - [dustilock](https://github.com/Checkmarx/dustilock) from 0.0.0 to **1.2.0** on 2023-02-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.0 to **7.23.1** on 2023-02-22
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

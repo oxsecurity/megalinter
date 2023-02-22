@@ -134,6 +134,6 @@ AUTHOR(S):
 - Dockerfile commands :
 ```dockerfile
 FROM alpine/terragrunt:latest as terragrunt
-COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
 

@@ -128,6 +128,6 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 FROM alpine/terragrunt:latest as terragrunt
-COPY --from=terragrunt /bin/terraform /usr/bin/
+COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```
 

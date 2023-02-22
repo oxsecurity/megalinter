@@ -128,6 +128,6 @@ USAGE:
 - Dockerfile commands :
 ```dockerfile
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
 

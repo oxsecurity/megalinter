@@ -26,10 +26,3 @@ description: actionlint is available to analyze ACTION files in MegaLinter
 | ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-
-## Behind the scenes
-
-### Installation
-
-- APK packages (Linux):
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)

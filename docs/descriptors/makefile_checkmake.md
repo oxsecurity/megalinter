@@ -9,7 +9,7 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 
 ## checkmake documentation
 
-- Version in MegaLinter: **0.2.1**
+- Version in MegaLinter: **0.2.0**
 - Visit [Official Web Site](https://github.com/mrtazz/checkmake#readme){target=_blank}
 - See [How to configure checkmake rules](https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini){target=_blank}
 
@@ -97,9 +97,9 @@ checkmake.
 
 - Dockerfile commands :
 ```dockerfile
-RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
-    && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
-    && chmod 755 /usr/local/bin/checkmake
-
+FROM mrtazz/checkmake:latest as checkmake
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 ```
 
+- APK packages (Linux):
+  - [make](https://pkgs.alpinelinux.org/packages?branch=edge&name=make)
