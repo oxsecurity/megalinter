@@ -21,7 +21,7 @@
         <link rel="next" href="../license/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.14">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ffa9267a.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.113286f1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -6036,17 +6036,21 @@ INFO    -  Documentation built in 9.76 seconds
 * It is not installed on the machine locally and you do not want to install it.
 * The OS does not allow the installation of the linter because it is not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.</p>
-<p>For those cases, it is important to have the possibility to run the tests inside the container. To do so:
-1. Run <code>bash build.sh</code> to update the Dockerfile files of each linter.
-2. Execute the following commands in a <strong>*.sh</strong> script. Example:</p>
+<p>For those cases, it is important to have the possibility to run the tests inside the container. To do so:</p>
+<ol>
+<li>Run <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
+<li>Execute the following commands in a <strong>*.sh</strong> script. Example:</li>
+</ol>
 <pre><code class="language-bash">docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
 TEST_KEYWORDS_TO_USE=&quot;spell_misspell&quot;
 docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS=&quot;${TEST_KEYWORDS_TO_USE}&quot; -e MEGALINTER_VOLUME_ROOT=&quot;.&quot; -v &quot;/var/run/docker.sock:/var/run/docker.sock:rw&quot; -v $(pwd):/tmp/lint spell_misspell
 </code></pre>
-<p>In the above example, it builds the <strong>misspell</strong> linter image and then runs its tests. To do the same for another linter you would have to:
-1. Change the path to the Dockerfile to the appropriate Dockerfile
-2. Change the <strong>tag</strong> in the 2 places (docker buildx build and docker run)
-3. Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that is responsible for finding the tests of the particular linter</p>
+<p>In the above example, it builds the <strong>misspell</strong> linter image and then runs its tests. To do the same for another linter you would have to:</p>
+<ol>
+<li>Change the path to the Dockerfile to the appropriate Dockerfile</li>
+<li>Change the <strong>tag</strong> in the 2 places (docker buildx build and docker run)</li>
+<li>Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that is responsible for finding the tests of the particular linter</li>
+</ol>
 <h3 id="cictcd">CI/CT/CD</h3>
 <p>The <strong>MegaLinter</strong> has <em>CI/CT/CD</em> configured utilizing <strong>GitHub</strong> Actions.</p>
 <ul>
