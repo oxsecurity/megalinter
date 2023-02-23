@@ -156,6 +156,7 @@ When running them, you may encounter several problems:
 * The behavior between running it on the local machine (host) and the container is different.
 
 For those cases, it is important to have the possibility to run the tests inside the container. To do so:
+
 1. Run `bash build.sh` to update the Dockerfile files of each linter.
 2. Execute the following commands in a ***.sh** script. Example:
 
@@ -166,6 +167,7 @@ docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${T
 ```
 
 In the above example, it builds the **misspell** linter image and then runs its tests. To do the same for another linter you would have to:
+
 1. Change the path to the Dockerfile to the appropriate Dockerfile
 2. Change the **tag** in the 2 places (docker buildx build and docker run)
 3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that is responsible for finding the tests of the particular linter
