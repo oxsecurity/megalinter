@@ -16,12 +16,17 @@ from megalinter.utils import REPO_HOME_DEFAULT
 
 
 class config_test(unittest.TestCase):
-    branch = os.environ.get("GITHUB_REF_NAME", "main")
+    test_folder = None
 
-    test_folder = (
-        f"https://raw.githubusercontent.com/{ML_REPO}/"
-        f"{branch}/.automation/test/mega-linter-config-test/"
-    )
+    def __init__(self, *args, **kwargs):
+        super(config_test, self).__init__(*args, **kwargs)
+
+        branch = self.get_branch()
+
+        self.test_folder = (
+            f"https://raw.githubusercontent.com/{ML_REPO}/"
+            f"{branch}/.automation/test/mega-linter-config-test/"
+        )
 
     def setUp(self):
         for key in [
@@ -242,3 +247,11 @@ class config_test(unittest.TestCase):
             repo.index.checkout(
                 [os.path.join(os.path.realpath(utilstest.REPO_HOME), file)], force=True
             )
+    
+    def get_branch(self):
+        eventName = os.environ.get("GITHUB_EVENT_NAME", "")
+
+        if (eventName.startswith("pull_request")):
+            return os.environ.get("GITHUB_HEAD_REF", "main")
+        else:
+            return os.environ.get("GITHUB_REF_NAME", "main")
