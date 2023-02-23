@@ -21,10 +21,11 @@ class config_test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(config_test, self).__init__(*args, **kwargs)
 
+        repository = self.get_repository()
         branch = self.get_branch()
 
         self.test_folder = (
-            f"https://raw.githubusercontent.com/{ML_REPO}/"
+            f"https://raw.githubusercontent.com/{repository}/"
             f"{branch}/.automation/test/mega-linter-config-test/"
         )
 
@@ -247,6 +248,14 @@ class config_test(unittest.TestCase):
             repo.index.checkout(
                 [os.path.join(os.path.realpath(utilstest.REPO_HOME), file)], force=True
             )
+
+    def get_repository(self):
+        eventName = os.environ.get("GITHUB_EVENT_NAME", "")
+
+        if (eventName.startswith("pull_request")):
+            return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
+        else:
+            return ML_REPO
     
     def get_branch(self):
         eventName = os.environ.get("GITHUB_EVENT_NAME", "")
