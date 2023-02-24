@@ -22,11 +22,12 @@ class config_test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(config_test, self).__init__(*args, **kwargs)
 
+        repository_owner = self.get_repository_owner()
         repository = self.get_repository()
         branch = self.get_branch()
 
         self.test_folder = (
-            f"https://raw.githubusercontent.com/{repository}/"
+            f"https://raw.githubusercontent.com/{repository_owner}/{repository}/"
             f"{branch}/.automation/test/mega-linter-config-test/"
         )
 
@@ -250,15 +251,12 @@ class config_test(unittest.TestCase):
                 [os.path.join(os.path.realpath(utilstest.REPO_HOME), file)], force=True
             )
 
+    def get_repository_owner(self):
+        return os.environ.get("GITHUB_REPOSITORY_OWNER", "oxsecurity")
+
     def get_repository(self):
         eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-        logging.warning(
-            f"GITHUB_EVENT_NAME {eventName}"
-        )
-        r = os.environ.get("GITHUB_REPOSITORY", "test")
-        logging.warning(
-            f"GITHUB_REPOSITORY {r}"
-        )
+
         if (eventName.startswith("pull_request")):
             return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
         else:
@@ -266,13 +264,7 @@ class config_test(unittest.TestCase):
     
     def get_branch(self):
         eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-        logging.warning(
-            f"GITHUB_EVENT_NAME {eventName}"
-        )
-        r = os.environ.get("GITHUB_HEAD_REF", "test2")
-        logging.warning(
-            f"GITHUB_HEAD_REF {r}"
-        )
+
         if (eventName.startswith("pull_request")):
             return os.environ.get("GITHUB_HEAD_REF", "main")
         else:
