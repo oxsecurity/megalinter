@@ -23,8 +23,8 @@ linters:
       - "raku -I ./lib -c myfile.raku"
     install:
       apk:
-      - rakudo
-      - zef
+        - rakudo
+        - zef
     ide:
       atom:
         - name: language-perl6
