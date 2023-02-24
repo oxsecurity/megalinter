@@ -203,7 +203,7 @@ jobs:
         run: |
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_SHA=${GITHUB_SHA} -e GITHUB_REF_NAME=${GITHUB_REF_NAME} -e GITHUB_HEAD_REF=${GITHUB_HEAD_REF} -e GITHUB_EVENT_NAME=${GITHUB_EVENT_NAME} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_REPOSITORY=${{ github.event.repository.name }} -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REF_NAME=${{ github.ref_name }} -e GITHUB_HEAD_REF=${{ github.head_ref }} -e GITHUB_EVENT_NAME=${{ github.event_name }} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
         timeout-minutes: 30
 
       ##############################################
