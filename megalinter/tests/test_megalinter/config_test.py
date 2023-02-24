@@ -4,7 +4,6 @@ Unit tests for Megalinter class
 
 """
 import glob
-import logging
 import os
 import re
 import unittest
