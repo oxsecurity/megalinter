@@ -6032,10 +6032,12 @@ INFO    -  Documentation built in 9.76 seconds
 </ol>
 <h3 id="execute-linter-tests-inside-the-container">Execute linter tests inside the container</h3>
 <p>If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.</p>
-<p>When running them, you may encounter several problems:
-* It is not installed on the machine locally and you do not want to install it.
-* The OS does not allow the installation of the linter because it is not cross-platform.
-* The behavior between running it on the local machine (host) and the container is different.</p>
+<p>When running them, you may encounter several problems:</p>
+<ul>
+<li>It is not installed on the machine locally and you do not want to install it.</li>
+<li>The OS does not allow the installation of the linter because it is not cross-platform.</li>
+<li>The behavior between running it on the local machine (host) and the container is different.</li>
+</ul>
 <p>For those cases, it is important to have the possibility to run the tests inside the container. To do so:</p>
 <ol>
 <li>Run <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
