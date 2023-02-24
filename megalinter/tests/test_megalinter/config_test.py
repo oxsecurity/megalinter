@@ -4,6 +4,7 @@ Unit tests for Megalinter class
 
 """
 import glob
+import logging
 import os
 import re
 import unittest
@@ -251,7 +252,13 @@ class config_test(unittest.TestCase):
 
     def get_repository(self):
         eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-
+        logging.warning(
+            f"GITHUB_EVENT_NAME {eventName}"
+        )
+        r = os.environ.get("GITHUB_REPOSITORY", "test")
+        logging.warning(
+            f"GITHUB_REPOSITORY {r}"
+        )
         if (eventName.startswith("pull_request")):
             return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
         else:
@@ -259,7 +266,13 @@ class config_test(unittest.TestCase):
     
     def get_branch(self):
         eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-
+        logging.warning(
+            f"GITHUB_EVENT_NAME {eventName}"
+        )
+        r = os.environ.get("GITHUB_HEAD_REF", "test2")
+        logging.warning(
+            f"GITHUB_HEAD_REF {r}"
+        )
         if (eventName.startswith("pull_request")):
             return os.environ.get("GITHUB_HEAD_REF", "main")
         else:
