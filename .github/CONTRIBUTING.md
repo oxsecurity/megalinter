@@ -151,6 +151,7 @@ Then run `bash build.sh` and it will generate all the rest!
 If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.
 
 When running them, you may encounter several problems:
+
 * It is not installed on the machine locally and you do not want to install it.
 * The OS does not allow the installation of the linter because it is not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.
