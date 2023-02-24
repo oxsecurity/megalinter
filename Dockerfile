@@ -127,6 +127,8 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
+                rakudo \
+                zef \
                 nodejs-current \
                 ruby \
                 ruby-dev \
@@ -571,16 +573,6 @@ RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
 
-# raku installation
-    && curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    # && source /root/.profile \
-    && /opt/rakudo-pkg/bin/install-zef-as-user
-
-ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
-
 # devskim installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -588,7 +580,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+    && dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
