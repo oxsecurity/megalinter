@@ -58,9 +58,9 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo "${{ github.event.event_name }}"
-          echo "${{ github.event.pull_request.head.ref }}"
-          echo "${{ github.event.pull_request.head.repo.full_name }}"
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_CONTEXT
           exit 1
 
       ##########################
