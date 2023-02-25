@@ -16,18 +16,19 @@ from megalinter.utils import REPO_HOME_DEFAULT
 
 
 class config_test(unittest.TestCase):
+    repository = None
+    branch = None
     test_folder = None
 
     def __init__(self, *args, **kwargs):
         super(config_test, self).__init__(*args, **kwargs)
 
-        repository_owner = self.get_repository_owner()
-        repository = self.get_repository()
-        branch = self.get_branch()
+        self.repository = self.get_repository()
+        self.branch = self.get_branch()
 
         self.test_folder = (
-            f"https://raw.githubusercontent.com/{repository_owner}/{repository}/"
-            f"{branch}/.automation/test/mega-linter-config-test/"
+            f"https://raw.githubusercontent.com/{self.repository}/"
+            f"{self.branch}/.automation/test/mega-linter-config-test/"
         )
 
     def setUp(self):
@@ -211,16 +212,15 @@ class config_test(unittest.TestCase):
             + "mega-linter-config-test"
         )
 
-        branch = os.environ.get("GITHUB_REF_NAME", "main")
-
         search_glob_pattern = root.replace("\\", "/") + "/**/*"
 
-        regex = r"(/oxsecurity/megalinter/)(main)(/\.automation)"
+        regex = r"(/oxsecurity/megalinter/main)(/\.automation)"
 
         list = []
 
         for file in glob.iglob(search_glob_pattern, recursive=True):
             file_name = os.path.basename(file)
+
             if ".yml" not in file_name:
                 continue
 
@@ -230,7 +230,7 @@ class config_test(unittest.TestCase):
                 file_content = f.read()
 
                 if re.search(regex, file_content):
-                    file_content = re.sub(regex, rf"\1{branch}\3", file_content)
+                    file_content = re.sub(regex, rf"/{self.repository}/{self.branch}\2", file_content)
 
                     match = True
 
@@ -250,21 +250,8 @@ class config_test(unittest.TestCase):
                 [os.path.join(os.path.realpath(utilstest.REPO_HOME), file)], force=True
             )
 
-    def get_repository_owner(self):
-        return os.environ.get("GITHUB_REPOSITORY_OWNER", "oxsecurity")
-
     def get_repository(self):
-        eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-
-        if (eventName.startswith("pull_request")):
-            return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
-        else:
-            return ML_REPO
+        return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
     
     def get_branch(self):
-        eventName = os.environ.get("GITHUB_EVENT_NAME", "")
-
-        if (eventName.startswith("pull_request")):
-            return os.environ.get("GITHUB_HEAD_REF", "main")
-        else:
-            return os.environ.get("GITHUB_REF_NAME", "main")
+        return os.environ.get("GITHUB_BRANCH", "main")
