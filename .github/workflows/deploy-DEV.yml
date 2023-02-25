@@ -54,6 +54,13 @@ jobs:
     # Load all steps #
     ##################
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          exit 1
+
       ##########################
       # Checkout the code base #
       ##########################
