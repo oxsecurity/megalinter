@@ -133,6 +133,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.72.0 to **0.73.0** on 2023-02-25
   - [rubocop](https://rubocop.org/) from 1.45.1 to **1.46.0** on 2023-02-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.43.2 to **0.44.0** on 2023-02-25
+  - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
+  - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
