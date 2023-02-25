@@ -9,7 +9,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 
 ## powershell documentation
 
-- Version in MegaLinter: **7.3.2**
+- Version in MegaLinter: **7.3.3**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
