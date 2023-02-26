@@ -149,8 +149,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \

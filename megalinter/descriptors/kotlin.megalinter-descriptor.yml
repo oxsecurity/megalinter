@@ -24,16 +24,16 @@ linters:
     examples:
       - "ktlint myfile.kt"
       - "ktlint --format myfile.kt"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - |
           RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
               chmod a+x ktlint && \
               mv "ktlint" /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flycheck-kotlin

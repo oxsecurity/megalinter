@@ -5,13 +5,6 @@ descriptor_flavors:
   - dotnet
 file_extensions:
   - ".cs"
-supported_platforms:
-  platform:
-    - linux/amd64
-    - linux/arm64
-    - linux/arm/v7
-    - linux/386
-    - windows/amd64
 install:
   apk:
     - icu-libs
@@ -51,6 +44,10 @@ linters:
     examples:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # CSharpier
   - class: DotnetLinter
     linter_name: csharpier

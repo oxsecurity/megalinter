@@ -126,15 +126,15 @@ linters:
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       npm:
         - eslint
         - eslint-plugin-jsonc
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: vscode-eslint
@@ -196,13 +196,13 @@ linters:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
+    install:
+      npm:
+        - "prettier"
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      npm:
-        - "prettier"
     ide:
       atom:
         - name: prettier-atom
@@ -270,3 +270,7 @@ linters:
       npm:
         - "npm-package-json-lint"
         - "npm-package-json-lint-config-default"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

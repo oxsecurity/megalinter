@@ -33,13 +33,13 @@ linters:
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
+    install:
+      npm:
+        - "cspell"
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      npm:
-        - "cspell"
     ide:
       vscode:
         - name: Code Spell Checker
@@ -73,6 +73,10 @@ linters:
     install:
       pip:
         - proselint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-proselint

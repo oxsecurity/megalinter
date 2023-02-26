@@ -18,13 +18,13 @@ linters:
     examples:
       - "coffeelint myfile.coffee"
       - "coffeelint -f .coffee-lint.json myfile.coffee"
+    install:
+      npm:
+        - "@coffeelint/cli"
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      npm:
-        - "@coffeelint/cli"
     ide:
       atom:
         - name: linter-coffeelint

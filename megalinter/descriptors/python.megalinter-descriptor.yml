@@ -25,14 +25,14 @@ linters:
     examples:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       pip:
         - pylint
         - typing-extensions
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: PyLint
@@ -72,13 +72,13 @@ linters:
       - "black --diff --check myfile.py"
       - "black --config pyproject.toml --diff --check myfile.py"
       - "black --config pyproject.toml myfile.py" # format
+    install:
+      pip:
+        - black
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - black
     ide:
       atom:
         - name: python-black
@@ -116,13 +116,13 @@ linters:
     examples:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
+    install:
+      pip:
+        - flake8
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - flake8
     ide:
       atom:
         - name: linter-flake8
@@ -162,14 +162,14 @@ linters:
       - "isort --diff --check --profile black myfile.py"
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
       - "isort --profile black --settings-file .isort.cfg myfile.py"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       pip:
         - isort
         - black
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: atom-python-isort
@@ -222,15 +222,19 @@ linters:
     examples:
       - "bandit myfile.py"
       - "bandit --configfile .bandit.yml myfile.py"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
+    install:
+      pip:
+        - bandit
+        - bandit_sarif_formatter
     install:
       pip:
         - bandit
         - bandit_sarif_formatter
         - bandit[toml]
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: bandit-lint
@@ -270,13 +274,13 @@ linters:
     examples:
       - "mypy myfile.py"
       - "mypy --config-file .mypy.yml myfile.py"
+    install:
+      pip:
+        - mypy
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - mypy
     ide:
       atom:
         - name: linter-mypy
@@ -349,6 +353,10 @@ linters:
         - nodejs
       pip:
         - pyright
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: LSP-pyright

@@ -29,13 +29,13 @@ linters:
       - "prettier --check myfile.yml"
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
+    install:
+      npm:
+        - "prettier"
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      npm:
-        - "prettier"
     ide:
       atom:
         - name: prettier-atom
@@ -80,13 +80,13 @@ linters:
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
+    install:
+      pip:
+        - yamllint
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - yamllint
     ide:
       emacs:
         - name: flycheck

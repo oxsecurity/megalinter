@@ -53,10 +53,6 @@ linters:
       - "eslint myfile.js"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       npm:
         - eslint
@@ -72,6 +68,10 @@ linters:
         - "@babel/core"
         - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-eslint

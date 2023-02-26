@@ -34,3 +34,6 @@ linters:
       dockerfile:
         - FROM mrtazz/checkmake:latest as checkmake
         - COPY --link --from=checkmake /checkmake /usr/bin/checkmake
+    supported_platforms:
+      platform:
+        - linux/amd64

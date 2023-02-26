@@ -23,11 +23,11 @@ linters:
     cli_version_arg_name: "-version"
     examples:
       - "editorconfig-checker myfile.js"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
         - COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

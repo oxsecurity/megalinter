@@ -13,13 +13,13 @@ linters:
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
+    install:
+      pip:
+        - restructuredtext_lint
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - restructuredtext_lint
   # rstcheck
   - linter_name: rstcheck
     linter_url: https://github.com/myint/rstcheck
@@ -32,13 +32,13 @@ linters:
     examples:
       - "rstcheck myfile.rst"
       - "rstcheck -c .rstcheck.cfg myfile.rst"
+    install:
+      pip:
+        - rstcheck
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
-    install:
-      pip:
-        - rstcheck
     ide:
       vscode:
         - name: vscode-restructuredtext
@@ -57,11 +57,11 @@ linters:
     examples:
       - "rstfmt --check myfile.rst"
       - "rstfmt myfile.rst" # Format
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       pip:
         - rstfmt
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

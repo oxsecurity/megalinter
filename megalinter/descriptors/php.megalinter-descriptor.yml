@@ -5,10 +5,6 @@ descriptor_flavors:
   - php
 file_extensions:
   - ".php"
-supported_platforms:
-  platform:
-    - linux/amd64
-    - linux/arm64
 install:
   apk:
     - gnupg
@@ -40,6 +36,10 @@ install:
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
     - ENV PATH="/root/.composer/vendor/bin:$PATH"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 linters:
   # PHPCS
   - linter_name: phpcs
@@ -57,14 +57,14 @@ linters:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
       - "phpcs --standard=phpcs.xml mydir/ myfile.php"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-phpcs
@@ -105,10 +105,6 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
       - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
@@ -120,6 +116,10 @@ linters:
       vscode:
         - name: vscode-phpstan
           url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PSALM
   - linter_name: psalm
     name: PHP_PSALM
@@ -143,14 +143,14 @@ linters:
       - "psalm myfile.php mydir/"
       - "psalm --config=psalm.xml myfile.php"
       - "psalm --config=psalm.xml myfile.php mydir/"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -170,12 +170,12 @@ linters:
       - "phplint mydir"
       - "phplint mydir myfile.php"
       - "phplint mydir -vvv"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
     install:
       dockerfile:
         - |
           RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
               && composer global config bin-dir --absolute
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
