@@ -82,7 +82,7 @@ jobs:
         id: image_tag
         run: |
           BRANCH_NAME="${GITHUB_REF##*/}"
-          TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
+          TAG="test-${{ github.actor }}-${BRANCH_NAME}"
           echo "Tag name: ${TAG}"
           echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
@@ -124,7 +124,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+            oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 90
 
       #######################################
@@ -153,7 +153,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+            oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 90
 
       ####################################
@@ -181,7 +181,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+            oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
 
       # Free disk space
       - name: Free Disk space
@@ -196,10 +196,13 @@ jobs:
       - name: Run Test Cases
         shell: bash
         run: |
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
+
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           TEST_KEYWORDS_TO_USE=""
-          if [[ "${{github.event.head_commit.message}}" == *"TEST_KEYWORDS="* ]]; then
-            COMMIT_MSG="${{github.event.head_commit.message}}"
+          if [[ "${{ github.event.head_commit.message }}" == *"TEST_KEYWORDS="* ]]; then
+            COMMIT_MSG="${{ github.event.head_commit.message }}"
             TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
             echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
             if [[ "${TEST_KEYWORDS_TO_USE}" =~ $'\r' ]]; then
@@ -207,7 +210,8 @@ jobs:
                 TEST_KEYWORDS_TO_USE=""
             fi
           fi
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e GITHUB_REF_NAME=${GITHUB_REF_NAME} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 60
 
       #####################################
@@ -216,7 +220,7 @@ jobs:
       - name: Run against all code base
         if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e PAT="${{ secrets.PAT }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 15
 
       # Upload MegaLinter artifacts
@@ -246,7 +250,7 @@ jobs:
         run: cd mega-linter-runner && sudo yarn install --frozen-lockfile && sudo npm link
       - name: Run mega-linter-runner tests
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{ steps.image_tag.outputs.tag }} MEGALINTER_NO_DOCKER_PULL=true npm run test
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -255,7 +259,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
+          image-ref: "docker.io/oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
