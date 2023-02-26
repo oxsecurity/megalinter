@@ -122,6 +122,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.26 to **2.3.33** on 2023-02-22
   - [dustilock](https://github.com/Checkmarx/dustilock) from 0.0.0 to **1.2.0** on 2023-02-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.0 to **7.23.1** on 2023-02-22
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.1 to **3.7.2** on 2023-02-25
+  - [phpstan](https://phpstan.org/) from 1.10.1 to **1.10.2** on 2023-02-25
+  - [psalm](https://psalm.dev) from Psalm.5.7.5@ to **Psalm.5.7.6@** on 2023-02-25
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.2 to **7.3.3** on 2023-02-25
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.2 to **7.3.3** on 2023-02-25
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.294 to **1.1.295** on 2023-02-25
+  - [checkov](https://www.checkov.io/) from 2.3.33 to **2.3.39** on 2023-02-25
+  - [semgrep](https://semgrep.dev/) from 1.12.1 to **1.13.0** on 2023-02-25
+  - [syft](https://github.com/anchore/syft) from 0.72.0 to **0.73.0** on 2023-02-25
+  - [rubocop](https://rubocop.org/) from 1.45.1 to **1.46.0** on 2023-02-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.43.2 to **0.44.0** on 2023-02-25
+  - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
+  - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
