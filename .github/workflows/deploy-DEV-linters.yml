@@ -206,7 +206,7 @@ jobs:
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
