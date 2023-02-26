@@ -135,6 +135,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.43.2 to **0.44.0** on 2023-02-25
   - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
   - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.7.0 to **10.8.0** on 2023-02-26
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

@@ -230,7 +230,9 @@ class config_test(unittest.TestCase):
                 file_content = f.read()
 
                 if re.search(regex, file_content):
-                    file_content = re.sub(regex, rf"/{self.repository}/{self.branch}\2", file_content)
+                    file_content = re.sub(
+                        regex, rf"/{self.repository}/{self.branch}\2", file_content
+                    )
 
                     match = True
 
@@ -252,6 +254,6 @@ class config_test(unittest.TestCase):
 
     def get_repository(self):
         return os.environ.get("GITHUB_REPOSITORY", ML_REPO)
-    
+
     def get_branch(self):
         return os.environ.get("GITHUB_BRANCH", "main")
