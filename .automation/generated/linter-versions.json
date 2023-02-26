@@ -9,7 +9,7 @@
     "cfn-lint": "0.73.2",
     "checkmake": "0.2.0",
     "checkov": "2.3.39",
-    "checkstyle": "10.7.0",
+    "checkstyle": "10.8.0",
     "chktex": "1.7.6",
     "clippy": "0.1.67",
     "clj-kondo": "2023.02.17",
