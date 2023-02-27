@@ -6,7 +6,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
