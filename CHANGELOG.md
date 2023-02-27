@@ -136,6 +136,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
   - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.7.0 to **10.8.0** on 2023-02-26
+  - [eslint](https://eslint.org) from 8.34.0 to **8.35.0** on 2023-02-27
+  - [checkov](https://www.checkov.io/) from 2.3.39 to **2.3.44** on 2023-02-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.3 to **6.27.0** on 2023-02-27
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
