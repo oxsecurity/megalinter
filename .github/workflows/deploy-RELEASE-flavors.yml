@@ -38,7 +38,6 @@ jobs:
       name: latest-flavors
     strategy:
       fail-fast: false
-      max-parallel: 6
       matrix:
         os: [ubuntu-latest]
         # flavors-start
