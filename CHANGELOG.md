@@ -37,7 +37,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
   - Authenticate to GitHub API during docker build to avoid reaching limits
   - Remove apk go package install in images where possible to decrease image sizes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2318>
-  - Create a slash PR bot to run `./build.sh` command manually on PRs, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2353>
+  - Create a slash PR bot to run `./build.sh` command manually on PRs, by @echoix in [#2353](https://github.com/oxsecurity/megalinter/pull/2353) and [#2381](https://github.com/oxsecurity/megalinter/pull/2381)
+  - Limit parallel execution of large job matrix in the workflows with max-parallel in order to keep runners available for other jobs, by @echoix in [#2397](https://github.com/oxsecurity/megalinter/pull/2397)
 
 - Fixes
   - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
@@ -135,6 +136,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.43.2 to **0.44.0** on 2023-02-25
   - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
   - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.7.0 to **10.8.0** on 2023-02-26
+  - [eslint](https://eslint.org) from 8.34.0 to **8.35.0** on 2023-02-27
+  - [checkov](https://www.checkov.io/) from 2.3.39 to **2.3.44** on 2023-02-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.3 to **6.27.0** on 2023-02-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.73.2 to **0.74.0** on 2023-02-28
+  - [djlint](https://djlint.com/) from 1.19.15 to **1.19.16** on 2023-02-28
+  - [checkov](https://www.checkov.io/) from 2.3.44 to **2.3.48** on 2023-02-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
