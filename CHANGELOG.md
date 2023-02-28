@@ -140,6 +140,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.34.0 to **8.35.0** on 2023-02-27
   - [checkov](https://www.checkov.io/) from 2.3.39 to **2.3.44** on 2023-02-27
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.3 to **6.27.0** on 2023-02-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.73.2 to **0.74.0** on 2023-02-28
+  - [djlint](https://djlint.com/) from 1.19.15 to **1.19.16** on 2023-02-28
+  - [checkov](https://www.checkov.io/) from 2.3.44 to **2.3.48** on 2023-02-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
