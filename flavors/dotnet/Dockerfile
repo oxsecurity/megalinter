@@ -69,22 +69,22 @@ RUN apk add --update --no-cache \
                 musl-dev \
                 openssh \
                 icu-libs \
-                libcurl \
+                dotnet7-sdk \
+                krb5-libs \
+                libgcc \
                 libintl \
                 libssl1.1 \
                 libstdc++ \
-                lttng-ust-dev \
                 zlib \
-                zlib-dev \
                 openjdk11 \
                 py3-pyflakes \
                 nodejs \
                 npm \
                 yarn \
+                dotnet6-sdk \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc \
                 nodejs-current \
                 ruby \
                 ruby-dev \
@@ -252,11 +252,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 
 
 # CSHARP installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # POWERSHELL installation
 RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
@@ -275,11 +271,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -311,7 +303,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
 
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -375,11 +367,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
 
 #OTHER__END

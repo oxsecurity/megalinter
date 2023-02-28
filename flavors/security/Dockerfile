@@ -58,14 +58,14 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                dotnet6-sdk \
                 icu-libs \
-                libcurl \
+                krb5-libs \
+                libgcc \
                 libintl \
                 libssl1.1 \
                 libstdc++ \
-                lttng-ust-dev \
                 zlib \
-                zlib-dev \
                 npm \
                 nodejs-current \
                 yarn \
@@ -207,14 +207,11 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
 
 # devskim installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation

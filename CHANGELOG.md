@@ -146,6 +146,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.406 to **7.0.103** on 2023-02-28
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

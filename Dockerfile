@@ -89,13 +89,13 @@ RUN apk add --update --no-cache \
                 docker \
                 openrc \
                 icu-libs \
-                libcurl \
+                dotnet7-sdk \
+                krb5-libs \
+                libgcc \
                 libintl \
                 libssl1.1 \
                 libstdc++ \
-                lttng-ust-dev \
                 zlib \
-                zlib-dev \
                 openjdk11 \
                 perl \
                 perl-dev \
@@ -120,13 +120,14 @@ RUN apk add --update --no-cache \
                 readline-dev \
                 g++ \
                 libc-dev \
-                libgcc \
+                libcurl \
                 libxml2-dev \
                 libxml2-utils \
                 linux-headers \
                 R \
                 R-dev \
                 R-doc \
+                dotnet6-sdk \
                 nodejs-current \
                 ruby \
                 ruby-dev \
@@ -343,11 +344,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 
 
 # CSHARP installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
@@ -402,11 +399,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -443,7 +436,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && ./install-clj-kondo \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
 
 # dartanalyzer installation
     && wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
@@ -583,11 +576,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
@@ -632,11 +621,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint \
 
 # tflint installation

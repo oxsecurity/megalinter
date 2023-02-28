@@ -107,12 +107,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
-RUN /usr/share/dotnet/dotnet tool install -g csharpier
+RUN dotnet tool install --global csharpier
 ```
 

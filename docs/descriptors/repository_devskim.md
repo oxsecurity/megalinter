@@ -100,20 +100,16 @@ Use "devskim [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```
 
 - APK packages (Linux):
+  - [dotnet6-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet6-sdk)
   - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
+  - [krb5-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=krb5-libs)
+  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
   - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
   - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
   - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
   - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
-  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
