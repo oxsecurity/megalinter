@@ -4844,6 +4844,8 @@
         "                                     %{message}  - The message.",
         "        --json                       Log output as JSON",
         "        --sarif                      Log output as SARIF",
+        "        --codeclimate-report-file FILE",
+        "                                     Save a code climate compatible report to this file",
         "        --list-checks                List available check names.",
         "",
         "    Checks:",
@@ -4912,7 +4914,9 @@
         "        --no-arrow_alignment-check   Skip the arrow_alignment check.",
         "        --no-hard_tabs-check         Skip the hard_tabs check.",
         "        --no-trailing_whitespace-check",
-        "                                     Skip the trailing_whitespace check."
+        "                                     Skip the trailing_whitespace check.",
+        "        --no-legacy_facts-check      Skip the legacy_facts check.",
+        "        --no-top_scope_facts-check   Skip the top_scope_facts check."
     ],
     "pylint": [
         "usage: pylint [options]",
