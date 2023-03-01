@@ -5869,7 +5869,7 @@
 <p><a href="https://github.com/rodjek/puppet-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rodjek/puppet-lint?cacheSeconds=3600" /></a> <img alt="autofix" src="https://shields.io/badge/-autofix-green" /> <a href="https://github.com/rodjek/puppet-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/rodjek/puppet-lint?sort=semver" /></a> <a href="https://github.com/rodjek/puppet-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rodjek/puppet-lint" /></a> <a href="https://github.com/rodjek/puppet-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/rodjek/puppet-lint" /></a> <a href="https://github.com/rodjek/puppet-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/rodjek/puppet-lint" /></a></p>
 <h2 id="puppet-lint-documentation">puppet-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.0.1</strong></li>
+<li>Version in MegaLinter: <strong>3.2.0</strong></li>
 <li>Visit <a href="http://puppet-lint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/rodjek/puppet-lint#configuration-file" target="_blank">How to configure puppet-lint rules</a></li>
 <li>See <a href="http://puppet-lint.com/controlcomments/" target="_blank">How to disable puppet-lint rules in files</a></li>
@@ -6049,6 +6049,8 @@
                                      %{message}  - The message.
         --json                       Log output as JSON
         --sarif                      Log output as SARIF
+        --codeclimate-report-file FILE
+                                     Save a code climate compatible report to this file
         --list-checks                List available check names.
 
     Checks:
@@ -6118,6 +6120,8 @@
         --no-hard_tabs-check         Skip the hard_tabs check.
         --no-trailing_whitespace-check
                                      Skip the trailing_whitespace check.
+        --no-legacy_facts-check      Skip the legacy_facts check.
+        --no-top_scope_facts-check   Skip the top_scope_facts check.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
