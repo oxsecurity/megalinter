@@ -48,6 +48,7 @@ jobs:
       name: beta-flavors
     strategy:
       fail-fast: false
+      max-parallel: 3
       matrix:
         os: [ubuntu-latest]
         # flavors-start

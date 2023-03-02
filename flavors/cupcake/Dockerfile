@@ -28,7 +28,7 @@ FROM golang:1.19-alpine as revive
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.15.3 as gitleaks
+FROM zricethezav/gitleaks:v8.16.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -91,6 +91,7 @@ RUN apk add --update --no-cache \
                 npm \
                 yarn \
                 go \
+                helm \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

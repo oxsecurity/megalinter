@@ -37,7 +37,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use docker/build-push-action to build docker images and akhilerm/tag-push-action to release by retagging and pushing beta images instead of rebuilding them
   - Authenticate to GitHub API during docker build to avoid reaching limits
   - Remove apk go package install in images where possible to decrease image sizes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2318>
-  - Create a slash PR bot to run `./build.sh` command manually on PRs, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2353>
+  - Create a slash PR bot to run `./build.sh` command manually on PRs, by @echoix in [#2353](https://github.com/oxsecurity/megalinter/pull/2353) and [#2381](https://github.com/oxsecurity/megalinter/pull/2381)
+  - Limit parallel execution of large job matrix in the workflows with max-parallel in order to keep runners available for other jobs, by @echoix in [#2397](https://github.com/oxsecurity/megalinter/pull/2397)
 
 - Fixes
   - Replace deprecated spectral package, by @bdovaz in by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2340>
@@ -122,6 +123,34 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.26 to **2.3.33** on 2023-02-22
   - [dustilock](https://github.com/Checkmarx/dustilock) from 0.0.0 to **1.2.0** on 2023-02-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.0 to **7.23.1** on 2023-02-22
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.1 to **3.7.2** on 2023-02-25
+  - [phpstan](https://phpstan.org/) from 1.10.1 to **1.10.2** on 2023-02-25
+  - [psalm](https://psalm.dev) from Psalm.5.7.5@ to **Psalm.5.7.6@** on 2023-02-25
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.2 to **7.3.3** on 2023-02-25
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.2 to **7.3.3** on 2023-02-25
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.294 to **1.1.295** on 2023-02-25
+  - [checkov](https://www.checkov.io/) from 2.3.33 to **2.3.39** on 2023-02-25
+  - [semgrep](https://semgrep.dev/) from 1.12.1 to **1.13.0** on 2023-02-25
+  - [syft](https://github.com/anchore/syft) from 0.72.0 to **0.73.0** on 2023-02-25
+  - [rubocop](https://rubocop.org/) from 1.45.1 to **1.46.0** on 2023-02-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.43.2 to **0.44.0** on 2023-02-25
+  - [phpstan](https://phpstan.org/) from 1.10.2 to **1.10.3** on 2023-02-25
+  - [psalm](https://psalm.dev) from Psalm.5.7.6@ to **Psalm.5.7.7@** on 2023-02-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.7.0 to **10.8.0** on 2023-02-26
+  - [eslint](https://eslint.org) from 8.34.0 to **8.35.0** on 2023-02-27
+  - [checkov](https://www.checkov.io/) from 2.3.39 to **2.3.44** on 2023-02-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.26.3 to **6.27.0** on 2023-02-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.73.2 to **0.74.0** on 2023-02-28
+  - [djlint](https://djlint.com/) from 1.19.15 to **1.19.16** on 2023-02-28
+  - [checkov](https://www.checkov.io/) from 2.3.44 to **2.3.48** on 2023-02-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.9.0 to **3.10.0** on 2023-02-28
+  - [puppet-lint](http://puppet-lint.com/) from 3.0.1 to **3.2.0** on 2023-03-01
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.295 to **1.1.296** on 2023-03-01
+  - [checkov](https://www.checkov.io/) from 2.3.48 to **2.3.50** on 2023-03-01
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.3 to **8.16.0** on 2023-03-01
+  - [kics](https://www.kics.io) from 1.6.10 to **1.6.11** on 2023-03-01
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

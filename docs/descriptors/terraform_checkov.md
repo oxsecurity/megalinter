@@ -23,7 +23,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.33**
+- Version in MegaLinter: **2.3.50**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -121,6 +121,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
+               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
 
 Infrastructure as code static analysis
 
@@ -394,6 +395,8 @@ options:
                         <variable1>,<variable2>
   --scan-secrets-history
                         will scan the history of commits for secrets
+  --secrets-history-timeout SECRETS_HISTORY_TIMEOUT
+                        maximum time to stop the scan
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
