@@ -151,6 +151,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.48 to **2.3.50** on 2023-03-01
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.3 to **8.16.0** on 2023-03-01
   - [kics](https://www.kics.io) from 1.6.10 to **1.6.11** on 2023-03-01
+  - [checkov](https://www.checkov.io/) from 2.3.50 to **2.3.53** on 2023-03-02
+  - [semgrep](https://semgrep.dev/) from 1.13.0 to **1.14.0** on 2023-03-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.3 to **0.38.0** on 2023-03-02
+  - [rubocop](https://rubocop.org/) from 1.46.0 to **1.47.0** on 2023-03-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.1 to **7.24.0** on 2023-03-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.0 to **0.44.1** on 2023-03-02
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
