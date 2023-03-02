@@ -91,6 +91,7 @@ RUN apk add --update --no-cache \
                 npm \
                 yarn \
                 go \
+                helm \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

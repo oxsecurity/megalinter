@@ -35,6 +35,7 @@
     "goodcheck": "3.1.0",
     "graphql-schema-linter": "3.0.1",
     "hadolint": "2.12.0",
+    "helm": "v3.11.1",
     "htmlhint": "1.1.4",
     "isort": "5.12.0",
     "jscpd": "3.5.3",

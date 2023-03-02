@@ -110,3 +110,5 @@ megalinter-reports/
 github_conf/
 
 Pipfile
+
+run_local_linter.sh
