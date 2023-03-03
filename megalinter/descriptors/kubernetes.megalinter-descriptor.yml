@@ -77,7 +77,7 @@ linters:
     linter_repo: https://github.com/helm/helm
     linter_url: https://helm.sh/docs/helm/helm_lint/
     linter_version_cache: "v3.11.1"
-    files_sub_directory: "" 
+    files_sub_directory: ""
     test_folder: kubernetes_helm
     cli_lint_mode: project
     cli_help_arg_name: -h
