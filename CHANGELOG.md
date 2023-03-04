@@ -164,6 +164,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.0 to **0.38.1** on 2023-03-04
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.27.0 to **6.28.0** on 2023-03-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.1 to **0.44.4** on 2023-03-04
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.42.2 to **0.43.0** on 2023-03-04
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
