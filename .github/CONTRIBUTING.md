@@ -25,7 +25,7 @@ _If it does not work, just run the following script_
 
 ```shell
 pip install -r requirements.dev.txt
-pip install mkdocs-material
+pip install mkdocs-material mkdocs-glightbox
 npm install markdown-table-formatter -g
 ```
 
@@ -108,7 +108,7 @@ In order to be able to run locally a server that serves all the documentation an
 Command to execute (only one time):
 
 ```bash
-pip install --upgrade "markdown==3.3.7" mike mkdocs-material mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+pip install --upgrade "markdown==3.3.7" mike mkdocs-material mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
 ```
 
 Command to run every time you want to bring up the server:
@@ -127,7 +127,7 @@ Once you think everything is correct run `bash build.sh --doc` and it will gener
 
 Each linter must:
 
-- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
+- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
 Then run `bash build.sh` and it will generate all the rest!

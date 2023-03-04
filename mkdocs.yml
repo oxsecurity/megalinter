@@ -20,6 +20,9 @@ theme:
   favicon: assets/images/mega-linter-square.png
   palette:
     primary: white
+plugins:
+  - glightbox
+  - search
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji

@@ -53,7 +53,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # MegaLinter GitHub Action configuration file
-# More info at https://megalinter.github.io
+# More info at https://megalinter.io
 name: MegaLinter
 
 on:
@@ -88,11 +88,11 @@ jobs:
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.github.io/flavors/
+        # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
-          # https://megalinter.github.io/configuration/
+          # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -144,17 +144,17 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
+# More info at https://megalinter.io/
 
 mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
+  # More info at https://megalinter.io/flavors/
   image: oxsecurity/megalinter:v6
   script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
+    # https://megalinter.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
@@ -217,10 +217,10 @@ To benefit from Pull Request comments, please follow [configuration instructions
 
 Add the following stage in your Jenkinsfile
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with MegaLinter: https://megalinter.github.io/
+// Lint with MegaLinter: https://megalinter.io/
 stage('MegaLinter') {
     agent {
         docker {
@@ -411,9 +411,9 @@ _Example:_
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
+You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
-See [mega-linter-runner installation instructions](https://megalinter.github.io/mega-linter-runner/#installation)
+See [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation)
 
 Example
 
