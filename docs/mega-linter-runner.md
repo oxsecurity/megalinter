@@ -15,7 +15,7 @@
 
 <!-- readme-header-end -->
 
-This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
+This package allows to run [MegaLinter](https://megalinter.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
@@ -79,7 +79,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | Option                 | Description                                                                                                        | Default           |
 |------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
-| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
+| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                             | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
@@ -112,7 +112,7 @@ mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.p
 
 ## Configuration
 
-You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 

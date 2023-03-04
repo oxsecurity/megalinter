@@ -1,5 +1,5 @@
 Results of dotnet-format linter (version 000)
-See documentation on https://megalinter.github.io/descriptors/csharp_dotnet_format/
+See documentation on https://megalinter.io/descriptors/csharp_dotnet_format/
 -----------------------------------------------
 
 ✅ [SUCCESS] .automation/test/csharp/good/csharp_good_01.cs
