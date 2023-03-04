@@ -157,6 +157,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.46.0 to **1.47.0** on 2023-03-02
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.1 to **7.24.0** on 2023-03-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.0 to **0.44.1** on 2023-03-02
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.13.1 to **6.14.0** on 2023-03-04
+  - [pylint](https://pylint.pycqa.org) from 2.16.2 to **2.16.3** on 2023-03-04
+  - [checkov](https://www.checkov.io/) from 2.3.53 to **2.3.57** on 2023-03-04
+  - [syft](https://github.com/anchore/syft) from 0.73.0 to **0.74.0** on 2023-03-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.0 to **0.38.1** on 2023-03-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.27.0 to **6.28.0** on 2023-03-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.1 to **0.44.4** on 2023-03-04
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
