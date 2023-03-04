@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Added **cli_lint_fix_arg_name** parameter to **powershell formatter** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Created **ProtolintLinter** class to fix the problem that returns exit code 1 when it encounters a problem to correct even though it corrects it correctly, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Concatenate **--output** parameter correctly to **xmllint** linter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Modified the .pre-commit-hooks.yaml for megalinter-full so the containername argument is correctly split between two lines, by @drbothen [#2411](https://github.com/oxsecurity/megalinter/pull/2411)
   - Avoid [jscpd](https://megalinter.io/v6/descriptors/copypaste_jscpd/) default config to detect copy pastes in image files
 
 - Documentation
@@ -152,6 +153,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.48 to **2.3.50** on 2023-03-01
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.3 to **8.16.0** on 2023-03-01
   - [kics](https://www.kics.io) from 1.6.10 to **1.6.11** on 2023-03-01
+  - [checkov](https://www.checkov.io/) from 2.3.50 to **2.3.53** on 2023-03-02
+  - [semgrep](https://semgrep.dev/) from 1.13.0 to **1.14.0** on 2023-03-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.37.3 to **0.38.0** on 2023-03-02
+  - [rubocop](https://rubocop.org/) from 1.46.0 to **1.47.0** on 2023-03-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.23.1 to **7.24.0** on 2023-03-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.0 to **0.44.1** on 2023-03-02
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.13.1 to **6.14.0** on 2023-03-04
+  - [pylint](https://pylint.pycqa.org) from 2.16.2 to **2.16.3** on 2023-03-04
+  - [checkov](https://www.checkov.io/) from 2.3.53 to **2.3.57** on 2023-03-04
+  - [syft](https://github.com/anchore/syft) from 0.73.0 to **0.74.0** on 2023-03-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.0 to **0.38.1** on 2023-03-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.27.0 to **6.28.0** on 2023-03-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.1 to **0.44.4** on 2023-03-04
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.42.2 to **0.43.0** on 2023-03-04
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
