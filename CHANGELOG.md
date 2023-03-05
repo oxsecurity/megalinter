@@ -151,6 +151,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.48 to **2.3.50** on 2023-03-01
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.15.3 to **8.16.0** on 2023-03-01
   - [kics](https://www.kics.io) from 1.6.10 to **1.6.11** on 2023-03-01
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from v3.11.1 to **3.10.2** on 2023-03-05
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05

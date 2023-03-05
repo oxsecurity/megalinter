@@ -76,14 +76,14 @@ linters:
     name: KUBERNETES_HELM
     linter_repo: https://github.com/helm/helm
     linter_url: https://helm.sh/docs/helm/helm_lint/
-    linter_version_cache: "v3.11.1"
     files_sub_directory: ""
     test_folder: kubernetes_helm
     active_only_if_file_found:
       - Chart.yml
       - Chart.yaml
     cli_lint_mode: project
-    cli_help_arg_name: -h
+    cli_help_arg_name: help
+    cli_version_arg_name: version
     cli_lint_extra_args:
       - "lint"
     linter_banner_image_url: https://helm.sh/img/helm.svg
