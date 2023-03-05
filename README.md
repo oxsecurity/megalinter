@@ -5,8 +5,8 @@
 
 <!-- header-logo-start -->
 <div align="center">
-  <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" height="200px">
+  <a href="https://megalinter.io" target="blank" title="Visit MegaLinter Web Site">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" min-height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -17,18 +17,18 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.1M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.1M-blue)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2083&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2098&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
@@ -40,7 +40,7 @@ Supporting [**53** languages](#languages), [**24** formats](#formats), [**21** t
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
-See [**Online Documentation Web Site which has a much easier user navigation than this README**](https://megalinter.github.io/)
+See [**Online Documentation Web Site which has a much easier user navigation than this README**](https://megalinter.io/)
 <!-- online-doc-end -->
 
 ________
@@ -155,11 +155,11 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
 - Reading error logs, **developers learn best practices** of the language they are using
-- [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](#quick-start)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 <!-- markdown-headers
@@ -386,7 +386,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # MegaLinter GitHub Action configuration file
-# More info at https://megalinter.github.io
+# More info at https://megalinter.io
 name: MegaLinter
 
 on:
@@ -421,11 +421,11 @@ jobs:
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.github.io/flavors/
+        # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
-          # https://megalinter.github.io/configuration/
+          # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -477,17 +477,17 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
+# More info at https://megalinter.io/
 
 mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
+  # More info at https://megalinter.io/flavors/
   image: oxsecurity/megalinter:v6
   script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
+    # https://megalinter.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
@@ -550,10 +550,10 @@ To benefit from Pull Request comments, please follow [configuration instructions
 
 Add the following stage in your Jenkinsfile
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with MegaLinter: https://megalinter.github.io/
+// Lint with MegaLinter: https://megalinter.io/
 stage('MegaLinter') {
     agent {
         docker {
@@ -744,9 +744,9 @@ _Example:_
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](#configuration) file
+You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](#configuration) file
 
-See [mega-linter-runner installation instructions](https://megalinter.github.io/mega-linter-runner/#installation)
+See [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation)
 
 Example
 
@@ -770,7 +770,7 @@ description: List of all configuration variables that can be used to customize t
 MegaLinter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml)
 
-Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.github.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
+Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 - VSCode: You need a VSCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
@@ -1109,7 +1109,7 @@ Submit a PR if you want your plugin to appear here :)
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
-- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
+- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html))
 - Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
 - File URLs must conform to the same directory and file naming criteria as defined above.
@@ -1198,14 +1198,14 @@ description: Help MegaLinter by starring the repo, post issues and Pull Requests
 ## How to contribute
 
 Contributions to MegaLinter are very welcome, the more we are, the stronger MegaLinter is !
-Please follow [Contributing Guide](https://megalinter.github.io/contributing/)
+Please follow [Contributing Guide](https://megalinter.io/contributing/)
 
 To help, you can also:
 
 - [:star: star the repository](https://github.com/oxsecurity/megalinter/stargazers)
 - [:beer: offer a beer !](https://github.com/sponsors/nvuillam)
 - [report problems and request new features](https://github.com/oxsecurity/megalinter/issues)
-- [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.github.io/&via=nvuillam){target=_blank}
+- [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.io/&via=nvuillam){target=_blank}
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
@@ -1310,7 +1310,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 ### Run locally
 
-MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/)
+MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.io/mega-linter-runner/)
 
 ### Reports
 
@@ -1365,7 +1365,7 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ### Enhanced Documentation
 
-- [**HTML documentation**](https://megalinter.github.io/)
+- [**HTML documentation**](https://megalinter.io/)
 
 ![HTML doc home](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
 
@@ -1404,8 +1404,8 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 - [Default behaviours for all linters](https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
-  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.github.io/supported-linters/)
-  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.github.io/descriptors/javascript_eslint/)
+  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.io/supported-linters/)
+  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.io/descriptors/javascript_eslint/)
 - **Automatic generation of Dockerfile** using YML descriptors, always using the linter latest version
   - Dockerfile commands (FROM, ARG, ENV, COPY, RUN )
   - APK packages (linux)
@@ -1436,7 +1436,7 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 - Migration from docker hub space **nvuillam** to space **megalinter**
   - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
 
-- Documentation is now hosted at <https://megalinter.github.io/>
+- Documentation is now hosted at <https://megalinter.io/>
 
 - Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
   - **latest** for latest official release

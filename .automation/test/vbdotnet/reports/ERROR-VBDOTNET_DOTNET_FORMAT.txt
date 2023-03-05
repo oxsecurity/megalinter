@@ -1,5 +1,5 @@
 Results of dotnet-format linter (version 000)
-See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
+See documentation on https://megalinter.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
 ❌ [ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb

@@ -7,8 +7,8 @@
 
 <!-- header-logo-start -->
 <div align="center">
-  <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" height="200px">
+  <a href="https://megalinter.io" target="blank" title="Visit MegaLinter Web Site">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" min-height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.0M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.0M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2011&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
@@ -80,11 +80,11 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
 - Reading error logs, **developers learn best practices** of the language they are using
-- [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
@@ -295,7 +295,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 - Migration from docker hub space **nvuillam** to space **megalinter**
   - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
 
-- Documentation is now hosted at <https://megalinter.github.io/>
+- Documentation is now hosted at <https://megalinter.io/>
 
 - Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
   - **latest** for latest official release

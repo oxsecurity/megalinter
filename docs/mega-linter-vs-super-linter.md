@@ -28,7 +28,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 ## Run locally
 
-MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/)
+MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.io/mega-linter-runner/)
 
 ## Reports
 
@@ -83,7 +83,7 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ## Enhanced Documentation
 
-- [**HTML documentation**](https://megalinter.github.io/)
+- [**HTML documentation**](https://megalinter.io/)
 
 ![HTML doc home](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
 
@@ -122,8 +122,8 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
 - [Default behaviours for all linters](https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
-  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.github.io/supported-linters/)
-  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.github.io/descriptors/javascript_eslint/)
+  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.io/supported-linters/)
+  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.io/descriptors/javascript_eslint/)
 - **Automatic generation of Dockerfile** using YML descriptors, always using the linter latest version
   - Dockerfile commands (FROM, ARG, ENV, COPY, RUN )
   - APK packages (linux)

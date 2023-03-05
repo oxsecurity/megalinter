@@ -17,7 +17,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.37.3**
+- Version in MegaLinter: **0.38.1**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories){target=_blank}
@@ -116,6 +116,7 @@ Examples:
 
 Available Commands:
   aws         [EXPERIMENTAL] Scan AWS account
+  completion  Generate the autocompletion script for the specified shell
   config      Scan config files for misconfigurations
   filesystem  Scan local filesystem
   help        Help about any command

@@ -41,7 +41,7 @@ Submit a PR if you want your plugin to appear here :)
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
-- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
+- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html))
 - Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
 - File URLs must conform to the same directory and file naming criteria as defined above.

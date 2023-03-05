@@ -7,7 +7,7 @@ import os
 import time
 import unittest
 
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 
 
 class mega_linter_2_fixes_test(unittest.TestCase):
