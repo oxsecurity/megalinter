@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.0** on 2023-03-05
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
@@ -118,7 +119,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove downgrading of ansible-lint, by @gotit96 in <https://github.com/oxsecurity/megalinter/pull/2257>
   - Tag some automatically updated files as generated files, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2285>
   - Fix Sarif Reporter in Azure Devops with space in project name, by @EtienneDeneuve in <https://github.com/oxsecurity/megalinter/pull/2301>
-  - Pass extra args for friendlier CSpell UX (#2271), by @Kurt-von-Laven in https://github.com/oxsecurity/megalinter/pull/2275
+  - Pass extra args for friendlier CSpell UX (#2271), by @Kurt-von-Laven in <https://github.com/oxsecurity/megalinter/pull/2275>
 
 - Documentation
   - Configure jsonschema documentation formatting (see [Descriptor schema](https://megalinter.io/latest/json-schemas/descriptor.html), [Configuration schema](https://megalinter.io/latest/json-schemas/configuration.html)), by @echoix in [#2270](https://github.com/oxsecurity/megalinter/pull/2270)

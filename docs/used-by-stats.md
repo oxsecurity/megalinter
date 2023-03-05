@@ -1,14 +1,14 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2098&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1415&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2099&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1416&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=683&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=56212&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=56218&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 35620 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6868 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 35625 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6870 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2344 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1841 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1828 |
@@ -24,7 +24,7 @@
 | [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn)                                                                                                 |   453 |
 | [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   420 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                                       |   362 |
-| [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   362 |
+| [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   361 |
 | [ministryofjustice/modernisation-platform](https://github.com/ministryofjustice/modernisation-platform)                                                                         |   309 |
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   295 |
 | [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   294 |
@@ -38,9 +38,9 @@
 | [unixorn/tumult.plugin.zsh](https://github.com/unixorn/tumult.plugin.zsh)                                                                                                       |   147 |
 | [unixorn/fzf-zsh-plugin](https://github.com/unixorn/fzf-zsh-plugin)                                                                                                             |   139 |
 | [nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                                                                                                         |   139 |
-| [carpenike/k8s-gitops](https://github.com/carpenike/k8s-gitops)                                                                                                                 |   136 |
+| [carpenike/k8s-gitops](https://github.com/carpenike/k8s-gitops)                                                                                                                 |   137 |
 | [apigee/devrel](https://github.com/apigee/devrel)                                                                                                                               |   130 |
-| [newrelic/newrelic-python-agent](https://github.com/newrelic/newrelic-python-agent)                                                                                             |   127 |
+| [newrelic/newrelic-python-agent](https://github.com/newrelic/newrelic-python-agent)                                                                                             |   128 |
 | [T145/black-mirror](https://github.com/T145/black-mirror)                                                                                                                       |   125 |
 | [cbg-ethz/V-pipe](https://github.com/cbg-ethz/V-pipe)                                                                                                                           |   104 |
 | [Luzkan/smells](https://github.com/Luzkan/smells)                                                                                                                               |    97 |
@@ -1207,6 +1207,7 @@
 | [actions-marketplace-validations/ahmadnassri_action-dotenv](https://github.com/actions-marketplace-validations/ahmadnassri_action-dotenv)                                       |     0 |
 | [MRDGH2821/MRDGH2821](https://github.com/MRDGH2821/MRDGH2821)                                                                                                                   |     0 |
 | [jmuelbert/qt_conan_boilerplate_template](https://github.com/jmuelbert/qt_conan_boilerplate_template)                                                                           |     0 |
+| [RunningMattress/upm-test-package](https://github.com/RunningMattress/upm-test-package)                                                                                         |     0 |
 | [zeissmicroscopy/imgdoc2](https://github.com/zeissmicroscopy/imgdoc2)                                                                                                           |     0 |
 | [jmuelbert/cleardirectory](https://github.com/jmuelbert/cleardirectory)                                                                                                         |     0 |
 | [jmuelbert/jmbde-java](https://github.com/jmuelbert/jmbde-java)                                                                                                                 |     0 |

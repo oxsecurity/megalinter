@@ -9,7 +9,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **13.0.1**
+- Version in MegaLinter: **14.0.0**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -18,8 +18,8 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## Configuration in MegaLinter
 
-- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](https://megalinter.io/6.20.0/configuration/#activation-and-deactivation)
-- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](https://megalinter.io/6.20.0/configuration/#activation-and-deactivation)
+- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -40,23 +40,23 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                                            | Embedded linters |                                                                                                                                                                                                      Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.20.0/supported-linters/)               | Default MegaLinter Flavor                                              |       112        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/6.20.0/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/6.20.0/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        80        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/6.20.0/flavors/documentation/) | MegaLinter for documentation projects                                  |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/6.20.0/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        59        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/6.20.0/flavors/go/)                       | Optimized for GO based projects                                        |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/6.20.0/flavors/java/)                   | Optimized for JAVA based projects                                      |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/6.20.0/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/6.20.0/flavors/php/)                     | Optimized for PHP based projects                                       |        50        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/6.20.0/flavors/python/)               | Optimized for PYTHON based projects                                    |        57        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/6.20.0/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/6.20.0/flavors/rust/)                   | Optimized for RUST based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/6.20.0/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/6.20.0/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        47        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/6.20.0/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        52        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6.20.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       112        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/beta/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        80        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        59        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        50        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        57        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        47        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        52        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -80,61 +80,55 @@ jsonlint myfile1.json myfile2.json
 ### Help content
 
 ```shell
-Usage: jsonlint [options] [<file, directory, pattern> ...]
-
 JSON/CJSON/JSON5 parser, syntax and schema validator and pretty-printer.
 
+Usage: jsonlint [options] [--] [<file, directory, pattern> ...]
+
 Options:
-  -f, --config [file]          read options from a custom configuration file
+  -f, --config <file>          read options from a custom configuration file
   -F, --no-config              disable searching for configuration files
   -s, --sort-keys              sort object keys (not when prettifying)
-  -E, --extensions [ext]       file extensions to process for directory walk
-                               (default: ["json","JSON"])
+  -E, --extensions <ext...>    file extensions to process for directory walk
+                               (default: json, JSON)
   -i, --in-place               overwrite the input files
   -j, --diff                   print difference instead of writing the output
   -k, --check                  check that the input is equal to the output
-  -t, --indent [num|char]      number of spaces or specific characters to use
-                               for indentation (default: 2)
+  -t, --indent <num|char>      number of spaces or specific characters to use
+                               for indentation or a string with whitespace
   -c, --compact                compact error display
-  -M, --mode [mode]            set other parsing flags according to a format
-                               type (default: "json")
+  -M, --mode <mode>            set other parsing flags according to the format
+                               of the input data (default: json)
   -B, --bom                    ignore the leading UTF-8 byte-order mark
   -C, --comments               recognize and ignore JavaScript-style comments
   -S, --single-quoted-strings  support single quotes as string delimiters
   -T, --trailing-commas        ignore trailing commas in objects and arrays
   -D, --no-duplicate-keys      report duplicate object keys as an error
-  -V, --validate [file]        JSON Schema file to use for validation
-  -e, --environment [env]      which specification of JSON Schema the
-                               validation file uses
-  -x, --context [num]          line count used as the diff context (default: 3)
+  -V, --validate <file...>     JSON Schema file(s) to use for validation
+  -e, --environment <env>      which version of JSON Schema the validation
+                               should use
+  -x, --context <num>          line number used as the diff context
+                               (default: 3)
   -l, --log-files              print only the parsed file names to stdout
   -q, --quiet                  do not print the parsed json to stdout
   -n, --continue               continue with other files if an error occurs
-  -p, --pretty-print           prettify the input instead of stringifying the
-                               parsed object
+  -p, --pretty-print           prettify the input instead of stringifying
+                               the parsed object
   -P, --pretty-print-invalid   force pretty-printing even for invalid input
   -r, --trailing-newline       ensure a line break at the end of the output
   -R, --no-trailing-newline    ensure no line break at the end of the output
   --prune-comments             omit comments from the prettified output
   --strip-object-keys          strip quotes from object keys if possible
-                               (JSON5)
   --enforce-double-quotes      surrounds all strings with double quotes
-  --enforce-single-quotes      surrounds all strings with single quotes (JSON5)
+  --enforce-single-quotes      surrounds all strings with single quotes
   --trim-trailing-commas       omit trailing commas from objects and arrays
-                               (JSON5)
   -v, --version                output the version number
   -h, --help                   display help for command
 
-You can use BASH patterns for including and excluding files (only files).
-Patterns are case-sensitive and have to use slashes as directory separators.
-A pattern to exclude from processing starts with "!".
-
-Parsing mode can be "cjson" or "json5" to enable other flags automatically.
-If no files or directories are specified, stdin will be parsed. Environments
-for JSON Schema validation are "draft-04", "draft-06", "draft-07",
-"draft-2019-09" or "draft-2020-12". The environment may be prefixed
-with "json-schema-". JSON Type Definition can be selected by "rfc8927",
-"json-type-definition" or "jtd". If not specified, it will be "draft-07".
+Examples:
+  $ jsonlint myfile.json
+  $ jsonlint --in-place --pretty-print mydir
+  $ jsonlint --comments --trailing-commas --no-duplicate-keys \
+      --log-files --compact --continue '**/*.json' '!**/node_modules'
 ```
 
 ### Installation on mega-linter Docker image
