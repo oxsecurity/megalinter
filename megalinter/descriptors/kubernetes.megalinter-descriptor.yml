@@ -86,7 +86,7 @@ linters:
     cli_help_arg_name: -h
     cli_lint_extra_args:
       - "lint"
-    linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
+    linter_banner_image_url: https://helm.sh/img/helm.svg
     linter_text: |
       `helm lint` examine a chart for possible issues.
     examples:
