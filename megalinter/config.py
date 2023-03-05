@@ -24,6 +24,7 @@ def init_config(workspace=None):
         print(f"[config] {CONFIG_SOURCE}")
         return
     # Search for config file
+    config_file = None
     if "MEGALINTER_CONFIG" in os.environ:
         config_file_name = os.environ.get("MEGALINTER_CONFIG")
         if config_file_name.startswith("https://"):
@@ -73,7 +74,7 @@ def init_config(workspace=None):
     if "EXTENDS" in runtime_config:
         combined_config = {}
         CONFIG_SOURCE = combine_config(
-            workspace, config_file_name, runtime_config, combined_config, CONFIG_SOURCE
+            workspace, config_file, runtime_config, combined_config, CONFIG_SOURCE
         )
         runtime_config = combined_config
     # Print & set config in cache
@@ -81,7 +82,7 @@ def init_config(workspace=None):
     set_config(runtime_config)
 
 
-def combine_config(workspace, config_file_name, config, combined_config, config_source):
+def combine_config(workspace, config_file, config, combined_config, config_source):
     extends = config["EXTENDS"]
     if isinstance(extends, str):
         extends = extends.split(",")
@@ -90,7 +91,7 @@ def combine_config(workspace, config_file_name, config, combined_config, config_
             r = requests.get(extends_item, allow_redirects=True)
             assert (
                 r.status_code == 200
-            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
+            ), f"Unable to retrieve EXTENDS config file {config_file}"
             extends_config_data = yaml.safe_load(r.content)
         else:
             with open(
