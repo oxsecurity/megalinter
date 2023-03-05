@@ -11,7 +11,7 @@ import unittest
 from git import Repo
 from megalinter import config
 from megalinter.constants import ML_REPO
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 from megalinter.utils import REPO_HOME_DEFAULT
 
 

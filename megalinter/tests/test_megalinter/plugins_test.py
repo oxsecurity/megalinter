@@ -7,7 +7,7 @@ import os
 import unittest
 
 from megalinter.constants import ML_REPO
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 
 
 class plugins_test(unittest.TestCase):

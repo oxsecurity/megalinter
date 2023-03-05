@@ -4,7 +4,7 @@ Use Standard to lint js files
 https://github.com/standard/standard
 """
 from megalinter import Linter
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 
 
 class TypeScriptStandardLinter(Linter):

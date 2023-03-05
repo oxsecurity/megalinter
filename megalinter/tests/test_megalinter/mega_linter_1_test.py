@@ -8,7 +8,7 @@ import unittest
 
 import megalinter
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 
 
 class mega_linter_1_test(unittest.TestCase):
