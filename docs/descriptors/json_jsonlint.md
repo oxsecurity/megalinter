@@ -9,7 +9,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **11.7.0**
+- Version in MegaLinter: **13.0.1**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -103,7 +103,7 @@ Options:
   -S, --single-quoted-strings  support single quotes as string delimiters
   -T, --trailing-commas        ignore trailing commas in objects and arrays
   -D, --no-duplicate-keys      report duplicate object keys as an error
-  -V, --validate [file]        JSON schema file to use for validation
+  -V, --validate [file]        JSON Schema file to use for validation
   -e, --environment [env]      which specification of JSON Schema the
                                validation file uses
   -x, --context [num]          line count used as the diff context (default: 3)
@@ -131,8 +131,10 @@ A pattern to exclude from processing starts with "!".
 
 Parsing mode can be "cjson" or "json5" to enable other flags automatically.
 If no files or directories are specified, stdin will be parsed. Environments
-for JSON schema validation are "json-schema-draft-04", "json-schema-draft-06"
-or "json-schema-draft-07". If not specified, it will be auto-detected.
+for JSON Schema validation are "draft-04", "draft-06", "draft-07",
+"draft-2019-09" or "draft-2020-12". The environment may be prefixed
+with "json-schema-". JSON Type Definition can be selected by "rfc8927",
+"json-type-definition" or "jtd". If not specified, it will be "draft-07".
 ```
 
 ### Installation on mega-linter Docker image
