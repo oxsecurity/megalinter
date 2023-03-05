@@ -169,6 +169,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.27.0 to **6.28.0** on 2023-03-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.1 to **0.44.4** on 2023-03-04
   - [protolint](https://github.com/yoheimuta/protolint) from 0.42.2 to **0.43.0** on 2023-03-04
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 11.7.0 to **13.0.1** on 2023-03-05
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.148 to **1.150** on 2023-03-05
+  - [checkov](https://www.checkov.io/) from 2.3.57 to **2.3.59** on 2023-03-05
 <!-- linter-versions-end -->
 
 ## [v6.19.0] - 2023-02-05
