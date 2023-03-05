@@ -9,10 +9,9 @@ import tempfile
 import unittest
 import uuid
 
-from megalinter import Linter, MegaLinter
+from megalinter import Linter, MegaLinter, utilstest
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
-from megalinter import utilstest
 
 root = (
     os.path.dirname(os.path.abspath(__file__))

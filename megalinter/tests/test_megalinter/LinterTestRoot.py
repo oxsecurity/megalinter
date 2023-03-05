@@ -4,8 +4,7 @@ Unit tests for Linter class (and sub-classes)
 """
 from typing import Optional
 
-from megalinter import linter_factory
-from megalinter import utilstest
+from megalinter import linter_factory, utilstest
 
 
 class LinterTestRoot:

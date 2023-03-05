@@ -9,9 +9,8 @@ import re
 import unittest
 
 from git import Repo
-from megalinter import config
+from megalinter import config, utilstest
 from megalinter.constants import ML_REPO
-from megalinter import utilstest
 from megalinter.utils import REPO_HOME_DEFAULT
 
 
