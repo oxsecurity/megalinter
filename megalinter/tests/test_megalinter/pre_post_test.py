@@ -6,7 +6,7 @@ Unit tests for Megalinter class
 import os
 import unittest
 
-from megalinter.tests.test_megalinter.helpers import utilstest
+from megalinter import utilstest
 
 
 class PrePostTest(unittest.TestCase):

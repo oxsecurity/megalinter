@@ -8,7 +8,12 @@ setup(
     author="Nicolas Vuillamy",
     author_email="nicolas.vuillamy@gmail.com",
     license="MIT",
-    packages=["megalinter", "megalinter.linters", "megalinter.reporters", "megalinter.tests"],
+    packages=[
+        "megalinter",
+        "megalinter.linters",
+        "megalinter.reporters",
+        "megalinter.tests",
+    ],
     install_requires=[
         "gitpython",
         "jsonpickle",
