@@ -22,6 +22,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade create-pull-request and create-or-update-comment GitHub Actions
   - Increase auto-update-linters GitHub Action timeout
   - Upgrade base Docker image to python:3.11.3-alpine3.17
+  - Fix a config inheritance bug that prevented extending a remote config that
+    extends a local config by @Kurt-von-Laven
+    ([#2371](https://github.com/oxsecurity/megalinter/issues/2371)).
 
 - Documentation
 

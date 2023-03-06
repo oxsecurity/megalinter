@@ -4,12 +4,21 @@ import logging
 import os
 import shlex
 import tempfile
+from collections.abc import Mapping, Sequence
+from pathlib import Path, PurePath
+from typing import AnyStr, cast
+from urllib.parse import ParseResult, urlparse, urlunparse
 
 import requests
 import yaml
 
 CONFIG_DATA = None
 CONFIG_SOURCE = None
+
+JsonValue = (
+    None | bool | int | float | str | Sequence["JsonValue"] | Mapping[str, "JsonValue"]
+)
+JsonObject = dict[str, JsonValue]
 
 
 def init_config(workspace=None):
@@ -72,7 +81,7 @@ def init_config(workspace=None):
         )
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
-        combined_config = {}
+        combined_config: JsonObject = {}
         CONFIG_SOURCE = combine_config(
             workspace, runtime_config, combined_config, CONFIG_SOURCE
         )
@@ -82,22 +91,32 @@ def init_config(workspace=None):
     set_config(runtime_config)
 
 
-def combine_config(workspace, config, combined_config, config_source):
-    extends = config["EXTENDS"]
+def combine_config(
+    workspace: str | None,
+    config: JsonObject,
+    combined_config: JsonObject,
+    config_source: str,
+    child_uri: ParseResult | None = None,
+) -> str:
+    workspace_path = Path(workspace) if workspace else None
+    parsed_uri: ParseResult | None = None
+    extends = cast(str | Sequence[str], config["EXTENDS"])
     if isinstance(extends, str):
         extends = extends.split(",")
     for extends_item in extends:
         if extends_item.startswith("http"):
-            r = requests.get(extends_item, allow_redirects=True)
-            assert (
-                r.status_code == 200
-            ), f"Unable to retrieve EXTENDS config file {extends_item}"
-            extends_config_data = yaml.safe_load(r.content)
+            parsed_uri = urlparse(extends_item)
+            extends_config_data = download_config(extends_item)
         else:
-            with open(
-                workspace + os.path.sep + extends_item, "r", encoding="utf-8"
-            ) as f:
-                extends_config_data = yaml.safe_load(f)
+            path = PurePath(extends_item)
+            if child_uri:
+                parsed_uri = resolve_uri(child_uri, path)
+                uri = urlunparse(parsed_uri)
+                extends_config_data = download_config(uri)
+            else:
+                resolved_path = workspace_path / path if workspace_path else Path(path)
+                with resolved_path.open("r", encoding="utf-8") as f:
+                    extends_config_data = yaml.safe_load(f)
         combined_config.update(extends_config_data)
         config_source += f"\n[config] - extends from: {extends_item}"
         if "EXTENDS" in extends_config_data:
@@ -106,9 +125,39 @@ def combine_config(workspace, config, combined_config, config_source):
                 extends_config_data,
                 combined_config,
                 config_source,
+                parsed_uri,
             )
     combined_config.update(config)
     return config_source
+
+
+def download_config(uri: AnyStr) -> JsonObject:
+    r = requests.get(uri, allow_redirects=True)
+    assert r.status_code == 200, f"Unable to retrieve EXTENDS config file {uri!r}"
+    return yaml.safe_load(r.content)
+
+
+def resolve_uri(child_uri: ParseResult, relative_config_path: PurePath) -> ParseResult:
+    match child_uri.netloc:
+        case "cdn.jsdelivr.net" | "git.launchpad.net":
+            repo_root_index = 3
+        case "code.rhodecode.com" | "git.savannah.gnu.org" | "raw.githubusercontent.com" | "repo.or.cz":
+            repo_root_index = 4
+        case "bitbucket.org" | "git.sr.ht" | "gitee.com" | "pagure.io":
+            repo_root_index = 5
+        case "codeberg.org" | "gitea.com" | "gitlab.com" | "huggingface.co" | "p.phcdn.net" | "sourceforge.net":
+            repo_root_index = 6
+        case _:
+            message = (
+                f"Unsupported Git repo hosting service: {child_uri.netloc}. "
+                "Request support be added to MegaLinter, or use absolute URLs "
+                "with EXTENDS in inherited configs rather than relative paths."
+            )
+            raise ValueError(message)
+    child_path = PurePath(child_uri.path)
+    repo_root_path = child_path.parts[:repo_root_index]
+    path = PurePath(*repo_root_path, str(relative_config_path))
+    return child_uri._replace(path=str(path))
 
 
 def get_config():
