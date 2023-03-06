@@ -96,7 +96,8 @@ module.exports = optionator({
       alias: "z",
       type: "String",
       default: "linux/amd64",
-      description: "Force a docker image platform (currently, only linux/amd64 works)",
+      description:
+        "Force a docker image platform (currently, only linux/amd64 works)",
     },
     {
       option: "debug",
