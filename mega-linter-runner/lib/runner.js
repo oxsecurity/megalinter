@@ -97,12 +97,17 @@ ERROR: Docker engine has not been found on your system.
       console.info(
         "The next runs, it will be immediate (thanks to docker cache !)"
       );
-      const spawnResPull = spawnSync("docker", ["pull", dockerImage], {
-        detached: false,
-        stdio: "inherit",
-        windowsHide: true,
-        windowsVerbatimArguments: true,
-      });
+      const imagePlatform = options.platform || "linux/amd64";
+      const spawnResPull = spawnSync(
+        "docker",
+        ["pull", "--platform", imagePlatform, dockerImage],
+        {
+          detached: false,
+          stdio: "inherit",
+          windowsHide: true,
+          windowsVerbatimArguments: true,
+        }
+      );
       // Manage case when unable to pull docker image
       if (spawnResPull.status !== 0) {
         return {
