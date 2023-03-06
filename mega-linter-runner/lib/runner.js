@@ -65,18 +65,18 @@ class MegaLinterRunner {
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)
         ? "nvuillam/mega-linter"
         : options.flavor !== "all" && this.isv4(release)
-        ? `nvuillam/mega-linter-${options.flavor}`
-        : // << v4 retrocompatibility
-        // v5 retrocompatibility >>
-        (options.flavor === "all" || options.flavor == null) &&
-          this.isv5(release)
-        ? "megalinter/megalinter"
-        : options.flavor !== "all" && this.isv5(release)
-        ? `megalinter/megalinter-${options.flavor}`
-        : // << v5 retrocompatibility
-        options.flavor === "all" || options.flavor == null
-        ? "oxsecurity/megalinter"
-        : `oxsecurity/megalinter-${options.flavor}`;
+          ? `nvuillam/mega-linter-${options.flavor}`
+          : // << v4 retrocompatibility
+          // v5 retrocompatibility >>
+          (options.flavor === "all" || options.flavor == null) &&
+            this.isv5(release)
+            ? "megalinter/megalinter"
+            : options.flavor !== "all" && this.isv5(release)
+              ? `megalinter/megalinter-${options.flavor}`
+              : // << v5 retrocompatibility
+              options.flavor === "all" || options.flavor == null
+                ? "oxsecurity/megalinter"
+                : `oxsecurity/megalinter-${options.flavor}`;
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
@@ -97,7 +97,8 @@ ERROR: Docker engine has not been found on your system.
       console.info(
         "The next runs, it will be immediate (thanks to docker cache !)"
       );
-      const spawnResPull = spawnSync("docker", ["pull", dockerImage], {
+      const imagePlatform = options.platform || "linux/amd64";
+      const spawnResPull = spawnSync("docker", ["pull", "--platform", imagePlatform, dockerImage], {
         detached: false,
         stdio: "inherit",
         windowsHide: true,
