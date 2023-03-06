@@ -13,6 +13,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.0** on 2023-03-05
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.0 to **0.74.1** on 2023-03-06
+  - [phpstan](https://phpstan.org/) from 1.10.3 to **1.10.4** on 2023-03-06
+  - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4** on 2023-03-06
+  - [checkov](https://www.checkov.io/) from 2.3.59 to **2.3.66** on 2023-03-06
+  - [rubocop](https://rubocop.org/) from 1.47.0 to **1.48.0** on 2023-03-06
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
