@@ -472,10 +472,10 @@ def build_dockerfile(
             "WORKDIR /node-deps\n"
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
-            + " && \\\n"
+            + "  \\\n"
             + "    && npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
-            + "    && chown -R $(id -u):$(id -g) node_modules # workaround for https://github.com/npm/cli/issues/5900 \\\n"
+            + "    && chown -R $(id -u):$(id -g) node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n"
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
             + '    && find . -name "*.map" -delete \\\n'

@@ -114,10 +114,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettier \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
-                @secretlint/secretlint-formatter-sarif && \
+                @secretlint/secretlint-formatter-sarif  \
     && npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
-    && chown -R $(id -u):$(id -g) node_modules # workaround for https://github.com/npm/cli/issues/5900 \
+    && chown -R $(id -u):$(id -g) node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
