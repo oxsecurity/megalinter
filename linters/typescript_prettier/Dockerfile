@@ -88,11 +88,9 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 prettier && \
-    npm doctor || true \
     && npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && chown -R $(id -u):$(id -g) node_modules # workaround for https://github.com/npm/cli/issues/5900 \
-    npm doctor || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
