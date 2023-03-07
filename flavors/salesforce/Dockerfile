@@ -118,12 +118,11 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts --production \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 sfdx-cli \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
-                stylelint-config-sass-guidelines \
                 stylelint-scss \
                 graphql \
                 graphql-schema-linter \

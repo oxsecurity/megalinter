@@ -85,7 +85,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts --production \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif && \
