@@ -474,7 +474,7 @@ def build_dockerfile(
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             + "    && npm doctor || true \\\n"
-            + "    npm audit fix --audit-level=critical || true \\\n"
+            + "    && npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
