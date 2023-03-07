@@ -23,6 +23,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.0 to **14.0.1** on 2023-03-07
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.1 to **1.1.1** on 2023-03-07
   - [checkov](https://www.checkov.io/) from 2.3.66 to **2.3.67** on 2023-03-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.0 to **6.14.1** on 2023-03-07
+  - [phpstan](https://phpstan.org/) from 1.10.4 to **1.10.5** on 2023-03-07
+  - [puppet-lint](http://puppet-lint.com/) from 3.2.0 to **3.3.0** on 2023-03-07
+  - [checkov](https://www.checkov.io/) from 2.3.67 to **2.3.70** on 2023-03-07
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05

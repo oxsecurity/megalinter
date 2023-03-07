@@ -1,23 +1,23 @@
 # Dependents stats for oxsecurity/megalinter
 
 [![](https://img.shields.io/static/v1?label=Used%20by&message=2103&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1404&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=699&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=53644&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1403&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=700&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=53663&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 35676 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6876 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 35691 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6879 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2348 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1843 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1828 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1753 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1572 |
-| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1118 |
-| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1047 |
+| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1119 |
+| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1048 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   925 |
-| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   854 |
+| [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   855 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   623 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   572 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   533 |
@@ -36,9 +36,9 @@
 | [pantheon-systems/documentation](https://github.com/pantheon-systems/documentation)                                                                                             |   179 |
 | [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   166 |
 | [unixorn/tumult.plugin.zsh](https://github.com/unixorn/tumult.plugin.zsh)                                                                                                       |   147 |
-| [carpenike/k8s-gitops](https://github.com/carpenike/k8s-gitops)                                                                                                                 |   141 |
-| [unixorn/fzf-zsh-plugin](https://github.com/unixorn/fzf-zsh-plugin)                                                                                                             |   140 |
-| [nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                                                                                                         |   139 |
+| [carpenike/k8s-gitops](https://github.com/carpenike/k8s-gitops)                                                                                                                 |   142 |
+| [unixorn/fzf-zsh-plugin](https://github.com/unixorn/fzf-zsh-plugin)                                                                                                             |   141 |
+| [nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                                                                                                         |   138 |
 | [apigee/devrel](https://github.com/apigee/devrel)                                                                                                                               |   130 |
 | [newrelic/newrelic-python-agent](https://github.com/newrelic/newrelic-python-agent)                                                                                             |   128 |
 | [T145/black-mirror](https://github.com/T145/black-mirror)                                                                                                                       |   125 |
@@ -47,7 +47,7 @@
 | [practicalli/spacemacs](https://github.com/practicalli/spacemacs)                                                                                                               |    94 |
 | [philips-software/amp-embedded-infra-lib](https://github.com/philips-software/amp-embedded-infra-lib)                                                                           |    92 |
 | [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                             |    89 |
-| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    79 |
+| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    81 |
 | [unixorn/lima-xbar-plugin](https://github.com/unixorn/lima-xbar-plugin)                                                                                                         |    76 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                                 |    74 |
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                                   |    71 |
@@ -97,8 +97,8 @@
 | [MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes](https://github.com/MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes)                                             |    17 |
 | [ci-monk/loli](https://github.com/ci-monk/loli)                                                                                                                                 |    17 |
 | [GSA/usagov-benefits-eligibility](https://github.com/GSA/usagov-benefits-eligibility)                                                                                           |    17 |
+| [5ire-org/5ire-faucet](https://github.com/5ire-org/5ire-faucet)                                                                                                                 |    17 |
 | [practicalli/clojurescript](https://github.com/practicalli/clojurescript)                                                                                                       |    17 |
-| [5ire-org/5ire-faucet](https://github.com/5ire-org/5ire-faucet)                                                                                                                 |    16 |
 | [Programming-Simplified-Community/Social-Coder](https://github.com/Programming-Simplified-Community/Social-Coder)                                                               |    16 |
 | [svt/open-source-project-template](https://github.com/svt/open-source-project-template)                                                                                         |    15 |
 | [janderssonse/gradle-versions-filter-plugin](https://github.com/janderssonse/gradle-versions-filter-plugin)                                                                     |    15 |
@@ -332,6 +332,7 @@
 | [SamNzo/Bug-tracker-VariaMos](https://github.com/SamNzo/Bug-tracker-VariaMos)                                                                                                   |     1 |
 | [XoopsModules25x/songlist](https://github.com/XoopsModules25x/songlist)                                                                                                         |     1 |
 | [mambax7/publisher](https://github.com/mambax7/publisher)                                                                                                                       |     1 |
+| [stevengonsalvez/cloud-cicd-exploration](https://github.com/stevengonsalvez/cloud-cicd-exploration)                                                                             |     1 |
 | [anandchugh/iotedge-cicd-github-actions](https://github.com/anandchugh/iotedge-cicd-github-actions)                                                                             |     1 |
 | [venkat-ml/linter-poc](https://github.com/venkat-ml/linter-poc)                                                                                                                 |     1 |
 | [jusmundi/docker-pgclient](https://github.com/jusmundi/docker-pgclient)                                                                                                         |     1 |
@@ -486,7 +487,6 @@
 | [mihaur/node-fastify-template](https://github.com/mihaur/node-fastify-template)                                                                                                 |     0 |
 | [coolhead/CodeSecurity](https://github.com/coolhead/CodeSecurity)                                                                                                               |     0 |
 | [adriansev/O2Physics](https://github.com/adriansev/O2Physics)                                                                                                                   |     0 |
-| [stevengonsalvez/cloud-cicd-exploration](https://github.com/stevengonsalvez/cloud-cicd-exploration)                                                                             |     0 |
 | [Dahlaan/test2222](https://github.com/Dahlaan/test2222)                                                                                                                         |     0 |
 | [svt/redisson-util-starter](https://github.com/svt/redisson-util-starter)                                                                                                       |     0 |
 | [svt/flum](https://github.com/svt/flum)                                                                                                                                         |     0 |
@@ -727,7 +727,6 @@
 | [exigo-pl/CIPP](https://github.com/exigo-pl/CIPP)                                                                                                                               |     0 |
 | [tommctech/CIPP-1](https://github.com/tommctech/CIPP-1)                                                                                                                         |     0 |
 | [k-grube/CIPP](https://github.com/k-grube/CIPP)                                                                                                                                 |     0 |
-| [jwguidry-vital/CIPP](https://github.com/jwguidry-vital/CIPP)                                                                                                                   |     0 |
 | [shiftnerd/CIPP](https://github.com/shiftnerd/CIPP)                                                                                                                             |     0 |
 | [dnorelid/CIPP](https://github.com/dnorelid/CIPP)                                                                                                                               |     0 |
 | [dward160/CIPP](https://github.com/dward160/CIPP)                                                                                                                               |     0 |
