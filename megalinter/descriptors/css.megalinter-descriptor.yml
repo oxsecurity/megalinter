@@ -30,7 +30,7 @@ linters:
       npm:
         - stylelint
         - stylelint-config-standard
-        - stylelint-config-sass-guidelines
+        # - stylelint-config-sass-guidelines
         - stylelint-scss
     ide:
       atom:
