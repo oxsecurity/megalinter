@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [puppet-lint](http://puppet-lint.com/) from 3.2.0 to **3.3.0** on 2023-03-07
   - [checkov](https://www.checkov.io/) from 2.3.67 to **2.3.70** on 2023-03-07
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.14.85 to **0.15.31** on 2023-03-07
+  - [stylelint](https://stylelint.io) from 14.16.1 to **15.2.0** on 2023-03-07
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
