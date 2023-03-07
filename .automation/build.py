@@ -477,6 +477,7 @@ def build_dockerfile(
             + "    && npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
             + "    && chown -R $(id -u):$(id -g) node_modules # workaround for https://github.com/npm/cli/issues/5900 \\\n"
+            + "    npm doctor || true \\\n"
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
             + '    && find . -name "*.map" -delete \\\n'
