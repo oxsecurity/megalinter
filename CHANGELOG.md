@@ -9,7 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Fixes
-  - Fix issue with running on Mac m1 no longer working [#2427](https://github.com/oxsecurity/megalinter/issues/2427)
+  - Fix [issue with running on Mac m1 no longer working](https://github.com/oxsecurity/megalinter/issues/2427), by @nvuillam
+  - Fix [Container images errors when pulling](https://github.com/oxsecurity/megalinter/issues/2348), by @echoix 
+  - Fix [Pre npm install not resolving](https://github.com/oxsecurity/megalinter/issues/2428), by @echoix
 
 - Linter versions upgrades
   - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.0** on 2023-03-05
