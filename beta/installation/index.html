@@ -2593,7 +2593,7 @@ mega-linter:
       - megalinter-reports
     expire_in: 1 week
 </code></pre>
-<p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables</p>
+<p>Create a Gitlab access token and define it in a variable <strong>GITLAB_ACCESS_TOKEN_MEGALINTER</strong> in the project CI/CD masked variables. Make sure your token (e.g. if a project token) as the appropriate <a href="https://docs.gitlab.com/ee/user/permissions.html">role</a> for commenting a merge request (at least developer).</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif"><img alt="config-gitlab-access-token" src="https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif"/></a></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;"><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true&gt;"/></a></p>
 <h2 id="azure-pipelines">Azure Pipelines</h2>
