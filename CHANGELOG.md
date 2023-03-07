@@ -17,23 +17,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix **GitlabCommentReporter** wrong variables names, check [#2423](https://github.com/oxsecurity/megalinter/issues/2423)
 
 - Linter versions upgrades
-  - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.0** on 2023-03-05
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.0 to **0.74.1** on 2023-03-06
-  - [phpstan](https://phpstan.org/) from 1.10.3 to **1.10.4** on 2023-03-06
-  - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4** on 2023-03-06
-  - [checkov](https://www.checkov.io/) from 2.3.59 to **2.3.66** on 2023-03-06
-  - [rubocop](https://rubocop.org/) from 1.47.0 to **1.48.0** on 2023-03-06
-  - [csharpier](https://csharpier.com/) from 0.22.1 to **0.23.0** on 2023-03-07
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.43.0 to **0.43.1** on 2023-03-07
-  - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.0 to **14.0.1** on 2023-03-07
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.1 to **1.1.1** on 2023-03-07
-  - [checkov](https://www.checkov.io/) from 2.3.66 to **2.3.67** on 2023-03-07
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.0 to **6.14.1** on 2023-03-07
-  - [phpstan](https://phpstan.org/) from 1.10.4 to **1.10.5** on 2023-03-07
-  - [puppet-lint](http://puppet-lint.com/) from 3.2.0 to **3.3.0** on 2023-03-07
-  - [checkov](https://www.checkov.io/) from 2.3.67 to **2.3.70** on 2023-03-07
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.14.85 to **0.15.31** on 2023-03-07
-  - [stylelint](https://stylelint.io) from 14.16.1 to **15.2.0** on 2023-03-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.0 to **6.14.1**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.14.85 to **0.15.31**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.0 to **0.74.1**
+  - [checkov](https://www.checkov.io/) from 2.3.59 to **2.3.70**
+  - [csharpier](https://csharpier.com/) from 0.22.1 to **0.23.0**
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.1**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.1 to **1.1.1**
+  - [phpstan](https://phpstan.org/) from 1.10.3 to **1.10.5** on 2023-03-07
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.43.0 to **0.43.1**
+  - [puppet-lint](http://puppet-lint.com/) from 3.2.0 to **3.3.0**
+  - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4**
+  - [rubocop](https://rubocop.org/) from 1.47.0 to **1.48.0**
+  - [stylelint](https://stylelint.io) from 14.16.1 to **15.2.0**
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
