@@ -85,7 +85,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint \
                 eslint-config-airbnb \
                 eslint-config-prettier \
@@ -100,7 +100,8 @@ RUN npm --no-cache install --force --ignore-scripts \
                 @babel/core \
                 @babel/eslint-parser \
                 @microsoft/eslint-formatter-sarif && \
-    npm audit fix --audit-level=critical || true \
+    npm doctor || true \
+    && npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
