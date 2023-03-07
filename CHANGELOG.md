@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4** on 2023-03-06
   - [checkov](https://www.checkov.io/) from 2.3.59 to **2.3.66** on 2023-03-06
   - [rubocop](https://rubocop.org/) from 1.47.0 to **1.48.0** on 2023-03-06
+  - [csharpier](https://csharpier.com/) from 0.22.1 to **0.23.0** on 2023-03-07
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.43.0 to **0.43.1** on 2023-03-07
 <!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
