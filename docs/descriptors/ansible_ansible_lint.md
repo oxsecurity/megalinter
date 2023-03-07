@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.14.0**
+- Version in MegaLinter: **6.14.1**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -90,7 +90,7 @@ ansible-lint -v -c .ansible-lint
 ```shell
 WARNING: PATH altered to expand ~ in it. Read https://stackoverflow.com/a/44704799/99834 and correct your system configuration.
 usage: ansible-lint [-h] [-P | -L | -T]
-                    [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}]
+                    [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif}]
                     [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
                     [-p] [--progressive] [--project-dir PROJECT_DIR]
@@ -115,7 +115,7 @@ options:
   -T, --list-tags       List all the tags and the rules they cover. Increase
                         the verbosity level with `-v` to include 'opt-in' tag
                         and its rules.
-  -f {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif,docs}
+  -f {brief,full,md,json,codeclimate,quiet,pep8,sarif}, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif}
                         stdout formatting, json being an alias for
                         codeclimate. (default: None)
   --sarif-file SARIF_FILE
