@@ -89,7 +89,7 @@ RUN npm --no-cache install --force --ignore-scripts \
                 graphql \
                 graphql-schema-linter && \
     && npm doctor || true \
-    npm audit fix --audit-level=critical || true \
+    && npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \

@@ -91,7 +91,7 @@ RUN npm --no-cache install --force --ignore-scripts \
                 stylelint-config-sass-guidelines \
                 stylelint-scss && \
     && npm doctor || true \
-    npm audit fix --audit-level=critical || true \
+    && npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
