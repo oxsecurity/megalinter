@@ -366,7 +366,7 @@
         "General help using GNU software: <http://www.gnu.org/gethelp/>"
     ],
     "bicep_linter": [
-        "Bicep CLI version 0.14.85 (f4a4d485ba)",
+        "Bicep CLI version 0.15.31 (3ba6e06a8d)",
         "",
         "Usage:",
         "  bicep build [options] <file>",
