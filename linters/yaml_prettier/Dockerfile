@@ -87,6 +87,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --force --ignore-scripts \
                 prettier && \
+    && npm doctor || true \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \

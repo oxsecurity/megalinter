@@ -88,6 +88,7 @@ WORKDIR /node-deps
 RUN npm --no-cache install --force --ignore-scripts \
                 remark-cli \
                 remark-preset-lint-recommended && \
+    && npm doctor || true \
     npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
