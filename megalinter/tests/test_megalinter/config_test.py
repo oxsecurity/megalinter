@@ -160,7 +160,14 @@ class config_test(unittest.TestCase):
             os.environ["MEGALINTER_CONFIG"] = remote_config
             config.init_config()
         except Exception as e:
-            self.assertIn("Unable to retrieve EXTENDS config file", str(e)),
+            self.assertRegex(
+                str(e),
+                (
+                    "Unable to retrieve EXTENDS config file "
+                    r"https://.*/\.automation/test/mega-linter-config-test/"
+                    r"extension3\.mega-linter\.yml"
+                ),
+            )
         finally:
             self.restore_branch_in_input_files(changed_files)
 

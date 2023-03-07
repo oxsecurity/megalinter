@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix issue with running on Mac m1 no longer working [#2427](https://github.com/oxsecurity/megalinter/issues/2427)
   - Correct misleading error message in **GitlabCommentReporter.py**, see [#2420](https://github.com/oxsecurity/megalinter/issues/2420)
 
+
 - Linter versions upgrades
   - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.0** on 2023-03-05
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.0 to **0.74.1** on 2023-03-06
