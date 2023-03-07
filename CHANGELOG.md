@@ -8,13 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.20.1] - 2023-03-07
+
 - Fixes
-  - Fix [issue with running on Mac m1 no longer working](https://github.com/oxsecurity/megalinter/issues/2427), by @nvuillam
-  - Fix [Container images errors when pulling](https://github.com/oxsecurity/megalinter/issues/2348), by @echoix
-  - Fix [Pre npm install not resolving](https://github.com/oxsecurity/megalinter/issues/2428), by @echoix
+  - Fix [issue with running on Mac m1 no longer working](https://github.com/oxsecurity/megalinter/issues/2427), by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2430
+  - Fix [Container images errors when pulling](https://github.com/oxsecurity/megalinter/issues/2348), by @echoix in https://github.com/oxsecurity/megalinter/pull/2435
+  - Fix [Pre npm install not resolving](https://github.com/oxsecurity/megalinter/issues/2428), by @echoix in https://github.com/oxsecurity/megalinter/pull/2435
   - Add build date in Beta docker images, by @nvuillam
   - Correct misleading error message in **GitlabCommentReporter.py**, see [#2420](https://github.com/oxsecurity/megalinter/issues/2420)
   - Fix **GitlabCommentReporter** wrong variables names, check [#2423](https://github.com/oxsecurity/megalinter/issues/2423)
+
+- Core
+  - Improve config test, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2426 
+
+- Doc
+  - Add article [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211), by @RunningMattress in https://github.com/oxsecurity/megalinter/pull/2436
+  - Correct minor docs error by @moverperfect in https://github.com/oxsecurity/megalinter/pull/2440
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.0 to **6.14.1**
@@ -30,7 +42,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4**
   - [rubocop](https://rubocop.org/) from 1.47.0 to **1.48.0**
   - [stylelint](https://stylelint.io) from 14.16.1 to **15.2.0**
-<!-- linter-versions-end -->
 
 ## [v6.20.0] - 2023-03-05
 
