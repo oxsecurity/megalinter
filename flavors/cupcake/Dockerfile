@@ -154,7 +154,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts \ # shellcheck disable=SC2046 
+RUN npm --no-cache install --ignore-scripts \
                 typescript \
                 jscpd \
                 stylelint \
@@ -197,8 +197,8 @@ RUN npm --no-cache install --ignore-scripts \ # shellcheck disable=SC2046
                 sql-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser  \
-    && npm audit fix --audit-level=critical || true \
+                @typescript-eslint/parser  &&\
+       npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && chown -R $(id -u):$(id -g) node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \

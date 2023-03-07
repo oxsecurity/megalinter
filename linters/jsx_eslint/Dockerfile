@@ -85,12 +85,12 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts \ # shellcheck disable=SC2046 
+RUN npm --no-cache install --ignore-scripts \
                 eslint \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
-                @microsoft/eslint-formatter-sarif  \
-    && npm audit fix --audit-level=critical || true \
+                @microsoft/eslint-formatter-sarif  &&\
+       npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && chown -R $(id -u):$(id -g) node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \
