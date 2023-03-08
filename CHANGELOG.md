@@ -14,19 +14,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v6.20.1] - 2023-03-07
 
 - Fixes
-  - Fix [issue with running on Mac m1 no longer working](https://github.com/oxsecurity/megalinter/issues/2427), by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2430
-  - Fix [Container images errors when pulling](https://github.com/oxsecurity/megalinter/issues/2348), by @echoix in https://github.com/oxsecurity/megalinter/pull/2435
-  - Fix [Pre npm install not resolving](https://github.com/oxsecurity/megalinter/issues/2428), by @echoix in https://github.com/oxsecurity/megalinter/pull/2435
+  - Fix [issue with running on Mac m1 no longer working](https://github.com/oxsecurity/megalinter/issues/2427), by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2430>
+  - Fix [Container images errors when pulling](https://github.com/oxsecurity/megalinter/issues/2348), by @echoix in <https://github.com/oxsecurity/megalinter/pull/2435>
+  - Fix [Pre npm install not resolving](https://github.com/oxsecurity/megalinter/issues/2428), by @echoix in <https://github.com/oxsecurity/megalinter/pull/2435>
   - Add build date in Beta docker images, by @nvuillam
   - Correct misleading error message in **GitlabCommentReporter.py**, see [#2420](https://github.com/oxsecurity/megalinter/issues/2420)
   - Fix **GitlabCommentReporter** wrong variables names, check [#2423](https://github.com/oxsecurity/megalinter/issues/2423)
 
 - Core
-  - Improve config test, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2426 
+  - Improve config test, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2426>
 
 - Doc
-  - Add article [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211), by @RunningMattress in https://github.com/oxsecurity/megalinter/pull/2436
-  - Correct minor docs error by @moverperfect in https://github.com/oxsecurity/megalinter/pull/2440
+  - Add article [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211), by @RunningMattress in <https://github.com/oxsecurity/megalinter/pull/2436>
+  - Correct minor docs error by @moverperfect in <https://github.com/oxsecurity/megalinter/pull/2440>
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.0 to **6.14.1**
