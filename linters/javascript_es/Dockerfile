@@ -96,7 +96,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-prettier \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
-                babel-eslint \
                 @babel/core \
                 @babel/eslint-parser \
                 @microsoft/eslint-formatter-sarif  && \

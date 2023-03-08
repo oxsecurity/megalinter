@@ -96,7 +96,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-node \
                 eslint-plugin-prettier \
                 eslint-plugin-promise \
-                babel-eslint \
+                @babel/eslint-parser \
                 prettier \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
