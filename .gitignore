@@ -110,3 +110,7 @@ megalinter-reports/
 github_conf/
 
 Pipfile
+
+# .NET Core build folders
+bin/
+obj/
