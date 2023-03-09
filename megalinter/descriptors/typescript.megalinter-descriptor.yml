@@ -64,7 +64,7 @@ linters:
         - eslint-plugin-node
         - eslint-plugin-prettier
         - eslint-plugin-promise
-        - babel-eslint
+        - "@babel/eslint-parser"
         - prettier
         - prettyjson
         - "@typescript-eslint/eslint-plugin"

@@ -92,6 +92,14 @@ module.exports = optionator({
       description: "Do not pull docker image before running it",
     },
     {
+      option: "platform",
+      alias: "z",
+      type: "String",
+      default: "linux/amd64",
+      description:
+        "Force a docker image platform (currently, only linux/amd64 works)",
+    },
+    {
       option: "debug",
       type: "Boolean",
       description: "See debug logs",
