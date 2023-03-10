@@ -18,6 +18,14 @@ class JsCpdLinter(Linter):
                 f"{self.report_folder}/copy-paste/",
             ]
         cmd = super().build_lint_command(file)
+        # COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN only has effect if jscpd
+        # exits nonzero, and by default jscpd exits 0 when clones are found.
+        # Only pass --exitCode 1 when
+        # COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN > 0, because the jscpd
+        # threshold option becomes moot once jscpd exits nonzero whenever any
+        # clones are found.
+        if self.disable_errors_if_less_than:
+            cmd += ["--exitCode", "1"]
         return cmd
 
     # Perform additional actions and provide additional details in text reporter logs
