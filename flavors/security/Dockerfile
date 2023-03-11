@@ -58,6 +58,7 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                helm \
                 icu-libs \
                 libcurl \
                 libintl \
