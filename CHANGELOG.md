@@ -8,7 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Add helm lint, by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386
+- New linters
+  - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in <https://github.com/oxsecurity/megalinter/pull/2386>
+
+- Linter enhancements
+  - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors
+
+- Core
+  - Run CI linter jobs only on Pull requests to avoid doubling jobs
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.2** on 2023-03-11
