@@ -486,6 +486,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/kubernetes_helm/</loc>
+         <lastmod>2023-03-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/kubernetes_kubeconform/</loc>
          <lastmod>2023-03-11</lastmod>
          <changefreq>daily</changefreq>
@@ -1247,6 +1252,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/hadolint/</loc>
+         <lastmod>2023-03-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/helm/</loc>
          <lastmod>2023-03-11</lastmod>
          <changefreq>daily</changefreq>
     </url>

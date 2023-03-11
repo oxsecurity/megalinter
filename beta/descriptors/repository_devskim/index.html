@@ -1671,6 +1671,11 @@
         kubeconform
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kubernetes_helm/">
+        helm
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2488,14 +2493,14 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">112</td>
+<td align="center">113</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
 <td align="left">Optimized for security</td>
-<td align="center">21</td>
+<td align="center">22</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
 </tr>
 </tbody>
@@ -2546,7 +2551,7 @@ Use "devskim [command] --help" for more information about a command.
     &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
