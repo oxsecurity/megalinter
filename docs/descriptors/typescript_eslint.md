@@ -19,7 +19,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.35.0**
+- Version in MegaLinter: **8.36.0**
 - Visit [Official Web Site](https://typescript-eslint.io/){target=_blank}
 - See [How to configure eslint rules](https://typescript-eslint.io/getting-started/#configuration-values){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -31,10 +31,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## Configuration in MegaLinter
 
-- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
-- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
+- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/6.20.1/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -71,11 +71,11 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                                Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.20.1/supported-linters/)         | Default MegaLinter Flavor                             |       112        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/6.20.1/flavors/cupcake/)       | MegaLinter for the most commonly used languages       |        80        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/6.20.1/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                           | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                             |       112        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages       |        80        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -182,7 +182,7 @@ Miscellaneous:
   - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
   - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
   - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
-  - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
+  - [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser)
   - [prettier](https://www.npmjs.com/package/prettier)
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)

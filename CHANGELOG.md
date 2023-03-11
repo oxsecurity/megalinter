@@ -11,6 +11,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Add helm lint, by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386
 
 - Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.2** on 2023-03-11
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.8.0 to **10.8.1** on 2023-03-11
+  - [eslint](https://eslint.org) from 8.35.0 to **8.36.0** on 2023-03-11
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.1 to **14.0.2** on 2023-03-11
+  - [phpstan](https://phpstan.org/) from 1.10.5 to **1.10.6** on 2023-03-11
+  - [psalm](https://psalm.dev) from Psalm.5.7.7@ to **Psalm.5.8.0@** on 2023-03-11
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.4 to **1.7.5** on 2023-03-11
+  - [pylint](https://pylint.pycqa.org) from 2.16.4 to **2.17.0** on 2023-03-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.296 to **1.1.298** on 2023-03-11
+  - [checkov](https://www.checkov.io/) from 2.3.70 to **2.3.75** on 2023-03-11
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.7.104 to **0.7.105** on 2023-03-11
+  - [syft](https://github.com/anchore/syft) from 0.74.0 to **0.74.1** on 2023-03-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.1 to **0.38.2** on 2023-03-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.67 to **0.1.68** on 2023-03-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.24.0 to **7.24.1** on 2023-03-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.1 to **0.8.2** on 2023-03-11
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.3.9 to **1.4.0** on 2023-03-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.4 to **0.44.5** on 2023-03-11
 <!-- linter-versions-end -->
 
 ## [v6.20.1] - 2023-03-07

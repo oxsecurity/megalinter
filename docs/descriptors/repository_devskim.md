@@ -11,7 +11,7 @@ Use `--ignore-globs` to ignore files and/or folders
 
 ## devskim documentation
 
-- Version in MegaLinter: **0.7.104**
+- Version in MegaLinter: **0.7.105**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -20,8 +20,8 @@ Use `--ignore-globs` to ignore files and/or folders
 
 ## Configuration in MegaLinter
 
-- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
-- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
+- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                              | Default value |
 |------------------------------------------------|--------------------------------------------------------------------------|---------------|
@@ -43,10 +43,10 @@ Use devskim in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                     | Description               | Embedded linters |                                                                                                                                                                                            Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:--------------------------|:----------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.20.1/supported-linters/)     | Default MegaLinter Flavor |       112        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/6.20.1/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       112        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -77,7 +77,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-Microsoft DevSkim Command Line Interface 0.7.104+bd34d6c82b
+Microsoft DevSkim Command Line Interface 0.7.105+f5648bfa2f
 
 Usage: devskim [options] [command]
 
