@@ -15,17 +15,17 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.3.9**
+- Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
-- Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://megalinter.io/6.20.1/configuration/#activation-and-deactivation)
+- Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.io/6.20.1/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -55,11 +55,11 @@ Use terraform-fmt in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                              Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/6.20.1/supported-linters/)       | Default MegaLinter Flavor                       |       112        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/6.20.1/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        80        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/6.20.1/flavors/terraform/) | Optimized for TERRAFORM based projects          |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6.20.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       112        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        80        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -105,6 +105,7 @@ All other commands:
   import        Associate existing infrastructure with a Terraform resource
   login         Obtain and save credentials for a remote host
   logout        Remove locally-stored credentials for a remote host
+  metadata      Metadata related commands
   output        Show output values from your root module
   providers     Show the providers required for this configuration
   refresh       Update the state to match remote systems
