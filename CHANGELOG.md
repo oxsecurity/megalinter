@@ -14,6 +14,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements
   - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors
 
+- Core
+  - Run CI linter jobs only on Pull requests to avoid doubling jobs
+
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.2** on 2023-03-11
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.8.0 to **10.8.1** on 2023-03-11
