@@ -33,6 +33,7 @@
     "goodcheck": "MIT",
     "graphql-schema-linter": "MIT",
     "hadolint": "GPL-3.0",
+    "helm": "Apache-2.0",
     "htmlhint": "MIT",
     "isort": "MIT",
     "jscpd": "MIT",
