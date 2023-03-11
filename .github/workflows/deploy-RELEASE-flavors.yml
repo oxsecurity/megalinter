@@ -96,13 +96,6 @@ jobs:
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
-
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################

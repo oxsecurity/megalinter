@@ -13,16 +13,6 @@
 #######################################
 name: "Build & Deploy - DEV linters"
 on:
-  push:
-    branches-ignore:
-      - main
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
   pull_request:
     branches-ignore: []
     paths-ignore:
@@ -113,6 +103,7 @@ jobs:
             "kotlin_ktlint",
             "kubernetes_kubeval",
             "kubernetes_kubeconform",
+            "kubernetes_helm",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",

@@ -114,3 +114,6 @@ Pipfile
 # .NET Core build folders
 bin/
 obj/
+
+run_local_linter.sh
+
