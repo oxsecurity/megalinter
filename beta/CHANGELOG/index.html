@@ -3407,7 +3407,22 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Add helm lint, by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386</li>
+<li>New linters<ul>
+<li>Add <a href="https://helm.sh/docs/helm/helm_lint/"><strong>helm lint</strong></a>, by @ThomasSanson in <a href="https://github.com/oxsecurity/megalinter/pull/2386">https://github.com/oxsecurity/megalinter/pull/2386</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter enhancements<ul>
+<li><a href="https://megalinter.io/latest/descriptors/php_phpcs/">phpcs</a>: Add regex in descriptor to be able to extract the number of found errors</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Core<ul>
+<li>Run CI linter jobs only on Pull requests to avoid doubling jobs</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
