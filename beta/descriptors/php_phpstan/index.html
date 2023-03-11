@@ -11,9 +11,9 @@
 <link href="../php_phpcs/" rel="prev"/>
 <link href="../php_psalm/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.1" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
 <title>phpstan configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -2403,7 +2403,7 @@
 <p><a href="https://github.com/phpstan/phpstan"><img alt="GitHub stars" src="https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600"/></a> <a href="https://github.com/phpstan/phpstan/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/phpstan/phpstan?sort=semver"/></a> <a href="https://github.com/phpstan/phpstan/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/phpstan/phpstan"/></a> <a href="https://github.com/phpstan/phpstan/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/phpstan/phpstan"/></a> <a href="https://github.com/phpstan/phpstan/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/phpstan/phpstan"/></a></p>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.10.5</strong></li>
+<li>Version in MegaLinter: <strong>1.10.6</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -2414,8 +2414,8 @@
 <p><a href="https://github.com/phpstan/phpstan" target="_blank"><img alt="phpstan - GitHub" src="https://gh-card.dev/repos/phpstan/phpstan.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable phpstan by adding <code>PHP_PHPSTAN</code> in <a href="https://megalinter.io/6.20.1/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable phpstan by adding <code>PHP_PHPSTAN</code> in <a href="https://megalinter.io/6.20.1/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable phpstan by adding <code>PHP_PHPSTAN</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable phpstan by adding <code>PHP_PHPSTAN</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -2529,24 +2529,24 @@
 <tbody>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/supported-linters/">all</a></td>
+<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
 <td align="center">112</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/flavors/cupcake/">cupcake</a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td align="left">MegaLinter for the most commonly used languages</td>
 <td align="center">80</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/flavors/php/">php</a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
 <td align="left">Optimized for PHP based projects</td>
 <td align="center">50</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
 </tr>
 </tbody>
 </table>
@@ -2692,7 +2692,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHU
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.b78d2936.min.js"></script>
+<script src="../../assets/javascripts/bundle.fc8c2696.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

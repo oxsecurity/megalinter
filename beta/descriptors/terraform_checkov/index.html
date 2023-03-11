@@ -11,9 +11,9 @@
 <link href="../terraform_terraform_fmt/" rel="prev"/>
 <link href="../terraform_kics/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.1" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
 <title>checkov configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -2414,7 +2414,7 @@
 </blockquote>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.70</strong></li>
+<li>Version in MegaLinter: <strong>2.3.75</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -2422,8 +2422,8 @@
 <p><a href="https://github.com/bridgecrewio/checkov" target="_blank"><img alt="checkov - GitHub" src="https://gh-card.dev/repos/bridgecrewio/checkov.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable checkov by adding <code>TERRAFORM_CHECKOV</code> in <a href="https://megalinter.io/6.20.1/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable checkov by adding <code>TERRAFORM_CHECKOV</code> in <a href="https://megalinter.io/6.20.1/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable checkov by adding <code>TERRAFORM_CHECKOV</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable checkov by adding <code>TERRAFORM_CHECKOV</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -2521,24 +2521,24 @@
 <tbody>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/supported-linters/">all</a></td>
+<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
 <td align="center">112</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/flavors/security/">security</a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
 <td align="left">Optimized for security</td>
 <td align="center">21</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/6.20.1/flavors/terraform/">terraform</a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
 <td align="left">Optimized for TERRAFORM based projects</td>
 <td align="center">52</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6.20.1"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v6.20.1"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
 </tr>
 </tbody>
 </table>
@@ -2564,8 +2564,8 @@
                [-o {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
-               [--framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy,all} ...]]
-               [--skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy} ...]]
+               [--framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} ...]]
+               [--skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -2652,10 +2652,10 @@ options:
   --quiet               in case of CLI output, display only failed checks.
                         Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
-  --framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy,all} ...]
+  --framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} ...]
                         Filter scan to run only on specific infrastructure
                         code frameworks [env var: CKV_FRAMEWORK]
-  --skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,3d_policy} ...]
+  --skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} ...]
                         Filter scan to skip specific infrastructure as code
                         frameworks.This will be included automatically for
                         some frameworks if system dependencies are missing.
@@ -2948,7 +2948,7 @@ override config file values which override defaults.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.b78d2936.min.js"></script>
+<script src="../../assets/javascripts/bundle.fc8c2696.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
