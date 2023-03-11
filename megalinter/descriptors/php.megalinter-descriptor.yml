@@ -47,6 +47,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
