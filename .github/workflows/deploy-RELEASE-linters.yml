@@ -87,6 +87,7 @@ jobs:
             "kotlin_ktlint",
             "kubernetes_kubeval",
             "kubernetes_kubeconform",
+            "kubernetes_helm",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",

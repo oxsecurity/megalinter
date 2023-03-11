@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Add helm lint, by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386
+
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.2** on 2023-03-11
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.8.0 to **10.8.1** on 2023-03-11
