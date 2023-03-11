@@ -1546,7 +1546,7 @@
         ""
     ],
     "devskim": [
-        "Microsoft DevSkim Command Line Interface 0.7.105+f5648bfa2f",
+        "Microsoft DevSkim Command Line Interface 0.7.104+bd34d6c82b",
         "",
         "Usage: devskim [options] [command]",
         "",
