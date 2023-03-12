@@ -13,6 +13,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Medias
 
 - Linter enhancements & fixes
+  - Ensure ESLint actually runs in project mode rather than silently doing
+    nothing, by @Kurt-von-Laven
+    [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
 
 - Core
 
