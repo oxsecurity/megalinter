@@ -1,2 +1,2 @@
-def f(x):
-    return 1
+def f():
+    return 1 is 1
