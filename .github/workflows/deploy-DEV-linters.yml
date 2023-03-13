@@ -128,6 +128,7 @@ jobs:
             "python_bandit",
             "python_mypy",
             "python_pyright",
+            "python_ruff",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
