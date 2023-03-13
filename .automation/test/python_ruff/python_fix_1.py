@@ -1,2 +1,2 @@
 def f():
-    return 1 == 1
+    return 1 is 1

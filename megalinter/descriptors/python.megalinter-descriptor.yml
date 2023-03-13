@@ -355,7 +355,8 @@ linters:
     cli_version_arg_name: "--version"
     cli_lint_extra_args: 
       - "check"
-    cli_lint_errors_count: total_lines
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: pyproject.toml
     test_folder: python_ruff
     examples:
