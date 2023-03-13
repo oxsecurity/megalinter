@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.1.1**
+- Version in MegaLinter: **6.1.2**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
