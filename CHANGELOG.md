@@ -38,6 +38,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.4 to **0.44.5** on 2023-03-11
   - [devskim](https://github.com/microsoft/DevSkim) from 0.7.105 to **0.7.104** on 2023-03-11
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.28.0 to **6.29.0** on 2023-03-11
+  - [v8r](https://github.com/chris48s/v8r) from 0.14.0 to **1.0.0** on 2023-03-13
+  - [checkov](https://www.checkov.io/) from 2.3.75 to **2.3.79** on 2023-03-13
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.1 to **6.1.2** on 2023-03-13
 <!-- linter-versions-end -->
 
 ## [v6.20.1] - 2023-03-07
