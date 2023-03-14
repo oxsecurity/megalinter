@@ -357,11 +357,11 @@ linters:
       - "check"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
-    config_file_name: pyproject.toml
+    config_file_name: ".ruff.toml"
     test_folder: python_ruff
     examples:
       - "ruff check myfile.py"
-      - "ruff check --config pyproject.toml myfile.py"
+      - "ruff check --config .ruff.toml myfile.py"
     install:
       pip:
         - ruff
