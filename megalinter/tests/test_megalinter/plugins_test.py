@@ -6,8 +6,8 @@ Unit tests for Megalinter class
 import os
 import unittest
 
+from megalinter import utilstest
 from megalinter.constants import ML_REPO
-from megalinter.tests.test_megalinter.helpers import utilstest
 
 
 class plugins_test(unittest.TestCase):

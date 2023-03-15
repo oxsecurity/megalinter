@@ -19,6 +19,7 @@ webpreview
 yq
 importlib-metadata>=3.10
 mkdocs-material
+mkdocs-glightbox
 mdx_truly_sane_lists
 beautifulsoup4
 giturlparse

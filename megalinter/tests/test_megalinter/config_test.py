@@ -9,9 +9,8 @@ import re
 import unittest
 
 from git import Repo
-from megalinter import config
+from megalinter import config, utilstest
 from megalinter.constants import ML_REPO
-from megalinter.tests.test_megalinter.helpers import utilstest
 from megalinter.utils import REPO_HOME_DEFAULT
 
 
@@ -166,7 +165,7 @@ class config_test(unittest.TestCase):
                 (
                     "Unable to retrieve EXTENDS config file "
                     r"https://.*/\.automation/test/mega-linter-config-test/"
-                    r"remote_extends_error/base-error\.mega-linter\.yml"
+                    r"extension3\.mega-linter\.yml"
                 ),
             )
         finally:

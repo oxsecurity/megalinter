@@ -21,14 +21,14 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
-FROM golang:1.19-alpine as revive
+FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.15.3 as gitleaks
+FROM zricethezav/gitleaks:v8.16.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -91,6 +91,7 @@ RUN apk add --update --no-cache \
                 npm \
                 yarn \
                 go \
+                helm \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -154,12 +155,11 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
-                stylelint-config-sass-guidelines \
                 stylelint-scss \
                 graphql \
                 graphql-schema-linter \
@@ -175,7 +175,6 @@ RUN npm --no-cache install --force --ignore-scripts \
                 eslint-plugin-prettier \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
-                babel-eslint \
                 @babel/core \
                 @babel/eslint-parser \
                 @microsoft/eslint-formatter-sarif \
@@ -198,9 +197,10 @@ RUN npm --no-cache install --force --ignore-scripts \
                 sql-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser && \
-    npm audit fix --audit-level=critical || true \
+                @typescript-eslint/parser  && \
+       npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
+    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \

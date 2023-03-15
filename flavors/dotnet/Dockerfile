@@ -23,7 +23,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.15.3 as gitleaks
+FROM zricethezav/gitleaks:v8.16.0 as gitleaks
 #FROM__END
 
 ##################
@@ -81,6 +81,7 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
+                helm \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -136,11 +137,10 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
-                stylelint-config-sass-guidelines \
                 stylelint-scss \
                 gherkin-lint \
                 graphql \
@@ -164,9 +164,10 @@ RUN npm --no-cache install --force --ignore-scripts \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
-                tekton-lint && \
-    npm audit fix --audit-level=critical || true \
+                tekton-lint  && \
+       npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
+    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \

@@ -48,7 +48,7 @@ jobs:
       name: beta-flavors
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # flavors-start
@@ -101,6 +101,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
         uses: docker/build-push-action@v4

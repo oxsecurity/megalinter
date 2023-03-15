@@ -17,7 +17,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.15.3 as gitleaks
+FROM zricethezav/gitleaks:v8.16.0 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -58,6 +58,7 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                helm \
                 icu-libs \
                 libcurl \
                 libintl \
@@ -110,12 +111,13 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --force --ignore-scripts \
+RUN npm --no-cache install --ignore-scripts --omit=dev \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
-                @secretlint/secretlint-formatter-sarif && \
-    npm audit fix --audit-level=critical || true \
+                @secretlint/secretlint-formatter-sarif  && \
+       npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
+    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
@@ -215,7 +217,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock

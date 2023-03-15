@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 53 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 53 languages, 24 formats, 22 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -20,6 +20,9 @@ theme:
   favicon: assets/images/mega-linter-square.png
   palette:
     primary: white
+plugins:
+  - glightbox
+  - search
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -259,6 +262,7 @@ nav:
               - "All KUBERNETES linters": "descriptors/kubernetes.md"
               - "kubeval": "descriptors/kubernetes_kubeval.md"
               - "kubeconform": "descriptors/kubernetes_kubeconform.md"
+              - "helm": "descriptors/kubernetes_helm.md"
           - "OPENAPI":
               - "All OPENAPI linters": "descriptors/openapi.md"
               - "spectral": "descriptors/openapi_spectral.md"

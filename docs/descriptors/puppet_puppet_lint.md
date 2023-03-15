@@ -9,7 +9,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 
 ## puppet-lint documentation
 
-- Version in MegaLinter: **3.0.1**
+- Version in MegaLinter: **3.3.0**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -53,7 +53,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       112        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -116,6 +116,8 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
                                      %{message}  - The message.
         --json                       Log output as JSON
         --sarif                      Log output as SARIF
+        --codeclimate-report-file FILE
+                                     Save a code climate compatible report to this file
         --list-checks                List available check names.
 
     Checks:
@@ -185,6 +187,8 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
         --no-hard_tabs-check         Skip the hard_tabs check.
         --no-trailing_whitespace-check
                                      Skip the trailing_whitespace check.
+        --no-legacy_facts-check      Skip the legacy_facts check.
+        --no-top_scope_facts-check   Skip the top_scope_facts check.
 ```
 
 ### Installation on mega-linter Docker image

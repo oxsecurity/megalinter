@@ -184,6 +184,11 @@
     "image": "https://avatars1.githubusercontent.com/u/34047791?s=400&v=4",
     "title": "hadolint/hadolint"
   },
+  "helm": {
+    "description": "Helm - The Kubernetes Package Manager.",
+    "image": "https://helm.sh/img/og-image.png",
+    "title": "Helm Lint"
+  },
   "htmlhint": {
     "description": "\u2699\ufe0f The static code analysis tool you need for your HTML - htmlhint/HTMLHint",
     "image": "https://avatars0.githubusercontent.com/u/42865284?s=400&v=4",

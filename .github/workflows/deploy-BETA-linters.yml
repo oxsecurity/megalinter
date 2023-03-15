@@ -63,7 +63,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # linters-start
@@ -111,6 +111,7 @@ jobs:
             "kotlin_ktlint",
             "kubernetes_kubeval",
             "kubernetes_kubeconform",
+            "kubernetes_helm",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",
@@ -213,6 +214,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
         uses: docker/build-push-action@v4

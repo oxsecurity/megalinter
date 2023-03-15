@@ -13,16 +13,6 @@
 #######################################
 name: "Build & Deploy - DEV linters"
 on:
-  push:
-    branches-ignore:
-      - main
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
   pull_request:
     branches-ignore: []
     paths-ignore:
@@ -65,7 +55,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # linters-start
@@ -113,6 +103,7 @@ jobs:
             "kotlin_ktlint",
             "kubernetes_kubeval",
             "kubernetes_kubeconform",
+            "kubernetes_helm",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",
@@ -206,6 +197,9 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
         uses: docker/build-push-action@v4

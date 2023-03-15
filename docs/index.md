@@ -7,8 +7,8 @@
 
 <!-- header-logo-start -->
 <div align="center">
-  <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
-    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" height="200px">
+  <a href="https://megalinter.io" target="blank" title="Visit MegaLinter Web Site">
+    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/megalinter-banner.png" alt="MegaLinter" min-height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.0M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.0M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2011&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
@@ -28,7 +28,7 @@
 <!-- welcome-phrase-start -->
 MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).
 
-Supporting [**53** languages](supported-linters.md#languages), [**24** formats](supported-linters.md#formats), [**21** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
+Supporting [**53** languages](supported-linters.md#languages), [**24** formats](supported-linters.md#formats), [**22** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
 [**Upgrade to MegaLinter v6 !**](https://github.com/oxsecurity/megalinter/issues/1592)
 <!-- welcome-phrase-end -->
@@ -80,11 +80,11 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
 - Reading error logs, **developers learn best practices** of the language they are using
-- [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
@@ -204,6 +204,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/gherkin.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->     | [**GHERKIN**](descriptors/gherkin.md)               | [**gherkin-lint**](descriptors/gherkin_gherkin_lint.md)<br/>[_GHERKIN_GHERKIN_LINT_](descriptors/gherkin_gherkin_lint.md)                                                |                                                     [![GitHub stars](https://img.shields.io/github/stars/vsiakka/gherkin-lint?cacheSeconds=3600)](https://github.com/vsiakka/gherkin-lint)                                                      |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**KUBERNETES**](descriptors/kubernetes.md)         | [**kubeval**](descriptors/kubernetes_kubeval.md)<br/>[_KUBERNETES_KUBEVAL_](descriptors/kubernetes_kubeval.md)                                                           |                          ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval)                           |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**KUBERNETES**](descriptors/kubernetes.md)         | [**kubeconform**](descriptors/kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](descriptors/kubernetes_kubeconform.md)                                           |                                                        [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)                                                         |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**KUBERNETES**](descriptors/kubernetes.md)         | [**helm**](descriptors/kubernetes_helm.md)<br/>[_KUBERNETES_HELM_](descriptors/kubernetes_helm.md)                                                                       |                                                                [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm)                                                                 |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/openapi.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->     | [**OPENAPI**](descriptors/openapi.md)               | [**spectral**](descriptors/openapi_spectral.md)<br/>[_OPENAPI_SPECTRAL_](descriptors/openapi_spectral.md)                                                                |                                                     [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral)                                                      |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/puppet.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->     | [**PUPPET**](descriptors/puppet.md)                 | [**puppet-lint**](descriptors/puppet_puppet_lint.md)<br/>[_PUPPET_PUPPET_LINT_](descriptors/puppet_puppet_lint.md)                                                       |                             [![GitHub stars](https://img.shields.io/github/stars/rodjek/puppet-lint?cacheSeconds=3600)](https://github.com/rodjek/puppet-lint) ![autofix](https://shields.io/badge/-autofix-green)                              |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**SNAKEMAKE**](descriptors/snakemake.md)           | [**snakemake**](descriptors/snakemake_snakemake.md)<br/>[_SNAKEMAKE_LINT_](descriptors/snakemake_snakemake.md)                                                           |                                                      [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake)                                                       |
@@ -295,7 +296,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 - Migration from docker hub space **nvuillam** to space **megalinter**
   - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
 
-- Documentation is now hosted at <https://megalinter.github.io/>
+- Documentation is now hosted at <https://megalinter.io/>
 
 - Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
   - **latest** for latest official release
