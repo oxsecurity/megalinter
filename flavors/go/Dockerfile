@@ -29,7 +29,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.0 as gitleaks
+FROM zricethezav/gitleaks:v8.16.1 as gitleaks
 #FROM__END
 
 ##################
