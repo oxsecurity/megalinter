@@ -41,6 +41,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 0.14.0 to **1.0.0** on 2023-03-13
   - [checkov](https://www.checkov.io/) from 2.3.75 to **2.3.79** on 2023-03-13
   - [rstcheck](https://github.com/myint/rstcheck) from 6.1.1 to **6.1.2** on 2023-03-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.1 to **0.74.3** on 2023-03-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.406 to **6.0.407** on 2023-03-16
+  - [revive](https://revive.run/) from 1.2.5 to **1.3.0** on 2023-03-16
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.298 to **1.1.299** on 2023-03-16
+  - [checkov](https://www.checkov.io/) from 2.3.79 to **2.3.95** on 2023-03-16
+  - [semgrep](https://semgrep.dev/) from 1.14.0 to **1.15.0** on 2023-03-16
+  - [syft](https://github.com/anchore/syft) from 0.74.1 to **0.75.0** on 2023-03-16
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.2 to **0.38.3** on 2023-03-16
+  - [rubocop](https://rubocop.org/) from 1.48.0 to **1.48.1** on 2023-03-16
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.24.1 to **7.24.2** on 2023-03-16
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.2 to **0.8.3** on 2023-03-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.29.0 to **6.29.3** on 2023-03-16
+  - [sqlfluff](https://www.sqlfluff.com/) from 1.4.5 to **2.0.0** on 2023-03-16
+  - [kics](https://www.kics.io) from 1.6.11 to **1.6.12** on 2023-03-16
 <!-- linter-versions-end -->
 
 ## [v6.20.1] - 2023-03-07
