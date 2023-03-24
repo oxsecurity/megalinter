@@ -99,9 +99,8 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-    ide:
+        - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/ /usr/bin/phpstan
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
