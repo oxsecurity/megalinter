@@ -56,6 +56,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.29.0 to **6.29.3** on 2023-03-16
   - [sqlfluff](https://www.sqlfluff.com/) from 1.4.5 to **2.0.0** on 2023-03-16
   - [kics](https://www.kics.io) from 1.6.11 to **1.6.12** on 2023-03-16
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.2 to **6.14.3** on 2023-03-25
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.02.17 to **2023.03.17** on 2023-03-25
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.74.3 to **0.75.1** on 2023-03-25
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.3 to **3.5.4** on 2023-03-25
+  - [stylelint](https://stylelint.io) from 15.2.0 to **15.3.0** on 2023-03-25
+  - [golangci-lint](https://golangci-lint.run/) from 1.51.2 to **1.52.1** on 2023-03-25
+  - [revive](https://revive.run/) from 1.3.0 to **1.3.1** on 2023-03-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.8.1 to **10.9.2** on 2023-03-25
+  - [prettier](https://prettier.io/) from 2.8.4 to **2.8.7** on 2023-03-25
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.6.0 to **2.7.0** on 2023-03-25
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.3 to **3.11.0** on 2023-03-25
+  - [phpstan](https://phpstan.org/) from 1.10.6 to **1.10.8** on 2023-03-25
+  - [pylint](https://pylint.pycqa.org) from 2.17.0 to **2.17.1** on 2023-03-25
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.299 to **1.1.300** on 2023-03-25
+  - [checkov](https://www.checkov.io/) from 2.3.95 to **2.3.115** on 2023-03-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.24.2 to **7.25.0** on 2023-03-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.29.3 to **6.31.1** on 2023-03-25
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.0 to **2.0.2** on 2023-03-25
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.0 to **1.4.2** on 2023-03-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.44.5 to **0.45.0** on 2023-03-25
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.29.0 to **1.30.0** on 2023-03-25
 <!-- linter-versions-end -->
 
 ## [v6.20.1] - 2023-03-07

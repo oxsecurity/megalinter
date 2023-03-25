@@ -23,7 +23,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.95**
+- Version in MegaLinter: **2.3.115**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -109,6 +109,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
                [--evaluate-variables EVALUATE_VARIABLES] [-ca CA_CERTIFICATE]
+               [--no-cert-verify]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
@@ -336,6 +337,11 @@ options:
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
                         Custom CA certificate (bundle) file [env var:
                         BC_CA_BUNDLE]
+  --no-cert-verify      Skip SSL certificate verification. Use this to bypass
+                        errors related to SSL certificates. Warning: this
+                        should only be used for testing purposes. Skipping
+                        certificate verification is dangerous as invalid and
+                        falsified certificates cannot be detected.
   --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
                         Directory containing the hcl code used to generate a
                         given plan file. Use with -f.
