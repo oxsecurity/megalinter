@@ -1152,8 +1152,8 @@ description: List of all known articles, blog posts and videos that talk about M
 
 ### French
 
-| Article                                                                                                                                                                                         | Author                                                                                                                            |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
+| Article                                                                                                                                                                                                                                                   | Author                                                          |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|
 | [MegaLinter, votre meilleur ami pour un code de qualité](https://www.neosoft.fr/nos-publications/blog-tech/mega-linter-votre-meilleur-ami-pour-un-code-de-qualite/?utm_source=twitter&utm_medium=organic&utm_campaign=article-mega-linter){target=_blank} | [Thomas Sanson](https://github.com/ThomasSanson){target=_blank} |
 
 ### Videos
