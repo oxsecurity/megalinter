@@ -8,6 +8,7 @@
         "**/licenses/*.md",
         "**/all_users.md",
         "**/used-by-stats.md",
+        "**/.cspell.json",
         "lib",
         "report",
         ".vscode"
