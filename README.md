@@ -1129,7 +1129,7 @@ description: List of all known articles, blog posts and videos that talk about M
 -->
 ## Articles
 
-### English blogs
+### English
 
 | Article                                                                                                                                                                                         | Author                                                                                                                            |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
@@ -1148,7 +1148,7 @@ description: List of all known articles, blog posts and videos that talk about M
 | [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/){target=_blank} | [Gijs Reijn](https://github.com/gijsreyn){target=_blank}                                                                          |
 | [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211){target=_blank}                                              | [RunningMattress](https://medium.com/@RunningMattress){target=_blank}                                                             |
 
-### French blogs
+### French
 
 | Article                                                                                                                                                                                         | Author                                                                                                                            |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
@@ -1163,6 +1163,10 @@ description: List of all known articles, blog posts and videos that talk about M
 - DevSecOps Webinar using MegaLinter, by [5.15 Technologies](https://www.515tech.com/){target=_blank}
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/hk950RUwIUA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+- (FR) Coding Tech - L'importance de la CI/CD dans le développement de logiciels, by [Arsene Fougerouse](https://github.com/GridexX) from [R2DevOps](https://r2devops.io/)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/raCDpsP9O78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <!-- articles-section-end -->
 
