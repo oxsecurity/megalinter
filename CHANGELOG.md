@@ -21,9 +21,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 <!-- /* cspell:enable */ -->
 
-- Linter enhancements
+- Linter enhancements & fixes
   - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors
   - Use docker image to install phpstan
+  - Avoid cspell error on readonly workspaces
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
