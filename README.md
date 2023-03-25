@@ -1129,6 +1129,8 @@ description: List of all known articles, blog posts and videos that talk about M
 -->
 ## Articles
 
+<!-- /* cspell:disable */ -->
+
 ### English
 
 | Article                                                                                                                                                                                         | Author                                                                                                                            |
@@ -1167,6 +1169,8 @@ description: List of all known articles, blog posts and videos that talk about M
 - (FR) Coding Tech - L'importance de la CI/CD dans le développement de logiciels, by [Arsene Fougerouse](https://github.com/GridexX) from [R2DevOps](https://r2devops.io/)
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/raCDpsP9O78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<!-- /* cspell:enable */ -->
 
 <!-- articles-section-end -->
 

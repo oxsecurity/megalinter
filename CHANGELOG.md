@@ -11,11 +11,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
   - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in <https://github.com/oxsecurity/megalinter/pull/2386>
 
+<!-- /* cspell:disable */ -->
+
 - Medias
   - Video: [Code quality - Ep01 - MegaLinter, one linter to rule them all](https://www.youtube.com/watch?v=NauVD4z-cMA), by @devpro
   - Video: [DevSecOps Webinar using MegaLinter](https://www.youtube.com/watch?v=hk950RUwIUA), by [5.15 Technologies](https://www.515tech.com/)
   - Video: (FR) [Coding Tech - L'importance de la CI/CD dans le développement de logiciels](https://www.youtube.com/watch?v=raCDpsP9O78), by @GridexX from [R2DevOps](https://r2devops.io/)
   - Article: (FR) [MegaLinter, votre meilleur ami pour un code de qualité](https://www.neosoft.fr/nos-publications/blog-tech/mega-linter-votre-meilleur-ami-pour-un-code-de-qualite/?utm_source=twitter&utm_medium=organic&utm_campaign=article-mega-linter), by @ThomasSanson
+
+<!-- /* cspell:enable */ -->
 
 - Linter enhancements
   - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors
