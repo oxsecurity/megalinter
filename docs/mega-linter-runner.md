@@ -78,7 +78,7 @@ mega-linter-runner [OPTIONS] [FILES]
 The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
 
 | Option                 | Description                                                                                                                                                                                     | Default           |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                                                                                                          | current directory |
 | `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                                                                                                           | <!-- -->          |
