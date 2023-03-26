@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use docker image to install phpstan
   - Avoid cspell error on readonly workspaces
   - Allow bandit to use pyproject.toml
+  - Bring back stylelint-config-sass-guidelines package
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
