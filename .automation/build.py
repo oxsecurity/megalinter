@@ -2567,6 +2567,7 @@ def generate_documentation_all_linters():
     linters.sort(key=lambda x: x.linter_name)
     table_header = [
         "Linter",
+        "Supported Platforms",
         "Version",
         "License",
         "Popularity",
@@ -2734,9 +2735,15 @@ def generate_documentation_all_linters():
                 f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
                 f"(https://github.com/{repo}){{target=_blank}}"
             )
+        supported_platforms = []
+        # supported platforms
+        if (hasattr(linter, "supported_platforms") and
+            "platform" in linter.supported_platforms):
+            supported_platforms += linter.supported_platforms["platform"]
         # line
         table_line = [
             linter.linter_name,
+            ", ".join(supported_platforms),
             linter_version,
             license,
             "N/A",
@@ -2753,6 +2760,7 @@ def generate_documentation_all_linters():
             linter_doc_links += [link]
         md_table_line = [
             md_linter_name,
+            "<br/> ".join(supported_platforms),
             linter_version,
             md_license,
             md_popularity,
@@ -2793,10 +2801,10 @@ def generate_documentation_all_linters():
         outfile.write("<!-- markdownlint-disable -->\n\n")
         outfile.write("# References\n\n")
         outfile.write(
-            "| Linter | Version | License | Popularity | Descriptors | Ref | URL |\n"
+            "| Linter | Supported Platforms | Version | License | Popularity | Descriptors | Ref | URL |\n"
         )
         outfile.write(
-            "| :----  | :-----: | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
+            "| :----  | :-----: | :-----: | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
         )
         for md_table_line in md_table_lines:
             outfile.write("| %s |\n" % " | ".join(md_table_line))
