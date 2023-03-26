@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "6.20.1",
+  "version": "6.21.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/oxsecurity/megalinter.git"
