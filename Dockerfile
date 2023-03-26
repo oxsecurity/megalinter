@@ -33,7 +33,7 @@ FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.16.0 as gitleaks
+FROM zricethezav/gitleaks:v8.16.1 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -164,7 +164,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/black" && cd "/venvs/black" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black && deactivate && cd ./../.. \
     && mkdir -p "/venvs/flake8" && cd "/venvs/flake8" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir flake8 && deactivate && cd ./../.. \
     && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir isort black && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit bandit_sarif_formatter && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit bandit_sarif_formatter bandit[toml] && deactivate && cd ./../.. \
     && mkdir -p "/venvs/mypy" && cd "/venvs/mypy" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir mypy && deactivate && cd ./../.. \
     && mkdir -p "/venvs/pyright" && cd "/venvs/pyright" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pyright && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging checkov && deactivate && cd ./../.. \

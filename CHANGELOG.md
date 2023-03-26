@@ -25,6 +25,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors
   - Use docker image to install phpstan
   - Avoid cspell error on readonly workspaces
+  - Allow bandit to use pyproject.toml
+  - Bring back stylelint-config-sass-guidelines package
   - Display only errors in markdown-link-check logs for better readability
 
 - Core
