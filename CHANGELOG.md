@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Avoid cspell error on readonly workspaces
   - Allow bandit to use pyproject.toml
   - Bring back stylelint-config-sass-guidelines package
+  - Display only errors in markdown-link-check logs for better readability
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
