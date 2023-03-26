@@ -2428,7 +2428,7 @@
 <h3 id="no-installation">No installation</h3>
 <p>You can run mega-linter-runner without installation by using <code>npx</code></p>
 <p>Example:</p>
-<pre><code class="language-shell">npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+<pre><code class="language-shell">npx mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
 <h3 id="pre-commit-hook">Pre-commit hook</h3>
 <p>You can run mega-linter-runner as a <a href="https://pre-commit.com/">pre-commit</a> hook</p>
@@ -2475,7 +2475,7 @@
 </tr>
 <tr>
 <td><code>-e</code> <br/> <code>--env</code></td>
-<td>Environment variables for MegaLinter, following format <strong>'ENV_VAR_NAME=VALUE'</strong> <br/>Warning: Quotes are mandatory</td>
+<td>Environment variables for MegaLinter, following format <strong>'ENV_VAR_NAME=VALUE'</strong> for a single value or <strong>"'ENV_VAR_NAME=VALUE1,VALUE2'"</strong> for a list of values<br/>Warning: Quotes are mandatory</td>
 <td><!-- --></td>
 </tr>
 <tr>
@@ -2521,7 +2521,7 @@
 </code></pre>
 <pre><code class="language-shell">mega-linter-runner -p myFolder --fix
 </code></pre>
-<pre><code class="language-shell">mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+<pre><code class="language-shell">mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
 <pre><code class="language-shell">mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
 </code></pre>
