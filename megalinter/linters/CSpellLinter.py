@@ -41,9 +41,15 @@ class CSpellLinter(Linter):
                 + str(uuid.uuid4())
                 + "-megalinter_file_names_cspell.txt"
             )
-            with open(self.temp_file_name, "w", encoding="utf-8") as f:
-                f.write(file_names_txt)
-            self.files += [self.temp_file_name]
+            try:
+                with open(self.temp_file_name, "w", encoding="utf-8") as f:
+                    f.write(file_names_txt)
+                self.files += [self.temp_file_name]
+            except Exception as e:
+                logging.info(
+                    "[cspell] Unable to check file names on a readonly workspace: "
+                    + str(e)
+                )
         return super().build_lint_command(file)
 
     # Remove temp file with file names if existing

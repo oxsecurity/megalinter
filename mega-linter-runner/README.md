@@ -62,7 +62,7 @@ You can run mega-linter-runner without installation by using `npx`
 Example:
 
 ```shell
-npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+npx mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ### Pre-commit hook
@@ -94,19 +94,19 @@ mega-linter-runner [OPTIONS] [FILES]
 
 The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
 
-| Option                 | Description                                                                                                        | Default           |
-|------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
-| `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
-| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                    | `all`             |
-| `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
-| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
-| `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
-| `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                         | `v5`              |
-| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
-| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
-| `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
-| `--container-name`     | Specify MegaLinter container name                                                                                  | <!-- -->          |
-| `--remove-container`   | Remove MegaLinter Docker container when done                                                                       | <!-- -->          |
+| Option                 | Description                                                                                                                                                                                     | Default           |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `-p` <br/> `--path`    | Directory containing the files to lint                                                                                                                                                          | current directory |
+| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
+| `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                                                                                                           | <!-- -->          |
+| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory | <!-- -->          |
+| `--fix`                | Automatically apply formatting and fixes in your files                                                                                                                                          | <!-- -->          |
+| `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                                                                                                      | `v5`              |
+| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                                                                                                    | <!-- -->          |
+| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                                                                                                 | <!-- -->          |
+| `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                                                                                                         | <!-- -->          |
+| `--container-name`     | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
+| `--remove-container`   | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
@@ -121,7 +121,7 @@ mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
-mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ```shell

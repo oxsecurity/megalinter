@@ -15,7 +15,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **1.4.5**
+- Version in MegaLinter: **2.0.2**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
   - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -102,6 +102,7 @@ Options:
 Commands:
   dialects  Show the current dialects available.
   fix       Fix SQL files.
+  format    Autoformat SQL files.
   lint      Lint SQL files via passing a list of files or using stdin.
   parse     Parse SQL files and just spit out the result.
   render    Render SQL files and just spit out the result.
@@ -112,9 +113,9 @@ Commands:
 
   sqlfluff lint --dialect postgres .
 
-  sqlfluff lint --dialect postgres --rules L042 .
+  sqlfluff lint --dialect postgres --rules ST05 .
 
-  sqlfluff fix --dialect sqlite --rules L041,L042 src/queries
+  sqlfluff fix --dialect sqlite --rules LT10,ST05 src/queries
 
   sqlfluff parse --dialect sqlite --templater jinja src/queries/common.sql
 ```

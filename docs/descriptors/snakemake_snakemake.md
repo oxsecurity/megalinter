@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.24.1**
+- Version in MegaLinter: **7.25.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -344,10 +344,10 @@ EXECUTION:
                         --preemption-default, and will take priority. Note
                         that preemptible instances have a maximum running time
                         of 24. If you want to apply a consistent number of
-                        retries across all your rules, use --premption-default
-                        instead. Example: snakemake --preemption-default 10
-                        --preemptible-rules map_reads=3 call_variants=0
-                        (default: None)
+                        retries across all your rules, use --preemption-
+                        default instead. Example: snakemake --preemption-
+                        default 10 --preemptible-rules map_reads=3
+                        call_variants=0 (default: None)
   --config [KEY=VALUE ...], -C [KEY=VALUE ...]
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
@@ -380,9 +380,9 @@ EXECUTION:
                         be recreated by Snakemake (e.g. because their input
                         files are newer). For enforcing a touch, combine this
                         with --force, --forceall, or --forcerun. Note however
-                        that you loose the provenance information when the
-                        files have been created in realitiy. Hence, this
-                        should be used only as a last resort. (default: False)
+                        that you lose the provenance information when the
+                        files have been created in reality. Hence, this should
+                        be used only as a last resort. (default: False)
   --keep-going, -k      Go on with independent jobs if a job fails. (default:
                         False)
   --rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]
@@ -500,7 +500,7 @@ NOTEBOOKS:
   --draft-notebook TARGET
                         Draft a skeleton notebook for the rule used to
                         generate the given target file. This notebook can then
-                        be opened in a jupyter server, exeucted and
+                        be opened in a jupyter server, executed and
                         implemented until ready. After saving, it will
                         automatically be reused in non-interactive mode by
                         Snakemake for subsequent jobs. (default: None)
@@ -533,7 +533,7 @@ UTILITIES:
                         input files will be skipped (a warning will be
                         issued). For each rule, one test case will be created
                         in the specified test folder (.tests/unit by default).
-                        After successfull execution, tests can be run with
+                        After successful execution, tests can be run with
                         'pytest TESTPATH'. (default: None)
   --containerize        Print a Dockerfile that provides an execution
                         environment for the workflow, including all conda
@@ -547,7 +547,7 @@ UTILITIES:
                         (default: False)
   --dag                 Do not execute anything and print the directed acyclic
                         graph of jobs in the dot language. Recommended use on
-                        Unix systems: snakemake --dag | dot | displayNote
+                        Unix systems: snakemake --dag | dot | display. Note
                         print statements in your Snakefile may interfere with
                         visualization. (default: False)
   --rulegraph           Do not execute anything and print the dependency graph
@@ -558,8 +558,9 @@ UTILITIES:
                         appears in several steps of the workflow. Use this if
                         above option leads to a DAG that is too large.
                         Recommended use on Unix systems: snakemake --rulegraph
-                        | dot | displayNote print statements in your Snakefile
-                        may interfere with visualization. (default: False)
+                        | dot | display. Note print statements in your
+                        Snakefile may interfere with visualization. (default:
+                        False)
   --filegraph           Do not execute anything and print the dependency graph
                         of rules with their input and output files in the dot
                         language. This is an intermediate solution between
@@ -568,7 +569,7 @@ UTILITIES:
                         be cyclic if a rule appears in several steps of the
                         workflow. Use this if above option leads to a DAG that
                         is too large. Recommended use on Unix systems:
-                        snakemake --filegraph | dot | displayNote print
+                        snakemake --filegraph | dot | display. Note print
                         statements in your Snakefile may interfere with
                         visualization. (default: False)
   --d3dag               Print the DAG in D3.js compatible JSON format.
@@ -829,7 +830,7 @@ SLURM:
                         'partition', 'ntasks', 'cpus', etc. need to be defined
                         per rule within the 'resources' definition. Note, that
                         memory can only be defined as 'mem_mb' or
-                        'mem_mb_per_cpu' as analoguous to the SLURM 'mem' and
+                        'mem_mb_per_cpu' as analogous to the SLURM 'mem' and
                         'mem-per-cpu' flags to sbatch, respectively. Here, the
                         unit is always 'MiB'. In addition '--
                         default_resources' should contain the SLURM account.
@@ -900,8 +901,8 @@ CLUSTER:
                         command provided to --cluster returns the cluster job
                         id. Then, the status command will be invoked with the
                         job id. Snakemake expects it to return 'success' if
-                        the job was successfull, 'failed' if the job failed
-                        and 'running' if the job still runs. (default: None)
+                        the job was successful, 'failed' if the job failed and
+                        'running' if the job still runs. (default: None)
   --cluster-cancel CLUSTER_CANCEL
                         Specify a command that allows to stop currently
                         running jobs. The command will be passed a single
