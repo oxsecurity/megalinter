@@ -54,7 +54,7 @@ class utilsTest(unittest.TestCase):
             "README.md",
             "target/foo.ext",
         ]
-        for (ignored_files, expected) in [
+        for ignored_files, expected in [
             ([], all_files),
             (["hello"], all_files),
             (["target/foo.ext2"], all_files),
@@ -86,7 +86,7 @@ class utilsTest(unittest.TestCase):
             "target/foo.ext",
         ]
 
-        for (file_extensions, expected) in [
+        for file_extensions, expected in [
             ([], []),
             ([".md"], ["README.md"]),
             ([""], ["LICENSE"]),

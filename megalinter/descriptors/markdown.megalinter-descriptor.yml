@@ -107,6 +107,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
     cli_lint_mode: list_of_files
     config_file_name: .markdown-link-check.json
+    cli_lint_extra_args:
+      - --quiet
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
     examples:

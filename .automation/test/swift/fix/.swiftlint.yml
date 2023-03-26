@@ -1,0 +1,10 @@
+included:
+  - Sources
+line_length: 200
+disabled_rules:
+  - anonymous namespace
+  - identifier_name
+  - multiple_closures_with_trailing_closure
+  - trailing_comma
+  - trailing_newline
+  - vertical_whitespace

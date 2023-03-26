@@ -19,29 +19,61 @@ install:
     - |
       RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
           && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
     - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 linters:
   # DOTNET FORMAT
   - class: DotnetFormatLinter
     linter_name: dotnet-format
     is_formatter: true
-    linter_url: https://github.com/dotnet/format
+    linter_text: |
+      dotnet-format requires a `.sln` or `.csproj` file to run correctly.
+    linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/format
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_executable: dotnet
     cli_lint_extra_args:
-      - "--folder"
+      - "format"
+      - "{{WORKSPACE}}"
+      - "--verify-no-changes"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
+    cli_lint_fix_remove_args:
+      - "--verify-no-changes"
+    cli_help_extra_args:
+      - format
+    examples:
+      - "dotnet format {{WORKSPACE}} --verify-no-changes"
+      - "dotnet format {{WORKSPACE}}" # Fix
+  # CSharpier
+  - class: DotnetLinter
+    linter_name: csharpier
+    is_formatter: true
+    linter_url: https://csharpier.com/
+    linter_repo: https://github.com/belav/csharpier
+    linter_image_url: https://csharpier.com/img/logo.svg
+    linter_rules_configuration_url: https://csharpier.com/docs/Configuration
+    linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    ignore_file_name: .csharpierignore
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
       - "--check"
-      - "--exclude"
-      - "/"
-      - "--include"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
       - "--check"
-    linter_version_cache: "000"
+    test_folder: csharp_csharpier
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.cs"
-      - "dotnet-format --folder --exclude / --include myfile.cs" # Fix
+      - "dotnet csharpier --check myfile.cs myfile2.cs"
+      - "dotnet csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+        - RUN /usr/share/dotnet/dotnet tool install -g csharpier
+    ide:
+      rider:
+        - name: csharpier
+          url: https://plugins.jetbrains.com/plugin/18243-csharpier
+      visual_studio:
+        - name: CSharpier
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.CSharpier
+      vscode:
+        - name: csharpier-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode

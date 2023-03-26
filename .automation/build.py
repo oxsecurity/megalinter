@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import date, datetime
@@ -44,6 +45,10 @@ RELEASE = "--release" in sys.argv
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
+IS_LATEST = "--latest" in sys.argv
+DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+
+# Release args management
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
@@ -56,8 +61,14 @@ elif "--version" in sys.argv:
 else:
     VERSION = "beta"
     VERSION_V = VERSION
+# latest management
+if IS_LATEST is True:
+    VERSION_URL_SEGMENT = "latest"
+else:
+    VERSION_URL_SEGMENT = VERSION
 
-MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION
+
+MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION_URL_SEGMENT
 
 BRANCH = "main"
 URL_ROOT = ML_REPO_URL + "/tree/" + BRANCH
@@ -201,8 +212,13 @@ branding:
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
         flavor_label = flavor_info["label"]
-        comment = f"# MEGA-LINTER FLAVOR [{flavor}]: {flavor_label}"
+        comment = f"# MEGALINTER FLAVOR [{flavor}]: {flavor_label}"
         with open(dockerfile, "r+", encoding="utf-8") as f:
+            first_line = f.readline().rstrip()
+            if first_line.startswith("# syntax="):
+                comment = f"{first_line}\n{comment}"
+            else:
+                f.seek(0)
             content = f.read()
             f.seek(0)
             f.truncate()
@@ -289,21 +305,50 @@ def build_dockerfile(
             for dockerfile_item in item["install"]["dockerfile"]:
                 # FROM
                 if dockerfile_item.startswith("FROM"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next FROM line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_from += [dockerfile_item]
                 # ARG
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
+                    if dockerfile_item in all_dockerfile_items:
+                        dockerfile_item = (
+                            "# Next COPY line commented because already managed by another linter\n"
+                            "# " + "\n# ".join(dockerfile_item.splitlines())
+                        )
                     docker_copy += [dockerfile_item]
-                    docker_other += ["# Managed with " + dockerfile_item]
+                    docker_other += [
+                        "# Managed with "
+                        + "\n#              ".join(dockerfile_item.splitlines())
+                    ]
                 # Already used item
-                elif dockerfile_item in all_dockerfile_items:
+                elif (
+                    dockerfile_item in all_dockerfile_items
+                    or dockerfile_item.replace(
+                        "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                    )
+                    in all_dockerfile_items
+                ):
                     dockerfile_item = (
                         "# Next line commented because already managed by another linter\n"
                         "# " + "\n# ".join(dockerfile_item.splitlines())
                     )
                     docker_other += [dockerfile_item]
+                # RUN (standalone with GITHUB_TOKEN)
+                elif (
+                    dockerfile_item.startswith("RUN")
+                    and "GITHUB_TOKEN" in dockerfile_item
+                ):
+                    dockerfile_item_cmd = dockerfile_item.replace(
+                        "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                    )
+                    docker_other += [dockerfile_item_cmd]
+                    is_docker_other_run = False
                 # RUN (start)
                 elif dockerfile_item.startswith("RUN") and is_docker_other_run is False:
                     docker_other += [dockerfile_item]
@@ -425,11 +470,12 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --ignore-scripts \\\n                "
+            + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
-            + " && \\\n"
-            + "    npm audit fix --audit-level=critical || true \\\n"
+            + "  && \\\n"
+            + "       npm audit fix --audit-level=critical || true \\\n"
             + "    && npm cache clean --force || true \\\n"
+            + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
             + '    && find . -name "*.map" -delete \\\n'
@@ -530,6 +576,9 @@ def match_flavor(item, flavor, flavor_info):
 
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
+    # Remove all the contents of LINTERS_DIR beforehand so that the result is deterministic
+    if DELETE_DOCKERFILES is True:
+        shutil.rmtree(os.path.realpath(LINTERS_DIR))
     # Browse descriptors
     linters_md = "# Standalone linter docker images\n\n"
     linters_md += "| Linter key | Docker image | Size |\n"
@@ -547,9 +596,6 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
-            # Do not build standalone linter if it does not manage SARIF
-            if linter.can_output_sarif is False:
-                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -634,10 +680,21 @@ def generate_linter_dockerfiles():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
+    test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
+
+    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+    shutil.rmtree(os.path.realpath(test_linters_root))
+    os.makedirs(os.path.realpath(test_linters_root))
+
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
+        if linter.name is not None:
+            linter_name = linter.name
+        else:
+            lang_lower = linter.descriptor_id.lower()
+            linter_name = f"{lang_lower}_{linter.linter_name}"
+
+        linter_name_lower = linter_name.lower().replace("-", "_")
         test_class_code = f"""# !/usr/bin/env python3
 \"\"\"
 Unit tests for {linter.descriptor_id} linter {linter.linter_name}
@@ -649,14 +706,11 @@ from unittest import TestCase
 from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
-class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
+class {linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
-        test_class_file_name = (
-            f"{REPO_HOME}/megalinter/tests/test_megalinter/"
-            + f"linters/{lang_lower}_{linter_name_lower}_test.py"
-        )
+        test_class_file_name = f"{test_linters_root}/{linter_name_lower}_test.py"
         if not os.path.isfile(test_class_file_name):
             file = open(
                 test_class_file_name,
@@ -767,7 +821,16 @@ def generate_documentation():
 def generate_descriptor_documentation(descriptor):
     descriptor_file = f"{descriptor.get('descriptor_id').lower()}.yml"
     descriptor_url = f"{URL_ROOT}/megalinter/descriptors/{descriptor_file}"
+    linter_names = [
+        linter.get("linter_name") for linter in descriptor.get("linters", [])
+    ]
+    is_are = "is" if len(linter_names) == 1 else "are"
     descriptor_md = [
+        "---",
+        f"title: {descriptor.get('descriptor_id')} linters in MegaLinter",
+        f"description: {', '.join(linter_names)} {is_are} available to analyze "
+        f"{descriptor.get('descriptor_id')} files in MegaLinter",
+        "---",
         "<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->",
         f"<!-- {'@'}generated by .automation/build.py, please do not update manually -->",
         f"<!-- Instead, update descriptor file at {descriptor_url} -->",
@@ -782,17 +845,25 @@ def generate_descriptor_documentation(descriptor):
     descriptor_md += [
         "## Linters",
         "",
-        "| Linter | Configuration key | Status |",
-        "| ------ | ----------------- | ------ |",
+        "| Linter | Additional |",
+        "| ------ | ---------- |",
     ]
     for linter in descriptor.get("linters", []):
         linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
         linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
-        badge = get_repository_badge_url(linter)
+        badges = get_badges(linter)
+        md_extra = " ".join(badges)
+        linter_key = linter.get("name", "")
+        if linter_key == "":
+            linter_key = (
+                descriptor.get("descriptor_id")
+                + "_"
+                + linter.get("linter_name").upper().replace("-", "_")
+            )
         descriptor_md += [
-            f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
-            f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
-            f" {badge} |"
+            f"| [**{linter.get('linter_name')}**]({doc_url(linter_doc_url)})<br/>"
+            f"[_{linter_key}_]({doc_url(linter_doc_url)}) "
+            f"| {md_extra} |"
         ]
 
     # Criteria used by the descriptor to identify files to lint
@@ -872,6 +943,11 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
+        "---",
+        f"title: {flavor_id} flavor in MegaLinter",
+        f"description: {flavor_id} flavor is an optimized MegaLinter with "
+        f"only linters related to {flavor_id} projects",
+        "---",
         f"# {flavor_id} MegaLinter Flavor",
         "",
         docker_image_badge,
@@ -895,14 +971,16 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         if "<!-- linter-icon -->" in line:
             match = False
             for linter_name in flavor["linters"]:
-                if f"[{linter_name}]" in line:
+                if f"{linter_name}" in line:
                     match = True
                     break
             if match is False:
                 continue
-        line = line.replace(
-            DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors"
-        ).replace(".md#readme", "/")
+        line = (
+            line.replace(DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors")
+            .replace(".md#readme", "/")
+            .replace(".md", "/")
+        )
         filtered_table_md += [line]
     flavor_doc_md += filtered_table_md
     # Write MD file
@@ -936,16 +1014,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Additional  |",
-        "| :---: | ----------------- | -------------- | ------------ | :-----:  |",
+        f"| <!-- --> | {col_header} | Linter | Additional  |",
+        "| :---: | ----------------- | -------------- | :-----:  |",
     ]
     descriptor_linters = linters_by_type[type1]
-    prev_lang = ""
     for linter in descriptor_linters:
         lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
-        if prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
-        ):
+        if os.path.isfile(REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/{linter.descriptor_id.lower()}.ico",
                 "",
@@ -953,9 +1028,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 descriptor_label,
                 32,
             )
-        elif prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/default.ico"
-        ):
+        elif os.path.isfile(REPO_ICONS + "/default.ico"):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/default.ico",
                 "",
@@ -966,45 +1039,42 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             icon_html = "<!-- -->"
         descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
-        descriptor_id_cell = (
-            f"[{descriptor_label}]({descriptor_url})"
-            if prev_lang != linter.descriptor_id
-            else ""
-        )
-        prev_lang = linter.descriptor_id
+        descriptor_id_cell = f"[{descriptor_label}]({descriptor_url})"
         # Build extra badges
-        md_extras = []
-        repo = get_github_repo(linter)
-        if repo is not None:
-            md_extras += [
-                f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
-                f"(https://github.com/{repo})"
-            ]
-        if hasattr(linter, "is_formatter") and linter.is_formatter is True:
-            md_extras += ["![formatter](https://shields.io/badge/-format-yellow)"]
-        elif linter.cli_lint_fix_arg_name is not None:
-            md_extras += ["![autofix](https://shields.io/badge/-autofix-green)"]
-        if hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True:
-            md_extras += ["![sarif](https://shields.io/badge/-SARIF-orange)"]
-        md_extra = " ".join(md_extras)
+        badges = get_badges(linter)
+        md_extra = " ".join(badges)
         # Build doc URL
         linter_doc_url = (
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
         # Build md table line
         linters_tables_md += [
-            f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
-            f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
-            f"| [{linter.name}]({doc_url(linter_doc_url)})"
-            f"| {md_extra} |"
+            f"| {icon_html} <!-- linter-icon --> | "
+            f"{descriptor_id_cell} | "
+            f"[**{linter.linter_name}**]({doc_url(linter_doc_url)})<br/>"
+            f"[_{linter.name}_]({doc_url(linter_doc_url)}) | "
+            f"{md_extra} |"
         ]
-
+        individual_badges = get_badges(
+            linter,
+            show_last_release=True,
+            show_last_commit=True,
+            show_commits_activity=True,
+            show_contributors=True,
+            show_downgraded_version=True,
+        )
+        md_individual_extra = " ".join(individual_badges)
         # Build individual linter doc
         linter_doc_md = [
+            "---",
+            f"title: {linter.linter_name} configuration in MegaLinter",
+            f"description: How to use {linter.linter_name} (configure, "
+            "ignore files, ignore errors, help & version documentations)"
+            f" to analyze {linter.descriptor_id} files",
+            "---",
             "<!-- markdownlint-disable MD033 MD041 -->",
             f"<!-- {'@'}generated by .automation/build.py, please do not update manually -->",
         ]
-        badge = get_repository_badge_url(linter)
         # Header image as title
         if (
             hasattr(linter, "linter_banner_image_url")
@@ -1019,7 +1089,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     "center",
                     150,
                 ),
-                "\n" + badge,
+                "\n" + md_individual_extra,
             ]
         # Text + image as title
         elif (
@@ -1035,14 +1105,36 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     100,
                 )
                 + linter.linter_name
-                + " "
-                + badge
+                + "\n"
+                + md_individual_extra
             ]
         # Text as title
-        elif badge == "":
+        elif md_individual_extra == "":
             linter_doc_md += [f"# {linter.linter_name}"]
         else:
-            linter_doc_md += [f"# {linter.linter_name} {badge}"]
+            linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
+
+        # Indicate that a linter is disabled in this version
+        if hasattr(linter, "deprecated") and linter.deprecated is True:
+            linter_doc_md += [""]
+            linter_doc_md += ["> This linter has been deprecated.", ">"]
+
+            if (
+                hasattr(linter, "deprecated_description")
+                and linter.deprecated_description
+            ):
+                linter_doc_md += [
+                    "> ".join(
+                        ("> " + linter.deprecated_description.lstrip()).splitlines(True)
+                    ),
+                    ">",
+                ]
+
+            linter_doc_md += [
+                f"> You should disable {linter.linter_name} by adding it in DISABLE_LINTERS property.",
+                ">",
+                "> It will be maintained at least until the next major release.",
+            ]
 
         # Indicate that a linter is disabled in this version
         if hasattr(linter, "disabled") and linter.disabled is True:
@@ -1224,12 +1316,25 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             )
         # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
         if linter.cli_lint_mode != "project":
-            linter_doc_md += [
+            cli_lint_mode_doc_md = (
                 f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
-                f"- `file`: Calls the linter for each file<br/>"
-                "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-                f"- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
-            ]
+            )
+            cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
+
+            if linter.cli_lint_mode == "file":
+                enum = ["file", "project"]
+            else:
+                enum = ["file", "list_of_files", "project"]
+
+                cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+
+            cli_lint_mode_doc_md += (
+                "- `project`: Call the linter from the root of the project"
+            )
+            cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
+
+            linter_doc_md += [cli_lint_mode_doc_md]
+
             add_in_config_schema_file(
                 [
                     [
@@ -1239,7 +1344,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "type": "string",
                             "title": f"{linter.name}: Override default cli lint mode",
                             "default": linter.cli_lint_mode,
-                            "enum": ["file", "list_of_files", "project"],
+                            "enum": enum,
                         },
                     ]
                 ]
@@ -1645,9 +1750,11 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
             f" {flavor['label']} | {str(linters_number)} | {docker_image_badge} {docker_pulls_badge} |"
         )
         if replace_link is True:
-            md_line = md_line.replace(
-                DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors"
-            ).replace(".md#readme", "/")
+            md_line = (
+                md_line.replace(DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors")
+                .replace(".md#readme", "/")
+                .replace(".md", "/")
+            )
         md_table += [md_line]
     return md_table
 
@@ -1813,29 +1920,37 @@ def get_install_md(item):
         linter_doc_md += ["- APK packages (Linux):"]
         linter_doc_md += md_package_list(
             item["install"]["apk"],
+            "apk",
             "  ",
             "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
         linter_doc_md += md_package_list(
-            item["install"]["npm"], "  ", "https://www.npmjs.com/package/"
+            item["install"]["npm"], "npm", "  ", "https://www.npmjs.com/package/"
         )
     if "pip" in item["install"]:
         linter_doc_md += ["- PIP packages (Python):"]
         linter_doc_md += md_package_list(
-            item["install"]["pip"], "  ", "https://pypi.org/project/"
+            item["install"]["pip"], "pip", "  ", "https://pypi.org/project/"
         )
     if "gem" in item["install"]:
         linter_doc_md += ["- GEM packages (Ruby) :"]
         linter_doc_md += md_package_list(
-            item["install"]["gem"], "  ", "https://rubygems.org/gems/"
+            item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
 
 
 def doc_url(href):
-    if href.startswith("https://github") and "#" not in href:
+    if (
+        "/descriptors/" in href
+        or "/flavors/" in href
+        or "/licenses/" in href
+        or "/reporters/" in href
+    ) and "#" not in href:
+        return href
+    elif href.startswith("https://github") and "#" not in href:
         return href + "#readme"
     return href
 
@@ -1946,16 +2061,28 @@ def merge_install_attr(item):
                 item["install"][elt] = elt_val + item["install"][elt]
 
 
-def md_package_list(package_list, indent, start_url):
+def md_package_list(package_list, type, indent, start_url):
     res = []
     for package_id_v in package_list:
-        if package_id_v.startswith("@"):
-            package_id = package_id_v
-            if package_id.count("@") == 2:
-                package_id = "@" + package_id.split("@")[1]
-        else:
-            package_id = package_id_v.split("@")[0].split(":")[0]
-        res += [f"{indent}- [{package_id_v}]({start_url}{package_id})"]
+        package_id = package_id_v
+        package_version = ""
+
+        if type == "npm" and package_id.count("@") == 2:  # npm specific version
+            package_id_split = package_id.split("@")
+            package_id = "@" + package_id_split[1]
+            package_version = "/v/" + package_id_split[2]
+        elif type == "pip" and "==" in package_id_v:  # py specific version
+            package_id = package_id_v.split("==")[0]
+            package_version = "/" + package_id_v.split("==")[1]
+        elif type == "gem":
+            gem_match = re.match(
+                r"(.*)\s-v\s(.*)", package_id_v
+            )  # gem specific version
+
+            if gem_match:  # gem specific version
+                package_id = gem_match.group(1)
+                package_version = "/versions/" + gem_match.group(2)
+        res += [f"{indent}- [{package_id_v}]({start_url}{package_id}{package_version})"]
     return res
 
 
@@ -1963,13 +2090,43 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
+    # Detect markdown headers if in replacement
+    header_content = None
+    header_matches = re.findall(
+        r"<!-- markdown-headers\n(.*)\n-->", content, re.MULTILINE | re.DOTALL
+    )
+    if header_matches and len(header_matches) > 0:
+        # Get text between markdown-headers tag
+        header_content = header_matches[0]
+        content = re.sub(
+            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
+        )[1:]
     # Replace the target string
     if add_new_line is True:
         replacement = f"{start}\n{content}\n{end}"
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+    # Add / replace header if necessary
+    if header_content is not None:
+        existing_header_matches = re.findall(
+            r"---\n(.*)\n---", file_content, re.MULTILINE | re.DOTALL
+        )
+        if (
+            existing_header_matches
+            and len(existing_header_matches) > 0
+            and file_content.startswith("---")
+        ):
+            file_content = re.sub(
+                r"---\n.*?\n---",
+                header_content,
+                file_content,
+                1,
+                re.MULTILINE | re.DOTALL,
+            )
+        else:
+            file_content = header_content + "\n" + file_content
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2040,7 +2197,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -2192,10 +2349,10 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.7M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.2M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
-[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=1690&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2011&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
@@ -2460,10 +2617,14 @@ def generate_documentation_all_linters():
                 repo = linter.linter_repo.split("https://github.com/", 1)[1]
                 api_github_url = f"https://api.github.com/repos/{repo}"
                 api_github_headers = {"content-type": "application/json"}
+                use_github_token = ""
                 if "GITHUB_TOKEN" in os.environ:
                     github_token = os.environ["GITHUB_TOKEN"]
                     api_github_headers["authorization"] = f"Bearer {github_token}"
-                logging.info(f"Getting license info for {api_github_url}")
+                    use_github_token = " (with GITHUB_TOKEN)"
+                logging.info(
+                    f"Getting license info for {api_github_url}" + use_github_token
+                )
                 try:
                     session = requests_retry_session()
                     r = session.get(api_github_url, headers=api_github_headers)
@@ -2650,44 +2811,71 @@ def generate_documentation_all_users():
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
 
-# https://shields.io/category/activity
-def get_repository_badge_url(linter):
-    repo_url = None
+def get_badges(
+    linter,
+    show_last_release=False,
+    show_last_commit=False,
+    show_commits_activity=False,
+    show_contributors=False,
+    show_downgraded_version=False,
+):
+    badges = []
+    repo = get_github_repo(linter)
 
+    if (hasattr(linter, "get") and linter.get("deprecated") is True) or (
+        hasattr(linter, "deprecated") and linter.deprecated is True
+    ):
+        badges += ["![deprecated](https://shields.io/badge/-deprecated-red)"]
     if (
-        hasattr(linter, "get")
-        and linter.get("linter_repo") is not None
-        and "github" in linter.get("linter_repo")
+        show_downgraded_version
+        and (hasattr(linter, "get") and linter.get("downgraded_version") is True)
+        or (hasattr(linter, "downgraded_version") and linter.downgraded_version is True)
     ):
-        repo_url = linter.get("linter_repo")
+        badges += [
+            "![downgraded version](https://shields.io/badge/-downgraded%20version-orange)"
+        ]
+    if repo is not None:
+        badges += [
+            f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
+            f"(https://github.com/{repo})"
+        ]
+    if (hasattr(linter, "get") and linter.get("is_formatter") is True) or (
+        hasattr(linter, "is_formatter") and linter.is_formatter is True
+    ):
+        badges += ["![formatter](https://shields.io/badge/-format-yellow)"]
     elif (
-        hasattr(linter, "get")
-        and linter.get("linter_url") is not None
-        and "github" in linter.get("linter_url")
+        hasattr(linter, "get") and linter.get("cli_lint_fix_arg_name") is not None
+    ) or (
+        hasattr(linter, "cli_lint_fix_arg_name")
+        and linter.cli_lint_fix_arg_name is not None
     ):
-        repo_url = linter.get("linter_url")
-    elif (
-        hasattr(linter, "linter_repo")
-        and linter.linter_repo is not None
-        and "github" in linter.linter_repo
+        badges += ["![autofix](https://shields.io/badge/-autofix-green)"]
+    if (hasattr(linter, "get") and linter.get("can_output_sarif") is True) or (
+        hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True
     ):
-        repo_url = linter.linter_repo
-    elif (
-        hasattr(linter, "linter_url")
-        and linter.linter_url is not None
-        and "github" in linter.linter_url
-    ):
-        repo_url = linter.linter_url
+        badges += ["![sarif](https://shields.io/badge/-SARIF-orange)"]
 
-    badge = ""
-
-    if repo_url is not None:
-        match = re.search(r"https://github\.com/(.*)/(.*)", repo_url)
-
-        badge_url = f"https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)}"
-        badge = f"[![GitHub last commit]({badge_url})]({repo_url}/commits)"
-
-    return badge
+    if show_last_release and repo is not None:
+        badges += [
+            f"[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/{repo}?sort=semver)]"
+            f"(https://github.com/{repo}/releases)"
+        ]
+    if show_last_commit and repo is not None:
+        badges += [
+            f"[![GitHub last commit](https://img.shields.io/github/last-commit/{repo})]"
+            f"(https://github.com/{repo}/commits)"
+        ]
+    if show_commits_activity and repo is not None:
+        badges += [
+            f"[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/{repo})]"
+            f"(https://github.com/{repo}/graphs/commit-activity/)"
+        ]
+    if show_contributors and repo is not None:
+        badges += [
+            f"[![GitHub contributors](https://img.shields.io/github/contributors/{repo})]"
+            f"(https://github.com/{repo}/graphs/contributors/)"
+        ]
+    return badges
 
 
 # get github repo info using api
@@ -2736,6 +2924,13 @@ def refresh_users_info():
 
 def get_github_repo(linter):
     if (
+        hasattr(linter, "get")
+        and linter.get("linter_repo") is not None
+        and linter.get("linter_repo").startswith("https://github.com")
+    ):
+        repo = linter.get("linter_repo").split("https://github.com/", 1)[1]
+        return repo
+    elif (
         hasattr(linter, "linter_repo")
         and linter.linter_repo is not None
         and linter.linter_repo.startswith("https://github.com")
@@ -2856,6 +3051,40 @@ def update_dependents_info():
     os.system(" ".join(command))
 
 
+def update_workflows_linters():
+    descriptors, _ = list_descriptors_for_build()
+
+    linters = ""
+
+    for descriptor in descriptors:
+        for linter in descriptor["linters"]:
+            if "name" in linter:
+                name = linter["name"].lower()
+            else:
+                lang_lower = descriptor["descriptor_id"].lower()
+                linter_name_lower = linter["linter_name"].lower().replace("-", "_")
+                name = f"{lang_lower}_{linter_name_lower}"
+
+            linters += f'            "{name}",\n'
+
+    update_workflow_linters(".github/workflows/deploy-DEV-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-BETA-linters.yml", linters)
+    update_workflow_linters(".github/workflows/deploy-RELEASE-linters.yml", linters)
+
+
+def update_workflow_linters(file_path, linters):
+    with open(file_path, "r", encoding="utf-8") as f:
+        file_content = f.read()
+        file_content = re.sub(
+            r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
+            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            file_content,
+        )
+
+    with open(file_path, "w") as f:
+        f.write(file_content)
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -2880,11 +3109,13 @@ if __name__ == "__main__":
     generate_all_flavors()
     generate_linter_dockerfiles()
     generate_linter_test_classes()
+    update_workflows_linters()
     if UPDATE_DOC is True:
-        refresh_users_info()
+        logging.info("Running documentation generators...")
+        # refresh_users_info() # deprecated since now we use github-dependents-info
         generate_documentation()
         generate_documentation_all_linters()
-        generate_documentation_all_users()
+        # generate_documentation_all_users() # deprecated since now we use github-dependents-info
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()

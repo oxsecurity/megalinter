@@ -25,7 +25,7 @@ _If it does not work, just run the following script_
 
 ```shell
 pip install -r requirements.dev.txt
-pip install mkdocs-material
+pip install mkdocs-material mkdocs-glightbox
 npm install markdown-table-formatter -g
 ```
 
@@ -57,6 +57,22 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
+Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:
+```text
+/build
+```
+
+Available commands can be listed with the help command by posting the following comment:
+```text
+/help
+```
+Which returns:
+> Command | Description
+> --- | ---
+> /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+> /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+> /help | Returns this help message
+
 ### Without write access
 
 1. [Fork][fork] and clone the repository
@@ -78,14 +94,43 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 - Create a branch with a name that identifies the user and nature of the changes (similar to `user/branch-purpose`)
 - Open a pull request
 
+### Update Dockerfile base image
+
+1. `/Dockerfile` file has to be updated
+2. Run `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+
+### Improve documentation
+
+Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
+
+In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you will have to run at least 2 commands.
+
+Command to execute (only one time):
+
+```bash
+pip install --upgrade "markdown==3.3.7" mike mkdocs-material mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+```
+
+Command to run every time you want to bring up the server:
+
+```bash
+mkdocs serve
+```
+
+By default it listens on `http://127.0.0.1:8000/`.
+
+Every time a change is made to a `.md` file it will automatically update if the server is up.
+
+Once you think everything is correct run `bash build.sh --doc` and it will generate all the rest!
+
 ### Add a new linter
 
 Each linter must:
 
-- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
+- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.sh` and it will generate all the rest !
+Then run `bash build.sh` and it will generate all the rest!
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)
@@ -100,6 +145,33 @@ Then run `bash build.sh` and it will generate all the rest !
 1. Install [Test Explorer UI](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer) extension
 2. Install [Python Test Explorer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=LittleFoxTeam.vscode-python-test-adapter) extension
 3. Execute or debug tests via the side menu
+
+### Execute linter tests inside the container
+
+If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.
+
+When running them, you may encounter several problems:
+
+* It is not installed on the machine locally and you do not want to install it.
+* The OS does not allow the installation of the linter because it is not cross-platform.
+* The behavior between running it on the local machine (host) and the container is different.
+
+For those cases, it is important to have the possibility to run the tests inside the container. To do so:
+
+1. Run `bash build.sh` to update the Dockerfile files of each linter.
+2. Execute the following commands in a ***.sh** script. Example:
+
+```bash
+docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
+TEST_KEYWORDS_TO_USE="spell_misspell"
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint spell_misspell
+```
+
+In the above example, it builds the **misspell** linter image and then runs its tests. To do the same for another linter you would have to:
+
+1. Change the path to the Dockerfile to the appropriate Dockerfile
+2. Change the **tag** in the 2 places (docker buildx build and docker run)
+3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that is responsible for finding the tests of the particular linter
 
 ### CI/CT/CD
 

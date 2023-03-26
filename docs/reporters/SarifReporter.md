@@ -1,3 +1,7 @@
+---
+title: SARIF Reporter for MegaLinter
+description: Generates SAST results in SARIF format within a file named mega-linter-report.sarif, located in report folder
+---
 # SARIF Reporter (beta)
 
 Generates a full execution log in SARIF format within a file named **mega-linter-report.sarif** , located in report folder.

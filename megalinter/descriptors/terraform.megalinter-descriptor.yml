@@ -29,8 +29,8 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.43.0 as tflint
-        - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
+        - FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
+        - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
@@ -66,8 +66,8 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM tenable/terrascan:1.16.0 as terrascan
-        - COPY --from=terrascan /go/bin/terrascan /usr/bin/
+        - FROM tenable/terrascan:1.18.0 as terrascan
+        - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
@@ -100,7 +100,7 @@ linters:
     install:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
-        - COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+        - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
@@ -122,7 +122,7 @@ linters:
     install:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
-        - COPY --from=terragrunt /bin/terraform /usr/bin/
+        - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
       atom:
         - name: terraform-fmt
@@ -142,13 +142,11 @@ linters:
   - linter_name: checkov #TODONEXT: disable
     name: TERRAFORM_CHECKOV
     can_output_sarif: true
+    deprecated: true
+    deprecated_description: TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
     descriptor_flavors:
       - terraform
       - security
-    linter_text: |
-      TERRAFORM_CHECKOV will be deprecated because now REPOSITORY_CHECKOV does the same and much more.
-
-      You should disable TERRAFORM_CHECKOV by adding it in DISABLE_LINTERS property.
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
@@ -164,7 +162,7 @@ linters:
       - "checkov --file myfile.tf"
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
@@ -196,7 +194,7 @@ linters:
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
-        - COPY --from=kics /app/bin/kics /usr/bin/
+        - COPY --link --from=kics /app/bin/kics /usr/bin/
         - RUN mkdir -p /opt/kics/assets
         - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
         - COPY --from=kics /app/bin/assets /opt/kics/assets/

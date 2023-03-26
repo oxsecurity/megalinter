@@ -37,7 +37,7 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) violations"
     examples:
       - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict"
     ide:
       atom:
         - name: linter-swiftlint

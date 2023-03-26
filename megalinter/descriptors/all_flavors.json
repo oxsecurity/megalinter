@@ -29,9 +29,7 @@
     },
     "cupcake": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -69,10 +67,12 @@
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",
             "JSON_PRETTIER",
+            "JSON_NPM_PACKAGE_JSON_LINT",
             "JSX_ESLINT",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -122,7 +122,6 @@
     },
     "documentation": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -150,6 +149,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -179,7 +179,6 @@
     },
     "dotnet": {
         "descriptors": [
-            "ACTION",
             "ARM",
             "BASH",
             "CSHARP",
@@ -200,6 +199,7 @@
             "COPYPASTE_JSCPD",
             "CPP_CPPLINT",
             "CSHARP_DOTNET_FORMAT",
+            "CSHARP_CSHARPIER",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_HADOLINT",
@@ -214,15 +214,18 @@
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",
             "JSON_PRETTIER",
+            "JSON_NPM_PACKAGE_JSON_LINT",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "POWERSHELL_POWERSHELL",
+            "POWERSHELL_POWERSHELL_FORMATTER",
             "PROTOBUF_PROTOLINT",
             "REPOSITORY_CHECKOV",
             "REPOSITORY_GIT_DIFF",
@@ -249,9 +252,7 @@
     },
     "go": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
@@ -280,6 +281,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -309,7 +311,6 @@
     },
     "java": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "JAVA",
             "KOTLIN"
@@ -341,6 +342,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -370,7 +372,6 @@
     },
     "javascript": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "TYPESCRIPT"
@@ -400,10 +401,12 @@
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",
             "JSON_PRETTIER",
+            "JSON_NPM_PACKAGE_JSON_LINT",
             "JSX_ESLINT",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -436,7 +439,6 @@
     },
     "php": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "PHP"
@@ -465,6 +467,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -497,7 +500,6 @@
     },
     "python": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -525,6 +527,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -564,7 +567,6 @@
     },
     "ruby": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -592,6 +594,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -621,7 +624,6 @@
     },
     "rust": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -649,6 +651,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -678,7 +681,6 @@
     },
     "salesforce": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "SALESFORCE"
@@ -704,9 +706,11 @@
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",
             "JSON_PRETTIER",
+            "JSON_NPM_PACKAGE_JSON_LINT",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -747,6 +751,7 @@
             "DOCKERFILE_HADOLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "PYTHON_BANDIT",
             "REPOSITORY_CHECKOV",
             "REPOSITORY_DEVSKIM",
@@ -765,7 +770,6 @@
     },
     "swift": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -793,6 +797,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -822,7 +827,6 @@
     },
     "terraform": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -850,6 +854,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",

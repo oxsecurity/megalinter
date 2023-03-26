@@ -10,7 +10,6 @@ from megalinter import Linter, utils
 
 
 class ShellcheckLinter(Linter):
-
     # Call shellcheck-sarif to convert default output to sarif
     # https://crates.io/crates/shellcheck-sarif
     def manage_sarif_output(self, return_stdout):

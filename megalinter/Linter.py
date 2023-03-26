@@ -79,6 +79,7 @@ class Linter:
         # Other
         self.files_sub_directory = None
         self.file_contains_regex = []
+        self.file_contains_regex_extensions = []
         self.file_names_not_ends_with = []
         self.active_only_if_file_found = []
         self.lint_all_files = False
@@ -579,7 +580,7 @@ class Linter:
                 and cli_lint_mode_config == "list_of_files"
             ):
                 raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode with list_of_files, "
+                    f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
                     "as it can process files only one by one. If you think it could be done, post an issue :)"
                 )
             self.cli_lint_mode = cli_lint_mode_config
@@ -769,6 +770,7 @@ class Linter:
             "file_names_regex": self.file_names_regex,
             "file_names_not_ends_with": self.file_names_not_ends_with,
             "file_contains_regex": self.file_contains_regex,
+            "file_contains_regex_extensions": self.file_contains_regex_extensions,
         }
         logging.debug("[Filters] " + str(log_object))
 
@@ -786,6 +788,7 @@ class Linter:
             ignore_generated_files=False,  # This filter is applied at MegaLinter level
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
+            file_contains_regex_extensions=self.file_contains_regex_extensions,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
             workspace=self.workspace,
@@ -1150,7 +1153,6 @@ class Linter:
                 elif self.sarif_default_output_file is not None and os.path.isfile(
                     self.sarif_default_output_file
                 ):
-
                     with open(
                         self.sarif_default_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
@@ -1240,3 +1242,9 @@ class Linter:
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, _reporter_self):
         return []
+
+    def pre_test(self):
+        pass
+
+    def post_test(self):
+        pass

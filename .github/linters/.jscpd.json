@@ -24,7 +24,7 @@
     "**/megalinter/tests/test_megalinter/mega_linter*",
     "**/megalinter/tests/test_megalinter/plugins_test.py*",
     "**/megalinter/tests/test_megalinter/config_test.py",
-    "**/megalinter/tests/test_megalinter/helpers/utilstest.py",
+    "**/megalinter/utilstest.py",
     "**/*.test.js",
     "**/CHANGELOG.md",
     "**/mega-linter-runner/README.md",

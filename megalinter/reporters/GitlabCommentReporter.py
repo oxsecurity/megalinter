@@ -131,8 +131,8 @@ class GitlabCommentReporter(Reporter):
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
                 if (
-                    "See errors details in [artifact MegaLinter reports on"
-                    in comment.body
+                    "See detailed report in [MegaLinter reports" in comment.body
+                    or "See detailed report in MegaLinter reports" in comment.body
                 ):
                     existing_comment = comment
 
@@ -166,7 +166,7 @@ class GitlabCommentReporter(Reporter):
     def display_auth_error(self, e):
         logging.error(
             "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
-            "GITLAB_MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
+            "GITLAB_ACCESS_TOKEN_MEGALINTER containing a personal token with scope 'api'\n"
             "(if already defined, your token is probably invalid)\n"
             "If you are using local certificate, you also may need to define variables "
             "GITLAB_CUSTOM_CERTIFICATE or GITLAB_CERTIFICATE_PATH" + str(e)

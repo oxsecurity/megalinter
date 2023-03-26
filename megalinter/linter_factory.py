@@ -121,7 +121,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 
 
 # Build a single linter instance from language and linter name
-def build_linter(language, linter_name):
+def build_linter(language, linter_name, linter_init_params=None):
     language_descriptor_file = (
         get_descriptor_dir()
         + os.path.sep
@@ -131,7 +131,9 @@ def build_linter(language, linter_name):
     assert os.path.isfile(
         language_descriptor_file
     ), f"Unable to find {language_descriptor_file}"
-    linters = build_descriptor_linters(language_descriptor_file, None, [linter_name])
+    linters = build_descriptor_linters(
+        language_descriptor_file, linter_init_params, [linter_name]
+    )
     assert (
         len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"

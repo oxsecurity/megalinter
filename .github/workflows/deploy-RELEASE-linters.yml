@@ -39,38 +39,125 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # linters-start
         linter:
           [
+            "action_actionlint",
             "ansible_ansible_lint",
+            "arm_arm_ttk",
+            "bash_exec",
             "bash_shellcheck",
+            "bash_shfmt",
+            "bicep_bicep_linter",
+            "c_cpplint",
+            "clojure_clj_kondo",
             "cloudformation_cfn_lint",
+            "coffee_coffeelint",
+            "copypaste_jscpd",
+            "cpp_cpplint",
+            "csharp_dotnet_format",
+            "csharp_csharpier",
+            "css_stylelint",
+            "css_scss_lint",
+            "dart_dartanalyzer",
             "dockerfile_hadolint",
+            "editorconfig_editorconfig_checker",
+            "env_dotenv_linter",
+            "gherkin_gherkin_lint",
+            "go_golangci_lint",
             "go_revive",
+            "graphql_graphql_schema_linter",
             "groovy_npm_groovy_lint",
+            "html_djlint",
+            "html_htmlhint",
             "java_checkstyle",
             "java_pmd",
             "javascript_es",
+            "javascript_standard",
+            "javascript_prettier",
+            "json_jsonlint",
             "json_eslint_plugin_jsonc",
+            "json_v8r",
+            "json_prettier",
+            "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
+            "kubernetes_kubeval",
+            "kubernetes_kubeconform",
+            "kubernetes_helm",
+            "latex_chktex",
+            "lua_luacheck",
+            "makefile_checkmake",
+            "markdown_markdownlint",
+            "markdown_remark_lint",
+            "markdown_markdown_link_check",
+            "markdown_markdown_table_formatter",
+            "openapi_spectral",
+            "perl_perlcritic",
+            "php_phpcs",
+            "php_phpstan",
             "php_psalm",
+            "php_phplint",
+            "powershell_powershell",
+            "powershell_powershell_formatter",
+            "protobuf_protolint",
+            "puppet_puppet_lint",
+            "python_pylint",
+            "python_black",
+            "python_flake8",
+            "python_isort",
             "python_bandit",
+            "python_mypy",
+            "python_pyright",
+            "r_lintr",
+            "raku_raku",
             "repository_checkov",
             "repository_devskim",
             "repository_dustilock",
+            "repository_git_diff",
             "repository_gitleaks",
+            "repository_goodcheck",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "rst_rst_lint",
+            "rst_rstcheck",
+            "rst_rstfmt",
+            "ruby_rubocop",
+            "rust_clippy",
+            "salesforce_sfdx_scanner_apex",
+            "salesforce_sfdx_scanner_aura",
+            "salesforce_sfdx_scanner_lwc",
+            "scala_scalafix",
+            "snakemake_lint",
+            "snakemake_snakefmt",
+            "spell_misspell",
+            "spell_cspell",
+            "spell_proselint",
+            "sql_sql_lint",
+            "sql_sqlfluff",
+            "sql_tsqllint",
+            "swift_swiftlint",
+            "tekton_tekton_lint",
             "terraform_tflint",
             "terraform_terrascan",
+            "terraform_terragrunt",
+            "terraform_terraform_fmt",
             "terraform_checkov",
+            "terraform_kics",
             "tsx_eslint",
             "typescript_es",
+            "typescript_standard",
+            "typescript_prettier",
+            "vbdotnet_dotnet_format",
+            "xml_xmllint",
+            "yaml_prettier",
+            "yaml_yamllint",
+            "yaml_v8r",
           ]
 # linters-end
     # Only run this on the main repo
@@ -85,21 +172,30 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      #####################
-      # Run Deploy script #
-      #####################
-      - name: Deploy ${{ github.event.release.tag_name }} image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ github.event.release.tag_name }}"
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          REGISTRY: Docker
-          ALWAYS_BUILD: force
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Retag and Push Images
+        uses: akhilerm/tag-push-action@v2.1.0
+        with:
+          src: docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+          dst: |
+            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v6
+            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v6
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
 
       #####################################
       # Run Linter test cases #
@@ -107,9 +203,13 @@ jobs:
       - name: Run Test Cases
         shell: bash
         run: |
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
+
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
         timeout-minutes: 30
 
       ##############################################

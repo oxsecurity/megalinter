@@ -16,7 +16,6 @@ from megalinter.constants import (
 
 
 class DustilockLinter(Linter):
-
     # Get dustilock text output and build SARIF output from it
     def manage_sarif_output(self, return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:

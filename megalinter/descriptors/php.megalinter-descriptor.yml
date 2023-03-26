@@ -21,7 +21,9 @@ install:
     - dpkg
   dockerfile:
     - |
-      RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+      RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+          && export GITHUB_AUTH_TOKEN \
+          && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
           && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
           && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
           && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
@@ -45,6 +47,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
@@ -52,7 +56,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
     ide:
       atom:
         - name: linter-phpcs
@@ -95,9 +99,9 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - |
-          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-    ide:
+        - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+        - RUN chmod +x /usr/bin/phpstan
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -130,7 +134,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -141,6 +145,7 @@ linters:
   # PHPLint
   - linter_name: phplint
     linter_url: https://github.com/overtrue/phplint
+    linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     examples:

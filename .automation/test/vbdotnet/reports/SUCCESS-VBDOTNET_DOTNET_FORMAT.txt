@@ -1,8 +1,10 @@
-Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
+Results of dotnet-format linter (version 000)
+See documentation on https://megalinter.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
-[SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb
-      Formatting code files in workspace '.automation/test/vbdotnet'.
-      Format complete in 1063ms.
+✅ [SUCCESS] .automation/test/vbdotnet/good/vbdotnet_good_1.vb
+    
+
+✅ [SUCCESS] .automation/test/vbdotnet/good/vbdotnet_good_2.vb
+    
 

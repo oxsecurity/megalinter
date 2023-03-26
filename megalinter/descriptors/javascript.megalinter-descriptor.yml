@@ -65,7 +65,6 @@ linters:
         - eslint-plugin-prettier
         - eslint-plugin-promise
         - eslint-plugin-vue
-        - babel-eslint
         - "@babel/core"
         - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
@@ -97,7 +96,8 @@ linters:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
-  - linter_name: standard
+  - class: JavaScriptStandardLinter
+    linter_name: standard
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -110,6 +110,7 @@ linters:
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
+    test_folder: javascript_standard
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"

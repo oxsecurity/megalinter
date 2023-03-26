@@ -27,6 +27,7 @@ linters:
         - rubocop-github
         - rubocop-performance
         - rubocop-rails
+        - rubocop-rake
         - rubocop-rspec
     ide:
       atom:
