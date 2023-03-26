@@ -270,4 +270,5 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 - NPM packages (node.js):
   - [stylelint](https://www.npmjs.com/package/stylelint)
   - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
+  - [stylelint-config-sass-guidelines](https://www.npmjs.com/package/stylelint-config-sass-guidelines)
   - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)

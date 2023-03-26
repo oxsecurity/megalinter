@@ -88,6 +88,7 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint \
                 stylelint-config-standard \
+                stylelint-config-sass-guidelines \
                 stylelint-scss  && \
        npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
