@@ -98,6 +98,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.9.2 to **10.9.3** on 2023-03-25
   - [checkov](https://www.checkov.io/) from 2.3.115 to **2.3.118** on 2023-03-26
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.0 to **8.16.1** on 2023-03-26
+  - [checkov](https://www.checkov.io/) from 2.3.118 to **2.3.120** on 2023-03-26
 <!-- linter-versions-end -->
 
 ## [v6.20.1] - 2023-03-07
