@@ -226,10 +226,6 @@ linters:
       pip:
         - bandit
         - bandit_sarif_formatter
-    install:
-      pip:
-        - bandit
-        - bandit_sarif_formatter
         - bandit[toml]
     supported_platforms:
       platform:
