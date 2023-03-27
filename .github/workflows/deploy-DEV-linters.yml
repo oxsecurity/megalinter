@@ -210,7 +210,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=${{ needs.prepare.outputs.tag }}
           load: true
           push: false
           secrets: |
