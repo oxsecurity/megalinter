@@ -218,6 +218,25 @@ jobs:
           tags: |
             oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
 
+      - name: Build Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile-release
+          platforms: linux/amd64
+          build-args: |
+            BASE_IMAGE=docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=testrelease
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:testrelease
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:testrelease
+
       #####################################
       # Run Linter test cases #
       #####################################
