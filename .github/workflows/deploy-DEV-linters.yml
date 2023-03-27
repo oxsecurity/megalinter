@@ -218,14 +218,27 @@ jobs:
           tags: |
             oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
 
-      - name: Build Image
+      - name: Login to Docker Hub TEST
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GitHub Container Registry TEST
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Image TEST
         uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile-release
           platforms: linux/amd64
           build-args: |
-            BASE_IMAGE=docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=testrelease
