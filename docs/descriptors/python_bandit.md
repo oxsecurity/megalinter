@@ -274,3 +274,4 @@ The following tests were discovered and loaded:
 - PIP packages (Python):
   - [bandit](https://pypi.org/project/bandit)
   - [bandit_sarif_formatter](https://pypi.org/project/bandit_sarif_formatter)
+  - [bandit[toml]](https://pypi.org/project/bandit[toml])

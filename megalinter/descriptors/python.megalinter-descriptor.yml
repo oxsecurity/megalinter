@@ -209,6 +209,7 @@ linters:
       pip:
         - bandit
         - bandit_sarif_formatter
+        - bandit[toml]
     ide:
       atom:
         - name: bandit-lint
