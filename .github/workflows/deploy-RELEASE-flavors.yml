@@ -94,7 +94,7 @@ jobs:
           file: Dockerfile-release
           platforms: linux/amd64
           build-args: |
-            BASE_IMAGE=docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
