@@ -15,7 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
-  
+  - Fix version displayed in logs
+
 - Documentation
 
 - Linter versions upgrades
