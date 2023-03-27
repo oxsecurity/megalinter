@@ -25,7 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v6.21.0] - 2023-03-26
 
 - New linters
-  - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386
+  - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in <https://github.com/oxsecurity/megalinter/pull/2386>
 
 <!-- /* cspell:disable */ -->
 
@@ -38,19 +38,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 <!-- /* cspell:enable */ -->
 
 - Linter enhancements & fixes
-  - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2453
-  - Replace babel-eslint with @babel/eslint-parser, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2445
-  - Use docker image to install phpstan, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2469
-  - Avoid cspell error on readonly workspaces, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2474
-  - Allow bandit to use pyproject.toml, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2475
-  - Bring back stylelint-config-sass-guidelines package, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2477
-  - Display only errors in markdown-link-check logs for better readability, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2479
+  - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2453>
+  - Replace babel-eslint with @babel/eslint-parser, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2445>
+  - Use docker image to install phpstan, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2469>
+  - Avoid cspell error on readonly workspaces, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2474>
+  - Allow bandit to use pyproject.toml, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2475>
+  - Bring back stylelint-config-sass-guidelines package, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2477>
+  - Display only errors in markdown-link-check logs for better readability, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2479>
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
   
 - Documentation
-  - mega-linter-runner: doc fix for env list of values, see [#2448](https://github.com/oxsecurity/megalinter/issues/2448), by @DariuszPorowski in https://github.com/oxsecurity/megalinter/pull/2449
+  - mega-linter-runner: doc fix for env list of values, see [#2448](https://github.com/oxsecurity/megalinter/issues/2448), by @DariuszPorowski in <https://github.com/oxsecurity/megalinter/pull/2449>
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.3**
