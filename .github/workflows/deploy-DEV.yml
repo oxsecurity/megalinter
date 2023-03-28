@@ -272,4 +272,4 @@ jobs:
           security-checks: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
+          timeout: 15m0s
