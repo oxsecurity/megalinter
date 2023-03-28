@@ -92,7 +92,7 @@
     "sqlfluff": "2.0.2",
     "standard": "17.0.0",
     "stylelint": "15.3.0",
-    "swiftlint": "0.50.3",
+    "swiftlint": "0.51.0",
     "syft": "0.75.0",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.4.2",
