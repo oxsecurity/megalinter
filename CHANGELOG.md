@@ -26,6 +26,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.0 to **0.76.1** on 2023-03-28
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.3 to **0.51.0** on 2023-03-28
   - [checkov](https://www.checkov.io/) from 2.3.124 to **2.3.125** on 2023-03-28
+  - [checkov](https://www.checkov.io/) from 2.3.125 to **2.3.126** on 2023-03-28
+  - [kics](https://www.kics.io) from 1.6.12 to **1.6.13** on 2023-03-28
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26
