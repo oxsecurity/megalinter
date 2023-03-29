@@ -28,6 +28,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.124 to **2.3.125** on 2023-03-28
   - [checkov](https://www.checkov.io/) from 2.3.125 to **2.3.126** on 2023-03-28
   - [kics](https://www.kics.io) from 1.6.12 to **1.6.13** on 2023-03-28
+  - [eslint](https://eslint.org) from 8.36.0 to **8.37.0** on 2023-03-29
+  - [checkov](https://www.checkov.io/) from 2.3.126 to **2.3.128** on 2023-03-29
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26
