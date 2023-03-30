@@ -16,16 +16,33 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
-  
+  - Fix version displayed in logs
+
 - Documentation
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.3.120 to **2.3.121** on 2023-03-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.75.1 to **0.76.0** on 2023-03-27
+  - [checkov](https://www.checkov.io/) from 2.3.121 to **2.3.124** on 2023-03-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.0 to **0.76.1** on 2023-03-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.3 to **0.51.0** on 2023-03-28
+  - [checkov](https://www.checkov.io/) from 2.3.124 to **2.3.125** on 2023-03-28
+  - [checkov](https://www.checkov.io/) from 2.3.125 to **2.3.126** on 2023-03-28
+  - [kics](https://www.kics.io) from 1.6.12 to **1.6.13** on 2023-03-28
+  - [eslint](https://eslint.org) from 8.36.0 to **8.37.0** on 2023-03-29
+  - [checkov](https://www.checkov.io/) from 2.3.126 to **2.3.128** on 2023-03-29
+  - [black](https://black.readthedocs.io/en/stable/) from 23.1.0 to **23.3.0** on 2023-03-30
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.300 to **1.1.301** on 2023-03-30
+  - [checkov](https://www.checkov.io/) from 2.3.128 to **2.3.134** on 2023-03-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26
 
 - New linters
-  - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2386
+  - Add [**helm lint**](https://helm.sh/docs/helm/helm_lint/), by @ThomasSanson in <https://github.com/oxsecurity/megalinter/pull/2386>
 
 <!-- /* cspell:disable */ -->
 
@@ -38,19 +55,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 <!-- /* cspell:enable */ -->
 
 - Linter enhancements & fixes
-  - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2453
-  - Replace babel-eslint with @babel/eslint-parser, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2445
-  - Use docker image to install phpstan, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2469
-  - Avoid cspell error on readonly workspaces, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2474
-  - Allow bandit to use pyproject.toml, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2475
-  - Bring back stylelint-config-sass-guidelines package, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2477
-  - Display only errors in markdown-link-check logs for better readability, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2479
+  - [phpcs](https://megalinter.io/latest/descriptors/php_phpcs/): Add regex in descriptor to be able to extract the number of found errors, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2453>
+  - Replace babel-eslint with @babel/eslint-parser, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2445>
+  - Use docker image to install phpstan, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2469>
+  - Avoid cspell error on readonly workspaces, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2474>
+  - Allow bandit to use pyproject.toml, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2475>
+  - Bring back stylelint-config-sass-guidelines package, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2477>
+  - Display only errors in markdown-link-check logs for better readability, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2479>
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
   
 - Documentation
-  - mega-linter-runner: doc fix for env list of values, see [#2448](https://github.com/oxsecurity/megalinter/issues/2448), by @DariuszPorowski in https://github.com/oxsecurity/megalinter/pull/2449
+  - mega-linter-runner: doc fix for env list of values, see [#2448](https://github.com/oxsecurity/megalinter/issues/2448), by @DariuszPorowski in <https://github.com/oxsecurity/megalinter/pull/2449>
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.1 to **6.14.3**
