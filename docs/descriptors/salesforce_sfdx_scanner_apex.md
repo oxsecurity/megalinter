@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.10.0**
+- Version in MegaLinter: **3.11.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file is not found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -93,11 +93,11 @@ sfdx scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sfdx scanner run -t <array> [-f csv|html|json|junit|sarif|table|xml]
-    [-o <string>] [-s <integer> | --json] [--normalize-severity] [-p <array>]
-    [-c <array>] [-r <array>] [-e <array>] [--tsconfig <string>] [--eslintconfig
-    <string>] [--pmdconfig <string>] [--env <string>] [--verbose-violations]
-    [--verbose] [--loglevel
+  $ sfdx scanner run -t <array> [-c <array>] [-f
+    csv|html|json|junit|sarif|table|xml] [-o <string>] [-s <integer> | --json]
+    [--normalize-severity] [-p <array>] [-r <array>] [-e <array>] [--tsconfig
+    <string>] [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>]
+    [--verbose-violations] [--verbose] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -167,12 +167,12 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  VfHtmlStyleTagXss                                      visualforce Security                                                               pmd               N
  VfUnescapeEl                                           visualforce Security              Basic VF                                         pmd               N
  ApexAssertionsShouldIncludeMessage                     apex        Best Practices                                                         pmd               N
- ApexUnitTestClassShouldHaveAsserts                     apex        Best Practices        ApexUnit,Default ruleset...,quickstart           pmd               N
+ ApexUnitTestClassShouldHaveAsserts                     apex        Best Practices        Default ruleset...,quickstart,ApexUnit           pmd               N
  ApexUnitTestClassShouldHaveRunAs                       apex        Best Practices        quickstart                                       pmd               N
  ApexUnitTestMethodShouldHaveIsTestAnnotation           apex        Best Practices                                                         pmd               N
- ApexUnitTestShouldNotUseSeeAllDataTrue                 apex        Best Practices        ApexUnit,Default ruleset...,quickstart           pmd               N
- AvoidGlobalModifier                                    apex        Best Practices        Default ruleset...,Style,quickstart              pmd               N
- AvoidLogicInTrigger                                    apex        Best Practices        Default ruleset...,Style,quickstart              pmd               N
+ ApexUnitTestShouldNotUseSeeAllDataTrue                 apex        Best Practices        Default ruleset...,quickstart,ApexUnit           pmd               N
+ AvoidGlobalModifier                                    apex        Best Practices        Style,Default ruleset...,quickstart              pmd               N
+ AvoidLogicInTrigger                                    apex        Best Practices        Style,Default ruleset...,quickstart              pmd               N
  DebugsShouldUseLoggingLevel                            apex        Best Practices        quickstart                                       pmd               N
  UnusedLocalVariable                                    apex        Best Practices                                                         pmd               N
  AvoidDebugStatements                                   apex        Performance                                                            pmd               N
@@ -181,32 +181,32 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  AvoidSoslInLoops                                       apex        Performance           Default ruleset...,Performance                   pmd               N
  EagerlyLoadedDescribeSObjectResult                     apex        Performance                                                            pmd               N
  OperationWithLimitsInLoop                              apex        Performance           quickstart                                       pmd               N
- ApexBadCrypto                                          apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexCRUDViolation                                      apex        Security              Default ruleset...,quickstart,Security           pmd               N
+ ApexBadCrypto                                          apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexCRUDViolation                                      apex        Security              Security,Default ruleset...,quickstart           pmd               N
  ApexCSRF                                               apex        Security              Security                                         pmd               N
- ApexDangerousMethods                                   apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexInsecureEndpoint                                   apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexOpenRedirect                                       apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexSharingViolations                                  apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexSOQLInjection                                      apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexSuggestUsingNamedCred                              apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexXSSFromEscapeFalse                                 apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ApexXSSFromURLParam                                    apex        Security              Default ruleset...,quickstart,Security           pmd               N
- ClassNamingConventions                                 apex        Code Style            Default ruleset...,Style,quickstart              pmd               N
- IfElseStmtsMustUseBraces                               apex        Code Style            Default ruleset...,Braces,quickstart             pmd               N
- IfStmtsMustUseBraces                                   apex        Code Style            Default ruleset...,Braces,quickstart             pmd               N
+ ApexDangerousMethods                                   apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexInsecureEndpoint                                   apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexOpenRedirect                                       apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSharingViolations                                  apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSOQLInjection                                      apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexSuggestUsingNamedCred                              apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexXSSFromEscapeFalse                                 apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ApexXSSFromURLParam                                    apex        Security              Security,Default ruleset...,quickstart           pmd               N
+ ClassNamingConventions                                 apex        Code Style            Style,Default ruleset...,quickstart              pmd               N
+ IfElseStmtsMustUseBraces                               apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
+ IfStmtsMustUseBraces                                   apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
  FieldDeclarationsShouldBeAtStart                       apex        Code Style                                                             pmd               N
  FieldNamingConventions                                 apex        Code Style            quickstart                                       pmd               N
- ForLoopsMustUseBraces                                  apex        Code Style            Default ruleset...,Braces,quickstart             pmd               N
+ ForLoopsMustUseBraces                                  apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
  FormalParameterNamingConventions                       apex        Code Style            quickstart                                       pmd               N
  LocalVariableNamingConventions                         apex        Code Style            quickstart                                       pmd               N
- MethodNamingConventions                                apex        Code Style            Default ruleset...,Style,quickstart              pmd               N
+ MethodNamingConventions                                apex        Code Style            Style,Default ruleset...,quickstart              pmd               N
  OneDeclarationPerLine                                  apex        Code Style            Default ruleset...,quickstart                    pmd               N
  PropertyNamingConventions                              apex        Code Style            quickstart                                       pmd               N
- VariableNamingConventions                              apex        Code Style            Default ruleset...,Style                         pmd               N
- WhileLoopsMustUseBraces                                apex        Code Style            Default ruleset...,Braces,quickstart             pmd               N
+ VariableNamingConventions                              apex        Code Style            Style,Default ruleset...                         pmd               N
+ WhileLoopsMustUseBraces                                apex        Code Style            Braces,Default ruleset...,quickstart             pmd               N
  AvoidDeeplyNestedIfStmts                               apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
- CyclomaticComplexity                                   apex        Design                Default ruleset...,Metrics tempora...,quickstart pmd               N
+ CyclomaticComplexity                                   apex        Design                Default ruleset...,quickstart,Metrics tempora... pmd               N
  CognitiveComplexity                                    apex        Design                                                                 pmd               N
  ExcessiveClassLength                                   apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
  ExcessiveParameterList                                 apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
@@ -218,16 +218,16 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  TooManyFields                                          apex        Design                Complexity,Default ruleset...,quickstart         pmd               N
  ApexDoc                                                apex        Documentation         Default ruleset...,quickstart                    pmd               N
  ApexCSRF                                               apex        Error Prone           Default ruleset...,quickstart                    pmd               N
- AvoidDirectAccessTriggerMap                            apex        Error Prone           Default ruleset...,Style,quickstart              pmd               N
- AvoidHardcodingId                                      apex        Error Prone           Default ruleset...,Style,quickstart              pmd               N
+ AvoidDirectAccessTriggerMap                            apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
+ AvoidHardcodingId                                      apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
  AvoidNonExistentAnnotations                            apex        Error Prone           Default ruleset...,quickstart                    pmd               N
- EmptyCatchBlock                                        apex        Error Prone           Default ruleset...,Empty Code,quickstart         pmd               N
- EmptyIfStmt                                            apex        Error Prone           Default ruleset...,Empty Code,quickstart         pmd               N
- EmptyStatementBlock                                    apex        Error Prone           Default ruleset...,Empty Code,quickstart         pmd               N
- EmptyTryOrFinallyBlock                                 apex        Error Prone           Default ruleset...,Empty Code,quickstart         pmd               N
- EmptyWhileStmt                                         apex        Error Prone           Default ruleset...,Empty Code,quickstart         pmd               N
+ EmptyCatchBlock                                        apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyIfStmt                                            apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyStatementBlock                                    apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyTryOrFinallyBlock                                 apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
+ EmptyWhileStmt                                         apex        Error Prone           Empty Code,Default ruleset...,quickstart         pmd               N
  InaccessibleAuraEnabledGetter                          apex        Error Prone                                                            pmd               N
- MethodWithSameNameAsEnclosingClass                     apex        Error Prone           Default ruleset...,Style,quickstart              pmd               N
+ MethodWithSameNameAsEnclosingClass                     apex        Error Prone           Style,Default ruleset...,quickstart              pmd               N
  OverrideBothEqualsAndHashcode                          apex        Error Prone                                                            pmd               N
  TestMethodsMustBeInTestClasses                         apex        Error Prone                                                            pmd               N
  constructor-super                                      javascript  problem               problem                                          eslint            N
@@ -375,6 +375,7 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  @typescript-eslint/unbound-method                      typescript  problem               problem                                          eslint-typescript N
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y
+ ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y
  UnusedMethodRule                                       apex        Performance                                                            sfge              N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N
 ```

@@ -30,6 +30,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.6.12 to **1.6.13** on 2023-03-28
   - [eslint](https://eslint.org) from 8.36.0 to **8.37.0** on 2023-03-29
   - [checkov](https://www.checkov.io/) from 2.3.126 to **2.3.128** on 2023-03-29
+  - [black](https://black.readthedocs.io/en/stable/) from 23.1.0 to **23.3.0** on 2023-03-30
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.300 to **1.1.301** on 2023-03-30
+  - [checkov](https://www.checkov.io/) from 2.3.128 to **2.3.134** on 2023-03-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26
