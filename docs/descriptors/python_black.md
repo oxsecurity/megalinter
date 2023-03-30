@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **23.1.0**
+- Version in MegaLinter: **23.3.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
