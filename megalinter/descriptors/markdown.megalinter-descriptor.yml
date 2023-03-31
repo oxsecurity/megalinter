@@ -114,9 +114,11 @@ linters:
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    # Unpin once https://github.com/tcort/markdown-link-check/issues/246 is fixed.
+    downgraded_version: true
     install:
       npm:
-        - markdown-link-check
+        - markdown-link-check@3.10.3
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true
