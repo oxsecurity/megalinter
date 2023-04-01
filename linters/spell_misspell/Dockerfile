@@ -125,7 +125,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # misspell installation
 RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
     && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete

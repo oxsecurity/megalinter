@@ -400,7 +400,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
     && rm -rf /root/.npm/_cacache \
 
 # SCALA installation
-    && curl -fLo coursier https://git.io/coursier-cli && \
+    && curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 
@@ -629,7 +629,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
     && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
