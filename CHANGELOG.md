@@ -30,7 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Pin markdown-link-check to 3.10.3 until [tcort/markdown-link-check#246](https://github.com/tcort/markdown-link-check/issues/246) is fixed, by @Kurt-von-Laven ([#2498](https://github.com/oxsecurity/megalinter/issues/2498)).
 
 - Core
-  - Fix MegaLinter doc version & url displayed in logs, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2485
+  - Fix MegaLinter doc version & url displayed in logs, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2485>
   - Use [megalinter-bot](https://github.com/megalinter-bot) to create apply fixes commits, by @lars-reimann, @nvuillam and @megalinter-bot :)
     - If you are an existing user of MegaLinter, you must update your github actions workflows to add the following parameters to **stefanzweifel/git-auto-commit-action@v4** :
 
@@ -42,7 +42,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - You can also use any github username and email you like :)
 
 - Documentation
-  - Close parentheses in ci_light flavour doc by @moverperfect in https://github.com/oxsecurity/megalinter/pull/2494 
+  - Close parentheses in ci_light flavour doc by @moverperfect in <https://github.com/oxsecurity/megalinter/pull/2494>
 
 - Linter versions upgrades
   - [black](https://black.readthedocs.io/en/stable/) from 23.1.0 to **23.3.0**
