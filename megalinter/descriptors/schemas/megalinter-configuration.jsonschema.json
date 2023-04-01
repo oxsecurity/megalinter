@@ -179,6 +179,7 @@
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
         "PYTHON_PYRIGHT",
+        "PYTHON_RUFF",
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",

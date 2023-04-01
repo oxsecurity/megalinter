@@ -394,6 +394,11 @@
     "image": "https://avatars1.githubusercontent.com/u/39672756?s=400&v=4",
     "title": "rubocop-hq/rubocop"
   },
+  "ruff": {
+    "description": "An extremely fast Python linter, written in Rust. Contribute to charliermarsh/ruff development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/125c259b7ef6ad7bf2a4d9b3af0e3bc2b1f8561c1d4ce8923b052cc30d8b8d75/charliermarsh/ruff",
+    "title": "GitHub - charliermarsh/ruff: An extremely fast Python linter, written in Rust."
+  },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",
     "image": "https://scalacenter.github.io//scalafix/img/scalacenter2x.png",

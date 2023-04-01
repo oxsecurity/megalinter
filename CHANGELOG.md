@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - New linters
+  - Add [**ruff**](https://github.com/charliermarsh/ruff), by @lars-reimann in <https://github.com/oxsecurity/megalinter/pull/2458>
 
 - Medias
 
