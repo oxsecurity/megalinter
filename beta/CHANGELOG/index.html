@@ -2283,6 +2283,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v6220-2023-04-01">
+    [v6.22.0] - 2023-04-01
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v6210-2023-03-26">
     [v6.21.0] - 2023-03-26
   </a>
@@ -2860,6 +2865,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v6220-2023-04-01">
+    [v6.22.0] - 2023-04-01
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v6210-2023-03-26">
     [v6.21.0] - 2023-03-26
   </a>
@@ -3427,13 +3437,30 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>New linters</li>
+</ul>
+<ul>
+<li>Medias</li>
+</ul>
+<ul>
+<li>Linter enhancements &amp; fixes</li>
+</ul>
+<ul>
+<li>Core</li>
+</ul>
+<ul>
+<li>Documentation</li>
+</ul>
+<ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+<h2 id="v6220-2023-04-01">[v6.22.0] - 2023-04-01</h2>
+<ul>
 <li>New linters<ul>
 <li>Add <a href="https://github.com/charliermarsh/ruff"><strong>ruff</strong></a>, by @lars-reimann in <a href="https://github.com/oxsecurity/megalinter/pull/2458">https://github.com/oxsecurity/megalinter/pull/2458</a></li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Medias</li>
 </ul>
 <ul>
 <li>Linter enhancements &amp; fixes<ul>
@@ -3443,7 +3470,7 @@
 </ul>
 <ul>
 <li>Core<ul>
-<li>Fix version displayed in logs</li>
+<li>Fix MegaLinter doc version &amp; url displayed in logs, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2485</li>
 <li>
 <p>Use <a href="https://github.com/megalinter-bot">megalinter-bot</a> to create apply fixes commits, by @lars-reimann, @nvuillam and @megalinter-bot :)</p>
 <ul>
@@ -3460,40 +3487,35 @@ commit_user_email: nicolas.vuillamy@ox.security</code></p>
 </li>
 </ul>
 <ul>
-<li>Documentation</li>
-</ul>
-<ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.120 to <strong>2.3.121</strong> on 2023-03-27</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.75.1 to <strong>0.76.0</strong> on 2023-03-27</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.121 to <strong>2.3.124</strong> on 2023-03-27</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.76.0 to <strong>0.76.1</strong> on 2023-03-28</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.50.3 to <strong>0.51.0</strong> on 2023-03-28</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.124 to <strong>2.3.125</strong> on 2023-03-28</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.125 to <strong>2.3.126</strong> on 2023-03-28</li>
-<li><a href="https://www.kics.io">kics</a> from 1.6.12 to <strong>1.6.13</strong> on 2023-03-28</li>
-<li><a href="https://eslint.org">eslint</a> from 8.36.0 to <strong>8.37.0</strong> on 2023-03-29</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.126 to <strong>2.3.128</strong> on 2023-03-29</li>
-<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 23.1.0 to <strong>23.3.0</strong> on 2023-03-30</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.300 to <strong>1.1.301</strong> on 2023-03-30</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.128 to <strong>2.3.134</strong> on 2023-03-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.10.0 to <strong>3.11.0</strong> on 2023-03-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.10.0 to <strong>3.11.0</strong> on 2023-03-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.10.0 to <strong>3.11.0</strong> on 2023-03-30</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.10.8 to <strong>1.10.9</strong> on 2023-04-01</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.5.8.0@ to <strong>Psalm.5.9.0@</strong> on 2023-04-01</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.134 to <strong>2.3.141</strong> on 2023-04-01</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.15.0 to <strong>1.16.0</strong> on 2023-04-01</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.75.0 to <strong>0.76.0</strong> on 2023-04-01</li>
-<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.4.2 to <strong>1.4.4</strong> on 2023-04-01</li>
-<li><a href="https://stylelint.io">stylelint</a> from 15.3.0 to <strong>15.4.0</strong> on 2023-04-01</li>
-<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.11.0 to <strong>3.10.3</strong> on 2023-04-01</li>
-<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.255 to <strong>0.0.260</strong> on 2023-04-01</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.38.3 to <strong>0.39.0</strong> on 2023-04-01</li>
+<li>Documentation<ul>
+<li>Close parentheses in ci_light flavour doc by @moverperfect in https://github.com/oxsecurity/megalinter/pull/2494 </li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 23.1.0 to <strong>23.3.0</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.75.1 to <strong>0.76.1</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.3.120 to <strong>2.3.141</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.36.0 to <strong>8.37.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.6.12 to <strong>1.6.13</strong></li>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.11.0 to <strong>3.10.3</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.10.8 to <strong>1.10.9</strong></li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.5.8.0@ to <strong>Psalm.5.9.0@</strong></li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.300 to <strong>1.1.301</strong></li>
+<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.255 to <strong>0.0.260</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.15.0 to <strong>1.16.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.10.0 to <strong>3.11.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.10.0 to <strong>3.11.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.10.0 to <strong>3.11.0</strong></li>
+<li><a href="https://stylelint.io">stylelint</a> from 15.3.0 to <strong>15.4.0</strong></li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.50.3 to <strong>0.51.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.75.0 to <strong>0.76.0</strong></li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.4.2 to <strong>1.4.4</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.38.3 to <strong>0.39.0</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v6210-2023-03-26">[v6.21.0] - 2023-03-26</h2>
 <ul>
 <li>New linters<ul>
