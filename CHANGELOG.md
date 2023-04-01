@@ -13,10 +13,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Medias
 
 - Linter enhancements & fixes
+  - Changed vars in AzureCommentReporter to reflects official Azure DevOps naming convention + fallback to keep backward compatibility, see [#2509](https://github.com/oxsecurity/megalinter/issues/2509)
 
 - Core
 
 - Documentation
+  - Updated usage scenario for Azure DevOps, see [#2509](https://github.com/oxsecurity/megalinter/issues/2509)
 
 - Linter versions upgrades
 <!-- linter-versions-end -->
@@ -91,7 +93,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Run CI linter jobs only on Pull requests to avoid doubling jobs
-  
+
 - Documentation
   - mega-linter-runner: doc fix for env list of values, see [#2448](https://github.com/oxsecurity/megalinter/issues/2448), by @DariuszPorowski in <https://github.com/oxsecurity/megalinter/pull/2449>
 
