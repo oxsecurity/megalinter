@@ -847,6 +847,11 @@
         pyright
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../descriptors/python_ruff/">
+        ruff
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2574,6 +2579,8 @@ jobs:
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[MegaLinter] Apply linters fixes"
+          commit_user_name: megalinter-bot
+          commit_user_email: nicolas.vuillamy@ox.security
 </code></pre>
 </details>
 <h2 id="gitlab-ci">GitLab CI</h2>

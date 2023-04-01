@@ -686,6 +686,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/python_ruff/</loc>
+         <lastmod>2023-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/r/</loc>
          <lastmod>2023-04-01</lastmod>
          <changefreq>daily</changefreq>

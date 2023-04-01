@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="How to use syft (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="description"/>
+<meta content="How to use ruff (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/repository_syft/" rel="canonical"/>
-<link href="../repository_semgrep/" rel="prev"/>
-<link href="../repository_trivy/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/python_ruff/" rel="canonical"/>
+<link href="../python_pyright/" rel="prev"/>
+<link href="../r/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
-<title>syft configuration in MegaLinter - MegaLinter by OX Security</title>
+<title>ruff configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="syft configuration in MegaLinter" name="twitter:title">
-<meta content="How to use syft (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="twitter:description">
+<meta content="ruff configuration in MegaLinter" name="twitter:title">
+<meta content="How to use ruff (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="syft configuration in MegaLinter" property="og:title"/>
-<meta content="How to use syft (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" property="og:description"/>
+<meta content="ruff configuration in MegaLinter" property="og:title"/>
+<meta content="How to use ruff (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#syft-documentation">
+<a class="md-skip" href="#ruff">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              syft configuration in MegaLinter
+              ruff configuration in MegaLinter
             
           </span>
 </div>
@@ -182,13 +182,13 @@
         All supported linters
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Languages linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Languages linters
@@ -704,13 +704,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_20" id="__nav_5_2_20_label" tabindex="0">
           PYTHON
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_20">
 <span class="md-nav__icon md-icon"></span>
           PYTHON
@@ -756,10 +756,77 @@
         pyright
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../python_ruff/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          ruff
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         ruff
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ruff-documentation">
+    ruff documentation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1842,13 +1909,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
           Other checks
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Other checks
@@ -1884,13 +1951,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_5_3">
 <span class="md-nav__icon md-icon"></span>
           REPOSITORY
@@ -1941,72 +2008,10 @@
         semgrep
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          syft
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../repository_syft/">
         syft
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#syft-documentation">
-    syft documentation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-    Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavours">
-    MegaLinter Flavours
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#behind-the-scenes">
-    Behind the scenes
-  </a>
-<nav aria-label="Behind the scenes" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-are-identified-applicable-files">
-    How are identified applicable files
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-the-linting-is-performed">
-    How the linting is performed
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#example-calls">
-    Example calls
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#help-content">
-    Help content
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
-    Installation on mega-linter Docker image
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../repository_trivy/">
@@ -2342,13 +2347,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#syft-documentation">
-    syft documentation
+<a class="md-nav__link" href="#ruff-documentation">
+    ruff documentation
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configuration-in-megalinter">
     Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
   </a>
 </li>
 <li class="md-nav__item">
@@ -2397,26 +2407,30 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>syft</h1>
 <!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please do not update manually -->
-<div align="center">
-<a href="https://github.com/anchore/syft#readme" target="blank" title="Visit linter Web Site">
-<img alt="syft" class="megalinter-banner" height="150px" src="https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png">
-</img></a>
-</div>
-<p><a href="https://github.com/anchore/syft"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/anchore/syft/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/anchore/syft?sort=semver"/></a> <a href="https://github.com/anchore/syft/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anchore/syft"/></a> <a href="https://github.com/anchore/syft/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/anchore/syft"/></a> <a href="https://github.com/anchore/syft/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/anchore/syft"/></a></p>
-<p>Builds a SBOM (Software Build Of Materials) from your repository</p>
-<h2 id="syft-documentation">syft documentation</h2>
+<h1 id="ruff">ruff</h1>
+<p><a href="https://github.com/charliermarsh/ruff"><img alt="GitHub stars" src="https://img.shields.io/github/stars/charliermarsh/ruff?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/charliermarsh/ruff/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/charliermarsh/ruff?sort=semver"/></a> <a href="https://github.com/charliermarsh/ruff/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/charliermarsh/ruff"/></a> <a href="https://github.com/charliermarsh/ruff/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/charliermarsh/ruff"/></a> <a href="https://github.com/charliermarsh/ruff/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/charliermarsh/ruff"/></a></p>
+<p>An extremely fast Python linter, written in Rust.</p>
+<h2 id="ruff-documentation">ruff documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.76.0</strong></li>
-<li>Visit <a href="https://github.com/anchore/syft#readme" target="_blank">Official Web Site</a></li>
+<li>Version in MegaLinter: <strong>0.0.260</strong></li>
+<li>Visit <a href="https://github.com/charliermarsh/ruff#readme" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://beta.ruff.rs/docs/configuration/" target="_blank">How to configure ruff rules</a><ul>
+<li>If custom <code>.ruff.toml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
 </ul>
-<p><a href="https://github.com/anchore/syft" target="_blank"><img alt="syft - GitHub" src="https://gh-card.dev/repos/anchore/syft.svg?fullname="/></a></p>
+</li>
+<li>See <a href="https://beta.ruff.rs/docs/configuration/#error-suppression" target="_blank">How to disable ruff rules in files</a></li>
+<li>See <a href="https://beta.ruff.rs/docs/rules/" target="_blank">Index of problems detected by ruff</a></li>
+</ul>
+<p><a href="https://github.com/charliermarsh/ruff" target="_blank"><img alt="ruff - GitHub" src="https://gh-card.dev/repos/charliermarsh/ruff.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable syft by adding <code>REPOSITORY_SYFT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable syft by adding <code>REPOSITORY_SYFT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable ruff by adding <code>PYTHON_RUFF</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable ruff by adding <code>PYTHON_RUFF</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
+<ul>
+<li>Enable <strong>auto-fixes</strong> by adding <code>PYTHON_RUFF</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
 </ul>
 <table>
 <thead>
@@ -2428,39 +2442,90 @@
 </thead>
 <tbody>
 <tr>
-<td>REPOSITORY_SYFT_ARGUMENTS</td>
+<td>PYTHON_RUFF_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_PRE_COMMANDS</td>
+<td>PYTHON_RUFF_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
+<td>Exclude no file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>list_of_files</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
+<td><code>[".py"]</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_POST_COMMANDS</td>
+<td>PYTHON_RUFF_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_CONFIG_FILE</td>
-<td>syft configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.syft.yaml</code></td>
+<td>PYTHON_RUFF_CONFIG_FILE</td>
+<td>ruff configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.ruff.toml</code></td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_RULES_PATH</td>
+<td>PYTHON_RUFF_RULES_PATH</td>
 <td>Path where to find linter configuration file</td>
 <td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_DISABLE_ERRORS</td>
+<td>PYTHON_RUFF_DISABLE_ERRORS</td>
 <td>Run linter but consider errors as warnings</td>
 <td><code>false</code></td>
 </tr>
 <tr>
-<td>REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>PYTHON_RUFF_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use ruff in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th align="center">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"/></a></td>
+<td><a href="https://www.jetbrains.com/products.html#type=ide">IDEA</a></td>
+<td><a href="https://plugins.jetbrains.com/plugin/20574-ruff">Ruff</a></td>
+<td align="center"><iframe frameborder="none" height="48px" src="https://plugins.jetbrains.com/embeddable/install/20574" width="245px"></iframe></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff</a></td>
+<td align="center"><a href="vscode:extension/charliermarsh.ruff" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -2485,104 +2550,75 @@
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
-<td align="left">Optimized for security</td>
-<td align="center">22</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">82</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
+<td align="left">Optimized for PYTHON based projects</td>
+<td align="center">59</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>If this linter is active, all files will always be linted</li>
+<li>File extensions: <code>.py</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
-<p>syft is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>filtering can not be done using MegaLinter configuration variables,it must be done using syft configuration or ignore file (if existing)</li>
-<li><code>VALIDATE_ALL_CODEBASE: false</code> does not make syft analyze only updated files</li>
+<li>ruff is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">syft /tmp/lint
+<pre><code class="language-shell">ruff check myfile.py
+</code></pre>
+<pre><code class="language-shell">ruff check --config .ruff.toml myfile.py
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
+<pre><code class="language-shell">Ruff: An extremely fast Python linter.
 
-Usage:
-  syft [SOURCE] [flags]
-  syft [command]
+Usage: ruff [OPTIONS] &lt;COMMAND&gt;
 
-Examples:
-  syft packages alpine:latest                                a summary of discovered packages
-  syft packages alpine:latest -o json                        show all possible cataloging details
-  syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
-  syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
-  syft packages alpine:latest -o spdx                        show a SPDX 2.3 Tag-Value formatted SBOM
-  syft packages alpine:latest -o spdx@2.2                    show a SPDX 2.2 Tag-Value formatted SBOM
-  syft packages alpine:latest -o spdx-json                   show a SPDX 2.3 JSON formatted SBOM
-  syft packages alpine:latest -o spdx-json@2.2               show a SPDX 2.2 JSON formatted SBOM
-  syft packages alpine:latest -vv                            show verbose debug information
-  syft packages alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
+Commands:
+  check   Run Ruff on the given files or directories (default)
+  rule    Explain a rule
+  config  List or describe the available configuration options
+  linter  List all supported upstream linters
+  clean   Clear any caches in the current directory and any subdirectories
+  help    Print this message or the help of the given subcommand(s)
 
-  Supports the following image sources:
-    syft packages yourrepo/yourimage:tag     defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry.
-    syft packages path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, SIF container, or generic filesystem directory
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
 
-  You can also explicitly specify the scheme to use:
-    syft packages docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
-    syft packages podman:yourrepo/yourimage:tag            explicitly use the Podman daemon
-    syft packages registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
-    syft packages docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from "docker save"
-    syft packages oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
-    syft packages oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
-    syft packages singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
-    syft packages dir:path/to/yourproject                  read directly from a path on disk (any directory)
-    syft packages file:path/to/yourproject/file            read directly from a path on disk (any single file)
+Log levels:
+  -v, --verbose  Enable verbose logging
+  -q, --quiet    Print lint violations, but nothing else
+  -s, --silent   Disable all logging (but still exit with status code "1" upon detecting lint violations)
 
-
-Available Commands:
-  attest      Generate an SBOM as an attestation for the given [SOURCE] container image
-  completion  Generate the autocompletion script for the specified shell
-  convert     Convert between SBOM formats
-  help        Help about any command
-  login       Log in to a registry
-  packages    Generate a package SBOM
-  version     show the version
-
-Flags:
-      --catalogers stringArray   enable one or more package catalogers
-  -c, --config string            application config file
-      --exclude stringArray      exclude paths from being scanned using a glob expression
-      --file string              file to write the default report output to (default is STDOUT)
-  -h, --help                     help for syft
-      --name string              set the name of the target being analyzed
-  -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (default [syft-table])
-      --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
-  -q, --quiet                    suppress all logging output
-  -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
-  -t, --template string          specify the path to a Go template file
-  -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for syft
-
-Use "syft [command] --help" for more information about a command.
+For help with a specific command, see: `ruff help &lt;command&gt;`.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>Dockerfile commands :</li>
+<li>PIP packages (Python):<ul>
+<li><a href="https://pypi.org/project/ruff">ruff</a></li>
 </ul>
-<pre><code class="language-dockerfile">RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-</code></pre>
+</li>
+</ul>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: semgrep" class="md-footer__link md-footer__link--prev" href="../repository_semgrep/" rel="prev">
+<a aria-label="Previous: pyright" class="md-footer__link md-footer__link--prev" href="../python_pyright/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2591,17 +2627,17 @@ Use "syft [command] --help" for more information about a command.
                 Previous
               </span>
 <div class="md-ellipsis">
-                semgrep
+                pyright
               </div>
 </div>
 </a>
-<a aria-label="Next: trivy" class="md-footer__link md-footer__link--next" href="../repository_trivy/" rel="next">
+<a aria-label="Next: All R linters" class="md-footer__link md-footer__link--next" href="../r/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                trivy
+                All R linters
               </div>
 </div>
 <div class="md-footer__button md-icon">
