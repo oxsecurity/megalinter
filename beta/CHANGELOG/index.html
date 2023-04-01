@@ -3431,13 +3431,26 @@
 <li>Medias</li>
 </ul>
 <ul>
-<li>Linter enhancements &amp; fixes</li>
+<li>Linter enhancements &amp; fixes<ul>
+<li>Pin markdown-link-check to 3.10.3 until <a href="https://github.com/tcort/markdown-link-check/issues/246">tcort/markdown-link-check#246</a> is fixed, by @Kurt-von-Laven (<a href="https://github.com/oxsecurity/megalinter/issues/2498">#2498</a>).</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Core<ul>
 <li>Fix version displayed in logs</li>
-<li>Pin markdown-link-check to 3.10.3 until <a href="https://github.com/tcort/markdown-link-check/issues/246">tcort/markdown-link-check#246</a>
-  is fixed, by @Kurt-von-Laven (<a href="https://github.com/oxsecurity/megalinter/issues/2498">#2498</a>).</li>
+<li>
+<p>Use <a href="https://github.com/megalinter-bot">megalinter-bot</a> to create apply fixes commits, by @lars-reimann, @nvuillam and @megalinter-bot :)</p>
+<ul>
+<li>If you are an existing user of MegaLinter, you must update your github actions workflows to add the following parameters to <strong>stefanzweifel/git-auto-commit-action@v4</strong> :</li>
+</ul>
+<p><code>yaml
+commit_user_name: megalinter-bot
+commit_user_email: nicolas.vuillamy@ox.security</code></p>
+<ul>
+<li>You can also use any github username and email you like :)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
