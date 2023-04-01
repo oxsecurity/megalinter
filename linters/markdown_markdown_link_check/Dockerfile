@@ -86,7 +86,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                markdown-link-check  && \
+                markdown-link-check@3.10.3  && \
        npm audit fix --audit-level=critical || true \
     && npm cache clean --force || true \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \

@@ -15,20 +15,55 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
-  - Fix version displayed in logs
 
 - Documentation
 
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 2.3.120 to **2.3.121** on 2023-03-27
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.75.1 to **0.76.0** on 2023-03-27
-  - [checkov](https://www.checkov.io/) from 2.3.121 to **2.3.124** on 2023-03-27
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.0 to **0.76.1** on 2023-03-28
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.3 to **0.51.0** on 2023-03-28
-  - [checkov](https://www.checkov.io/) from 2.3.124 to **2.3.125** on 2023-03-28
-  - [checkov](https://www.checkov.io/) from 2.3.125 to **2.3.126** on 2023-03-28
-  - [kics](https://www.kics.io) from 1.6.12 to **1.6.13** on 2023-03-28
 <!-- linter-versions-end -->
+
+## [v6.22.0] - 2023-04-01
+
+- New linters
+  - Add [**ruff**](https://github.com/charliermarsh/ruff), by @lars-reimann in <https://github.com/oxsecurity/megalinter/pull/2458>
+
+- Linter enhancements & fixes
+  - Pin markdown-link-check to 3.10.3 until [tcort/markdown-link-check#246](https://github.com/tcort/markdown-link-check/issues/246) is fixed, by @Kurt-von-Laven ([#2498](https://github.com/oxsecurity/megalinter/issues/2498)).
+
+- Core
+  - Fix MegaLinter doc version & url displayed in logs, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2485>
+  - Use [megalinter-bot](https://github.com/megalinter-bot) to create apply fixes commits, by @lars-reimann, @nvuillam and @megalinter-bot :)
+    - If you are an existing user of MegaLinter, you must update your github actions workflows to add the following parameters to **stefanzweifel/git-auto-commit-action@v4** :
+
+    ```yaml
+    commit_user_name: megalinter-bot
+    commit_user_email: nicolas.vuillamy@ox.security
+    ```
+
+    - You can also use any github username and email you like :)
+
+- Documentation
+  - Close parentheses in ci_light flavour doc by @moverperfect in <https://github.com/oxsecurity/megalinter/pull/2494>
+
+- Linter versions upgrades
+  - [black](https://black.readthedocs.io/en/stable/) from 23.1.0 to **23.3.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.75.1 to **0.76.1**
+  - [checkov](https://www.checkov.io/) from 2.3.120 to **2.3.141**
+  - [eslint](https://eslint.org) from 8.36.0 to **8.37.0**
+  - [kics](https://www.kics.io) from 1.6.12 to **1.6.13**
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.0 to **3.10.3**
+  - [phpstan](https://phpstan.org/) from 1.10.8 to **1.10.9**
+  - [psalm](https://psalm.dev) from Psalm.5.8.0@ to **Psalm.5.9.0@**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.300 to **1.1.301**
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.255 to **0.0.260**
+  - [semgrep](https://semgrep.dev/) from 1.15.0 to **1.16.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0**
+  - [stylelint](https://stylelint.io) from 15.3.0 to **15.4.0**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.50.3 to **0.51.0**
+  - [syft](https://github.com/anchore/syft) from 0.75.0 to **0.76.0**
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.2 to **1.4.4**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.3 to **0.39.0**
 
 ## [v6.21.0] - 2023-03-26
 
