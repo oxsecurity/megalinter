@@ -107,7 +107,7 @@ def combine_config(workspace, config, combined_config, config_source):
                 combined_config,
                 config_source,
             )
-    combined_config.update(config)  
+    combined_config.update(config)
     return config_source
 
 
