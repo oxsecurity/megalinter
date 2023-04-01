@@ -154,7 +154,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
-                markdown-link-check \
+                markdown-link-check@3.10.3 \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \

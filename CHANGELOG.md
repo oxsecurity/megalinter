@@ -39,6 +39,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.10.0 to **3.11.0** on 2023-03-30
+  - [phpstan](https://phpstan.org/) from 1.10.8 to **1.10.9** on 2023-04-01
+  - [psalm](https://psalm.dev) from Psalm.5.8.0@ to **Psalm.5.9.0@** on 2023-04-01
+  - [checkov](https://www.checkov.io/) from 2.3.134 to **2.3.141** on 2023-04-01
+  - [semgrep](https://semgrep.dev/) from 1.15.0 to **1.16.0** on 2023-04-01
+  - [syft](https://github.com/anchore/syft) from 0.75.0 to **0.76.0** on 2023-04-01
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.2 to **1.4.4** on 2023-04-01
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26

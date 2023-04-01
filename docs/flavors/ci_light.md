@@ -9,7 +9,7 @@ description: ci_light flavor is an optimized MegaLinter with only linters relate
 
 ## Description
 
-Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)
+Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 
 ## Usage
 
