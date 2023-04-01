@@ -14,11 +14,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Medias
 
 - Linter enhancements & fixes
+  - Pin markdown-link-check to 3.10.3 until [tcort/markdown-link-check#246](https://github.com/tcort/markdown-link-check/issues/246) is fixed, by @Kurt-von-Laven ([#2498](https://github.com/oxsecurity/megalinter/issues/2498)).
 
 - Core
   - Fix version displayed in logs
-  - Pin markdown-link-check to 3.10.3 until [tcort/markdown-link-check#246](https://github.com/tcort/markdown-link-check/issues/246)
-    is fixed, by @Kurt-von-Laven ([#2498](https://github.com/oxsecurity/megalinter/issues/2498)).
+  - Use [megalinter-bot](https://github.com/megalinter-bot) to create apply fixes commits, by @lars-reimann, @nvuillam and @megalinter-bot :)
+    - If you are an existing user of MegaLinter, you must update your github actions workflows to add the following parameters to **stefanzweifel/git-auto-commit-action@v4** :
+
+    ```yaml
+    commit_user_name: megalinter-bot
+    commit_user_email: nicolas.vuillamy@ox.security
+    ```
+
+    - You can also use any github username and email you like :)
 
 - Documentation
 

@@ -354,7 +354,7 @@ linters:
     cli_help_arg_name: "help"
     cli_lint_fix_arg_name: "--fix"
     cli_version_arg_name: "--version"
-    cli_lint_extra_args: 
+    cli_lint_extra_args:
       - "check"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
