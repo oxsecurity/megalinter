@@ -53,6 +53,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.15.0 to **1.16.0** on 2023-04-01
   - [syft](https://github.com/anchore/syft) from 0.75.0 to **0.76.0** on 2023-04-01
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.2 to **1.4.4** on 2023-04-01
+  - [stylelint](https://stylelint.io) from 15.3.0 to **15.4.0** on 2023-04-01
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.0 to **3.10.3** on 2023-04-01
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.255 to **0.0.260** on 2023-04-01
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.38.3 to **0.39.0** on 2023-04-01
 <!-- linter-versions-end -->
 
 ## [v6.21.0] - 2023-03-26
