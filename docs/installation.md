@@ -192,15 +192,9 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            -e CI=true \
-            -e TF_BUILD=true \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
@@ -236,7 +230,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
         }
     }
 }
@@ -358,7 +352,7 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
@@ -380,13 +374,13 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
-    
+
 trigger:
   event:
   - push

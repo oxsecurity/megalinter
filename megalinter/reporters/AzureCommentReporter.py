@@ -8,7 +8,7 @@ Requires the following vars sent to docker run:
 - SYSTEM_COLLECTIONURI
 - SYSTEM_PULLREQUEST_PULLREQUESTID
 - SYSTEM_TEAMPROJECT
-- BUILD_BUILD_ID
+- BUILD_BUILDID
 - BUILD_REPOSITORY_ID
 """
 import logging
@@ -45,17 +45,17 @@ class AzureCommentReporter(Reporter):
                 )
             SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
-            BUILD_BUILD_ID = config.get("BUILD_BUILD_ID")
+            BUILD_BUILDID = config.get("BUILD_BUILDID", config.get("BUILD_BUILD_ID"))
             AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
                 "AZURE_COMMENT_REPORTER_LINKS_TYPE", "artifacts"
             )
             if AZURE_COMMENT_REPORTER_LINKS_TYPE == "artifacts":
                 artifacts_url = (
                     f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
-                    f"{BUILD_BUILD_ID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+                    f"{BUILD_BUILDID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
                 )
             else:
-                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILD_ID}"
+                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
             url = (
                 f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis/git/repositories/"
                 f"{BUILD_REPOSITORY_ID}/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
