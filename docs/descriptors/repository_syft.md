@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.75.0**
+- Version in MegaLinter: **0.76.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -74,16 +74,18 @@ syft /tmp/lint
 Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
 
 Usage:
-   [flags]
-   [command]
+  syft [SOURCE] [flags]
+  syft [command]
 
 Examples:
   syft packages alpine:latest                                a summary of discovered packages
   syft packages alpine:latest -o json                        show all possible cataloging details
   syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
   syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
-  syft packages alpine:latest -o spdx                        show a SPDX 2.2 Tag-Value formatted SBOM
-  syft packages alpine:latest -o spdx-json                   show a SPDX 2.2 JSON formatted SBOM
+  syft packages alpine:latest -o spdx                        show a SPDX 2.3 Tag-Value formatted SBOM
+  syft packages alpine:latest -o spdx@2.2                    show a SPDX 2.2 Tag-Value formatted SBOM
+  syft packages alpine:latest -o spdx-json                   show a SPDX 2.3 JSON formatted SBOM
+  syft packages alpine:latest -o spdx-json@2.2               show a SPDX 2.2 JSON formatted SBOM
   syft packages alpine:latest -vv                            show verbose debug information
   syft packages alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
 
@@ -117,7 +119,7 @@ Flags:
   -c, --config string            application config file
       --exclude stringArray      exclude paths from being scanned using a glob expression
       --file string              file to write the default report output to (default is STDOUT)
-  -h, --help                     help for this command
+  -h, --help                     help for syft
       --name string              set the name of the target being analyzed
   -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
@@ -125,9 +127,9 @@ Flags:
   -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
   -t, --template string          specify the path to a Go template file
   -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for this command
+      --version                  version for syft
 
-Use " [command] --help" for more information about a command.
+Use "syft [command] --help" for more information about a command.
 ```
 
 ### Installation on mega-linter Docker image

@@ -138,7 +138,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r \
                 prettier \
                 markdownlint-cli \
-                markdown-link-check \
+                markdown-link-check@3.10.3 \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \
