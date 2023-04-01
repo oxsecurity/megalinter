@@ -11,9 +11,9 @@
 <link href="../repository_semgrep/" rel="prev"/>
 <link href="../repository_trivy/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.4" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>syft configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.240905d7.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -2404,7 +2404,7 @@
 <p>Builds a SBOM (Software Build Of Materials) from your repository</p>
 <h2 id="syft-documentation">syft documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.75.0</strong></li>
+<li>Version in MegaLinter: <strong>0.76.0</strong></li>
 <li>Visit <a href="https://github.com/anchore/syft#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/anchore/syft" target="_blank"><img alt="syft - GitHub" src="https://gh-card.dev/repos/anchore/syft.svg?fullname="/></a></p>
@@ -2508,16 +2508,18 @@
 <pre><code class="language-shell">Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
 
 Usage:
-   [flags]
-   [command]
+  syft [SOURCE] [flags]
+  syft [command]
 
 Examples:
   syft packages alpine:latest                                a summary of discovered packages
   syft packages alpine:latest -o json                        show all possible cataloging details
   syft packages alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
   syft packages alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
-  syft packages alpine:latest -o spdx                        show a SPDX 2.2 Tag-Value formatted SBOM
-  syft packages alpine:latest -o spdx-json                   show a SPDX 2.2 JSON formatted SBOM
+  syft packages alpine:latest -o spdx                        show a SPDX 2.3 Tag-Value formatted SBOM
+  syft packages alpine:latest -o spdx@2.2                    show a SPDX 2.2 Tag-Value formatted SBOM
+  syft packages alpine:latest -o spdx-json                   show a SPDX 2.3 JSON formatted SBOM
+  syft packages alpine:latest -o spdx-json@2.2               show a SPDX 2.2 JSON formatted SBOM
   syft packages alpine:latest -vv                            show verbose debug information
   syft packages alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
 
@@ -2551,7 +2553,7 @@ Flags:
   -c, --config string            application config file
       --exclude stringArray      exclude paths from being scanned using a glob expression
       --file string              file to write the default report output to (default is STDOUT)
-  -h, --help                     help for this command
+  -h, --help                     help for syft
       --name string              set the name of the target being analyzed
   -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
@@ -2559,9 +2561,9 @@ Flags:
   -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
   -t, --template string          specify the path to a Go template file
   -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for this command
+      --version                  version for syft
 
-Use " [command] --help" for more information about a command.
+Use "syft [command] --help" for more information about a command.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -2580,20 +2582,20 @@ Use " [command] --help" for more information about a command.
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  Previous
-                </span>
+                Previous
+              </span>
+<div class="md-ellipsis">
                 semgrep
               </div>
 </div>
 </a>
 <a aria-label="Next: trivy" class="md-footer__link md-footer__link--next" href="../repository_trivy/" rel="next">
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  Next
-                </span>
+                Next
+              </span>
+<div class="md-ellipsis">
                 trivy
               </div>
 </div>
@@ -2634,7 +2636,7 @@ Use " [command] --help" for more information about a command.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.19047be9.min.js"></script>
+<script src="../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
