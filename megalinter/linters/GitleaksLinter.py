@@ -106,7 +106,7 @@ class GitleaksLinter(Linter):
         elif "--no-git" in cmd and is_git_repo(self.workspace):
             cmd = list(filter(lambda a: a != "--no-git", cmd))
 
-        if self.validate_all_code_base is False and self.is_pr:
+        if config.get("VALIDATE_ALL_CODEBASE") == "false" and self.is_pr:
             if self.pr_target_sha != self.pr_source_sha:
                 cmd += [
                     f"--log-opts=--no-merges --first-parent {self.pr_target_sha}^..{self.pr_source_sha}"
