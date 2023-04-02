@@ -14,12 +14,11 @@ Requires the following vars sent to docker run:
 import logging
 import urllib.parse
 
-import requests
 from azure.devops.connection import Connection
 from azure.devops.released.git.git_client import GitClient
-from msrest.authentication import BasicTokenAuthentication
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
+from msrest.authentication import BasicTokenAuthentication
 
 
 class AzureCommentReporter(Reporter):
@@ -35,7 +34,6 @@ class AzureCommentReporter(Reporter):
     def produce_report(self):
         # Post thread on Azure pull request
         if config.get("SYSTEM_ACCESSTOKEN", "") != "":
-
             # Collect variables
             SYSTEM_COLLECTIONURI = config.get("SYSTEM_COLLECTIONURI")
             SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
