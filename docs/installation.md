@@ -172,7 +172,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
-
 ## Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
