@@ -74,9 +74,9 @@ class AzureCommentReporter(Reporter):
 
             # Create connection to Azure API
             access_token = config.get("SYSTEM_ACCESSTOKEN")
-            credentials = BasicTokenAuthentication(access_token=access_token)
+            credentials = BasicTokenAuthentication({"access_token": access_token})
             connection = Connection(
-                base_url=f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}",
+                base_url=f"{SYSTEM_COLLECTIONURI}",
                 creds=credentials,
             )
             git_client: GitClient = connection.clients.get_git_client()
