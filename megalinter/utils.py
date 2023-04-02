@@ -358,3 +358,42 @@ def can_write_report_files(megalinter_instance) -> bool:
     ):
         return False
     return True
+
+# GitHub ref: https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+def is_github_actions() -> bool:
+    return config.get("GITHUB_ACTIONS") is not None
+
+def is_github_pr() -> bool:
+    return config.get("GITHUB_EVENT_NAME") == "pull_request"
+
+# GitLab ref: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+def is_gitlab_ci() -> bool:
+    return config.get("GITLAB_CI") == "true"
+
+def is_gitlab_mr() -> bool:
+    return config.get("CI_PIPELINE_SOURCE") == "merge_request_event"
+
+def is_gitlab_external_pr() -> bool:
+    return config.get("CI_PIPELINE_SOURCE") == "external_pull_request_event"
+
+def is_gitlab_premium() -> bool:
+    mr_event_type = config.get("CI_MERGE_REQUEST_EVENT_TYPE")
+    return (
+        True
+        if mr_event_type == "merged_result" or mr_event_type == "merge_train"
+        else False
+    )
+
+# Azure DevOps ref: https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+def is_azure_pipelines() -> bool:
+    return config.get("TF_BUILD") == "True"
+
+def is_azure_devops_pr() -> bool:
+    return config.get("BUILD_REASON") == "PullRequest"
+
+
+def is_ci() -> bool:
+    return True if config.get("CI") == "true" or is_github_actions() or is_gitlab_ci() or is_azure_pipelines() else False
+
+def is_pr() -> bool:
+    return True if config.get("PULL_REQUEST") == "true" or is_github_pr() or is_gitlab_mr() or is_gitlab_external_pr() or is_azure_devops_pr() else False

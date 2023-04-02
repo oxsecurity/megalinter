@@ -414,10 +414,9 @@ See [mega-linter-runner installation instructions](https://megalinter.io/mega-li
 Example
 
 ```shell
-npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 Note: You can also use such command line in your custom CI/CD pipelines
-
 
 <!-- installation-section-end -->

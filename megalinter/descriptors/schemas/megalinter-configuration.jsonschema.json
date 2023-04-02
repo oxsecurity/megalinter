@@ -10270,11 +10270,21 @@
       "title": "REPOSITORY_GITLEAKS: Custom config file path",
       "type": "string"
     },
-    "REPOSITORY_GITLEAKS_ONLY_PR_COMMITS": {
-      "$id": "#/properties/REPOSITORY_GITLEAKS_ONLY_PR_COMMITS",
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
       "default": false,
       "title": "REPOSITORY_GITLEAKS: Scan only PR commits on Pull Request",
       "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "title": "REPOSITORY_GITLEAKS: PR source commit sha (N/A to supported scenarios)",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "title": "REPOSITORY_GITLEAKS: PR target commit sha (N/A to supported scenarios)",
+      "type": "string"
     },
     "REPOSITORY_GIT_DIFF_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_ARGUMENTS",

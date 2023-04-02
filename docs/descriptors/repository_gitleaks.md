@@ -32,7 +32,9 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 | REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                        | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                          | `false`                                         |
 | REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                    | `0`                                             |
-| REPOSITORY_GITLEAKS_ONLY_PR_COMMITS             | Scan only PR commits on Pull Request                                                | `false`                                         |
+| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only PR commits on Pull Request                                                | `false`                                         |
+| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Pull Request source commit sha (N/A to supported scenarios)                         |                                                 |
+| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Pull Request target commit sha (N/A to supported scenarios)                         |                                                 |
 
 ## MegaLinter Flavours
 
@@ -70,10 +72,12 @@ This linter is available in the following flavours
 gitleaks is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables, it must be done using gitleaks configuration itself like: [baseline](https://github.com/gitleaks/gitleaks#creating-a-baseline){target=_blank}, allowlists in [.gitleaks.toml](https://github.com/gitleaks/gitleaks#configuration){target=_blank} or [.gitleaksignore](https://github.com/gitleaks/gitleaks#gitleaksignore){target=_blank}
-- `VALIDATE_ALL_CODEBASE: false` does make gitleaks analyze only commits on Pull Request, but only for selected tools: GitHub Actions, Azure Pipelines, GitLab Piplines\* (Merge Requests and External Pull Requestes)
+- `VALIDATE_ALL_CODEBASE: false` does make gitleaks analyze only commits on Pull Request together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify explicitly), but only for selected tools: GitHub Actions, Azure Pipelines, GitLab Piplines\* (Merge Requests and External Pull Requestes)
   - \* Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (limitation due to GitLab itself) and [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
-  - If `VALIDATE_ALL_CODEBASE: false` and MegaLinter with the gitleaks runs on PR on the not listed tool above, then the analysis is performed on the whole repository (checked-out commits - depends on fetch-depth configuration).
-
+  - If MegaLinter with the gitleaks runs on PR on the not listed tool above, then the analysis is performed on the whole repository - default gitleaks behaviour (checked-out commits - depends on fetch-depth configuration).
+    - You can still scan only PR commits in your CI/CD tool by setting MegaLinter envs: `PULL_REQUEST=true`\*, `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`, `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (e.g. `main` if you do PR to main branch). Example on how to get source commit sha `git rev-list -n 1 refs/remotes/origin/<source_branch>` and target commit sha `git rev-parse refs/remotes/origin/<target_branch>`
+      - \* `PULL_REQUEST` environment variable has to be set to `true` only on Pull Requests, so you have to calculate value in your pipeline and pass the right result.
+  - PR commits scan feature if aplicable will override your `--log-opts` argument if you used it in the 
 
 #### Repository checkout on Pull Requests
 
@@ -111,7 +115,6 @@ gitleaks detect --no-git --verbose --source .
 ```shell
 gitleaks detect -c .gitleaks.toml --no-git --verbose --source .
 ```
-
 
 ### Help content
 
@@ -152,9 +155,9 @@ Use "gitleaks [command] --help" for more information about a command.
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
+- Dockerfile commands:
+
 ```dockerfile
 FROM zricethezav/gitleaks:v8.16.1 as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
-

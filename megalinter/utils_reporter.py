@@ -172,41 +172,28 @@ def get_linter_doc_url(linter):
 
 
 def log_section_start(section_key: str, section_title: str):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
-        if is_github_actions():
+    if utils.is_ci() and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+        if utils.is_github_actions():
             return f"::group::{section_title} (expand for details)"
-        elif is_gitlab_ci():
+        elif utils.is_gitlab_ci():
             return (
                 f"\x1b[0Ksection_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
                 + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
             )
-        elif is_azure_pipelines():
+        elif utils.is_azure_pipelines():
             return f"##[group]{section_title} (expand for details)"
     return section_title
 
 
 def log_section_end(section_key):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
-        if is_github_actions():
+    if utils.is_ci() and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+        if utils.is_github_actions():
             return "::endgroup::"
-        elif is_gitlab_ci():
+        elif utils.is_gitlab_ci():
             return f"\x1b[0Ksection_end:`{time.time_ns()}`:{section_key}\r\x1b[0K"  # noqa: W605
-        elif is_azure_pipelines():
+        elif utils.is_azure_pipelines():
             return "##[endgroup]"
     return ""
-
-
-def is_github_actions() -> bool:
-    return "GITHUB_ACTIONS" in os.environ
-
-
-def is_gitlab_ci() -> bool:
-    return "GITLAB_CI" in os.environ
-
-
-def is_azure_pipelines() -> bool:
-    return "TF_BUILD" in os.environ
-
 
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in) -> str:

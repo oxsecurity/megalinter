@@ -168,6 +168,7 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - detect
+      - --redact
       - --no-git
     cli_sarif_args:
       - --report-format
@@ -184,8 +185,8 @@ linters:
     cli_lint_errors_regex: "leaks found: ([0-9]+)"
     test_folder: gitleaks
     examples:
-      - "gitleaks detect --no-git --verbose --source ."
-      - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
+      - "gitleaks detect --redact --no-git --verbose --source ."
+      - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
         - FROM zricethezav/gitleaks:v8.16.1 as gitleaks

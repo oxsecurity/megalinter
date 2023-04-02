@@ -531,7 +531,6 @@ Add the following job in your `azure-pipelines.yaml` file
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
-            -e CI=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
@@ -753,7 +752,7 @@ See [mega-linter-runner installation instructions](https://megalinter.io/mega-li
 Example
 
 ```shell
-npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 Note: You can also use such command line in your custom CI/CD pipelines
