@@ -451,6 +451,7 @@
         "bottomrule",
         "btxg",
         "bucketname",
+        "BUILDID",
         "buildx",
         "builtins",
         "cacache",

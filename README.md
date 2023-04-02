@@ -12,7 +12,7 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter, by [![OX Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
+# MegaLinter, by [![OX Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2177&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -73,7 +73,7 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#megalinter)
+- [MegaLinter](#megalinter-by-)
   - [Table of Contents](#table-of-contents)
   - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
@@ -87,14 +87,15 @@ _Github PR reporter_
     - [Upgrade to MegaLinter v6](#upgrade-to-megalinter-v6)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
-    - [Azure Pipelines](#azure-pipelines)
     - [GitLab CI](#gitlab-ci)
+    - [Azure Pipelines](#azure-pipelines)
     - [Jenkins](#jenkins)
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
     - [Drone CI](#drone-ci)
-    - [Docker container](#docker)
+      - [(Optional) Adjusting trigger rules](#optional-adjusting-trigger-rules)
+    - [Docker container](#docker-container)
     - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
@@ -117,12 +118,15 @@ _Github PR reporter_
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
   - [Articles](#articles)
+    - [English](#english)
+    - [French](#french)
+    - [Videos](#videos)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
     - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
-      - [Global](#global)
+      - [Web Sites](#web-sites)
       - [Linters](#linters)
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
@@ -139,7 +143,7 @@ _Github PR reporter_
     - [Enhanced Documentation](#enhanced-documentation)
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
-    - [Improve robustness & stability](#improve-robustness--stability)
+    - [Improve robustness \& stability](#improve-robustness--stability)
   - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
@@ -507,7 +511,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
-
 ### Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -527,15 +530,10 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e CI=true \
-            -e TF_BUILD=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
@@ -571,7 +569,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
         }
     }
 }
@@ -693,7 +691,7 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
@@ -715,13 +713,13 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
-    
+
 trigger:
   event:
   - push
@@ -857,7 +855,7 @@ DISABLE: PHP
 - Run all linters except PHP_PHPSTAN and PHP_PSALM linters
 
 ```yaml
-DISABLE_LINTERS: 
+DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
 ```
@@ -1037,6 +1035,7 @@ You can show MegaLinter status with a badge in your repository README
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
 _If your main branch is **master** , replace **main** by **master** in URLs_
+
 ### Markdown
 
 - Format
@@ -1100,11 +1099,11 @@ PLUGINS:
 
 ### Plugins Catalog
 
-* [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
-* [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
-* [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
-* [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-* [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
+- [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
+- [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
+- [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+- [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
+- [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
 
 Submit a PR if you want your plugin to appear here :)
 
@@ -1253,7 +1252,6 @@ description: List of all contributors, websites and linters that help MegaLinter
 <a href="https://github.com/oxsecurity/megalinter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
-
 
 ### Sites referring to MegaLinter
 
