@@ -10270,6 +10270,12 @@
       "title": "REPOSITORY_GITLEAKS: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_GITLEAKS_ONLY_PR_COMMITS": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_ONLY_PR_COMMITS",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only PR commits on Pull Request",
+      "type": "boolean"
+    },
     "REPOSITORY_GIT_DIFF_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_ARGUMENTS",
       "description": "REPOSITORY_GIT_DIFF: User custom arguments to add in linter CLI call",
