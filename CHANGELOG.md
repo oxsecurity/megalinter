@@ -19,6 +19,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Documentation
 
 - Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 1.10.9 to **1.10.10** on 2023-04-02
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.12 to **0.0.13** on 2023-04-02
 <!-- linter-versions-end -->
 
 ## [v6.22.0] - 2023-04-01
