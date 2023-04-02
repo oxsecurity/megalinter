@@ -9,7 +9,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 
 ## rstfmt documentation
 
-- Version in MegaLinter: **0.0.12**
+- Version in MegaLinter: **0.0.13**
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 
 [![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
