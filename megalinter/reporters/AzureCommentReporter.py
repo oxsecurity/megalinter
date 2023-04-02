@@ -126,6 +126,7 @@ class AzureCommentReporter(Reporter):
             new_thread_result = git_client.create_thread(
                 thread_data, BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
             )
+            logging.info(str(new_thread_result))
             if new_thread_result.status_code == 200:
                 logging.debug(f"Posted Azure Pipelines comment: {thread_data}")
                 logging.info(
