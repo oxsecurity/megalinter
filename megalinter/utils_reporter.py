@@ -6,6 +6,7 @@ import urllib
 
 from megalinter import config, utils
 from megalinter.constants import (
+    DEFAULT_RELEASE,
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
@@ -124,7 +125,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 " if you use a MegaLinter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
-                build_version = os.environ.get("BUILD_VERSION", "v5")
+                build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = "v5" if len(build_version) > 20 else build_version
                 action_path = (
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
