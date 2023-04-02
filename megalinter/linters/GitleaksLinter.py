@@ -18,9 +18,12 @@ class GitleaksLinter(Linter):
             self.pr_source_sha, self.pr_target_sha = self.get_pr_data()
 
     def get_pr_data(self):
-        # Azure DevOps ref: https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
-        # GitHub ref: https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
-        # GitLab ref: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+        # Azure DevOps ref:
+        # https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+        # GitHub ref:
+        # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+        # GitLab ref:
+        # https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 
         pr_source_sha = config.get("REPOSITORY_GITLEAKS_PR_SOURCE_SHA")
         pr_target_sha = config.get("REPOSITORY_GITLEAKS_PR_TARGET_SHA")
