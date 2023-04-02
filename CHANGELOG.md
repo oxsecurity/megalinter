@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
+  - Fix failure of AzureCommentReporter when there is no pull request found in ENV vars
 
 - Documentation
 

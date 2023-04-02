@@ -40,12 +40,13 @@ class AzureCommentReporter(Reporter):
                 "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
             )
             if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
-                logging.warning(
+                logging.info(
                     "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_PULLREQUESTID\n"
                     + "You may need to configure a build validation policy to make it appear.\n"
                     + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
+                return
             SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
             BUILD_BUILDID = config.get("BUILD_BUILDID", config.get("BUILD_BUILD_ID"))
