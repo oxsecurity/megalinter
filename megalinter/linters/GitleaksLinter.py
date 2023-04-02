@@ -6,6 +6,7 @@ import json
 import os
 
 from git import Repo
+
 from megalinter import Linter, config, utils
 
 
@@ -65,7 +66,11 @@ class GitleaksLinter(Linter):
             cmd = list(filter(lambda a: a != "--no-git", cmd))
 
         if config.get("VALIDATE_ALL_CODEBASE") == "false" and self.pr_commits_scan == "true" and utils.is_pr():
-            if self.pr_target_sha is not None and self.pr_source_sha is not None and self.pr_target_sha != self.pr_source_sha:
+            if (
+                    self.pr_target_sha is not None
+                    and self.pr_source_sha is not None
+                    and self.pr_target_sha != self.pr_source_sha
+                ):
                 # `--log-opts <arg_value>` has been sent by user in REPOSITORY_GITLEAKS_ARGUMENTS
                 if "--log-opts" in cmd:
                     cmd.pop(cmd.index("--log-opts") + 1)
