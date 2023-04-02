@@ -15,6 +15,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
+
+- Documentation
+
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v6.22.1] - 2023-04-02
+
+- Core
   - Changed vars in AzureCommentReporter to reflects official Azure DevOps naming convention + fallback to keep backward compatibility, see [#2509](https://github.com/oxsecurity/megalinter/issues/2509)
   - Update AzureCommentReport to have only one MegaLinter thread instead of a new one for each run of MegaLinter
 
@@ -22,11 +31,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Updated usage scenario for Azure DevOps, see [#2509](https://github.com/oxsecurity/megalinter/issues/2509)
 
 - Linter versions upgrades
-  - [phpstan](https://phpstan.org/) from 1.10.9 to **1.10.10** on 2023-04-02
-  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.12 to **0.0.13** on 2023-04-02
-  - [checkov](https://www.checkov.io/) from 2.3.141 to **2.3.142** on 2023-04-02
-  - [checkov](https://www.checkov.io/) from 2.3.142 to **2.3.143** on 2023-04-02
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.3.141 to **2.3.145**
+  - [phpstan](https://phpstan.org/) from 1.10.9 to **1.10.10**
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.12 to **0.0.13**
 
 ## [v6.22.0] - 2023-04-01
 
