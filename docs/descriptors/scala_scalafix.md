@@ -230,7 +230,7 @@ Less common options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN curl -fLo coursier https://git.io/coursier-cli && \
+RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 # Linter install
