@@ -1,18 +1,18 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2181&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1453&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2182&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1454&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=728&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=55919&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=55930&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 36875 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6991 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 36883 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  6992 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2381 |
-| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1953 |
+| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1954 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1880 |
-| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1847 |
+| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1848 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1619 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1181 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1089 |
@@ -299,6 +299,7 @@
 | [matejkosiarcik/azlint](https://github.com/matejkosiarcik/azlint)                                                                                                               |     2 |
 | [matejkosiarcik/dotfiles](https://github.com/matejkosiarcik/dotfiles)                                                                                                           |     2 |
 | [mimmi20/coding-standard](https://github.com/mimmi20/coding-standard)                                                                                                           |     2 |
+| [KohaAloha/Koha-Dev](https://github.com/KohaAloha/Koha-Dev)                                                                                                                     |     2 |
 | [devcontainers-community/templates](https://github.com/devcontainers-community/templates)                                                                                       |     2 |
 | [PowerDNS-Admin/pda-next](https://github.com/PowerDNS-Admin/pda-next)                                                                                                           |     2 |
 | [bzkf/diz-in-a-box](https://github.com/bzkf/diz-in-a-box)                                                                                                                       |     2 |
