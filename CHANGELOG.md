@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Fix failure of AzureCommentReporter when there is no pull request found in ENV vars
+  - Fix HTML comment appearing in Azure Pull Request mail notifications
 
 - Documentation
 

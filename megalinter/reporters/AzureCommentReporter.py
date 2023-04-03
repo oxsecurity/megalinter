@@ -89,7 +89,7 @@ class AzureCommentReporter(Reporter):
             existing_thread_comment_id = None
             for existing_thread in existing_threads:
                 for comment in existing_thread.comments or []:
-                    if "<!-- MegaLinter Status Report -->" in (comment.content or ""):
+                    if "MegaLinter is graciously provided by" in (comment.content or ""):
                         existing_thread_comment = existing_thread
                         existing_thread_comment_id = existing_thread.comments[0].id
                         existing_thread_id = existing_thread.id
