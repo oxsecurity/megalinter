@@ -15,17 +15,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
 
 - Core
-  - Fix failure of AzureCommentReporter when there is no pull request found in ENV vars
-  - Fix HTML comment appearing in Azure Pull Request mail notifications
 
 - Documentation
 
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 2.3.145 to **2.3.148** on 2023-04-03
-  - [rubocop](https://rubocop.org/) from 1.48.1 to **1.49.0** on 2023-04-03
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.3 to **6.14.4** on 2023-04-03
-  - [pylint](https://pylint.pycqa.org) from 2.17.1 to **2.17.2** on 2023-04-03
 <!-- linter-versions-end -->
+
+## [v6.22.2] - 2023-04-03
+
+- Core
+  - Fix failure of AzureCommentReporter when there is no pull request found in ENV vars
+  - Fix HTML comment appearing in Azure Pull Request mail notifications
+
+- Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.3 to **6.14.4**
+  - [checkov](https://www.checkov.io/) from 2.3.145 to **2.3.149**
+  - [pylint](https://pylint.pycqa.org) from 2.17.1 to **2.17.2** on 2023-04-03
+  - [rubocop](https://rubocop.org/) from 1.48.1 to **1.49.0** on 2023-04-03
 
 ## [v6.22.1] - 2023-04-02
 
