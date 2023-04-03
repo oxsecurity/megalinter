@@ -130,7 +130,7 @@ class GitlabCommentReporter(Reporter):
 
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
-                if "<!-- MegaLinter Status Report -->" in comment.body:
+                if "MegaLinter is graciously provided by" in comment.body:
                     existing_comment = comment
 
             # Process comment
