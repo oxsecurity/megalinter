@@ -67,10 +67,11 @@ class GitleaksLinter(Linter):
     # Manage presence of --no-git in command line
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
-        # --no-git has been sent by user in REPOSITORY_GITLEAKS_ARGUMENTS
+        # --no-git / --redact has been sent by user in REPOSITORY_GITLEAKS_ARGUMENTS
         # make sure that it is only once in the arguments list
-        if "--no-git" in self.cli_lint_user_args:
+        if "--redact" or "--no-git" in self.cli_lint_user_args:
             cmd = list(dict.fromkeys(cmd))
+
         # --no-git has been sent by default from ML descriptor
         # but as it is a git repo, remove all --no-git from arguments list
         elif "--no-git" in cmd and utils.is_git_repo(self.workspace):
