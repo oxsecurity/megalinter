@@ -14,12 +14,11 @@ Requires the following vars sent to docker run:
 import logging
 import urllib.parse
 
-import requests
 from azure.devops.connection import Connection
 from azure.devops.released.git.git_client import GitClient
-from msrest.authentication import BasicTokenAuthentication
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
+from msrest.authentication import BasicTokenAuthentication
 
 
 class AzureCommentReporter(Reporter):
@@ -35,19 +34,19 @@ class AzureCommentReporter(Reporter):
     def produce_report(self):
         # Post thread on Azure pull request
         if config.get("SYSTEM_ACCESSTOKEN", "") != "":
-
             # Collect variables
             SYSTEM_COLLECTIONURI = config.get("SYSTEM_COLLECTIONURI")
             SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
                 "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
             )
             if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
-                logging.warning(
+                logging.info(
                     "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_PULLREQUESTID\n"
                     + "You may need to configure a build validation policy to make it appear.\n"
                     + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
+                return
             SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
             BUILD_BUILDID = config.get("BUILD_BUILDID", config.get("BUILD_BUILD_ID"))
@@ -90,7 +89,9 @@ class AzureCommentReporter(Reporter):
             existing_thread_comment_id = None
             for existing_thread in existing_threads:
                 for comment in existing_thread.comments or []:
-                    if "<!-- MegaLinter Status Report -->" in (comment.content or ""):
+                    if "MegaLinter is graciously provided by" in (
+                        comment.content or ""
+                    ):
                         existing_thread_comment = existing_thread
                         existing_thread_comment_id = existing_thread.comments[0].id
                         existing_thread_id = existing_thread.id
