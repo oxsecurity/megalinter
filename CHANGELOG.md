@@ -19,6 +19,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Documentation
 
 - Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
+  - [checkov](https://www.checkov.io/) from 2.3.149 to **2.3.150** on 2023-04-04
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
