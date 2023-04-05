@@ -18,6 +18,12 @@ on:
       actor:
         description: "The user who executed the slash command"
         required: true
+      checkout-ref:
+        description: "The reference to pass to 'ref' to checkout action"
+        required: true
+      checkout-repository:
+        description: "The repository to pass to 'repository' to tcheckout action"
+        required: false
   repository_dispatch:
     types: [build-command]
 jobs:
@@ -56,7 +62,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
-          ref: refs/pull/${{ github.event.inputs.issue-number }}/head
+          ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
         uses: actions/setup-python@v4.5.0
         with:
