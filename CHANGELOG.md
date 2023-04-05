@@ -24,6 +24,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
   - [checkov](https://www.checkov.io/) from 2.3.149 to **2.3.150** on 2023-04-04
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.23 to **1.6.24** on 2023-04-05
+  - [phpstan](https://phpstan.org/) from 1.10.10 to **1.10.11** on 2023-04-05
+  - [checkov](https://www.checkov.io/) from 2.3.150 to **2.3.152** on 2023-04-05
+  - [semgrep](https://semgrep.dev/) from 1.16.0 to **1.17.0** on 2023-04-05
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.0 to **0.45.1** on 2023-04-05
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
