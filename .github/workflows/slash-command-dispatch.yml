@@ -30,7 +30,7 @@ jobs:
             }
       - name: Dump the get-pr payload context
         env:
-          GETPR_CONTEXT: ${{ toJson(steps.get-pr.outputs) }}
+          GETPR_CONTEXT: ${{ toJson(steps.get-pr.outputs.result) }}
         run: echo "$GETPR_CONTEXT"
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
