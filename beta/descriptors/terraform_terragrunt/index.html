@@ -2403,7 +2403,7 @@
 <p><a href="https://github.com/gruntwork-io/terragrunt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/gruntwork-io/terragrunt/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/gruntwork-io/terragrunt?sort=semver"/></a> <a href="https://github.com/gruntwork-io/terragrunt/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/gruntwork-io/terragrunt"/></a></p>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.45.0</strong></li>
+<li>Version in MegaLinter: <strong>0.45.1</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -2593,9 +2593,10 @@ GLOBAL OPTIONS:
    terragrunt-strict-validate                   Sets strict mode for the validate-inputs command. By default, strict mode is off. When this flag is passed, strict mode is turned on. When strict mode is turned off, the validate-inputs command will only return an error if required inputs are missing from all input sources (env vars, var files, etc). When strict mode is turned on, an error will be returned if required inputs are missing OR if unused variables are passed to Terragrunt.
    terragrunt-json-out                          The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json.
    terragrunt-use-partial-parse-config-cache    Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided.
+   terragrunt-include-module-prefix             When this flag is set output from Terraform sub-commands is prefixed with module path.
 
 VERSION:
-   v0.45.0
+   v0.45.1
 
 AUTHOR(S):
    Gruntwork &lt;www.gruntwork.io&gt;
