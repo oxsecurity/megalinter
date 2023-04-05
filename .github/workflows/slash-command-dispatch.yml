@@ -12,7 +12,7 @@ jobs:
         run: echo "$EVENT_CONTEXT"
       - uses: xt0rted/pull-request-comment-branch@v2
         id: comment-branch
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v3
         id: get-pr
         with:
           script: |
