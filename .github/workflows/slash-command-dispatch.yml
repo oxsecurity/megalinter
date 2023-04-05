@@ -12,7 +12,7 @@ jobs:
         run: echo "$EVENT_CONTEXT"
       - uses: xt0rted/pull-request-comment-branch@v2
         id: comment-branch
-      - uses: actions/github-script@v3
+      - uses: actions/github-script@v6
         id: get-pr
         with:
           script: |
@@ -23,7 +23,7 @@ jobs:
             }
             core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
             try {
-              const result = await github.pulls.get(request)
+              const result = await github.rest.pulls.get(request)
               return result.data
             } catch (err) {
               core.setFailed(`Request failed with error ${err}`)
