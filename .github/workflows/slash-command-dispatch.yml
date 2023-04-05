@@ -6,10 +6,16 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
+      - name: Dump the event payload context
+        env:
+          EVENT_CONTEXT: ${{ toJson(github.event) }}
+        run: echo "$EVENT_CONTEXT"
+      - uses: xt0rted/pull-request-comment-branch@v2
+        id: comment-branch
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
         id: scd
-        if: github.event.issue.pull_request
+        if: success()
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -22,6 +28,7 @@ jobs:
             comment-id=${{ github.event.comment.id }}
             issue-number=${{ github.event.issue.number }}
             actor=${{ github.actor }}
+            checkout-ref=${{ steps.comment-branch.outputs.head_ref }}
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v2
