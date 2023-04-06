@@ -391,7 +391,10 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+
+# kubescape installation
+    && apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
 
 # checkmake installation

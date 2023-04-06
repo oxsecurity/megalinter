@@ -70,7 +70,6 @@ linters:
               && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
               && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
               && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
-
   # HELM LINT
   - linter_name: helm
     name: KUBERNETES_HELM
@@ -95,13 +94,14 @@ linters:
     install:
       apk:
         - helm
-   # KUBESCAPE
-   - linter_name: kubescape
+    # KUBESCAPE
+  - linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
-    linter_repo: https://github.com/kubescape/kubescape
+    linter_repo: https://www.armosec.io/kubescape/
     linter_url: https://www.armosec.io/kubescape/
     files_sub_directory: ""
-    test_folder: kubernetes_sec
+    test_folder: kubernetes_kubescape
+    linter_spdx_license: Apache-2.0
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -109,9 +109,6 @@ linters:
       - cupcake
       - security
       - ci_light
-    # active_only_if_file_found:
-    #   - Chart.yml
-    #   - Chart.yaml
     cli_lint_mode: project
     cli_help_arg_name: help
     cli_version_arg_name: version
@@ -119,11 +116,16 @@ linters:
       - "scan"
       - "framework"
       - "DevOpsBest"
+    cli_sarif_args: ["--format", "sarif", "--output", "kubescape_sarif"]
     linter_banner_image_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/stacked/color/kubescape-stacked-color.svg
     linter_text: |
       `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
     examples:
       - "kubescape scan ."
+    ide:
+      vscode:
+        - name: Kubescape
+          url: https://marketplace.visualstudio.com/items?itemName=kubescape.kubescape
     install:
       dockerfile:
         - |

@@ -352,6 +352,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
+# kubescape installation
+    && apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
+
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 

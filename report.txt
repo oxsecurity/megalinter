@@ -1,0 +1,226 @@
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;93m
+Controls: 212 (Failed: 0, Passed: 212, Action Required: 0)
+[0m[1;93mFailed Resources by Severity: Critical — 0, High — 0, Medium — 0, Low — 0
+
+[0m+----------+-------------------------------------------------------+------------------+---------------+--------------+
+| SEVERITY |                     CONTROL NAME                      | FAILED RESOURCES | ALL RESOURCES | % RISK-SCORE |
++----------+-------------------------------------------------------+------------------+---------------+--------------+
+| [31;1mCritical[0m | API server insecure port is enabled                   |        0         |       0       |      0%      |
+| [31;1mCritical[0m | Disable anonymous access to Kubelet service           |        0         |       0       |      0%      |
+| [31;1mCritical[0m | Enforce Kubelet client TLS authentication             |        0         |       0       |      0%      |
+| [31;1mCritical[0m | CVE-2022-39328-grafana-auth-bypass                    |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Forbidden Container Registries                        |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Resources memory limit and request                    |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Resource limits                                       |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Applications credentials in configuration files       |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | List Kubernetes secrets                               |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Host PID/IPC privileges                               |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | HostNetwork access                                    |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Writable hostPath mount                               |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Insecure capabilities                                 |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | HostPath mount                                        |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Resources CPU limit and request                       |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Instance Metadata API                                 |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Privileged container                                  |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CVE-2021-25742-nginx-ingress-snippet-annotation-vu... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Workloads with Critical vulnerabilities exposed to... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Workloads with RCE vulnerabilities exposed to exte... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CVE-2022-23648-containerd-fs-escape                   |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | RBAC enabled                                          |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CVE-2022-47633-kyverno-signature-bypass               |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.11 Ensure that the etcd data directory per... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.12 Ensure that the etcd data directory own... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.13 Ensure that the admin.conf file permiss... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.14 Ensure that the admin.conf file ownersh... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.19 Ensure that the Kubernetes PKI director... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.20 Ensure that the Kubernetes PKI certific... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.1.21 Ensure that the Kubernetes PKI key file... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.1 Ensure that the API Server --anonymous-a... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.2 Ensure that the API Server --token-auth-... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.4 Ensure that the API Server --kubelet-cli... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.5 Ensure that the API Server --kubelet-cer... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.6 Ensure that the API Server --authorizati... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.8 Ensure that the API Server --authorizati... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.10 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.16 Ensure that the API Server --secure-por... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.18 Ensure that the API Server --audit-log-... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.25 Ensure that the API Server --etcd-certf... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.26 Ensure that the API Server --tls-cert-f... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.27 Ensure that the API Server --client-ca-... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.28 Ensure that the API Server --etcd-cafil... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.29 Ensure that the API Server --encryption... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.2.30 Ensure that encryption providers are ap... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-1.3.5 Ensure that the Controller Manager --roo... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-2.1 Ensure that the --cert-file and --key-file... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-2.2 Ensure that the --client-cert-auth argumen... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-2.4 Ensure that the --peer-cert-file and --pee... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-2.5 Ensure that the --peer-client-cert-auth ar... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-2.7 Ensure that a unique Certificate Authority... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.1.7 Ensure that the certificate authorities ... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.1.8 Ensure that the client certificate autho... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.1.9 If the kubelet config.yaml configuration... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-3.1.4 Ensure that the kubelet configuration fi... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-3.2.1 Ensure that the Anonymous Auth is Not En... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-3.2.10 Ensure that the --rotate-certificates a... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.1.1 Ensure that the cluster-admin role is on... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.1.3 Minimize wildcard use in Roles and Clust... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.2.2 Minimize the admission of privileged con... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.2.11 Minimize the admission of Windows HostP... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.7.3 Apply Security Context to Your Pods and ... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-4.2.1 Minimize the admission of privileged con... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.2.1 Prefer using dedicated EKS Service Accou... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.4.1 Restrict Access to the Control Plane End... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.4.2 Ensure clusters are created with Private... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.4.3 Ensure clusters are created with Private... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | CIS-5.5.1 Manage Kubernetes RBAC users with AWS IA... |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Verify image signature                                |        0         |       0       |      0%      |
+| [33;1mHigh[0m     | Check if signature exists                             |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Exec into container                                   |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Data Destruction                                      |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Non-root containers                                   |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Allow privilege escalation                            |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Mount service principal                               |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Exposed sensitive interfaces                          |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Ingress and Egress blocked                            |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Delete Kubernetes events                              |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Automatic mapping of service account                  |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Cluster-admin binding                                 |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CoreDNS poisoning                                     |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Malicious admission controller (mutating)             |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Container hostPort                                    |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Access container service account                      |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Cluster internal networking                           |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Linux hardening                                       |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Configured liveness probe                             |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CVE-2021-25741 - Using symlink for arbitrary host ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Sudo in container entrypoint                          |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Portforwarding privileges                             |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | No impersonation                                      |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Secret/ETCD encryption enabled                        |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Audit logs enabled                                    |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Containers mounting Docker socket                     |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Images from allowed registry                          |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CVE-2022-0185-linux-kernel-container-escape           |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CVE-2022-24348-argocddirtraversal                     |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Workloads with excessive amount of vulnerabilities    |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CVE-2022-0492-cgroups-container-escape                |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.1 Ensure that the API server pod specifica... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.2 Ensure that the API server pod specifica... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.3 Ensure that the controller manager pod s... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.4 Ensure that the controller manager pod s... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.5 Ensure that the scheduler pod specificat... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.6 Ensure that the scheduler pod specificat... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.7 Ensure that the etcd pod specification f... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.8 Ensure that the etcd pod specification f... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.9 Ensure that the Container Network Interf... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.10 Ensure that the Container Network Inter... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.15 Ensure that the scheduler.conf file per... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.16 Ensure that the scheduler.conf file own... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.17 Ensure that the controller-manager.conf... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.1.18 Ensure that the controller-manager.conf... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.3 Ensure that the API Server --DenyService... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.7 Ensure that the API Server --authorizati... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.9 Ensure that the admission control plugin... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.11 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.12 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.15 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.19 Ensure that the API Server --audit-log-... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.20 Ensure that the API Server --audit-log-... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.21 Ensure that the API Server --audit-log-... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.22 Ensure that the API Server --request-ti... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.23 Ensure that the API Server --service-ac... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.24 Ensure that the API Server --service-ac... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.2.31 Ensure that the API Server only makes u... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.3.1 Ensure that the Controller Manager --ter... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.3.3 Ensure that the Controller Manager --use... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.3.4 Ensure that the Controller Manager --ser... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.3.6 Ensure that the Controller Manager Rotat... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.3.7 Ensure that the Controller Manager --bin... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-1.4.2 Ensure that the Scheduler --bind-address... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-2.3 Ensure that the --auto-tls argument is not... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-2.6 Ensure that the --peer-auto-tls argument i... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.1 Ensure that a minimal audit policy is cr... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.2 Ensure that the audit policy covers key ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.1 Ensure that the kubelet service file per... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.2 Ensure that the kubelet service file own... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.3 If proxy kubeconfig file exists ensure p... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.4 If proxy kubeconfig file exists ensure o... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.5 Ensure that the --kubeconfig kubelet.con... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.1.2 Ensure that the kubelet kubeconfig file ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.2 Ensure that the --authorization-mode arg... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.3 Ensure that a Client CA File is Configur... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.4 Ensure that the --read-only-port is disa... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.11 Ensure that the --rotate-certificates a... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.2.11 Ensure that the RotateKubeletServerCert... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.13 Ensure that the Kubelet only makes use ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.2 Minimize access to secrets                  |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.4 Minimize access to create pods              |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.5 Ensure that default service accounts are... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.6 Ensure that Service Account Tokens are o... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.1.8 Limit use of the Bind, Impersonate and E... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.1 Ensure that the cluster has at least one... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.3 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.4 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.5 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.6 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.7 Minimize the admission of root container... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.8 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.9 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.10 Minimize the admission of containers wi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.12 Minimize the admission of HostPath volu... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.2.13 Minimize the admission of containers wh... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.3.1 Ensure CNI plugin supports network polic... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.3.2 Ensure that all Namespaces have Network ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.4.1 Prefer using secrets as files over secre... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.4.2 Consider external secret storage            |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.6.1 Create administrative boundaries between... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.7.2 Ensure that the seccomp profile is set t... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.6.3 The default namespace should not be used    |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.2 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.3 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.4 Minimize the admission of containers wis... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.5 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.6 Minimize the admission of root container... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.7 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.2.8 Minimize the admission of containers wit... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.1.1 Ensure Image Vulnerability Scanning usin... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.1.3 Minimize cluster access to read-only for... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.4.4 Ensure Network Policy is Enabled and set... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-5.4.5 Encrypt traffic to HTTPS load balancers ... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-4.4.2 Consider external secret storage            |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.1.3 Ensure that the kubelet configuration fi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | CIS-3.1.1 Ensure that the kubeconfig file permissi... |        0         |       0       |      0%      |
+| [36;1mMedium[0m   | Deprecated Kubernetes image registry                  |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Access Kubernetes dashboard                           |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Immutable container filesystem                        |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Configured readiness probe                            |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Kubernetes CronJob                                    |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Malicious admission controller (validating)           |        0         |       0       |      0%      |
+| [37;1mLow[0m      | SSH server running inside container                   |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Network mapping                                       |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Pods in default namespace                             |        0         |       0       |      0%      |
+| [37;1mLow[0m      | PSP enabled                                           |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Naked PODs                                            |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Image pull policy on latest tag                       |        0         |       0       |      0%      |
+| [37;1mLow[0m      | Label usage for resources                             |        0         |       0       |      0%      |
+| [37;1mLow[0m      | K8s common labels usage                               |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CVE-2022-3172-aggregated-API-server-redirect          |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-1.2.13 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-1.2.14 Ensure that the admission control plugi... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-1.2.17 Ensure that the API Server --profiling ... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-1.3.2 Ensure that the Controller Manager --pro... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-1.4.1 Ensure that the Scheduler --profiling ar... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.2.5 Ensure that the --streaming-connection-i... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.2.6 Ensure that the --protect-kernel-default... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.2.7 Ensure that the --make-iptables-util-cha... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.2.8 Ensure that the --hostname-override argu... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.2.9 Ensure that the --eventRecordQPS argumen... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-3.3.1 Prefer using a container-optimized OS wh... |        0         |       0       |      0%      |
+| [37;1mLow[0m      | CIS-5.6.1 Consider Fargate for running untrusted w... |        0         |       0       |      0%      |
++----------+-------------------------------------------------------+------------------+---------------+--------------+
+|          |                   RESOURCE SUMMARY                    |        0         |       0       |    0.00%     |
++----------+-------------------------------------------------------+------------------+---------------+--------------+
+[1;93mFRAMEWORKS: AllControls (risk: 0.00), NSA (risk: 0.00), MITRE (risk: 0.00), ArmoBest (risk: 0.00), cis-v1.23-t1.0.1 (risk: 0.00), cis-eks-t1.2.0 (risk: 0.00), NSA (risk: 0.00), MITRE (risk: 0.00), DevOpsBest (risk: 0.00), AllControls (risk: 0.00)
+[0m
