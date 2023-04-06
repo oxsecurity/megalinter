@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
 
 - Core
+  - Fix issue preventing plugins to work with flavors
 
 - Documentation
 
