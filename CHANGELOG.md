@@ -29,6 +29,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.150 to **2.3.152** on 2023-04-05
   - [semgrep](https://semgrep.dev/) from 1.16.0 to **1.17.0** on 2023-04-05
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.0 to **0.45.1** on 2023-04-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.15.31 to **0.16.1** on 2023-04-06
+  - [djlint](https://djlint.com/) from 1.19.16 to **1.19.17** on 2023-04-06
+  - [puppet-lint](http://puppet-lint.com/) from 3.3.0 to **3.4.0** on 2023-04-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.301 to **1.1.302** on 2023-04-06
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.260 to **0.0.261** on 2023-04-06
+  - [semgrep](https://semgrep.dev/) from 1.17.0 to **1.17.1** on 2023-04-06
+  - [syft](https://github.com/anchore/syft) from 0.76.0 to **0.76.1** on 2023-04-06
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.3 to **0.8.4** on 2023-04-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.2 to **2.0.3** on 2023-04-06
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
