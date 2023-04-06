@@ -194,9 +194,6 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 
-# kubescape installation
-    && apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
-
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
