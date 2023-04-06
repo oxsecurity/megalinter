@@ -83,7 +83,9 @@ def check_active_linters_match_flavor(active_linters):
     flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
     for active_linter in active_linters:
-        if active_linter.name not in flavor_linters:
+        if (
+            active_linter.name not in flavor_linters
+        ) and active_linter.is_plugin is False:
             missing_linters += [active_linter.name]
             active_linter.is_active = False
     # Manage cases where linters are missing in flavor
