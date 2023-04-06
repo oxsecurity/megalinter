@@ -23,7 +23,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.79**
+- Version in MegaLinter: **2.3.152**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -62,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                            | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor              |       113        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor              |       114        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                 |        22        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -109,6 +109,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
                [--evaluate-variables EVALUATE_VARIABLES] [-ca CA_CERTIFICATE]
+               [--no-cert-verify]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
@@ -122,6 +123,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
+               [--openai-api-key OPENAI_API_KEY]
 
 Infrastructure as code static analysis
 
@@ -336,6 +338,11 @@ options:
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
                         Custom CA certificate (bundle) file [env var:
                         BC_CA_BUNDLE]
+  --no-cert-verify      Skip SSL certificate verification. Use this to bypass
+                        errors related to SSL certificates. Warning: this
+                        should only be used for testing purposes. Skipping
+                        certificate verification is dangerous as invalid and
+                        falsified certificates cannot be detected.
   --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
                         Directory containing the hcl code used to generate a
                         given plan file. Use with -f.
@@ -397,6 +404,13 @@ options:
                         will scan the history of commits for secrets
   --secrets-history-timeout SECRETS_HISTORY_TIMEOUT
                         maximum time to stop the scan
+  --openai-api-key OPENAI_API_KEY
+                        Add an OpenAI API key to enhance finding guidelines by
+                        sending violated policies and resource code to OpenAI
+                        to request remediation guidance. This will use your
+                        OpenAI credits. Set your number of findings that will
+                        receive enhanced guidelines using
+                        CKV_OPENAI_MAX_FINDINGS [env var: CKV_OPENAI_API_KEY]
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml

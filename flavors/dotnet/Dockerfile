@@ -23,7 +23,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.0 as gitleaks
+FROM zricethezav/gitleaks:v8.16.1 as gitleaks
 #FROM__END
 
 ##################
@@ -141,6 +141,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
+                stylelint-config-sass-guidelines \
                 stylelint-scss \
                 gherkin-lint \
                 graphql \
@@ -156,7 +157,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
                 markdownlint-cli \
-                markdown-link-check \
+                markdown-link-check@3.10.3 \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \
@@ -369,7 +370,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # misspell installation
     && ML_THIRD_PARTY_DIR="/third-party/misspell" \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
     && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \

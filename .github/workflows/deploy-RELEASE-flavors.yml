@@ -84,11 +84,25 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Retag and Push Images
-        uses: akhilerm/tag-push-action@v2.1.0
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+
+      - name: Build Image
+        uses: docker/build-push-action@v4
         with:
-          src: docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
-          dst: |
+          context: .
+          file: Dockerfile-release
+          platforms: linux/amd64
+          build-args: |
+            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.event.release.tag_name }}
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
             docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v6
             docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
             docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest

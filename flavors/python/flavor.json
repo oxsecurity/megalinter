@@ -41,6 +41,7 @@
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
         "PYTHON_PYRIGHT",
+        "PYTHON_RUFF",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",

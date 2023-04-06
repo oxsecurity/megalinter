@@ -134,6 +134,8 @@ jobs:
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[MegaLinter] Apply linters fixes"
+          commit_user_name: megalinter-bot
+          commit_user_email: nicolas.vuillamy@ox.security
 ```
 
 </details>
@@ -170,7 +172,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
-
 ## Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -190,15 +191,10 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e CI=true \
-            -e TF_BUILD=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
@@ -234,7 +230,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
         }
     }
 }
@@ -356,7 +352,7 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
@@ -378,13 +374,13 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
-    
+
 trigger:
   event:
   - push

@@ -14,7 +14,6 @@ description: List of all contributors, websites and linters that help MegaLinter
   <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
 
-
 ## Sites referring to MegaLinter
 
 ### Web Sites

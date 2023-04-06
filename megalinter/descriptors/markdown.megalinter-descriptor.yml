@@ -107,14 +107,18 @@ linters:
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
     cli_lint_mode: list_of_files
     config_file_name: .markdown-link-check.json
+    cli_lint_extra_args:
+      - --quiet
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    # Unpin once https://github.com/tcort/markdown-link-check/issues/246 is fixed.
+    downgraded_version: true
     install:
       npm:
-        - markdown-link-check
+        - markdown-link-check@3.10.3
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true

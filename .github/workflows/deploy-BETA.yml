@@ -40,7 +40,7 @@ jobs:
 
   build:
     # Name the Job
-    name: Deploy Docker Image - PROD
+    name: Deploy Docker Image - BETA
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run this on the main repo
@@ -102,7 +102,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=beta
           load: false
           push: true
           secrets: |
