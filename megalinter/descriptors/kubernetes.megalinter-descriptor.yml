@@ -97,9 +97,10 @@ linters:
     # KUBESCAPE
   - linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
-    linter_repo: https://www.armosec.io/kubescape/
-    linter_url: https://www.armosec.io/kubescape/
+    linter_repo: https://github.com/kubescape/kubescape
+    linter_url: https://github.com/kubescape/kubescape
     test_folder: kubernetes_kubescape
+    linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
     linter_spdx_license: Apache-2.0
     can_output_sarif: true
     cli_lint_mode: project
@@ -110,7 +111,6 @@ linters:
       - "framework"
       - "DevOpsBest"
     cli_sarif_args: ["--format", "sarif", "--output", "kubescape_sarif"]
-    linter_banner_image_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/stacked/color/kubescape-stacked-color.svg
     linter_text: |
       `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
     examples:
