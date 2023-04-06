@@ -99,16 +99,9 @@ linters:
     name: KUBERNETES_KUBESCAPE
     linter_repo: https://www.armosec.io/kubescape/
     linter_url: https://www.armosec.io/kubescape/
-    files_sub_directory: ""
     test_folder: kubernetes_kubescape
     linter_spdx_license: Apache-2.0
     can_output_sarif: true
-    # descriptor_flavors:
-    #   - all_flavors # Applicable to CI in any language project
-    #   - terraform
-    #   - cupcake
-    #   - security
-    #   - ci_light
     cli_lint_mode: project
     cli_help_arg_name: help
     cli_version_arg_name: version
@@ -130,3 +123,9 @@ linters:
       dockerfile:
         - |
           RUN apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+    # descriptor_flavors:
+    #   - all_flavors # Applicable to CI in any language project
+    #   - terraform
+    #   - cupcake
+    #   - security
+    #   - ci_light
