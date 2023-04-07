@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Fix issue preventing plugins to work with flavors
+  - Upgrade base Docker image to python:3.11.3-alpine3.17
 
 - Documentation
 
