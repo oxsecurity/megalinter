@@ -87,9 +87,11 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettier  && \
-       npm audit fix --audit-level=critical || true \
+    echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
+    && echo "Changing owner of node_modules files..." \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
+    && echo "Removing extra node_module files..." \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
