@@ -474,7 +474,7 @@ def build_dockerfile(
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + "  && \\\n"
             + '       echo "Fixing audit issues with npm..." \\\n'
-        #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
+            #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    && echo "Cleaning npm cache..." \\\n'
             + "    && npm cache clean --force || true \\\n"
             + '    && echo "Changing owner of node_modules files..." \\\n'
