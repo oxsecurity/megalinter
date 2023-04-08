@@ -473,7 +473,7 @@ def build_dockerfile(
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + "  && \\\n"
-            + '       echo "Fixing audit issues with npm..." \\\n'
+            #    + '       echo "Fixing audit issues with npm..." \\\n'
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    && echo "Cleaning npm cache..." \\\n'
             + "    && npm cache clean --force || true \\\n"

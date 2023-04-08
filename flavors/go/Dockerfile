@@ -153,8 +153,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 cspell \
                 sql-lint \
                 tekton-lint  && \
-       echo "Fixing audit issues with npm..." \
-    && npm audit fix --audit-level=critical || true \
     && echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files..." \

@@ -89,8 +89,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint \
                 eslint-plugin-jsonc \
                 @microsoft/eslint-formatter-sarif  && \
-       echo "Fixing audit issues with npm..." \
-    && npm audit fix --audit-level=critical || true \
     && echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files..." \

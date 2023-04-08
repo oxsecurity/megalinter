@@ -88,8 +88,6 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default  && \
-       echo "Fixing audit issues with npm..." \
-    && npm audit fix --audit-level=critical || true \
     && echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files..." \
