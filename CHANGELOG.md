@@ -18,12 +18,30 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
 
 - Core
+  - Fix issue preventing plugins to work with flavors
+  - Upgrade create-pull-request and create-or-update-comment GitHub Actions
+  - Increase auto-update-linters GitHub Action timeout
+  - Upgrade base Docker image to python:3.11.3-alpine3.17
 
 - Documentation
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
   - [checkov](https://www.checkov.io/) from 2.3.149 to **2.3.150** on 2023-04-04
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.23 to **1.6.24** on 2023-04-05
+  - [phpstan](https://phpstan.org/) from 1.10.10 to **1.10.11** on 2023-04-05
+  - [checkov](https://www.checkov.io/) from 2.3.150 to **2.3.152** on 2023-04-05
+  - [semgrep](https://semgrep.dev/) from 1.16.0 to **1.17.0** on 2023-04-05
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.0 to **0.45.1** on 2023-04-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.15.31 to **0.16.1** on 2023-04-06
+  - [djlint](https://djlint.com/) from 1.19.16 to **1.19.17** on 2023-04-06
+  - [puppet-lint](http://puppet-lint.com/) from 3.3.0 to **3.4.0** on 2023-04-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.301 to **1.1.302** on 2023-04-06
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.260 to **0.0.261** on 2023-04-06
+  - [semgrep](https://semgrep.dev/) from 1.17.0 to **1.17.1** on 2023-04-06
+  - [syft](https://github.com/anchore/syft) from 0.76.0 to **0.76.1** on 2023-04-06
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.3 to **0.8.4** on 2023-04-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.2 to **2.0.3** on 2023-04-06
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
