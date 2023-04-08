@@ -34,12 +34,12 @@ jobs:
         env:
           GETPR_CONTEXT: ${{ toJson(steps.get-pr.outputs.result) }}
         run: echo "$GETPR_CONTEXT"
-      - run: echo "$GETPR_REF"
-        env: 
-          GETPR_REF: ${{ steps.get-pr.head_ref }}
-      - run: echo "$GETPR_REPO"
-        env: 
-          GETPR_REPO: ${{ steps.get-pr.head_repo_full_name }}
+      - env: 
+          GETPR_REF: ${{ steps.get-pr.outputs.head_ref }}
+        run: echo "$GETPR_REF"
+      - env: 
+          GETPR_REPO: ${{ steps.get-pr.outputs.head_repo_full_name }}
+        run: echo "$GETPR_REPO"
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
         id: scd
@@ -56,8 +56,8 @@ jobs:
             comment-id=${{ github.event.comment.id }}
             issue-number=${{ github.event.issue.number }}
             actor=${{ github.actor }}
-            checkout-ref=${{ steps.get-pr.head_ref }}
-            checkout-repository=${{ steps.get-pr.head-repo_full_name }}
+            checkout-ref=${{ steps.get-pr.outputs.head_ref }}
+            checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v2
