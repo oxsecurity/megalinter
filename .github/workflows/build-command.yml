@@ -61,13 +61,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ github.event.inputs.repository }}
+          repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
         uses: actions/setup-python@v4.5.0
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
-          python-version: 3.11.2 # optional
+          python-version: 3.11.3 # optional
           # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
           cache: pip # optional
       - run: pip install -r requirements.dev.txt
