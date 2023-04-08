@@ -473,9 +473,13 @@ def build_dockerfile(
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + "  && \\\n"
-            + "       npm audit fix --audit-level=critical || true \\\n"
+            + "       echo \"Fixing audit issues with npm...\" \\\n"
+            + "    && npm audit fix --audit-level=critical || true \\\n"
+            + "    && echo \"Cleaning npm cache...\" \\\n"
             + "    && npm cache clean --force || true \\\n"
+            + "    && echo \"Changing owner of node_modules files...\" \\\n"
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
+            + "    && echo \"Removing extra node_module files...\" \\\n"
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
             + '    && find . -name "*.map" -delete \\\n'
