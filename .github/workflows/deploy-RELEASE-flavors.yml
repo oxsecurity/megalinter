@@ -34,7 +34,7 @@ jobs:
     name: Deploy Docker Image - RELEASE - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
-    environment: 
+    environment:
       name: latest-flavors
     strategy:
       fail-fast: false
@@ -120,7 +120,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
