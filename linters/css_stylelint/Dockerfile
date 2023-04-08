@@ -90,7 +90,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss  && \
-    && echo "Cleaning npm cache..." \
+    echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files..." \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \

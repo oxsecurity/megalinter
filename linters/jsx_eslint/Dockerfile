@@ -90,7 +90,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 @microsoft/eslint-formatter-sarif  && \
-    && echo "Cleaning npm cache..." \
+    echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files..." \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
