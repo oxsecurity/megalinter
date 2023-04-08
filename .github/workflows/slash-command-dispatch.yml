@@ -48,7 +48,8 @@ jobs:
             comment-id=${{ github.event.comment.id }}
             issue-number=${{ github.event.issue.number }}
             actor=${{ github.actor }}
-            checkout-ref=${{ steps.comment-branch.outputs.head_ref }}
+            checkout-ref=${{ steps.get-pr.outputs.head.ref }}
+            checkout-repository=${{ steps.get-pr.outputs.head.repo.full_name }}
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v2
