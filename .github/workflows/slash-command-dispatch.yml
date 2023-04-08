@@ -32,6 +32,12 @@ jobs:
         env:
           GETPR_CONTEXT: ${{ toJson(steps.get-pr.outputs.result) }}
         run: echo "$GETPR_CONTEXT"
+      - run: echo "$GETPR_REF"
+        env: 
+          GETPR_REF: ${{ steps.get-pr.outputs.result.head.ref }}
+      - run: echo "$GETPR_REPO"
+        env: 
+          GETPR_REPO: ${{ steps.get-pr.outputs.result.head.repo.full_name }}
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
         id: scd
