@@ -23,7 +23,7 @@ jobs:
             }
             core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
             try {
-              const result = await github.rest.pulls.get(request)
+              const result = await github.rest.pulls.get(request);
               core.setOutput('head_ref', result.data.head.ref);
               core.setOutput('head_repo_full_name', result.data.head.repo.full_name);
               return result.data;
@@ -33,13 +33,14 @@ jobs:
       - name: Dump the get-pr payload context
         env:
           GETPR_CONTEXT: ${{ toJson(steps.get-pr.outputs.result) }}
-        run: echo "$GETPR_CONTEXT"
-      - run: echo "$GETPR_REF"
-        env: 
-          GETPR_REF: ${{ steps.get-pr.head_ref }}
-      - run: echo "$GETPR_REPO"
-        env: 
-          GETPR_REPO: ${{ steps.get-pr.head_repo_full_name }}
+          GETPR_OUTPUTS: ${{ toJson(steps.get-pr.outputs) }}
+        run: echo "$GETPR_OUTPUTS" && echo "$GETPR_CONTEXT"
+      - env: 
+          GETPR_REF: ${{ toJson(steps.get-pr.outputs.head_ref) }}
+        run: echo "$GETPR_REF"
+      - env: 
+          GETPR_REPO: ${{ toJson(steps.get-pr.outputs.head_repo_full_name) }}
+        run: echo "$GETPR_REPO"
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
         id: scd
@@ -56,8 +57,8 @@ jobs:
             comment-id=${{ github.event.comment.id }}
             issue-number=${{ github.event.issue.number }}
             actor=${{ github.actor }}
-            checkout-ref=${{ steps.get-pr.head_ref }}
-            checkout-repository=${{ steps.get-pr.head-repo_full_name }}
+            checkout-ref=${{ steps.get-pr.outputs.head_ref }}
+            checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v2
