@@ -251,8 +251,9 @@ branding:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = [
-        "COPY entrypoint.sh /entrypoint.sh",
+        "COPY --chown=1000:1000 entrypoint.sh /entrypoint.sh",
         "RUN chmod +x entrypoint.sh",
+        "USER 1000",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
