@@ -43,6 +43,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.76.0 to **0.76.1** on 2023-04-06
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.3 to **0.8.4** on 2023-04-06
   - [sqlfluff](https://www.sqlfluff.com/) from 2.0.2 to **2.0.3** on 2023-04-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.2 to **0.77.0** on 2023-04-10
+  - [eslint](https://eslint.org) from 8.37.0 to **8.38.0** on 2023-04-10
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.1.1 to **1.2.0** on 2023-04-10
+  - [checkov](https://www.checkov.io/) from 2.3.152 to **2.3.158** on 2023-04-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.0 to **0.39.1** on 2023-04-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.1 to **0.45.2** on 2023-04-10
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
