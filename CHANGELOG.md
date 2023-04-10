@@ -18,10 +18,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
 
 - Core
+  - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
   - Upgrade create-pull-request and create-or-update-comment GitHub Actions
   - Increase auto-update-linters GitHub Action timeout
-  - Upgrade base Docker image to python:3.11.3-alpine3.17
+  - Fix crash in case of unreachable symlinks
 
 - Documentation
 
