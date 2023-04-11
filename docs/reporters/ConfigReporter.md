@@ -10,7 +10,7 @@ It contains:
 
 - All default MegaLinter configuration files used during the linting
 - Updated `.vscode/extensions.json` containing VsCode extensions corresponding to the linters used during MegaLinter run
-- Updated `.idea/externalDependencies.xml` containing VsCode extensions corresponding to the linters used during MegaLinter run
+- Updated `.idea/externalDependencies.xml` containing Intellij extensions corresponding to the linters used during MegaLinter run
 
 This reporter **activated by default**.
 
