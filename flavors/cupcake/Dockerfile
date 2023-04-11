@@ -191,7 +191,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
-                markdown-link-check@3.10.3 \
+                markdown-link-check \
                 markdown-table-formatter \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
