@@ -9,12 +9,12 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 
 ## pmd documentation
 
-- Version in MegaLinter: **6.48.0**
+- Version in MegaLinter: **6.55.0**
 - Visit [Official Web Site](https://pmd.github.io/){target=_blank}
-- See [How to configure pmd rules](https://pmd.github.io/pmd-6.40.0/pmd_userdocs_configuring_rules.html){target=_blank}
+- See [How to configure pmd rules](https://pmd.github.io/pmd-6.55.0/pmd_userdocs_configuring_rules.html){target=_blank}
   - If custom `java-pmd-ruleset.xml` config file is not found, [java-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml){target=_blank} will be used
-- See [How to disable pmd rules in files](https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html){target=_blank}
-- See [Index of problems detected by pmd](https://pmd.github.io/pmd-6.40.0/pmd_rules_java.html){target=_blank}
+- See [How to disable pmd rules in files](https://pmd.github.io/pmd-6.55.0/pmd_userdocs_suppressing_warnings.html){target=_blank}
+- See [Index of problems detected by pmd](https://pmd.github.io/pmd-6.55.0/pmd_rules_java.html){target=_blank}
 
 [![pmd - GitHub](https://gh-card.dev/repos/pmd/pmd.svg?fullname=)](https://github.com/pmd/pmd){target=_blank}
 
@@ -147,6 +147,14 @@ Usage: <main class> [options]
     --property, -property, -P
        {name}={value}: Define a property for the report format.
        Default: []
+    --relativize-paths-with, -z
+       Path relative to which directories are rendered in the report. This
+       option allows shortening directories in the report; without it, paths are
+       rendered as mentioned in the source directory (option "--dir"). The option can be
+       repeated, in which case the shortest relative path will be used. If the root path
+       is mentioned (e.g. "/" or "C:\"), then the paths will be rendered as
+       absolute.
+       Default: []
     --report-file, -reportfile, -r
        Path to a file to which report output is written. The file is created if
        it does not exist. If this option is not specified, the report is rendered
@@ -175,6 +183,10 @@ Usage: <main class> [options]
     --uri, -uri, -u
        Database URI for sources. One of --dir, --file-list or --uri must be
        provided.
+    --use-version
+       The language version PMD should use when parsing source code in the
+       language-version format, ie: 'java-1.8'
+       Default: []
     --debug, --verbose, -debug, -verbose, -D, -V
        Debug mode.
        Default: false
@@ -193,9 +205,9 @@ Mandatory arguments:
 3) A ruleset filename or a comma-delimited string of ruleset filenames
 
 For example:
-C:\>pmd-bin-6.48.0\bin\pmd.bat -d c:\my\source\code -f html -R java-unusedcode
+C:\>pmd-bin-6.55.0\bin\pmd.bat -d c:\my\source\code -f html -R java-unusedcode
 
-Languages and version suported:
+Languages and version supported:
 apex, ecmascript, html, java, jsp, modelica, plsql, pom, scala, vf, vm, wsdl, xml, xsl
 
 Available report formats and their configuration properties are:
@@ -239,15 +251,16 @@ Available report formats and their configuration properties are:
         outputDir - Output directory.
 
 For example on windows:
-C:\>pmd-bin-6.48.0\bin\pmd.bat -dir c:\my\source\code -format text -R rulesets/java/quickstart.xml -version 1.5 -language java -debug
-C:\>pmd-bin-6.48.0\bin\pmd.bat -dir c:\my\source\code -f xml -rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml -encoding UTF-8
-C:\>pmd-bin-6.48.0\bin\pmd.bat -d c:\my\source\code -rulesets rulesets/java/quickstart.xml -auxclasspath lib\commons-collections.jar;lib\derby.jar
-C:\>pmd-bin-6.48.0\bin\pmd.bat -d c:\my\source\code -f html -R rulesets/java/quickstart.xml -auxclasspath file:///C:/my/classpathfile
+C:\>pmd-bin-6.55.0\bin\pmd.bat --dir c:\my\source\code --format text -R rulesets/java/quickstart.xml --use-version java-1.5 --debug
+C:\>pmd-bin-6.55.0\bin\pmd.bat -dir c:\my\source\code -f xml --rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml --encoding UTF-8
+C:\>pmd-bin-6.55.0\bin\pmd.bat --d c:\my\source\code --rulesets rulesets/java/quickstart.xml --aux-classpath lib\commons-collections.jar;lib\derby.jar
+C:\>pmd-bin-6.55.0\bin\pmd.bat -d c:\my\source\code -f html -R rulesets/java/quickstart.xml --aux-classpath file:///C:/my/classpathfile
 
 For example on *nix:
-$ pmd-bin-6.48.0/bin/run.sh pmd -dir /home/workspace/src/main/java/code -f html -rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml
-$ pmd-bin-6.48.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickstart.xml -f xslt -property xsltFilename=my-own.xsl
-$ pmd-bin-6.48.0/bin/run.sh pmd -d ./src/main/java/code -f html -R rulesets/java/quickstart.xml -auxclasspath commons-collections.jar:derby.jar
+$ pmd-bin-6.55.0/bin/run.sh pmd --dir /home/workspace/src/main/java/code -f html --rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml
+$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickstart.xml -f xslt --property xsltFilename=my-own.xsl
+$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickstart.xml -f xslt --property xsltFilename=html-report-v2.xslt
+ - html-report-v2.xslt is at https://github.com/pmd/pmd/tree/master/pmd-core/etc/xslt/html-report-v2.xslt$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -f html -R rulesets/java/quickstart.xml --aux-classpath commons-collections.jar:derby.jar
 
 
 
@@ -262,7 +275,7 @@ $ pmd-bin-6.48.0/bin/run.sh pmd -d ./src/main/java/code -f html -R rulesets/java
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-ARG PMD_VERSION=6.48.0
+ARG PMD_VERSION=6.55.0
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
     unzip pmd-bin-${PMD_VERSION}.zip && \
     rm pmd-bin-${PMD_VERSION}.zip && \
