@@ -69,7 +69,6 @@ if IS_LATEST is True:
 else:
     VERSION_URL_SEGMENT = VERSION
 
-
 MKDOCS_URL_ROOT = ML_DOC_URL_BASE + VERSION_URL_SEGMENT
 
 BRANCH = "main"
@@ -419,31 +418,6 @@ def build_dockerfile(
     if len(gem_packages) > 0:
         apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
     # Replace between tags in Dockerfile
-    # Commands
-    replace_in_file(
-        dockerfile,
-        "#FROM__START",
-        "#FROM__END",
-        "\n".join(list(dict.fromkeys(docker_from))),
-    )
-    replace_in_file(
-        dockerfile,
-        "#ARG__START",
-        "#ARG__END",
-        "\n".join(list(dict.fromkeys(docker_arg))),
-    )
-    replace_in_file(
-        dockerfile,
-        "#COPY__START",
-        "#COPY__END",
-        "\n".join(docker_copy),
-    )
-    replace_in_file(
-        dockerfile,
-        "#OTHER__START",
-        "#OTHER__END",
-        "\n".join(docker_other),
-    )
     # apk packages
     apk_install_command = ""
     if len(apk_packages) > 0:
@@ -455,6 +429,44 @@ def build_dockerfile(
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     # cargo packages
     cargo_install_command = ""
+    # Pre-building packages
+    prebuild_list = set(cargo_packages) & {"shellcheck-sarif", "sarif-fmt"}
+    cargo_packages = set(cargo_packages) - prebuild_list
+    if len(prebuild_list) > 0:
+        docker_from += [
+            "FROM --platform=$BUILDPLATFORM alpine:3 AS cargo-build\n"
+            + "WORKDIR /cargo\n"
+            + "ENV HOME=/cargo\n"
+            + "USER 0\n"
+            + "RUN --mount=type=cache,target=/var/cache/apk,id=apk-${BUILDARCH},sharing=locked  \\\n"
+            + "    apk add --update \\\n"
+            + "      gcc \\\n"
+            + "      rustup \\\n"
+            + "      bash \\\n"
+            + "      git \\\n"
+            + "      musl-dev \\\n"
+            + "      llvm \\\n"
+            + "      clang\n"
+            + "RUN chown 63425:63425 /cargo\n"
+            + "USER 63425\n"
+            + "ENV CC_aarch64_unknown_linux_musl=clang \\\n"
+            + "    AR_aarch64_unknown_linux_musl=llvm-ar \\\n"
+            + '    CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-Clink-self-contained=yes -Clinker=rust-lld" \\\n'
+            + "    CC_x86_64_unknown_linux_musl=clang \\\n"
+            + "    AR_x86_64_unknown_linux_musl=llvm-ar \\\n"
+            + '    CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-Clink-self-contained=yes -Clinker=rust-lld"\n'
+            + "ARG TARGETARCH\n"
+            + 'RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl")\n'
+            + "\n"
+            + "RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \\\n"
+            + "     . /cargo/.cargo/env \\\n"
+            + f' && cargo install {" ".join(prebuild_list)} --root /tmp --target $([[ "${{TARGETARCH}}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") \n'
+            + "\n"
+            + "FROM scratch AS cargo\n"
+            + "COPY --link --from=cargo-build /tmp/bin/* /bin/\n"
+            + f'RUN ["/bin/' + '", "--help"]\nRUN ["/bin/'.join(prebuild_list) + '", "--help"]\n'
+        ]
+        docker_copy += [f"COPY --from=cargo /bin/* /usr/bin/"]
     keep_rustup = False
     if len(cargo_packages) > 0:
         rust_commands = []
@@ -561,6 +573,31 @@ def build_dockerfile(
             + " \\\n          ".join(list(dict.fromkeys(gem_packages)))
         )
     replace_in_file(dockerfile, "#GEM__START", "#GEM__END", gem_install_command)
+    # Commands
+    replace_in_file(
+        dockerfile,
+        "#FROM__START",
+        "#FROM__END",
+        "\n".join(list(dict.fromkeys(docker_from))),
+    )
+    replace_in_file(
+        dockerfile,
+        "#ARG__START",
+        "#ARG__END",
+        "\n".join(list(dict.fromkeys(docker_arg))),
+    )
+    replace_in_file(
+        dockerfile,
+        "#COPY__START",
+        "#COPY__END",
+        "\n".join(docker_copy),
+    )
+    replace_in_file(
+        dockerfile,
+        "#OTHER__START",
+        "#OTHER__END",
+        "\n".join(docker_other),
+    )
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
     replace_in_file(
@@ -1441,12 +1478,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Pre/post commands & unsecured variables
         linter_doc_md += [
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
-            f"| {dump_as_json(linter.pre_commands,'None')} |",
+            f"| {dump_as_json(linter.pre_commands, 'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
             f"| {dump_as_json(linter.post_commands,'None')} |",
             f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
             + f"not filtered before calling {linter.name} and its pre/post commands"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
         ]
         add_in_config_schema_file(
             [
@@ -2484,7 +2521,7 @@ def finalize_doc_build():
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""", # noqa: E501
     )
 
     # Remove TOC in target file
@@ -3239,7 +3276,7 @@ def update_workflow_linters(file_path, linters):
         file_content = f.read()
         file_content = re.sub(
             r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
-            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            rf"\1{re.escape(linters).replace(chr(92), '').strip()}\3",
             file_content,
         )
 
