@@ -62,7 +62,7 @@ ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-lin
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.34-r0'
-ARG PMD_VERSION=6.48.0
+ARG PMD_VERSION=6.55.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
