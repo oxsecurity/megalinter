@@ -139,6 +139,7 @@ linters:
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+          id: de.espend.idea.php.generics
       vscode:
         - name: Psalm VSCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin

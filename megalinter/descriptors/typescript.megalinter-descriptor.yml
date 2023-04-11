@@ -86,6 +86,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint
@@ -195,8 +196,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier

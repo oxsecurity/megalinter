@@ -70,6 +70,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint

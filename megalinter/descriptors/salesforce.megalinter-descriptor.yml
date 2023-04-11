@@ -83,10 +83,10 @@ linters:
       idea:
         - name: PMD IntelliJ
           url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+          id: PMDPlugin
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
-
   # SFDX Scanner Aura
   - linter_name: sfdx-scanner-aura
     name: SALESFORCE_SFDX_SCANNER_AURA
@@ -144,7 +144,6 @@ linters:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
-
   # SFDX Scanner LWC
   - linter_name: sfdx-scanner-lwc
     name: SALESFORCE_SFDX_SCANNER_LWC
