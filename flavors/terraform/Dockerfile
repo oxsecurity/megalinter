@@ -22,8 +22,8 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
+FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter

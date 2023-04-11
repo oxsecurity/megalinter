@@ -16,7 +16,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
+FROM zricethezav/gitleaks:v8.16.2 as gitleaks
 #FROM__END
 
 ##################
