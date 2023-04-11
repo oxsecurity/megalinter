@@ -33,8 +33,8 @@ FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
+FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
@@ -62,7 +62,7 @@ ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-lin
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.34-r0'
-ARG PMD_VERSION=6.48.0
+ARG PMD_VERSION=6.55.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 

@@ -1,13 +1,13 @@
-import random
-import os
 import json
 import logging
+import os
+import random
 import re
-from tempfile import mkstemp
-from shutil import move
-from os import fdopen
-
 from json.decoder import JSONDecodeError
+from os import fdopen
+from shutil import move
+from tempfile import mkstemp
+
 from megalinter import config
 from megalinter.utils_reporter import get_linter_doc_url
 
