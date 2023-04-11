@@ -157,7 +157,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
                 markdownlint-cli \
-                markdown-link-check@3.10.3 \
+                markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \
