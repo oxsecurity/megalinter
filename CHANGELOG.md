@@ -49,6 +49,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.152 to **2.3.158** on 2023-04-10
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.0 to **0.39.1** on 2023-04-10
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.1 to **0.45.2** on 2023-04-10
+  - [pmd](https://pmd.github.io/) from 6.48.0 to **6.55.0** on 2023-04-11
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.1 to **8.16.2** on 2023-04-11
+  - [rubocop](https://rubocop.org/) from 1.49.0 to **1.50.0** on 2023-04-11
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.45.0 to **0.46.0** on 2023-04-11
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
