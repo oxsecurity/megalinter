@@ -39,6 +39,7 @@ linters:
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
+          # cSpell:ignore binx cfnlint
           id: io.binx.cfnlint.plugin
       sublime:
         - name: SublimeLinter CloudFormation
