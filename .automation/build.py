@@ -466,7 +466,7 @@ def build_dockerfile(
             + "COPY --link --from=cargo-build /tmp/bin/* /bin/\n"
             + f'RUN ["/bin/' + '", "--help"]\nRUN ["/bin/'.join(prebuild_list) + '", "--help"]\n'
         ]
-        docker_copy += [f"COPY --from=cargo /bin/* /usr/bin/"]
+        docker_copy += [f"COPY --link --from=cargo /bin/* /usr/bin/"]
     keep_rustup = False
     if len(cargo_packages) > 0:
         rust_commands = []
