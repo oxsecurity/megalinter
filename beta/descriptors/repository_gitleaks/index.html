@@ -2403,7 +2403,7 @@
 <p><a href="https://github.com/zricethezav/gitleaks"><img alt="GitHub stars" src="https://img.shields.io/github/stars/zricethezav/gitleaks?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/zricethezav/gitleaks/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/zricethezav/gitleaks?sort=semver"/></a> <a href="https://github.com/zricethezav/gitleaks/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zricethezav/gitleaks"/></a> <a href="https://github.com/zricethezav/gitleaks/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/zricethezav/gitleaks"/></a> <a href="https://github.com/zricethezav/gitleaks/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/zricethezav/gitleaks"/></a></p>
 <h2 id="gitleaks-documentation">gitleaks documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.16.1</strong></li>
+<li>Version in MegaLinter: <strong>8.16.2</strong></li>
 <li>Visit <a href="https://github.com/zricethezav/gitleaks#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/zricethezav/gitleaks#configuration" target="_blank">How to configure gitleaks rules</a><ul>
 <li>If custom <code>.gitleaks.toml</code> config file is not found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml" target="_blank">.gitleaks.toml</a> will be used</li>
@@ -2634,10 +2634,11 @@ Flags:
   -l, --log-level string           log level (trace, debug, info, warn, error, fatal) (default "info")
       --max-target-megabytes int   files larger than this will be skipped
       --no-banner                  suppress banner
+      --no-color                   turn off color for verbose output
       --redact                     redact secrets from logs and stdout
   -f, --report-format string       output format (json, csv, sarif) (default "json")
   -r, --report-path string         report file
-  -s, --source string              path to source (default: $PWD) (default ".")
+  -s, --source string              path to source (default ".")
   -v, --verbose                    show verbose output from scan
 
 Use "gitleaks [command] --help" for more information about a command.
@@ -2646,7 +2647,7 @@ Use "gitleaks [command] --help" for more information about a command.
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM zricethezav/gitleaks:v8.16.1 as gitleaks
+<pre><code class="language-dockerfile">FROM zricethezav/gitleaks:v8.16.2 as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 </code></pre>
 </article>
