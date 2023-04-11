@@ -53,6 +53,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.1 to **8.16.2** on 2023-04-11
   - [rubocop](https://rubocop.org/) from 1.49.0 to **1.50.0** on 2023-04-11
   - [tflint](https://github.com/terraform-linters/tflint) from 0.45.0 to **0.46.0** on 2023-04-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.407 to **6.0.408** on 2023-04-11
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.3 to **3.11.1** on 2023-04-11
+  - [syft](https://github.com/anchore/syft) from 0.76.1 to **0.77.0** on 2023-04-11
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21003 to **21004** on 2023-04-11
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
