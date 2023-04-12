@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix issue preventing plugins to work with flavors
   - Upgrade create-pull-request and create-or-update-comment GitHub Actions
   - Increase auto-update-linters GitHub Action timeout
+  - Fix `/build` slash command to checkout the correct branch when called from PR, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2542>
   - Fix crash in case of unreachable symlinks
 
 - Documentation
