@@ -61,6 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [xmllint](http://xmlsoft.org/xmllint.html) from 21003 to **21004** on 2023-04-11
   - [checkov](https://www.checkov.io/) from 2.3.158 to **2.3.160** on 2023-04-11
   - [kics](https://www.kics.io) from 1.6.13 to **1.6.14** on 2023-04-11
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.16.1 to **0.16.2** on 2023-04-12
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
