@@ -534,34 +534,52 @@ def build_dockerfile(
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
-        pipenv_install_command = (
+        pipenv_download_command = (
             "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir --upgrade pip virtualenv \\\n"
+            " --no-cache-dir --upgrade pip crossenv \\\n"
         )
-        env_path_command = 'ENV PATH="${PATH}"'
+        pipenv_install_command = (
+            "RUN echo \\\n"
+        )
+        pipenv_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
+            pipenv_download_command += (
+                f'    && mkdir -p "/download/{pip_linter}" '
+                + f'&& pip download -d "/download/{pip_linter}" '
+                + (" ".join(pip_linter_packages))
+                + " \\\n"
+            )
             pipenv_install_command += (
                 f'    && mkdir -p "/venvs/{pip_linter}" '
                 + f'&& cd "/venvs/{pip_linter}" '
-                + "&& virtualenv . "
+                + "&& python3 -m crossenv /usr/local/bin/target-python3 . "
                 + "&& source bin/activate "
-                + "&& PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir "
+                + f"&& PYTHONDONTWRITEBYTECODE=1 pip3 install --find-links /download/{pip_linter} --no-cache-dir "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
                 + "&& cd ./../.. \\\n"
             )
-            env_path_command += f":/venvs/{pip_linter}/bin"
+            pipenv_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
+        pipenv_download_command = pipenv_download_command[:-2]  # remove last \
         pipenv_install_command += (
             ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
             + "&& rm -rf /root/.cache\n"
-            + env_path_command
         )
+        pipenv_download_command += "\n"
     else:
         pipenv_install_command = ""
+        pipenv_download_command = ""
+        pipenv_path_command = ""
     replace_in_file(
         dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
+    )
+    replace_in_file(
+        dockerfile, "#PIPVENV_DOWNLOAD__START", "#PIPVENV_DOWNLOAD__END", pipenv_download_command
+    )
+    replace_in_file(
+        dockerfile, "#PIPVENV_PATH__START", "#PIPVENV_PATH__END", pipenv_path_command
     )
 
     # Ruby gem packages
