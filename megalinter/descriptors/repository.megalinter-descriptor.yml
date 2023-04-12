@@ -188,7 +188,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.16.1 as gitleaks
+        - FROM zricethezav/gitleaks:v8.16.2 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK

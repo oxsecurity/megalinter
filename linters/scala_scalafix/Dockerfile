@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.2-alpine3.17
+FROM python:3.11.3-alpine3.17
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -124,7 +124,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # SCALA installation
-RUN curl -fLo coursier https://git.io/coursier-cli && \
+RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier \
 
 # scalafix installation

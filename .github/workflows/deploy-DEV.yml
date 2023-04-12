@@ -123,7 +123,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=${{ steps.image_tag.outputs.tag }}
             MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
           load: false
           push: true
@@ -153,7 +153,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=${{ steps.image_tag.outputs.tag }}
           load: true
           push: false
           secrets: |
@@ -181,7 +181,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=${{ steps.image_tag.outputs.tag }}
           load: false
           push: true
           secrets: |
@@ -269,7 +269,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
+          timeout: 15m0s

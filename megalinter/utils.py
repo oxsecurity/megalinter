@@ -228,10 +228,14 @@ def check_activation_rules(activation_rules, _linter):
 def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
     if not regex_object:
         return True
-    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
-        content = f.read()
-    found_pattern = regex_object.search(content) is not None
-    return found_pattern
+    try:
+        with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+            content = f.read()
+        found_pattern = regex_object.search(content) is not None
+        return found_pattern
+    except Exception as e:
+        logging.warning(f"Unable to check content of file {file_name}: " + str(e))
+        return False
 
 
 def file_is_generated(file_name: str) -> bool:

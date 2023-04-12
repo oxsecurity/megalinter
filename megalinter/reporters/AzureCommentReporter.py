@@ -8,15 +8,17 @@ Requires the following vars sent to docker run:
 - SYSTEM_COLLECTIONURI
 - SYSTEM_PULLREQUEST_PULLREQUESTID
 - SYSTEM_TEAMPROJECT
-- BUILD_BUILD_ID
+- BUILD_BUILDID
 - BUILD_REPOSITORY_ID
 """
 import logging
 import urllib.parse
 
-import requests
+from azure.devops.connection import Connection
+from azure.devops.released.git.git_client import GitClient
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
+from msrest.authentication import BasicTokenAuthentication
 
 
 class AzureCommentReporter(Reporter):
@@ -30,52 +32,103 @@ class AzureCommentReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        # Post comment on GitHub pull request
+        # Post thread on Azure pull request
         if config.get("SYSTEM_ACCESSTOKEN", "") != "":
+            # Collect variables
             SYSTEM_COLLECTIONURI = config.get("SYSTEM_COLLECTIONURI")
             SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
                 "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
             )
             if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
-                logging.warning(
+                logging.info(
                     "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_PULLREQUESTID\n"
                     + "You may need to configure a build validation policy to make it appear.\n"
                     + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
+                return
             SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
             BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
-            BUILD_BUILD_ID = config.get("BUILD_BUILD_ID")
+            BUILD_BUILDID = config.get("BUILD_BUILDID", config.get("BUILD_BUILD_ID"))
+
+            # Build thread data
             AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
                 "AZURE_COMMENT_REPORTER_LINKS_TYPE", "artifacts"
             )
             if AZURE_COMMENT_REPORTER_LINKS_TYPE == "artifacts":
                 artifacts_url = (
                     f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
-                    f"{BUILD_BUILD_ID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+                    f"{BUILD_BUILDID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
                 )
             else:
-                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILD_ID}"
-            url = (
-                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis/git/repositories/"
-                f"{BUILD_REPOSITORY_ID}/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                "/threads?api-version=6.0"
-            )
-            headers = {
-                "content-type": "application/json",
-                "Authorization": f"BEARER {config.get('SYSTEM_ACCESSTOKEN')}",
-            }
+                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
             p_r_msg = build_markdown_summary(self, artifacts_url)
             comment_status = "fixed" if self.master.return_code == 0 else 1
-            data = {
+            thread_data = {
                 "comments": [
                     {"parentCommentId": 0, "content": p_r_msg, "commentType": 1}
                 ],
                 "status": comment_status,
             }
-            r = requests.post(url=url, json=data, headers=headers)
-            if r.status_code == 200:
-                logging.debug(f"Posted Azure Pipelines comment: {p_r_msg}")
+
+            # Create connection to Azure API
+            access_token = config.get("SYSTEM_ACCESSTOKEN")
+            credentials = BasicTokenAuthentication({"access_token": access_token})
+            connection = Connection(
+                base_url=f"{SYSTEM_COLLECTIONURI}",
+                creds=credentials,
+            )
+            git_client: GitClient = connection.clients.get_git_client()
+
+            # Look for existing MegaLinter thread
+            existing_threads = git_client.get_threads(
+                BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+            )
+            existing_thread_id = None
+            existing_thread_comment = None
+            existing_thread_comment_id = None
+            for existing_thread in existing_threads:
+                for comment in existing_thread.comments or []:
+                    if "MegaLinter is graciously provided by" in (
+                        comment.content or ""
+                    ):
+                        existing_thread_comment = existing_thread
+                        existing_thread_comment_id = existing_thread.comments[0].id
+                        existing_thread_id = existing_thread.id
+                        break
+                if existing_thread_id is not None:
+                    break
+
+            # Remove previous MegaLinter thread if existing
+            if existing_thread_id is not None:
+                git_client.delete_comment(
+                    BUILD_REPOSITORY_ID,
+                    SYSTEM_PULLREQUEST_PULLREQUESTID,
+                    existing_thread_id,
+                    existing_thread_comment_id,
+                )
+                existing_thread_comment = git_client.get_pull_request_thread(
+                    BUILD_REPOSITORY_ID,
+                    SYSTEM_PULLREQUEST_PULLREQUESTID,
+                    existing_thread_id,
+                )
+                existing_thread_comment = {
+                    "id": existing_thread_comment.id,
+                    "status": 4,  # = Closed
+                }
+                git_client.update_thread(
+                    existing_thread_comment,
+                    BUILD_REPOSITORY_ID,
+                    SYSTEM_PULLREQUEST_PULLREQUESTID,
+                    existing_thread_id,
+                )
+
+            # Post thread
+            new_thread_result = git_client.create_thread(
+                thread_data, BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+            )
+            if new_thread_result.id is not None and new_thread_result.id > 0:
+                logging.debug(f"Posted Azure Pipelines comment: {thread_data}")
                 logging.info(
                     "[Azure Comment Reporter] Posted summary as comment on "
                     + f"{SYSTEM_TEAMPROJECT} #PR{SYSTEM_PULLREQUEST_PULLREQUESTID}"
@@ -83,7 +136,7 @@ class AzureCommentReporter(Reporter):
             else:
                 logging.warning(
                     "[Azure Comment Reporter] Error while posting comment:"
-                    + r.reason
+                    + str(new_thread_result)
                     + "\n"
                     + "See https://megalinter.io/latest/reporters/AzureCommentReporter/"
                 )

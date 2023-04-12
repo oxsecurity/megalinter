@@ -128,6 +128,7 @@ jobs:
             "python_bandit",
             "python_mypy",
             "python_pyright",
+            "python_ruff",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
@@ -210,7 +211,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_VERSION=${{ needs.prepare.outputs.tag }}
           load: true
           push: false
           secrets: |
@@ -229,7 +230,7 @@ jobs:
 
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          
+
           docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
         timeout-minutes: 30
 
@@ -243,7 +244,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
