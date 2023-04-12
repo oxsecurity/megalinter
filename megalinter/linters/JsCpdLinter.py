@@ -10,7 +10,6 @@ from megalinter import Linter, utils
 
 
 class JsCpdLinter(Linter):
-
     # Special cases for build lint command
     def build_lint_command(self, file=None):
         if utils.can_write_report_files(self.master):
