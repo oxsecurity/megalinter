@@ -28,3 +28,4 @@ linters:
       idea:
         - name: coffeelint
           url: https://plugins.jetbrains.com/plugin/7723-coffeelint
+          id: com.wix.coffeelint
