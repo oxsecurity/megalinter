@@ -62,6 +62,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.158 to **2.3.160** on 2023-04-11
   - [kics](https://www.kics.io) from 1.6.13 to **1.6.14** on 2023-04-11
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.16.1 to **0.16.2** on 2023-04-12
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.4 to **6.14.5** on 2023-04-12
+  - [djlint](https://djlint.com/) from 1.19.17 to **1.22.0** on 2023-04-12
+  - [phpstan](https://phpstan.org/) from 1.10.11 to **1.10.12** on 2023-04-12
+  - [rubocop](https://rubocop.org/) from 1.50.0 to **1.50.1** on 2023-04-12
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
