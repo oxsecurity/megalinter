@@ -101,7 +101,6 @@ linters:
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
-          # cSpell:ignore kropp
           id: name.kropp.intellij.proselint
       sublime:
         - name: SublimeLinter-contrib-proselint

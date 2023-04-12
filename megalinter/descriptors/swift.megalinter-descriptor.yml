@@ -45,7 +45,6 @@ linters:
       idea:
         - name: swiftlint
           url: https://plugins.jetbrains.com/plugin/9175-swiftlint
-          # cSpell:ignore appcodeplugins
           id: com.appcodeplugins.swiftlint
       xcode:
         - name: Configure manually

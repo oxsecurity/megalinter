@@ -371,7 +371,6 @@ linters:
       idea:
         - name: Ruff
           url: https://plugins.jetbrains.com/plugin/20574-ruff
-          # cSpell:ignore koxudaxi
           id: com.koxudaxi.ruff
       vscode:
         - name: Ruff
