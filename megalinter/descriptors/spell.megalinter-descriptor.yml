@@ -101,6 +101,7 @@ linters:
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
+          id: name.kropp.intellij.proselint
       sublime:
         - name: SublimeLinter-contrib-proselint
           url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint

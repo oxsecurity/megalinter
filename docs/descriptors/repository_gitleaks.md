@@ -9,7 +9,7 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.16.1**
+- Version in MegaLinter: **8.16.2**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file is not found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -109,10 +109,11 @@ Flags:
   -l, --log-level string           log level (trace, debug, info, warn, error, fatal) (default "info")
       --max-target-megabytes int   files larger than this will be skipped
       --no-banner                  suppress banner
+      --no-color                   turn off color for verbose output
       --redact                     redact secrets from logs and stdout
   -f, --report-format string       output format (json, csv, sarif) (default "json")
   -r, --report-path string         report file
-  -s, --source string              path to source (default: $PWD) (default ".")
+  -s, --source string              path to source (default ".")
   -v, --verbose                    show verbose output from scan
 
 Use "gitleaks [command] --help" for more information about a command.
@@ -122,7 +123,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
+FROM zricethezav/gitleaks:v8.16.2 as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

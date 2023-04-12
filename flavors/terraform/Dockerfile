@@ -22,8 +22,8 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
+FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
 FROM tenable/terrascan:1.18.0 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
@@ -142,7 +142,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r \
                 prettier \
                 markdownlint-cli \
-                markdown-link-check@3.10.3 \
+                markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \
@@ -151,9 +151,11 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 cspell \
                 sql-lint \
                 tekton-lint  && \
-       npm audit fix --audit-level=critical || true \
+    echo "Cleaning npm cache..." \
     && npm cache clean --force || true \
+    && echo "Changing owner of node_modules files..." \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
+    && echo "Removing extra node_module files..." \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \

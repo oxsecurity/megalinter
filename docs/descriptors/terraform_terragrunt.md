@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.45.1**
+- Version in MegaLinter: **0.45.2**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -123,7 +123,7 @@ GLOBAL OPTIONS:
    terragrunt-include-module-prefix             When this flag is set output from Terraform sub-commands is prefixed with module path.
 
 VERSION:
-   v0.45.1
+   v0.45.2
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

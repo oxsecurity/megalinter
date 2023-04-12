@@ -76,6 +76,7 @@ linters:
       idea:
         - name: scss-lint-plugin
           url: https://plugins.jetbrains.com/plugin/7530-scss-lint
+          id: com.wix.scss.lint
       vscode:
         - name: scss-lint
           url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

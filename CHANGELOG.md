@@ -18,11 +18,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
 
 - Core
+  - Add support for idea plugins auto-install
+  - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
   - Upgrade create-pull-request and create-or-update-comment GitHub Actions
   - Increase auto-update-linters GitHub Action timeout
-  - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix `/build` slash command to checkout the correct branch when called from PR, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2542>
+  - Fix crash in case of unreachable symlinks
 
 - Documentation
 
@@ -43,6 +45,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.76.0 to **0.76.1** on 2023-04-06
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.3 to **0.8.4** on 2023-04-06
   - [sqlfluff](https://www.sqlfluff.com/) from 2.0.2 to **2.0.3** on 2023-04-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.2 to **0.77.0** on 2023-04-10
+  - [eslint](https://eslint.org) from 8.37.0 to **8.38.0** on 2023-04-10
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.1.1 to **1.2.0** on 2023-04-10
+  - [checkov](https://www.checkov.io/) from 2.3.152 to **2.3.158** on 2023-04-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.0 to **0.39.1** on 2023-04-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.1 to **0.45.2** on 2023-04-10
+  - [pmd](https://pmd.github.io/) from 6.48.0 to **6.55.0** on 2023-04-11
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.1 to **8.16.2** on 2023-04-11
+  - [rubocop](https://rubocop.org/) from 1.49.0 to **1.50.0** on 2023-04-11
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.45.0 to **0.46.0** on 2023-04-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.407 to **6.0.408** on 2023-04-11
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.3 to **3.11.1** on 2023-04-11
+  - [syft](https://github.com/anchore/syft) from 0.76.1 to **0.77.0** on 2023-04-11
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21003 to **21004** on 2023-04-11
+  - [checkov](https://www.checkov.io/) from 2.3.158 to **2.3.160** on 2023-04-11
+  - [kics](https://www.kics.io) from 1.6.13 to **1.6.14** on 2023-04-11
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
