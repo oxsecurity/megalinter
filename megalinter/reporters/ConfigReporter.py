@@ -4,11 +4,11 @@ Output results in console
 """
 import json
 import os
+import xml.dom.minidom
 from pathlib import Path
 from shutil import copyfile
 
 import commentjson
-import xml.dom.minidom
 from megalinter import Reporter, config, utils
 
 
@@ -134,7 +134,10 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             if os.path.isfile(idea_extensions_file):
                 dom = xml.dom.minidom.parse(idea_extensions_file)
                 for node in dom.documentElement.childNodes:
-                    if node.localName == "component" and node.getAttribute("name") == "ExternalDependencies":
+                    if (
+                        node.localName == "component"
+                        and node.getAttribute("name") == "ExternalDependencies"
+                    ):
                         ext_dep_component = node
             else:
                 impl = xml.dom.minidom.getDOMImplementation()
@@ -161,7 +164,5 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             # Write .idea/externalDependencies.xml file
             output_idea_extensions_file = f"{config_report_folder}{os.path.sep}.idea{os.path.sep}externalDependencies.xml"
             os.makedirs(os.path.dirname(output_idea_extensions_file), exist_ok=True)
-            with open(
-                output_idea_extensions_file, "w", encoding="utf-8"
-            ) as json_file:
+            with open(output_idea_extensions_file, "w", encoding="utf-8") as json_file:
                 json_file.write(dom.documentElement.toprettyxml())
