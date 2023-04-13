@@ -306,6 +306,7 @@ def build_dockerfile(
     cargo_packages = [] if "cargo" not in extra_packages else extra_packages["cargo"]
     is_docker_other_run = False
     is_docker_build_platform_other_run = False
+    has_npm_copy = False
     # Manage docker
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
@@ -470,6 +471,9 @@ def build_dockerfile(
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
+            if not has_npm_copy:
+                has_npm_copy = True
+                docker_copy += ["COPY --link --from=node_modules /node-deps /node-deps"]
         # Collect python for venvs
         if "linter_name" in item and "pip" in item["install"]:
             pipvenv_packages[item["linter_name"]] = item["install"]["pip"]
