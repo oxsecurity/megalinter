@@ -9,8 +9,8 @@ description: editorconfig-checker is available to analyze EDITORCONFIG files in 
 
 ## Linters
 
-| Linter                                                                                                                                           | Additional                                                                                                                                                                       |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**editorconfig-checker**](editorconfig_editorconfig_checker.md)<br/>[_EDITORCONFIG_EDITORCONFIG_CHECKER_](editorconfig_editorconfig_checker.md) | [![GitHub stars](https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600)](https://github.com/editorconfig-checker/editorconfig-checker) |
 
 ## Linted files
@@ -21,8 +21,8 @@ description: editorconfig-checker is available to analyze EDITORCONFIG files in 
 
 ## Configuration in MegaLinter
 
-| Variable                          | Description                   | Default value |
-|-----------------------------------|-------------------------------|---------------|
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

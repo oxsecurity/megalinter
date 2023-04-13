@@ -9,20 +9,20 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc are availabl
 
 ## Linters
 
-| Linter                                                                                                                         | Additional                                                                                                                                     |
-|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
 | [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
-| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md)     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
+| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner) |
 
 ## Linted files
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

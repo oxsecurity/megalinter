@@ -9,11 +9,11 @@ description: eslint, standard, prettier are available to analyze JAVASCRIPT file
 
 ## Linters
 
-| Linter                                                                                     | Additional                                                                                                                                                                                                                    |
-|--------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**eslint**](javascript_eslint.md)<br/>[_JAVASCRIPT_ES_](javascript_eslint.md)             | [![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**standard**](javascript_standard.md)<br/>[_JAVASCRIPT_STANDARD_](javascript_standard.md) | [![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green)                                          |
-| [**prettier**](javascript_prettier.md)<br/>[_JAVASCRIPT_PRETTIER_](javascript_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow)                                        |
+| Linter | Additional |
+| ------ | ---------- |
+| [**eslint**](javascript_eslint.md)<br/>[_JAVASCRIPT_ES_](javascript_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**standard**](javascript_standard.md)<br/>[_JAVASCRIPT_STANDARD_](javascript_standard.md) | [![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green) |
+| [**prettier**](javascript_prettier.md)<br/>[_JAVASCRIPT_PRETTIER_](javascript_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -22,8 +22,8 @@ description: eslint, standard, prettier are available to analyze JAVASCRIPT file
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

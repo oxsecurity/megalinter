@@ -22,7 +22,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
  # https://stackoverflow.com/a/73711302/699056
 FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
 
-FROM python:3.11.2-alpine3.17
+FROM python:3.11.3-alpine3.17
 ARG GITHUB_TOKEN
 
 # https://stackoverflow.com/a/73711302/699056

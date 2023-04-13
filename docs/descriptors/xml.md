@@ -9,8 +9,8 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 ## Linters
 
-| Linter                                                            | Additional                                          |
-|-------------------------------------------------------------------|-----------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**xmllint**](xml_xmllint.md)<br/>[_XML_XMLLINT_](xml_xmllint.md) | ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

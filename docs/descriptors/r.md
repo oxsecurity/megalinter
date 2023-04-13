@@ -9,8 +9,8 @@ description: lintr is available to analyze R files in MegaLinter
 
 ## Linters
 
-| Linter                                              | Additional                                                                                                           |
-|-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**lintr**](r_lintr.md)<br/>[_R_LINTR_](r_lintr.md) | [![GitHub stars](https://img.shields.io/github/stars/r-lib/lintr?cacheSeconds=3600)](https://github.com/r-lib/lintr) |
 
 ## Linted files
@@ -23,8 +23,8 @@ description: lintr is available to analyze R files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable               | Description                   | Default value |
-|------------------------|-------------------------------|---------------|
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| R_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

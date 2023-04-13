@@ -9,8 +9,8 @@ description: raku is available to analyze RAKU files in MegaLinter
 
 ## Linters
 
-| Linter                                                   | Additional                                                                                                               |
-|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**raku**](raku_raku.md)<br/>[_RAKU_RAKU_](raku_raku.md) | [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo) |
 
 ## Linted files
@@ -25,8 +25,8 @@ description: raku is available to analyze RAKU files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

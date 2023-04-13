@@ -9,11 +9,11 @@ description: rst-lint, rstcheck, rstfmt are available to analyze RST files in Me
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                                                 |
-|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**rst-lint**](rst_rst_lint.md)<br/>[_RST_RST_LINT_](rst_rst_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/twolfson/restructuredtext-lint?cacheSeconds=3600)](https://github.com/twolfson/restructuredtext-lint) |
-| [**rstcheck**](rst_rstcheck.md)<br/>[_RST_RSTCHECK_](rst_rstcheck.md) | [![GitHub stars](https://img.shields.io/github/stars/myint/rstcheck?cacheSeconds=3600)](https://github.com/myint/rstcheck)                                 |
-| [**rstfmt**](rst_rstfmt.md)<br/>[_RST_RSTFMT_](rst_rstfmt.md)         | ![formatter](https://shields.io/badge/-format-yellow)                                                                                                      |
+| [**rstcheck**](rst_rstcheck.md)<br/>[_RST_RSTCHECK_](rst_rstcheck.md) | [![GitHub stars](https://img.shields.io/github/stars/myint/rstcheck?cacheSeconds=3600)](https://github.com/myint/rstcheck) |
+| [**rstfmt**](rst_rstfmt.md)<br/>[_RST_RSTFMT_](rst_rstfmt.md) | ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -22,8 +22,8 @@ description: rst-lint, rstcheck, rstfmt are available to analyze RST files in Me
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

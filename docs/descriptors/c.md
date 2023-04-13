@@ -9,8 +9,8 @@ description: cpplint is available to analyze C files in MegaLinter
 
 ## Linters
 
-| Linter                                                      | Additional                                                                                                                   |
-|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**cpplint**](c_cpplint.md)<br/>[_C_CPPLINT_](c_cpplint.md) | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) |
 
 ## Linted files
@@ -21,8 +21,8 @@ description: cpplint is available to analyze C files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable               | Description                   | Default value |
-|------------------------|-------------------------------|---------------|
-| C_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| C_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

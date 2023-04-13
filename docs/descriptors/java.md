@@ -9,10 +9,10 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Linters
 
-| Linter                                                                           | Additional                                                                                                                                                                                |
-|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**checkstyle**](java_checkstyle.md)<br/>[_JAVA_CHECKSTYLE_](java_checkstyle.md) | [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**pmd**](java_pmd.md)<br/>[_JAVA_PMD_](java_pmd.md)                             | [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
+| [**pmd**](java_pmd.md)<br/>[_JAVA_PMD_](java_pmd.md) | [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
@@ -21,10 +21,10 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

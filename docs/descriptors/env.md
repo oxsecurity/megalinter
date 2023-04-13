@@ -9,8 +9,8 @@ description: dotenv-linter is available to analyze ENV files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                    | Additional                                                                                                                                                                                               |
-|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**dotenv-linter**](env_dotenv_linter.md)<br/>[_ENV_DOTENV_LINTER_](env_dotenv_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/dotenv-linter/dotenv-linter?cacheSeconds=3600)](https://github.com/dotenv-linter/dotenv-linter) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: dotenv-linter is available to analyze ENV files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

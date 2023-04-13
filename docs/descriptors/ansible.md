@@ -9,8 +9,8 @@ description: ansible-lint is available to analyze ANSIBLE files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                            | Additional                                                                                                                                                                              |
-|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**ansible-lint**](ansible_ansible_lint.md)<br/>[_ANSIBLE_ANSIBLE_LINT_](ansible_ansible_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600)](https://github.com/ansible/ansible-lint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -21,8 +21,8 @@ description: ansible-lint is available to analyze ANSIBLE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
