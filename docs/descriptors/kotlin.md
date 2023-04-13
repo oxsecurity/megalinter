@@ -9,8 +9,8 @@ description: ktlint is available to analyze KOTLIN files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                 | Additional                                                                                                                                                                                                                          |
+|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**ktlint**](kotlin_ktlint.md)<br/>[_KOTLIN_KTLINT_](kotlin_ktlint.md) | [![GitHub stars](https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600)](https://github.com/pinterest/ktlint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -21,10 +21,10 @@ description: ktlint is available to analyze KOTLIN files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

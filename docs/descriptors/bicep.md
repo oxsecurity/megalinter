@@ -9,16 +9,16 @@ description: bicep_linter is available to analyze BICEP files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                                      | Additional                                                                                                           |
+|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | [**bicep_linter**](bicep_bicep_linter.md)<br/>[_BICEP_BICEP_LINTER_](bicep_bicep_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/Azure/bicep?cacheSeconds=3600)](https://github.com/Azure/bicep) |
 
 ## Linted files
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| BICEP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BICEP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                   | Description                   | Default value |
+|----------------------------|-------------------------------|---------------|
+| BICEP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| BICEP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

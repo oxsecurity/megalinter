@@ -9,8 +9,8 @@ description: luacheck is available to analyze LUA files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                | Additional                                                                                                                       |
+|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600)](https://github.com/luarocks/luacheck) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: luacheck is available to analyze LUA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

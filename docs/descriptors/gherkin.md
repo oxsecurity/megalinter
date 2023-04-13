@@ -9,8 +9,8 @@ description: gherkin-lint is available to analyze GHERKIN files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                                            | Additional                                                                                                                             |
+|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | [**gherkin-lint**](gherkin_gherkin_lint.md)<br/>[_GHERKIN_GHERKIN_LINT_](gherkin_gherkin_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/vsiakka/gherkin-lint?cacheSeconds=3600)](https://github.com/vsiakka/gherkin-lint) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: gherkin-lint is available to analyze GHERKIN files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

@@ -9,11 +9,11 @@ description: kubeval, kubeconform, helm are available to analyze KUBERNETES file
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
-| [**kubeval**](kubernetes_kubeval.md)<br/>[_KUBERNETES_KUBEVAL_](kubernetes_kubeval.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval) |
-| [**kubeconform**](kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform) |
-| [**helm**](kubernetes_helm.md)<br/>[_KUBERNETES_HELM_](kubernetes_helm.md) | [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm) |
+| Linter                                                                                                 | Additional                                                                                                                                                                                   |
+|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**kubeval**](kubernetes_kubeval.md)<br/>[_KUBERNETES_KUBEVAL_](kubernetes_kubeval.md)                 | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval) |
+| [**kubeconform**](kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)                                                             |
+| [**helm**](kubernetes_helm.md)<br/>[_KUBERNETES_HELM_](kubernetes_helm.md)                             | [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm)                                                                             |
 
 ## Linted files
 
@@ -29,8 +29,8 @@ description: kubeval, kubeconform, helm are available to analyze KUBERNETES file
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

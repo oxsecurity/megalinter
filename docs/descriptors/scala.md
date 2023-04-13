@@ -9,8 +9,8 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                      | Additional                                                                                                                             |
+|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | [**scalafix**](scala_scalafix.md)<br/>[_SCALA_SCALAFIX_](scala_scalafix.md) | [![GitHub stars](https://img.shields.io/github/stars/scalacenter/scalafix?cacheSeconds=3600)](https://github.com/scalacenter/scalafix) |
 
 ## Linted files
@@ -20,10 +20,10 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                   | Description                   | Default value |
+|----------------------------|-------------------------------|---------------|
+| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

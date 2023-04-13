@@ -9,8 +9,8 @@ description: npm-groovy-lint is available to analyze GROOVY files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                                                     | Additional                                                                                                                                                                                                                                          |
+|------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**npm-groovy-lint**](groovy_npm_groovy_lint.md)<br/>[_GROOVY_NPM_GROOVY_LINT_](groovy_npm_groovy_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?cacheSeconds=3600)](https://github.com/nvuillam/npm-groovy-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -26,8 +26,8 @@ description: npm-groovy-lint is available to analyze GROOVY files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

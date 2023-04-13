@@ -9,8 +9,8 @@ description: rubocop is available to analyze RUBY files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                               | Additional                                                                                                                                                                             |
+|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**rubocop**](ruby_rubocop.md)<br/>[_RUBY_RUBOCOP_](ruby_rubocop.md) | [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -20,8 +20,8 @@ description: rubocop is available to analyze RUBY files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
