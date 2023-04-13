@@ -298,6 +298,7 @@ def build_dockerfile(
     all_build_platform_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
     apk_build_platform_packages = []
+    apk_npm_packages = []
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -464,6 +465,8 @@ def build_dockerfile(
             apk_packages += item["install"]["apk"]
         if "build_platform_apk" in item["install"]:
             apk_build_platform_packages += item["install"]["build_platform_apk"]
+        if "npm_apk" in item["install"]:
+            apk_npm_packages += item["install"]["npm_apk"]
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
@@ -500,8 +503,15 @@ def build_dockerfile(
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_build_platform_packages)))
         )
+    apk_npm_install_command = ""
+    if len(apk_npm_packages) > 0:
+        apk_npm_install_command = (
+            "RUN apk add --update --no-cache \\\n                "
+            + " \\\n                ".join(list(dict.fromkeys(apk_npm_packages)))
+        )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     replace_in_file(dockerfile, "#BUILD_PLATFORM_APK__START", "#BUILD_PLATFORM_APK__END", apk_build_platform_install_command)
+    replace_in_file(dockerfile, "#NPM_APK__START", "#NPM_APK__END", apk_npm_install_command)
     # cargo packages
     cargo_install_command = ""
     # Pre-building packages
