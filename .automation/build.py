@@ -2737,8 +2737,10 @@ def generate_documentation_all_linters():
             )
         supported_platforms = []
         # supported platforms
-        if (hasattr(linter, "supported_platforms") and
-            "platform" in linter.supported_platforms):
+        if (
+            hasattr(linter, "supported_platforms")
+            and "platform" in linter.supported_platforms
+        ):
             supported_platforms += linter.supported_platforms["platform"]
         # line
         table_line = [
