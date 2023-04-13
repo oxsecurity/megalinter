@@ -293,7 +293,9 @@ def build_dockerfile(
     docker_arg = []
     docker_copy = []
     docker_other = []
+    docker_build_platform_other = []
     all_dockerfile_items = []
+    all_build_platform_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
@@ -301,6 +303,7 @@ def build_dockerfile(
     gem_packages = []
     cargo_packages = [] if "cargo" not in extra_packages else extra_packages["cargo"]
     is_docker_other_run = False
+    is_docker_build_platform_other_run = False
     # Manage docker
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
@@ -312,6 +315,68 @@ def build_dockerfile(
         if "install" not in item:
             item["install"] = {}
         # Collect Dockerfile items
+        if "build_platform_dockerfile" in item["install"]:
+            item_label = item.get("linter_name", item.get("descriptor_id", ""))
+            install_comment = f"# {item_label} installation"
+            docker_build_platform_other += [install_comment]
+            for dockerfile_item in item["install"]["build_platform_dockerfile"]:
+                # FROM
+                if (
+                    dockerfile_item in all_build_platform_dockerfile_items
+                    or dockerfile_item.replace(
+                    "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                )
+                    in all_build_platform_dockerfile_items
+                ):
+                    dockerfile_item = (
+                        "# Next line commented because already managed by another linter\n"
+                        "# " + "\n# ".join(dockerfile_item.splitlines())
+                    )
+                    docker_build_platform_other += [dockerfile_item]
+                # RUN (standalone with GITHUB_TOKEN)
+                elif (
+                    dockerfile_item.startswith("RUN")
+                    and "GITHUB_TOKEN" in dockerfile_item
+                ):
+                    dockerfile_item_cmd = dockerfile_item.replace(
+                        "RUN ", "RUN --mount=type=secret,id=GITHUB_TOKEN "
+                    )
+                    docker_build_platform_other += [dockerfile_item_cmd]
+                    is_docker_build_platform_other_run = False
+                # RUN (start)
+                elif dockerfile_item.startswith("RUN") and is_docker_build_platform_other_run is False:
+                    docker_build_platform_other += [dockerfile_item]
+                    is_docker_build_platform_other_run = True
+                # RUN (append)
+                elif dockerfile_item.startswith("RUN") and is_docker_build_platform_other_run is True:
+                    dockerfile_item_cmd = dockerfile_item.replace("RUN", "    &&")
+                    # Add \ in previous instruction line
+                    for index, prev_instruction_line in reversed(
+                        list(enumerate(docker_build_platform_other))
+                    ):
+                        if (
+                            prev_instruction_line.strip() != ""
+                            and not prev_instruction_line.startswith("#")
+                        ):
+                            # Remove last char if \n
+                            prev_instruction_line = (
+                                prev_instruction_line
+                                if not prev_instruction_line.endswith("\n")
+                                else prev_instruction_line[:-1]
+                            )
+                            docker_build_platform_other[index] = prev_instruction_line + " \\"
+                            break
+                    docker_build_platform_other += [dockerfile_item_cmd]
+                # Other
+                else:
+                    is_docker_build_platform_other_run = False
+                    docker_build_platform_other += [dockerfile_item]
+                all_dockerfile_items += [dockerfile_item]
+            # Removing comment if no install was needed
+            if docker_build_platform_other[-1] == install_comment:
+                docker_build_platform_other.pop()
+            else:
+                docker_build_platform_other += ["#"]
         if "dockerfile" in item["install"]:
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
             install_comment = f"# {item_label} installation"
@@ -615,6 +680,12 @@ def build_dockerfile(
         "#OTHER__START",
         "#OTHER__END",
         "\n".join(docker_other),
+    )
+    replace_in_file(
+        dockerfile,
+        "#BUILD_PLATFORM_OTHER__START",
+        "#BUILD_PLATFORM_OTHER__END",
+        "\n".join(docker_build_platform_other),
     )
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
