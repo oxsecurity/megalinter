@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ -d /venvs/megalinter ]]; then
+  source /venvs/megalinter/bin/activate
+fi
+
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 

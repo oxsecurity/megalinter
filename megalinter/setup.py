@@ -8,6 +8,7 @@ setup(
     author="Nicolas Vuillamy",
     author_email="nicolas.vuillamy@gmail.com",
     license="MIT",
+    package_dir={"megalinter": ""},
     packages=[
         "megalinter",
         "megalinter.linters",
