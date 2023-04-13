@@ -492,7 +492,6 @@ def build_dockerfile(
         apk_install_command = (
             "RUN apk add --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
-            + " \\\n    && git config --global core.autocrlf true"
         )
     apk_build_platform_install_command = ""
     if len(apk_build_platform_packages) > 0:
