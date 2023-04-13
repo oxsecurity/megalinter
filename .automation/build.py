@@ -315,7 +315,8 @@ def build_dockerfile(
         # Collect Dockerfile items
         if "dockerfile" in item["install"]:
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
-            docker_other += [f"# {item_label} installation"]
+            install_comment = f"# {item_label} installation"
+            docker_other += [install_comment]
             for dockerfile_item in item["install"]["dockerfile"]:
                 # FROM
                 if dockerfile_item.startswith("FROM"):
@@ -336,10 +337,6 @@ def build_dockerfile(
                             "# " + "\n# ".join(dockerfile_item.splitlines())
                         )
                     docker_copy += [dockerfile_item]
-                    docker_other += [
-                        "# Managed with "
-                        + "\n#              ".join(dockerfile_item.splitlines())
-                    ]
                 # Already used item
                 elif (
                     dockerfile_item in all_dockerfile_items
@@ -392,7 +389,11 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
-            docker_other += [""]
+            # Removing comment if no install was needed
+            if docker_other[-1] == install_comment:
+                docker_other.pop()
+            else:
+                docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
