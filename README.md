@@ -12,7 +12,7 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter, by [![OX Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
+# MegaLinter, by [![OX Security](https://www.ox.security/wp-content/uploads/2022/06/logo.svg?ref=megalinter_readme)](https://www.ox.security/?ref=megalinter)
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
@@ -23,7 +23,7 @@
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2159&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2203&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -34,7 +34,7 @@
 <!-- welcome-phrase-start -->
 MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).
 
-Supporting [**53** languages](#languages), [**24** formats](#formats), [**22** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
+Supporting [**54** languages](#languages), [**24** formats](#formats), [**22** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
 [**Upgrade to MegaLinter v6 !**](https://github.com/oxsecurity/megalinter/issues/1592)
 <!-- welcome-phrase-end -->
@@ -73,7 +73,7 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#megalinter)
+- [MegaLinter](#megalinter-by-)
   - [Table of Contents](#table-of-contents)
   - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
@@ -87,14 +87,15 @@ _Github PR reporter_
     - [Upgrade to MegaLinter v6](#upgrade-to-megalinter-v6)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
-    - [Azure Pipelines](#azure-pipelines)
     - [GitLab CI](#gitlab-ci)
+    - [Azure Pipelines](#azure-pipelines)
     - [Jenkins](#jenkins)
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
     - [Drone CI](#drone-ci)
-    - [Docker container](#docker)
+      - [(Optional) Adjusting trigger rules](#optional-adjusting-trigger-rules)
+    - [Docker container](#docker-container)
     - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
@@ -117,12 +118,15 @@ _Github PR reporter_
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
   - [Articles](#articles)
+    - [English](#english)
+    - [French](#french)
+    - [Videos](#videos)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
     - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
-      - [Global](#global)
+      - [Web Sites](#web-sites)
       - [Linters](#linters)
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
@@ -139,7 +143,7 @@ _Github PR reporter_
     - [Enhanced Documentation](#enhanced-documentation)
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
-    - [Improve robustness & stability](#improve-robustness--stability)
+    - [Improve robustness \& stability](#improve-robustness--stability)
   - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
@@ -237,6 +241,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**PYTHON**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python.md)                         | [**bandit**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_bandit.md)<br/>[_PYTHON_BANDIT_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_bandit.md)                                                                     |                                                  [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)                                                  |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**PYTHON**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python.md)                         | [**mypy**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_mypy.md)<br/>[_PYTHON_MYPY_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_mypy.md)                                                                             |                                                                           [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                                            |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**PYTHON**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python.md)                         | [**pyright**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_pyright.md)<br/>[_PYTHON_PYRIGHT_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_pyright.md)                                                                 |                                                                     [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)                                                                      |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**PYTHON**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python.md)                         | [**ruff**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_ruff.md)<br/>[_PYTHON_RUFF_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/python_ruff.md)                                                                             |                                          [![GitHub stars](https://img.shields.io/github/stars/charliermarsh/ruff?cacheSeconds=3600)](https://github.com/charliermarsh/ruff) ![autofix](https://shields.io/badge/-autofix-green)                                           |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/r.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**R**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/r.md)                                   | [**lintr**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/r_lintr.md)<br/>[_R_LINTR_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/r_lintr.md)                                                                                        |                                                                           [![GitHub stars](https://img.shields.io/github/stars/r-lib/lintr?cacheSeconds=3600)](https://github.com/r-lib/lintr)                                                                            |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/raku.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RAKU**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/raku.md)                             | [**raku**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/raku_raku.md)<br/>[_RAKU_RAKU_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/raku_raku.md)                                                                                   |                                                                         [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo)                                                                          |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**RUBY**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/ruby.md)                             | [**rubocop**](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/ruby_rubocop.md)<br/>[_RUBY_RUBOCOP_](https://github.com/oxsecurity/megalinter/tree/main/docs/descriptors/ruby_rubocop.md)                                                                       |                                          [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green)                                           |
@@ -446,7 +451,7 @@ jobs:
       - name: Create Pull Request with applied fixes
         id: cpr
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
@@ -468,6 +473,8 @@ jobs:
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[MegaLinter] Apply linters fixes"
+          commit_user_name: megalinter-bot
+          commit_user_email: nicolas.vuillamy@ox.security
 ```
 
 </details>
@@ -504,7 +511,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
-
 ### Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -524,15 +530,10 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e CI=true \
-            -e TF_BUILD=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
@@ -568,7 +569,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
         }
     }
 }
@@ -690,7 +691,7 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
@@ -712,13 +713,13 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
-    
+
 trigger:
   event:
   - push
@@ -854,7 +855,7 @@ DISABLE: PHP
 - Run all linters except PHP_PHPSTAN and PHP_PSALM linters
 
 ```yaml
-DISABLE_LINTERS: 
+DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
 ```
@@ -998,16 +999,16 @@ _The following table does not display docker pulls from [MegaLinter v4 & v5 imag
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                            | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)                                              | Default MegaLinter Flavor                                              |       113        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)                                              | Default MegaLinter Flavor                                              |       114        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ci_light.md)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/cupcake.md)             | MegaLinter for the most commonly used languages                        |        81        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/cupcake.md)             | MegaLinter for the most commonly used languages                        |        82        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/documentation.md) | MegaLinter for documentation projects                                  |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/dotnet.md)               | Optimized for C, C++, C# or VB based projects                          |        60        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/go.md)                       | Optimized for GO based projects                                        |        50        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/java.md)                   | Optimized for JAVA based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/javascript.md)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        57        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/php.md)                     | Optimized for PHP based projects                                       |        51        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/python.md)               | Optimized for PYTHON based projects                                    |        58        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/python.md)               | Optimized for PYTHON based projects                                    |        59        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ruby.md)                   | Optimized for RUBY based projects                                      |        48        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/rust.md)                   | Optimized for RUST based projects                                      |        48        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/salesforce.md)       | Optimized for Salesforce based projects                                |        51        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
@@ -1034,6 +1035,7 @@ You can show MegaLinter status with a badge in your repository README
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
 _If your main branch is **master** , replace **main** by **master** in URLs_
+
 ### Markdown
 
 - Format
@@ -1097,11 +1099,11 @@ PLUGINS:
 
 ### Plugins Catalog
 
-* [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
-* [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
-* [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
-* [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-* [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
+- [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
+- [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
+- [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+- [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
+- [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
 
 Submit a PR if you want your plugin to appear here :)
 
@@ -1251,7 +1253,6 @@ description: List of all contributors, websites and linters that help MegaLinter
   <img src="https://contrib.rocks/image?repo=oxsecurity/megalinter" />
 </a>
 
-
 ### Sites referring to MegaLinter
 
 #### Web Sites
@@ -1283,7 +1284,7 @@ description: List of all contributors, websites and linters that help MegaLinter
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
 - [npm-package-json-lint](https://npmpackagejsonlint.org/docs/integrations#megalinter){target=_blank}
-- [pmd](https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html){target=_blank}
+- [pmd](https://pmd.sourceforge.io/pmd-6.55.0/pmd_userdocs_tools_ci.html){target=_blank}
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
 - [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}

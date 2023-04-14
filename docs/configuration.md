@@ -94,7 +94,7 @@ DISABLE: PHP
 - Run all linters except PHP_PHPSTAN and PHP_PSALM linters
 
 ```yaml
-DISABLE_LINTERS: 
+DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
 ```

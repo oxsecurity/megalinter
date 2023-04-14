@@ -40,12 +40,12 @@ jobs:
 
   build:
     # Name the Job
-    name: Deploy Docker Image - PROD
+    name: Deploy Docker Image - BETA
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
-    environment: 
+    environment:
       name: beta
     ##################
     # Load all steps #
@@ -139,7 +139,7 @@ jobs:
 #          format: 'table'
 #          exit-code: '1'
 #          ignore-unfixed: true
-#          security-checks: vuln
+#          scanners: vuln
 #          vuln-type: 'os,library'
 #          severity: 'CRITICAL,HIGH'
 #          timeout: 10m0s

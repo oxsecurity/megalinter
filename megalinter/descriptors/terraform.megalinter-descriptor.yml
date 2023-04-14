@@ -29,7 +29,7 @@ linters:
       - "tflint -c .tflint.hcl myfile.tf"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.45.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -130,6 +130,7 @@ linters:
       idea:
         - name: HashiCorp Terraform / HCL language support
           url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+          id: org.intellij.plugins.hcl
       sublime:
         - name: Terrafmt
           url: https://packagecontrol.io/packages/Terrafmt

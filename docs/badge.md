@@ -13,6 +13,7 @@ You can show MegaLinter status with a badge in your repository README
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
 _If your main branch is **master** , replace **main** by **master** in URLs_
+
 ## Markdown
 
 - Format
