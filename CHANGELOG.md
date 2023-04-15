@@ -65,6 +65,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.19.17 to **1.22.0** on 2023-04-12
   - [phpstan](https://phpstan.org/) from 1.10.11 to **1.10.12** on 2023-04-12
   - [rubocop](https://rubocop.org/) from 1.50.0 to **1.50.1** on 2023-04-12
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.5 to **6.14.6** on 2023-04-15
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.03.17 to **2023.04.14** on 2023-04-15
+  - [djlint](https://djlint.com/) from 1.22.0 to **1.23.0** on 2023-04-15
+  - [phpstan](https://phpstan.org/) from 1.10.12 to **1.10.13** on 2023-04-15
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.3 to **7.3.4** on 2023-04-15
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.3 to **7.3.4** on 2023-04-15
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.302 to **1.1.303** on 2023-04-15
+  - [checkov](https://www.checkov.io/) from 2.3.160 to **2.3.165** on 2023-04-15
+  - [semgrep](https://semgrep.dev/) from 1.17.1 to **1.18.0** on 2023-04-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.3 to **2.0.5** on 2023-04-15
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.4 to **1.4.5** on 2023-04-15
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
