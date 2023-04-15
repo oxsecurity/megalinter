@@ -119,7 +119,6 @@ linters:
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
     linter_rules_url: https://vale.sh/hub/
-    linter_image_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/default.ico
     linter_rules_configuration_url: https://vale.sh/explorer/
     linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
     cli_lint_mode: list_of_files
@@ -128,6 +127,7 @@ linters:
     examples:
       - "vale **/*.md"
       - "vale --config .vale.yml README.md"
+    test_folder: spell_vale
     install:
       dockerfile:
         - FROM jdkato/vale:latest as vale
