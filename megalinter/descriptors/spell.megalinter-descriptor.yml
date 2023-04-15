@@ -130,7 +130,7 @@ linters:
       - "vale --config .vale.yml README.md"
     install:
       dockerfile:
-        - FROM jdkato/vale:v2.22.0 as vale
+        - FROM jdkato/vale:latest as vale
         - COPY --link --from=vale /bin/vale /bin/vale
     ide:
       emacs:

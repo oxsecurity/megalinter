@@ -534,6 +534,11 @@
     "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",
     "title": "chris48s/v8r"
   },
+  "vale": {
+    "description": "Vale is a command-line tool that brings code-like linting to prose. It's fast, cross-platform (Windows, macOS, and Linux), and highly customizable.",
+    "image": "https://user-images.githubusercontent.com/8785025/167473311-6de8c59b-ccb3-41e1-b887-4a17b2cb74fd.png",
+    "title": "Your style, our editor"
+  },
   "xmllint": {
     "description": "None",
     "image": null,

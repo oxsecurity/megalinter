@@ -206,6 +206,7 @@
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
+        "SPELL_VALE",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SQL_TSQLLINT",
