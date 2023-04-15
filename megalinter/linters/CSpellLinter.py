@@ -67,7 +67,7 @@ class CSpellLinter(Linter):
             return []
         whitelisted_words = []
         for log_line in self.stdout.split("\n"):
-            words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
+            words = re.findall(r"(?<=Unknown word )\(([^)]+)\)", log_line, re.MULTILINE)
             whitelisted_words += words
         if len(whitelisted_words) == 0:
             return []

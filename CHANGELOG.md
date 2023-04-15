@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter enhancements & fixes
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
   - Prevent jscpd to create output folder if the repo is not writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
+  - Fix corrective .cspell.json file generated from cspell output
 
 - Core
   - Add support for idea plugins auto-install
