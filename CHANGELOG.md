@@ -13,12 +13,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Medias
 
 - Linter enhancements & fixes
-  - Ensure ESLint actually runs in project mode rather than silently doing
-    nothing, by @Kurt-von-Laven
-    [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
+  - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
+  - Prevent jscpd to create output folder if the repo is not writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
+  - Fix corrective .cspell.json file generated from cspell output
 
 - Core
+  - Add support for idea plugins auto-install
+  - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
+  - Upgrade create-pull-request and create-or-update-comment GitHub Actions
+  - Increase auto-update-linters GitHub Action timeout
+  - Fix `/build` slash command to checkout the correct branch when called from PR, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2542>
+  - Fix crash in case of unreachable symlinks
 
 - Documentation
 
@@ -39,6 +45,39 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.76.0 to **0.76.1** on 2023-04-06
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.3 to **0.8.4** on 2023-04-06
   - [sqlfluff](https://www.sqlfluff.com/) from 2.0.2 to **2.0.3** on 2023-04-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.2 to **0.77.0** on 2023-04-10
+  - [eslint](https://eslint.org) from 8.37.0 to **8.38.0** on 2023-04-10
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.1.1 to **1.2.0** on 2023-04-10
+  - [checkov](https://www.checkov.io/) from 2.3.152 to **2.3.158** on 2023-04-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.0 to **0.39.1** on 2023-04-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.1 to **0.45.2** on 2023-04-10
+  - [pmd](https://pmd.github.io/) from 6.48.0 to **6.55.0** on 2023-04-11
+  - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.1 to **8.16.2** on 2023-04-11
+  - [rubocop](https://rubocop.org/) from 1.49.0 to **1.50.0** on 2023-04-11
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.45.0 to **0.46.0** on 2023-04-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.407 to **6.0.408** on 2023-04-11
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.3 to **3.11.1** on 2023-04-11
+  - [syft](https://github.com/anchore/syft) from 0.76.1 to **0.77.0** on 2023-04-11
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21003 to **21004** on 2023-04-11
+  - [checkov](https://www.checkov.io/) from 2.3.158 to **2.3.160** on 2023-04-11
+  - [kics](https://www.kics.io) from 1.6.13 to **1.6.14** on 2023-04-11
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.16.1 to **0.16.2** on 2023-04-12
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.4 to **6.14.5** on 2023-04-12
+  - [djlint](https://djlint.com/) from 1.19.17 to **1.22.0** on 2023-04-12
+  - [phpstan](https://phpstan.org/) from 1.10.11 to **1.10.12** on 2023-04-12
+  - [rubocop](https://rubocop.org/) from 1.50.0 to **1.50.1** on 2023-04-12
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.5 to **6.14.6** on 2023-04-15
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.03.17 to **2023.04.14** on 2023-04-15
+  - [djlint](https://djlint.com/) from 1.22.0 to **1.23.0** on 2023-04-15
+  - [phpstan](https://phpstan.org/) from 1.10.12 to **1.10.13** on 2023-04-15
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.3 to **7.3.4** on 2023-04-15
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.3 to **7.3.4** on 2023-04-15
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.302 to **1.1.303** on 2023-04-15
+  - [checkov](https://www.checkov.io/) from 2.3.160 to **2.3.165** on 2023-04-15
+  - [semgrep](https://semgrep.dev/) from 1.17.1 to **1.18.0** on 2023-04-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.3 to **2.0.5** on 2023-04-15
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.4 to **1.4.5** on 2023-04-15
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.18.0 to **1.18.1** on 2023-04-15
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

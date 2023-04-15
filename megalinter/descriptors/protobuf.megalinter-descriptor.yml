@@ -31,6 +31,7 @@ linters:
       idea:
         - name: Protocol Buffer Linter
           url: https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter
+          id: com.yoheimuta.intellij.plugin.protolint
       vscode:
         - name: VSCode Protolint
           url: https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint
