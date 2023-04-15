@@ -13,6 +13,10 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 
 ![Screenshot](../assets/images/GitlabCommentReporter.jpg)
 
+After a first MegaLinter run, a comment is posted on the MR. To avoid multiplicating MegaLinter MR comments, future MegaLinter runs will update the existing MR comment instead of posting a new one.
+
+If you really want a new MR comment for each MegaLinter run, define variable `GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT` to `false`.
+
 ## Configuration
 
 - Create an [access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token) with scope **api**
@@ -22,8 +26,9 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 
 | Variable                       | Description                                                                                            | Default value |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|---------------|
-| GITLAB_COMMENT_REPORTER        | Activates/deactivates reporter                                                                         | true          |
+| GITLAB_COMMENT_REPORTER        | Activates/deactivates reporter                                                                         | `true`          |
 | GITLAB_ACCESS_TOKEN_MEGALINTER | Must contain a Gitlab private access token defined with api access                                     | <!-- -->      |
+| GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT        | Set to false to not overwrite existing comments in case of new runs on the same Merge Request                                                                         | `true`          |
 | GITLAB_CUSTOM_CERTIFICATE      | SSL certificate value to connect to Gitlab                                                             | <!-- -->      |
 | GITLAB_CERTIFICATE_PATH        | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS) | <!-- -->      |
 | REPORTERS_MARKDOWN_TYPE        | Set to `simple` to avoid external images in generated markdown                                         | `advanced`    |
