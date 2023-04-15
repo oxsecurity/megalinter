@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.302**
+- Version in MegaLinter: **1.1.303**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -101,7 +101,6 @@ Usage: pyright [options] files...
   --dependencies                     Emit import dependency information
   -h,--help                          Show this help message
   --ignoreexternal                   Ignore external imports for --verifytypes
-  --lib                              Use library code to infer types when stubs are missing
   --level <LEVEL>                    Minimum diagnostic level (error or warning)
   --outputjson                       Output results in JSON format
   -p,--project <FILE OR DIRECTORY>   Use the configuration file at this location

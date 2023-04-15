@@ -27,7 +27,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.22.0**
+- Version in MegaLinter: **1.23.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -134,6 +134,7 @@ Options:
   --statistics              Count the number of occurrences of each
                             error/warning code.
   --include TEXT            Codes to include. ex: "H014,H017"
+  --ignore-case             Do not fix case on known html tags.
   -h, --help                Show this message and exit.
 ```
 
