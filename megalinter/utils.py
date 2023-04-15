@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import importlib
+import json
 import logging
 import os
 import re
@@ -8,6 +9,7 @@ from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
 import git
+import regex
 from megalinter import config
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -70,6 +72,7 @@ def filter_files(
     ignore_generated_files: Optional[bool] = False,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
+    file_contains_regex_extensions: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
     prefix: Optional[str] = None,
@@ -142,9 +145,24 @@ def filter_files(
         # Skip according to end of file name
         if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
             continue
-        # Skip according to file name regex
-        if file_contains_regex and not file_contains(
-            file_with_prefix_and_sub_dir, file_contains_regex_object
+        # Skip according to file contains regex
+        if (
+            file_contains_regex
+            and (
+                (
+                    # no defined file extension to check file content
+                    file_contains_regex_extensions is None
+                    or len(file_contains_regex_extensions) == 0
+                )
+                or (
+                    # check file extension
+                    file_extension
+                    in file_contains_regex_extensions
+                )
+            )
+            and not file_contains(
+                file_with_prefix_and_sub_dir, file_contains_regex_object
+            )
         ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
@@ -211,10 +229,14 @@ def check_activation_rules(activation_rules, _linter):
 def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
     if not regex_object:
         return True
-    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
-        content = f.read()
-    found_pattern = regex_object.search(content) is not None
-    return found_pattern
+    try:
+        with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+            content = f.read()
+        found_pattern = regex_object.search(content) is not None
+        return found_pattern
+    except Exception as e:
+        logging.warning(f"Unable to check content of file {file_name}: " + str(e))
+        return False
 
 
 def file_is_generated(file_name: str) -> bool:
@@ -279,28 +301,48 @@ def format_bullet_list(files):
 
 
 def find_json_in_stdout(stdout: str):
-    # Whole stdout is json
-    if stdout.startswith("{"):
-        return truncate_json_from_line(stdout)
-    # Try to find a json line within stdout
-    found_json = ""
+    # Try using full stdout
+    found_json = truncate_json_from_string(stdout)
+    if found_json != "":
+        sarif_json = extract_sarif_json(found_json)
+        if sarif_json != "":
+            return sarif_json
+    # Try to find a json single line within stdout
     stdout_lines = stdout.splitlines()
     stdout_lines.reverse()  # start from last lines
     for line in stdout_lines:
-        if line.startswith("{"):
-            json_only = truncate_json_from_line(line)
-            if json_only != "":
-                found_json = json_only
-                break
-    return found_json
-
-
-def truncate_json_from_line(line: str):
-    start_pos = line.find("{")
-    end_pos = line.rfind("}")
-    if start_pos > -1 and end_pos > -1:
-        return line[start_pos : end_pos + 1]  # noqa: E203
+        if line.strip().startswith("{"):
+            json_unique_line = truncate_json_from_string(line)
+            sarif_json = extract_sarif_json(json_unique_line)
+            if sarif_json != "":
+                return sarif_json
+    # Try using regex
+    pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
+    json_regex_results = pattern.findall(stdout)
+    for json_regex_result in json_regex_results:
+        sarif_json = extract_sarif_json(json_regex_result)
+        if sarif_json != "":
+            return sarif_json
+    # SARIF json not found in stdout
     return ""
+
+
+def truncate_json_from_string(string_with_json_inside: str):
+    start_pos = string_with_json_inside.find("{")
+    end_pos = string_with_json_inside.rfind("}")
+    if start_pos > -1 and end_pos > -1:
+        return string_with_json_inside[start_pos : end_pos + 1]  # noqa: E203
+    return ""
+
+
+def extract_sarif_json(json_text: str):
+    try:
+        json_obj = json.loads(json_text)
+        if "runs" in json_obj:
+            sarif_json = json.dumps(json_obj, indent=4)
+    except json.decoder.JSONDecodeError:
+        sarif_json = ""
+    return sarif_json
 
 
 def get_current_test_name(full_name=False):

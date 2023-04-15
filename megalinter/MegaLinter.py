@@ -40,7 +40,6 @@ def run_linters(linters):
 
 # Main MegaLinter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
-
     # Constructor: Load global config, linters & compute file extensions
     def __init__(self, params=None):
         if params is None:
@@ -126,7 +125,6 @@ class Megalinter:
 
     # Collect files, run linters on them and write reports
     def run(self):
-
         # Manage case where we only want to return standalone linter version
         if self.linter_version_only is True:
             standalone_linter = self.linters[0]
@@ -685,7 +683,7 @@ class Megalinter:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories()
-        for (dirpath, dirnames, filenames) in os.walk(self.workspace, topdown=True):
+        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
             all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
         return all_files
@@ -761,10 +759,10 @@ class Megalinter:
             if logging_level_key in logging_level_list
             else logging.INFO
         )
-        log_file = (
-            self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
-        )
-        if config.get("LOG_FILE", "") == "none":
+
+        if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
+            self
+        ):
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
@@ -775,6 +773,11 @@ class Megalinter:
                 ],
             )
         else:
+            log_file = (
+                self.report_folder
+                + os.path.sep
+                + config.get("LOG_FILE", "megalinter.log")
+            )
             # Log console output in a file
             if not os.path.isdir(os.path.dirname(log_file)):
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)

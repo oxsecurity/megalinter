@@ -45,7 +45,7 @@ class FileIoReporter(Reporter):
         for root, dirs, files in os.walk(self.report_folder):
             for file in files:
                 file_abs_path = os.path.join(root, file)
-                if not os.path.splitext(file_abs_path) in [".js", ".map"]:
+                if os.path.splitext(file_abs_path) not in [".js", ".map"]:
                     zip_file.write(
                         file_abs_path,
                         arcname=file_abs_path.replace(self.report_folder, ""),

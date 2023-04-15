@@ -1,3 +1,7 @@
+---
+title: Linters Configuration Files Reporter for MegaLinter
+description: Generates a folder IDE-config located in report folder that contains configuration files used by MegaLinter so they can be reused locally
+---
 # IDE Configuration Reporter
 
 Generates a folder **IDE-config** located in report folder.
@@ -6,6 +10,7 @@ It contains:
 
 - All default MegaLinter configuration files used during the linting
 - Updated `.vscode/extensions.json` containing VsCode extensions corresponding to the linters used during MegaLinter run
+- Updated `.idea/externalDependencies.xml` containing IntelliJ extensions corresponding to the linters used during MegaLinter run
 
 This reporter **activated by default**.
 

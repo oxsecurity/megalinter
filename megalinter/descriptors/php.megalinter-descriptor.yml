@@ -8,30 +8,22 @@ file_extensions:
 install:
   apk:
     - gnupg
-    - php7
-    - php7-phar
-    - php7-json
-    - php7-mbstring
-    - php7-xmlwriter
-    - php7-tokenizer
-    - php7-ctype
-    - php7-curl
-    - php7-dom
-    - php7-simplexml
-    - php8
-    - php8-phar
-    - php8-mbstring
-    - php8-xmlwriter
-    - php8-tokenizer
-    - php8-ctype
-    - php8-curl
-    - php8-dom
-    - php8-simplexml
+    - php81
+    - php81-phar
+    - php81-mbstring
+    - php81-xmlwriter
+    - php81-tokenizer
+    - php81-ctype
+    - php81-curl
+    - php81-dom
+    - php81-simplexml
     - composer
     - dpkg
   dockerfile:
     - |
-      RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+      RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+          && export GITHUB_AUTH_TOKEN \
+          && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
           && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
           && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
           && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
@@ -42,8 +34,8 @@ install:
           && chmod +x phive.phar \
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+          && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    - ENV PATH="/root/.composer/vendor/bin:$PATH"
 linters:
   # PHPCS
   - linter_name: phpcs
@@ -55,6 +47,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
@@ -62,7 +56,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
     ide:
       atom:
         - name: linter-phpcs
@@ -105,9 +99,9 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - |
-          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-    ide:
+        - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+        - RUN chmod +x /usr/bin/phpstan
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -140,17 +134,19 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive --no-progress install psalm@^4.30.0 -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+          id: de.espend.idea.php.generics
       vscode:
         - name: Psalm VSCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
     linter_url: https://github.com/overtrue/phplint
+    linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     examples:
@@ -161,9 +157,5 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require --ignore-platform-reqs overtrue/phplint ^3.0 \
+          RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
               && composer global config bin-dir --absolute
-        - |
-          RUN wget --tries=5 -q -O phplint.phar https://github.com/overtrue/phplint/releases/download/3.1.1/phplint.phar \
-              && chmod +x phplint.phar \
-              && mv phplint.phar /usr/local/bin/phplint

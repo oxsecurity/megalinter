@@ -27,8 +27,10 @@ linters:
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
     install:
       dockerfile:
-        - FROM cljkondo/clj-kondo:2022.10.14-alpine as clj-kondo
-        - COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+        - |
+          RUN curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+              && chmod +x install-clj-kondo \
+              && ./install-clj-kondo
     ide:
       atom:
         - name: linter-kondo

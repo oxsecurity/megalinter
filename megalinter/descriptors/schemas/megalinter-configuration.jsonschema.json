@@ -127,6 +127,7 @@
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
         "CSHARP_DOTNET_FORMAT",
+        "CSHARP_CSHARPIER",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DART_DARTANALYZER",
@@ -149,10 +150,12 @@
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSON_PRETTIER",
+        "JSON_NPM_PACKAGE_JSON_LINT",
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
         "KUBERNETES_KUBECONFORM",
+        "KUBERNETES_HELM",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MAKEFILE_CHECKMAKE",
@@ -167,6 +170,7 @@
         "PHP_PSALM",
         "PHP_PHPLINT",
         "POWERSHELL_POWERSHELL",
+        "POWERSHELL_POWERSHELL_FORMATTER",
         "PROTOBUF_PROTOLINT",
         "PUPPET_PUPPET_LINT",
         "PYTHON_PYLINT",
@@ -176,6 +180,7 @@
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
         "PYTHON_PYRIGHT",
+        "PYTHON_RUFF",
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
@@ -549,7 +554,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "ARM_ARM_TTK: Override default cli lint mode",
@@ -703,7 +707,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "BASH_EXEC: Override default cli lint mode",
@@ -1034,7 +1037,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "BICEP_BICEP_LINTER: Override default cli lint mode",
@@ -1158,7 +1160,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CLOJURE_CLJ_KONDO: Override default cli lint mode",
@@ -1432,7 +1433,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "COFFEE_COFFEELINT: Override default cli lint mode",
@@ -1893,6 +1893,113 @@
       "title": "CREDENTIALS_SECRETLINT: Custom config file path",
       "type": "string"
     },
+    "CSHARP_CSHARPIER_ARGUMENTS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_ARGUMENTS",
+      "description": "CSHARP_CSHARPIER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_CSHARPIER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CSHARP_CSHARPIER_CLI_LINT_MODE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CSHARP_CSHARPIER: Override default cli lint mode",
+      "type": "string"
+    },
+    "CSHARP_CSHARPIER_DISABLE_ERRORS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS",
+      "default": false,
+      "title": "CSHARP_CSHARPIER: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CSHARP_CSHARPIER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CSHARP_CSHARPIER_FILE_EXTENSIONS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_CSHARPIER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CSHARP_CSHARPIER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CSHARP_CSHARPIER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_CSHARPIER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE",
+      "title": "CSHARP_CSHARPIER: Excluding Regex",
+      "type": "string"
+    },
+    "CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE",
+      "title": "CSHARP_CSHARPIER: Including Regex",
+      "type": "string"
+    },
+    "CSHARP_CSHARPIER_POST_COMMANDS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CSHARP_CSHARPIER_PRE_COMMANDS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "CSHARP_DOTNET_FORMAT_ARGUMENTS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_ARGUMENTS",
       "description": "CSHARP_DOTNET_FORMAT: User custom arguments to add in linter CLI call",
@@ -1914,7 +2021,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
@@ -2041,7 +2147,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "CSS_SCSS_LINT: Override default cli lint mode",
@@ -2412,7 +2517,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "DART_DARTANALYZER: Override default cli lint mode",
@@ -3100,7 +3204,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "ENV_DOTENV_LINTER: Override default cli lint mode",
@@ -3326,7 +3429,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "GHERKIN_GHERKIN_LINT: Override default cli lint mode",
@@ -3887,7 +3989,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default cli lint mode",
@@ -5278,6 +5379,105 @@
       "title": "JSON_JSONLINT: Custom config file path",
       "type": "string"
     },
+    "JSON_NPM_PACKAGE_JSON_LINT_ARGUMENTS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_ARGUMENTS",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_CONFIG_FILE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_CONFIG_FILE",
+      "default": ".npmpackagejsonlintrc.json",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: User custom config file name if different from default",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Custom config file name",
+      "type": "string"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_RULES_PATH": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_RULES_PATH",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Path where to find linter configuration file",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Custom config file path",
+      "type": "string"
+    },
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
       "description": "JSON_PRETTIER: User custom arguments to add in linter CLI call",
@@ -5691,7 +5891,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "KOTLIN_KTLINT: Override default cli lint mode",
@@ -5791,6 +5990,98 @@
       "$id": "#/properties/KUBERNETES_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for KUBERNETES descriptor",
       "type": "string"
+    },
+    "KUBERNETES_HELM_ARGUMENTS": {
+      "$id": "#/properties/KUBERNETES_HELM_ARGUMENTS",
+      "description": "KUBERNETES_HELM: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_HELM: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KUBERNETES_HELM_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_HELM_DIRECTORY",
+      "default": "",
+      "title": "KUBERNETES_HELM: Directory containing KUBERNETES files",
+      "type": "string"
+    },
+    "KUBERNETES_HELM_DISABLE_ERRORS": {
+      "$id": "#/properties/KUBERNETES_HELM_DISABLE_ERRORS",
+      "default": false,
+      "title": "KUBERNETES_HELM: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KUBERNETES_HELM_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_HELM_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_HELM: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KUBERNETES_HELM_FILE_EXTENSIONS": {
+      "$id": "#/properties/KUBERNETES_HELM_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_HELM: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KUBERNETES_HELM_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KUBERNETES_HELM_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_HELM: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KUBERNETES_HELM_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_HELM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_HELM: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_HELM_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_HELM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_HELM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "KUBERNETES_KUBECONFORM_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_ARGUMENTS",
@@ -5926,7 +6217,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "KUBERNETES_KUBEVAL: Override default cli lint mode",
@@ -6039,7 +6329,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "LATEX_CHKTEX: Override default cli lint mode",
@@ -6217,7 +6506,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "LUA_LUACHECK: Override default cli lint mode",
@@ -6344,7 +6632,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "MAKEFILE_CHECKMAKE: Override default cli lint mode",
@@ -6908,7 +7195,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "MARKDOWN_REMARK_LINT: Override default cli lint mode",
@@ -7060,7 +7346,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "OPENAPI_SPECTRAL: Override default cli lint mode",
@@ -7224,7 +7509,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PERL_PERLCRITIC: Override default cli lint mode",
@@ -8018,7 +8302,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "POWERSHELL_POWERSHELL: Override default cli lint mode",
@@ -8082,6 +8365,125 @@
     "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_ARGUMENTS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_ARGUMENTS",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_CLI_LINT_MODE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Override default cli lint mode",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_CONFIG_FILE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CONFIG_FILE",
+      "default": ".powershell-formatter.psd1",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: User custom config file name if different from default",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Custom config file name",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS",
+      "default": false,
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_FILE_EXTENSIONS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Excluding Regex",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_PRE_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_RULES_PATH": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_RULES_PATH",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: Path where to find linter configuration file",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Custom config file path",
       "type": "string"
     },
     "POWERSHELL_POWERSHELL_POST_COMMANDS": {
@@ -8192,7 +8594,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PROTOBUF_PROTOLINT: Override default cli lint mode",
@@ -8329,7 +8730,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "PUPPET_PUPPET_LINT: Override default cli lint mode",
@@ -9313,6 +9713,126 @@
       "title": "PYTHON_PYRIGHT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_RUFF_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_RUFF_ARGUMENTS",
+      "description": "PYTHON_RUFF: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_RUFF_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_RUFF_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_RUFF: Override default cli lint mode",
+      "type": "string"
+    },
+    "PYTHON_RUFF_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_RUFF_CONFIG_FILE",
+      "default": ".ruff.toml",
+      "description": "PYTHON_RUFF: User custom config file name if different from default",
+      "title": "PYTHON_RUFF: Custom config file name",
+      "type": "string"
+    },
+    "PYTHON_RUFF_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_RUFF_DISABLE_ERRORS",
+      "default": false,
+      "title": "PYTHON_RUFF: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PYTHON_RUFF_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_RUFF_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_RUFF: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PYTHON_RUFF_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_RUFF_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_RUFF_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_RUFF_FILTER_REGEX_EXCLUDE",
+      "title": "PYTHON_RUFF: Excluding Regex",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_RUFF_FILTER_REGEX_INCLUDE",
+      "title": "PYTHON_RUFF: Including Regex",
+      "type": "string"
+    },
+    "PYTHON_RUFF_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_RUFF_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_RUFF: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_RUFF_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_RUFF_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_RUFF: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PYTHON_RUFF_RULES_PATH": {
+      "$id": "#/properties/PYTHON_RUFF_RULES_PATH",
+      "description": "PYTHON_RUFF: Path where to find linter configuration file",
+      "title": "PYTHON_RUFF: Custom config file path",
+      "type": "string"
+    },
     "RAKU_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RAKU_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for RAKU descriptor",
@@ -9344,7 +9864,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RAKU_RAKU: Override default cli lint mode",
@@ -9448,6 +9967,17 @@
       "$id": "#/properties/RAKU_RAKU_RULES_PATH",
       "description": "RAKU_RAKU: Path where to find linter configuration file",
       "title": "RAKU_RAKU: Custom config file path",
+      "type": "string"
+    },
+    "REPORTERS_MARKDOWN_TYPE": {
+      "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
+      "default": "advanced",
+      "description": "Define simple if you do not to have external images in PR/MR comments",
+      "enum": [
+        "simple",
+        "advanced"
+      ],
+      "title": "Reporters Markdown type",
       "type": "string"
     },
     "REPORT_OUTPUT_FOLDER": {
@@ -10106,6 +10636,13 @@
         "string"
       ]
     },
+    "REPOSITORY_TRIVY_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CONFIG_FILE",
+      "default": "trivy.yaml",
+      "description": "REPOSITORY_TRIVY: User custom config file name if different from default",
+      "title": "REPOSITORY_TRIVY: Custom config file name",
+      "type": "string"
+    },
     "REPOSITORY_TRIVY_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_TRIVY_DISABLE_ERRORS",
       "default": false,
@@ -10152,6 +10689,12 @@
       "title": "REPOSITORY_TRIVY: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_TRIVY_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_TRIVY_RULES_PATH",
+      "description": "REPOSITORY_TRIVY: Path where to find linter configuration file",
+      "title": "REPOSITORY_TRIVY: Custom config file path",
+      "type": "string"
+    },
     "RST_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for RST descriptor",
@@ -10183,7 +10726,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RSTCHECK: Override default cli lint mode",
@@ -10310,7 +10852,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RSTFMT: Override default cli lint mode",
@@ -10417,7 +10958,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RST_RST_LINT: Override default cli lint mode",
@@ -10534,7 +11074,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "RUBY_RUBOCOP: Override default cli lint mode",
@@ -10787,7 +11326,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "R_LINTR: Override default cli lint mode",
@@ -11280,7 +11818,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SCALA_SCALAFIX: Override default cli lint mode",
@@ -11450,7 +11987,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SNAKEMAKE_LINT: Override default cli lint mode",
@@ -11557,7 +12093,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SNAKEMAKE_SNAKEFMT: Override default cli lint mode",
@@ -11662,6 +12197,13 @@
       "description": "SNAKEMAKE_SNAKEFMT: Path where to find linter configuration file",
       "title": "SNAKEMAKE_SNAKEFMT: Custom config file path",
       "type": "string"
+    },
+    "SPELL_CSPELL_ANALYZE_FILE_NAMES": {
+      "$id": "#/properties/SPELL_CSPELL_ANALYZE_FILE_NAMES",
+      "default": false,
+      "description": "If set to true, MegaLinter will also send file names to cspell for analysis.",
+      "title": "SPELL_CSPELL: Analyze file names",
+      "type": "boolean"
     },
     "SPELL_CSPELL_ARGUMENTS": {
       "$id": "#/properties/SPELL_CSPELL_ARGUMENTS",
@@ -12178,7 +12720,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "SQL_SQL_LINT: Override default cli lint mode",
@@ -12558,7 +13099,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TEKTON_TEKTON_LINT: Override default cli lint mode",
@@ -12685,7 +13225,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_CHECKOV: Override default cli lint mode",
@@ -12802,7 +13341,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_KICS: Override default cli lint mode",
@@ -12909,7 +13447,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TERRAFORM_FMT: Override default cli lint mode",
@@ -13016,7 +13553,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TERRAGRUNT: Override default cli lint mode",
@@ -13242,7 +13778,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "TERRAFORM_TFLINT: Override default cli lint mode",
@@ -13915,7 +14450,6 @@
       "default": "file",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",

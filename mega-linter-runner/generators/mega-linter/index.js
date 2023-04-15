@@ -1,7 +1,7 @@
 "use strict";
 const Generator = require("yeoman-generator");
 const { asciiArt } = require("../../lib/ascii");
-const { OxSecuritySetup } = require("../../lib/ox-setup");
+const { OXSecuritySetup } = require("../../lib/ox-setup");
 
 module.exports = class extends Generator {
   prompting() {
@@ -45,6 +45,7 @@ When you don't know what option to select, please use default values`
         default: "gitHubActions",
         choices: [
           { name: "GitHub Actions", value: "gitHubActions" },
+          { name: "Drone CI", value: "droneCI" },
           { name: "Jenkins", value: "jenkins" },
           { name: "GitLab CI", value: "gitLabCI" },
           { name: "Azure Pipelines", value: "azure" },
@@ -138,6 +139,7 @@ When you don't know what option to select, please use default values`
   writing() {
     // Generate workflow config
     this._generateGitHubAction();
+    this._generateDroneCI();
     this._generateJenkinsfile();
     this._generateGitLabCi();
     this._generateAzurePipelines();
@@ -159,7 +161,7 @@ When you don't know what option to select, please use default values`
     this._manageGitIgnore();
     // Process linking to ox.security service
     if (this.props.ox === true) {
-      new OxSecuritySetup().run();
+      new OXSecuritySetup().run();
     }
   }
 
@@ -231,7 +233,19 @@ When you don't know what option to select, please use default values`
       }
     );
   }
-
+  _generateDroneCI() {
+    if (this.props.ci !== "droneCI") {
+      return;
+    }
+    this.fs.copyTpl(
+      this.templatePath(".drone.yml"),
+      this.destinationPath(".drone.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+      }
+    );
+  }
   _generateJenkinsfile() {
     if (this.props.ci !== "jenkins") {
       return;

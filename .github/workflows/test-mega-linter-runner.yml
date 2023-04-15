@@ -1,6 +1,22 @@
 ---
 name: "Test mega-linter-runner"
-on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
+  pull_request:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -19,7 +35,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: "12"
       - name: Install dependencies

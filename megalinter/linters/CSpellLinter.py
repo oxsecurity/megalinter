@@ -7,7 +7,6 @@ import json
 import logging
 import os
 import re
-import tempfile
 import uuid
 
 from megalinter import Linter, config, utils
@@ -15,7 +14,16 @@ from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 
 class CSpellLinter(Linter):
+    def __init__(self, params=None, linter_config=None):
+        self.temp_file_name = None
+        super().__init__(params, linter_config)
+
     def build_lint_command(self, file=None) -> list:
+        self.cli_lint_extra_args += [
+            "--show-context",
+            "--show-suggestions",
+            "--no-must-find-files",
+        ]
         # Create temp file with files segments
         if (
             self.cli_lint_mode == "list_of_files"
@@ -27,26 +35,39 @@ class CSpellLinter(Linter):
             for file_path in self.files:
                 file_path = re.sub("[^0-9a-zA-Z]+", " ", os.path.splitext(file_path)[0])
                 file_names_txt += file_path + "\n"
-            temp_file_name = (
-                tempfile.gettempdir()
+            self.temp_file_name = (
+                self.workspace
                 + os.path.sep
                 + str(uuid.uuid4())
                 + "-megalinter_file_names_cspell.txt"
             )
-            with open(temp_file_name, "w", encoding="utf-8") as f:
-                f.write(file_names_txt)
-            self.files += [temp_file_name]
+            try:
+                with open(self.temp_file_name, "w", encoding="utf-8") as f:
+                    f.write(file_names_txt)
+                self.files += [self.temp_file_name]
+            except Exception as e:
+                logging.info(
+                    "[cspell] Unable to check file names on a readonly workspace: "
+                    + str(e)
+                )
         return super().build_lint_command(file)
+
+    # Remove temp file with file names if existing
+    def execute_lint_command(self, command):
+        res = super().execute_lint_command(command)
+        if self.temp_file_name is not None:
+            os.remove(self.temp_file_name)
+        return res
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, reporter_self):
         # Collect detected words from logs
-        if self.stdout is None:
+        if self.stdout is None or not utils.can_write_report_files(self.master):
             return []
         whitelisted_words = []
         for log_line in self.stdout.split("\n"):
-            words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
+            words = re.findall(r"(?<=Unknown word )\(([^)]+)\)", log_line, re.MULTILINE)
             whitelisted_words += words
         if len(whitelisted_words) == 0:
             return []
@@ -114,3 +135,6 @@ Of course, please correct real typos before :)
             ]
         )
         return additional_report.splitlines()
+
+    def pre_test(self):
+        config.set_value("SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"])

@@ -1,3 +1,7 @@
+---
+title: TAP Reporter for MegaLinter
+description: Generates SAST results in TAP output files in report folder
+---
 # TAP Reporter
 
 Posts a pack of TAP logs , zipped as a GitHub Action artifact

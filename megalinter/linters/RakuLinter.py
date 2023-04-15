@@ -11,7 +11,6 @@ import megalinter
 
 
 class RakuLinter(megalinter.Linter):
-
     # To execute before linting files
     def before_lint_files(self):
         if os.path.isfile(

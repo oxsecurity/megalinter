@@ -6,7 +6,8 @@ descriptor_flavors:
 lint_all_other_linters_files: true
 linters:
   # MISSPELL
-  - linter_name: misspell
+  - class: MisspellLinter
+    linter_name: misspell
     name: SPELL_MISSPELL
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
@@ -27,7 +28,7 @@ linters:
         - |
           RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
               && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+              && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
               && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
               && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
               && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
@@ -66,7 +67,8 @@ linters:
         - name: Code Spell Checker
           url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
   # PROSELINT
-  - linter_name: proselint
+  - class: ProselintLinter
+    linter_name: proselint
     name: SPELL_PROSELINT
     lint_all_other_linters_files: false
     file_extensions:
@@ -99,6 +101,7 @@ linters:
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
+          id: name.kropp.intellij.proselint
       sublime:
         - name: SublimeLinter-contrib-proselint
           url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint

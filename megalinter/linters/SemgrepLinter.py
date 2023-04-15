@@ -9,7 +9,6 @@ from megalinter import Linter, config, flavor_factory, utils
 
 
 class SemgrepLinter(Linter):
-
     # Activate SemGrep only if we have custom rulesets defined
     def manage_activation(self, params):
         super().manage_activation(params)

@@ -17,6 +17,8 @@ linters:
   # KUBEVAL
   - linter_name: kubeval
     name: KUBERNETES_KUBEVAL
+    deprecated: true
+    deprecated_description: Kubeval project is no longer maintained, you should use KUBERNETES_KUBECONFORM.
     linter_url: https://www.kubeval.com/
     linter_repo: https://github.com/instrumenta/kubeval
     linter_spdx_license: Apache-2.0
@@ -68,3 +70,28 @@ linters:
               && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
               && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
               && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+  # HELM LINT
+  - linter_name: helm
+    name: KUBERNETES_HELM
+    linter_repo: https://github.com/helm/helm
+    linter_url: https://helm.sh/docs/helm/helm_lint/
+    files_sub_directory: ""
+    test_folder: kubernetes_helm
+    active_only_if_file_found:
+      - Chart.yml
+      - Chart.yaml
+    cli_lint_mode: project
+    cli_help_arg_name: help
+    cli_version_arg_name: version
+    cli_lint_extra_args:
+      - "lint"
+    linter_banner_image_url: https://helm.sh/img/helm.svg
+    linter_text: |
+      `helm lint` examine a chart for possible issues.
+    examples:
+      - helm lint .
+      - helm lint --with-subcharts .
+    install:
+      apk:
+        - helm

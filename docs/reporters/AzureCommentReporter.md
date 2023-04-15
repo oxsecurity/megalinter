@@ -1,3 +1,7 @@
+---
+title: Azure Pipelines Reporter for MegaLinter
+description: Posts MegaLinter SAST results summary in the comments of the related Azure Pipelines pull request (if existing)
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # Azure Comment Reporter
 
@@ -11,22 +15,17 @@ Click on **MegaLinter-reports** artifact from the main job log to view or downlo
 
 ## Configuration
 
-- The following variables must be sent to docker run command
+- The following variables must be sent to the docker run command
 
 Example:
 
 ```yaml
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e CI=true \
-            -e TF_BUILD=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT=$(System.TeamProject) \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 ```
@@ -39,7 +38,8 @@ Example:
 
 ![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
 
-| Variable                          | Description                                                                      | Default value |
-|-----------------------------------|----------------------------------------------------------------------------------|---------------|
-| AZURE_COMMENT_REPORTER            | Activates/deactivates reporter                                                   | true          |
-| AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments links to target Build and not artifacts page | `artifacts`   |
+| Variable                          | Description                                                                        | Default value |
+|-----------------------------------|------------------------------------------------------------------------------------|---------------|
+| AZURE_COMMENT_REPORTER            | Activates/deactivates reporter                                                     | true          |
+| AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
+| REPORTERS_MARKDOWN_TYPE           | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
