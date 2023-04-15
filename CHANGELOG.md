@@ -77,6 +77,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.17.1 to **1.18.0** on 2023-04-15
   - [sqlfluff](https://www.sqlfluff.com/) from 2.0.3 to **2.0.5** on 2023-04-15
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.4 to **1.4.5** on 2023-04-15
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.18.0 to **1.18.1** on 2023-04-15
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

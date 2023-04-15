@@ -98,7 +98,7 @@
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.4.5",
     "terragrunt": "0.45.2",
-    "terrascan": "1.18.0",
+    "terrascan": "1.18.1",
     "tflint": "0.46.0",
     "trivy": "0.39.1",
     "tsqllint": "1.15.3.0",
