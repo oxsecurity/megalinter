@@ -9,6 +9,8 @@ linters:
   - class: MisspellLinter
     linter_name: misspell
     name: SPELL_MISSPELL
+    deprecated: true
+    deprecated_description: misspell is not maintained since 2018 so will be removed in a future version
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
     linter_repo: https://github.com/client9/misspell
@@ -110,12 +112,19 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint
 
   # Vale
-  - linter_name: vale
+  - class: ValeLinter
+    linter_name: vale
     name: SPELL_VALE
     can_output_sarif: false
+    active_only_if_file_found:
+      - .vale.ini
     descriptor_flavors:
       - all_flavors
       - documentation
+    linter_text: |
+      Vale brings your editorial style to life !
+
+      To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
     linter_rules_url: https://vale.sh/hub/
