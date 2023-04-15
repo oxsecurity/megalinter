@@ -28,7 +28,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN curl -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo
     ide:
@@ -54,20 +54,21 @@ linters:
     linter_rules_inline_disable_url: https://github.com/greglook/cljstyle#ignoring-forms
     linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
     config_file_name: .cljstyle
+    cli_lint_extra_args:
+      - "check"
+    cli_lint_fix_arg_name: "fix"
+    cli_lint_fix_remove_args:
+      - "check"
     examples:
       - "cljstyle check"
       - "cljstyle fix"
       - "clj-kondo fix myfile.clj path/to/myfile.clj"
     install:
-      # Add compression library for cljstyle fix
-      apk:
-        - zlib
-        - zlib-dev
-      # https://github.com/abogoyavlensky/docker/blob/master/cljstyle/Dockerfile
-      # TODO: create practicalli/cljstyle docker image that works with megalinter
       dockerfile:
-        - FROM abogoyavlensky/cljstyle:0.15.0 as cljstyle
-        - COPY --from=cljstyle /usr/local/bin/cljstyle /usr/bin/
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
+          chmod +x install-cljstyle \
+          ./install-cljstyle
     ide:
       emacs:
         - name: cljstyle-mode
