@@ -34,6 +34,15 @@ REPO_HOME = (
     + ".."
 )
 
+# Returns root dir depending we are locally or in CI
+def get_root_dir():
+    root_dir = (
+        DEFAULT_DOCKER_WORKSPACE_DIR
+        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
+        else Repo(__file__, search_parent_directories=True).git.rev_parse("--show-toplevel")
+    )
+    return root_dir
+
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
@@ -74,13 +83,8 @@ def linter_test_setup(params=None):
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
     # Root path of default rules
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
+
     workspace = None
     config_file_path = root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
     if os.path.isfile(config_file_path):
@@ -334,13 +338,7 @@ def test_get_linter_version(linter, test_self):
         version == version_cache, "Version not found in linter instance cache"
     )
     # Write in linter-versions.json
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
     versions_file = (
         root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
     )
@@ -399,13 +397,7 @@ def test_get_linter_help(linter, test_self):
         help_txt == "ERROR", "Returned help invalid: [" + help_txt + "]"
     )
     # Write in linter-helps.json
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
     helps_file = root_dir + os.path.sep + "/.automation/generated/linter-helps.json"
     data = {}
     help_lines = help_txt.splitlines()
