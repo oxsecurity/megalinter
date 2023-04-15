@@ -34,12 +34,15 @@ REPO_HOME = (
     + ".."
 )
 
+
 # Returns root dir depending we are locally or in CI
 def get_root_dir():
     root_dir = (
         DEFAULT_DOCKER_WORKSPACE_DIR
         if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else Repo(__file__, search_parent_directories=True).git.rev_parse("--show-toplevel")
+        else Repo(__file__, search_parent_directories=True).git.rev_parse(
+            "--show-toplevel"
+        )
     )
     return root_dir
 
