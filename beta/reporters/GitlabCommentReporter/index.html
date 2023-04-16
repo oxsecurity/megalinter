@@ -2335,6 +2335,8 @@
 <h2 id="usage">Usage</h2>
 <p>Click on hyperlinks to access detailed logs (click on <strong>Download</strong> in <strong>Artifacts section</strong> at the left of a CI job page)</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/GitlabCommentReporter.jpg"><img alt="Screenshot" src="../../assets/images/GitlabCommentReporter.jpg"/></a></p>
+<p>After a first MegaLinter run, a comment is posted on the MR. To avoid multiplicating MegaLinter MR comments, future MegaLinter runs will update the existing MR comment instead of posting a new one.</p>
+<p>If you really want a new MR comment for each MegaLinter run, define variable <code>GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT</code> to <code>false</code>.</p>
 <h2 id="configuration">Configuration</h2>
 <ul>
 <li>Create an <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token">access token</a> with scope <strong>api</strong></li>
@@ -2353,12 +2355,17 @@
 <tr>
 <td>GITLAB_COMMENT_REPORTER</td>
 <td>Activates/deactivates reporter</td>
-<td>true</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>GITLAB_ACCESS_TOKEN_MEGALINTER</td>
 <td>Must contain a Gitlab private access token defined with api access</td>
 <td><!-- --></td>
+</tr>
+<tr>
+<td>GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT</td>
+<td>Set to false to not overwrite existing comments in case of new runs on the same Merge Request</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>GITLAB_CUSTOM_CERTIFICATE</td>
