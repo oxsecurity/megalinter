@@ -129,6 +129,8 @@ linters:
       Vale brings your editorial style to life !
 
       To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
+
+      MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
     linter_rules_url: https://vale.sh/hub/
@@ -140,8 +142,8 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: ([0-9]+) errors, [0-9]+ warnings and [0-9]+ suggestions in [0-9]+ files.
     examples:
-      - "vale file1.md file2.md file3.md"
-      - "vale --config .vale.yml README.md"
+      - "vale README.md file1.md file2.md file3.md"
+      - "vale --config .vale.ini README.md file1.md file2.md file3.md"
     test_folder: spell_vale
     install:
       dockerfile:

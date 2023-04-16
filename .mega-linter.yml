@@ -47,8 +47,6 @@ PLUGINS:
 PRE_COMMANDS:
   - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"
-  - command: apk add libxslt
-    cwd: "root"
 POST_COMMANDS:
   - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter ! :)"
     cwd: "workspace"
