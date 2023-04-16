@@ -417,7 +417,7 @@ class Linter:
         elif config.exists(self.descriptor_id + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
         # Linter config file:
-        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
         # 3: linter_rules_path + config_file_name
@@ -490,7 +490,7 @@ class Linter:
                 ).replace(self.TEMPLATES_DIR, "")
 
         # Linter ignore file:
-        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + ignore_file_name
         # 3: linter_rules_path + ignore_file_name

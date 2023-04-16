@@ -435,7 +435,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Unify the drawing of badges in documentation, by @bdovaz in [#2220](https://github.com/oxsecurity/megalinter/pull/2220)
 
 - Fixes
-  - Do not write output files if REPORT_OUTPUT_FOLDER is none
+  - Don't write output files if REPORT_OUTPUT_FOLDER is none
   - Fix Perl linter skipping files
 
 - New MegaLinter plugins
@@ -1880,7 +1880,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
 - Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
-- Do not check for updated files when `APPLY_FIXES` isn't active
+- Don't check for updated files when `APPLY_FIXES` isn't active
 - Fix CLI_LINT_MODE default value in doc (#1086)
 
 - Linters
@@ -2983,7 +2983,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [4.18.0] - 2020-12-23
 
 - Core
-  - Do not suggest flavors when MegaLinter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
+  - Don't suggest flavors when MegaLinter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
   - Fix ConsoleReporter active linters table content
   - Check if linter is able to fix before flagging it as a fixing linter during runtime
 
@@ -3024,7 +3024,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 - Fixes
   - Output reporter problems as warnings
-  - Do not make MegaLinter fail in case GitHubStatusReporter fails
+  - Don't make MegaLinter fail in case GitHubStatusReporter fails
 
 - Doc
   - Rename "index" pages into more meaningful labels

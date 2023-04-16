@@ -90,7 +90,7 @@ def check_active_linters_match_flavor(active_linters):
             active_linter.is_active = False
     # Manage cases where linters are missing in flavor
     if len(missing_linters) > 0:
-        # Do not warn/stop if missing linters are repository ones (mostly OX.security related)
+        # Don't warn/stop if missing linters are repository ones (mostly OX.security related)
         if not are_all_repository_linters(missing_linters):
             missing_linters_str = ",".join(missing_linters)
             logging.warning(

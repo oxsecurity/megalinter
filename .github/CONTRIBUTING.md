@@ -152,7 +152,7 @@ If you are creating a linter or making changes to a linter, you may want to run 
 
 When running them, you may encounter several problems:
 
-* it's not installed on the machine locally and you do not want to install it.
+* it's not installed on the machine locally and you don't want to install it.
 * The OS doesn't allow the installation of the linter because it's not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.
 

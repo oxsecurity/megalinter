@@ -730,7 +730,7 @@ class Megalinter:
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
-        # Do not initialize reports if report folder is none or false
+        # Don't initialize reports if report folder is none or false
         if not utils.can_write_report_files(self):
             return
         # Initialize output dir
@@ -763,7 +763,7 @@ class Megalinter:
         if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
             self
         ):
-            # Do not log console output in a file
+            # Don't log console output in a file
             logging.basicConfig(
                 force=True,
                 level=logging_level,

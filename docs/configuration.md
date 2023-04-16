@@ -107,8 +107,8 @@ You can apply filters to a single linter by defining variable `<LINTER_KEY>_FILT
 Examples:
 
 - Lint only src folder: `FILTER_REGEX_INCLUDE: (src/)`
-- Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
-- Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
+- Don't lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
+- Don't lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
 Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
 
@@ -125,7 +125,7 @@ Only for GitHub Action Workflow file if you use it:
 
 Notes:
 
-- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you don't want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
 - If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
 
 - If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
@@ -187,7 +187,7 @@ Allowing `file` or `list_of_files` to be overridden to `project` is mostly for w
 
 Special considerations:
 
-- As list of files isn't sent to the linter command, linters using `project` lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
+- As list of files isn't sent to the linter command, linters using `project` lint mode don't take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
 
 <!-- configuration-section-end -->
