@@ -90,11 +90,11 @@ pwsh -NoProfile -NoLogo -Command "
 ### Help content
 
 ```shell
-[31;1mTest-AzTemplate: [0m
-[31;1m[36;1mLine |[0m
-[31;1m[36;1m[36;1m   2 | [0m $TAZ_V = (Test-AzTemplate [36;1m-help[0m);[0m
-[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m                           ~~~~~[0m
-[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mA parameter cannot be found that matches parameter name 'help'.[0m
+Test-AzTemplate: 
+Line |
+   2 |  $TAZ_V = (Test-AzTemplate -help);
+     |                            ~~~~~
+     | A parameter cannot be found that matches parameter name 'help'.
 ```
 
 ### Installation on mega-linter Docker image

@@ -93,6 +93,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.165 to **2.3.167** on 2023-04-16
   - [checkov](https://www.checkov.io/) from 2.3.167 to **2.3.168** on 2023-04-16
   - [vale](https://vale.sh/) from 2.24.2 to **2.24.0** on 2023-04-16
+  - [checkov](https://www.checkov.io/) from 2.3.168 to **2.3.171** on 2023-04-16
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.1 to **0.40.0** on 2023-04-16
+  - [vale](https://vale.sh/) from 2.24.0 to **2.24.2** on 2023-04-16
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
