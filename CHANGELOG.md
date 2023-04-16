@@ -18,6 +18,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Prevent jscpd to create output folder if the repo is not writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
   - Fix corrective .cspell.json file generated from cspell output
 
+- Reporters
+  - Enhancements and fixes on Gitlab Comment Reporter
+    - New var GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT to allow to disable the overwrite of existing MegaLinter comment in case of new run
+    - In case of overwrite activated (by default), fetch all Merge Request comments, not the first 20.
+    - Display a different message in log when a Merge Request comment is created or updated.
+
 - Core
   - Add support for idea plugins auto-install
   - Upgrade base Docker image to python:3.11.3-alpine3.17
@@ -26,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Increase auto-update-linters GitHub Action timeout
   - Fix `/build` slash command to checkout the correct branch when called from PR, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2542>
   - Fix crash in case of unreachable symlinks
+  - Fix local run of python test cases
 
 - Documentation
 

@@ -30,6 +30,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM jdkato/vale:latest as vale
 #FROM__END
 
 ##################
@@ -223,6 +224,7 @@ COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
 #COPY__END
 
 #############################################################################################
@@ -305,6 +307,9 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
 
+
+# vale installation
+# Managed with COPY --link --from=vale /bin/vale /bin/vale
 
 #OTHER__END
 
