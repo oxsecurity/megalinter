@@ -1205,17 +1205,17 @@ class Linter:
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            m = re.search(reg, stdout)
+            m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_errors = int(m.group(1))
         # Count the number of occurrences of a regex corresponding to an error in linter log
         elif self.cli_lint_errors_count == "regex_count":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            total_errors = len(re.findall(reg, stdout))
+            total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
         # Sum of all numbers found in linter logs with a regex
         elif self.cli_lint_errors_count == "regex_sum":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            matches = re.findall(reg, stdout)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
             total_errors = sum(int(m) for m in matches)
         # Count all lines of the linter log
         elif self.cli_lint_errors_count == "total_lines":
