@@ -145,7 +145,7 @@ _Github PR reporter_
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness \& stability](#improve-robustness--stability)
   - [V4 versus V5](#v4-versus-v5)
-<!-- table-of-contents-end -->
+<!-- table-of-contents-end --> 
 
 ## Why MegaLinter
 
@@ -158,7 +158,7 @@ Not all developers have the good habit to use linters in their IDEs, making code
 By using **MegaLinter**, you'll enjoy the following benefits for you and your team:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
-- Reading error logs, **developers learn best practices** of the language they are using
+- Reading error logs, **developers learn best practices** of the language they're using
 - [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](#quick-start)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
@@ -770,10 +770,10 @@ description: List of all configuration variables that can be used to customize t
 -->
 ## Configuration
 
-MegaLinter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
+MegaLinter configuration variables are defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml)
 
-Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
+Configuration is assisted with autocompletion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 - VSCode: You need a VSCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
@@ -795,7 +795,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | [**DISABLE_ERRORS_LINTERS**](#activation-and-deactivation) | <!-- -->                                 | List of enabled but not blocking linters keys [(more info)](#activation-and-deactivation)                                                                                                                  |
 | [**ENABLE**](#activation-and-deactivation)                 | <!-- -->                                 | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
 | [**ENABLE_LINTERS**](#activation-and-deactivation)         | <!-- -->                                 | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
-| **EXCLUDED_DIRECTORIES**                                   | \[...many values...\]                    | List of excluded directory basenames. They are excluded at any nested level.                                                                                                                               |
+| **EXCLUDED_DIRECTORIES**                                   | \[...many values...\]                    | List of excluded directory basenames. they're excluded at any nested level.                                                                                                                                |
 | **EXTENDS**                                                | <!-- -->                                 | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs. Later files take precedence.                              |
 | **FAIL_IF_MISSING_LINTER_IN_FLAVOR**                       | `false`                                  | If set to `true`, MegaLinter fails if a linter is missing in the selected flavor                                                                                                                           |
 | **FAIL_IF_UPDATED_SOURCES**                                | `false`                                  | If set to `true`, MegaLinter fails if a linter or formatter has auto-fixed sources, even if there are no errors                                                                                            |

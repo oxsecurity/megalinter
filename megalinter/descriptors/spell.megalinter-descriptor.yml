@@ -26,6 +26,8 @@ linters:
     examples:
       - "misspell myfile.any"
     install:
+      apk:
+        - libxslt
       dockerfile:
         - |
           RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \

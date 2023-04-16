@@ -9,6 +9,7 @@
         "**/all_users.md",
         "**/used-by-stats.md",
         "**/.cspell.json",
+        "**/styles/**",
         "lib",
         "report",
         ".vscode"

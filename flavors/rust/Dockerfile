@@ -66,6 +66,7 @@ RUN apk add --update --no-cache \
                 npm \
                 yarn \
                 helm \
+                libxslt \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
