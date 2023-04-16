@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
   - Prevent jscpd to create output folder if the repo isn't writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
   - Fix corrective .cspell.json file generated from cspell output
+  - Deprecate misspell, as it is not maintained since 2018
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
