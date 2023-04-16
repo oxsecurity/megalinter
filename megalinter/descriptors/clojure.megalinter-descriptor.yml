@@ -67,8 +67,8 @@ linters:
       dockerfile:
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-          chmod +x install-cljstyle \
-          ./install-cljstyle
+              && chmod +x install-cljstyle \
+              && ./install-cljstyle
     ide:
       emacs:
         - name: cljstyle-mode

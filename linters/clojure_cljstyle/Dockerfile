@@ -124,8 +124,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # cljstyle installation
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-chmod +x install-cljstyle \
-./install-cljstyle
+    && chmod +x install-cljstyle \
+    && ./install-cljstyle
 
 
 #OTHER__END

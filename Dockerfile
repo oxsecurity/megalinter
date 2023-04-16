@@ -452,8 +452,8 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-chmod +x install-cljstyle \
-./install-cljstyle \
+    && chmod +x install-cljstyle \
+    && ./install-cljstyle \
 
 # csharpier installation
     && /usr/share/dotnet/dotnet tool install -g csharpier \
