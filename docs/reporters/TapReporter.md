@@ -29,7 +29,7 @@ Open the downloaded zip file and browse linters TAP reports
 
 ### Other CI tools
 
-If you are not using GitHub Actions, you can export `mega-linter.log` and folder `<WORKSPACE>/megalinter-reports`
+If you aren't using GitHub Actions, you can export `mega-linter.log` and folder `<WORKSPACE>/megalinter-reports`
 
 ## Configuration
 

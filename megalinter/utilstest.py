@@ -608,7 +608,7 @@ def test_linter_format_fix(linter, test_self):
         or "all" in getattr(linter, "descriptor_flavors_exclude", [])
         or (linter.is_formatter is False and linter.cli_lint_fix_arg_name is None)
     ):
-        raise unittest.SkipTest("Linter doesn't format and cannot apply fixes")
+        raise unittest.SkipTest("Linter doesn't format and can't apply fixes")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     # Special cases when files must be copied in a temp directory before being linted

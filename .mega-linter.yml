@@ -33,7 +33,7 @@ MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors|used-by-stats)'
 SPELL_VALE_FILE_EXTENSIONS:
   - .md
-SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github)
+SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github|docs/licenses)
 DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 --ignore DL3016 --ignore DL3018 --ignore DL3028 --ignore DL3059 --ignore DL4001 --ignore DL4006 --ignore SC2015 --ignore SC2016 --ignore SC2039 --ignore SC2086 --ignore SC1091 --ignore SC3046"
 REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"

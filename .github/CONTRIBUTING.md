@@ -85,7 +85,7 @@ Which returns:
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
-- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
+- Keep your change as focused as possible. If there are multiple changes you would like to make that aren't dependent upon each other, consider submitting them as separate pull requests.
 - Write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 - Update [CHANGELOG.md](https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
 
@@ -171,7 +171,7 @@ In the above example, it builds the **misspell** linter image and then runs its 
 
 1. Change the path to the Dockerfile to the appropriate Dockerfile
 2. Change the **tag** in the 2 places (docker buildx build and docker run)
-3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that is responsible for finding the tests of the particular linter
+3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that's responsible for finding the tests of the particular linter
 
 ### CI/CT/CD
 

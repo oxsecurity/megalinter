@@ -104,42 +104,42 @@ vale --config .vale.ini README.md file1.md file2.md file3.md
 ```shell
 vale - A command-line linter for prose.
 
-[1mUsage[0m:  [90mvale [options] [input...][0m
-  [90mvale myfile.md myfile1.md mydir1[0m
-  [90mvale --output=JSON [input...][0m
+Usage:  vale [options] [input...]
+  vale myfile.md myfile1.md mydir1
+  vale --output=JSON [input...]
 
 Vale is a syntax-aware linter for prose built with speed and extensibility in
 mind. It supports Markdown, AsciiDoc, reStructuredText, HTML, and more.
 
-To get started, you'll need a configuration file ([90m.vale.ini[0m):
+To get started, you'll need a configuration file (.vale.ini):
 
-[1mExample[0m:
+Example:
 
-  [90mMinAlertLevel = suggestion[0m
-[90m[0m
-[90m  [*][0m
-[90m  BasedOnStyles = Vale[0m
+  MinAlertLevel = suggestion
 
-See [4mhttps://vale.sh[0m for more setup information.
-[1m[0m
-[1mFlags:[0m
+  [*]
+  BasedOnStyles = Vale
 
- [90m--config[0m         A file path ([90m--config='some/file/path/.vale.ini'[0m).
- [90m--ext[0m            An extension to associate with stdin ([90m--ext=.md[0m).
- [90m--filter[0m         An expression to filter rules by.
- [90m--glob[0m           A glob pattern ([90m--glob='*.{md,txt}.'[0m)
- [90m-h[0m, [90m--help[0m       Print this help message.
- [90m--ignore-syntax[0m  Lint all files line-by-line.
- [90m--no-exit[0m        Don't return a nonzero exit code on errors.
- [90m--no-wrap[0m        Don't wrap CLI output.
- [90m--output[0m         An output style ("line", "JSON", or a template file).
- [90m-v[0m, [90m--version[0m    Print the current version.
+See https://vale.sh for more setup information.
 
-[1mCommands:[0m
+Flags:
 
- [90mls-metrics[0m       Print the given file's internal metrics to stdout.
- [90msync[0m             Download and install external configuration sources.
- [90mls-config[0m        Print the current configuration to stdout.
+ --config         A file path (--config='some/file/path/.vale.ini').
+ --ext            An extension to associate with stdin (--ext=.md).
+ --filter         An expression to filter rules by.
+ --glob           A glob pattern (--glob='*.{md,txt}.')
+ -h, --help       Print this help message.
+ --ignore-syntax  Lint all files line-by-line.
+ --no-exit        Don't return a nonzero exit code on errors.
+ --no-wrap        Don't wrap CLI output.
+ --output         An output style ("line", "JSON", or a template file).
+ -v, --version    Print the current version.
+
+Commands:
+
+ sync             Download and install external configuration sources.
+ ls-config        Print the current configuration to stdout.
+ ls-metrics       Print the given file's internal metrics to stdout.
 
 ```
 

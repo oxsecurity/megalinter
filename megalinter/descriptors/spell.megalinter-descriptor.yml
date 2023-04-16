@@ -11,6 +11,7 @@ linters:
     name: SPELL_MISSPELL
     deprecated: true
     deprecated_description: misspell is not maintained since 2018 so will be removed in a future version
+    linter_speed: 2
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
     linter_repo: https://github.com/client9/misspell
@@ -42,6 +43,7 @@ linters:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
         default_value: "true"
         description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
+    linter_speed: 1
     linter_text: |
       MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
 
@@ -80,6 +82,7 @@ linters:
       - .proselintrc
       - proselint/config.json
     linter_text: a linter for prose
+    linter_speed: 2
     linter_url: http://proselint.com
     linter_repo: https://github.com/amperser/proselint
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
@@ -125,6 +128,7 @@ linters:
     descriptor_flavors:
       - all_flavors
       - documentation
+    linter_speed: 1
     linter_text: |
       Vale brings your editorial style to life !
 

@@ -455,7 +455,7 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
+        # if flavor selected and no flavor suggestion, ignore linters that aren't in current flavor)
         if self.megalinter_flavor == "none":
             # Single linter docker image
             unique_linter = config.get("SINGLE_LINTER")

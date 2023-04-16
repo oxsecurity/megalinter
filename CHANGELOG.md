@@ -269,12 +269,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Build: automatically update the linter list used in the matrix of several of the workflows, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: create a testing architecture for format/autofix linters, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Test: create or adapt input files for format/autofix tests, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
-  - Test: created specific test folders for linters that need them because they cannot share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Test: created specific test folders for linters that need them because they can't share them, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Added rubocop-rake RubyGem for linting Rake files with RuboCop
 
 - Fixes
   - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
-  - Removed the default **powershell** templates TEMPLATES/.powershell-formatter.psd1 and TEMPLATES/.powershell-psscriptanalyzer.psd1. Having these templates caused all rules to be ignored as the settings are not incremental but absolute, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Removed the default **powershell** templates TEMPLATES/.powershell-formatter.psd1 and TEMPLATES/.powershell-psscriptanalyzer.psd1. Having these templates caused all rules to be ignored as the settings aren't incremental but absolute, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Added **cli_lint_fix_arg_name** parameter to **dotnet format** descriptor as without it, autofix doesn't work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Created **BicepLinter** class to add **DOTNET_SYSTEM_GLOBALIZATION_INVARIANT** environment variable to avoid problems with ICU packages, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Modified **npm-groovy-lint** descriptor to add **--failon** parameter to only fail with error and not info which is the default value, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
@@ -854,7 +854,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Fixes
   - Fix: Properly match `files_sub_directory` as a prefix instead of partial string matching ([#1765](https://github.com/oxsecurity/megalinter/pull/1765))
   - Match regex without `workspace` and `sub_directory`
-  - Remove config variables that are not applicable to linters analyzing all files or all other linters files
+  - Remove config variables that aren't applicable to linters analyzing all files or all other linters files
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.62.0 to **0.63.0**
@@ -991,7 +991,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - Fix bug that disables generation of `megalinter.log` file in most cases
   - Fixes about JSON Schema [(#1621)](https://github.com/oxsecurity/megalinter/issues/1621)
   - Remove redundant line separator after generated table [(#1650)](https://github.com/oxsecurity/megalinter/pull/1650)
-  - Avoid flavor suggestion message when only REPOSITORY linters are not found
+  - Avoid flavor suggestion message when only REPOSITORY linters aren't found
 
 - Linters
   - Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
@@ -2892,7 +2892,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [4.23.0] - 2021-01-12
 
 - Core
-  - If the linter is a formatter, errors are not considered as blocking errors by default
+  - If the linter is a formatter, errors aren't considered as blocking errors by default
 
 - Linters
   - Add **prettier** to format Javascript and Typescript. **standard** remains default
@@ -2966,7 +2966,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Flavors
   - Add **ci_light** flavor for only CI config files (Dockerfile,Jenkinsfile,JSON,YAML,XML)
   - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
-  - If all required linters are not in the current flavor, just skip them with a warning message
+  - If all required linters aren't in the current flavor, just skip them with a warning message
 
 - Core
   - Add Json Schema for descriptors (allows validation and auto-completion from IDEs)
@@ -3042,7 +3042,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Descriptor yaml schema changes:
   - Rename `files_names_not_ends_with` to `file_names_not_ends_with`
   - Rename `files_names` to `files_names_regex` and change behavior to expect regular expressions in the list.
-    they're applied using full match (i.e. the whole text should match the regular expression)
+    they're applied using full match (the whole text should match the regular expression)
 
 - Fix error message from Email Reporter when SMTP password isn't set
 - Fix automerge action yml (skip if secrets.PAT isn't set)
