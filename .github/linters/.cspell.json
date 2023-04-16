@@ -424,6 +424,8 @@
         "autocorrect",
         "autocrlf",
         "autofix",
+        "autofixed",
+        "autofixes",
         "autoload",
         "autoloader",
         "automagically",
