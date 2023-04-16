@@ -142,8 +142,6 @@ linters:
       - "vale --config .vale.yml README.md"
     test_folder: spell_vale
     install:
-      apk:
-        - libxslt
       dockerfile:
         - FROM jdkato/vale:latest as vale
         - COPY --link --from=vale /bin/vale /bin/vale

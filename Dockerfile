@@ -130,7 +130,6 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
-                libxslt \
                 nodejs-current \
                 ruby \
                 ruby-dev \

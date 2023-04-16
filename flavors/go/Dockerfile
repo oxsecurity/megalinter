@@ -74,7 +74,6 @@ RUN apk add --update --no-cache \
                 yarn \
                 go \
                 helm \
-                libxslt \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
