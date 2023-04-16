@@ -24,6 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM jdkato/vale:latest as vale
 #FROM__END
 
 ##################
@@ -227,6 +228,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
 #COPY__END
 
 #############################################################################################
@@ -334,6 +336,9 @@ RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
 
+
+# vale installation
+# Managed with COPY --link --from=vale /bin/vale /bin/vale
 
 #OTHER__END
 
