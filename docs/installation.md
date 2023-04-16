@@ -40,7 +40,7 @@ You can also use **beta** version (corresponding to the content of main branch)
 
 **NOTES:**
 
-- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
+- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it's automatically set by GitHub, it only needs to be passed to the action.
 - You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run) , and have status on Github Pull Request if `GITHUB_TARGET_URL` environment variable exists.
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
@@ -62,7 +62,7 @@ on:
   pull_request:
     branches: [master, main]
 
-env: # Comment env block if you do not want to apply fixes
+env: # Comment env block if you don't want to apply fixes
   # Apply linter fixes configuration
   APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
   APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
@@ -153,7 +153,7 @@ mega-linter:
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
   image: oxsecurity/megalinter:v6
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+  script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.io/configuration/
@@ -268,7 +268,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
               cd repo
               export DEFAULT_WORKSPACE=$(pwd)
               bash -ex /entrypoint.sh
-              # doing this because concourse does not work as other CI systems
+              # doing this because concourse doesn't work as other CI systems
           # params:
             # PARALLEL: true
             # DISABLE: SPELL
@@ -364,7 +364,7 @@ This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/ove
 
 ### (Optional) Adjusting trigger rules
 
-The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can _optionally_ change this behavior by changing the trigger. For example:
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync…) however, you can _optionally_ change this behavior by changing the trigger. For example:
 
 ```yaml
 kind: pipeline

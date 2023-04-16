@@ -81,7 +81,7 @@ class TextReporter(Reporter):
             status = "✅ [SUCCESS]" if self.master.status == "success" else "❌ [ERROR]"
             text_report_lines += [f"{status} for workspace {workspace_nm}"]
             if self.report_type == "detailed" or self.master.status != "success":
-                stdout = (
+                stdout = utils.normalize_log_string(
                     self.master.stdout_human
                     if self.master.stdout_human is not None
                     else self.master.stdout
