@@ -26,8 +26,6 @@ linters:
     examples:
       - "misspell myfile.any"
     install:
-      apk:
-        - libxslt
       dockerfile:
         - |
           RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
@@ -118,6 +116,10 @@ linters:
     linter_name: vale
     name: SPELL_VALE
     can_output_sarif: false
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".rst"
     active_only_if_file_found:
       - .vale.ini
     descriptor_flavors:
@@ -136,10 +138,12 @@ linters:
     cli_config_arg_name: "--config"
     config_file_name: .vale.ini
     examples:
-      - "vale **/*.md"
+      - "vale file1.md file2.md file3.md"
       - "vale --config .vale.yml README.md"
     test_folder: spell_vale
     install:
+      apk:
+        - libxslt
       dockerfile:
         - FROM jdkato/vale:latest as vale
         - COPY --link --from=vale /bin/vale /bin/vale
