@@ -596,11 +596,7 @@ class Megalinter:
                         + str(len(ignored_files))
                         + "]: "
                         + ", ".join(ignored_files[0:10])
-                        + (
-                            ",…(full list in DEBUG)"
-                            if len(ignored_files) > 10
-                            else ""
-                        )
+                        + (",…(full list in DEBUG)" if len(ignored_files) > 10 else "")
                     )
             except git.InvalidGitRepositoryError as git_err:
                 logging.warning(f"Unable to list git ignored files ({str(git_err)})")

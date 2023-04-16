@@ -4,11 +4,11 @@ ignorecase: true
 action:
   name: replace
 swap:
-  '(?:cell phone|cell-phone)': cellphone
-  '(?:cliquey|cliquy)': cliquish
-  '(?:pygmean|pygmaen)': pygmy
-  '(?:retributional|retributionary)': retributive
-  '(?:revokable|revokeable)': revocable
+  "(?:cell phone|cell-phone)": cellphone
+  "(?:cliquey|cliquy)": cliquish
+  "(?:pygmean|pygmaen)": pygmy
+  "(?:retributional|retributionary)": retributive
+  "(?:revokable|revokeable)": revocable
   abolishment: abolition
   accessary: accessory
   accreditate: accredit

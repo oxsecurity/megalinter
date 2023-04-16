@@ -66,7 +66,7 @@ _Github PR reporter_
 
 <!-- table-of-contents-start -->
 
-<!-- table-of-contents-end --> 
+<!-- table-of-contents-end -->
 
 ## Why MegaLinter
 

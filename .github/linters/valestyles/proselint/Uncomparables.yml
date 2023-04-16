@@ -5,9 +5,9 @@ level: error
 action:
   name: edit
   params:
-   - split
-   - ' '
-   - '1'
+    - split
+    - " "
+    - "1"
 raw:
   - \b(?:absolutely|most|more|less|least|very|quite|largely|extremely|increasingly|kind of|mildy|hardly|greatly|sort of)\b\s*
 tokens:
@@ -18,7 +18,7 @@ tokens:
   - certain
   - devoid
   - entire
-  - 'false'
+  - "false"
   - fatal
   - favorite
   - final
@@ -39,7 +39,7 @@ tokens:
   - singular
   - stationary
   - sufficient
-  - 'true'
+  - "true"
   - unanimous
   - unavoidable
   - unbroken

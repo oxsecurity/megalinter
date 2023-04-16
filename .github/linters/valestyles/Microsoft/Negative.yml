@@ -7,7 +7,7 @@ action:
   name: edit
   params:
     - replace
-    - '-'
-    - '–'
+    - "-"
+    - "–"
 tokens:
   - '\s-\d+\s'

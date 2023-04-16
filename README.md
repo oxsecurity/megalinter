@@ -145,7 +145,7 @@ _Github PR reporter_
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness \& stability](#improve-robustness--stability)
   - [V4 versus V5](#v4-versus-v5)
-<!-- table-of-contents-end --> 
+<!-- table-of-contents-end -->
 
 ## Why MegaLinter
 
