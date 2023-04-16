@@ -39,7 +39,7 @@ class GithubCommentReporter(Reporter):
         GITHUB_WORKFLOW and GITHUB_JOB environment variables) to avoid clashes
         between multiple Mega-Linter jobs operating on the same PR:
 
-          <!-- megalinter: github-comment-reporter workflow='...' jobid='...' -->
+          <!-- megalinter: github-comment-reporter workflow='…' jobid='…' -->
 
         """
         workflow = os.getenv("GITHUB_WORKFLOW")

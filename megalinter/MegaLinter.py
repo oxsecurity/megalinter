@@ -154,7 +154,7 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
-        # Display warning if selected flavors does not match all linters
+        # Display warning if selected flavors doesn't match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
@@ -455,7 +455,7 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
+        # if flavor selected and no flavor suggestion, ignore linters that aren't in current flavor)
         if self.megalinter_flavor == "none":
             # Single linter docker image
             unique_linter = config.get("SINGLE_LINTER")
@@ -596,11 +596,7 @@ class Megalinter:
                         + str(len(ignored_files))
                         + "]: "
                         + ", ".join(ignored_files[0:10])
-                        + (
-                            ",...(full list in DEBUG)"
-                            if len(ignored_files) > 10
-                            else ""
-                        )
+                        + (",…(full list in DEBUG)" if len(ignored_files) > 10 else "")
                     )
             except git.InvalidGitRepositoryError as git_err:
                 logging.warning(f"Unable to list git ignored files ({str(git_err)})")
@@ -659,7 +655,7 @@ class Megalinter:
                 "HEAD" if default_branch == "HEAD" else f"refs/heads/{default_branch}"
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
-            # Try to fetch default_branch from origin, because it isn't cached locally.
+            # Try to fetch default_branch from origin, because it'sn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files
         diff = repo.git.diff(default_branch_remote, name_only=True)
@@ -730,7 +726,7 @@ class Megalinter:
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
-        # Do not initialize reports if report folder is none or false
+        # Don't initialize reports if report folder is none or false
         if not utils.can_write_report_files(self):
             return
         # Initialize output dir
@@ -763,7 +759,7 @@ class Megalinter:
         if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
             self
         ):
-            # Do not log console output in a file
+            # Don't log console output in a file
             logging.basicConfig(
                 force=True,
                 level=logging_level,
@@ -863,7 +859,7 @@ class Megalinter:
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
             logging.error(
                 c.red(
-                    "❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
+                    "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
                 )
             )
             sys.exit(1)

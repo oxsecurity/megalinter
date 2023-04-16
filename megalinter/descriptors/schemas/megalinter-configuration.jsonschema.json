@@ -1047,7 +1047,6 @@
       "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS",
       "default": false,
       "title": "BICEP_BICEP_LINTER: Linter does not make MegaLinter fail even if errors are found",
-      "type": "boolean"
     },
     "BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN",

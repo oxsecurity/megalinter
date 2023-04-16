@@ -8,7 +8,7 @@ description: Help MegaLinter by starring the repo, post issues and Pull Requests
 
 # How to contribute
 
-Contributions to MegaLinter are very welcome, the more we are, the stronger MegaLinter is !
+Contributions to MegaLinter are very welcome, the more we're, the stronger MegaLinter is !
 Please follow [Contributing Guide](https://megalinter.io/contributing/)
 
 To help, you can also:

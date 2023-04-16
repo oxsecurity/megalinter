@@ -227,6 +227,7 @@ linters:
       - ci_light
       - cupcake
       - security
+    linter_speed: 1
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
