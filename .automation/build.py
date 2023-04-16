@@ -473,13 +473,13 @@ def build_dockerfile(
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + "  && \\\n"
-            #    + '       echo "Fixing audit issues with npm..." \\\n'
+            #    + '       echo "Fixing audit issues with npm…" \\\n'
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
-            + '    echo "Cleaning npm cache..." \\\n'
+            + '    echo "Cleaning npm cache…" \\\n'
             + "    && npm cache clean --force || true \\\n"
-            + '    && echo "Changing owner of node_modules files..." \\\n'
+            + '    && echo "Changing owner of node_modules files…" \\\n'
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
-            + '    && echo "Removing extra node_module files..." \\\n'
+            + '    && echo "Removing extra node_module files…" \\\n'
             + "    && rm -rf /root/.npm/_cacache \\\n"
             + '    && find . -name "*.d.ts" -delete \\\n'
             + '    && find . -name "*.map" -delete \\\n'
@@ -1189,7 +1189,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
-                    f"  - If custom `{linter.config_file_name}` config file is not found, "
+                    f"  - If custom `{linter.config_file_name}` config file isn't found, "
                     f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name}){{target=_blank}}"
                     " will be used"
                 ]
@@ -1462,7 +1462,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
-                        "title": f"{linter.name}: Linter does not make MegaLinter fail even if errors are found",
+                        "title": f"{linter.name}: Linter doesn't make MegaLinter fail even if errors are found",
                     },
                 ],
                 [
@@ -1626,7 +1626,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 "",
                 "- filtering can not be done using MegaLinter configuration variables,"
                 f"it must be done using {linter.linter_name} configuration or ignore file (if existing)",
-                f"- `VALIDATE_ALL_CODEBASE: false` does not make {linter.linter_name} analyze only updated files",
+                f"- `VALIDATE_ALL_CODEBASE: false` doesn't make {linter.linter_name} analyze only updated files",
             ]
         elif linter.cli_lint_mode == "list_of_files":
             linter_doc_md += [
@@ -2419,7 +2419,7 @@ def finalize_doc_build():
 
 
 def generate_mkdocs_yml():
-    logging.info("Generating mkdocs dynamic yml...")
+    logging.info("Generating mkdocs dynamic yml…")
     descriptors, linters_by_type = list_descriptors_for_build()
     process_type_mkdocs_yml(linters_by_type, "language")
     process_type_mkdocs_yml(linters_by_type, "format")
@@ -2966,7 +2966,7 @@ def manage_output_variables():
 
 
 def reformat_markdown_tables():
-    logging.info("Formatting markdown tables...")
+    logging.info("Formatting markdown tables…")
     # Call markdown-table-formatter with the list of files
     if sys.platform == "win32":
         format_md_tables_command = ["bash", "format-tables.sh"]
@@ -2989,7 +2989,7 @@ def reformat_markdown_tables():
 
 def generate_version():
     # npm version
-    logging.info("Updating npm package version...")
+    logging.info("Updating npm package version…")
     cwd_to_use = os.getcwd() + "/mega-linter-runner"
     process = subprocess.run(
         [
@@ -3037,7 +3037,7 @@ def generate_version():
 
 
 def update_dependents_info():
-    logging.info("Updating dependents info...")
+    logging.info("Updating dependents info…")
     command = [
         "github-dependents-info",
         "--repo",
@@ -3115,7 +3115,7 @@ if __name__ == "__main__":
     generate_linter_test_classes()
     update_workflows_linters()
     if UPDATE_DOC is True:
-        logging.info("Running documentation generators...")
+        logging.info("Running documentation generators…")
         # refresh_users_info() # deprecated since now we use github-dependents-info
         generate_documentation()
         generate_documentation_all_linters()

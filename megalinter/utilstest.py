@@ -196,7 +196,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -261,7 +261,7 @@ def test_linter_failure(linter, test_self):
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
@@ -515,7 +515,7 @@ def test_linter_report_tap(linter, test_self):
                 )
 
 
-# Test that the linter provides a SARIF output if it is configured like that
+# Test that the linter provides a SARIF output if it's configured like that
 def test_linter_report_sarif(linter, test_self):
     if (
         linter.disabled is True
@@ -607,7 +607,7 @@ def test_linter_format_fix(linter, test_self):
         or "all" in getattr(linter, "descriptor_flavors_exclude", [])
         or (linter.is_formatter is False and linter.cli_lint_fix_arg_name is None)
     ):
-        raise unittest.SkipTest("Linter does not format and cannot apply fixes")
+        raise unittest.SkipTest("Linter doesn't format and cannot apply fixes")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     # Special cases when files must be copied in a temp directory before being linted

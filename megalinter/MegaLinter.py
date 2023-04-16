@@ -154,7 +154,7 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
-        # Display warning if selected flavors does not match all linters
+        # Display warning if selected flavors doesn't match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
@@ -597,7 +597,7 @@ class Megalinter:
                         + "]: "
                         + ", ".join(ignored_files[0:10])
                         + (
-                            ",...(full list in DEBUG)"
+                            ",…(full list in DEBUG)"
                             if len(ignored_files) > 10
                             else ""
                         )
@@ -659,7 +659,7 @@ class Megalinter:
                 "HEAD" if default_branch == "HEAD" else f"refs/heads/{default_branch}"
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
-            # Try to fetch default_branch from origin, because it isn't cached locally.
+            # Try to fetch default_branch from origin, because it'sn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files
         diff = repo.git.diff(default_branch_remote, name_only=True)

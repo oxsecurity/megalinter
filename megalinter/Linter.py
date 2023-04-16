@@ -126,10 +126,10 @@ class Linter:
         self.cli_help_arg_name = "-h"
         self.cli_help_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_help_extra_commands = []
-        # If linter --help does not return 0 when it is in success, override. ex: 1
+        # If linter --help doesn't return 0 when it's in success, override. ex: 1
         self.help_command_return_code = 0
         self.version_extract_regex = r"\d+(\.\d+)+"
-        # If linter --version does not return 0 when it is in success, override. ex: 1
+        # If linter --version doesn't return 0 when it's in success, override. ex: 1
         self.version_command_return_code = 0
 
         self.log_lines_pre: list(str) = []
@@ -298,7 +298,7 @@ class Linter:
                         f" {self.files_sub_directory}"
                     )
 
-            # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
+            # Some linters require a file to be existing, else they're deactivated ( ex: .editorconfig )
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
@@ -901,7 +901,7 @@ class Linter:
                 sarif_confirmed = True
             else:
                 logging.error(
-                    "[Sarif] ERROR: there is no SARIF output file found, and stdout does not contain SARIF"
+                    "[Sarif] ERROR: there is no SARIF output file found, and stdout doesn't contain SARIF"
                 )
                 logging.error("[Sarif] stdout: " + return_stdout)
         elif (

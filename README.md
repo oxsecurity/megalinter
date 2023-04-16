@@ -380,7 +380,7 @@ You can also use **beta** version (corresponding to the content of main branch)
 
 **NOTES:**
 
-- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
+- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it's automatically set by GitHub, it only needs to be passed to the action.
 - You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run) , and have status on Github Pull Request if `GITHUB_TARGET_URL` environment variable exists.
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
@@ -493,7 +493,7 @@ mega-linter:
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
   image: oxsecurity/megalinter:v6
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+  script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.io/configuration/
@@ -608,7 +608,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
               cd repo
               export DEFAULT_WORKSPACE=$(pwd)
               bash -ex /entrypoint.sh
-              ## doing this because concourse does not work as other CI systems
+              ## doing this because concourse doesn't work as other CI systems
           # params:
             # PARALLEL: true
             # DISABLE: SPELL
@@ -704,7 +704,7 @@ This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/ove
 
 #### (Optional) Adjusting trigger rules
 
-The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can _optionally_ change this behavior by changing the trigger. For example:
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync…) however, you can _optionally_ change this behavior by changing the trigger. For example:
 
 ```yaml
 kind: pipeline
@@ -765,7 +765,7 @@ Note: You can also use such command line in your custom CI/CD pipelines
 <!-- markdown-headers
 ---
 title: MegaLinter configuration Guide
-description: List of all configuration variables that can be used to customize the use of MegaLinter (activation, filtering, auto-update, pre-post commands...)
+description: List of all configuration variables that can be used to customize the use of MegaLinter (activation, filtering, auto-update, pre-post commands…)
 ---
 -->
 ## Configuration
@@ -784,7 +784,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 
 | **ENV VAR**                                                | **Default Value**                        | **Notes**                                                                                                                                                                                                  |
 |------------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **ADDITIONAL_EXCLUDED_DIRECTORIES**                        | \[\]                                     | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                    |
+| **ADDITIONAL_EXCLUDED_DIRECTORIES**                        | \[\]                                     | List of additional excluded directory basenames. they're excluded at any nested level.                                                                                                                    |
 | [**APPLY_FIXES**](#apply-fixes)                            | `none`                                   | Activates formatting and auto-fixing [(more info)](#apply-fixes)                                                                                                                                           |
 | **CLEAR_REPORT_FOLDER**                                    | `false`                                  | Flag to clear files from report folder (usually megalinter-reports) before starting the linting process                                                                                                    |
 | **DEFAULT_BRANCH**                                         | `HEAD`                                   | Deprecated: The name of the repository's default branch.                                                                                                                                                   |
@@ -795,7 +795,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | [**DISABLE_ERRORS_LINTERS**](#activation-and-deactivation) | <!-- -->                                 | List of enabled but not blocking linters keys [(more info)](#activation-and-deactivation)                                                                                                                  |
 | [**ENABLE**](#activation-and-deactivation)                 | <!-- -->                                 | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
 | [**ENABLE_LINTERS**](#activation-and-deactivation)         | <!-- -->                                 | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
-| **EXCLUDED_DIRECTORIES**                                   | \[...many values...\]                    | List of excluded directory basenames. they're excluded at any nested level.                                                                                                                                |
+| **EXCLUDED_DIRECTORIES**                                   | \[…many values…\]                    | List of excluded directory basenames. they're excluded at any nested level.                                                                                                                                |
 | **EXTENDS**                                                | <!-- -->                                 | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs. Later files take precedence.                              |
 | **FAIL_IF_MISSING_LINTER_IN_FLAVOR**                       | `false`                                  | If set to `true`, MegaLinter fails if a linter is missing in the selected flavor                                                                                                                           |
 | **FAIL_IF_UPDATED_SOURCES**                                | `false`                                  | If set to `true`, MegaLinter fails if a linter or formatter has auto-fixed sources, even if there are no errors                                                                                            |
@@ -804,7 +804,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | **FLAVOR_SUGGESTIONS**                                     | `true`                                   | Provides suggestions about different MegaLinter flavors to use to improve runtime performances                                                                                                             |
 | **FORMATTERS_DISABLE_ERRORS**                              | `true`                                   | Formatter errors will be reported as errors (and not warnings) if this variable is set to `false`                                                                                                          |
 | **GIT_AUTHORIZATION_BEARER**                               | <!-- -->                                 | If set, calls git with **`Authorization: Bearer`+value**                                                                                                                                                   |
-| **GITHUB_WORKSPACE**                                       | <!-- -->                                 | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                                          |
+| **GITHUB_WORKSPACE**                                       | <!-- -->                                 | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` isn't set                                                          |
 | **IGNORE_GENERATED_FILES**                                 | `false`                                  | If set to `true`, MegaLinter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                               |
 | **IGNORE_GITIGNORED_FILES**                                | `true`                                   | If set to `true`, MegaLinter will skip files ignored by git using `.gitignore` file                                                                                                                        |
 | **JAVASCRIPT_DEFAULT_STYLE**                               | `standard`                               | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
@@ -831,7 +831,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 
 MegaLinter have all linters enabled by default, but allows to enable only some, or disable only some
 
-- If `ENABLE` is not set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default
+- If `ENABLE` isn't set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default
 - If `ENABLE_LINTERS` is set, only listed linters will be processed
 - If `DISABLE` is set, the linters in the listed descriptors will be skipped
 - If `DISABLE_LINTERS` is set, the listed linters will be skipped
@@ -945,11 +945,11 @@ You can override the CLI_LINT_MODE by using configuration variable for each lint
 - Linters with `file` default lint mode can not be overridden to `list_of_files`
 - Linters with `project` default lint mode can not be overridden to `list_of_files` or `file`
 
-Allowing `file` or `list_of_files` to be overridden to `project` is mostly for workarounds, for example with linters that have a problem to find their config file when the current folder is not the repo root.
+Allowing `file` or `list_of_files` to be overridden to `project` is mostly for workarounds, for example with linters that have a problem to find their config file when the current folder isn't the repo root.
 
 Special considerations:
 
-- As list of files is not sent to the linter command, linters using `project` lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it is awaited by the linter (for example with a `.secretlintignore` file for secretlint)
+- As list of files isn't sent to the linter command, linters using `project` lint mode do not take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
 <!-- configuration-section-end -->
 
@@ -957,7 +957,7 @@ Special considerations:
 <!-- markdown-headers
 ---
 title: MegaLinter Reporters Guide
-description: "List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON..."
+description: "List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab, Azure, IDE, File.io, Email, JSON…"
 ---
 -->
 ## Reporters
@@ -995,7 +995,7 @@ To improve run performances, we generate **Flavored MegaLinter images** containi
 - When using default MegaLinter, if a MegaLinter Flavor would cover all your project requirements, a message is added in the logs
 - If your project uses a MegaLinter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
 
-_The following table does not display docker pulls from [MegaLinter v4 & v5 images](https://hub.docker.com/r/nvuillam/mega-linter)._
+_The following table doesn't display docker pulls from [MegaLinter v4 & v5 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                            | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
@@ -1186,11 +1186,11 @@ description: List of recurrent questions about MegaLinter
 -->
 ## Frequently Asked Questions
 
-> My repo CI already have linters and they are perfectly working, so why do I need MegaLinter ?
+> My repo CI already have linters and they're perfectly working, so why do I need MegaLinter ?
 
-You can perfectly **continue using your installed linters** and deactivate them in `.mega-linter.yml`. For example, in a javascript project using eslint, you can configure MegaLinter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other MegaLinter linters checking JSON, YAML, Markdown, Dockerfile, Bash, spelling mistakes, dead URLs...
+You can perfectly **continue using your installed linters** and deactivate them in `.mega-linter.yml`. For example, in a javascript project using eslint, you can configure MegaLinter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other MegaLinter linters checking JSON, YAML, Markdown, Dockerfile, Bash, spelling mistakes, dead URLs…
 
-> Ok but... how does it work ?
+> Ok but… how does it work ?
 
 MegaLinter is based on Docker images containing either all linters, or just a selection of linters if you are using a MegaLinter flavor for a project using a specific language / format
 
@@ -1198,7 +1198,7 @@ The core architecture does the following:
 
 - **Initialization**
   - **List all project files**:
-    - except files in ignored folders (`node_modules`, etc...)
+    - except files in ignored folders (`node_modules`, etc…)
     - except files not matching `FILTER_REGEX_INCLUDE` (if defined by user)
     - except files matching `FILTER_REGEX_EXCLUDE` (if defined by user)
   - **Collect files for each activated linter**, matching their **own filtering criteria**:
@@ -1210,9 +1210,9 @@ The core architecture does the following:
 - **Linting**
   - **Parallelly**, for **each linter** with matching files:
     - **Call the linter** on matching files (or the whole project for some linters like copy-paste detector)
-    - Call activated **linter-level reporters** (GitHub Status Reporter...)
+    - Call activated **linter-level reporters** (GitHub Status Reporter…)
 - **Finalization**
-  - Call activated **global level reporters** (GitHub Pull Request Comment Reporter, File.io Reporter, Email Reporter...)
+  - Call activated **global level reporters** (GitHub Pull Request Comment Reporter, File.io Reporter, Email Reporter…)
   - Manage return code:
     - **0** if no error (or only non blocking errors if user defined `DISABLE_ERRORS` or `<descriptor_or_linter_key>_DISABLE_ERRORS`)
     - **1** if errors
@@ -1228,7 +1228,7 @@ description: Help MegaLinter by starring the repo, post issues and Pull Requests
 -->
 ## How to contribute
 
-Contributions to MegaLinter are very welcome, the more we are, the stronger MegaLinter is !
+Contributions to MegaLinter are very welcome, the more we're, the stronger MegaLinter is !
 Please follow [Contributing Guide](https://megalinter.io/contributing/)
 
 To help, you can also:
@@ -1315,12 +1315,12 @@ Even if I disagree with their decision to remain in bash, the core team has alwa
 <!-- markdown-headers
 ---
 title: Compare MegaLinter and SuperLinter
-description: Detailed differences between MegaLinter and SuperLinter (performances, reporters, architecture...)
+description: Detailed differences between MegaLinter and SuperLinter (performances, reporters, architecture…)
 ---
 -->
 ## MegaLinter vs Super-Linter
 
-The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
+The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
 ### Performances
 
@@ -1330,7 +1330,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ### More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** …
 
 ### Automatically apply formatting and fixes
 
@@ -1443,7 +1443,7 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
   - PIP packages (python)
   - GEM packages (ruby)
   - Phive packages (PHP)
-- Have a centralized exclude list (node_modules,.rbenv, etc...)
+- Have a centralized exclude list (node_modules,.rbenv, etc…)
 
 ### Improve robustness & stability
 

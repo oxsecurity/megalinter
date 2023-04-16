@@ -9408,9 +9408,9 @@
         "",
         "\u001b[1mCommands:\u001b[0m",
         "",
-        " \u001b[90mls-config\u001b[0m        Print the current configuration to stdout.",
         " \u001b[90mls-metrics\u001b[0m       Print the given file's internal metrics to stdout.",
         " \u001b[90msync\u001b[0m             Download and install external configuration sources.",
+        " \u001b[90mls-config\u001b[0m        Print the current configuration to stdout.",
         ""
     ],
     "xmllint": [

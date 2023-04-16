@@ -13,7 +13,7 @@ Posts a pack of TAP logs , zipped as a GitHub Action artifact
 - Performances: all linters with CLI lint mode `list_of_files` are switched to `file` mode, so linter is called ont time per file to analyze
 - Scope: all linters with CLI lint mode `project` are deactivated
 
-For those reasons... why not having a look at [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/), that does not have those issues ?
+For those reasons… why not having a look at [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/), that doesn't have those issues ?
 
 ## Usage
 

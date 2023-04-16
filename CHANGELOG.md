@@ -14,7 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter enhancements & fixes
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
-  - Prevent jscpd to create output folder if the repo is not writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
+  - Prevent jscpd to create output folder if the repo isn't writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
   - Fix corrective .cspell.json file generated from cspell output
 
 - Reporters
@@ -88,6 +88,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 15.4.0 to **15.5.0** on 2023-04-16
   - [checkov](https://www.checkov.io/) from 2.3.165 to **2.3.167** on 2023-04-16
   - [checkov](https://www.checkov.io/) from 2.3.167 to **2.3.168** on 2023-04-16
+  - [vale](https://vale.sh/) from 2.24.2 to **2.24.0** on 2023-04-16
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
@@ -274,10 +275,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Correctly generate class names and test class files for each linter when the linter descriptor defines the attribute "name", by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Removed the default **powershell** templates TEMPLATES/.powershell-formatter.psd1 and TEMPLATES/.powershell-psscriptanalyzer.psd1. Having these templates caused all rules to be ignored as the settings are not incremental but absolute, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
-  - Added **cli_lint_fix_arg_name** parameter to **dotnet format** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **dotnet format** descriptor as without it, autofix doesn't work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Created **BicepLinter** class to add **DOTNET_SYSTEM_GLOBALIZATION_INVARIANT** environment variable to avoid problems with ICU packages, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Modified **npm-groovy-lint** descriptor to add **--failon** parameter to only fail with error and not info which is the default value, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
-  - Added **cli_lint_fix_arg_name** parameter to **powershell formatter** descriptor as without it, autofix does not work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
+  - Added **cli_lint_fix_arg_name** parameter to **powershell formatter** descriptor as without it, autofix doesn't work, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Created **ProtolintLinter** class to fix the problem that returns exit code 1 when it encounters a problem to correct even though it corrects it correctly, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Concatenate **--output** parameter correctly to **xmllint** linter, by @bdovaz in [#2294](https://github.com/oxsecurity/megalinter/pull/2294)
   - Modified the .pre-commit-hooks.yaml for megalinter-full so the containername argument is correctly split between two lines, by @drbothen [#2411](https://github.com/oxsecurity/megalinter/pull/2411)
@@ -496,7 +497,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Change reporter text for better UX, by @ashokm ([#2168](https://github.com/oxsecurity/megalinter/pull/2168))
   - Remove workspace prefix from aggregate sarif report, by @janderssonse ([#2119](https://github.com/oxsecurity/megalinter/pull/2119))
-  - CSpell file name linting does not use (custom) CSpell configuration ([#2058](https://github.com/oxsecurity/megalinter/issues/2058))
+  - CSpell file name linting doesn't use (custom) CSpell configuration ([#2058](https://github.com/oxsecurity/megalinter/issues/2058))
   - HTML email not rendering correctly ([#2120](https://github.com/oxsecurity/megalinter/issues/2120)). Set `REPORTERS_MARKDOWN_TYPE` to `simple` to avoid external images in PR/MR markdown comments.
   - mega-linter-runner: Fix Value for container-name of type String required, by @AlbanAndrieu ([#2123](https://github.com/oxsecurity/megalinter/pull/2123)
   - Use warning emoji in reporters, by @ashokm ([#2156](https://github.com/oxsecurity/megalinter/pull/2156))
@@ -748,7 +749,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - MegaLinter Docker images size improvements
   - Remove NPM cache
   - Remove Cargo cache
-  - Remove rustup when clippy is not embedded in the image
+  - Remove rustup when clippy isn't embedded in the image
   - Remove npm packages useless files
 
 - Linter versions upgrades
@@ -903,7 +904,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [v6.5.0] - 2022-08-15
 
 - npm-groovy-lint: Use Cli lint mode `list_of_files` for much better performances
-- Disable proselint by default if .proselintrc file is not found
+- Disable proselint by default if .proselintrc file isn't found
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.1.121 to **2.1.127**
@@ -994,7 +995,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 - Linters
   - Add [checkmake](https://github.com/mrtazz/checkmake) to lint Makefile
-  - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` is not defined.
+  - Disable SemGrep by default if `REPOSITORY_SEMGREP_RULESETS` isn't defined.
   - Avoid cspell to lint all files. Lint only other linter files [(#1648)](https://github.com/oxsecurity/megalinter/issues/1648)
   - Fix revive installation command
   - New default config for gitleaks with `useDefault=true`
@@ -1113,8 +1114,8 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
   - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
   - Add [trivy](https://github.com/aquasecurity/trivy) security linter
-  - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
-  - Remove **rstfmt** as it is not maintained anymore
+  - Remove **dockerfilelint**, as it'sn't maintained anymore and hadolint contains all its rules
+  - Remove **rstfmt** as it'sn't maintained anymore
   - SARIF management for:
     - bandit
     - checkov
@@ -1419,7 +1420,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [v5.11.0] - 2022-04-11
 
 - Linters
-  - Disable rstfmt as it is neither stable or maintained
+  - Disable rstfmt as it's neither stable or maintained
   - markdown-links-check: allow 203 as valid return code
 
 - Fixes
@@ -1710,7 +1711,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 - Linter updates:
   - Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
-  - secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+  - secretlint: Use .gitignore as .secretlintignore if --secretlintignore isn't defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
   - Update bash-exec documentation
   - Display correct number of errors in logs
     - actionlint
@@ -1879,7 +1880,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
 - Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
-- Do not check for updated files when `APPLY_FIXES` is not active
+- Do not check for updated files when `APPLY_FIXES` isn't active
 - Fix CLI_LINT_MODE default value in doc (#1086)
 
 - Linters
@@ -2461,7 +2462,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Downgrade npm to npm@latest-6 to avoid idealTree error when using npm install
 - Use pip to install ansible & ansible-lint as alpine apk package ansible disappeared
 - Add `--doc` argument to build.sh to generate doc only when requested (manually, or from CI job Auto-Update-Linters)
-- Add rust in default installations as it is required for latest pip cryptography package
+- Add rust in default installations as it's required for latest pip cryptography package
 
 - Linter versions upgrades
   - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.0 to **0.0.9** on 2021-06-24
@@ -2518,7 +2519,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 ## [4.35.0] - 2021-06-12
 
-- Fix [#304](https://github.com/megalinter/megalinter/issues/304): Display error message when docker is not found when running mega-linter-runner
+- Fix [#304](https://github.com/megalinter/megalinter/issues/304): Display error message when docker isn't found when running mega-linter-runner
 - Calculate sum of docker pulls for main page counter badge
 - Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/megalinter/megalinter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
 - Upgrade clj-kondo 2021.04.23-alpine
@@ -2670,7 +2671,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [4.29.0] - 2021-03-12
 
 - Fix regex to list Salesforce errors
-- Fix Updated Files Reporter when MegaLinter is not running on GitHub Action
+- Fix Updated Files Reporter when MegaLinter isn't running on GitHub Action
 - Fix #359 - invalid literal with _DISABLE_ERRORS_IF_LESS_THAN
 
 - Linter versions upgrades
@@ -2699,7 +2700,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 ## [4.28.0] - 2021-03-01
 
-- Feature: **<LINTER_NAME>_DISABLE_ERRORS_IF_LESS_THAN** : set linter status to warning if maximum allowed errors is not reached
+- Feature: **<LINTER_NAME>_DISABLE_ERRORS_IF_LESS_THAN** : set linter status to warning if maximum allowed errors isn't reached
 - Add colors in logs
 
 - Linter versions upgrades
@@ -2788,8 +2789,8 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Fixes
   - Prevent `unexpected token` error using mega-linter-runner on old versions of node
   - [#293](https://github.com/megalinter/megalinter/issues/293) Fix CI for PR from forked repositories
-  - [#295](https://github.com/megalinter/megalinter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
-  - [#311](https://github.com/megalinter/megalinter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
+  - [#295](https://github.com/megalinter/megalinter/issues/295) Fix crash when .cspell.json isn't parseable (wrong JSON format)
+  - [#311](https://github.com/megalinter/megalinter/issues/295) Add java in salesforce flavor descriptor because it's used by Apex PMD
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
@@ -3041,16 +3042,16 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Descriptor yaml schema changes:
   - Rename `files_names_not_ends_with` to `file_names_not_ends_with`
   - Rename `files_names` to `files_names_regex` and change behavior to expect regular expressions in the list.
-    They are applied using full match (i.e. the whole text should match the regular expression)
+    they're applied using full match (i.e. the whole text should match the regular expression)
 
-- Fix error message from Email Reporter when SMTP password is not set
-- Fix automerge action yml (skip if secrets.PAT is not set)
+- Fix error message from Email Reporter when SMTP password isn't set
+- Fix automerge action yml (skip if secrets.PAT isn't set)
 - Improve caching of compiled regular expressions
 - Override mkdocs theme to make analytics work
 
 - CI
   - Auto update linters and documentation: Create update PR only if linter versions has been updated
-  - Build and deploy docker images only when it is relevant (not in case of just documentation update for example)
+  - Build and deploy docker images only when it's relevant (not in case of just documentation update for example)
 
 ## [4.14.2] - 2020-12-07
 
@@ -3060,7 +3061,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 ## [4.14.1] - 2020-12-07
 
 - Fixes
-  - Fix python error when File.io does not respond, + harmonize reporter logs
+  - Fix python error when File.io doesn't respond, + harmonize reporter logs
 
 ## [4.14.0] - 2020-12-07
 
@@ -3093,7 +3094,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - Fix boolean variables not taken in account in .mega-linter.yml config file
 
 - Performance
-  - Change way to install linters in Dockerfile (replace FROM ... COPY) by package or sh installation, to reduce the docker build steps from 93 to 87
+  - Change way to install linters in Dockerfile (replace FROM … COPY) by package or sh installation, to reduce the docker build steps from 93 to 87
     - shellcheck
     - editorconfig-checker
     - dotenv-linter
