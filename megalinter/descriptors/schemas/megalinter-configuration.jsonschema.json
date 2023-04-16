@@ -3598,6 +3598,13 @@
       "title": "Activate Gitlab MR Comments reporter",
       "type": "boolean"
     },
+    "GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT": {
+      "$id": "#/properties/GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT",
+      "default": true,
+      "description": "Set to false to disable the overwrite of existing MegaLinter Merge Request comment in case of new run",
+      "title": "Overwrite Gitlab Merge Request Comment",
+      "type": "boolean"
+    },
     "GITLAB_CUSTOM_CERTIFICATE": {
       "$id": "#/properties/GITLAB_CUSTOM_CERTIFICATE",
       "default": true,

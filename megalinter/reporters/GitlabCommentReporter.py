@@ -119,19 +119,23 @@ class GitlabCommentReporter(Reporter):
 
             # List comments on merge request
             existing_comment = None
-            try:
-                existing_comments = mr.notes.list()
-            except gitlab.GitlabAuthenticationError as e:
-                self.display_auth_error(e)
-                return
-            except Exception as e:
-                self.display_auth_error(e)
-                return
-
-            # Check if there is already a MegaLinter comment
-            for comment in existing_comments:
-                if "MegaLinter is graciously provided by" in comment.body:
-                    existing_comment = comment
+            if (
+                config.get("GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT", "true")
+                == "true"
+            ):
+                try:
+                    existing_comments = mr.notes.list(get_all=True)
+                except gitlab.GitlabAuthenticationError as e:
+                    self.display_auth_error(e)
+                    return
+                except Exception as e:
+                    self.display_auth_error(e)
+                    return
+                # Check if there is already a MegaLinter comment
+                for comment in existing_comments:
+                    if "MegaLinter is graciously provided by" in comment.body:
+                        existing_comment = comment
+                        break
 
             # Process comment
             try:
@@ -139,13 +143,17 @@ class GitlabCommentReporter(Reporter):
                 if existing_comment is not None:
                     existing_comment.body = p_r_msg
                     existing_comment.save()
+                    logging.debug(f"Updated Gitlab comment: {p_r_msg}")
+                    logging.info(
+                        f"[Gitlab Comment Reporter] Updated existing comment summary on {gitlab_repo} #MR{mr.id}"
+                    )
                 # Or create a new PR comment
                 else:
                     mr.notes.create({"body": p_r_msg})
-                logging.debug(f"Posted Gitlab comment: {p_r_msg}")
-                logging.info(
-                    f"[Gitlab Comment Reporter] Posted summary as comment on {gitlab_repo} #MR{mr.id}"
-                )
+                    logging.debug(f"Posted Gitlab comment: {p_r_msg}")
+                    logging.info(
+                        f"[Gitlab Comment Reporter] Posted summary as comment on {gitlab_repo} #MR{mr.id}"
+                    )
             except gitlab.GitlabError as e:
                 logging.warning(
                     "[Gitlab Comment Reporter] Unable to post merge request comment"
