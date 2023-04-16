@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - New linters
+  - [Vale](https://vale.sh/), a powerful enforcer of writing style
 
 - Medias
 
@@ -24,7 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Display a different message in log when a Merge Request comment is created or updated.
 
 - Core
-  - Add support for idea plugins auto-install
+  - Add support for idea plugins autoinstall
   - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
   - Upgrade create-pull-request and create-or-update-comment GitHub Actions
@@ -34,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix local run of python test cases
 
 - Documentation
+  - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
