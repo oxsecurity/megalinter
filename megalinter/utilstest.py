@@ -415,6 +415,7 @@ def test_get_linter_help(linter, test_self):
             .replace(r"(\[.m)", "")  # pylint: disable=invalid-character-esc
             .rstrip()
         )
+        line_clean = utils.normalize_log_string(line_clean)
         help_lines_clean += [line_clean]
     if os.path.isfile(helps_file):
         with open(helps_file, "r", encoding="utf-8") as json_file:
