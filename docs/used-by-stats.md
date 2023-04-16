@@ -3,14 +3,14 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=2208&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1469&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=739&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=56552&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=56564&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 37354 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 37364 |
 | [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7052 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2395 |
-| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1975 |
+| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1976 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1904 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1890 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1643 |
@@ -26,7 +26,7 @@
 | [practicalli/clojure-cli-config](https://github.com/practicalli/clojure-cli-config)                                                                                             |   455 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                                       |   372 |
 | [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   362 |
-| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   340 |
+| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   341 |
 | [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   314 |
 | [ministryofjustice/modernisation-platform](https://github.com/ministryofjustice/modernisation-platform)                                                                         |   314 |
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   299 |
@@ -48,7 +48,7 @@
 | [philips-software/amp-embedded-infra-lib](https://github.com/philips-software/amp-embedded-infra-lib)                                                                           |    96 |
 | [practicalli/spacemacs](https://github.com/practicalli/spacemacs)                                                                                                               |    95 |
 | [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    92 |
-| [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                             |    89 |
+| [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                             |    90 |
 | [unixorn/lima-xbar-plugin](https://github.com/unixorn/lima-xbar-plugin)                                                                                                         |    80 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                                 |    77 |
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                                   |    71 |
@@ -198,6 +198,7 @@
 | [AzorianSolutions/broadband-label-maker](https://github.com/AzorianSolutions/broadband-label-maker)                                                                             |     6 |
 | [miracum/ahd2fhir](https://github.com/miracum/ahd2fhir)                                                                                                                         |     6 |
 | [chilcano/how-tos](https://github.com/chilcano/how-tos)                                                                                                                         |     6 |
+| [snoopy82481/home_cluster](https://github.com/snoopy82481/home_cluster)                                                                                                         |     6 |
 | [MrMarble/home-ops](https://github.com/MrMarble/home-ops)                                                                                                                       |     6 |
 | [Euvaz/GitOps-Home](https://github.com/Euvaz/GitOps-Home)                                                                                                                       |     6 |
 | [blthazr/area0](https://github.com/blthazr/area0)                                                                                                                               |     6 |
@@ -212,7 +213,6 @@
 | [llaville/phpunit-LoggerTestListener](https://github.com/llaville/phpunit-LoggerTestListener)                                                                                   |     5 |
 | [miracum/kafka-fhir-to-server](https://github.com/miracum/kafka-fhir-to-server)                                                                                                 |     5 |
 | [proinsias/proinsias.github.io](https://github.com/proinsias/proinsias.github.io)                                                                                               |     5 |
-| [snoopy82481/home_cluster](https://github.com/snoopy82481/home_cluster)                                                                                                         |     5 |
 | [maksimkurb/home-ops](https://github.com/maksimkurb/home-ops)                                                                                                                   |     5 |
 | [ahmadnassri/template-template](https://github.com/ahmadnassri/template-template)                                                                                               |     5 |
 | [ahmadnassri/action-google-cloud-sql-proxy](https://github.com/ahmadnassri/action-google-cloud-sql-proxy)                                                                       |     5 |
