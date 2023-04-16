@@ -876,6 +876,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/spell_vale/</loc>
+         <lastmod>2023-04-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/sql/</loc>
          <lastmod>2023-04-16</lastmod>
          <changefreq>daily</changefreq>
