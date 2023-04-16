@@ -28,7 +28,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 - Enable prettier by adding `JAVASCRIPT_PRETTIER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable prettier by adding `JAVASCRIPT_PRETTIER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_PRETTIER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `JAVASCRIPT_PRETTIER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                        | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|

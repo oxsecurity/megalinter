@@ -22,7 +22,7 @@ See more details in [Help](#help-content)
 - Version in MegaLinter: **3.11.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
-  - If custom `apex-pmd-ruleset.xml` config file is not found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
+  - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
 - See [How to disable sfdx-scanner-apex rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
 - See [Index of problems detected by sfdx-scanner-apex](https://pmd.github.io/latest/pmd_rules_apex.html){target=_blank}
 
@@ -78,7 +78,7 @@ This linter is available in the following flavours
 sfdx-scanner-apex is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using sfdx-scanner-apex configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make sfdx-scanner-apex analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make sfdx-scanner-apex analyze only updated files
 
 ### Example calls
 

@@ -22,7 +22,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 - Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `POWERSHELL_POWERSHELL` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `POWERSHELL_POWERSHELL` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                          | Description                                                                                                                                                                                  | Default value                                                       |
 |---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|

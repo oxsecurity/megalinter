@@ -18,7 +18,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 - Version in MegaLinter: **2.17.2**
 - Visit [Official Web Site](https://pylint.pycqa.org){target=_blank}
 - See [How to configure pylint rules](https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html){target=_blank}
-  - If custom `.pylintrc` config file is not found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
+  - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
 - See [How to disable pylint rules in files](https://pylint.pycqa.org/en/latest/user_guide/messages/message_control.html){target=_blank}
 - See [Index of problems detected by pylint](https://pylint.pycqa.org/en/latest/user_guide/messages/messages_overview.html){target=_blank}
 

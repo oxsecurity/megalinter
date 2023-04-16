@@ -19,7 +19,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 - Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                               | Description                                                                                                                                                                                                         | Default value                       |
 |----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|

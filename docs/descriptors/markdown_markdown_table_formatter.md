@@ -21,7 +21,7 @@ markdown-table-formatter detects wrongly formatted markdown tables and can autom
 - Enable markdown-table-formatter by adding `MARKDOWN_MARKDOWN_TABLE_FORMATTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable markdown-table-formatter by adding `MARKDOWN_MARKDOWN_TABLE_FORMATTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWN_TABLE_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `MARKDOWN_MARKDOWN_TABLE_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                                      | Description                                                                                                                                                                                                         | Default value      |
 |---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|

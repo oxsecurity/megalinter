@@ -18,7 +18,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 - Version in MegaLinter: **6.6.0**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
-  - If custom `.openapirc.yml` config file is not found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
+  - If custom `.openapirc.yml` config file isn't found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
 - See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md){target=_blank}
 
 [![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral){target=_blank}

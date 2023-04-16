@@ -64,7 +64,7 @@ This linter is available in the following flavours
 git_diff is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using git_diff configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make git_diff analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make git_diff analyze only updated files
 
 ### Example calls
 

@@ -20,12 +20,12 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 - Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `XML_XMLLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `XML_XMLLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | XML_XMLLINT_AUTOFORMAT                  | If set to `true`, it will reformat and reindent the output                                                                                                                                                          | `false`            |
-| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | ``                 |
+| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | `  `               |
 | XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
 | XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
 | XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |

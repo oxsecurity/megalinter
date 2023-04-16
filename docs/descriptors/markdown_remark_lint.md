@@ -14,7 +14,7 @@ _This linter has been temporary disabled in this version_
 - Version in MegaLinter: **14.0.2**
 - Visit [Official Web Site](https://remark.js.org/){target=_blank}
 - See [How to configure remark-lint rules](https://github.com/remarkjs/remark-lint#configuring-remark-lint){target=_blank}
-  - If custom `.remarkrc` config file is not found, [.remarkrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.remarkrc){target=_blank} will be used
+  - If custom `.remarkrc` config file isn't found, [.remarkrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.remarkrc){target=_blank} will be used
 - See [How to disable remark-lint rules in files](https://github.com/remarkjs/remark-message-control#markers){target=_blank}
 - See [Index of problems detected by remark-lint](https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules){target=_blank}
 
@@ -25,7 +25,7 @@ _This linter has been temporary disabled in this version_
 - Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|

@@ -12,7 +12,7 @@ description: How to use goodcheck (configure, ignore files, ignore errors, help 
 - Version in MegaLinter: **3.1.0**
 - Visit [Official Web Site](https://sider.github.io/goodcheck/){target=_blank}
 - See [How to configure goodcheck rules](https://sider.github.io/goodcheck/docs/configuration){target=_blank}
-  - If custom `goodcheck.yml` config file is not found, [goodcheck.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/goodcheck.yml){target=_blank} will be used
+  - If custom `goodcheck.yml` config file isn't found, [goodcheck.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/goodcheck.yml){target=_blank} will be used
 - See [Index of problems detected by goodcheck](https://sider.github.io/goodcheck/docs/rules){target=_blank}
 
 [![goodcheck - GitHub](https://gh-card.dev/repos/sider/goodcheck.svg?fullname=)](https://github.com/sider/goodcheck){target=_blank}
@@ -68,7 +68,7 @@ This linter is available in the following flavours
 goodcheck is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using goodcheck configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make goodcheck analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make goodcheck analyze only updated files
 
 ### Example calls
 

@@ -11,9 +11,11 @@ Vale brings your editorial style to life !
 
 To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
 
+MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
+
 ## vale documentation
 
-- Version in MegaLinter: **2.24.2**
+- Version in MegaLinter: **2.24.0**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -32,7 +34,7 @@ To be active within MegaLinter, you need to [initialize a .vale.ini configuratio
 | SPELL_VALE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | SPELL_VALE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | SPELL_VALE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| SPELL_VALE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | Exclude every file                              |
+| SPELL_VALE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".md", ".rst"]`                               |
 | SPELL_VALE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | SPELL_VALE_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | SPELL_VALE_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
@@ -78,7 +80,7 @@ This linter is available in the following flavours
 ### How are identified applicable files
 
 - Activated only if one of these files is found: `.vale.ini`
-- If this linter is active, all files linted by all other active linters will be linted
+- File extensions: `.md`, `.rst`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -89,11 +91,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-vale **/*.md
+vale README.md file1.md file2.md file3.md
 ```
 
 ```shell
-vale --config .vale.yml README.md
+vale --config .vale.ini README.md file1.md file2.md file3.md
 ```
 
 
@@ -135,9 +137,9 @@ See [4mhttps://vale.sh[0m for more setup information.
 
 [1mCommands:[0m
 
- [90mls-config[0m        Print the current configuration to stdout.
  [90mls-metrics[0m       Print the given file's internal metrics to stdout.
  [90msync[0m             Download and install external configuration sources.
+ [90mls-config[0m        Print the current configuration to stdout.
 
 ```
 

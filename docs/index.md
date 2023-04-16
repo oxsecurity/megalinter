@@ -66,7 +66,7 @@ _Github PR reporter_
 
 <!-- table-of-contents-start -->
 
-<!-- table-of-contents-end -->
+<!-- table-of-contents-end --> 
 
 ## Why MegaLinter
 
@@ -79,7 +79,7 @@ Not all developers have the good habit to use linters in their IDEs, making code
 By using **MegaLinter**, you'll enjoy the following benefits for you and your team:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
-- Reading error logs, **developers learn best practices** of the language they are using
+- Reading error logs, **developers learn best practices** of the language they're using
 - [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)

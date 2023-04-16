@@ -18,7 +18,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 - Version in MegaLinter: **2.0.5**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
-  - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
+  - If custom `.sqlfluff` config file isn't found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
 
 [![sqlfluff - GitHub](https://gh-card.dev/repos/sqlfluff/sqlfluff.svg?fullname=)](https://github.com/sqlfluff/sqlfluff){target=_blank}

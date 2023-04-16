@@ -12,7 +12,7 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 - Version in MegaLinter: **6.55.0**
 - Visit [Official Web Site](https://pmd.github.io/){target=_blank}
 - See [How to configure pmd rules](https://pmd.github.io/pmd-6.55.0/pmd_userdocs_configuring_rules.html){target=_blank}
-  - If custom `java-pmd-ruleset.xml` config file is not found, [java-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml){target=_blank} will be used
+  - If custom `java-pmd-ruleset.xml` config file isn't found, [java-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml){target=_blank} will be used
 - See [How to disable pmd rules in files](https://pmd.github.io/pmd-6.55.0/pmd_userdocs_suppressing_warnings.html){target=_blank}
 - See [Index of problems detected by pmd](https://pmd.github.io/pmd-6.55.0/pmd_rules_java.html){target=_blank}
 

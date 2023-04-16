@@ -11,7 +11,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 - Version in MegaLinter: **5.5**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
-  - If custom `.phplint.yml` config file is not found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
+  - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
 [![phplint - GitHub](https://gh-card.dev/repos/overtrue/phplint.svg?fullname=)](https://github.com/overtrue/phplint){target=_blank}
 

@@ -18,7 +18,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 - Version in MegaLinter: **2.3.168**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
-  - If custom `.checkov.yml` config file is not found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
+  - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
 
@@ -82,7 +82,7 @@ This linter is available in the following flavours
 checkov is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using checkov configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make checkov analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make checkov analyze only updated files
 
 ### Example calls
 

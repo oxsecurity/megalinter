@@ -1257,7 +1257,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if linter.cli_lint_fix_arg_name is not None:
             linter_doc_md += [
                 "",
-                f"- Enable **auto-fixes** by adding `{linter.name}` in [APPLY_FIXES variable]({apply_fixes_url})",
+                f"- Enable **autofixes** by adding `{linter.name}` in [APPLY_FIXES variable]({apply_fixes_url})",
             ]
         linter_doc_md += [
             "",

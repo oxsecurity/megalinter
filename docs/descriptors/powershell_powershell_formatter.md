@@ -22,7 +22,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 - Enable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `POWERSHELL_POWERSHELL_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `POWERSHELL_POWERSHELL_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                                    | Description                                                                                                                                                                                  | Default value                                                       |
 |-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|

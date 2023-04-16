@@ -863,7 +863,7 @@ class Megalinter:
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
             logging.error(
                 c.red(
-                    "❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
+                    "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
                 )
             )
             sys.exit(1)

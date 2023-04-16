@@ -12,7 +12,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 - Version in MegaLinter: **6.4.0**
 - Visit [Official Web Site](https://npmpackagejsonlint.org/){target=_blank}
 - See [How to configure npm-package-json-lint rules](https://npmpackagejsonlint.org/docs/configuration){target=_blank}
-  - If custom `.npmpackagejsonlintrc.json` config file is not found, [.npmpackagejsonlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.npmpackagejsonlintrc.json){target=_blank} will be used
+  - If custom `.npmpackagejsonlintrc.json` config file isn't found, [.npmpackagejsonlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.npmpackagejsonlintrc.json){target=_blank} will be used
 - See [How to ignore files and directories with npm-package-json-lint](https://npmpackagejsonlint.org/docs/ignore){target=_blank}
   - You can define a `.npmpackagejsonlintignore` file to ignore files and folders
 - See [Index of problems detected by npm-package-json-lint](https://npmpackagejsonlint.org/docs/rules){target=_blank}
@@ -63,7 +63,7 @@ This linter is available in the following flavours
 npm-package-json-lint is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using npm-package-json-lint configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make npm-package-json-lint analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make npm-package-json-lint analyze only updated files
 
 ### Example calls
 

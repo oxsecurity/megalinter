@@ -14,7 +14,7 @@ An extremely fast Python linter, written in Rust.
 - Version in MegaLinter: **0.0.261**
 - Visit [Official Web Site](https://github.com/charliermarsh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://beta.ruff.rs/docs/configuration/){target=_blank}
-  - If custom `.ruff.toml` config file is not found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
+  - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
 - See [How to disable ruff rules in files](https://beta.ruff.rs/docs/configuration/#error-suppression){target=_blank}
 - See [Index of problems detected by ruff](https://beta.ruff.rs/docs/rules/){target=_blank}
 
@@ -25,7 +25,7 @@ An extremely fast Python linter, written in Rust.
 - Enable ruff by adding `PYTHON_RUFF` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable ruff by adding `PYTHON_RUFF` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_RUFF` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `PYTHON_RUFF` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|

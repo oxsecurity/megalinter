@@ -12,7 +12,7 @@ description: How to use markdown-link-check (configure, ignore files, ignore err
 - Version in MegaLinter: **3.11.1**
 - Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
 - See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
-  - If custom `.markdown-link-check.json` config file is not found, [.markdown-link-check.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
+  - If custom `.markdown-link-check.json` config file isn't found, [.markdown-link-check.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
 - See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments){target=_blank}
 
 [![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check){target=_blank}

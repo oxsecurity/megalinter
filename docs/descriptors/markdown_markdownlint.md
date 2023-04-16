@@ -18,7 +18,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 - Version in MegaLinter: **0.33.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
-  - If custom `.markdownlint.json` config file is not found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
+  - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
 - See [How to ignore files and directories with markdownlint](https://github.com/igorshubovych/markdownlint-cli#ignoring-files){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
@@ -30,7 +30,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 - Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                          | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|

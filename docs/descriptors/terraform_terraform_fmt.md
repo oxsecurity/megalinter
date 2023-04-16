@@ -25,7 +25,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 - Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|

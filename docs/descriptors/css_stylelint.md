@@ -18,7 +18,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 - Version in MegaLinter: **15.5.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
-  - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
+  - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
 - See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}
 - See [Index of problems detected by stylelint](https://stylelint.io/user-guide/rules/list){target=_blank}
 
@@ -29,7 +29,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 - Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|

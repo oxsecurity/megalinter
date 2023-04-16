@@ -22,7 +22,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 - Enable csharpier by adding `CSHARP_CSHARPIER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable csharpier by adding `CSHARP_CSHARPIER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSHARP_CSHARPIER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `CSHARP_CSHARPIER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                     | Description                                                                                                                                                                                                         | Default value      |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|

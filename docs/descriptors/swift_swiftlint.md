@@ -24,7 +24,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 - Enable swiftlint by adding `SWIFT_SWIFTLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable swiftlint by adding `SWIFT_SWIFTLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `SWIFT_SWIFTLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Enable **autofixes** by adding `SWIFT_SWIFTLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                    | Description                                                                                                                                                                                  | Default value                                   |
 |---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -73,7 +73,7 @@ This linter is available in the following flavours
 swiftlint is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using swiftlint configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make swiftlint analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make swiftlint analyze only updated files
 
 ### Example calls
 

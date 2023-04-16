@@ -89,7 +89,7 @@ This linter is available in the following flavours
 semgrep is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using semgrep configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make semgrep analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make semgrep analyze only updated files
 
 ### Example calls
 

@@ -12,7 +12,7 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 - Version in MegaLinter: **1.1.4**
 - Visit [Official Web Site](https://htmlhint.com/){target=_blank}
 - See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
-  - If custom `.htmlhintrc` config file is not found, [.htmlhintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
+  - If custom `.htmlhintrc` config file isn't found, [.htmlhintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
 - See [How to disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
 - See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules){target=_blank}
 

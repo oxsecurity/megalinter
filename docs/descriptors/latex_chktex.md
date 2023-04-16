@@ -11,7 +11,7 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 - Version in MegaLinter: **1.7.6**
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
-  - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
+  - If custom `.chktexrc` config file isn't found, [.chktexrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
 
 ## Configuration in MegaLinter
 

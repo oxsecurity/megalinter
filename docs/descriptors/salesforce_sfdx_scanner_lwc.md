@@ -74,7 +74,7 @@ This linter is available in the following flavours
 sfdx-scanner-lwc is called once on the whole project directory (`project` CLI lint mode)
 
 - filtering can not be done using MegaLinter configuration variables,it must be done using sfdx-scanner-lwc configuration or ignore file (if existing)
-- `VALIDATE_ALL_CODEBASE: false` does not make sfdx-scanner-lwc analyze only updated files
+- `VALIDATE_ALL_CODEBASE: false` doesn't make sfdx-scanner-lwc analyze only updated files
 
 ### Example calls
 
