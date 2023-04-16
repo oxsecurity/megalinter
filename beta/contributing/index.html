@@ -2456,7 +2456,7 @@ echo ".venv/" &gt;&gt; .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 </code></pre>
-<p><em>If it does not work, just run the following script</em></p>
+<p><em>If it doesn't work, just run the following script</em></p>
 <pre><code class="language-shell">pip install -r requirements.dev.txt
 pip install mkdocs-material mkdocs-glightbox
 npm install markdown-table-formatter -g
@@ -2465,12 +2465,12 @@ npm install markdown-table-formatter -g
 <pre><code class="language-shell">./build.sh
 2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
 2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-...
-Formatting markdown tables...
+…
+Formatting markdown tables…
 Need to install the following packages:
   markdown-table-formatter
 Ok to proceed? (y)
-...
+…
 INFO    -  Documentation built in 9.76 seconds
 (done.)
 </code></pre>
@@ -2506,7 +2506,7 @@ INFO    -  Documentation built in 9.76 seconds
 <td>Updates the Dockerfile, documentation, and other files from the yml descriptors</td>
 </tr>
 <tr>
-<td>/build [ref=...]</td>
+<td>/build [ref=…]</td>
 <td>Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.</td>
 </tr>
 <tr>
@@ -2528,7 +2528,7 @@ INFO    -  Documentation built in 9.76 seconds
 </ol>
 <p>Here are a few things you can do that will increase the likelihood of your pull request being accepted:</p>
 <ul>
-<li>Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.</li>
+<li>Keep your change as focused as possible. If there are multiple changes you would like to make that aren't dependent upon each other, consider submitting them as separate pull requests.</li>
 <li>Write <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">good commit messages</a>.</li>
 <li>Update <a href="https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md">CHANGELOG.md</a> to briefly describe your changes</li>
 </ul>
@@ -2579,11 +2579,11 @@ INFO    -  Documentation built in 9.76 seconds
 <p>If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.</p>
 <p>When running them, you may encounter several problems:</p>
 <ul>
-<li>It is not installed on the machine locally and you do not want to install it.</li>
-<li>The OS does not allow the installation of the linter because it is not cross-platform.</li>
+<li>it's not installed on the machine locally and you don't want to install it.</li>
+<li>The OS doesn't allow the installation of the linter because it's not cross-platform.</li>
 <li>The behavior between running it on the local machine (host) and the container is different.</li>
 </ul>
-<p>For those cases, it is important to have the possibility to run the tests inside the container. To do so:</p>
+<p>For those cases, it's important to have the possibility to run the tests inside the container. To do so:</p>
 <ol>
 <li>Run <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
 <li>Execute the following commands in a <strong>*.sh</strong> script. Example:</li>
@@ -2596,7 +2596,7 @@ docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${T
 <ol>
 <li>Change the path to the Dockerfile to the appropriate Dockerfile</li>
 <li>Change the <strong>tag</strong> in the 2 places (docker buildx build and docker run)</li>
-<li>Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that is responsible for finding the tests of the particular linter</li>
+<li>Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that's responsible for finding the tests of the particular linter</li>
 </ol>
 <h3 id="cictcd">CI/CT/CD</h3>
 <p>The <strong>MegaLinter</strong> has <em>CI/CT/CD</em> configured utilizing <strong>GitHub</strong> Actions.</p>
