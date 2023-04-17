@@ -8,7 +8,7 @@
     "black": "23.3.0",
     "cfn-lint": "0.77.0",
     "checkmake": "0.2.0",
-    "checkov": "2.3.168",
+    "checkov": "2.3.171",
     "checkstyle": "10.9.3",
     "chktex": "1.7.6",
     "clippy": "0.1.68",
@@ -100,10 +100,10 @@
     "terragrunt": "0.45.2",
     "terrascan": "1.18.1",
     "tflint": "0.46.0",
-    "trivy": "0.39.1",
+    "trivy": "0.40.0",
     "tsqllint": "1.15.3.0",
     "v8r": "1.0.0",
-    "vale": "2.24.0",
+    "vale": "2.24.2",
     "xmllint": "21004",
     "yamllint": "1.30.0"
 }
