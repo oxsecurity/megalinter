@@ -18,6 +18,12 @@ on:
       actor:
         description: "The user who executed the slash command"
         required: true
+      checkout-ref:
+        description: "The reference to pass to 'ref' to checkout action"
+        required: true
+      checkout-repository:
+        description: "The repository to pass to 'repository' to tcheckout action"
+        required: false
   repository_dispatch:
     types: [build-command]
 jobs:
@@ -47,17 +53,21 @@ jobs:
         env:
           PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
         run: echo "$PAYLOAD_CONTEXT"
+      - name: Dump the inputs payload context
+        env:
+          INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
+        run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+          repository: ${{ github.event.inputs.checkout-repository }}
+          ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
         uses: actions/setup-python@v4.5.0
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
-          python-version: 3.11.2 # optional
+          python-version: 3.11.3 # optional
           # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
           cache: pip # optional
       - run: pip install -r requirements.dev.txt

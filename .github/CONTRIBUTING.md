@@ -21,7 +21,7 @@ python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 ```
 
-_If it does not work, just run the following script_
+_If it doesn't work, just run the following script_
 
 ```shell
 pip install -r requirements.dev.txt
@@ -35,12 +35,12 @@ Second level dev dependencies are installed by running `./build.sh` which is als
 ./build.sh
 2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
 2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-...
-Formatting markdown tables...
+…
+Formatting markdown tables…
 Need to install the following packages:
   markdown-table-formatter
 Ok to proceed? (y)
-...
+…
 INFO    -  Documentation built in 9.76 seconds
 (done.)
 ```
@@ -70,7 +70,7 @@ Which returns:
 > Command | Description
 > --- | ---
 > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
-> /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+> /build [ref=…]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
 > /help | Returns this help message
 
 ### Without write access
@@ -85,7 +85,7 @@ Which returns:
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
-- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
+- Keep your change as focused as possible. If there are multiple changes you would like to make that aren't dependent upon each other, consider submitting them as separate pull requests.
 - Write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 - Update [CHANGELOG.md](https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
 
@@ -152,11 +152,11 @@ If you are creating a linter or making changes to a linter, you may want to run 
 
 When running them, you may encounter several problems:
 
-* It is not installed on the machine locally and you do not want to install it.
-* The OS does not allow the installation of the linter because it is not cross-platform.
+* it's not installed on the machine locally and you don't want to install it.
+* The OS doesn't allow the installation of the linter because it's not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.
 
-For those cases, it is important to have the possibility to run the tests inside the container. To do so:
+For those cases, it's important to have the possibility to run the tests inside the container. To do so:
 
 1. Run `bash build.sh` to update the Dockerfile files of each linter.
 2. Execute the following commands in a ***.sh** script. Example:
@@ -171,7 +171,7 @@ In the above example, it builds the **misspell** linter image and then runs its 
 
 1. Change the path to the Dockerfile to the appropriate Dockerfile
 2. Change the **tag** in the 2 places (docker buildx build and docker run)
-3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that is responsible for finding the tests of the particular linter
+3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that's responsible for finding the tests of the particular linter
 
 ### CI/CT/CD
 

@@ -40,8 +40,6 @@ linters:
     cli_lint_extra_args:
       - "--reporters"
       - "console,html"
-      - "--output"
-      - "{{REPORT_FOLDER}}/copy-paste/"
       - "--exitCode"
       - "1"
     cli_lint_extra_args_after:

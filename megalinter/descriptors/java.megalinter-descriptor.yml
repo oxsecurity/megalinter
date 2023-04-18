@@ -61,6 +61,7 @@ linters:
       idea:
         - name: checkstyle-idea
           url: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
+          id: CheckStyle-IDEA
       vscode:
         - name: vscode-checkstyle
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle

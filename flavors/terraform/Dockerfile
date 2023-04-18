@@ -23,8 +23,9 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM jdkato/vale:latest as vale
 FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
-FROM tenable/terrascan:1.18.0 as terrascan
+FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -151,11 +152,11 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 cspell \
                 sql-lint \
                 tekton-lint  && \
-    echo "Cleaning npm cache..." \
+    echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
-    && echo "Changing owner of node_modules files..." \
+    && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
-    && echo "Removing extra node_module files..." \
+    && echo "Removing extra node_module files…" \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
@@ -219,6 +220,7 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
@@ -296,6 +298,9 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
+
+# vale installation
+# Managed with COPY --link --from=vale /bin/vale /bin/vale
 
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

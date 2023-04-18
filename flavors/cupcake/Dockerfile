@@ -31,7 +31,7 @@ FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM zricethezav/gitleaks:v8.16.2 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
-FROM tenable/terrascan:1.18.0 as terrascan
+FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -201,11 +201,11 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser  && \
-    echo "Cleaning npm cache..." \
+    echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
-    && echo "Changing owner of node_modules files..." \
+    && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
-    && echo "Removing extra node_module files..." \
+    && echo "Removing extra node_module files…" \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \

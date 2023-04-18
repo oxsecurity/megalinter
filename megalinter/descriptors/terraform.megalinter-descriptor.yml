@@ -66,7 +66,7 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM tenable/terrascan:1.18.0 as terrascan
+        - FROM tenable/terrascan:1.18.1 as terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
@@ -130,6 +130,7 @@ linters:
       idea:
         - name: HashiCorp Terraform / HCL language support
           url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+          id: org.intellij.plugins.hcl
       sublime:
         - name: Terrafmt
           url: https://packagecontrol.io/packages/Terrafmt

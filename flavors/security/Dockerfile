@@ -19,7 +19,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.16.2 as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
-FROM tenable/terrascan:1.18.0 as terrascan
+FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
 #FROM__END
@@ -115,11 +115,11 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif  && \
-    echo "Cleaning npm cache..." \
+    echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
-    && echo "Changing owner of node_modules files..." \
+    && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
-    && echo "Removing extra node_module files..." \
+    && echo "Removing extra node_module files…" \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \

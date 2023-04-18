@@ -63,7 +63,7 @@ class TapReporter(Reporter):
                 )
                 std_out_tap = "\\n".join(std_out_tap.splitlines())
                 std_out_tap = std_out_tap.replace(":", " ")
-                detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
+                detailed_lines = ["  ---", f"  message: {std_out_tap}", "  …"]
                 file_tap_lines += detailed_lines
             tap_report_lines += file_tap_lines
         # Write TAP file

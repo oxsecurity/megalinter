@@ -25,7 +25,7 @@ max_line_length = 120
 
 [*.sh]
 indent_style = space
-# Note: indent_size is not applied for Bash scripts in PyCharm for some reason. Pycharm is using indentation size 2.
+# Note: indent_size isn't applied for Bash scripts in PyCharm for some reason. Pycharm is using indentation size 2.
 indent_size = 2
 end_of_line = lf
 
