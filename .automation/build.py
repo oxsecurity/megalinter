@@ -308,6 +308,8 @@ def build_dockerfile(
     is_docker_build_platform_other_run = False
     has_npm_copy = False
     venv_builddeps_command = []
+    venv_builddeps_arm_command = []
+    venv_builddeps_amd_command = []
     venv_apk_builddeps = ["gcc", "libffi-dev", "musl-dev", "make", "curl", "openssl-dev"]
     # Manage docker
     if requires_docker is True:
@@ -470,6 +472,10 @@ def build_dockerfile(
             venv_apk_builddeps += item["install"]["pip_apk"]
         if "pip_builddep" in item["install"]:
             venv_builddeps_command += item["install"]["pip_builddep"]
+        if "pip_builddep_arm" in item["install"]:
+            venv_builddeps_arm_command += item["install"]["pip_builddep_arm"]
+        if "pip_builddep_amd" in item["install"]:
+            venv_builddeps_amd_command += item["install"]["pip_builddep_amd"]
         if "build_platform_apk" in item["install"]:
             apk_build_platform_packages += item["install"]["build_platform_apk"]
         if "npm_apk" in item["install"]:
@@ -680,6 +686,12 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile, "#PIPVENV_BUILDDEPS__START", "#PIPVENV_BUILDDEPS__END", "\\n".join(venv_builddeps_command)
+    )
+    replace_in_file(
+        dockerfile, "#PIPVENV_BUILDDEPS_AMD__START", "#PIPVENV_BUILDDEPS_AMD__END", "\\n".join(venv_builddeps_amd_command)
+    )
+    replace_in_file(
+        dockerfile, "#PIPVENV_BUILDDEPS_ARM__START", "#PIPVENV_BUILDDEPS_ARM__END", "\\n".join(venv_builddeps_arm_command)
     )
     replace_in_file(
         dockerfile, "#PIPVENV_PATH__START", "#PIPVENV_PATH__END", pipenv_path_command
