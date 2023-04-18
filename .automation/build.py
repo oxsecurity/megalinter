@@ -308,8 +308,6 @@ def build_dockerfile(
     is_docker_build_platform_other_run = False
     has_npm_copy = False
     venv_builddeps_command = []
-    venv_builddeps_arm_command = []
-    venv_builddeps_amd_command = []
     venv_apk_builddeps = ["gcc", "libffi-dev", "musl-dev", "make", "curl", "openssl-dev"]
     # Manage docker
     if requires_docker is True:
@@ -472,10 +470,6 @@ def build_dockerfile(
             venv_apk_builddeps += item["install"]["pip_apk"]
         if "pip_builddep" in item["install"]:
             venv_builddeps_command += item["install"]["pip_builddep"]
-        if "pip_builddep_arm" in item["install"]:
-            venv_builddeps_arm_command += item["install"]["pip_builddep_arm"]
-        if "pip_builddep_amd" in item["install"]:
-            venv_builddeps_amd_command += item["install"]["pip_builddep_amd"]
         if "build_platform_apk" in item["install"]:
             apk_build_platform_packages += item["install"]["build_platform_apk"]
         if "npm_apk" in item["install"]:
@@ -488,7 +482,10 @@ def build_dockerfile(
                 docker_copy += ["COPY --link --from=node_modules /node-deps /node-deps"]
         # Collect python for venvs
         if "linter_name" in item and "pip" in item["install"]:
-            pipvenv_packages[item["linter_name"]] = item["install"]["pip"]
+            pipvenv_packages[item["linter_name"]] = {
+                "pip": item["install"]["pip"],
+                "env": item["install"]["pip_builddep_env"] if "pip_builddep_env" in item["install"] else ""
+            }
         # Collect python packages
         elif "pip" in item["install"]:
             pip_packages += item["install"]["pip"]
@@ -648,7 +645,9 @@ def build_dockerfile(
             "RUN echo \\\n"
         )
         pipenv_path_command = 'ENV PATH="${PATH}"'
-        for pip_linter, pip_linter_packages in pipvenv_packages.items():
+        for pip_linter, data in pipvenv_packages.items():
+            pip_linter_packages = data["pip"]
+            pip_linter_env = data["env"]
             pipenv_download_command += (
                 f'    && mkdir -p "/download/{pip_linter}" '
                 + f'&& pip download -d "/download/{pip_linter}" '
@@ -660,7 +659,7 @@ def build_dockerfile(
                 + f'&& cd "/venvs/{pip_linter}" '
                 + "&& python3 -m crossenv /usr/local/bin/target-python3 . "
                 + "&& source bin/activate "
-                + f"&& PYTHONDONTWRITEBYTECODE=1 pip3 install --find-links /download/{pip_linter} --no-cache-dir "
+                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 install --find-links /download/{pip_linter} --no-cache-dir "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
@@ -686,12 +685,6 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile, "#PIPVENV_BUILDDEPS__START", "#PIPVENV_BUILDDEPS__END", "\\n".join(venv_builddeps_command)
-    )
-    replace_in_file(
-        dockerfile, "#PIPVENV_BUILDDEPS_AMD__START", "#PIPVENV_BUILDDEPS_AMD__END", "\\n".join(venv_builddeps_amd_command)
-    )
-    replace_in_file(
-        dockerfile, "#PIPVENV_BUILDDEPS_ARM__START", "#PIPVENV_BUILDDEPS_ARM__END", "\\n".join(venv_builddeps_arm_command)
     )
     replace_in_file(
         dockerfile, "#PIPVENV_PATH__START", "#PIPVENV_PATH__END", pipenv_path_command

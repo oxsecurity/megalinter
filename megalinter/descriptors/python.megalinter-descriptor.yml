@@ -397,8 +397,7 @@ linters:
       - "ruff check myfile.py"
       - "ruff check --config .ruff.toml myfile.py"
     install:
-      pip_builddep_arm:
-      - ENV CFLAGS=-mno-outline-atomics
+      pip_builddep_env: CFLAGS=-mno-outline-atomics
       pip:
         - ruff
     ide:
