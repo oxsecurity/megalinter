@@ -37,6 +37,9 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
+      pip_apk:
+      - g++
+      - cmake
       pip:
         - packaging
         - checkov
@@ -428,6 +431,9 @@ linters:
       - "semgrep /tmp/lint"
       - "semgrep "
     install:
+      pip_apk:
+      - g++
+      - cmake
       pip:
         - semgrep
     variables:

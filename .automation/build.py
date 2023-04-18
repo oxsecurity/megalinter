@@ -307,6 +307,8 @@ def build_dockerfile(
     is_docker_other_run = False
     is_docker_build_platform_other_run = False
     has_npm_copy = False
+    venv_builddeps_command = []
+    venv_apk_builddeps = ["gcc", "libffi-dev", "musl-dev", "make", "curl", "openssl-dev"]
     # Manage docker
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
@@ -464,6 +466,10 @@ def build_dockerfile(
         # Collect apk packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
+        if "pip_apk" in item["install"]:
+            venv_apk_builddeps += item["install"]["pip_apk"]
+        if "pip_builddep" in item["install"]:
+            venv_builddeps_command += item["install"]["pip_builddep"]
         if "build_platform_apk" in item["install"]:
             apk_build_platform_packages += item["install"]["build_platform_apk"]
         if "npm_apk" in item["install"]:
@@ -513,6 +519,11 @@ def build_dockerfile(
             "RUN apk add --update --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_npm_packages)))
         )
+    if len(venv_apk_builddeps) > 0:
+        venv_builddeps_command = [(
+            "RUN apk add --update --no-cache \\\n                "
+            + " \\\n                ".join(list(dict.fromkeys(venv_apk_builddeps)))
+        )] + venv_builddeps_command
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
     replace_in_file(dockerfile, "#BUILD_PLATFORM_APK__START", "#BUILD_PLATFORM_APK__END", apk_build_platform_install_command)
     replace_in_file(dockerfile, "#NPM_APK__START", "#NPM_APK__END", apk_npm_install_command)
@@ -666,6 +677,9 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile, "#PIPVENV_DOWNLOAD__START", "#PIPVENV_DOWNLOAD__END", pipenv_download_command
+    )
+    replace_in_file(
+        dockerfile, "#PIPVENV_BUILDDEPS__START", "#PIPVENV_BUILDDEPS__END", "\\n".join(venv_builddeps_command)
     )
     replace_in_file(
         dockerfile, "#PIPVENV_PATH__START", "#PIPVENV_PATH__END", pipenv_path_command
