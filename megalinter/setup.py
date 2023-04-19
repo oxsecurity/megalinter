@@ -21,7 +21,7 @@ setup(
         "pychalk",
         "pygithub",
         "python-gitlab",
-        "azure-devops",
+        "azure-devops==6.0.0b4",
         "commentjson",
         "pytablewriter",
         "pyyaml",
