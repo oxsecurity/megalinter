@@ -551,7 +551,7 @@ def build_dockerfile(
             + "      llvm \\\n"
             + "      clang \\\n"
             + "      curl \n"
-            + 'RUN curl https://github.com/cargo-bins/cargo-binstall/releases/download/v0.22.0/cargo-binstall-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz -O - | tar -xvf \\\n'
+            + 'RUN curl --location "https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz" | tar -xzv \\\n'
             + " && mkdir -p /cargo/.cargo/bin \\\n"
             + " && mv cargo-binstall /cargo/.cargo/bin \\\n"
             + " && chown -R 63425:63425 /cargo \n"
