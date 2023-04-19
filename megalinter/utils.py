@@ -159,9 +159,7 @@ def filter_files(
                     in file_contains_regex_extensions
                 )
             )
-            and not file_contains(
-                file_with_workspace, file_contains_regex_object
-            )
+            and not file_contains(file_with_workspace, file_contains_regex_object)
         ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
