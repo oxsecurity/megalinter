@@ -549,8 +549,13 @@ def build_dockerfile(
             + "      git \\\n"
             + "      musl-dev \\\n"
             + "      llvm \\\n"
-            + "      clang\n"
-            + "RUN chown 63425:63425 /cargo\n"
+            + "      clang \\\n"
+            + "      curl \\\n"
+            + 'RUN curl https://github.com/cargo-bins/cargo-binstall/releases/download/v0.22.0/cargo-binstall-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz -O - | tar -xvf \\\n'
+            + " && mkdir -p /cargo/.cargo/bin \\\n"
+            + " && mv cargo-binstall /cargo/.cargo/bin \\\n"
+            + " && chown -R 63425:63425 /cargo \\\n"
+            + " && chown 63425:63425 /cargo\n"
             + "USER 63425\n"
             + "ENV CC_aarch64_unknown_linux_musl=clang \\\n"
             + "    AR_aarch64_unknown_linux_musl=llvm-ar \\\n"
@@ -656,6 +661,7 @@ def build_dockerfile(
                 + "&& source bin/activate "
                 + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip "
                 + (" ".join(pip_linter_packages))
+                + "\\n"
             )
             pipenv_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_download_command += (
@@ -663,7 +669,6 @@ def build_dockerfile(
             + (" \\\n      ".join(pipenv_download_list))
             + " \\\n"
         )
-        pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_download_command = pipenv_download_command[:-2]  # remove last \
         pipenv_download_command += "\n"
     else:
