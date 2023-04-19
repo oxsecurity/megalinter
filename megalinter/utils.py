@@ -160,7 +160,7 @@ def filter_files(
                 )
             )
             and not file_contains(
-                file_with_prefix_and_sub_dir, file_contains_regex_object
+                file_with_workspace, file_contains_regex_object
             )
         ):
             continue
