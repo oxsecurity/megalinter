@@ -637,6 +637,7 @@ def build_dockerfile(
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
+        pipenv_download_list = []
         pipenv_download_command = (
             "RUN --mount=type=cache,id=pip-download,sharing=locked,target=/var/cache/pip,uid=0 \\\n"
             "    mkdir /download \\\n"
@@ -650,17 +651,7 @@ def build_dockerfile(
         for pip_linter, data in pipvenv_packages.items():
             pip_linter_packages = data["pip"]
             pip_linter_env = data["env"]
-            pipenv_download_command += (
-                '&& pip download --cache-dir=/var/cache/pip --platform=linux_x86_64 --only-binary=:all: --dest "/download" '
-                + (" ".join(pip_linter_packages))
-                + " \\\n"
-                + '&& pip download --cache-dir=/var/cache/pip --platform=linux_aarch64 --only-binary=:all: --dest "/download" '
-                + (" ".join(pip_linter_packages))
-                + " \\\n"
-                + '&& pip download --cache-dir=/var/cache/pip --dest "/download" '
-                + (" ".join(pip_linter_packages))
-                + " \\\n"
-            )
+            pipenv_download_list += pip_linter_packages
             pipenv_install_command += (
                 f'    && mkdir -p "/venvs/{pip_linter}" '
                 + f'&& cd "/venvs/{pip_linter}" '
@@ -673,6 +664,17 @@ def build_dockerfile(
                 + "&& cd ./../.. \\\n"
             )
             pipenv_path_command += f":/venvs/{pip_linter}/bin"
+        pipenv_download_command += (
+            '&& pip download --cache-dir=/var/cache/pip --dest "/download" '
+            + (" ".join(pipenv_download_list))
+            + " \\\n"
+            + '&& pip download --cache-dir=/var/cache/pip --platform=linux_x86_64 --only-binary=:all: --dest "/download" '
+            + (" ".join(pipenv_download_list))
+            + " \\\n"
+            + '&& pip download --cache-dir=/var/cache/pip --platform=linux_aarch64 --only-binary=:all: --dest "/download" '
+            + (" ".join(pipenv_download_list))
+            + " \\\n"
+        )
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_download_command = pipenv_download_command[:-2]  # remove last \
         pipenv_install_command += (
