@@ -638,12 +638,12 @@ def build_dockerfile(
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
         pipenv_download_command = (
-            "RUN --mount=type=cache,id=pip-download,sharing=locked,target=/var/cache/pip,uid=65532 \\\n"
+            "RUN --mount=type=cache,id=pip-download,sharing=locked,target=/var/cache/pip,uid=0 \\\n"
             "    mkdir /download \\\n"
             "    && PYTHONDONTWRITEBYTECODE=1 pip3 install --cache-dir=/var/cache/pip --upgrade pip crossenv \\\n"
         )
         pipenv_install_command = (
-            "RUN --mount=type=cache,id=pip-${BUILDARCH},sharing=locked,target=/var/cache/pip,uid=65532 \\\n"
+            "RUN --mount=type=cache,id=pip-${BUILDARCH},sharing=locked,target=/var/cache/pip,uid=0 \\\n"
             "     echo \\\n"
         )
         pipenv_path_command = 'ENV PATH="${PATH}"'
@@ -651,10 +651,13 @@ def build_dockerfile(
             pip_linter_packages = data["pip"]
             pip_linter_env = data["env"]
             pipenv_download_command += (
-                '&& pip download --cache-dir=/var/cache/pip --platform=linux_x86_64 --dest "/download" '
+                '&& pip download --cache-dir=/var/cache/pip --platform=linux_x86_64 --only-binary=:all: --dest "/download" '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
-                + '&& pip download --cache-dir=/var/cache/pip --platform=linux_aarch64 --dest "/download" '
+                + '&& pip download --cache-dir=/var/cache/pip --platform=linux_aarch64 --only-binary=:all: --dest "/download" '
+                + (" ".join(pip_linter_packages))
+                + " \\\n"
+                + '&& pip download --cache-dir=/var/cache/pip --dest "/download" '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
             )
