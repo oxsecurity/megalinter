@@ -657,7 +657,7 @@ def build_dockerfile(
                 + f'&& cd "/venvs/{pip_linter}" '
                 + "&& python3 -m crossenv /usr/local/bin/target-python3 . "
                 + "&& source bin/activate "
-                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 install --no-index --find-links=/download --cache-dir=/var/cache/pip "
+                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 install --find-links=/download --cache-dir=/var/cache/pip "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
@@ -667,13 +667,6 @@ def build_dockerfile(
         pipenv_download_command += (
             '&& pip download --cache-dir=/var/cache/pip --dest "/download" '
             + (" ".join(pipenv_download_list))
-            + " \\\n"
-            + '&& pip download --cache-dir=/var/cache/pip --platform=linux_x86_64 --only-binary=:all: --dest "/download" '
-            + (" ".join(pipenv_download_list))
-            + " \\\n"
-            + '&& pip download --cache-dir=/var/cache/pip --platform=linux_aarch64 --only-binary=:all: --dest "/download" '
-            + (" ".join(pipenv_download_list))
-            + " \\\n"
         )
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_download_command = pipenv_download_command[:-2]  # remove last \
