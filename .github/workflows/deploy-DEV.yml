@@ -162,7 +162,7 @@ jobs:
       - name: Load OCI
         shell: bash
         run: |
-          docker load --input /tmp/image.tar
+          cat /tmp/image.tar | docker load
           rm -f /tmp/image.tar
 
       ####################################
