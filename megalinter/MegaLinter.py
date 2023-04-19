@@ -614,6 +614,7 @@ class Megalinter:
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
             ignore_generated_files=self.ignore_generated_files,
+            workspace=self.workspace,
         )
 
         logging.info(
@@ -663,7 +664,7 @@ class Megalinter:
         all_files = list()
         for diff_line in diff.splitlines():
             if os.path.isfile(self.workspace + os.path.sep + diff_line):
-                all_files += [self.workspace + os.path.sep + diff_line]
+                all_files += [diff_line]
         return all_files
 
     def list_files_all(self):
@@ -672,7 +673,7 @@ class Megalinter:
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
         all_files = [
-            os.path.join(self.workspace, file)
+            file
             for file in sorted(os.listdir(self.workspace))
             if os.path.isfile(os.path.join(self.workspace, file))
         ]
@@ -681,8 +682,11 @@ class Megalinter:
         excluded_directories = utils.get_excluded_directories()
         for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
-            all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
-        return all_files
+            all_files += [
+                os.path.relpath(os.path.join(dirpath, file), self.workspace)
+                for file in sorted(filenames)
+            ]
+        return list(dict.fromkeys(all_files))
 
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)

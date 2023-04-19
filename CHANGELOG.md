@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Display a different message in log when a Merge Request comment is created or updated.
 
 - Core
+  - Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))
   - Add support for idea plugins autoinstall
   - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors

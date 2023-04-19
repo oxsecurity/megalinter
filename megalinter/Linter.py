@@ -483,6 +483,11 @@ class Linter:
                 self.config_file = (
                     self.default_rules_location + os.path.sep + self.config_file_name
                 )
+            # Make config file path absolute if not located in workspace
+            if self.config_file is not None and not os.path.isfile(
+                self.workspace + os.path.sep + self.config_file
+            ):
+                self.config_file = os.path.abspath(self.config_file)
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
@@ -787,7 +792,7 @@ class Linter:
             file_contains_regex_extensions=self.file_contains_regex_extensions,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
-            prefix=self.workspace,
+            workspace=self.workspace,
         )
         self.files_number = len(self.files)
         logging.debug(
@@ -814,12 +819,7 @@ class Linter:
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
-        cwd = (
-            os.getcwd()
-            if self.cli_lint_mode in ["file", "list_of_files"]
-            else self.workspace
-        )
-        cwd = os.path.abspath(cwd)
+        cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {**os.environ, "FORCE_COLOR": "0"}
         if type(command) == str:
