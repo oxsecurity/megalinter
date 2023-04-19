@@ -82,7 +82,7 @@ linters:
       - "yamllint -c .yamllint.yml myfile.yaml"
     install:
       pip:
-        - yamllint
+      - yamllint
     supported_platforms:
       platform:
         - linux/amd64
