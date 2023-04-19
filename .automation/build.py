@@ -638,19 +638,19 @@ def build_dockerfile(
     # Python packages in venv
     if len(pipvenv_packages.items()) > 0:
         pipenv_download_command = (
-            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir --upgrade pip crossenv \\\n"
+            "RUN mkdir /download \\\n"
+            "    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip crossenv \\\n"
         )
         pipenv_install_command = (
-            "RUN echo \\\n"
+            "RUN --mount=type=cache,id=pip-${BUILDARCH},sharing=locked,target=/var/cache/pip,uid=65532 \\\n"
+            "     echo \\\n"
         )
         pipenv_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, data in pipvenv_packages.items():
             pip_linter_packages = data["pip"]
             pip_linter_env = data["env"]
             pipenv_download_command += (
-                f'    && mkdir -p "/download/{pip_linter}" '
-                + f'&& pip download -d "/download/{pip_linter}" '
+                '&& pip download -d "/download" '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
             )
@@ -659,7 +659,7 @@ def build_dockerfile(
                 + f'&& cd "/venvs/{pip_linter}" '
                 + "&& python3 -m crossenv /usr/local/bin/target-python3 . "
                 + "&& source bin/activate "
-                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 install --find-links /download/{pip_linter} --no-cache-dir "
+                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 install --find-links /download --cache-dir=/var/cache/pip "
                 + (" ".join(pip_linter_packages))
                 + " "
                 + "&& deactivate "
