@@ -120,3 +120,5 @@ jobs:
         with:
           name: oci-tar
           path: image.tar
+          if-no-files-found: ${{ (inputs.push && 'ignore') || 'error' }}
+          retention-days: 1
