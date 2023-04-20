@@ -32,99 +32,97 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Get current date
-      run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >>"$GITHUB_ENV"
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >>"$GITHUB_ENV"
 
-    - name: Build image tag name
-      id: image_tag
-      run: |
-        BRANCH_NAME="${GITHUB_REF##*/}"
-        TAG="${{ inputs.tagTemplate }}"
-        echo "Tag name: ${TAG}"
-        echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
+      - name: Build image tag name
+        id: image_tag
+        run: |
+          BRANCH_NAME="${GITHUB_REF##*/}"
+          TAG="${{ inputs.tagTemplate }}"
+          echo "Tag name: ${TAG}"
+          echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
 
-    - name: Login to Docker Hub
-      if: ${{ inputs.shouldLoginDockerHub }}
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login to Docker Hub
+        if: ${{ inputs.shouldLoginDockerHub }}
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
         
-    - name: Login to GitHub Container Registry
-      if: ${{ inputs.shouldLoginGithub }}
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        if: ${{ inputs.shouldLoginGithub }}
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build Image
-      uses: docker/build-push-action@v4
-      with:
-        file: ${{ inputs.dockerfile }}
-        platforms: linux/amd64,linux/arm64
-        build-args: |
-          BUILD_DATE=${{ env.BUILD_DATE }}
-          BUILD_REVISION=${{ github.sha }}
-          BUILD_VERSION=alpha
-        load: ${{ inputs.load }}
-        push: ${{ inputs.push }}
-        outputs: type=oci,dest=image.tar
+      - name: Build Image
+        uses: docker/build-push-action@v4
+        with:
+          file: ${{ inputs.dockerfile }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: ${{ inputs.load }}
+          push: ${{ inputs.push }}
+          outputs: type=oci,dest=image.tar
 
-        secrets: |
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-        tags: ${{ 
-          (
-            inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
-            'oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}'
-          ) || (
-            inputs.shouldLoginGithub && 'oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}'
-          ) || (
-            inputs.shouldLoginDockerHub && 'ghcr.io/oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}''
-          ) || ''
-        }}
-        timeout-minutes: 360 #90 - Temp increasing this to see how long it takes
-
-    - name: Build Worker Image
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        file: Dockerfile-worker
-        platforms: linux/amd64
-        build-args: |
-          MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
-          BUILD_DATE=${{ env.BUILD_DATE }}
-          BUILD_REVISION=${{ github.sha }}
-          BUILD_VERSION=alpha
-        load: false
-        push: true
-
-        secrets: |
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-        tags: ${{
-          (
-            inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
-            'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
-          ) || (
-            inputs.shouldLoginGithub && 'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{
+              (
+              inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
+              'oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}'
             ) || (
-            inputs.shouldLoginDockerHub && 'ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}''
-          ) || ''
-        }}
+              inputs.shouldLoginGithub && 'oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}'
+            ) || (
+              inputs.shouldLoginDockerHub && 'ghcr.io/oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}''
+            ) || ''
+          }}
+          timeout-minutes: 360 #90 - Temp increasing this to see how long it takes
 
+      - name: Build Worker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile-worker
+          platforms: linux/amd64
+          build-args: |
+            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+         load: false
+          push: true
+  
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{
+            (
+              inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
+              'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
+           ) || (
+              inputs.shouldLoginGithub && 'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
+              ) || (
+              inputs.shouldLoginDockerHub && 'ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}''
+            ) || ''
+          }}
 
-    - name: Archive oci artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: oci-tar
-        path: image.tar
-
+      - name: Archive oci artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: oci-tar
+          path: image.tar
