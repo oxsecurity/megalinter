@@ -146,7 +146,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64 #,linux/arm64 - Temp disabling this to see build times with amd64
+          platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
@@ -158,7 +158,7 @@ jobs:
           tags: |
             oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
           outputs: type=oci,dest=/tmp/image.tar
-        timeout-minutes: 90
+        timeout-minutes: 360 #90 - Temp increasing this to see how long it takes
       - name: Load OCI
         shell: bash
         run: |
