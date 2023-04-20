@@ -46,7 +46,7 @@ jobs:
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
-    uses: -build-docker.yml
+    uses: ./.github/workflows/-build-docker.yml
     with:
       tagTemplate: "alpha"
       shouldLoginDockerHub: false

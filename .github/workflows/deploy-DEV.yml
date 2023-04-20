@@ -50,7 +50,7 @@ jobs:
     name: Tests + Deploy Docker Image - DEV
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
-    uses: -build-docker.yml
+    uses: ./.github/workflows/-build-docker.yml
     with:
       tagTemplate: "test-${{ github.actor }}-${BRANCH_NAME}"
       shouldLoginDockerHub: |
