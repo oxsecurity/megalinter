@@ -53,10 +53,10 @@ jobs:
           TAG="${{ inputs.tagTemplate }}"
           echo "Tag name: ${TAG}"
           if [[ "${{inputs.shouldLoginGithub}}" == "true" ]]; then
-              echo "ghcr.io/oxsecurity/${{ input.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
+              echo "ghcr.io/oxsecurity/${{ inputs.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
           fi
           if [[ "${{inputs.shouldLoginDockerHub}}" == "true" ]]; then
-              echo "oxsecurity/${{ input.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
+              echo "oxsecurity/${{ inputs.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
           fi
 
       - name: Login to Docker Hub
