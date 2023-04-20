@@ -84,7 +84,8 @@ jobs:
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{
+          tags: >+
+	    ${{
               (
               inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
               'oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.imageName }}:${{ steps.image_tag.outputs.tag }}'
