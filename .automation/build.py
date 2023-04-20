@@ -533,9 +533,9 @@ def build_dockerfile(
     # cargo packages
     cargo_install_command = ""
     # Pre-building packages
-    prebuild_list = set(cargo_packages) & {"shellcheck-sarif", "sarif-fmt", "ruff"}
+    prebuild_list = set(cargo_packages) & {"shellcheck-sarif", "sarif-fmt"}
     cargo_packages = set(cargo_packages) - prebuild_list
-    if len(prebuild_list) > 0:
+    if len(cargo_packages) > 0:
         docker_from += [
             "FROM --platform=$BUILDPLATFORM alpine:3 AS cargo-build\n"
             + "WORKDIR /cargo\n"

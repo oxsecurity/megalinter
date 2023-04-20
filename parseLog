@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This script will parse the github actions log to tell you where time is being spent
+# To use it:
+#   1. Go to a job
+#   2. Click the gear
+#   3. Then click "Download log archive"
+#   4. Extract the archive
+#   5. Run ./parseLog path/to/buildkitOutput.log
+# You will then have a csv file containing some basic information about each stage, when it ran, and how long it ran
+file=$(cat "$1")
+timeStamps="$(echo "$file" | grep -o '[^ ]*Z #[0-9]*')"
+jobIds=$(echo "$timeStamps" | grep -o '#[0-9]*' | sort | uniq)
+data="Job Id,Label,Start,End,Length"
+
+for f in $jobIds; do
+  jobTimestamps=$(echo "$timeStamps" | grep "$f$" | grep -o "^[^ ]*")
+  start=$(echo "$jobTimestamps" | head -n 1)
+  end=$(echo "$jobTimestamps" | tail -n 1)
+  length=$(echo "$file" | grep "$f DONE" | grep -o "[0-9.]*s$" | grep -o "[0-9.]*")
+  label=$(echo "$file" | grep -o -e "Z $f \[[^]]*\]" | grep -o -e "\[[^]]*\]" | grep -o -e "[^][]*")
+  data="${data}
+${f},${label},${start},${end},${length}"
+done
+
+echo "${data}"
