@@ -106,6 +106,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.50.1 to **1.50.2** on 2023-04-20
   - [vale](https://vale.sh/) from 2.24.2 to **2.24.3** on 2023-04-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.2 to **0.45.3** on 2023-04-20
+  - [checkov](https://www.checkov.io/) from 2.3.187 to **2.3.189** on 2023-04-20
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.3 to **0.45.4** on 2023-04-20
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

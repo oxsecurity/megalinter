@@ -9160,7 +9160,7 @@
         "   terragrunt-include-module-prefix             When this flag is set output from Terraform sub-commands is prefixed with module path.",
         "",
         "VERSION:",
-        "   v0.45.3",
+        "   v0.45.4",
         "",
         "AUTHOR(S):",
         "   Gruntwork <www.gruntwork.io>",
