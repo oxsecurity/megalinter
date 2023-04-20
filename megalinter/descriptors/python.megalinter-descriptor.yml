@@ -405,7 +405,9 @@ linters:
               apk add --update curl
           WORKDIR /
           ARG TARGETARCH
-          RUN curl --location "https://github.com/charliermarsh/ruff/releases/latest/download/ruff-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz" | tar -xzv
+          RUN export DL_LOCATION="https://github.com/charliermarsh/ruff/releases/latest/download/ruff-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz" \
+              && echo "Downloading from ${DL_LOCATION}" \
+              && curl --location "${DL_LOCATION}" | tar -xzv
         - COPY --link --from=fetch-ruff /ruff /usr/bin/ruff
     ide:
       idea:
