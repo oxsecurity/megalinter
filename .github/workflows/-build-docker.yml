@@ -91,7 +91,7 @@ jobs:
             BUILD_VERSION=alpha
           load: ${{ inputs.load }}
           push: ${{ inputs.push }}
-          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
+#          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
