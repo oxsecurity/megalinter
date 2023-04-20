@@ -397,9 +397,16 @@ linters:
       - "ruff check myfile.py"
       - "ruff check --config .ruff.toml myfile.py"
     install:
-      #pip_builddep_env: CFLAGS=-mno-outline-atomics
-      pip:
-        - ruff
+      dockerfile:
+        - |-
+          FROM --platform=$BUILDPLATFORM alpine:3 AS fetch-ruff
+          ARG BUILDARCH
+          RUN --mount=type=cache,target=/var/cache/apk,id=apk-${BUILDARCH},sharing=locked  \
+              apk add --update curl
+          WORKDIR /
+          ARG TARGETARCH
+          RUN curl --location "https://github.com/charliermarsh/ruff/releases/latest/download/ruff-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz" | tar -xzv
+        - COPY --link --from=fetch-ruff /ruff /usr/bin/ruff
     ide:
       idea:
         - name: Ruff

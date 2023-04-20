@@ -533,7 +533,7 @@ def build_dockerfile(
     # cargo packages
     cargo_install_command = ""
     # Pre-building packages
-    prebuild_list = set(cargo_packages) & {"shellcheck-sarif", "sarif-fmt"}
+    prebuild_list = set(cargo_packages) & {"shellcheck-sarif", "sarif-fmt", "ruff"}
     cargo_packages = set(cargo_packages) - prebuild_list
     if len(prebuild_list) > 0:
         docker_from += [
@@ -567,7 +567,7 @@ def build_dockerfile(
             + "\n"
             + "RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \\\n"
             + "     . /cargo/.cargo/env \\\n"
-            + f' && cargo binstall {" ".join(prebuild_list)} --root /tmp --target $([[ "${{TARGETARCH}}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") \n'
+            + f' && cargo binstall --no-confirm --no-symlinks {" ".join(prebuild_list)} --root /tmp --target $([[ "${{TARGETARCH}}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") \n'
             + "\n"
             + "FROM scratch AS cargo\n"
             + "COPY --link --from=cargo-build /tmp/bin/* /bin/\n"
