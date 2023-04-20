@@ -97,6 +97,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.168 to **2.3.171** on 2023-04-16
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.1 to **0.40.0** on 2023-04-16
   - [vale](https://vale.sh/) from 2.24.0 to **2.24.2** on 2023-04-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.0 to **0.77.2** on 2023-04-20
+  - [djlint](https://djlint.com/) from 1.23.0 to **1.23.3** on 2023-04-20
+  - [phpstan](https://phpstan.org/) from 1.10.13 to **1.10.14** on 2023-04-20
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.261 to **0.0.262** on 2023-04-20
+  - [checkov](https://www.checkov.io/) from 2.3.171 to **2.3.187** on 2023-04-20
+  - [syft](https://github.com/anchore/syft) from 0.77.0 to **0.78.0** on 2023-04-20
+  - [rubocop](https://rubocop.org/) from 1.50.1 to **1.50.2** on 2023-04-20
+  - [vale](https://vale.sh/) from 2.24.2 to **2.24.3** on 2023-04-20
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.2 to **0.45.3** on 2023-04-20
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
