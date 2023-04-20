@@ -83,17 +83,19 @@ def check_active_linters_match_flavor(active_linters):
     flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
     for active_linter in active_linters:
-        if active_linter.name not in flavor_linters:
+        if (
+            active_linter.name not in flavor_linters
+        ) and active_linter.is_plugin is False:
             missing_linters += [active_linter.name]
             active_linter.is_active = False
     # Manage cases where linters are missing in flavor
     if len(missing_linters) > 0:
-        # Do not warn/stop if missing linters are repository ones (mostly OX.security related)
+        # Don't warn/stop if missing linters are repository ones (mostly OX.security related)
         if not are_all_repository_linters(missing_linters):
             missing_linters_str = ",".join(missing_linters)
             logging.warning(
-                f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
-                "As they are not available in this docker image, they will not be processed\n"
+                f"MegaLinter flavor [{flavor}] doesn't contain linters {missing_linters_str}.\n"
+                "As they're not available in this docker image, they will not be processed\n"
                 "To solve this problem, please either: \n"
                 f"- use default flavor {ML_REPO}\n"
                 "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "

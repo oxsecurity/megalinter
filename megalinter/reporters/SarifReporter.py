@@ -5,10 +5,9 @@ Produce SARIF report
 import json
 import logging
 import os
-import random
 from json.decoder import JSONDecodeError
 
-from megalinter import Linter, Reporter, config, utils
+from megalinter import Reporter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_REPORT_FILE_NAME,
     DEFAULT_SARIF_SCHEMA_URI,
@@ -16,7 +15,6 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.utils import normalize_log_string
-from megalinter.utils_reporter import get_linter_doc_url
 
 
 class SarifReporter(Reporter):
@@ -89,8 +87,6 @@ class SarifReporter(Reporter):
                         )
                         logging.error(str(e))
                 if load_ok is True:
-                    # fix sarif file
-                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj, linter)
                     # append to global megalinter sarif run
                     sarif_obj["runs"] += linter_sarif_obj["runs"]
                     # Delete linter SARIF file if LOG_FILE=none
@@ -129,123 +125,3 @@ class SarifReporter(Reporter):
                 except:  # noqa: E722
                     pass
         return obj
-
-    # Some SARIF linter output contain errors (like references to line 0)
-    # We must correct them so SARIF is valid
-    def fix_sarif(self, linter_sarif_obj, linter: Linter):
-        # browse runs
-        if "runs" in linter_sarif_obj:
-            for id_run, run in enumerate(linter_sarif_obj["runs"]):
-
-                # Add MegaLinter info
-                run_properties = run["properties"] if "properties" in run else {}
-                run_properties["megalinter"] = {
-                    "linterKey": linter.name,
-                    "docUrl": get_linter_doc_url(linter),
-                    "linterVersion": linter.get_linter_version(),
-                }
-                run["properties"] = run_properties
-
-                # Update linter name in case there are duplicates
-                if (
-                    "tool" in run
-                    and "driver" in run["tool"]
-                    and "name" in run["tool"]["driver"]
-                    and linter.master.megalinter_flavor
-                    != "none"  # single linter image case
-                ):
-                    run["tool"]["driver"]["name"] = (
-                        run["tool"]["driver"]["name"]
-                        + " (MegaLinter "
-                        + linter.name
-                        + ")"
-                    )
-
-                # fix missing informationUri
-                if (
-                    "tool" in run
-                    and "driver" in run["tool"]
-                    and "informationUri" not in run["tool"]["driver"]
-                ):
-                    run["tool"]["driver"]["informationUri"] = get_linter_doc_url(linter)
-
-                # fix missing version
-                if (
-                    "tool" in run
-                    and "driver" in run["tool"]
-                    and "version" not in run["tool"]["driver"]
-                ):
-                    run["tool"]["driver"]["version"] = linter.get_linter_version()
-
-                # fix duplicate rules property
-                if (
-                    "tool" in run
-                    and "driver" in run["tool"]
-                    and "rules" in run["tool"]["driver"]
-                ):
-                    rules = run["tool"]["driver"]["rules"]
-                    rules_updated: list = []
-                    for rule in rules:
-                        # If duplicate id, update duplicate items ids with a random value
-                        if "id" in rule and any(
-                            "id" in rule_item and rule_item["id"] == rule["id"]
-                            for rule_item in rules_updated
-                        ):
-                            rule["id"] = (
-                                rule["id"]
-                                + "_DUPLICATE_"
-                                + str(random.randint(1, 99999))
-                            )
-                        rules_updated += [rule]
-                    run["tool"]["driver"]["rules"] = rules_updated
-
-                # fix results property
-                if "results" in run:
-                    # browse run results
-                    for id_result, result in enumerate(run["results"]):
-                        if "locations" in result:
-                            # browse result locations
-                            for id_location, location in enumerate(result["locations"]):
-                                if "physicalLocation" in location:
-                                    location[
-                                        "physicalLocation"
-                                    ] = self.fix_sarif_physical_location(
-                                        location["physicalLocation"]
-                                    )
-                                result["locations"][id_location] = location
-                        run["results"][id_result] = result
-                else:
-                    # make sure that there is a results entry so GitHub's SARIF validator doesn't cry
-                    run["results"] = []
-
-                # Update run in full list
-                linter_sarif_obj["runs"][id_run] = run
-        return linter_sarif_obj
-
-    # If DEFAULT_WORKSPACE is set, don't add that to the SARIF-report prefix
-    def fix_default_workspace_prefix(self, artifactLocation):
-        default_workspace = config.get("DEFAULT_WORKSPACE", "")
-        if default_workspace:
-            if artifactLocation["uri"].startswith(default_workspace):
-                artifactLocation["uri"] = artifactLocation["uri"].replace(
-                    default_workspace, "", 1
-                )
-        return artifactLocation["uri"]
-
-    # Replace startLine and endLine in region or contextRegion
-    def fix_sarif_physical_location(self, physical_location):
-
-        for location_key in physical_location.keys():
-            location_item = physical_location[location_key]
-            if "uri" in location_item and location_key == "artifactLocation":
-                location_item["uri"] = self.fix_default_workspace_prefix(location_item)
-            if "startLine" in location_item and location_item["startLine"] == 0:
-                location_item["startLine"] = 1
-            if "endLine" in location_item and location_item["endLine"] == 0:
-                location_item["endLine"] = 1
-            if "startColumn" in location_item and location_item["startColumn"] == 0:
-                location_item["startColumn"] = 1
-            if "endColumn" in location_item and location_item["endColumn"] == 0:
-                location_item["endColumn"] = 1
-            physical_location[location_key] = location_item
-        return physical_location

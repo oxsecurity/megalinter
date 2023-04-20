@@ -1,6 +1,22 @@
 ---
 name: "Test mega-linter-runner"
-on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
+  pull_request:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}

@@ -118,6 +118,7 @@ linters:
       idea:
         - name: flake8-support
           url: https://plugins.jetbrains.com/plugin/11563-flake8-support
+          id: python-flake8
       vscode:
         - name: Native Support
           url: https://code.visualstudio.com/docs/python/linting#_flake8
@@ -209,6 +210,7 @@ linters:
       pip:
         - bandit
         - bandit_sarif_formatter
+        - bandit[toml]
     ide:
       atom:
         - name: bandit-lint
@@ -295,7 +297,8 @@ linters:
   #     pip:
   #       - pytype
   # PyRight
-  - linter_name: pyright
+  - class: PyrightLinter
+    linter_name: pyright
     name: PYTHON_PYRIGHT
     linter_text: |
       Optional static typing checks for python, by Microsoft
@@ -317,10 +320,9 @@ linters:
     examples:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
-    downgraded_version: true
     install:
       pip:
-        - pyright==1.1.270
+        - pyright
     ide:
       emacs:
         - name: LSP-pyright
@@ -336,3 +338,40 @@ linters:
       vscode:
         - name: PyRight
           url: https://marketplace.visualstudio.com/items?itemName=ms-pyright.pyright
+  # ruff
+  - linter_name: ruff
+    name: PYTHON_RUFF
+    linter_text: |
+      An extremely fast Python linter, written in Rust.
+    linter_url: https://github.com/charliermarsh/ruff
+    linter_repo: https://github.com/charliermarsh/ruff
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://beta.ruff.rs/docs/rules/
+    linter_rules_configuration_url: https://beta.ruff.rs/docs/configuration/
+    linter_rules_inline_disable_url: https://beta.ruff.rs/docs/configuration/#error-suppression
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    cli_help_arg_name: "help"
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "--version"
+    cli_lint_extra_args:
+      - "check"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) error"
+    config_file_name: ".ruff.toml"
+    test_folder: python_ruff
+    examples:
+      - "ruff check myfile.py"
+      - "ruff check --config .ruff.toml myfile.py"
+    install:
+      pip:
+        - ruff
+    ide:
+      idea:
+        - name: Ruff
+          url: https://plugins.jetbrains.com/plugin/20574-ruff
+          id: com.koxudaxi.ruff
+      vscode:
+        - name: Ruff
+          url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff

@@ -38,7 +38,7 @@ linters:
       - "checkov --directory . --output --sarif"
     install:
       pip:
-        - packaging==21.3
+        - packaging
         - checkov
     ide:
       vscode:
@@ -94,7 +94,7 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104
     ide:
       vscode:
         - name: VSCode DevSkim
@@ -116,24 +116,18 @@ linters:
       - --recursive
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(error )"
-    linter_version_cache: "0.0.0"
+    linter_version_cache: "1.2.0"
     test_folder: dustilock
     examples:
       - "dustilock"
     install:
-      apk:
-        - go
       dockerfile:
+        # The golang image used as a builder is a temporary workaround
+        # Dustilock is not released as a binary or container
         - |
-          RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
-              mkdir -p ${ML_THIRD_PARTY_DIR} && \
-              git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
-              cd ${ML_THIRD_PARTY_DIR} && \
-              go build && go clean --cache && \
-              chmod +x dustilock && \
-              mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
-              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete && \
-              cd /
+          FROM golang:alpine as dustilock
+          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+        - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
   - linter_name: git_diff
@@ -194,8 +188,8 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.15.2 as gitleaks
-        - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
+        - FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+        - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
   - linter_name: goodcheck
@@ -233,6 +227,7 @@ linters:
       - ci_light
       - cupcake
       - security
+    linter_speed: 1
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
@@ -330,7 +325,7 @@ linters:
     linter_repo: https://github.com/anchore/syft
     linter_text: |
       Builds a SBOM (Software Build Of Materials) from your repository
-    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
     cli_lint_mode: project
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
@@ -375,7 +370,7 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
       - fs
-      - --security-checks
+      - --scanners
       - vuln,config
       - --exit-code
       - "1"
@@ -383,12 +378,11 @@ linters:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --security-checks vuln,config ."
-    downgraded_version: true
+      - "trivy fs --scanners vuln,config ."
     install:
       dockerfile:
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.35.0
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
     ide:
       vscode:
         - name: VSCode Trivy

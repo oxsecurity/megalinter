@@ -184,6 +184,11 @@
     "image": "https://avatars1.githubusercontent.com/u/34047791?s=400&v=4",
     "title": "hadolint/hadolint"
   },
+  "helm": {
+    "description": "Helm - The Kubernetes Package Manager.",
+    "image": "https://helm.sh/img/og-image.png",
+    "title": "Helm Lint"
+  },
   "htmlhint": {
     "description": "\u2699\ufe0f The static code analysis tool you need for your HTML - htmlhint/HTMLHint",
     "image": "https://avatars0.githubusercontent.com/u/42865284?s=400&v=4",
@@ -389,6 +394,11 @@
     "image": "https://avatars1.githubusercontent.com/u/39672756?s=400&v=4",
     "title": "rubocop-hq/rubocop"
   },
+  "ruff": {
+    "description": "An extremely fast Python linter, written in Rust. Contribute to charliermarsh/ruff development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/125c259b7ef6ad7bf2a4d9b3af0e3bc2b1f8561c1d4ce8923b052cc30d8b8d75/charliermarsh/ruff",
+    "title": "GitHub - charliermarsh/ruff: An extremely fast Python linter, written in Rust."
+  },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",
     "image": "https://scalacenter.github.io//scalafix/img/scalacenter2x.png",
@@ -523,6 +533,11 @@
     "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",
     "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",
     "title": "chris48s/v8r"
+  },
+  "vale": {
+    "description": "Vale is a command-line tool that brings code-like linting to prose. It's fast, cross-platform (Windows, macOS, and Linux), and highly customizable.",
+    "image": "https://user-images.githubusercontent.com/8785025/167473311-6de8c59b-ccb3-41e1-b887-4a17b2cb74fd.png",
+    "title": "Your style, our editor"
   },
   "xmllint": {
     "description": "None",

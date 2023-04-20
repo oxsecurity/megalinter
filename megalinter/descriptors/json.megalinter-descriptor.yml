@@ -203,8 +203,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier
@@ -225,7 +226,7 @@ linters:
     linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
     linter_rules_ignore_config_url: https://npmpackagejsonlint.org/docs/ignore
     linter_image_url: https://npmpackagejsonlint.org/img/logo.svg
-    linter_megalinter_ref_url: https://github.com/tclindner/npm-package-json-lint/pull/915
+    linter_megalinter_ref_url: https://npmpackagejsonlint.org/docs/integrations#megalinter
     descriptor_flavors:
       - cupcake
       - dotnet
@@ -233,6 +234,8 @@ linters:
       - salesforce
     file_names_regex:
       - "package\\.json"
+    active_only_if_file_found:
+      - "package.json"
     cli_lint_mode: project
     cli_executable: npmPkgJsonLint
     cli_config_arg_name: --configFile

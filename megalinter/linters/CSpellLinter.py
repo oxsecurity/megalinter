@@ -19,6 +19,11 @@ class CSpellLinter(Linter):
         super().__init__(params, linter_config)
 
     def build_lint_command(self, file=None) -> list:
+        self.cli_lint_extra_args += [
+            "--show-context",
+            "--show-suggestions",
+            "--no-must-find-files",
+        ]
         # Create temp file with files segments
         if (
             self.cli_lint_mode == "list_of_files"
@@ -36,9 +41,15 @@ class CSpellLinter(Linter):
                 + str(uuid.uuid4())
                 + "-megalinter_file_names_cspell.txt"
             )
-            with open(self.temp_file_name, "w", encoding="utf-8") as f:
-                f.write(file_names_txt)
-            self.files += [self.temp_file_name]
+            try:
+                with open(self.temp_file_name, "w", encoding="utf-8") as f:
+                    f.write(file_names_txt)
+                self.files += [self.temp_file_name]
+            except Exception as e:
+                logging.info(
+                    "[cspell] Unable to check file names on a readonly workspace: "
+                    + str(e)
+                )
         return super().build_lint_command(file)
 
     # Remove temp file with file names if existing
@@ -56,7 +67,7 @@ class CSpellLinter(Linter):
             return []
         whitelisted_words = []
         for log_line in self.stdout.split("\n"):
-            words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
+            words = re.findall(r"(?<=Unknown word )\(([^)]+)\)", log_line, re.MULTILINE)
             whitelisted_words += words
         if len(whitelisted_words) == 0:
             return []
@@ -124,3 +135,6 @@ Of course, please correct real typos before :)
             ]
         )
         return additional_report.splitlines()
+
+    def pre_test(self):
+        config.set_value("SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"])

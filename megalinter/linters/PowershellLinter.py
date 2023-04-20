@@ -17,6 +17,7 @@ class PowershellLinter(Linter):
 
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
+        pwsh_script = []
         if self.linter_name == "powershell":
             pwsh_script = ["Invoke-ScriptAnalyzer -EnableExit"]
         elif self.linter_name == "powershell_formatter":

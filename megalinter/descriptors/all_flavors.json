@@ -29,9 +29,7 @@
     },
     "cupcake": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -74,6 +72,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -88,6 +87,7 @@
             "PYTHON_ISORT",
             "PYTHON_MYPY",
             "PYTHON_PYRIGHT",
+            "PYTHON_RUFF",
             "REPOSITORY_CHECKOV",
             "REPOSITORY_GIT_DIFF",
             "REPOSITORY_GITLEAKS",
@@ -123,7 +123,6 @@
     },
     "documentation": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -151,6 +150,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -169,6 +169,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -180,7 +181,6 @@
     },
     "dotnet": {
         "descriptors": [
-            "ACTION",
             "ARM",
             "BASH",
             "CSHARP",
@@ -220,6 +220,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -240,6 +241,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "SQL_TSQLLINT",
@@ -253,9 +255,7 @@
     },
     "go": {
         "descriptors": [
-            "ACTION",
             "BASH",
-            "GO",
             "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
@@ -284,6 +284,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -302,6 +303,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -313,7 +315,6 @@
     },
     "java": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "JAVA",
             "KOTLIN"
@@ -345,6 +346,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -363,6 +365,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -374,7 +377,6 @@
     },
     "javascript": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "TYPESCRIPT"
@@ -409,6 +411,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -426,6 +429,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -441,7 +445,6 @@
     },
     "php": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "PHP"
@@ -470,6 +473,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -491,6 +495,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -502,7 +507,6 @@
     },
     "python": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -530,6 +534,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MAKEFILE_CHECKMAKE",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -543,6 +548,7 @@
             "PYTHON_BANDIT",
             "PYTHON_MYPY",
             "PYTHON_PYRIGHT",
+            "PYTHON_RUFF",
             "REPOSITORY_CHECKOV",
             "REPOSITORY_GIT_DIFF",
             "REPOSITORY_GITLEAKS",
@@ -558,6 +564,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -569,7 +576,6 @@
     },
     "ruby": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -597,6 +603,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -615,6 +622,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -626,7 +634,6 @@
     },
     "rust": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -654,6 +661,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -672,6 +680,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -683,7 +692,6 @@
     },
     "salesforce": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN",
             "SALESFORCE"
@@ -713,6 +721,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -733,6 +742,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",
@@ -753,6 +763,7 @@
             "DOCKERFILE_HADOLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "PYTHON_BANDIT",
             "REPOSITORY_CHECKOV",
             "REPOSITORY_DEVSKIM",
@@ -771,7 +782,6 @@
     },
     "swift": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -799,6 +809,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -816,6 +827,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "SWIFT_SWIFTLINT",
@@ -828,7 +840,6 @@
     },
     "terraform": {
         "descriptors": [
-            "ACTION",
             "BASH",
             "KOTLIN"
         ],
@@ -856,6 +867,7 @@
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "KUBERNETES_KUBECONFORM",
+            "KUBERNETES_HELM",
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -873,6 +885,7 @@
             "SPELL_MISSPELL",
             "SPELL_CSPELL",
             "SPELL_PROSELINT",
+            "SPELL_VALE",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
             "TEKTON_TEKTON_LINT",

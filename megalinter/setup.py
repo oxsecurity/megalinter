@@ -8,7 +8,12 @@ setup(
     author="Nicolas Vuillamy",
     author_email="nicolas.vuillamy@gmail.com",
     license="MIT",
-    packages=["megalinter", "megalinter.linters", "megalinter.reporters"],
+    packages=[
+        "megalinter",
+        "megalinter.linters",
+        "megalinter.reporters",
+        "megalinter.tests",
+    ],
     install_requires=[
         "gitpython",
         "jsonpickle",
@@ -16,6 +21,7 @@ setup(
         "pychalk",
         "pygithub",
         "python-gitlab",
+        "azure-devops==6.0.0b4",
         "commentjson",
         "pytablewriter",
         "pyyaml",

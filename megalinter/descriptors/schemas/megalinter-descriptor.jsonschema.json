@@ -384,7 +384,7 @@
                 "eslint-config-prettier",
                 "eslint-plugin-jest",
                 "eslint-plugin-prettier",
-                "babel-eslint"
+                "@babel/eslint-parser"
               ]
             },
             "linter_banner_image_url": "https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png",

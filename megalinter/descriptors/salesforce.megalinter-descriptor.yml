@@ -83,6 +83,7 @@ linters:
       idea:
         - name: PMD IntelliJ
           url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+          id: PMDPlugin
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode

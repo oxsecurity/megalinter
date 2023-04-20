@@ -40,7 +40,7 @@ You can also use **beta** version (corresponding to the content of main branch)
 
 **NOTES:**
 
-- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
+- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it's automatically set by GitHub, it only needs to be passed to the action.
 - You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run) , and have status on Github Pull Request if `GITHUB_TARGET_URL` environment variable exists.
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
@@ -53,7 +53,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # MegaLinter GitHub Action configuration file
-# More info at https://megalinter.github.io
+# More info at https://megalinter.io
 name: MegaLinter
 
 on:
@@ -62,7 +62,7 @@ on:
   pull_request:
     branches: [master, main]
 
-env: # Comment env block if you do not want to apply fixes
+env: # Comment env block if you don't want to apply fixes
   # Apply linter fixes configuration
   APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
   APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
@@ -88,11 +88,11 @@ jobs:
       - name: MegaLinter
         id: ml
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.github.io/flavors/
+        # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter@v6
         env:
           # All available variables are described in documentation
-          # https://megalinter.github.io/configuration/
+          # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -112,7 +112,7 @@ jobs:
       - name: Create Pull Request with applied fixes
         id: cpr
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
@@ -134,6 +134,8 @@ jobs:
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[MegaLinter] Apply linters fixes"
+          commit_user_name: megalinter-bot
+          commit_user_email: nicolas.vuillamy@ox.security
 ```
 
 </details>
@@ -144,17 +146,17 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # MegaLinter GitLab CI job configuration file
-# More info at https://megalinter.github.io/
+# More info at https://megalinter.io/
 
 mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.github.io/flavors/
+  # More info at https://megalinter.io/flavors/
   image: oxsecurity/megalinter:v6
-  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+  script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
-    # https://megalinter.github.io/configuration/
+    # https://megalinter.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
@@ -164,12 +166,11 @@ mega-linter:
     expire_in: 1 week
 ```
 
-Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables. Make sure your token (e.g. if a project token) as the appropriate [role](https://docs.gitlab.com/ee/user/permissions.html) for commenting a merge request (at least developer).
 
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
-
 
 ## Azure Pipelines
 
@@ -190,15 +191,10 @@ Add the following job in your `azure-pipelines.yaml` file
       # Run MegaLinter
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e CI=true \
-            -e TF_BUILD=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
         displayName: Run MegaLinter
 
@@ -217,10 +213,10 @@ To benefit from Pull Request comments, please follow [configuration instructions
 
 Add the following stage in your Jenkinsfile
 
-You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with MegaLinter: https://megalinter.github.io/
+// Lint with MegaLinter: https://megalinter.io/
 stage('MegaLinter') {
     agent {
         docker {
@@ -234,7 +230,7 @@ stage('MegaLinter') {
     }
     post {
         always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false  
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
         }
     }
 }
@@ -272,7 +268,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
               cd repo
               export DEFAULT_WORKSPACE=$(pwd)
               bash -ex /entrypoint.sh
-              # doing this because concourse does not work as other CI systems
+              # doing this because concourse doesn't work as other CI systems
           # params:
             # PARALLEL: true
             # DISABLE: SPELL
@@ -356,7 +352,7 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
@@ -368,7 +364,7 @@ This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/ove
 
 ### (Optional) Adjusting trigger rules
 
-The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync...) however, you can _optionally_ change this behavior by changing the trigger. For example:
+The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync…) however, you can _optionally_ change this behavior by changing the trigger. For example:
 
 ```yaml
 kind: pipeline
@@ -378,13 +374,13 @@ name: MegaLinter
 workspace:
   path: /tmp/lint
 
-steps: 
+steps:
 
 - name: megalinter
   image: oxsecurity/megalinter:v6
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
-    
+
 trigger:
   event:
   - push
@@ -411,9 +407,9 @@ _Example:_
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
+You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
-See [mega-linter-runner installation instructions](https://megalinter.github.io/mega-linter-runner/#installation)
+See [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation)
 
 Example
 

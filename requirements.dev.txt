@@ -5,6 +5,8 @@ mkdocs
 multiprocessing_logging
 pychalk
 pygithub
+python-gitlab
+azure-devops==6.0.0b4
 commentjson
 pytablewriter
 pytest-cov
@@ -19,6 +21,7 @@ webpreview
 yq
 importlib-metadata>=3.10
 mkdocs-material
+mkdocs-glightbox
 mdx_truly_sane_lists
 beautifulsoup4
 giturlparse

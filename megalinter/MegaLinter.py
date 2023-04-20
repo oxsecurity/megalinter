@@ -40,7 +40,6 @@ def run_linters(linters):
 
 # Main MegaLinter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
-
     # Constructor: Load global config, linters & compute file extensions
     def __init__(self, params=None):
         if params is None:
@@ -126,7 +125,6 @@ class Megalinter:
 
     # Collect files, run linters on them and write reports
     def run(self):
-
         # Manage case where we only want to return standalone linter version
         if self.linter_version_only is True:
             standalone_linter = self.linters[0]
@@ -156,7 +154,7 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
-        # Display warning if selected flavors does not match all linters
+        # Display warning if selected flavors doesn't match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
@@ -457,7 +455,7 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
+        # if flavor selected and no flavor suggestion, ignore linters that aren't in current flavor)
         if self.megalinter_flavor == "none":
             # Single linter docker image
             unique_linter = config.get("SINGLE_LINTER")
@@ -598,11 +596,7 @@ class Megalinter:
                         + str(len(ignored_files))
                         + "]: "
                         + ", ".join(ignored_files[0:10])
-                        + (
-                            ",...(full list in DEBUG)"
-                            if len(ignored_files) > 10
-                            else ""
-                        )
+                        + (",…(full list in DEBUG)" if len(ignored_files) > 10 else "")
                     )
             except git.InvalidGitRepositoryError as git_err:
                 logging.warning(f"Unable to list git ignored files ({str(git_err)})")
@@ -620,6 +614,7 @@ class Megalinter:
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
             ignore_generated_files=self.ignore_generated_files,
+            workspace=self.workspace,
         )
 
         logging.info(
@@ -661,7 +656,7 @@ class Megalinter:
                 "HEAD" if default_branch == "HEAD" else f"refs/heads/{default_branch}"
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
-            # Try to fetch default_branch from origin, because it isn't cached locally.
+            # Try to fetch default_branch from origin, because it'sn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files
         diff = repo.git.diff(default_branch_remote, name_only=True)
@@ -669,7 +664,7 @@ class Megalinter:
         all_files = list()
         for diff_line in diff.splitlines():
             if os.path.isfile(self.workspace + os.path.sep + diff_line):
-                all_files += [self.workspace + os.path.sep + diff_line]
+                all_files += [diff_line]
         return all_files
 
     def list_files_all(self):
@@ -678,17 +673,20 @@ class Megalinter:
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
         all_files = [
-            os.path.join(self.workspace, file)
+            file
             for file in sorted(os.listdir(self.workspace))
             if os.path.isfile(os.path.join(self.workspace, file))
         ]
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories()
-        for (dirpath, dirnames, filenames) in os.walk(self.workspace, topdown=True):
+        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
-            all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
-        return all_files
+            all_files += [
+                os.path.relpath(os.path.join(dirpath, file), self.workspace)
+                for file in sorted(filenames)
+            ]
+        return list(dict.fromkeys(all_files))
 
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)
@@ -732,7 +730,7 @@ class Megalinter:
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
-        # Do not initialize reports if report folder is none or false
+        # Don't initialize reports if report folder is none or false
         if not utils.can_write_report_files(self):
             return
         # Initialize output dir
@@ -765,7 +763,7 @@ class Megalinter:
         if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
             self
         ):
-            # Do not log console output in a file
+            # Don't log console output in a file
             logging.basicConfig(
                 force=True,
                 level=logging_level,
@@ -865,7 +863,7 @@ class Megalinter:
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
             logging.error(
                 c.red(
-                    "❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
+                    "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
                 )
             )
             sys.exit(1)

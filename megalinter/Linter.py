@@ -32,7 +32,7 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-from megalinter import config, pre_post_factory, utils, utils_reporter
+from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
@@ -108,7 +108,8 @@ class Linter:
         self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
-        self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
+        # Name of the cli argument to send in case of APPLY_FIXES required by user
+        self.cli_lint_fix_arg_name = None
         self.cli_lint_fix_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -125,10 +126,10 @@ class Linter:
         self.cli_help_arg_name = "-h"
         self.cli_help_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_help_extra_commands = []
-        # If linter --help does not return 0 when it is in success, override. ex: 1
+        # If linter --help doesn't return 0 when it's in success, override. ex: 1
         self.help_command_return_code = 0
         self.version_extract_regex = r"\d+(\.\d+)+"
-        # If linter --version does not return 0 when it is in success, override. ex: 1
+        # If linter --version doesn't return 0 when it's in success, override. ex: 1
         self.version_command_return_code = 0
 
         self.log_lines_pre: list(str) = []
@@ -297,7 +298,7 @@ class Linter:
                         f" {self.files_sub_directory}"
                     )
 
-            # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
+            # Some linters require a file to be existing, else they're deactivated ( ex: .editorconfig )
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
@@ -416,7 +417,7 @@ class Linter:
         elif config.exists(self.descriptor_id + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
         # Linter config file:
-        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
         # 3: linter_rules_path + config_file_name
@@ -482,6 +483,11 @@ class Linter:
                 self.config_file = (
                     self.default_rules_location + os.path.sep + self.config_file_name
                 )
+            # Make config file path absolute if not located in workspace
+            if self.config_file is not None and not os.path.isfile(
+                self.workspace + os.path.sep + self.config_file
+            ):
+                self.config_file = os.path.abspath(self.config_file)
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
@@ -489,7 +495,7 @@ class Linter:
                 ).replace(self.TEMPLATES_DIR, "")
 
         # Linter ignore file:
-        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + ignore_file_name
         # 3: linter_rules_path + ignore_file_name
@@ -786,7 +792,7 @@ class Linter:
             file_contains_regex_extensions=self.file_contains_regex_extensions,
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
-            prefix=self.workspace,
+            workspace=self.workspace,
         )
         self.files_number = len(self.files)
         logging.debug(
@@ -813,12 +819,7 @@ class Linter:
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
-        cwd = (
-            os.getcwd()
-            if self.cli_lint_mode in ["file", "list_of_files"]
-            else self.workspace
-        )
-        cwd = os.path.abspath(cwd)
+        cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {**os.environ, "FORCE_COLOR": "0"}
         if type(command) == str:
@@ -874,9 +875,19 @@ class Linter:
                 if os.path.isfile(self.sarif_default_output_file)
                 else os.path.join(self.workspace, self.sarif_default_output_file)
             )
-            shutil.move(linter_sarif_report, self.sarif_output_file)
-            sarif_confirmed = True
-            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
+
+            # Check that a sarif report really exists before moving it etc)
+            if os.path.isfile(linter_sarif_report):
+                shutil.move(linter_sarif_report, self.sarif_output_file)
+                sarif_confirmed = True
+                logging.debug(
+                    f"Moved {linter_sarif_report} to {self.sarif_output_file}"
+                )
+            else:
+                logging.debug(
+                    f"Could not find {linter_sarif_report} (linter sarif output error?)"
+                )
+                sarif_confirmed = False
         # Manage case when SARIF output is in stdout (and not generated by the linter)
         elif (
             self.can_output_sarif is True
@@ -890,7 +901,7 @@ class Linter:
                 sarif_confirmed = True
             else:
                 logging.error(
-                    "[Sarif] ERROR: there is no SARIF output file found, and stdout does not contain SARIF"
+                    "[Sarif] ERROR: there is no SARIF output file found, and stdout doesn't contain SARIF"
                 )
                 logging.error("[Sarif] stdout: " + return_stdout)
         elif (
@@ -899,6 +910,10 @@ class Linter:
             and os.path.isfile(self.sarif_output_file)
         ):
             sarif_confirmed = True
+
+        if sarif_confirmed is True:
+            utils_sarif.normalize_sarif_files(self)
+
         # Convert SARIF into human readable text for Console & Text reporters
         if sarif_confirmed is True and self.master.sarif_to_human is True:
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
@@ -1153,7 +1168,6 @@ class Linter:
                 elif self.sarif_default_output_file is not None and os.path.isfile(
                     self.sarif_default_output_file
                 ):
-
                     with open(
                         self.sarif_default_output_file, "r", encoding="utf-8"
                     ) as sarif_file:
@@ -1191,17 +1205,17 @@ class Linter:
         # Get number with a single regex.
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            m = re.search(reg, stdout)
+            m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_errors = int(m.group(1))
         # Count the number of occurrences of a regex corresponding to an error in linter log
         elif self.cli_lint_errors_count == "regex_count":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            total_errors = len(re.findall(reg, stdout))
+            total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
         # Sum of all numbers found in linter logs with a regex
         elif self.cli_lint_errors_count == "regex_sum":
             reg = self.get_regex(self.cli_lint_errors_regex)
-            matches = re.findall(reg, stdout)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
             total_errors = sum(int(m) for m in matches)
         # Count all lines of the linter log
         elif self.cli_lint_errors_count == "total_lines":
@@ -1243,3 +1257,9 @@ class Linter:
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, _reporter_self):
         return []
+
+    def pre_test(self):
+        pass
+
+    def post_test(self):
+        pass

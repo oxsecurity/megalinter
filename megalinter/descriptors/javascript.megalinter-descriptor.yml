@@ -65,7 +65,6 @@ linters:
         - eslint-plugin-prettier
         - eslint-plugin-promise
         - eslint-plugin-vue
-        - babel-eslint
         - "@babel/core"
         - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
@@ -85,6 +84,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint
@@ -97,7 +97,8 @@ linters:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
-  - linter_name: standard
+  - class: JavaScriptStandardLinter
+    linter_name: standard
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -110,6 +111,7 @@ linters:
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
+    test_folder: javascript_standard
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
@@ -186,8 +188,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier
