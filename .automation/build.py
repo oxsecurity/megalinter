@@ -567,7 +567,7 @@ def build_dockerfile(
             + "\n"
             + "RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \\\n"
             + "     . /cargo/.cargo/env \\\n"
-            + f' && cargo install {" ".join(prebuild_list)} --root /tmp --target $([[ "${{TARGETARCH}}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") \n'
+            + f' && cargo binstall {" ".join(prebuild_list)} --root /tmp --target $([[ "${{TARGETARCH}}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") \n'
             + "\n"
             + "FROM scratch AS cargo\n"
             + "COPY --link --from=cargo-build /tmp/bin/* /bin/\n"
