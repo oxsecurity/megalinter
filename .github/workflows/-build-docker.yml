@@ -52,12 +52,18 @@ jobs:
           BRANCH_NAME="${GITHUB_REF##*/}"
           TAG="${{ inputs.tagTemplate }}"
           echo "Tag name: ${TAG}"
+          MAIN_TAG=()
+          WORKER_TAG=()
           if [[ "${{inputs.shouldLoginGithub}}" == "true" ]]; then
-              echo "ghcr.io/oxsecurity/${{ inputs.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
+              MAIN_TAG+=("ghcr.io/oxsecurity/${{ inputs.imageName }}:${TAG}")
+              WORKER_TAG+=("ghcr.io/oxsecurity/${{ inputs.workerImageName }}:${TAG}")
           fi
           if [[ "${{inputs.shouldLoginDockerHub}}" == "true" ]]; then
-              echo "oxsecurity/${{ inputs.imageName }}:${TAG}" >>"$GITHUB_OUTPUT"
+              MAIN_TAG+=("oxsecurity/${{ inputs.imageName }}:${TAG}")
+              WORKER_TAG+=("oxsecurity/${{ inputs.workerImageName }}:${TAG}")
           fi
+          echo "tag=${MAIN_TAG}" >>"$GITHUB_OUTPUT"
+          echo "workerTag=${WORKER_TAG}" >>"$GITHUB_OUTPUT"
 
       - name: Login to Docker Hub
         if: ${{ inputs.shouldLoginDockerHub }}
@@ -107,16 +113,7 @@ jobs:
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{
-            (
-              inputs.shouldLoginGithub && inputs.shouldLoginDockerHub
-              'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }} ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
-           ) || (
-              inputs.shouldLoginGithub && 'oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}'
-              ) || (
-             inputs.shouldLoginDockerHub && 'ghcr.io/oxsecurity/${{ input.workerImageName }}:${{ steps.image_tag.outputs.tag }}''
-            ) || ''
-          }}
+          tags: ${{ steps.image_tag.outputs.workerTag }}
 
       - name: Archive oci artifacts
         uses: actions/upload-artifact@v3
