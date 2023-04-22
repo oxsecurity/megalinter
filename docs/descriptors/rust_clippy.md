@@ -9,7 +9,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.68**
+- Version in MegaLinter: **0.1.69**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -99,7 +99,7 @@ with:
     -D --deny OPT       Set lint denied
     -F --forbid OPT     Set lint forbidden
 
-You can use tool lints to allow or deny lints from your code, eg.:
+You can use tool lints to allow or deny lints from your code, e.g.:
 
     #[allow(clippy::needless_lifetimes)]
 
