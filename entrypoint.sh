@@ -77,7 +77,7 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   echo "[MegaLinter init] MEGALINTER SERVER"
   pip install "uvicorn[standard]"
   HOST="${HOST:-0.0.0.0}" # Default host
-  PORT="${PORT:-8000}" # Default port
+  PORT="${PORT:-8000}"    # Default port
   uvicorn megalinter.server:app --host "$HOST" --port "$PORT"
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
