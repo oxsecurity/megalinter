@@ -3,6 +3,7 @@
 Start MegaLinter server
 """
 import logging
+from typing import List
 from uuid import uuid1
 from enum import StrEnum
 import git
@@ -22,7 +23,7 @@ app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DE
 global running_process_number, max_running_process_number, ANALYSIS_REQUESTS
 running_process_number = 0
 max_running_process_number = 1
-ANALYSIS_REQUESTS = []
+ANALYSIS_REQUESTS: List[any] = []
 
 
 # Get status of MegaLinter server
@@ -55,6 +56,7 @@ async def get_analysis_by_id(item_id):
         status_code=404, detail=f"Unable to find analysis request {item_id}"
     )
 
+
 # Find request by repository url
 @app.get("/analysis/", status_code=status.HTTP_200_OK)
 async def get_analysis_by_repo(repo: str):
@@ -66,6 +68,7 @@ async def get_analysis_by_repo(repo: str):
         status_code=404, detail=f"Unable to find analysis request for repository {repo}"
     )
 
+
 # Post a new request to MegaLinter
 @app.post("/analysis", status_code=status.HTTP_102_PROCESSING)
 async def request_analysis(
@@ -76,7 +79,8 @@ async def request_analysis(
     global running_process_number, max_running_process_number
     if running_process_number >= max_running_process_number:
         raise HTTPException(
-            status_code=423, detail=f"The server is already processing the max number of requests ({max_running_process_number})"
+            status_code=423,
+            detail=f"The server is already processing the max number of requests ({max_running_process_number})",
         )
     # Increment number of processed requests
     running_process_number += 1
@@ -109,7 +113,7 @@ class AnalysisRequest(BaseModel):
     repository: str | None = None
     request_item: AnalysisRequestItem | None = None
     workspace: str | None = None
-    web_hook_url : str | None = None
+    web_hook_url: str | None = None
 
     # Find analysis request from unique id: Could be using external database in the future
     @staticmethod
@@ -129,7 +133,7 @@ class AnalysisRequest(BaseModel):
                 return analysis_request
         return None
 
-    def initialize(self, request_item: AnalysisRequestItem):
+    def initialize(self, request_item: AnalysisRequestItem | None):
         self.id = str(uuid1())
         self.status = AnalysisStatus.NEW
         self.request_item = request_item
@@ -194,13 +198,15 @@ class AnalysisRequest(BaseModel):
         logger.info(f"Analysis request {self.id} has been saved")
 
     def process(self):
-        mega_linter = MegaLinter.Megalinter({
-            "request_id": self.id,
-            "workspace": self.workspace,
-            "SARIF_REPORTER": "true",
-            "WEBHOOK_REPORTER": "true",
-            "WEBHOOK_REPORTER_URL": self.web_hook_url
-        })
+        mega_linter = MegaLinter.Megalinter(
+            {
+                "request_id": self.id,
+                "workspace": self.workspace,
+                "SARIF_REPORTER": "true",
+                "WEBHOOK_REPORTER": "true",
+                "WEBHOOK_REPORTER_URL": self.web_hook_url,
+            }
+        )
         self.change_status(AnalysisStatus.IN_PROGRESS)
         mega_linter.run()
         self.change_status(AnalysisStatus.COMPLETE)

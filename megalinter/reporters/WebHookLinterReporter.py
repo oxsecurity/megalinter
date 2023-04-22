@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-GitHub Status reporter
-Post a GitHub status for each linter
+Web Hook linter reporter
+Post linter results to a Web Hook
 """
 import json
 import logging
