@@ -46,7 +46,7 @@ class AnalysisRequestItem(BaseModel):
 
 # Get info about a request
 @app.get("/analysis/{item_id}", status_code=status.HTTP_200_OK)
-async def get_analysis(item_id):
+async def get_analysis_by_id(item_id):
     global ANALYSIS_REQUESTS
     analysis_request = AnalysisRequest.findById(item_id)
     if analysis_request is not None:
@@ -57,7 +57,7 @@ async def get_analysis(item_id):
 
 # Find request by repository url
 @app.get("/analysis/", status_code=status.HTTP_200_OK)
-async def get_analysis(repo: str):
+async def get_analysis_by_repo(repo: str):
     global ANALYSIS_REQUESTS
     analysis_request = AnalysisRequest.findByRepository(repo)
     if analysis_request is not None:
@@ -171,7 +171,7 @@ class AnalysisRequest(BaseModel):
             },
         }
 
-    def stop_request():
+    def stop_request(self):
         global running_process_number
         running_process_number -= 1
 
