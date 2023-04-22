@@ -12,7 +12,7 @@ CONFIG_DATA = None
 CONFIG_SOURCE = None
 
 
-def init_config(workspace=None,params={}):
+def init_config(workspace=None, params={}):
     global CONFIG_DATA, CONFIG_SOURCE
     if CONFIG_DATA is not None:
         logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")

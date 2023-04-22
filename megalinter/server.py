@@ -3,16 +3,16 @@
 Start MegaLinter server
 """
 import logging
+import tempfile
+from enum import StrEnum
 from typing import List
 from uuid import uuid1
-from enum import StrEnum
-import git
-import tempfile
 
-from pydantic import BaseModel
-from megalinter import config, alpaca, MegaLinter
-from fastapi import BackgroundTasks, FastAPI, Response, status, HTTPException
+import git
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
 from fastapi.responses import JSONResponse
+from megalinter import MegaLinter, alpaca, config
+from pydantic import BaseModel
 
 print("MegaLinter Server starting...")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)

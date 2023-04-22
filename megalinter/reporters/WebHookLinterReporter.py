@@ -67,7 +67,7 @@ class WebHookLinterReporter(Reporter):
             "descriptorId": self.master.descriptor_id,
             "linterId": self.master.linter_name,
             "docUrl": linter_doc_url,
-            "isFormatter": self.master.is_formatter
+            "isFormatter": self.master.is_formatter,
         }
         if (
             self.master.sarif_output_file is not None
