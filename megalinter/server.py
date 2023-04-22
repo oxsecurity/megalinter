@@ -5,6 +5,7 @@ Start MegaLinter server
 import logging
 import tempfile
 from enum import StrEnum
+import os
 from typing import List
 from uuid import uuid1
 
@@ -22,18 +23,20 @@ app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DE
 
 global running_process_number, max_running_process_number, ANALYSIS_REQUESTS
 running_process_number = 0
-max_running_process_number = 1
+max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER",5)
+total_process_number_run = 0
 ANALYSIS_REQUESTS: List[any] = []
 
 
 # Get status of MegaLinter server
 @app.get("/", status_code=status.HTTP_200_OK)
 async def read_root():
-    global running_process_number, max_running_process_number
+    global running_process_number, max_running_process_number, total_process_number_run
     return {
         "version": app.version,
         "runningProcessNumber": running_process_number,
         "maxRunningProcessNumber": max_running_process_number,
+        "totalProcessRunNumber": total_process_number_run,
         "available": running_process_number < max_running_process_number,
     }
 
@@ -76,13 +79,14 @@ async def request_analysis(
     item: AnalysisRequestItem | None = None,
 ) -> Response:
     # Check server is available
-    global running_process_number, max_running_process_number
+    global running_process_number, max_running_process_number, total_process_number_run
     if running_process_number >= max_running_process_number:
         raise HTTPException(
             status_code=423,
             detail=f"The server is already processing the max number of requests ({max_running_process_number})",
         )
-    # Increment number of processed requests
+    # Increment number of processing requests
+    total_process_number_run += 1
     running_process_number += 1
     analysis_request = AnalysisRequest()
     analysis_request.initialize(item)
@@ -114,6 +118,7 @@ class AnalysisRequest(BaseModel):
     request_item: AnalysisRequestItem | None = None
     workspace: str | None = None
     web_hook_url: str | None = None
+    results: List = []
 
     # Find analysis request from unique id: Could be using external database in the future
     @staticmethod
@@ -173,6 +178,8 @@ class AnalysisRequest(BaseModel):
                 "inputString": self.request_item.inputString,
                 "repositoryUrl": self.request_item.repositoryUrl,
             },
+            "repository": self.repository,
+            "results": self.results,
         }
 
     def stop_request(self):
@@ -209,5 +216,9 @@ class AnalysisRequest(BaseModel):
         )
         self.change_status(AnalysisStatus.IN_PROGRESS)
         mega_linter.run()
+        for linters in mega_linter.linters:
+            for reporter in linters.reporters:
+                if reporter.name == "WEBHOOK_REPORTER" and reporter.web_hook_data:
+                    self.results.append(reporter.web_hook_data)
         self.change_status(AnalysisStatus.COMPLETE)
         del mega_linter
