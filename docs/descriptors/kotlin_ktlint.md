@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.48.2**
+- Version in MegaLinter: **0.49.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -134,14 +134,14 @@ and its subdirectories:
 output=my-custom-report.csv
 Flags:
 
-  -a, --android         Turn on Android Kotlin Style Guide compatibility
+      --code-style=<codeStyle>
+                        Defines the code style (ktlint_official, intellij_idea
+                          or android_studio) to be used for formatting the
+                          code. It is advised to define '.editorconfig'
+                          property 'ktlint_code_style'.
       --color           Make output colorful
       --color-name=<colorName>
                         Customize the output color
-      --debug           Turn on debug output. Deprecated, use
-                          '--log-level=debug' instead.
-      --trace           Turn on trace output. Deprecated, use
-                          '--log-level=trace' instead.
       --disabled_rules=<disabledRules>
                         Comma-separated list of rules to globally disable. To
                           disable standard ktlint rule-set use
@@ -150,7 +150,7 @@ Flags:
       --limit=<limit>   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
                           dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=<reporterJarPaths>
+      --reporter=<reporterConfigurations>
                         A reporter to use (built-in: plain (default), plain?
                           group_by_file, plain-summary, json, sarif,
                           checkstyle, html). To use a third-party reporter
@@ -165,8 +165,6 @@ Flags:
                           Patterns are delimited by the given argument.
                           (default is newline) If the argument is an empty
                           string, the NUL byte is used.
-  -v, --verbose         Show error codes. Deprecated, use '--log-level=info'
-                          instead.
       --editorconfig=<editorConfigPath>
                         Path to the default '.editorconfig'. A property value
                           from this file is used only when no '.editorconfig'
@@ -174,7 +172,7 @@ Flags:
                           property. Note: up until ktlint 0.46 the property
                           value in this file used to override values found in '.
                           editorconfig' files on the path to the source file.
-      --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
+      --experimental    Enable experimental rules
       --baseline=<baselinePath>
                         Defines a baseline file to check against
   -l, --log-level=<minLogLevel>
@@ -183,23 +181,12 @@ Flags:
   -h, --help            Show this help message and exit.
   -V, --version         Print version information and exit.
 Commands:
-  installGitPreCommitHook, --install-git-pre-commit-hook  Install git hook to
-                                                            automatically check
-                                                            files for style
-                                                            violations on commit
-  installGitPrePushHook, --install-git-pre-push-hook      Install git hook to
-                                                            automatically check
-                                                            files for style
-                                                            violations before
-                                                            push
-  printAST, --print-ast                                   Print AST (useful
-                                                            when
-                                                            writing/debugging
-                                                            rules)
-  generateEditorConfig                                    EXPERIMENTAL!!!
-                                                            Generate kotlin
-                                                            style section for '.
-                                                            editorconfig' file.
+  installGitPreCommitHook  Install git hook to automatically check files for
+                             style violations on commit
+  installGitPrePushHook    Install git hook to automatically check files for
+                             style violations before push
+  generateEditorConfig     Generate kotlin style section for '.editorconfig'
+                             file.
 ```
 
 ### Installation on mega-linter Docker image
