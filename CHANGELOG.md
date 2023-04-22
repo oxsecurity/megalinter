@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix `/build` slash command to checkout the correct branch when called from PR, by @echoix in <https://github.com/oxsecurity/megalinter/pull/2542>
   - Fix crash in case of unreachable symlinks
   - Fix local run of python test cases
+  - Fix mkdocs documentaton generation by downgrading mkdocs-glightbox to 0.3.2 
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs

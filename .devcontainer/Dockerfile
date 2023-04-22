@@ -11,7 +11,7 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 COPY requirements.dev.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.dev.txt \
-   && rm -rf /tmp/pip-tmp && pip3 install --no-cache-dir mkdocs-material mkdocs-glightbox
+   && rm -rf /tmp/pip-tmp && pip3 install --no-cache-dir mkdocs-material mkdocs-glightbox==0.3.2
 
 RUN npm install markdown-table-formatter -g
 

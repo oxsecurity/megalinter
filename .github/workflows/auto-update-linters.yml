@@ -4,8 +4,9 @@ on:
   # Run when there is an update in main
   push:
     branches:
-      - "main"
-      - "auto-update"
+      - main
+      - auto-update
+      - fixes/docgen
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
