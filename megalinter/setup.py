@@ -28,7 +28,8 @@ setup(
         "regex",
         "requests",
         "terminaltables",
-        "importlib-metadata>=3.10" "fastapi",
+        "importlib-metadata>=3.10",
+        "fastapi"
     ],
     zip_safe=False,
 )
