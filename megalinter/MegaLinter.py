@@ -51,9 +51,12 @@ class Megalinter:
         self.linter_version_only = None
         self.load_cli_vars()
 
+        if "request_id" in params:
+            self.request_id = params["request_id"]
+
         # Initialization for lint request cases
-        self.workspace = self.get_workspace()
-        config.init_config(self.workspace)  # Initialize runtime config
+        self.workspace = self.get_workspace(params)
+        config.init_config(self.workspace, params)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
@@ -272,7 +275,9 @@ class Megalinter:
                         break
 
     # noinspection PyMethodMayBeStatic
-    def get_workspace(self):
+    def get_workspace(self, params):
+        if "workspace" in params:
+            self.arg_input = params["workspace"]
         default_workspace = config.get("DEFAULT_WORKSPACE", "")
         github_workspace = config.get("GITHUB_WORKSPACE", "")
         # Use CLI input argument

@@ -28,8 +28,7 @@ setup(
         "regex",
         "requests",
         "terminaltables",
-        "importlib-metadata>=3.10"
-        # "flask-restful"
+        "importlib-metadata>=3.10" "fastapi",
     ],
     zip_safe=False,
 )
