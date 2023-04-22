@@ -75,7 +75,8 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # MegaLinter HTTP server run
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
-  python ./megalinter/megalinter_server.py
+  pip install "uvicorn[standard]"
+  python -m megalinter.server
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

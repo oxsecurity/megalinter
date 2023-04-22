@@ -29,7 +29,7 @@ setup(
         "requests",
         "terminaltables",
         "importlib-metadata>=3.10"
-        # "flask-restful"
+        "fastapi"
     ],
     zip_safe=False,
 )
