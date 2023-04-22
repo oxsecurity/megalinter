@@ -2458,7 +2458,7 @@ python3 -m pip install -r requirements.dev.txt
 </code></pre>
 <p><em>If it doesn't work, just run the following script</em></p>
 <pre><code class="language-shell">pip install -r requirements.dev.txt
-pip install mkdocs-material mkdocs-glightbox
+pip install mkdocs-material "mkdocs-glightbox==0.3.2"
 npm install markdown-table-formatter -g
 </code></pre>
 <p>Second level dev dependencies are installed by running <code>./build.sh</code> which is also a test if the installation worked</p>
@@ -2546,7 +2546,7 @@ INFO    -  Documentation built in 9.76 seconds
 <p>Apart from the descriptors, it will usually involve modifying files such as <a href="https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py">.automation/build.py</a></p>
 <p>In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you will have to run at least 2 commands.</p>
 <p>Command to execute (only one time):</p>
-<pre><code class="language-bash">pip install --upgrade "markdown==3.3.7" mike mkdocs-material mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+<pre><code class="language-bash">pip install --upgrade "markdown==3.3.7" mike mkdocs-material "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
 </code></pre>
 <p>Command to run every time you want to bring up the server:</p>
 <pre><code class="language-bash">mkdocs serve
