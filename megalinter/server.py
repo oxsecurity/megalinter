@@ -1,4 +1,5 @@
 # !/usr/bin/env python3
+# mypy allow-attr-defined, allow-valid-type, allow-union-attr
 """
 Start MegaLinter server
 """
