@@ -12,14 +12,15 @@ CONFIG_DATA = None
 CONFIG_SOURCE = None
 
 
-def init_config(workspace=None):
+def init_config(workspace=None,params={}):
     global CONFIG_DATA, CONFIG_SOURCE
     if CONFIG_DATA is not None:
         logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")
         return
     env = os.environ.copy()
+    env_plus_params = env | params
     if workspace is None and "MEGALINTER_CONFIG" not in os.environ:
-        set_config(env)
+        set_config(env_plus_params)
         CONFIG_SOURCE = "Environment variables only (no workspace)"
         print(f"[config] {CONFIG_SOURCE}")
         return
@@ -60,13 +61,13 @@ def init_config(workspace=None):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
             config_data = yaml.safe_load(config_file_stream)
             if config_data is None:  # .mega-linter.yml existing but empty
-                runtime_config = env
+                runtime_config = env_plus_params
             else:
                 # append config file variables to env variables, with priority to env variables
-                runtime_config = config_data | env
+                runtime_config = config_data | env_plus_params
             CONFIG_SOURCE = f"{config_file} + Environment variables"
     else:
-        runtime_config = env
+        runtime_config = env_plus_params
         CONFIG_SOURCE = (
             f"Environment variables only (no config file found in {workspace})"
         )
