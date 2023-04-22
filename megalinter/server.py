@@ -3,9 +3,9 @@
 Start MegaLinter server
 """
 import logging
+import os
 import tempfile
 from enum import StrEnum
-import os
 from typing import List
 from uuid import uuid1
 
@@ -23,7 +23,7 @@ app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DE
 
 global running_process_number, max_running_process_number, ANALYSIS_REQUESTS
 running_process_number = 0
-max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER",5)
+max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5)
 total_process_number_run = 0
 ANALYSIS_REQUESTS: List[any] = []
 

@@ -94,7 +94,9 @@ class WebHookLinterReporter(Reporter):
                 with open(text_file_name, "r", encoding="utf-8") as text_file:
                     self.web_hook_data["outputText"] = text_file.read()
         try:
-            response = requests.post(self.hook_url, headers=headers, json=self.web_hook_data)
+            response = requests.post(
+                self.hook_url, headers=headers, json=self.web_hook_data
+            )
             if 200 <= response.status_code < 299:
                 logging.debug(
                     f"[WebHook Reporter] Successfully posted Web Hook for {self.master.descriptor_id}"
