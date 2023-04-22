@@ -25,7 +25,7 @@ _If it doesn't work, just run the following script_
 
 ```shell
 pip install -r requirements.dev.txt
-pip install mkdocs-material mkdocs-glightbox
+pip install mkdocs-material "mkdocs-glightbox==0.3.2"
 npm install markdown-table-formatter -g
 ```
 
@@ -108,7 +108,7 @@ In order to be able to run locally a server that serves all the documentation an
 Command to execute (only one time):
 
 ```bash
-pip install --upgrade "markdown==3.3.7" mike mkdocs-material mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+pip install --upgrade "markdown==3.3.7" mike mkdocs-material "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
 ```
 
 Command to run every time you want to bring up the server:
