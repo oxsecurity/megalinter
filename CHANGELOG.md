@@ -109,6 +109,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.2 to **0.45.3** on 2023-04-20
   - [checkov](https://www.checkov.io/) from 2.3.187 to **2.3.189** on 2023-04-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.3 to **0.45.4** on 2023-04-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.6 to **6.15.0** on 2023-04-22
+  - [eslint](https://eslint.org) from 8.38.0 to **8.39.0** on 2023-04-22
+  - [ktlint](https://ktlint.github.io) from 0.48.2 to **0.49.0** on 2023-04-22
+  - [puppet-lint](http://puppet-lint.com/) from 3.4.0 to **4.0.0** on 2023-04-22
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.303 to **1.1.304** on 2023-04-22
+  - [checkov](https://www.checkov.io/) from 2.3.189 to **2.3.192** on 2023-04-22
+  - [semgrep](https://semgrep.dev/) from 1.18.0 to **1.19.0** on 2023-04-22
+  - [syft](https://github.com/anchore/syft) from 0.78.0 to **0.79.0** on 2023-04-22
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.68 to **0.1.69** on 2023-04-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.0.5 to **2.0.7** on 2023-04-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.30.0 to **1.31.0** on 2023-04-22
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
