@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 from pygments import lexers
 
 print("MegaLinter Server starting...")
-logging.config.fileConfig("logging.conf", disable_existing_loggers=False) # mypy: allow-attr-defined
+logging.config.fileConfig("logging.conf", disable_existing_loggers=False)# mypy: disable-error-code="attr-defined"
 logger = logging.getLogger(__name__)
 alpaca()
 app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DEV"))
