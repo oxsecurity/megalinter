@@ -30,7 +30,7 @@
     "flake8": "6.0.0",
     "gherkin-lint": "0.0.0",
     "git_diff": "2.38.4",
-    "gitleaks": "8.16.2",
+    "gitleaks": "8.16.3",
     "golangci-lint": "1.52.2",
     "goodcheck": "3.1.0",
     "graphql-schema-linter": "3.0.1",
