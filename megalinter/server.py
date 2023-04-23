@@ -22,20 +22,65 @@ logger = logging.getLogger(__name__)
 alpaca()
 app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DEV"))
 
-global running_process_number, max_running_process_number, ANALYSIS_REQUESTS
+global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0
 max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5)
 total_process_number_run = 0
-ANALYSIS_REQUESTS: List[any] = []
+ANALYSIS_EXECUTIONS: List[any] = []
 
 ###############
 ####  API  #### # noqa: E266
 ###############
 
 
+# Analysis status enum
+class AnalysisStatus(StrEnum):
+    NEW = "new"
+    IN_PROGRESS = "in-progress"
+    COMPLETE = "complete"
+
+
+# Analysis request model
+class AnalysisRequestInput(BaseModel):
+    snippet: str | None = None
+    repositoryUrl: str | None = None
+    webHookUrl: str | None = None
+
+
+# Linter status result
+class AnalysisLinterResultStatus(StrEnum):
+    SUCCESS = "success"
+    ERROR = "error"
+
+
+# Linter result
+class AnalysisLinterResult(BaseModel):
+    requestId: str | None = None
+    status: AnalysisLinterResultStatus | None = None
+    statusMessage: str | None = None
+    errorNumber: int | None = None
+    elapsedTime: float | None = None
+    descriptorId: str | None = None
+    linterId: str | None = None
+    linterKey: str | None = None
+    isFormatter: bool | None = None
+    docUrl: str | None = None
+    outputText: str | None = None
+    outputSarif: object | None = None
+
+
+# Full Analysis result
+class AnalysisRequest(BaseModel):
+    id: str | None = None
+    status: AnalysisStatus | None = None
+    repository: str | None = None
+    requestInput: AnalysisRequestInput | None = None
+    results: List[AnalysisLinterResult] = []
+
+
 # Get status of MegaLinter server
 @app.get("/", status_code=status.HTTP_200_OK)
-async def read_root():
+async def server_info():
     global running_process_number, max_running_process_number, total_process_number_run
     return {
         "version": app.version,
@@ -46,42 +91,41 @@ async def read_root():
     }
 
 
-# Analysis request model
-class AnalysisRequestItem(BaseModel):
-    inputString: str | None = None
-    repositoryUrl: str | None = None
-    webHookUrl: str | None = None
-
-
 # Get info about a request
-@app.get("/analysis/{item_id}", status_code=status.HTTP_200_OK)
+@app.get(
+    "/analysis/{item_id}",
+    response_model=AnalysisRequest,
+    status_code=status.HTTP_200_OK,
+)
 async def get_analysis_by_id(item_id):
-    global ANALYSIS_REQUESTS
-    analysis_request = AnalysisRequest.findById(item_id)
-    if analysis_request is not None:
-        return JSONResponse(content=analysis_request.toJsonObject())
+    global ANALYSIS_EXECUTIONS
+    analysis_executor: AnalysisExecutor = AnalysisExecutor.findById(item_id)
+    if analysis_executor is not None:
+        return analysis_executor.toAnalysisRequest()
     raise HTTPException(
         status_code=404, detail=f"Unable to find analysis request {item_id}"
     )
 
 
 # Find request by repository url
-@app.get("/analysis/", status_code=status.HTTP_200_OK)
+@app.get("/analysis/", response_model=AnalysisRequest, status_code=status.HTTP_200_OK)
 async def get_analysis_by_repo(repo: str):
-    global ANALYSIS_REQUESTS
-    analysis_request = AnalysisRequest.findByRepository(repo)
-    if analysis_request is not None:
-        return JSONResponse(content=analysis_request.toJsonObject())
+    global ANALYSIS_EXECUTIONS
+    analysis_executor: AnalysisExecutor = AnalysisExecutor.findByRepository(repo)
+    if analysis_executor is not None:
+        return analysis_executor.toAnalysisRequest()
     raise HTTPException(
         status_code=404, detail=f"Unable to find analysis request for repository {repo}"
     )
 
 
 # Post a new request to MegaLinter
-@app.post("/analysis", status_code=status.HTTP_102_PROCESSING)
+@app.post(
+    "/analysis", response_model=AnalysisRequest, status_code=status.HTTP_201_CREATED
+)
 async def request_analysis(
     background_tasks: BackgroundTasks,
-    item: AnalysisRequestItem | None = None,
+    item: AnalysisRequestInput | None = None,
 ) -> Response:
     # Check server is available
     global running_process_number, max_running_process_number, total_process_number_run
@@ -93,40 +137,32 @@ async def request_analysis(
     # Increment number of processing requests
     total_process_number_run += 1
     running_process_number += 1
-    analysis_request = AnalysisRequest()
-    analysis_request.initialize(item)
-    analysis_request.initialize_files()
-    analysis_request.save()
-    background_tasks.add_task(start_analysis, analysis_request.id)
-    return JSONResponse(content=analysis_request.toJsonObject())
+    analysis_executor = AnalysisExecutor()
+    analysis_executor.initialize(item)
+    analysis_executor.initialize_files()
+    analysis_executor.save()
+    background_tasks.add_task(start_analysis, analysis_executor.id)
+    return analysis_executor.toAnalysisRequest()
 
 
-########################
-### Analysis request ### # noqa: E266
-########################
-
-
-# Analysis status enum
-class AnalysisStatus(StrEnum):
-    NEW = "new"
-    IN_PROGRESS = "in-progress"
-    COMPLETE = "complete"
-
+##########################
+### Analysis Execution ### # noqa: E266
+##########################
 
 # Outside method to start analysis as a background task so HTTP response can be sent before
 def start_analysis(analysis_request_id: str):
-    analysis_request: AnalysisRequest = AnalysisRequest.findById(analysis_request_id)
-    analysis_request.process()
+    analysis_executor: AnalysisExecutor = AnalysisExecutor.findById(analysis_request_id)
+    analysis_executor.process()
     global running_process_number
     running_process_number -= 1
 
 
 # Analysis processor class
-class AnalysisRequest(BaseModel):
+class AnalysisExecutor:
     id: str | None = None
     status: AnalysisStatus | None = None
     repository: str | None = None
-    request_item: AnalysisRequestItem | None = None
+    request_input: AnalysisRequestInput | None = None
     workspace: str | None = None
     web_hook_url: str | None = None
     results: List = []
@@ -134,8 +170,8 @@ class AnalysisRequest(BaseModel):
     # Find analysis request from unique id: Could be using external database in the future
     @staticmethod
     def findById(static_analysis_id: str):
-        global ANALYSIS_REQUESTS
-        for analysis_request in ANALYSIS_REQUESTS:
+        global ANALYSIS_EXECUTIONS
+        for analysis_request in ANALYSIS_EXECUTIONS:
             if analysis_request.id == static_analysis_id:
                 return analysis_request
         return None
@@ -143,29 +179,29 @@ class AnalysisRequest(BaseModel):
     # Find analysis request from unique key, like a repository url
     @staticmethod
     def findByRepository(repository: str):
-        global ANALYSIS_REQUESTS
-        for analysis_request in ANALYSIS_REQUESTS:
+        global ANALYSIS_EXECUTIONS
+        for analysis_request in ANALYSIS_EXECUTIONS:
             if analysis_request.repository == repository:
                 return analysis_request
         return None
 
     # Initialize analysis request and assign an unique Id
-    def initialize(self, request_item: AnalysisRequestItem | None):
+    def initialize(self, request_input: AnalysisRequestInput | None):
         self.id = str(uuid1())
         self.status = AnalysisStatus.NEW
-        self.request_item = request_item
-        if request_item.webHookUrl:
-            self.web_hook_url = request_item.webHookUrl
+        self.request_input = request_input
+        if request_input.webHookUrl:
+            self.web_hook_url = request_input.webHookUrl
         logger.info(f"Analysis request {self.id} has been initialized")
 
     # Initialize files for analysis
     def initialize_files(self):
         # Clone repo from provided url
-        if self.request_item.repositoryUrl:
+        if self.request_input.repositoryUrl:
             self.init_from_repository()
             return
         # Detect language and create temporary workspace with file
-        elif self.request_item.inputString:
+        elif self.request_input.snippet:
             self.init_from_snippet()
             return
         # Nothing to create a request !
@@ -183,20 +219,20 @@ class AnalysisRequest(BaseModel):
     def init_from_repository(self):
         temp_dir = self.create_temp_dir()
         try:
-            git.Repo.clone_from(self.request_item.repositoryUrl, temp_dir)
+            git.Repo.clone_from(self.request_input.repositoryUrl, temp_dir)
         except Exception as e:
             self.stop_request()
             raise HTTPException(
                 status_code=404, detail=f"Unable to clone repository\n{str(e)}"
             )
-        logger.info(f"Cloned {self.request_item.repositoryUrl} in temp dir {temp_dir}")
+        logger.info(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
         self.workspace = temp_dir
-        self.repository = self.request_item.repositoryUrl
+        self.repository = self.request_input.repositoryUrl
 
     # Init from user snippet
     def init_from_snippet(self):
         # Guess language using pygments
-        code_lexer = lexers.guess_lexer(self.request_item.inputString)
+        code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
             self.stop_request()
             raise HTTPException(
@@ -212,27 +248,29 @@ class AnalysisRequest(BaseModel):
         else:
             self.stop_request()
             raise HTTPException(
-                status_code=404, detail="Unable build file from snippet"
+                status_code=404,
+                detail=f"Unable build file from {code_lexer.name} snippet",
             )
         logger.info(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
         snippet_file = os.path.join(temp_dir, snippet_file_name)
         with open(snippet_file, "w", encoding="utf-8") as file:
-            file.write(self.request_item.inputString)
+            file.write(self.request_input.snippet)
         self.workspace = temp_dir
 
     # Build result for output
-    def toJsonObject(self):
-        return {
-            "id": self.id,
-            "status": self.status,
-            "requestItem": {
-                "inputString": self.request_item.inputString,
-                "repositoryUrl": self.request_item.repositoryUrl,
-            },
-            "repository": self.repository,
-            "results": self.results,
-        }
+    def toAnalysisRequest(self):
+        analysis_request = AnalysisRequest(
+            id=self.id,
+            status=self.status,
+            repository=self.repository,
+            requestInput=self.request_input,
+        )
+        if self.repository:
+            analysis_request.repository = self.repository
+        if len(self.results) > 0:
+            analysis_request.results = self.results
+        return analysis_request
 
     # Stop request and release a slot for a next request
     def stop_request(self):
@@ -247,15 +285,15 @@ class AnalysisRequest(BaseModel):
 
     # Save state of Analysis Request (Could be using external database in the future)
     def save(self):
-        global ANALYSIS_REQUESTS
-        existing_analysis_request = AnalysisRequest.findById(self.id)
+        global ANALYSIS_EXECUTIONS
+        existing_analysis_request = AnalysisExecutor.findById(self.id)
         if existing_analysis_request is not None:
-            for index, x in enumerate(ANALYSIS_REQUESTS):
+            for index, x in enumerate(ANALYSIS_EXECUTIONS):
                 if x.id == self.id:
-                    ANALYSIS_REQUESTS[index] = self
+                    ANALYSIS_EXECUTIONS[index] = self
                     break
         else:
-            ANALYSIS_REQUESTS.append(self)
+            ANALYSIS_EXECUTIONS.append(self)
         logger.info(f"Analysis request {self.id} has been saved")
 
     # Run MegaLinter
