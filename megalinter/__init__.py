@@ -16,5 +16,5 @@ __all__ = [
     "pre_post_factory",
     "utils",
     "utilstest",
-    "alpaca"
+    "alpaca",
 ]

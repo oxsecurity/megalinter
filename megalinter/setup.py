@@ -28,7 +28,7 @@ setup(
         "regex",
         "requests",
         "terminaltables",
-        "importlib-metadata>=3.10"
+        "importlib-metadata>=3.10",
     ],
     zip_safe=False,
 )

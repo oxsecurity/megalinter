@@ -12,9 +12,9 @@ from uuid import uuid1
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
 from fastapi.responses import JSONResponse
-from pygments import lexers
 from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel
+from pygments import lexers
 
 print("MegaLinter Server starting...")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)
@@ -31,6 +31,7 @@ ANALYSIS_REQUESTS: List[any] = []
 ###############
 ####  API  #### # noqa: E266
 ###############
+
 
 # Get status of MegaLinter server
 @app.get("/", status_code=status.HTTP_200_OK)
@@ -103,6 +104,7 @@ async def request_analysis(
 ########################
 ### Analysis request ### # noqa: E266
 ########################
+
 
 # Analysis status enum
 class AnalysisStatus(StrEnum):
@@ -198,7 +200,7 @@ class AnalysisRequest(BaseModel):
         if not code_lexer:
             self.stop_request()
             raise HTTPException(
-                status_code=404, detail=f"Unable to detect language from snippet"
+                status_code=404, detail="Unable to detect language from snippet"
             )
         logger.info(f"Guessed snipped language: {code_lexer.name}")
         # Build file name
@@ -210,7 +212,7 @@ class AnalysisRequest(BaseModel):
         else:
             self.stop_request()
             raise HTTPException(
-                status_code=404, detail=f"Unable build file from snippet"
+                status_code=404, detail="Unable build file from snippet"
             )
         logger.info(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
