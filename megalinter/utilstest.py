@@ -35,6 +35,18 @@ REPO_HOME = (
 )
 
 
+# Returns root dir depending we are locally or in CI
+def get_root_dir():
+    root_dir = (
+        DEFAULT_DOCKER_WORKSPACE_DIR
+        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
+        else Repo(__file__, search_parent_directories=True).git.rev_parse(
+            "--show-toplevel"
+        )
+    )
+    return root_dir
+
+
 # Define env variables before any test case
 def linter_test_setup(params=None):
     for key in [
@@ -74,13 +86,8 @@ def linter_test_setup(params=None):
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
     # Root path of default rules
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
+
     workspace = None
     config_file_path = root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
     if os.path.isfile(config_file_path):
@@ -189,7 +196,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -254,7 +261,7 @@ def test_linter_failure(linter, test_self):
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log does not appear in SPELL linters
+    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
@@ -334,13 +341,7 @@ def test_get_linter_version(linter, test_self):
         version == version_cache, "Version not found in linter instance cache"
     )
     # Write in linter-versions.json
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
     versions_file = (
         root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
     )
@@ -399,13 +400,7 @@ def test_get_linter_help(linter, test_self):
         help_txt == "ERROR", "Returned help invalid: [" + help_txt + "]"
     )
     # Write in linter-helps.json
-    root_dir = (
-        DEFAULT_DOCKER_WORKSPACE_DIR
-        if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
-        )
-    )
+    root_dir = get_root_dir()
     helps_file = root_dir + os.path.sep + "/.automation/generated/linter-helps.json"
     data = {}
     help_lines = help_txt.splitlines()
@@ -420,6 +415,7 @@ def test_get_linter_help(linter, test_self):
             .replace(r"(\[.m)", "")  # pylint: disable=invalid-character-esc
             .rstrip()
         )
+        line_clean = utils.normalize_log_string(line_clean)
         help_lines_clean += [line_clean]
     if os.path.isfile(helps_file):
         with open(helps_file, "r", encoding="utf-8") as json_file:
@@ -520,7 +516,7 @@ def test_linter_report_tap(linter, test_self):
                 )
 
 
-# Test that the linter provides a SARIF output if it is configured like that
+# Test that the linter provides a SARIF output if it's configured like that
 def test_linter_report_sarif(linter, test_self):
     if (
         linter.disabled is True
@@ -612,7 +608,7 @@ def test_linter_format_fix(linter, test_self):
         or "all" in getattr(linter, "descriptor_flavors_exclude", [])
         or (linter.is_formatter is False and linter.cli_lint_fix_arg_name is None)
     ):
-        raise unittest.SkipTest("Linter does not format and cannot apply fixes")
+        raise unittest.SkipTest("Linter doesn't format and can't apply fixes")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     # Special cases when files must be copied in a temp directory before being linted

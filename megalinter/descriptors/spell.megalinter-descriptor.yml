@@ -9,6 +9,9 @@ linters:
   - class: MisspellLinter
     linter_name: misspell
     name: SPELL_MISSPELL
+    deprecated: true
+    deprecated_description: misspell is not maintained since 2018 so will be removed in a future version
+    linter_speed: 2
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
     linter_repo: https://github.com/client9/misspell
@@ -40,6 +43,7 @@ linters:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
         default_value: "true"
         description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
+    linter_speed: 1
     linter_text: |
       MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
 
@@ -78,6 +82,7 @@ linters:
       - .proselintrc
       - proselint/config.json
     linter_text: a linter for prose
+    linter_speed: 2
     linter_url: http://proselint.com
     linter_repo: https://github.com/amperser/proselint
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
@@ -101,9 +106,66 @@ linters:
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
+          id: name.kropp.intellij.proselint
       sublime:
         - name: SublimeLinter-contrib-proselint
           url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint
       vscode:
         - name: VSCode Proselint
           url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint
+
+  # Vale
+  - class: ValeLinter
+    linter_name: vale
+    name: SPELL_VALE
+    can_output_sarif: false
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".rst"
+    active_only_if_file_found:
+      - .vale.ini
+    descriptor_flavors:
+      - all_flavors
+      - documentation
+    linter_speed: 1
+    linter_text: |
+      Vale brings your editorial style to life !
+
+      To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
+
+      MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
+    linter_url: https://vale.sh/
+    linter_repo: https://github.com/errata-ai/vale
+    linter_rules_url: https://vale.sh/hub/
+    linter_rules_configuration_url: https://vale.sh/explorer/
+    linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    config_file_name: .vale.ini
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: ([0-9]+) errors, [0-9]+ warnings and [0-9]+ suggestions in [0-9]+ files
+    examples:
+      - "vale README.md file1.md file2.md file3.md"
+      - "vale --config .vale.ini README.md file1.md file2.md file3.md"
+    test_folder: spell_vale
+    install:
+      dockerfile:
+        - FROM jdkato/vale:latest as vale
+        - COPY --link --from=vale /bin/vale /bin/vale
+    ide:
+      emacs:
+        - name: flymake-vale
+          url: https://github.com/tpeacock19/flymake-vale
+      jetbrains:
+        - name: Vale
+          url: https://vale.sh/docs/integrations/jetbrains/
+      sublime:
+        - name: SublimeLinter-contrib-vale
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-vale
+      vim:
+        - name: dense-analysis/vale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: Vale
+          url: https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server

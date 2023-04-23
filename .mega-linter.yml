@@ -15,12 +15,14 @@ DISABLE:
 DISABLE_LINTERS:
   - JSON_PRETTIER
   - REPOSITORY_GITLEAKS
+  - SPELL_MISSPELL
   - SPELL_PROSELINT
 DISABLE_ERRORS_LINTERS:
   - PYTHON_BANDIT
   - PYTHON_PYRIGHT
   - REPOSITORY_DEVSKIM
   - REPOSITORY_SEMGREP
+  - SPELL_VALE
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
@@ -30,7 +32,11 @@ YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.code
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
 MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
-SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors|used-by-stats)'
+PYTHON_MYPY_FILTER_REGEX_EXCLUDE: (server\.py)
+SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors|used-by-stats|docs/used-by-stats\.md)'
+SPELL_VALE_FILE_EXTENSIONS:
+  - .md
+SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github|docs/licenses)
 DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 --ignore DL3016 --ignore DL3018 --ignore DL3028 --ignore DL3059 --ignore DL4001 --ignore DL4006 --ignore SC2015 --ignore SC2016 --ignore SC2039 --ignore SC2086 --ignore SC1091 --ignore SC3046"
 REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"

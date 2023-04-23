@@ -41,7 +41,7 @@ jobs:
 
   prepare:
     name: Prepare matrix
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
     steps:
 
     - name: Build unique image name for beta
@@ -50,10 +50,10 @@ jobs:
 
     - name: Prepare result is ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
       shell: bash
-      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}  
+      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
 
     outputs:
-      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"  
+      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
 
   build:
     needs: prepare
@@ -163,6 +163,7 @@ jobs:
             "spell_misspell",
             "spell_cspell",
             "spell_proselint",
+            "spell_vale",
             "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
@@ -264,7 +265,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

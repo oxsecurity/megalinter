@@ -309,6 +309,7 @@ nav:
               - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
               - "proselint": "descriptors/spell_proselint.md"
+              - "vale": "descriptors/spell_vale.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"

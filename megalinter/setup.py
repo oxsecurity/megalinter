@@ -21,15 +21,15 @@ setup(
         "pychalk",
         "pygithub",
         "python-gitlab",
-        "azure-devops",
+        "azure-devops==6.0.0b4",
         "commentjson",
         "pytablewriter",
         "pyyaml",
         "regex",
         "requests",
         "terminaltables",
-        "importlib-metadata>=3.10"
-        # "flask-restful"
+        "importlib-metadata>=3.10",
+        "fastapi",
     ],
     zip_safe=False,
 )

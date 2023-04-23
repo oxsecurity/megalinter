@@ -139,6 +139,7 @@ jobs:
             "spell_misspell",
             "spell_cspell",
             "spell_proselint",
+            "spell_vale",
             "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
@@ -238,7 +239,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

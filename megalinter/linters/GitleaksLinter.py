@@ -68,7 +68,7 @@ class GitleaksLinter(Linter):
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         # --no-git / --redact has been sent by user in REPOSITORY_GITLEAKS_ARGUMENTS
-        # make sure that it is only once in the arguments list
+        # make sure that it's only once in the arguments list
         if "--redact" or "--no-git" in self.cli_lint_user_args:
             cmd = list(dict.fromkeys(cmd))
 

@@ -23,13 +23,14 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.1 as gitleaks
+FROM zricethezav/gitleaks:v8.16.3 as gitleaks
+FROM jdkato/vale:latest as vale
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.11.2-alpine3.17
+FROM python:3.11.3-alpine3.17
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -157,7 +158,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
                 markdownlint-cli \
-                markdown-link-check@3.10.3 \
+                markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
                 secretlint \
@@ -166,9 +167,11 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 cspell \
                 sql-lint \
                 tekton-lint  && \
-       npm audit fix --audit-level=critical || true \
+    echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
+    && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
+    && echo "Removing extra node_module files…" \
     && rm -rf /root/.npm/_cacache \
     && find . -name "*.d.ts" -delete \
     && find . -name "*.map" -delete \
@@ -233,6 +236,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
 #COPY__END
 
 #############################################################################################
@@ -374,6 +378,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
+
+# vale installation
+# Managed with COPY --link --from=vale /bin/vale /bin/vale
 
 # tsqllint installation
 # Next line commented because already managed by another linter
