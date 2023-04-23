@@ -1,5 +1,4 @@
 # !/usr/bin/env python3
-# noqa: E266
 """
 Start MegaLinter server
 """
@@ -30,7 +29,7 @@ total_process_number_run = 0
 ANALYSIS_REQUESTS: List[any] = []
 
 ###############
-####  API  ####
+####  API  #### # noqa: E266
 ###############
 
 # Get status of MegaLinter server
@@ -102,7 +101,7 @@ async def request_analysis(
 
 
 ########################
-### Analysis request ###
+### Analysis request ### # noqa: E266
 ########################
 
 # Analysis status enum
