@@ -12,12 +12,12 @@ from uuid import uuid1
 
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
-from megalinter import MegaLinter, alpaca, config  # mypy: allow-attr-defined
+from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel, Field
 from pygments import lexers
 
 print("MegaLinter Server starting...")
-logging.config.fileConfig("logging.conf", disable_existing_loggers=False)
+logging.config.fileConfig("logging.conf", disable_existing_loggers=False) # mypy: allow-attr-defined
 logger = logging.getLogger(__name__)
 alpaca()
 app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DEV"))
