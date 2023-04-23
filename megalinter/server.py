@@ -7,12 +7,12 @@ import os
 import tempfile
 from enum import StrEnum
 from typing import List
+import typing
 from uuid import uuid1
 
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
-from fastapi.responses import JSONResponse
-from megalinter import MegaLinter, alpaca, config
+from megalinter import MegaLinter, alpaca, config # mypy: allow-attr-defined
 from pydantic import BaseModel
 from pygments import lexers
 
@@ -26,7 +26,7 @@ global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0
 max_running_process_number = int(os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5))
 total_process_number_run = 0
-ANALYSIS_EXECUTIONS: List[any] = []
+ANALYSIS_EXECUTIONS: List[typing.Any] = []
 
 ###############
 ####  API  #### # noqa: E266
@@ -171,19 +171,20 @@ class AnalysisExecutor:
     @staticmethod
     def findById(static_analysis_id: str):
         global ANALYSIS_EXECUTIONS
-        for analysis_request in ANALYSIS_EXECUTIONS:
-            analysis_request: AnalysisRequest = analysis_request
-            if analysis_request.id == static_analysis_id:
-                return analysis_request
+        for analysis_executor in ANALYSIS_EXECUTIONS:
+            analysis_executor2: AnalysisExecutor = analysis_executor
+            if analysis_executor2.id == static_analysis_id:
+                return analysis_executor2
         return None
 
     # Find analysis request from unique key, like a repository url
     @staticmethod
     def findByRepository(repository: str):
         global ANALYSIS_EXECUTIONS
-        for analysis_request in ANALYSIS_EXECUTIONS:
-            if analysis_request.repository == repository:
-                return analysis_request
+        for analysis_executor in ANALYSIS_EXECUTIONS:
+            analysis_executor2: AnalysisExecutor = analysis_executor
+            if analysis_executor2.repository == repository:
+                return analysis_executor2
         return None
 
     # Initialize analysis request and assign an unique Id
