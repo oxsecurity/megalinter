@@ -1152,6 +1152,7 @@ description: List of all known articles, blog posts and videos that talk about M
 | [Make Clojure tasks simple and consistent](https://practical.li/blog/posts/make-clojure-tasks-simple-and-consistent/){target=_blank}                                                            | [Practicalli](https://twitter.com/practical_li){target=_blank}                                                                    |
 | [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/){target=_blank} | [Gijs Reijn](https://github.com/gijsreyn){target=_blank}                                                                          |
 | [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211){target=_blank}                                              | [RunningMattress](https://medium.com/@RunningMattress){target=_blank}                                                             |
+| [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide)                                                                         | [Google Cloud](https://cloud.google.com/)                                                                                         |
 
 ### French
 
