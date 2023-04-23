@@ -24,7 +24,7 @@ app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DE
 
 global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0
-max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5)
+max_running_process_number = int(os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5))
 total_process_number_run = 0
 ANALYSIS_EXECUTIONS: List[any] = []
 
@@ -125,7 +125,7 @@ async def get_analysis_by_repo(repo: str):
 )
 async def request_analysis(
     background_tasks: BackgroundTasks,
-    item: AnalysisRequestInput | None = None,
+    item: AnalysisRequestInput,
 ) -> Response:
     # Check server is available
     global running_process_number, max_running_process_number, total_process_number_run
@@ -172,6 +172,7 @@ class AnalysisExecutor:
     def findById(static_analysis_id: str):
         global ANALYSIS_EXECUTIONS
         for analysis_request in ANALYSIS_EXECUTIONS:
+            analysis_request: AnalysisRequest = analysis_request
             if analysis_request.id == static_analysis_id:
                 return analysis_request
         return None
@@ -186,7 +187,7 @@ class AnalysisExecutor:
         return None
 
     # Initialize analysis request and assign an unique Id
-    def initialize(self, request_input: AnalysisRequestInput | None):
+    def initialize(self, request_input: AnalysisRequestInput):
         self.id = str(uuid1())
         self.status = AnalysisStatus.NEW
         self.request_input = request_input
