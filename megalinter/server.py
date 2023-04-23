@@ -99,6 +99,7 @@ async def request_analysis(
     background_tasks.add_task(start_analysis, analysis_request.id)
     return JSONResponse(content=analysis_request.toJsonObject())
 
+
 ########################
 ### Analysis request ###
 ########################
@@ -108,6 +109,7 @@ class AnalysisStatus(StrEnum):
     NEW = "new"
     IN_PROGRESS = "in-progress"
     COMPLETE = "complete"
+
 
 # Outside method to start analysis as a background task so HTTP response can be sent before
 def start_analysis(analysis_request_id: str):
@@ -158,36 +160,62 @@ class AnalysisRequest(BaseModel):
     def initialize_files(self):
         # Clone repo from provided url
         if self.request_item.repositoryUrl:
-            temp_dir = tempfile.mkdtemp()
-            try:
-                git.Repo.clone_from(self.request_item.repositoryUrl, temp_dir)
-            except Exception as e:
-                self.stop_request()
-                raise HTTPException(
-                    status_code=404, detail=f"Unable to clone repository\n{str(e)}"
-                )
-            logger.info(
-                f"Cloned {self.request_item.repositoryUrl} in temp dir {temp_dir}"
-            )
-            self.workspace = temp_dir
-            self.repository = self.request_item.repositoryUrl
+            self.init_from_repository()
             return
         # Detect language and create temporary workspace with file
         elif self.request_item.inputString:
-            code_lexer = lexers.guess_lexer(self.request_item.inputString)
-            logger.info(f"Guessed language {str(code_lexer)}")
-            temp_dir = tempfile.mkdtemp()
-            extension = code_lexer.options
-            sample_file_name = os.path.join(self.workspace,f"sample.{extension}")
-            with open(sample_file_name, "w", encoding="utf-8") as file:
-                file.write(self.request_item.inputString)
-            self.workspace = temp_dir
+            self.init_from_snippet()
+            return
         # Nothing to create a request !
         self.stop_request()
         raise HTTPException(
             status_code=422,
             detail="Unable to initialize files for analysis",  # Unprocessable content
         )
+
+    # Create uniform temp directories
+    def create_temp_dir(self):
+        return tempfile.mkdtemp(prefix="ct-megalinter-x")
+
+    # Init by cloning a remote repository
+    def init_from_repository(self):
+        temp_dir = self.create_temp_dir()
+        try:
+            git.Repo.clone_from(self.request_item.repositoryUrl, temp_dir)
+        except Exception as e:
+            self.stop_request()
+            raise HTTPException(
+                status_code=404, detail=f"Unable to clone repository\n{str(e)}"
+            )
+        logger.info(f"Cloned {self.request_item.repositoryUrl} in temp dir {temp_dir}")
+        self.workspace = temp_dir
+        self.repository = self.request_item.repositoryUrl
+
+    # Init from user snippet
+    def init_from_snippet(self):
+        # Guess language using pygments
+        code_lexer = lexers.guess_lexer(self.request_item.inputString)
+        if not code_lexer:
+            raise HTTPException(
+                status_code=404, detail=f"Unable to detect language from snippet"
+            )
+        logger.info(f"Guessed snipped language: {code_lexer.name}")
+        # Build file name
+        if len(code_lexer.filenames) > 0:
+            if "*." in code_lexer.filenames[0]:
+                snippet_file_name = "snippet" + code_lexer.filenames[0].replace("*", "")
+            else:
+                snippet_file_name = code_lexer.filenames[0]
+        else:
+            raise HTTPException(
+                status_code=404, detail=f"Unable build file from snippet"
+            )
+        logger.info(f"Snippet file name: {snippet_file_name}")
+        temp_dir = self.create_temp_dir()
+        snippet_file = os.path.join(temp_dir, snippet_file_name)
+        with open(snippet_file, "w", encoding="utf-8") as file:
+            file.write(self.request_item.inputString)
+        self.workspace = temp_dir
 
     # Build result for output
     def toJsonObject(self):
