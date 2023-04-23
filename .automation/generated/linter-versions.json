@@ -92,7 +92,7 @@
     "sql-lint": "1.0.0",
     "sqlfluff": "2.0.7",
     "standard": "17.0.0",
-    "stylelint": "15.5.0",
+    "stylelint": "15.6.0",
     "swiftlint": "0.51.0",
     "syft": "0.79.0",
     "tekton-lint": "0.6.0",
