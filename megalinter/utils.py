@@ -394,13 +394,13 @@ def is_azure_devops_pr() -> bool:
 
 
 def is_ci() -> bool:
-    return True if (config.get("CI").casefold() == "true".casefold()
+    return True if (config.get("CI") == "true"
                     or is_github_actions()
                     or is_gitlab_ci()
                     or is_azure_pipelines()) else False
 
 def is_pr() -> bool:
-    return True if (config.get("PULL_REQUEST").casefold() == "true".casefold()
+    return True if (config.get("PULL_REQUEST") == "true"
                     or is_github_pr()
                     or is_gitlab_mr()
                     or is_gitlab_external_pr()
