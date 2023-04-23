@@ -10,6 +10,8 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 import regex
+import os
+import tempfile
 from megalinter import config
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -22,6 +24,31 @@ REPO_HOME_DEFAULT = (
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+
+# Replacements for temp folder in case of MegaLinter server
+LIST_OF_REPLACEMENTS_REGEX = []
+if os.environ.get("MEGALINTER_SERVER", "") == "true":
+    global_temp_dir = tempfile.gettempdir()
+    path_seb_regex = os.path.sep.replace("\\", "\\\\")
+    temp_megalinter_dir = (
+        os.path.join(global_temp_dir, "ct-megalinter-x")
+        .replace("\\", "\\\\")
+        .replace(":", "\\:")
+        + f".*?({path_seb_regex}| |\\n|\\s)"
+    )
+    temp_megalinter_dir_2 = (
+        os.path.join(global_temp_dir, "ct-megalinter-x")
+        .replace("\\", "\\\\")
+        .replace(":", "\\:")
+        + ".*"
+    )
+    temp_megalinter_dir_regex = rf"{temp_megalinter_dir}"
+    temp_megalinter_dir_regex_2 = rf"{temp_megalinter_dir_2}"
+    logging.error("REGEX: " + str(temp_megalinter_dir_regex))
+    LIST_OF_REPLACEMENTS_REGEX = [
+        temp_megalinter_dir_regex,
+        temp_megalinter_dir_regex_2,
+    ]
 LIST_OF_REPLACEMENTS = [
     # MegaLinter image
     [f"{DEFAULT_DOCKER_WORKSPACE_DIR}/", ""],
@@ -287,6 +314,8 @@ def normalize_log_string(str_in):
     str_in = ANSI_ESCAPE_REGEX.sub("", str_in)
     for replacement in LIST_OF_REPLACEMENTS:
         str_in = str_in.replace(replacement[0], replacement[1])
+    for replacement_regex in LIST_OF_REPLACEMENTS_REGEX:
+        str_in = re.sub(replacement_regex, "", str_in)
     return str_in
 
 
