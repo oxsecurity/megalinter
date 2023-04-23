@@ -1,17 +1,17 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2232&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1482&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2233&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1483&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=750&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=57112&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=57141&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 37590 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 37592 |
 | [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7071 |
-| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2403 |
+| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2404 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1989 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1923 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1932 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1907 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1648 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1228 |
@@ -1270,6 +1270,7 @@
 | [beiertu-mms/cli-app-template](https://github.com/beiertu-mms/cli-app-template)                                                                                                 |     0 |
 | [beiertu-mms/sonarqube-report](https://github.com/beiertu-mms/sonarqube-report)                                                                                                 |     0 |
 | [charkchalk/backend](https://github.com/charkchalk/backend)                                                                                                                     |     0 |
+| [SER516-Team-Morpheus/scrum-simulator](https://github.com/SER516-Team-Morpheus/scrum-simulator)                                                                                 |     0 |
 | [dilincoln/capivara-planning-poker](https://github.com/dilincoln/capivara-planning-poker)                                                                                       |     0 |
 | [actions-marketplace-validations/ahmadnassri_action-template-repository-sync](https://github.com/actions-marketplace-validations/ahmadnassri_action-template-repository-sync)   |     0 |
 | [actions-marketplace-validations/dgteixeira_pr-status-giphy-action](https://github.com/actions-marketplace-validations/dgteixeira_pr-status-giphy-action)                       |     0 |
