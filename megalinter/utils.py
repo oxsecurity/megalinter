@@ -44,7 +44,6 @@ if os.environ.get("MEGALINTER_SERVER", "") == "true":
     )
     temp_megalinter_dir_regex = rf"{temp_megalinter_dir}"
     temp_megalinter_dir_regex_2 = rf"{temp_megalinter_dir_2}"
-    logging.error("REGEX: " + str(temp_megalinter_dir_regex))
     LIST_OF_REPLACEMENTS_REGEX = [
         temp_megalinter_dir_regex,
         temp_megalinter_dir_regex_2,
