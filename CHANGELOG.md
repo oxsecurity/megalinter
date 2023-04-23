@@ -122,6 +122,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.30.0 to **1.31.0** on 2023-04-22
   - [protolint](https://github.com/yoheimuta/protolint) from 0.43.1 to **0.43.2** on 2023-04-22
   - [gitleaks](https://github.com/zricethezav/gitleaks) from 8.16.2 to **8.16.3** on 2023-04-23
+  - [stylelint](https://stylelint.io) from 15.5.0 to **15.6.0** on 2023-04-23
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
