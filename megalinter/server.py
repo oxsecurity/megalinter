@@ -14,6 +14,7 @@ from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
 from fastapi.responses import JSONResponse
 from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel
+from pygments import lexers
 
 print("MegaLinter Server starting...")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)
@@ -26,6 +27,10 @@ running_process_number = 0
 max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5)
 total_process_number_run = 0
 ANALYSIS_REQUESTS: List[any] = []
+
+###############
+####  API  #### # noqa: E266
+###############
 
 
 # Get status of MegaLinter server
@@ -96,6 +101,11 @@ async def request_analysis(
     return JSONResponse(content=analysis_request.toJsonObject())
 
 
+########################
+### Analysis request ### # noqa: E266
+########################
+
+
 # Analysis status enum
 class AnalysisStatus(StrEnum):
     NEW = "new"
@@ -103,6 +113,7 @@ class AnalysisStatus(StrEnum):
     COMPLETE = "complete"
 
 
+# Outside method to start analysis as a background task so HTTP response can be sent before
 def start_analysis(analysis_request_id: str):
     analysis_request: AnalysisRequest = AnalysisRequest.findById(analysis_request_id)
     analysis_request.process()
@@ -138,6 +149,7 @@ class AnalysisRequest(BaseModel):
                 return analysis_request
         return None
 
+    # Initialize analysis request and assign an unique Id
     def initialize(self, request_item: AnalysisRequestItem | None):
         self.id = str(uuid1())
         self.status = AnalysisStatus.NEW
@@ -146,22 +158,15 @@ class AnalysisRequest(BaseModel):
             self.web_hook_url = request_item.webHookUrl
         logger.info(f"Analysis request {self.id} has been initialized")
 
+    # Initialize files for analysis
     def initialize_files(self):
         # Clone repo from provided url
         if self.request_item.repositoryUrl:
-            temp_dir = tempfile.mkdtemp()
-            try:
-                git.Repo.clone_from(self.request_item.repositoryUrl, temp_dir)
-            except Exception as e:
-                self.stop_request()
-                raise HTTPException(
-                    status_code=404, detail=f"Unable to clone repository\n{str(e)}"
-                )
-            logger.info(
-                f"Cloned {self.request_item.repositoryUrl} in temp dir {temp_dir}"
-            )
-            self.workspace = temp_dir
-            self.repository = self.request_item.repositoryUrl
+            self.init_from_repository()
+            return
+        # Detect language and create temporary workspace with file
+        elif self.request_item.inputString:
+            self.init_from_snippet()
             return
         # Nothing to create a request !
         self.stop_request()
@@ -170,6 +175,53 @@ class AnalysisRequest(BaseModel):
             detail="Unable to initialize files for analysis",  # Unprocessable content
         )
 
+    # Create uniform temp directories
+    def create_temp_dir(self):
+        return tempfile.mkdtemp(prefix="ct-megalinter-x")
+
+    # Init by cloning a remote repository
+    def init_from_repository(self):
+        temp_dir = self.create_temp_dir()
+        try:
+            git.Repo.clone_from(self.request_item.repositoryUrl, temp_dir)
+        except Exception as e:
+            self.stop_request()
+            raise HTTPException(
+                status_code=404, detail=f"Unable to clone repository\n{str(e)}"
+            )
+        logger.info(f"Cloned {self.request_item.repositoryUrl} in temp dir {temp_dir}")
+        self.workspace = temp_dir
+        self.repository = self.request_item.repositoryUrl
+
+    # Init from user snippet
+    def init_from_snippet(self):
+        # Guess language using pygments
+        code_lexer = lexers.guess_lexer(self.request_item.inputString)
+        if not code_lexer:
+            self.stop_request()
+            raise HTTPException(
+                status_code=404, detail="Unable to detect language from snippet"
+            )
+        logger.info(f"Guessed snipped language: {code_lexer.name}")
+        # Build file name
+        if len(code_lexer.filenames) > 0:
+            if "*." in code_lexer.filenames[0]:
+                snippet_file_name = "snippet" + code_lexer.filenames[0].replace("*", "")
+            else:
+                snippet_file_name = code_lexer.filenames[0]
+        else:
+            self.stop_request()
+            raise HTTPException(
+                status_code=404, detail="Unable build file from snippet"
+            )
+        logger.info(f"Snippet file name: {snippet_file_name}")
+        temp_dir = self.create_temp_dir()
+        snippet_file = os.path.join(temp_dir, snippet_file_name)
+        with open(snippet_file, "w", encoding="utf-8") as file:
+            file.write(self.request_item.inputString)
+        self.workspace = temp_dir
+
+    # Build result for output
     def toJsonObject(self):
         return {
             "id": self.id,
@@ -182,10 +234,12 @@ class AnalysisRequest(BaseModel):
             "results": self.results,
         }
 
+    # Stop request and release a slot for a next request
     def stop_request(self):
         global running_process_number
         running_process_number -= 1
 
+    # Change status of analysis request
     def change_status(self, status: AnalysisStatus):
         self.status = status
         logger.info(f"Analysis request {self.id} status change: {status}")
@@ -204,6 +258,7 @@ class AnalysisRequest(BaseModel):
             ANALYSIS_REQUESTS.append(self)
         logger.info(f"Analysis request {self.id} has been saved")
 
+    # Run MegaLinter
     def process(self):
         mega_linter = MegaLinter.Megalinter(
             {
