@@ -12,8 +12,8 @@ from uuid import uuid1
 
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
-from megalinter import MegaLinter, alpaca, config # mypy: allow-attr-defined
-from pydantic import BaseModel
+from megalinter import MegaLinter, alpaca, config  # mypy: allow-attr-defined
+from pydantic import BaseModel, Field
 from pygments import lexers
 
 print("MegaLinter Server starting...")
@@ -42,9 +42,29 @@ class AnalysisStatus(StrEnum):
 
 # Analysis request model
 class AnalysisRequestInput(BaseModel):
-    snippet: str | None = None
-    repositoryUrl: str | None = None
-    webHookUrl: str | None = None
+    snippet: str | None = Field(
+        default=None,
+        description="Input any code snippet",
+        example="#!/usr/bin/env python3",
+    )
+    repositoryUrl: str | None = Field(
+        default=None,
+        description="Input a public repository url",
+        example="https://github.com/nvuillam/github-dependents-info",
+    )
+    webHookUrl: str | None = Field(
+        default=None,
+        description="WebHook URL to receive results",
+        example="https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
+    )
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "repositoryUrl": "https://github.com/nvuillam/github-dependents-info",
+                "webHookUrl": "https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
+            }
+        }
 
 
 # Linter status result
@@ -78,8 +98,42 @@ class AnalysisRequest(BaseModel):
     results: List[AnalysisLinterResult] = []
 
 
+class ServerInfo(BaseModel):
+    version: str = Field(
+        description="Version of MegaLinter Server",
+        example="6.21.0",
+    )
+    runningProcessNumber: int = Field(
+        description="Number of currently running analysis",
+        example=6,
+    )
+    maxRunningProcessNumber: int = Field(
+        description="Maximum Number of parallel running analysis",
+        example=10,
+    )
+    totalProcessRunNumber: int = Field(
+        description="Total Number of analysis since the server has been started",
+        example=345,
+    )
+    available: bool = Field(
+        description="Returns true if the server is available (total process number not currently reached)",
+        example=True,
+    )
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "version": "6.21.0",
+                "runningProcessNumber": 4,
+                "maxRunningProcessNumber": 10,
+                "totalProcessRunNumber": 412,
+                "available": True,
+            }
+        }
+
+
 # Get status of MegaLinter server
-@app.get("/", status_code=status.HTTP_200_OK)
+@app.get("/", response_model=ServerInfo, status_code=status.HTTP_200_OK)
 async def server_info():
     global running_process_number, max_running_process_number, total_process_number_run
     return {
