@@ -196,6 +196,7 @@ class AnalysisRequest(BaseModel):
         # Guess language using pygments
         code_lexer = lexers.guess_lexer(self.request_item.inputString)
         if not code_lexer:
+            self.stop_request()
             raise HTTPException(
                 status_code=404, detail=f"Unable to detect language from snippet"
             )
@@ -207,6 +208,7 @@ class AnalysisRequest(BaseModel):
             else:
                 snippet_file_name = code_lexer.filenames[0]
         else:
+            self.stop_request()
             raise HTTPException(
                 status_code=404, detail=f"Unable build file from snippet"
             )
