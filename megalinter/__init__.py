@@ -17,5 +17,4 @@ __all__ = [
     "utils",
     "utilstest",
     "alpaca"
-    # "megalinter_server"
 ]

@@ -75,7 +75,8 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # MegaLinter HTTP server run
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
-  pip install "uvicorn[standard]"
+  # Install python dependencies used by server to avoid to make bigger docker images
+  pip install fastapi pygments "uvicorn[standard]" 
   HOST="${HOST:-0.0.0.0}" # Default host
   PORT="${PORT:-8000}"    # Default port
   uvicorn megalinter.server:app --host "$HOST" --port "$PORT"

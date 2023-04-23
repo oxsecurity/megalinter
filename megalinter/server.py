@@ -12,6 +12,7 @@ from uuid import uuid1
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
 from fastapi.responses import JSONResponse
+from pygments import lexers
 from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel
 
@@ -27,6 +28,9 @@ max_running_process_number = os.environ.get("MAX_RUNNING_PROCESS_NUMBER", 5)
 total_process_number_run = 0
 ANALYSIS_REQUESTS: List[any] = []
 
+###############
+####  API  ####
+###############
 
 # Get status of MegaLinter server
 @app.get("/", status_code=status.HTTP_200_OK)
@@ -95,6 +99,9 @@ async def request_analysis(
     background_tasks.add_task(start_analysis, analysis_request.id)
     return JSONResponse(content=analysis_request.toJsonObject())
 
+########################
+### Analysis request ###
+########################
 
 # Analysis status enum
 class AnalysisStatus(StrEnum):
@@ -102,7 +109,7 @@ class AnalysisStatus(StrEnum):
     IN_PROGRESS = "in-progress"
     COMPLETE = "complete"
 
-
+# Outside method to start analysis as a background task so HTTP response can be sent before
 def start_analysis(analysis_request_id: str):
     analysis_request: AnalysisRequest = AnalysisRequest.findById(analysis_request_id)
     analysis_request.process()
@@ -138,6 +145,7 @@ class AnalysisRequest(BaseModel):
                 return analysis_request
         return None
 
+    # Initialize analysis request and assign an unique Id
     def initialize(self, request_item: AnalysisRequestItem | None):
         self.id = str(uuid1())
         self.status = AnalysisStatus.NEW
@@ -146,6 +154,7 @@ class AnalysisRequest(BaseModel):
             self.web_hook_url = request_item.webHookUrl
         logger.info(f"Analysis request {self.id} has been initialized")
 
+    # Initialize files for analysis
     def initialize_files(self):
         # Clone repo from provided url
         if self.request_item.repositoryUrl:
@@ -163,6 +172,16 @@ class AnalysisRequest(BaseModel):
             self.workspace = temp_dir
             self.repository = self.request_item.repositoryUrl
             return
+        # Detect language and create temporary workspace with file
+        elif self.request_item.inputString:
+            code_lexer = lexers.guess_lexer(self.request_item.inputString)
+            logger.info(f"Guessed language {str(code_lexer)}")
+            temp_dir = tempfile.mkdtemp()
+            extension = code_lexer.options
+            sample_file_name = os.path.join(self.workspace,f"sample.{extension}")
+            with open(sample_file_name, "w", encoding="utf-8") as file:
+                file.write(self.request_item.inputString)
+            self.workspace = temp_dir
         # Nothing to create a request !
         self.stop_request()
         raise HTTPException(
@@ -170,6 +189,7 @@ class AnalysisRequest(BaseModel):
             detail="Unable to initialize files for analysis",  # Unprocessable content
         )
 
+    # Build result for output
     def toJsonObject(self):
         return {
             "id": self.id,
@@ -182,10 +202,12 @@ class AnalysisRequest(BaseModel):
             "results": self.results,
         }
 
+    # Stop request and release a slot for a next request
     def stop_request(self):
         global running_process_number
         running_process_number -= 1
 
+    # Change status of analysis request
     def change_status(self, status: AnalysisStatus):
         self.status = status
         logger.info(f"Analysis request {self.id} status change: {status}")
@@ -204,6 +226,7 @@ class AnalysisRequest(BaseModel):
             ANALYSIS_REQUESTS.append(self)
         logger.info(f"Analysis request {self.id} has been saved")
 
+    # Run MegaLinter
     def process(self):
         mega_linter = MegaLinter.Megalinter(
             {

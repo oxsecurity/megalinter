@@ -20,8 +20,7 @@ setup(
         "pyyaml",
         "requests==2.24.0",
         "terminaltables",
-        "importlib-metadata>=3.10",
-        "fastapi"
+        "importlib-metadata>=3.10"
     ],
     zip_safe=False,
 )
