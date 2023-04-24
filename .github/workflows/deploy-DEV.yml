@@ -56,52 +56,65 @@ jobs:
       shouldLoginDockerHub: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter') }}
       shouldLoginGithub: false
       dockerfile: ${{ (contains(github.event.head_commit.message, 'quick build') && 'Dockerfile-quick') || 'Dockerfile' }}
-      push: false
-      load: ${{ !(
-          (
-          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
-          (github.event_name == 'push' && github.repository != 'oxsecurity/megalinter')
-          )
-          &&
-          !contains(github.event.head_commit.message, 'quick build')
-        )
-      }}
+      push: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter') }}
       imageName: megalinter
+  test:
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        platform: [amd64] #,linux/arm64 -Temporary, getting no space left on device
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: oci-tar
+          path: /oci-tar
+      - name: Load image
+        shell: bash
+        run: |
+          if [[ -f /oci-tar/image.tar ]]; then
+            skopeo copy --override-os=linux --override-arch=${{ matrix.platform }} oci-archive:/oci-tar/image.tar oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+          fi
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
-#    steps:
-#
-#      #####################################
-#      # Run Linter test cases #
-#      #####################################
-#      - name: Run Test Cases
-#        shell: bash
-#        run: |
-#          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
-#          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
-#
-#          export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
-#          TEST_KEYWORDS_TO_USE=""
-#          if [[ "${{ github.event.head_commit.message }}" == *"TEST_KEYWORDS="* ]]; then
-#            COMMIT_MSG="${{ github.event.head_commit.message }}"
-#            TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
-#            echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
-#            if [[ "${TEST_KEYWORDS_TO_USE}" =~ $'\r' ]]; then
-#                echo "Problem while parsing test keywords: switch back to all tests"
-#                TEST_KEYWORDS_TO_USE=""
-#            fi
-#          fi
-#          docker image ls
-#          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
-#        timeout-minutes: 90
-#
-#      #####################################
-#      # Run Linter against ALL code base  #
-#      #####################################
-#      - name: Run against all code base
-#        if: "!contains(github.event.head_commit.message, 'quick build')"
-#        shell: bash
-#        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
-#        timeout-minutes: 15
+      #####################################
+      # Run Linter test cases #
+      #####################################
+      - name: Run Test Cases
+        shell: bash
+        run: |
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
+
+          export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
+          TEST_KEYWORDS_TO_USE=""
+          if [[ "${{ github.event.head_commit.message }}" == *"TEST_KEYWORDS="* ]]; then
+            COMMIT_MSG="${{ github.event.head_commit.message }}"
+            TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
+            echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
+            if [[ "${TEST_KEYWORDS_TO_USE}" =~ $'\r' ]]; then
+                echo "Problem while parsing test keywords: switch back to all tests"
+                TEST_KEYWORDS_TO_USE=""
+            fi
+          fi
+
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+        timeout-minutes: 90
+
+      #####################################
+      # Run Linter against ALL code base  #
+      #####################################
+      - name: Run against all code base
+        if: "!contains(github.event.head_commit.message, 'quick build')"
+        shell: bash
+        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+        timeout-minutes: 15
 #
 #      # Upload MegaLinter artifacts
 #      - name: Archive production artifacts

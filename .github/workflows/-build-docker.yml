@@ -37,6 +37,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -84,14 +91,14 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           file: ${{ inputs.dockerfile }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64 #,linux/arm64 -Temporary, getting no space left on device
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
           load: ${{ inputs.load }}
           push: ${{ inputs.push }}
-#          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
+          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
