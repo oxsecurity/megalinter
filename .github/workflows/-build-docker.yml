@@ -84,14 +84,14 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           file: ${{ inputs.dockerfile }}
-          platforms: linux/amd64 #,linux/arm64 -Temporary
+          platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
           load: ${{ inputs.load }}
           push: ${{ inputs.push }}
-          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
+#          outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
