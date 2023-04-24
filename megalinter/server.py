@@ -5,9 +5,9 @@ Start MegaLinter server
 import logging
 import os
 import tempfile
+import typing
 from enum import StrEnum
 from typing import List
-import typing
 from uuid import uuid1
 
 import git
@@ -298,6 +298,7 @@ async def request_analysis(
 ##########################
 ### Analysis Execution ### # noqa: E266
 ##########################
+
 
 # Outside method to start analysis as a background task so HTTP response can be sent before
 def start_analysis(analysis_request_id: str):
