@@ -126,6 +126,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 15.5.0 to **15.6.0** on 2023-04-23
   - [prettier](https://prettier.io/) from 2.8.7 to **2.8.8** on 2023-04-23
   - [checkov](https://www.checkov.io/) from 2.3.192 to **2.3.194** on 2023-04-23
+  - [checkov](https://www.checkov.io/) from 2.3.194 to **2.3.197** on 2023-04-24
+  - [vale](https://vale.sh/) from 2.24.3 to **2.24.4** on 2023-04-24
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
