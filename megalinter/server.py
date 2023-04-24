@@ -117,7 +117,7 @@ class AnalysisLinterResult(BaseModel):
     )
     outputText: str | None = Field(
         default=None,
-        description="Console output of the linter process, when avaialble",
+        description="Console output of the linter process, when available",
         example="",
     )
     outputSarif: object | None = Field(
