@@ -59,6 +59,8 @@ jobs:
       push: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter') }}
       imageName: megalinter
   test:
+    name: Test
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       max-parallel: 10
