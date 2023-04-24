@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 from pygments import lexers
 
 print("MegaLinter Server starting...")
-logging.config.fileConfig("logging.conf", disable_existing_loggers=False) # type: ignore[attr-defined]
+logging.config.fileConfig("logging.conf", disable_existing_loggers=False)  # type: ignore[attr-defined]
 logger = logging.getLogger(__name__)
 alpaca()
 app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DEV"))
@@ -75,27 +75,107 @@ class AnalysisLinterResultStatus(StrEnum):
 
 # Linter result
 class AnalysisLinterResult(BaseModel):
-    requestId: str | None = None
-    status: AnalysisLinterResultStatus | None = None
-    statusMessage: str | None = None
-    errorNumber: int | None = None
-    elapsedTime: float | None = None
-    descriptorId: str | None = None
-    linterId: str | None = None
-    linterKey: str | None = None
-    isFormatter: bool | None = None
-    docUrl: str | None = None
-    outputText: str | None = None
-    outputSarif: object | None = None
+    requestId: str = Field(
+        description="Analysis request id",
+        example="530661a2-e266-11ed-9ab4-683e263f13c0",
+    )
+    status: AnalysisLinterResultStatus = Field(
+        description="Status of the linter (success, error)",
+        example="success",
+    )
+    statusMessage: str = Field(
+        description="Status message",
+        example="No errors were found in the linting process",
+    )
+    errorNumber: int = Field(
+        description="Number of errors found",
+        example=8,
+    )
+    elapsedTime: float = Field(
+        description="Elapsed time to run the linter",
+        example=1.62,
+    )
+    descriptorId: str = Field(
+        description="MegaLinter descriptor identifier",
+        example="PYTHON",
+    )
+    linterId: str = Field(
+        description="MegaLinter linter name",
+        example="ruff",
+    )
+    linterKey: str = Field(
+        description="MegaLinter linter key",
+        example="PYTHON_RUFF",
+    )
+    isFormatter: bool = Field(
+        description="True if the linter is flagged as a formatter",
+        example=True,
+    )
+    docUrl: str = Field(
+        description="URL of the linter documentation on MegaLinter online docs",
+        example="https://megalinter.io/latest/descriptors/python_ruff/",
+    )
+    outputText: str | None = Field(
+        default=None,
+        description="Console output of the linter process, when avaialble",
+        example="",
+    )
+    outputSarif: object | None = Field(
+        default=None,
+        description="Sarif output of the linter process, when available",
+        example={
+            "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+            "runs": [
+                {
+                    "columnKind": "utf16CodeUnits",
+                    "properties": {
+                        "megalinter": {
+                            "docUrl": "https://megalinter.io/latest/descriptors/repository_devskim",
+                            "linterKey": "REPOSITORY_DEVSKIM",
+                            "linterVersion": "0.6.5",
+                        }
+                    },
+                    "results": [],
+                    "tool": {
+                        "driver": {
+                            "fullName": "Microsoft DevSkim Command Line Interface",
+                            "informationUri": "https://megalinter.io/latest/descriptors/repository_devskim",
+                            "name": "devskim (MegaLinter REPOSITORY_DEVSKIM)",
+                            "version": "0.6.5+331482234a",
+                        }
+                    },
+                }
+            ],
+            "version": "2.1.0",
+        },
+    )
 
 
 # Full Analysis result
 class AnalysisRequest(BaseModel):
-    id: str | None = None
-    status: AnalysisStatus | None = None
-    repository: str | None = None
-    requestInput: AnalysisRequestInput | None = None
-    results: List[AnalysisLinterResult] = []
+    id: str = Field(
+        description="Analysis request unique id",
+        example="530661a2-e266-11ed-9ab4-683e263f13c0",
+    )
+    status: AnalysisStatus = Field(
+        description="Analysis request status (new,in-progress,complete)",
+        example="complete",
+    )
+    repository: str | None = Field(
+        description="Repository used for analysis",
+        example="https://github.com/nvuillam/github-dependents-info",
+    )
+    requestInput: AnalysisRequestInput | None = Field(
+        description="Input initially sent that generated this analysis request",
+        example={
+            "repositoryUrl": "https://github.com/nvuillam/github-dependents-info",
+            "webHookUrl": "https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
+        },
+    )
+    results: List[AnalysisLinterResult] = Field(
+        default=[],
+        description="All linter analysis results"
+    )
 
 
 class ServerInfo(BaseModel):
