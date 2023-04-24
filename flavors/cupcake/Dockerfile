@@ -30,7 +30,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM zricethezav/gitleaks:v8.16.3 as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
