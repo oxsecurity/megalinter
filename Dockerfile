@@ -35,7 +35,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.16.3 as gitleaks
 FROM jdkato/vale:latest as vale
-FROM ghcr.io/terraform-linters/tflint:v0.46.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
