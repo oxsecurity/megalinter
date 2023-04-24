@@ -23,7 +23,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.194**
+- Version in MegaLinter: **2.3.197**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -390,7 +390,8 @@ options:
                         exclude extra resources (resources without violations)
                         from report output [env var:
                         CKV_SKIP_RESOURCES_WITHOUT_VIOLATIONS]
-  --deep-analysis       Enable combine tf graph and rf plan graph
+  --deep-analysis       Combine the TF Plan and TF graphs to make connections
+                        not available in either
   --no-fail-on-crash    Return exit code 0 instead of 2 [env var:
                         CKV_NO_FAIL_ON_CRASH]
   --mask MASK           List of <resource_type>:<variable> OR <variable> only.

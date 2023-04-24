@@ -8,7 +8,7 @@
     "black": "23.3.0",
     "cfn-lint": "0.77.2",
     "checkmake": "0.2.0",
-    "checkov": "2.3.194",
+    "checkov": "2.3.197",
     "checkstyle": "10.9.3",
     "chktex": "1.7.6",
     "clippy": "0.1.69",
@@ -103,7 +103,7 @@
     "trivy": "0.40.0",
     "tsqllint": "1.15.3.0",
     "v8r": "1.0.0",
-    "vale": "2.24.3",
+    "vale": "2.24.4",
     "xmllint": "21004",
     "yamllint": "1.31.0"
 }
