@@ -173,8 +173,7 @@ class AnalysisRequest(BaseModel):
         },
     )
     results: List[AnalysisLinterResult] = Field(
-        default=[],
-        description="All linter analysis results"
+        default=[], description="All linter analysis results"
     )
 
 
@@ -213,7 +212,12 @@ class ServerInfo(BaseModel):
 
 
 # Get status of MegaLinter server
-@app.get("/", response_model=ServerInfo, status_code=status.HTTP_200_OK)
+@app.get(
+    "/",
+    response_model=ServerInfo,
+    status_code=status.HTTP_200_OK,
+    summary="Returns MegaLinter server version and workload info",
+)
 async def server_info():
     global running_process_number, max_running_process_number, total_process_number_run
     return {
@@ -230,6 +234,7 @@ async def server_info():
     "/analysis/{item_id}",
     response_model=AnalysisRequest,
     status_code=status.HTTP_200_OK,
+    summary="Returns status (and result if available) of an analysis",
 )
 async def get_analysis_by_id(item_id):
     global ANALYSIS_EXECUTIONS
@@ -242,7 +247,12 @@ async def get_analysis_by_id(item_id):
 
 
 # Find request by repository url
-@app.get("/analysis/", response_model=AnalysisRequest, status_code=status.HTTP_200_OK)
+@app.get(
+    "/analysis/",
+    response_model=AnalysisRequest,
+    status_code=status.HTTP_200_OK,
+    summary="Find an existing analysis using repository url as criteria",
+)
 async def get_analysis_by_repo(repo: str):
     global ANALYSIS_EXECUTIONS
     analysis_executor: AnalysisExecutor = AnalysisExecutor.findByRepository(repo)
@@ -255,7 +265,13 @@ async def get_analysis_by_repo(repo: str):
 
 # Post a new request to MegaLinter
 @app.post(
-    "/analysis", response_model=AnalysisRequest, status_code=status.HTTP_201_CREATED
+    "/analysis",
+    response_model=AnalysisRequest,
+    status_code=status.HTTP_201_CREATED,
+    summary="Requests a new analysis using repository url or snippet",
+    description="""If the analysis initialization is successful, an id will be returned.
+    If webHookUrl is provided, everytime a linter will be completed, the result will be sent to this HTTP webhook
+    """,
 )
 async def request_analysis(
     background_tasks: BackgroundTasks,
