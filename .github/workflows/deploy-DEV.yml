@@ -69,15 +69,21 @@ jobs:
         platform: [amd64] #,linux/arm64 -Temporary, getting no space left on device
     steps:
       - uses: actions/checkout@v3
+      - name: Build image tag name
+        id: image_tag
+        run: |
+          BRANCH_NAME="${GITHUB_REF##*/}"
+          TAG="test-${{ github.actor }}-${BRANCH_NAME}"
+          echo "Tag name: ${TAG}"
+          echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
       - uses: actions/download-artifact@v3
         with:
           name: oci-tar
-          path: /oci-tar
       - name: Load image
         shell: bash
         run: |
-          if [[ -f /oci-tar/image.tar ]]; then
-            skopeo copy --override-os=linux --override-arch=${{ matrix.platform }} oci-archive:/oci-tar/image.tar oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+          if [[ -f image.tar ]]; then
+            skopeo copy --override-os=linux --override-arch=${{ matrix.platform }} oci-archive:image.tar docker-daemon:oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
           fi
       # Free disk space
       - name: Free Disk space
