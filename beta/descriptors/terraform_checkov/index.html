@@ -11,7 +11,7 @@
 <link href="../terraform_terraform_fmt/" rel="prev"/>
 <link href="../terraform_kics/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.7" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.8" name="generator"/>
 <title>checkov configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.ded33207.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
@@ -2429,7 +2429,7 @@
 </blockquote>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.194</strong></li>
+<li>Version in MegaLinter: <strong>2.3.197</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -2874,7 +2874,8 @@ options:
                         exclude extra resources (resources without violations)
                         from report output [env var:
                         CKV_SKIP_RESOURCES_WITHOUT_VIOLATIONS]
-  --deep-analysis       Enable combine tf graph and rf plan graph
+  --deep-analysis       Combine the TF Plan and TF graphs to make connections
+                        not available in either
   --no-fail-on-crash    Return exit code 0 instead of 2 [env var:
                         CKV_NO_FAIL_ON_CRASH]
   --mask MASK           List of &lt;resource_type&gt;:&lt;variable&gt; OR &lt;variable&gt; only.
