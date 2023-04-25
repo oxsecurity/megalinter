@@ -133,6 +133,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.pycqa.org) from 2.17.2 to **2.17.3** on 2023-04-25
   - [checkov](https://www.checkov.io/) from 2.3.197 to **2.3.199** on 2023-04-25
   - [tflint](https://github.com/terraform-linters/tflint) from 0.46.0 to **0.46.1** on 2023-04-25
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.262 to **0.0.263** on 2023-04-25
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
