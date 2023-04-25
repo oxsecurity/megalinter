@@ -128,6 +128,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.192 to **2.3.194** on 2023-04-23
   - [checkov](https://www.checkov.io/) from 2.3.194 to **2.3.197** on 2023-04-24
   - [vale](https://vale.sh/) from 2.24.3 to **2.24.4** on 2023-04-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.2 to **0.77.3** on 2023-04-25
+  - [djlint](https://djlint.com/) from 1.23.3 to **1.24.0** on 2023-04-25
+  - [pylint](https://pylint.pycqa.org) from 2.17.2 to **2.17.3** on 2023-04-25
+  - [checkov](https://www.checkov.io/) from 2.3.197 to **2.3.199** on 2023-04-25
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.46.0 to **0.46.1** on 2023-04-25
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
