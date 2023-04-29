@@ -317,8 +317,8 @@ class Megalinter:
     def get_workspace(self, params):
         if "workspace" in params:
             self.arg_input = params["workspace"]
-        default_workspace = config.get(self.request_id, "DEFAULT_WORKSPACE", "")
-        github_workspace = config.get(self.request_id, "GITHUB_WORKSPACE", "")
+        default_workspace = config.get(None, "DEFAULT_WORKSPACE", "")
+        github_workspace = config.get(None, "GITHUB_WORKSPACE", "")
         # Use CLI input argument
         if self.arg_input is not None:
             if os.path.isdir(self.arg_input):
