@@ -9,6 +9,4 @@ from megalinter import Linter, config
 
 class ValeLinter(Linter):
     def pre_test(self):
-        config.set_value(
-            self.request_id, "SPELL_VALE_FILE_EXTENSIONS", [".js", ".md"]
-        )
+        config.set_value(self.request_id, "SPELL_VALE_FILE_EXTENSIONS", [".js", ".md"])
