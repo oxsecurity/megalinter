@@ -130,7 +130,7 @@ class ConsoleReporter(Reporter):
                     f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
                 )
             else:
-                build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
+                build_version = config.get(None,"BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
                     "v5"
                     if "v5" in build_version

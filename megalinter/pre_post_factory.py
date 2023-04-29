@@ -63,7 +63,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     add_in_logs(
         linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"]
     )
-    subprocess_env = {**os.environ, **mega_linter.exec_env}
+    subprocess_env = config.get(mega_linter.request_id)
     # Run command
     process = subprocess.run(
         command_info["command"],
