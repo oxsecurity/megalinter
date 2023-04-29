@@ -157,6 +157,13 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
+def get_for_env(request_id):
+    config_dict = get_config(request_id).copy()
+    for key, value in config_dict.items():
+        if not isinstance(value, str):
+            config_dict[key] = str(value)
+    return config_dict
+
 def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
