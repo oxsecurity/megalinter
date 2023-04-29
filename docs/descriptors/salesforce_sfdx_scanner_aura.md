@@ -86,6 +86,9 @@ sfdx scanner:run
 ### Help content
 
 ```shell
+(node:1540) Warning: Deprecated environment variable: SFDX_AUTOUPDATE_DISABLE. Please use SF_AUTOUPDATE_DISABLE instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1540) Warning: Deprecated environment variable: SFDX_DISABLE_AUTOUPDATE. Please use SF_DISABLE_AUTOUPDATE instead.
 scan a codebase with a selection of rules
 
 USAGE
@@ -156,7 +159,11 @@ FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
+(node:1555) Warning: Deprecated environment variable: SFDX_AUTOUPDATE_DISABLE. Please use SF_AUTOUPDATE_DISABLE instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1555) Warning: Deprecated environment variable: SFDX_DISABLE_AUTOUPDATE. Please use SF_DISABLE_AUTOUPDATE instead.
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
+(node:1555) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ──────
  VfCsrf                                                 visualforce Security              Basic VF                                         pmd               N
