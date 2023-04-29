@@ -875,7 +875,7 @@ class Linter:
     def execute_lint_command(self, command):
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
-        subprocess_env = {**config.get(self.request_id), "FORCE_COLOR": "0"}
+        subprocess_env = {**os.environ,**config.get(self.request_id), "FORCE_COLOR": "0"}
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(
@@ -996,7 +996,7 @@ class Linter:
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
-        subprocess_env = {**config.get(self.request_id), "FORCE_COLOR": "0"}
+        subprocess_env = {**os.environ,**config.get(self.request_id), "FORCE_COLOR": "0"}
         try:
             process = subprocess.run(
                 command,
@@ -1042,6 +1042,7 @@ class Linter:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
                 subprocess_env = {
+                    **os.environ,
                     **config.get(self.request_id),
                     "FORCE_COLOR": "0",
                 }
