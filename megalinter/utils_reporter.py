@@ -224,7 +224,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
         stderr=subprocess.STDOUT,
         text=True,
         input=sarif_in + "\n",
-        env=config.build_env(request_id)
+        env=config.build_env(request_id),
     )
     return_code = process.returncode
     output = utils.decode_utf8(process.stdout)

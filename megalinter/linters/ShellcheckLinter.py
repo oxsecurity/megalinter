@@ -6,7 +6,7 @@ Use Shellcheck to analyze shell / bash code
 import logging
 import subprocess
 
-from megalinter import Linter, utils, config
+from megalinter import Linter, config, utils
 
 
 class ShellcheckLinter(Linter):

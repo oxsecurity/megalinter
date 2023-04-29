@@ -981,7 +981,9 @@ class Linter:
         # Convert SARIF into human readable text for Console & Text reporters
         if sarif_confirmed is True and self.master.sarif_to_human is True:
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
-                self.stdout_human = utils_reporter.convert_sarif_to_human(file.read(),self.request_id)
+                self.stdout_human = utils_reporter.convert_sarif_to_human(
+                    file.read(), self.request_id
+                )
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
