@@ -140,8 +140,7 @@ class Linter:
         self.reporters = []
 
         # Initialize parameters
-        if params is None:
-            params = {
+        default_params = {
                 "default_linter_activation": False,
                 "enable_descriptors": [],
                 "enable_linters": [],
@@ -150,6 +149,10 @@ class Linter:
                 "disable_errors_linters": [],
                 "post_linter_status": True,
             }
+        if params is None:
+            params = default_params
+        else:
+            params = {**default_params,**params}
 
         # Initialize with configuration data
         for key, value in linter_config.items():
@@ -163,7 +166,7 @@ class Linter:
         else:
             raise Exception("Missing megalinter request_id")
 
-        self.is_active = params["default_linter_activation"]
+        self.is_active = False if "default_linter_activation" not in params else params["default_linter_activation"]
         # Disable errors
         self.disable_errors_if_less_than = None
         self.disable_errors = (
