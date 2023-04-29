@@ -857,8 +857,7 @@ class Megalinter:
                 ],
             )
 
-    @staticmethod
-    def display_header():
+    def display_header(self):
         # Header prints
         logging.info(utils.format_hyphens(""))
         logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
@@ -889,7 +888,7 @@ class Megalinter:
             logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
             logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
         # Display config variables for debug mode
-        for name, value in sorted(config.get_config(None).items()):
+        for name, value in sorted(config.get_config(self.request_id).items()):
             if name not in ["GITHUB_TOKEN", "PAT"]:
                 logging.debug("" + name + "=" + str(value))
             else:

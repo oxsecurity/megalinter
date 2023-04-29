@@ -151,7 +151,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.24.4 to **2.25.2** on 2023-04-29
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.5 to **1.4.6** on 2023-04-29
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.4 to **0.45.5** on 2023-04-29
-  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.2.15 to **4.4.23** on 2023-04-29
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
