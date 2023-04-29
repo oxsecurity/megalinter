@@ -69,7 +69,7 @@ def get_image_flavor():
 
 
 # Compare linters active for the current repo, and linters available in the current MegaLinter image flavor
-def check_active_linters_match_flavor(active_linters):
+def check_active_linters_match_flavor(active_linters,request_id):
     flavor = get_image_flavor()
     if flavor == "all":
         logging.debug('MegaLinter flavor is "all", no need to check match with linters')
@@ -105,7 +105,7 @@ def check_active_linters_match_flavor(active_linters):
             # Stop the process if user wanted so in case of missing linters
             if (
                 config.get(
-                    active_linter[0].master.request_id,
+                    request_id,
                     "FAIL_IF_MISSING_LINTER_IN_FLAVOR",
                     "",
                 )

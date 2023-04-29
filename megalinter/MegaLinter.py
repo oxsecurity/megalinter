@@ -191,7 +191,7 @@ class Megalinter:
             reporter.initialize()
 
         # Display warning if selected flavors doesn't match all linters
-        if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
+        if flavor_factory.check_active_linters_match_flavor(active_linters,self.request_id) is False:
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
             ]
