@@ -216,7 +216,7 @@ def is_azure_pipelines() -> bool:
 
 
 # Convert SARIF into human readable text
-def convert_sarif_to_human(sarif_in) -> str:
+def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
     process = subprocess.run(
         sarif_fmt_command,
@@ -224,6 +224,7 @@ def convert_sarif_to_human(sarif_in) -> str:
         stderr=subprocess.STDOUT,
         text=True,
         input=sarif_in + "\n",
+        env=config.build_env(request_id)
     )
     return_code = process.returncode
     output = utils.decode_utf8(process.stdout)

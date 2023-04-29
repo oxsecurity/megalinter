@@ -8,6 +8,7 @@ import os
 import subprocess
 
 import megalinter
+from megalinter import config
 
 
 class RakuLinter(megalinter.Linter):
@@ -23,6 +24,7 @@ class RakuLinter(megalinter.Linter):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 shell=True,
+                env=config.build_env(self.request_id),
             )
             return_code = process.returncode
             return_stdout = megalinter.utils.decode_utf8(process.stdout)
