@@ -60,7 +60,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
 
     def test_sarif_fix(self):
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter()
+        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
         # Create sample linters
         sarif_dir = (
             root
