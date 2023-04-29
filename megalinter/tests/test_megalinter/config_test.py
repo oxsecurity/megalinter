@@ -7,6 +7,7 @@ import glob
 import os
 import re
 import unittest
+import uuid
 
 from git import Repo
 from megalinter import config, utilstest
@@ -49,16 +50,18 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote/custom.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
-        config.init_config()
-        self.assertEqual("(custom)", config.get("FILTER_REGEX_INCLUDE"))
+        request_id = str(uuid.uuid1())
+        config.init_config(request_id)
+        self.assertEqual("(custom)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_remote_config_error(self):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "custom.mega-linter-not-existing.yml"
+        request_id = str(uuid.uuid1())
         try:
             os.environ["MEGALINTER_CONFIG"] = remote_config
-            config.init_config()
+            config.init_config(request_id)
         except Exception as e:
             self.assertRegex(
                 str(e),
@@ -134,7 +137,8 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote_extends/base.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
-        config.init_config()
+        request_id = str(uuid.uuid1())
+        config.init_config(request_id)
         self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("(extension2)", config.get("FILTER_REGEX_EXCLUDE"))
         self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
@@ -144,7 +148,8 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote_extends_2/base2.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
-        config.init_config()
+        request_id = str(uuid.uuid1())
+        config.init_config(request_id)
         self.assertEqual("(base)", config.get("FILTER_REGEX_INCLUDE"))
         self.assertEqual("(extension2)", config.get("FILTER_REGEX_EXCLUDE"))
         self.assertEqual("true", config.get("SHOW_ELAPSED_TIME"))
@@ -155,10 +160,10 @@ class config_test(unittest.TestCase):
         remote_config = (
             self.test_folder + "remote_extends_error/base-error.mega-linter.yml"
         )
-        os.environ["MEGALINTER_CONFIG"] = remote_config
+        request_id = str(uuid.uuid1())
         try:
             os.environ["MEGALINTER_CONFIG"] = remote_config
-            config.init_config()
+            config.init_config(request_id)
         except Exception as e:
             self.assertRegex(
                 str(e),
@@ -197,8 +202,9 @@ class config_test(unittest.TestCase):
         os.environ[
             "PRE_COMMANDS"
         ] = '[{"cwd": "workspace", "command:": "echo \\"hello world\\""}]'
-        config.init_config()
-        pre_commands = config.get_list("PRE_COMMANDS", [])
+        request_id = str(uuid.uuid1())
+        config.init_config(request_id)
+        pre_commands = config.get_list(request_id, "PRE_COMMANDS", [])
         del os.environ["PRE_COMMANDS"]
         self.assertTrue(len(pre_commands) > 0, "PRE_COMMANDS not loaded from ENV var")
 
