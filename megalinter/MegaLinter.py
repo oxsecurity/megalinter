@@ -132,8 +132,10 @@ class Megalinter:
         plugin_factory.initialize_plugins()
 
         # Copy node_modules in current folder if necessary
-        if os.path.isdir("/node_deps") and len(os.listdir("/node_deps")) > 0 and os.path.isfile(
-            os.path.join(self.workspace, ".gitignore")
+        if (
+            os.path.isdir("/node_deps")
+            and len(os.listdir("/node_deps")) > 0
+            and os.path.isfile(os.path.join(self.workspace, ".gitignore"))
         ):
             with open(
                 os.path.join(self.workspace, ".gitignore"), "r", encoding="utf-8"
@@ -317,8 +319,14 @@ class Megalinter:
     def get_workspace(self, params):
         if "workspace" in params:
             self.arg_input = params["workspace"]
-        default_workspace = config.get(None, "DEFAULT_WORKSPACE", "")
-        github_workspace = config.get(None, "GITHUB_WORKSPACE", "")
+        if config.is_initialized_for(self.request_id):
+            # Use stored config vars
+            default_workspace = config.get(self.request_id, "DEFAULT_WORKSPACE", "")
+            github_workspace = config.get(self.request_id, "GITHUB_WORKSPACE", "")
+        else:
+            # Use ENV vars
+            default_workspace = config.get(None, "DEFAULT_WORKSPACE", "")
+            github_workspace = config.get(None, "GITHUB_WORKSPACE", "")
         # Use CLI input argument
         if self.arg_input is not None:
             if os.path.isdir(self.arg_input):

@@ -22,9 +22,9 @@ def init_config(request_id, workspace=None, params={}):
     env_plus_params = env | params
     if workspace is None and "MEGALINTER_CONFIG" not in env:
         set_config(request_id, env_plus_params)
-        RUN_CONFIGS[
-            request_id
-        ]['CONFIG_SOURCE'] = "Environment variables only (no workspace)"
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = "Environment variables only (no workspace)"
         print(f"[config] {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}")
         return
     # Search for config file
@@ -68,24 +68,22 @@ def init_config(request_id, workspace=None, params={}):
             else:
                 # append config file variables to env variables, with priority to env variables
                 runtime_config = config_data | env_plus_params
-            RUN_CONFIGS[
-                request_id
-            ]['CONFIG_SOURCE'] = f"{config_file} + Environment variables"
+            RUN_CONFIGS[request_id][
+                "CONFIG_SOURCE"
+            ] = f"{config_file} + Environment variables"
     else:
         runtime_config = env_plus_params
-        RUN_CONFIGS[
-            request_id
-        ]['CONFIG_SOURCE'] = (
-            f"Environment variables only (no config file found in {workspace})"
-        )
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = f"Environment variables only (no config file found in {workspace})"
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
         combined_config = {}
-        RUN_CONFIGS[request_id]['CONFIG_SOURCE'] = combine_config(
+        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = combine_config(
             workspace,
             runtime_config,
             combined_config,
-            RUN_CONFIGS[request_id]['CONFIG_SOURCE'],
+            RUN_CONFIGS[request_id]["CONFIG_SOURCE"],
         )
         runtime_config = combined_config
     # Print & set config in cache
@@ -122,12 +120,21 @@ def combine_config(workspace, config, combined_config, config_source):
     return config_source
 
 
+def is_initialized_for(request_id):
+    global RUN_CONFIGS
+    if request_id in RUN_CONFIGS:
+        return True
+    return False
+
+
 def get_config(request_id=None):
     global RUN_CONFIGS
     if request_id is not None and request_id in RUN_CONFIGS:
         return RUN_CONFIGS[request_id]
     elif request_id is not None:
-        raise Exception(f"Internal error: there should be a config for request_id {request_id}")
+        raise Exception(
+            f"Internal error: there should be a config for request_id {request_id}"
+        )
     else:
         return os.environ.copy()
 
