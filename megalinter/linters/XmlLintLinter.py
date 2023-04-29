@@ -31,5 +31,5 @@ class XmlLintLinter(Linter):
         return cmd
 
     def pre_test(self):
-        config.set_value(self.master.request_id, "XML_XMLLINT_AUTOFORMAT", "true")
-        config.set_value(self.master.request_id, "XML_XMLLINT_CLI_LINT_MODE", "file")
+        config.set_value(self.request_id, "XML_XMLLINT_AUTOFORMAT", "true")
+        config.set_value(self.request_id, "XML_XMLLINT_CLI_LINT_MODE", "file")

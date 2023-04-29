@@ -9,5 +9,5 @@ from megalinter import Linter, config
 class ProselintLinter(Linter):
     def pre_test(self):
         config.set_value(
-            self.master.request_id, "SPELL_PROSELINT_FILE_EXTENSIONS", [".js", ".md"]
+            self.request_id, "SPELL_PROSELINT_FILE_EXTENSIONS", [".js", ".md"]
         )
