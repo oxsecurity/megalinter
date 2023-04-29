@@ -158,8 +158,9 @@ def get(request_id, config_var=None, default=None):
 
 
 def build_env(request_id):
-    secured_env_variables = ["GITHUB_TOKEN", "PAT"]
-    secured_env_variables += get_list(request_id, "SECURED_ENV_VARIABLES", [])
+    secured_env_variables = get_list(
+        request_id, "SECURED_ENV_VARIABLES", ["GITHUB_TOKEN", "PAT"]
+    )
     env_dict = {}
     for key, value in get_config(request_id).items():
         if key in secured_env_variables:
