@@ -136,7 +136,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 )
         p_r_msg += os.linesep
     # Link to ox
-    if config.get(reporter_self.request_id,"REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
+    if config.get(reporter_self.master.request_id,"REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
         p_r_msg += (
             os.linesep
             + "MegaLinter is graciously provided by [OX Security]"
