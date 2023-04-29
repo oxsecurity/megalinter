@@ -9,7 +9,7 @@ import uuid
 
 linter = megalinter.Megalinter({
     "cli": True,
-    "request_id": uuid.uuid1()
+    "request_id": str(uuid.uuid1())
 })
 
 # Guess who's there ? :)
