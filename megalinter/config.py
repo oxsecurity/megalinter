@@ -20,8 +20,8 @@ def init_config(request_id, workspace=None, params={}):
         return
     env = os.environ.copy()
     env_plus_params = env | params
+    set_config(request_id, env_plus_params)
     if workspace is None and "MEGALINTER_CONFIG" not in env:
-        set_config(request_id, env_plus_params)
         RUN_CONFIGS[request_id][
             "CONFIG_SOURCE"
         ] = "Environment variables only (no workspace)"
