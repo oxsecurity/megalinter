@@ -11,7 +11,7 @@ import tempfile
 import unittest
 import uuid
 from datetime import datetime
-from distutils.dir_util import copy_tree
+from shutil import copytree
 
 from git import Repo
 from megalinter import Megalinter, config, utils
@@ -272,7 +272,7 @@ def test_linter_failure(linter, test_self):
 def manage_copy_sources(workspace):
     if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
         tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
-        copy_tree(workspace, tmp_sources_folder)
+        copytree(workspace, tmp_sources_folder)
         workspace = tmp_sources_folder
     return workspace
 

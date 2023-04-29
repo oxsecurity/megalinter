@@ -30,7 +30,7 @@ from megalinter.constants import (
 )
 from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
-from distutils.dir_util import copy_tree
+from shutil import copytree
 
 
 # Function to run linters using multiprocessing pool
@@ -141,7 +141,7 @@ class Megalinter:
                 gitignore_content = gitignore_file.read()
             if "node_modules" in gitignore_content:
                 workspace_node_modules = os.path.join(self.workspace, "node_modules")
-                copy_tree("/node_deps", workspace_node_modules)
+                copytree("/node_deps", workspace_node_modules)
                 # Update PATH & NODE_PATH so node_modules of the currently analyzed workspace is used
                 config.set(
                     self.request_id,

@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))
   - Refactor internal configuration management to scope config to a request identifier
+  - Replace deprecated distutils.copy_tree by shutil.copytree
   - Add support for idea plugins autoinstall
   - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
