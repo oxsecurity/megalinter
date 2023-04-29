@@ -883,7 +883,6 @@ class Linter:
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {
-            **os.environ,
             **config.get_for_env(self.request_id),
             "FORCE_COLOR": "0",
         }
@@ -1008,7 +1007,6 @@ class Linter:
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
         subprocess_env = {
-            **os.environ,
             **config.get_for_env(self.request_id),
             "FORCE_COLOR": "0",
         }
@@ -1057,7 +1055,6 @@ class Linter:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
                 subprocess_env = {
-                    **os.environ,
                     **config.get_for_env(self.request_id),
                     "FORCE_COLOR": "0",
                 }

@@ -60,7 +60,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
     command_info = complete_command(command_info)
-    subprocess_env = {**os.environ, **config.get_for_env(mega_linter.request_id)}
+    subprocess_env = {**config.get_for_env(mega_linter.request_id)}
     add_in_logs(
         linter,
         log_key,
