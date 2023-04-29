@@ -149,7 +149,7 @@ def test_linter_success(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
-        "PRINT_ALL_FILES": "false",
+        "PRINT_ALL_FILES": "true",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -621,7 +621,7 @@ def test_linter_format_fix(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
-        "PRINT_ALL_FILES": "false",
+        "PRINT_ALL_FILES": "true",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
