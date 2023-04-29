@@ -38,7 +38,7 @@ def run_linter_post_commands(mega_linter, linter):
 
 # Get commands from configuration
 def run_pre_post_commands(key, log_key, mega_linter):
-    pre_or_post_commands = config.get_list(mega_linter.request_id,key, None)
+    pre_or_post_commands = config.get_list(mega_linter.request_id, key, None)
     return run_commands(pre_or_post_commands, log_key, mega_linter)
 
 
@@ -63,7 +63,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     add_in_logs(
         linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"]
     )
-    subprocess_env = {**os.environ,**config.get(mega_linter.request_id)}
+    subprocess_env = {**os.environ, **config.get(mega_linter.request_id)}
     # Run command
     process = subprocess.run(
         command_info["command"],
@@ -72,7 +72,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         shell=True,
         cwd=os.path.realpath(cwd),
         executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
-        env=subprocess_env
+        env=subprocess_env,
     )
     return_code = process.returncode
     return_stdout = utils.decode_utf8(process.stdout)
@@ -111,3 +111,13 @@ def add_in_logs(linter, log_key, lines):
             linter.log_lines_post += lines
     else:
         logging.info("\n".join(lines))
+
+
+def has_npm_or_yarn_commands(request_id):
+    config_dict = config.get(request_id)
+    for key, value in config_dict.items():
+        if ("PRE_COMMANDS" in key or "POST_COMMANDS" in key) and (
+            "npm" in value or "yarn" in value
+        ):
+            return True
+    return False

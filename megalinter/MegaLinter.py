@@ -135,24 +135,19 @@ class Megalinter:
         if (
             os.path.isdir("/node_deps")
             and len(os.listdir("/node_deps")) > 0
-            and os.path.isfile(os.path.join(self.workspace, ".gitignore"))
+            and pre_post_factory.has_npm_or_yarn_commands(self.request_id)
         ):
-            with open(
-                os.path.join(self.workspace, ".gitignore"), "r", encoding="utf-8"
-            ) as gitignore_file:
-                gitignore_content = gitignore_file.read()
-            if "node_modules" in gitignore_content:
-                workspace_node_modules = os.path.join(self.workspace, "node_modules")
-                copytree("/node_deps", workspace_node_modules)
-                # Update PATH & NODE_PATH so node_modules of the currently analyzed workspace is used
-                config.set(
-                    self.request_id,
-                    "PATH",
-                    config.get(self.request_id, "PATH").replace(
-                        "/node-deps/node_modules/.bin:", workspace_node_modules
-                    ),
-                )
-                config.set(self.request_id, "NODE_PATH", workspace_node_modules)
+            workspace_node_modules = os.path.join(self.workspace, "node_modules")
+            copytree("/node_deps", workspace_node_modules)
+            # Update PATH & NODE_PATH so node_modules of the currently analyzed workspace is used
+            config.set(
+                self.request_id,
+                "PATH",
+                config.get(self.request_id, "PATH").replace(
+                    "/node-deps/node_modules/.bin:", workspace_node_modules
+                ),
+            )
+            config.set(self.request_id, "NODE_PATH", workspace_node_modules)
 
         # Run user-defined commands
         self.pre_commands_results = pre_post_factory.run_pre_commands(self)
