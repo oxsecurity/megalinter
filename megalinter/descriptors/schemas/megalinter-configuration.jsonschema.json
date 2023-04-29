@@ -11932,13 +11932,24 @@
     },
     "SECURED_ENV_VARIABLES": {
       "$id": "#/properties/SECURED_ENV_VARIABLES",
-      "default": ["GITHUB_TOKEN","PAT"],
-      "description": "List of secured environment variables to hide when calling pre_commands and linters",
-      "examples:": [
+      "default": [
         "GITHUB_TOKEN",
         "PAT",
-        "SOME_SECURED_ENV_VAR",
-        "ANOTHER_SECURED_ENV_VAR"
+        "SYSTEM_ACCESSTOKEN",
+        "CI_JOB_TOKEN",
+        "GITLAB_ACCESS_TOKEN_MEGALINTER",
+        "GITLAB_CUSTOM_CERTIFICATE",
+        "WEBHOOK_REPORTER_BEARER_TOKEN"
+      ],
+      "description": "List of secured environment variables to hide when calling linters",
+      "examples:": [[
+        "GITHUB_TOKEN",
+        "PAT",
+        "SYSTEM_ACCESSTOKEN",
+        "CI_JOB_TOKEN",
+        "GITLAB_ACCESS_TOKEN_MEGALINTER",
+        "GITLAB_CUSTOM_CERTIFICATE",
+        "WEBHOOK_REPORTER_BEARER_TOKEN"]
       ],
       "items": {
         "type": "string"
