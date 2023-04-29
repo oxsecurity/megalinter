@@ -60,10 +60,11 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
     command_info = complete_command(command_info)
-    add_in_logs(
-        linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"]
-    )
     subprocess_env = {**os.environ, **config.get(mega_linter.request_id)}
+    add_in_logs(
+        #linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"] #TODO: Uncomment before merge
+        linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}] with ENV {str(subprocess_env)}"]
+    )
     # Run command
     process = subprocess.run(
         command_info["command"],
