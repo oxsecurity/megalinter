@@ -157,7 +157,7 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
-def build_env(request_id,secured=True):
+def build_env(request_id, secured=True):
     secured_env_variables = []
     if secured is True:
         secured_env_variables = get_list(
@@ -170,7 +170,7 @@ def build_env(request_id,secured=True):
                 "CI_JOB_TOKEN",
                 "GITLAB_ACCESS_TOKEN_MEGALINTER",
                 "GITLAB_CUSTOM_CERTIFICATE",
-                "WEBHOOK_REPORTER_BEARER_TOKEN"
+                "WEBHOOK_REPORTER_BEARER_TOKEN",
             ],
         )
     env_dict = {}
