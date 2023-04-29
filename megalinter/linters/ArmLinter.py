@@ -13,7 +13,9 @@ class ArmLinter(Linter):
 
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
-        self.arm_ttk_psd1 = config.get(self.request_id, "ARM_TTK_PSD1", "/usr/bin/arm-ttk")
+        self.arm_ttk_psd1 = config.get(
+            self.request_id, "ARM_TTK_PSD1", "/usr/bin/arm-ttk"
+        )
         pwsh_script = ["Import-Module " + self.arm_ttk_psd1 + " ;"]
         if self.config_file is not None:
             pwsh_script += [

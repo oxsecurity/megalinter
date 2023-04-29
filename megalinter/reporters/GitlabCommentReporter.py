@@ -18,23 +18,35 @@ class GitlabCommentReporter(Reporter):
     gitlab_server_url = "https://gitlab.com"
 
     def manage_activation(self):
-        if config.get(self.master.request_id,"GITLAB_COMMENT_REPORTER", "true") != "true":
+        if (
+            config.get(self.master.request_id, "GITLAB_COMMENT_REPORTER", "true")
+            != "true"
+        ):
             self.is_active = False
         elif (
-            config.get(self.master.request_id,"POST_GITLAB_COMMENT", "true") == "true"
+            config.get(self.master.request_id, "POST_GITLAB_COMMENT", "true") == "true"
         ):  # Legacy - true by default
             self.is_active = True
 
     def produce_report(self):
         # Post comment on Gitlab pull request
-        if config.get(self.master.request_id,"CI_JOB_TOKEN", "") != "":
-            gitlab_repo = config.get(self.master.request_id,"CI_PROJECT_NAME")
-            gitlab_project_id = config.get(self.master.request_id,"CI_PROJECT_ID")
-            gitlab_merge_request_id = config.get(self.master.request_id,"CI_MERGE_REQUEST_ID", "")
+        if config.get(self.master.request_id, "CI_JOB_TOKEN", "") != "":
+            gitlab_repo = config.get(self.master.request_id, "CI_PROJECT_NAME")
+            gitlab_project_id = config.get(self.master.request_id, "CI_PROJECT_ID")
+            gitlab_merge_request_id = config.get(
+                self.master.request_id, "CI_MERGE_REQUEST_ID", ""
+            )
             if gitlab_merge_request_id == "":
-                if config.get(self.master.request_id,"CI_OPEN_MERGE_REQUESTS", "") != "":
+                if (
+                    config.get(self.master.request_id, "CI_OPEN_MERGE_REQUESTS", "")
+                    != ""
+                ):
                     gitlab_merge_request_id = (
-                        config.get(self.master.request_id,"CI_OPEN_MERGE_REQUESTS", "missing!missing")
+                        config.get(
+                            self.master.request_id,
+                            "CI_OPEN_MERGE_REQUESTS",
+                            "missing!missing",
+                        )
                         .split(",")[0]
                         .split("!")[1]
                     )
@@ -44,24 +56,38 @@ class GitlabCommentReporter(Reporter):
                     )
                     return
 
-            gitlab_server_url = config.get(self.master.request_id,"CI_SERVER_URL", self.gitlab_server_url)
-            action_run_url = config.get(self.master.request_id,"CI_JOB_URL", "")
+            gitlab_server_url = config.get(
+                self.master.request_id, "CI_SERVER_URL", self.gitlab_server_url
+            )
+            action_run_url = config.get(self.master.request_id, "CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Build gitlab options
             gitlab_options = {}
             # auth token
-            if config.get(self.master.request_id,"GITLAB_ACCESS_TOKEN_MEGALINTER", "") != "":
-                gitlab_options["private_token"] = config.get(self.master.request_id,
-                    "GITLAB_ACCESS_TOKEN_MEGALINTER"
+            if (
+                config.get(self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", "")
+                != ""
+            ):
+                gitlab_options["private_token"] = config.get(
+                    self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER"
                 )
             else:
-                gitlab_options["job_token"] = config.get(self.master.request_id,"CI_JOB_TOKEN")
+                gitlab_options["job_token"] = config.get(
+                    self.master.request_id, "CI_JOB_TOKEN"
+                )
             # Certificate management
-            gitlab_certificate_path = config.get(self.master.request_id,"GITLAB_CERTIFICATE_PATH", "")
-            if config.get(self.master.request_id,"GITLAB_CUSTOM_CERTIFICATE", "") != "":
+            gitlab_certificate_path = config.get(
+                self.master.request_id, "GITLAB_CERTIFICATE_PATH", ""
+            )
+            if (
+                config.get(self.master.request_id, "GITLAB_CUSTOM_CERTIFICATE", "")
+                != ""
+            ):
                 # Certificate value defined in an ENV variable
-                cert_value = config.get(self.master.request_id,"GITLAB_CUSTOM_CERTIFICATE")
+                cert_value = config.get(
+                    self.master.request_id, "GITLAB_CUSTOM_CERTIFICATE"
+                )
                 gitlab_certificate_path = "/etc/ssl/certs/gitlab-cert.crt"
                 with open(gitlab_certificate_path, "w", encoding="utf-8") as cert_file:
                     cert_file.write(cert_value)
@@ -99,7 +125,9 @@ class GitlabCommentReporter(Reporter):
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
             except gitlab.GitlabGetError:
-                gitlab_merge_request_id = config.get(self.master.request_id,"CI_MERGE_REQUEST_IID", "none")
+                gitlab_merge_request_id = config.get(
+                    self.master.request_id, "CI_MERGE_REQUEST_IID", "none"
+                )
                 try:
                     mr = project.mergerequests.get(gitlab_merge_request_id)
                 except gitlab.GitlabGetError as e:
@@ -120,7 +148,11 @@ class GitlabCommentReporter(Reporter):
             # List comments on merge request
             existing_comment = None
             if (
-                config.get(self.master.request_id,"GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT", "true")
+                config.get(
+                    self.master.request_id,
+                    "GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT",
+                    "true",
+                )
                 == "true"
             ):
                 try:

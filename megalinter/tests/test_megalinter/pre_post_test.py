@@ -6,6 +6,7 @@ Unit tests for Megalinter class
 import os
 import unittest
 import uuid
+
 from megalinter import utilstest
 
 
@@ -28,7 +29,7 @@ class PrePostTest(unittest.TestCase):
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
                 "LOG_LEVEL": "DEBUG",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(

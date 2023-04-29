@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import shutil
 import sys
+from shutil import copytree
 from uuid import uuid1
 
 import chalk as c
@@ -30,7 +31,6 @@ from megalinter.constants import (
 )
 from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
-from shutil import copytree
 
 
 # Function to run linters using multiprocessing pool
@@ -191,7 +191,12 @@ class Megalinter:
             reporter.initialize()
 
         # Display warning if selected flavors doesn't match all linters
-        if flavor_factory.check_active_linters_match_flavor(active_linters,self.request_id) is False:
+        if (
+            flavor_factory.check_active_linters_match_flavor(
+                active_linters, self.request_id
+            )
+            is False
+        ):
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
             ]

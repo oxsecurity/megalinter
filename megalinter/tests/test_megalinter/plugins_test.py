@@ -19,7 +19,7 @@ class plugins_test(unittest.TestCase):
         utilstest.linter_test_setup(
             {
                 "request_id": self.request_id,
-                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}mega-linter-plugin-test"
+                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}mega-linter-plugin-test",
             }
         )
 
@@ -37,7 +37,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -54,7 +54,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -72,7 +72,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:
@@ -88,7 +88,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:
@@ -103,7 +103,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:
@@ -118,7 +118,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:
@@ -137,7 +137,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:
@@ -154,7 +154,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
-                    "request_id": self.request_id
+                    "request_id": self.request_id,
                 }
             )
         except Exception as e:

@@ -2,7 +2,6 @@
 """
 Use Bicep to lint bicep files
 """
-import os
 
 from megalinter import Linter, config
 

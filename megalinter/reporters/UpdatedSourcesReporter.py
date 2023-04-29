@@ -22,7 +22,10 @@ class UpdatedSourcesReporter(Reporter):
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
-        elif config.get(self.master.request_id,"UPDATED_SOURCES_REPORTER", "true") != "true":
+        elif (
+            config.get(self.master.request_id, "UPDATED_SOURCES_REPORTER", "true")
+            != "true"
+        ):
             self.is_active = False
 
     def produce_report(self):
@@ -30,7 +33,9 @@ class UpdatedSourcesReporter(Reporter):
         # Copy updated files in report folder
         updated_files = utils.list_updated_files(self.master.github_workspace)
         logging.debug("Updated files :\n" + "\n -".join(updated_files))
-        updated_dir = config.get(self.master.request_id,"UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
+        updated_dir = config.get(
+            self.master.request_id, "UPDATED_SOURCES_REPORTER_DIR", "updated_sources"
+        )
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
             updated_file_clean = utils.normalize_log_string(updated_file)

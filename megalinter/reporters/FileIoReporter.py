@@ -23,14 +23,17 @@ class FileIoReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get(self.master.request_id,"FILEIO_REPORTER", "false") == "true":
+        if config.get(self.master.request_id, "FILEIO_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):
         # Skip report if no errors has been found
         if (
             self.master.status == "success"
-            and config.get(self.master.request_id,"FILEIO_REPORTER_SEND_SUCCESS", "false") == "true"
+            and config.get(
+                self.master.request_id, "FILEIO_REPORTER_SEND_SUCCESS", "false"
+            )
+            == "true"
             and self.master.has_updated_sources is False
         ):
             logging.info(

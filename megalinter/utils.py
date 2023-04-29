@@ -80,10 +80,12 @@ def get_excluded_directories(request_id):
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get(request_id,"REPORT_OUTPUT_FOLDER", "megalinter-reports"),
+        config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
-    excluded_dirs = config.get_list(request_id,"EXCLUDED_DIRECTORIES", default_excluded_dirs)
-    excluded_dirs += config.get_list(request_id,"ADDITIONAL_EXCLUDED_DIRECTORIES", [])
+    excluded_dirs = config.get_list(
+        request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
+    )
+    excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     return set(excluded_dirs)
 
 
@@ -239,7 +241,9 @@ def check_activation_rules(activation_rules, linter):
     active = False
     for rule in activation_rules:
         if rule["type"] == "variable":
-            value = config.get(linter.request_id, rule["variable"], rule["default_value"])
+            value = config.get(
+                linter.request_id, rule["variable"], rule["default_value"]
+            )
             if value == rule["expected_value"]:
                 active = True
             else:

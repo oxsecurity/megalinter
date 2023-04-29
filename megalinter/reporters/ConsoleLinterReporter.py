@@ -22,11 +22,11 @@ class ConsoleLinterReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get(self.master.request_id,"OUTPUT_DETAIL", "") == "detailed":
+        if config.get(self.master.request_id, "OUTPUT_DETAIL", "") == "detailed":
             self.report_type = "detailed"
-        if config.get(self.master.request_id,"PRINT_ALL_FILES", "") == "true":
+        if config.get(self.master.request_id, "PRINT_ALL_FILES", "") == "true":
             self.print_all_files = True
-        if config.get(self.master.request_id,"CONSOLE_REPORTER", "true") == "false":
+        if config.get(self.master.request_id, "CONSOLE_REPORTER", "true") == "false":
             self.is_active = False
 
     def produce_report(self):

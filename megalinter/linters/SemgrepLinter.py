@@ -16,7 +16,10 @@ class SemgrepLinter(Linter):
             custom_rulesets = self.get_custom_rulesets()
             if (
                 len(custom_rulesets) == 0
-                and len(config.get_list(self.request_id,"REPOSITORY_SEMGREP_ARGUMENTS", [])) == 0
+                and len(
+                    config.get_list(self.request_id, "REPOSITORY_SEMGREP_ARGUMENTS", [])
+                )
+                == 0
                 and "semgrep" not in utils.get_current_test_name(full_name=True)
             ):
                 logging.info(
@@ -45,13 +48,14 @@ class SemgrepLinter(Linter):
         return cmd
 
     def get_custom_rulesets(self):
-        if config.exists(self.request_id,"REPOSITORY_SEMGREP_RULESETS"):
+        if config.exists(self.request_id, "REPOSITORY_SEMGREP_RULESETS"):
             # User defined rulesets
-            return config.get_list(self.request_id,"REPOSITORY_SEMGREP_RULESETS")
+            return config.get_list(self.request_id, "REPOSITORY_SEMGREP_RULESETS")
         elif (
             # security rulesets
             flavor_factory.get_image_flavor() in ["security", "none"]
-            or config.get(self.request_id,"REPOSITORY_SEMGREP_RULESETS_TYPE", "") == "security"
+            or config.get(self.request_id, "REPOSITORY_SEMGREP_RULESETS_TYPE", "")
+            == "security"
         ):
             return [
                 "p/docker-compose",

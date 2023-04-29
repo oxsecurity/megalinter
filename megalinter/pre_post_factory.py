@@ -62,7 +62,11 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     command_info = complete_command(command_info)
     subprocess_env = {**os.environ, **config.get_for_env(mega_linter.request_id)}
     add_in_logs(
-        linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"] #TODO: Uncomment before merge
+        linter,
+        log_key,
+        [
+            f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"
+        ],  # TODO: Uncomment before merge
     )
     # Run command
     process = subprocess.run(

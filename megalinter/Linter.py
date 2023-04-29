@@ -159,7 +159,7 @@ class Linter:
         elif self.master is not None:
             self.request_id: str = self.master.request_id
         elif "master" in params:
-            self.request_id: str = params["master"].request_id            
+            self.request_id: str = params["master"].request_id
         else:
             raise Exception("Missing megalinter request_id")
 
@@ -875,7 +875,11 @@ class Linter:
     def execute_lint_command(self, command):
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
-        subprocess_env = {**os.environ,**config.get_for_env(self.request_id), "FORCE_COLOR": "0"}
+        subprocess_env = {
+            **os.environ,
+            **config.get_for_env(self.request_id),
+            "FORCE_COLOR": "0",
+        }
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(
@@ -996,7 +1000,11 @@ class Linter:
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
-        subprocess_env = {**os.environ,**config.get_for_env(self.request_id), "FORCE_COLOR": "0"}
+        subprocess_env = {
+            **os.environ,
+            **config.get_for_env(self.request_id),
+            "FORCE_COLOR": "0",
+        }
         try:
             process = subprocess.run(
                 command,

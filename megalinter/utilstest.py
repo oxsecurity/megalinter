@@ -51,7 +51,7 @@ def get_root_dir():
 def linter_test_setup(params=None):
     config.delete()
     if params is None:
-        params = {"request_id" : str(uuid.uuid1())}
+        params = {"request_id": str(uuid.uuid1())}
     request_id = params["request_id"]
     # Root to lint
     sub_lint_root = (
@@ -70,41 +70,47 @@ def linter_test_setup(params=None):
         raise Exception(
             f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}"
         )
-    config.init_config(request_id,workspace)
+    config.init_config(request_id, workspace)
     # Ignore report folder
-    config.set_value(request_id,"FILTER_REGEX_EXCLUDE", r"\/megalinter-reports\/")
+    config.set_value(request_id, "FILTER_REGEX_EXCLUDE", r"\/megalinter-reports\/")
     # TAP Output deactivated by default
-    config.set_value(request_id,"OUTPUT_FORMAT", "text")
-    config.set_value(request_id,"OUTPUT_DETAIL", "detailed")
-    config.set_value(request_id,"PLUGINS", "")
-    config.set_value(request_id,"GITHUB_STATUS_REPORTER", "false")
-    config.set_value(request_id,"IGNORE_GITIGNORED_FILES", "true")
-    config.set_value(request_id,"VALIDATE_ALL_CODEBASE", "true")
-    config.set_value(request_id,"CLEAR_REPORT_FOLDER", "true")
+    config.set_value(request_id, "OUTPUT_FORMAT", "text")
+    config.set_value(request_id, "OUTPUT_DETAIL", "detailed")
+    config.set_value(request_id, "PLUGINS", "")
+    config.set_value(request_id, "GITHUB_STATUS_REPORTER", "false")
+    config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
+    config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
+    config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
             "additional_test_variables"
         ).items():
-            config.set_value(request_id,env_var_key, env_var_value)
+            config.set_value(request_id, env_var_key, env_var_value)
     # Root path of files to lint
-    config.set_value(request_id,
+    config.set_value(
+        request_id,
         "DEFAULT_WORKSPACE",
         (
-            config.get(request_id,"DEFAULT_WORKSPACE") + sub_lint_root
-            if config.exists(request_id,"DEFAULT_WORKSPACE")
-            and os.path.isdir(config.get(request_id,"DEFAULT_WORKSPACE") + sub_lint_root)
+            config.get(request_id, "DEFAULT_WORKSPACE") + sub_lint_root
+            if config.exists(request_id, "DEFAULT_WORKSPACE")
+            and os.path.isdir(
+                config.get(request_id, "DEFAULT_WORKSPACE") + sub_lint_root
+            )
             else root_dir + sub_lint_root
         ),
     )
-    assert os.path.isdir(config.get(request_id,"DEFAULT_WORKSPACE")), (
+    assert os.path.isdir(config.get(request_id, "DEFAULT_WORKSPACE")), (
         "DEFAULT_WORKSPACE "
-        + config.get(request_id,"DEFAULT_WORKSPACE")
+        + config.get(request_id, "DEFAULT_WORKSPACE")
         + " is not a valid folder"
     )
 
 
 def print_output(output):
-    if config.exists(None,"OUTPUT_DETAIL") and config.get(None,"OUTPUT_DETAIL") == "detailed":
+    if (
+        config.exists(None, "OUTPUT_DETAIL")
+        and config.get(None, "OUTPUT_DETAIL") == "detailed"
+    ):
         for line in output.splitlines():
             print(line)
 
@@ -115,7 +121,7 @@ def call_mega_linter(env_vars):
     with contextlib.redirect_stdout(usage_stdout):
         # Set env variables
         for env_var_key, env_var_value in env_vars.items():
-            config.set_value(request_id,env_var_key, env_var_value)
+            config.set_value(request_id, env_var_key, env_var_value)
         # Call linter
         mega_linter = Megalinter({"request_id": request_id})
         mega_linter.run()
@@ -133,7 +139,9 @@ def test_linter_success(linter, test_self):
     ):
         raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
-    workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    workspace = (
+        config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    )
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
@@ -191,7 +199,9 @@ def test_linter_failure(linter, test_self):
     ):
         raise unittest.SkipTest("Linter or test has been disabled")
     test_folder = linter.test_folder
-    workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    workspace = (
+        config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    )
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
     workspace = manage_copy_sources(workspace)
@@ -404,7 +414,9 @@ def test_linter_report_tap(linter, test_self):
     ):
         raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
-    workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    workspace = (
+        config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    )
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     expected_file_name = ""
     # Identify expected report if defined
@@ -496,7 +508,9 @@ def test_linter_report_sarif(linter, test_self):
     ):
         raise unittest.SkipTest("SARIF is not configured for this linter")
     test_folder = linter.test_folder
-    workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    workspace = (
+        config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    )
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
@@ -582,7 +596,9 @@ def test_linter_format_fix(linter, test_self):
     ):
         raise unittest.SkipTest("Linter doesn't format and can't apply fixes")
     test_folder = linter.test_folder
-    workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    workspace = (
+        config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    )
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "fix"):
         workspace = workspace + os.path.sep + "fix"

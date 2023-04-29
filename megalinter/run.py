@@ -4,13 +4,11 @@ Run mega-linter
 
 """
 
-import megalinter
 import uuid
 
-linter = megalinter.Megalinter({
-    "cli": True,
-    "request_id": str(uuid.uuid1())
-})
+import megalinter
+
+linter = megalinter.Megalinter({"cli": True, "request_id": str(uuid.uuid1())})
 
 # Guess who's there ? :)
 megalinter.alpaca()

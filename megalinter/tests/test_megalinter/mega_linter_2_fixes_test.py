@@ -4,7 +4,6 @@ Unit tests for Megalinter class
 
 """
 import os
-import time
 import unittest
 import uuid
 
@@ -19,7 +18,6 @@ class mega_linter_2_fixes_test(unittest.TestCase):
         utilstest.linter_test_setup(
             {
                 "request_id": self.request_id,
-                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_fixes"
+                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_fixes",
             }
         )
-

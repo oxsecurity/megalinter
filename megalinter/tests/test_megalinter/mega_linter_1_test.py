@@ -6,6 +6,7 @@ Unit tests for Megalinter class
 import os
 import unittest
 import uuid
+
 import megalinter
 from megalinter import utilstest
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
@@ -19,22 +20,26 @@ class mega_linter_1_test(unittest.TestCase):
         utilstest.linter_test_setup(
             {
                 "request_id": self.request_id,
-                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project"
+                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project",
             }
         )
 
     def test_disable_language(self):
-        mega_linter, output = utilstest.call_mega_linter({
-            "DISABLE": "GROOVY",
-            "request_id": self.request_id,
-            })
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "DISABLE": "GROOVY",
+                "request_id": self.request_id,
+            }
+        )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         utilstest.assert_is_skipped("GROOVY", output, self)
 
     def test_disable_language_legacy(self):
-        mega_linter, output = utilstest.call_mega_linter({"VALIDATE_GROOVY": "false","request_id": self.request_id})
+        mega_linter, output = utilstest.call_mega_linter(
+            {"VALIDATE_GROOVY": "false", "request_id": self.request_id}
+        )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
@@ -42,7 +47,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_disable_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"DISABLE_LINTERS": "JAVASCRIPT_ES","request_id": self.request_id}
+            {"DISABLE_LINTERS": "JAVASCRIPT_ES", "request_id": self.request_id}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -53,7 +58,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_disable_linter_legacy(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"VALIDATE_JAVASCRIPT_ES": "false","request_id": self.request_id}
+            {"VALIDATE_JAVASCRIPT_ES": "false", "request_id": self.request_id}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -64,7 +69,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_enable_only_one_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"ENABLE_LINTERS": "JAVASCRIPT_ES","request_id": self.request_id}
+            {"ENABLE_LINTERS": "JAVASCRIPT_ES", "request_id": self.request_id}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -76,7 +81,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_enable_only_one_linter_legacy(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"VALIDATE_JAVASCRIPT_ES": "true","request_id": self.request_id}
+            {"VALIDATE_JAVASCRIPT_ES": "true", "request_id": self.request_id}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -87,7 +92,9 @@ class mega_linter_1_test(unittest.TestCase):
         utilstest.assert_is_skipped("GROOVY", output, self)
 
     def test_enable_only_one_language(self):
-        mega_linter, output = utilstest.call_mega_linter({"ENABLE": "JAVASCRIPT","request_id": self.request_id})
+        mega_linter, output = utilstest.call_mega_linter(
+            {"ENABLE": "JAVASCRIPT", "request_id": self.request_id}
+        )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
@@ -98,7 +105,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_enable_only_one_language_legacy(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"VALIDATE_JAVASCRIPT": "true","request_id": self.request_id}
+            {"VALIDATE_JAVASCRIPT": "true", "request_id": self.request_id}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -109,7 +116,8 @@ class mega_linter_1_test(unittest.TestCase):
         utilstest.assert_is_skipped("GROOVY", output, self)
 
     def test_validate_all_code_base_false(self):
-        megalinter.config.set_value(self.request_id,
+        megalinter.config.set_value(
+            self.request_id,
             "GITHUB_WORKSPACE",
             (
                 DEFAULT_DOCKER_WORKSPACE_DIR
@@ -124,7 +132,7 @@ class mega_linter_1_test(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "PYTHON_PYLINT",
                 "VALIDATE_ALL_CODEBASE": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -137,7 +145,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": ".",
                 "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -153,7 +161,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main"
                 "/.automation/test/sample_project",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -174,7 +182,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main/"
                 ".automation/test/sample_project",
                 "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -194,7 +202,7 @@ class mega_linter_1_test(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": "https://raw.githubusercontent.com/notexisting/wesh",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -214,7 +222,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "JAVASCRIPT_CONFIG_FILE": ".eslintrc-custom.yml",
                 "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
                 "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -229,7 +237,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
                 "FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -246,7 +254,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
                 "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
                 "MULTI_STATUS": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -263,7 +271,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "JAVASCRIPT_ES_ARGUMENTS": "--debug --env-info",
                 "MULTI_STATUS": "false",
                 "LOG_LEVEL": "DEBUG",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -278,7 +286,11 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_new_flavor_suggestion(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"MULTI_STATUS": "false", "LOG_LEVEL": "DEBUG","request_id": self.request_id}
+            {
+                "MULTI_STATUS": "false",
+                "LOG_LEVEL": "DEBUG",
+                "request_id": self.request_id,
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -286,7 +298,9 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertEqual("new", mega_linter.flavor_suggestions[0])
 
     def test_json_output(self):
-        mega_linter, output = utilstest.call_mega_linter({"JSON_REPORTER": "true","request_id": self.request_id})
+        mega_linter, output = utilstest.call_mega_linter(
+            {"JSON_REPORTER": "true", "request_id": self.request_id}
+        )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
@@ -300,7 +314,11 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_json_output_detailed(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"JSON_REPORTER": "true", "JSON_REPORTER_OUTPUT_DETAIL": "detailed","request_id": self.request_id}
+            {
+                "JSON_REPORTER": "true",
+                "JSON_REPORTER_OUTPUT_DETAIL": "detailed",
+                "request_id": self.request_id,
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -319,7 +337,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "TAP_REPORTER": "true",
                 "TAP_REPORTER_OUTPUT_DETAIL": "detailed",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -338,7 +356,9 @@ class mega_linter_1_test(unittest.TestCase):
         )
 
     def test_config_reporter(self):
-        mega_linter, output = utilstest.call_mega_linter({"CONFIG_REPORTER": "true","request_id": self.request_id})
+        mega_linter, output = utilstest.call_mega_linter(
+            {"CONFIG_REPORTER": "true", "request_id": self.request_id}
+        )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
@@ -355,7 +375,7 @@ class mega_linter_1_test(unittest.TestCase):
             {
                 "ENABLE": "YAML",
                 "YAML_YAMLLINT_CLI_LINT_MODE": "file",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -383,7 +403,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "PRINT_ALL_FILES": "false",
                 "MEGALINTER_FLAVOR": "javascript",
                 "FLAVOR_SUGGESTIONS": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -399,7 +419,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "PRINT_ALL_FILES": "false",
                 "MEGALINTER_FLAVOR": "javascript",
                 "FLAVOR_SUGGESTIONS": "false",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -416,7 +436,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "MEGALINTER_FLAVOR": "javascript",
                 "FLAVOR_SUGGESTIONS": "false",
                 "SKIP_CLI_LINT_MODES": "list_of_files",
-                "request_id": self.request_id
+                "request_id": self.request_id,
             }
         )
         self.assertIn(

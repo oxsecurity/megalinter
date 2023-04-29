@@ -26,10 +26,12 @@ class WebHookLinterReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get(self.master.request_id,"WEBHOOK_REPORTER", "false") == "true":
-            if config.exists(self.master.request_id,"WEBHOOK_REPORTER_URL"):
+        if config.get(self.master.request_id, "WEBHOOK_REPORTER", "false") == "true":
+            if config.exists(self.master.request_id, "WEBHOOK_REPORTER_URL"):
                 self.is_active = True
-                self.hook_url = config.get(self.master.request_id,"WEBHOOK_REPORTER_URL")
+                self.hook_url = config.get(
+                    self.master.request_id, "WEBHOOK_REPORTER_URL"
+                )
             else:
                 logging.error(
                     "You need to define WEBHOOK_REPORTER_URL to use WebHookReporter"
@@ -44,7 +46,7 @@ class WebHookLinterReporter(Reporter):
             "accept": "application/json",
             "content-type": "application/json",
         }
-        if config.exists(self.master.request_id,"WEBHOOK_REPORTER_BEARER_TOKEN"):
+        if config.exists(self.master.request_id, "WEBHOOK_REPORTER_BEARER_TOKEN"):
             headers[
                 "authorization"
             ] = f"Bearer {config.get(self.master.request_id,'WEBHOOK_REPORTER_BEARER_TOKEN')}"
@@ -83,8 +85,8 @@ class WebHookLinterReporter(Reporter):
             ) as linter_sarif_file:
                 self.web_hook_data["outputSarif"] = json.load(linter_sarif_file)
         else:
-            text_report_sub_folder = config.get(self.master.request_id,
-                "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+            text_report_sub_folder = config.get(
+                self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
             )
             text_file_name = (
                 f"{self.report_folder}{os.path.sep}"

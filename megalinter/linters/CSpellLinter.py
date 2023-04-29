@@ -29,7 +29,8 @@ class CSpellLinter(Linter):
             self.cli_lint_mode == "list_of_files"
             and self.files is not None
             and len(self.files) > 0
-            and config.get(self.request_id,"SPELL_CSPELL_ANALYZE_FILE_NAMES", "true") == "true"
+            and config.get(self.request_id, "SPELL_CSPELL_ANALYZE_FILE_NAMES", "true")
+            == "true"
         ):
             file_names_txt = ""
             for file_path in self.files:
@@ -137,4 +138,6 @@ Of course, please correct real typos before :)
         return additional_report.splitlines()
 
     def pre_test(self):
-        config.set_value(self.master.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"])
+        config.set_value(
+            self.master.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"]
+        )
