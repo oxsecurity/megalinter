@@ -8,7 +8,7 @@ import tempfile
 import requests
 import yaml
 
-RUN_CONFIGS = {}
+RUN_CONFIGS = {}  # type: ignore[var-annotated]
 
 
 def init_config(request_id, workspace=None, params={}):
@@ -163,6 +163,7 @@ def get_for_env(request_id):
         if not isinstance(value, str):
             config_dict[key] = str(value)
     return config_dict
+
 
 def set(request_id, config_var, value):
     global RUN_CONFIGS
