@@ -136,6 +136,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.262 to **0.0.263** on 2023-04-25
   - [djlint](https://djlint.com/) from 1.24.0 to **1.25.0** on 2023-04-26
   - [git_diff](https://git-scm.com) from 2.38.4 to **2.38.5** on 2023-04-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.3 to **0.77.4** on 2023-04-29
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.4 to **3.5.5** on 2023-04-29
+  - [csharpier](https://csharpier.com/) from 0.23.0 to **0.24.1** on 2023-04-29
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.9.3 to **10.10.0** on 2023-04-29
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.2 to **14.0.3** on 2023-04-29
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.304 to **1.1.305** on 2023-04-29
+  - [checkov](https://www.checkov.io/) from 2.3.199 to **2.3.205** on 2023-04-29
+  - [semgrep](https://semgrep.dev/) from 1.19.0 to **1.20.0** on 2023-04-29
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.40.0 to **0.41.0** on 2023-04-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.0 to **7.25.2** on 2023-04-29
+  - [vale](https://vale.sh/) from 2.24.4 to **2.25.2** on 2023-04-29
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.5 to **1.4.6** on 2023-04-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.4 to **0.45.5** on 2023-04-29
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
