@@ -11930,6 +11930,22 @@
       "title": "SCALA_SCALAFIX: Custom config file path",
       "type": "string"
     },
+    "SECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SECURED_ENV_VARIABLES",
+      "default": ["GITHUB_TOKEN","PAT"],
+      "description": "List of secured environment variables to hide when calling pre_commands and linters",
+      "examples:": [
+        "GITHUB_TOKEN",
+        "PAT",
+        "SOME_SECURED_ENV_VAR",
+        "ANOTHER_SECURED_ENV_VAR"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Secured environment variables",
+      "type": "array"
+    },
     "SHOW_ELAPSED_TIME": {
       "$id": "#/properties/SHOW_ELAPSED_TIME",
       "default": false,
