@@ -25,7 +25,7 @@ import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
-from megalinter import utils, config
+from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
@@ -2489,7 +2489,7 @@ def generate_json_schema_enums():
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():
-    linters = megalinter.linter_factory.list_all_linters({'request_id': 'build'})
+    linters = megalinter.linter_factory.list_all_linters({"request_id": "build"})
     # Read file
     with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
