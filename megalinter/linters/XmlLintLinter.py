@@ -16,10 +16,10 @@ class XmlLintLinter(Linter):
         if (
             self.apply_fixes is True
             and self.cli_lint_fix_arg_name is not None
-            and config.get("XML_XMLLINT_AUTOFORMAT", "false") == "true"
+            and config.get(self.request_id,"XML_XMLLINT_AUTOFORMAT", "false") == "true"
         ):
             if self.cli_lint_mode == "file":
-                os.environ["XMLLINT_INDENT"] = config.get("XML_XMLLINT_INDENT", "  ")
+                os.environ["XMLLINT_INDENT"] = config.get(self.request_id,"XML_XMLLINT_INDENT", "  ")
 
                 cmd += ["--output", f"{file}"]
             else:
@@ -29,5 +29,5 @@ class XmlLintLinter(Linter):
         return cmd
 
     def pre_test(self):
-        config.set_value("XML_XMLLINT_AUTOFORMAT", "true")
-        config.set_value("XML_XMLLINT_CLI_LINT_MODE", "file")
+        config.set_value(self.master.request_id,"XML_XMLLINT_AUTOFORMAT", "true")
+        config.set_value(self.master.request_id,"XML_XMLLINT_CLI_LINT_MODE", "file")

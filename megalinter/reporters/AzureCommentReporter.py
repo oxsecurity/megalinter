@@ -26,17 +26,17 @@ class AzureCommentReporter(Reporter):
     scope = "mega-linter"
 
     def manage_activation(self):
-        if config.get("AZURE_COMMENT_REPORTER", "true") != "true":
+        if config.get(self.master.request_id,"AZURE_COMMENT_REPORTER", "true") != "true":
             self.is_active = False
-        elif config.get("POST_AZURE_COMMENT", "true") == "true":  # True by default
+        elif config.get(self.master.request_id,"POST_AZURE_COMMENT", "true") == "true":  # True by default
             self.is_active = True
 
     def produce_report(self):
         # Post thread on Azure pull request
-        if config.get("SYSTEM_ACCESSTOKEN", "") != "":
+        if config.get(self.master.request_id,"SYSTEM_ACCESSTOKEN", "") != "":
             # Collect variables
-            SYSTEM_COLLECTIONURI = config.get("SYSTEM_COLLECTIONURI")
-            SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
+            SYSTEM_COLLECTIONURI = config.get(self.master.request_id,"SYSTEM_COLLECTIONURI")
+            SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(self.master.request_id,
                 "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
             )
             if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
@@ -47,12 +47,12 @@ class AzureCommentReporter(Reporter):
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
                 return
-            SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get("SYSTEM_TEAMPROJECT"))
-            BUILD_REPOSITORY_ID = config.get("BUILD_REPOSITORY_ID")
-            BUILD_BUILDID = config.get("BUILD_BUILDID", config.get("BUILD_BUILD_ID"))
+            SYSTEM_TEAMPROJECT = urllib.parse.quote(config.get(self.master.request_id,"SYSTEM_TEAMPROJECT"))
+            BUILD_REPOSITORY_ID = config.get(self.master.request_id,"BUILD_REPOSITORY_ID")
+            BUILD_BUILDID = config.get(self.master.request_id,"BUILD_BUILDID", config.get(self.master.request_id,"BUILD_BUILD_ID"))
 
             # Build thread data
-            AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
+            AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(self.master.request_id,
                 "AZURE_COMMENT_REPORTER_LINKS_TYPE", "artifacts"
             )
             if AZURE_COMMENT_REPORTER_LINKS_TYPE == "artifacts":
@@ -72,7 +72,7 @@ class AzureCommentReporter(Reporter):
             }
 
             # Create connection to Azure API
-            access_token = config.get("SYSTEM_ACCESSTOKEN")
+            access_token = config.get(self.master.request_id,"SYSTEM_ACCESSTOKEN")
             credentials = BasicTokenAuthentication({"access_token": access_token})
             connection = Connection(
                 base_url=f"{SYSTEM_COLLECTIONURI}",

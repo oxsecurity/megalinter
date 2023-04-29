@@ -53,9 +53,9 @@ def normalize_sarif_files(linter):
                 )
 
             # In case SARIF is active, and default workspace is set, clear that from sarif files
-            default_workspace = config.get("DEFAULT_WORKSPACE")
+            default_workspace = config.get(linter.request_id,"DEFAULT_WORKSPACE")
             if (
-                config.get("SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT", True) == "true"
+                config.get(linter.request_id,"SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT", True) == "true"
                 and default_workspace
             ):
                 clear_default_workspace_prefix(

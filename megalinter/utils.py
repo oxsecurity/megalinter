@@ -68,7 +68,7 @@ if DEFAULT_WORKSPACE != "":
     ]
 
 
-def get_excluded_directories():
+def get_excluded_directories(request_id):
     default_excluded_dirs = [
         "__pycache__",
         ".git",
@@ -80,10 +80,10 @@ def get_excluded_directories():
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get("REPORT_OUTPUT_FOLDER", "megalinter-reports"),
+        config.get(request_id,"REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
-    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
-    excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
+    excluded_dirs = config.get_list(request_id,"EXCLUDED_DIRECTORIES", default_excluded_dirs)
+    excluded_dirs += config.get_list(request_id,"ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     return set(excluded_dirs)
 
 
@@ -235,11 +235,11 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-def check_activation_rules(activation_rules, _linter):
+def check_activation_rules(activation_rules, linter):
     active = False
     for rule in activation_rules:
         if rule["type"] == "variable":
-            value = config.get(rule["variable"], rule["default_value"])
+            value = config.get(linter.request_id, rule["variable"], rule["default_value"])
             if value == rule["expected_value"]:
                 active = True
             else:

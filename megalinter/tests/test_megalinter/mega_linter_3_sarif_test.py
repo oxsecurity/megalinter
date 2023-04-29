@@ -25,9 +25,13 @@ root = (
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
+    def __init__(self) -> None:
+        self.request_id = str(uuid.uuid1())
+
     def setUp(self):
         utilstest.linter_test_setup(
             {
+                "request_id": self.request_id,
                 "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_sarif"
             }
         )
@@ -40,6 +44,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "MULTI_STATUS": "false",
                 "ENABLE_LINTERS": "JAVASCRIPT_ES,REPOSITORY_TRIVY,REPOSITORY_GITLEAKS,PYTHON_BANDIT,TERRAFORM_KICS",
                 "SARIF_REPORTER": "true",
+                "request_id": self.request_id
             }
         )
         self.assertTrue(

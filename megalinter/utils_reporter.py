@@ -136,7 +136,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 )
         p_r_msg += os.linesep
     # Link to ox
-    if config.get("REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
+    if config.get(reporter_self.request_id,"REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
         p_r_msg += (
             os.linesep
             + "MegaLinter is graciously provided by [OX Security]"
@@ -168,7 +168,7 @@ def get_linter_doc_url(linter):
 
 
 def log_section_start(section_key: str, section_title: str):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+    if "CI" in os.environ and config.get(None,"CONSOLE_REPORTER_SECTIONS", "true") == "true":
         if is_github_actions():
             return f"::group::{section_title} (expand for details)"
         elif is_gitlab_ci():
@@ -182,7 +182,7 @@ def log_section_start(section_key: str, section_title: str):
 
 
 def log_section_end(section_key):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+    if "CI" in os.environ and config.get(None,"CONSOLE_REPORTER_SECTIONS", "true") == "true":
         if is_github_actions():
             return "::endgroup::"
         elif is_gitlab_ci():

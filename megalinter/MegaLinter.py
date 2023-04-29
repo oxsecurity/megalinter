@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import shutil
 import sys
+from uuid import uuid1
 
 import chalk as c
 import git
@@ -29,6 +30,7 @@ from megalinter.constants import (
 )
 from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler
+from distutils.dir_util import copy_tree
 
 
 # Function to run linters using multiprocessing pool
@@ -53,11 +55,18 @@ class Megalinter:
 
         if "request_id" in params:
             self.request_id = params["request_id"]
+        else:
+            self.request_id = str(uuid1())
 
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
-        config.init_config(self.workspace, params)  # Initialize runtime config
-        self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
+        # Do not send secrets to linter executables
+        config.init_config(
+            self.request_id, self.workspace, params
+        )  # Initialize runtime config
+        self.github_workspace = config.get(
+            self.request_id, "GITHUB_WORKSPACE", self.workspace
+        )
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
         self.initialize_logger()
@@ -86,19 +95,23 @@ class Megalinter:
         self.output_sarif = False
 
         # Get enable / disable vars
-        self.enable_descriptors = config.get_list("ENABLE", [])
-        self.enable_linters = config.get_list("ENABLE_LINTERS", [])
-        self.disable_descriptors = config.get_list("DISABLE", [])
-        self.disable_linters = config.get_list("DISABLE_LINTERS", [])
-        self.disable_errors_linters = config.get_list("DISABLE_ERRORS_LINTERS", [])
+        self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
+        self.enable_linters = config.get_list(self.request_id, "ENABLE_LINTERS", [])
+        self.disable_descriptors = config.get_list(self.request_id, "DISABLE", [])
+        self.disable_linters = config.get_list(self.request_id, "DISABLE_LINTERS", [])
+        self.disable_errors_linters = config.get_list(
+            self.request_id, "DISABLE_ERRORS_LINTERS", []
+        )
         self.manage_default_linter_activation()
-        self.apply_fixes = config.get_list("APPLY_FIXES", "none")
+        self.apply_fixes = config.get_list(self.request_id, "APPLY_FIXES", "none")
         self.show_elapsed_time = (
-            config.get("SHOW_ELAPSED_TIME", "false") == "true"
-            or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
+            config.get(self.request_id, "SHOW_ELAPSED_TIME", "false") == "true"
+            or config.get(self.request_id, "LOG_LEVEL", "DEBUG") == "DEBUG"
         )
         # In case SARIF is active, convert results into human readable text for logs
-        self.sarif_to_human = config.get("SARIF_TO_HUMAN", "true") == "true"
+        self.sarif_to_human = (
+            config.get(self.request_id, "SARIF_TO_HUMAN", "true") == "true"
+        )
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -111,11 +124,34 @@ class Megalinter:
         self.has_git_extraheader = False
         self.has_updated_sources = 0
         self.fail_if_updated_sources = (
-            config.get("FAIL_IF_UPDATED_SOURCES", "false") == "true"
+            config.get(self.request_id, "FAIL_IF_UPDATED_SOURCES", "false") == "true"
         )
         self.flavor_suggestions = None
+
         # Initialize plugins
         plugin_factory.initialize_plugins()
+
+        # Copy node_modules in current folder if necessary
+        if os.path.isdir("/node_deps") and len(os.listdir("/node_deps")) > 0 and os.path.isfile(
+            os.path.join(self.workspace, ".gitignore")
+        ):
+            with open(
+                os.path.join(self.workspace, ".gitignore"), "r", encoding="utf-8"
+            ) as gitignore_file:
+                gitignore_content = gitignore_file.read()
+            if "node_modules" in gitignore_content:
+                workspace_node_modules = os.path.join(self.workspace, "node_modules")
+                copy_tree("/node_deps", workspace_node_modules)
+                # Update PATH & NODE_PATH so node_modules of the currently analyzed workspace is used
+                config.set(
+                    self.request_id,
+                    "PATH",
+                    config.get(self.request_id, "PATH").replace(
+                        "/node-deps/node_modules/.bin:", workspace_node_modules
+                    ),
+                )
+                config.set(self.request_id, "NODE_PATH", workspace_node_modules)
+
         # Run user-defined commands
         self.pre_commands_results = pre_post_factory.run_pre_commands(self)
         self.post_commands_results = []
@@ -163,7 +199,10 @@ class Megalinter:
                 linter for linter in active_linters if linter.is_active is True
             ]
 
-        if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
+        if (
+            config.get(self.request_id, "PARALLEL", "true") == "true"
+            and len(active_linters) > 1
+        ):
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
             self.process_linters_serial(active_linters)
@@ -195,7 +234,7 @@ class Megalinter:
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
         if (
             self.validate_all_code_base is True
-            and config.get("FLAVOR_SUGGESTIONS", "true") == "true"
+            and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") == "true"
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters
@@ -278,8 +317,8 @@ class Megalinter:
     def get_workspace(self, params):
         if "workspace" in params:
             self.arg_input = params["workspace"]
-        default_workspace = config.get("DEFAULT_WORKSPACE", "")
-        github_workspace = config.get("GITHUB_WORKSPACE", "")
+        default_workspace = config.get(self.request_id, "DEFAULT_WORKSPACE", "")
+        github_workspace = config.get(self.request_id, "GITHUB_WORKSPACE", "")
         # Use CLI input argument
         if self.arg_input is not None:
             if os.path.isdir(self.arg_input):
@@ -393,8 +432,8 @@ class Megalinter:
     # Manage configuration variables
     def load_config_vars(self):
         # Linter rules root path
-        if config.exists("LINTER_RULES_PATH"):
-            linter_rules_path_val = config.get("LINTER_RULES_PATH")
+        if config.exists(self.request_id, "LINTER_RULES_PATH"):
+            linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH")
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
             else:
@@ -402,29 +441,33 @@ class Megalinter:
                     self.github_workspace + os.path.sep + linter_rules_path_val
                 )
         # Filtering regex (inclusion)
-        if config.exists("FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = config.get("FILTER_REGEX_INCLUDE")
+        if config.exists(self.request_id, "FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = config.get(
+                self.request_id, "FILTER_REGEX_INCLUDE"
+            )
         # Filtering regex (exclusion)
-        if config.exists("FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get("FILTER_REGEX_EXCLUDE")
+        if config.exists(self.request_id, "FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = config.get(
+                self.request_id, "FILTER_REGEX_EXCLUDE"
+            )
         # Disable all fields validation if VALIDATE_ALL_CODEBASE is 'false'
         if (
-            config.exists("VALIDATE_ALL_CODEBASE")
-            and config.get("VALIDATE_ALL_CODEBASE") == "false"
+            config.exists(self.request_id, "VALIDATE_ALL_CODEBASE")
+            and config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
         ):
             self.validate_all_code_base = False
         # Manage IGNORE_GITIGNORED_FILES
-        if config.exists("IGNORE_GITIGNORED_FILES"):
+        if config.exists(self.request_id, "IGNORE_GITIGNORED_FILES"):
             self.ignore_gitignore_files = (
-                config.get("IGNORE_GITIGNORED_FILES", "true") == "true"
+                config.get(self.request_id, "IGNORE_GITIGNORED_FILES", "true") == "true"
             )
         # Manage IGNORE_GENERATED_FILES
-        if config.exists("IGNORE_GENERATED_FILES"):
+        if config.exists(self.request_id, "IGNORE_GENERATED_FILES"):
             self.ignore_generated_files = (
-                config.get("IGNORE_GENERATED_FILES", "false") == "true"
+                config.get(self.request_id, "IGNORE_GENERATED_FILES", "false") == "true"
             )
         # Manage SARIF output
-        if config.get("SARIF_REPORTER", "") == "true":
+        if config.get(self.request_id, "SARIF_REPORTER", "") == "true":
             self.output_sarif = True
 
     # Calculate default linter activation according to env variables
@@ -433,9 +476,9 @@ class Megalinter:
         if len(self.enable_descriptors) > 0 or len(self.enable_linters) > 0:
             self.default_linter_activation = False
         # V3 legacy variables
-        for env_var in config.get():
+        for env_var in config.get(self.request_id):
             if env_var.startswith("VALIDATE_") and env_var != "VALIDATE_ALL_CODEBASE":
-                if config.get(env_var) == "true":
+                if config.get(self.request_id, env_var) == "true":
                     self.default_linter_activation = False
 
     # Load and initialize all linters
@@ -463,14 +506,14 @@ class Megalinter:
         # if flavor selected and no flavor suggestion, ignore linters that aren't in current flavor)
         if self.megalinter_flavor == "none":
             # Single linter docker image
-            unique_linter = config.get("SINGLE_LINTER")
+            unique_linter = config.get(self.request_id, "SINGLE_LINTER")
             all_linters = linter_factory.list_linters_by_name(
                 linter_init_params, [unique_linter]
             )
         elif (
             # Flavored MegaLinter
             self.megalinter_flavor != "all"
-            and config.get("FLAVOR_SUGGESTIONS", "true") != "true"
+            and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") != "true"
         ):
             all_linters = linter_factory.list_flavor_linters(
                 linter_init_params, self.megalinter_flavor
@@ -481,7 +524,9 @@ class Megalinter:
 
         skipped_linters = []
         # Remove inactive, disabled or skipped linters
-        skip_cli_lint_modes = config.get_list("SKIP_CLI_LINT_MODES", [])
+        skip_cli_lint_modes = config.get_list(
+            self.request_id, "SKIP_CLI_LINT_MODES", []
+        )
         for linter in all_linters:
             linter.master = self
             if (
@@ -503,7 +548,9 @@ class Megalinter:
                 continue
             self.linters += [linter]
         # Display skipped linters in log
-        show_skipped_linters = config.get("SHOW_SKIPPED_LINTERS", "true") == "true"
+        show_skipped_linters = (
+            config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
+        )
         if len(skipped_linters) > 0 and show_skipped_linters:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
@@ -534,7 +581,7 @@ class Megalinter:
     # Collect list of files matching extensions and regex
     def collect_files(self):
         # Collect not filtered list of files
-        files_to_lint = config.get_list("MEGALINTER_FILES_TO_LINT", [])
+        files_to_lint = config.get_list(self.request_id, "MEGALINTER_FILES_TO_LINT", [])
         if len(files_to_lint) > 0:
             # Files sent as input parameter
             all_files = list()
@@ -647,14 +694,14 @@ class Megalinter:
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
         # Add auth header if necessary
-        if config.get("GIT_AUTHORIZATION_BEARER", "") != "":
+        if config.get(self.request_id, "GIT_AUTHORIZATION_BEARER", "") != "":
             auth_bearer = "Authorization: Bearer " + config.get(
-                "GIT_AUTHORIZATION_BEARER"
+                self.request_id, "GIT_AUTHORIZATION_BEARER"
             )
             repo.config_writer().set_value("http", "extraheader", auth_bearer).release()
             self.has_git_extraheader = True
         # Fetch base branch content
-        default_branch = config.get("DEFAULT_BRANCH", "HEAD")
+        default_branch = config.get(self.request_id, "DEFAULT_BRANCH", "HEAD")
         default_branch_remote = f"origin/{default_branch}"
         if default_branch_remote not in [ref.name for ref in repo.refs]:
             remote_ref = (
@@ -684,7 +731,7 @@ class Megalinter:
         ]
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
-        excluded_directories = utils.get_excluded_directories()
+        excluded_directories = utils.get_excluded_directories(self.request_id)
         for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
             all_files += [
@@ -714,8 +761,10 @@ class Megalinter:
 
     def initialize_output(self):
         self.report_folder = config.get(
+            self.request_id,
             "REPORT_OUTPUT_FOLDER",
             config.get(
+                self.request_id,
                 "OUTPUT_FOLDER",
                 self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
             ),
@@ -727,11 +776,15 @@ class Megalinter:
                     # --output /logs/megalinter/myoutputfile.sarif
                     self.report_folder = os.path.dirname(self.arg_output)
                     config.set(
-                        "SARIF_REPORTER_FILE_NAME", os.path.basename(self.arg_output)
+                        self.request_id,
+                        "SARIF_REPORTER_FILE_NAME",
+                        os.path.basename(self.arg_output),
                     )
                 else:
                     # --output myoutputfile.sarif
-                    config.set("SARIF_REPORTER_FILE_NAME", self.arg_output)
+                    config.set(
+                        self.request_id, "SARIF_REPORTER_FILE_NAME", self.arg_output
+                    )
             elif os.path.isdir(self.arg_output):
                 # --output /logs/megalinter
                 self.report_folder = self.arg_output
@@ -741,7 +794,7 @@ class Megalinter:
         # Initialize output dir
         os.makedirs(self.report_folder, exist_ok=True)
         # Clear report folder if requested
-        if config.get("CLEAR_REPORT_FOLDER", "false") == "true":
+        if config.get(self.request_id, "CLEAR_REPORT_FOLDER", "false") == "true":
             logging.info(
                 f"CLEAR_REPORT_FOLDER found: empty folder {self.report_folder}"
             )
@@ -749,7 +802,7 @@ class Megalinter:
             os.makedirs(self.report_folder, exist_ok=True)
 
     def initialize_logger(self):
-        logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
+        logging_level_key = config.get(self.request_id, "LOG_LEVEL", "INFO").upper()
         logging_level_list = {
             "INFO": logging.INFO,
             "DEBUG": logging.DEBUG,
@@ -765,9 +818,9 @@ class Megalinter:
             else logging.INFO
         )
 
-        if config.get("LOG_FILE", "") == "none" or not utils.can_write_report_files(
-            self
-        ):
+        if config.get(
+            self.request_id, "LOG_FILE", ""
+        ) == "none" or not utils.can_write_report_files(self):
             # Don't log console output in a file
             logging.basicConfig(
                 force=True,
@@ -781,7 +834,7 @@ class Megalinter:
             log_file = (
                 self.report_folder
                 + os.path.sep
-                + config.get("LOG_FILE", "megalinter.log")
+                + config.get(self.request_id, "LOG_FILE", "megalinter.log")
             )
             # Log console output in a file
             if not os.path.isdir(os.path.dirname(log_file)):
@@ -803,50 +856,55 @@ class Megalinter:
         logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
         logging.info(utils.format_hyphens(""))
         logging.info(
-            " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
+            " - Image Creation Date: "
+            + config.get(None, "BUILD_DATE", "No docker image")
         )
         logging.info(
-            " - Image Revision: " + config.get("BUILD_REVISION", "No docker image")
+            " - Image Revision: "
+            + config.get(None, "BUILD_REVISION", "No docker image")
         )
         logging.info(
-            " - Image Version: " + config.get("BUILD_VERSION", "No docker image")
+            " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
         )
         logging.info(utils.format_hyphens(""))
         logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
-        if os.environ.get("GITHUB_REPOSITORY", "") != "":
+        if config.get(None, "GITHUB_REPOSITORY", "") != "":
             logging.info(
-                "GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", "")
+                "GITHUB_REPOSITORY: " + config.get(None, "GITHUB_REPOSITORY", "")
             )
             # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
-            logging.info("GITHUB_REF: " + os.environ.get("GITHUB_REF", ""))
+            logging.info("GITHUB_REF: " + config.get(None, "GITHUB_REF", ""))
             # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
-            logging.info("GITHUB_RUN_ID: " + os.environ.get("GITHUB_RUN_ID", ""))
-            logging.info("PAT: " + "set" if os.environ.get("PAT", "") != "" else "")
+            logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
+            logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
         # Display config variables for debug mode
-        for name, value in sorted(config.get_config().items()):
-            logging.debug("" + name + "=" + str(value))
+        for name, value in sorted(config.get_config(None).items()):
+            if name not in ["GITHUB_TOKEN", "PAT"]:
+                logging.debug("" + name + "=" + str(value))
+            else:
+                logging.debug("" + name + "=**********")
         logging.debug(utils.format_hyphens(""))
         logging.info("")
 
     def check_results(self):
-        if "GITHUB_OUTPUT" in os.environ:
-            github_output_file = os.environ["GITHUB_OUTPUT"]
+        if config.exists(self.request_id, "GITHUB_OUTPUT"):
+            github_output_file = config.get(self.request_id, "GITHUB_OUTPUT")
             with open(github_output_file, "a", encoding="utf-8") as output_stream:
                 output_stream.write(
                     f"has_updated_sources={str(self.has_updated_sources)}\n"
                 )
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
-            config.delete()
+            config.delete(self.request_id)
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
                 c.yellow("◬ Successfully linted all files, but with ignored errors")
             )
-            config.delete()
+            config.delete(self.request_id)
             self.check_updated_sources_failure()
         else:
             logging.error(c.red("❌ Error(s) have been found during linting"))
@@ -856,13 +914,13 @@ class Megalinter:
             )
             logging.warning(f"More info at {ML_DOC_URL}/configuration/")
             if self.cli is True:
-                if config.get("DISABLE_ERRORS", "false") == "true":
-                    config.delete()
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true":
+                    config.delete(self.request_id)
                     sys.exit(0)
                 else:
-                    config.delete()
+                    config.delete(self.request_id)
                     sys.exit(self.return_code)
-            config.delete()
+            config.delete(self.request_id)
 
     def check_updated_sources_failure(self):
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
@@ -887,7 +945,9 @@ class Megalinter:
 
     # Propose legacy versions users to upgrade
     def manage_upgrade_message(self):
-        mega_linter_version = config.get("BUILD_VERSION", "No docker image")
+        mega_linter_version = config.get(
+            self.request_id, "BUILD_VERSION", "No docker image"
+        )
         if (
             "insiders" in mega_linter_version
             or "v4" in mega_linter_version

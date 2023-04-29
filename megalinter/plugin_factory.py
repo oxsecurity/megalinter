@@ -11,7 +11,7 @@ from megalinter import config, linter_factory, utils
 
 
 def list_plugins():
-    plugins = config.get_list("PLUGINS", [])
+    plugins = config.get_list(None, "PLUGINS", [])
     return plugins
 
 

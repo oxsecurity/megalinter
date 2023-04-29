@@ -5,15 +5,20 @@ Unit tests for Megalinter class
 """
 import os
 import unittest
+import uuid
 
 from megalinter import utilstest
 from megalinter.constants import ML_REPO
 
 
 class plugins_test(unittest.TestCase):
+    def __init__(self) -> None:
+        self.request_id = str(uuid.uuid1())
+
     def setUp(self):
         utilstest.linter_test_setup(
             {
+                "request_id": self.request_id,
                 "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}mega-linter-plugin-test"
             }
         )
@@ -32,6 +37,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
+                "request_id": self.request_id
             }
         )
         self.assertTrue(
@@ -48,6 +54,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
+                "request_id": self.request_id
             }
         )
         self.assertTrue(
@@ -65,6 +72,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:
@@ -80,6 +88,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:
@@ -94,6 +103,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:
@@ -108,6 +118,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:
@@ -126,6 +137,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:
@@ -142,6 +154,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "request_id": self.request_id
                 }
             )
         except Exception as e:

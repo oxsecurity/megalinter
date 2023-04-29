@@ -26,7 +26,7 @@ class ConsoleReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("CONSOLE_REPORTER", "true") == "false":
+        if config.get(self.master.request_id,"CONSOLE_REPORTER", "true") == "false":
             self.is_active = False
 
     def initialize(self):
