@@ -158,15 +158,17 @@ def get(request_id, config_var=None, default=None):
 
 
 def build_env(request_id):
-    config_dict = get_config(request_id).copy()
     secured_env_variables = ["GITHUB_TOKEN", "PAT"]
     secured_env_variables += get_list(request_id, "SECURED_ENV_VARIABLES", [])
-    for key, value in config_dict.items():
-        if not isinstance(value, str):
-            config_dict[key] = str(value)
+    env_dict = {}
+    for key, value in get_config(request_id).items():
         if key in secured_env_variables:
-            del config_dict[key]
-    return config_dict
+            continue
+        elif not isinstance(value, str):
+            env_dict[key] = str(value)
+        else:
+            env_dict[key] = value
+    return env_dict
 
 
 def set(request_id, config_var, value):
