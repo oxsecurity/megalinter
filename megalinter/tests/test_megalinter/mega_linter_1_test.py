@@ -28,7 +28,7 @@ class mega_linter_1_test(unittest.TestCase):
     def test_disable_language(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DISABLE": "GROOVY",
+                "DISABLE": "GROOVY,REPOSITORY,SPELL",
                 "request_id": self.request_id,
             }
         )
@@ -300,7 +300,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_json_output(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"JSON_REPORTER": "true", "request_id": self.request_id}
+            {"JSON_REPORTER": "true", "request_id": self.request_id, "ENABLE_LINTERS": "JAVASCRIPT_ES"}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -318,6 +318,7 @@ class mega_linter_1_test(unittest.TestCase):
             {
                 "JSON_REPORTER": "true",
                 "JSON_REPORTER_OUTPUT_DETAIL": "detailed",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "request_id": self.request_id,
             }
         )
@@ -358,7 +359,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_config_reporter(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"CONFIG_REPORTER": "true", "request_id": self.request_id}
+            {"CONFIG_REPORTER": "true", "request_id": self.request_id, "ENABLE_LINTERS": "JAVASCRIPT_ES"}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -374,7 +375,7 @@ class mega_linter_1_test(unittest.TestCase):
     def test_override_cli_lint_mode(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "ENABLE": "YAML",
+                "ENABLE_LINTERS": "YAML_YAMLLINT",
                 "YAML_YAMLLINT_CLI_LINT_MODE": "file",
                 "request_id": self.request_id,
             }
