@@ -49,6 +49,7 @@ class Megalinter:
             params = {}
 
         # megalinter_exec cli variables
+        self.cli = params["cli"] if "cli" in params else False
         self.arg_input = None
         self.arg_output = None
         self.linter_version_only = None
@@ -71,9 +72,10 @@ class Megalinter:
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
         # Initialize logger + init logs
-        initialize_logger(self)
-        manage_upgrade_message()
-        display_header(self)
+        if self.cli is True:
+            initialize_logger(self)
+            manage_upgrade_message()
+            display_header(self)
         # MegaLinter default rules location
         self.default_rules_location = (
             "/action/lib/.automation"
@@ -92,7 +94,6 @@ class Megalinter:
         self.validate_all_code_base = True
         self.filter_regex_include = None
         self.filter_regex_exclude = None
-        self.cli = params["cli"] if "cli" in params else False
         self.default_linter_activation = True
         self.output_sarif = False
 
@@ -421,6 +422,8 @@ class Megalinter:
 
     # Manage CLI variables
     def load_cli_vars(self):
+        if self.cli is False:
+            return
         parser = argparse.ArgumentParser()
         parser.add_argument("--input", type=str, help="Input folder to lint")
         parser.add_argument("--output", type=str, help="Output file or directory")

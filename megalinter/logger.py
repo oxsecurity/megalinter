@@ -10,6 +10,7 @@ from megalinter.utils_reporter import log_section_start
 
 
 def initialize_logger(mega_linter):
+
     logging_level_key = config.get(mega_linter.request_id, "LOG_LEVEL", "INFO").upper()
     logging_level_list = {
         "INFO": logging.INFO,
