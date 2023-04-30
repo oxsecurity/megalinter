@@ -891,11 +891,12 @@ class Megalinter:
             logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
             logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
         # Display config variables for debug mode
+        secured_env_variables = config.list_secured_variables(self.request_id)
         for name, value in sorted(config.get_config(self.request_id).items()):
-            if name not in ["GITHUB_TOKEN", "PAT"]:
+            if name not in secured_env_variables:
                 logging.debug("" + name + "=" + str(value))
             else:
-                logging.debug("" + name + "=**********")
+                logging.debug("" + name + "=HIDDEN_BY_MEGALINTER")
         logging.debug(utils.format_hyphens(""))
         logging.info("")
 

@@ -5,7 +5,7 @@ export PYTHONPATH
 
 # Manage debug mode
 LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
+if [[ ${LOG_LEVEL} == "DEBUG_WITH_PRINTENV" ]]; then
   printenv
 fi
 
