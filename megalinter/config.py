@@ -20,19 +20,20 @@ def init_config(request_id, workspace=None, params={}):
         return
     env = os.environ.copy()
     env_plus_params = env | params
-    set_config(request_id, env_plus_params)
-    if workspace is None and "MEGALINTER_CONFIG" not in env:
+    if workspace is None and "MEGALINTER_CONFIG" not in env_plus_params:
+        set_config(request_id, env_plus_params)
         RUN_CONFIGS[request_id][
             "CONFIG_SOURCE"
         ] = "Environment variables only (no workspace)"
         print(f"[config] {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}")
         return
     else:
-        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = "Test class"
+        set_config(request_id, env_plus_params)
+        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = "TEMPORARY VAL THAT SHOULD NOT REMAIN"
     # Search for config file
     config_file = None
-    if "MEGALINTER_CONFIG" in env:
-        config_file_name = env.get("MEGALINTER_CONFIG")
+    if "MEGALINTER_CONFIG" in env_plus_params:
+        config_file_name = env_plus_params.get("MEGALINTER_CONFIG")
         if config_file_name.startswith("https://"):
             # Remote configuration file
             config_file = (
