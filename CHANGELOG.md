@@ -12,7 +12,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Vale](https://vale.sh/), a powerful enforcer of writing style
 
 - Medias
-  - [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
+  - Article: [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
+  - Video: [Ortelius Architecture Meeting](), with a review of MegaLinter, by [Steve Taylor](https://github.com/sbtaylor15) from [Ortelius](https://ortelius.io/)
+  - Web site: [my-devops-lab.com](https://www.my-devops-lab.com/tools)
 
 - Linter enhancements & fixes
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
