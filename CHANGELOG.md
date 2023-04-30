@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
 
 - Linter enhancements & fixes
+  - Gitleaks: add support to scan PR commits only on PRs when `VALIDATE_ALL_CODEBASE` is set to `false`, by @DariuszPorowski [#2504](https://github.com/oxsecurity/megalinter/pull/2504)
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
   - Prevent jscpd to create output folder if the repo isn't writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
   - Fix corrective .cspell.json file generated from cspell output
