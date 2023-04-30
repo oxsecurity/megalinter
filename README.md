@@ -105,6 +105,7 @@ _Github PR reporter_
     - [Linter specific variables](#linter-specific-variables)
     - [Pre-commands](#pre-commands)
     - [Post-commands](#post-commands)
+    - [Environment variables security](#environment-variables-security)
     - [CLI lint mode](#cli-lint-mode)
   - [Reporters](#reporters)
   - [Flavors](#flavors)
@@ -821,7 +822,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | **PRINT_ALPACA**                                           | `true`                                        | Enable printing alpaca image to console                                                                                                                                                                                                                     |
 | **PRINT_ALL_FILES**                                        | `false`                                       | Display all files analyzed by the linter instead of only the number                                                                                                                                                                                         |
 | **REPORT_OUTPUT_FOLDER**                                   | `${GITHUB_WORKSPACE}/megalinter-reports`      | Directory for generating report files. Set to `none` to not generate reports                                                                                                                                                                                |
-| **SECURED_ENV_VARIABLES**                                  | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them ! |
+| [**SECURED_ENV_VARIABLES**](#environment-variables-security)                                  | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them ! |
 | **SHOW_ELAPSED_TIME**                                      | `false`                                       | Displays elapsed time in reports                                                                                                                                                                                                                            |
 | **SHOW_SKIPPED_LINTERS**                                   | `true`                                        | Displays all disabled linters mega-linter could have run                                                                                                                                                                                                    |
 | **SKIP_CLI_LINT_MODES**                                    | \[\]                                          | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                                                                               |
@@ -932,6 +933,36 @@ POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 ```
+
+### Environment variables security
+
+MegaLinter runs on a docker image and calls the linters via command line to gather their results.
+
+If you run it from your **CI/CD pipelines**, the docker image may have **access to your environment variables, that can contain secrets** defined in CI/CD variables.
+
+As it can be complicated to **trust** the authors of all the open-source linters, **MegaLinter removes variables from the environment used to call linters**.
+
+Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py), but there is **no need to trust all the linters that are used** !
+
+You can override the list of hidden variables using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable.
+
+Example in `.mega-linter.yml`, with default values:
+
+```yaml
+SECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN
+  - PAT
+  - SYSTEM_ACCESSTOKEN
+  - CI_JOB_TOKEN
+  - GITLAB_ACCESS_TOKEN_MEGALINTER
+  - GITLAB_CUSTOM_CERTIFICATE
+  - WEBHOOK_REPORTER_BEARER_TOKEN
+```
+
+Notes:
+
+- If you define SECURED_ENV_VARIABLES, it replaces the default list, so append to the default list instead of just adding the new variables that you want to secure !
+- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
 
 ### CLI lint mode
 
