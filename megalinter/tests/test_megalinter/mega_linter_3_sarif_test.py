@@ -25,7 +25,7 @@ root = (
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
-    def __init__(self,args) -> None:
+    def __init__(self, args) -> None:
         self.request_id = str(uuid.uuid1())
         super().__init__(args)
 
