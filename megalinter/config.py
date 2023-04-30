@@ -164,33 +164,6 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
-def build_env(request_id, secured=True):
-    secured_env_variables = []
-    if secured is True:
-        secured_env_variables = get_list(
-            request_id,
-            "SECURED_ENV_VARIABLES",
-            [
-                "GITHUB_TOKEN",
-                "PAT",
-                "SYSTEM_ACCESSTOKEN",
-                "CI_JOB_TOKEN",
-                "GITLAB_ACCESS_TOKEN_MEGALINTER",
-                "GITLAB_CUSTOM_CERTIFICATE",
-                "WEBHOOK_REPORTER_BEARER_TOKEN",
-            ],
-        )
-    env_dict = {}
-    for key, value in get_config(request_id).items():
-        if key in secured_env_variables:
-            continue
-        elif not isinstance(value, str):
-            env_dict[key] = str(value)
-        else:
-            env_dict[key] = value
-    return env_dict
-
-
 def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
@@ -254,3 +227,36 @@ def delete(request_id=None, key=None):
     if key in config:
         del config[key]
     set_config(request_id, config)
+
+
+def build_env(request_id, secured=True):
+    secured_env_variables = []
+    if secured is True:
+        secured_env_variables = list_secured_variables(request_id)
+    env_dict = {}
+    for key, value in get_config(request_id).items():
+        if key in secured_env_variables:
+            continue
+        elif not isinstance(value, str):
+            env_dict[key] = str(value)
+        else:
+            env_dict[key] = value
+    return env_dict
+
+
+def list_secured_variables(request_id) -> list[str]:
+    secured_env_variables = get_list(
+        request_id,
+        "SECURED_ENV_VARIABLES",
+        [
+            "GITHUB_TOKEN",
+            "PAT",
+            "SYSTEM_ACCESSTOKEN",
+            "GIT_AUTHORIZATION_BEARER",
+            "CI_JOB_TOKEN",
+            "GITLAB_ACCESS_TOKEN_MEGALINTER",
+            "GITLAB_CUSTOM_CERTIFICATE",
+            "WEBHOOK_REPORTER_BEARER_TOKEN",
+        ],
+    )
+    return secured_env_variables
