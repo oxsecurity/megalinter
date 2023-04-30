@@ -228,6 +228,7 @@ def delete(request_id=None, key=None):
         del config[key]
     set_config(request_id, config)
 
+
 def build_env(request_id, secured=True):
     secured_env_variables = []
     if secured is True:
@@ -241,6 +242,7 @@ def build_env(request_id, secured=True):
         else:
             env_dict[key] = value
     return env_dict
+
 
 def list_secured_variables(request_id) -> list[str]:
     secured_env_variables = get_list(
