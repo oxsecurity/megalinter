@@ -27,6 +27,8 @@ def init_config(request_id, workspace=None, params={}):
         ] = "Environment variables only (no workspace)"
         print(f"[config] {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}")
         return
+    else:
+        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = "Test class"
     # Search for config file
     config_file = None
     if "MEGALINTER_CONFIG" in env:
@@ -130,12 +132,14 @@ def is_initialized_for(request_id):
 def get_config(request_id=None):
     global RUN_CONFIGS
     if request_id is not None and request_id in RUN_CONFIGS:
+        # Return request config
         return RUN_CONFIGS[request_id]
     elif request_id is not None:
         raise Exception(
             f"Internal error: there should be a config for request_id {request_id}"
         )
     else:
+        # Return ENV
         return os.environ.copy()
 
 
