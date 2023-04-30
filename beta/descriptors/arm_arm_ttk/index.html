@@ -2579,11 +2579,17 @@
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Test-AzTemplate: 
+<pre><code class="language-shell">
+cmdlet Import-Module at command pipeline position 1
+Supply values for the following parameters:
+Name[0]:
+Import-Module: Cannot process command because of one or more missing mandatory parameters: Name.
+Test-AzTemplate: 
 Line |
    2 |  $TAZ_V = (Test-AzTemplate -help);
-     |                            ~~~~~
-     | A parameter cannot be found that matches parameter name 'help'.
+     |            ~~~~~~~~~~~~~~~
+     | The term 'Test-AzTemplate' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>

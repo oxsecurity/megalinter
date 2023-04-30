@@ -211,6 +211,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#environment-variables-security">
+    Environment variables security
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#cli-lint-mode">
     CLI lint mode
   </a>
@@ -2373,6 +2378,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#environment-variables-security">
+    Environment variables security
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#cli-lint-mode">
     CLI lint mode
   </a>
@@ -2592,6 +2602,11 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <td>Directory for generating report files. Set to <code>none</code> to not generate reports</td>
 </tr>
 <tr>
+<td><a href="#environment-variables-security"><strong>SECURED_ENV_VARIABLES</strong></a></td>
+<td>MegaLinter &amp; CI platforms sensitive variables</td>
+<td>List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them !</td>
+</tr>
+<tr>
 <td><strong>SHOW_ELAPSED_TIME</strong></td>
 <td><code>false</code></td>
 <td>Displays elapsed time in reports</td>
@@ -2704,6 +2719,27 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 </code></pre>
+<h2 id="environment-variables-security">Environment variables security</h2>
+<p>MegaLinter runs on a docker image and calls the linters via command line to gather their results.</p>
+<p>If you run it from your <strong>CI/CD pipelines</strong>, the docker image may have <strong>access to your environment variables, that can contain secrets</strong> defined in CI/CD variables.</p>
+<p>As it can be complicated to <strong>trust</strong> the authors of all the open-source linters, <strong>MegaLinter removes variables from the environment used to call linters</strong>.</p>
+<p>Thanks to this feature, you only need to <a href="https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py"><strong>trust MegaLinter and its internal python dependencies</strong></a>, but there is <strong>no need to trust all the linters that are used</strong> !</p>
+<p>You can override the list of hidden variables using configuration property <strong>SECURED_ENV_VARIABLES</strong> in .mega-linter.yml or in an environment variable.</p>
+<p>Example in <code>.mega-linter.yml</code>, with default values:</p>
+<pre><code class="language-yaml">SECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN
+  - PAT
+  - SYSTEM_ACCESSTOKEN
+  - CI_JOB_TOKEN
+  - GITLAB_ACCESS_TOKEN_MEGALINTER
+  - GITLAB_CUSTOM_CERTIFICATE
+  - WEBHOOK_REPORTER_BEARER_TOKEN
+</code></pre>
+<p>Notes:</p>
+<ul>
+<li>If you define SECURED_ENV_VARIABLES, it replaces the default list, so append to the default list instead of just adding the new variables that you want to secure !</li>
+<li>Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for <a href="#pre-commands">PRE_COMMANDS</a> , as you might need secured values within their code.</li>
+</ul>
 <h2 id="cli-lint-mode">CLI lint mode</h2>
 <p>Each linter has a lint mode by default, visible in its MegaLinter documentation (<a href="https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed">example</a>):</p>
 <ul>
