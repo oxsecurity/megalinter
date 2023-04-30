@@ -822,7 +822,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | **PRINT_ALPACA**                                             | `true`                                        | Enable printing alpaca image to console                                                                                                                                                                                                                     |
 | **PRINT_ALL_FILES**                                          | `false`                                       | Display all files analyzed by the linter instead of only the number                                                                                                                                                                                         |
 | **REPORT_OUTPUT_FOLDER**                                     | `${GITHUB_WORKSPACE}/megalinter-reports`      | Directory for generating report files. Set to `none` to not generate reports                                                                                                                                                                                |
-| [**SECURED_ENV_VARIABLES**](#environment-variables-security) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them ! |
+| [**SECURED_ENV_VARIABLES**](#environment-variables-security) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GIT_AUTHORIZATION_BEARER,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them ! |
 | **SHOW_ELAPSED_TIME**                                        | `false`                                       | Displays elapsed time in reports                                                                                                                                                                                                                            |
 | **SHOW_SKIPPED_LINTERS**                                     | `true`                                        | Displays all disabled linters mega-linter could have run                                                                                                                                                                                                    |
 | **SKIP_CLI_LINT_MODES**                                      | \[\]                                          | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                                                                               |
@@ -953,6 +953,7 @@ SECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
   - PAT
   - SYSTEM_ACCESSTOKEN
+  - GIT_AUTHORIZATION_BEARER
   - CI_JOB_TOKEN
   - GITLAB_ACCESS_TOKEN_MEGALINTER
   - GITLAB_CUSTOM_CERTIFICATE

@@ -174,6 +174,7 @@ def build_env(request_id, secured=True):
                 "GITHUB_TOKEN",
                 "PAT",
                 "SYSTEM_ACCESSTOKEN",
+                "GIT_AUTHORIZATION_BEARER",
                 "CI_JOB_TOKEN",
                 "GITLAB_ACCESS_TOKEN_MEGALINTER",
                 "GITLAB_CUSTOM_CERTIFICATE",
