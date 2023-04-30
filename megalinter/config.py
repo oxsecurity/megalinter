@@ -8,26 +8,34 @@ import tempfile
 import requests
 import yaml
 
-CONFIG_DATA = None
-CONFIG_SOURCE = None
+RUN_CONFIGS = {}  # type: ignore[var-annotated]
 
 
-def init_config(workspace=None, params={}):
-    global CONFIG_DATA, CONFIG_SOURCE
-    if CONFIG_DATA is not None:
-        logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")
+def init_config(request_id, workspace=None, params={}):
+    global RUN_CONFIGS
+    if request_id in RUN_CONFIGS:
+        logging.debug(
+            f"[config] Already initialized: {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}"
+        )
         return
     env = os.environ.copy()
     env_plus_params = env | params
-    if workspace is None and "MEGALINTER_CONFIG" not in os.environ:
-        set_config(env_plus_params)
-        CONFIG_SOURCE = "Environment variables only (no workspace)"
-        print(f"[config] {CONFIG_SOURCE}")
+    if workspace is None and "MEGALINTER_CONFIG" not in env_plus_params:
+        set_config(request_id, env_plus_params)
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = "Environment variables only (no workspace)"
+        print(f"[config] {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}")
         return
+    else:
+        set_config(request_id, env_plus_params)
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = "TEMPORARY VAL THAT SHOULD NOT REMAIN"
     # Search for config file
     config_file = None
-    if "MEGALINTER_CONFIG" in os.environ:
-        config_file_name = os.environ.get("MEGALINTER_CONFIG")
+    if "MEGALINTER_CONFIG" in env_plus_params:
+        config_file_name = env_plus_params.get("MEGALINTER_CONFIG")
         if config_file_name.startswith("https://"):
             # Remote configuration file
             config_file = (
@@ -65,22 +73,27 @@ def init_config(workspace=None, params={}):
             else:
                 # append config file variables to env variables, with priority to env variables
                 runtime_config = config_data | env_plus_params
-            CONFIG_SOURCE = f"{config_file} + Environment variables"
+            RUN_CONFIGS[request_id][
+                "CONFIG_SOURCE"
+            ] = f"{config_file} + Environment variables"
     else:
         runtime_config = env_plus_params
-        CONFIG_SOURCE = (
-            f"Environment variables only (no config file found in {workspace})"
-        )
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = f"Environment variables only (no config file found in {workspace})"
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
         combined_config = {}
-        CONFIG_SOURCE = combine_config(
-            workspace, runtime_config, combined_config, CONFIG_SOURCE
+        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = combine_config(
+            workspace,
+            runtime_config,
+            combined_config,
+            RUN_CONFIGS[request_id]["CONFIG_SOURCE"],
         )
         runtime_config = combined_config
     # Print & set config in cache
-    print(f"[config] {CONFIG_SOURCE}")
-    set_config(runtime_config)
+    print(f"[config] {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}")
+    set_config(request_id, runtime_config)
 
 
 def combine_config(workspace, config, combined_config, config_source):
@@ -112,23 +125,36 @@ def combine_config(workspace, config, combined_config, config_source):
     return config_source
 
 
-def get_config():
-    global CONFIG_DATA
-    if CONFIG_DATA is not None:
-        return CONFIG_DATA
+def is_initialized_for(request_id):
+    global RUN_CONFIGS
+    if request_id in RUN_CONFIGS:
+        return True
+    return False
+
+
+def get_config(request_id=None):
+    global RUN_CONFIGS
+    if request_id is not None and request_id in RUN_CONFIGS:
+        # Return request config
+        return RUN_CONFIGS[request_id]
+    elif request_id is not None:
+        raise Exception(
+            f"Internal error: there should be a config for request_id {request_id}"
+        )
     else:
+        # Return ENV
         return os.environ.copy()
 
 
-def set_config(runtime_config):
-    global CONFIG_DATA
-    CONFIG_DATA = runtime_config
+def set_config(request_id, runtime_config):
+    global RUN_CONFIGS
+    RUN_CONFIGS[request_id] = runtime_config
 
 
-def get(config_var=None, default=None):
+def get(request_id, config_var=None, default=None):
     if config_var is None:
-        return get_config()
-    val = get_config().get(config_var, default)
+        return get_config(request_id)
+    val = get_config(request_id).get(config_var, default)
     # IF boolean, convert to "true" or "false"
     if isinstance(val, bool):
         if val is True:
@@ -138,15 +164,42 @@ def get(config_var=None, default=None):
     return val
 
 
-def set(config_var, value):
-    global CONFIG_DATA
-    assert CONFIG_DATA is not None, "Config has not been initialized yet !"
-    CONFIG_DATA[config_var] = value
+def build_env(request_id, secured=True):
+    secured_env_variables = []
+    if secured is True:
+        secured_env_variables = get_list(
+            request_id,
+            "SECURED_ENV_VARIABLES",
+            [
+                "GITHUB_TOKEN",
+                "PAT",
+                "SYSTEM_ACCESSTOKEN",
+                "CI_JOB_TOKEN",
+                "GITLAB_ACCESS_TOKEN_MEGALINTER",
+                "GITLAB_CUSTOM_CERTIFICATE",
+                "WEBHOOK_REPORTER_BEARER_TOKEN",
+            ],
+        )
+    env_dict = {}
+    for key, value in get_config(request_id).items():
+        if key in secured_env_variables:
+            continue
+        elif not isinstance(value, str):
+            env_dict[key] = str(value)
+        else:
+            env_dict[key] = value
+    return env_dict
+
+
+def set(request_id, config_var, value):
+    global RUN_CONFIGS
+    assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
+    RUN_CONFIGS[request_id][config_var] = value
 
 
 # Get list of elements from configuration. It can be list of strings or objects
-def get_list(config_var, default=None):
-    var = get(config_var, None)
+def get_list(request_id, config_var, default=None):
+    var = get(request_id, config_var, None)
     if var is not None:
         # List format
         if isinstance(var, list):
@@ -162,8 +215,8 @@ def get_list(config_var, default=None):
     return default
 
 
-def get_list_args(config_var, default=None):
-    var = get(config_var, None)
+def get_list_args(request_id, config_var, default=None):
+    var = get(request_id, config_var, None)
     if var is not None:
         if isinstance(var, list):
             return var
@@ -173,28 +226,31 @@ def get_list_args(config_var, default=None):
     return default
 
 
-def set_value(config_var, val):
-    config = get_config()
+def set_value(request_id, config_var, val):
+    config = get_config(request_id)
     config[config_var] = val
-    set_config(config)
+    set_config(request_id, config)
 
 
-def exists(config_var):
-    return config_var in get_config()
+def exists(request_id, config_var):
+    return config_var in get_config(request_id)
 
 
-def copy():
-    return get_config().copy()
+def copy(request_id):
+    return get_config(request_id).copy()
 
 
-def delete(key=None):
-    global CONFIG_DATA, CONFIG_SOURCE
-    if key is None:
-        CONFIG_DATA = None
-        CONFIG_SOURCE = None
-        logging.debug("Cleared MegaLinter runtime config")
+def delete(request_id=None, key=None):
+    global RUN_CONFIGS
+    # Global delete (used for tests)
+    if request_id is None:
+        RUN_CONFIGS = {}
         return
-    config = get_config()
+    if key is None:
+        del RUN_CONFIGS[request_id]
+        logging.debug("Cleared MegaLinter runtime config for request " + request_id)
+        return
+    config = get_config(request_id)
     if key in config:
         del config[key]
-    set_config(config)
+    set_config(request_id, config)

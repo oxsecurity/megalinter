@@ -16,11 +16,13 @@ from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel, Field
 from pygments import lexers
 
-print("MegaLinter Server starting...")
+print("MegaLinter Server starting…")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)  # type: ignore[attr-defined]
 logger = logging.getLogger(__name__)
 alpaca()
-app = FastAPI(title="MegaLinter Server", version=config.get("BUILD_VERSION", "DEV"))
+app = FastAPI(
+    title="MegaLinter Server", version=config.get(None, "BUILD_VERSION", "DEV")
+)
 
 global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0

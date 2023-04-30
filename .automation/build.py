@@ -25,7 +25,7 @@ import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
-from megalinter import utils
+from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
@@ -47,6 +47,7 @@ UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
 DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+DELETE_TEST_CLASSES = "--delete-test-classes" in sys.argv
 
 # Release args management
 if RELEASE is True:
@@ -153,7 +154,7 @@ def generate_flavor(flavor, flavor_info):
                 descriptor_and_linters += [descriptor]
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
-    linters = megalinter.linter_factory.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     requires_docker = False
     for linter in linters:
         if match_flavor(vars(linter), flavor, flavor_info) is True:
@@ -596,7 +597,7 @@ def generate_linter_dockerfiles():
         if "install" in descriptor:
             descriptor_items += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
-            descriptor_file, None
+            descriptor_file, {"request_id": "build"}
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
@@ -686,11 +687,12 @@ def generate_linter_dockerfiles():
 def generate_linter_test_classes():
     test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
 
-    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
-    shutil.rmtree(os.path.realpath(test_linters_root))
-    os.makedirs(os.path.realpath(test_linters_root))
+    if DELETE_TEST_CLASSES is True:
+        # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+        shutil.rmtree(os.path.realpath(test_linters_root))
+        os.makedirs(os.path.realpath(test_linters_root))
 
-    linters = megalinter.linter_factory.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     for linter in linters:
         if linter.name is not None:
             linter_name = linter.name
@@ -737,7 +739,7 @@ def list_descriptors_for_build():
         descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
         descriptors += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
-            descriptor_file
+            descriptor_file, {"request_id": "build"}
         )
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     DESCRIPTORS_FOR_BUILD_CACHE = descriptors, linters_by_type
@@ -2468,7 +2470,7 @@ def generate_json_schema_enums():
         outfile.write("\n")
     # Update list of descriptors and linters in configuration schema
     descriptors, _linters_by_type = list_descriptors_for_build()
-    linters = megalinter.linter_factory.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters({"request_id": "build"})
     with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
@@ -2489,7 +2491,7 @@ def generate_json_schema_enums():
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():
-    linters = megalinter.linter_factory.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters({"request_id": "build"})
     # Read file
     with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
@@ -2498,7 +2500,7 @@ def collect_linter_previews():
     for linter in linters:
         if (
             linter.linter_name not in data
-            or megalinter.config.get("REFRESH_LINTER_PREVIEWS", "false") == "true"
+            or megalinter.config.get(None, "REFRESH_LINTER_PREVIEWS", "false") == "true"
         ):
             logging.info(
                 f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}"
@@ -2527,7 +2529,7 @@ def collect_linter_previews():
 
 
 def generate_documentation_all_linters():
-    linters_raw = megalinter.linter_factory.list_all_linters()
+    linters_raw = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     linters = []
     with open(VERSIONS_FILE, "r", encoding="utf-8") as json_file:
         linter_versions = json.load(json_file)
@@ -3103,7 +3105,7 @@ if __name__ == "__main__":
             format="%(asctime)s [%(levelname)s] %(message)s",
             handlers=[logging.StreamHandler(sys.stdout)],
         )
-
+    config.init_config("build")
     # noinspection PyTypeChecker
     collect_linter_previews()
     generate_json_schema_enums()

@@ -50,6 +50,7 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                icu-libs \
     && git config --global core.autocrlf true
 #APK__END
 

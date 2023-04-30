@@ -36,7 +36,9 @@ class PowershellLinter(Linter):
 
             if self.apply_fixes is True:
                 file_encoding = config.get(
-                    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING", "utf8"
+                    self.request_id,
+                    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+                    "utf8",
                 )
 
                 pwsh_script[

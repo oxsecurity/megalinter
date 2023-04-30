@@ -17,20 +17,20 @@ class TextReporter(Reporter):
     def __init__(self, params=None):
         # report_type is simple by default
         self.report_type = "simple"
-        if config.get("OUTPUT_DETAIL", "") == "detailed":
-            self.report_type = "detailed"
         self.processing_order = -5
         super().__init__(params)
 
     def manage_activation(self):
-        output_format = config.get("OUTPUT_FORMAT", "")
+        if config.get(self.master.request_id, "OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
+        output_format = config.get(self.master.request_id, "OUTPUT_FORMAT", "")
         if not utils.can_write_report_files(self.master):
             self.is_active = False
         elif output_format.startswith("text"):
             # Super-Linter legacy variable
             self.is_active = True
         # MegaLinter vars (true by default)
-        elif config.get("TEXT_REPORTER", "true") != "true":
+        elif config.get(self.master.request_id, "TEXT_REPORTER", "true") != "true":
             self.is_active = False
         else:
             self.is_active = True
@@ -90,7 +90,9 @@ class TextReporter(Reporter):
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
         # Write to file
-        text_report_sub_folder = config.get("TEXT_REPORTER_SUB_FOLDER", "linters_logs")
+        text_report_sub_folder = config.get(
+            self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"

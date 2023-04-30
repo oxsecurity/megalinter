@@ -45,6 +45,7 @@ class Linter:
         self.linter_help_cache = None
         self.processing_order = 0
         self.master = None
+        self.request_id = None
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
         self.descriptor_id = (
@@ -138,31 +139,47 @@ class Linter:
         self.report_folder = ""
         self.reporters = []
 
+        # Initialize parameters
+        default_params = {
+            "default_linter_activation": False,
+            "enable_descriptors": [],
+            "enable_linters": [],
+            "disable_descriptors": [],
+            "disable_linters": [],
+            "disable_errors_linters": [],
+            "post_linter_status": True,
+        }
+        if params is None:
+            params = default_params
+        else:
+            params = {**default_params, **params}
+
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+        if "request_id" in params:
+            self.request_id = params["request_id"]
+        elif self.master is not None:
+            self.request_id: str = self.master.request_id
+        elif "master" in params:
+            self.request_id: str = params["master"].request_id
+        else:
+            raise Exception("Missing megalinter request_id")
 
-        # Initialize parameters
-        if params is None:
-            params = {
-                "default_linter_activation": False,
-                "enable_descriptors": [],
-                "enable_linters": [],
-                "disable_descriptors": [],
-                "disable_linters": [],
-                "disable_errors_linters": [],
-                "post_linter_status": True,
-            }
-
-        self.is_active = params["default_linter_activation"]
+        self.is_active = (
+            False
+            if "default_linter_activation" not in params
+            else params["default_linter_activation"]
+        )
         # Disable errors
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
             if self.is_formatter is True
-            and not config.get("FORMATTERS_DISABLE_ERRORS", "true") == "false"
+            and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
+            == "false"
             else True
-            if config.get("DISABLE_ERRORS", "false") == "true"
+            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
             else False
         )
         # Name
@@ -178,15 +195,19 @@ class Linter:
         )
         if self.output_sarif is True:
             # Disable SARIF if linter not in specified linter list
-            sarif_enabled_linters = config.get_list("SARIF_REPORTER_LINTERS", None)
+            sarif_enabled_linters = config.get_list(
+                self.request_id, "SARIF_REPORTER_LINTERS", None
+            )
             if (
                 sarif_enabled_linters is not None
                 and self.name not in sarif_enabled_linters
             ):
                 self.output_sarif = False
         # Override default executable
-        if config.exists(self.name + "_CLI_EXECUTABLE"):
-            self.cli_executable = config.get(self.name + "_CLI_EXECUTABLE")
+        if config.exists(self.request_id, self.name + "_CLI_EXECUTABLE"):
+            self.cli_executable = config.get(
+                self.request_id, self.name + "_CLI_EXECUTABLE"
+            )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
         if self.cli_executable_fix is None:
@@ -200,10 +221,10 @@ class Linter:
 
         # Apply linter customization via config settings:
         self.file_extensions = config.get_list(
-            self.name + "_FILE_EXTENSIONS", self.file_extensions
+            self.request_id, self.name + "_FILE_EXTENSIONS", self.file_extensions
         )
         self.file_names_regex = config.get_list(
-            self.name + "_FILE_NAMES_REGEX", self.file_names_regex
+            self.request_id, self.name + "_FILE_NAMES_REGEX", self.file_names_regex
         )
 
         self.manage_activation(params)
@@ -241,7 +262,7 @@ class Linter:
             # because there are no other linters
             if (
                 self.lint_all_other_linters_files is True
-                and config.get("SINGLE_LINTER", "") != ""
+                and config.get(self.request_id, "SINGLE_LINTER", "") != ""
             ):
                 self.lint_all_other_linters_files = False
 
@@ -287,7 +308,9 @@ class Linter:
             # Manage sub-directory filter if defined
             if self.files_sub_directory is not None:
                 self.files_sub_directory = config.get(
-                    f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory
+                    self.request_id,
+                    f"{self.descriptor_id}_DIRECTORY",
+                    self.files_sub_directory,
                 )
                 if not os.path.isdir(
                     self.workspace + os.path.sep + self.files_sub_directory
@@ -370,23 +393,23 @@ class Linter:
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
         elif (
-            config.exists("VALIDATE_" + self.name)
-            and config.get("VALIDATE_" + self.name) == "false"
+            config.exists(self.request_id, "VALIDATE_" + self.name)
+            and config.get(self.request_id, "VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
         elif (
-            config.exists("VALIDATE_" + self.descriptor_id)
-            and config.get("VALIDATE_" + self.descriptor_id) == "false"
+            config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
+            and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
         elif (
-            config.exists("VALIDATE_" + self.name)
-            and config.get("VALIDATE_" + self.name) == "true"
+            config.exists(self.request_id, "VALIDATE_" + self.name)
+            and config.get(self.request_id, "VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
         elif (
-            config.exists("VALIDATE_" + self.descriptor_id)
-            and config.get("VALIDATE_" + self.descriptor_id) == "true"
+            config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
+            and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
         # check activation rules
@@ -397,25 +420,41 @@ class Linter:
     def load_config_vars(self, params):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
-        if config.exists(self.name + "_CONFIG_FILE"):
-            self.config_file_name = config.get(self.name + "_CONFIG_FILE")
-        elif config.exists(self.descriptor_id + "_CONFIG_FILE"):
-            self.config_file_name = config.get(self.descriptor_id + "_CONFIG_FILE")
-        elif config.exists(self.name + "_FILE_NAME"):
-            self.config_file_name = config.get(self.name + "_FILE_NAME")
-        elif config.exists(self.descriptor_id + "_FILE_NAME"):
-            self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
+        if config.exists(self.request_id, self.name + "_CONFIG_FILE"):
+            self.config_file_name = config.get(
+                self.request_id, self.name + "_CONFIG_FILE"
+            )
+        elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
+            self.config_file_name = config.get(
+                self.request_id, self.descriptor_id + "_CONFIG_FILE"
+            )
+        elif config.exists(self.request_id, self.name + "_FILE_NAME"):
+            self.config_file_name = config.get(
+                self.request_id, self.name + "_FILE_NAME"
+            )
+        elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
+            self.config_file_name = config.get(
+                self.request_id, self.descriptor_id + "_FILE_NAME"
+            )
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
-            if config.exists(self.name + "_IGNORE_FILE"):
-                self.ignore_file_name = config.get(self.name + "_IGNORE_FILE")
-            elif config.exists(self.descriptor_id + "_IGNORE_FILE"):
-                self.ignore_file_name = config.get(self.descriptor_id + "_IGNORE_FILE")
+            if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(
+                    self.request_id, self.name + "_IGNORE_FILE"
+                )
+            elif config.exists(self.request_id, self.descriptor_id + "_IGNORE_FILE"):
+                self.ignore_file_name = config.get(
+                    self.request_id, self.descriptor_id + "_IGNORE_FILE"
+                )
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
-        if config.exists(self.name + "_RULES_PATH"):
-            self.linter_rules_path = config.get(self.name + "_RULES_PATH")
-        elif config.exists(self.descriptor_id + "_RULES_PATH"):
-            self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
+        if config.exists(self.request_id, self.name + "_RULES_PATH"):
+            self.linter_rules_path = config.get(
+                self.request_id, self.name + "_RULES_PATH"
+            )
+        elif config.exists(self.request_id, self.descriptor_id + "_RULES_PATH"):
+            self.linter_rules_path = config.get(
+                self.request_id, self.descriptor_id + "_RULES_PATH"
+            )
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
@@ -568,9 +607,11 @@ class Linter:
                 ).replace(self.TEMPLATES_DIR, "")
 
         # User override of cli_lint_mode
-        if config.exists(self.name + "_CLI_LINT_MODE"):
+        if config.exists(self.request_id, self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
-            cli_lint_mode_config = config.get(self.name + "_CLI_LINT_MODE")
+            cli_lint_mode_config = config.get(
+                self.request_id, self.name + "_CLI_LINT_MODE"
+            )
             if cli_lint_mode_descriptor == "project":
                 raise KeyError(
                     f"You can not override {self.name} cli_lint_mode as it can "
@@ -587,52 +628,72 @@ class Linter:
             self.cli_lint_mode = cli_lint_mode_config
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
-        if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = config.get(self.name + "_FILTER_REGEX_INCLUDE")
-        elif config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
+        if config.exists(self.request_id, self.name + "_FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get(
-                self.descriptor_id + "_FILTER_REGEX_INCLUDE"
+                self.request_id, self.name + "_FILTER_REGEX_INCLUDE"
+            )
+        elif config.exists(
+            self.request_id, self.descriptor_id + "_FILTER_REGEX_INCLUDE"
+        ):
+            self.filter_regex_include = config.get(
+                self.request_id, self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
         # User arguments from config
-        if config.get(self.name + "_ARGUMENTS", "") != "":
-            self.cli_lint_user_args = config.get_list_args(self.name + "_ARGUMENTS")
+        if config.get(self.request_id, self.name + "_ARGUMENTS", "") != "":
+            self.cli_lint_user_args = config.get_list_args(
+                self.request_id, self.name + "_ARGUMENTS"
+            )
 
         # Get PRE_COMMANDS overridden by user
-        if config.get(self.name + "_PRE_COMMANDS", "") != "":
-            self.pre_commands = config.get_list(self.name + "_PRE_COMMANDS")
+        if config.get(self.request_id, self.name + "_PRE_COMMANDS", "") != "":
+            self.pre_commands = config.get_list(
+                self.request_id, self.name + "_PRE_COMMANDS"
+            )
 
         # Get POST_COMMANDS overridden by user
-        if config.get(self.name + "_POST_COMMANDS", "") != "":
-            self.post_commands = config.get_list(self.name + "_POST_COMMANDS")
+        if config.get(self.request_id, self.name + "_POST_COMMANDS", "") != "":
+            self.post_commands = config.get_list(
+                self.request_id, self.name + "_POST_COMMANDS"
+            )
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
-        if config.get(self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
+        if config.get(self.request_id, self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
             self.disable_errors_if_less_than = int(
-                config.get(self.name + "_DISABLE_ERRORS_IF_LESS_THAN")
+                config.get(self.request_id, self.name + "_DISABLE_ERRORS_IF_LESS_THAN")
             )
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
         elif self.name in params["disable_errors_linters"]:
             self.disable_errors = True
-        elif config.get(self.name + "_DISABLE_ERRORS", "") == "false":
+        elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
-        elif config.get(self.name + "_DISABLE_ERRORS", "") == "true":
+        elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "true":
             self.disable_errors = True
-        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "") == "false":
+        elif (
+            config.get(self.request_id, self.descriptor_id + "_DISABLE_ERRORS", "")
+            == "false"
+        ):
             self.disable_errors = False
-        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "") == "true":
+        elif (
+            config.get(self.request_id, self.descriptor_id + "_DISABLE_ERRORS", "")
+            == "true"
+        ):
             self.disable_errors = True
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
-        if config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get(self.name + "_FILTER_REGEX_EXCLUDE")
-        elif config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
+        if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = config.get(
-                self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
+                self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
+            )
+        elif config.exists(
+            self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
+        ):
+            self.filter_regex_exclude = config.get(
+                self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
             )
         # Override default docker image version
-        if config.exists(self.name + "_DOCKER_IMAGE_VERSION"):
+        if config.exists(self.request_id, self.name + "_DOCKER_IMAGE_VERSION"):
             self.cli_docker_image_version = config.get(
-                self.name + "_DOCKER_IMAGE_VERSION"
+                self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
 
     # Processes the linter
@@ -821,7 +882,10 @@ class Linter:
     def execute_lint_command(self, command):
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
-        subprocess_env = {**os.environ, "FORCE_COLOR": "0"}
+        subprocess_env = {
+            **config.build_env(self.request_id),
+            "FORCE_COLOR": "0",
+        }
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(
@@ -917,7 +981,9 @@ class Linter:
         # Convert SARIF into human readable text for Console & Text reporters
         if sarif_confirmed is True and self.master.sarif_to_human is True:
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
-                self.stdout_human = utils_reporter.convert_sarif_to_human(file.read())
+                self.stdout_human = utils_reporter.convert_sarif_to_human(
+                    file.read(), self.request_id
+                )
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
@@ -942,9 +1008,17 @@ class Linter:
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
+        subprocess_env = {
+            **config.build_env(self.request_id),
+            "FORCE_COLOR": "0",
+        }
         try:
             process = subprocess.run(
-                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=cwd,
+                env=subprocess_env,
             )
             return_code = process.returncode
             output = utils.decode_utf8(process.stdout)
@@ -982,8 +1056,15 @@ class Linter:
                     if cli_absolute is not None:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
+                subprocess_env = {
+                    **config.build_env(self.request_id),
+                    "FORCE_COLOR": "0",
+                }
                 process = subprocess.run(
-                    command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+                    command,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    env=subprocess_env,
                 )
                 return_code = process.returncode
                 output += utils.decode_utf8(process.stdout)
@@ -1014,7 +1095,7 @@ class Linter:
             return command
         docker_command = ["docker", "run", "--rm"]
         if hasattr(self, "workspace"):
-            volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
+            volume_root = config.get(self.request_id, "MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
                 workspace_value = (
                     volume_root

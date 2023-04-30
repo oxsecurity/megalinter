@@ -41,6 +41,7 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"
   - ".automation/test"
 SHOW_ELAPSED_TIME: true
+FLAVOR_SUGGESTIONS: false
 EMAIL_REPORTER: false
 FILEIO_REPORTER: true
 JSON_REPORTER: true

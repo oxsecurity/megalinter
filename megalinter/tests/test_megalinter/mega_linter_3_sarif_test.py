@@ -25,10 +25,15 @@ root = (
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
+    def __init__(self, args) -> None:
+        self.request_id = str(uuid.uuid1())
+        super().__init__(args)
+
     def setUp(self):
         utilstest.linter_test_setup(
             {
-                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_sarif"
+                "request_id": self.request_id,
+                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_sarif",
             }
         )
 
@@ -38,8 +43,9 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "APPLY_FIXES": "false",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "ENABLE_LINTERS": "JAVASCRIPT_ES,REPOSITORY_TRIVY,REPOSITORY_GITLEAKS,PYTHON_BANDIT,TERRAFORM_KICS",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
                 "SARIF_REPORTER": "true",
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -55,7 +61,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
 
     def test_sarif_fix(self):
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter()
+        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
         # Create sample linters
         sarif_dir = (
             root

@@ -8,4 +8,6 @@ from megalinter import Linter, config
 
 class ProselintLinter(Linter):
     def pre_test(self):
-        config.set_value("SPELL_PROSELINT_FILE_EXTENSIONS", [".js", ".md"])
+        config.set_value(
+            self.request_id, "SPELL_PROSELINT_FILE_EXTENSIONS", [".js", ".md"]
+        )
