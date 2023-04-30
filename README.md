@@ -524,6 +524,9 @@ Add the following job in your `azure-pipelines.yaml` file
     pool:
       vmImage: ubuntu-latest
     steps:
+      # Checkout repo
+      - checkout: self
+
       # Pull MegaLinter docker image
       - script: docker pull oxsecurity/megalinter:v6
         displayName: Pull MegaLinter

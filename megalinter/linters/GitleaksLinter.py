@@ -74,7 +74,7 @@ class GitleaksLinter(Linter):
 
         # --no-git has been sent by default from ML descriptor
         # but as it is a git repo, remove all --no-git from arguments list
-        elif "--no-git" in cmd and utils.is_git_repo(self.workspace):
+        if "--no-git" in cmd and utils.is_git_repo(self.workspace):
             cmd = list(filter(lambda a: a != "--no-git", cmd))
 
         if config.get("VALIDATE_ALL_CODEBASE") == "false" and self.pr_commits_scan == "true" and utils.is_pr():

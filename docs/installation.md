@@ -184,6 +184,9 @@ Add the following job in your `azure-pipelines.yaml` file
     pool:
       vmImage: ubuntu-latest
     steps:
+      # Checkout repo
+      - checkout: self
+
       # Pull MegaLinter docker image
       - script: docker pull oxsecurity/megalinter:v6
         displayName: Pull MegaLinter
@@ -192,7 +195,6 @@ Add the following job in your `azure-pipelines.yaml` file
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
-            -e CI=true \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v6
