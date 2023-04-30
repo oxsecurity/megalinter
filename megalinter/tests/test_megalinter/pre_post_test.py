@@ -11,8 +11,9 @@ from megalinter import utilstest
 
 
 class PrePostTest(unittest.TestCase):
-    def __init__(self) -> None:
+    def __init__(self,args) -> None:
         self.request_id = str(uuid.uuid1())
+        super().__init__(args)
 
     def setUp(self):
         utilstest.linter_test_setup(

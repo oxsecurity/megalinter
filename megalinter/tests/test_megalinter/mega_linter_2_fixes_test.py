@@ -11,8 +11,9 @@ from megalinter import utilstest
 
 
 class mega_linter_2_fixes_test(unittest.TestCase):
-    def __init__(self) -> None:
+    def __init__(self,args) -> None:
         self.request_id = str(uuid.uuid1())
+        super().__init__(args)
 
     def setUp(self):
         utilstest.linter_test_setup(

@@ -13,8 +13,9 @@ from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
 class mega_linter_1_test(unittest.TestCase):
-    def __init__(self) -> None:
+    def __init__(self,args) -> None:
         self.request_id = str(uuid.uuid1())
+        super().__init__(args)
 
     def setUp(self):
         utilstest.linter_test_setup(
