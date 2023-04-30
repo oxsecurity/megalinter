@@ -1093,6 +1093,7 @@
         "pydocstyle",
         "pyflakes",
         "pygithub",
+        "pygments",
         "pygtk",
         "pylance",
         "pylint",

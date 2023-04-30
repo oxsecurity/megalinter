@@ -68,6 +68,7 @@ class WebHookLinterReporter(Reporter):
             "descriptorId": self.master.descriptor_id,
             "linterId": self.master.linter_name,
             "linterKey": self.master.name,
+            "linterVersion": self.master.get_linter_version(),
             "requestId": self.master.master.request_id,
             "docUrl": linter_doc_url,
             "isFormatter": self.master.is_formatter,

@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Vale](https://vale.sh/), a powerful enforcer of writing style
 
 - Medias
+  - [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
 
 - Linter enhancements & fixes
   - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
@@ -125,6 +126,32 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 15.5.0 to **15.6.0** on 2023-04-23
   - [prettier](https://prettier.io/) from 2.8.7 to **2.8.8** on 2023-04-23
   - [checkov](https://www.checkov.io/) from 2.3.192 to **2.3.194** on 2023-04-23
+  - [checkov](https://www.checkov.io/) from 2.3.194 to **2.3.197** on 2023-04-24
+  - [vale](https://vale.sh/) from 2.24.3 to **2.24.4** on 2023-04-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.2 to **0.77.3** on 2023-04-25
+  - [djlint](https://djlint.com/) from 1.23.3 to **1.24.0** on 2023-04-25
+  - [pylint](https://pylint.pycqa.org) from 2.17.2 to **2.17.3** on 2023-04-25
+  - [checkov](https://www.checkov.io/) from 2.3.197 to **2.3.199** on 2023-04-25
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.46.0 to **0.46.1** on 2023-04-25
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.262 to **0.0.263** on 2023-04-25
+  - [djlint](https://djlint.com/) from 1.24.0 to **1.25.0** on 2023-04-26
+  - [git_diff](https://git-scm.com) from 2.38.4 to **2.38.5** on 2023-04-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.3 to **0.77.4** on 2023-04-29
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.4 to **3.5.5** on 2023-04-29
+  - [csharpier](https://csharpier.com/) from 0.23.0 to **0.24.1** on 2023-04-29
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.9.3 to **10.10.0** on 2023-04-29
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.2 to **14.0.3** on 2023-04-29
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.304 to **1.1.305** on 2023-04-29
+  - [checkov](https://www.checkov.io/) from 2.3.199 to **2.3.205** on 2023-04-29
+  - [semgrep](https://semgrep.dev/) from 1.19.0 to **1.20.0** on 2023-04-29
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.40.0 to **0.41.0** on 2023-04-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.0 to **7.25.2** on 2023-04-29
+  - [vale](https://vale.sh/) from 2.24.4 to **2.25.2** on 2023-04-29
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.4.5 to **1.4.6** on 2023-04-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.4 to **0.45.5** on 2023-04-29
+  - [checkov](https://www.checkov.io/) from 2.3.205 to **2.3.206** on 2023-04-29
+  - [kics](https://www.kics.io) from 1.6.14 to **1.7.0** on 2023-04-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.5 to **0.45.6** on 2023-04-29
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
