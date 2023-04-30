@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import chalk as c
 import logging
 import os
 import sys
+
+import chalk as c
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
 from megalinter.utils_reporter import log_section_start
