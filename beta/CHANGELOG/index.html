@@ -3496,6 +3496,9 @@
 <ul>
 <li>Core<ul>
 <li>Use relative file paths to call linters (<a href="https://github.com/oxsecurity/megalinter/issues/1875">#1875</a>)</li>
+<li>Refactor internal configuration management to scope config to a request identifier</li>
+<li>New configuration variable SECURED_ENV_VARIABLES to hide some env vars from environment used when calling linters</li>
+<li>Replace deprecated distutils.copy_tree by shutil.copytree</li>
 <li>Add support for idea plugins autoinstall</li>
 <li>Upgrade base Docker image to python:3.11.3-alpine3.17</li>
 <li>Fix issue preventing plugins to work with flavors</li>
