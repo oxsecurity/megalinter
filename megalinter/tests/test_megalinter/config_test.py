@@ -76,7 +76,8 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         local_config = "local.mega-linter.yml"
         request_id = str(uuid.uuid1())
-        config.init_config(request_id,
+        config.init_config(
+            request_id,
             REPO_HOME_DEFAULT
             + os.path.sep
             + ".automation"
@@ -88,15 +89,16 @@ class config_test(unittest.TestCase):
             + "local_extends",
             {"MEGALINTER_CONFIG": local_config},
         )
-        self.assertEqual("(local)", config.get(request_id,"FILTER_REGEX_INCLUDE"))
-        self.assertEqual("false", config.get(request_id,"SHOW_ELAPSED_TIME"))
+        self.assertEqual("(local)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.assertEqual("false", config.get(request_id, "SHOW_ELAPSED_TIME"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_local_config_extends_recurse_success(self):
         changed_files = self.replace_branch_in_input_files()
         local_config = "recurse.mega-linter.yml"
         request_id = str(uuid.uuid1())
-        config.init_config(request_id,
+        config.init_config(
+            request_id,
             REPO_HOME_DEFAULT
             + os.path.sep
             + ".automation"
@@ -108,10 +110,10 @@ class config_test(unittest.TestCase):
             + "local_extends_recurse",
             {"MEGALINTER_CONFIG": local_config},
         )
-        self.assertEqual("(local)", config.get(request_id,"FILTER_REGEX_INCLUDE"))
-        self.assertEqual("false", config.get(request_id,"SHOW_ELAPSED_TIME"))
-        self.assertEqual("dev", config.get(request_id,"DEFAULT_BRANCH"))
-        self.assertEqual("DEBUG", config.get(request_id,"LOG_LEVEL"))
+        self.assertEqual("(local)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.assertEqual("false", config.get(request_id, "SHOW_ELAPSED_TIME"))
+        self.assertEqual("dev", config.get(request_id, "DEFAULT_BRANCH"))
+        self.assertEqual("DEBUG", config.get(request_id, "LOG_LEVEL"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_local_config_extends_error(self):
@@ -139,20 +141,20 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote_extends/base.mega-linter.yml"
         request_id = str(uuid.uuid1())
-        config.init_config(request_id,None,{"MEGALINTER_CONFIG": remote_config})
-        self.assertEqual("(base)", config.get(request_id,"FILTER_REGEX_INCLUDE"))
-        self.assertEqual("(extension2)", config.get(request_id,"FILTER_REGEX_EXCLUDE"))
-        self.assertEqual("true", config.get(request_id,"SHOW_ELAPSED_TIME"))
+        config.init_config(request_id, None, {"MEGALINTER_CONFIG": remote_config})
+        self.assertEqual("(base)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(extension2)", config.get(request_id, "FILTER_REGEX_EXCLUDE"))
+        self.assertEqual("true", config.get(request_id, "SHOW_ELAPSED_TIME"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_remote_config_extends_success_2(self):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote_extends_2/base2.mega-linter.yml"
         request_id = str(uuid.uuid1())
-        config.init_config(request_id,None,{"MEGALINTER_CONFIG": remote_config})
-        self.assertEqual("(base)", config.get(request_id,"FILTER_REGEX_INCLUDE"))
-        self.assertEqual("(extension2)", config.get(request_id,"FILTER_REGEX_EXCLUDE"))
-        self.assertEqual("true", config.get(request_id,"SHOW_ELAPSED_TIME"))
+        config.init_config(request_id, None, {"MEGALINTER_CONFIG": remote_config})
+        self.assertEqual("(base)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(extension2)", config.get(request_id, "FILTER_REGEX_EXCLUDE"))
+        self.assertEqual("true", config.get(request_id, "SHOW_ELAPSED_TIME"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_remote_config_extends_error(self):
@@ -162,7 +164,7 @@ class config_test(unittest.TestCase):
         )
         request_id = str(uuid.uuid1())
         try:
-            config.init_config(request_id,None,{"MEGALINTER_CONFIG": remote_config})
+            config.init_config(request_id, None, {"MEGALINTER_CONFIG": remote_config})
         except Exception as e:
             self.assertRegex(
                 str(e),
@@ -179,7 +181,8 @@ class config_test(unittest.TestCase):
         changed_files = self.replace_branch_in_input_files()
         local_config = "local.remote.mega-linter.yml"
         request_id = str(uuid.uuid1())
-        config.init_config(request_id,
+        config.init_config(
+            request_id,
             REPO_HOME_DEFAULT
             + os.path.sep
             + ".automation"
@@ -189,18 +192,24 @@ class config_test(unittest.TestCase):
             + "mega-linter-config-test"
             + os.path.sep
             + "local_remote_extends_recurse",
-            {"MEGALINTER_CONFIG": local_config}
+            {"MEGALINTER_CONFIG": local_config},
         )
-        self.assertEqual("(base)", config.get(request_id,"FILTER_REGEX_INCLUDE"))
-        self.assertEqual("(extension2)", config.get(request_id,"FILTER_REGEX_EXCLUDE"))
-        self.assertEqual("true", config.get(request_id,"SHOW_ELAPSED_TIME"))
-        self.assertEqual("dev", config.get(request_id,"DEFAULT_BRANCH"))
-        self.assertEqual("DEBUG", config.get(request_id,"LOG_LEVEL"))
+        self.assertEqual("(base)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(extension2)", config.get(request_id, "FILTER_REGEX_EXCLUDE"))
+        self.assertEqual("true", config.get(request_id, "SHOW_ELAPSED_TIME"))
+        self.assertEqual("dev", config.get(request_id, "DEFAULT_BRANCH"))
+        self.assertEqual("DEBUG", config.get(request_id, "LOG_LEVEL"))
         self.restore_branch_in_input_files(changed_files)
 
     def test_list_of_obj_as_env_var(self):
         request_id = str(uuid.uuid1())
-        config.init_config(request_id, None,{ "PRE_COMMANDS": '[{"cwd": "workspace", "command:": "echo \\"hello world\\""}]'})
+        config.init_config(
+            request_id,
+            None,
+            {
+                "PRE_COMMANDS": '[{"cwd": "workspace", "command:": "echo \\"hello world\\""}]'
+            },
+        )
         pre_commands = config.get_list(request_id, "PRE_COMMANDS", [])
         self.assertTrue(len(pre_commands) > 0, "PRE_COMMANDS not loaded from ENV var")
 
