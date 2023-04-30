@@ -70,9 +70,10 @@ class Megalinter:
         )
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
+        # Initialize logger + init logs
         initialize_logger(self)
         manage_upgrade_message()
-        display_header()
+        display_header(self)
         # MegaLinter default rules location
         self.default_rules_location = (
             "/action/lib/.automation"
