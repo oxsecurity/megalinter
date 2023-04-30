@@ -17,11 +17,11 @@ are met:
 
   3. The name "PHP" must not be used to endorse or promote products
      derived from this software without prior written permission. For
-     written permission, please contact group@php.net.
+     written permission, please contact <group@php.net>.
 
   4. Products derived from this software may not be called "PHP", nor
      may "PHP" appear in their name, without prior written permission
-     from group@php.net.  You may indicate that your software works in
+     from <group@php.net>.  You may indicate that your software works in
      conjunction with PHP by saying "Foo for PHP" instead of calling
      it "PHP Foo" or "phpfoo"
 
@@ -59,7 +59,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 This software consists of voluntary contributions made by many
 individuals on behalf of the PHP Group.
 
-The PHP Group can be contacted via Email at group@php.net.
+The PHP Group can be contacted via Email at <group@php.net>.
 
 For more information on the PHP Group and the PHP project,
 please see <http://www.php.net>.
