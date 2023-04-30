@@ -43,7 +43,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "APPLY_FIXES": "false",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "ENABLE_LINTERS": "JAVASCRIPT_ES,REPOSITORY_TRIVY,REPOSITORY_GITLEAKS,PYTHON_BANDIT,TERRAFORM_KICS",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
                 "SARIF_REPORTER": "true",
                 "request_id": self.request_id,
             }

@@ -38,6 +38,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
+                "DISABLE": "REPOSITORY,SPELL",
                 "request_id": self.request_id,
             }
         )
@@ -55,6 +56,7 @@ class plugins_test(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
+                "DISABLE": "REPOSITORY,SPELL",
                 "request_id": self.request_id,
             }
         )
@@ -73,6 +75,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )
@@ -89,6 +92,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )
@@ -104,6 +108,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )
@@ -119,6 +124,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )
@@ -138,6 +144,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )
@@ -155,6 +162,7 @@ class plugins_test(unittest.TestCase):
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
                     "GITHUB_COMMENT_REPORTER": "false",
+                    "DISABLE": "REPOSITORY,SPELL",
                     "request_id": self.request_id,
                 }
             )

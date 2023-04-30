@@ -30,7 +30,7 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.utils_reporter import log_section_end, log_section_start
-from multiprocessing_logging import install_mp_handler
+from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -129,7 +129,7 @@ class Megalinter:
         self.flavor_suggestions = None
 
         # Initialize plugins
-        plugin_factory.initialize_plugins()
+        plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
         if (
@@ -314,6 +314,7 @@ class Megalinter:
                     if self.linters[i].name == updated_linter.name:
                         self.linters[i] = updated_linter
                         break
+        uninstall_mp_handler()
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self, params):
