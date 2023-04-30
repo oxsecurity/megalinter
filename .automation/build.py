@@ -47,6 +47,7 @@ UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
 DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
+DELETE_TEST_CLASSES = "--delete-test-classes" in sys.argv
 
 # Release args management
 if RELEASE is True:
@@ -686,9 +687,10 @@ def generate_linter_dockerfiles():
 def generate_linter_test_classes():
     test_linters_root = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters"
 
-    # Remove all the contents of test_linters_root beforehand so that the result is deterministic
-    shutil.rmtree(os.path.realpath(test_linters_root))
-    os.makedirs(os.path.realpath(test_linters_root))
+    if DELETE_TEST_CLASSES is True:
+        # Remove all the contents of test_linters_root beforehand so that the result is deterministic
+        shutil.rmtree(os.path.realpath(test_linters_root))
+        os.makedirs(os.path.realpath(test_linters_root))
 
     linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     for linter in linters:
