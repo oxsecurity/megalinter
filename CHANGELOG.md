@@ -152,6 +152,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.205 to **2.3.206** on 2023-04-29
   - [kics](https://www.kics.io) from 1.6.14 to **1.7.0** on 2023-04-29
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.5 to **0.45.6** on 2023-04-29
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.1 to **3.11.2** on 2023-04-30
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0** on 2023-04-30
+  - [checkov](https://www.checkov.io/) from 2.3.206 to **2.3.212** on 2023-04-30
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

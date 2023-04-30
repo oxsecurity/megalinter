@@ -137,9 +137,9 @@ Flags:
 
 Commands:
 
- ls-metrics       Print the given file's internal metrics to stdout.
  sync             Download and install external configuration sources.
  ls-config        Print the current configuration to stdout.
+ ls-metrics       Print the given file's internal metrics to stdout.
 
 ```
 
