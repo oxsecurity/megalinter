@@ -11942,14 +11942,16 @@
         "WEBHOOK_REPORTER_BEARER_TOKEN"
       ],
       "description": "List of secured environment variables to hide when calling linters",
-      "examples:": [[
-        "GITHUB_TOKEN",
-        "PAT",
-        "SYSTEM_ACCESSTOKEN",
-        "CI_JOB_TOKEN",
-        "GITLAB_ACCESS_TOKEN_MEGALINTER",
-        "GITLAB_CUSTOM_CERTIFICATE",
-        "WEBHOOK_REPORTER_BEARER_TOKEN"]
+      "examples:": [
+        [
+          "GITHUB_TOKEN",
+          "PAT",
+          "SYSTEM_ACCESSTOKEN",
+          "CI_JOB_TOKEN",
+          "GITLAB_ACCESS_TOKEN_MEGALINTER",
+          "GITLAB_CUSTOM_CERTIFICATE",
+          "WEBHOOK_REPORTER_BEARER_TOKEN"
+        ]
       ],
       "items": {
         "type": "string"

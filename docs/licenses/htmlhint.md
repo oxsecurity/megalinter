@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2014-2016 Yanis Wang &lt;yanis.wang@gmail.com&gt;
+Copyright (c) 2014-2016 Yanis Wang &lt;<yanis.wang@gmail.com>&gt;
 
 Copyright (c) 2018 David Dias (Thanks to the initial contributor Yanis Wang)
 

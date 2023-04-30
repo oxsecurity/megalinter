@@ -229,3 +229,5 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
 
 ```
 
+- APK packages (Linux):
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
