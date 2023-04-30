@@ -29,7 +29,9 @@ def init_config(request_id, workspace=None, params={}):
         return
     else:
         set_config(request_id, env_plus_params)
-        RUN_CONFIGS[request_id]["CONFIG_SOURCE"] = "TEMPORARY VAL THAT SHOULD NOT REMAIN"
+        RUN_CONFIGS[request_id][
+            "CONFIG_SOURCE"
+        ] = "TEMPORARY VAL THAT SHOULD NOT REMAIN"
     # Search for config file
     config_file = None
     if "MEGALINTER_CONFIG" in env_plus_params:
