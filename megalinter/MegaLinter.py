@@ -29,6 +29,7 @@ from megalinter.constants import (
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
 )
+from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
 from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
@@ -69,9 +70,9 @@ class Megalinter:
         )
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
-        self.initialize_logger()
-        self.manage_upgrade_message()
-        self.display_header()
+        initialize_logger(self)
+        manage_upgrade_message()
+        display_header()
         # MegaLinter default rules location
         self.default_rules_location = (
             "/action/lib/.automation"
@@ -812,94 +813,6 @@ class Megalinter:
             shutil.rmtree(self.report_folder, ignore_errors=True)
             os.makedirs(self.report_folder, exist_ok=True)
 
-    def initialize_logger(self):
-        logging_level_key = config.get(self.request_id, "LOG_LEVEL", "INFO").upper()
-        logging_level_list = {
-            "INFO": logging.INFO,
-            "DEBUG": logging.DEBUG,
-            "WARNING": logging.WARNING,
-            "ERROR": logging.ERROR,
-            # Previous values for v3 ascending compatibility
-            "TRACE": logging.WARNING,
-            "VERBOSE": logging.INFO,
-        }
-        logging_level = (
-            logging_level_list[logging_level_key]
-            if logging_level_key in logging_level_list
-            else logging.INFO
-        )
-
-        if config.get(
-            self.request_id, "LOG_FILE", ""
-        ) == "none" or not utils.can_write_report_files(self):
-            # Don't log console output in a file
-            logging.basicConfig(
-                force=True,
-                level=logging_level,
-                format="%(message)s",
-                handlers=[
-                    logging.StreamHandler(sys.stdout),
-                ],
-            )
-        else:
-            log_file = (
-                self.report_folder
-                + os.path.sep
-                + config.get(self.request_id, "LOG_FILE", "megalinter.log")
-            )
-            # Log console output in a file
-            if not os.path.isdir(os.path.dirname(log_file)):
-                os.makedirs(os.path.dirname(log_file), exist_ok=True)
-            logging.basicConfig(
-                force=True,
-                level=logging_level,
-                format="%(message)s",
-                handlers=[
-                    logging.FileHandler(log_file, "w", "utf-8"),
-                    logging.StreamHandler(sys.stdout),
-                ],
-            )
-
-    def display_header(self):
-        # Header prints
-        logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
-        logging.info(utils.format_hyphens(""))
-        logging.info(
-            " - Image Creation Date: "
-            + config.get(None, "BUILD_DATE", "No docker image")
-        )
-        logging.info(
-            " - Image Revision: "
-            + config.get(None, "BUILD_REVISION", "No docker image")
-        )
-        logging.info(
-            " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
-        )
-        logging.info(utils.format_hyphens(""))
-        logging.info("The MegaLinter documentation can be found at:")
-        logging.info(" - " + ML_DOC_URL)
-        logging.info(utils.format_hyphens(""))
-        logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
-        if config.get(None, "GITHUB_REPOSITORY", "") != "":
-            logging.info(
-                "GITHUB_REPOSITORY: " + config.get(None, "GITHUB_REPOSITORY", "")
-            )
-            # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
-            logging.info("GITHUB_REF: " + config.get(None, "GITHUB_REF", ""))
-            # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
-            logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
-            logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
-        # Display config variables for debug mode
-        secured_env_variables = config.list_secured_variables(self.request_id)
-        for name, value in sorted(config.get_config(self.request_id).items()):
-            if name not in secured_env_variables:
-                logging.debug("" + name + "=" + str(value))
-            else:
-                logging.debug("" + name + "=HIDDEN_BY_MEGALINTER")
-        logging.debug(utils.format_hyphens(""))
-        logging.info("")
-
     def check_results(self):
         if config.exists(self.request_id, "GITHUB_OUTPUT"):
             github_output_file = config.get(self.request_id, "GITHUB_OUTPUT")
@@ -953,32 +866,3 @@ class Megalinter:
         if self.has_git_extraheader is True:
             repo = git.Repo(os.path.realpath(self.github_workspace))
             repo.config_writer().set_value("http", "extraheader", "").release()
-
-    # Propose legacy versions users to upgrade
-    def manage_upgrade_message(self):
-        mega_linter_version = config.get(
-            self.request_id, "BUILD_VERSION", "No docker image"
-        )
-        if (
-            "insiders" in mega_linter_version
-            or "v4" in mega_linter_version
-            or "v5" in mega_linter_version
-        ):
-            logging.warning(
-                c.yellow(
-                    "#######################################################################"
-                )
-            )
-            logging.warning(
-                c.yellow(
-                    "MEGA-LINTER HAS A NEW V6 VERSION at https://github.com/oxsecurity/megalinter .\n"
-                    + "Please upgrade your configuration by running the following command at the "
-                    + "root of your repository (requires node.js): \n"
-                    + c.green("npx mega-linter-runner --upgrade")
-                )
-            )
-            logging.warning(
-                c.yellow(
-                    "#######################################################################"
-                )
-            )
