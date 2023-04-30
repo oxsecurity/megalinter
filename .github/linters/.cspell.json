@@ -1,7 +1,4 @@
 {
-    "import": [
-       "@cspell/dict-medicalterms/cspell-ext.json"
-    ],
     "ignorePaths": [
         "**/node_modules/**",
         "**/vscode-extension/**",
