@@ -860,7 +860,7 @@ class Megalinter:
         # Clean git repository
         self.manage_clean_git_repo()
         # Display upgrade recommendation if necessary
-        self.manage_upgrade_message()
+        manage_upgrade_message()
 
     def manage_clean_git_repo(self):
         # Add auth header if necessary
