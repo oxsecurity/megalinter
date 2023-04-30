@@ -58,11 +58,10 @@ def initialize_logger(mega_linter):
             ],
         )
 
+
 # Propose legacy versions users to upgrade
 def manage_upgrade_message():
-    mega_linter_version = config.get(
-        None, "BUILD_VERSION", "No docker image"
-    )
+    mega_linter_version = config.get(None, "BUILD_VERSION", "No docker image")
     if (
         "insiders" in mega_linter_version
         or "v4" in mega_linter_version
@@ -87,18 +86,17 @@ def manage_upgrade_message():
             )
         )
 
+
 def display_header(mega_linter):
     # Header prints
     logging.info(utils.format_hyphens(""))
     logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
     logging.info(utils.format_hyphens(""))
     logging.info(
-        " - Image Creation Date: "
-        + config.get(None, "BUILD_DATE", "No docker image")
+        " - Image Creation Date: " + config.get(None, "BUILD_DATE", "No docker image")
     )
     logging.info(
-        " - Image Revision: "
-        + config.get(None, "BUILD_REVISION", "No docker image")
+        " - Image Revision: " + config.get(None, "BUILD_REVISION", "No docker image")
     )
     logging.info(
         " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
@@ -109,9 +107,7 @@ def display_header(mega_linter):
     logging.info(utils.format_hyphens(""))
     logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
     if config.get(None, "GITHUB_REPOSITORY", "") != "":
-        logging.info(
-            "GITHUB_REPOSITORY: " + config.get(None, "GITHUB_REPOSITORY", "")
-        )
+        logging.info("GITHUB_REPOSITORY: " + config.get(None, "GITHUB_REPOSITORY", ""))
         # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
         logging.info("GITHUB_REF: " + config.get(None, "GITHUB_REF", ""))
         # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))

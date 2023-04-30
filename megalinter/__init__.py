@@ -17,5 +17,5 @@ __all__ = [
     "utils",
     "utilstest",
     "alpaca",
-    "logger"
+    "logger",
 ]
