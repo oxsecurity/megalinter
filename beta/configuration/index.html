@@ -2604,7 +2604,7 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <tr>
 <td><a href="#environment-variables-security"><strong>SECURED_ENV_VARIABLES</strong></a></td>
 <td>MegaLinter &amp; CI platforms sensitive variables</td>
-<td>List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them !</td>
+<td>List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GIT_AUTHORIZATION_BEARER,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them !</td>
 </tr>
 <tr>
 <td><strong>SHOW_ELAPSED_TIME</strong></td>
@@ -2730,6 +2730,7 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
   - GITHUB_TOKEN
   - PAT
   - SYSTEM_ACCESSTOKEN
+  - GIT_AUTHORIZATION_BEARER
   - CI_JOB_TOKEN
   - GITLAB_ACCESS_TOKEN_MEGALINTER
   - GITLAB_CUSTOM_CERTIFICATE
