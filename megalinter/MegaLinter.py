@@ -135,7 +135,7 @@ class Megalinter:
         plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
-        internal_node_modules = "/node_deps/node_modules"
+        internal_node_modules = "/node-deps/node_modules"
         if (
             os.path.isdir(internal_node_modules)
             and len(os.listdir(internal_node_modules)) > 0
