@@ -119,9 +119,13 @@ def add_in_logs(linter, log_key, lines):
 
 def has_npm_or_yarn_commands(request_id):
     config_dict = config.get(request_id)
-    for key, value in config_dict.items():
-        if ("PRE_COMMANDS" in key or "POST_COMMANDS" in key) and (
-            "npm" in value or "yarn" in value
-        ):
-            return True
+    for key in config_dict.keys():
+        if "PRE_COMMANDS" in key or "POST_COMMANDS" in key:
+            for command_info in config.get_list(request_id, key, []):
+                if (
+                    "command" in command_info
+                    and "npm" in command_info["command"]
+                    or "yarn" in command_info["command"]
+                ):
+                    return True
     return False
