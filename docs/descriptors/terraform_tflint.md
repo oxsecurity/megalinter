@@ -37,6 +37,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 | TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| TERRAFORM_TFLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['tflint']`                                    |
 
 ## MegaLinter Flavours
 

@@ -33,6 +33,7 @@ description: How to use shellcheck (configure, ignore files, ignore errors, help
 | BASH_SHELLCHECK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                |
 | BASH_SHELLCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                             |
 | BASH_SHELLCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                 |
+| BASH_SHELLCHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['shellcheck']`                    |
 
 ## IDE Integration
 

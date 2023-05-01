@@ -47,6 +47,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | TERRAFORM_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | TERRAFORM_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| TERRAFORM_CHECKOV_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['checkov']`      |
 
 ## IDE Integration
 

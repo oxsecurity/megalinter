@@ -45,6 +45,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 | TYPESCRIPT_PRETTIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | TYPESCRIPT_PRETTIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | TYPESCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| TYPESCRIPT_PRETTIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['prettier']`                                  |
 
 ## IDE Integration
 

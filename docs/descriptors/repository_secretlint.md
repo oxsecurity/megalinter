@@ -39,6 +39,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 | REPOSITORY_SECRETLINT_RULES_PATH                  | Path where to find linter configuration file                                          | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_SECRETLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                            | `false`                                         |
 | REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                      | `0`                                             |
+| REPOSITORY_SECRETLINT_CLI_EXECUTABLE              | Override CLI executable                                                               | `['secretlint']`                                |
 
 ## MegaLinter Flavours
 

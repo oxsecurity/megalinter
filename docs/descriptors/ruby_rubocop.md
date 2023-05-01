@@ -45,6 +45,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 | RUBY_RUBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | RUBY_RUBOCOP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| RUBY_RUBOCOP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rubocop']`                                   |
 
 ## IDE Integration
 

@@ -253,6 +253,19 @@
         "string"
       ]
     },
+    "ACTION_ACTIONLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/ACTION_ACTIONLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "actionlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ACTIONLINT: CLI Executable",
+      "type": "array"
+    },
     "ACTION_ACTIONLINT_CLI_LINT_MODE": {
       "$id": "#/properties/ACTION_ACTIONLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -403,6 +416,19 @@
         "string"
       ]
     },
+    "ANSIBLE_ANSIBLE_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ansible-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ANSIBLE_ANSIBLE_LINT: CLI Executable",
+      "type": "array"
+    },
     "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
       "default": ".ansible-lint",
@@ -548,6 +574,19 @@
         "array",
         "string"
       ]
+    },
+    "ARM_ARM_TTK_CLI_EXECUTABLE": {
+      "$id": "#/properties/ARM_ARM_TTK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "arm-ttk"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ARM_ARM_TTK: CLI Executable",
+      "type": "array"
     },
     "ARM_ARM_TTK_CLI_LINT_MODE": {
       "$id": "#/properties/ARM_ARM_TTK_CLI_LINT_MODE",
@@ -702,6 +741,19 @@
         "string"
       ]
     },
+    "BASH_EXEC_CLI_EXECUTABLE": {
+      "$id": "#/properties/BASH_EXEC_CLI_EXECUTABLE",
+      "default": [
+        [
+          "bash-exec"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_EXEC: CLI Executable",
+      "type": "array"
+    },
     "BASH_EXEC_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_EXEC_CLI_LINT_MODE",
       "default": "file",
@@ -818,6 +870,19 @@
         "string"
       ]
     },
+    "BASH_SHELLCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/BASH_SHELLCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "shellcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHELLCHECK: CLI Executable",
+      "type": "array"
+    },
     "BASH_SHELLCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHELLCHECK_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -925,6 +990,19 @@
         "string"
       ]
     },
+    "BASH_SHFMT_CLI_EXECUTABLE": {
+      "$id": "#/properties/BASH_SHFMT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "shfmt"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHFMT: CLI Executable",
+      "type": "array"
+    },
     "BASH_SHFMT_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHFMT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -1031,6 +1109,19 @@
         "array",
         "string"
       ]
+    },
+    "BICEP_BICEP_LINTER_CLI_EXECUTABLE": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "bicep"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: CLI Executable",
+      "type": "array"
     },
     "BICEP_BICEP_LINTER_CLI_LINT_MODE": {
       "$id": "#/properties/BICEP_BICEP_LINTER_CLI_LINT_MODE",
@@ -1154,6 +1245,19 @@
         "array",
         "string"
       ]
+    },
+    "CLOJURE_CLJ_KONDO_CLI_EXECUTABLE": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_CLI_EXECUTABLE",
+      "default": [
+        [
+          "clj-kondo"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOJURE_CLJ_KONDO: CLI Executable",
+      "type": "array"
     },
     "CLOJURE_CLJ_KONDO_CLI_LINT_MODE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_CLI_LINT_MODE",
@@ -1291,6 +1395,19 @@
         "string"
       ]
     },
+    "CLOUDFORMATION_CFN_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cfn-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOUDFORMATION_CFN_LINT: CLI Executable",
+      "type": "array"
+    },
     "CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -1427,6 +1544,19 @@
         "array",
         "string"
       ]
+    },
+    "COFFEE_COFFEELINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/COFFEE_COFFEELINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "coffeelint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "COFFEE_COFFEELINT: CLI Executable",
+      "type": "array"
     },
     "COFFEE_COFFEELINT_CLI_LINT_MODE": {
       "$id": "#/properties/COFFEE_COFFEELINT_CLI_LINT_MODE",
@@ -1601,6 +1731,19 @@
         "string"
       ]
     },
+    "COPYPASTE_JSCPD_CLI_EXECUTABLE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_CLI_EXECUTABLE",
+      "default": [
+        [
+          "jscpd"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "COPYPASTE_JSCPD: CLI Executable",
+      "type": "array"
+    },
     "COPYPASTE_JSCPD_CONFIG_FILE": {
       "$id": "#/properties/COPYPASTE_JSCPD_CONFIG_FILE",
       "default": ".jscpd.json",
@@ -1682,6 +1825,19 @@
         "array",
         "string"
       ]
+    },
+    "CPP_CPPLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CPP_CPPLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cpplint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPLINT: CLI Executable",
+      "type": "array"
     },
     "CPP_CPPLINT_CLI_LINT_MODE": {
       "$id": "#/properties/CPP_CPPLINT_CLI_LINT_MODE",
@@ -1909,6 +2065,19 @@
         "string"
       ]
     },
+    "CSHARP_CSHARPIER_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "csharpier"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_CSHARPIER: CLI Executable",
+      "type": "array"
+    },
     "CSHARP_CSHARPIER_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -2015,6 +2184,19 @@
         "array",
         "string"
       ]
+    },
+    "CSHARP_DOTNET_FORMAT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "dotnet"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_DOTNET_FORMAT: CLI Executable",
+      "type": "array"
     },
     "CSHARP_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_CLI_LINT_MODE",
@@ -2142,6 +2324,19 @@
         "string"
       ]
     },
+    "CSS_SCSS_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSS_SCSS_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "scss-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_SCSS_LINT: CLI Executable",
+      "type": "array"
+    },
     "CSS_SCSS_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/CSS_SCSS_LINT_CLI_LINT_MODE",
       "default": "file",
@@ -2267,6 +2462,19 @@
         "array",
         "string"
       ]
+    },
+    "CSS_STYLELINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSS_STYLELINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "stylelint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_STYLELINT: CLI Executable",
+      "type": "array"
     },
     "CSS_STYLELINT_CLI_LINT_MODE": {
       "$id": "#/properties/CSS_STYLELINT_CLI_LINT_MODE",
@@ -2395,6 +2603,19 @@
         "string"
       ]
     },
+    "C_CPPLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/C_CPPLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cpplint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPLINT: CLI Executable",
+      "type": "array"
+    },
     "C_CPPLINT_CLI_LINT_MODE": {
       "$id": "#/properties/C_CPPLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -2511,6 +2732,19 @@
         "array",
         "string"
       ]
+    },
+    "DART_DARTANALYZER_CLI_EXECUTABLE": {
+      "$id": "#/properties/DART_DARTANALYZER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "dartanalyzer"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "DART_DARTANALYZER: CLI Executable",
+      "type": "array"
     },
     "DART_DARTANALYZER_CLI_LINT_MODE": {
       "$id": "#/properties/DART_DARTANALYZER_CLI_LINT_MODE",
@@ -2855,6 +3089,19 @@
         "string"
       ]
     },
+    "DOCKERFILE_HADOLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "hadolint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "DOCKERFILE_HADOLINT: CLI Executable",
+      "type": "array"
+    },
     "DOCKERFILE_HADOLINT_CLI_LINT_MODE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -2981,6 +3228,19 @@
         "array",
         "string"
       ]
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_EXECUTABLE": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "editorconfig-checker"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: CLI Executable",
+      "type": "array"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE",
@@ -3198,6 +3458,19 @@
         "array",
         "string"
       ]
+    },
+    "ENV_DOTENV_LINTER_CLI_EXECUTABLE": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "dotenv-linter"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ENV_DOTENV_LINTER: CLI Executable",
+      "type": "array"
     },
     "ENV_DOTENV_LINTER_CLI_LINT_MODE": {
       "$id": "#/properties/ENV_DOTENV_LINTER_CLI_LINT_MODE",
@@ -3423,6 +3696,19 @@
         "array",
         "string"
       ]
+    },
+    "GHERKIN_GHERKIN_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "gherkin-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GHERKIN_GHERKIN_LINT: CLI Executable",
+      "type": "array"
     },
     "GHERKIN_GHERKIN_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_CLI_LINT_MODE",
@@ -3734,6 +4020,19 @@
         "string"
       ]
     },
+    "GO_GOLANGCI_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "golangci-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_GOLANGCI_LINT: CLI Executable",
+      "type": "array"
+    },
     "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -3860,6 +4159,19 @@
         "array",
         "string"
       ]
+    },
+    "GO_REVIVE_CLI_EXECUTABLE": {
+      "$id": "#/properties/GO_REVIVE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "revive"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: CLI Executable",
+      "type": "array"
     },
     "GO_REVIVE_CLI_LINT_MODE": {
       "$id": "#/properties/GO_REVIVE_CLI_LINT_MODE",
@@ -3990,6 +4302,19 @@
         "array",
         "string"
       ]
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_EXECUTABLE": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "graphql-schema-linter"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI Executable",
+      "type": "array"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE",
@@ -4127,6 +4452,19 @@
         "string"
       ]
     },
+    "GROOVY_NPM_GROOVY_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "npm-groovy-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GROOVY_NPM_GROOVY_LINT: CLI Executable",
+      "type": "array"
+    },
     "GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -4254,6 +4592,19 @@
         "string"
       ]
     },
+    "HTML_DJLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/HTML_DJLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "djlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_DJLINT: CLI Executable",
+      "type": "array"
+    },
     "HTML_DJLINT_CLI_LINT_MODE": {
       "$id": "#/properties/HTML_DJLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -4370,6 +4721,19 @@
         "array",
         "string"
       ]
+    },
+    "HTML_HTMLHINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/HTML_HTMLHINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "htmlhint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_HTMLHINT: CLI Executable",
+      "type": "array"
     },
     "HTML_HTMLHINT_CLI_LINT_MODE": {
       "$id": "#/properties/HTML_HTMLHINT_CLI_LINT_MODE",
@@ -4524,6 +4888,19 @@
         "string"
       ]
     },
+    "JAVASCRIPT_ES_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVASCRIPT_ES_CLI_EXECUTABLE",
+      "default": [
+        [
+          "eslint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_ES: CLI Executable",
+      "type": "array"
+    },
     "JAVASCRIPT_ES_CLI_LINT_MODE": {
       "$id": "#/properties/JAVASCRIPT_ES_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -4661,6 +5038,19 @@
         "string"
       ]
     },
+    "JAVASCRIPT_PRETTIER_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "prettier"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: CLI Executable",
+      "type": "array"
+    },
     "JAVASCRIPT_PRETTIER_CLI_LINT_MODE": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -4781,6 +5171,19 @@
         "string"
       ]
     },
+    "JAVASCRIPT_STANDARD_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_CLI_EXECUTABLE",
+      "default": [
+        [
+          "standard"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_STANDARD: CLI Executable",
+      "type": "array"
+    },
     "JAVASCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -4887,6 +5290,19 @@
         "array",
         "string"
       ]
+    },
+    "JAVA_CHECKSTYLE_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "java"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_CHECKSTYLE: CLI Executable",
+      "type": "array"
     },
     "JAVA_CHECKSTYLE_CLI_LINT_MODE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_CLI_LINT_MODE",
@@ -5025,6 +5441,19 @@
         "string"
       ]
     },
+    "JAVA_PMD_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVA_PMD_CLI_EXECUTABLE",
+      "default": [
+        [
+          "/usr/bin/pmd/bin/run.sh"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_PMD: CLI Executable",
+      "type": "array"
+    },
     "JAVA_PMD_CLI_LINT_MODE": {
       "$id": "#/properties/JAVA_PMD_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -5144,6 +5573,19 @@
         "array",
         "string"
       ]
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE",
+      "default": [
+        [
+          "eslint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
+      "type": "array"
     },
     "JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE",
@@ -5282,6 +5724,19 @@
         "string"
       ]
     },
+    "JSON_JSONLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_JSONLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "jsonlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_JSONLINT: CLI Executable",
+      "type": "array"
+    },
     "JSON_JSONLINT_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_JSONLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -5402,6 +5857,19 @@
         "string"
       ]
     },
+    "JSON_NPM_PACKAGE_JSON_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "npmPkgJsonLint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: CLI Executable",
+      "type": "array"
+    },
     "JSON_NPM_PACKAGE_JSON_LINT_CONFIG_FILE": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_CONFIG_FILE",
       "default": ".npmpackagejsonlintrc.json",
@@ -5500,6 +5968,19 @@
         "array",
         "string"
       ]
+    },
+    "JSON_PRETTIER_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_PRETTIER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "prettier"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_PRETTIER: CLI Executable",
+      "type": "array"
     },
     "JSON_PRETTIER_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_PRETTIER_CLI_LINT_MODE",
@@ -5639,6 +6120,19 @@
         "string"
       ]
     },
+    "JSON_V8R_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_V8R_CLI_EXECUTABLE",
+      "default": [
+        [
+          "v8r"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_V8R: CLI Executable",
+      "type": "array"
+    },
     "JSON_V8R_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_V8R_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -5745,6 +6239,19 @@
         "array",
         "string"
       ]
+    },
+    "JSX_ESLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSX_ESLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "eslint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_ESLINT: CLI Executable",
+      "type": "array"
     },
     "JSX_ESLINT_CLI_LINT_MODE": {
       "$id": "#/properties/JSX_ESLINT_CLI_LINT_MODE",
@@ -5893,6 +6400,19 @@
         "string"
       ]
     },
+    "KOTLIN_KTLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/KOTLIN_KTLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ktlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_KTLINT: CLI Executable",
+      "type": "array"
+    },
     "KOTLIN_KTLINT_CLI_LINT_MODE": {
       "$id": "#/properties/KOTLIN_KTLINT_CLI_LINT_MODE",
       "default": "file",
@@ -6014,6 +6534,19 @@
         "string"
       ]
     },
+    "KUBERNETES_HELM_CLI_EXECUTABLE": {
+      "$id": "#/properties/KUBERNETES_HELM_CLI_EXECUTABLE",
+      "default": [
+        [
+          "helm"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_HELM: CLI Executable",
+      "type": "array"
+    },
     "KUBERNETES_HELM_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_HELM_DIRECTORY",
       "default": "",
@@ -6105,6 +6638,19 @@
         "array",
         "string"
       ]
+    },
+    "KUBERNETES_KUBECONFORM_CLI_EXECUTABLE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kubeconform"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: CLI Executable",
+      "type": "array"
     },
     "KUBERNETES_KUBECONFORM_CLI_LINT_MODE": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_CLI_LINT_MODE",
@@ -6219,6 +6765,19 @@
         "string"
       ]
     },
+    "KUBERNETES_KUBEVAL_CLI_EXECUTABLE": {
+      "$id": "#/properties/KUBERNETES_KUBEVAL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kubeval"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBEVAL: CLI Executable",
+      "type": "array"
+    },
     "KUBERNETES_KUBEVAL_CLI_LINT_MODE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_CLI_LINT_MODE",
       "default": "file",
@@ -6330,6 +6889,19 @@
         "array",
         "string"
       ]
+    },
+    "LATEX_CHKTEX_CLI_EXECUTABLE": {
+      "$id": "#/properties/LATEX_CHKTEX_CLI_EXECUTABLE",
+      "default": [
+        [
+          "chktex"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LATEX_CHKTEX: CLI Executable",
+      "type": "array"
     },
     "LATEX_CHKTEX_CLI_LINT_MODE": {
       "$id": "#/properties/LATEX_CHKTEX_CLI_LINT_MODE",
@@ -6508,6 +7080,19 @@
         "string"
       ]
     },
+    "LUA_LUACHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/LUA_LUACHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "luacheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_LUACHECK: CLI Executable",
+      "type": "array"
+    },
     "LUA_LUACHECK_CLI_LINT_MODE": {
       "$id": "#/properties/LUA_LUACHECK_CLI_LINT_MODE",
       "default": "file",
@@ -6633,6 +7218,19 @@
         "array",
         "string"
       ]
+    },
+    "MAKEFILE_CHECKMAKE_CLI_EXECUTABLE": {
+      "$id": "#/properties/MAKEFILE_CHECKMAKE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "checkmake"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MAKEFILE_CHECKMAKE: CLI Executable",
+      "type": "array"
     },
     "MAKEFILE_CHECKMAKE_CLI_LINT_MODE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_CLI_LINT_MODE",
@@ -6783,6 +7381,19 @@
         "string"
       ]
     },
+    "MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "markdownlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWNLINT: CLI Executable",
+      "type": "array"
+    },
     "MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -6910,6 +7521,19 @@
         "string"
       ]
     },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "markdown-link-check"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: CLI Executable",
+      "type": "array"
+    },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -7036,6 +7660,19 @@
         "array",
         "string"
       ]
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_EXECUTABLE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "markdown-table-formatter"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: CLI Executable",
+      "type": "array"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE",
@@ -7197,6 +7834,19 @@
         "string"
       ]
     },
+    "MARKDOWN_REMARK_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "remark"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: CLI Executable",
+      "type": "array"
+    },
     "MARKDOWN_REMARK_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CLI_LINT_MODE",
       "default": "file",
@@ -7347,6 +7997,19 @@
         "array",
         "string"
       ]
+    },
+    "OPENAPI_SPECTRAL_CLI_EXECUTABLE": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "spectral"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "OPENAPI_SPECTRAL: CLI Executable",
+      "type": "array"
     },
     "OPENAPI_SPECTRAL_CLI_LINT_MODE": {
       "$id": "#/properties/OPENAPI_SPECTRAL_CLI_LINT_MODE",
@@ -7510,6 +8173,19 @@
         "array",
         "string"
       ]
+    },
+    "PERL_PERLCRITIC_CLI_EXECUTABLE": {
+      "$id": "#/properties/PERL_PERLCRITIC_CLI_EXECUTABLE",
+      "default": [
+        [
+          "perlcritic"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PERL_PERLCRITIC: CLI Executable",
+      "type": "array"
     },
     "PERL_PERLCRITIC_CLI_LINT_MODE": {
       "$id": "#/properties/PERL_PERLCRITIC_CLI_LINT_MODE",
@@ -7739,6 +8415,19 @@
         "string"
       ]
     },
+    "PHP_PHPCS_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PHPCS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "phpcs"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCS: CLI Executable",
+      "type": "array"
+    },
     "PHP_PHPCS_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPCS_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -7865,6 +8554,19 @@
         "array",
         "string"
       ]
+    },
+    "PHP_PHPLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PHPLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "phplint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPLINT: CLI Executable",
+      "type": "array"
     },
     "PHP_PHPLINT_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPLINT_CLI_LINT_MODE",
@@ -7993,6 +8695,19 @@
         "string"
       ]
     },
+    "PHP_PHPSTAN_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PHPSTAN_CLI_EXECUTABLE",
+      "default": [
+        [
+          "phpstan"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPSTAN: CLI Executable",
+      "type": "array"
+    },
     "PHP_PHPSTAN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -8119,6 +8834,19 @@
         "array",
         "string"
       ]
+    },
+    "PHP_PSALM_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PSALM_CLI_EXECUTABLE",
+      "default": [
+        [
+          "psalm"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PSALM: CLI Executable",
+      "type": "array"
     },
     "PHP_PSALM_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PSALM_CLI_LINT_MODE",
@@ -8304,6 +9032,19 @@
         "string"
       ]
     },
+    "POWERSHELL_POWERSHELL_CLI_EXECUTABLE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "powershell"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL: CLI Executable",
+      "type": "array"
+    },
     "POWERSHELL_POWERSHELL_CLI_LINT_MODE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_LINT_MODE",
       "default": "file",
@@ -8389,6 +9130,19 @@
         "array",
         "string"
       ]
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "powershell"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: CLI Executable",
+      "type": "array"
     },
     "POWERSHELL_POWERSHELL_FORMATTER_CLI_LINT_MODE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_LINT_MODE",
@@ -8596,6 +9350,19 @@
         "string"
       ]
     },
+    "PROTOBUF_PROTOLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "protolint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PROTOBUF_PROTOLINT: CLI Executable",
+      "type": "array"
+    },
     "PROTOBUF_PROTOLINT_CLI_LINT_MODE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_CLI_LINT_MODE",
       "default": "file",
@@ -8732,6 +9499,19 @@
         "string"
       ]
     },
+    "PUPPET_PUPPET_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "puppet-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PUPPET_PUPPET_LINT: CLI Executable",
+      "type": "array"
+    },
     "PUPPET_PUPPET_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_CLI_LINT_MODE",
       "default": "file",
@@ -8858,6 +9638,19 @@
         "string"
       ]
     },
+    "PYTHON_BANDIT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_BANDIT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "bandit"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: CLI Executable",
+      "type": "array"
+    },
     "PYTHON_BANDIT_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_BANDIT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -8977,6 +9770,19 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_BLACK_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_BLACK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "black"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BLACK: CLI Executable",
+      "type": "array"
     },
     "PYTHON_BLACK_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_BLACK_CLI_LINT_MODE",
@@ -9115,6 +9921,19 @@
         "string"
       ]
     },
+    "PYTHON_FLAKE8_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_FLAKE8_CLI_EXECUTABLE",
+      "default": [
+        [
+          "flake8"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_FLAKE8: CLI Executable",
+      "type": "array"
+    },
     "PYTHON_FLAKE8_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_FLAKE8_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -9241,6 +10060,19 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_ISORT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_ISORT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "isort"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_ISORT: CLI Executable",
+      "type": "array"
     },
     "PYTHON_ISORT_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_ISORT_CLI_LINT_MODE",
@@ -9369,6 +10201,19 @@
         "string"
       ]
     },
+    "PYTHON_MYPY_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_MYPY_CLI_EXECUTABLE",
+      "default": [
+        [
+          "mypy"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_MYPY: CLI Executable",
+      "type": "array"
+    },
     "PYTHON_MYPY_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_MYPY_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -9488,6 +10333,19 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_PYLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_PYLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "pylint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYLINT: CLI Executable",
+      "type": "array"
     },
     "PYTHON_PYLINT_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_PYLINT_CLI_LINT_MODE",
@@ -9616,6 +10474,19 @@
         "string"
       ]
     },
+    "PYTHON_PYRIGHT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_PYRIGHT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "pyright"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: CLI Executable",
+      "type": "array"
+    },
     "PYTHON_PYRIGHT_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_PYRIGHT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -9735,6 +10606,19 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_RUFF_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_RUFF_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ruff"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF: CLI Executable",
+      "type": "array"
     },
     "PYTHON_RUFF_CLI_LINT_MODE": {
       "$id": "#/properties/PYTHON_RUFF_CLI_LINT_MODE",
@@ -9865,6 +10749,19 @@
         "array",
         "string"
       ]
+    },
+    "RAKU_RAKU_CLI_EXECUTABLE": {
+      "$id": "#/properties/RAKU_RAKU_CLI_EXECUTABLE",
+      "default": [
+        [
+          "raku"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RAKU_RAKU: CLI Executable",
+      "type": "array"
     },
     "RAKU_RAKU_CLI_LINT_MODE": {
       "$id": "#/properties/RAKU_RAKU_CLI_LINT_MODE",
@@ -10010,6 +10907,19 @@
         "string"
       ]
     },
+    "REPOSITORY_CHECKOV_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_CLI_EXECUTABLE",
+      "default": [
+        [
+          "checkov"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_CHECKOV: CLI Executable",
+      "type": "array"
+    },
     "REPOSITORY_CHECKOV_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_CHECKOV_CONFIG_FILE",
       "default": ".checkov.yml",
@@ -10085,6 +10995,19 @@
         "string"
       ]
     },
+    "REPOSITORY_DEVSKIM_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_CLI_EXECUTABLE",
+      "default": [
+        [
+          "devskim"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DEVSKIM: CLI Executable",
+      "type": "array"
+    },
     "REPOSITORY_DEVSKIM_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_DISABLE_ERRORS",
       "default": false,
@@ -10146,6 +11069,19 @@
         "array",
         "string"
       ]
+    },
+    "REPOSITORY_DUSTILOCK_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "dustilock"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DUSTILOCK: CLI Executable",
+      "type": "array"
     },
     "REPOSITORY_DUSTILOCK_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_DISABLE_ERRORS",
@@ -10218,6 +11154,19 @@
         "array",
         "string"
       ]
+    },
+    "REPOSITORY_GITLEAKS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "gitleaks"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GITLEAKS: CLI Executable",
+      "type": "array"
     },
     "REPOSITORY_GITLEAKS_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_CONFIG_FILE",
@@ -10294,6 +11243,19 @@
         "string"
       ]
     },
+    "REPOSITORY_GIT_DIFF_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_CLI_EXECUTABLE",
+      "default": [
+        [
+          "git"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GIT_DIFF: CLI Executable",
+      "type": "array"
+    },
     "REPOSITORY_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_DISABLE_ERRORS",
       "default": false,
@@ -10355,6 +11317,19 @@
         "array",
         "string"
       ]
+    },
+    "REPOSITORY_GOODCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_GOODCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "goodcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOODCHECK: CLI Executable",
+      "type": "array"
     },
     "REPOSITORY_GOODCHECK_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_CONFIG_FILE",
@@ -10431,6 +11406,19 @@
         "string"
       ]
     },
+    "REPOSITORY_SECRETLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "secretlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SECRETLINT: CLI Executable",
+      "type": "array"
+    },
     "REPOSITORY_SECRETLINT_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_CONFIG_FILE",
       "default": ".secretlintrc.json",
@@ -10506,6 +11494,19 @@
         "string"
       ]
     },
+    "REPOSITORY_SEMGREP_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_CLI_EXECUTABLE",
+      "default": [
+        [
+          "semgrep"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SEMGREP: CLI Executable",
+      "type": "array"
+    },
     "REPOSITORY_SEMGREP_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_DISABLE_ERRORS",
       "default": false,
@@ -10567,6 +11568,19 @@
         "array",
         "string"
       ]
+    },
+    "REPOSITORY_SYFT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_SYFT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "syft"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SYFT: CLI Executable",
+      "type": "array"
     },
     "REPOSITORY_SYFT_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_SYFT_CONFIG_FILE",
@@ -10642,6 +11656,19 @@
         "array",
         "string"
       ]
+    },
+    "REPOSITORY_TRIVY_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CLI_EXECUTABLE",
+      "default": [
+        [
+          "trivy"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRIVY: CLI Executable",
+      "type": "array"
     },
     "REPOSITORY_TRIVY_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_TRIVY_CONFIG_FILE",
@@ -10727,6 +11754,19 @@
         "array",
         "string"
       ]
+    },
+    "RST_RSTCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/RST_RSTCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "rstcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTCHECK: CLI Executable",
+      "type": "array"
     },
     "RST_RSTCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RSTCHECK_CLI_LINT_MODE",
@@ -10854,6 +11894,19 @@
         "string"
       ]
     },
+    "RST_RSTFMT_CLI_EXECUTABLE": {
+      "$id": "#/properties/RST_RSTFMT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "rstfmt"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTFMT: CLI Executable",
+      "type": "array"
+    },
     "RST_RSTFMT_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RSTFMT_CLI_LINT_MODE",
       "default": "file",
@@ -10959,6 +12012,19 @@
         "array",
         "string"
       ]
+    },
+    "RST_RST_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/RST_RST_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "rst-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RST_LINT: CLI Executable",
+      "type": "array"
     },
     "RST_RST_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RST_LINT_CLI_LINT_MODE",
@@ -11075,6 +12141,19 @@
         "array",
         "string"
       ]
+    },
+    "RUBY_RUBOCOP_CLI_EXECUTABLE": {
+      "$id": "#/properties/RUBY_RUBOCOP_CLI_EXECUTABLE",
+      "default": [
+        [
+          "rubocop"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RUBY_RUBOCOP: CLI Executable",
+      "type": "array"
     },
     "RUBY_RUBOCOP_CLI_LINT_MODE": {
       "$id": "#/properties/RUBY_RUBOCOP_CLI_LINT_MODE",
@@ -11202,6 +12281,19 @@
         "string"
       ]
     },
+    "RUST_CLIPPY_CLI_EXECUTABLE": {
+      "$id": "#/properties/RUST_CLIPPY_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cargo-clippy"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RUST_CLIPPY: CLI Executable",
+      "type": "array"
+    },
     "RUST_CLIPPY_CONFIG_FILE": {
       "$id": "#/properties/RUST_CLIPPY_CONFIG_FILE",
       "default": ".clippy.toml",
@@ -11327,6 +12419,19 @@
         "array",
         "string"
       ]
+    },
+    "R_LINTR_CLI_EXECUTABLE": {
+      "$id": "#/properties/R_LINTR_CLI_EXECUTABLE",
+      "default": [
+        [
+          "lintr"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "R_LINTR: CLI Executable",
+      "type": "array"
     },
     "R_LINTR_CLI_LINT_MODE": {
       "$id": "#/properties/R_LINTR_CLI_LINT_MODE",
@@ -11470,6 +12575,19 @@
         "string"
       ]
     },
+    "SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sfdx"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
+      "type": "array"
+    },
     "SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE",
       "default": "apex-pmd-ruleset.xml",
@@ -11566,6 +12684,19 @@
         "array",
         "string"
       ]
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sfdx"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
+      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE",
@@ -11700,6 +12831,19 @@
         "string"
       ]
     },
+    "SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sfdx"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
+      "type": "array"
+    },
     "SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE",
       "default": "--eslintconfig",
@@ -11819,6 +12963,19 @@
         "array",
         "string"
       ]
+    },
+    "SCALA_SCALAFIX_CLI_EXECUTABLE": {
+      "$id": "#/properties/SCALA_SCALAFIX_CLI_EXECUTABLE",
+      "default": [
+        [
+          "scalafix"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SCALA_SCALAFIX: CLI Executable",
+      "type": "array"
     },
     "SCALA_SCALAFIX_CLI_LINT_MODE": {
       "$id": "#/properties/SCALA_SCALAFIX_CLI_LINT_MODE",
@@ -12019,6 +13176,19 @@
         "string"
       ]
     },
+    "SNAKEMAKE_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SNAKEMAKE_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "snakemake"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_LINT: CLI Executable",
+      "type": "array"
+    },
     "SNAKEMAKE_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/SNAKEMAKE_LINT_CLI_LINT_MODE",
       "default": "file",
@@ -12124,6 +13294,19 @@
         "array",
         "string"
       ]
+    },
+    "SNAKEMAKE_SNAKEFMT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "snakefmt"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_SNAKEFMT: CLI Executable",
+      "type": "array"
     },
     "SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE",
@@ -12257,6 +13440,19 @@
         "array",
         "string"
       ]
+    },
+    "SPELL_CSPELL_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_CSPELL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cspell"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: CLI Executable",
+      "type": "array"
     },
     "SPELL_CSPELL_CLI_LINT_MODE": {
       "$id": "#/properties/SPELL_CSPELL_CLI_LINT_MODE",
@@ -12395,6 +13591,19 @@
         "string"
       ]
     },
+    "SPELL_MISSPELL_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_MISSPELL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "misspell"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: CLI Executable",
+      "type": "array"
+    },
     "SPELL_MISSPELL_CLI_LINT_MODE": {
       "$id": "#/properties/SPELL_MISSPELL_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -12501,6 +13710,19 @@
         "array",
         "string"
       ]
+    },
+    "SPELL_PROSELINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_PROSELINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "proselint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_PROSELINT: CLI Executable",
+      "type": "array"
     },
     "SPELL_PROSELINT_CLI_LINT_MODE": {
       "$id": "#/properties/SPELL_PROSELINT_CLI_LINT_MODE",
@@ -12621,6 +13843,19 @@
         "array",
         "string"
       ]
+    },
+    "SPELL_VALE_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_VALE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "vale"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_VALE: CLI Executable",
+      "type": "array"
     },
     "SPELL_VALE_CLI_LINT_MODE": {
       "$id": "#/properties/SPELL_VALE_CLI_LINT_MODE",
@@ -12752,6 +13987,19 @@
         "string"
       ]
     },
+    "SQL_SQLFLUFF_CLI_EXECUTABLE": {
+      "$id": "#/properties/SQL_SQLFLUFF_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sqlfluff"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQLFLUFF: CLI Executable",
+      "type": "array"
+    },
     "SQL_SQLFLUFF_CLI_LINT_MODE": {
       "$id": "#/properties/SQL_SQLFLUFF_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -12871,6 +14119,19 @@
         "array",
         "string"
       ]
+    },
+    "SQL_SQL_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SQL_SQL_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sql-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQL_LINT: CLI Executable",
+      "type": "array"
     },
     "SQL_SQL_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/SQL_SQL_LINT_CLI_LINT_MODE",
@@ -12997,6 +14258,19 @@
         "array",
         "string"
       ]
+    },
+    "SQL_TSQLLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SQL_TSQLLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "tsqllint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: CLI Executable",
+      "type": "array"
     },
     "SQL_TSQLLINT_CLI_LINT_MODE": {
       "$id": "#/properties/SQL_TSQLLINT_CLI_LINT_MODE",
@@ -13128,6 +14402,19 @@
         "string"
       ]
     },
+    "SWIFT_SWIFTLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "swiftlint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: CLI Executable",
+      "type": "array"
+    },
     "SWIFT_SWIFTLINT_CONFIG_FILE": {
       "$id": "#/properties/SWIFT_SWIFTLINT_CONFIG_FILE",
       "default": ".swiftlint.yml",
@@ -13250,6 +14537,19 @@
         "array",
         "string"
       ]
+    },
+    "TEKTON_TEKTON_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "tekton-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TEKTON_TEKTON_LINT: CLI Executable",
+      "type": "array"
     },
     "TEKTON_TEKTON_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_CLI_LINT_MODE",
@@ -13377,6 +14677,19 @@
         "string"
       ]
     },
+    "TERRAFORM_CHECKOV_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_CHECKOV_CLI_EXECUTABLE",
+      "default": [
+        [
+          "checkov"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_CHECKOV: CLI Executable",
+      "type": "array"
+    },
     "TERRAFORM_CHECKOV_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_CLI_LINT_MODE",
       "default": "file",
@@ -13493,6 +14806,19 @@
         "string"
       ]
     },
+    "TERRAFORM_KICS_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_KICS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kics"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: CLI Executable",
+      "type": "array"
+    },
     "TERRAFORM_KICS_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_KICS_CLI_LINT_MODE",
       "default": "file",
@@ -13599,6 +14925,19 @@
         "string"
       ]
     },
+    "TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "terraform"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: CLI Executable",
+      "type": "array"
+    },
     "TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE",
       "default": "file",
@@ -13704,6 +15043,19 @@
         "array",
         "string"
       ]
+    },
+    "TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "terragrunt"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAGRUNT: CLI Executable",
+      "type": "array"
     },
     "TERRAFORM_TERRAGRUNT_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_CLI_LINT_MODE",
@@ -13831,6 +15183,19 @@
         "string"
       ]
     },
+    "TERRAFORM_TERRASCAN_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_EXECUTABLE",
+      "default": [
+        [
+          "terrascan"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRASCAN: CLI Executable",
+      "type": "array"
+    },
     "TERRAFORM_TERRASCAN_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
       "default": "terrascan-config.toml",
@@ -13929,6 +15294,19 @@
         "array",
         "string"
       ]
+    },
+    "TERRAFORM_TFLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "tflint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TFLINT: CLI Executable",
+      "type": "array"
     },
     "TERRAFORM_TFLINT_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
@@ -14069,6 +15447,19 @@
         "array",
         "string"
       ]
+    },
+    "TSX_ESLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/TSX_ESLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "eslint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_ESLINT: CLI Executable",
+      "type": "array"
     },
     "TSX_ESLINT_CLI_LINT_MODE": {
       "$id": "#/properties/TSX_ESLINT_CLI_LINT_MODE",
@@ -14221,6 +15612,19 @@
         "string"
       ]
     },
+    "TYPESCRIPT_ES_CLI_EXECUTABLE": {
+      "$id": "#/properties/TYPESCRIPT_ES_CLI_EXECUTABLE",
+      "default": [
+        [
+          "eslint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_ES: CLI Executable",
+      "type": "array"
+    },
     "TYPESCRIPT_ES_CLI_LINT_MODE": {
       "$id": "#/properties/TYPESCRIPT_ES_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -14358,6 +15762,19 @@
         "string"
       ]
     },
+    "TYPESCRIPT_PRETTIER_CLI_EXECUTABLE": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "prettier"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: CLI Executable",
+      "type": "array"
+    },
     "TYPESCRIPT_PRETTIER_CLI_LINT_MODE": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -14477,6 +15894,19 @@
         "array",
         "string"
       ]
+    },
+    "TYPESCRIPT_STANDARD_CLI_EXECUTABLE": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_EXECUTABLE",
+      "default": [
+        [
+          "standard"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_STANDARD: CLI Executable",
+      "type": "array"
     },
     "TYPESCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_LINT_MODE",
@@ -14601,6 +16031,19 @@
         "array",
         "string"
       ]
+    },
+    "VBDOTNET_DOTNET_FORMAT_CLI_EXECUTABLE": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "dotnet"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "VBDOTNET_DOTNET_FORMAT: CLI Executable",
+      "type": "array"
     },
     "VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE",
@@ -14728,6 +16171,19 @@
         "string"
       ]
     },
+    "XML_XMLLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/XML_XMLLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "xmllint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "XML_XMLLINT: CLI Executable",
+      "type": "array"
+    },
     "XML_XMLLINT_CLI_LINT_MODE": {
       "$id": "#/properties/XML_XMLLINT_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -14844,6 +16300,19 @@
         "array",
         "string"
       ]
+    },
+    "YAML_PRETTIER_CLI_EXECUTABLE": {
+      "$id": "#/properties/YAML_PRETTIER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "prettier"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: CLI Executable",
+      "type": "array"
     },
     "YAML_PRETTIER_CLI_LINT_MODE": {
       "$id": "#/properties/YAML_PRETTIER_CLI_LINT_MODE",
@@ -14965,6 +16434,19 @@
         "string"
       ]
     },
+    "YAML_V8R_CLI_EXECUTABLE": {
+      "$id": "#/properties/YAML_V8R_CLI_EXECUTABLE",
+      "default": [
+        [
+          "v8r"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_V8R: CLI Executable",
+      "type": "array"
+    },
     "YAML_V8R_CLI_LINT_MODE": {
       "$id": "#/properties/YAML_V8R_CLI_LINT_MODE",
       "default": "list_of_files",
@@ -15084,6 +16566,19 @@
         "array",
         "string"
       ]
+    },
+    "YAML_YAMLLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/YAML_YAMLLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "yamllint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_YAMLLINT: CLI Executable",
+      "type": "array"
     },
     "YAML_YAMLLINT_CLI_LINT_MODE": {
       "$id": "#/properties/YAML_YAMLLINT_CLI_LINT_MODE",

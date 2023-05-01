@@ -38,6 +38,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 | PUPPET_PUPPET_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| PUPPET_PUPPET_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['puppet-lint']`                               |
 
 ## IDE Integration
 

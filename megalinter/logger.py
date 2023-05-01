@@ -107,6 +107,7 @@ def display_header(mega_linter):
     logging.info(" - " + ML_DOC_URL)
     logging.info(utils.format_hyphens(""))
     logging.info(log_section_start("megalinter-init", "MegaLinter initialization"))
+    logging.info(f"MegaLinter will analyze workspace [{mega_linter.workspace}]")
     if config.get(None, "GITHUB_REPOSITORY", "") != "":
         logging.info("GITHUB_REPOSITORY: " + config.get(None, "GITHUB_REPOSITORY", ""))
         # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))

@@ -40,6 +40,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 | KOTLIN_KTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | KOTLIN_KTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| KOTLIN_KTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['ktlint']`       |
 
 ## IDE Integration
 

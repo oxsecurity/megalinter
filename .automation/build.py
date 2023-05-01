@@ -1476,6 +1476,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Maximum number of errors allowed",
                     },
                 ],
+                [
+                    f"{linter.name}_CLI_EXECUTABLE",
+                    {
+                        "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
+                        "type": "array",
+                        "default": [linter.cli_executable],
+                        "title": f"{linter.name}: CLI Executable",
+                        "items": {"type": "string"},
+                    },
+                ],
             ]
         )
 
@@ -1516,6 +1526,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f" `{default_disable_errors}` |",
             f"| {linter.name}_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed |"
             f" `0` |",
+            f"| {linter.name}_CLI_EXECUTABLE | Override CLI executable |"
+            f" `{str(linter.cli_executable)}` |",
         ]
 
         if linter.files_sub_directory is not None:
