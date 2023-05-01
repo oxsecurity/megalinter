@@ -3,7 +3,9 @@
 Unit tests for Megalinter class
 
 """
+import contextlib
 import glob
+import io
 import os
 import re
 import unittest
@@ -12,6 +14,7 @@ import uuid
 from git import Repo
 from megalinter import config, utilstest
 from megalinter.constants import ML_REPO
+from megalinter.MegaLinter import Megalinter
 from megalinter.utils import REPO_HOME_DEFAULT
 
 
@@ -212,6 +215,83 @@ class config_test(unittest.TestCase):
         )
         pre_commands = config.get_list(request_id, "PRE_COMMANDS", [])
         self.assertTrue(len(pre_commands) > 0, "PRE_COMMANDS not loaded from ENV var")
+
+    def test_config_secure_env_vars_default(self):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "VISIBLE_VAR": "VALUE",
+                "GITHUB_TOKEN": "GITHUB_TOKEN_VALUE",
+                "GITLAB_ACCESS_TOKEN_MEGALINTER": "GITLAB_ACCESS_TOKEN_MEGALINTER_VALUE",
+                "LOG_LEVEL": "DEBUG",
+            },
+        )
+        cli_env = config.build_env(request_id)
+        self.assertTrue("VISIBLE_VAR" in cli_env, "VISIBLE_VAR is visible")
+        self.assertTrue("GITHUB_TOKEN" not in cli_env, "GITHUB_TOKEN is not visible")
+        self.assertTrue(
+            "GITLAB_ACCESS_TOKEN_MEGALINTER" not in cli_env,
+            "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
+        )
+        usage_stdout = io.StringIO()
+        with contextlib.redirect_stdout(usage_stdout):
+            Megalinter(
+                {
+                    "cli": True,
+                    "request_id": request_id,
+                    "workspace": ".",
+                    "LOG_LEVEL": "DEBUG",
+                }
+            )
+        output = usage_stdout.getvalue().strip()
+        self.assertTrue("VISIBLE_VAR=VALUE" in output, "VISIBLE_VAR is visible")
+        self.assertTrue(
+            "GITHUB_TOKEN=HIDDEN_BY_MEGALINTER" in output, "GITHUB_TOKEN is not visible"
+        )
+        self.assertTrue(
+            "GITLAB_ACCESS_TOKEN_MEGALINTER=HIDDEN_BY_MEGALINTER" in output,
+            "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
+        )
+
+    def test_config_secure_env_vars_custom(self):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "VISIBLE_VAR": "VALUE",
+                "GITHUB_TOKEN": "GITHUB_TOKEN_VALUE",
+                "SECRET_VAR": "SECRET_VALUE",
+                "SECURED_ENV_VARIABLES": "GITHUB_TOKEN,SECRET_VAR",
+                "workspace": ".",
+                "LOG_LEVEL": "DEBUG",
+            },
+        )
+        cli_env = config.build_env(request_id)
+        self.assertTrue("VISIBLE_VAR" in cli_env, "VISIBLE_VAR is visible")
+        self.assertTrue("GITHUB_TOKEN" not in cli_env, "GITHUB_TOKEN is not visible")
+        self.assertTrue("SECRET_VAR" not in cli_env, "SECRET_VAR is not visible")
+        usage_stdout = io.StringIO()
+        with contextlib.redirect_stdout(usage_stdout):
+            Megalinter(
+                {
+                    "cli": True,
+                    "request_id": request_id,
+                    "workspace": ".",
+                    "LOG_LEVEL": "DEBUG",
+                }
+            )
+        output = usage_stdout.getvalue().strip()
+        self.assertTrue("VISIBLE_VAR=VALUE" in output, "VISIBLE_VAR is visible")
+        self.assertTrue(
+            "GITHUB_TOKEN=HIDDEN_BY_MEGALINTER" in output, "GITHUB_TOKEN is not visible"
+        )
+        self.assertTrue(
+            "SECRET_VAR=HIDDEN_BY_MEGALINTER" in output,
+            "SECRET_VAR is not visible",
+        )
 
     def replace_branch_in_input_files(self):
         root = (
