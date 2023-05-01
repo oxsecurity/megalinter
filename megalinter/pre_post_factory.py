@@ -96,14 +96,19 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     }
 
 
-def complete_command(command_info):
+def complete_command(command_info: dict):
+    # Force npm/yarn install in /node-deps ONLY if cwd is root
+    command: str = command_info["command"]
+    if (
+        command.startswith("npm i") or command.startswith("yarn add")
+    ) and command_info.get("cwd", "root") == "root":
+        command_info["command"] = "cd /node-deps && " + command_info["command"]
     # Pip dependencies case
-    if command_info.get("venv", None) is not None:
+    elif command_info.get("venv", None) is not None:
         venv = command_info.get("venv")
-        cmd = command_info["command"]
         command_info[
             "command"
-        ] = f"cd /venvs/{venv} && source bin/activate && {cmd} && deactivate"
+        ] = f"cd /venvs/{venv} && source bin/activate && {command} && deactivate"
     return command_info
 
 
