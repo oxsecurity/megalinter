@@ -140,6 +140,8 @@ class Megalinter:
             os.path.isdir(internal_node_modules)
             and len(os.listdir(internal_node_modules)) > 0
             and pre_post_factory.has_npm_or_yarn_commands(self.request_id)
+            and config.get(self.request_id, "COPY_NODE_MODULES_IN_WORKSPACE", "")
+            == "true"
         ):
             workspace_node_modules = os.path.join(self.workspace, "node_modules")
             copytree(internal_node_modules, workspace_node_modules, dirs_exist_ok=True)
