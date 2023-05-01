@@ -215,10 +215,16 @@ class Linter:
             )
         if len(self.cli_executable_fix) == 0:
             self.cli_executable_fix = [*self.cli_executable]
+        else:
+            self.cli_executable_fix = [self.cli_executable_fix]
         if len(self.cli_executable_version) == 0:
             self.cli_executable_version = [*self.cli_executable]
+        else:
+            self.cli_executable_version = [self.cli_executable_version]
         if len(self.cli_executable_help) == 0:
             self.cli_executable_help = [*self.cli_executable]
+        else:
+            self.cli_executable_help = [self.cli_executable_help]
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
 
