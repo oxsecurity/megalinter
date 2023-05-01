@@ -66,7 +66,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         log_key,
         [
             f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"
-        ],  # TODO: Uncomment before merge
+        ],
     )
     # Run command
     process = subprocess.run(
@@ -81,9 +81,9 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     return_code = process.returncode
     return_stdout = utils.decode_utf8(process.stdout)
     if return_code == 0:
-        add_in_logs(linter, log_key, [f"{log_key} {return_stdout}"])
-    else:
         add_in_logs(linter, log_key, [f"{log_key} result:\n{return_stdout}"])
+    else:
+        add_in_logs(linter, log_key, [f"{log_key} error:\n{return_stdout}"])
     # If user defined command to fail in case of crash, stop running MegaLinter
     if return_code > 0 and command_info.get("continue_if_failed", True) is False:
         raise Exception(
