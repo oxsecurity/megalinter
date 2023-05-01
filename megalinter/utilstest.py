@@ -123,7 +123,7 @@ def call_mega_linter(env_vars):
         for env_var_key, env_var_value in env_vars.items():
             config.set_value(request_id, env_var_key, env_var_value)
         # Call linter
-        mega_linter = Megalinter({"request_id": request_id})
+        mega_linter = Megalinter({"request_id": request_id, "cli": True})
         mega_linter.run()
     output = usage_stdout.getvalue().strip()
     print_output(output)
