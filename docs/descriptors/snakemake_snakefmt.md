@@ -37,6 +37,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 | SNAKEMAKE_SNAKEFMT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                          |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| SNAKEMAKE_SNAKEFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['snakefmt']]`                                |
 
 ## MegaLinter Flavours
 

@@ -43,6 +43,7 @@ misspell detects and corrects commonly misspelled english words
 | SPELL_MISSPELL_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
 | SPELL_MISSPELL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| SPELL_MISSPELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['misspell']]`   |
 
 ## MegaLinter Flavours
 

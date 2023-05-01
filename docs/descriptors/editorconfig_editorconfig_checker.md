@@ -41,6 +41,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 | EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['editorconfig-checker']]`                    |
 
 ## MegaLinter Flavours
 

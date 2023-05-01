@@ -36,6 +36,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 | PHP_PHPCS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PHP_PHPCS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PHP_PHPCS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['phpcs']]`                                   |
 
 ## IDE Integration
 

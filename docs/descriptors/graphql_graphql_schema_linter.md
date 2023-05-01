@@ -36,6 +36,7 @@ description: How to use graphql-schema-linter (configure, ignore files, ignore e
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['graphql-schema-linter']]`                   |
 
 ## MegaLinter Flavours
 

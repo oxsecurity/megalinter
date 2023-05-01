@@ -37,6 +37,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 | BICEP_BICEP_LINTER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | BICEP_BICEP_LINTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| BICEP_BICEP_LINTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['bicep']]`      |
 
 ## IDE Integration
 

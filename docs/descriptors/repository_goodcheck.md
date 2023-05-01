@@ -31,6 +31,7 @@ description: How to use goodcheck (configure, ignore files, ignore errors, help 
 | REPOSITORY_GOODCHECK_RULES_PATH                  | Path where to find linter configuration file                                         | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_GOODCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                           | `false`                                         |
 | REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                     | `0`                                             |
+| REPOSITORY_GOODCHECK_CLI_EXECUTABLE              | Override CLI executable                                                              | `[['goodcheck']]`                               |
 
 ## MegaLinter Flavours
 

@@ -35,6 +35,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 | JSON_NPM_PACKAGE_JSON_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| JSON_NPM_PACKAGE_JSON_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['npmPkgJsonLint']]`                          |
 
 ## MegaLinter Flavours
 

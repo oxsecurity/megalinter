@@ -35,6 +35,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 | RST_RSTCHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | RST_RSTCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| RST_RSTCHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['rstcheck']]`                                |
 
 ## IDE Integration
 

@@ -43,6 +43,7 @@ a linter for prose
 | SPELL_PROSELINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SPELL_PROSELINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SPELL_PROSELINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SPELL_PROSELINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['proselint']]`                               |
 
 ## IDE Integration
 

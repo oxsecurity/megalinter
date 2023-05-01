@@ -37,6 +37,7 @@ description: How to use coffeelint (configure, ignore files, ignore errors, help
 | COFFEE_COFFEELINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | COFFEE_COFFEELINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| COFFEE_COFFEELINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['coffeelint']]`                              |
 
 ## IDE Integration
 

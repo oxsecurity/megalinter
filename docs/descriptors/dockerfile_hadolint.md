@@ -36,6 +36,7 @@ description: How to use hadolint (configure, ignore files, ignore errors, help &
 | DOCKERFILE_HADOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| DOCKERFILE_HADOLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['hadolint']]`                                |
 
 ## IDE Integration
 

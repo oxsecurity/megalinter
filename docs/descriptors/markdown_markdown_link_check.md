@@ -36,6 +36,7 @@ description: How to use markdown-link-check (configure, ignore files, ignore err
 | MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| MARKDOWN_MARKDOWN_LINK_CHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['markdown-link-check']]`                     |
 
 ## MegaLinter Flavours
 

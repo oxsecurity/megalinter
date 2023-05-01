@@ -42,6 +42,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 | SPELL_VALE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SPELL_VALE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SPELL_VALE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SPELL_VALE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['vale']]`                                    |
 
 ## IDE Integration
 

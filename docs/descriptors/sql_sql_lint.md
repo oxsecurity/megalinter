@@ -36,6 +36,7 @@ description: How to use sql-lint (configure, ignore files, ignore errors, help &
 | SQL_SQL_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | SQL_SQL_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| SQL_SQL_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['sql-lint']]`                                |
 
 ## IDE Integration
 

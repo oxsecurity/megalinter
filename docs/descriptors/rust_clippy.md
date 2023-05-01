@@ -33,6 +33,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 | RUST_CLIPPY_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | RUST_CLIPPY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | RUST_CLIPPY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| RUST_CLIPPY_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['cargo-clippy']]`                            |
 
 ## IDE Integration
 

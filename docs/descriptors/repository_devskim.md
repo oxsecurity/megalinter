@@ -23,13 +23,14 @@ Use `--ignore-globs` to ignore files and/or folders
 - Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                              | Default value |
-|------------------------------------------------|--------------------------------------------------------------------------|---------------|
-| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                           | None          |
-| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
+| Variable                                       | Description                                                              | Default value   |
+|------------------------------------------------|--------------------------------------------------------------------------|-----------------|
+| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |                 |
+| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                           | None            |
+| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                            | None            |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`         |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`             |
+| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                  | `[['devskim']]` |
 
 ## IDE Integration
 

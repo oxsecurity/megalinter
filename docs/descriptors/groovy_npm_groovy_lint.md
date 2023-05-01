@@ -39,6 +39,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 | GROOVY_NPM_GROOVY_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| GROOVY_NPM_GROOVY_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['npm-groovy-lint']]`                         |
 
 ## IDE Integration
 

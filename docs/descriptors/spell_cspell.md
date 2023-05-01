@@ -42,6 +42,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 | SPELL_CSPELL_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SPELL_CSPELL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SPELL_CSPELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['cspell']]`                                  |
 
 ## IDE Integration
 

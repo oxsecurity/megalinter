@@ -47,6 +47,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 | MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['markdownlint']]`                            |
 
 ## IDE Integration
 

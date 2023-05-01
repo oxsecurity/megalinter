@@ -42,6 +42,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 | OPENAPI_SPECTRAL_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | OPENAPI_SPECTRAL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | OPENAPI_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| OPENAPI_SPECTRAL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['spectral']]`                                |
 
 ## IDE Integration
 

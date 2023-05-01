@@ -31,6 +31,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 | RST_RST_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | RST_RST_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| RST_RST_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['rst-lint']]`   |
 
 ## MegaLinter Flavours
 

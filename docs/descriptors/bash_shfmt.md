@@ -33,6 +33,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 | BASH_SHFMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                |
 | BASH_SHFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                              |
 | BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                 |
+| BASH_SHFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['shfmt']]`                       |
 
 ## IDE Integration
 

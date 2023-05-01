@@ -35,6 +35,7 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 | VBDOTNET_DOTNET_FORMAT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
 | VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| VBDOTNET_DOTNET_FORMAT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['dotnet']]`     |
 
 ## MegaLinter Flavours
 
