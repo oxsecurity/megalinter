@@ -13,8 +13,8 @@ import uuid
 
 from git import Repo
 from megalinter import config, utilstest
-from megalinter.MegaLinter import Megalinter
 from megalinter.constants import ML_REPO
+from megalinter.MegaLinter import Megalinter
 from megalinter.utils import REPO_HOME_DEFAULT
 
 
