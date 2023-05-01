@@ -455,6 +455,7 @@ class AnalysisExecutor:
     def process(self):
         mega_linter = MegaLinter.Megalinter(
             {
+                "cli": False,
                 "request_id": self.id,
                 "workspace": self.workspace,
                 "SARIF_REPORTER": "true",
