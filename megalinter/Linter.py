@@ -203,21 +203,22 @@ class Linter:
                 and self.name not in sarif_enabled_linters
             ):
                 self.output_sarif = False
+        # Use linter_name if the descriptor does not force another executable
+        if len(self.cli_executable) == 0:
+            self.cli_executable = [self.linter_name]
+        else:
+            self.cli_executable = [self.cli_executable]
         # Override default executable
         if config.exists(self.request_id, self.name + "_CLI_EXECUTABLE"):
             self.cli_executable = config.get_list(
                 self.request_id, self.name + "_CLI_EXECUTABLE"
             )
-        if len(self.cli_executable) == 0:
-            self.cli_executable = [self.linter_name]
-        else:
-            self.cli_executable = [self.cli_executable]
         if len(self.cli_executable_fix) == 0:
-            self.cli_executable_fix = self.cli_executable
+            self.cli_executable_fix = [*self.cli_executable]
         if len(self.cli_executable_version) == 0:
-            self.cli_executable_version = self.cli_executable
+            self.cli_executable_version = [*self.cli_executable]
         if len(self.cli_executable_help) == 0:
-            self.cli_executable_help = self.cli_executable
+            self.cli_executable_help = [*self.cli_executable]
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
 
@@ -1130,7 +1131,7 @@ class Linter:
 
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
-        cmd = self.cli_executable
+        cmd = [*self.cli_executable]
 
         # Add other lint cli arguments if defined
         self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
