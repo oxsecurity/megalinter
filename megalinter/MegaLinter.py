@@ -135,14 +135,19 @@ class Megalinter:
         plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
+        internal_node_modules = "/node_deps/node_modules"
         if (
-            os.path.isdir("/node_deps/node_modules")
-            and len(os.listdir("/node_deps/node_modules")) > 0
+            os.path.isdir(internal_node_modules)
+            and len(os.listdir(internal_node_modules)) > 0
             and pre_post_factory.has_npm_or_yarn_commands(self.request_id)
         ):
             workspace_node_modules = os.path.join(self.workspace, "node_modules")
-            copytree("/node_deps/node_modules", workspace_node_modules, dirs_exist_ok=True)
-            logging.info("[pre] node.js related pre-commands found: copy MegaLinter internal node_modules into workspace node_modules")
+            copytree(internal_node_modules, workspace_node_modules, dirs_exist_ok=True)
+            logging.info(
+                "[pre] node.js related PRE_COMMANDS found: copy MegaLinter "
+                f"internal node_modules ({internal_node_modules}) into "
+                f"workspace node_modules ({workspace_node_modules}), and swap PATH"
+            )
             # Update PATH & NODE_PATH so node_modules of the currently analyzed workspace is used
             config.set(
                 self.request_id,
