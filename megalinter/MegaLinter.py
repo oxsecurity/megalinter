@@ -72,7 +72,7 @@ class Megalinter:
         self.megalinter_flavor = flavor_factory.get_image_flavor()
         self.initialize_output()
         # Initialize logger + init logs
-        if self.cli is True:
+        if self.cli is True or os.environ.get("PYTEST_CURRENT_TEST", None) is not None:
             initialize_logger(self)
             manage_upgrade_message()
             display_header(self)
