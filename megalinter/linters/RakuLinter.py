@@ -32,7 +32,7 @@ class RakuLinter(megalinter.Linter):
 
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
-        cmd = [self.cli_executable]
+        cmd = self.cli_executable
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined

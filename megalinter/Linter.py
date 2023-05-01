@@ -94,10 +94,10 @@ class Linter:
         self.cli_docker_image = None
         self.cli_docker_image_version = "latest"
         self.cli_docker_args = []
-        self.cli_executable = None
-        self.cli_executable_fix = None
-        self.cli_executable_version = None
-        self.cli_executable_help = None
+        self.cli_executable = []
+        self.cli_executable_fix = []
+        self.cli_executable_version = []
+        self.cli_executable_help = []
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
         self.cli_config_default_value = None
@@ -205,16 +205,18 @@ class Linter:
                 self.output_sarif = False
         # Override default executable
         if config.exists(self.request_id, self.name + "_CLI_EXECUTABLE"):
-            self.cli_executable = config.get(
+            self.cli_executable = config.get_list(
                 self.request_id, self.name + "_CLI_EXECUTABLE"
             )
-        if self.cli_executable is None:
-            self.cli_executable = self.linter_name
-        if self.cli_executable_fix is None:
+        if len(self.cli_executable) == 0:
+            self.cli_executable = [self.linter_name]
+        else:
+            self.cli_executable = [self.cli_executable]
+        if len(self.cli_executable_fix) == 0:
             self.cli_executable_fix = self.cli_executable
-        if self.cli_executable_version is None:
+        if len(self.cli_executable_version) == 0:
             self.cli_executable_version = self.cli_executable
-        if self.cli_executable_help is None:
+        if len(self.cli_executable_help) == 0:
             self.cli_executable_help = self.cli_executable
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
@@ -1128,7 +1130,7 @@ class Linter:
 
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
-        cmd = [self.cli_executable]
+        cmd = self.cli_executable
 
         # Add other lint cli arguments if defined
         self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
@@ -1137,9 +1139,10 @@ class Linter:
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
-            or self.cli_executable_fix != self.cli_executable
+            or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
-            cmd[0] = self.cli_executable_fix
+            cmd.pop(len(self.cli_executable)) 
+            cmd = self.cli_executable_fix + cmd
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
 
@@ -1318,7 +1321,7 @@ class Linter:
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
-        cmd = shlex.split(self.cli_executable_version)
+        cmd = self.cli_executable_version
         cli_absolute = shutil.which(cmd[0])
         if cli_absolute is not None:
             cmd[0] = cli_absolute
@@ -1329,7 +1332,7 @@ class Linter:
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_help_command(self):
-        cmd = [self.cli_executable_help]
+        cmd = self.cli_executable_help
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
         return self.manage_docker_command(cmd)
