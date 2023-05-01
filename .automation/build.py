@@ -1527,7 +1527,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {linter.name}_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed |"
             f" `0` |",
             f"| {linter.name}_CLI_EXECUTABLE | Override CLI executable |"
-            f" `[{linter.cli_executable}]` |",
+            f" `{str(linter.cli_executable)}` |",
         ]
 
         if linter.files_sub_directory is not None:

@@ -35,7 +35,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 | GO_REVIVE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | GO_REVIVE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| GO_REVIVE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['revive']]`                                  |
+| GO_REVIVE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['revive']`                                    |
 
 ## IDE Integration
 

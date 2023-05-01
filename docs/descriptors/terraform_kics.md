@@ -39,7 +39,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 | TERRAFORM_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | TERRAFORM_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
-| TERRAFORM_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['kics']]`       |
+| TERRAFORM_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['kics']`         |
 
 ## MegaLinter Flavours
 

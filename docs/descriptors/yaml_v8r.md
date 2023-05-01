@@ -36,7 +36,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 | YAML_V8R_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | YAML_V8R_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | YAML_V8R_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| YAML_V8R_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['v8r']]`                                     |
+| YAML_V8R_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['v8r']`                                       |
 
 ## IDE Integration
 

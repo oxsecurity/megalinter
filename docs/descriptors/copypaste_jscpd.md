@@ -56,7 +56,7 @@ Example:
 | COPYPASTE_JSCPD_RULES_PATH                  | Path where to find linter configuration file                                     | Workspace folder, then MegaLinter default rules |
 | COPYPASTE_JSCPD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                       | `false`                                         |
 | COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                 | `0`                                             |
-| COPYPASTE_JSCPD_CLI_EXECUTABLE              | Override CLI executable                                                          | `[['jscpd']]`                                   |
+| COPYPASTE_JSCPD_CLI_EXECUTABLE              | Override CLI executable                                                          | `['jscpd']`                                     |
 
 ## MegaLinter Flavours
 

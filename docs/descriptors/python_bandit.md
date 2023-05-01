@@ -47,7 +47,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 | PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_BANDIT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PYTHON_BANDIT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['bandit']]`                                  |
+| PYTHON_BANDIT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['bandit']`                                    |
 
 ## IDE Integration
 

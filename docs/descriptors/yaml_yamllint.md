@@ -36,7 +36,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 | YAML_YAMLLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| YAML_YAMLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['yamllint']]`                                |
+| YAML_YAMLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['yamllint']`                                  |
 
 ## IDE Integration
 

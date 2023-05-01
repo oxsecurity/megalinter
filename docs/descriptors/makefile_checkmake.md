@@ -34,7 +34,7 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 | MAKEFILE_CHECKMAKE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | MAKEFILE_CHECKMAKE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | MAKEFILE_CHECKMAKE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| MAKEFILE_CHECKMAKE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['checkmake']]`                               |
+| MAKEFILE_CHECKMAKE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['checkmake']`                                 |
 
 ## MegaLinter Flavours
 

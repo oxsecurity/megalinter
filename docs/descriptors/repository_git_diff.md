@@ -28,7 +28,7 @@ Git diff checks for git conflicts markers in files
 | REPOSITORY_GIT_DIFF_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
 | REPOSITORY_GIT_DIFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
 | REPOSITORY_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
-| REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                  | `[['git']]`   |
+| REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                  | `['git']`     |
 
 ## MegaLinter Flavours
 

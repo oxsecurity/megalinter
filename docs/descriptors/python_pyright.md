@@ -46,7 +46,7 @@ If you don't use python static typing, you should disable this linter by adding 
 | PYTHON_PYRIGHT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_PYRIGHT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PYTHON_PYRIGHT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['pyright']]`                                 |
+| PYTHON_PYRIGHT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['pyright']`                                   |
 
 ## IDE Integration
 

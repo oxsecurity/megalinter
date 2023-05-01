@@ -40,7 +40,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 | PERL_PERLCRITIC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                       |
 | PERL_PERLCRITIC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                    |
 | PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                        |
-| PERL_PERLCRITIC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['perlcritic']]`         |
+| PERL_PERLCRITIC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['perlcritic']`           |
 
 ## MegaLinter Flavours
 

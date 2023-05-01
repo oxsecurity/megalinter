@@ -36,7 +36,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 | TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['terragrunt']]`                              |
+| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
 
 ## MegaLinter Flavours
 

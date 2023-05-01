@@ -38,7 +38,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 | REPOSITORY_TRIVY_RULES_PATH                  | Path where to find linter configuration file                                     | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_TRIVY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                       | `false`                                         |
 | REPOSITORY_TRIVY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                 | `0`                                             |
-| REPOSITORY_TRIVY_CLI_EXECUTABLE              | Override CLI executable                                                          | `[['trivy']]`                                   |
+| REPOSITORY_TRIVY_CLI_EXECUTABLE              | Override CLI executable                                                          | `['trivy']`                                     |
 
 ## IDE Integration
 

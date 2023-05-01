@@ -43,7 +43,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 | CLOJURE_CLJ_KONDO_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | CLOJURE_CLJ_KONDO_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| CLOJURE_CLJ_KONDO_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['clj-kondo']]`                               |
+| CLOJURE_CLJ_KONDO_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['clj-kondo']`                                 |
 
 ## IDE Integration
 

@@ -41,7 +41,7 @@ description: How to use standard (configure, ignore files, ignore errors, help &
 | JAVASCRIPT_STANDARD_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
 | JAVASCRIPT_STANDARD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | JAVASCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
-| JAVASCRIPT_STANDARD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['standard']]`   |
+| JAVASCRIPT_STANDARD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['standard']`     |
 
 ## IDE Integration
 

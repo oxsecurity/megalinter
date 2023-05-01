@@ -104,7 +104,7 @@ DISABLE_LINTERS:
 | JSON_ESLINT_PLUGIN_JSONC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['eslint']]`                                  |
+| JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
 
 ## IDE Integration
 

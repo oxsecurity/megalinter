@@ -50,7 +50,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | TYPESCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | TYPESCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| TYPESCRIPT_ES_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['eslint']]`                                  |
+| TYPESCRIPT_ES_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
 
 ## IDE Integration
 

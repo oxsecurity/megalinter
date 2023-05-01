@@ -52,7 +52,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 | HTML_DJLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                |
 | HTML_DJLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`             |
 | HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                 |
-| HTML_DJLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['djlint']]`      |
+| HTML_DJLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['djlint']`        |
 
 ## IDE Integration
 

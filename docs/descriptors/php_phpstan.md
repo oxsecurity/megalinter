@@ -36,7 +36,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 | PHP_PHPSTAN_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PHP_PHPSTAN_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PHP_PHPSTAN_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `[['phpstan']]`                                 |
+| PHP_PHPSTAN_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['phpstan']`                                   |
 
 ## MegaLinter Flavours
 

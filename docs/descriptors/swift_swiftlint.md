@@ -38,7 +38,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 | SWIFT_SWIFTLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | SWIFT_SWIFTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| SWIFT_SWIFTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['swiftlint']]`                               |
+| SWIFT_SWIFTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['swiftlint']`                                 |
 
 ## IDE Integration
 

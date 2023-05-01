@@ -33,7 +33,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 | RST_RSTFMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | RST_RSTFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
 | RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
-| RST_RSTFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['rstfmt']]`     |
+| RST_RSTFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rstfmt']`       |
 
 ## MegaLinter Flavours
 

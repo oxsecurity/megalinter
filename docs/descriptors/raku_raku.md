@@ -33,7 +33,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 | RAKU_RAKU_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules             |
 | RAKU_RAKU_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                                     |
 | RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                         |
-| RAKU_RAKU_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['raku']]`                                                |
+| RAKU_RAKU_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['raku']`                                                  |
 
 ## IDE Integration
 

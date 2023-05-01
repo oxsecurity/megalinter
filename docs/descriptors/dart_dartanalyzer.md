@@ -41,7 +41,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 | DART_DARTANALYZER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | DART_DARTANALYZER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| DART_DARTANALYZER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `[['dartanalyzer']]`                            |
+| DART_DARTANALYZER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['dartanalyzer']`                              |
 
 ## IDE Integration
 
