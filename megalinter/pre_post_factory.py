@@ -64,9 +64,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     add_in_logs(
         linter,
         log_key,
-        [
-            f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"
-        ],
+        [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"],
     )
     # Run command
     process = subprocess.run(
@@ -97,11 +95,9 @@ def run_command(command_info, log_key, mega_linter, linter=None):
 
 
 def complete_command(command_info: dict):
-    # Force npm/yarn install in /node-deps ONLY if cwd is root
+    # Force npm install in /node-deps ONLY if cwd is root
     command: str = command_info["command"]
-    if (
-        command.startswith("npm i") or command.startswith("yarn add")
-    ) and command_info.get("cwd", "root") == "root":
+    if command.startswith("npm i") and command_info.get("cwd", "root") == "root":
         command_info["command"] = "cd /node-deps && " + command_info["command"]
     # Pip dependencies case
     elif command_info.get("venv", None) is not None:
