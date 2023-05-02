@@ -12,7 +12,7 @@ from megalinter import utilstest
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
-class mega_linter_1_test(unittest.TestCase):
+class mega_linter_4_dependencies_test(unittest.TestCase):
     def __init__(self, args) -> None:
         self.request_id = str(uuid.uuid1())
         super().__init__(args)
@@ -33,11 +33,13 @@ class mega_linter_1_test(unittest.TestCase):
                 "PRINT_ALL_FILES": "false",
                 "MEGALINTER_FLAVOR": "javascript",
                 "FLAVOR_SUGGESTIONS": "false",
-                "TYPESCRIPT_ES_PRE_COMMANDS": {
-                    "command": "npm install @tsconfig/node18-strictest-esm@1.0.1",
-                    "continue_if_failed": False,
-                    "cwd": "workspace",
-                },
+                "TYPESCRIPT_ES_PRE_COMMANDS": [
+                    {
+                        "command": "npm install @tsconfig/node18-strictest-esm@1.0.1",
+                        "continue_if_failed": False,
+                        "cwd": "workspace",
+                    }
+                ],
                 "request_id": self.request_id,
             }
         )
