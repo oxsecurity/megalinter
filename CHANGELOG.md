@@ -161,6 +161,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0** on 2023-04-30
   - [checkov](https://www.checkov.io/) from 2.3.206 to **2.3.212** on 2023-04-30
   - [syft](https://github.com/anchore/syft) from 0.76.1 to **0.79.0** on 2023-04-30
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.5 to **3.5.8** on 2023-05-02
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
