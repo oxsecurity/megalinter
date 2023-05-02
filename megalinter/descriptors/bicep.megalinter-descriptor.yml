@@ -31,6 +31,8 @@ linters:
         # Azure CLI 
         az bicep build -f infra.bicep
     install:
+      apk:
+        - icu-libs
       dockerfile:
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'

@@ -5,7 +5,7 @@ from megalinter import config
 
 # pylint: disable=E1111
 def alpaca():
-    print_alpaca = config.get("PRINT_ALPACA", "true") == "true"
+    print_alpaca = config.get(None, "PRINT_ALPACA", "true") == "true"
     if not print_alpaca:
         return
 

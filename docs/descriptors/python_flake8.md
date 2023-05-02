@@ -37,6 +37,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 | PYTHON_FLAKE8_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_FLAKE8_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_FLAKE8_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_FLAKE8_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['flake8']`                                    |
 
 ## IDE Integration
 

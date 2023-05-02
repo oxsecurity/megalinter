@@ -32,6 +32,7 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 | LATEX_CHKTEX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | LATEX_CHKTEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| LATEX_CHKTEX_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['chktex']`                                    |
 
 ## IDE Integration
 

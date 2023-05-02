@@ -45,6 +45,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 | REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                  | `['semgrep']` |
 
 ## IDE Integration
 

@@ -11,9 +11,9 @@ from megalinter import Linter, config
 class PowershellLinter(Linter):
     def __init__(self, params=None, linter_config=None):
         super(PowershellLinter, self).__init__(params, linter_config)
-        self.cli_executable = "powershell" if sys.platform == "win32" else "pwsh"
-        self.cli_executable_help = self.cli_executable
-        self.cli_executable_version = self.cli_executable
+        self.cli_executable = ["powershell"] if sys.platform == "win32" else ["pwsh"]
+        self.cli_executable_help = [*self.cli_executable]
+        self.cli_executable_version = [*self.cli_executable]
 
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
@@ -36,7 +36,9 @@ class PowershellLinter(Linter):
 
             if self.apply_fixes is True:
                 file_encoding = config.get(
-                    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING", "utf8"
+                    self.request_id,
+                    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+                    "utf8",
                 )
 
                 pwsh_script[
@@ -50,7 +52,7 @@ class PowershellLinter(Linter):
         ):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
         cmd = [
-            self.cli_executable,
+            *self.cli_executable,
             "-NoProfile",
             "-NoLogo",
             "-Command",
@@ -61,7 +63,7 @@ class PowershellLinter(Linter):
     # Build the CLI command to get linter version
     def build_version_command(self):
         cmd = [
-            self.cli_executable_version,
+            *self.cli_executable_version,
             "-Command",
             "Write-Output $PsVersionTable.PsVersion;",
         ]

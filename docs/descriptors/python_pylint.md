@@ -43,6 +43,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 | PYTHON_PYLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_PYLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['pylint']`                                    |
 
 ## IDE Integration
 

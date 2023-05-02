@@ -6,6 +6,8 @@ Template class for custom reporters: any linter class in /reporters folder must 
 
 from typing import Optional
 
+from megalinter.Linter import Linter
+
 
 class Reporter:
     # Report definition
@@ -16,7 +18,7 @@ class Reporter:
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):
         self.processing_order = 0
-        self.master = params["master"]
+        self.master: Linter = params["master"]
         self.report_folder = params["report_folder"]
         # Any reporter is inactive by default except if __init__ is overridden on sub class
         if not hasattr(self, "is_active"):

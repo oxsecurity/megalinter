@@ -35,6 +35,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 | JSON_JSONLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSON_JSONLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| JSON_JSONLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['jsonlint']`                                  |
 
 ## MegaLinter Flavours
 

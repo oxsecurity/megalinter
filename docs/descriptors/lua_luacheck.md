@@ -37,6 +37,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 | LUA_LUACHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | LUA_LUACHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | LUA_LUACHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| LUA_LUACHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['luacheck']`                                  |
 
 ## IDE Integration
 

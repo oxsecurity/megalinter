@@ -12,7 +12,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Vale](https://vale.sh/), a powerful enforcer of writing style
 
 - Medias
-  - [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
+  - Article: [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
+  - Video: [Ortelius Architecture Meeting](https://www.youtube.com/watch?v=oegOSmVegiQ&t=1510s), with a review of MegaLinter, by [Steve Taylor](https://github.com/sbtaylor15) from [Ortelius](https://ortelius.io/)
+  - Web site: [my-devops-lab.com](https://www.my-devops-lab.com/tools)
 
 - Linter enhancements & fixes
   - Gitleaks: add support to scan PR commits only on PRs when `VALIDATE_ALL_CODEBASE` is set to `false`, by @DariuszPorowski [#2504](https://github.com/oxsecurity/megalinter/pull/2504)
@@ -29,6 +31,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))
+  - Refactor internal configuration management to scope config to a request identifier
+  - New configuration variable SECURED_ENV_VARIABLES to hide some env vars from environment used when calling linters
+  - Replace deprecated distutils.copy_tree by shutil.copytree
   - Add support for idea plugins autoinstall
   - Upgrade base Docker image to python:3.11.3-alpine3.17
   - Fix issue preventing plugins to work with flavors
@@ -153,6 +158,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.205 to **2.3.206** on 2023-04-29
   - [kics](https://www.kics.io) from 1.6.14 to **1.7.0** on 2023-04-29
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.5 to **0.45.6** on 2023-04-29
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.1 to **3.11.2** on 2023-04-30
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0** on 2023-04-30
+  - [checkov](https://www.checkov.io/) from 2.3.206 to **2.3.212** on 2023-04-30
+  - [syft](https://github.com/anchore/syft) from 0.76.1 to **0.79.0** on 2023-04-30
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

@@ -15,7 +15,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.33.0**
+- Version in MegaLinter: **0.34.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
@@ -47,6 +47,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 | MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['markdownlint']`                              |
 
 ## IDE Integration
 

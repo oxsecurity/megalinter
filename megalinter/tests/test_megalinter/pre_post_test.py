@@ -5,14 +5,20 @@ Unit tests for Megalinter class
 """
 import os
 import unittest
+import uuid
 
 from megalinter import utilstest
 
 
 class PrePostTest(unittest.TestCase):
+    def __init__(self, args) -> None:
+        self.request_id = str(uuid.uuid1())
+        super().__init__(args)
+
     def setUp(self):
         utilstest.linter_test_setup(
             {
+                "request_id": self.request_id,
                 "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}pre-post-test",
                 "required_config_file": True,
             }
@@ -24,6 +30,7 @@ class PrePostTest(unittest.TestCase):
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
                 "LOG_LEVEL": "DEBUG",
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(

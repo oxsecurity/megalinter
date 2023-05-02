@@ -37,6 +37,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 | SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| SNAKEMAKE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['snakemake']`    |
 
 ## IDE Integration
 

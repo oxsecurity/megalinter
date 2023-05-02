@@ -32,6 +32,7 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 | CPP_CPPLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                                                  |
 | CPP_CPPLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                                                               |
 | CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                                                   |
+| CPP_CPPLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['cpplint']`                                                                         |
 
 ## MegaLinter Flavours
 

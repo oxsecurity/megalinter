@@ -34,6 +34,7 @@ description: How to use arm-ttk (configure, ignore files, ignore errors, help & 
 | ARM_ARM_TTK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | ARM_ARM_TTK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| ARM_ARM_TTK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['arm-ttk']`                                   |
 
 ## IDE Integration
 
@@ -90,11 +91,17 @@ pwsh -NoProfile -NoLogo -Command "
 ### Help content
 
 ```shell
+
+cmdlet Import-Module at command pipeline position 1
+Supply values for the following parameters:
+Name[0]:
+Import-Module: Cannot process command because of one or more missing mandatory parameters: Name.
 Test-AzTemplate: 
 Line |
    2 |  $TAZ_V = (Test-AzTemplate -help);
-     |                            ~~~~~
-     | A parameter cannot be found that matches parameter name 'help'.
+     |            ~~~~~~~~~~~~~~~
+     | The term 'Test-AzTemplate' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 ```
 
 ### Installation on mega-linter Docker image

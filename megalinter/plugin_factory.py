@@ -10,17 +10,17 @@ import yaml
 from megalinter import config, linter_factory, utils
 
 
-def list_plugins():
-    plugins = config.get_list("PLUGINS", [])
+def list_plugins(request_id):
+    plugins = config.get_list(request_id, "PLUGINS", [])
     return plugins
 
 
 # Load & install plugins from external URLs
-def initialize_plugins():
-    plugins = list_plugins()
+def initialize_plugins(request_id):
+    plugins = list_plugins(request_id)
     for plugin in plugins:
         descriptor_file = load_plugin(plugin)
-        install_plugin(descriptor_file)
+        install_plugin(descriptor_file, request_id)
 
 
 # Load plugin descriptor
@@ -75,23 +75,23 @@ def load_plugin(plugin):
 
 
 # Run plugin installation routines
-def install_plugin(descriptor_file):
+def install_plugin(descriptor_file, request_id):
     descriptor = linter_factory.build_descriptor_info(descriptor_file)
     # Install descriptor level items
     if "install" in descriptor:
-        process_install(descriptor["install"])
+        process_install(descriptor["install"], request_id)
     # Install linter level items
     if "linters" in descriptor:
         for linter_description in descriptor["linters"]:
             if "install" in linter_description:
-                process_install(linter_description["install"])
+                process_install(linter_description["install"], request_id)
     logging.info(
         f"[Plugins] Successful initialization of {descriptor['descriptor_id']} plugins"
     )
 
 
 # WARNING: works only with dockerfile and RUN instructions for now
-def process_install(install):
+def process_install(install, request_id):
     # Build commands from descriptor
     commands = []
     # Dockerfile commands
@@ -110,6 +110,7 @@ def process_install(install):
             stderr=subprocess.STDOUT,
             shell=True,
             executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
+            env=config.build_env(request_id),
         )
         return_code = process.returncode
         stdout = utils.decode_utf8(process.stdout)
