@@ -236,10 +236,15 @@ linters:
         - FROM zricethezav/gitleaks:v8.16.3 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
-      - {"default_value":"false","description":"Scan only PR commits on Pull Request","name":"REPOSITORY_GITLEAKS_PR_COMMITS_SCAN"}
-      - {"default_value":"","description":"Pull Request source commit sha (N/A to supported scenarios)","name":"REPOSITORY_GITLEAKS_PR_SOURCE_SHA "}
-      - {"default_value":"","description":"Pull Request target commit sha (N/A to supported scenarios)","name":"REPOSITORY_GITLEAKS_PR_TARGET_SHA "}
-
+      - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
+        description: Scan only PR commits on Pull Request
+        default_value: "false"
+      - name: REPOSITORY_GITLEAKS_PR_SOURCE_SHA
+        description: Pull Request source commit sha (N/A to supported scenarios)
+        default_value: ""
+      - name: REPOSITORY_GITLEAKS_PR_TARGET_SHA
+        description: Pull Request target commit sha (N/A to supported scenarios)
+        default_value: ""
 
   # GOODCHECK
   - linter_name: goodcheck
