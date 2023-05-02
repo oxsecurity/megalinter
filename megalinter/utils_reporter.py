@@ -173,8 +173,8 @@ def get_linter_doc_url(linter):
 
 
 def log_section_start(section_key: str, section_title: str):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
-        if is_github_actions():
+    if utils.is_ci() and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+        if utils.is_github_actions():
             return f"::group::{section_title} (expand for details)"
         elif utils.is_gitlab_ci():
             return (
