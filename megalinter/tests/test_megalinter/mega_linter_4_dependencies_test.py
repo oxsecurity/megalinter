@@ -7,9 +7,7 @@ import os
 import unittest
 import uuid
 
-import megalinter
 from megalinter import utilstest
-from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
 class mega_linter_4_dependencies_test(unittest.TestCase):
