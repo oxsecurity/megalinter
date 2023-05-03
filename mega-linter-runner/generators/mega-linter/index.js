@@ -275,7 +275,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/latest/installation/#azure-pipelines"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
     );
   }
 
