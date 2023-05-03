@@ -821,7 +821,8 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | **PRINT_ALPACA**                                             | `true`                                        | Enable printing alpaca image to console                                                                                                                                                                                                                                              |
 | **PRINT_ALL_FILES**                                          | `false`                                       | Display all files analyzed by the linter instead of only the number                                                                                                                                                                                                                  |
 | **REPORT_OUTPUT_FOLDER**                                     | `${GITHUB_WORKSPACE}/megalinter-reports`      | Directory for generating report files. Set to `none` to not generate reports                                                                                                                                                                                                         |
-| [**SECURED_ENV_VARIABLES**](#environment-variables-security) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. Default list is GITHUB_TOKEN,PAT,SYSTEM_ACCESSTOKEN,CI_JOB_TOKEN,GIT_AUTHORIZATION_BEARER,GITLAB_ACCESS_TOKEN_MEGALINTER,GITLAB_CUSTOM_CERTIFICATE,WEBHOOK_REPORTER_BEARER_TOKEN. If you override it, add them ! |
+| [**SECURED_ENV_VARIABLES**](#environment-variables-security) | \[\]   | Additional list of secured environment variables to hide when calling linters. |
+| [**SECURED_ENV_VARIABLES_DEFAULT**](#environment-variables-security) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. [Default list](#environment-variables-security). This is not recommended to override this variable, use SECURED_ENV_VARIABLES |
 | **SHOW_ELAPSED_TIME**                                        | `false`                                       | Displays elapsed time in reports                                                                                                                                                                                                                                                     |
 | **SHOW_SKIPPED_LINTERS**                                     | `true`                                        | Displays all disabled linters mega-linter could have run                                                                                                                                                                                                                             |
 | **SKIP_CLI_LINT_MODES**                                      | \[\]                                          | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                                                                                                        |
@@ -943,12 +944,10 @@ As it can be complicated to **trust** the authors of all the open-source linters
 
 Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py), but there is **no need to trust all the linters that are used** !
 
-You can override the list of hidden variables using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable.
+You can add secured variables to the default list using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable (priority is given to ENV variables above `.mega-linter.yml` property).
 
-Example in `.mega-linter.yml`, with default values:
+SECURED_ENV_VARIABLES_DEFAULT contains:
 
-```yaml
-SECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
   - PAT
   - SYSTEM_ACCESSTOKEN
@@ -957,11 +956,28 @@ SECURED_ENV_VARIABLES:
   - GITLAB_ACCESS_TOKEN_MEGALINTER
   - GITLAB_CUSTOM_CERTIFICATE
   - WEBHOOK_REPORTER_BEARER_TOKEN
+  - NPM_TOKEN
+  - DOCKER_USERNAME
+  - DOCKER_PASSWORD
+
+Example of adding extra secured variables `.mega-linter.yml`:
+
+```yaml
+SECURED_ENV_VARIABLES:
+  - MY_SECRET_TOKEN
+  - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
+  - OX_API_KEY
+```
+
+Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
+
+```shell
+SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
 ```
 
 Notes:
 
-- If you define SECURED_ENV_VARIABLES, it replaces the default list, so append to the default list instead of just adding the new variables that you want to secure !
+- If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
 - Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
 
 ### CLI lint mode
