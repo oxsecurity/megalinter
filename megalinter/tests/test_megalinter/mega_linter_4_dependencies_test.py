@@ -11,11 +11,8 @@ from megalinter import utilstest
 
 
 class mega_linter_4_dependencies_test(unittest.TestCase):
-    def __init__(self, args) -> None:
+    def before_start(self):
         self.request_id = str(uuid.uuid1())
-        super().__init__(args)
-
-    def setUp(self):
         utilstest.linter_test_setup(
             {
                 "request_id": self.request_id,
@@ -24,6 +21,7 @@ class mega_linter_4_dependencies_test(unittest.TestCase):
         )
 
     def test_override_cli_executable(self):
+        self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "APPLY_FIXES": "all",
