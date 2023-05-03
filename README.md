@@ -959,6 +959,10 @@ SECURED_ENV_VARIABLES_DEFAULT contains:
   - NPM_TOKEN
   - DOCKER_USERNAME
   - DOCKER_PASSWORD
+  - CODECOV_TOKEN
+  - GCR_USERNAME
+  - GCR_PASSWORD
+  - SMTP_PASSWORD
 
 Example of adding extra secured variables `.mega-linter.yml`:
 

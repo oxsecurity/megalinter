@@ -260,6 +260,10 @@ def list_secured_variables(request_id) -> list[str]:
             "NPM_TOKEN",
             "DOCKER_USERNAME",
             "DOCKER_PASSWORD",
+            "CODECOV_TOKEN",
+            "GCR_USERNAME",
+            "GCR_PASSWORD",
+            "SMTP_PASSWORD"
         ],
     )
     secured_env_variables = get_list(

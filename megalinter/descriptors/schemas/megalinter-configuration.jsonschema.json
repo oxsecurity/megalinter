@@ -13089,6 +13089,22 @@
         },
         "SECURED_ENV_VARIABLES": {
             "$id": "#/properties/SECURED_ENV_VARIABLES",
+            "default": [],
+            "description": "Additional list of secured en variables, will be concatenated at runtime with SECURED_ENV_VARIABLES_DEFAULT",
+            "examples:": [
+                [
+                    "OX_API_TOKEN",
+                    "MY_SECRET_VARIABLE"
+                ]
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "Secured environment variables",
+            "type": "array"
+        },
+        "SECURED_ENV_VARIABLES_DEFAULT": {
+            "$id": "#/properties/SECURED_ENV_VARIABLES_DEFAULT",
             "default": [
                 "GITHUB_TOKEN",
                 "PAT",
@@ -13097,9 +13113,16 @@
                 "CI_JOB_TOKEN",
                 "GITLAB_ACCESS_TOKEN_MEGALINTER",
                 "GITLAB_CUSTOM_CERTIFICATE",
-                "WEBHOOK_REPORTER_BEARER_TOKEN"
+                "WEBHOOK_REPORTER_BEARER_TOKEN",
+                "NPM_TOKEN",
+                "DOCKER_USERNAME",
+                "DOCKER_PASSWORD",
+                "CODECOV_TOKEN",
+                "GCR_USERNAME",
+                "GCR_PASSWORD",
+                "SMTP_PASSWORD"
             ],
-            "description": "List of secured environment variables to hide when calling linters",
+            "description": "Default list of secured environment variables to hide when calling linters (not recommended to override)",
             "examples:": [
                 [
                     "GITHUB_TOKEN",
@@ -13108,13 +13131,20 @@
                     "CI_JOB_TOKEN",
                     "GITLAB_ACCESS_TOKEN_MEGALINTER",
                     "GITLAB_CUSTOM_CERTIFICATE",
-                    "WEBHOOK_REPORTER_BEARER_TOKEN"
+                    "WEBHOOK_REPORTER_BEARER_TOKEN",
+                    "NPM_TOKEN",
+                    "DOCKER_USERNAME",
+                    "DOCKER_PASSWORD",
+                    "CODECOV_TOKEN",
+                    "GCR_USERNAME",
+                    "GCR_PASSWORD",
+                    "SMTP_PASSWORD"
                 ]
             ],
             "items": {
                 "type": "string"
             },
-            "title": "Secured environment variables",
+            "title": "Secured environment variables default list",
             "type": "array"
         },
         "SHOW_ELAPSED_TIME": {
