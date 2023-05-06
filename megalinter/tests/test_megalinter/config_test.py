@@ -229,10 +229,13 @@ class config_test(unittest.TestCase):
             },
         )
         cli_env = config.build_env(request_id)
-        self.assertTrue(cli_env["VISIBLE_VAR"] == 'VALUE', "VISIBLE_VAR is visible")
-        self.assertTrue(cli_env["GITHUB_TOKEN"] == 'HIDDEN_BY_MEGALINTER', "GITHUB_TOKEN is not visible")
+        self.assertTrue(cli_env["VISIBLE_VAR"] == "VALUE", "VISIBLE_VAR is visible")
         self.assertTrue(
-            cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == 'HIDDEN_BY_MEGALINTER',
+            cli_env["GITHUB_TOKEN"] == "HIDDEN_BY_MEGALINTER",
+            "GITHUB_TOKEN is not visible",
+        )
+        self.assertTrue(
+            cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == "HIDDEN_BY_MEGALINTER",
             "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
         )
         usage_stdout = io.StringIO()
@@ -272,12 +275,19 @@ class config_test(unittest.TestCase):
             },
         )
         cli_env = config.build_env(request_id)
-        self.assertTrue(cli_env["VISIBLE_VAR"] == 'VALUE', "VISIBLE_VAR is visible")
-        self.assertTrue(cli_env["GITHUB_TOKEN"] == 'HIDDEN_BY_MEGALINTER', "GITHUB_TOKEN is not visible")
-        self.assertTrue(cli_env["SECRET_VAR"] == 'HIDDEN_BY_MEGALINTER', "SECRET_VAR is not visible")
-        self.assertTrue(cli_env["OX_API_KEY"] == 'HIDDEN_BY_MEGALINTER', "OX_API_KEY is not visible")
+        self.assertTrue(cli_env["VISIBLE_VAR"] == "VALUE", "VISIBLE_VAR is visible")
         self.assertTrue(
-            cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == 'HIDDEN_BY_MEGALINTER',
+            cli_env["GITHUB_TOKEN"] == "HIDDEN_BY_MEGALINTER",
+            "GITHUB_TOKEN is not visible",
+        )
+        self.assertTrue(
+            cli_env["SECRET_VAR"] == "HIDDEN_BY_MEGALINTER", "SECRET_VAR is not visible"
+        )
+        self.assertTrue(
+            cli_env["OX_API_KEY"] == "HIDDEN_BY_MEGALINTER", "OX_API_KEY is not visible"
+        )
+        self.assertTrue(
+            cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == "HIDDEN_BY_MEGALINTER",
             "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
         )
         usage_stdout = io.StringIO()
@@ -321,10 +331,16 @@ class config_test(unittest.TestCase):
             },
         )
         cli_env = config.build_env(request_id)
-        self.assertTrue(cli_env["VISIBLE_VAR"] == 'VALUE', "VISIBLE_VAR is visible")
-        self.assertTrue(cli_env["GITHUB_TOKEN"] == 'GITHUB_TOKEN_VALUE', "GITHUB_TOKEN is visible")
-        self.assertTrue(cli_env["SECRET_VAR"] == 'HIDDEN_BY_MEGALINTER', "SECRET_VAR is not visible")
-        self.assertTrue(cli_env["OX_API_KEY"] == 'HIDDEN_BY_MEGALINTER', "OX_API_KEY is not visible")
+        self.assertTrue(cli_env["VISIBLE_VAR"] == "VALUE", "VISIBLE_VAR is visible")
+        self.assertTrue(
+            cli_env["GITHUB_TOKEN"] == "GITHUB_TOKEN_VALUE", "GITHUB_TOKEN is visible"
+        )
+        self.assertTrue(
+            cli_env["SECRET_VAR"] == "HIDDEN_BY_MEGALINTER", "SECRET_VAR is not visible"
+        )
+        self.assertTrue(
+            cli_env["OX_API_KEY"] == "HIDDEN_BY_MEGALINTER", "OX_API_KEY is not visible"
+        )
         usage_stdout = io.StringIO()
         with contextlib.redirect_stdout(usage_stdout):
             Megalinter(

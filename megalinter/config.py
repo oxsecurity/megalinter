@@ -236,7 +236,7 @@ def build_env(request_id, secured=True):
     env_dict = {}
     for key, value in get_config(request_id).items():
         if key in secured_env_variables:
-            env_dict[key] = 'HIDDEN_BY_MEGALINTER'
+            env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)
         else:
@@ -263,7 +263,7 @@ def list_secured_variables(request_id) -> list[str]:
             "CODECOV_TOKEN",
             "GCR_USERNAME",
             "GCR_PASSWORD",
-            "SMTP_PASSWORD"
+            "SMTP_PASSWORD",
         ],
     )
     secured_env_variables = get_list(
