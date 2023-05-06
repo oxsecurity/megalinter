@@ -25,11 +25,8 @@ root = (
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
-    def __init__(self, args) -> None:
+    def before_start(self):
         self.request_id = str(uuid.uuid1())
-        super().__init__(args)
-
-    def setUp(self):
         utilstest.linter_test_setup(
             {
                 "request_id": self.request_id,
@@ -38,6 +35,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         )
 
     def test_sarif_output(self):
+        self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "APPLY_FIXES": "false",
@@ -60,6 +58,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         )
 
     def test_sarif_fix(self):
+        self.before_start()
         # Create megalinter
         mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
         # Create sample linters

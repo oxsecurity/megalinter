@@ -321,6 +321,8 @@ linters:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
     install:
+      apk:
+        - nodejs
       pip:
         - pyright
     ide:

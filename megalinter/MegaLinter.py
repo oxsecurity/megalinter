@@ -34,8 +34,20 @@ from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 
+# initialize worker processes
+def init_worker(data):
+    # declare scope of a new global variable
+    global RUN_CONFIGS
+    # store argument in the global variable for this process
+    RUN_CONFIGS = data
+
+
 # Function to run linters using multiprocessing pool
-def run_linters(linters):
+def run_linters(linters, request_id):
+    global RUN_CONFIGS
+    config.set_config(
+        request_id, RUN_CONFIGS
+    )  # Avoid to loose global variable because of multiprocessing
     for linter in linters:
         linter.run()
     return linters
@@ -305,7 +317,11 @@ class Megalinter:
         process_number = mp.cpu_count()
         logging.info(f"Processing linters on [{str(process_number)}] parallel cores…")
         install_mp_handler()
-        pool = mp.Pool(process_number)
+        pool = mp.Pool(
+            process_number,
+            initializer=init_worker,
+            initargs=(config.get(self.request_id),),
+        )
         pool_results = []
         # Add linter groups to pool
         for linter_group in linter_groups:
@@ -314,7 +330,7 @@ class Megalinter:
                 + ": "
                 + str([o.linter_name for o in linter_group])
             )
-            result = pool.apply_async(run_linters, args=[linter_group])
+            result = pool.apply_async(run_linters, args=[linter_group, self.request_id])
             pool_results += [result]
         pool.close()
         pool.join()
