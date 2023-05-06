@@ -38,7 +38,11 @@ class mega_linter_1_test(unittest.TestCase):
     def test_disable_language_legacy(self):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
-            {"VALIDATE_GROOVY": "false", "request_id": self.request_id}
+            {
+                "DISABLE": "REPOSITORY,SPELL",
+                "VALIDATE_GROOVY": "false",
+                "request_id": self.request_id,
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -48,7 +52,11 @@ class mega_linter_1_test(unittest.TestCase):
     def test_disable_linter(self):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
-            {"DISABLE_LINTERS": "JAVASCRIPT_ES", "request_id": self.request_id}
+            {
+                "DISABLE": "REPOSITORY,SPELL",
+                "DISABLE_LINTERS": "JAVASCRIPT_ES",
+                "request_id": self.request_id,
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -60,7 +68,11 @@ class mega_linter_1_test(unittest.TestCase):
     def test_disable_linter_legacy(self):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
-            {"VALIDATE_JAVASCRIPT_ES": "false", "request_id": self.request_id}
+            {
+                "DISABLE": "REPOSITORY,SPELL",
+                "VALIDATE_JAVASCRIPT_ES": "false",
+                "request_id": self.request_id,
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -304,6 +316,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
+                "DISABLE": "REPOSITORY,SPELL",
                 "MULTI_STATUS": "false",
                 "LOG_LEVEL": "DEBUG",
                 "request_id": self.request_id,
