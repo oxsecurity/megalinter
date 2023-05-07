@@ -14,6 +14,9 @@ RUN_CONFIGS = {}  # type: ignore[var-annotated]
 def init_config(request_id, workspace=None, params={}):
     global RUN_CONFIGS
     if request_id in RUN_CONFIGS:
+        existing_config = get_config(request_id)
+        new_config = existing_config | params
+        set_config(request_id, new_config)
         logging.debug(
             f"[config] Already initialized: {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}"
         )
