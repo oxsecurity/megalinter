@@ -8,12 +8,13 @@ import unittest
 import uuid
 
 import megalinter
-from megalinter import utilstest
+from megalinter import utilstest,config
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
 class mega_linter_1_test(unittest.TestCase):
     def before_start(self):
+        config.delete()
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup(
             {
@@ -39,7 +40,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DISABLE": "REPOSITORY,SPELL",
+                "DISABLE": "REPOSITORY,SPELL,TERRAFORM",
                 "VALIDATE_GROOVY": "false",
                 "request_id": self.request_id,
             }
@@ -53,7 +54,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DISABLE": "REPOSITORY,SPELL",
+                "DISABLE": "REPOSITORY,SPELL,TERRAFORM",
                 "DISABLE_LINTERS": "JAVASCRIPT_ES",
                 "request_id": self.request_id,
             }
@@ -69,7 +70,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DISABLE": "REPOSITORY,SPELL",
+                "DISABLE": "REPOSITORY,SPELL,TERRAFORM",
                 "VALIDATE_JAVASCRIPT_ES": "false",
                 "request_id": self.request_id,
             }
@@ -316,7 +317,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DISABLE": "REPOSITORY,SPELL",
+                "DISABLE": "REPOSITORY,SPELL,TERRAFORM",
                 "MULTI_STATUS": "false",
                 "LOG_LEVEL": "DEBUG",
                 "request_id": self.request_id,
