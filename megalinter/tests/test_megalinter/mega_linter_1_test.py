@@ -8,7 +8,7 @@ import unittest
 import uuid
 
 import megalinter
-from megalinter import utilstest,config
+from megalinter import config, utilstest
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
