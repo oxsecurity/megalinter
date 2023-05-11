@@ -35,19 +35,17 @@ from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 
 # initialize worker processes
-def init_worker(data):
+def init_worker(request_config_in):
     # declare scope of a new global variable
-    global RUN_CONFIGS
+    global REQUEST_CONFIG
     # store argument in the global variable for this process
-    RUN_CONFIGS = data
+    REQUEST_CONFIG = request_config_in
 
 
 # Function to run linters using multiprocessing pool
 def run_linters(linters, request_id):
-    global RUN_CONFIGS
-    config.set_config(
-        request_id, RUN_CONFIGS
-    )  # Avoid to loose global variable because of multiprocessing
+    global REQUEST_CONFIG
+    config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
         linter.run()
     return linters
