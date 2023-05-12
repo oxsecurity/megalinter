@@ -27,7 +27,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.25.0**
+- Version in MegaLinter: **1.27.2**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -141,6 +141,9 @@ Options:
                                   ... %} tag groups.
   --blank-line-before-tag TEXT    Add an additional blank line before {% <tag>
                                   ... %} tag groups.
+  --line-break-after-multiline-tag
+                                  Do not condense the content of multi-line
+                                  tags into the line of the last attribute.
   --custom-blocks TEXT            Indent custom template blocks. For example
                                   {% toc %}...{% endtoc %}
   --custom-html TEXT              Indent custom HTML tags. For example <mjml>
@@ -156,6 +159,8 @@ Options:
                                   Ignore linter rules on a per-file basis.
   --indent-css INTEGER            Set CSS indent level.
   --indent-js INTEGER             Set JS indent level.
+  --close-void-tags               Add closing mark on known void tags. Ex:
+                                  <img> becomse <img />
   -h, --help                      Show this message and exit.
 ```
 
