@@ -5,9 +5,6 @@ export PYTHONPATH
 
 # Manage debug mode
 LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-if [[ ${LOG_LEVEL} == "DEBUG_WITH_PRINTENV" ]]; then
-  printenv
-fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
 #

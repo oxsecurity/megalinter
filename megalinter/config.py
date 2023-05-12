@@ -14,6 +14,9 @@ RUN_CONFIGS = {}  # type: ignore[var-annotated]
 def init_config(request_id, workspace=None, params={}):
     global RUN_CONFIGS
     if request_id in RUN_CONFIGS:
+        existing_config = get_config(request_id)
+        new_config = existing_config | params
+        set_config(request_id, new_config)
         logging.debug(
             f"[config] Already initialized: {RUN_CONFIGS[request_id]['CONFIG_SOURCE']}"
         )
@@ -236,7 +239,7 @@ def build_env(request_id, secured=True):
     env_dict = {}
     for key, value in get_config(request_id).items():
         if key in secured_env_variables:
-            continue
+            env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)
         else:
@@ -245,9 +248,9 @@ def build_env(request_id, secured=True):
 
 
 def list_secured_variables(request_id) -> list[str]:
-    secured_env_variables = get_list(
+    secured_env_variables_default = get_list(
         request_id,
-        "SECURED_ENV_VARIABLES",
+        "SECURED_ENV_VARIABLES_DEFAULT",
         [
             "GITHUB_TOKEN",
             "PAT",
@@ -257,6 +260,18 @@ def list_secured_variables(request_id) -> list[str]:
             "GITLAB_ACCESS_TOKEN_MEGALINTER",
             "GITLAB_CUSTOM_CERTIFICATE",
             "WEBHOOK_REPORTER_BEARER_TOKEN",
+            "NPM_TOKEN",
+            "DOCKER_USERNAME",
+            "DOCKER_PASSWORD",
+            "CODECOV_TOKEN",
+            "GCR_USERNAME",
+            "GCR_PASSWORD",
+            "SMTP_PASSWORD",
         ],
     )
-    return secured_env_variables
+    secured_env_variables = get_list(
+        request_id,
+        "SECURED_ENV_VARIABLES",
+        [],
+    )
+    return secured_env_variables_default + secured_env_variables
