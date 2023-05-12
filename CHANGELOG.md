@@ -191,6 +191,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.51.0 to **0.52.1** on 2023-05-12
   - [kics](https://www.kics.io) from 1.7.0 to **1.7.1** on 2023-05-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.6 to **0.45.11** on 2023-05-12
+  - [ktlint](https://ktlint.github.io) from 0.49.0 to **0.49.1** on 2023-05-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.307 to **1.1.308** on 2023-05-12
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.265 to **0.0.266** on 2023-05-12
+  - [checkov](https://www.checkov.io/) from 2.3.238 to **2.3.239** on 2023-05-12
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.3 to **7.25.4** on 2023-05-12
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
