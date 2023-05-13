@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix corrective .cspell.json file generated from cspell output
   - Deprecate misspell, as it is not maintained since 2018
   - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
+  - kubeconform: Simplify installation and get latest version
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
