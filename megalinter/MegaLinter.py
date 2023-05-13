@@ -74,14 +74,12 @@ class Megalinter:
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
         # Do not send secrets to linter executables
-        config.init_config(
-            self.request_id, self.workspace, params
-        )
-        
+        config.init_config(self.request_id, self.workspace, params)
+
         # Guess who's there ? :)
         if self.cli is True:
             alpaca(self.request_id)
-        
+
         # Initialize runtime config
         self.github_workspace = config.get(
             self.request_id, "GITHUB_WORKSPACE", self.workspace
