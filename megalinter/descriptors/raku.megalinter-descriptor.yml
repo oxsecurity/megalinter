@@ -25,6 +25,8 @@ linters:
     examples:
       - "raku -I ./lib -c myfile.raku"
     install:
+      apk:
+        - sudo
       dockerfile:
         - RUN curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
     ide:

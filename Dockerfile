@@ -129,6 +129,7 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
+                sudo \
                 nodejs-current \
                 ruby \
                 ruby-dev \
