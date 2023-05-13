@@ -67,6 +67,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 go \
                 helm \
+                gcompat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -273,6 +274,9 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 
 # kubeconform installation
     && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+
+# kubescape installation
+    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
