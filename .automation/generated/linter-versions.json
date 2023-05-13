@@ -93,7 +93,7 @@
     "sqlfluff": "2.1.0",
     "standard": "17.0.0",
     "stylelint": "15.6.1",
-    "swiftlint": "0.52.1",
+    "swiftlint": "0.52.2",
     "syft": "0.80.0",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.4.6",
@@ -103,7 +103,7 @@
     "trivy": "0.41.0",
     "tsqllint": "1.15.3.0",
     "v8r": "2.0.0",
-    "vale": "2.25.2",
+    "vale": "2.26.0",
     "xmllint": "21004",
     "yamllint": "1.31.0"
 }

@@ -1,14 +1,14 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2317&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1549&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2320&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1552&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=768&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61741&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61742&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38214 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7115 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38215 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7116 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2417 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1998 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1990 |
@@ -441,6 +441,7 @@
 | [mimmi20/monolog-factory](https://github.com/mimmi20/monolog-factory)                                                                                                           |     1 |
 | [mimmi20/laminas-router-hostname](https://github.com/mimmi20/laminas-router-hostname)                                                                                           |     1 |
 | [mimmi20/template](https://github.com/mimmi20/template)                                                                                                                         |     1 |
+| [GenZmeY/KF2-CustomTraderInventory](https://github.com/GenZmeY/KF2-CustomTraderInventory)                                                                                       |     1 |
 | [gabrielfrasantos/embedded-hal-st](https://github.com/gabrielfrasantos/embedded-hal-st)                                                                                         |     1 |
 | [GenZmeY/KF2-BuildTools](https://github.com/GenZmeY/KF2-BuildTools)                                                                                                             |     1 |
 | [hypercision/java-properties-i18n-translation](https://github.com/hypercision/java-properties-i18n-translation)                                                                 |     1 |
@@ -1146,6 +1147,8 @@
 | [rciam/simplesamlphp-module-assurance](https://github.com/rciam/simplesamlphp-module-assurance)                                                                                 |     0 |
 | [rciam/simplesamlphp-module-userid](https://github.com/rciam/simplesamlphp-module-userid)                                                                                       |     0 |
 | [Teasel-Ian/terraform](https://github.com/Teasel-Ian/terraform)                                                                                                                 |     0 |
+| [GenZmeY/KF2-ControlledVoteCollector](https://github.com/GenZmeY/KF2-ControlledVoteCollector)                                                                                   |     0 |
+| [Koridore/discel](https://github.com/Koridore/discel)                                                                                                                           |     0 |
 | [GenZmeY/KF2-BoxPainterLib](https://github.com/GenZmeY/KF2-BoxPainterLib)                                                                                                       |     0 |
 | [KoukiSoeda/O2Physics](https://github.com/KoukiSoeda/O2Physics)                                                                                                                 |     0 |
 | [complexcircuit/greyrock-ops](https://github.com/complexcircuit/greyrock-ops)                                                                                                   |     0 |
