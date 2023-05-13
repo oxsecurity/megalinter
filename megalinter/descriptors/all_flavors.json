@@ -30,6 +30,7 @@
     "cupcake": {
         "descriptors": [
             "BASH",
+            "CLOJURE",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -317,6 +318,7 @@
     "java": {
         "descriptors": [
             "BASH",
+            "CLOJURE",
             "JAVA",
             "KOTLIN"
         ],

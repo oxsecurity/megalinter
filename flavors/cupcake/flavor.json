@@ -1,6 +1,7 @@
 {
     "descriptors": [
         "BASH",
+        "CLOJURE",
         "JAVA",
         "KOTLIN",
         "PHP",
