@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.0.261**
+- Version in MegaLinter: **0.0.267**
 - Visit [Official Web Site](https://github.com/charliermarsh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://beta.ruff.rs/docs/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -41,6 +41,7 @@ An extremely fast Python linter, written in Rust.
 | PYTHON_RUFF_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_RUFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_RUFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_RUFF_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['ruff']`                                      |
 
 ## IDE Integration
 

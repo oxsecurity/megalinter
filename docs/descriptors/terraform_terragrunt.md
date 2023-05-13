@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.45.2**
+- Version in MegaLinter: **0.45.11**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -36,6 +36,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 | TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
 
 ## MegaLinter Flavours
 
@@ -123,7 +124,7 @@ GLOBAL OPTIONS:
    terragrunt-include-module-prefix             When this flag is set output from Terraform sub-commands is prefixed with module path.
 
 VERSION:
-   v0.45.2
+   v0.45.11
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

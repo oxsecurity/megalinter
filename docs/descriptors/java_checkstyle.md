@@ -15,7 +15,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.9.3**
+- Version in MegaLinter: **10.11.0**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -43,6 +43,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 | JAVA_CHECKSTYLE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JAVA_CHECKSTYLE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| JAVA_CHECKSTYLE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['java']`                                      |
 
 ## IDE Integration
 

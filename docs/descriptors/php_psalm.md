@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.5.9.0@**
+- Version in MegaLinter: **Psalm.5.11.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -43,6 +43,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 | PHP_PSALM_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PHP_PSALM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PHP_PSALM_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['psalm']`                                     |
 
 ## IDE Integration
 
@@ -121,6 +122,9 @@ Basic configuration:
 
     --php-version=PHP_VERSION
         Explicitly set PHP version to analyse code against.
+
+    --error-level=ERROR_LEVEL
+        Set the error reporting level
 
 Surfacing issues:
     --show-info[=BOOLEAN]

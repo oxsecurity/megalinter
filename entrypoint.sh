@@ -5,9 +5,6 @@ export PYTHONPATH
 
 # Manage debug mode
 LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-  printenv
-fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
 #
@@ -38,7 +35,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --upgrade "markdown==3.3.7" mike mkdocs-material mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview "github-dependents-info==0.10.0"
+  pip3 install --upgrade "markdown==3.3.7" mike mkdocs-material "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview "github-dependents-info==0.10.0"
   cd /tmp/lint || exit 1
   chmod +x build.sh
   GITHUB_TOKEN=${GITHUB_TOKEN} bash build.sh --doc --dependents
@@ -75,7 +72,11 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # MegaLinter HTTP server run
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
-  python ./megalinter/megalinter_server.py
+  # Install python dependencies used by server to avoid to make bigger docker images
+  pip install fastapi pygments "uvicorn[standard]"
+  HOST="${HOST:-0.0.0.0}" # Default host
+  PORT="${PORT:-8000}"    # Default port
+  uvicorn megalinter.server:app --host "$HOST" --port "$PORT"
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.77.0**
+- Version in MegaLinter: **0.80.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -36,6 +36,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 | REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                    | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                      | `false`                                         |
 | REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                | `0`                                             |
+| REPOSITORY_SYFT_CLI_EXECUTABLE              | Override CLI executable                                                         | `['syft']`                                      |
 
 ## MegaLinter Flavours
 

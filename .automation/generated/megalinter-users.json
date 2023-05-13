@@ -63,8 +63,8 @@
                 "network_count": 858,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxNjM4ODMyNzk=",
                 "notifications_url": "https://api.github.com/repos/nektos/act/notifications{?since,all,participating}",
-                "open_issues": 89,
-                "open_issues_count": 89,
+                "open_issues": 90,
+                "open_issues_count": 90,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/3813618?v=4",
                     "events_url": "https://api.github.com/users/nektos/events{/privacy}",

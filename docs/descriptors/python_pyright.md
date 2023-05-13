@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.303**
+- Version in MegaLinter: **1.1.308**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -46,6 +46,7 @@ If you don't use python static typing, you should disable this linter by adding 
 | PYTHON_PYRIGHT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_PYRIGHT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | PYTHON_PYRIGHT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_PYRIGHT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['pyright']`                                   |
 
 ## IDE Integration
 
@@ -120,5 +121,7 @@ Usage: pyright [options] files...
 
 ### Installation on mega-linter Docker image
 
+- APK packages (Linux):
+  - [nodejs](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs)
 - PIP packages (Python):
   - [pyright](https://pypi.org/project/pyright)

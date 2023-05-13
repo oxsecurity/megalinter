@@ -11,7 +11,7 @@ Git diff checks for git conflicts markers in files
 
 ## git_diff documentation
 
-- Version in MegaLinter: **2.38.4**
+- Version in MegaLinter: **2.38.5**
 - Visit [Official Web Site](https://git-scm.com){target=_blank}
 
 [![git - GitHub](https://gh-card.dev/repos/git/git.svg?fullname=)](https://github.com/git/git){target=_blank}
@@ -28,6 +28,7 @@ Git diff checks for git conflicts markers in files
 | REPOSITORY_GIT_DIFF_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
 | REPOSITORY_GIT_DIFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
 | REPOSITORY_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
+| REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                  | `['git']`     |
 
 ## MegaLinter Flavours
 

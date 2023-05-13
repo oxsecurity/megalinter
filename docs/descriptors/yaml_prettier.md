@@ -15,7 +15,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **2.8.7**
+- Version in MegaLinter: **2.8.8**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#yaml){target=_blank}
@@ -44,6 +44,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 | YAML_PRETTIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | YAML_PRETTIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | YAML_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| YAML_PRETTIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['prettier']`                                  |
 
 ## IDE Integration
 

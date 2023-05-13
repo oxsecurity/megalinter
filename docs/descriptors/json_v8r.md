@@ -11,7 +11,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **1.0.0**
+- Version in MegaLinter: **2.0.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -34,6 +34,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 | JSON_V8R_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
 | JSON_V8R_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | JSON_V8R_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| JSON_V8R_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['v8r']`          |
 
 ## IDE Integration
 

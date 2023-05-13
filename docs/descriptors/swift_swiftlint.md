@@ -9,7 +9,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.51.0**
+- Version in MegaLinter: **0.52.2**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
@@ -38,6 +38,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 | SWIFT_SWIFTLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | SWIFT_SWIFTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| SWIFT_SWIFTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['swiftlint']`                                 |
 
 ## IDE Integration
 
@@ -104,6 +105,7 @@ SUBCOMMANDS:
   generate-docs           Generates markdown documentation for selected group
                           of rules
   lint (default)          Print lint warnings and errors
+  reporters               Display the list of reporters and their identifiers
   rules                   Display the list of rules and their identifiers
   version                 Display the current version of SwiftLint
 

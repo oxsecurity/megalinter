@@ -3,7 +3,6 @@
 Use XmlLint to lint xml files
 http://xmlsoft.org/xmllint.html
 """
-import os
 
 from megalinter import Linter, config
 
@@ -16,11 +15,14 @@ class XmlLintLinter(Linter):
         if (
             self.apply_fixes is True
             and self.cli_lint_fix_arg_name is not None
-            and config.get("XML_XMLLINT_AUTOFORMAT", "false") == "true"
+            and config.get(self.request_id, "XML_XMLLINT_AUTOFORMAT", "false") == "true"
         ):
             if self.cli_lint_mode == "file":
-                os.environ["XMLLINT_INDENT"] = config.get("XML_XMLLINT_INDENT", "  ")
-
+                config.set(
+                    self.request_id,
+                    "XMLLINT_INDENT",
+                    config.get(self.request_id, "XML_XMLLINT_INDENT", "  "),
+                )
                 cmd += ["--output", f"{file}"]
             else:
                 raise KeyError(
@@ -29,5 +31,5 @@ class XmlLintLinter(Linter):
         return cmd
 
     def pre_test(self):
-        config.set_value("XML_XMLLINT_AUTOFORMAT", "true")
-        config.set_value("XML_XMLLINT_CLI_LINT_MODE", "file")
+        config.set_value(self.request_id, "XML_XMLLINT_AUTOFORMAT", "true")
+        config.set_value(self.request_id, "XML_XMLLINT_CLI_LINT_MODE", "file")

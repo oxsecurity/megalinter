@@ -72,7 +72,7 @@ DISABLE_LINTERS:
 
 ## eslint-plugin-jsonc documentation
 
-- Version in MegaLinter: **2.7.0**
+- Version in MegaLinter: **2.8.0**
 - Visit [Official Web Site](https://ota-meshi.github.io/eslint-plugin-jsonc/){target=_blank}
 - See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
@@ -104,6 +104,7 @@ DISABLE_LINTERS:
 | JSON_ESLINT_PLUGIN_JSONC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
 
 ## IDE Integration
 

@@ -9,7 +9,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **14.0.2**
+- Version in MegaLinter: **14.0.3**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -35,6 +35,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 | JSON_JSONLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSON_JSONLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| JSON_JSONLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['jsonlint']`                                  |
 
 ## MegaLinter Flavours
 

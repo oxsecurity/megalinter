@@ -42,6 +42,7 @@ _This linter has been temporary disabled in this version_
 | MARKDOWN_REMARK_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_REMARK_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                          |
 | MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| MARKDOWN_REMARK_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['remark']`                                    |
 
 ## IDE Integration
 

@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import tempfile
 from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
@@ -22,6 +23,30 @@ REPO_HOME_DEFAULT = (
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+
+# Replacements for temp folder in case of MegaLinter server
+LIST_OF_REPLACEMENTS_REGEX = []
+if os.environ.get("MEGALINTER_SERVER", "") == "true":
+    global_temp_dir = tempfile.gettempdir()
+    path_seb_regex = os.path.sep.replace("\\", "\\\\")
+    temp_megalinter_dir = (
+        os.path.join(global_temp_dir, "ct-megalinter-x")
+        .replace("\\", "\\\\")
+        .replace(":", "\\:")
+        + f".*?({path_seb_regex}| |\\n|\\s)"
+    )
+    temp_megalinter_dir_2 = (
+        os.path.join(global_temp_dir, "ct-megalinter-x")
+        .replace("\\", "\\\\")
+        .replace(":", "\\:")
+        + ".*"
+    )
+    temp_megalinter_dir_regex = rf"{temp_megalinter_dir}"
+    temp_megalinter_dir_regex_2 = rf"{temp_megalinter_dir_2}"
+    LIST_OF_REPLACEMENTS_REGEX = [
+        temp_megalinter_dir_regex,
+        temp_megalinter_dir_regex_2,
+    ]
 LIST_OF_REPLACEMENTS = [
     # MegaLinter image
     [f"{DEFAULT_DOCKER_WORKSPACE_DIR}/", ""],
@@ -43,7 +68,7 @@ if DEFAULT_WORKSPACE != "":
     ]
 
 
-def get_excluded_directories():
+def get_excluded_directories(request_id):
     default_excluded_dirs = [
         "__pycache__",
         ".git",
@@ -55,10 +80,12 @@ def get_excluded_directories():
         ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        config.get("REPORT_OUTPUT_FOLDER", "megalinter-reports"),
+        config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
-    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
-    excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
+    excluded_dirs = config.get_list(
+        request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
+    )
+    excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     return set(excluded_dirs)
 
 
@@ -75,7 +102,7 @@ def filter_files(
     file_contains_regex_extensions: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
     lint_all_other_linters_files: bool = False,
-    prefix: Optional[str] = None,
+    workspace: str = "",
 ) -> Sequence[str]:
     file_extensions = frozenset(file_extensions)
     filter_regex_include_object = (
@@ -100,18 +127,13 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
-        file_with_prefix_and_sub_dir = os.path.normpath(file)
+        file_with_prefix_and_sub_dir = os.path.normpath(file).replace(os.sep, "/")
+        file_with_workspace = os.path.join(workspace, file_with_prefix_and_sub_dir)
         file = file_with_prefix_and_sub_dir
 
-        if prefix or files_sub_directory:
-            prefix_and_sub_dir = os.path.normpath(
-                os.path.join(prefix or "", files_sub_directory or "") + os.path.sep
-            )
-
-            if file.startswith(prefix_and_sub_dir):
-                file = os.path.relpath(file_with_prefix_and_sub_dir, prefix_and_sub_dir)
-            else:
-                # Skip if file is not in defined files_sub_directory
+        # skip file if sub_directory necessary
+        if files_sub_directory is not None:
+            if not file.startswith(files_sub_directory):
                 continue
 
         # Skip if file is in ignore list
@@ -126,10 +148,14 @@ def filter_files(
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
         # Skip according to FILTER_REGEX_INCLUDE
-        if filter_regex_include_object and not filter_regex_include_object.search(file):
+        if filter_regex_include_object and not filter_regex_include_object.search(
+            file_with_workspace
+        ):
             continue
         # Skip according to FILTER_REGEX_EXCLUDE
-        if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
+        if filter_regex_exclude_object and filter_regex_exclude_object.search(
+            file_with_workspace
+        ):
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
@@ -160,16 +186,14 @@ def filter_files(
                     in file_contains_regex_extensions
                 )
             )
-            and not file_contains(
-                file_with_prefix_and_sub_dir, file_contains_regex_object
-            )
+            and not file_contains(file_with_workspace, file_contains_regex_object)
         ):
             continue
         # Skip according to IGNORE_GENERATED_FILES
         if (
             ignore_generated_files is not None
             and ignore_generated_files is True
-            and file_is_generated(file_with_prefix_and_sub_dir)
+            and file_is_generated(file_with_workspace)
         ):
             continue
 
@@ -213,11 +237,13 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-def check_activation_rules(activation_rules, _linter):
+def check_activation_rules(activation_rules, linter):
     active = False
     for rule in activation_rules:
         if rule["type"] == "variable":
-            value = config.get(rule["variable"], rule["default_value"])
+            value = config.get(
+                linter.request_id, rule["variable"], rule["default_value"]
+            )
             if value == rule["expected_value"]:
                 active = True
             else:
@@ -290,6 +316,8 @@ def normalize_log_string(str_in):
     str_in = ANSI_ESCAPE_REGEX.sub("", str_in)
     for replacement in LIST_OF_REPLACEMENTS:
         str_in = str_in.replace(replacement[0], replacement[1])
+    for replacement_regex in LIST_OF_REPLACEMENTS_REGEX:
+        str_in = re.sub(replacement_regex, "", str_in)
     return str_in
 
 

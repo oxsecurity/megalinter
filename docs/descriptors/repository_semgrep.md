@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.18.0**
+- Version in MegaLinter: **1.21.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -45,6 +45,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 | REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                  | `['semgrep']` |
 
 ## IDE Integration
 

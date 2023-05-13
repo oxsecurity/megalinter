@@ -36,6 +36,7 @@ description: How to use tsqllint (configure, ignore files, ignore errors, help &
 | SQL_TSQLLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SQL_TSQLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SQL_TSQLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['tsqllint']`                                  |
 
 ## IDE Integration
 

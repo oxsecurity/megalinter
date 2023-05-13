@@ -125,7 +125,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 " if you use a MegaLinter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
-                build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
+                build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = "v5" if len(build_version) > 20 else build_version
                 action_path = (
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
@@ -136,7 +136,12 @@ def build_markdown_summary(reporter_self, action_run_url):
                 )
         p_r_msg += os.linesep
     # Link to ox
-    if config.get("REPORTERS_MARKDOWN_TYPE", "advanced") == "simple":
+    if (
+        config.get(
+            reporter_self.master.request_id, "REPORTERS_MARKDOWN_TYPE", "advanced"
+        )
+        == "simple"
+    ):
         p_r_msg += (
             os.linesep
             + "MegaLinter is graciously provided by [OX Security]"
@@ -168,7 +173,10 @@ def get_linter_doc_url(linter):
 
 
 def log_section_start(section_key: str, section_title: str):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+    if (
+        "CI" in os.environ
+        and config.get(None, "CONSOLE_REPORTER_SECTIONS", "true") == "true"
+    ):
         if is_github_actions():
             return f"::group::{section_title} (expand for details)"
         elif is_gitlab_ci():
@@ -182,7 +190,10 @@ def log_section_start(section_key: str, section_title: str):
 
 
 def log_section_end(section_key):
-    if "CI" in os.environ and config.get("CONSOLE_REPORTER_SECTIONS", "true") == "true":
+    if (
+        "CI" in os.environ
+        and config.get(None, "CONSOLE_REPORTER_SECTIONS", "true") == "true"
+    ):
         if is_github_actions():
             return "::endgroup::"
         elif is_gitlab_ci():
@@ -205,7 +216,7 @@ def is_azure_pipelines() -> bool:
 
 
 # Convert SARIF into human readable text
-def convert_sarif_to_human(sarif_in) -> str:
+def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
     process = subprocess.run(
         sarif_fmt_command,
@@ -213,6 +224,7 @@ def convert_sarif_to_human(sarif_in) -> str:
         stderr=subprocess.STDOUT,
         text=True,
         input=sarif_in + "\n",
+        env=config.build_env(request_id),
     )
     return_code = process.returncode
     output = utils.decode_utf8(process.stdout)

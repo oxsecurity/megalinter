@@ -9,7 +9,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.43.1**
+- Version in MegaLinter: **0.44.0**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -38,6 +38,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 | PROTOBUF_PROTOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | PROTOBUF_PROTOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| PROTOBUF_PROTOLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['protolint']`                                 |
 
 ## IDE Integration
 
@@ -114,7 +115,7 @@ Usage of lint:
   -plugin value
       plugins to provide custom lint rule set. Note that it's necessary to specify it as path format'
   -reporter value
-      formatter to output results in the specific format. Available reporters are "plain"(default), "junit", "json", and "unix".
+      formatter to output results in the specific format. Available reporters are "plain"(default), "junit", "json", "sarif", and "unix".
   -v  verbose output that includes parsing process details
 ```
 

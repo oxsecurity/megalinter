@@ -188,7 +188,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+        - FROM zricethezav/gitleaks:v8.16.3 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
@@ -294,7 +294,7 @@ linters:
     cli_help_arg_name: -h
     cli_help_extra_args: ["--help"]
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "files: ([0-9]+) findings."
+    cli_lint_errors_regex: "files: ([0-9]+) finding"
     test_folder: repository_semgrep
     examples:
       - "semgrep /tmp/lint"

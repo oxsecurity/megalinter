@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 ## kics documentation
 
-- Version in MegaLinter: **1.6.14**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
 - See [Index of problems detected by kics](https://docs.kics.io/latest/queries/all-queries/){target=_blank}
@@ -39,6 +39,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 | TERRAFORM_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | TERRAFORM_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
 | TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| TERRAFORM_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['kics']`         |
 
 ## MegaLinter Flavours
 

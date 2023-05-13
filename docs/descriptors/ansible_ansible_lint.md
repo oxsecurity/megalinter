@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.14.6**
+- Version in MegaLinter: **6.16.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -33,6 +33,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 | ANSIBLE_ANSIBLE_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| ANSIBLE_ANSIBLE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['ansible-lint']`                              |
 | ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                           | `ansible`                                       |
 
 ## MegaLinter Flavours
@@ -93,13 +94,12 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif}]
                     [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
-                    [-p] [--progressive] [--project-dir PROJECT_DIR]
-                    [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
-                    [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
-                    [--generate-ignore] [-w WARN_LIST]
+                    [-p] [--project-dir PROJECT_DIR] [-r RULESDIR] [-R] [-s]
+                    [--write [WRITE_LIST]] [--show-relpath] [-t TAGS] [-v]
+                    [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [-i IGNORE_FILE] [--offline] [--version]
+                    [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -124,9 +124,6 @@ options:
   --profile {min,basic,moderate,safety,shared,production}
                         Specify which rules profile to be used.
   -p, --parseable       parseable output, same as '-f pep8'
-  --progressive         Return success if number of violations compared with
-                        previous git commit has not increased. This feature
-                        works only in git repositories.
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on
                         location of configuration file.
@@ -171,7 +168,7 @@ options:
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
   --force-color         Force colored output, same as FORCE_COLOR=1
-  --exclude EXCLUDE_PATHS
+  --exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE, --config-file CONFIG_FILE

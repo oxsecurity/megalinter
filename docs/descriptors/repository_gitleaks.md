@@ -9,7 +9,7 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.16.2**
+- Version in MegaLinter: **8.16.3**
 - Visit [Official Web Site](https://github.com/zricethezav/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/zricethezav/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -31,6 +31,7 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 | REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                        | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                          | `false`                                         |
 | REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                    | `0`                                             |
+| REPOSITORY_GITLEAKS_CLI_EXECUTABLE              | Override CLI executable                                                             | `['gitleaks']`                                  |
 
 ## MegaLinter Flavours
 
@@ -123,7 +124,7 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.16.2 as gitleaks
+FROM zricethezav/gitleaks:v8.16.3 as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

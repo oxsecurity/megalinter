@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.23.0**
+- Version in MegaLinter: **0.24.2**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -36,6 +36,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 | CSHARP_CSHARPIER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
 | CSHARP_CSHARPIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`             |
 | CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| CSHARP_CSHARPIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['csharpier']`    |
 
 ## IDE Integration
 

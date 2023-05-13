@@ -25,12 +25,12 @@ class ConfigReporter(Reporter):
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
-        elif config.get("CONFIG_REPORTER", "true") == "false":
+        elif config.get(self.master.request_id, "CONFIG_REPORTER", "true") == "false":
             self.is_active = False
 
     def produce_report(self):
         config_report_folder_name = config.get(
-            "CONFIG_REPORTER_SUB_FOLDER", "IDE-config"
+            self.master.request_id, "CONFIG_REPORTER_SUB_FOLDER", "IDE-config"
         )
         config_report_folder = (
             f"{self.report_folder}{os.path.sep}{config_report_folder_name}"

@@ -15,7 +15,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **0.77.0**
+- Version in MegaLinter: **0.77.5**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
@@ -41,6 +41,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 | CLOUDFORMATION_CFN_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| CLOUDFORMATION_CFN_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['cfn-lint']`                                  |
 
 ## IDE Integration
 

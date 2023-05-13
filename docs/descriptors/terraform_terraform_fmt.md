@@ -15,7 +15,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.4.5**
+- Version in MegaLinter: **1.4.6**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -39,6 +39,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 | TERRAFORM_TERRAFORM_FMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
 | TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
 | TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terraform']`    |
 
 ## IDE Integration
 

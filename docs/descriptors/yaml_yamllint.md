@@ -9,7 +9,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 
 ## yamllint documentation
 
-- Version in MegaLinter: **1.30.0**
+- Version in MegaLinter: **1.31.0**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
   - If custom `.yamllint.yml` config file isn't found, [.yamllint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.yamllint.yml){target=_blank} will be used
@@ -36,6 +36,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 | YAML_YAMLLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| YAML_YAMLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['yamllint']`                                  |
 
 ## IDE Integration
 
