@@ -48,7 +48,6 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                sudo \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -124,7 +123,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # raku installation
-RUN curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
+RUN curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | /bin/bash
 
 #OTHER__END
 

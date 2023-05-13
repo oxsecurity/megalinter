@@ -130,7 +130,6 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
-                sudo \
                 nodejs-current \
                 ruby \
                 ruby-dev \
@@ -665,7 +664,7 @@ RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
 
 # raku installation
-    && curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash \
+    && curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | /bin/bash \
 
 # devskim installation
 # Next line commented because already managed by another linter
