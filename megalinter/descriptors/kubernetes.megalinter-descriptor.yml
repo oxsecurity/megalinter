@@ -105,6 +105,7 @@ linters:
     cli_version_arg_name: version
     cli_lint_extra_args:
       - "scan"
+      - --verbose
       - "--severity-threshold"
       - high
     cli_lint_extra_args_after:
