@@ -105,6 +105,7 @@ jobs:
             "kubernetes_kubeval",
             "kubernetes_kubeconform",
             "kubernetes_helm",
+            "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",

@@ -68,6 +68,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 go \
                 helm \
+                gcompat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -341,6 +342,9 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 
 # kubeconform installation
     && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+
+# kubescape installation
+    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake

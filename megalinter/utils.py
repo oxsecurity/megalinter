@@ -368,6 +368,8 @@ def extract_sarif_json(json_text: str):
         json_obj = json.loads(json_text)
         if "runs" in json_obj:
             sarif_json = json.dumps(json_obj, indent=4)
+        else:
+            sarif_json = ""
     except json.decoder.JSONDecodeError:
         sarif_json = ""
     return sarif_json

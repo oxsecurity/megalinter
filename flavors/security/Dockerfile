@@ -60,6 +60,7 @@ RUN apk add --update --no-cache \
                 openssh \
                 go \
                 helm \
+                gcompat \
                 icu-libs \
                 libcurl \
                 libintl \
@@ -206,6 +207,9 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubeconform installation
     && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+
+# kubescape installation
+    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # devskim installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
