@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Prevent jscpd to create output folder if the repo isn't writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
   - Fix corrective .cspell.json file generated from cspell output
   - Deprecate misspell, as it is not maintained since 2018
+  - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter

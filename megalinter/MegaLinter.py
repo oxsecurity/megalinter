@@ -24,6 +24,7 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
+from megalinter.alpaca import alpaca
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -73,9 +74,13 @@ class Megalinter:
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
         # Do not send secrets to linter executables
-        config.init_config(
-            self.request_id, self.workspace, params
-        )  # Initialize runtime config
+        config.init_config(self.request_id, self.workspace, params)
+
+        # Guess who's there ? :)
+        if self.cli is True:
+            alpaca(self.request_id)
+
+        # Initialize runtime config
         self.github_workspace = config.get(
             self.request_id, "GITHUB_WORKSPACE", self.workspace
         )
