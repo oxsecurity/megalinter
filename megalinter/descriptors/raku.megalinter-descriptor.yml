@@ -7,6 +7,9 @@ file_extensions:
   - ".pm6"
   - ".pl6"
   - ".p6"
+install:
+  apk:
+    - bash
 linters:
   # Raku internal linter
   - class: RakuLinter
@@ -23,7 +26,7 @@ linters:
       - "raku -I ./lib -c myfile.raku"
     install:
       dockerfile:
-        - RUN curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | bash
+        - RUN curl --retry 5 --retry-delay 5 -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
     ide:
       atom:
         - name: language-perl6
