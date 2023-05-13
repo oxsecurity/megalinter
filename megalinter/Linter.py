@@ -1147,7 +1147,8 @@ class Linter:
             self.cli_lint_fix_arg_name is not None
             or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
-            cmd.pop(len(self.cli_executable) - 1)  # Remove executable elements
+            args_pos = len(self.cli_executable)
+            cmd = cmd[args_pos:]  # Remove executable elements
             cmd = self.cli_executable_fix + cmd
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True

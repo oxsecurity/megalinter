@@ -9,7 +9,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.51.0**
+- Version in MegaLinter: **0.52.2**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
@@ -105,6 +105,7 @@ SUBCOMMANDS:
   generate-docs           Generates markdown documentation for selected group
                           of rules
   lint (default)          Print lint warnings and errors
+  reporters               Display the list of reporters and their identifiers
   rules                   Display the list of rules and their identifiers
   version                 Display the current version of SwiftLint
 
