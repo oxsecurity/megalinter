@@ -46,6 +46,7 @@ linters:
     linter_text: |
       `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
     cli_version_arg_name: -v
+    linter_version_cache: 0.6.1
     cli_help_arg_name: -h
     cli_lint_extra_args:
       - -summary
