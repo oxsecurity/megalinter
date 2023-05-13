@@ -110,8 +110,8 @@ linters:
     cli_version_arg_name: version
     cli_lint_extra_args:
       - "scan"
-      - "framework"
-      - "DevOpsBest"
+    cli_lint_extra_args_after:
+      - "."
     cli_sarif_args: ["--format", "sarif", "--output", "{{SARIF_OUTPUT_FILE}}"]
     examples:
       - "kubescape scan ."
