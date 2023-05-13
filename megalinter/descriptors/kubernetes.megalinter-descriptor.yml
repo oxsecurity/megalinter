@@ -97,12 +97,14 @@ linters:
     # KUBESCAPE
   - linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
+    can_output_sarif: true
+    files_sub_directory: ""
     linter_repo: https://github.com/kubescape/kubescape
     linter_url: https://github.com/kubescape/kubescape
-    test_folder: kubernetes_kubescape
+    linter_text: |
+      `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
     linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
     linter_spdx_license: Apache-2.0
-    can_output_sarif: true
     cli_lint_mode: project
     cli_help_arg_name: help
     cli_version_arg_name: version
@@ -110,11 +112,10 @@ linters:
       - "scan"
       - "framework"
       - "DevOpsBest"
-    cli_sarif_args: ["--format", "sarif", "--output", "kubescape_sarif"]
-    linter_text: |
-      `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
+    cli_sarif_args: ["--format", "sarif", "--output", "{{SARIF_OUTPUT_FILE}}"]
     examples:
       - "kubescape scan ."
+    test_folder: kubernetes_kubescape
     ide:
       vscode:
         - name: Kubescape
