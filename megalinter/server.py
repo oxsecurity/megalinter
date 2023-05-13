@@ -174,6 +174,10 @@ class AnalysisRequest(BaseModel):
             "webHookUrl": "https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
         },
     )
+    snippetLanguage: str | None = Field(
+        description="Guessed snippet language",
+        example="python",
+    )
     results: List[AnalysisLinterResult] = Field(
         default=[], description="All linter analysis results"
     )
@@ -316,6 +320,7 @@ class AnalysisExecutor:
     status: AnalysisStatus | None = None
     repository: str | None = None
     request_input: AnalysisRequestInput | None = None
+    snippet_language: str | None = None
     workspace: str | None = None
     web_hook_url: str | None = None
     results: List = []
@@ -393,7 +398,8 @@ class AnalysisExecutor:
             raise HTTPException(
                 status_code=404, detail="Unable to detect language from snippet"
             )
-        logger.info(f"Guessed snipped language: {code_lexer.name}")
+        self.snippet_language = code_lexer.name
+        logger.info(f"Guessed snipped language: {self.snippet_language}")
         # Build file name
         if len(code_lexer.filenames) > 0:
             if "*." in code_lexer.filenames[0]:
@@ -423,6 +429,8 @@ class AnalysisExecutor:
         )
         if self.repository:
             analysis_request.repository = self.repository
+        if self.snippet_language:
+            analysis_request.snippetLanguage = self.snippet_language
         if len(self.results) > 0:
             analysis_request.results = self.results
         return analysis_request

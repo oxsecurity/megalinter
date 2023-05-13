@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.15.0**
+- Version in MegaLinter: **6.16.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -42,12 +42,12 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                           | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                             |       115        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages       |        82        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                             |       116        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages       |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                 |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        61        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                       |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                     |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                     |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                      |        52        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                   |        60        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -94,13 +94,12 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif}]
                     [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
-                    [-p] [--progressive] [--project-dir PROJECT_DIR]
-                    [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
-                    [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
-                    [--generate-ignore] [-w WARN_LIST]
+                    [-p] [--project-dir PROJECT_DIR] [-r RULESDIR] [-R] [-s]
+                    [--write [WRITE_LIST]] [--show-relpath] [-t TAGS] [-v]
+                    [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [-i IGNORE_FILE] [--offline] [--version]
+                    [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -125,9 +124,6 @@ options:
   --profile {min,basic,moderate,safety,shared,production}
                         Specify which rules profile to be used.
   -p, --parseable       parseable output, same as '-f pep8'
-  --progressive         Return success if number of violations compared with
-                        previous git commit has not increased. This feature
-                        works only in git repositories.
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on
                         location of configuration file.
@@ -172,7 +168,7 @@ options:
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
   --force-color         Force colored output, same as FORCE_COLOR=1
-  --exclude EXCLUDE_PATHS
+  --exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE, --config-file CONFIG_FILE
