@@ -102,6 +102,8 @@ linters:
     cli_lint_fix_arg_name: "fix"
     cli_lint_fix_remove_args:
       - "check"
+    cli_version_arg_name: version
+    test_folder: clojure-style
     examples:
       - "cljstyle check"
       - "cljstyle fix"
