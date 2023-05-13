@@ -200,6 +200,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.266 to **0.0.267** on 2023-05-12
   - [vale](https://vale.sh/) from 2.25.2 to **2.26.0** on 2023-05-13
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.1 to **0.52.2** on 2023-05-13
+  - [rubocop](https://rubocop.org/) from 1.50.2 to **1.51.0** on 2023-05-13
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
