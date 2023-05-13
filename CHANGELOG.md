@@ -196,6 +196,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.265 to **0.0.266** on 2023-05-12
   - [checkov](https://www.checkov.io/) from 2.3.238 to **2.3.239** on 2023-05-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.3 to **7.25.4** on 2023-05-12
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.266 to **0.0.267** on 2023-05-12
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
