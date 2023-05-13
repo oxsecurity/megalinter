@@ -6,7 +6,7 @@ https://github.com/kucherenko/jscpd
 import os
 import shutil
 
-from megalinter import Linter, utils
+from megalinter import Linter, config, utils
 
 
 class JsCpdLinter(Linter):
@@ -18,6 +18,9 @@ class JsCpdLinter(Linter):
                 f"{self.report_folder}/copy-paste/",
             ]
         cmd = super().build_lint_command(file)
+        # Do not use Jscpd HTML reporter if deactivated
+        if not utils.can_write_report_files(self.master):
+            cmd = [item.replace('console,html', 'console') for item in cmd]
         return cmd
 
     # Perform additional actions and provide additional details in text reporter logs
