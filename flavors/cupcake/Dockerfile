@@ -433,7 +433,11 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest
+    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+
+# kubescape installation
+    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+
 
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
