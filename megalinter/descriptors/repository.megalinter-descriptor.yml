@@ -193,6 +193,8 @@ linters:
 
   # GOODCHECK
   - linter_name: goodcheck
+    deprecated: true
+    deprecated_description: Goodcheck linter is no longer open-source so will be removed in a next version
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
