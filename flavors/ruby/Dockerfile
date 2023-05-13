@@ -65,6 +65,7 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
+                go \
                 helm \
                 gcompat \
                 libc-dev \
@@ -268,14 +269,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-    && KUBECONFORM_VERSION=v0.5.0 \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
