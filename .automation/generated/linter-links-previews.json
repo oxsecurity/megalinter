@@ -229,6 +229,11 @@
     "image": "https://opengraph.githubassets.com/b990bb1574e3f44a352a20ca20657b21cc9f52eb1738f5551195458f99aa596d/yannh/kubeconform",
     "title": "GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!"
   },
+  "kubescape": {
+    "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernet...",
+    "image": "https://repository-images.githubusercontent.com/395283401/8b597a65-306c-496e-bc3e-9a7c1e21620f",
+    "title": "GitHub - kubescape/kubescape: Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources."
+  },
   "kubeval": {
     "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",
     "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
