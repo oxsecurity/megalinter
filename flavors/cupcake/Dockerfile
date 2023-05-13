@@ -93,6 +93,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 go \
                 helm \
+                gcompat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -394,7 +395,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubescape installation
-    && apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
 
 # checkmake installation

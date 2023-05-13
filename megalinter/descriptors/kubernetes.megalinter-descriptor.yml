@@ -120,12 +120,9 @@ linters:
         - name: Kubescape
           url: https://marketplace.visualstudio.com/items?itemName=kubescape.kubescape
     install:
+      apk:
+        - curl
+        - gcompat
       dockerfile:
         - |
-          RUN apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
-    # descriptor_flavors:
-    #   - all_flavors # Applicable to CI in any language project
-    #   - terraform
-    #   - cupcake
-    #   - security
-    #   - ci_light
+          RUN curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash

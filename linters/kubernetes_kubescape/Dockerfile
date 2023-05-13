@@ -48,6 +48,7 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                gcompat \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -123,7 +124,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # kubescape installation
-RUN apk add curl gcompat --no-cache && curl -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+RUN curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
 
 #OTHER__END
