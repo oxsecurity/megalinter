@@ -1,5 +1,5 @@
 (ns clojure-good-1
-  (:require
+  (:require 
     [clojure.string :as string]))
 
 
@@ -15,7 +15,7 @@
 
 
 (letfn
-  [(f [g] (h g))
+      [(f [g] (h g))
    (h [i] (f i))])
 
 
@@ -24,13 +24,13 @@
   1)
 
 
-(inc (incremetal))
+(inc (incremetal ))
 
 (Thread/sleep 1000 1)
 
 
 ;; Here we switch to another namespace and require the previous:
-#_{:clj-kondo/ignore [:namespace-name-mismatch]}
+#_{:clj-kondo/ignore   [:namespace-name-mismatch]}
 
 
 (ns bar
