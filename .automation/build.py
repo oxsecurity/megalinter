@@ -789,7 +789,7 @@ def generate_documentation():
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
         + "[**Upgrade to MegaLinter v7 !**]"
-        + "https://github.com/oxsecurity/megalinter/issues/2608" #TODOV7: Replace link
+        + "https://github.com/oxsecurity/megalinter/issues/2608"  # TODOV7: Replace link
     )
     # Update README.md file
     replace_in_file(
