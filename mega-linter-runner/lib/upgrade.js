@@ -444,7 +444,7 @@ jobs:
       message: c.blueBright(
         `MegaLinter is now part of ${c.green(
           "OX Security"
-        )}.\nhttps://www.ox.security/?ref=megalinter\nDo you want to try OX Security to secure your software supply chain security ?`
+        )}. -> https://www.ox.security/?ref=megalinter\n\nDo you want to try OX Security to secure your software supply chain security ?`
       ),
       type: "confirm",
       initial: true,
