@@ -1,24 +1,24 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2328&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1560&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2336&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1568&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=768&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61804&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61557&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38232 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7117 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38251 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7116 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2417 |
-| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  1998 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1991 |
+| [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  2002 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1994 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1967 |
-| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1684 |
-| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1257 |
+| [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1685 |
+| [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1259 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1154 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   931 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   871 |
-| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   641 |
+| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   642 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   590 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   562 |
 | [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   507 |
@@ -46,18 +46,18 @@
 | [Luzkan/smells](https://github.com/Luzkan/smells)                                                                                                                               |   134 |
 | [newrelic/newrelic-python-agent](https://github.com/newrelic/newrelic-python-agent)                                                                                             |   130 |
 | [cbg-ethz/V-pipe](https://github.com/cbg-ethz/V-pipe)                                                                                                                           |   106 |
-| [philips-software/amp-embedded-infra-lib](https://github.com/philips-software/amp-embedded-infra-lib)                                                                           |    98 |
-| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    98 |
+| [philips-software/amp-embedded-infra-lib](https://github.com/philips-software/amp-embedded-infra-lib)                                                                           |    99 |
+| [brettinternet/homelab](https://github.com/brettinternet/homelab)                                                                                                               |    99 |
 | [practicalli/spacemacs](https://github.com/practicalli/spacemacs)                                                                                                               |    97 |
 | [oasisprotocol/oasis-wallet-web](https://github.com/oasisprotocol/oasis-wallet-web)                                                                                             |    91 |
 | [unixorn/lima-xbar-plugin](https://github.com/unixorn/lima-xbar-plugin)                                                                                                         |    81 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                                 |    80 |
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                                   |    71 |
+| [szinn/k8s-homelab](https://github.com/szinn/k8s-homelab)                                                                                                                       |    65 |
 | [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    64 |
-| [szinn/k8s-homelab](https://github.com/szinn/k8s-homelab)                                                                                                                       |    64 |
 | [hardisgroupcom/sfdx-hardis](https://github.com/hardisgroupcom/sfdx-hardis)                                                                                                     |    62 |
 | [nvuillam/vscode-groovy-lint](https://github.com/nvuillam/vscode-groovy-lint)                                                                                                   |    60 |
-| [0dragosh/homelab](https://github.com/0dragosh/homelab)                                                                                                                         |    57 |
+| [0dragosh/homelab](https://github.com/0dragosh/homelab)                                                                                                                         |    58 |
 | [unixorn/warhol.plugin.zsh](https://github.com/unixorn/warhol.plugin.zsh)                                                                                                       |    55 |
 | [ahmadnassri/node-glob-promise](https://github.com/ahmadnassri/node-glob-promise)                                                                                               |    53 |
 | [davidB/axum-tracing-opentelemetry](https://github.com/davidB/axum-tracing-opentelemetry)                                                                                       |    52 |
@@ -215,6 +215,7 @@
 | [Ramblurr/home-ops](https://github.com/Ramblurr/home-ops)                                                                                                                       |     5 |
 | [GiorgioAresu/homelab-gitops](https://github.com/GiorgioAresu/homelab-gitops)                                                                                                   |     5 |
 | [llaville/phpunit-LoggerTestListener](https://github.com/llaville/phpunit-LoggerTestListener)                                                                                   |     5 |
+| [GenZmeY/KF2-SafeMutLoader](https://github.com/GenZmeY/KF2-SafeMutLoader)                                                                                                       |     5 |
 | [PowerDNS-Admin/pda-next](https://github.com/PowerDNS-Admin/pda-next)                                                                                                           |     5 |
 | [miracum/kafka-fhir-to-server](https://github.com/miracum/kafka-fhir-to-server)                                                                                                 |     5 |
 | [proinsias/proinsias.github.io](https://github.com/proinsias/proinsias.github.io)                                                                                               |     5 |
@@ -233,6 +234,7 @@
 | [leosuncin/nest-graphql-example](https://github.com/leosuncin/nest-graphql-example)                                                                                             |     4 |
 | [xoap-io/xoap-uberagent-kibana-dashboards](https://github.com/xoap-io/xoap-uberagent-kibana-dashboards)                                                                         |     4 |
 | [mimmi20/monolog-streamformatter](https://github.com/mimmi20/monolog-streamformatter)                                                                                           |     4 |
+| [I-Language-Development/I-language-python](https://github.com/I-Language-Development/I-language-python)                                                                         |     4 |
 | [FiveGuys-DevOps/MiniTwit](https://github.com/FiveGuys-DevOps/MiniTwit)                                                                                                         |     4 |
 | [shalltearb1oodfallen/airbnb](https://github.com/shalltearb1oodfallen/airbnb)                                                                                                   |     4 |
 | [shiranr/linkcheck](https://github.com/shiranr/linkcheck)                                                                                                                       |     4 |
@@ -317,6 +319,7 @@
 | [matejkosiarcik/azlint](https://github.com/matejkosiarcik/azlint)                                                                                                               |     2 |
 | [matejkosiarcik/dotfiles](https://github.com/matejkosiarcik/dotfiles)                                                                                                           |     2 |
 | [mimmi20/coding-standard](https://github.com/mimmi20/coding-standard)                                                                                                           |     2 |
+| [GenZmeY/KF2-LootedTraderInventory](https://github.com/GenZmeY/KF2-LootedTraderInventory)                                                                                       |     2 |
 | [devcontainers-community/templates](https://github.com/devcontainers-community/templates)                                                                                       |     2 |
 | [Samidaites2/megalizer](https://github.com/Samidaites2/megalizer)                                                                                                               |     2 |
 | [bzkf/diz-in-a-box](https://github.com/bzkf/diz-in-a-box)                                                                                                                       |     2 |
@@ -330,7 +333,7 @@
 | [chgl/FhirParametersGenerator](https://github.com/chgl/FhirParametersGenerator)                                                                                                 |     2 |
 | [proinsias/proinsias](https://github.com/proinsias/proinsias)                                                                                                                   |     2 |
 | [proinsias/dotfiles](https://github.com/proinsias/dotfiles)                                                                                                                     |     2 |
-| [mgueye01/home-ops](https://github.com/mgueye01/home-ops)                                                                                                                       |     2 |
+| [mgueye01/homelab](https://github.com/mgueye01/homelab)                                                                                                                         |     2 |
 | [xitobuh/flux-cluster](https://github.com/xitobuh/flux-cluster)                                                                                                                 |     2 |
 | [ahmadnassri/action-changed-files](https://github.com/ahmadnassri/action-changed-files)                                                                                         |     2 |
 | [zbigniewzolnierowicz/cluster](https://github.com/zbigniewzolnierowicz/cluster)                                                                                                 |     2 |
@@ -442,6 +445,7 @@
 | [mimmi20/monolog-factory](https://github.com/mimmi20/monolog-factory)                                                                                                           |     1 |
 | [mimmi20/laminas-router-hostname](https://github.com/mimmi20/laminas-router-hostname)                                                                                           |     1 |
 | [mimmi20/template](https://github.com/mimmi20/template)                                                                                                                         |     1 |
+| [gabrielfrasantos/embedded-pid](https://github.com/gabrielfrasantos/embedded-pid)                                                                                               |     1 |
 | [GenZmeY/KF2-CustomTraderInventory](https://github.com/GenZmeY/KF2-CustomTraderInventory)                                                                                       |     1 |
 | [gabrielfrasantos/embedded-hal-st](https://github.com/gabrielfrasantos/embedded-hal-st)                                                                                         |     1 |
 | [GenZmeY/KF2-BuildTools](https://github.com/GenZmeY/KF2-BuildTools)                                                                                                             |     1 |
@@ -1147,6 +1151,10 @@
 | [rciam/simplesamlphp-module-assurance](https://github.com/rciam/simplesamlphp-module-assurance)                                                                                 |     0 |
 | [rciam/simplesamlphp-module-userid](https://github.com/rciam/simplesamlphp-module-userid)                                                                                       |     0 |
 | [Teasel-Ian/terraform](https://github.com/Teasel-Ian/terraform)                                                                                                                 |     0 |
+| [GenZmeY/KF2-StartWave](https://github.com/GenZmeY/KF2-StartWave)                                                                                                               |     0 |
+| [GenZmeY/KF2-TAWOD](https://github.com/GenZmeY/KF2-TAWOD)                                                                                                                       |     0 |
+| [GenZmeY/KF2-ZedSpawner](https://github.com/GenZmeY/KF2-ZedSpawner)                                                                                                             |     0 |
+| [GenZmeY/KF2-DroppedPickupLifespan](https://github.com/GenZmeY/KF2-DroppedPickupLifespan)                                                                                       |     0 |
 | [dochang/asdf-carbonyl](https://github.com/dochang/asdf-carbonyl)                                                                                                               |     0 |
 | [GenZmeY/KF2-ControlledVoteCollector](https://github.com/GenZmeY/KF2-ControlledVoteCollector)                                                                                   |     0 |
 | [Koridore/discel](https://github.com/Koridore/discel)                                                                                                                           |     0 |
@@ -1258,7 +1266,7 @@
 | [Roguito/flux-cluster-template](https://github.com/Roguito/flux-cluster-template)                                                                                               |     0 |
 | [aumer-amr/lab](https://github.com/aumer-amr/lab)                                                                                                                               |     0 |
 | [asujata/home-ops](https://github.com/asujata/home-ops)                                                                                                                         |     0 |
-| [t3cht0nic/talz-cluster](https://github.com/t3cht0nic/talz-cluster)                                                                                                             |     0 |
+| [CipherPulse/talz-cluster](https://github.com/CipherPulse/talz-cluster)                                                                                                         |     0 |
 | [vdbe/homelab](https://github.com/vdbe/homelab)                                                                                                                                 |     0 |
 | [negative7/alex-home](https://github.com/negative7/alex-home)                                                                                                                   |     0 |
 | [jr0dd/aws-gitops](https://github.com/jr0dd/aws-gitops)                                                                                                                         |     0 |
