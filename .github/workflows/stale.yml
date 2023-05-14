@@ -9,6 +9,10 @@ on:
   schedule:
     # every day at 0:00 UTC
     - cron: "0 0 * * *"
+permissions:
+  #contents: write # only for delete-branch option
+  issues: write
+  pull-requests: write
 
 ###############
 # Run the job #
