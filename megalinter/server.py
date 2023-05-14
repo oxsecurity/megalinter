@@ -2,6 +2,7 @@
 """
 Start MegaLinter server
 """
+# https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
 import logging
 import logging.config
 import os
