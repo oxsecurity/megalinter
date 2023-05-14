@@ -115,7 +115,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+COPY --link --from=kubeconform /kubeconform /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -123,7 +123,7 @@ COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
 #############################################################################################
 #OTHER__START
 # kubeconform installation
-# Managed with COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 #OTHER__END
 

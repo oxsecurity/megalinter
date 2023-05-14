@@ -62,7 +62,7 @@ linters:
     install:
       dockerfile:
         - FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
-        - COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+        - COPY --link --from=kubeconform /kubeconform /usr/bin/
 
   # HELM LINT
   - linter_name: helm

@@ -173,7 +173,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -207,7 +207,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-# Managed with COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \

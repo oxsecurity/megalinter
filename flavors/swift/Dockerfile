@@ -216,7 +216,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
@@ -267,7 +267,7 @@ RUN rc-update add docker boot && rc-service docker start || true \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-# Managed with COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
+# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
