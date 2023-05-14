@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix crash in case of unreachable symlinks
   - Fix local run of python test cases
   - Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2
+  - mega-linter-runner v7 upgrader
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
