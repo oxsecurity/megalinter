@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 22 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !" name="description"/>
+<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.[Upgrade to MegaLinter v7 !]https://github.com/oxsecurity/megalinter/issues/2608" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
 <link href="https://megalinter.io/beta/" rel="canonical"/>
 <link href="quick-start/" rel="next"/>
@@ -1726,11 +1726,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="descriptors/kubernetes_kubeval.md">
-        kubeval
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/kubernetes_kubeconform/">
         kubeconform
       </a>
@@ -1738,6 +1733,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/kubernetes_helm/">
         helm
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="descriptors/kubernetes_kubescape/">
+        kubescape
       </a>
 </li>
 </ul>
@@ -1886,11 +1886,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="descriptors/terraform_checkov.md">
-        checkov
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/terraform_kics/">
         kics
       </a>
@@ -1986,11 +1981,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="descriptors/repository_goodcheck.md">
-        goodcheck
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/repository_secretlint/">
         secretlint
       </a>
@@ -2028,11 +2018,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/spell/">
         All SPELL linters
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="descriptors/spell_misspell.md">
-        misspell
       </a>
 </li>
 <li class="md-nav__item">
@@ -2415,8 +2400,8 @@
 <!-- mega-linter-badges-end -->
 <!-- welcome-phrase-start -->
 <p>MegaLinter is an <strong>Open-Source</strong> tool for <strong>CI/CD workflows</strong> that analyzes the <strong>consistency of your code</strong>, <strong>IAC</strong>, <strong>configuration</strong>, and <strong>scripts</strong> in your repository sources, to <strong>ensure all your projects sources are clean and formatted</strong> whatever IDE/toolbox is used by their developers, powered by <a href="https://www.ox.security/?ref=megalinter"><strong>OX Security</strong></a>.</p>
-<p>Supporting <a href="supported-linters/#languages"><strong>55</strong> languages</a>, <a href="supported-linters/#formats"><strong>24</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>22</strong> tooling formats</a> and <strong>ready to use out of the box</strong>, as a GitHub action or any CI system <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
-<p><a href="https://github.com/oxsecurity/megalinter/issues/1592"><strong>Upgrade to MegaLinter v6 !</strong></a></p>
+<p>Supporting <a href="supported-linters/#languages"><strong>55</strong> languages</a>, <a href="supported-linters/#formats"><strong>24</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>21</strong> tooling formats</a> and <strong>ready to use out of the box</strong>, as a GitHub action or any CI system <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
+<p>[<strong>Upgrade to MegaLinter v7 !</strong>]<a href="https://github.com/oxsecurity/megalinter/issues/2608">https://github.com/oxsecurity/megalinter/issues/2608</a></p>
 <!-- welcome-phrase-end -->
 <!-- online-doc-start -->
 <!-- online-doc-end -->
@@ -3025,12 +3010,6 @@ description: Full list of all linters for all languages and formats that are ava
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
 <td><a href="descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
-<td><a href="descriptors/kubernetes_kubeval.md"><strong>kubeval</strong></a><br/><a href="descriptors/kubernetes_kubeval.md"><em>KUBERNETES_KUBEVAL</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/instrumenta/kubeval"><img alt="GitHub stars" src="https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600"/></a></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
-<td><a href="descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
 <td><a href="descriptors/kubernetes_kubeconform/"><strong>kubeconform</strong></a><br/><a href="descriptors/kubernetes_kubeconform/"><em>KUBERNETES_KUBECONFORM</em></a></td>
 <td align="center"><a href="https://github.com/yannh/kubeconform"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600"/></a></td>
 </tr>
@@ -3039,6 +3018,12 @@ description: Full list of all linters for all languages and formats that are ava
 <td><a href="descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
 <td><a href="descriptors/kubernetes_helm/"><strong>helm</strong></a><br/><a href="descriptors/kubernetes_helm/"><em>KUBERNETES_HELM</em></a></td>
 <td align="center"><a href="https://github.com/helm/helm"><img alt="GitHub stars" src="https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600"/></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
+<td><a href="descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
+<td><a href="descriptors/kubernetes_kubescape/"><strong>kubescape</strong></a><br/><a href="descriptors/kubernetes_kubescape/"><em>KUBERNETES_KUBESCAPE</em></a></td>
+<td align="center"><a href="https://github.com/kubescape/kubescape"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/openapi.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/openapi.ico"/></a> <!-- linter-icon --></td>
@@ -3097,12 +3082,6 @@ description: Full list of all linters for all languages and formats that are ava
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a> <!-- linter-icon --></td>
 <td><a href="descriptors/terraform/"><strong>TERRAFORM</strong></a></td>
-<td><a href="descriptors/terraform_checkov.md"><strong>checkov</strong></a><br/><a href="descriptors/terraform_checkov.md"><em>TERRAFORM_CHECKOV</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a> <!-- linter-icon --></td>
-<td><a href="descriptors/terraform/"><strong>TERRAFORM</strong></a></td>
 <td><a href="descriptors/terraform_kics/"><strong>kics</strong></a><br/><a href="descriptors/terraform_kics/"><em>TERRAFORM_KICS</em></a></td>
 <td align="center"><a href="https://github.com/checkmarx/kics"><img alt="GitHub stars" src="https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600"/></a></td>
 </tr>
@@ -3153,13 +3132,7 @@ description: Full list of all linters for all languages and formats that are ava
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
 <td><a href="descriptors/repository/"><strong>REPOSITORY</strong></a></td>
 <td><a href="descriptors/repository_gitleaks/"><strong>gitleaks</strong></a><br/><a href="descriptors/repository_gitleaks/"><em>REPOSITORY_GITLEAKS</em></a></td>
-<td align="center"><a href="https://github.com/zricethezav/gitleaks"><img alt="GitHub stars" src="https://img.shields.io/github/stars/zricethezav/gitleaks?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="descriptors/repository_goodcheck.md"><strong>goodcheck</strong></a><br/><a href="descriptors/repository_goodcheck.md"><em>REPOSITORY_GOODCHECK</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/sider/goodcheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sider/goodcheck?cacheSeconds=3600"/></a></a></td>
+<td align="center"><a href="https://github.com/gitleaks/gitleaks"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gitleaks/gitleaks?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
@@ -3184,12 +3157,6 @@ description: Full list of all linters for all languages and formats that are ava
 <td><a href="descriptors/repository/"><strong>REPOSITORY</strong></a></td>
 <td><a href="descriptors/repository_trivy/"><strong>trivy</strong></a><br/><a href="descriptors/repository_trivy/"><em>REPOSITORY_TRIVY</em></a></td>
 <td align="center"><a href="https://github.com/aquasecurity/trivy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
-<td><a href="descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="descriptors/spell_misspell.md"><strong>misspell</strong></a><br/><a href="descriptors/spell_misspell.md"><em>SPELL_MISSPELL</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/client9/misspell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>

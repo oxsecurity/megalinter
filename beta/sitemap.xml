@@ -501,6 +501,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/kubernetes_kubescape/</loc>
+         <lastmod>2023-05-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/latex/</loc>
          <lastmod>2023-05-14</lastmod>
          <changefreq>daily</changefreq>
