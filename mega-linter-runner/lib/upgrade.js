@@ -444,10 +444,10 @@ jobs:
       message: c.blueBright(
         `MegaLinter is now part of ${c.green(
           "OX Security"
-        )}.\nDo you want to connect to OX Security to secure your repository ?`
+        )}.\nhttps://www.ox.security/?ref=megalinter\nDo you want to try OX Security to secure your software supply chain security ?`
       ),
       type: "confirm",
-      initial: false,
+      initial: true,
     });
     if (promptsOXRes.ox === true) {
       new OXSecuritySetup().run();
