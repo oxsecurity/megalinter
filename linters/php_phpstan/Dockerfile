@@ -58,7 +58,6 @@ RUN apk add --update --no-cache \
                 php81-curl \
                 php81-dom \
                 php81-simplexml \
-                composer \
                 dpkg \
     && git config --global core.autocrlf true
 #APK__END
@@ -150,7 +149,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # phpstan installation
 # Managed with COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
