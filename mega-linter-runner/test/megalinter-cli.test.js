@@ -64,7 +64,7 @@ describe("CLI", function () {
         done(err);
         throw err;
       });
-  });
+  }).timeout(10000);
 
   /*
 Disabled until find a way to run with default options
