@@ -215,6 +215,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.50.2 to **1.51.0** on 2023-05-13
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.5.0 to **0.6.1** on 2023-05-14
   - [checkov](https://www.checkov.io/) from 2.3.239 to **2.3.240** on 2023-05-14
+  - [phplint](https://github.com/overtrue/phplint) from 5.5 to **9.0.4** on 2023-05-14
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

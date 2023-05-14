@@ -134,7 +134,6 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
