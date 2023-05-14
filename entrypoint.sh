@@ -62,7 +62,15 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   fi
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
-    bash <(curl -s https://codecov.io/bash)
+    apk add curl gnupg coreutils
+    curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
+    curl -Os https://uploader.codecov.io/latest/alpine/codecov
+    curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM
+    curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM.sig
+    gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+    shasum -a 256 -c codecov.SHA256SUM
+    chmod +x codecov
+    ./codecov -t "${CODECOV_TOKEN}"
     exit $?
   fi
   exit $?
