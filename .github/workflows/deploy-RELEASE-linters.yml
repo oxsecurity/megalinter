@@ -121,7 +121,6 @@ jobs:
             "repository_dustilock",
             "repository_git_diff",
             "repository_gitleaks",
-            "repository_goodcheck",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",

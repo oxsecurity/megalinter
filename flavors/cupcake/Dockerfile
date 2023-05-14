@@ -235,7 +235,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
-          goodcheck \
           rubocop \
           rubocop-github \
           rubocop-performance \
