@@ -23,7 +23,7 @@ DEFAULT_SARIF_SCHEMA_URI = (
     "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json"
 )
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "v6"
+DEFAULT_RELEASE = "v7"
 
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",

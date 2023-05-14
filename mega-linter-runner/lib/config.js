@@ -1,5 +1,6 @@
 const path = require("path");
 
+const DEFAULT_RELEASE = 'v7';
 const OX_PROTOCOL = process.env.OX_PROTOCOL || "https";
 const OX_BASE_URL =
   process.env.OX_BASE_URL || `${OX_PROTOCOL}://app.ox.security`;
@@ -11,7 +12,9 @@ const ALLOWED_ORIGINS = {
   "https://app.ox.security:443": true,
 };
 
+
 module.exports = {
+  DEFAULT_RELEASE,
   OX_BASE_URL,
   OX_PORT,
   OX_LOGIN_URL,
