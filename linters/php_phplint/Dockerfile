@@ -58,7 +58,6 @@ RUN apk add --update --no-cache \
                 php81-curl \
                 php81-dom \
                 php81-simplexml \
-                composer \
                 dpkg \
     && git config --global core.autocrlf true
 #APK__END
@@ -150,11 +149,9 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # phplint installation
-RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
-    && composer global config bin-dir --absolute
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g 
 
 
 #OTHER__END
