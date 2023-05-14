@@ -11,7 +11,7 @@
 <link href="../ansible/" rel="prev"/>
 <link href="../arm/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.9" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.12" name="generator"/>
 <title>ansible-lint configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
@@ -279,6 +279,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../clojure_clj_kondo/">
         clj-kondo
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clojure_cljstyle/">
+        cljstyle
       </a>
 </li>
 </ul>
@@ -1729,7 +1734,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../kubernetes_kubeval/">
+<a class="md-nav__link" href="../kubernetes_kubeval.md">
         kubeval
       </a>
 </li>
@@ -1889,7 +1894,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../terraform_checkov/">
+<a class="md-nav__link" href="../terraform_checkov.md">
         checkov
       </a>
 </li>
@@ -1989,7 +1994,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../repository_goodcheck/">
+<a class="md-nav__link" href="../repository_goodcheck.md">
         goodcheck
       </a>
 </li>
@@ -2034,7 +2039,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../spell_misspell/">
+<a class="md-nav__link" href="../spell_misspell.md">
         misspell
       </a>
 </li>
@@ -2408,7 +2413,7 @@
 <p><a href="https://github.com/ansible/ansible-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/ansible/ansible-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/ansible/ansible-lint?sort=semver"/></a> <a href="https://github.com/ansible/ansible-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/ansible/ansible-lint"/></a></p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.15.0</strong></li>
+<li>Version in MegaLinter: <strong>6.16.0</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives" target="_blank">How to disable ansible-lint rules in files</a></li>
@@ -2503,14 +2508,14 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">115</td>
+<td align="center">116</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td align="left">MegaLinter for the most commonly used languages</td>
-<td align="center">82</td>
+<td align="center">83</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -2538,7 +2543,7 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
 <td align="left">Optimized for JAVA based projects</td>
-<td align="center">52</td>
+<td align="center">53</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"/></a></a></td>
 </tr>
 <tr>
@@ -2632,13 +2637,12 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif}]
                     [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
-                    [-p] [--progressive] [--project-dir PROJECT_DIR]
-                    [-r RULESDIR] [-R] [-s] [--write [WRITE_LIST]]
-                    [--show-relpath] [-t TAGS] [-v] [-x SKIP_LIST]
-                    [--generate-ignore] [-w WARN_LIST]
+                    [-p] [--project-dir PROJECT_DIR] [-r RULESDIR] [-R] [-s]
+                    [--write [WRITE_LIST]] [--show-relpath] [-t TAGS] [-v]
+                    [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [-i IGNORE_FILE] [--offline] [--version]
+                    [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -2663,9 +2667,6 @@ options:
   --profile {min,basic,moderate,safety,shared,production}
                         Specify which rules profile to be used.
   -p, --parseable       parseable output, same as '-f pep8'
-  --progressive         Return success if number of violations compared with
-                        previous git commit has not increased. This feature
-                        works only in git repositories.
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on
                         location of configuration file.
@@ -2710,7 +2711,7 @@ options:
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
   --force-color         Force colored output, same as FORCE_COLOR=1
-  --exclude EXCLUDE_PATHS
+  --exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE, --config-file CONFIG_FILE
@@ -2796,7 +2797,7 @@ options:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+<script src="../../assets/javascripts/bundle.c2be25ad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

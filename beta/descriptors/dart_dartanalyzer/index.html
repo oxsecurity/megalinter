@@ -11,7 +11,7 @@
 <link href="../dart/" rel="prev"/>
 <link href="../go/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.9" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.12" name="generator"/>
 <title>dartanalyzer configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
@@ -279,6 +279,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../clojure_clj_kondo/">
         clj-kondo
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clojure_cljstyle/">
+        cljstyle
       </a>
 </li>
 </ul>
@@ -1734,7 +1739,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../kubernetes_kubeval/">
+<a class="md-nav__link" href="../kubernetes_kubeval.md">
         kubeval
       </a>
 </li>
@@ -1894,7 +1899,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../terraform_checkov/">
+<a class="md-nav__link" href="../terraform_checkov.md">
         checkov
       </a>
 </li>
@@ -1994,7 +1999,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../repository_goodcheck/">
+<a class="md-nav__link" href="../repository_goodcheck.md">
         goodcheck
       </a>
 </li>
@@ -2039,7 +2044,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../spell_misspell/">
+<a class="md-nav__link" href="../spell_misspell.md">
         misspell
       </a>
 </li>
@@ -2555,7 +2560,7 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">115</td>
+<td align="center">116</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 </tbody>
@@ -2607,12 +2612,51 @@ For more information, see https://www.dartlang.org/tools/analyzer.
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">ARG DART_VERSION='2.8.4'
-ARG GLIBC_VERSION='2.34-r0'
-RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
-    &amp;&amp; wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
-    &amp;&amp; apk add --force-overwrite --no-cache glibc-${GLIBC_VERSION}.apk &amp;&amp; rm glibc-${GLIBC_VERSION}.apk \
-    &amp;&amp; wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
+<pre><code class="language-dockerfile"># Parent descriptor install
+ENV LANG=C.UTF-8
+RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" &amp;&amp; \
+    ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" &amp;&amp; \
+    ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
+    ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
+    ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
+    apk add --no-cache --virtual=.build-dependencies wget ca-certificates &amp;&amp; \
+    echo \
+        "-----BEGIN PUBLIC KEY-----\
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
+        y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
+        tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
+        m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
+        KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
+        Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
+        1QIDAQAB\
+        -----END PUBLIC KEY-----" | sed 's/   */\\n/g' &gt; "/etc/apk/keys/sgerrand.rsa.pub" &amp;&amp; \
+    wget --quiet \
+        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" &amp;&amp; \
+    mv /etc/nsswitch.conf /etc/nsswitch.conf.bak &amp;&amp; \
+    apk add --no-cache --force-overwrite \
+        "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" &amp;&amp; \
+    \
+    mv /etc/nsswitch.conf.bak /etc/nsswitch.conf &amp;&amp; \
+    rm "/etc/apk/keys/sgerrand.rsa.pub" &amp;&amp; \
+    (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) &amp;&amp; \
+    echo "export LANG=$LANG" &gt; /etc/profile.d/locale.sh &amp;&amp; \
+    \
+    apk del glibc-i18n &amp;&amp; \
+    \
+    rm "/root/.wget-hsts" &amp;&amp; \
+    apk del .build-dependencies &amp;&amp; \
+    rm \
+        "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
+
+# Linter install
+ARG DART_VERSION='2.8.4'
+RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     &amp;&amp; chmod +x dart-sdk/bin/dart* \
     &amp;&amp; mv dart-sdk/bin/* /usr/bin/ &amp;&amp; mv dart-sdk/lib/* /usr/lib/ &amp;&amp; mv dart-sdk/include/* /usr/include/ \
     &amp;&amp; rm -r dart-sdk/
@@ -2683,7 +2727,7 @@ RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sge
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+<script src="../../assets/javascripts/bundle.c2be25ad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

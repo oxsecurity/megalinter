@@ -11,7 +11,7 @@
 <link href="../bicep/" rel="prev"/>
 <link href="../cloudformation/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.9" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.12" name="generator"/>
 <title>bicep_linter configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
@@ -279,6 +279,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../clojure_clj_kondo/">
         clj-kondo
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clojure_cljstyle/">
+        cljstyle
       </a>
 </li>
 </ul>
@@ -1734,7 +1739,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../kubernetes_kubeval/">
+<a class="md-nav__link" href="../kubernetes_kubeval.md">
         kubeval
       </a>
 </li>
@@ -1894,7 +1899,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../terraform_checkov/">
+<a class="md-nav__link" href="../terraform_checkov.md">
         checkov
       </a>
 </li>
@@ -1994,7 +1999,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../repository_goodcheck/">
+<a class="md-nav__link" href="../repository_goodcheck.md">
         goodcheck
       </a>
 </li>
@@ -2039,7 +2044,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../spell_misspell/">
+<a class="md-nav__link" href="../spell_misspell.md">
         misspell
       </a>
 </li>
@@ -2420,7 +2425,7 @@
 use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.16.2</strong></li>
+<li>Version in MegaLinter: <strong>0.17.1</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -2535,7 +2540,7 @@ use a <code>bicepconfig.json</code> file. For more information, see the <a href=
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">115</td>
+<td align="center">116</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
@@ -2567,7 +2572,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.16.2 (de7fdd2b33)
+<pre><code class="language-shell">Bicep CLI version 0.17.1 (d423d61882)
 
 Usage:
   bicep build [options] &lt;file&gt;
@@ -2659,9 +2664,11 @@ Usage:
 
     Options:
       --documentationUri  Module documentation uri
+      --force             Overwrite existing published module or file
 
     Examples:
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1
+      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --force
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md
 
@@ -2686,16 +2693,15 @@ Usage:
       &lt;file&gt;        The input Bicepparam file
 
     Options:
-      --bicep-file &lt;file&gt; Verifies if the bicep file reference in the params file using declaration matches the specified file path.
-      --outfile-params &lt;file&gt;  Saves the param output as the specified file path.
-      --outfile-bicep &lt;file&gt;  Saves the bicep output as the specified file path.
-      --stdout          Prints the output to stdout.
-      --no-restore      Builds the bicep file without restoring external modules.
+      --bicep-file &lt;file&gt; Verifies if the specified bicep file path matches the one provided in the params file using declaration
+      --outfile &lt;file&gt;  Saves the param output json as the specified file path.
+      --stdout          Prints the param and bicep json output to stdout.
+      --no-restore      Builds the bicep file (referenced in using declaration) without restoring external modules.
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
-      bicep build-params params.bicepparam --outfile-params otherParams.json --outfile-bicep otherMain.json
+      bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
 
 
@@ -2783,7 +2789,7 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+<script src="../../assets/javascripts/bundle.c2be25ad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

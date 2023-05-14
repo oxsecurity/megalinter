@@ -5,12 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 54 languages, 24 formats, 22 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !" name="description"/>
+<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 22 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
 <link href="https://megalinter.io/beta/CHANGELOG/" rel="canonical"/>
 <link href="../license/" rel="prev"/>
 <link href="../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.9" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.12" name="generator"/>
 <title>Changelog - MegaLinter by OX Security</title>
 <link href="../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
@@ -281,6 +281,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../descriptors/clojure_clj_kondo/">
         clj-kondo
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../descriptors/clojure_cljstyle/">
+        cljstyle
       </a>
 </li>
 </ul>
@@ -1669,7 +1674,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes_kubeval/">
+<a class="md-nav__link" href="../descriptors/kubernetes_kubeval.md">
         kubeval
       </a>
 </li>
@@ -1829,7 +1834,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_checkov/">
+<a class="md-nav__link" href="../descriptors/terraform_checkov.md">
         checkov
       </a>
 </li>
@@ -1929,7 +1934,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_goodcheck/">
+<a class="md-nav__link" href="../descriptors/repository_goodcheck.md">
         goodcheck
       </a>
 </li>
@@ -1974,7 +1979,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_misspell/">
+<a class="md-nav__link" href="../descriptors/spell_misspell.md">
         misspell
       </a>
 </li>
@@ -3463,6 +3468,7 @@
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
 <li>New linters<ul>
+<li><a href="https://github.com/oxsecurity/megalinter/pull/2115">#2115</a> Add cljstyle to Clojure linters</li>
 <li><a href="https://vale.sh/">Vale</a>, a powerful enforcer of writing style</li>
 </ul>
 </li>
@@ -3477,10 +3483,13 @@
 </ul>
 <ul>
 <li>Linter enhancements &amp; fixes<ul>
+<li>Gitleaks: add support to scan PR commits only on PRs when <code>VALIDATE_ALL_CODEBASE</code> is set to <code>false</code>, by @DariuszPorowski <a href="https://github.com/oxsecurity/megalinter/pull/2504">#2504</a></li>
 <li>Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven <a href="https://github.com/oxsecurity/megalinter/pull/2455">#2455</a>.</li>
 <li>Prevent jscpd to create output folder if the repo isn't writable. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/2108">#2108</a></li>
 <li>Fix corrective .cspell.json file generated from cspell output</li>
 <li>Deprecate misspell, as it is not maintained since 2018</li>
+<li>Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none</li>
+<li>kubeconform: Simplify installation and get latest version</li>
 </ul>
 </li>
 </ul>
@@ -3496,10 +3505,19 @@
 </li>
 </ul>
 <ul>
+<li>Removed linters<ul>
+<li>KUBERNETES_KUBEVAL: Not maintained anymore (kubeconform recommended by the authors)</li>
+<li>REPOSITORY_GOODCHECK: Not open-source anymore</li>
+<li>SPELL_MISSPELL: Not maintained anymore (last commit 2018)</li>
+<li>TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Core<ul>
 <li>Use relative file paths to call linters (<a href="https://github.com/oxsecurity/megalinter/issues/1875">#1875</a>)</li>
 <li>Refactor internal configuration management to scope config to a request identifier</li>
-<li>New configuration variable SECURED_ENV_VARIABLES to hide some env vars from environment used when calling linters</li>
+<li>New configuration variables <strong>SECURED_ENV_VARIABLES</strong> and SECURED_ENV_VARIABLES_DEFAULT to hide some env vars from environment used when calling linters (not recommended to override SECURED_ENV_VARIABLES_DEFAULT)</li>
 <li>Replace deprecated distutils.copy_tree by shutil.copytree</li>
 <li>Add support for idea plugins autoinstall</li>
 <li>Upgrade base Docker image to python:3.11.3-alpine3.17</li>
@@ -3510,6 +3528,7 @@
 <li>Fix crash in case of unreachable symlinks</li>
 <li>Fix local run of python test cases</li>
 <li>Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2</li>
+<li>mega-linter-runner v7 upgrader</li>
 </ul>
 </li>
 </ul>
@@ -3636,6 +3655,44 @@
 <li><a href="https://www.checkov.io/">checkov</a> from 2.3.206 to <strong>2.3.212</strong> on 2023-04-30</li>
 <li><a href="https://github.com/anchore/syft">syft</a> from 0.76.1 to <strong>0.79.0</strong> on 2023-04-30</li>
 <li><a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd">jscpd</a> from 3.5.5 to <strong>3.5.8</strong> on 2023-05-02</li>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 6.15.0 to <strong>6.16.0</strong> on 2023-05-12</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.16.2 to <strong>0.17.1</strong> on 2023-05-12</li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.77.4 to <strong>0.77.5</strong> on 2023-05-12</li>
+<li><a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd">jscpd</a> from 3.5.8 to <strong>3.5.9</strong> on 2023-05-12</li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.24.1 to <strong>0.24.2</strong> on 2023-05-12</li>
+<li><a href="https://stylelint.io">stylelint</a> from 15.6.0 to <strong>15.6.1</strong> on 2023-05-12</li>
+<li><a href="https://djlint.com/">djlint</a> from 1.25.0 to <strong>1.27.2</strong> on 2023-05-12</li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.10.0 to <strong>10.11.0</strong> on 2023-05-12</li>
+<li><a href="https://eslint.org">eslint</a> from 8.39.0 to <strong>8.40.0</strong> on 2023-05-12</li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.7.0 to <strong>2.8.0</strong> on 2023-05-12</li>
+<li><a href="https://github.com/chris48s/v8r">v8r</a> from 1.0.0 to <strong>2.0.0</strong> on 2023-05-12</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.10.14 to <strong>1.10.15</strong> on 2023-05-12</li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.5.9.0@ to <strong>Psalm.5.11.0@</strong> on 2023-05-12</li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.43.2 to <strong>0.44.0</strong> on 2023-05-12</li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 1.2.0 to <strong>1.3.0</strong> on 2023-05-12</li>
+<li><a href="https://pylint.pycqa.org">pylint</a> from 2.17.3 to <strong>2.17.4</strong> on 2023-05-12</li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.305 to <strong>1.1.307</strong> on 2023-05-12</li>
+<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.263 to <strong>0.0.265</strong> on 2023-05-12</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.3.212 to <strong>2.3.238</strong> on 2023-05-12</li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.20.0 to <strong>1.21.0</strong> on 2023-05-12</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.79.0 to <strong>0.80.0</strong> on 2023-05-12</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.11.0 to <strong>3.12.0</strong> on 2023-05-12</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.11.0 to <strong>3.12.0</strong> on 2023-05-12</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.11.0 to <strong>3.12.0</strong> on 2023-05-12</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.25.2 to <strong>7.25.3</strong> on 2023-05-12</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 2.0.7 to <strong>2.1.0</strong> on 2023-05-12</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.51.0 to <strong>0.52.1</strong> on 2023-05-12</li>
+<li><a href="https://www.kics.io">kics</a> from 1.7.0 to <strong>1.7.1</strong> on 2023-05-12</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.45.6 to <strong>0.45.11</strong> on 2023-05-12</li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.49.0 to <strong>0.49.1</strong> on 2023-05-12</li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.307 to <strong>1.1.308</strong> on 2023-05-12</li>
+<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.265 to <strong>0.0.266</strong> on 2023-05-12</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.3.238 to <strong>2.3.239</strong> on 2023-05-12</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.25.3 to <strong>7.25.4</strong> on 2023-05-12</li>
+<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.266 to <strong>0.0.267</strong> on 2023-05-12</li>
+<li><a href="https://vale.sh/">vale</a> from 2.25.2 to <strong>2.26.0</strong> on 2023-05-13</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.52.1 to <strong>0.52.2</strong> on 2023-05-13</li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.50.2 to <strong>1.51.0</strong> on 2023-05-13</li>
 </ul>
 </li>
 </ul>
@@ -7481,7 +7538,7 @@ commit_user_email: nicolas.vuillamy@ox.security</code></p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+<script src="../assets/javascripts/bundle.c2be25ad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../javascripts/tables.js"></script>
 <script src="../javascripts/gtag.js"></script>

@@ -11,7 +11,7 @@
 <link href="../configuration/" rel="prev"/>
 <link href="../descriptors/bash/" rel="next"/>
 <link href="../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.9" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.12" name="generator"/>
 <title>List of the 100+ supported linters embedded in MegaLinter - MegaLinter by OX Security</title>
 <link href="../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
@@ -312,6 +312,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../descriptors/clojure_clj_kondo/">
         clj-kondo
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../descriptors/clojure_cljstyle/">
+        cljstyle
       </a>
 </li>
 </ul>
@@ -1700,7 +1705,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes_kubeval/">
+<a class="md-nav__link" href="../descriptors/kubernetes_kubeval.md">
         kubeval
       </a>
 </li>
@@ -1860,7 +1865,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_checkov/">
+<a class="md-nav__link" href="../descriptors/terraform_checkov.md">
         checkov
       </a>
 </li>
@@ -1960,7 +1965,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_goodcheck/">
+<a class="md-nav__link" href="../descriptors/repository_goodcheck.md">
         goodcheck
       </a>
 </li>
@@ -2005,7 +2010,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_misspell/">
+<a class="md-nav__link" href="../descriptors/spell_misspell.md">
         misspell
       </a>
 </li>
@@ -2391,6 +2396,12 @@
 <td><a href="../descriptors/clojure/"><strong>CLOJURE</strong></a></td>
 <td><a href="../descriptors/clojure_clj_kondo/"><strong>clj-kondo</strong></a><br/><a href="../descriptors/clojure_clj_kondo/"><em>CLOJURE_CLJ_KONDO</em></a></td>
 <td align="center"><a href="https://github.com/borkdude/clj-kondo"><img alt="GitHub stars" src="https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600"/></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/clojure.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/clojure.ico"/></a> <!-- linter-icon --></td>
+<td><a href="../descriptors/clojure/"><strong>CLOJURE</strong></a></td>
+<td><a href="../descriptors/clojure_cljstyle/"><strong>cljstyle</strong></a><br/><a href="../descriptors/clojure_cljstyle/"><em>CLOJURE_CLJSTYLE</em></a></td>
+<td align="center"><a href="https://github.com/greglook/cljstyle"><img alt="GitHub stars" src="https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/coffee.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/coffee.ico"/></a> <!-- linter-icon --></td>
@@ -2907,7 +2918,7 @@
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
 <td><a href="../descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
-<td><a href="../descriptors/kubernetes_kubeval/"><strong>kubeval</strong></a><br/><a href="../descriptors/kubernetes_kubeval/"><em>KUBERNETES_KUBEVAL</em></a></td>
+<td><a href="descriptors/kubernetes_kubeval.md"><strong>kubeval</strong></a><br/><a href="descriptors/kubernetes_kubeval.md"><em>KUBERNETES_KUBEVAL</em></a></td>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/instrumenta/kubeval"><img alt="GitHub stars" src="https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600"/></a></a></td>
 </tr>
 <tr>
@@ -2932,7 +2943,7 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/puppet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/puppet.ico"/></a> <!-- linter-icon --></td>
 <td><a href="../descriptors/puppet/"><strong>PUPPET</strong></a></td>
 <td><a href="../descriptors/puppet_puppet_lint/"><strong>puppet-lint</strong></a><br/><a href="../descriptors/puppet_puppet_lint/"><em>PUPPET_PUPPET_LINT</em></a></td>
-<td align="center"><a href="https://github.com/rodjek/puppet-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rodjek/puppet-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
+<td align="center"><a href="https://github.com/puppetlabs/puppet-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/puppetlabs/puppet-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"/></a> <!-- linter-icon --></td>
@@ -2979,7 +2990,7 @@
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a> <!-- linter-icon --></td>
 <td><a href="../descriptors/terraform/"><strong>TERRAFORM</strong></a></td>
-<td><a href="../descriptors/terraform_checkov/"><strong>checkov</strong></a><br/><a href="../descriptors/terraform_checkov/"><em>TERRAFORM_CHECKOV</em></a></td>
+<td><a href="descriptors/terraform_checkov.md"><strong>checkov</strong></a><br/><a href="descriptors/terraform_checkov.md"><em>TERRAFORM_CHECKOV</em></a></td>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></a></td>
 </tr>
 <tr>
@@ -3040,8 +3051,8 @@
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
 <td><a href="../descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="../descriptors/repository_goodcheck/"><strong>goodcheck</strong></a><br/><a href="../descriptors/repository_goodcheck/"><em>REPOSITORY_GOODCHECK</em></a></td>
-<td align="center"><a href="https://github.com/sider/goodcheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sider/goodcheck?cacheSeconds=3600"/></a></td>
+<td><a href="descriptors/repository_goodcheck.md"><strong>goodcheck</strong></a><br/><a href="descriptors/repository_goodcheck.md"><em>REPOSITORY_GOODCHECK</em></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/sider/goodcheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sider/goodcheck?cacheSeconds=3600"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
@@ -3070,7 +3081,7 @@
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
 <td><a href="../descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="../descriptors/spell_misspell/"><strong>misspell</strong></a><br/><a href="../descriptors/spell_misspell/"><em>SPELL_MISSPELL</em></a></td>
+<td><a href="descriptors/spell_misspell.md"><strong>misspell</strong></a><br/><a href="descriptors/spell_misspell.md"><em>SPELL_MISSPELL</em></a></td>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-deprecated-red"><img alt="deprecated" src="https://shields.io/badge/-deprecated-red"/> <a href="https://github.com/client9/misspell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/client9/misspell?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></a></td>
 </tr>
 <tr>
@@ -3160,7 +3171,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+<script src="../assets/javascripts/bundle.c2be25ad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../javascripts/tables.js"></script>
 <script src="../javascripts/gtag.js"></script>
