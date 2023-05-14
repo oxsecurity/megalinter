@@ -2490,11 +2490,16 @@ def generate_json_schema_enums():
     ]
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += [
-        "CREDENTIALS_SECRETLINT",
-        "DOCKERFILE_DOCKERFILELINT",
-        "GIT_GIT_DIFF",
-        "PHP_BUILTIN",
+        "CREDENTIALS_SECRETLINT",  # Removed in v6
+        "DOCKERFILE_DOCKERFILELINT",  # Removed in v6
+        "GIT_GIT_DIFF",  # Removed in v6
+        "PHP_BUILTIN",  # Removed in v6
+        "KUBERNETES_KUBEVAL",  # Removed in v7
+        "REPOSITORY_GOODCHECK",  # Removed in v7
+        "SPELL_MISSPELL",  # Removed in v7
+        "TERRAFORM_CHECKOV",  # Removed in v7
     ]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)

@@ -16675,7 +16675,6 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
-        "TERRAFORM_CHECKOV",
         "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
@@ -16689,7 +16688,11 @@
         "CREDENTIALS_SECRETLINT",
         "DOCKERFILE_DOCKERFILELINT",
         "GIT_GIT_DIFF",
-        "PHP_BUILTIN"
+        "PHP_BUILTIN",
+        "KUBERNETES_KUBEVAL",
+        "REPOSITORY_GOODCHECK",
+        "SPELL_MISSPELL",
+        "TERRAFORM_CHECKOV"
       ],
       "type": "string"
     }

@@ -148,7 +148,6 @@ jobs:
             "terraform_terrascan",
             "terraform_terragrunt",
             "terraform_terraform_fmt",
-            "terraform_checkov",
             "terraform_kics",
             "tsx_eslint",
             "typescript_es",

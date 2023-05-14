@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Display a different message in log when a Merge Request comment is created or updated.
 
 - Removed linters
+  - KUBERNETES_KUBEVAL: Not maintained anymore (kubeconform recommended by the authors)
   - REPOSITORY_GOODCHECK: Not open-source anymore
   - SPELL_MISSPELL: Not maintained anymore (last commit 2018)
   - TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV

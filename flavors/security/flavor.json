@@ -22,7 +22,6 @@
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
-        "TERRAFORM_CHECKOV",
         "TERRAFORM_KICS"
     ]
 }
