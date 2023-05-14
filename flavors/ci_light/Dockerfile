@@ -62,10 +62,6 @@ RUN apk add --update --no-cache \
                 libxml2-utils \
                 libgcc \
                 nodejs-current \
-                ruby \
-                ruby-dev \
-                ruby-bundler \
-                ruby-rdoc \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -145,9 +141,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #GEM__START
-RUN echo 'gem: --no-document' >> ~/.gemrc && \
-    gem install \
-          goodcheck
+
 #GEM__END
 
 ##############################

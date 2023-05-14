@@ -246,35 +246,6 @@ linters:
         description: Pull Request target commit sha (N/A to supported scenarios)
         default_value: ""
 
-  # GOODCHECK
-  - linter_name: goodcheck
-    deprecated: true
-    deprecated_description: Goodcheck linter is no longer open-source so will be removed in a next version
-    descriptor_flavors:
-      - all_flavors # Applicable to CI in any language project
-      - ci_light
-      - cupcake
-    linter_url: https://sider.github.io/goodcheck/
-    linter_repo: https://github.com/sider/goodcheck
-    linter_speed: 2
-    linter_rules_url: https://sider.github.io/goodcheck/docs/rules
-    linter_rules_configuration_url: https://sider.github.io/goodcheck/docs/configuration
-    active_only_if_file_found:
-      - goodcheck.yml
-    config_file_name: goodcheck.yml
-    cli_config_arg_name: "-c"
-    cli_lint_mode: project
-    cli_lint_extra_args:
-      - check
-    cli_help_arg_name: "help"
-    test_folder: repository_goodcheck
-    examples:
-      - "goodcheck check"
-      - "goodcheck check -c goodcheck.yml"
-    install:
-      gem:
-        - goodcheck
-
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint

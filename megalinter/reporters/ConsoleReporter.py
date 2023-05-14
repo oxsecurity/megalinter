@@ -131,8 +131,8 @@ class ConsoleReporter(Reporter):
             else:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
-                    "v5"
-                    if "v5" in build_version
+                    DEFAULT_RELEASE
+                    if DEFAULT_RELEASE in build_version
                     else "beta"
                     if build_version == "latest"
                     else build_version

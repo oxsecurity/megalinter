@@ -276,7 +276,6 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
           puppet-lint \
-          goodcheck \
           rubocop \
           rubocop-github \
           rubocop-performance \
@@ -591,15 +590,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
-# kubeval installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-
 # kubeconform installation
     && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
 
@@ -713,14 +703,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
-
-# misspell installation
-    && ML_THIRD_PARTY_DIR="/third-party/misspell" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete \
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale

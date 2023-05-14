@@ -126,7 +126,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             )
             for suggestion in reporter_self.master.flavor_suggestions:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
-                action_version = "v5" if len(build_version) > 20 else build_version
+                action_version = DEFAULT_RELEASE if len(build_version) > 20 else build_version
                 action_path = (
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )

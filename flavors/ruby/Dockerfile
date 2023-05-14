@@ -181,7 +181,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
-          goodcheck \
           rubocop \
           rubocop-github \
           rubocop-performance \
@@ -259,15 +258,6 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
-# kubeval installation
-    && ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-    && rm ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-
 # kubeconform installation
     && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
 
@@ -281,15 +271,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
-
-# misspell installation
-    && ML_THIRD_PARTY_DIR="/third-party/misspell" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 
 # vale installation
