@@ -102,7 +102,6 @@ jobs:
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
-            "kubernetes_kubeval",
             "kubernetes_kubeconform",
             "kubernetes_helm",
             "kubernetes_kubescape",
