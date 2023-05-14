@@ -60,10 +60,9 @@ linters:
       - kubeconform myfile.yml
       - kubeconform -ignore-missing-schemas -skip SomeCRD,AnotherCRD -kubernetes-version '1.18.0' -strict myfile.yml
     install:
-      apk:
-        - go
       dockerfile:
-        - RUN go install github.com/yannh/kubeconform/cmd/kubeconform@latest
+        - FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
+        - COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
 
   # HELM LINT
   - linter_name: helm

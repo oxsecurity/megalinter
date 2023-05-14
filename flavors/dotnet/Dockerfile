@@ -21,6 +21,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.16.3 as gitleaks
@@ -82,7 +83,6 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 helm \
                 gcompat \
                 libc-dev \
@@ -235,6 +235,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -345,7 +346,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
 
 # kubeconform installation
-    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+# Managed with COPY --link --from=kubeconform /bin/kubeconform /usr/bin/
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
