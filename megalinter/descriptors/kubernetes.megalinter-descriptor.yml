@@ -100,6 +100,9 @@ linters:
       `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
     linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
     linter_spdx_license: Apache-2.0
+    active_only_if_file_found:
+      - Chart.yml
+      - Chart.yaml
     cli_lint_mode: project
     cli_help_arg_name: help
     cli_version_arg_name: version
