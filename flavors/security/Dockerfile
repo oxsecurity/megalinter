@@ -14,6 +14,7 @@
 #FROM__START
 FROM koalaman/shellcheck:stable as shellcheck
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
@@ -58,7 +59,6 @@ RUN apk add --update --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                go \
                 helm \
                 gcompat \
                 icu-libs \
@@ -173,6 +173,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #COPY__START
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -197,7 +198,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # kubeconform installation
-    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \

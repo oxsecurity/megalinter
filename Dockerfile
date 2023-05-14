@@ -26,6 +26,7 @@ FROM golang:1-alpine as revive
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
+FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
@@ -315,6 +316,7 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
@@ -591,7 +593,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     mv "ktlint" /usr/bin/ \
 
 # kubeconform installation
-    && go install github.com/yannh/kubeconform/cmd/kubeconform@latest \
+# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
     && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
