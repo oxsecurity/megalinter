@@ -50,7 +50,6 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 - APK packages (Linux):
@@ -64,5 +63,4 @@ ENV PATH="/root/.composer/vendor/bin:$PATH"
   - [php81-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-curl)
   - [php81-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-dom)
   - [php81-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-simplexml)
-  - [composer](https://pkgs.alpinelinux.org/packages?branch=edge&name=composer)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)
