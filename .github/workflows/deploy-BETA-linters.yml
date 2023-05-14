@@ -160,7 +160,6 @@ jobs:
             "scala_scalafix",
             "snakemake_lint",
             "snakemake_snakefmt",
-            "spell_misspell",
             "spell_cspell",
             "spell_proselint",
             "spell_vale",

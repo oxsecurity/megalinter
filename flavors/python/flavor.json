@@ -53,7 +53,6 @@
         "RST_RSTFMT",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
-        "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
         "SPELL_VALE",

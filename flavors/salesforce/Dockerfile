@@ -280,7 +280,8 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
+    && rm -rf /root/.npm/_cacache
+
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
@@ -293,15 +294,6 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
-
-# misspell installation
-    && ML_THIRD_PARTY_DIR="/third-party/misspell" \
-    && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
-
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale

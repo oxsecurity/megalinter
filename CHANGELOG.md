@@ -32,6 +32,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - In case of overwrite activated (by default), fetch all Merge Request comments, not the first 20.
     - Display a different message in log when a Merge Request comment is created or updated.
 
+- Removed linters
+  - REPOSITORY_GOODCHECK: Not open-source anymore
+  - SPELL_MISSPELL: Not maintained anymore (last commit 2018)
+  - TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV
+
 - Core
   - Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))
   - Refactor internal configuration management to scope config to a request identifier

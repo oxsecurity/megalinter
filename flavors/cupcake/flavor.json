@@ -72,7 +72,6 @@
         "RST_RSTFMT",
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
-        "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
         "SQL_SQL_LINT",
