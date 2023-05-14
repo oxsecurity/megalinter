@@ -511,8 +511,10 @@ def test_linter_report_sarif(linter, test_self):
     workspace = (
         config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
     )
-    if linter.cli_lint_mode == 'project' and os.path.isdir(workspace + os.path.sep + 'bad'):
-        workspace += os.path.sep + 'bad'
+    if linter.cli_lint_mode == "project" and os.path.isdir(
+        workspace + os.path.sep + "bad"
+    ):
+        workspace += os.path.sep + "bad"
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())

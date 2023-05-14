@@ -202,6 +202,7 @@ def log_section_end(section_key):
             return "##[endgroup]"
     return ""
 
+
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
