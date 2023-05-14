@@ -18,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel, Field
 from pygments import lexers
+from rq import Queue
 
 print("MegaLinter Server starting…")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)  # type: ignore[attr-defined]
@@ -46,8 +47,12 @@ if redis_port != '':
         decode_responses=True
     )
     logging.info("REDIS Connection: "+str(redis.info()))
+    # Initialize redis Queue
+    q = Queue('megalinter_queue', connection=redis)
+    logging.info("REDIS Queue: "+str(q.name))
 else:
     redis = None
+
 
 global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0
