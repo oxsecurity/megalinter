@@ -54,6 +54,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2
   - mega-linter-runner v7 upgrader
   - Run stale workflow only on schedule, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
+  - Add explicit permissions to stale workflow, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
