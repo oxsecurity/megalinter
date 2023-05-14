@@ -3,15 +3,18 @@
 Start MegaLinter server
 """
 import logging
+import logging.config
 import os
 import tempfile
 import typing
 from enum import StrEnum
 from typing import List
+from redis_om import get_redis_connection
 from uuid import uuid1
 
 import git
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Response, status
+from fastapi.middleware.cors import CORSMiddleware
 from megalinter import MegaLinter, alpaca, config
 from pydantic import BaseModel, Field
 from pygments import lexers
@@ -20,9 +23,31 @@ print("MegaLinter Server starting…")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)  # type: ignore[attr-defined]
 logger = logging.getLogger(__name__)
 alpaca()
+
+# Initialize FastAPI
 app = FastAPI(
     title="MegaLinter Server", version=config.get(None, "BUILD_VERSION", "DEV")
 )
+allow_origins = config.get_list(None, "CORS_ALLOW_ORIGINS",["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allow_origins,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
+logging.info("Fast API: "+app.version)
+# Initialize redis connection
+redis_host: str = os.environ.get("REDIS_HOST", '')
+redis_port: int = int(os.environ.get("REDIS_PORT",6379))
+if redis_port != '':
+    redis = get_redis_connection(
+        host=redis_host,
+        port=redis_port,
+        decode_responses=True
+    )
+    logging.info("REDIS Connection: "+str(redis.info()))
+else:
+    redis = None
 
 global running_process_number, max_running_process_number, ANALYSIS_EXECUTIONS
 running_process_number = 0
