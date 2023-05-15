@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Deprecate misspell, as it is not maintained since 2018
   - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
   - kubeconform: Simplify installation and get latest version
+  - Updated cases in console/log output to use ⚠ `Warning Sign (U+26A0)` instead of ◬ `White Up-Pointing Triangle with Dot (U+25EC)`
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
@@ -59,6 +60,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
   - Remove ASCII characters from linters helps displayed in MegaLinter documentation
+  - Add instructions to install MegaLinter on Bitbucket Pipelines
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
