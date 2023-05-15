@@ -676,6 +676,26 @@ resources:
         #   VALIDATE_ALL_CODEBASE: true
 ```
 
+## Bitbucket Pipeline
+
+1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
+
+2. Copy and paste the following template or add the step to your existing pipeline.
+
+```yaml
+image: atlassian/default-image:3
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Run MegaLinter
+          image: oxsecurity/megalinter
+          script:
+            - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
+          artifacts:
+            -  megalinter-reports/**
+```
+
 ### Drone CI
 
 **Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
