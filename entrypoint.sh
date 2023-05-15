@@ -35,9 +35,9 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
   pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
-  pytest -v --durations=0 -k _get_linter_version megalinter/
+  pytest -v --durations=0 -k _get_linter_version /venvs/megalinter/
   # Run only get_linter_help test methods
-  pytest -v --durations=0 -k _get_linter_help megalinter/
+  pytest -v --durations=0 -k _get_linter_help /venvs/megalinter/
   # Reinstall mkdocs-material because of broken dependency
   pip3 install --upgrade "markdown==3.3.7" mike mkdocs-material "pymdown-extensions==9.11" "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview "github-dependents-info==0.10.0"
   cd /tmp/lint || exit 1
@@ -51,9 +51,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout pytest-xdist
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml megalinter/
+    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml /venvs/megalinter/
   else
-    pytest -v --timeout=300 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
+    pytest -v --timeout=300 --durations=0 -k "${TEST_KEYWORDS}" /venvs/megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
