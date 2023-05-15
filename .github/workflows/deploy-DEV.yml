@@ -84,6 +84,7 @@ jobs:
         run: |
           if [[ -f image.tar ]]; then
             skopeo copy --override-os=linux --override-arch=${{ matrix.platform }} oci-archive:image.tar docker-daemon:oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+            rm -f image.tar
           fi
       # Free disk space
       - name: Free Disk space
