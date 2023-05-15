@@ -17,7 +17,6 @@ install:
     - php81-curl
     - php81-dom
     - php81-simplexml
-    - composer
     - dpkg
   dockerfile:
     - |
@@ -35,7 +34,6 @@ install:
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
-    - ENV PATH="/root/.composer/vendor/bin:$PATH"
 linters:
   # PHPCS
   - linter_name: phpcs
@@ -157,5 +155,4 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
-              && composer global config bin-dir --absolute
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g

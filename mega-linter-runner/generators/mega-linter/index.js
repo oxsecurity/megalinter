@@ -2,6 +2,7 @@
 const Generator = require("yeoman-generator");
 const { asciiArt } = require("../../lib/ascii");
 const { OXSecuritySetup } = require("../../lib/ox-setup");
+const { DEFAULT_RELEASE } = require("../../lib/config");
 
 module.exports = class extends Generator {
   prompting() {
@@ -68,9 +69,9 @@ When you don't know what option to select, please use default values`
         type: "list",
         name: "version",
         message: "Which MegaLinter version do you want to use ?",
-        default: "v6",
+        default: DEFAULT_RELEASE,
         choices: [
-          { name: "v6 (Latest official release)", value: "v6" },
+          { name: `${DEFAULT_RELEASE} (Latest official release)`, value: DEFAULT_RELEASE },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -125,8 +126,8 @@ When you don't know what option to select, please use default values`
         type: "confirm",
         name: "ox",
         message:
-          "Do you want to connect to OX Security to secure your repository ?",
-        default: false,
+          "Do you want to try OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
+        default: true,
       },
     ];
 
@@ -183,9 +184,9 @@ When you don't know what option to select, please use default values`
       this.dockerImageName = "oxsecurity/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v6") {
-      this.gitHubActionVersion = "v6";
-      this.dockerImageVersion = "v6";
+    if (this.props.version == DEFAULT_RELEASE) {
+      this.gitHubActionVersion = DEFAULT_RELEASE;
+      this.dockerImageVersion = DEFAULT_RELEASE;
     } else {
       this.gitHubActionVersion = "beta";
       this.dockerImageVersion = "beta";
@@ -275,7 +276,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
     );
   }
 

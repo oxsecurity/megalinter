@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 const optionator = require("optionator");
+const { DEFAULT_RELEASE } = require("./config");
 
 //------------------------------------------------------------------------------
 // Initialization and Public Interface
@@ -27,9 +28,9 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v6",
+      default: DEFAULT_RELEASE,
       description: "MegaLinter version",
-      example: ["stable", "latest", "v5.9.0"],
+      example: ["stable", "latest", `${DEFAULT_RELEASE}.1.2`],
     },
     {
       option: "flavor",
@@ -46,8 +47,8 @@ module.exports = optionator({
       description: "MegaLinter docker image",
       example: [
         "ghcr.io/oxsecurity/megalinter:latest",
-        "ghcr.io/oxsecurity/megalinter:v5",
-        "my-registry.com/mega-linter-python:v5",
+        `ghcr.io/oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        `my-registry.com/mega-linter-python:${DEFAULT_RELEASE}`,
       ],
     },
     {

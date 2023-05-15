@@ -24,6 +24,7 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
+from megalinter.alpaca import alpaca
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -34,8 +35,18 @@ from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 
+# initialize worker processes
+def init_worker(request_config_in):
+    # declare scope of a new global variable
+    global REQUEST_CONFIG
+    # store argument in the global variable for this process
+    REQUEST_CONFIG = request_config_in
+
+
 # Function to run linters using multiprocessing pool
-def run_linters(linters):
+def run_linters(linters, request_id):
+    global REQUEST_CONFIG
+    config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
         linter.run()
     return linters
@@ -63,9 +74,13 @@ class Megalinter:
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
         # Do not send secrets to linter executables
-        config.init_config(
-            self.request_id, self.workspace, params
-        )  # Initialize runtime config
+        config.init_config(self.request_id, self.workspace, params)
+
+        # Guess who's there ? :)
+        if self.cli is True:
+            alpaca(self.request_id)
+
+        # Initialize runtime config
         self.github_workspace = config.get(
             self.request_id, "GITHUB_WORKSPACE", self.workspace
         )
@@ -305,7 +320,11 @@ class Megalinter:
         process_number = mp.cpu_count()
         logging.info(f"Processing linters on [{str(process_number)}] parallel cores…")
         install_mp_handler()
-        pool = mp.Pool(process_number)
+        pool = mp.Pool(
+            process_number,
+            initializer=init_worker,
+            initargs=(config.get(self.request_id),),
+        )
         pool_results = []
         # Add linter groups to pool
         for linter_group in linter_groups:
@@ -314,7 +333,7 @@ class Megalinter:
                 + ": "
                 + str([o.linter_name for o in linter_group])
             )
-            result = pool.apply_async(run_linters, args=[linter_group])
+            result = pool.apply_async(run_linters, args=[linter_group, self.request_id])
             pool_results += [result]
         pool.close()
         pool.join()

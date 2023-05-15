@@ -5,36 +5,6 @@ descriptor_flavors:
   - cupcake
 lint_all_other_linters_files: true
 linters:
-  # MISSPELL
-  - class: MisspellLinter
-    linter_name: misspell
-    name: SPELL_MISSPELL
-    deprecated: true
-    deprecated_description: misspell is not maintained since 2018 so will be removed in a future version
-    linter_speed: 2
-    linter_text: misspell detects and corrects commonly misspelled english words
-    linter_url: https://github.com/client9/misspell
-    linter_repo: https://github.com/client9/misspell
-    cli_lint_mode: list_of_files
-    cli_lint_extra_args:
-      - "-error"
-    cli_lint_fix_arg_name: "-w"
-    cli_lint_fix_remove_args:
-      - "-error"
-    cli_version_arg_name: "-v"
-    version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
-    help_command_return_code: 2
-    examples:
-      - "misspell myfile.any"
-    install:
-      dockerfile:
-        - |
-          RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
-              && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && curl --retry 10 --retry-all-errors -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-              && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-              && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-              && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell

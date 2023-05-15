@@ -74,6 +74,11 @@
     "image": "https://avatars1.githubusercontent.com/u/284934?s=400&v=4",
     "title": "borkdude/clj-kondo"
   },
+  "cljstyle": {
+    "description": "A tool for formatting Clojure code. Contribute to greglook/cljstyle development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bf0d187aea6f03a804178458080b2be18a5fd1bf8d8cc353ff3150743aae9805/greglook/cljstyle",
+    "title": "GitHub - greglook/cljstyle: A tool for formatting Clojure code"
+  },
   "coffeelint": {
     "description": "\n          CoffeeLint is a style checker that helps keep\n          CoffeeScript\n          code clean and consistent. CoffeeScript does a great job at\n          insulating programmers from many of\n          JavaScript's bad parts, but it won't help enforce a consistent style\n          across a code base. CoffeeLint can help with that.\n        ",
     "image": null,
@@ -223,6 +228,11 @@
     "description": "A FAST Kubernetes manifests validator, with support for Custom Resources! - GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!",
     "image": "https://opengraph.githubassets.com/b990bb1574e3f44a352a20ca20657b21cc9f52eb1738f5551195458f99aa596d/yannh/kubeconform",
     "title": "GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!"
+  },
+  "kubescape": {
+    "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernet...",
+    "image": "https://repository-images.githubusercontent.com/395283401/8b597a65-306c-496e-bc3e-9a7c1e21620f",
+    "title": "GitHub - kubescape/kubescape: Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources."
   },
   "kubeval": {
     "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",

@@ -7,6 +7,7 @@ const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");
 const { MegaLinterUpgrader } = require("./upgrade");
+const { DEFAULT_RELEASE } = require("./config");
 
 class MegaLinterRunner {
   async run(options) {
@@ -59,7 +60,7 @@ class MegaLinterRunner {
     }
 
     // Build MegaLinter docker image name with flavor and release version
-    const release = options.release in ["stable"] ? "v6" : options.release;
+    const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)
@@ -77,6 +78,7 @@ class MegaLinterRunner {
         options.flavor === "all" || options.flavor == null
         ? "oxsecurity/megalinter"
         : `oxsecurity/megalinter-${options.flavor}`;
+    this.checkPreviousVersion(release);
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
@@ -186,48 +188,32 @@ ERROR: Docker engine has not been found on your system.
 
   isv4(release) {
     const isV4flag = release === "insiders" || release.includes("v4");
-    if (isV4flag) {
-      console.warn(
-        c.bold(
-          "#######################################################################"
-        )
-      );
-      console.warn(
-        c.bold("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:")
-      );
-      console.warn(
-        c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"
-        )
-      );
-      console.warn(
-        c.bold(
-          "- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
-        )
-      );
-      console.warn(
-        c.bold(
-          "#######################################################################"
-        )
-      );
-    }
     return isV4flag;
   }
 
   isv5(release) {
     const isV5flag = release.includes("v5");
-    if (isV5flag) {
+    return isV5flag;
+  }
+
+  checkPreviousVersion(release) {
+    if (release.includes("v4") || release.includes("v5") || release.includes("v6")) {
       console.warn(
         c.bold(
           "#######################################################################"
         )
       );
       console.warn(
-        c.bold("MEGA-LINTER HAS A NEW V6 VERSION. Please upgrade to it by:")
+        c.bold(`MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`)
       );
       console.warn(
         c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"
+          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade"
+        )
+      );
+      console.warn(
+        c.bold(
+          `- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`
         )
       );
       console.warn(
@@ -236,7 +222,6 @@ ERROR: Docker engine has not been found on your system.
         )
       );
     }
-    return isV5flag;
   }
 }
 
