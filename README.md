@@ -89,6 +89,7 @@ _Github PR reporter_
     - [GitHub Action](#github-action)
     - [GitLab CI](#gitlab-ci)
     - [Azure Pipelines](#azure-pipelines)
+    - [Bitbucket Pipelines](#bitbucket-pipelines)
     - [Jenkins](#jenkins)
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
@@ -549,6 +550,27 @@ Add the following job in your `azure-pipelines.yaml` file
 
 To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
+### Bitbucket Pipelines
+
+1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
+
+2. Copy and paste the following template or add the step to your existing pipeline.
+
+```yaml
+image: atlassian/default-image:3
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Run MegaLinter
+          image: oxsecurity/megalinter:v6
+          script:
+            - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
+          artifacts:
+            -  megalinter-reports/**
+```
+
+
 ### Jenkins
 
 Add the following stage in your Jenkinsfile
@@ -674,26 +696,6 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-```
-
-## Bitbucket Pipeline
-
-1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
-
-2. Copy and paste the following template or add the step to your existing pipeline.
-
-```yaml
-image: atlassian/default-image:3
-pipelines:
-  default:
-    - parallel:
-      - step:
-          name: Run MegaLinter
-          image: oxsecurity/megalinter
-          script:
-            - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
-          artifacts:
-            -  megalinter-reports/**
 ```
 
 ### Drone CI
