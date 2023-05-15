@@ -479,6 +479,7 @@ def build_dockerfile(
             npm_packages += item["install"]["npm"]
             if not has_npm_copy:
                 has_npm_copy = True
+                apk_npm_packages += ["npm"]
                 docker_copy += ["COPY --link --from=node_modules /node-deps /node-deps"]
         # Collect python for venvs
         if "linter_name" in item and "pip" in item["install"]:
