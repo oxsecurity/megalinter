@@ -21,6 +21,7 @@ webpreview
 yq
 importlib-metadata>=3.10
 mkdocs-material
+pymdown-extensions==9.11
 mkdocs-glightbox==0.3.2
 mdx_truly_sane_lists
 beautifulsoup4
