@@ -25,7 +25,7 @@ _If it doesn't work, just run the following script_
 
 ```shell
 pip install -r requirements.dev.txt
-pip install mkdocs-material "mkdocs-glightbox==0.3.2"
+pip install "mkdocs-material==9.1.12" "mkdocs-glightbox==0.3.2"
 npm install markdown-table-formatter -g
 ```
 
