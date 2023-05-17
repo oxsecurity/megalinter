@@ -664,7 +664,7 @@ def build_dockerfile(
                 + (" ".join(pip_linter_packages))
                 + "\\n"
             )
-            pipenv_path_command += f":/venvs/{pip_linter}/bin"
+            pipenv_path_command += f":/venvs/{pip_linter}/cross/bin"
         pipenv_download_command += (
             '&& pip download --cache-dir=/var/cache/pip --dest "/download" \\\n      '
             + (" \\\n      ".join(pipenv_download_list))
