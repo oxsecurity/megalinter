@@ -64,7 +64,7 @@ jobs:
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
-        uses: actions/setup-python@v4.5.0
+        uses: actions/setup-python@v4.6.0
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version: 3.11.3 # optional
