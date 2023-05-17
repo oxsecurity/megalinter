@@ -655,11 +655,12 @@ def build_dockerfile(
             pip_linter_env = data["env"]
             pipenv_download_list += pip_linter_packages
             pipenv_install_command += (
-                f'RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \\\n   mkdir -p "/venvs/{pip_linter}" '
-                + f'&& cd "/venvs/{pip_linter}" '
-                + "&& python3 -m crossenv /usr/local/bin/target-python3 . "
-                + "&& source bin/activate "
-                + f"&& PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip "
+                'RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \\\n'
+                f'   mkdir -p "/venvs/{pip_linter}" \\\n'
+                + f' && cd "/venvs/{pip_linter}" \\\n'
+                + " && python3 -m crossenv /usr/local/bin/target-python3 . \\\n"
+                + " && source bin/activate \\\n"
+                + f" && PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip "
                 + (" ".join(pip_linter_packages))
                 + "\\n"
             )
