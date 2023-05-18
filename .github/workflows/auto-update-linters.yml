@@ -25,6 +25,12 @@ jobs:
     name: Auto-Update Linters
     # Set the agent to run on
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
+      # Remove the ones you do not need
+      contents: write
+      issues: write
+      pull-requests: write
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
     # Set max build time for the job
@@ -81,7 +87,7 @@ jobs:
       - name: Collect latest versions and help
         id: compute_versions
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN=${GITHUB_TOKEN} -e PAT="${{ secrets.PAT }}" -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${{ github.sha }}
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN=${GITHUB_TOKEN} -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${{ github.sha }}
         timeout-minutes: 60
 
       # Format markdown tables
@@ -105,7 +111,7 @@ jobs:
         if: steps.compute_versions.outputs.has_updated_versions == 1
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.PAT  }}
+          token: ${{ secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
           commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true
