@@ -119,6 +119,7 @@ RUN apk add --update --no-cache \
                 go \
                 helm \
                 gcompat \
+                libc6-compat \
                 openssl \
                 readline-dev \
                 g++ \
@@ -594,7 +595,8 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
-    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/

@@ -219,6 +219,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.5.0 to **0.6.1** on 2023-05-14
   - [checkov](https://www.checkov.io/) from 2.3.239 to **2.3.240** on 2023-05-14
   - [phplint](https://github.com/overtrue/phplint) from 5.5 to **9.0.4** on 2023-05-14
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.0 to **6.16.1** on 2023-05-18
+  - [stylelint](https://stylelint.io) from 15.6.1 to **15.6.2** on 2023-05-18
+  - [revive](https://revive.run/) from 1.3.1 to **1.3.2** on 2023-05-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.1 to **2.3.3** on 2023-05-18
+  - [checkov](https://www.checkov.io/) from 2.3.240 to **2.3.245** on 2023-05-18
+  - [semgrep](https://semgrep.dev/) from 1.21.0 to **1.22.0** on 2023-05-18
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
