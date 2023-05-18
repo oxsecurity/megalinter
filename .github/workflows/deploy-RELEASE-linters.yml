@@ -39,6 +39,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     permissions:
       packages: write
+    environment:
+      name: release
     strategy:
       fail-fast: false
       max-parallel: 10

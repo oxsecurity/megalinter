@@ -35,7 +35,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     environment:
-      name: latest-flavors
+      name: release
     strategy:
       fail-fast: false
       matrix:
