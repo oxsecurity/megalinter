@@ -2415,7 +2415,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_PYRIGHT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="pyright-documentation">pyright documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.1.308</strong></li>
+<li>Version in MegaLinter: <strong>1.1.309</strong></li>
 <li>Visit <a href="https://github.com/Microsoft/pyright#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/configuration.md" target="_blank">How to configure pyright rules</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls" target="_blank">How to disable pyright rules in files</a></li>
@@ -2610,11 +2610,12 @@
   --outputjson                       Output results in JSON format
   -p,--project &lt;FILE OR DIRECTORY&gt;   Use the configuration file at this location
   --pythonplatform &lt;PLATFORM&gt;        Analyze for a specific platform (Darwin, Linux, Windows)
+  --pythonpath &lt;FILE&gt;                Path to the Python interpreter
   --pythonversion &lt;VERSION&gt;          Analyze for a specific version (3.3, 3.4, etc.)
   --skipunannotated                  Skip analysis of functions with no type annotations
   --stats                            Print detailed performance stats
-  -t,--typeshed-path &lt;DIRECTORY&gt;     Use typeshed type stubs at this location
-  -v,--venv-path &lt;DIRECTORY&gt;         Directory that contains virtual environments
+  -t,--typeshedpath &lt;DIRECTORY&gt;      Use typeshed type stubs at this location
+  -v,--venvpath &lt;DIRECTORY&gt;          Directory that contains virtual environments
   --verbose                          Emit verbose diagnostics
   --verifytypes &lt;PACKAGE&gt;            Verify type completeness of a py.typed package
   --version                          Print Pyright version
