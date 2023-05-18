@@ -36,9 +36,11 @@ linters:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdownlint.json myfile.md"
       - "markdownlint --fix -c .markdownlint.json myfile.md"
+    downgraded_version: true
+    downgraded_reason: "Performance issues with newest version: See https://github.com/DavidAnson/markdownlint/issues/821"
     install:
       npm:
-        - markdownlint-cli
+        - markdownlint-cli@0.33.0
     ide:
       atom:
         - name: linter-node-markdownlint

@@ -787,6 +787,13 @@
             "title": "Disabled",
             "type": "boolean"
           },
+          "downgraded_reason": {
+            "$id": "#/properties/linters/items/properties/downgraded_reason",
+            "default": false,
+            "description": "Explanation about why the linter is downgraded",
+            "title": "Downgraded reason",
+            "type": "string"
+          },
           "downgraded_version": {
             "$id": "#/properties/linters/items/properties/downgraded_version",
             "default": false,
