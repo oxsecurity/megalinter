@@ -153,7 +153,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-flow-scanner installation
-    && sfdx plugins:install lightning-flow-scanner \
+    && echo y|sfdx plugins:install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

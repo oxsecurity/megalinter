@@ -237,7 +237,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install lightning-flow-scanner \
+          RUN echo y|sfdx plugins:install lightning-flow-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:

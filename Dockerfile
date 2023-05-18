@@ -702,7 +702,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-flow-scanner installation
-    && sfdx plugins:install lightning-flow-scanner \
+    && echo y|sfdx plugins:install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
