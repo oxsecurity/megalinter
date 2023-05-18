@@ -52,6 +52,9 @@ def init_config(request_id, workspace=None, params={}):
             ), f"Unable to retrieve config file {config_file_name}"
             with open(config_file, "wb") as f:
                 f.write(r.content)
+        # Hardcoded path to config file
+        elif os.path.isfile(config_file_name):
+            config_file = config_file_name
         else:
             # Local configuration file with name forced by user
             config_file = workspace + os.path.sep + config_file_name
