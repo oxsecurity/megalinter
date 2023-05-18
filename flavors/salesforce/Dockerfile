@@ -68,6 +68,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 helm \
                 gcompat \
+                libc6-compat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -267,7 +268,8 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
-    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/

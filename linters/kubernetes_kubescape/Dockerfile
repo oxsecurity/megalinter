@@ -49,6 +49,7 @@ RUN apk add --update --no-cache \
                 musl-dev \
                 openssh \
                 gcompat \
+                libc6-compat \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -124,7 +125,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # kubescape installation
-RUN curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
 
 #OTHER__END

@@ -76,6 +76,7 @@ RUN apk add --update --no-cache \
                 go \
                 helm \
                 gcompat \
+                libc6-compat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -274,7 +275,8 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
-    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
