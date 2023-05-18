@@ -52,6 +52,7 @@ jobs:
     name: Tests + Deploy Docker Image - DEV
     # Set the agent to run on
     runs-on: ubuntu-latest
+    permissions: read-all
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     # Set max build time for the job
@@ -206,7 +207,7 @@ jobs:
             fi
           fi
 
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 90
 
       #####################################
@@ -215,7 +216,7 @@ jobs:
       - name: Run against all code base
         if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e PAT="${{ secrets.PAT }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
+        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
         timeout-minutes: 15
 
       # Upload MegaLinter artifacts
