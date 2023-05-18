@@ -230,8 +230,6 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx flow:scan"
     install:

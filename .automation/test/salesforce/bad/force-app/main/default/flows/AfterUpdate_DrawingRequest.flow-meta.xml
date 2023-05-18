@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Drawing_rejected</name>
+        <label>Drawing rejected</label>
+        <locationX>50</locationX>
+        <locationY>1031</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Is_Drawing_presented</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Body_DrawingRejected</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.CRM_TECH_PresentedDrawing__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>Subject_DrawingRejected</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Priority_Request</name>
+        <label>Priority Request</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <connector>
+            <targetReference>Is_Drawing_request_rejected</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>Newpriorityrequest</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>ByPass</name>
+        <label>ByPass</label>
+        <locationX>611</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ByPassrulesfalse</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.ByPass__c.ByPassAllFlows__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Drawing_Request</targetReference>
+            </connector>
+            <label>ByPass rules =false</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Drawing_presented</name>
+        <label>Is Drawing presented ?</label>
+        <locationX>182</locationX>
+        <locationY>1247</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>StatusPresented</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Drawing Presented</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FillCRM_TECH_PresentedDrawing</targetReference>
+            </connector>
+            <label>Status = Presented</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Drawing_Request</name>
+        <label>Is Drawing Request</label>
+        <locationX>380</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>RecordtypeDrawingRequest</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CRM_CAS_DrawingRequest</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_priority_request</targetReference>
+            </connector>
+            <label>Recordtype = drawing request</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Drawing_request_rejected</name>
+        <label>Is Drawing request rejected ?</label>
+        <locationX>182</locationX>
+        <locationY>911</locationY>
+        <defaultConnector>
+            <targetReference>Is_Drawing_presented</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Drawing_request_rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Drawing Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Drawing_rejected</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Drawing request rejected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_priority_request</name>
+        <label>Is priority request ?</label>
+        <locationX>182</locationX>
+        <locationY>575</locationY>
+        <defaultConnector>
+            <targetReference>Is_Drawing_request_rejected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Priority_Request_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CRM_PriorityRequest__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Priority_Request</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Priority Request = true</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>AfterUpdate_DrawingRequest {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AfterUpdate_DrawingRequest</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>fill the field CRM_TECH_PresentedDrawing__c with the information of who set the drawing to the presented status</description>
+        <name>FillCRM_TECH_PresentedDrawing</name>
+        <label>Fill CRM_TECH_PresentedDrawing__c</label>
+        <locationX>50</locationX>
+        <locationY>1367</locationY>
+        <inputAssignments>
+            <field>CRM_TECH_PresentedDrawing__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>485</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ByPass</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Body_DrawingRejected</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Drawing request n°{!$Record.CaseNumber} related to the opportunity {!$Record.Opportunity__r.Name} has been rejected. 
+Reason for rejection : {!$Record.CRM_DrawingRejectedReason__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Newpriorityrequest</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi @[{!$Setup.GeneralSettings__c.ID_GroupChatter__c}] ! A new priority request have been created by @[{!$Record.CreatedById}]. Case number : {!$Record.CaseNumber} 
+Priority request reason : {!$Record.CRM_ReasonForPriorityRequest__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Subject_DrawingRejected</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Drawing request n°{!$Record.CaseNumber} rejected</text>
+    </textTemplates>
+</Flow>
