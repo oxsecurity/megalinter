@@ -5,6 +5,12 @@ on:
 jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
+      # Remove the ones you do not need
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - name: Dump the event payload context
         env:
@@ -37,7 +43,7 @@ jobs:
         id: scd
         if: success()
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             build
             help
