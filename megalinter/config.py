@@ -267,7 +267,7 @@ def list_secured_variables(request_id) -> list[str]:
             "DOCKER_USERNAME",
             "DOCKER_PASSWORD",
             "CODECOV_TOKEN",
-            "GCR_USERNAME",    
+            "GCR_USERNAME",
             "GCR_PASSWORD",
             "SMTP_PASSWORD",
         ],
