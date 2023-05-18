@@ -225,6 +225,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 2.3.1 to **2.3.3** on 2023-05-18
   - [checkov](https://www.checkov.io/) from 2.3.240 to **2.3.245** on 2023-05-18
   - [semgrep](https://semgrep.dev/) from 1.21.0 to **1.22.0** on 2023-05-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.04.14 to **2023.05.18** on 2023-05-18
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.308 to **1.1.309** on 2023-05-18
+  - [checkov](https://www.checkov.io/) from 2.3.245 to **2.3.246** on 2023-05-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.11 to **0.45.13** on 2023-05-18
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

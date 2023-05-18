@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.308**
+- Version in MegaLinter: **1.1.309**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -106,11 +106,12 @@ Usage: pyright [options] files...
   --outputjson                       Output results in JSON format
   -p,--project <FILE OR DIRECTORY>   Use the configuration file at this location
   --pythonplatform <PLATFORM>        Analyze for a specific platform (Darwin, Linux, Windows)
+  --pythonpath <FILE>                Path to the Python interpreter
   --pythonversion <VERSION>          Analyze for a specific version (3.3, 3.4, etc.)
   --skipunannotated                  Skip analysis of functions with no type annotations
   --stats                            Print detailed performance stats
-  -t,--typeshed-path <DIRECTORY>     Use typeshed type stubs at this location
-  -v,--venv-path <DIRECTORY>         Directory that contains virtual environments
+  -t,--typeshedpath <DIRECTORY>      Use typeshed type stubs at this location
+  -v,--venvpath <DIRECTORY>          Directory that contains virtual environments
   --verbose                          Emit verbose diagnostics
   --verifytypes <PACKAGE>            Verify type completeness of a py.typed package
   --version                          Print Pyright version

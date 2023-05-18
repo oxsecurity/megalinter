@@ -144,10 +144,12 @@ Use "kubescape [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
 ```
 
 - APK packages (Linux):
   - [curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=curl)
   - [gcompat](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcompat)
+  - [libc6-compat](https://pkgs.alpinelinux.org/packages?branch=edge&name=libc6-compat)
