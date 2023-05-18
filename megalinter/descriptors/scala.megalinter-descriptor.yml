@@ -46,7 +46,7 @@ linters:
       build_platform_dockerfile:
         - RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
       dockerfile:
-        - COPY --link --from=build-platform /usr/bin/scalafix /usr/bin
+        - COPY --link --from=build-platform /usr/bin/scalafix /usr/bin/
     supported_platforms:
       platform:
         - linux/amd64
