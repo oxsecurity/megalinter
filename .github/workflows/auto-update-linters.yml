@@ -31,6 +31,8 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+    environment:
+      name: auto-update
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
     # Set max build time for the job
@@ -111,7 +113,7 @@ jobs:
         if: steps.compute_versions.outputs.has_updated_versions == 1
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN  }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
           commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true

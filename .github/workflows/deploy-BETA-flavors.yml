@@ -45,7 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     environment:
-      name: beta-flavors
+      name: beta
     strategy:
       fail-fast: false
       max-parallel: 10
