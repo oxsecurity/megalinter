@@ -25,10 +25,11 @@ jobs:
     name: MegaLinter
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the added or changed files to the repository.
+      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
+      # Remove the ones you do not need
       contents: write
-      # Give the default GITHUB_TOKEN write permission to comment PR issues & post new PR
       issues: write
+      pull-requests: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
