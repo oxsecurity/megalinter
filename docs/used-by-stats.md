@@ -3,20 +3,20 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=2345&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1575&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=770&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61872&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=61867&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38407 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7124 |
-| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2421 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 38410 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  7125 |
+| [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2422 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  2002 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  1998 |
-| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1978 |
+| [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  1977 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1692 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1272 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1162 |
-| [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   931 |
+| [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   932 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   873 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   645 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   593 |
@@ -143,13 +143,13 @@
 | [beleavemebe/marketplace-app](https://github.com/beleavemebe/marketplace-app)                                                                                                   |    11 |
 | [nvuillam/njre](https://github.com/nvuillam/njre)                                                                                                                               |    11 |
 | [CoRoSoN-Kit/CoRoSoN-Kit](https://github.com/CoRoSoN-Kit/CoRoSoN-Kit)                                                                                                           |    11 |
+| [Euvaz/GitOps-Home](https://github.com/Euvaz/GitOps-Home)                                                                                                                       |    11 |
 | [chgl/kube-powertools](https://github.com/chgl/kube-powertools)                                                                                                                 |    11 |
 | [bjw-s/pmb](https://github.com/bjw-s/pmb)                                                                                                                                       |    11 |
 | [Qarj/WebImblaze](https://github.com/Qarj/WebImblaze)                                                                                                                           |    10 |
 | [llaville/php-compatinfo-db](https://github.com/llaville/php-compatinfo-db)                                                                                                     |    10 |
 | [miracum/fhir-gateway](https://github.com/miracum/fhir-gateway)                                                                                                                 |    10 |
 | [ahmadnassri/action-semantic-release](https://github.com/ahmadnassri/action-semantic-release)                                                                                   |    10 |
-| [Euvaz/GitOps-Home](https://github.com/Euvaz/GitOps-Home)                                                                                                                       |    10 |
 | [practicalli/neovim](https://github.com/practicalli/neovim)                                                                                                                     |    10 |
 | [curedao/docs](https://github.com/curedao/docs)                                                                                                                                 |     9 |
 | [ahgraber/homelab-infra](https://github.com/ahgraber/homelab-infra)                                                                                                             |     9 |

@@ -20,7 +20,7 @@
     "cspell": "6.31.1",
     "dartanalyzer": "0.0.0",
     "devskim": "0.7.104",
-    "djlint": "1.27.2",
+    "djlint": "1.28.0",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.3.0",
     "dotnet-format": "6.0.408",
