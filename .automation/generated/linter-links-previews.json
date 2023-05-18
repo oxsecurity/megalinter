@@ -429,6 +429,11 @@
     "image": null,
     "title": "Semgrep"
   },
+  "sfdx-flow-scanner": {
+    "description": "Static analysis for Salesforce Lightning Flows using SalesforceDX (sfdx) - GitHub - Force-Config-Control/lightning-flow-scanner-sfdx: Static analysis for Salesforce Lightning Flows using Salesforce...",
+    "image": "https://opengraph.githubassets.com/6d099c875990b6ca69e464ab1aeba02b488aba06fe72d8dc4d1937a23ddcbeb7/Force-Config-Control/lightning-flow-scanner-sfdx",
+    "title": "GitHub - Force-Config-Control/lightning-flow-scanner-sfdx: Static analysis for Salesforce Lightning Flows using SalesforceDX (sfdx)"
+  },
   "sfdx-scanner": {
     "description": "",
     "image": null,

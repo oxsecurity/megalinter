@@ -203,3 +203,44 @@ linters:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+  # SFDX Flow Scanner
+  - linter_name: sfdx-flow-scanner
+    name: SALESFORCE_FLOW_SCANNER
+    file_extensions:
+      - .flow-meta.xml
+    files_sub_directory: ""
+    linter_text: |
+      Lightning flow scanner detects issues in your Salesforce Flows and provide hints to solve them.
+
+      This is critical for your production org to control the stability of your flows :)
+    linter_url: https://github.com/Force-Config-Control/lightning-flow-scanner-sfdx
+    linter_repo: https://github.com/Force-Config-Control/lightning-flow-scanner-sfdx
+    linter_rules_url: https://github.com/Force-Config-Control/lightning-flow-scanner-core
+    linter_rules_configuration_url: https://github.com/Force-Config-Control/lightning-flow-scanner-sfdx#optional-configurations
+    linter_rules_ignore_config_url: https://github.com/Force-Config-Control/lightning-flow-scanner-sfdx#optional-configurations
+    config_file_name: .flowscanignore
+    cli_config_arg_name: ""
+    cli_executable: sfdx
+    cli_lint_extra_args:
+      - "flow:scan"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "flow:scan"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: '"[0-9]+",'
+    examples:
+      - "sfdx flow:scan"
+    install:
+      dockerfile:
+        - |
+          RUN sfdx plugins:install lightning-flow-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Lightning Flow Scanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
