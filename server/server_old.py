@@ -3,6 +3,8 @@
 Start MegaLinter server
 """
 # https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
+# To run locally: REDIS_HOST=localhost uvicorn megalinter.server:app (needs a redis server online on localhost:6379)
+# cd /mnt/c/git/megalinter && rq worker --url redis://localhost:6379 megalinter_queue
 import logging
 import logging.config
 import os
