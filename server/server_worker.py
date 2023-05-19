@@ -85,7 +85,7 @@ class MegaLinterAnalysis:
                 status_code=404,
                 detail=f"Unable build file from {code_lexer.name} snippet",
             )
-        logger.info(f"Snippet file name: {snippet_file_name}")
+        print(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
         snippet_file = os.path.join(temp_dir, snippet_file_name)
         with open(snippet_file, "w", encoding="utf-8") as file:
