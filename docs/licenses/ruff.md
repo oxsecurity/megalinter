@@ -565,7 +565,7 @@ are:
     Portions of this flake8-commas Software may utilize the following
     copyrighted material, the use of which is hereby acknowledged.
 
-    Original flake8-commas: https://github.com/trevorcreech/flake8-commas/commit/e8563b71b1d5442e102c8734c11cb5202284293d
+    Original flake8-commas: <https://github.com/trevorcreech/flake8-commas/commit/e8563b71b1d5442e102c8734c11cb5202284293d>
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -852,14 +852,14 @@ are:
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, this
+  * Redistributions of source code must retain the above copyright notice, this
       list of conditions and the following disclaimer.
 
-    * Redistributions in binary form must reproduce the above copyright notice,
+  * Redistributions in binary form must reproduce the above copyright notice,
       this list of conditions and the following disclaimer in the documentation
       and/or other materials provided with the distribution.
 
-    * Neither the name of pytest-{{ cookiecutter.plugin_name }} nor the names of its
+  * Neither the name of pytest-{{ cookiecutter.plugin_name }} nor the names of its
       contributors may be used to endorse or promote products derived from
       this software without specific prior written permission.
 
@@ -948,7 +948,7 @@ are:
   """
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+                        <http://www.apache.org/licenses/>
 
     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
