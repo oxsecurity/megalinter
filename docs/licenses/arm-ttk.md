@@ -1,3 +1,8 @@
+---
+title: License info for arm-ttk within MegaLinter
+search:
+  exclude: true
+---
     MIT License
 
     Copyright (c) Microsoft Corporation.

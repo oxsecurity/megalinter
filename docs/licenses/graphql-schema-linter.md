@@ -1,3 +1,8 @@
+---
+title: License info for graphql-schema-linter within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2017 Christian Joudrey
