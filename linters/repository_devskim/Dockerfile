@@ -155,6 +155,9 @@ RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
 
+# Copy server scripts
+COPY server /server
+
 ###########################
 # Get the build arguments #
 ###########################

@@ -16,9 +16,8 @@ services:
     links:
       - megalinter_server_redis
   megalinter_server_worker:
-    image: ghcr.io/oxsecurity/megalinter-ci_light:alpha
-    environment:
-      - MEGALINTER_SERVER=true
+    image: megalinter-server:latest
+    command: rq worker --url redis://megalinter_server_redis:6379 megalinter_queue
     depends_on:
       - megalinter_server_redis
     links:

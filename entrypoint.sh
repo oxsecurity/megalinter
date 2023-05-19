@@ -73,10 +73,11 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER WORKER"
   # Install python dependencies used by server to avoid to make bigger docker images
-  pip install server/requirements.txt
-  HOST="${HOST:-0.0.0.0}" # Default host
-  PORT="${PORT:-8000}"    # Default port
-  uvicorn server.server:app --host "$HOST" --port "$PORT"
+  pip install /server/requirements.txt
+  HOST="${HOST:-megalinter_server_redis}" # Default host
+  PORT="${PORT:-6379}"    # Default port
+  QUEUE="${QUEUE:-megalinter_queue}" 
+  rq worker --url "redis://${HOST}:${PORT}" "${QUEUE}"
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

@@ -1,7 +1,10 @@
 '''
 https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
 
-docker build -t megalinter-server:latest -f server/Dockerfile-dev . && docker-compose -f server/docker-compose.yml up
+DEV:
+docker build -t megalinter-server:latest -f server/Dockerfile-dev . && docker-compose -f server/docker-compose-dev.yml up
+
+TEST:
 docker build -t megalinter-server:latest -f server/Dockerfile . && docker-compose -f server/docker-compose.yml up
 '''
 import logging

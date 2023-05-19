@@ -26,5 +26,3 @@ COPY server/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY logging.conf logging.conf
-
-CMD REDIS_HOST=localhost uvicorn server.server:app
