@@ -1,5 +1,6 @@
 fastapi 
 pygments
 uvicorn[standard]
-rq
 redis
+rq
+

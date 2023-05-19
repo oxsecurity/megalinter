@@ -12,10 +12,10 @@ from uuid import uuid1
 
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
+from redis import Redis
 from megalinter import config
 
 from megalinter.alpaca import alpaca
-from redis_om import get_redis_connection
 from rq import Queue
 from server.server_worker import processAnalysisRequest
 from server.types import AnalysisRequestInput, AnalysisRequestOutput
@@ -39,12 +39,10 @@ app.add_middleware(
 )
 logging.info("Fast API: " + app.version)
 # Initialize redis connection
-redis_host: str = os.environ.get("REDIS_HOST", "")
+redis_host: str = os.environ.get("REDIS_HOST", "megalinter_server_redis")
 redis_port: int = int(os.environ.get("REDIS_PORT", 6379))
 if redis_port != "":
-    redis = get_redis_connection(
-        host=redis_host, port=redis_port, decode_responses=True
-    )
+    redis = Redis(host=redis_host, port=redis_port, db=0)
     logging.info("REDIS Connection: " + str(redis.info()))
     # Initialize redis Queue
     q = Queue("megalinter_queue", connection=redis)
