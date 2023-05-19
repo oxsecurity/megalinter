@@ -1,3 +1,8 @@
+---
+title: License info for terrascan within MegaLinter
+search:
+  exclude: true
+---
 
                                  Apache License
                            Version 2.0, January 2004
@@ -176,7 +181,7 @@
 
    END OF TERMS AND CONDITIONS
 
-   Copyright 2020 Accurics, Inc.
+   Copyright 2022 Tenable, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

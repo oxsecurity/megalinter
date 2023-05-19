@@ -1,3 +1,8 @@
+---
+title: License info for puppet-lint within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) 2011 Tim Sharpe
 
 Permission is hereby granted, free of charge, to any person obtaining

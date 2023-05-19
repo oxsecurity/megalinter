@@ -2667,7 +2667,11 @@ def generate_documentation_all_linters():
                     # Update license key for licenses file
                     resp = r.json()
                     if resp is not None and not isinstance(resp, type(None)):
-                        if "license" in resp and "spdx_id" in resp["license"]:
+                        if (
+                            "license" in resp
+                            and resp["license"] is not None
+                            and "spdx_id" in resp["license"]
+                        ):
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
@@ -2692,12 +2696,22 @@ def generate_documentation_all_linters():
                             resp_license = r_license.json()
                             if "download_url" in resp_license:
                                 license_downloaded = session.get(
-                                    resp_license["download_url"]
+                                    resp_license["download_url"],
+                                    headers=api_github_headers,
                                 )
                                 with open(
                                     linter_license_md_file, "w", encoding="utf-8"
                                 ) as license_out_file:
-                                    license_out_file.write(license_downloaded.text)
+                                    license_header = (
+                                        "---\n"
+                                        f"title: License info for {linter.linter_name} within MegaLinter\n"
+                                        "search:\n"
+                                        "  exclude: true\n"
+                                        "---\n"
+                                    )
+                                    license_out_file.write(
+                                        license_header + license_downloaded.text
+                                    )
                                     logging.info(
                                         f"Copied license of {linter.linter_name} in {linter_license_md_file}"
                                     )

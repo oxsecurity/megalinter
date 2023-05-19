@@ -29,7 +29,7 @@ YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors|used-by-stats|docs/used-by-stats\.md)'
 SPELL_VALE_FILE_EXTENSIONS:
