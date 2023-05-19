@@ -294,7 +294,8 @@ class Linter:
             self.ignore_file_label = None
             self.ignore_file_error = None
             self.filter_regex_include = None
-            self.filter_regex_exclude = None
+            self.filter_regex_exclude_descriptor = None
+            self.filter_regex_exclude_linter = None
             self.post_linter_status = (
                 params["post_linter_status"]
                 if "post_linter_status" in params
@@ -687,16 +688,15 @@ class Linter:
             == "true"
         ):
             self.disable_errors = True
-        # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
-        if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get(
-                self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
-            )
-        elif config.exists(
-            self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
-        ):
-            self.filter_regex_exclude = config.get(
+        # Exclude regex: descriptor level
+        if config.exists(self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude_descriptor = config.get(
                 self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
+            )
+        # Exclude regex: linter level
+        if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude_linter = config.get(
+                self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
             )
         # Override default docker image version
         if config.exists(self.request_id, self.name + "_DOCKER_IMAGE_VERSION"):
@@ -832,7 +832,8 @@ class Linter:
         log_object = {
             "name": self.name,
             "filter_regex_include": self.filter_regex_include,
-            "filter_regex_exclude": self.filter_regex_exclude,
+            "filter_regex_exclude_descriptor": self.filter_regex_exclude_descriptor,
+            "filter_regex_exclude_linter": self.filter_regex_exclude_linter,
             "files_sub_directory": self.files_sub_directory,
             "lint_all_files": self.lint_all_files,
             "lint_all_other_linters_files": self.lint_all_other_linters_files,
@@ -851,7 +852,10 @@ class Linter:
         self.files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
-            filter_regex_exclude=self.filter_regex_exclude,
+            filter_regex_exclude=[
+                self.filter_regex_exclude_descriptor,
+                self.filter_regex_exclude_linter,
+            ],
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=[],
