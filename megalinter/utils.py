@@ -92,7 +92,7 @@ def get_excluded_directories(request_id):
 def filter_files(
     all_files: Sequence[str],
     filter_regex_include: Optional[str],
-    filter_regex_exclude: Optional[str],
+    filter_regex_exclude: Sequence[str],
     file_names_regex: Sequence[str],
     file_extensions: Any,
     ignored_files: Optional[Sequence[str]],
@@ -108,9 +108,12 @@ def filter_files(
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
-    filter_regex_exclude_object = (
-        re.compile(filter_regex_exclude) if filter_regex_exclude else None
-    )
+    filter_regex_exclude_objects = []
+    for filter_regex_exclude_item in filter_regex_exclude:
+        filter_regex_exclude_object = (
+            re.compile(filter_regex_exclude_item) if filter_regex_exclude_item else None
+        )
+        filter_regex_exclude_objects += [filter_regex_exclude_object]
     file_names_regex_object = re.compile("|".join(file_names_regex))
     filtered_files = []
     file_contains_regex_object = (
@@ -152,10 +155,15 @@ def filter_files(
             file_with_workspace
         ):
             continue
-        # Skip according to FILTER_REGEX_EXCLUDE
-        if filter_regex_exclude_object and filter_regex_exclude_object.search(
-            file_with_workspace
-        ):
+        # Skip according to FILTER_REGEX_EXCLUDE list
+        excluded_by_regex = False
+        for filter_regex_exclude_object in filter_regex_exclude_objects:
+            if filter_regex_exclude_object and filter_regex_exclude_object.search(
+                file_with_workspace
+            ):
+                excluded_by_regex = True
+                break
+        if excluded_by_regex is True:
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)

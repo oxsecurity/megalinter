@@ -703,7 +703,7 @@ class Megalinter:
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
-            filter_regex_exclude=self.filter_regex_exclude,
+            filter_regex_exclude=[self.filter_regex_exclude],
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,

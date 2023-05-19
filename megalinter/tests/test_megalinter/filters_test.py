@@ -68,7 +68,7 @@ class utilsTest(unittest.TestCase):
             filtered_files = utils.filter_files(
                 all_files=all_files,
                 filter_regex_include=None,
-                filter_regex_exclude=None,
+                filter_regex_exclude=[None],
                 file_names_regex=[],
                 file_extensions=["", ".md", ".ext"],
                 ignored_files=ignored_files,
@@ -95,7 +95,7 @@ class utilsTest(unittest.TestCase):
             filtered_files = utils.filter_files(
                 all_files=all_files,
                 filter_regex_include=None,
-                filter_regex_exclude=None,
+                filter_regex_exclude=[],
                 file_names_regex=[],
                 file_extensions=file_extensions,
                 ignored_files=[],

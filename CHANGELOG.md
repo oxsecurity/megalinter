@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Run stale workflow only on schedule, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
   - Add explicit permissions to stale workflow, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
   - Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file
+  - Simultaneous regex filtering at decriptor and linter levels
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
