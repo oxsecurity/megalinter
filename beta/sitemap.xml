@@ -1346,11 +1346,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/php/</loc>
-         <lastmod>2023-05-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/phpcs/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1391,6 +1386,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/protolint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/psalm/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1402,6 +1402,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/pylint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/pyright/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1421,7 +1426,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/rst-lint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/rstcheck/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/rubocop/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/ruff/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1431,7 +1451,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/scss-lint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/secretlint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/semgrep/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1451,12 +1481,32 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/shellcheck/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/shfmt/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/snakefmt/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/snakemake/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/spectral/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/sql-lint/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1481,6 +1531,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/syft/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/terraform-fmt/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1496,7 +1551,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/tflint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/trivy/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/tsqllint/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/v8r/</loc>
+         <lastmod>2023-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/vale/</loc>
          <lastmod>2023-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
