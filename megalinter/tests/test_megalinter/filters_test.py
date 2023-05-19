@@ -126,5 +126,5 @@ class utilsTest(unittest.TestCase):
         self.assertListEqual(
             sorted(filtered_files),
             sorted(["target/foo.md"]),
-            f"check regex_exclude_multilevel",
+            "check regex_exclude_multilevel",
         )
