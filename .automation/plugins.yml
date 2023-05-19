@@ -1,0 +1,31 @@
+plugins:
+  # Jupyfmt
+  - name: jupyfmt
+    description: The uncompromising Jupyter notebook formatter
+    docUrl: https://github.com/kpj/jupyfmt#mega-linter-integration
+    pluginUrl: https://raw.githubusercontent.com/kpj/jupyfmt/master/mega-linter-plugin-jupyfmt/jupyfmt.megalinter-descriptor.yml
+    author: "[Kim Philipp Jablonski](https://github.com/kpj)"
+  # linkcheck
+  - name: linkcheck
+    description: Plugin to check and validate markdown links exist and working
+    docUrl: https://github.com/shiranr/linkcheck
+    pluginUrl: https://raw.githubusercontent.com/shiranr/linkcheck/main/mega-linter-plugin-linkcheck/linkcheck.megalinter-descriptor.yml
+    author: "[Shiran Rubin](https://github.com/shiranr)"
+  # nitpick
+  - name: nitpick
+    description: Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects
+    docUrl: https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin
+    pluginUrl: https://raw.githubusercontent.com/andreoliwa/nitpick/master/mega-linter-plugin-nitpick/nitpick.megalinter-descriptor.yml
+    author: "[W. Augusto Andreoli](https://github.com/andreoliwa)"
+  # mustache
+  - name: mustache
+    description: Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
+    docUrl: https://github.com/one-acre-fund/mega-linter-plugin-logstash
+    pluginUrl: https://raw.githubusercontent.com/one-acre-fund/mega-linter-plugin-logstash/main/mega-linter-plugin-logstash/logstash.megalinter-descriptor.yml
+    author: "[Yann Jouanique](https://github.com/Yann-J)"
+  # salt-lint
+  - name: salt-lint
+    description: Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
+    docUrl: https://github.com/ssc-services/mega-linter-plugin-salt
+    pluginUrl: https://raw.githubusercontent.com/ssc-services/mega-linter-plugin-salt/main/mega-linter-plugin-salt/salt.megalinter-descriptor.yml
+    author: "[Joachim Grimm](https://github.com/grimmjo)"

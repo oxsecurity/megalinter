@@ -114,10 +114,10 @@ _Github PR reporter_
     - [Markdown](#markdown)
     - [reStructuredText](#restructuredtext)
   - [Plugins](#plugins)
+    - [External Plugins Catalog](#external-plugins-catalog)
     - [Use plugins](#use-plugins)
       - [Example](#example)
-    - [Plugins Catalog](#plugins-catalog)
-    - [Create plugins](#create-plugins)
+    - [Create your own plugin](#create-your-own-plugin)
       - [Limitations](#limitations)
   - [They talk about MegaLinter](#they-talk-about-megalinter)
     - [English articles](#english-articles)
@@ -940,7 +940,6 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
-
 ### Linter specific variables
 
 See variables related to a single linter behavior in [linters documentations](#supported-linters)
@@ -1170,11 +1169,20 @@ description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpic
 -->
 ## Plugins
 
-For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
+For performances and security reasons, we can not embed all linters of the world within MegaLinter.
 
-But any linter can be callable within MegaLinter thanks to the plugin mechanism !
+But our core architecture allows to build and publish MegaLinter Plugins !
 
-### Use plugins
+### External Plugins Catalog
+
+<!-- plugins-table-start -->
+<!-- plugins-table-end -->
+
+> Note: Using an external plugin means you trust its author
+
+Submit a Pull Request if you want your plugin to appear here :)
+
+### Use external plugins
 
 Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either begin with "https://" or take the form of "file://\<path\>", where \<path\> points to a valid plugin descriptor file.
 
@@ -1189,17 +1197,7 @@ PLUGINS:
   - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
 
-### Plugins Catalog
-
-- [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
-- [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
-- [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
-- [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-- [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
-
-Submit a PR if you want your plugin to appear here :)
-
-### Create plugins
+### Create your own plugin !
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
