@@ -194,6 +194,20 @@
 <a class="md-nav__link" href="#apply-fixes">
     Apply fixes
   </a>
+<nav aria-label="Apply fixes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#apply-fixes-issues">
+    Apply fixes issues
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notes">
+    Notes
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#linter-specific-variables">
@@ -2351,6 +2365,20 @@
 <a class="md-nav__link" href="#apply-fixes">
     Apply fixes
   </a>
+<nav aria-label="Apply fixes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#apply-fixes-issues">
+    Apply fixes issues
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notes">
+    Notes
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#linter-specific-variables">
@@ -2677,23 +2705,32 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 <li><strong>APPLY_FIXES_EVENT</strong>: <code>all</code>, <code>push</code>, <code>pull_request</code>, <code>none</code> <em>(use none in case of use of <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a>)</em></li>
 <li><strong>APPLY_FIXES_MODE</strong>: <code>commit</code> to create a new commit and push it on the same branch, or <code>pull_request</code> to create a new PR targeting the branch.</li>
 </ul>
-<p>Notes:</p>
+<h3 id="apply-fixes-issues">Apply fixes issues</h3>
+<p>You may see <strong>github permission errors</strong>, or workflows not run on the new commit.</p>
+<p>To solve these issues, you can apply one of the following solutions.</p>
 <ul>
-<li>You can use <a href="../reporters/UpdatedSourcesReporter/"><strong>Updated sources reporter</strong></a> if you don't want fixes to be automatically applied on git branch, but <strong>download them in a zipped file</strong> and manually <strong>extract them in your project</strong></li>
-<li>If used, <strong>APPLY_FIXES_EVENT</strong> and <strong>APPLY_FIXES_MODE</strong> can not be defined in <code>.mega-linter.yml</code>config file, they must be set as environment variables</li>
+<li>Method 1: The most secured<ul>
+<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">Create Fine Grained Personal Access Token</a>, scoped only on your repository and then copy the PAT value</li>
+<li><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment">Define environment secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</li>
+<li>Update your Github Actions Workflow to add the environment name</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>If you use <strong>APPLY_FIXES</strong>, add the following line in your <code>.gitignore file</code></li>
-</ul>
-<pre><code class="language-shell">megalinter-reports/
-</code></pre>
-<ul>
-<li>You may see <strong>github permission errors</strong>, or workflows not run on the new commit. To solve these issues:<ul>
-<li><a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token">Create Personal Access Token</a>, then copy the PAT value</li>
+<li>Method 2: Easier, but any contributor with write access can see your Personal Access Token<ul>
+<li><a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token">Create Classic Personal Access Token</a>, then copy the PAT value</li>
 <li><a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository">Define secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</li>
 </ul>
 </li>
 </ul>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>You can use <a href="../reporters/UpdatedSourcesReporter/"><strong>Updated sources reporter</strong></a> if you don't want fixes to be automatically applied on git branch, but <strong>download them in a zipped file</strong> and manually <strong>extract them in your project</strong></li>
+<li>If used, <strong>APPLY_FIXES_EVENT</strong> and <strong>APPLY_FIXES_MODE</strong> can not be defined in <code>.mega-linter.yml</code>config file, they must be set as environment variables</li>
+<li>If you use <strong>APPLY_FIXES</strong>, add the following line in your <code>.gitignore file</code></li>
+</ul>
+<pre><code class="language-shell">megalinter-reports/
+</code></pre>
 <h2 id="linter-specific-variables">Linter specific variables</h2>
 <p>See variables related to a single linter behavior in <a href="../supported-linters/">linters documentations</a></p>
 <h2 id="pre-commands">Pre-commands</h2>
