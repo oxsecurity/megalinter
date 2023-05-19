@@ -1,0 +1,24 @@
+version: '3'
+services:
+  megalinter_server_redis:
+    image: redis:4.0.6-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+  megalinter_server_api:
+    image: megalinter-server:latest
+    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - megalinter_server_redis
+    links:
+      - megalinter_server_redis
+  megalinter_server_worker:
+    image: megalinter-server:latest
+    command: rq worker --url redis://megalinter_server_redis:6379 megalinter_queue
+    depends_on:
+      - megalinter_server_redis
+    links:
+      - megalinter_server_redis

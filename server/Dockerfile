@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+# Core MegaLinter
+COPY megalinter /megalinter
+RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
+    && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
+    && rm -rf /var/cache/apk/* \
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+
+COPY megalinter/descriptors /megalinter-descriptors
+COPY TEMPLATES /action/lib/.automation
+
+# MegaLinter Server
+COPY megalinter /megalinter
+COPY server/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+CMD REDIS_HOST=localhost uvicorn megalinter.server:app
