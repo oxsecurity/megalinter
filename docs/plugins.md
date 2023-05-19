@@ -42,7 +42,7 @@ PLUGINS:
   - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
 
-## Create your own plugin !
+## Create your own plugin
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 

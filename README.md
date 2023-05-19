@@ -36,7 +36,7 @@ MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the 
 
 Supporting [**55** languages](#languages), [**24** formats](#formats), [**21** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
-[**Upgrade to MegaLinter v7 !**]https://github.com/oxsecurity/megalinter/issues/2608
+[**Upgrade to MegaLinter v7 !**]<https://github.com/oxsecurity/megalinter/issues/2608>
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -1203,7 +1203,7 @@ PLUGINS:
   - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
 
-### Create your own plugin !
+### Create your own plugin
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 
