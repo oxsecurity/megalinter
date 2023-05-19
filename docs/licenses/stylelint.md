@@ -1,3 +1,8 @@
+---
+title: License info for stylelint within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2015 - present Maxime Thirouin, David Clark & Richard Hallows

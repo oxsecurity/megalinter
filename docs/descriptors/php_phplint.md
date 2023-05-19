@@ -9,7 +9,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **5.5**
+- Version in MegaLinter: **9.0.4**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
@@ -42,9 +42,9 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       116        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        52        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       113        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        81        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        50        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -81,32 +81,35 @@ phplint mydir -vvv
 
 ```shell
 Description:
-  Lint something
+  Files syntax check only
 
 Usage:
-  phplint [options] [--] [<path>...]
+  lint [options] [--] [<path>...]
 
 Arguments:
-  path                               Path to file or directory to lint.
+  path                               Path to file or directory to lint (default: working directory)
 
 Options:
       --exclude=EXCLUDE              Path to file or directory to exclude from linting (multiple values allowed)
-      --extensions=EXTENSIONS        Check only files with selected extensions (default: php)
-  -j, --jobs=JOBS                    Number of parraled jobs to run (default: 5)
-  -c, --configuration=CONFIGURATION  Read configuration from config file (default: ./.phplint.yml).
-      --no-configuration             Ignore default configuration file (default: ./.phplint.yml).
-      --no-cache                     Ignore cached data.
-      --cache=CACHE                  Path to the cache file.
-      --no-progress                  Hide the progress output.
-      --json[=JSON]                  Path to store JSON results.
-      --xml[=XML]                    Path to store JUnit XML results.
-  -w, --warning                      Also show warnings.
+      --extensions=EXTENSIONS        Check only files with selected extensions (multiple values allowed)
+  -j, --jobs=JOBS                    Number of paralleled jobs to run
+  -c, --configuration=CONFIGURATION  Read configuration from config file [default: ".phplint.yml"]
+      --no-configuration             Ignore default configuration file (.phplint.yml)
+      --cache=CACHE                  Path to the cache directory
+      --no-cache                     Ignore cached data
+  -p, --progress=PROGRESS            Show the progress output
+      --no-progress                  Hide the progress output
+      --log-json[=LOG-JSON]          Log scan results in JSON format to file (default: standard output)
+      --log-junit[=LOG-JUNIT]        Log scan results in JUnit XML format to file (default: standard output)
+  -w, --warning                      Also show warnings
+      --memory-limit=MEMORY-LIMIT    Memory limit for analysis
+      --ignore-exit-code             Ignore exit codes so there are no "failure" exit code even when no files processed
+  -h, --help                         Display help for the given command. When no command is given display help for the lint command
   -q, --quiet                        Do not output any message
-      --no-files-exit-code           Throw error if no files processed.
-  -h, --help                         Display help for the given command. When no command is given display help for the list command
   -V, --version                      Display this application version
       --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
   -n, --no-interaction               Do not ask any interactive question
+      --manifest                     Show which versions of dependencies are bundled
   -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 
@@ -130,10 +133,8 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
 # Linter install
-RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
-    && composer global config bin-dir --absolute
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
 
 ```
 

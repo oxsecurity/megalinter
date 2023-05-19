@@ -1,3 +1,8 @@
+---
+title: License info for clj-kondo within MegaLinter
+search:
+  exclude: true
+---
 Eclipse Public License - v 1.0
 
 THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC

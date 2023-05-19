@@ -1,3 +1,8 @@
+---
+title: License info for swiftlint within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2020 Realm Inc.

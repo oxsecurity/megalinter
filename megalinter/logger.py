@@ -115,6 +115,16 @@ def display_header(mega_linter):
         # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
         logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
         logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
+        if config.exists(None, "PAT"):
+            logging.warning(
+                "You should not use PAT anymore, please use Github Permissions in your Github Actions job"
+            )
+            logging.warning(
+                "Add permissions contents:write, issues: write and pull-requests: write"
+            )
+            logging.warning(
+                "More details: https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs"
+            )
     # Display config variables for debug mode
     secured_env_variables = config.list_secured_variables(mega_linter.request_id)
     for name, value in sorted(config.get_config(mega_linter.request_id).items()):

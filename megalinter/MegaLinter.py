@@ -703,7 +703,7 @@ class Megalinter:
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
-            filter_regex_exclude=self.filter_regex_exclude,
+            filter_regex_exclude=[self.filter_regex_exclude],
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
@@ -856,7 +856,7 @@ class Megalinter:
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
-                c.yellow("◬ Successfully linted all files, but with ignored errors")
+                c.yellow("⚠️ Successfully linted all files, but with ignored errors")
             )
             config.delete(self.request_id)
             self.check_updated_sources_failure()

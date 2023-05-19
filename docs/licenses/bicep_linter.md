@@ -1,3 +1,8 @@
+---
+title: License info for bicep_linter within MegaLinter
+search:
+  exclude: true
+---
     MIT License
 
     Copyright (c) Microsoft Corporation.

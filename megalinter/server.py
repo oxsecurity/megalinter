@@ -157,7 +157,7 @@ class AnalysisLinterResult(BaseModel):
         default=None,
         description="Sarif output of the linter process, when available",
         example={
-            "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+            "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
             "runs": [
                 {
                     "columnKind": "utf16CodeUnits",

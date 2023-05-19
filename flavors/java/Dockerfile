@@ -69,6 +69,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 helm \
                 gcompat \
+                libc6-compat \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -139,7 +140,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
-                markdownlint-cli \
+                markdownlint-cli@0.33.0 \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
@@ -243,7 +244,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
         1QIDAQAB\
         -----END PUBLIC KEY-----" | sed 's/   */\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
-    wget --quiet \
+    wget --quiet --tries=10 --waitretry=10 \
         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
@@ -335,7 +336,8 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
 # kubescape installation
-    && curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
 
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake

@@ -89,6 +89,7 @@ USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
+PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
@@ -788,8 +789,8 @@ def generate_documentation():
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
-        + "[**Upgrade to MegaLinter v7 !**]"
-        + "https://github.com/oxsecurity/megalinter/issues/2608" #TODOV7: Replace link
+        + "[**Try MegaLinter v7 beta !**]"
+        + "(https://github.com/oxsecurity/megalinter/issues/2608)"  # TODOV7: Replace link
     )
     # Update README.md file
     replace_in_file(
@@ -815,6 +816,18 @@ def generate_documentation():
         "<!-- flavors-table-end -->",
         flavors_table_md_str,
     )
+
+    # Build & Update flavors table
+    plugins_table_md = build_plugins_md_table()
+    plugins_table_md_str = "\n".join(plugins_table_md)
+    logging.info("Generated Plugins table for README:\n" + plugins_table_md_str)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- plugins-table-start -->",
+        "<!-- plugins-table-end -->",
+        plugins_table_md_str,
+    )
+
     # Generate flavors individual documentations
     flavors = megalinter.flavor_factory.get_all_flavors()
     for flavor, flavor_info in flavors.items():
@@ -1777,6 +1790,24 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     return md_table
 
 
+# Build plugins table from YML file in .automation/plugins.yml
+def build_plugins_md_table():
+    with open(PLUGINS_FILE, "r", encoding="utf-8") as f:
+        plugins_file_data = yaml.safe_load(f)
+    plugins = plugins_file_data["plugins"]
+    md_table = [
+        "| Name | Description | Author | Raw URL |",
+        "| :----- | :---------- | :--------------: | :--- |",
+    ]
+    for plugin in plugins:
+        md_table += [
+            f"| [**{plugin['name']}**]({plugin['docUrl']}) | "
+            f"{plugin['description']} | {plugin['author']} | "
+            f"[Descriptor]({plugin['pluginUrl']}) |",
+        ]
+    return md_table
+
+
 def update_mkdocs_and_workflow_yml_with_flavors():
     mkdocs_yml = []
     gha_workflow_yml = ["        flavor:", "          ["]
@@ -2667,7 +2698,11 @@ def generate_documentation_all_linters():
                     # Update license key for licenses file
                     resp = r.json()
                     if resp is not None and not isinstance(resp, type(None)):
-                        if "license" in resp and "spdx_id" in resp["license"]:
+                        if (
+                            "license" in resp
+                            and resp["license"] is not None
+                            and "spdx_id" in resp["license"]
+                        ):
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
@@ -2692,12 +2727,22 @@ def generate_documentation_all_linters():
                             resp_license = r_license.json()
                             if "download_url" in resp_license:
                                 license_downloaded = session.get(
-                                    resp_license["download_url"]
+                                    resp_license["download_url"],
+                                    headers=api_github_headers,
                                 )
                                 with open(
                                     linter_license_md_file, "w", encoding="utf-8"
                                 ) as license_out_file:
-                                    license_out_file.write(license_downloaded.text)
+                                    license_header = (
+                                        "---\n"
+                                        f"title: License info for {linter.linter_name} within MegaLinter\n"
+                                        "search:\n"
+                                        "  exclude: true\n"
+                                        "---\n"
+                                    )
+                                    license_out_file.write(
+                                        license_header + license_downloaded.text
+                                    )
                                     logging.info(
                                         f"Copied license of {linter.linter_name} in {linter_license_md_file}"
                                     )

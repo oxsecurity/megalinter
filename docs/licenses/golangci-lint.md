@@ -1,3 +1,8 @@
+---
+title: License info for golangci-lint within MegaLinter
+search:
+  exclude: true
+---
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

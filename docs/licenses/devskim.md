@@ -1,3 +1,8 @@
+---
+title: License info for devskim within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) Microsoft Corporation. All rights reserved.
 
 MIT License

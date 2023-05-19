@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Deprecate misspell, as it is not maintained since 2018
   - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
   - kubeconform: Simplify installation and get latest version
+  - Updated cases in console/log output to use ⚠ `Warning Sign (U+26A0)` instead of ◬ `White Up-Pointing Triangle with Dot (U+25EC)`
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
@@ -53,10 +54,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix local run of python test cases
   - Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2
   - mega-linter-runner v7 upgrader
+  - Run stale workflow only on schedule, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
+  - Add explicit permissions to stale workflow, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
+  - Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file
+  - Simultaneous regex filtering at descriptor and linter levels
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
   - Remove ASCII characters from linters helps displayed in MegaLinter documentation
+  - Add instructions to install MegaLinter on Bitbucket Pipelines
+  - Exclude licenses from search results
+  - Automate External Plugins table generation using **.automation/plugins.yml** file
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
@@ -211,6 +219,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.25.2 to **2.26.0** on 2023-05-13
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.1 to **0.52.2** on 2023-05-13
   - [rubocop](https://rubocop.org/) from 1.50.2 to **1.51.0** on 2023-05-13
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.5.0 to **0.6.1** on 2023-05-14
+  - [checkov](https://www.checkov.io/) from 2.3.239 to **2.3.240** on 2023-05-14
+  - [phplint](https://github.com/overtrue/phplint) from 5.5 to **9.0.4** on 2023-05-14
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.0 to **6.16.1** on 2023-05-18
+  - [stylelint](https://stylelint.io) from 15.6.1 to **15.6.2** on 2023-05-18
+  - [revive](https://revive.run/) from 1.3.1 to **1.3.2** on 2023-05-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.1 to **2.3.3** on 2023-05-18
+  - [checkov](https://www.checkov.io/) from 2.3.240 to **2.3.245** on 2023-05-18
+  - [semgrep](https://semgrep.dev/) from 1.21.0 to **1.22.0** on 2023-05-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.04.14 to **2023.05.18** on 2023-05-18
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.308 to **1.1.309** on 2023-05-18
+  - [checkov](https://www.checkov.io/) from 2.3.245 to **2.3.246** on 2023-05-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.11 to **0.45.13** on 2023-05-18
+  - [djlint](https://djlint.com/) from 1.27.2 to **1.28.0** on 2023-05-18
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.33.0** on 2023-05-19
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.267 to **0.0.269** on 2023-05-19
+  - [checkov](https://www.checkov.io/) from 2.3.246 to **2.3.247** on 2023-05-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.13 to **0.45.14** on 2023-05-19
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

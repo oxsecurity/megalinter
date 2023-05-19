@@ -6875,6 +6875,111 @@
       "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KUBERNETES_KUBESCAPE_ARGUMENTS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_ARGUMENTS",
+      "description": "KUBERNETES_KUBESCAPE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KUBERNETES_KUBESCAPE_CLI_EXECUTABLE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kubescape"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: CLI Executable",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DIRECTORY",
+      "default": "",
+      "title": "KUBERNETES_KUBESCAPE: Directory containing KUBERNETES files",
+      "type": "string"
+    },
+    "KUBERNETES_KUBESCAPE_DISABLE_ERRORS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DISABLE_ERRORS",
+      "default": false,
+      "title": "KUBERNETES_KUBESCAPE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_KUBESCAPE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KUBERNETES_KUBESCAPE_FILE_EXTENSIONS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
       "description": "KUBERNETES_KUBEVAL: User custom arguments to add in linter CLI call",
@@ -9162,7 +9267,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {
@@ -9261,7 +9366,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {

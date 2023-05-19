@@ -29,6 +29,12 @@ on:
 jobs:
   build-sh:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
+      # Remove the ones you do not need
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - name: Create URL to the run output
         id: vars
@@ -37,7 +43,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -60,7 +66,7 @@ jobs:
       # Checkout the pull request branch
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
@@ -75,7 +81,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -93,7 +99,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -103,7 +109,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -114,7 +120,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}

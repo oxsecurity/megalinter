@@ -76,6 +76,12 @@ jobs:
   build:
     name: MegaLinter
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
+      # Remove the ones you do not need
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       # Git Checkout
       - name: Checkout Code
@@ -210,6 +216,27 @@ Add the following job in your `azure-pipelines.yaml` file
 ```
 
 To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
+
+## Bitbucket Pipelines
+
+1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
+
+2. Copy and paste the following template or add the step to your existing pipeline.
+
+```yaml
+image: atlassian/default-image:3
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Run MegaLinter
+          image: oxsecurity/megalinter:v6
+          script:
+            - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
+          artifacts:
+            -  megalinter-reports/**
+```
+
 
 ## Jenkins
 
@@ -420,5 +447,6 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 ```
 
 Note: You can also use such command line in your custom CI/CD pipelines
+
 
 <!-- installation-section-end -->
