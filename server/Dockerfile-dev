@@ -2,7 +2,13 @@ FROM python:3.11-alpine
 
 #RUN apk add --update --no-cache \
 #            git
-RUN apk add --update --no-cache git
+RUN apk add \
+    bash \
+    git \
+    nodejs \
+    npm
+
+RUN npm install eslint stylelint --global
 
 # Core MegaLinter
 COPY megalinter /megalinter

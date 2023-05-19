@@ -1,18 +1,29 @@
+import logging
 import os
+import tempfile
+from typing import List
 
 from fastapi import HTTPException
 import git
+from megalinter import MegaLinter
 from server.types import AnalysisRequestInput, AnalysisStatus
 from pygments import lexers
 
+logger = logging.getLogger(__name__)
+
+
 def processAnalysisRequest(
-    item,
-    request_id,
-    server_id,
+    request_input: dict,
+    request_id: str,
+    server_id: str,
 ):
-    analysis_executor = MegaLinterAnalysis()
-    analysis_executor.initialize(item, request_id, server_id)
-    return {}
+    analysis = MegaLinterAnalysis()
+    analysis.initialize(
+        AnalysisRequestInput.parse_obj(request_input), request_id, server_id
+    )
+    analysis.initialize_files()
+    analysis.process()
+    return analysis.__dict__
 
 
 # Analysis processor class
@@ -24,10 +35,11 @@ class MegaLinterAnalysis:
     snippet_language: str | None = None
     workspace: str | None = None
     web_hook_url: str | None = None
+    results: List = []
 
     # Initialize analysis request and assign an unique Id
     def initialize(self, request_input: AnalysisRequestInput, request_id, server_id):
-        self.id = (request_id,)
+        self.id = request_id
         self.server_id = server_id
         self.status = AnalysisStatus.NEW
         self.request_input = request_input
@@ -91,3 +103,37 @@ class MegaLinterAnalysis:
         with open(snippet_file, "w", encoding="utf-8") as file:
             file.write(self.request_input.snippet)
         self.workspace = temp_dir
+
+    # Run MegaLinter
+    def process(self):
+        mega_linter = MegaLinter.Megalinter(
+            {
+                "cli": False,
+                "request_id": self.id,
+                "workspace": self.workspace,
+                "SARIF_REPORTER": "true",
+                "WEBHOOK_REPORTER": "true",
+                "WEBHOOK_REPORTER_URL": self.web_hook_url,
+            }
+        )
+        self.change_status(AnalysisStatus.IN_PROGRESS)
+        mega_linter.run()
+        for linters in mega_linter.linters:
+            for reporter in linters.reporters:
+                if reporter.name == "WEBHOOK_REPORTER" and reporter.web_hook_data:
+                    self.results.append(reporter.web_hook_data)
+        self.change_status(AnalysisStatus.COMPLETE)
+        del mega_linter
+
+    # Create uniform temp directories
+    def create_temp_dir(self):
+        return tempfile.mkdtemp(prefix="ct-megalinter-x")
+
+    # Change status of analysis request
+    def change_status(self, status: AnalysisStatus):
+        self.status = status
+        logger.info(f"Analysis request {self.id} status change: {status}")
+        self.save()
+
+    def save(self):
+        print("Saved state " + str(self.__dict__))

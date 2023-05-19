@@ -1,9 +1,8 @@
 '''
 https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
-Run server: REDIS_HOST=localhost uvicorn megalinter.server:app (needs a redis server online on localhost:6379)
-Run worker: cd /mnt/c/git/megalinter && rq worker --url redis://localhost:6379 megalinter_queue
 
-docker build -t megalinter-server:latest -f server/Dockerfile .
+docker build -t megalinter-server:latest -f server/Dockerfile-dev . && docker-compose -f server/docker-compose.yml up
+docker build -t megalinter-server:latest -f server/Dockerfile . && docker-compose -f server/docker-compose.yml up
 '''
 import logging
 import logging.config
