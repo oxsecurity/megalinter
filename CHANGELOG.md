@@ -57,11 +57,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Run stale workflow only on schedule, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
   - Add explicit permissions to stale workflow, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
   - Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file
+  - Simultaneous regex filtering at descriptor and linter levels
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
   - Remove ASCII characters from linters helps displayed in MegaLinter documentation
   - Add instructions to install MegaLinter on Bitbucket Pipelines
+  - Exclude licenses from search results
+  - Automate External Plugins table generation using **.automation/plugins.yml** file
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
@@ -230,6 +233,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.245 to **2.3.246** on 2023-05-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.11 to **0.45.13** on 2023-05-18
   - [djlint](https://djlint.com/) from 1.27.2 to **1.28.0** on 2023-05-18
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.33.0** on 2023-05-19
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.267 to **0.0.269** on 2023-05-19
+  - [checkov](https://www.checkov.io/) from 2.3.246 to **2.3.247** on 2023-05-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.13 to **0.45.14** on 2023-05-19
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03

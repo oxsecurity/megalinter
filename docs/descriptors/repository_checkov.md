@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.246**
+- Version in MegaLinter: **2.3.247**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -103,7 +103,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}]
+               [-o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
                [--framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} ...]]
@@ -169,7 +169,7 @@ options:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}, --output {cli,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,csv}
+  -o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH

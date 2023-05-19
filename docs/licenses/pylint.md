@@ -1,3 +1,8 @@
+---
+title: License info for pylint within MegaLinter
+search:
+  exclude: true
+---
       GNU GENERAL PUBLIC LICENSE
          Version 2, June 1991
 

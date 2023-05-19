@@ -1,3 +1,8 @@
+---
+title: License info for phplint within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2016 overtrue <i@overtrue.me>

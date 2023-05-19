@@ -1,3 +1,8 @@
+---
+title: License info for ktlint within MegaLinter
+search:
+  exclude: true
+---
 Copyright 2019 Pinterest, Inc.
 Copyright 2016-2019 Stanley Shyiko
 

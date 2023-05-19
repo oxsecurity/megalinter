@@ -22,6 +22,26 @@
   display: table;
 }
 
+/* light mode table header bgcolor */
+.md-typeset__table th {
+  background-color: #f2edfe;
+}
+
+/* dark mode table header bgcolor */
+[data-md-color-scheme="slate"] .md-typeset__table th {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
+/* light mode alternating table bg colors */
+.md-typeset__table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* dark mode alternating table bg colors */
+[data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
 h1[content~=Home] {
   display: none;
 }
@@ -50,4 +70,7 @@ h1[content~=Home] {
 
   --md-footer-bg-color: #B95CE4;
 
+  --md-typeset-table-color--light: #fff5fb;
+
 }
+

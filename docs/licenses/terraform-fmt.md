@@ -1,3 +1,10 @@
+---
+title: License info for terraform-fmt within MegaLinter
+search:
+  exclude: true
+---
+Copyright (c) 2014 HashiCorp, Inc.
+
 Mozilla Public License, version 2.0
 
 1. Definitions

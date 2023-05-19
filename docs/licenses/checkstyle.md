@@ -1,3 +1,8 @@
+---
+title: License info for checkstyle within MegaLinter
+search:
+  exclude: true
+---
                   GNU LESSER GENERAL PUBLIC LICENSE
                        Version 2.1, February 1999
 
