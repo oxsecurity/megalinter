@@ -233,6 +233,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.33.0** on 2023-05-19
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.267 to **0.0.269** on 2023-05-19
   - [checkov](https://www.checkov.io/) from 2.3.246 to **2.3.247** on 2023-05-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.13 to **0.45.14** on 2023-05-19
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
