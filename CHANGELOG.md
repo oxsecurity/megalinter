@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove ASCII characters from linters helps displayed in MegaLinter documentation
   - Add instructions to install MegaLinter on Bitbucket Pipelines
   - Exclude licenses from search results
+  - Automate External Plugins table generation using **.automation/plugins.yml** file
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
