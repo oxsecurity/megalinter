@@ -8,11 +8,27 @@ description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpic
 
 # Plugins
 
-For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
+For performances and security reasons, we can not embed all linters of the world within MegaLinter.
 
-But any linter can be callable within MegaLinter thanks to the plugin mechanism !
+But our core architecture allows to build and publish MegaLinter Plugins !
 
-## Use plugins
+## External Plugins Catalog
+
+<!-- plugins-table-start -->
+|   <!-- -->    | Name                                                                        | Description                                                                                                                                                                             |                        Author                        | Raw URL                                                                                                                                                       |
+|:-------------:|:----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <!-- icon --> | [jupyfmt](https://github.com/kpj/jupyfmt#mega-linter-integration)           | The uncompromising Jupyter notebook formatter                                                                                                                                           |   [Kim Philipp Jablonski](https://github.com/kpj)    | [Descriptor](https://raw.githubusercontent.com/kpj/jupyfmt/master/mega-linter-plugin-jupyfmt/jupyfmt.megalinter-descriptor.yml)                               |
+| <!-- icon --> | [linkcheck](https://github.com/shiranr/linkcheck)                           | Plugin to check and validate markdown links exist and working                                                                                                                           |      [Shiran Rubin](https://github.com/shiranr)      | [Descriptor](https://raw.githubusercontent.com/shiranr/linkcheck/main/mega-linter-plugin-linkcheck/linkcheck.megalinter-descriptor.yml)                       |
+| <!-- icon --> | [nitpick](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin) | Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects                                                                          | [W. Augusto Andreoli](https://github.com/andreoliwa) | [Descriptor](https://raw.githubusercontent.com/andreoliwa/nitpick/master/mega-linter-plugin-nitpick/nitpick.megalinter-descriptor.yml)                        |
+| <!-- icon --> | [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash)    | Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config) |     [Yann Jouanique](https://github.com/Yann-J)      | [Descriptor](https://raw.githubusercontent.com/one-acre-fund/mega-linter-plugin-logstash/main/mega-linter-plugin-logstash/logstash.megalinter-descriptor.yml) |
+| <!-- icon --> | [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt)        | Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.                                                                                       |     [Joachim Grimm](https://github.com/grimmjo)      | [Descriptor](https://raw.githubusercontent.com/ssc-services/mega-linter-plugin-salt/main/mega-linter-plugin-salt/salt.megalinter-descriptor.yml)              |
+<!-- plugins-table-end -->
+
+> Note: Using an external plugin means you trust its author
+
+Submit a Pull Request if you want your plugin to appear here :)
+
+## Use external plugins
 
 Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either begin with "https://" or take the form of "file://\<path\>", where \<path\> points to a valid plugin descriptor file.
 
@@ -22,22 +38,11 @@ Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either be
 
 ```yaml
 PLUGINS:
-  - https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
-  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/kpj/jupyfmt/master/mega-linter-plugin-jupyfmt/jupyfmt.megalinter-descriptor.yml
   - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 ```
 
-## Plugins Catalog
-
-- [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
-- [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate markdown links exist and working.
-- [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
-- [mustache](https://github.com/one-acre-fund/mega-linter-plugin-logstash): Plugin to validate [Logstash](https://www.elastic.co/guide/en/logstash/current/configuration.html) pipeline definition files using [mustache](https://github.com/breml/logstash-config)
-- [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved.
-
-Submit a PR if you want your plugin to appear here :)
-
-## Create plugins
+## Create your own plugin
 
 You can implement your own descriptors and load them as plugins during MegaLinter runtime
 

@@ -89,6 +89,7 @@ USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
+PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
@@ -815,6 +816,18 @@ def generate_documentation():
         "<!-- flavors-table-end -->",
         flavors_table_md_str,
     )
+
+    # Build & Update flavors table
+    plugins_table_md = build_plugins_md_table()
+    plugins_table_md_str = "\n".join(plugins_table_md)
+    logging.info("Generated Plugins table for README:\n" + plugins_table_md_str)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- plugins-table-start -->",
+        "<!-- plugins-table-end -->",
+        plugins_table_md_str,
+    )
+
     # Generate flavors individual documentations
     flavors = megalinter.flavor_factory.get_all_flavors()
     for flavor, flavor_info in flavors.items():
@@ -1774,6 +1787,24 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
                 .replace(".md", "/")
             )
         md_table += [md_line]
+    return md_table
+
+
+# Build plugins table from YML file in .automation/plugins.yml
+def build_plugins_md_table():
+    with open(PLUGINS_FILE, "r", encoding="utf-8") as f:
+        plugins_file_data = yaml.safe_load(f)
+    plugins = plugins_file_data["plugins"]
+    md_table = [
+        "| <!-- --> | Name | Description | Author | Raw URL |",
+        "| :------: | :----- | :---------- | :--------------: | :--- |",
+    ]
+    for plugin in plugins:
+        md_table += [
+            f"| <!-- icon --> | [{plugin['name']}]({plugin['docUrl']}) | "
+            f"{plugin['description']} | {plugin['author']} | "
+            f"[Descriptor]({plugin['pluginUrl']}) |",
+        ]
     return md_table
 
 

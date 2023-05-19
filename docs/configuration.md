@@ -150,7 +150,6 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
-
 ## Linter specific variables
 
 See variables related to a single linter behavior in [linters documentations](supported-linters.md)
