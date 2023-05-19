@@ -1801,7 +1801,7 @@ def build_plugins_md_table():
     ]
     for plugin in plugins:
         md_table += [
-            f"| [{plugin['name']}]({plugin['docUrl']}) | "
+            f"| [**{plugin['name']}**]({plugin['docUrl']}) | "
             f"{plugin['description']} | {plugin['author']} | "
             f"[Descriptor]({plugin['pluginUrl']}) |",
         ]
