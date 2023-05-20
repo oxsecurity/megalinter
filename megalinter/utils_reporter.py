@@ -268,6 +268,14 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
+        else:
+            logging.warning(
+                "External Message: Unable to find linter output, "
+                "there is a probably an error within MegaLinter Worker"
+            )
+            result[
+                "outputText"
+            ] = f"Internal error: unable to find linter output in {text_file_name}"
     return manage_redis_stream(result, redis_stream)
 
 
