@@ -106,16 +106,16 @@ class MegaLinterAnalysis:
 
     # Run MegaLinter
     def process(self):
-        mega_linter = MegaLinter.Megalinter(
-            {
+        megalinter_params =             {
                 "cli": False,
                 "request_id": self.id,
                 "workspace": self.workspace,
                 "SARIF_REPORTER": "true",
-                "WEBHOOK_REPORTER": "true",
-                "WEBHOOK_REPORTER_URL": self.web_hook_url,
-            }
-        )
+        }
+        if self.web_hook_url:
+            megalinter_params["WEBHOOK_REPORTER"] = "true"
+            megalinter_params["WEBHOOK_REPORTER_URL"] = self.web_hook_url
+        mega_linter = MegaLinter.Megalinter(megalinter_params)
         self.change_status(AnalysisStatus.IN_PROGRESS)
         mega_linter.run()
         for linters in mega_linter.linters:

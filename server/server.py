@@ -36,9 +36,9 @@ app.add_middleware(
 )
 logging.info("Fast API: " + app.version)
 # Initialize redis connection
-redis_host: str = os.environ.get("REDIS_HOST", "megalinter_server_redis")
-redis_port: int = int(os.environ.get("REDIS_PORT", 6379))
-redis_queue: str = os.environ.get("REDIS_QUEUE","megalinter_queue")
+redis_host: str = os.environ.get("MEGALINTER_SERVER_REDIS_HOST", "megalinter_server_redis")
+redis_port: int = int(os.environ.get("MEGALINTER_SERVER_REDIS_PORT", 6379))
+redis_queue: str = os.environ.get("MEGALINTER_SERVER_REDIS_QUEUE","megalinter:queue_requests")
 if redis_port != "":
     redis = Redis(host=redis_host, port=redis_port, db=0)
     logging.info("REDIS Connection: " + str(redis.info()))

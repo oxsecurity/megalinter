@@ -46,22 +46,22 @@ class RedisLinterReporter(Reporter):
                 )
                 self.stream_key = config.get(
                     self.master.request_id,
-                    "REDIS_LITER_REPORTER_STREAM",
-                    "megalinter_linter_result",
+                    "REDIS_LINTER_REPORTER_STREAM",
+                    "megalinter:stream_linter_results",
                 )
             else:
                 logging.error(
-                    "You need to define REDIS_HOST to use RedisLinterReporter"
+                    "You need to define REDIS_LINTER_REPORTER_HOST to use RedisLinterReporter"
                 )
 
     # Send message to Redis Stream
     def produce_report(self):
-        self.stream_data = build_linter_reporter_external_result(self)
+        self.stream_data = build_linter_reporter_external_result(self,redis=True)
         try:
             redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
             logging.debug("REDIS Connection: " + str(redis.info()))
             resp = redis.xadd(self.stream_key, self.stream_data)
-            logging.info(resp)
+            logging.info("REDIS RESP"+str(resp))
         except ConnectionError as e:
             logging.warning(
                 f"[Redis Linter Reporter] Error posting message for {self.master.descriptor_id}"

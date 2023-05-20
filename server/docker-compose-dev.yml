@@ -1,7 +1,7 @@
 version: '3'
 services:
   megalinter_server_redis:
-    image: redis:4.0.6-alpine
+    image: redis:7.0.11-alpine
     ports:
       - "6379:6379"
     volumes:
@@ -9,6 +9,11 @@ services:
   megalinter_server_api:
     image: megalinter-server:latest
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
+    environment:
+      - MEGALINTER_SERVER=true
+      - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
+      - MEGALINTER_SERVER_REDIS_PORT=6379
+      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue_requests
     ports:
       - "8000:8000"
     depends_on:
@@ -17,11 +22,13 @@ services:
       - megalinter_server_redis
   megalinter_server_worker:
     image: megalinter-server:latest
-    command: rq worker --url redis://megalinter_server_redis:6379 megalinter_queue
+    command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue_requests
     environment:
       - MEGALINTER_SERVER=true
       - REDIS_LINTER_REPORTER=true
       - REDIS_LINTER_REPORTER_HOST=megalinter_server_redis
+      - REDIS_LINTER_REPORTER_PORT=6379
+      - REDIS_LINTER_REPORTER_STREAM=megalinter:stream_linter_results
     depends_on:
       - megalinter_server_redis
     links:

@@ -222,7 +222,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
 
-def build_linter_reporter_external_result(reporter) -> dict:
+def build_linter_reporter_external_result(reporter,redis=False) -> dict:
     success_msg = "No errors were found in the linting process"
     error_not_blocking = "Errors were detected but are considered not blocking"
     error_msg = f"Found {reporter.master.total_number_errors} errors"
@@ -239,18 +239,21 @@ def build_linter_reporter_external_result(reporter) -> dict:
         f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
     )
     result = {
-        "status": "success" if reporter.master.return_code == 0 else "error",
-        "errorNumber": reporter.master.total_number_errors,
-        "statusMessage": status_message,
-        "elapsedTime": round(reporter.master.elapsed_time_s, 2),
+        "linterStatus": "success" if reporter.master.return_code == 0 else "error",
+        "linterErrorNumber": reporter.master.total_number_errors,
+        "linterStatusMessage": status_message,
+        "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
         "descriptorId": reporter.master.descriptor_id,
         "linterId": reporter.master.linter_name,
         "linterKey": reporter.master.name,
         "linterVersion": reporter.master.get_linter_version(),
+        "linterCliLintMode": reporter.master.cli_lint_mode,
         "requestId": reporter.master.master.request_id,
         "docUrl": linter_doc_url,
         "isFormatter": reporter.master.is_formatter,
     }
+    if reporter.master.cli_lint_mode in ["file","list_of_files"]:
+        result["filesNumber"] = len(reporter.master.files)
     if (
         reporter.master.sarif_output_file is not None
         and os.path.isfile(reporter.master.sarif_output_file)
@@ -272,4 +275,11 @@ def build_linter_reporter_external_result(reporter) -> dict:
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
+    # Redis does not accept certain types of values: convert them
+    if redis is True:
+        for result_key,result_val in result.items():
+             if isinstance(result_val, dict):
+                 result[result_key] = json.dumps(result_val)
+             elif isinstance(result_val, bool):
+                 result[result_key] = int(result_val)
     return result

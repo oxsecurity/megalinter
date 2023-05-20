@@ -74,10 +74,10 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   echo "[MegaLinter init] MEGALINTER SERVER WORKER"
   # Install python dependencies used by server to avoid to make bigger docker images
   pip install -r /server/requirements.txt
-  HOST="${HOST:-megalinter_server_redis}" # Default host
-  PORT="${PORT:-6379}"    # Default port
-  QUEUE="${QUEUE:-megalinter_queue}" 
-  rq worker --url "redis://${HOST}:${PORT}" "${QUEUE}"
+  MEGALINTER_SERVER_REDIS_HOST="${MEGALINTER_SERVER_REDIS_HOST:-megalinter_server_redis}" # Default host
+  MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"    # Default port
+  MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue_requests}" 
+  rq worker --url "redis://${HOST}:${PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server
