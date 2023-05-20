@@ -19,6 +19,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.repository == 'oxsecurity/megalinter'
     steps:
       - uses: actions/checkout@v3
