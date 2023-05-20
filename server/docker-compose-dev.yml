@@ -1,11 +1,15 @@
 version: '3'
 services:
+
+  # Redis server to manage request queues and results
   megalinter_server_redis:
     image: redis:7.0.11-alpine
     ports:
       - "6379:6379"
     volumes:
       - ./redis:/data
+
+  # Server to receive requests and post them in redis queue
   megalinter_server_api:
     image: megalinter-server:latest
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
@@ -20,15 +24,28 @@ services:
       - megalinter_server_redis
     links:
       - megalinter_server_redis
+
+  # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
     image: megalinter-server:latest
     command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue_requests
     environment:
+      # Worker variables
       - MEGALINTER_SERVER=true
       - REDIS_LINTER_REPORTER=true
       - REDIS_LINTER_REPORTER_HOST=megalinter_server_redis
       - REDIS_LINTER_REPORTER_PORT=6379
-      - REDIS_LINTER_REPORTER_STREAM=megalinter:stream_linter_results
+
+      # Use either of the following variables groups depending you want to use redis stream messages or pubsub
+
+      # Stream mode
+      #- REDIS_LINTER_REPORTER_METHOD=STREAM
+      #- REDIS_LINTER_REPORTER_STREAM=megalinter:stream_linter_results
+
+      # PubSub mode
+      - REDIS_LINTER_REPORTER_METHOD=PUBSUB
+      ## You can force a channel. If not set, megalinter:channel_linter_results:REQUEST_ID will be used (request_id is returned in initial THHP POST body)
+      - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:channel_linter_results  
     depends_on:
       - megalinter_server_redis
     links:

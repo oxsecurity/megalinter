@@ -20,8 +20,10 @@ class RedisLinterReporter(Reporter):
 
     redis_host: str | None = None
     redis_port: int | None = None
+    redis_method: str | None = None  # Stream or PubSub
     stream_key: str | None = None
-    stream_data: object | None = None
+    pubsub_channel: str | None = None
+    message_data: object | None = None
 
     def __init__(self, params=None):
         # Deactivate Redis Linter Reporter by default
@@ -44,11 +46,23 @@ class RedisLinterReporter(Reporter):
                         self.master.request_id, "REDIS_LINTER_REPORTER_PORT", 6379
                     )
                 )
-                self.stream_key = config.get(
-                    self.master.request_id,
-                    "REDIS_LINTER_REPORTER_STREAM",
-                    "megalinter:stream_linter_results",
+                self.redis_method = config.get(
+                    self.master.request_id, "REDIS_LINTER_REPORTER_METHOD", "STREAM"
                 )
+                # Use Redis Stream
+                if self.redis_method == "STREAM":
+                    self.stream_key = config.get(
+                        self.master.request_id,
+                        "REDIS_LINTER_REPORTER_STREAM",
+                        "megalinter:stream_linter_results",
+                    )
+                else:
+                    # Use redis PubSub
+                    self.pubsub_channel = config.get(
+                        self.master.request_id,
+                        "REDIS_LINTER_REPORTER_PUBSUB_CHANNEL",
+                        "megalinter:channel_linter_results:" + self.master.request_id,
+                    )
             else:
                 logging.error(
                     "You need to define REDIS_LINTER_REPORTER_HOST to use RedisLinterReporter"
@@ -56,12 +70,15 @@ class RedisLinterReporter(Reporter):
 
     # Send message to Redis Stream
     def produce_report(self):
-        self.stream_data = build_linter_reporter_external_result(self,redis=True)
+        self.message_data = build_linter_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
         try:
             redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
             logging.debug("REDIS Connection: " + str(redis.info()))
-            resp = redis.xadd(self.stream_key, self.stream_data)
-            logging.info("REDIS RESP"+str(resp))
+            if self.redis_method == "STREAM":
+                resp = redis.xadd(self.stream_key, self.message_data)
+            else:
+                resp = redis.publish(self.pubsub_channel, json.dumps(self.message_data))
+            logging.info("REDIS RESP" + str(resp))
         except ConnectionError as e:
             logging.warning(
                 f"[Redis Linter Reporter] Error posting message for {self.master.descriptor_id}"
@@ -72,4 +89,6 @@ class RedisLinterReporter(Reporter):
                 f"[Redis Linter Reporter] Error posting message for {self.master.descriptor_id}"
                 f" with {self.master.linter_name}: Error {str(e)}"
             )
-            logging.warning("[Redis Linter Reporter] Stream data: "+str(self.stream_data))
+            logging.warning(
+                "[Redis Linter Reporter] Redis Message data: " + str(self.message_data)
+            )

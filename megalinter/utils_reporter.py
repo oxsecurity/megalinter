@@ -222,7 +222,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
 
-def build_linter_reporter_external_result(reporter,redis=False) -> dict:
+def build_linter_reporter_external_result(reporter,redis_stream=False) -> dict:
     success_msg = "No errors were found in the linting process"
     error_not_blocking = "Errors were detected but are considered not blocking"
     error_msg = f"Found {reporter.master.total_number_errors} errors"
@@ -276,7 +276,7 @@ def build_linter_reporter_external_result(reporter,redis=False) -> dict:
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
     # Redis does not accept certain types of values: convert them
-    if redis is True:
+    if redis_stream is True:
         for result_key,result_val in result.items():
              if isinstance(result_val, dict):
                  result[result_key] = json.dumps(result_val)
