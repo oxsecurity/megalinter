@@ -71,21 +71,21 @@ class RedisLinterReporter(Reporter):
     # Send message when linter is about to start
     def initialize(self):
         start_message = build_linter_reporter_start_message(self, redis_stream=(self.redis_method == 'STREAM'))
-        self.send_redis_message(self.message_data)
+        self.send_redis_message(start_message)
 
     # Send message when linter is completed to Redis Stream
     def produce_report(self):
         self.message_data = build_linter_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
         self.send_redis_message(self.message_data)
 
-    def send_redis_message(self):
+    def send_redis_message(self,message_data):
         try:
             redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
             logging.debug("REDIS Connection: " + str(redis.info()))
             if self.redis_method == "STREAM":
-                resp = redis.xadd(self.stream_key, self.message_data)
+                resp = redis.xadd(self.stream_key, message_data)
             else:
-                resp = redis.publish(self.pubsub_channel, json.dumps(self.message_data))
+                resp = redis.publish(self.pubsub_channel, json.dumps(message_data))
             logging.info("REDIS RESP" + str(resp))
         except ConnectionError as e:
             logging.warning(
@@ -98,5 +98,5 @@ class RedisLinterReporter(Reporter):
                 f" with {self.master.linter_name}: Error {str(e)}"
             )
             logging.warning(
-                "[Redis Linter Reporter] Redis Message data: " + str(self.message_data)
+                "[Redis Linter Reporter] Redis Message data: " + str(message_data)
             )
