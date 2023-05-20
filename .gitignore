@@ -117,3 +117,4 @@ obj/
 
 run_local_linter.sh
 
+**/dump.rdb

@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 # Initialize FastAPI
 server_id = "SRV_" + str(uuid1())
 app = FastAPI(
-    title="MegaLinter Server", version=os.environ.get(None, "BUILD_VERSION", "DEV")
+    title="MegaLinter Server", version=os.environ.get("BUILD_VERSION", "DEV")
 )
 app.add_middleware(
     CORSMiddleware,
