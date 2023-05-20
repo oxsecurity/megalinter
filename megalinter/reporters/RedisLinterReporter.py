@@ -11,7 +11,7 @@ from redis import Redis
 import requests
 from megalinter import Reporter, config
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
-from megalinter.utils_reporter import build_linter_reporter_external_result
+from megalinter.utils_reporter import build_linter_reporter_external_result, build_linter_reporter_start_message
 
 
 class RedisLinterReporter(Reporter):
@@ -68,9 +68,17 @@ class RedisLinterReporter(Reporter):
                     "You need to define REDIS_LINTER_REPORTER_HOST to use RedisLinterReporter"
                 )
 
-    # Send message to Redis Stream
+    # Send message when linter is about to start
+    def initialize(self):
+        start_message = build_linter_reporter_start_message(self, redis_stream=(self.redis_method == 'STREAM'))
+        self.send_redis_message(self.message_data)
+
+    # Send message when linter is completed to Redis Stream
     def produce_report(self):
         self.message_data = build_linter_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
+        self.send_redis_message(self.message_data)
+
+    def send_redis_message(self):
         try:
             redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
             logging.debug("REDIS Connection: " + str(redis.info()))
