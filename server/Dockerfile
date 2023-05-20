@@ -1,5 +1,7 @@
 FROM python:3.11-alpine
 
+WORKDIR /
+
 #RUN apk add --update --no-cache \
 #            git
 RUN apk add --update --no-cache git

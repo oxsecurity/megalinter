@@ -5,6 +5,5 @@ from .types import AnalysisRequestInput,AnalysisRequestOutput,AnalysisStatus
 __all__ = [
     "server",
     "server_worker",
-    "types",
-    processAnalysisRequest
+    "types"
 ]
