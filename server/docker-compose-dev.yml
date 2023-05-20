@@ -18,6 +18,10 @@ services:
   megalinter_server_worker:
     image: megalinter-server:latest
     command: rq worker --url redis://megalinter_server_redis:6379 megalinter_queue
+    environment:
+      - MEGALINTER_SERVER=true
+      - REDIS_LINTER_REPORTER=true
+      - REDIS_LINTER_REPORTER_HOST=megalinter_server_redis
     depends_on:
       - megalinter_server_redis
     links:

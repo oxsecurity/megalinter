@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import subprocess
@@ -220,3 +221,55 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     output = utils.decode_utf8(process.stdout)
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
+
+def build_linter_reporter_external_result(reporter) -> dict:
+    success_msg = "No errors were found in the linting process"
+    error_not_blocking = "Errors were detected but are considered not blocking"
+    error_msg = f"Found {reporter.master.total_number_errors} errors"
+    status_message = (
+        success_msg
+        if reporter.master.status == "success" and reporter.master.return_code == 0
+        else error_not_blocking
+        if reporter.master.status == "error" and reporter.master.return_code == 0
+        else error_msg
+        )
+    lang_lower = reporter.master.descriptor_id.lower()
+    linter_name_lower = reporter.master.linter_name.lower().replace("-", "_")
+    linter_doc_url = (
+        f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    )
+    result = {
+        "status": "success" if reporter.master.return_code == 0 else "error",
+        "errorNumber": reporter.master.total_number_errors,
+        "statusMessage": status_message,
+        "elapsedTime": round(reporter.master.elapsed_time_s, 2),
+        "descriptorId": reporter.master.descriptor_id,
+        "linterId": reporter.master.linter_name,
+        "linterKey": reporter.master.name,
+        "linterVersion": reporter.master.get_linter_version(),
+        "requestId": reporter.master.master.request_id,
+        "docUrl": linter_doc_url,
+        "isFormatter": reporter.master.is_formatter,
+    }
+    if (
+        reporter.master.sarif_output_file is not None
+        and os.path.isfile(reporter.master.sarif_output_file)
+        and os.path.getsize(reporter.master.sarif_output_file) > 0
+    ):
+        with open(
+            reporter.master.sarif_output_file, "r", encoding="utf-8"
+        ) as linter_sarif_file:
+            result["outputSarif"] = json.load(linter_sarif_file)
+    else:
+        text_report_sub_folder = config.get(
+            reporter.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
+        text_file_name = (
+            f"{reporter.report_folder}{os.path.sep}"
+            f"{text_report_sub_folder}{os.path.sep}"
+            f"{reporter.master.status.upper()}-{reporter.master.name}.log"
+        )
+        if os.path.isfile(text_file_name):
+            with open(text_file_name, "r", encoding="utf-8") as text_file:
+                result["outputText"] = text_file.read()
+    return result
