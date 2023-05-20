@@ -1,3 +1,4 @@
+gitpython
 fastapi 
 pygments
 uvicorn[standard]

@@ -15,27 +15,22 @@ from uuid import uuid1
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
-from megalinter import config
 
-from megalinter.alpaca import alpaca
 from rq import Queue
-from server.server_worker import processAnalysisRequest
 from server.types import AnalysisRequestInput, AnalysisRequestOutput
 
 print("MegaLinter Server starting…")
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)  # type: ignore[attr-defined]
 logger = logging.getLogger(__name__)
-alpaca()
 
 # Initialize FastAPI
 server_id = "SRV_" + str(uuid1())
 app = FastAPI(
-    title="MegaLinter Server", version=config.get(None, "BUILD_VERSION", "DEV")
+    title="MegaLinter Server", version=os.environ.get(None, "BUILD_VERSION", "DEV")
 )
-allow_origins = config.get_list(None, "CORS_ALLOW_ORIGINS", ["*"])
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allow_origins,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -68,7 +63,7 @@ async def request_analysis(
 ) -> AnalysisRequestOutput:
     request_id = "RQ_" + str(uuid1())
     job = q.enqueue(
-        processAnalysisRequest,
+        "server.server_worker.processAnalysisRequest",
         item.dict(),
         request_id,
         server_id,

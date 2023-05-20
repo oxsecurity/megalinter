@@ -1,24 +1,17 @@
 FROM python:3.11-alpine
 
+RUN apk add --upgrade --no-cache git
+
 WORKDIR /
 
-#RUN apk add --update --no-cache \
-#            git
-RUN apk add --update --no-cache git
-
-# Core MegaLinter
 COPY megalinter /megalinter
+COPY server /server
+COPY server/requirements.txt requirements.txt
+COPY logging.conf logging.conf
+
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf \
+    pip install -r requirements.txt
 
-COPY megalinter/descriptors /megalinter-descriptors
-COPY TEMPLATES /action/lib/.automation
-
-# MegaLinter Server
-COPY server /server
-COPY server/requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-COPY logging.conf logging.conf

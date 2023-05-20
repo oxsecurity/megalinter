@@ -17,6 +17,7 @@ services:
       - megalinter_server_redis
   megalinter_server_worker:
     image: ghcr.io/oxsecurity/megalinter-ci_light:alpha
+    #image: ghcr.io/oxsecurity/megalinter-cupcake:alpha
     environment:
       - MEGALINTER_SERVER=true
     depends_on:
