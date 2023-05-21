@@ -1422,29 +1422,5 @@
     "xXNXXXXXXXXXKo",
     "yallist",
     "yocto-queue"
-  ],
-  "enabled": true,
-  "enableFiletypes": [
-    "bat",
-    "bibtex",
-    "dockerfile",
-    "dotenv",
-    "go.mod",
-    "go.sum",
-    "jsx-tags",
-    "julia",
-    "pip-requirements",
-    "properties",
-    "r",
-    "ruby",
-    "shaderlab",
-    "shellcheckrc",
-    "shellscript",
-    "sql",
-    "tex",
-    "toml",
-    "vb",
-    "xml",
-    "xsl"
   ]
 }
