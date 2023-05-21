@@ -38,7 +38,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pip3 install --upgrade "markdown==3.3.7" mike mkdocs-material "pymdown-extensions==9.11" "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview "github-dependents-info==0.10.0"
   cd /tmp/lint || exit 1
   chmod +x build.sh
-  GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents
+  GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents --stats
   exit $?
 fi
 

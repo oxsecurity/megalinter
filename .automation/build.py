@@ -42,6 +42,7 @@ from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
+UPDATE_STATS = "--stats" in sys.argv or RELEASE is True
 UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 UPDATE_DEPENDENTS = "--dependents" in sys.argv
 UPDATE_CHANGELOG = "--changelog" in sys.argv
@@ -127,7 +128,7 @@ def generate_all_flavors():
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
-    if UPDATE_DOC is True:
+    if UPDATE_STATS is True:
         try:
             update_docker_pulls_counter()
         except requests.exceptions.ConnectionError as e:
