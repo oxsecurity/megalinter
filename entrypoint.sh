@@ -77,7 +77,14 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   MEGALINTER_SERVER_REDIS_HOST="${MEGALINTER_SERVER_REDIS_HOST:-megalinter_server_redis}" # Default host
   MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"    # Default port
   MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue_requests}" 
-  rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  if [ "${MEGALINTER_SERVER_WORKER_POOL}" == "true" ]; then
+    # Use RQ worker pool (beta)
+    MEGALINTER_SERVER_WORKER_POOL_NUMBER="${MEGALINTER_SERVER_WORKER_POOL_NUMBER:-10}"    # Default number of worker threads
+    rq worker-pool --num-workers "${MEGALINTER_SERVER_WORKER_POOL_NUMBER}" --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  else 
+    # Use RQ worker (a worker can execute a single job paralelly)
+    rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  fi
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

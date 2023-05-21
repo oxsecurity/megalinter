@@ -54,14 +54,14 @@ class RedisLinterReporter(Reporter):
                     self.stream_key = config.get(
                         self.master.request_id,
                         "REDIS_LINTER_REPORTER_STREAM",
-                        "megalinter:stream_linter_results",
+                        "megalinter:stream:linter_results",
                     )
                 else:
                     # Use redis PubSub
                     self.pubsub_channel = config.get(
                         self.master.request_id,
                         "REDIS_LINTER_REPORTER_PUBSUB_CHANNEL",
-                        "megalinter:channel_linter_results:" + self.master.request_id,
+                        "megalinter:pubsub:linter_results:" + self.master.request_id,
                     )
             else:
                 logging.error(

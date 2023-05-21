@@ -27,12 +27,19 @@ services:
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
     #image: ghcr.io/oxsecurity/megalinter-ci_light:alpha # ci_light is lighter
-    image: ghcr.io/oxsecurity/megalinter-javascript:alpha # javascript projects
-    #image: ghcr.io/oxsecurity/megalinter-cupcake:alpha # cupcake is more complete
+    #image: ghcr.io/oxsecurity/megalinter-javascript:alpha # javascript projects
+    image: ghcr.io/oxsecurity/megalinter-cupcake:alpha # cupcake is more complete
     #image: ghcr.io/oxsecurity/megalinter:alpha # all linters
     environment:
       # Worker variables
       - MEGALINTER_SERVER=true
+      - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
+      - MEGALINTER_SERVER_REDIS_PORT=6379
+      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue_requests
+      # - MEGALINTER_SERVER_WORKER_POOL=true # Uncomment to try worker pool (beta), to have multiple jobs processed by the same worker
+      # - MEGALINTER_SERVER_WORKER_POOL_NUMBER=5 # If worker pool active, number of parallel threads in the worker
+
+      # Redis Reporter info: can be different than Redis job Queue server
       - REDIS_LINTER_REPORTER=true
       - REDIS_LINTER_REPORTER_HOST=megalinter_server_redis
       - REDIS_LINTER_REPORTER_PORT=6379
@@ -41,11 +48,12 @@ services:
 
       # Stream mode
       #- REDIS_LINTER_REPORTER_METHOD=STREAM
-      #- REDIS_LINTER_REPORTER_STREAM=megalinter:stream_linter_results
+      #- REDIS_LINTER_REPORTER_STREAM=megalinter:stream:linter_results
 
       # PubSub mode
       - REDIS_LINTER_REPORTER_METHOD=PUBSUB
-      - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:channel_linter_results  # You can force a channel. If not set, megalinter:channel_linter_results:REQUEST_ID will be used
+      ## You can force a channel. If not set, megalinter:pubsub:linter_results:REQUEST_ID will be used (request_id is returned in initial THHP POST body)
+      - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results  
     depends_on:
       - megalinter_server_redis
     links:
