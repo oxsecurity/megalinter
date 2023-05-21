@@ -36,8 +36,8 @@ services:
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
       - MEGALINTER_SERVER_REDIS_PORT=6379
       - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue_requests
-      # - MEGALINTER_SERVER_WORKER_POOL=true # Uncomment to try worker pool (beta), to have multiple jobs processed by the same worker
-      # - MEGALINTER_SERVER_WORKER_POOL_NUMBER=5 # If worker pool active, number of parallel threads in the worker
+      - MEGALINTER_SERVER_WORKER_POOL=true # Uncomment to try worker pool (beta), to have multiple jobs processed by the same worker
+      - MEGALINTER_SERVER_WORKER_POOL_NUMBER=5 # If worker pool active, number of parallel threads in the worker
 
       # Redis Reporter info: can be different than Redis job Queue server
       - REDIS_LINTER_REPORTER=true

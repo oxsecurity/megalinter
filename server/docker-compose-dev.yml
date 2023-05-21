@@ -28,15 +28,11 @@ services:
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
     image: megalinter-server:latest
-    command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue_requests
+    # command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue_requests
+    command: rq worker-pool --num-workers 5 --url redis://megalinter_server_redis:6379 megalinter:queue_requests # Uncomment to try worker pool
     environment:
       # Worker variables
       - MEGALINTER_SERVER=true
-      - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
-      - MEGALINTER_SERVER_REDIS_PORT=6379
-      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue_requests
-      # - MEGALINTER_SERVER_WORKER_POOL=true # Uncomment to try worker pool (beta), to have multiple jobs processed by the same worker
-      # - MEGALINTER_SERVER_WORKER_POOL_NUMBER=5 # If worker pool active, number of parallel threads in the worker
 
       # Redis Reporter info: can be different than Redis job Queue server
       - REDIS_LINTER_REPORTER=true
