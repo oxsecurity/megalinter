@@ -17,7 +17,7 @@ services:
       - MEGALINTER_SERVER=true
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
       - MEGALINTER_SERVER_REDIS_PORT=6379
-      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue_requests
+      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue:requests
     ports:
       - "8000:8000"
     depends_on:
@@ -28,8 +28,8 @@ services:
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
     image: megalinter-server:latest
-    # command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue_requests
-    command: rq worker-pool --num-workers 5 --url redis://megalinter_server_redis:6379 megalinter:queue_requests # Uncomment to try worker pool
+    # command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue:requests
+    command: rq worker-pool --num-workers 5 --url redis://megalinter_server_redis:6379 megalinter:queue:requests # Uncomment to try worker pool
     environment:
       # Worker variables
       - MEGALINTER_SERVER=true
