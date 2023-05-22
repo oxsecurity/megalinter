@@ -20,7 +20,7 @@
     "cspell": "6.31.1",
     "dartanalyzer": "0.0.0",
     "devskim": "0.7.104",
-    "djlint": "1.28.0",
+    "djlint": "1.29.0",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.3.0",
     "dotnet-format": "6.0.408",
@@ -89,14 +89,14 @@
     "shellcheck": "0.9.0",
     "shfmt": "3.6.0",
     "snakefmt": "0.8.4",
-    "snakemake": "7.25.4",
+    "snakemake": "7.26.0",
     "spectral": "6.6.0",
     "sql-lint": "1.0.0",
     "sqlfluff": "2.1.0",
     "standard": "17.0.0",
     "stylelint": "15.6.2",
     "swiftlint": "0.52.2",
-    "syft": "0.80.0",
+    "syft": "0.81.0",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.4.6",
     "terragrunt": "0.45.15",
@@ -107,5 +107,5 @@
     "v8r": "2.0.0",
     "vale": "2.26.0",
     "xmllint": "21004",
-    "yamllint": "1.31.0"
+    "yamllint": "1.32.0"
 }
