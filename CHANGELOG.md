@@ -243,6 +243,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.14 to **0.45.15** on 2023-05-20
   - [checkov](https://www.checkov.io/) from 2.3.247 to **2.3.251** on 2023-05-21
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.1 to **6.16.2** on 2023-05-22
+  - [djlint](https://djlint.com/) from 1.28.0 to **1.29.0** on 2023-05-22
+  - [syft](https://github.com/anchore/syft) from 0.80.0 to **0.81.0** on 2023-05-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.4 to **7.26.0** on 2023-05-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.31.0 to **1.32.0** on 2023-05-22
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
