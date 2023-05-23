@@ -8,7 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- cljstyle: Remove default value for configuration file name
+- Linter enhancements & fixes
+  - cljstyle: Remove default value for configuration file name
+  - golangci-lint : Add autofix capability using **--fix** argument
 
 - Linter versions upgrades
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.05.18 to **2023.05.26** on 2023-06-01
