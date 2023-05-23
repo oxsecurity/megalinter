@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
   - kubeconform: Simplify installation and get latest version
   - Updated cases in console/log output to use ⚠ `Warning Sign (U+26A0)` instead of ◬ `White Up-Pointing Triangle with Dot (U+25EC)`
+  - golangci-lint : Add autofix capability using **--fix** argument
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
