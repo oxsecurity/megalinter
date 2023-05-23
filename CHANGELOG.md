@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add explicit permissions to stale workflow, by @echoix in [#2641](https://github.com/oxsecurity/megalinter/pull/2641)
   - Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file
   - Simultaneous regex filtering at descriptor and linter levels
+  - Review MegaLinter's own cspell word list for outdated exclusions, by @echoix in [#2676](https://github.com/oxsecurity/megalinter/pull/2676)
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
@@ -65,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add instructions to install MegaLinter on Bitbucket Pipelines
   - Exclude licenses from search results
   - Automate External Plugins table generation using **.automation/plugins.yml** file
+  - Add `--stats` argument to `build.sh` to update docker pull stats only when requested (manually, or from CI job Auto-Update-Linters), by @echoix in [#2677](https://github.com/oxsecurity/megalinter/pull/2677)
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04
@@ -239,6 +241,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.13 to **0.45.14** on 2023-05-19
   - [eslint](https://eslint.org) from 8.40.0 to **8.41.0** on 2023-05-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.14 to **0.45.15** on 2023-05-20
+  - [checkov](https://www.checkov.io/) from 2.3.247 to **2.3.251** on 2023-05-21
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.1 to **6.16.2** on 2023-05-22
+  - [djlint](https://djlint.com/) from 1.28.0 to **1.29.0** on 2023-05-22
+  - [syft](https://github.com/anchore/syft) from 0.80.0 to **0.81.0** on 2023-05-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.4 to **7.26.0** on 2023-05-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.31.0 to **1.32.0** on 2023-05-22
+  - [psalm](https://psalm.dev) from Psalm.5.11.0@ to **Psalm.5.12.0@** on 2023-05-23
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
