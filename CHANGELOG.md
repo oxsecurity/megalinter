@@ -247,6 +247,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.80.0 to **0.81.0** on 2023-05-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.4 to **7.26.0** on 2023-05-22
   - [yamllint](https://yamllint.readthedocs.io/) from 1.31.0 to **1.32.0** on 2023-05-22
+  - [psalm](https://psalm.dev) from Psalm.5.11.0@ to **Psalm.5.12.0@** on 2023-05-23
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
