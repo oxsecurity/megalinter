@@ -2280,14 +2280,22 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
     logging.info("Updated " + file.name + " between " + start + " and " + end)
-    bracket_content = (
-        bracket_content.replace("####", "#THREE#")
-        .replace("###", "#TWO#")
-        .replace("##", "#ONE#")
-        .replace("#THREE#", "###")
-        .replace("#TWO#", "##")
-        .replace("#ONE#", "#")
-    )
+    if "<!-- install-" in start or "<!-- config-" in start:
+        bracket_content = (
+            bracket_content.replace("####", "#TWO#")
+            .replace("###", "#ONE#")
+            .replace("#TWO#", "##")
+            .replace("#ONE#", "#")
+        )
+    else:
+        bracket_content = (
+            bracket_content.replace("####", "#THREE#")
+            .replace("###", "#TWO#")
+            .replace("##", "#ONE#")
+            .replace("#THREE#", "###")
+            .replace("#TWO#", "##")
+            .replace("#ONE#", "#")
+        )
 
     if not os.path.isfile(target_file):
         mdl_disable = "<!-- markdownlint-disable MD013 -->"
