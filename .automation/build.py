@@ -2327,7 +2327,14 @@ def replace_anchors_by_links(file_path, moves):
         ["formats", "supported-linters.md#formats"],
         ["tooling-formats", "supported-linters.md#tooling-formats"],
         ["other", "supported-linters.md#other"],
-        ["apply-fixes", "configuration.md#apply-fixes"],
+        ["apply-fixes", "config-apply-fixes.md"], 
+        ["installation", "install-assisted.md"],
+        ["configuration", "config-file.md"],
+        ["activation-and-deactivation", "config-activation.md"],
+        ["filter-linted-files", "config-filtering.md"],
+        ["pre-commands", "config-precommands.md"],
+        ["post-commands", "config-postcommands.md"],
+        ["environment-variables-security", "config-variables-security.md"],
     ]:
         file_content_new = file_content_new.replace(f"(#{pair[0]})", f"({pair[1]})")
     if file_content_new != file_content:
