@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="checkov, devskim, dustilock, git_diff, gitleaks, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" name="description"/>
+<meta content="checkov, devskim, dustilock, git_diff, gitleaks, kics, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
 <link href="https://megalinter.io/beta/descriptors/repository/" rel="canonical"/>
 <link href="../copypaste_jscpd/" rel="prev"/>
@@ -24,12 +24,12 @@
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
 <meta content="REPOSITORY linters in MegaLinter" name="twitter:title">
-<meta content="checkov, devskim, dustilock, git_diff, gitleaks, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" name="twitter:description">
+<meta content="checkov, devskim, dustilock, git_diff, gitleaks, kics, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
 <meta content="REPOSITORY linters in MegaLinter" property="og:title"/>
-<meta content="checkov, devskim, dustilock, git_diff, gitleaks, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" property="og:description"/>
+<meta content="checkov, devskim, dustilock, git_diff, gitleaks, kics, secretlint, semgrep, syft, trivy are available to analyze REPOSITORY files in MegaLinter" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -1956,11 +1956,6 @@
         terraform-fmt
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../terraform_kics/">
-        kics
-      </a>
-</li>
 </ul>
 </nav>
 </li>
@@ -2077,6 +2072,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../repository_gitleaks/">
         gitleaks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../repository_kics/">
+        kics
       </a>
 </li>
 <li class="md-nav__item">
@@ -2481,6 +2481,10 @@
 <tr>
 <td><a href="../repository_gitleaks/"><strong>gitleaks</strong></a><br/><a href="../repository_gitleaks/"><em>REPOSITORY_GITLEAKS</em></a></td>
 <td><a href="https://github.com/gitleaks/gitleaks"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gitleaks/gitleaks?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
+</tr>
+<tr>
+<td><a href="../repository_kics/"><strong>kics</strong></a><br/><a href="../repository_kics/"><em>REPOSITORY_KICS</em></a></td>
+<td><a href="https://github.com/checkmarx/kics"><img alt="GitHub stars" src="https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 <tr>
 <td><a href="../repository_secretlint/"><strong>secretlint</strong></a><br/><a href="../repository_secretlint/"><em>REPOSITORY_SECRETLINT</em></a></td>

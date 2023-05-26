@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="How to use remark-lint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze MARKDOWN files" name="description"/>
+<meta content="How to use kics (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/markdown_remark_lint/" rel="canonical"/>
-<link href="../markdown_markdownlint/" rel="prev"/>
-<link href="../markdown_markdown_link_check/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/repository_kics/" rel="canonical"/>
+<link href="../repository_gitleaks/" rel="prev"/>
+<link href="../repository_secretlint/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.14" name="generator"/>
-<title>remark-lint configuration in MegaLinter - MegaLinter by OX Security</title>
+<title>kics configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.85bb2934.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a6bdf11c.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="remark-lint configuration in MegaLinter" name="twitter:title">
-<meta content="How to use remark-lint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze MARKDOWN files" name="twitter:description">
+<meta content="kics configuration in MegaLinter" name="twitter:title">
+<meta content="How to use kics (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="remark-lint configuration in MegaLinter" property="og:title"/>
-<meta content="How to use remark-lint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze MARKDOWN files" property="og:description"/>
+<meta content="kics configuration in MegaLinter" property="og:title"/>
+<meta content="How to use kics (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#remark-lint">
+<a class="md-skip" href="#kics-documentation">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              remark-lint configuration in MegaLinter
+              kics configuration in MegaLinter
             
           </span>
 </div>
@@ -1202,13 +1202,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
           Formats linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_3">
 <span class="md-nav__icon md-icon"></span>
           Formats linters
@@ -1399,13 +1399,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_3_8" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3_8" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_3_8" id="__nav_5_3_8_label" tabindex="0">
           MARKDOWN
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_3_8_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_8_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_3_8">
 <span class="md-nav__icon md-icon"></span>
           MARKDOWN
@@ -1421,77 +1421,10 @@
         markdownlint
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          remark-lint
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../markdown_remark_lint/">
         remark-lint
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#remark-lint-documentation">
-    remark-lint documentation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-    Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ide-integration">
-    IDE Integration
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavours">
-    MegaLinter Flavours
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#behind-the-scenes">
-    Behind the scenes
-  </a>
-<nav aria-label="Behind the scenes" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-are-identified-applicable-files">
-    How are identified applicable files
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-the-linting-is-performed">
-    How the linting is performed
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#example-calls">
-    Example calls
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#help-content">
-    Help content
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
-    Installation on mega-linter Docker image
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../markdown_markdown_link_check/">
@@ -2029,13 +1962,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
           Other checks
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Other checks
@@ -2071,13 +2004,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_5_3">
 <span class="md-nav__icon md-icon"></span>
           REPOSITORY
@@ -2113,10 +2046,72 @@
         gitleaks
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../repository_kics/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          kics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         kics
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kics-documentation">
+    kics documentation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../repository_secretlint/">
@@ -2467,18 +2462,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#remark-lint-documentation">
-    remark-lint documentation
+<a class="md-nav__link" href="#kics-documentation">
+    kics documentation
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configuration-in-megalinter">
     Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ide-integration">
-    IDE Integration
   </a>
 </li>
 <li class="md-nav__item">
@@ -2527,30 +2517,28 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
+<h1>kics</h1>
 <!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please don't update manually -->
-<h1 id="remark-lint"><a href="https://remark.js.org/" target="blank" title="Visit linter Web Site"><img alt="remark-lint" class="megalinter-logo" height="100px" src="https://raw.githubusercontent.com/remarkjs/remark-lint/02295bc/logo.svg?sanitize=true"/></a>remark-lint</h1>
-<p><a href="https://github.com/remarkjs/remark-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/remarkjs/remark-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/remarkjs/remark-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/remarkjs/remark-lint?sort=semver"/></a> <a href="https://github.com/remarkjs/remark-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/remarkjs/remark-lint"/></a> <a href="https://github.com/remarkjs/remark-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/remarkjs/remark-lint"/></a> <a href="https://github.com/remarkjs/remark-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/remarkjs/remark-lint"/></a></p>
-<p><em>This linter has been temporary disabled in this version</em></p>
-<h2 id="remark-lint-documentation">remark-lint documentation</h2>
+<div align="center">
+<a href="https://www.kics.io" target="blank" title="Visit linter Web Site">
+<img alt="kics" class="megalinter-banner" height="150px" src="https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png">
+</img></a>
+</div>
+<p><a href="https://github.com/checkmarx/kics"><img alt="GitHub stars" src="https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/checkmarx/kics/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/checkmarx/kics?sort=semver"/></a> <a href="https://github.com/checkmarx/kics/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/checkmarx/kics"/></a></p>
+<h2 id="kics-documentation">kics documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>14.0.2</strong></li>
-<li>Visit <a href="https://remark.js.org/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://github.com/remarkjs/remark-lint#configuring-remark-lint" target="_blank">How to configure remark-lint rules</a><ul>
-<li>If custom <code>.remarkrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.remarkrc" target="_blank">.remarkrc</a> will be used</li>
+<li>Version in MegaLinter: <strong>1.7.1</strong></li>
+<li>Visit <a href="https://www.kics.io" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://docs.kics.io/latest/configuration-file/" target="_blank">How to configure kics rules</a></li>
+<li>See <a href="https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments" target="_blank">How to disable kics rules in files</a></li>
+<li>See <a href="https://docs.kics.io/latest/queries/all-queries/" target="_blank">Index of problems detected by kics</a></li>
 </ul>
-</li>
-<li>See <a href="https://github.com/remarkjs/remark-message-control#markers" target="_blank">How to disable remark-lint rules in files</a></li>
-<li>See <a href="https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules" target="_blank">Index of problems detected by remark-lint</a></li>
-</ul>
-<p><a href="https://github.com/remarkjs/remark-lint" target="_blank"><img alt="remark-lint - GitHub" src="https://gh-card.dev/repos/remarkjs/remark-lint.svg?fullname="/></a></p>
+<p><a href="https://github.com/checkmarx/kics" target="_blank"><img alt="kics - GitHub" src="https://gh-card.dev/repos/checkmarx/kics.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable remark-lint by adding <code>MARKDOWN_REMARK_LINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable remark-lint by adding <code>MARKDOWN_REMARK_LINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
-</ul>
-<ul>
-<li>Enable <strong>autofixes</strong> by adding <code>MARKDOWN_REMARK_LINT</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
+<li>Enable kics by adding <code>REPOSITORY_KICS</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable kics by adding <code>REPOSITORY_KICS</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -2562,112 +2550,44 @@
 </thead>
 <tbody>
 <tr>
-<td>MARKDOWN_DEFAULT_STYLE</td>
-<td>For remark-lint to be active, MARKDOWN_DEFAULT_STYLE must be <code>remark-lint</code></td>
-<td><code>markdownlint</code></td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_ARGUMENTS</td>
+<td>REPOSITORY_KICS_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_FILE_EXTENSIONS</td>
-<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
-<td><code>[".md"]</code></td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX</td>
-<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>MARKDOWN_REMARK_LINT_PRE_COMMANDS</td>
+<td>REPOSITORY_KICS_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_POST_COMMANDS</td>
+<td>REPOSITORY_KICS_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_CONFIG_FILE</td>
-<td>remark-lint configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.remarkrc</code></td>
+<td>REPOSITORY_KICS_CONFIG_FILE</td>
+<td>kics configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>kics.config</code></td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_RULES_PATH</td>
+<td>REPOSITORY_KICS_RULES_PATH</td>
 <td>Path where to find linter configuration file</td>
 <td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_DISABLE_ERRORS</td>
+<td>REPOSITORY_KICS_DISABLE_ERRORS</td>
 <td>Run linter but consider errors as warnings</td>
-<td><code>true</code></td>
+<td><code>false</code></td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
 </tr>
 <tr>
-<td>MARKDOWN_REMARK_LINT_CLI_EXECUTABLE</td>
+<td>REPOSITORY_KICS_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
-<td><code>['remark']</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="ide-integration">IDE Integration</h2>
-<p>Use remark-lint in your favorite IDE to catch errors before MegaLinter !</p>
-<table>
-<thead>
-<tr>
-<th align="center"><!-- --></th>
-<th>IDE</th>
-<th>Extension Name</th>
-<th align="center">Install</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"/></a></td>
-<td><a href="https://atom.io/">Atom</a></td>
-<td><a href="https://github.com/wooorm/linter-remark">linter-remark</a></td>
-<td align="center"><a href="https://github.com/wooorm/linter-remark" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
-<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
-<td><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint">SublimeLinter-contrib-remark-lint</a></td>
-<td align="center"><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico"/></a></td>
-<td><a href="https://www.vim.org/">vim</a></td>
-<td><a href="https://github.com/w0rp/ale">ale</a></td>
-<td align="center"><a href="https://github.com/w0rp/ale" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
-<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
-<td><a href="https://github.com/drewbourne/vscode-remark-lint">vscode-remark-lint</a></td>
-<td align="center"><a href="https://github.com/drewbourne/vscode-remark-lint" target="_blank">Visit Web Site</a></td>
+<td><code>['kics']</code></td>
 </tr>
 </tbody>
 </table>
@@ -2691,85 +2611,89 @@
 <td align="center">113</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">81</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">21</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td align="left">Optimized for TERRAFORM based projects</td>
+<td align="center">51</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.md</code></li>
+<li>If this linter is active, all files will always be linted</li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>kics is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>remark-lint is called one time by identified file (<code>file</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using kics configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make kics analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">remark --frail myfile.md
-</code></pre>
-<pre><code class="language-shell">remark --frail --rc-path .remarkrc myfile.md
-</code></pre>
-<pre><code class="language-shell">remark --frail -o --rc-path .remarkrc myfile.md
+<pre><code class="language-shell">kics scan --path .
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Usage: remark [options] [path | glob ...]
+<pre><code class="language-shell">Keeping Infrastructure as Code Secure
 
-  Command line interface to inspect and change markdown files with remark
+Usage:
+  kics [command]
 
-Options:
+Available Commands:
+  generate-id    Generates uuid for query
+  help           Help about any command
+  list-platforms List supported platforms
+  remediate      Auto remediates the project
+  scan           Executes a scan analysis
+  version        Displays the current version
 
-  -h  --help                              output usage information
-  -v  --version                           output version number
-  -o  --output [path]                     specify output location
-  -r  --rc-path &lt;path&gt;                    specify configuration file
-  -i  --ignore-path &lt;path&gt;                specify ignore file
-  -s  --setting &lt;settings&gt;                specify settings
-  -e  --ext &lt;extensions&gt;                  specify extensions
-  -u  --use &lt;plugins&gt;                     use plugins
-  -w  --watch                             watch for changes and reprocess
-  -q  --quiet                             output only warnings and errors
-  -S  --silent                            output only errors
-  -f  --frail                             exit with 1 on warnings
-  -t  --tree                              specify input and output as syntax tree
-      --report &lt;reporter&gt;                 specify reporter
-      --file-path &lt;path&gt;                  specify path to process as
-      --ignore-path-resolve-from dir|cwd  resolve patterns in `ignore-path` from its directory or cwd
-      --ignore-pattern &lt;globs&gt;            specify ignore patterns
-      --silently-ignore                   do not fail when given ignored files
-      --tree-in                           specify input as syntax tree
-      --tree-out                          output syntax tree
-      --inspect                           output formatted syntax tree
-      --[no-]stdout                       specify writing to stdout (on by default)
-      --[no-]color                        specify color in report (on by default)
-      --[no-]config                       search for configuration files (on by default)
-      --[no-]ignore                       search for ignore files (on by default)
+Flags:
+      --ci                  display only log messages to CLI output (mutually exclusive with silent)
+  -h, --help                help for kics
+  -f, --log-format string   determines log format (pretty,json) (default "pretty")
+      --log-level string    determines log level (TRACE,DEBUG,INFO,WARN,ERROR,FATAL) (default "INFO")
+      --log-path string     path to generate log file (info.log)
+      --no-color            disable CLI color output
+      --profiling string    enables performance profiler that prints resource consumption metrics in the logs during the execution (CPU, MEM)
+  -s, --silent              silence stdout messages (mutually exclusive with verbose and ci)
+  -v, --verbose             write logs to stdout too (mutually exclusive with silent)
 
-Examples:
-
-  # Process `input.md`
-  $ remark input.md -o output.md
-
-  # Pipe
-  $ remark &lt; input.md &gt; output.md
-
-  # Rewrite all applicable files
-  $ remark . -o
+Use "kics [command] --help" for more information about a command.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/remark-cli">remark-cli</a></li>
-<li><a href="https://www.npmjs.com/package/remark-preset-lint-recommended">remark-preset-lint-recommended</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile">FROM checkmarx/kics:alpine as kics
+COPY --link --from=kics /app/bin/kics /usr/bin/
+RUN mkdir -p /opt/kics/assets
+ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+COPY --from=kics /app/bin/assets /opt/kics/assets/
+</code></pre>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: markdownlint" class="md-footer__link md-footer__link--prev" href="../markdown_markdownlint/" rel="prev">
+<a aria-label="Previous: gitleaks" class="md-footer__link md-footer__link--prev" href="../repository_gitleaks/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2778,17 +2702,17 @@ Examples:
                 Previous
               </span>
 <div class="md-ellipsis">
-                markdownlint
+                gitleaks
               </div>
 </div>
 </a>
-<a aria-label="Next: markdown-link-check" class="md-footer__link md-footer__link--next" href="../markdown_markdown_link_check/" rel="next">
+<a aria-label="Next: secretlint" class="md-footer__link md-footer__link--next" href="../repository_secretlint/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                markdown-link-check
+                secretlint
               </div>
 </div>
 <div class="md-footer__button md-icon">
