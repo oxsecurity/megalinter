@@ -383,7 +383,7 @@ You can also use **beta** version (corresponding to the content of main branch)
 - GitHub Action: `oxsecurity/megalinter@beta`
 
 <!-- install-version-section-end -->
-<!-- install-github-start -->
+<!-- install-github-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on GitHub Actions
@@ -507,8 +507,8 @@ jobs:
 
 </details>
 
-<!-- install-github-end -->
-<!-- install-gitlab-start -->
+<!-- install-github-section-end -->
+<!-- install-gitlab-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Gitlab CI
@@ -548,8 +548,8 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
-<!-- install-gitlab-end -->
-<!-- install-azure-start -->
+<!-- install-gitlab-section-end -->
+<!-- install-azure-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Azure Pipelines
@@ -596,8 +596,8 @@ Add the following job in your `azure-pipelines.yaml` file
 
 To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
-<!-- install-azure-end -->
-<!-- install-bitbucket-start -->
+<!-- install-azure-section-end -->
+<!-- install-bitbucket-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Bitbucket Pipelines
@@ -625,8 +625,8 @@ pipelines:
             -  megalinter-reports/**
 ```
 
-<!-- install-bitbucket-end -->
-<!-- install-jenkins-start -->
+<!-- install-bitbucket-section-end -->
+<!-- install-jenkins-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Jenkins
@@ -661,8 +661,8 @@ stage('MegaLinter') {
 }
 ```
 
-<!-- install-jenkins-end -->
-<!-- install-concourse-start -->
+<!-- install-jenkins-section-end -->
+<!-- install-concourse-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Concourse
@@ -770,8 +770,8 @@ resources:
         #   VALIDATE_ALL_CODEBASE: true
 ```
 
-<!-- install-concourse-end -->
-<!-- install-drone-start -->
+<!-- install-concourse-section-end -->
+<!-- install-drone-section-start -->
 <!-- markdown-headers
 ---
 title: Install MegaLinter on Drone CI
@@ -831,8 +831,8 @@ trigger:
 
 The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
 
-<!-- install-drone-end -->
-<!-- install-docker-start -->
+<!-- install-drone-section-end -->
+<!-- install-docker-section-start -->
 <!-- markdown-headers
 ---
 title: Run MegaLinter as a Docker image
@@ -853,8 +853,8 @@ _Example:_
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6`
 
-<!-- install-docker-end -->
-<!-- install-locally-start -->
+<!-- install-docker-section-end -->
+<!-- install-locally-section-start -->
 <!-- markdown-headers
 ---
 title: Run MegaLinter locally on your computer
@@ -880,7 +880,7 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 
 Note: You can also use such command line in your custom CI/CD pipelines
 
-<!-- install-locally-end -->
+<!-- install-locally-section-end -->
 <!-- installation-section-end -->
 
 <!-- configuration-section-start -->
@@ -892,7 +892,7 @@ description: List of all configuration variables that can be used to customize t
 -->
 ## Configuration
 
-<!-- config-file-start -->
+<!-- config-file-section-start -->
 <!-- markdown-headers
 ---
 title: MegaLinter configuration file
@@ -914,8 +914,8 @@ You can also define variables as environment variables.
 
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
-<!-- config-file-end -->
-<!-- config-variables-start -->
+<!-- config-file-section-end -->
+<!-- config-variables-section-start -->
 <!-- markdown-headers
 ---
 title: All Megalinter configuration common variables
@@ -971,8 +971,8 @@ description: List of common variables that you can use to customize MegaLinter b
 | **TYPESCRIPT_DEFAULT_STYLE**                                         | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
 | **VALIDATE_ALL_CODEBASE**                                            | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                           |
 
-<!-- config-variables-end -->
-<!-- config-activation-start -->
+<!-- config-variables-section-end -->
+<!-- config-activation-section-start -->
 <!-- markdown-headers
 ---
 title: Configure activation and deactivation of linters within MegaLinter
@@ -1014,8 +1014,8 @@ DISABLE_LINTERS:
   - PHP_PSALM
 ```
 
-<!-- config-activation-end -->
-<!-- config-filtering-start -->
+<!-- config-activation-section-end -->
+<!-- config-filtering-section-start -->
 <!-- markdown-headers
 ---
 title: Configure filtering of files analyzed by MegaLinter
@@ -1036,8 +1036,8 @@ Examples:
 
 Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
 
-<!-- config-filtering-end -->
-<!-- config-apply-fixes-start -->
+<!-- config-filtering-section-end -->
+<!-- config-apply-fixes-section-start -->
 <!-- markdown-headers
 ---
 title: Configure auto-fixing of issues by MegaLinter
@@ -1081,8 +1081,8 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
-<!-- config-filtering-end -->
-<!-- config-linters-start -->
+<!-- config-filtering-section-end -->
+<!-- config-linters-section-start -->
 <!-- markdown-headers
 ---
 title: Linter scoped variables
@@ -1094,8 +1094,8 @@ description: Every linters has its own variables that can be customized
 
 See variables related to a single linter behavior in [linters documentations](#supported-linters)
 
-<!-- config-linters-end -->
-<!-- config-precommands-start -->
+<!-- config-linters-section-end -->
+<!-- config-precommands-section-start -->
 <!-- markdown-headers
 ---
 title: Configure custom commands to run before linters
@@ -1119,8 +1119,8 @@ PRE_COMMANDS:
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 ```
 
-<!-- config-precommands-end -->
-<!-- config-postcommands-start -->
+<!-- config-precommands-section-end -->
+<!-- config-postcommands-section-start -->
 <!-- markdown-headers
 ---
 title: Configure custom commands to run after linters
@@ -1140,8 +1140,8 @@ POST_COMMANDS:
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 ```
 
-<!-- config-postcommands-end -->
-<!-- config-variables-security-start -->
+<!-- config-postcommands-section-end -->
+<!-- config-variables-security-section-start -->
 <!-- markdown-headers
 ---
 title: Configure environment variables security with MegaLinter
@@ -1199,8 +1199,8 @@ Notes:
 - If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
 - Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
 
-<!-- config-variables-security-end -->
-<!-- config-cli-lint-mode-start -->
+<!-- config-variables-security-section-end -->
+<!-- config-cli-lint-mode-section-start -->
 <!-- markdown-headers
 ---
 title: Override the way linters are called by MegaLinter
@@ -1227,7 +1227,7 @@ Special considerations:
 
 - As list of files isn't sent to the linter command, linters using `project` lint mode don't take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
-<!-- config-cli-lint-mode-end -->
+<!-- config-cli-lint-mode-section-end -->
 <!-- configuration-section-end -->
 
 <!-- reporters-section-start -->
