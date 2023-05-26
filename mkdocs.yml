@@ -75,6 +75,8 @@ nav:
   - "Configuration": 
     - ".mega-linter.yml file": "config-file.md"
     - "Common Variables": "config-variables.md"
+    - "Activation / Deactivation": "config-activation.md"
+    - "Filtering files": "config-filtering.md"    
     - "Apply fixes": "config-apply-fixes.md"
     - "Linter scopes variables": "config-linters.md"
     - "Pre-commands": "config-precommands.md"

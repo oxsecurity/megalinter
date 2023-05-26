@@ -145,7 +145,6 @@ _Github PR reporter_
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness \& stability](#improve-robustness--stability)
-  - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
 ## Why MegaLinter
@@ -354,7 +353,6 @@ title: Install mega-linter with automated setup
 description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
 ---
 -->
-
 ### Assisted installation
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
@@ -369,7 +367,6 @@ title: Selecting a MegaLinter version to use
 description: You can use latest release or beta version of MegaLinter, know the differences !
 ---
 -->
-
 ### Which version to use ?
 
 The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
@@ -390,7 +387,6 @@ title: Install MegaLinter on GitHub Actions
 description: Manual instructions to setup MegaLinter in a GitHub Action Workflow 
 ---
 -->
-
 ### GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
@@ -515,7 +511,6 @@ title: Install MegaLinter on Gitlab CI
 description: Manual instructions to setup MegaLinter as a Gitlab Pipeline job
 ---
 -->
-
 ### GitLab CI
 
 Create or update `.gitlab-ci.yml` file at the root of your repository
@@ -556,7 +551,6 @@ title: Install MegaLinter on Azure Pipelines
 description: Manual instructions to setup MegaLinter as an Azure Pipelines job
 ---
 -->
-
 ### Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -604,7 +598,6 @@ title: Install MegaLinter on Bitbucket Pipelines
 description: Manual instructions to setup MegaLinter as a Bitbucket Pipelines job
 ---
 -->
-
 ### Bitbucket Pipelines
 
 1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
@@ -633,7 +626,6 @@ title: Install MegaLinter on Jenkins
 description: Manual instructions to setup MegaLinter as a Jenkins job
 ---
 -->
-
 ### Jenkins
 
 Add the following stage in your Jenkinsfile
@@ -669,7 +661,6 @@ title: Install MegaLinter on Concourse
 description: Manual instructions to setup MegaLinter as a Concourse job
 ---
 -->
-
 ### Concourse
 
 #### Pipeline step
@@ -778,7 +769,6 @@ title: Install MegaLinter on Drone CI
 description: Manual instructions to setup MegaLinter as a Drone CI job
 ---
 -->
-
 ### Drone CI
 
 **Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
@@ -839,7 +829,6 @@ title: Run MegaLinter as a Docker image
 description: Manual instructions to run MegaLinter as a docker image
 ---
 -->
-
 ### Docker container
 
 You can also run megalinter with its Docker container, just execute this command:
@@ -861,7 +850,6 @@ title: Run MegaLinter locally on your computer
 description: Manual instructions to run MegaLinter locally on your computer
 ---
 -->
-
 ### Run MegaLinter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
@@ -979,7 +967,6 @@ title: Configure activation and deactivation of linters within MegaLinter
 description: You can enable, disable, make not blocking, allow a minimum number of errors...
 ---
 -->
-
 ### Activation and deactivation
 
 MegaLinter have all linters enabled by default, but allows to enable only some, or disable only some
@@ -1022,7 +1009,6 @@ title: Configure filtering of files analyzed by MegaLinter
 description: Exclude files from linting
 ---
 -->
-
 ### Filter linted files
 
 If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
@@ -1044,7 +1030,6 @@ title: Configure auto-fixing of issues by MegaLinter
 description: Use MegaLinter to auto apply corrections on your repository files
 ---
 -->
-
 ### Apply fixes
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
@@ -1081,7 +1066,7 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
-<!-- config-filtering-section-end -->
+<!-- config-apply-fixes-section-end -->
 <!-- config-linters-section-start -->
 <!-- markdown-headers
 ---
@@ -1089,7 +1074,6 @@ title: Linter scoped variables
 description: Every linters has its own variables that can be customized
 ---
 -->
-
 ### Linter specific variables
 
 See variables related to a single linter behavior in [linters documentations](#supported-linters)
@@ -1102,7 +1086,6 @@ title: Configure custom commands to run before linters
 description: Customize your MegaLinter run by installing linters extensions with npm, pip, or even raw bash before linters are run
 ---
 -->
-
 ### Pre-commands
 
 MegaLinter can run custom commands before running linters (for example, installing an plugin required by one of the linters you use)
@@ -1127,7 +1110,6 @@ title: Configure custom commands to run after linters
 description: Customize your MegaLinter run by running commands after linters are run
 ---
 -->
-
 ### Post-commands
 
 MegaLinter can run custom commands after running linters (for example, running additional tests)
@@ -1148,7 +1130,6 @@ title: Configure environment variables security with MegaLinter
 description: Hide from linter executables the environment variables that can contain secrets
 ---
 -->
-
 ### Environment variables security
 
 MegaLinter runs on a docker image and calls the linters via command line to gather their results.
@@ -1207,7 +1188,6 @@ title: Override the way linters are called by MegaLinter
 description: Cli lint mode can be list_of_files, project or files
 ---
 -->
-
 ### CLI lint mode
 
 Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
@@ -1609,6 +1589,12 @@ description: Detailed differences between MegaLinter and SuperLinter (performanc
 
 The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
+### Security
+
+MegaLinter [hides many environment variables](#environment-variables-security) when calling the linters.
+
+That way you need to trust only MegaLinter core code with your secrets, not the 100+ embedded linters !
+
 ### Performances
 
 - [MegaLinter Flavors](#flavors) allow to use **smaller docker images**, so the pull time is reduced
@@ -1743,24 +1729,3 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
   - Validate descriptor YML files with json schema during build
   - Automated job to upgrade linters to their latest stable version
 <!-- mega-linter-vs-super-linter-section-end -->
-
-## V4 versus V5
-
-- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _oxsecurity/megalinter_)
-
-- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **oxsecurity/megalinter**
-
-- Migration from docker hub space **nvuillam** to space **megalinter**
-  - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
-
-- Documentation is now hosted at <https://megalinter.io/>
-
-- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
-  - **latest** for latest official release
-  - **beta** for current content of main branch
-  - **alpha** for current content of alpha branch
-  - docker image, github action and mega-linter-runner can still be called with exact version number
-
-- Being more inclusive: rename `master` branch into `main`
-
-- **IGNORE_GITIGNORED_FILES** parameter default to `true`

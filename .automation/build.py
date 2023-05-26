@@ -2398,6 +2398,8 @@ def finalize_doc_build():
         "install-locally",
         "config-file",
         "config-variables",
+        "config-activation",
+        "config-filtering",
         "config-apply-fixes",
         "config-linters",
         "config-precommands",
@@ -2463,6 +2465,18 @@ def finalize_doc_build():
         target_file,
         "<!-- table-of-contents-start -->",
         "<!-- table-of-contents-end -->",
+        "",
+    )
+    replace_in_file(
+        target_file,
+        "<!-- configuration-section-start -->",
+        "<!-- configuration-section-end -->",
+        "",
+    )
+    replace_in_file(
+        target_file,
+        "<!-- installation-section-start -->",
+        "<!-- installation-section-end -->",
         "",
     )
     # Remove link to online doc

@@ -10,6 +10,12 @@ description: Detailed differences between MegaLinter and SuperLinter (performanc
 
 The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
+## Security
+
+MegaLinter [hides many environment variables](#environment-variables-security) when calling the linters.
+
+That way you need to trust only MegaLinter core code with your secrets, not the 100+ embedded linters !
+
 ## Performances
 
 - [MegaLinter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
