@@ -246,6 +246,51 @@ linters:
         description: Pull Request target commit sha (N/A to supported scenarios)
         default_value: ""
 
+  # KICS
+  - linter_name: kics
+    can_output_sarif: true
+    descriptor_flavors:
+      - cupcake
+      - terraform
+      - security
+    linter_speed: 2
+    linter_url: https://www.kics.io
+    linter_repo: https://github.com/checkmarx/kics
+    linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
+    linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_rules_configuration_url: https://docs.kics.io/latest/configuration-file/
+    linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
+    linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: kics.config
+    cli_executable: kics
+    cli_lint_extra_args:
+      - scan
+    cli_lint_extra_args_after:
+      - --no-progress
+      - --path
+      - "."
+    sarif_default_output_file: kics-results.sarif
+    cli_sarif_args:
+      - --output-name
+      - kics-results.sarif
+      - --output-path
+      - "{{REPORT_FOLDER}}"
+      - --report-formats
+      - "sarif"
+    cli_version_arg_name: "version"
+    examples:
+      - "kics scan --path ."
+    install:
+      dockerfile:
+        - FROM checkmarx/kics:alpine as kics
+        - COPY --link --from=kics /app/bin/kics /usr/bin/
+        - RUN mkdir -p /opt/kics/assets
+        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+    test_folder: repository_kics
+
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint

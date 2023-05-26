@@ -31,12 +31,12 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM zricethezav/gitleaks:v8.16.3 as gitleaks
+FROM checkmarx/kics:alpine as kics
 FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
-FROM checkmarx/kics:alpine as kics
 #FROM__END
 
 ##################
@@ -279,12 +279,12 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/
+COPY --from=kics /app/bin/assets /opt/kics/assets/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
-COPY --link --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/bin/assets /opt/kics/assets/
 #COPY__END
 
 #############################################################################################
@@ -453,8 +453,15 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
+# kics installation
+# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
+RUN mkdir -p /opt/kics/assets
+ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
+
 # trivy installation
-RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
 
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -467,12 +474,6 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
-
-# kics installation
-# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-    && mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 #OTHER__END
 

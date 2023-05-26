@@ -180,6 +180,7 @@
         "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
+        "REPOSITORY_KICS",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
@@ -207,7 +208,6 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
-        "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -224,7 +224,8 @@
         "KUBERNETES_KUBEVAL",
         "REPOSITORY_GOODCHECK",
         "SPELL_MISSPELL",
-        "TERRAFORM_CHECKOV"
+        "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS"
       ],
       "type": "string"
     }
@@ -11621,6 +11622,94 @@
       "title": "(removed) REPOSITORY_GOODCHECK: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_KICS_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_KICS_ARGUMENTS",
+      "description": "REPOSITORY_KICS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_KICS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kics"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_KICS_CONFIG_FILE",
+      "default": "kics.config",
+      "description": "REPOSITORY_KICS: User custom config file name if different from default",
+      "title": "REPOSITORY_KICS: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_KICS: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_KICS_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_KICS_RULES_PATH",
+      "description": "REPOSITORY_KICS: Path where to find linter configuration file",
+      "title": "REPOSITORY_KICS: Custom config file path",
+      "type": "string"
+    },
     "REPOSITORY_SECRETLINT_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_ARGUMENTS",
       "description": "REPOSITORY_SECRETLINT: User custom arguments to add in linter CLI call",
@@ -15031,7 +15120,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Custom arguments",
+      "title": "(removed) TERRAFORM_KICS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -15047,7 +15136,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: CLI Executable",
+      "title": "(removed) TERRAFORM_KICS: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_KICS_CLI_LINT_MODE": {
@@ -15057,19 +15146,19 @@
         "file",
         "project"
       ],
-      "title": "TERRAFORM_KICS: Override default cli lint mode",
+      "title": "(removed) TERRAFORM_KICS: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_KICS: Maximum number of errors allowed",
+      "title": "(removed) TERRAFORM_KICS: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_KICS_FILE_EXTENSIONS": {
@@ -15081,7 +15170,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_KICS_FILE_NAMES_REGEX": {
@@ -15093,17 +15182,17 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_KICS: Excluding Regex",
+      "title": "(removed) TERRAFORM_KICS: Excluding Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_KICS: Including Regex",
+      "title": "(removed) TERRAFORM_KICS: Including Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_POST_COMMANDS": {
@@ -15120,7 +15209,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_KICS_PRE_COMMANDS": {
@@ -15137,7 +15226,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
