@@ -44,6 +44,8 @@ jobs:
     name: Deploy Docker Image - BETA - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    permissions:
+      packages: write
     environment:
       name: beta
     strategy:
