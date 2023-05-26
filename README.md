@@ -1142,6 +1142,11 @@ Thanks to this feature, you only need to [**trust MegaLinter and its internal py
 
 You can add secured variables to the default list using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable (priority is given to ENV variables above `.mega-linter.yml` property).
 
+Values can be:
+
+- String (ex: `MY_SECRET_VAR`)
+- Regular Expression (ex: `(MY.*VAR)`)
+
 SECURED_ENV_VARIABLES_DEFAULT contains:
 
 - GITHUB_TOKEN
@@ -1152,6 +1157,7 @@ SECURED_ENV_VARIABLES_DEFAULT contains:
 - GITLAB_ACCESS_TOKEN_MEGALINTER
 - GITLAB_CUSTOM_CERTIFICATE
 - WEBHOOK_REPORTER_BEARER_TOKEN
+- NODE_TOKEN
 - NPM_TOKEN
 - DOCKER_USERNAME
 - DOCKER_PASSWORD
@@ -1159,6 +1165,9 @@ SECURED_ENV_VARIABLES_DEFAULT contains:
 - GCR_USERNAME
 - GCR_PASSWORD
 - SMTP_PASSWORD
+- CI_SFDX_HARDIS_GITLAB_TOKEN
+- (SFDX_CLIENT_ID_.*)
+- (SFDX_CLIENT_KEY_.*)
 
 Example of adding extra secured variables `.mega-linter.yml`:
 
@@ -1167,6 +1176,7 @@ SECURED_ENV_VARIABLES:
   - MY_SECRET_TOKEN
   - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
   - OX_API_KEY
+  - (MY.*VAR)  # Regex format
 ```
 
 Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
