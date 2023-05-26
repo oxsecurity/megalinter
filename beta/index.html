@@ -196,11 +196,6 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v4-versus-v5">
-    V4 versus V5
-  </a>
-</li>
 </ul>
 </nav>
 </li>
@@ -209,15 +204,140 @@
         Quick Start
       </a>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="installation/">
-        Installation
+<a class="md-nav__link" href="install-assisted/">
+        Assisted Installation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="configuration/">
-        Configuration
+<a class="md-nav__link" href="install-version/">
+        Which version to use ?
       </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-github/">
+        GitHub Actions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-gitlab/">
+        Gitlab CI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-azure/">
+        Azure Pipelines
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-bitbucket/">
+        Bitbucket Pipelines
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-jenkins/">
+        Jenkins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-concourse/">
+        Concourse CI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-drone/">
+        Drone CI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-docker/">
+        Docker (CLI)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="install-locally/">
+        Run locally
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-file/">
+        .mega-linter.yml file
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-variables/">
+        Common Variables
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-activation/">
+        Activation / Deactivation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-filtering/">
+        Filtering files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-apply-fixes/">
+        Apply fixes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-linters/">
+        Linter scopes variables
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-precommands/">
+        Pre-commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-postcommands/">
+        Post-commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-variables-security/">
+        ENV variables security
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="config-cli-lint-mode/">
+        CLI lint mode
+      </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
@@ -2362,11 +2482,6 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v4-versus-v5">
-    V4 versus V5
-  </a>
-</li>
 </ul>
 </nav>
 </div>
@@ -2431,9 +2546,9 @@
 <li>Reading error logs, <strong>developers learn best practices</strong> of the language they're using</li>
 <li><a href="https://megalinter.io/"><strong>MegaLinter documentation</strong></a> provides the <strong>list of IDE plugins integrating each linter</strong>, so developers know which linter and plugins to install</li>
 <li>MegaLinter is <strong>ready out of the box</strong> after a <a href="quick-start/"><strong>quick setup</strong></a></li>
-<li><strong>Formatting and fixes</strong> can be automatically <a href="configuration/#apply-fixes"><strong>applied on the git branch</strong></a> or <a href="reporters/UpdatedSourcesReporter/"><strong>provided in reports</strong></a></li>
+<li><strong>Formatting and fixes</strong> can be automatically <a href="config-apply-fixes/"><strong>applied on the git branch</strong></a> or <a href="reporters/UpdatedSourcesReporter/"><strong>provided in reports</strong></a></li>
 <li>This tool is <strong>100% open-source</strong> and <strong>free for all uses</strong> (personal, professional, public and private repositories)</li>
-<li>MegaLinter can run on <a href="installation/"><strong>any CI tool</strong></a> and be <a href="https://megalinter.io/mega-linter-runner/"><strong>run locally</strong></a>: <strong>no need to authorize an external application</strong>, and <strong>your code base never leaves your tooling ecosystem</strong></li>
+<li>MegaLinter can run on <a href="install-assisted/"><strong>any CI tool</strong></a> and be <a href="https://megalinter.io/mega-linter-runner/"><strong>run locally</strong></a>: <strong>no need to authorize an external application</strong>, and <strong>your code base never leaves your tooling ecosystem</strong></li>
 </ul>
 <!-- quick-start-section-start -->
 <!-- quick-start-section-end -->
@@ -3204,37 +3319,6 @@ description: Full list of all linters for all languages and formats that are ava
 <!-- license-section-end -->
 <!-- mega-linter-vs-super-linter-section-start -->
 <!-- mega-linter-vs-super-linter-section-end -->
-<h2 id="v4-versus-v5">V4 versus V5</h2>
-<ul>
-<li>Tool to upgrade user repos configuration files using <code>npx mega-linter-runner --upgrade</code> (will upgrade references to <em>nvuillam/mega-linter</em> into <em>oxsecurity/megalinter</em>)</li>
-</ul>
-<ul>
-<li>Migration from github individual repo <strong>nvuillam/mega-linter</strong> to github organization repo <strong>oxsecurity/megalinter</strong></li>
-</ul>
-<ul>
-<li>Migration from docker hub space <strong>nvuillam</strong> to space <strong>megalinter</strong><ul>
-<li>Docker images are now <strong>oxsecurity/megalinter</strong> or <strong>oxsecurity/megalinter-FLAVOR</strong></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Documentation is now hosted at <a href="https://megalinter.io/">https://megalinter.io/</a></li>
-</ul>
-<ul>
-<li>Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned<ul>
-<li><strong>latest</strong> for latest official release</li>
-<li><strong>beta</strong> for current content of main branch</li>
-<li><strong>alpha</strong> for current content of alpha branch</li>
-<li>docker image, github action and mega-linter-runner can still be called with exact version number</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Being more inclusive: rename <code>master</code> branch into <code>main</code></li>
-</ul>
-<ul>
-<li><strong>IGNORE_GITIGNORED_FILES</strong> parameter default to <code>true</code></li>
-</ul>
 </article>
 </div>
 </div>
