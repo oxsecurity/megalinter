@@ -66,18 +66,18 @@ class MegaLinterRunner {
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)
         ? "nvuillam/mega-linter"
         : options.flavor !== "all" && this.isv4(release)
-        ? `nvuillam/mega-linter-${options.flavor}`
-        : // << v4 retrocompatibility
-        // v5 retrocompatibility >>
-        (options.flavor === "all" || options.flavor == null) &&
-          this.isv5(release)
-        ? "megalinter/megalinter"
-        : options.flavor !== "all" && this.isv5(release)
-        ? `megalinter/megalinter-${options.flavor}`
-        : // << v5 retrocompatibility
-        options.flavor === "all" || options.flavor == null
-        ? "oxsecurity/megalinter"
-        : `oxsecurity/megalinter-${options.flavor}`;
+          ? `nvuillam/mega-linter-${options.flavor}`
+          : // << v4 retrocompatibility
+          // v5 retrocompatibility >>
+          (options.flavor === "all" || options.flavor == null) &&
+            this.isv5(release)
+            ? "megalinter/megalinter"
+            : options.flavor !== "all" && this.isv5(release)
+              ? `megalinter/megalinter-${options.flavor}`
+              : // << v5 retrocompatibility
+              options.flavor === "all" || options.flavor == null
+                ? "oxsecurity/megalinter"
+                : `oxsecurity/megalinter-${options.flavor}`;
     this.checkPreviousVersion(release);
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
@@ -90,6 +90,9 @@ ERROR: Docker engine has not been found on your system.
 - to run docker on CI, use a base image containing docker engine`);
     });
 
+    // Get platform to use with docker pull & run
+    const imagePlatform = options.platform || "linux/amd64";
+
     // Pull docker image
     if (options.nodockerpull !== true) {
       console.info(`Pulling docker image ${dockerImage} ... `);
@@ -99,7 +102,6 @@ ERROR: Docker engine has not been found on your system.
       console.info(
         "The next runs, it will be immediate (thanks to docker cache !)"
       );
-      const imagePlatform = options.platform || "linux/amd64";
       const spawnResPull = spawnSync(
         "docker",
         ["pull", "--platform", imagePlatform, dockerImage],
@@ -127,7 +129,7 @@ ERROR: Docker engine has not been found on your system.
 
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
-    const commandArgs = ["run"];
+    const commandArgs = ["run", "--platform", imagePlatform];
     if (options["removeContainer"]) {
       commandArgs.push("--rm");
     }

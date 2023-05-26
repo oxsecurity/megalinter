@@ -61,6 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file
   - Simultaneous regex filtering at descriptor and linter levels
   - Review MegaLinter's own cspell word list for outdated exclusions, by @echoix in [#2676](https://github.com/oxsecurity/megalinter/pull/2676)
+  - mega-linter-runner: Use --platform also for docker run
 
 - Documentation
   - Apply many updates after the use of [Vale](https://vale.sh/) on MegaLinter own sources and docs
