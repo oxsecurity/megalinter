@@ -54,7 +54,7 @@ SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_A
 Notes:
 
 - If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
-- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
+- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](config-precommands.md) , as you might need secured values within their code.
 
 
 <!-- config-variables-security-section-end -->

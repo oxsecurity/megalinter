@@ -82,9 +82,9 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Reading error logs, **developers learn best practices** of the language they're using
 - [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
-- **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](config-apply-fixes.md) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](install-assisted.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
