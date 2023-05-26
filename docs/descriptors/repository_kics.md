@@ -11,12 +11,13 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkmarx/kics?sort=semver)](https://github.com/checkmarx/kics/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkmarx/kics?sort=semver)](https://github.com/checkmarx/kics/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/contributors/)
 
 ## kics documentation
 
 - Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
+- See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
 - See [Index of problems detected by kics](https://docs.kics.io/latest/queries/all-queries/){target=_blank}
 
@@ -27,17 +28,16 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 - Enable kics by adding `REPOSITORY_KICS` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable kics by adding `REPOSITORY_KICS` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                                                                               | Default value      |
-|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                  |                    |
-| REPOSITORY_KICS_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                        | Include every file |
-| REPOSITORY_KICS_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                  | Exclude no file    |
-| REPOSITORY_KICS_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`             |
-| REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                            | None               |
-| REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                             | None               |
-| REPOSITORY_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                | `false`            |
-| REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                          | `0`                |
-| REPOSITORY_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                   | `['kics']`         |
+| Variable                                    | Description                                                                     | Default value                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`        |                                                 |
+| REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                  | None                                            |
+| REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                   | None                                            |
+| REPOSITORY_KICS_CONFIG_FILE                 | kics configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `kics.config`                                   |
+| REPOSITORY_KICS_RULES_PATH                  | Path where to find linter configuration file                                    | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                      | `false`                                         |
+| REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                | `0`                                             |
+| REPOSITORY_KICS_CLI_EXECUTABLE              | Override CLI executable                                                         | `['kics']`                                      |
 
 ## MegaLinter Flavours
 
@@ -60,7 +60,10 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- kics is called one time by identified file (`file` CLI lint mode)
+kics is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using kics configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make kics analyze only updated files
 
 ### Example calls
 
