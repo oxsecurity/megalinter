@@ -2327,7 +2327,7 @@ def replace_anchors_by_links(file_path, moves):
         ["formats", "supported-linters.md#formats"],
         ["tooling-formats", "supported-linters.md#tooling-formats"],
         ["other", "supported-linters.md#other"],
-        ["apply-fixes", "config-apply-fixes.md"], 
+        ["apply-fixes", "config-apply-fixes.md"],
         ["installation", "install-assisted.md"],
         ["configuration", "config-file.md"],
         ["activation-and-deactivation", "config-activation.md"],
