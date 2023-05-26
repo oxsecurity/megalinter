@@ -241,10 +241,14 @@ def build_env(request_id, secured=True):
     secured_env_variables_regex = []
     if secured is True:
         secured_env_variables = list_secured_variables(request_id)
-        secured_env_variables_regex = list_secured_variables_regexes(secured_env_variables)
+        secured_env_variables_regex = list_secured_variables_regexes(
+            secured_env_variables
+        )
     env_dict = {}
     for key, value in get_config(request_id).items():
-        if key in secured_env_variables or match_variable_regexes(key,secured_env_variables_regex):
+        if key in secured_env_variables or match_variable_regexes(
+            key, secured_env_variables_regex
+        ):
             env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)
@@ -274,8 +278,7 @@ def list_secured_variables(request_id) -> list[str]:
             "GCR_USERNAME",
             "GCR_PASSWORD",
             "SMTP_PASSWORD",
-            "CI_SFDX_HARDIS_GITLAB_TOKEN"
-            "(SFDX_CLIENT_ID_.*)",
+            "CI_SFDX_HARDIS_GITLAB_TOKEN" "(SFDX_CLIENT_ID_.*)",
             "(SFDX_CLIENT_KEY_.*)",
         ],
     )
@@ -295,7 +298,9 @@ def list_secured_variables_regexes(secured_env_variables: list[str]):
     return regexes
 
 
-def match_variable_regexes(variable_name,secured_env_variable_regexes: list[re.Pattern]):
+def match_variable_regexes(
+    variable_name, secured_env_variable_regexes: list[re.Pattern]
+):
     for regex in secured_env_variable_regexes:
         if regex.search(variable_name):
             return True

@@ -272,7 +272,7 @@ class config_test(unittest.TestCase):
                 "SECURED_ENV_VARIABLES": "SECRET_VAR,OX_API_KEY,(VAR_.*_REGEX)",
                 "workspace": ".",
                 "LOG_LEVEL": "DEBUG",
-                "VAR_WITH_REGEX": "aXw32"
+                "VAR_WITH_REGEX": "aXw32",
             },
         )
         cli_env = config.build_env(request_id)
@@ -288,7 +288,8 @@ class config_test(unittest.TestCase):
             cli_env["OX_API_KEY"] == "HIDDEN_BY_MEGALINTER", "OX_API_KEY is not visible"
         )
         self.assertTrue(
-            cli_env["VAR_WITH_REGEX"] == "HIDDEN_BY_MEGALINTER", "VAR_WITH_REGEX is not visible"
+            cli_env["VAR_WITH_REGEX"] == "HIDDEN_BY_MEGALINTER",
+            "VAR_WITH_REGEX is not visible",
         )
         self.assertTrue(
             cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == "HIDDEN_BY_MEGALINTER",
@@ -332,7 +333,7 @@ class config_test(unittest.TestCase):
                 "SECURED_ENV_VARIABLES": "OX_API_KEY",
                 "workspace": ".",
                 "LOG_LEVEL": "DEBUG",
-                "VAR_WITH_REGEX": "aXw32"
+                "VAR_WITH_REGEX": "aXw32",
             },
         )
         cli_env = config.build_env(request_id)
@@ -344,7 +345,8 @@ class config_test(unittest.TestCase):
             cli_env["SECRET_VAR"] == "HIDDEN_BY_MEGALINTER", "SECRET_VAR is not visible"
         )
         self.assertTrue(
-            cli_env["VAR_WITH_REGEX"] == "HIDDEN_BY_MEGALINTER", "VAR_WITH_REGEX is not visible"
+            cli_env["VAR_WITH_REGEX"] == "HIDDEN_BY_MEGALINTER",
+            "VAR_WITH_REGEX is not visible",
         )
         self.assertTrue(
             cli_env["OX_API_KEY"] == "HIDDEN_BY_MEGALINTER", "OX_API_KEY is not visible"
