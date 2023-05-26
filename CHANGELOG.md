@@ -248,6 +248,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.25.4 to **7.26.0** on 2023-05-22
   - [yamllint](https://yamllint.readthedocs.io/) from 1.31.0 to **1.32.0** on 2023-05-22
   - [psalm](https://psalm.dev) from Psalm.5.11.0@ to **Psalm.5.12.0@** on 2023-05-23
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.6.0 to **6.8.0** on 2023-05-24
+  - [checkov](https://www.checkov.io/) from 2.3.251 to **2.3.257** on 2023-05-24
+  - [syft](https://github.com/anchore/syft) from 0.81.0 to **0.82.0** on 2023-05-24
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.309 to **1.1.310** on 2023-05-26
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.269 to **0.0.270** on 2023-05-26
+  - [checkov](https://www.checkov.io/) from 2.3.257 to **2.3.259** on 2023-05-26
+  - [semgrep](https://semgrep.dev/) from 1.22.0 to **1.23.0** on 2023-05-26
+  - [vale](https://vale.sh/) from 2.26.0 to **2.27.0** on 2023-05-26
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.0 to **2.1.1** on 2023-05-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.15 to **0.45.16** on 2023-05-26
 <!-- linter-versions-end -->
 
 ## [v6.22.2] - 2023-04-03
