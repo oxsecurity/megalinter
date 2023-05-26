@@ -98,6 +98,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - Web site: [my-devops-lab.com](https://www.my-devops-lab.com/tools)
 
 - Linter enhancements & fixes
+<<<<<<< HEAD
   - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/)
     - Fix corrective .cspell.json file generated from cspell output by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2562>
   - [eslint](https://megalinter.io/latest/descriptors/javascript_eslint/)
@@ -118,6 +119,29 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
     - Remove old options from SQLFluff config file by @tunetheweb in <https://github.com/oxsecurity/megalinter/pull/2560>
   - [v8r](https://megalinter.io/latest/descriptors/json_v8r/)
     - Allow use of configuration files with v8r by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/1982>
+=======
+  - Gitleaks: add support to scan PR commits only on PRs when `VALIDATE_ALL_CODEBASE` is set to `false`, by @DariuszPorowski [#2504](https://github.com/oxsecurity/megalinter/pull/2504)
+  - Ensure ESLint actually runs in project mode rather than silently doing nothing, by @Kurt-von-Laven [#2455](https://github.com/oxsecurity/megalinter/pull/2455).
+  - Prevent jscpd to create output folder if the repo isn't writable. Fixes [#2108](https://github.com/oxsecurity/megalinter/issues/2108)
+  - Fix corrective .cspell.json file generated from cspell output
+  - Deprecate misspell, as it is not maintained since 2018
+  - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
+  - kubeconform: Simplify installation and get latest version
+  - Updated cases in console/log output to use ⚠ `Warning Sign (U+26A0)` instead of ◬ `White Up-Pointing Triangle with Dot (U+25EC)`
+  - golangci-lint : Change default config & add autofix capability using **--fix** argument
+
+- Reporters
+  - Enhancements and fixes on Gitlab Comment Reporter
+    - New var GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT to allow to disable the overwrite of existing MegaLinter comment in case of new run
+    - In case of overwrite activated (by default), fetch all Merge Request comments, not the first 20.
+    - Display a different message in log when a Merge Request comment is created or updated.
+
+- Removed linters
+  - KUBERNETES_KUBEVAL: Not maintained anymore (kubeconform recommended by the authors)
+  - REPOSITORY_GOODCHECK: Not open-source anymore
+  - SPELL_MISSPELL: Not maintained anymore (last commit 2018)
+  - TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV
+>>>>>>> c1ba088300 (Change default golangci config)
 
 - Core
   - Upgrade base Docker image to python:3.11.3-alpine3.17 by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2537>
