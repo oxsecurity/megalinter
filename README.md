@@ -145,7 +145,6 @@ _Github PR reporter_
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness \& stability](#improve-robustness--stability)
-  - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
 ## Why MegaLinter
@@ -162,9 +161,9 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Reading error logs, **developers learn best practices** of the language they're using
 - [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](#quick-start)
-- **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-apply-fixes.md) or [**provided in reports**](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](#installation) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 <!-- markdown-headers
@@ -185,7 +184,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `oxsecurity/megalinter@v6` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
-- If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](#installation)
+- If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
 
@@ -347,17 +346,28 @@ description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipel
 -->
 ## Installation
 
+<!-- install-assisted-section-start -->
+<!-- markdown-headers
+---
+title: Install mega-linter with automated setup
+description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
+---
+-->
 ### Assisted installation
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-### Upgrade to MegaLinter v6
-
-- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration from v4 or v5 to v6 :)
-
-### Manual installation
+<!-- install-assisted-section-end -->
+<!-- install-version-section-start -->
+<!-- markdown-headers
+---
+title: Selecting a MegaLinter version to use
+description: You can use latest release or beta version of MegaLinter, know the differences !
+---
+-->
+### Which version to use ?
 
 The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
@@ -369,6 +379,14 @@ You can also use **beta** version (corresponding to the content of main branch)
 - Docker image: `oxsecurity/megalinter:beta`
 - GitHub Action: `oxsecurity/megalinter@beta`
 
+<!-- install-version-section-end -->
+<!-- install-github-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on GitHub Actions
+description: Manual instructions to setup MegaLinter in a GitHub Action Workflow 
+---
+-->
 ### GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
@@ -485,6 +503,14 @@ jobs:
 
 </details>
 
+<!-- install-github-section-end -->
+<!-- install-gitlab-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Gitlab CI
+description: Manual instructions to setup MegaLinter as a Gitlab Pipeline job
+---
+-->
 ### GitLab CI
 
 Create or update `.gitlab-ci.yml` file at the root of your repository
@@ -517,6 +543,14 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
+<!-- install-gitlab-section-end -->
+<!-- install-azure-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Azure Pipelines
+description: Manual instructions to setup MegaLinter as an Azure Pipelines job
+---
+-->
 ### Azure Pipelines
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -556,6 +590,14 @@ Add the following job in your `azure-pipelines.yaml` file
 
 To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
+<!-- install-azure-section-end -->
+<!-- install-bitbucket-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Bitbucket Pipelines
+description: Manual instructions to setup MegaLinter as a Bitbucket Pipelines job
+---
+-->
 ### Bitbucket Pipelines
 
 1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
@@ -576,7 +618,14 @@ pipelines:
             -  megalinter-reports/**
 ```
 
-
+<!-- install-bitbucket-section-end -->
+<!-- install-jenkins-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Jenkins
+description: Manual instructions to setup MegaLinter as a Jenkins job
+---
+-->
 ### Jenkins
 
 Add the following stage in your Jenkinsfile
@@ -604,6 +653,14 @@ stage('MegaLinter') {
 }
 ```
 
+<!-- install-jenkins-section-end -->
+<!-- install-concourse-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Concourse
+description: Manual instructions to setup MegaLinter as a Concourse job
+---
+-->
 ### Concourse
 
 #### Pipeline step
@@ -704,6 +761,14 @@ resources:
         #   VALIDATE_ALL_CODEBASE: true
 ```
 
+<!-- install-concourse-section-end -->
+<!-- install-drone-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Drone CI
+description: Manual instructions to setup MegaLinter as a Drone CI job
+---
+-->
 ### Drone CI
 
 **Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
@@ -756,6 +821,14 @@ trigger:
 
 The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
 
+<!-- install-drone-section-end -->
+<!-- install-docker-section-start -->
+<!-- markdown-headers
+---
+title: Run MegaLinter as a Docker image
+description: Manual instructions to run MegaLinter as a docker image
+---
+-->
 ### Docker container
 
 You can also run megalinter with its Docker container, just execute this command:
@@ -769,13 +842,21 @@ _Example:_
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6`
 
+<!-- install-docker-section-end -->
+<!-- install-locally-section-start -->
+<!-- markdown-headers
+---
+title: Run MegaLinter locally on your computer
+description: Manual instructions to run MegaLinter locally on your computer
+---
+-->
 ### Run MegaLinter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](#configuration) file
+You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](https://github.com/oxsecurity/megalinter/tree/main/docs/config-file.md) file
 
 See [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation)
 
@@ -787,6 +868,7 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 
 Note: You can also use such command line in your custom CI/CD pipelines
 
+<!-- install-locally-section-end -->
 <!-- installation-section-end -->
 
 <!-- configuration-section-start -->
@@ -798,6 +880,15 @@ description: List of all configuration variables that can be used to customize t
 -->
 ## Configuration
 
+<!-- config-file-section-start -->
+<!-- markdown-headers
+---
+title: MegaLinter configuration file
+description: Use config file with auto-completion to customize MegaLinter behaviour
+---
+-->
+### .mega-linter.yml file
+
 MegaLinter configuration variables are defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml)
 
@@ -806,57 +897,76 @@ Configuration is assisted with autocompletion and validation in most commonly us
 - VSCode: You need a VSCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
+You can also define variables as environment variables.
+- In case a variable exists in both ENV and `.mega-linter.yml` file, priority is given to ENV variable.
+
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
+<!-- config-file-section-end -->
+<!-- config-variables-section-start -->
+<!-- markdown-headers
+---
+title: All Megalinter configuration common variables
+description: List of common variables that you can use to customize MegaLinter behaviour
+---
+-->
 ### Common variables
 
-| **ENV VAR**                                                          | **Default Value**                             | **Notes**                                                                                                                                                                                                  |
-|----------------------------------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **ADDITIONAL_EXCLUDED_DIRECTORIES**                                  | \[\]                                          | List of additional excluded directory basenames. they're excluded at any nested level.                                                                                                                     |
-| [**APPLY_FIXES**](#apply-fixes)                                      | `none`                                        | Activates formatting and autofix [(more info)](#apply-fixes)                                                                                                                                               |
-| **CLEAR_REPORT_FOLDER**                                              | `false`                                       | Flag to clear files from report folder (usually megalinter-reports) before starting the linting process                                                                                                    |
-| **DEFAULT_BRANCH**                                                   | `HEAD`                                        | Deprecated: The name of the repository's default branch.                                                                                                                                                   |
-| **DEFAULT_WORKSPACE**                                                | `/tmp/lint`                                   | The location containing files to lint if you are running locally.                                                                                                                                          |
-| **DISABLE_ERRORS**                                                   | `false`                                       | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                            |
-| [**DISABLE**](#activation-and-deactivation)                          | <!-- -->                                      | List of disabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                              |
-| [**DISABLE_LINTERS**](#activation-and-deactivation)                  | <!-- -->                                      | List of disabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                  |
-| [**DISABLE_ERRORS_LINTERS**](#activation-and-deactivation)           | <!-- -->                                      | List of enabled but not blocking linters keys [(more info)](#activation-and-deactivation)                                                                                                                  |
-| [**ENABLE**](#activation-and-deactivation)                           | <!-- -->                                      | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
-| [**ENABLE_LINTERS**](#activation-and-deactivation)                   | <!-- -->                                      | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
-| **EXCLUDED_DIRECTORIES**                                             | \[…many values…\]                             | List of excluded directory basenames. they're excluded at any nested level.                                                                                                                                |
-| **EXTENDS**                                                          | <!-- -->                                      | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs. Later files take precedence.                              |
-| **FAIL_IF_MISSING_LINTER_IN_FLAVOR**                                 | `false`                                       | If set to `true`, MegaLinter fails if a linter is missing in the selected flavor                                                                                                                           |
-| **FAIL_IF_UPDATED_SOURCES**                                          | `false`                                       | If set to `true`, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors                                                                                             |
-| [**FILTER_REGEX_EXCLUDE**](#filter-linted-files)                     | `none`                                        | Regular expression defining which files will be excluded from linting [(more info)](#filter-linted-files) .ex: `.*src/test.*`)                                                                             |
-| [**FILTER_REGEX_INCLUDE**](#filter-linted-files)                     | `all`                                         | Regular expression defining which files will be processed by linters [(more info)](#filter-linted-files) .ex: `.*src/.*`)                                                                                  |
-| **FLAVOR_SUGGESTIONS**                                               | `true`                                        | Provides suggestions about different MegaLinter flavors to use to improve runtime performances                                                                                                             |
-| **FORMATTERS_DISABLE_ERRORS**                                        | `true`                                        | Formatter errors will be reported as errors (and not warnings) if this variable is set to `false`                                                                                                          |
-| **GIT_AUTHORIZATION_BEARER**                                         | <!-- -->                                      | If set, calls git with **`Authorization: Bearer`+value**                                                                                                                                                   |
-| **GITHUB_WORKSPACE**                                                 | <!-- -->                                      | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` isn't set                                                           |
-| **IGNORE_GENERATED_FILES**                                           | `false`                                       | If set to `true`, MegaLinter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                               |
-| **IGNORE_GITIGNORED_FILES**                                          | `true`                                        | If set to `true`, MegaLinter will skip files ignored by git using `.gitignore` file                                                                                                                        |
-| **JAVASCRIPT_DEFAULT_STYLE**                                         | `standard`                                    | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
-| **LINTER_RULES_PATH**                                                | `.github/linters`                             | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                   |
-| **LOG_FILE**                                                         | `mega-linter.log`                             | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`. Use `none` to not generate this file.                                                                     |
-| **LOG_LEVEL**                                                        | `INFO`                                        | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                                                     |
-| **MARKDOWN_DEFAULT_STYLE**                                           | `markdownlint`                                | Markdown default style to check/apply. `markdownlint`,`remark-lint`                                                                                                                                        |
-| **MEGALINTER_CONFIG**                                                | `.mega-linter.yml`                            | Name of MegaLinter configuration file. Can be defined remotely, in that case set this environment variable with the remote URL of `.mega-linter.yml` config file                                           |
-| **MEGALINTER_FILES_TO_LINT**                                         | \[\]                                          | Comma-separated list of files to analyze. Using this variable will bypass other file listing methods                                                                                                       |
-| **PARALLEL**                                                         | `true`                                        | Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
-| [**PLUGINS**](#plugins)                                              | \[\]                                          | List of plugin urls to install and run during MegaLinter run                                                                                                                                               |
-| [**POST_COMMANDS**](#post-commands)                                  | \[\]                                          | Custom bash commands to run after linters                                                                                                                                                                  |
-| [**PRE_COMMANDS**](#pre-commands)                                    | \[\]                                          | Custom bash commands to run before linters                                                                                                                                                                 |
-| **PRINT_ALPACA**                                                     | `true`                                        | Enable printing alpaca image to console                                                                                                                                                                    |
-| **PRINT_ALL_FILES**                                                  | `false`                                       | Display all files analyzed by the linter instead of only the number                                                                                                                                        |
-| **REPORT_OUTPUT_FOLDER**                                             | `${GITHUB_WORKSPACE}/megalinter-reports`      | Directory for generating report files. Set to `none` to not generate reports                                                                                                                               |
-| [**SECURED_ENV_VARIABLES**](#environment-variables-security)         | \[\]                                          | Additional list of secured environment variables to hide when calling linters.                                                                                                                             |
-| [**SECURED_ENV_VARIABLES_DEFAULT**](#environment-variables-security) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. [Default list](#environment-variables-security). This is not recommended to override this variable, use SECURED_ENV_VARIABLES          |
-| **SHOW_ELAPSED_TIME**                                                | `false`                                       | Displays elapsed time in reports                                                                                                                                                                           |
-| **SHOW_SKIPPED_LINTERS**                                             | `true`                                        | Displays all disabled linters mega-linter could have run                                                                                                                                                   |
-| **SKIP_CLI_LINT_MODES**                                              | \[\]                                          | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                              |
-| **TYPESCRIPT_DEFAULT_STYLE**                                         | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
-| **VALIDATE_ALL_CODEBASE**                                            | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                           |
+| **ENV VAR**                                                                                                               | **Default Value**                             | **Notes**                                                                                                                                                                                                                                              |
+|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **ADDITIONAL_EXCLUDED_DIRECTORIES**                                                                                       | \[\]                                          | List of additional excluded directory basenames. they're excluded at any nested level.                                                                                                                                                                 |
+| [**APPLY_FIXES**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-apply-fixes.md)                          | `none`                                        | Activates formatting and autofix [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-apply-fixes.md)                                                                                                                          |
+| **CLEAR_REPORT_FOLDER**                                                                                                   | `false`                                       | Flag to clear files from report folder (usually megalinter-reports) before starting the linting process                                                                                                                                                |
+| **DEFAULT_BRANCH**                                                                                                        | `HEAD`                                        | Deprecated: The name of the repository's default branch.                                                                                                                                                                                               |
+| **DEFAULT_WORKSPACE**                                                                                                     | `/tmp/lint`                                   | The location containing files to lint if you are running locally.                                                                                                                                                                                      |
+| **DISABLE_ERRORS**                                                                                                        | `false`                                       | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                                                                        |
+| [**DISABLE**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                               | <!-- -->                                      | List of disabled descriptors keys [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                                                                                                          |
+| [**DISABLE_LINTERS**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                       | <!-- -->                                      | List of disabled linters keys [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                                                                                                              |
+| [**DISABLE_ERRORS_LINTERS**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                | <!-- -->                                      | List of enabled but not blocking linters keys [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                                                                                              |
+| [**ENABLE**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                | <!-- -->                                      | List of enabled descriptors keys [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                                                                                                           |
+| [**ENABLE_LINTERS**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                        | <!-- -->                                      | List of enabled linters keys [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-activation.md)                                                                                                                               |
+| **EXCLUDED_DIRECTORIES**                                                                                                  | \[…many values…\]                             | List of excluded directory basenames. they're excluded at any nested level.                                                                                                                                                                            |
+| **EXTENDS**                                                                                                               | <!-- -->                                      | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs. Later files take precedence.                                                                          |
+| **FAIL_IF_MISSING_LINTER_IN_FLAVOR**                                                                                      | `false`                                       | If set to `true`, MegaLinter fails if a linter is missing in the selected flavor                                                                                                                                                                       |
+| **FAIL_IF_UPDATED_SOURCES**                                                                                               | `false`                                       | If set to `true`, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors                                                                                                                                         |
+| [**FILTER_REGEX_EXCLUDE**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-filtering.md)                   | `none`                                        | Regular expression defining which files will be excluded from linting [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-filtering.md) .ex: `.*src/test.*`)                                                                  |
+| [**FILTER_REGEX_INCLUDE**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-filtering.md)                   | `all`                                         | Regular expression defining which files will be processed by linters [(more info)](https://github.com/oxsecurity/megalinter/tree/main/docs/config-filtering.md) .ex: `.*src/.*`)                                                                       |
+| **FLAVOR_SUGGESTIONS**                                                                                                    | `true`                                        | Provides suggestions about different MegaLinter flavors to use to improve runtime performances                                                                                                                                                         |
+| **FORMATTERS_DISABLE_ERRORS**                                                                                             | `true`                                        | Formatter errors will be reported as errors (and not warnings) if this variable is set to `false`                                                                                                                                                      |
+| **GIT_AUTHORIZATION_BEARER**                                                                                              | <!-- -->                                      | If set, calls git with **`Authorization: Bearer`+value**                                                                                                                                                                                               |
+| **GITHUB_WORKSPACE**                                                                                                      | <!-- -->                                      | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` isn't set                                                                                                       |
+| **IGNORE_GENERATED_FILES**                                                                                                | `false`                                       | If set to `true`, MegaLinter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                                                                           |
+| **IGNORE_GITIGNORED_FILES**                                                                                               | `true`                                        | If set to `true`, MegaLinter will skip files ignored by git using `.gitignore` file                                                                                                                                                                    |
+| **JAVASCRIPT_DEFAULT_STYLE**                                                                                              | `standard`                                    | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                                                                         |
+| **LINTER_RULES_PATH**                                                                                                     | `.github/linters`                             | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                                                               |
+| **LOG_FILE**                                                                                                              | `mega-linter.log`                             | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`. Use `none` to not generate this file.                                                                                                                 |
+| **LOG_LEVEL**                                                                                                             | `INFO`                                        | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                                                                                                 |
+| **MARKDOWN_DEFAULT_STYLE**                                                                                                | `markdownlint`                                | Markdown default style to check/apply. `markdownlint`,`remark-lint`                                                                                                                                                                                    |
+| **MEGALINTER_CONFIG**                                                                                                     | `.mega-linter.yml`                            | Name of MegaLinter configuration file. Can be defined remotely, in that case set this environment variable with the remote URL of `.mega-linter.yml` config file                                                                                       |
+| **MEGALINTER_FILES_TO_LINT**                                                                                              | \[\]                                          | Comma-separated list of files to analyze. Using this variable will bypass other file listing methods                                                                                                                                                   |
+| **PARALLEL**                                                                                                              | `true`                                        | Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files                                             |
+| [**PLUGINS**](#plugins)                                                                                                   | \[\]                                          | List of plugin urls to install and run during MegaLinter run                                                                                                                                                                                           |
+| [**POST_COMMANDS**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-postcommands.md)                       | \[\]                                          | Custom bash commands to run after linters                                                                                                                                                                                                              |
+| [**PRE_COMMANDS**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md)                         | \[\]                                          | Custom bash commands to run before linters                                                                                                                                                                                                             |
+| **PRINT_ALPACA**                                                                                                          | `true`                                        | Enable printing alpaca image to console                                                                                                                                                                                                                |
+| **PRINT_ALL_FILES**                                                                                                       | `false`                                       | Display all files analyzed by the linter instead of only the number                                                                                                                                                                                    |
+| **REPORT_OUTPUT_FOLDER**                                                                                                  | `${GITHUB_WORKSPACE}/megalinter-reports`      | Directory for generating report files. Set to `none` to not generate reports                                                                                                                                                                           |
+| [**SECURED_ENV_VARIABLES**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-variables-security.md)         | \[\]                                          | Additional list of secured environment variables to hide when calling linters.                                                                                                                                                                         |
+| [**SECURED_ENV_VARIABLES_DEFAULT**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-variables-security.md) | MegaLinter & CI platforms sensitive variables | List of secured environment variables to hide when calling linters. [Default list](https://github.com/oxsecurity/megalinter/tree/main/docs/config-variables-security.md). This is not recommended to override this variable, use SECURED_ENV_VARIABLES |
+| **SHOW_ELAPSED_TIME**                                                                                                     | `false`                                       | Displays elapsed time in reports                                                                                                                                                                                                                       |
+| **SHOW_SKIPPED_LINTERS**                                                                                                  | `true`                                        | Displays all disabled linters mega-linter could have run                                                                                                                                                                                               |
+| **SKIP_CLI_LINT_MODES**                                                                                                   | \[\]                                          | Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: `file,project`). Available values: `file`,`cli_lint_mode`,`project`.                                                                          |
+| **TYPESCRIPT_DEFAULT_STYLE**                                                                                              | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                                                                         |
+| **VALIDATE_ALL_CODEBASE**                                                                                                 | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                                                                       |
 
+<!-- config-variables-section-end -->
+<!-- config-activation-section-start -->
+<!-- markdown-headers
+---
+title: Configure activation and deactivation of linters within MegaLinter
+description: You can enable, disable, make not blocking, allow a minimum number of errors...
+---
+-->
 ### Activation and deactivation
 
 MegaLinter have all linters enabled by default, but allows to enable only some, or disable only some
@@ -891,6 +1001,14 @@ DISABLE_LINTERS:
   - PHP_PSALM
 ```
 
+<!-- config-activation-section-end -->
+<!-- config-filtering-section-start -->
+<!-- markdown-headers
+---
+title: Configure filtering of files analyzed by MegaLinter
+description: Exclude files from linting
+---
+-->
 ### Filter linted files
 
 If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
@@ -902,8 +1020,16 @@ Examples:
 - Don't lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
 - Don't lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
-Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
+Warning: not applicable with linters using CLI lint mode `project` ([see details](https://github.com/oxsecurity/megalinter/tree/main/docs/config-cli-lint-mode.md))
 
+<!-- config-filtering-section-end -->
+<!-- config-apply-fixes-section-start -->
+<!-- markdown-headers
+---
+title: Configure auto-fixing of issues by MegaLinter
+description: Use MegaLinter to auto apply corrections on your repository files
+---
+-->
 ### Apply fixes
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
@@ -940,10 +1066,26 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
+<!-- config-apply-fixes-section-end -->
+<!-- config-linters-section-start -->
+<!-- markdown-headers
+---
+title: Linter scoped variables
+description: Every linters has its own variables that can be customized
+---
+-->
 ### Linter specific variables
 
 See variables related to a single linter behavior in [linters documentations](#supported-linters)
 
+<!-- config-linters-section-end -->
+<!-- config-precommands-section-start -->
+<!-- markdown-headers
+---
+title: Configure custom commands to run before linters
+description: Customize your MegaLinter run by installing linters extensions with npm, pip, or even raw bash before linters are run
+---
+-->
 ### Pre-commands
 
 MegaLinter can run custom commands before running linters (for example, installing an plugin required by one of the linters you use)
@@ -960,6 +1102,14 @@ PRE_COMMANDS:
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 ```
 
+<!-- config-precommands-section-end -->
+<!-- config-postcommands-section-start -->
+<!-- markdown-headers
+---
+title: Configure custom commands to run after linters
+description: Customize your MegaLinter run by running commands after linters are run
+---
+-->
 ### Post-commands
 
 MegaLinter can run custom commands after running linters (for example, running additional tests)
@@ -972,6 +1122,14 @@ POST_COMMANDS:
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 ```
 
+<!-- config-postcommands-section-end -->
+<!-- config-variables-security-section-start -->
+<!-- markdown-headers
+---
+title: Configure environment variables security with MegaLinter
+description: Hide from linter executables the environment variables that can contain secrets
+---
+-->
 ### Environment variables security
 
 MegaLinter runs on a docker image and calls the linters via command line to gather their results.
@@ -1020,8 +1178,16 @@ SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_A
 Notes:
 
 - If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
-- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
+- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md) , as you might need secured values within their code.
 
+<!-- config-variables-security-section-end -->
+<!-- config-cli-lint-mode-section-start -->
+<!-- markdown-headers
+---
+title: Override the way linters are called by MegaLinter
+description: Cli lint mode can be list_of_files, project or files
+---
+-->
 ### CLI lint mode
 
 Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
@@ -1041,6 +1207,7 @@ Special considerations:
 
 - As list of files isn't sent to the linter command, linters using `project` lint mode don't take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
+<!-- config-cli-lint-mode-section-end -->
 <!-- configuration-section-end -->
 
 <!-- reporters-section-start -->
@@ -1422,6 +1589,12 @@ description: Detailed differences between MegaLinter and SuperLinter (performanc
 
 The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
+### Security
+
+MegaLinter [hides many environment variables](https://github.com/oxsecurity/megalinter/tree/main/docs/config-variables-security.md) when calling the linters.
+
+That way you need to trust only MegaLinter core code with your secrets, not the 100+ embedded linters !
+
 ### Performances
 
 - [MegaLinter Flavors](#flavors) allow to use **smaller docker images**, so the pull time is reduced
@@ -1434,7 +1607,7 @@ The hard-fork of Super-Linter to be rewritten in Python isn't just a language sw
 
 ### Automatically apply formatting and fixes
 
-MegaLinter can [**automatically apply fixes performed by linters**](#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
+MegaLinter can [**automatically apply fixes performed by linters**](https://github.com/oxsecurity/megalinter/tree/main/docs/config-apply-fixes.md), and **push them to the same branch**, or **create a Pull Request** that you can validate
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
@@ -1556,24 +1729,3 @@ For linters less commonly used, MegaLinters offers a plugins architecture so any
   - Validate descriptor YML files with json schema during build
   - Automated job to upgrade linters to their latest stable version
 <!-- mega-linter-vs-super-linter-section-end -->
-
-## V4 versus V5
-
-- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _oxsecurity/megalinter_)
-
-- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **oxsecurity/megalinter**
-
-- Migration from docker hub space **nvuillam** to space **megalinter**
-  - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
-
-- Documentation is now hosted at <https://megalinter.io/>
-
-- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
-  - **latest** for latest official release
-  - **beta** for current content of main branch
-  - **alpha** for current content of alpha branch
-  - docker image, github action and mega-linter-runner can still be called with exact version number
-
-- Being more inclusive: rename `master` branch into `main`
-
-- **IGNORE_GITIGNORED_FILES** parameter default to `true`

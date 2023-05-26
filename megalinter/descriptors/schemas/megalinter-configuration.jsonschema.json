@@ -2086,7 +2086,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Custom arguments",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -2096,19 +2096,19 @@
       "$id": "#/properties/CREDENTIALS_SECRETLINT_CONFIG_FILE",
       "default": ".secretlintrc.json",
       "description": "CREDENTIALS_SECRETLINT: User custom config file name if different from default",
-      "title": "CREDENTIALS_SECRETLINT: Custom config file name",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom config file name",
       "type": "string"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "CREDENTIALS_SECRETLINT: Maximum number of errors allowed",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Maximum number of errors allowed",
       "type": "number"
     },
     "CREDENTIALS_SECRETLINT_FILE_EXTENSIONS": {
@@ -2120,7 +2120,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_FILE_NAMES_REGEX": {
@@ -2132,7 +2132,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_POST_COMMANDS": {
@@ -2149,7 +2149,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_PRE_COMMANDS": {
@@ -2166,13 +2166,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_RULES_PATH": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_RULES_PATH",
       "description": "CREDENTIALS_SECRETLINT: Path where to find linter configuration file",
-      "title": "CREDENTIALS_SECRETLINT: Custom config file path",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom config file path",
       "type": "string"
     },
     "CSHARP_CSHARPIER_ARGUMENTS": {
@@ -3072,7 +3072,7 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom arguments",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -3086,26 +3086,26 @@
         "list_of_files",
         "project"
       ],
-      "title": "DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
       "default": ".dockerfilelintrc",
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
       "type": "number"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS": {
@@ -3117,14 +3117,14 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAME": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_NAME",
       "default": ".dockerfilelintrc",
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX": {
@@ -3136,17 +3136,17 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE",
-      "title": "DOCKERFILE_DOCKERFILELINT: Excluding Regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Excluding Regex",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE",
-      "title": "DOCKERFILE_DOCKERFILELINT: Including Regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Including Regex",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_POST_COMMANDS": {
@@ -3163,7 +3163,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS": {
@@ -3180,13 +3180,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_RULES_PATH": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_RULES_PATH",
       "description": "DOCKERFILE_DOCKERFILELINT: Path where to find linter configuration file",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file path",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file path",
       "type": "string"
     },
     "DOCKERFILE_FILTER_REGEX_EXCLUDE": {
@@ -4044,7 +4044,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Custom arguments",
+      "title": "(removed) GIT_GIT_DIFF: Custom arguments",
       "type": [
         "array",
         "string"
@@ -4053,13 +4053,13 @@
     "GIT_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS",
       "default": false,
-      "title": "GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "GIT_GIT_DIFF: Maximum number of errors allowed",
+      "title": "(removed) GIT_GIT_DIFF: Maximum number of errors allowed",
       "type": "number"
     },
     "GIT_GIT_DIFF_FILE_EXTENSIONS": {
@@ -4071,7 +4071,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
+      "title": "(removed) GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "GIT_GIT_DIFF_FILE_NAMES_REGEX": {
@@ -4083,7 +4083,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Override descriptor/linter matching file name regex",
+      "title": "(removed) GIT_GIT_DIFF: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "GIT_GIT_DIFF_POST_COMMANDS": {
@@ -4100,7 +4100,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "GIT_GIT_DIFF_PRE_COMMANDS": {
@@ -4117,7 +4117,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) GIT_GIT_DIFF: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "GO_FILTER_REGEX_EXCLUDE": {
@@ -6990,7 +6990,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Custom arguments",
+      "title": "(removed) KUBERNETES_KUBEVAL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -7006,7 +7006,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: CLI Executable",
+      "title": "(removed) KUBERNETES_KUBEVAL: CLI Executable",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_CLI_LINT_MODE": {
@@ -7016,25 +7016,25 @@
         "file",
         "project"
       ],
-      "title": "KUBERNETES_KUBEVAL: Override default cli lint mode",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override default cli lint mode",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DIRECTORY",
       "default": "kubernetes",
-      "title": "KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
+      "title": "(removed) KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS",
       "default": false,
-      "title": "KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "KUBERNETES_KUBEVAL: Maximum number of errors allowed",
+      "title": "(removed) KUBERNETES_KUBEVAL: Maximum number of errors allowed",
       "type": "number"
     },
     "KUBERNETES_KUBEVAL_FILE_EXTENSIONS": {
@@ -7046,7 +7046,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_FILE_NAMES_REGEX": {
@@ -7058,17 +7058,17 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE",
-      "title": "KUBERNETES_KUBEVAL: Excluding Regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Excluding Regex",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE",
-      "title": "KUBERNETES_KUBEVAL: Including Regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Including Regex",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_POST_COMMANDS": {
@@ -7085,7 +7085,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_PRE_COMMANDS": {
@@ -7102,7 +7102,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "LATEX_CHKTEX_ARGUMENTS": {
@@ -8518,7 +8518,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Custom arguments",
+      "title": "(removed) PHP_BUILTIN: Custom arguments",
       "type": [
         "array",
         "string"
@@ -8526,7 +8526,7 @@
     },
     "PHP_BUILTIN_CLI_EXECUTABLE": {
       "$id": "#/properties/PHP_BUILTIN_CLI_EXECUTABLE",
-      "title": "PHP_BUILTIN: Override default CLI executable for linting request",
+      "title": "(removed) PHP_BUILTIN: Override default CLI executable for linting request",
       "type": "string"
     },
     "PHP_BUILTIN_CLI_LINT_MODE": {
@@ -8537,19 +8537,19 @@
         "list_of_files",
         "project"
       ],
-      "title": "PHP_BUILTIN: Override default cli lint mode",
+      "title": "(removed) PHP_BUILTIN: Override default cli lint mode",
       "type": "string"
     },
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "PHP_BUILTIN: Maximum number of errors allowed",
+      "title": "(removed) PHP_BUILTIN: Maximum number of errors allowed",
       "type": "number"
     },
     "PHP_BUILTIN_FILE_EXTENSIONS": {
@@ -8561,7 +8561,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Override descriptor/linter matching files extensions",
+      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "PHP_BUILTIN_FILE_NAMES_REGEX": {
@@ -8573,17 +8573,17 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Override descriptor/linter matching file name regex",
+      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "PHP_BUILTIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_EXCLUDE",
-      "title": "PHP_BUILTIN: Excluding Regex",
+      "title": "(removed) PHP_BUILTIN: Excluding Regex",
       "type": "string"
     },
     "PHP_BUILTIN_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_INCLUDE",
-      "title": "PHP_BUILTIN: Including Regex",
+      "title": "(removed) PHP_BUILTIN: Including Regex",
       "type": "string"
     },
     "PHP_BUILTIN_POST_COMMANDS": {
@@ -8600,7 +8600,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "PHP_BUILTIN_PRE_COMMANDS": {
@@ -8617,7 +8617,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "PHP_FILTER_REGEX_EXCLUDE": {
@@ -9267,7 +9267,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {
@@ -9366,7 +9366,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {
@@ -11543,7 +11543,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GOODCHECK: Custom arguments",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom arguments",
       "type": [
         "array",
         "string"
@@ -11559,26 +11559,26 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GOODCHECK: CLI Executable",
+      "title": "(removed) REPOSITORY_GOODCHECK: CLI Executable",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_CONFIG_FILE",
       "default": "goodcheck.yml",
       "description": "REPOSITORY_GOODCHECK: User custom config file name if different from default",
-      "title": "REPOSITORY_GOODCHECK: Custom config file name",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file name",
       "type": "string"
     },
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "REPOSITORY_GOODCHECK: Maximum number of errors allowed",
+      "title": "(removed) REPOSITORY_GOODCHECK: Maximum number of errors allowed",
       "type": "number"
     },
     "REPOSITORY_GOODCHECK_POST_COMMANDS": {
@@ -11595,7 +11595,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_PRE_COMMANDS": {
@@ -11612,13 +11612,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_RULES_PATH",
       "description": "REPOSITORY_GOODCHECK: Path where to find linter configuration file",
-      "title": "REPOSITORY_GOODCHECK: Custom config file path",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file path",
       "type": "string"
     },
     "REPOSITORY_SECRETLINT_ARGUMENTS": {
@@ -14902,7 +14902,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Custom arguments",
+      "title": "(removed) TERRAFORM_CHECKOV: Custom arguments",
       "type": [
         "array",
         "string"
@@ -14918,7 +14918,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: CLI Executable",
+      "title": "(removed) TERRAFORM_CHECKOV: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_CLI_LINT_MODE": {
@@ -14928,19 +14928,19 @@
         "file",
         "project"
       ],
-      "title": "TERRAFORM_CHECKOV: Override default cli lint mode",
+      "title": "(removed) TERRAFORM_CHECKOV: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_CHECKOV: Maximum number of errors allowed",
+      "title": "(removed) TERRAFORM_CHECKOV: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_CHECKOV_FILE_EXTENSIONS": {
@@ -14952,7 +14952,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
+      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_FILE_NAMES_REGEX": {
@@ -14964,17 +14964,17 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_CHECKOV: Excluding Regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Excluding Regex",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_CHECKOV: Including Regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Including Regex",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_POST_COMMANDS": {
@@ -14991,7 +14991,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_PRE_COMMANDS": {
@@ -15008,7 +15008,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_FILTER_REGEX_EXCLUDE": {

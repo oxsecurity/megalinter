@@ -10,6 +10,12 @@ description: Detailed differences between MegaLinter and SuperLinter (performanc
 
 The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
+## Security
+
+MegaLinter [hides many environment variables](config-variables-security.md) when calling the linters.
+
+That way you need to trust only MegaLinter core code with your secrets, not the 100+ embedded linters !
+
 ## Performances
 
 - [MegaLinter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
@@ -22,7 +28,7 @@ The hard-fork of Super-Linter to be rewritten in Python isn't just a language sw
 
 ## Automatically apply formatting and fixes
 
-MegaLinter can [**automatically apply fixes performed by linters**](configuration.md#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
+MegaLinter can [**automatically apply fixes performed by linters**](config-apply-fixes.md), and **push them to the same branch**, or **create a Pull Request** that you can validate
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
