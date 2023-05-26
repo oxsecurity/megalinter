@@ -846,8 +846,8 @@ description: List of common variables that you can use to customize MegaLinter b
 <!-- config-activation-start -->
 <!-- markdown-headers
 ---
-title: Configura activation and deactivation of linters within MegaLinter
-description: You can enable, disable, make not blocking, allow a manimum number of errors...
+title: Configure activation and deactivation of linters within MegaLinter
+description: You can enable, disable, make not blocking, allow a minimum number of errors...
 ---
 -->
 
