@@ -68,6 +68,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Exclude licenses from search results
   - Automate External Plugins table generation using **.automation/plugins.yml** file
   - Add `--stats` argument to `build.sh` to update docker pull stats only when requested (manually, or from CI job Auto-Update-Linters), by @echoix in [#2677](https://github.com/oxsecurity/megalinter/pull/2677)
+  - Manage deprecation in JSON Schema variables
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.76.1 to **0.76.2** on 2023-04-04

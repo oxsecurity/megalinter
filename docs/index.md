@@ -82,9 +82,9 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Reading error logs, **developers learn best practices** of the language they're using
 - [**MegaLinter documentation**](https://megalinter.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
-- **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](config-apply-fixes.md) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](install-assisted.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
@@ -286,24 +286,3 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 <!-- mega-linter-vs-super-linter-section-start -->
 
 <!-- mega-linter-vs-super-linter-section-end -->
-
-## V4 versus V5
-
-- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _oxsecurity/megalinter_)
-
-- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **oxsecurity/megalinter**
-
-- Migration from docker hub space **nvuillam** to space **megalinter**
-  - Docker images are now **oxsecurity/megalinter** or **oxsecurity/megalinter-FLAVOR**
-
-- Documentation is now hosted at <https://megalinter.io/>
-
-- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
-  - **latest** for latest official release
-  - **beta** for current content of main branch
-  - **alpha** for current content of alpha branch
-  - docker image, github action and mega-linter-runner can still be called with exact version number
-
-- Being more inclusive: rename `master` branch into `main`
-
-- **IGNORE_GITIGNORED_FILES** parameter default to `true`

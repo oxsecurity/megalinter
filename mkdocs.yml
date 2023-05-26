@@ -60,8 +60,29 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
-  - "Installation": "installation.md"
-  - "Configuration": "configuration.md"
+  - "Installation": 
+    - "Assisted Installation": "install-assisted.md"
+    - "Which version to use ?": "install-version.md"
+    - "GitHub Actions": "install-github.md"
+    - "Gitlab CI": "install-gitlab.md"
+    - "Azure Pipelines": "install-azure.md"
+    - "Bitbucket Pipelines": "install-bitbucket.md"
+    - "Jenkins": "install-jenkins.md"
+    - "Concourse CI": "install-concourse.md"
+    - "Drone CI": "install-drone.md"
+    - "Docker (CLI)": "install-docker.md"
+    - "Run locally": "install-locally.md"
+  - "Configuration": 
+    - ".mega-linter.yml file": "config-file.md"
+    - "Common Variables": "config-variables.md"
+    - "Activation / Deactivation": "config-activation.md"
+    - "Filtering files": "config-filtering.md"    
+    - "Apply fixes": "config-apply-fixes.md"
+    - "Linter scopes variables": "config-linters.md"
+    - "Pre-commands": "config-precommands.md"
+    - "Post-commands": "config-postcommands.md"
+    - "ENV variables security": "config-variables-security.md"
+    - "CLI lint mode": "config-cli-lint-mode.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
