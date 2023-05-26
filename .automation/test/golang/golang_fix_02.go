@@ -4,6 +4,5 @@ package main
 import "fmt"
 
 func nicolas() {
-	var useless int
-	fmt.Println("hello world")
+fmt.Println("hello world")
 }

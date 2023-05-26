@@ -3,8 +3,6 @@ package main
 
 import "fmt"
 
-func main() {
-	var useless int
-	fmt.Println("hello world")
-	nicolas()
+func nicolas() {
+fmt.Println("hello world")
 }
