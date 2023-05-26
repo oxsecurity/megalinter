@@ -268,9 +268,15 @@ linters:
     cli_lint_extra_args:
       - scan
     cli_lint_extra_args_after:
+      - --no-progress
       - --path
       - "."
+    sarif_default_output_file: kics-results.sarif
     cli_sarif_args:
+      - --output-name
+      - kics-results.sarif
+      - --output-path
+      - "{{REPORT_FOLDER}}"
       - --report-formats
       - "sarif"
     cli_version_arg_name: "version"

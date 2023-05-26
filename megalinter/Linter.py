@@ -951,6 +951,10 @@ class Linter:
                 if os.path.isfile(self.sarif_default_output_file)
                 else os.path.join(self.workspace, self.sarif_default_output_file)
             )
+            if not os.path.isfile(linter_sarif_report):
+                linter_sarif_report = os.path.join(
+                    self.report_folder, self.sarif_default_output_file
+                )
 
             # Check that a sarif report really exists before moving it etc)
             if os.path.isfile(linter_sarif_report):
