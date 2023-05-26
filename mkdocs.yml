@@ -60,7 +60,18 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
-  - "Installation": "installation.md"
+  - "Installation": 
+    - "Assisted Installation": "install-assisted.md"
+    - "Which version to use ?": "install-version.md"
+    - "GitHub Actions": "install-github.md"
+    - "Gitlab CI": "install-gitlab.md"
+    - "Azure Pipelines": "install-azure.md"
+    - "Bitbucket Pipelines": "install-bitbucket.md"
+    - "Jenkins": "install-jenkins.md"
+    - "Concourse CI": "install-concourse.md"
+    - "Drone CI": "install-drone.md"
+    - "Docker (CLI)": "install-docker.md"
+    - "Run locally": "install-locally.md"
   - "Configuration": "configuration.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"

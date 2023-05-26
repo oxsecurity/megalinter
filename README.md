@@ -347,17 +347,30 @@ description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipel
 -->
 ## Installation
 
+<!-- install-assisted-section-start -->
+<!-- markdown-headers
+---
+title: Install mega-linter with automated setup
+description: Setup MegaLinter in 5 minutes thanks to its assisted installation tool
+---
+-->
+
 ### Assisted installation
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-### Upgrade to MegaLinter v6
+<!-- install-assisted-section-end -->
+<!-- install-version-section-start -->
+<!-- markdown-headers
+---
+title: Selecting a MegaLinter version to use
+description: You can use latest release or beta version of MegaLinter, know the differences !
+---
+-->
 
-- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration from v4 or v5 to v6 :)
-
-### Manual installation
+### Which version to use ?
 
 The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
@@ -368,6 +381,15 @@ You can also use **beta** version (corresponding to the content of main branch)
 
 - Docker image: `oxsecurity/megalinter:beta`
 - GitHub Action: `oxsecurity/megalinter@beta`
+
+<!-- install-version-section-end -->
+<!-- install-github-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on GitHub Actions
+description: Manual instructions to setup MegaLinter in a GitHub Action Workflow 
+---
+-->
 
 ### GitHub Action
 
@@ -485,6 +507,15 @@ jobs:
 
 </details>
 
+<!-- install-github-end -->
+<!-- install-gitlab-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Gitlab CI
+description: Manual instructions to setup MegaLinter as a Gitlab Pipeline job
+---
+-->
+
 ### GitLab CI
 
 Create or update `.gitlab-ci.yml` file at the root of your repository
@@ -516,6 +547,15 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+<!-- install-gitlab-end -->
+<!-- install-azure-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Azure Pipelines
+description: Manual instructions to setup MegaLinter as an Azure Pipelines job
+---
+-->
 
 ### Azure Pipelines
 
@@ -556,6 +596,15 @@ Add the following job in your `azure-pipelines.yaml` file
 
 To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
+<!-- install-azure-end -->
+<!-- install-bitbucket-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Bitbucket Pipelines
+description: Manual instructions to setup MegaLinter as a Bitbucket Pipelines job
+---
+-->
+
 ### Bitbucket Pipelines
 
 1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
@@ -576,6 +625,14 @@ pipelines:
             -  megalinter-reports/**
 ```
 
+<!-- install-bitbucket-end -->
+<!-- install-jenkins-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Jenkins
+description: Manual instructions to setup MegaLinter as a Jenkins job
+---
+-->
 
 ### Jenkins
 
@@ -603,6 +660,15 @@ stage('MegaLinter') {
     }
 }
 ```
+
+<!-- install-jenkins-end -->
+<!-- install-concourse-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Concourse
+description: Manual instructions to setup MegaLinter as a Concourse job
+---
+-->
 
 ### Concourse
 
@@ -704,6 +770,15 @@ resources:
         #   VALIDATE_ALL_CODEBASE: true
 ```
 
+<!-- install-concourse-end -->
+<!-- install-drone-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter on Drone CI
+description: Manual instructions to setup MegaLinter as a Drone CI job
+---
+-->
+
 ### Drone CI
 
 **Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
@@ -756,6 +831,15 @@ trigger:
 
 The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
 
+<!-- install-drone-end -->
+<!-- install-docker-start -->
+<!-- markdown-headers
+---
+title: Run MegaLinter as a Docker image
+description: Manual instructions to run MegaLinter as a docker image
+---
+-->
+
 ### Docker container
 
 You can also run megalinter with its Docker container, just execute this command:
@@ -768,6 +852,15 @@ This can also be changed:
 _Example:_
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6`
+
+<!-- install-docker-end -->
+<!-- install-locally-start -->
+<!-- markdown-headers
+---
+title: Run MegaLinter locally on your computer
+description: Manual instructions to run MegaLinter locally on your computer
+---
+-->
 
 ### Run MegaLinter locally
 
@@ -787,6 +880,7 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 
 Note: You can also use such command line in your custom CI/CD pipelines
 
+<!-- install-locally-end -->
 <!-- installation-section-end -->
 
 <!-- configuration-section-start -->
