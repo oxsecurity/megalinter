@@ -892,6 +892,15 @@ description: List of all configuration variables that can be used to customize t
 -->
 ## Configuration
 
+<!-- config-file-start -->
+<!-- markdown-headers
+---
+title: MegaLinter configuration file
+description: Use config file with auto-completion to customize MegaLinter behaviour
+---
+-->
+### .mega-linter.yml file
+
 MegaLinter configuration variables are defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/oxsecurity/megalinter/blob/main/.mega-linter.yml)
 
@@ -900,8 +909,19 @@ Configuration is assisted with autocompletion and validation in most commonly us
 - VSCode: You need a VSCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
+You can also define variables as environment variables.
+  - In case a variable exists in both ENV and `.mega-linter.yml` file, priority is given to ENV variable.
+
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
+<!-- config-file-end -->
+<!-- config-variables-start -->
+<!-- markdown-headers
+---
+title: All Megalinter configuration common variables
+description: List of common variables that you can use to customize MegaLinter behaviour
+---
+-->
 ### Common variables
 
 | **ENV VAR**                                                          | **Default Value**                             | **Notes**                                                                                                                                                                                                  |
@@ -951,6 +971,15 @@ Configuration is assisted with autocompletion and validation in most commonly us
 | **TYPESCRIPT_DEFAULT_STYLE**                                         | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                             |
 | **VALIDATE_ALL_CODEBASE**                                            | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                           |
 
+<!-- config-variables-end -->
+<!-- config-activation-start -->
+<!-- markdown-headers
+---
+title: Configura activation and deactivation of linters within MegaLinter
+description: You can enable, disable, make not blocking, allow a manimum number of errors...
+---
+-->
+
 ### Activation and deactivation
 
 MegaLinter have all linters enabled by default, but allows to enable only some, or disable only some
@@ -985,6 +1014,15 @@ DISABLE_LINTERS:
   - PHP_PSALM
 ```
 
+<!-- config-activation-end -->
+<!-- config-filtering-start -->
+<!-- markdown-headers
+---
+title: Configure filtering of files analyzed by MegaLinter
+description: Exclude files from linting
+---
+-->
+
 ### Filter linted files
 
 If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
@@ -997,6 +1035,15 @@ Examples:
 - Don't lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
 Warning: not applicable with linters using CLI lint mode `project` ([see details](#cli-lint-mode))
+
+<!-- config-filtering-end -->
+<!-- config-apply-fixes-start -->
+<!-- markdown-headers
+---
+title: Configure auto-fixing of issues by MegaLinter
+description: Use MegaLinter to auto apply corrections on your repository files
+---
+-->
 
 ### Apply fixes
 
@@ -1034,9 +1081,27 @@ To solve these issues, you can apply one of the following solutions.
 megalinter-reports/
 ```
 
+<!-- config-filtering-end -->
+<!-- config-linters-start -->
+<!-- markdown-headers
+---
+title: Linter scoped variables
+description: Every linters has its own variables that can be customized
+---
+-->
+
 ### Linter specific variables
 
 See variables related to a single linter behavior in [linters documentations](#supported-linters)
+
+<!-- config-linters-end -->
+<!-- config-precommands-start -->
+<!-- markdown-headers
+---
+title: Configure custom commands to run before linters
+description: Customize your MegaLinter run by installing linters extensions with npm, pip, or even raw bash before linters are run
+---
+-->
 
 ### Pre-commands
 
@@ -1054,6 +1119,15 @@ PRE_COMMANDS:
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 ```
 
+<!-- config-precommands-end -->
+<!-- config-postcommands-start -->
+<!-- markdown-headers
+---
+title: Configure custom commands to run after linters
+description: Customize your MegaLinter run by running commands after linters are run
+---
+-->
+
 ### Post-commands
 
 MegaLinter can run custom commands after running linters (for example, running additional tests)
@@ -1065,6 +1139,15 @@ POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
 ```
+
+<!-- config-postcommands-end -->
+<!-- config-variables-security-start -->
+<!-- markdown-headers
+---
+title: Configure environment variables security with MegaLinter
+description: Hide from linter executables the environment variables that can contain secrets
+---
+-->
 
 ### Environment variables security
 
@@ -1116,6 +1199,15 @@ Notes:
 - If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
 - Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](#pre-commands) , as you might need secured values within their code.
 
+<!-- config-variables-security-end -->
+<!-- config-cli-lint-mode-start -->
+<!-- markdown-headers
+---
+title: Override the way linters are called by MegaLinter
+description: Cli lint mode can be list_of_files, project or files
+---
+-->
+
 ### CLI lint mode
 
 Each linter has a lint mode by default, visible in its MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)):
@@ -1135,6 +1227,7 @@ Special considerations:
 
 - As list of files isn't sent to the linter command, linters using `project` lint mode don't take in account some variables like FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE. For those linters, you must check their documentation to define ignore configuration as it's awaited by the linter (for example with a `.secretlintignore` file for secretlint)
 
+<!-- config-cli-lint-mode-end -->
 <!-- configuration-section-end -->
 
 <!-- reporters-section-start -->

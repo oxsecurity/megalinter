@@ -72,7 +72,15 @@ nav:
     - "Drone CI": "install-drone.md"
     - "Docker (CLI)": "install-docker.md"
     - "Run locally": "install-locally.md"
-  - "Configuration": "configuration.md"
+  - "Configuration": 
+    - ".mega-linter.yml file": "config-file.md"
+    - "Common Variables": "config-variables.md"
+    - "Apply fixes": "config-apply-fixes.md"
+    - "Linter scopes variables": "config-linters.md"
+    - "Pre-commands": "config-precommands.md"
+    - "Post-commands": "config-postcommands.md"
+    - "ENV variables security": "config-variables-security.md"
+    - "CLI lint mode": "config-cli-lint-mode.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
