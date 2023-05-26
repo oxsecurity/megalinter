@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Try MegaLinter v7 beta !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Try MegaLinter v7 beta !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -305,7 +305,6 @@ nav:
               - "terrascan": "descriptors/terraform_terrascan.md"
               - "terragrunt": "descriptors/terraform_terragrunt.md"
               - "terraform-fmt": "descriptors/terraform_terraform_fmt.md"
-              - "kics": "descriptors/terraform_kics.md"
 # tooling_format-end
       - "Other checks":
           - "All other linters": "./supported-linters/#other"
@@ -320,6 +319,7 @@ nav:
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
               - "gitleaks": "descriptors/repository_gitleaks.md"
+              - "kics": "descriptors/repository_kics.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"

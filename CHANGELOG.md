@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Jscpd: Do not output HTML reports if REPORT_OUTPUT_FOLDER is none
   - kubeconform: Simplify installation and get latest version
   - Updated cases in console/log output to use ⚠ `Warning Sign (U+26A0)` instead of ◬ `White Up-Pointing Triangle with Dot (U+25EC)`
+  - Now KICS runs on the whole project and not only terraform files
 
 - Reporters
   - Enhancements and fixes on Gitlab Comment Reporter
@@ -38,6 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - REPOSITORY_GOODCHECK: Not open-source anymore
   - SPELL_MISSPELL: Not maintained anymore (last commit 2018)
   - TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV
+  - TERRAFORM_KICS: Replaced by REPOSITORY_KICS
 
 - Core
   - Use relative file paths to call linters ([#1875](https://github.com/oxsecurity/megalinter/issues/1875))

@@ -127,6 +127,7 @@ DEPRECATED_LINTERS = [
     "REPOSITORY_GOODCHECK",  # Removed in v7
     "SPELL_MISSPELL",  # Removed in v7
     "TERRAFORM_CHECKOV",  # Removed in v7
+    "TERRAFORM_KICS", # Removed in v7
 ]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None

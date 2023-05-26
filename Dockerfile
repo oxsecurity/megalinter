@@ -35,13 +35,13 @@ FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.16.3 as gitleaks
+FROM checkmarx/kics:alpine as kics
 FROM jdkato/vale:latest as vale
 FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
-FROM checkmarx/kics:alpine as kics
 #FROM__END
 
 ##################
@@ -323,13 +323,13 @@ COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bi
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/
+COPY --from=kics /app/bin/assets /opt/kics/assets/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
-COPY --link --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/bin/assets /opt/kics/assets/
 #COPY__END
 
 #############################################################################################
@@ -680,8 +680,14 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
+# kics installation
+# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
+    && mkdir -p /opt/kics/assets
+ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
+
 # syft installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin \
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
@@ -716,7 +722,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-    && dotnet tool install --global TSQLLint \
+    && dotnet tool install --global TSQLLint
 
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -729,12 +735,6 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104 \
 
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
-
-# kics installation
-# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-    && mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 #OTHER__END
 

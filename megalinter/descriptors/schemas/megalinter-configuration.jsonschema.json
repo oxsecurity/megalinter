@@ -180,6 +180,7 @@
         "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
+        "REPOSITORY_KICS",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
@@ -207,7 +208,6 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
-        "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -224,7 +224,8 @@
         "KUBERNETES_KUBEVAL",
         "REPOSITORY_GOODCHECK",
         "SPELL_MISSPELL",
-        "TERRAFORM_CHECKOV"
+        "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS"
       ],
       "type": "string"
     }
@@ -11620,6 +11621,101 @@
       "description": "REPOSITORY_GOODCHECK: Path where to find linter configuration file",
       "title": "(removed) REPOSITORY_GOODCHECK: Custom config file path",
       "type": "string"
+    },
+    "REPOSITORY_KICS_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_KICS_ARGUMENTS",
+      "description": "REPOSITORY_KICS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_KICS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kics"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "REPOSITORY_KICS: Override default cli lint mode",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_KICS: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_KICS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_EXCLUDE",
+      "title": "REPOSITORY_KICS: Excluding Regex",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_INCLUDE",
+      "title": "REPOSITORY_KICS: Including Regex",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "REPOSITORY_SECRETLINT_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_ARGUMENTS",
