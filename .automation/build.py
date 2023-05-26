@@ -118,6 +118,17 @@ IDE_LIST = {
     "vscode": {"label": "Visual Studio Code", "url": "https://code.visualstudio.com/"},
 }
 
+DEPRECATED_LINTERS = [
+    "CREDENTIALS_SECRETLINT",  # Removed in v6
+    "DOCKERFILE_DOCKERFILELINT",  # Removed in v6
+    "GIT_GIT_DIFF",  # Removed in v6
+    "PHP_BUILTIN",  # Removed in v6
+    "KUBERNETES_KUBEVAL",  # Removed in v7
+    "REPOSITORY_GOODCHECK",  # Removed in v7
+    "SPELL_MISSPELL",  # Removed in v7
+    "TERRAFORM_CHECKOV",  # Removed in v7
+]
+
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
 
@@ -1135,7 +1146,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
         # Indicate that a linter is disabled in this version
+        title_prefix=""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
+            title_prefix="(deprecated) "
             linter_doc_md += [""]
             linter_doc_md += ["> This linter has been deprecated.", ">"]
 
@@ -1314,7 +1327,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
                             "type": "string",
-                            "title": f"{linter.name}: Including Regex",
+                            "title": f"{title_prefix}{linter.name}: Including Regex",
                         },
                     ],
                     [
@@ -1322,7 +1335,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
                             "type": "string",
-                            "title": f"{linter.name}: Excluding Regex",
+                            "title": f"{title_prefix}{linter.name}: Excluding Regex",
                         },
                     ],
                 ]
@@ -1362,7 +1375,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
                             "type": "string",
-                            "title": f"{linter.name}: Override default cli lint mode",
+                            "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
                             "default": linter.cli_lint_mode,
                             "enum": enum,
                         },
@@ -1395,7 +1408,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
                             "type": "array",
-                            "title": f"{linter.name}: Override descriptor/linter matching files extensions",
+                            "title": f"{title_prefix}{linter.name}: Override descriptor/linter matching files extensions",
                             "examples:": [".py", ".myext"],
                             "items": {"type": "string"},
                         },
@@ -1405,7 +1418,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
                             "type": "array",
-                            "title": f"{linter.name}: Override descriptor/linter matching file name regex",
+                            "title": f"{title_prefix}{linter.name}: Override descriptor/linter matching file name regex",
                             "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
                             "items": {"type": "string"},
                         },
@@ -1430,7 +1443,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     {
                         "$id": f"#/properties/{linter.name}_ARGUMENTS",
                         "type": ["array", "string"],
-                        "title": f"{linter.name}: Custom arguments",
+                        "title": f"{title_prefix}{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
                         "examples:": ["--foo", "bar"],
                         "items": {"type": "string"},
@@ -1441,7 +1454,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     {
                         "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
                         "type": "array",
-                        "title": f"{linter.name}: Define or override a list of bash commands to run before the linter",
+                        "title": f"{title_prefix}{linter.name}: Define or override a list of bash commands to run before the linter",
                         "examples": [
                             [
                                 {
@@ -1459,7 +1472,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     {
                         "$id": f"#/properties/{linter.name}_POST_COMMANDS",
                         "type": "array",
-                        "title": f"{linter.name}: Define or override a list of bash commands to run after the linter",
+                        "title": f"{title_prefix}{linter.name}: Define or override a list of bash commands to run after the linter",
                         "examples": [
                             [
                                 {
@@ -1478,7 +1491,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
-                        "title": f"{linter.name}: Linter doesn't make MegaLinter fail even if errors are found",
+                        "title": f"{title_prefix}{linter.name}: Linter doesn't make MegaLinter fail even if errors are found",
                     },
                 ],
                 [
@@ -1487,7 +1500,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                         "type": "number",
                         "default": 0,
-                        "title": f"{linter.name}: Maximum number of errors allowed",
+                        "title": f"{title_prefix}{linter.name}: Maximum number of errors allowed",
                     },
                 ],
                 [
@@ -1496,7 +1509,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
                         "type": "array",
                         "default": [linter.cli_executable],
-                        "title": f"{linter.name}: CLI Executable",
+                        "title": f"{title_prefix}{linter.name}: CLI Executable",
                         "items": {"type": "string"},
                     },
                 ],
@@ -1518,7 +1531,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_CONFIG_FILE",
                             "type": "string",
-                            "title": f"{linter.name}: Custom config file name",
+                            "title": f"{title_prefix}{linter.name}: Custom config file name",
                             "default": linter.config_file_name,
                             "description": f"{linter.name}: User custom config file name if different from default",
                         },
@@ -1528,7 +1541,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_RULES_PATH",
                             "type": "string",
-                            "title": f"{linter.name}: Custom config file path",
+                            "title": f"{title_prefix}{linter.name}: Custom config file path",
                             "description": f"{linter.name}: Path where to find linter configuration file",
                         },
                     ],
@@ -1556,7 +1569,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
-                            "title": f"{linter.name}: Directory containing {linter.descriptor_id} files",
+                            "title": f"{title_prefix}{linter.name}: Directory containing {linter.descriptor_id} files",
                             "default": linter.files_sub_directory,
                         },
                     ],
@@ -2540,16 +2553,7 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     # Deprecated linters
-    json_schema["definitions"]["enum_linter_keys"]["enum"] += [
-        "CREDENTIALS_SECRETLINT",  # Removed in v6
-        "DOCKERFILE_DOCKERFILELINT",  # Removed in v6
-        "GIT_GIT_DIFF",  # Removed in v6
-        "PHP_BUILTIN",  # Removed in v6
-        "KUBERNETES_KUBEVAL",  # Removed in v7
-        "REPOSITORY_GOODCHECK",  # Removed in v7
-        "SPELL_MISSPELL",  # Removed in v7
-        "TERRAFORM_CHECKOV",  # Removed in v7
-    ]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
