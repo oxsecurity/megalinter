@@ -1146,9 +1146,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
         # Indicate that a linter is disabled in this version
-        title_prefix=""
+        title_prefix = ""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
-            title_prefix="(deprecated) "
+            title_prefix = "(deprecated) "
             linter_doc_md += [""]
             linter_doc_md += ["> This linter has been deprecated.", ">"]
 
@@ -1408,7 +1408,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
                             "type": "array",
-                            "title": f"{title_prefix}{linter.name}: Override descriptor/linter matching files extensions",
+                            "title": (
+                                title_prefix
+                                + f"{linter.name}: Override descriptor/linter matching files extensions"
+                            ),
                             "examples:": [".py", ".myext"],
                             "items": {"type": "string"},
                         },
@@ -1418,7 +1421,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
                             "type": "array",
-                            "title": f"{title_prefix}{linter.name}: Override descriptor/linter matching file name regex",
+                            "title": (
+                                title_prefix
+                                + f"{linter.name}: Override descriptor/linter matching file name regex"
+                            ),
                             "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
                             "items": {"type": "string"},
                         },
@@ -1454,7 +1460,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     {
                         "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
                         "type": "array",
-                        "title": f"{title_prefix}{linter.name}: Define or override a list of bash commands to run before the linter",
+                        "title": (
+                            title_prefix
+                            + f"{linter.name}: Define or override a list of bash commands to run before the linter"
+                        ),
                         "examples": [
                             [
                                 {
@@ -1472,7 +1481,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     {
                         "$id": f"#/properties/{linter.name}_POST_COMMANDS",
                         "type": "array",
-                        "title": f"{title_prefix}{linter.name}: Define or override a list of bash commands to run after the linter",
+                        "title": (
+                            title_prefix
+                            + f"{linter.name}: Define or override a list of bash commands to run after the linter"
+                        ),
                         "examples": [
                             [
                                 {
@@ -1491,7 +1503,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
-                        "title": f"{title_prefix}{linter.name}: Linter doesn't make MegaLinter fail even if errors are found",
+                        "title": (
+                            title_prefix
+                            + f"{linter.name}: Linter doesn't make MegaLinter fail even if errors are found"
+                        ),
                     },
                 ],
                 [
