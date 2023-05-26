@@ -277,7 +277,6 @@ linters:
         - COPY --from=kics /app/bin/assets /opt/kics/assets/
     test_folder: terraform_kics
 
-
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint
