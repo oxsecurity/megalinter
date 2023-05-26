@@ -127,8 +127,9 @@ def display_header(mega_linter):
             )
     # Display config variables for debug mode
     secured_env_variables = config.list_secured_variables(mega_linter.request_id)
+    secured_env_variables_regex = config.list_secured_variables_regexes(secured_env_variables)
     for name, value in sorted(config.get_config(mega_linter.request_id).items()):
-        if name not in secured_env_variables:
+        if name not in secured_env_variables and not config.match_variable_regexes(name,secured_env_variables_regex):
             logging.debug("" + name + "=" + str(value))
         else:
             logging.debug("" + name + "=HIDDEN_BY_MEGALINTER")
