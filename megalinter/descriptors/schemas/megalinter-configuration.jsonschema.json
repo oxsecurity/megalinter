@@ -15127,7 +15127,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Custom arguments",
+      "title": "(removed) TERRAFORM_KICS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -15143,7 +15143,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: CLI Executable",
+      "title": "(removed) TERRAFORM_KICS: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_KICS_CLI_LINT_MODE": {
@@ -15153,19 +15153,19 @@
         "file",
         "project"
       ],
-      "title": "TERRAFORM_KICS: Override default cli lint mode",
+      "title": "(removed) TERRAFORM_KICS: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_KICS: Maximum number of errors allowed",
+      "title": "(removed) TERRAFORM_KICS: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_KICS_FILE_EXTENSIONS": {
@@ -15177,7 +15177,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_KICS_FILE_NAMES_REGEX": {
@@ -15189,17 +15189,17 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_KICS: Excluding Regex",
+      "title": "(removed) TERRAFORM_KICS: Excluding Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_KICS: Including Regex",
+      "title": "(removed) TERRAFORM_KICS: Including Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_POST_COMMANDS": {
@@ -15216,7 +15216,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_KICS_PRE_COMMANDS": {
@@ -15233,7 +15233,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
