@@ -24,8 +24,8 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## Configuration in MegaLinter
 
-- Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.1/configuration/#activation-and-deactivation)
-- Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.1/configuration/#activation-and-deactivation)
+- Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.2/configuration/#activation-and-deactivation)
+- Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.2/configuration/#activation-and-deactivation)
 
 | Variable                                    | Description                                                                     | Default value                                   |
 |---------------------------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|
@@ -44,8 +44,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                    | Description               | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.1/supported-linters/)     | Default MegaLinter Flavor |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/7.0.1/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.0.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.2/supported-linters/)     | Default MegaLinter Flavor |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.2) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/7.0.2/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.0.2) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
