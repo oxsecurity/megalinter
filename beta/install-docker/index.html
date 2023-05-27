@@ -2406,11 +2406,11 @@
 <!-- install-docker-section-start -->
 <h1 id="docker-container">Docker container</h1>
 <p>You can also run megalinter with its Docker container, just execute this command:</p>
-<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v6</code></p>
+<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v7</code></p>
 <p><strong>No extra arguments are needed,</strong> however, megalinter will lint all of the files inside the <code>/tmp/lint</code> folder, so it may be needed to configure your tool of choice to use the <code>/tmp/lint</code> folder as workspace.
 This can also be changed:</p>
 <p><em>Example:</em></p>
-<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v6</code></p>
+<p><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v7</code></p>
 <!-- install-docker-section-end -->
 </article>
 </div>
