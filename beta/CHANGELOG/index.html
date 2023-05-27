@@ -3594,19 +3594,22 @@
 </li>
 </ul>
 <ul>
-<li>Linter versions upgrades</li>
+<li>Linter versions upgrades<ul>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.11.0 to <strong>10.12.0</strong> on 2023-05-27</li>
+</ul>
+</li>
 </ul>
 <!-- linter-versions-end -->
 <h2 id="v700-2023-05-27">[v7.0.0] - 2023-05-27</h2>
 <p>To upgrade to MegaLinter v7, run <code>npx mega-linter-runner@latest --upgrade</code> , comment <a href="https://github.com/oxsecurity/megalinter/issues/2692">here</a> if you have any issue :)</p>
 <ul>
 <li>MAJOR Updates<ul>
-<li><a href="https://megalinter.io/latest/config-variables-security/">SECURED_ENV_VARIABLES</a> &amp; core scoped configuration by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2601<ul>
+<li><a href="https://megalinter.io/latest/config-variables-security/">SECURED_ENV_VARIABLES</a> &amp; core scoped configuration by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2601">https://github.com/oxsecurity/megalinter/pull/2601</a><ul>
 <li>New configuration variables <strong>SECURED_ENV_VARIABLES</strong> and SECURED_ENV_VARIABLES_DEFAULT to hide your environment sensitive variables to the linters called by MegaLinter</li>
 <li>Read <a href="https://megalinter.io/latest/config-variables-security/">documentation</a> to enhance security using MegaLinter</li>
 </ul>
 </li>
-<li>Use <strong>relative file paths</strong> to call linters by @nvuillam in https://github.com/oxsecurity/megalinter/pull/1877<ul>
+<li>Use <strong>relative file paths</strong> to call linters by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/1877">https://github.com/oxsecurity/megalinter/pull/1877</a><ul>
 <li>This can be a breaking change for customizations, post an issue if you see a problem !</li>
 </ul>
 </li>
@@ -3615,9 +3618,9 @@
 </ul>
 <ul>
 <li>New linters<ul>
-<li>Add linter <a href="https://github.com/greglook/cljstyle">cljstyle</a>, Clojure formatter, by @practicalli-john in https://github.com/oxsecurity/megalinter/pull/2115</li>
-<li>Add <a href="https://github.com/kubescape/kubescape">kubescape</a>, kubernetes linter, by @muandane in https://github.com/oxsecurity/megalinter/pull/2531</li>
-<li>Add <a href="https://vale.sh/">Vale</a>, a powerful enforcer of writing style, by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/2406</li>
+<li>Add linter <a href="https://github.com/greglook/cljstyle">cljstyle</a>, Clojure formatter, by @practicalli-john in <a href="https://github.com/oxsecurity/megalinter/pull/2115">https://github.com/oxsecurity/megalinter/pull/2115</a></li>
+<li>Add <a href="https://github.com/kubescape/kubescape">kubescape</a>, kubernetes linter, by @muandane in <a href="https://github.com/oxsecurity/megalinter/pull/2531">https://github.com/oxsecurity/megalinter/pull/2531</a></li>
+<li>Add <a href="https://vale.sh/">Vale</a>, a powerful enforcer of writing style, by @wesley-dean-flexion in <a href="https://github.com/oxsecurity/megalinter/pull/2406">https://github.com/oxsecurity/megalinter/pull/2406</a></li>
 </ul>
 </li>
 </ul>
@@ -3642,15 +3645,15 @@
 <ul>
 <li>Linter enhancements &amp; fixes<ul>
 <li><a href="https://megalinter.io/latest/descriptors/spell_cspell/">cspell</a><ul>
-<li>Fix corrective .cspell.json file generated from cspell output by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2562</li>
+<li>Fix corrective .cspell.json file generated from cspell output by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2562">https://github.com/oxsecurity/megalinter/pull/2562</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/javascript_eslint/">eslint</a><ul>
-<li>Ensure ESLint actually runs in project mode (#1572) by @Kurt-von-Laven in https://github.com/oxsecurity/megalinter/pull/2455</li>
+<li>Ensure ESLint actually runs in project mode (#1572) by @Kurt-von-Laven in <a href="https://github.com/oxsecurity/megalinter/pull/2455">https://github.com/oxsecurity/megalinter/pull/2455</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/copypaste_jscpd/">jscpd</a><ul>
-<li>Prevent jscpd to create output folder if the repo is not writable by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2556</li>
+<li>Prevent jscpd to create output folder if the repo is not writable by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2556">https://github.com/oxsecurity/megalinter/pull/2556</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/repository_gitleaks/">Gitleaks</a><ul>
@@ -3658,25 +3661,25 @@
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/repository_kics/">KICS</a><ul>
-<li>Move KICS to REPOSITORY descriptor, so it can analyze all types of files, not terraform only,  by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2689</li>
+<li>Move KICS to REPOSITORY descriptor, so it can analyze all types of files, not terraform only,  by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2689">https://github.com/oxsecurity/megalinter/pull/2689</a></li>
 <li>KICS can now output SARIF</li>
 <li>The new version can have performance issues: customize of disable REPOSITORY_KICS if necessary</li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/kubernetes_kubeconform/">KubeConform</a><ul>
-<li>Simplify kubeconform install &amp; get version by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2629</li>
+<li>Simplify kubeconform install &amp; get version by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2629">https://github.com/oxsecurity/megalinter/pull/2629</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/php_phplint/">PHPLint</a><ul>
-<li>Upgrade PHPLint to v9 by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2638</li>
+<li>Upgrade PHPLint to v9 by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/2638">https://github.com/oxsecurity/megalinter/pull/2638</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/sql_sqlfluff/">sqlfluff</a><ul>
-<li>Remove old options from SQLFluff config file by @tunetheweb in https://github.com/oxsecurity/megalinter/pull/2560</li>
+<li>Remove old options from SQLFluff config file by @tunetheweb in <a href="https://github.com/oxsecurity/megalinter/pull/2560">https://github.com/oxsecurity/megalinter/pull/2560</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/descriptors/json_v8r/">v8r</a><ul>
-<li>Allow use of configuration files with v8r by @bdovaz in https://github.com/oxsecurity/megalinter/pull/1982</li>
+<li>Allow use of configuration files with v8r by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/1982">https://github.com/oxsecurity/megalinter/pull/1982</a></li>
 </ul>
 </li>
 </ul>
@@ -3684,12 +3687,12 @@
 </ul>
 <ul>
 <li>Core<ul>
-<li>Upgrade base Docker image to python:3.11.3-alpine3.17 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2537</li>
-<li>Allow simultaneous regex filtering at descriptor and linter levels by @nvuillam &amp; @seaneagan in https://github.com/oxsecurity/megalinter/pull/2669</li>
-<li>Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2649</li>
-<li>Fix issue preventing plugins to work with flavors by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2532</li>
-<li>Fix crash in case of unreachable symlinks by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2538 </li>
-<li>mega-linter-runner: Use --platform also for docker run by @nvuillam , @Kurt-Von-Laven &amp; @cam-barts in https://github.com/oxsecurity/megalinter/pull/2690</li>
+<li>Upgrade base Docker image to python:3.11.3-alpine3.17 by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2537">https://github.com/oxsecurity/megalinter/pull/2537</a></li>
+<li>Allow simultaneous regex filtering at descriptor and linter levels by @nvuillam &amp; @seaneagan in <a href="https://github.com/oxsecurity/megalinter/pull/2669">https://github.com/oxsecurity/megalinter/pull/2669</a></li>
+<li>Allow MEGALINTER_CONFIG to contain a full path to a MegaLinter config file by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2649">https://github.com/oxsecurity/megalinter/pull/2649</a></li>
+<li>Fix issue preventing plugins to work with flavors by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2532">https://github.com/oxsecurity/megalinter/pull/2532</a></li>
+<li>Fix crash in case of unreachable symlinks by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2538">https://github.com/oxsecurity/megalinter/pull/2538</a></li>
+<li>mega-linter-runner: Use --platform also for docker run by @nvuillam , @Kurt-Von-Laven &amp; @cam-barts in <a href="https://github.com/oxsecurity/megalinter/pull/2690">https://github.com/oxsecurity/megalinter/pull/2690</a></li>
 <li>Replace deprecated distutils.copy_tree by shutil.copytree</li>
 </ul>
 </li>
@@ -3697,12 +3700,12 @@
 <ul>
 <li>Reporters<ul>
 <li><a href="https://megalinter.io/latest/reporters/SarifReporter/">SARIF_REPORTER</a><ul>
-<li>Add option to skip def_ws prefix in sarif reports by @janderssonse in https://github.com/oxsecurity/megalinter/pull/2383</li>
-<li>update schema to pass official SARIF validator by @DariuszPorowski in https://github.com/oxsecurity/megalinter/pull/2645</li>
+<li>Add option to skip def_ws prefix in sarif reports by @janderssonse in <a href="https://github.com/oxsecurity/megalinter/pull/2383">https://github.com/oxsecurity/megalinter/pull/2383</a></li>
+<li>update schema to pass official SARIF validator by @DariuszPorowski in <a href="https://github.com/oxsecurity/megalinter/pull/2645">https://github.com/oxsecurity/megalinter/pull/2645</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/reporters/ConfigReporter/">CONFIG_REPORTER</a><ul>
-<li>Add support for idea plugins auto-install by @waterfoul in https://github.com/oxsecurity/megalinter/pull/2553</li>
+<li>Add support for idea plugins auto-install by @waterfoul in <a href="https://github.com/oxsecurity/megalinter/pull/2553">https://github.com/oxsecurity/megalinter/pull/2553</a></li>
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/reporters/ConsoleReporter/">CONSOLE_REPORTER</a><ul>
@@ -3710,7 +3713,7 @@
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/reporters/GitlabCommentReporter/">GITLAB_COMMENT_REPORTER</a><ul>
-<li>Enhancement &amp; fixes for GitlabCommentReporter by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2564<ul>
+<li>Enhancement &amp; fixes for GitlabCommentReporter by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2564">https://github.com/oxsecurity/megalinter/pull/2564</a><ul>
 <li>New var GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT to allow to disable the overwrite of existing MegaLinter comment in case of new run</li>
 <li>In case of overwrite activated (by default), fetch all Merge Request comments, not the first 20.</li>
 <li>Display a different message in log when a Merge Request comment is created or updated.</li>
@@ -3719,7 +3722,7 @@
 </ul>
 </li>
 <li><a href="https://megalinter.io/latest/reporters/AzureCommentReporter/">AZURE_COMMENT_REPORTER</a><ul>
-<li>Downgrade Azure DevOps pipy package to avoid crash by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2576</li>
+<li>Downgrade Azure DevOps pipy package to avoid crash by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2576">https://github.com/oxsecurity/megalinter/pull/2576</a></li>
 </ul>
 </li>
 </ul>
@@ -3727,36 +3730,36 @@
 </ul>
 <ul>
 <li>Documentation<ul>
-<li>Improve documentation pages split by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2688<ul>
+<li>Improve documentation pages split by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2688">https://github.com/oxsecurity/megalinter/pull/2688</a><ul>
 <li>Now Installation and Configuration menus have their own child menus</li>
 </ul>
 </li>
-<li>Doc about how to use fine grained PAT by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2662</li>
-<li>Fixed incorrect link in Azure to Gitlab reporters pages. by @Doommius in https://github.com/oxsecurity/megalinter/pull/2613</li>
-<li>Added bitbucket job template + Fix icon in console logs by @Doommius in https://github.com/oxsecurity/megalinter/pull/2617</li>
-<li>Exclude licenses pages from online search results by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2665</li>
-<li>Improve HTML tables display by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2670</li>
+<li>Doc about how to use fine grained PAT by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2662">https://github.com/oxsecurity/megalinter/pull/2662</a></li>
+<li>Fixed incorrect link in Azure to Gitlab reporters pages. by @Doommius in <a href="https://github.com/oxsecurity/megalinter/pull/2613">https://github.com/oxsecurity/megalinter/pull/2613</a></li>
+<li>Added bitbucket job template + Fix icon in console logs by @Doommius in <a href="https://github.com/oxsecurity/megalinter/pull/2617">https://github.com/oxsecurity/megalinter/pull/2617</a></li>
+<li>Exclude licenses pages from online search results by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2665">https://github.com/oxsecurity/megalinter/pull/2665</a></li>
+<li>Improve HTML tables display by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2670">https://github.com/oxsecurity/megalinter/pull/2670</a></li>
 <li>Remove ASCII characters from linters helps displayed in MegaLinter documentation</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Internal CI<ul>
-<li>Upgrade GitHub Actions to change automated comments and increase timeout by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2536</li>
-<li>Use Github Permissions instead of PAT by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2652</li>
-<li>Update GitHub Actions workflows environments by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2657</li>
-<li>Automate External Plugins table generation using <strong>.automation/plugins.yml</strong> file by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2667</li>
-<li>Fix MegaLinter build issue by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2539</li>
-<li>Fix for trivy-action (new naming for input) by @DariuszPorowski in https://github.com/oxsecurity/megalinter/pull/2541</li>
-<li>Fix <code>/build</code> slash command to checkout the correct PR branch by @echoix in https://github.com/oxsecurity/megalinter/pull/2542</li>
-<li>Fix local run of python test cases by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2565</li>
-<li>Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2582</li>
-<li>Do not push to docker from dev PRs by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2639</li>
-<li>Update stale workflow: remove trigger on comments and explicit permissions by @echoix in https://github.com/oxsecurity/megalinter/pull/2641</li>
-<li>Decouple updating docker pull stats from building docs by @echoix in https://github.com/oxsecurity/megalinter/pull/2677</li>
-<li>Review MegaLinter's own cspell word list for outdated exclusions by @echoix in https://github.com/oxsecurity/megalinter/pull/2676</li>
-<li>Run stale workflow only on schedule, by @echoix in https://github.com/oxsecurity/megalinter/pull/2641</li>
-<li>Add explicit permissions to stale workflow, by @echoix in https://github.com/oxsecurity/megalinter/pull/2641</li>
+<li>Upgrade GitHub Actions to change automated comments and increase timeout by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2536">https://github.com/oxsecurity/megalinter/pull/2536</a></li>
+<li>Use Github Permissions instead of PAT by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2652">https://github.com/oxsecurity/megalinter/pull/2652</a></li>
+<li>Update GitHub Actions workflows environments by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2657">https://github.com/oxsecurity/megalinter/pull/2657</a></li>
+<li>Automate External Plugins table generation using <strong>.automation/plugins.yml</strong> file by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2667">https://github.com/oxsecurity/megalinter/pull/2667</a></li>
+<li>Fix MegaLinter build issue by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2539">https://github.com/oxsecurity/megalinter/pull/2539</a></li>
+<li>Fix for trivy-action (new naming for input) by @DariuszPorowski in <a href="https://github.com/oxsecurity/megalinter/pull/2541">https://github.com/oxsecurity/megalinter/pull/2541</a></li>
+<li>Fix <code>/build</code> slash command to checkout the correct PR branch by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2542">https://github.com/oxsecurity/megalinter/pull/2542</a></li>
+<li>Fix local run of python test cases by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2565">https://github.com/oxsecurity/megalinter/pull/2565</a></li>
+<li>Fix mkdocs documentation generation by downgrading mkdocs-glightbox to 0.3.2 by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2582">https://github.com/oxsecurity/megalinter/pull/2582</a></li>
+<li>Do not push to docker from dev PRs by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/2639">https://github.com/oxsecurity/megalinter/pull/2639</a></li>
+<li>Update stale workflow: remove trigger on comments and explicit permissions by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2641">https://github.com/oxsecurity/megalinter/pull/2641</a></li>
+<li>Decouple updating docker pull stats from building docs by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2677">https://github.com/oxsecurity/megalinter/pull/2677</a></li>
+<li>Review MegaLinter's own cspell word list for outdated exclusions by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2676">https://github.com/oxsecurity/megalinter/pull/2676</a></li>
+<li>Run stale workflow only on schedule, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2641">https://github.com/oxsecurity/megalinter/pull/2641</a></li>
+<li>Add explicit permissions to stale workflow, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/2641">https://github.com/oxsecurity/megalinter/pull/2641</a></li>
 </ul>
 </li>
 </ul>
