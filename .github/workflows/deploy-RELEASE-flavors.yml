@@ -34,6 +34,8 @@ jobs:
     name: Deploy Docker Image - RELEASE - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    permissions:
+      packages: write
     environment:
       name: release
     strategy:

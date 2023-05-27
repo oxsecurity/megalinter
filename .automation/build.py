@@ -802,8 +802,8 @@ def generate_documentation():
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
-        + "[**Try MegaLinter v7 beta !**]"
-        + "(https://github.com/oxsecurity/megalinter/issues/2608)"  # TODOV7: Replace link
+        + "[**Switch to MegaLinter v7 !**]"
+        + "(https://github.com/oxsecurity/megalinter/issues/2692)"
     )
     # Update README.md file
     replace_in_file(
@@ -2462,7 +2462,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.3M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)

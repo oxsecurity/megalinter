@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.3M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
@@ -30,7 +30,7 @@ MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the 
 
 Supporting [**55** languages](supported-linters.md#languages), [**24** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
-[**Try MegaLinter v7 beta !**](https://github.com/oxsecurity/megalinter/issues/2608)
+[**Switch to MegaLinter v7 !**](https://github.com/oxsecurity/megalinter/issues/2692)
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->

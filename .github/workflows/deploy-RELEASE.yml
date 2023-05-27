@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     # Only run on main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    permissions:
+      packages: write
     environment:
       name: release
     ##################
