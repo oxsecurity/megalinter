@@ -1,0 +1,76 @@
+/* stylelint-disable SelectorFormat, selector-class-pattern */
+.megalinter-banner {
+  height: 50px;
+  max-height: 150px;
+}
+
+.megalinter-logo {
+  height: 70px;
+  max-height: 70px;
+}
+
+.megalinter-icon {
+  max-height: 32px;
+  max-width: 32px;
+}
+
+.md-typeset__table {
+  min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+/* light mode table header bgcolor */
+.md-typeset__table th {
+  background-color: #f2edfe;
+}
+
+/* dark mode table header bgcolor */
+[data-md-color-scheme="slate"] .md-typeset__table th {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
+/* light mode alternating table bg colors */
+.md-typeset__table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* dark mode alternating table bg colors */
+[data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
+h1[content~=Home] {
+  display: none;
+}
+
+:root>* {
+  --md-default-fg-color: #1E144D;
+  --md-default-fg-color--light: #6A2BFF;
+  --md-default-fg-color--lighter: #FD80CD ;
+  --md-default-fg-color--lightest: #dcc4d3;
+  --md-default-bg-color: #fff;
+  --md-default-bg-color--light: #fff;
+  --md-default-bg-color--lighter: #fff;
+  --md-default-bg-color--lightest: #fff;
+
+  --md-primary-fg-color: #1E144D;
+  --md-primary-fg-color--light: #FD80CD;
+  --md-primary-fg-color--dark: #6A2BFF;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #fff;
+
+
+  --md-accent-fg-color: #6A2BFF;
+  --md-accent-fg-color--transparent: #6A2BFF;
+  --md-accent-bg-color: #B95CE4;
+  --md-accent-bg-color--light: #FD80CD;
+
+  --md-footer-bg-color: #B95CE4;
+
+  --md-typeset-table-color--light: #fff5fb;
+
+}
+
