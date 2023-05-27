@@ -2410,6 +2410,11 @@
 <p>As it can be complicated to <strong>trust</strong> the authors of all the open-source linters, <strong>MegaLinter removes variables from the environment used to call linters</strong>.</p>
 <p>Thanks to this feature, you only need to <a href="https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py"><strong>trust MegaLinter and its internal python dependencies</strong></a>, but there is <strong>no need to trust all the linters that are used</strong> !</p>
 <p>You can add secured variables to the default list using configuration property <strong>SECURED_ENV_VARIABLES</strong> in .mega-linter.yml or in an environment variable (priority is given to ENV variables above <code>.mega-linter.yml</code> property).</p>
+<p>Values can be:</p>
+<ul>
+<li>String (ex: <code>MY_SECRET_VAR</code>)</li>
+<li>Regular Expression (ex: <code>(MY.*VAR)</code>)</li>
+</ul>
 <p>SECURED_ENV_VARIABLES_DEFAULT contains:</p>
 <ul>
 <li>GITHUB_TOKEN</li>
@@ -2420,6 +2425,7 @@
 <li>GITLAB_ACCESS_TOKEN_MEGALINTER</li>
 <li>GITLAB_CUSTOM_CERTIFICATE</li>
 <li>WEBHOOK_REPORTER_BEARER_TOKEN</li>
+<li>NODE_TOKEN</li>
 <li>NPM_TOKEN</li>
 <li>DOCKER_USERNAME</li>
 <li>DOCKER_PASSWORD</li>
@@ -2427,12 +2433,16 @@
 <li>GCR_USERNAME</li>
 <li>GCR_PASSWORD</li>
 <li>SMTP_PASSWORD</li>
+<li>CI_SFDX_HARDIS_GITLAB_TOKEN</li>
+<li>(SFDX_CLIENT_ID_.*)</li>
+<li>(SFDX_CLIENT_KEY_.*)</li>
 </ul>
 <p>Example of adding extra secured variables <code>.mega-linter.yml</code>:</p>
 <pre><code class="language-yaml">SECURED_ENV_VARIABLES:
   - MY_SECRET_TOKEN
   - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
   - OX_API_KEY
+  - (MY.*VAR)  # Regex format
 </code></pre>
 <p>Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:</p>
 <pre><code class="language-shell">SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
