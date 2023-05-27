@@ -22,7 +22,7 @@ Add the following job in your `azure-pipelines.yaml` file
       - checkout: self
 
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v6
+      - script: docker pull oxsecurity/megalinter:v7
         displayName: Pull MegaLinter
 
       # Run MegaLinter
@@ -31,7 +31,7 @@ Add the following job in your `azure-pipelines.yaml` file
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v6
+            oxsecurity/megalinter:v7
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports

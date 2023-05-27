@@ -8,10 +8,10 @@ description: You can use latest release or beta version of MegaLinter, know the 
 
 # Which version to use ?
 
-The following instructions examples are using latest MegaLinter stable version (**v6** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v7** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- Docker image: `oxsecurity/megalinter:v6`
-- GitHub Action: `oxsecurity/megalinter@v6`
+- Docker image: `oxsecurity/megalinter:v7`
+- GitHub Action: `oxsecurity/megalinter@v7`
 
 You can also use **beta** version (corresponding to the content of main branch)
 

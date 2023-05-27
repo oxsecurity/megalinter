@@ -17,7 +17,7 @@ You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReport
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v6'
+            image 'oxsecurity/megalinter:v7'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }

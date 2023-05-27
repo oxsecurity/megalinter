@@ -18,7 +18,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
-  image: oxsecurity/megalinter:v6
+  image: oxsecurity/megalinter:v7
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
