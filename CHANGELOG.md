@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Regex issue with megalinter-reports
 
 - Linter versions upgrades
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
 <!-- linter-versions-end -->
 
 ## [v7.0.0] - 2023-05-27

@@ -19,10 +19,10 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 
 ## Configuration in MegaLinter
 
-- Enable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.2/configuration/#activation-and-deactivation)
-- Disable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.2/configuration/#activation-and-deactivation)
+- Enable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable powershell_formatter by adding `POWERSHELL_POWERSHELL_FORMATTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `POWERSHELL_POWERSHELL_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/7.0.2/configuration/#apply-fixes)
+- Enable **autofixes** by adding `POWERSHELL_POWERSHELL_FORMATTER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                                    | Description                                                                                                                                                                                  | Default value                                                       |
 |-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
@@ -39,7 +39,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 | POWERSHELL_POWERSHELL_FORMATTER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules                     |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                                              |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                                 |
-| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['powershell']`                                                    |
+| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['pwsh']`                                                          |
 
 ## IDE Integration
 
@@ -53,10 +53,10 @@ Use powershell_formatter in your favorite IDE to catch errors before MegaLinter 
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description                                   | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:----------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.2/supported-linters/) | Default MegaLinter Flavor                     |       113        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.2) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/7.0.2/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v7.0.2) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description                                   | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor                     |       113        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
 
