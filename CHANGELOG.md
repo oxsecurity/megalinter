@@ -10,9 +10,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Secure PRE_COMMANDS and POST_COMMANDS by default
   - Can be disabled with **secured_env: false** in the command definition
+- New variable **TERRAFORM_TFLINT_SECURED_ENV** with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
 
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.3 to **2.3.4** on 2023-05-28
+  - [checkov](https://www.checkov.io/) from 2.3.259 to **2.3.261** on 2023-05-28
 <!-- linter-versions-end -->
 
 ## [v7.0.2] - 2023-05-27
