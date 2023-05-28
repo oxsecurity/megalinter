@@ -105,7 +105,6 @@ class utilsTest(unittest.TestCase):
                 sorted(filtered_files), sorted(expected), f"check {file_extensions}"
             )
 
-
     def test_filter_regex_exclude_single_level(self):
         all_files = [
             "index.html",
@@ -125,7 +124,6 @@ class utilsTest(unittest.TestCase):
             sorted(["target/index.html"]),
             "check regex_exclude_multilevel",
         )
-
 
     def test_filter_regex_exclude_multilevel(self):
         all_files = [

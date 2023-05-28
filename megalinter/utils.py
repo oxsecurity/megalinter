@@ -151,16 +151,12 @@ def filter_files(
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
         # Skip according to FILTER_REGEX_INCLUDE
-        if filter_regex_include_object and not filter_regex_include_object.search(
-            file
-        ):
+        if filter_regex_include_object and not filter_regex_include_object.search(file):
             continue
         # Skip according to FILTER_REGEX_EXCLUDE list
         excluded_by_regex = False
         for filter_regex_exclude_object in filter_regex_exclude_objects:
-            if filter_regex_exclude_object and filter_regex_exclude_object.search(
-                file
-            ):
+            if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
                 excluded_by_regex = True
                 break
         if excluded_by_regex is True:
