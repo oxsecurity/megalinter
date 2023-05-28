@@ -105,6 +105,28 @@ class utilsTest(unittest.TestCase):
                 sorted(filtered_files), sorted(expected), f"check {file_extensions}"
             )
 
+
+    def test_filter_regex_exclude_single_level(self):
+        all_files = [
+            "index.html",
+            "target/index.html",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=None,
+            filter_regex_exclude=["(^index.html)"],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["target/index.html"]),
+            "check regex_exclude_multilevel",
+        )
+
+
     def test_filter_regex_exclude_multilevel(self):
         all_files = [
             "should/be/excluded/descriptor-level/test.md",
