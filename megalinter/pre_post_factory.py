@@ -59,7 +59,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     cwd = os.getcwd()
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
-        # Secure env by default. Must be explicitely define to false in command definition to be disabled
+        # Secure env by default. Must be explicitly define to false in command definition to be disabled
     if not "secured_env" in command_info:
         command_info['secured_env'] = True
     command_info = complete_command(command_info)
