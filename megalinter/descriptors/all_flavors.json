@@ -92,6 +92,7 @@
             "REPOSITORY_CHECKOV",
             "REPOSITORY_GIT_DIFF",
             "REPOSITORY_GITLEAKS",
+            "REPOSITORY_KICS",
             "REPOSITORY_SECRETLINT",
             "REPOSITORY_SEMGREP",
             "REPOSITORY_TRIVY",
@@ -109,7 +110,6 @@
             "TERRAFORM_TERRASCAN",
             "TERRAFORM_TERRAGRUNT",
             "TERRAFORM_TERRAFORM_FMT",
-            "TERRAFORM_KICS",
             "TSX_ESLINT",
             "TYPESCRIPT_ES",
             "TYPESCRIPT_STANDARD",
@@ -750,14 +750,14 @@
             "REPOSITORY_DEVSKIM",
             "REPOSITORY_DUSTILOCK",
             "REPOSITORY_GITLEAKS",
+            "REPOSITORY_KICS",
             "REPOSITORY_SECRETLINT",
             "REPOSITORY_SEMGREP",
             "REPOSITORY_SYFT",
             "REPOSITORY_TRIVY",
             "TERRAFORM_TFLINT",
             "TERRAFORM_TERRASCAN",
-            "TERRAFORM_TERRAGRUNT",
-            "TERRAFORM_KICS"
+            "TERRAFORM_TERRAGRUNT"
         ]
     },
     "swift": {
@@ -854,6 +854,7 @@
             "REPOSITORY_CHECKOV",
             "REPOSITORY_GIT_DIFF",
             "REPOSITORY_GITLEAKS",
+            "REPOSITORY_KICS",
             "REPOSITORY_SECRETLINT",
             "REPOSITORY_SEMGREP",
             "REPOSITORY_TRIVY",
@@ -869,7 +870,6 @@
             "TERRAFORM_TERRASCAN",
             "TERRAFORM_TERRAGRUNT",
             "TERRAFORM_TERRAFORM_FMT",
-            "TERRAFORM_KICS",
             "XML_XMLLINT",
             "YAML_PRETTIER",
             "YAML_YAMLLINT",
