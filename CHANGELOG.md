@@ -8,13 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Quick Fix mega-linter-runner --upgrade
-  - Dead link to configuration.md
-  - Regex issue with megalinter-reports
+- Secure PRE_COMMANDS and POST_COMMANDS by default
+  - Can be disabled with **secured_env: false** in the command definition
 
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
 <!-- linter-versions-end -->
+
+## [v7.0.2] - 2023-05-27
+
+- Quick Fix mega-linter-runner --upgrade (Warning: bug with npm, not publish yet in mega-linter-runner)
+  - Dead link to configuration.md
+  - Regex issue with megalinter-reports
 
 ## [v7.0.0] - 2023-05-27
 

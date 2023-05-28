@@ -31,6 +31,12 @@
                     ],
                     "title": "Folder where to run the command",
                     "type": "string"
+                },
+                "secured_env": {
+                    "Description": "Hides sensitive variables from ENV variables when calling the command",
+                    "default": true,
+                    "title": "Secured Environment Variables",
+                    "type": "boolean"
                 }
             },
             "required": [],
@@ -9268,7 +9274,7 @@
             "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
             "default": [
                 [
-                    "pwsh"
+                    "powershell"
                 ]
             ],
             "items": {
@@ -9367,7 +9373,7 @@
             "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
             "default": [
                 [
-                    "pwsh"
+                    "powershell"
                 ]
             ],
             "items": {

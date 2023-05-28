@@ -97,7 +97,7 @@ class GitlabCommentReporter(Reporter):
             if gitlab_certificate_path != "":
                 # Update certificates and set cert path in gitlab options
                 run_command(
-                    {"cwd": "root", "command": "update-ca-certificates"},
+                    {"cwd": "root", "command": "update-ca-certificates", "secured_env": False},
                     "GitlabCommentReporter",
                     self.master,
                 )
