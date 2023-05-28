@@ -14,7 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Secure PRE_COMMANDS and POST_COMMANDS by default
   - Can be disabled with **secured_env: false** in the command definition
-  - Manage retrocompatibility with FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE expression
+  - Manage v6 retrocompatibility with FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE expression
 
 - Linter versions upgrades
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
