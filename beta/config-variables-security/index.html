@@ -2450,7 +2450,7 @@
 <p>Notes:</p>
 <ul>
 <li>If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !</li>
-<li>Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for <a href="../config-precommands/">PRE_COMMANDS</a> , as you might need secured values within their code.</li>
+<li>Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for <a href="../config-precommands/">PRE_COMMANDS</a> , ONLY if you define <code>secured_env: false</code> in the command.</li>
 </ul>
 <!-- config-variables-security-section-end -->
 </article>
