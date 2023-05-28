@@ -26,7 +26,7 @@ linters:
     cli_sarif_args:
       - --format
       - sarif
-    variables: 
+    variables:
       - name: TERRAFORM_TFLINT_SECURED_ENV
         default_value: true
         description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
