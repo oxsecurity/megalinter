@@ -3597,11 +3597,18 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Secure PRE_COMMANDS and POST_COMMANDS by default<ul>
-<li>Can be disabled with <strong>secured_env: false</strong> in the command definition</li>
+<li>Linter enhancements &amp; fixes<ul>
+<li>New variable <strong>TERRAFORM_TFLINT_SECURED_ENV</strong> with default value <code>true</code>. Set to <code>false</code> to allow <code>tflint --init</code> to access your env vars.</li>
 </ul>
 </li>
-<li>New variable <strong>TERRAFORM_TFLINT_SECURED_ENV</strong> with default value <code>true</code>. Set to <code>false</code> to allow <code>tflint --init</code> to access your env vars.</li>
+</ul>
+<ul>
+<li>Core<ul>
+<li>Secure PRE_COMMANDS and POST_COMMANDS by default</li>
+<li>Can be disabled with <strong>secured_env: false</strong> in the command definition</li>
+<li>Manage v6 retrocompatibility with FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE expression</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
