@@ -20,10 +20,16 @@ linters:
     linter_rules_url: https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
+    linter_text: |
+      Set variable TERRAFORM_TFLINT_SECURED_ENV to `false` if you need `tflint --init` to be called with all ENV variables.
     config_file_name: .tflint.hcl
     cli_sarif_args:
       - --format
       - sarif
+    variables: 
+      - name: TERRAFORM_TFLINT_SECURED_ENV
+        default_value: true
+        description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
