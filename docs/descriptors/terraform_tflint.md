@@ -7,6 +7,8 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 # tflint
 [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/terraform-linters/tflint?sort=semver)](https://github.com/terraform-linters/tflint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/contributors/)
 
+Set variable TERRAFORM_TFLINT_SECURED_ENV to `false` if you need `tflint --init` to be called with all ENV variables.
+
 ## tflint documentation
 
 - Version in MegaLinter: **0.46.1**
@@ -25,6 +27,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 | Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                    | `True`                                          |
 | TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
 | TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |

@@ -32,3 +32,6 @@ class TfLintLinter(megalinter.Linter):
         if self.pre_commands is None:
             self.pre_commands = []
         self.pre_commands.append(tflint_pre_command)
+
+    def pre_test(self):
+        config.set_value(self.request_id, "TERRAFORM_TFLINT_SECURED_ENV", "false")
