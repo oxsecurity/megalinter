@@ -1098,6 +1098,7 @@ PRE_COMMANDS:
     cwd: "root"        # Will be run at the root of MegaLinter docker image
   - command: echo "pre-test command has been called"
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+    continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
   - command: pip install flake8-cognitive-complexity
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
 ```
@@ -1120,6 +1121,7 @@ Example in `.mega-linter.yml` config file
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+    continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
 ```
 
 <!-- config-postcommands-section-end -->
@@ -1188,7 +1190,7 @@ SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_A
 Notes:
 
 - If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
-- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md) , as you might need secured values within their code.
+- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md) , ONLY if you define `secured_env: false` in the command.
 
 <!-- config-variables-security-section-end -->
 <!-- config-cli-lint-mode-section-start -->
