@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v7.0.3] - 2023-05-29
+
 - Linter enhancements & fixes
   - New variable **TERRAFORM_TFLINT_SECURED_ENV** with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
 
@@ -20,7 +25,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
   - [kubescape](https://github.com/kubescape/kubescape) from 2.3.3 to **2.3.4** on 2023-05-28
   - [checkov](https://www.checkov.io/) from 2.3.259 to **2.3.261** on 2023-05-28
-<!-- linter-versions-end -->
 
 ## [v7.0.2] - 2023-05-27
 
