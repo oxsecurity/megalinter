@@ -38,7 +38,7 @@ Supporting [**55** languages](#languages), [**24** formats](#formats), [**20** t
 
 [**Switch to MegaLinter v7 !**](https://github.com/oxsecurity/megalinter/issues/2692)
 
-[![Upgrade to v7 Video](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/6NSBzq01S9g.jpg)](https://www.youtube.com/watch?v=6NSBzq01S9g)
+[![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)](https://www.youtube.com/watch?v=6NSBzq01S9g)
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
