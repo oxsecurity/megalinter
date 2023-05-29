@@ -37,6 +37,9 @@ MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the 
 Supporting [**55** languages](#languages), [**24** formats](#formats), [**20** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
 [**Switch to MegaLinter v7 !**](https://github.com/oxsecurity/megalinter/issues/2692)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/6NSBzq01S9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
