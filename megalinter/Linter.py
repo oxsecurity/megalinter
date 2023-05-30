@@ -669,7 +669,7 @@ class Linter:
         # Get secured variables allow list
         if config.exists(self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"):
             self.unsecured_env_variables = config.get_list(
-                self.name + "_UNSECURED_ENV_VARIABLES"
+                self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"
             )
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
