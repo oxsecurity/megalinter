@@ -25,8 +25,8 @@ Scalafix lints and fixes scala files
 
 ## Configuration in MegaLinter
 
-- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
-- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
+- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                   | Description                                                                                                                                                                                  | Default value                                   |
 |--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -38,6 +38,7 @@ Scalafix lints and fixes scala files
 | SCALA_SCALAFIX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | SCALA_SCALAFIX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
 | SCALA_SCALAFIX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| SCALA_SCALAFIX_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling SCALA_SCALAFIX and its pre/post commands                                                                                       | None                                            |
 | SCALA_SCALAFIX_CONFIG_FILE                 | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.scalafix.conf`                                |
 | SCALA_SCALAFIX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | SCALA_SCALAFIX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
@@ -48,9 +49,9 @@ Scalafix lints and fixes scala files
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.3/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

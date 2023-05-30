@@ -803,7 +803,9 @@ def generate_documentation():
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
         + "[**Switch to MegaLinter v7 !**]"
-        + "(https://github.com/oxsecurity/megalinter/issues/2692)"
+        + "(https://github.com/oxsecurity/megalinter/issues/2692)\n\n"
+        + "[![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)]"
+        + "(https://www.youtube.com/watch?v=6NSBzq01S9g)"
     )
     # Update README.md file
     replace_in_file(

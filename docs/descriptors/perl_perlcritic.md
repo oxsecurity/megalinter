@@ -25,8 +25,8 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 
 ## Configuration in MegaLinter
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                    | Description                                                                                                                                                                                  | Default value              |
 |---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
@@ -38,6 +38,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 | PERL_PERLCRITIC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file         |
 | PERL_PERLCRITIC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                       |
 | PERL_PERLCRITIC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                       |
+| PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling PERL_PERLCRITIC and its pre/post commands                                                                                      | None                       |
 | PERL_PERLCRITIC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                    |
 | PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                        |
 | PERL_PERLCRITIC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['perlcritic']`           |
@@ -46,9 +47,9 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.3/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
