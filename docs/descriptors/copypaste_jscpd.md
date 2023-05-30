@@ -47,17 +47,17 @@ Example:
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                                             | Default value                                   |
-|---------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| COPYPASTE_JSCPD_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                |                                                 |
-| COPYPASTE_JSCPD_PRE_COMMANDS                | List of bash commands to run before the linter                                                          | None                                            |
-| COPYPASTE_JSCPD_POST_COMMANDS               | List of bash commands to run after the linter                                                           | None                                            |
-| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling COPYPASTE_JSCPD and its pre/post commands | None                                            |
-| COPYPASTE_JSCPD_CONFIG_FILE                 | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.jscpd.json`                                   |
-| COPYPASTE_JSCPD_RULES_PATH                  | Path where to find linter configuration file                                                            | Workspace folder, then MegaLinter default rules |
-| COPYPASTE_JSCPD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                              | `false`                                         |
-| COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                        | `0`                                             |
-| COPYPASTE_JSCPD_CLI_EXECUTABLE              | Override CLI executable                                                                                 | `['jscpd']`                                     |
+| Variable                                    | Description                                                                                            | Default value                                   |
+|---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| COPYPASTE_JSCPD_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| COPYPASTE_JSCPD_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
+| COPYPASTE_JSCPD_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
+| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands | None                                            |
+| COPYPASTE_JSCPD_CONFIG_FILE                 | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                       | `.jscpd.json`                                   |
+| COPYPASTE_JSCPD_RULES_PATH                  | Path where to find linter configuration file                                                           | Workspace folder, then MegaLinter default rules |
+| COPYPASTE_JSCPD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                             | `false`                                         |
+| COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                       | `0`                                             |
+| COPYPASTE_JSCPD_CLI_EXECUTABLE              | Override CLI executable                                                                                | `['jscpd']`                                     |
 
 ## MegaLinter Flavours
 

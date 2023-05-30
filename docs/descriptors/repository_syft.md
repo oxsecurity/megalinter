@@ -27,17 +27,17 @@ Builds a SBOM (Software Build Of Materials) from your repository
 - Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                                             | Default value                                   |
-|---------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                |                                                 |
-| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                                          | None                                            |
-| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                                           | None                                            |
-| REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling REPOSITORY_SYFT and its pre/post commands | None                                            |
-| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                         | `.syft.yaml`                                    |
-| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                                            | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                              | `false`                                         |
-| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                        | `0`                                             |
-| REPOSITORY_SYFT_CLI_EXECUTABLE              | Override CLI executable                                                                                 | `['syft']`                                      |
+| Variable                                    | Description                                                                                            | Default value                                   |
+|---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
+| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
+| REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands | None                                            |
+| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.syft.yaml`                                    |
+| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                                           | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                             | `false`                                         |
+| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                       | `0`                                             |
+| REPOSITORY_SYFT_CLI_EXECUTABLE              | Override CLI executable                                                                                | `['syft']`                                      |
 
 ## MegaLinter Flavours
 

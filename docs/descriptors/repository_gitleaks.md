@@ -65,20 +65,20 @@ git fetch --depth=0
 - Enable gitleaks by adding `REPOSITORY_GITLEAKS` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable gitleaks by adding `REPOSITORY_GITLEAKS` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                 | Default value                                   |
-|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only PR commits on Pull Request                                                                        | `false`                                         |
-| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Pull Request source commit sha (N/A to supported scenarios)                                                 | ``                                              |
-| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Pull Request target commit sha (N/A to supported scenarios)                                                 | ``                                              |
-| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                    |                                                 |
-| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                              | None                                            |
-| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                               | None                                            |
-| REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands | None                                            |
-| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                         | `.gitleaks.toml`                                |
-| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                                                | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                  | `false`                                         |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                            | `0`                                             |
-| REPOSITORY_GITLEAKS_CLI_EXECUTABLE              | Override CLI executable                                                                                     | `['gitleaks']`                                  |
+| Variable                                        | Description                                                                                                | Default value                                   |
+|-------------------------------------------------|------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only PR commits on Pull Request                                                                       | `false`                                         |
+| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Pull Request source commit sha (N/A to supported scenarios)                                                | ``                                              |
+| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Pull Request target commit sha (N/A to supported scenarios)                                                | ``                                              |
+| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                   |                                                 |
+| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                             | None                                            |
+| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                              | None                                            |
+| REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands | None                                            |
+| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.gitleaks.toml`                                |
+| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                                               | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                 | `false`                                         |
+| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                           | `0`                                             |
+| REPOSITORY_GITLEAKS_CLI_EXECUTABLE              | Override CLI executable                                                                                    | `['gitleaks']`                                  |
 
 ## MegaLinter Flavours
 

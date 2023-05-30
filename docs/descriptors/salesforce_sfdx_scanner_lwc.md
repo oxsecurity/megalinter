@@ -32,18 +32,18 @@ See more details in [Help](#help-content)
 - Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                | Description                                                                                                         | Default value                                   |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                            |                                                 |
-| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                      | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                       | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE                 | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                         | `--eslintconfig`                                |
-| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                        | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                          | `false`                                         |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                    | `0`                                             |
-| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                             | `['sfdx']`                                      |
-| SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files                                                                               | `force-app`                                     |
+| Variable                                                | Description                                                                                                        | Default value                                   |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                           |                                                 |
+| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                     | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                      | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE                 | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `--eslintconfig`                                |
+| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                       | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                         | `false`                                         |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                   | `0`                                             |
+| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                            | `['sfdx']`                                      |
+| SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files                                                                              | `force-app`                                     |
 
 ## IDE Integration
 

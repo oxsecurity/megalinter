@@ -1444,7 +1444,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {dump_as_json(linter.pre_commands,'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
             f"| {dump_as_json(linter.post_commands,'None')} |",
-            f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitely "
+            f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
             + f"not filtered before calling {linter.name} and its pre/post commands"
             f"| {dump_as_json(linter.post_commands,'None')} |",
         ]
@@ -1540,7 +1540,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_UNSECURED_ENV_VARIABLES",
                         "type": "array",
                         "default": [],
-                        "description": "List of env variables explicitely "
+                        "description": "List of env variables explicitly "
                         + f"not filtered before calling {linter.name} and its pre/post commands",
                         "title": f"{title_prefix}{linter.name}: Unsecured env variables",
                         "items": {"type": "string"},

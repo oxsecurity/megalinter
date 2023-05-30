@@ -21,15 +21,15 @@ Git diff checks for git conflicts markers in files
 - Enable git_diff by adding `REPOSITORY_GIT_DIFF` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable git_diff by adding `REPOSITORY_GIT_DIFF` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                 | Default value |
-|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_GIT_DIFF_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                    |               |
-| REPOSITORY_GIT_DIFF_PRE_COMMANDS                | List of bash commands to run before the linter                                                              | None          |
-| REPOSITORY_GIT_DIFF_POST_COMMANDS               | List of bash commands to run after the linter                                                               | None          |
-| REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES     | List of env variables explicitely not filtered before calling REPOSITORY_GIT_DIFF and its pre/post commands | None          |
-| REPOSITORY_GIT_DIFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                  | `false`       |
-| REPOSITORY_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                            | `0`           |
-| REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                                                     | `['git']`     |
+| Variable                                        | Description                                                                                                | Default value |
+|-------------------------------------------------|------------------------------------------------------------------------------------------------------------|---------------|
+| REPOSITORY_GIT_DIFF_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                   |               |
+| REPOSITORY_GIT_DIFF_PRE_COMMANDS                | List of bash commands to run before the linter                                                             | None          |
+| REPOSITORY_GIT_DIFF_POST_COMMANDS               | List of bash commands to run after the linter                                                              | None          |
+| REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_GIT_DIFF and its pre/post commands | None          |
+| REPOSITORY_GIT_DIFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                 | `false`       |
+| REPOSITORY_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                           | `0`           |
+| REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                                                    | `['git']`     |
 
 ## MegaLinter Flavours
 
