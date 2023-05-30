@@ -8,6 +8,8 @@ description: Hide from linter executables the environment variables that can con
 
 # Environment variables security
 
+## Secured env variables
+
 MegaLinter runs on a docker image and calls the linters via command line to gather their results.
 
 If you run it from your **CI/CD pipelines**, the docker image may have **access to your environment variables, that can contain secrets** defined in CI/CD variables.
@@ -22,6 +24,30 @@ Values can be:
 
 - String (ex: `MY_SECRET_VAR`)
 - Regular Expression (ex: `(MY.*VAR)`)
+
+Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](config-precommands.md) , ONLY if you define `secured_env: false` in the command.
+
+## Secured configuration examples
+
+- Example of adding extra secured variables `.mega-linter.yml`:
+
+```yaml
+SECURED_ENV_VARIABLES:
+  - MY_SECRET_TOKEN
+  - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
+  - OX_API_KEY
+  - (MY.*VAR)  # Regex format
+```
+
+- Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
+
+```shell
+SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
+```
+
+## Default secured variables
+
+If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
 
 SECURED_ENV_VARIABLES_DEFAULT contains:
 
@@ -45,26 +71,16 @@ SECURED_ENV_VARIABLES_DEFAULT contains:
 - (SFDX_CLIENT_ID_.*)
 - (SFDX_CLIENT_KEY_.*)
 
-Example of adding extra secured variables `.mega-linter.yml`:
+## Unhide variables for linters
+
+You can configure exceptions for a specific linter by defining **(linter-key)_UNSECURED_ENV_VARIABLES**.
+
+Variable names in this list won't be hidden to the linter commands.
 
 ```yaml
-SECURED_ENV_VARIABLES:
-  - MY_SECRET_TOKEN
-  - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
-  - OX_API_KEY
-  - (MY.*VAR)  # Regex format
+TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN # Can contain string only, not regex
 ```
-
-Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
-
-```shell
-SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
-```
-
-Notes:
-
-- If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
-- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](config-precommands.md) , ONLY if you define `secured_env: false` in the command.
 
 
 <!-- config-variables-security-section-end -->
