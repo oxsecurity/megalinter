@@ -236,7 +236,7 @@ def delete(request_id=None, key=None):
     set_config(request_id, config)
 
 
-def build_env(request_id, secured=True):
+def build_env(request_id, secured=True, allow_list=[]):
     secured_env_variables = []
     secured_env_variables_regex = []
     if secured is True:
@@ -246,9 +246,10 @@ def build_env(request_id, secured=True):
         )
     env_dict = {}
     for key, value in get_config(request_id).items():
-        if key in secured_env_variables or match_variable_regexes(
-            key, secured_env_variables_regex
-        ):
+        if (
+            key in secured_env_variables
+            or match_variable_regexes(key, secured_env_variables_regex)
+        ) and key not in allow_list:
             env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)

@@ -34,4 +34,4 @@ class TfLintLinter(megalinter.Linter):
         self.pre_commands.append(tflint_pre_command)
 
     def pre_test(self):
-        config.set_value(self.request_id, "TERRAFORM_TFLINT_SECURED_ENV", "false")
+        config.set_value(self.request_id, "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES", "GITHUB_TOKEN")
