@@ -67,7 +67,9 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     if linter is not None:
         unsecured_env_variables = linter.unsecured_env_variables
     subprocess_env = {
-        **config.build_env(mega_linter.request_id, command_info["secured_env"], unsecured_env_variables)
+        **config.build_env(
+            mega_linter.request_id, command_info["secured_env"], unsecured_env_variables
+        )
     }
     add_in_logs(
         linter,
