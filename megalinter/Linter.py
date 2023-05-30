@@ -87,6 +87,7 @@ class Linter:
         self.is_plugin = False
         self.pre_commands = None
         self.post_commands = None
+        self.unsecured_env_variables = []
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
@@ -665,6 +666,12 @@ class Linter:
                 self.request_id, self.name + "_POST_COMMANDS"
             )
 
+        # Get secured variables allow list
+        if config.exists(self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"):
+            self.unsecured_env_variables = config.get_list(
+                self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"
+            )
+
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.request_id, self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
             self.disable_errors_if_less_than = int(
@@ -895,7 +902,7 @@ class Linter:
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {
-            **config.build_env(self.request_id),
+            **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
         if type(command) == str:
@@ -1025,7 +1032,7 @@ class Linter:
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
         subprocess_env = {
-            **config.build_env(self.request_id),
+            **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
         try:
@@ -1073,7 +1080,9 @@ class Linter:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
                 subprocess_env = {
-                    **config.build_env(self.request_id),
+                    **config.build_env(
+                        self.request_id, True, self.unsecured_env_variables
+                    ),
                     "FORCE_COLOR": "0",
                 }
                 process = subprocess.run(

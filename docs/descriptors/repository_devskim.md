@@ -20,17 +20,18 @@ Use `--ignore-globs` to ignore files and/or folders
 
 ## Configuration in MegaLinter
 
-- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
-- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/7.0.3/configuration/#activation-and-deactivation)
+- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                              | Default value |
-|------------------------------------------------|--------------------------------------------------------------------------|---------------|
-| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                           | None          |
-| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                            | None          |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                               | `false`       |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                         | `0`           |
-| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                  | `['devskim']` |
+| Variable                                       | Description                                                                                               | Default value |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
+| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
+| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
+| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
+| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None          |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`       |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`           |
+| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']` |
 
 ## IDE Integration
 
@@ -44,10 +45,10 @@ Use devskim in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                    | Description               | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.3/supported-linters/)     | Default MegaLinter Flavor |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/7.0.3/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 

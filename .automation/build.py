@@ -803,7 +803,9 @@ def generate_documentation():
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
         + "[**Switch to MegaLinter v7 !**]"
-        + "(https://github.com/oxsecurity/megalinter/issues/2692)"
+        + "(https://github.com/oxsecurity/megalinter/issues/2692)\n\n"
+        + "[![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)]"
+        + "(https://www.youtube.com/watch?v=6NSBzq01S9g)"
     )
     # Update README.md file
     replace_in_file(
@@ -1436,11 +1438,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             remove_in_config_schema_file(
                 [f"{linter.name}_FILE_EXTENSIONS", f"{linter.name}_FILE_NAMES_REGEX"]
             )
-        # Pre/post commands
+        # Pre/post commands & unsecured variables
         linter_doc_md += [
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
             f"| {dump_as_json(linter.pre_commands,'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
+            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
+            + f"not filtered before calling {linter.name} and its pre/post commands"
             f"| {dump_as_json(linter.post_commands,'None')} |",
         ]
         add_in_config_schema_file(
@@ -1526,6 +1531,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "default": [linter.cli_executable],
                         "title": f"{title_prefix}{linter.name}: CLI Executable",
+                        "items": {"type": "string"},
+                    },
+                ],
+                [
+                    f"{linter.name}_UNSECURED_ENV_VARIABLES",
+                    {
+                        "$id": f"#/properties/{linter.name}_UNSECURED_ENV_VARIABLES",
+                        "type": "array",
+                        "default": [],
+                        "description": "List of env variables explicitly "
+                        + f"not filtered before calling {linter.name} and its pre/post commands",
+                        "title": f"{title_prefix}{linter.name}: Unsecured env variables",
                         "items": {"type": "string"},
                     },
                 ],

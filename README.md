@@ -1136,6 +1136,8 @@ description: Hide from linter executables the environment variables that can con
 -->
 ### Environment variables security
 
+#### Secured env variables
+
 MegaLinter runs on a docker image and calls the linters via command line to gather their results.
 
 If you run it from your **CI/CD pipelines**, the docker image may have **access to your environment variables, that can contain secrets** defined in CI/CD variables.
@@ -1150,6 +1152,30 @@ Values can be:
 
 - String (ex: `MY_SECRET_VAR`)
 - Regular Expression (ex: `(MY.*VAR)`)
+
+Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md) , ONLY if you define `secured_env: false` in the command.
+
+#### Secured configuration examples
+
+- Example of adding extra secured variables `.mega-linter.yml`:
+
+```yaml
+SECURED_ENV_VARIABLES:
+  - MY_SECRET_TOKEN
+  - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
+  - OX_API_KEY
+  - (MY.*VAR)  # Regex format
+```
+
+- Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
+
+```shell
+SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
+```
+
+#### Default secured variables
+
+If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
 
 SECURED_ENV_VARIABLES_DEFAULT contains:
 
@@ -1173,26 +1199,16 @@ SECURED_ENV_VARIABLES_DEFAULT contains:
 - (SFDX_CLIENT_ID_.*)
 - (SFDX_CLIENT_KEY_.*)
 
-Example of adding extra secured variables `.mega-linter.yml`:
+#### Unhide variables for linters
+
+You can configure exceptions for a specific linter by defining **(linter-key)_UNSECURED_ENV_VARIABLES**.
+
+Variable names in this list won't be hidden to the linter commands.
 
 ```yaml
-SECURED_ENV_VARIABLES:
-  - MY_SECRET_TOKEN
-  - ANOTHER_VAR_CONTAINING_SENSITIVE_DATA
-  - OX_API_KEY
-  - (MY.*VAR)  # Regex format
+TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN # Can contain string only, not regex
 ```
-
-Example of adding extra secured variables in CI variables, so they can not be overridden in .mega-linter.yml:
-
-```shell
-SECURED_ENV_VARIABLES=MY_SECRET_TOKEN,ANOTHER_VAR_CONTAINING_SENSITIVE_DATA,OX_API_KEY
-```
-
-Notes:
-
-- If you override SECURED_ENV_VARIABLES_DEFAULT, it replaces the default list, so it's better to only define SECURED_ENV_VARIABLES to add them to the default list !
-- Environment variables are secured for each command line called (linters, plugins, sarif formatter...) except for [PRE_COMMANDS](https://github.com/oxsecurity/megalinter/tree/main/docs/config-precommands.md) , ONLY if you define `secured_env: false` in the command.
 
 <!-- config-variables-security-section-end -->
 <!-- config-cli-lint-mode-section-start -->
@@ -1269,24 +1285,24 @@ To improve run performances, we generate **Flavored MegaLinter images** containi
 _The following table doesn't display docker pulls from [MegaLinter v4 & v5 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
-|                                                                         <!-- -->                                                                         | Flavor                                                                                            | Description                                                            | Embedded linters |                                                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.0.3/supported-linters/)                                             | Default MegaLinter Flavor                                              |       113        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ci_light.md)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        19        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/cupcake.md)             | MegaLinter for the most commonly used languages                        |        81        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/documentation.md) | MegaLinter for documentation projects                                  |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/dotnet.md)               | Optimized for C, C++, C# or VB based projects                          |        59        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/go.md)                       | Optimized for GO based projects                                        |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/java.md)                   | Optimized for JAVA based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/javascript.md)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/php.md)                     | Optimized for PHP based projects                                       |        50        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/python.md)               | Optimized for PYTHON based projects                                    |        58        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ruby.md)                   | Optimized for RUBY based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/rust.md)                   | Optimized for RUST based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/salesforce.md)       | Optimized for Salesforce based projects                                |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/security.md)           | Optimized for security                                                 |        21        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/swift.md)                 | Optimized for SWIFT based projects                                     |        47        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/terraform.md)         | Optimized for TERRAFORM based projects                                 |        51        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v7.0.3) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                                                            | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)                                              | Default MegaLinter Flavor                                              |       113        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ci_light.md)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        19        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/cupcake.md)             | MegaLinter for the most commonly used languages                        |        81        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/documentation.md) | MegaLinter for documentation projects                                  |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/dotnet.md)               | Optimized for C, C++, C# or VB based projects                          |        59        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/go.md)                       | Optimized for GO based projects                                        |        49        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/java.md)                   | Optimized for JAVA based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/javascript.md)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/php.md)                     | Optimized for PHP based projects                                       |        50        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/python.md)               | Optimized for PYTHON based projects                                    |        58        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/ruby.md)                   | Optimized for RUBY based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/rust.md)                   | Optimized for RUST based projects                                      |        47        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/salesforce.md)       | Optimized for Salesforce based projects                                |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/security.md)           | Optimized for security                                                 |        21        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/swift.md)                 | Optimized for SWIFT based projects                                     |        47        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/terraform.md)         | Optimized for TERRAFORM based projects                                 |        51        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 <!-- flavors-table-end -->
 
 If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
