@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.310 to **1.1.311** on 2023-05-31
   - [checkov](https://www.checkov.io/) from 2.3.264 to **2.3.267** on 2023-05-31
 
+  - [semgrep](https://semgrep.dev/) from 1.23.0 to **1.24.0** on 2023-05-31
 <!-- linter-versions-end -->
 
 ## [v7.0.3] - 2023-05-29
