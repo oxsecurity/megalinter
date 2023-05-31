@@ -13,6 +13,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [standard](https://standardjs.com/) from 17.0.0 to **17.1.0** on 2023-05-31
   - [checkov](https://www.checkov.io/) from 2.3.261 to **2.3.264** on 2023-05-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.16 to **0.45.17** on 2023-05-31
+- Documentation
+  - Add note to terraform_tflint about TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES by @ruzickap in <https://github.com/oxsecurity/megalinter/pull/2706>
 <!-- linter-versions-end -->
 
 ## [v7.0.3] - 2023-05-29

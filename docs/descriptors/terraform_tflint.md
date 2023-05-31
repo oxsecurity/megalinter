@@ -18,6 +18,8 @@ Set variable TERRAFORM_TFLINT_SECURED_ENV to `false` if you need `tflint --init`
 - See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md){target=_blank}
 - See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules){target=_blank}
 
+> If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+
 [![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
 
 ## Configuration in MegaLinter
