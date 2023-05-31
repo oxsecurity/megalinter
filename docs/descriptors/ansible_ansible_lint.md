@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.16.2**
+- Version in MegaLinter: **6.17.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -164,7 +164,7 @@ options:
   -w WARN_LIST, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in
                         config file. Current version default value is:
-                        experimental, jinja[spacing]
+                        experimental, jinja[spacing], fqcn[deep]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
   --nocolor             disable colored output, same as NO_COLOR=1
