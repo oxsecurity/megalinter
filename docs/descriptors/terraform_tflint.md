@@ -7,7 +7,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 # tflint
 [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/terraform-linters/tflint?sort=semver)](https://github.com/terraform-linters/tflint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/contributors/)
 
-Set variable TERRAFORM_TFLINT_SECURED_ENV to `false` if you need `tflint --init` to be called with all ENV variables.
+> If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
 ## tflint documentation
 
