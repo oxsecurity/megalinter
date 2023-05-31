@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v7.0.4] - 2023-05-31
+
+- Core
+  - Allow to define `linterkey_UNSECURED_ENV_VARIABLES` for specific linters to make them visible when necessary (ex: GITHUB_TOKEN for TERRAFORM_TFLINT)
+
 - Documentation
   - Add note to terraform_tflint about TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES by @ruzickap in <https://github.com/oxsecurity/megalinter/pull/2706>
 
@@ -18,9 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.16 to **0.45.17** on 2023-05-31
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.310 to **1.1.311** on 2023-05-31
   - [checkov](https://www.checkov.io/) from 2.3.264 to **2.3.267** on 2023-05-31
-
   - [semgrep](https://semgrep.dev/) from 1.23.0 to **1.24.0** on 2023-05-31
-<!-- linter-versions-end -->
 
 ## [v7.0.3] - 2023-05-29
 
