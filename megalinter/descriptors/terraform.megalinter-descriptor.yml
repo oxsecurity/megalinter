@@ -21,7 +21,7 @@ linters:
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     linter_text: |
-      Set variable TERRAFORM_TFLINT_SECURED_ENV to `false` if you need `tflint --init` to be called with all ENV variables.
+      > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
     config_file_name: .tflint.hcl
     cli_sarif_args:
       - --format
