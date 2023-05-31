@@ -13,7 +13,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [standard](https://standardjs.com/) from 17.0.0 to **17.1.0** on 2023-05-31
   - [checkov](https://www.checkov.io/) from 2.3.261 to **2.3.264** on 2023-05-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.16 to **0.45.17** on 2023-05-31
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.2 to **6.17.0** on 2023-05-31
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.310 to **1.1.311** on 2023-05-31
   - [checkov](https://www.checkov.io/) from 2.3.264 to **2.3.267** on 2023-05-31
 <!-- linter-versions-end -->
