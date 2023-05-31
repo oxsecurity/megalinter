@@ -15,7 +15,7 @@ description: How to use standard (configure, ignore files, ignore errors, help &
 
 ## standard documentation
 
-- Version in MegaLinter: **17.0.0**
+- Version in MegaLinter: **17.1.0**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
 - See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
@@ -116,6 +116,7 @@ Flags:
 Flags (advanced):
         --stdin     Read file text from stdin
         --ext       Specify JavaScript file extensions
+        --ignore    Specify files to ignore
         --global    Declare global variable
         --plugin    Use custom eslint plugin
         --env       Use custom eslint environment
