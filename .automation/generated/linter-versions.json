@@ -12,7 +12,7 @@
     "checkstyle": "10.12.0",
     "chktex": "1.7.6",
     "clippy": "0.1.69",
-    "clj-kondo": "2023.05.18",
+    "clj-kondo": "2023.05.26",
     "cljstyle": "0.15.0",
     "coffeelint": "5.2.11",
     "cpplint": "1.6.1",
