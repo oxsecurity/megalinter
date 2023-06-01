@@ -21,13 +21,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add note to terraform_tflint about TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES by @ruzickap in <https://github.com/oxsecurity/megalinter/pull/2706>
 
 - Linter versions upgrades
-  - [djlint](https://djlint.com/) from 1.29.0 to **1.30.0** on 2023-05-31
-  - [standard](https://standardjs.com/) from 17.0.0 to **17.1.0** on 2023-05-31
-  - [checkov](https://www.checkov.io/) from 2.3.261 to **2.3.264** on 2023-05-31
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.16 to **0.45.17** on 2023-05-31
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.310 to **1.1.311** on 2023-05-31
-  - [checkov](https://www.checkov.io/) from 2.3.264 to **2.3.267** on 2023-05-31
-  - [semgrep](https://semgrep.dev/) from 1.23.0 to **1.24.0** on 2023-05-31
+  - [checkov](https://www.checkov.io/) from 2.3.261 to **2.3.267**
+  - [djlint](https://djlint.com/) from 1.29.0 to **1.30.0**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.310 to **1.1.311**
+  - [semgrep](https://semgrep.dev/) from 1.23.0 to **1.24.0**
+  - [standard](https://standardjs.com/) from 17.0.0 to **17.1.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.16 to **0.45.17**
 
 ## [v7.0.3] - 2023-05-29
 
