@@ -893,6 +893,7 @@
         "linelength",
         "linesep",
         "linkcheck",
+        "linterkey",
         "linterrc",
         "linterversion",
         "lintignore",
