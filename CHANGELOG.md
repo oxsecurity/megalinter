@@ -10,6 +10,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.05.18 to **2023.05.26** on 2023-06-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.5 to **0.77.6** on 2023-06-02
+  - [golangci-lint](https://golangci-lint.run/) from 1.52.2 to **1.53.0** on 2023-06-02
+  - [checkov](https://www.checkov.io/) from 2.3.267 to **2.3.273** on 2023-06-02
+  - [semgrep](https://semgrep.dev/) from 1.24.0 to **1.24.1** on 2023-06-02
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.69 to **0.1.70** on 2023-06-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.17 to **0.45.18** on 2023-06-02
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31

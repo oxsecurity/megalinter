@@ -15,7 +15,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **0.77.5**
+- Version in MegaLinter: **0.77.6**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
@@ -95,7 +95,7 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 usage:
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml
-Configure a rule: cfn-lint -x E3012:strict=false -t test.yaml
+Configure a rule: cfn-lint -x E3012:strict=true -t test.yaml
 Lint all yaml files in a folder: cfn-lint dir/**/*.yaml
 
 CloudFormation Linter
@@ -127,7 +127,7 @@ Standard:
                         Include experimental rules
   -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
                         Provide configuration for a rule. Format
-                        RuleId:key=value. Example: E3012:strict=false
+                        RuleId:key=value. Example: E3012:strict=true
   --config-file CONFIG_FILE
                         Specify the cfnlintrc file to use
   -z CUSTOM_RULES, --custom-rules CUSTOM_RULES
