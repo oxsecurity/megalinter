@@ -142,7 +142,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettier \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
-                markdownlint-cli@0.33.0 \
+                markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
