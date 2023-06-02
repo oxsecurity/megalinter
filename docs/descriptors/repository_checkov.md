@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.267**
+- Version in MegaLinter: **2.3.273**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -112,7 +112,8 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
-               [--prisma-api-url PRISMA_API_URL] [--docker-image DOCKER_IMAGE]
+               [--prisma-api-url PRISMA_API_URL] [--skip-results-upload]
+               [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
                [-b BRANCH] [--skip-download] [--use-enforcement-rules]
                [--no-guide] [--skip-suppressions] [--skip-policy-download]
@@ -131,7 +132,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check] [-f FILE]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -290,6 +291,11 @@ options:
                         --bc-api-key to be a Prisma Cloud Access Key in the
                         following format: <access_key_id>::<secret_key> [env
                         var: PRISMA_API_URL]
+  --skip-results-upload
+                        Do not upload scan results to the platform to view in
+                        the console. Results are only available locally. If
+                        you use the --support flag, logs will still get
+                        uploaded.
   --docker-image DOCKER_IMAGE, --image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
@@ -394,7 +400,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

@@ -9,7 +9,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.69**
+- Version in MegaLinter: **0.1.70**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -91,7 +91,7 @@ Common options:
     -V, --version            Print version info and exit
     --explain LINT           Print the documentation for a given lint
 
-Other options are the same as `cargo check`.
+For the other options see `cargo check --help`.
 
 To allow or deny a lint from the command line you can use `cargo clippy --`
 with:
