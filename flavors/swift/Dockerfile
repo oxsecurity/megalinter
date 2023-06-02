@@ -141,7 +141,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
-                markdownlint-cli@0.33.0 \
+                markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
