@@ -2538,7 +2538,7 @@
 <p><a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/bridgecrewio/checkov/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver"/></a> <a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bridgecrewio/checkov"/></a></p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.267</strong></li>
+<li>Version in MegaLinter: <strong>2.3.273</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -2780,7 +2780,8 @@
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
-               [--prisma-api-url PRISMA_API_URL] [--docker-image DOCKER_IMAGE]
+               [--prisma-api-url PRISMA_API_URL] [--skip-results-upload]
+               [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
                [-b BRANCH] [--skip-download] [--use-enforcement-rules]
                [--no-guide] [--skip-suppressions] [--skip-policy-download]
@@ -2799,7 +2800,7 @@
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -2958,6 +2959,11 @@ options:
                         --bc-api-key to be a Prisma Cloud Access Key in the
                         following format: &lt;access_key_id&gt;::&lt;secret_key&gt; [env
                         var: PRISMA_API_URL]
+  --skip-results-upload
+                        Do not upload scan results to the platform to view in
+                        the console. Results are only available locally. If
+                        you use the --support flag, logs will still get
+                        uploaded.
   --docker-image DOCKER_IMAGE, --image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
@@ -3062,7 +3068,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
