@@ -17,7 +17,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.41.0**
+- Version in MegaLinter: **0.42.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories){target=_blank}
@@ -116,22 +116,27 @@ Examples:
   # Run in server mode
   $ trivy server
 
-Available Commands:
+Scanning Commands
   aws         [EXPERIMENTAL] Scan AWS account
-  completion  Generate the autocompletion script for the specified shell
   config      Scan config files for misconfigurations
   filesystem  Scan local filesystem
-  help        Help about any command
   image       Scan a container image
   kubernetes  [EXPERIMENTAL] Scan kubernetes cluster
-  module      Manage modules
-  plugin      Manage plugins
   repository  Scan a remote repository
   rootfs      Scan rootfs
   sbom        Scan SBOM for vulnerabilities
+  vm          [EXPERIMENTAL] Scan a virtual machine image
+
+Management Commands
+  module      Manage modules
+  plugin      Manage plugins
+
+Utility Commands
+  completion  Generate the autocompletion script for the specified shell
+  convert     Convert Trivy JSON report into a different format
+  help        Help about any command
   server      Server mode
   version     Print the version
-  vm          [EXPERIMENTAL] Scan a virtual machine image
 
 Flags:
       --cache-dir string          cache directory (default "/root/.cache/trivy")

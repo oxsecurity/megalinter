@@ -16,6 +16,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.24.0 to **1.24.1** on 2023-06-02
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.69 to **0.1.70** on 2023-06-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.17 to **0.45.18** on 2023-06-02
+  - [golangci-lint](https://golangci-lint.run/) from 1.53.0 to **1.53.1** on 2023-06-03
+  - [djlint](https://djlint.com/) from 1.30.0 to **1.30.2** on 2023-06-03
+  - [eslint](https://eslint.org) from 8.41.0 to **8.42.0** on 2023-06-03
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0** on 2023-06-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.41.0 to **0.42.0** on 2023-06-03
+  - [rubocop](https://rubocop.org/) from 1.51.0 to **1.52.0** on 2023-06-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.18 to **0.46.1** on 2023-06-03
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
