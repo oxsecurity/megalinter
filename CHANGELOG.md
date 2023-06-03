@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.41.0 to **0.42.0** on 2023-06-03
   - [rubocop](https://rubocop.org/) from 1.51.0 to **1.52.0** on 2023-06-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.18 to **0.46.1** on 2023-06-03
+  - [stylelint](https://stylelint.io) from 15.6.2 to **15.6.3** on 2023-06-03
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
