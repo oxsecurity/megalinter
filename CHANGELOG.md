@@ -26,6 +26,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.51.0 to **1.52.0** on 2023-06-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.18 to **0.46.1** on 2023-06-03
   - [stylelint](https://stylelint.io) from 15.6.2 to **15.6.3** on 2023-06-03
+  - [golangci-lint](https://golangci-lint.run/) from 1.53.1 to **1.53.2** on 2023-06-04
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.4 to **0.11.0** on 2023-06-04
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
