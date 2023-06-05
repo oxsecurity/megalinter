@@ -28,6 +28,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 15.6.2 to **15.6.3** on 2023-06-03
   - [golangci-lint](https://golangci-lint.run/) from 1.53.1 to **1.53.2** on 2023-06-04
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.4 to **0.11.0** on 2023-06-04
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.4 to **2.3.5** on 2023-06-05
+  - [checkov](https://www.checkov.io/) from 2.3.273 to **2.3.276** on 2023-06-05
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
