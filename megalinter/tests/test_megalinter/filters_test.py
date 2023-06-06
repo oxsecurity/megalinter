@@ -54,16 +54,25 @@ class utilsTest(unittest.TestCase):
             "README.md",
             "target/foo.ext",
         ]
-        for ignored_files, expected in [
-            ([], all_files),
-            (["hello"], all_files),
-            (["target/foo.ext2"], all_files),
+        for ignored_files, workspace, expected in [
+            ([], "", all_files),
+            (["hello"], "", all_files),
+            (["target/foo.ext2"], "", all_files),
             (
                 ["target/foo.ext"],
+                "",
                 ["src/foo.ext", "README.md"],
             ),
-            (["target/**"], ["src/foo.ext", "README.md"]),
-            (["foo.ext"], all_files),
+            (
+                ["/tmp/lint/target/foo.ext"],
+                "/tmp/lint",
+                ["src/foo.ext", "README.md"],
+            ),
+            (["/tmp/lint/target/foo.ext", "", all_files]),
+            (["target/**"], "", ["src/foo.ext", "README.md"]),
+            (["/tmp/lint/target/**"], "/tmp/lint", all_files),
+            (["/tmp/lint/target/**"], "", all_files),
+            (["foo.ext"], "", all_files),
         ]:
             filtered_files = utils.filter_files(
                 all_files=all_files,
@@ -73,6 +82,12 @@ class utilsTest(unittest.TestCase):
                 file_extensions=["", ".md", ".ext"],
                 ignored_files=ignored_files,
                 ignore_generated_files=False,
+                file_names_not_ends_with=None,
+                file_contains_regex=None,
+                file_contains_regex_extensions=None,
+                files_sub_directory=None,
+                lint_all_other_linters_files=False,
+                workspace=workspace,
             )
             self.assertListEqual(
                 sorted(filtered_files), sorted(expected), f"check {ignored_files}"
