@@ -12,6 +12,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
 <!-- linter-versions-end -->
 
+- Core
+  - Fix for workspace path in ignored files list
+
 ## [v7.2.1] - 2023-07-26
 
 - Fixes
