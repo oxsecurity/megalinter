@@ -140,7 +140,7 @@ def filter_files(
                 continue
 
         # Skip if file is in ignore list
-        if file in ignored_fileset:
+        if file_with_workspace in ignored_fileset:
             continue
         # Skip if file is in ignored patterns
         if ignored_patterns and any(
