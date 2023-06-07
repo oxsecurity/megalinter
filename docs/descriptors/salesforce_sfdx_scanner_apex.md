@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.12.0**
+- Version in MegaLinter: **3.13.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -380,6 +380,7 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
  UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
+ MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 ```

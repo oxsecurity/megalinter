@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **3.12.0**
+- Version in MegaLinter: **3.13.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -376,6 +376,7 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
  UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
+ MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 ```
