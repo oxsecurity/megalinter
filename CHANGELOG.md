@@ -32,6 +32,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.4 to **0.11.0** on 2023-06-04
   - [kubescape](https://github.com/kubescape/kubescape) from 2.3.4 to **2.3.5** on 2023-06-05
   - [checkov](https://www.checkov.io/) from 2.3.273 to **2.3.276** on 2023-06-05
+  - [stylelint](https://stylelint.io) from 15.6.3 to **15.7.0** on 2023-06-07
+  - [phpstan](https://phpstan.org/) from 1.10.15 to **1.10.16** on 2023-06-07
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.270 to **0.0.271** on 2023-06-07
+  - [checkov](https://www.checkov.io/) from 2.3.276 to **2.3.281** on 2023-06-07
+  - [semgrep](https://semgrep.dev/) from 1.24.1 to **1.25.0** on 2023-06-07
+  - [syft](https://github.com/anchore/syft) from 0.82.0 to **0.83.0** on 2023-06-07
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.1 to **0.46.2** on 2023-06-07
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
