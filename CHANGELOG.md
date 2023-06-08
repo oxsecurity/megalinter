@@ -42,6 +42,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.1 to **0.46.2** on 2023-06-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.6 to **0.77.7** on 2023-06-08
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.1 to **0.6.2** on 2023-06-08
+  - [phpstan](https://phpstan.org/) from 1.10.16 to **1.10.18** on 2023-06-08
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.311 to **1.1.313** on 2023-06-08
+  - [checkov](https://www.checkov.io/) from 2.3.281 to **2.3.283** on 2023-06-08
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
