@@ -17,7 +17,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 ## kubeconform documentation
 
-- Version in MegaLinter: **0.6.1**
+- Version in MegaLinter: **0.6.2**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}
@@ -112,7 +112,7 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
   -n int
       number of goroutines to run concurrently (default 4)
   -output string
-      output format - json, junit, tap, text (default "text")
+      output format - json, junit, pretty, tap, text (default "text")
   -reject string
       comma-separated list of kinds or GVKs to reject
   -schema-location value
