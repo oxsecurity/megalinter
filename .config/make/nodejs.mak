@@ -1,7 +1,7 @@
 ## —— Node.js —————————————————————————————————————————————————————————————————————————————————————
 .PHONY: nodejs-clean
 nodejs-clean: ## Clean nodejs files
-	rm -rf node_modules
+	sudo rm -rf node_modules
 
 .PHONY: nodejs-bootstrap
 nodejs-bootstrap: ## Bootstrap nodejs
