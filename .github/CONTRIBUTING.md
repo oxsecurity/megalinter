@@ -3,49 +3,60 @@
 :wave: Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 
-## Submitting a pull request
+## How to Contribute
 
-[Pull Requests][pulls] are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.
+### 1. Create an issue
 
-### Pre-requisites
+Report problems or suggest improvements by [creating an issue](https://github.com/oxsecurity/megalinter/issues).
 
-- You need [**Python 3**](https://www.python.org/downloads/) (version 3.7 minimum) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
-  - If you have issues running Python on Windows, you can uninstall it then reinstall it using [this video tutorial](https://www.youtube.com/watch?v=uDbDIhR76H4), then copy python.exe and name it python3.exe
+### 2. Fork the project
 
-- Run the following commands at the root of the repository to install required dev dependencies
-```shell
-python3 -m venv .venv
-. .venv/bin/activate
-echo ".venv/" >> .git/info/exclude
-python3 -m pip install -U pip
-python3 -m pip install -r requirements.dev.txt
+[Fork the repository](https://github.com/oxsecurity/megalinter) to your GitHub account.
+
+### 3. Make changes
+
+Clone your fork locally and make the necessary changes:
+
+```bash
+git clone git@github.com:YOURNAMESPACE/megalinter.git
 ```
 
-_If it doesn't work, just run the following script_
+### 4. Test your changes
 
-```shell
-pip install -r requirements.dev.txt
-pip install mkdocs-material "mkdocs-glightbox==0.3.2" "pymdown-extensions==9.11"
-npm install markdown-table-formatter -g
-```
+#### 4.1 Gitpod
 
-Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
+Use Gitpod for a cloud-based development environment:
 
-```shell
-./build.sh
-2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
-2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-…
-Formatting markdown tables…
-Need to install the following packages:
-  markdown-table-formatter
-Ok to proceed? (y)
-…
-INFO    -  Documentation built in 9.76 seconds
-(done.)
-```
+1. Sign up for Gitpod: https://gitpod.io
+2. Fork the `megalinter` repository
+3. Open your fork in Gitpod: `https://gitpod.io/#https://github.com/username/megalinter`
+4. Create a new branch: `git checkout -b my-feature-branch`
+5. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
+6. Test all : `make tests` or `make tests-fast` for TDD mode
+7. Test with megalinter: `make megalinter` (Incoming)
+8. Push your changes: `git push origin my-feature-branch`
+9. Create a pull request on GitHub
+10. Wait for a review
 
-_(if you have a permission denied issue on Windows, please check [this solution](https://stackoverflow.com/a/57168165/7113625))_
+Keep your Gitpod workspace synced with the main repository.
+
+#### 4.2 Desktop
+
+Install [make](https://www.gnu.org/software/make/), [Python3.10](https://www.python.org/), [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), [docker](https://docs.docker.com/engine/install/ubuntu/) and [nodejs](https://github.com/nodesource/distributions/tree/master).
+
+Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization` or `make bootstrap`. Test your changes with `make tests` or `make tests-fast`.
+
+You can lint with `make megalinter` (Incoming)
+
+### 5. Submit a pull request
+
+[Create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) and [refer to the issue number](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls) using #123, where 123 is the issue number.
+
+### 6. Wait
+
+Your pull request will be reviewed, and you'll receive feedback. Thanks for contributing!
+
+Consider sponsoring the maintainer via [GitHub](https://github.com/sponsors/nvuillam).
 
 ### With write access
 
