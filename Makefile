@@ -8,30 +8,25 @@ python_launcher := python$(shell cat .config/python_version.config | cut -d '=' 
 .PHONY: tests
 tests: ## Tests all
 	$(MAKE) gitpod-tests
+	$(MAKE) megalinter-test
 
 .PHONY: tests-fast
 tests-fast: ## Tests quickly for TDD mode
+	$(MAKE) megalinter-test
 
 ## —— Virtualenv ————————————————————————————————————————————————————————————————————————————————
 .PHONY: bootstrap
-bootstrap: ## Bootstrap environment
+bootstrap: ## Bootstrap environment for development
 	$(MAKE) python-bootstrap
-
-.PHONY: bootstrap-dev
-bootstrap-dev: ## Bootstrap environment for development
-	$(MAKE) bootstrap
 	$(MAKE) python-bootstrap-dev
+	$(MAKE) nodejs-bootstrap
 
 .PHONY: reinitialization
 reinitialization: ## Return to an initial state of Bootstrap
 	$(MAKE) clean
 	$(MAKE) bootstrap
 
-.PHONY: reinitialization-dev
-reinitialization-dev: ## Return to an initial state of Bootstrap for development
-	$(MAKE) reinitialization
-	$(MAKE) bootstrap-dev
-
 .PHONY: clean
 clean: ## Cleaning environment
 	$(MAKE) python-venv-purge
+	$(MAKE) nodejs-clean
