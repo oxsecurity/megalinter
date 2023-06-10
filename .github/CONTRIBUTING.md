@@ -27,7 +27,7 @@ git clone git@github.com:YOURNAMESPACE/megalinter.git
 
 Use Gitpod for a cloud-based development environment:
 
-1. Sign up for Gitpod: https://gitpod.io
+1. Sign up for Gitpod: <https://gitpod.io>
 2. Fork the `megalinter` repository
 3. Open your fork in Gitpod: `https://gitpod.io/#https://github.com/username/megalinter`
 4. Create a new branch: `git checkout -b my-feature-branch`
@@ -216,6 +216,5 @@ If you are the current maintainer of this action:
 - [Using Pull Requests](https://help.github.com/articles/about-pull-requests/)
 - [GitHub Help](https://help.github.com)
 
-[pulls]: https://github.com/oxsecurity/megalinter/pulls
 [pr]: https://github.com/oxsecurity/megalinter/compare
 [fork]: https://github.com/oxsecurity/megalinter/fork
