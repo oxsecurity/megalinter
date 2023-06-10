@@ -12,11 +12,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Copy Python version config file
 COPY .config/python_version.config /tmp/
 
-# Set a variable for the npm version
-ARG NPM_VERSION=9.6.7
-# Set a variable for the ungit version
-ARG UNGIT_VERSION=1.5.23
-
 # Update system and install packages
 # hadolint ignore=DL3008,DL3009,DL3013
 RUN PYTHON_VERSION=$(cut -d '=' -f 2 /tmp/python_version.config) \
@@ -65,12 +60,19 @@ FROM docker-installer as npm-installer
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# Set a variable for packages version
+ARG NPM_VERSION=9.6.7
+ARG UNGIT_VERSION=1.5.23
+ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.4.0
+
 # hadolint ignore=DL3008
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install  -y --no-install-recommends nodejs \
     && npm install -g "npm@${NPM_VERSION}" \
     && npm install -g \
-    "ungit@${UNGIT_VERSION}"
+    "ungit@${UNGIT_VERSION}" \
+    "markdown-table-formatter@${MARKDOWN_TABLE_FORMATTER_VERSION}"
+
 
 ###########################
 #         cleanup         #
