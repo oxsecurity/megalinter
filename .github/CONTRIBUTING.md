@@ -18,13 +18,13 @@ python3 -m venv .venv
 . .venv/bin/activate
 echo ".venv/" >> .git/info/exclude
 python3 -m pip install -U pip
-python3 -m pip install -r requirements.dev.txt
+python3 -m pip install -r .config/python/dev/requirements.txt
 ```
 
 _If it doesn't work, just run the following script_
 
 ```shell
-pip install -r requirements.dev.txt
+pip install -r .config/python/dev/requirements.txt
 pip install mkdocs-material "mkdocs-glightbox==0.3.2" "pymdown-extensions==9.11"
 npm install markdown-table-formatter -g
 ```
