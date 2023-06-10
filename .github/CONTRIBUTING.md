@@ -44,7 +44,7 @@ Keep your Gitpod workspace synced with the main repository.
 
 Install [make](https://www.gnu.org/software/make/), [Python3.10](https://www.python.org/), [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), [docker](https://docs.docker.com/engine/install/ubuntu/) and [nodejs](https://github.com/nodesource/distributions/tree/master).
 
-Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization-dev` or `make bootstrap-dev`. Test your changes with `make tests` or `make tests-fast`.
+Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization` or `make bootstrap`. Test your changes with `make tests` or `make tests-fast`.
 
 You can lint with `make megalinter` (Incoming)
 
