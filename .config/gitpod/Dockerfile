@@ -73,7 +73,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     "ungit@${UNGIT_VERSION}" \
     "markdown-table-formatter@${MARKDOWN_TABLE_FORMATTER_VERSION}"
 
-
 ###########################
 #         cleanup         #
 ###########################
