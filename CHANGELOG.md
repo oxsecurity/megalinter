@@ -8,56 +8,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v7.1.0] - 2023-06-11
+
 - Core
-  - Upgrade base image to **python:3.11.4-alpine3.17**
+  - Upgrade base image to **python:3.11.4-alpine3.17**, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2738
 
 - Linter enhancements & fixes
-  - cljstyle: Remove default value for configuration file name
-  - golangci-lint : Add autofix capability using **--fix** argument
+  - cljstyle: Remove default value for configuration file name, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2717
+  - golangci-lint : Add autofix capability using **--fix** argument, by @seaneagan in https://github.com/oxsecurity/megalinter/pull/2700
 
 - Linter versions upgrades
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.05.18 to **2023.05.26** on 2023-06-01
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.5 to **0.77.6** on 2023-06-02
-  - [golangci-lint](https://golangci-lint.run/) from 1.52.2 to **1.53.0** on 2023-06-02
-  - [checkov](https://www.checkov.io/) from 2.3.267 to **2.3.273** on 2023-06-02
-  - [semgrep](https://semgrep.dev/) from 1.24.0 to **1.24.1** on 2023-06-02
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.69 to **0.1.70** on 2023-06-02
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.17 to **0.45.18** on 2023-06-02
-  - [golangci-lint](https://golangci-lint.run/) from 1.53.0 to **1.53.1** on 2023-06-03
-  - [djlint](https://djlint.com/) from 1.30.0 to **1.30.2** on 2023-06-03
-  - [eslint](https://eslint.org) from 8.41.0 to **8.42.0** on 2023-06-03
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0** on 2023-06-03
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.41.0 to **0.42.0** on 2023-06-03
-  - [rubocop](https://rubocop.org/) from 1.51.0 to **1.52.0** on 2023-06-03
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.18 to **0.46.1** on 2023-06-03
-  - [stylelint](https://stylelint.io) from 15.6.2 to **15.6.3** on 2023-06-03
-  - [golangci-lint](https://golangci-lint.run/) from 1.53.1 to **1.53.2** on 2023-06-04
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.4 to **0.11.0** on 2023-06-04
-  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.4 to **2.3.5** on 2023-06-05
-  - [checkov](https://www.checkov.io/) from 2.3.273 to **2.3.276** on 2023-06-05
-  - [stylelint](https://stylelint.io) from 15.6.3 to **15.7.0** on 2023-06-07
-  - [phpstan](https://phpstan.org/) from 1.10.15 to **1.10.16** on 2023-06-07
-  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.270 to **0.0.271** on 2023-06-07
-  - [checkov](https://www.checkov.io/) from 2.3.276 to **2.3.281** on 2023-06-07
-  - [semgrep](https://semgrep.dev/) from 1.24.1 to **1.25.0** on 2023-06-07
-  - [syft](https://github.com/anchore/syft) from 0.82.0 to **0.83.0** on 2023-06-07
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0** on 2023-06-07
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.1 to **0.46.2** on 2023-06-07
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.6 to **0.77.7** on 2023-06-08
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.1 to **0.6.2** on 2023-06-08
-  - [phpstan](https://phpstan.org/) from 1.10.16 to **1.10.18** on 2023-06-08
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.311 to **1.1.313** on 2023-06-08
-  - [checkov](https://www.checkov.io/) from 2.3.281 to **2.3.283** on 2023-06-08
-  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.271 to **0.0.272** on 2023-06-08
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.2 to **0.46.3** on 2023-06-08
-  - [luacheck](https://luacheck.readthedocs.io) from 1.1.0 to **1.1.1** on 2023-06-11
-  - [checkov](https://www.checkov.io/) from 2.3.283 to **2.3.285** on 2023-06-11
-  - [semgrep](https://semgrep.dev/) from 1.25.0 to **1.26.0** on 2023-06-11
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.0 to **0.42.1** on 2023-06-11
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.16.3 to **8.16.4** on 2023-06-11
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.5 to **0.77.7**
+  - [checkov](https://www.checkov.io/) from 2.3.267 to **2.3.285**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.69 to **0.1.70**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.05.18 to **2023.05.26**
+  - [djlint](https://djlint.com/) from 1.30.0 to **1.30.2**
+  - [eslint](https://eslint.org) from 8.41.0 to **8.42.0**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.16.3 to **8.16.4**
+  - [golangci-lint](https://golangci-lint.run/) from 1.52.2 to **1.53.2**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.1 to **0.6.2**
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.4 to **2.3.5**
+  - [luacheck](https://luacheck.readthedocs.io) from 1.1.0 to **1.1.1**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.33.0 to **0.34.0**
+  - [phpstan](https://phpstan.org/) from 1.10.15 to **1.10.18**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.311 to **1.1.313**
+  - [rubocop](https://rubocop.org/) from 1.51.0 to **1.52.0**
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.270 to **0.0.272**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.4 to **0.11.0**
+  - [semgrep](https://semgrep.dev/) from 1.24.0 to **1.26.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.12.0 to **3.13.0**
+  - [stylelint](https://stylelint.io) from 15.6.2 to **15.7.0**
+  - [syft](https://github.com/anchore/syft) from 0.82.0 to **0.83.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.45.17 to **0.46.3**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.41.0 to **0.42.1**
 
 ## [v7.0.4] - 2023-05-31
 
@@ -86,9 +74,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Manage v6 retrocompatibility with FILTER_REGEX_INCLUDE and FILTER_REGEX_EXCLUDE expression
 
 - Linter versions upgrades
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0** on 2023-05-27
-  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.3 to **2.3.4** on 2023-05-28
-  - [checkov](https://www.checkov.io/) from 2.3.259 to **2.3.261** on 2023-05-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.11.0 to **10.12.0**
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.3 to **2.3.4**
+  - [checkov](https://www.checkov.io/) from 2.3.259 to **2.3.261**
 
 ## [v7.0.2] - 2023-05-27
 
@@ -266,8 +254,8 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.14.3 to **6.14.4**
   - [checkov](https://www.checkov.io/) from 2.3.145 to **2.3.149**
-  - [pylint](https://pylint.pycqa.org) from 2.17.1 to **2.17.2** on 2023-04-03
-  - [rubocop](https://rubocop.org/) from 1.48.1 to **1.49.0** on 2023-04-03
+  - [pylint](https://pylint.pycqa.org) from 2.17.1 to **2.17.2**
+  - [rubocop](https://rubocop.org/) from 1.48.1 to **1.49.0**
 
 ## [v6.22.1] - 2023-04-02
 
@@ -419,7 +407,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [csharpier](https://csharpier.com/) from 0.22.1 to **0.23.0**
   - [jsonlint](https://github.com/prantlf/jsonlint) from 13.0.1 to **14.0.1**
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.0.1 to **1.1.1**
-  - [phpstan](https://phpstan.org/) from 1.10.3 to **1.10.5** on 2023-03-07
+  - [phpstan](https://phpstan.org/) from 1.10.3 to **1.10.5**
   - [protolint](https://github.com/yoheimuta/protolint) from 0.43.0 to **0.43.1**
   - [puppet-lint](http://puppet-lint.com/) from 3.2.0 to **3.3.0**
   - [pylint](https://pylint.pycqa.org) from 2.16.3 to **2.16.4**
@@ -626,7 +614,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [phpstan](https://phpstan.org/) from 1.9.4 to **1.9.7**
   - [rubocop](https://rubocop.org/) from 1.41.1 to **1.42.0**
   - [secretlint](https://github.com/secretlint/secretlint) from 5.3.0 to **6.0.2**
-  - [semgrep](https://semgrep.dev/) from 1.2.1 to **1.3.0** on 2023-01-06
+  - [semgrep](https://semgrep.dev/) from 1.2.1 to **1.3.0**
   - [sfdx-scanner](https://forcedotcom.github.io/sfdx-scanner/) from 3.7.1 to **3.8.0**
   - [stylelint](https://stylelint.io) from 14.16.0 to **14.16.1**
   - [syft](https://github.com/anchore/syft) from 0.64.0 to **0.65.0**
