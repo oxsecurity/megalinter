@@ -26,7 +26,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: make bootstrap-dev
+        run: make bootstrap
 
       - name: Run Giptod tests
         uses: nick-invision/retry@v2
