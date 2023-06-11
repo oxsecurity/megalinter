@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Core
+  - Upgrade base image to **python:3.11.4-alpine3.17**
+
 - Linter enhancements & fixes
   - cljstyle: Remove default value for configuration file name
   - golangci-lint : Add autofix capability using **--fix** argument
