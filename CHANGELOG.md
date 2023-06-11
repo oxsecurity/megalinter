@@ -56,6 +56,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.283 to **2.3.285** on 2023-06-11
   - [semgrep](https://semgrep.dev/) from 1.25.0 to **1.26.0** on 2023-06-11
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.0 to **0.42.1** on 2023-06-11
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.16.3 to **8.16.4** on 2023-06-11
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
