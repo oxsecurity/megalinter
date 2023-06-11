@@ -49,6 +49,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.281 to **2.3.283** on 2023-06-08
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.271 to **0.0.272** on 2023-06-08
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.2 to **0.46.3** on 2023-06-08
+  - [luacheck](https://luacheck.readthedocs.io) from 1.1.0 to **1.1.1** on 2023-06-11
+  - [checkov](https://www.checkov.io/) from 2.3.283 to **2.3.285** on 2023-06-11
+  - [semgrep](https://semgrep.dev/) from 1.25.0 to **1.26.0** on 2023-06-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.0 to **0.42.1** on 2023-06-11
 <!-- linter-versions-end -->
 
 ## [v7.0.4] - 2023-05-31
