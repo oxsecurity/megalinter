@@ -51,7 +51,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.16.3**
+- Version in MegaLinter: **8.16.4**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
