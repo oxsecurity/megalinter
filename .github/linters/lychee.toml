@@ -1,20 +1,42 @@
 # Docs: https://lychee.cli.rs/#/usage/config
 # Example config: https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml
 
-# Exclude all mail addresses from checking.
-exclude_mail = true
-
 # Enable link caching. This can be helpful to avoid checking the same links on multiple runs.
 cache = true
 
 # Discard all cached requests older than this duration.
 max_cache_age = "1d"
 
-# Exclude loopback IP address range and localhost from checking.
-exclude_loopback = true
+# User agent to send with each request.
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.50"
 
 # Comma-separated list of accepted status codes for valid links.
 accept = [200, 206, 429]
 
 # Custom request headers
 headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
+
+# Only test links with the given schemes (e.g. https).
+# Omit to check links with any scheme.
+scheme = [ "https", "http" ]
+
+# Maximum number of allowed redirects.
+max_redirects = 5
+
+# Maximum number of allowed retries before a link is declared dead.
+max_retries = 2
+
+# Exclude all private IPs from checking.
+exclude_all_private = true
+
+# Exclude private IP address ranges from checking.
+exclude_private = true
+
+# Exclude link-local IP address range from checking.
+exclude_link_local = true
+
+# Exclude loopback IP address range and localhost from checking.
+exclude_loopback = true
+
+# Exclude all mail addresses from checking.
+exclude_mail = true
