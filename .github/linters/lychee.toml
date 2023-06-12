@@ -1,0 +1,20 @@
+# Docs: https://lychee.cli.rs/#/usage/config
+# Example config: https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml
+
+# Exclude all mail addresses from checking.
+exclude_mail = true
+
+# Enable link caching. This can be helpful to avoid checking the same links on multiple runs.
+cache = true
+
+# Discard all cached requests older than this duration.
+max_cache_age = "1d"
+
+# Exclude loopback IP address range and localhost from checking.
+exclude_loopback = true
+
+# Comma-separated list of accepted status codes for valid links.
+accept = [200, 206, 429]
+
+# Custom request headers
+headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
