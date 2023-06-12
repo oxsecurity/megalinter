@@ -59,6 +59,7 @@
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
         "SPELL_VALE",
+        "SPELL_LYCHEE",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SQL_TSQLLINT",
