@@ -14,6 +14,6 @@ Linter raw log:
 ❓ Unknown..........0
 🚫 Errors...........2
 
-Errors in /github/workspace/.automation/test/lychee/markdown_bad_1.md
+Errors in /github/workspace/.automation/test/spell_lychee/markdown_bad_1.md
 ✗ [ERR] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com2/ | Failed: Network error: dns error: no record found for Query { name: Name("www.glouglouglglsdgdfgfdgsfgdfgdf.com2."), query_type: AAAA, query_class: IN }
 ✗ [ERR] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com/ | Failed: Network error: dns error: no record found for Query { name: Name("www.glouglouglglsdgdfgfdgsfgdfgdf.com."), query_type: AAAA, query_class: IN }

@@ -144,7 +144,12 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    test_folder: spell_lychee
     can_output_sarif: false
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - documentation
     linter_url: https://lychee.cli.rs
     linter_repo: https://github.com/lycheeverse/lychee
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
@@ -152,6 +157,8 @@ linters:
     linter_rules_url: https://lychee.cli.rs/#/usage/cli
     linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
     linter_speed: 2
+    lint_all_other_linters_files: false
+    lint_all_files: false
     file_extensions:
       - .md
       - .mdx
@@ -165,6 +172,7 @@ linters:
       - .yaml
       - .yml
       - .epub
+    ignore_file_name: .lycheeignore
     config_file_name: lychee.toml
     cli_config_arg_name: --config
     cli_help_arg_name: --help
@@ -185,14 +193,6 @@ linters:
       - 'lychee --format detailed --no-progress "~/projects/big_project/**/README.*"'
       - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
     install:
-      # apk:
-      #   - wget
       dockerfile:
         - FROM lycheeverse/lychee:latest-alpine as lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-      # dockerfile:
-      #   - |
-      #     RUN wget --tries=5 -4 -q -O - https://github.com/lycheeverse/lychee/releases/download/v0.13.0/lychee-v0.13.0-x86_64-unknown-linux-musl.tar.gz | tar -xz lychee \
-      #       && chmod +x lychee \
-      #       && mv -f lychee /usr/bin/lychee
-    lint_all_files: false
