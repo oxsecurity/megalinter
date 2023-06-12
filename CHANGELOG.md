@@ -16,11 +16,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v7.1.0] - 2023-06-11
 
 - Core
-  - Upgrade base image to **python:3.11.4-alpine3.17**, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2738
+  - Upgrade base image to **python:3.11.4-alpine3.17**, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2738>
 
 - Linter enhancements & fixes
-  - cljstyle: Remove default value for configuration file name, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2717
-  - golangci-lint : Add autofix capability using **--fix** argument, by @seaneagan in https://github.com/oxsecurity/megalinter/pull/2700
+  - cljstyle: Remove default value for configuration file name, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2717>
+  - golangci-lint : Add autofix capability using **--fix** argument, by @seaneagan in <https://github.com/oxsecurity/megalinter/pull/2700>
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.5 to **0.77.7**
