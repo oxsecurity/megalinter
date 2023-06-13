@@ -84,7 +84,7 @@ linters:
           url: https://github.com/jorgenschaefer/elpy
       idea:
         - name: black
-          url: https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea
+          url: https://black.readthedocs.io/en/stable/integrations/editors.html#pycharm-intellij-idea
       sublime:
         - name: sublack
           url: https://github.com/jgirardet/sublack

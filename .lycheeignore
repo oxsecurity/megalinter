@@ -3,7 +3,10 @@
 # The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/recipes/excluding-paths.md
 
 my-company.com
+https://megalinter.io/
 https://www.linkedin.com
 http://twitter.com/intent/tweet
 https://twitter.com/NicolasVuillamy
 https://fonts.gstatic.com
+http://mozilla.org/MPL/2.0/
+https://github.com/sider/goodcheck

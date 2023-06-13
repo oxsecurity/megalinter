@@ -1062,7 +1062,7 @@
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "description": "URL of an image used to build header of linter Markdown documentation",
             "examples": [
-              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
             ],
             "format": "uri",
             "title": "Linter banner image URL",
