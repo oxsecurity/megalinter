@@ -11,6 +11,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.17.1 to **0.18.4** on 2023-06-13
+  - [djlint](https://djlint.com/) from 1.30.2 to **1.31.0** on 2023-06-13
+  - [rubocop](https://rubocop.org/) from 1.52.0 to **1.52.1** on 2023-06-13
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11

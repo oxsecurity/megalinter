@@ -27,7 +27,7 @@ For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.30.2**
+- Version in MegaLinter: **1.31.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -166,6 +166,8 @@ Options:
                                   matter.
   --no-function-formatting        Do not attempt to format function contents.
   --no-set-formatting             Do not attempt to format set contents.
+  --max-blank-lines INTEGER       Consolidate blank lines down to x lines.
+                                  [default: 0]
   -h, --help                      Show this message and exit.
 ```
 
