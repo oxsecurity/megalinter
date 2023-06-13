@@ -1,7 +1,6 @@
 # These links are ignored by lychee link checker: https://github.com/lycheeverse/lychee
 # The file allows you to list multiple regular expressions for exclusion (one pattern per line).
-
-**/node_modules/**
+# The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/recipes/excluding-paths.md
 
 https://www.linkedin.com
 http://twitter.com/intent/tweet

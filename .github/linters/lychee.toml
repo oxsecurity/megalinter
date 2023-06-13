@@ -1,30 +1,47 @@
 # Docs: https://lychee.cli.rs/#/usage/config
 # Example config: https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml
 
+#############################  Cache  ###############################
+
 # Enable link caching. This can be helpful to avoid checking the same links on multiple runs.
 cache = true
 
 # Discard all cached requests older than this duration.
 max_cache_age = "1d"
 
+#############################  Runtime  #############################
+
+# Maximum number of allowed redirects.
+max_redirects = 4
+
+# Maximum number of allowed retries before a link is declared dead.
+max_retries = 2
+
+# Maximum number of concurrent link checks.
+max_concurrency = 2
+
+#############################  Requests  ############################
+
 # User agent to send with each request.
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.50"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.43"
+
+# Minimum wait time in seconds between retries of failed requests.
+retry_wait_time = 2
 
 # Comma-separated list of accepted status codes for valid links.
 accept = [200, 206, 429]
-
-# Custom request headers
-headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
 
 # Only test links with the given schemes (e.g. https).
 # Omit to check links with any scheme.
 scheme = [ "https", "http" ]
 
-# Maximum number of allowed redirects.
-max_redirects = 5
+# Custom request headers
+headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
 
-# Maximum number of allowed retries before a link is declared dead.
-max_retries = 2
+#############################  Exclusions  ##########################
+
+# Ignore case of paths when matching glob patterns.
+glob_ignore_case = true
 
 # Exclude all private IPs from checking.
 exclude_all_private = true
@@ -40,3 +57,6 @@ exclude_loopback = true
 
 # Exclude all mail addresses from checking.
 exclude_mail = true
+
+# Exclude these filesystem paths from getting checked.
+exclude_path = ["node_modules"]
