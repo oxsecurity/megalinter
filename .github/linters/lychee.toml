@@ -12,13 +12,13 @@ max_cache_age = "1d"
 #############################  Runtime  #############################
 
 # Maximum number of allowed redirects.
-max_redirects = 4
+max_redirects = 6
 
 # Maximum number of allowed retries before a link is declared dead.
 max_retries = 2
 
 # Maximum number of concurrent link checks.
-max_concurrency = 2
+# max_concurrency = 2
 
 #############################  Requests  ############################
 
@@ -59,4 +59,4 @@ exclude_loopback = true
 exclude_mail = true
 
 # Exclude these filesystem paths from getting checked.
-exclude_path = ["node_modules"]
+exclude_path = ["node_modules", "site", ".venv"]

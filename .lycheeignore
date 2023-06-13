@@ -2,6 +2,8 @@
 # The file allows you to list multiple regular expressions for exclusion (one pattern per line).
 # The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/recipes/excluding-paths.md
 
+my-company.com
 https://www.linkedin.com
 http://twitter.com/intent/tweet
-my-company.com
+https://twitter.com/NicolasVuillamy
+https://fonts.gstatic.com
