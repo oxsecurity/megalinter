@@ -169,9 +169,9 @@ linters:
       - .txt
       - .json
       - .jsonc
+      - .json5
       - .yaml
       - .yml
-      - .epub
     ignore_file_name: .lycheeignore
     config_file_name: lychee.toml
     cli_config_arg_name: --config
