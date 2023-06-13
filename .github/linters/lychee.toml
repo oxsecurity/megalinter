@@ -59,4 +59,4 @@ exclude_loopback = true
 exclude_mail = true
 
 # Exclude these filesystem paths from getting checked.
-exclude_path = ["node_modules", "site", "docs", ".venv", "CHANGELOG.md", "megalinter/descriptors/schemas"]
+exclude_path = ["node_modules", "site", "docs", ".venv", "CHANGELOG.md", "megalinter/descriptors/schemas", ".automation/generated", ".automation/test"]
