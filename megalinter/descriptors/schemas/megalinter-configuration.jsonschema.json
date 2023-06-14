@@ -17439,7 +17439,7 @@
       "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_EXECUTABLE",
       "default": [
         [
-          "standard"
+          "ts-standard"
         ]
       ],
       "items": {

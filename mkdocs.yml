@@ -198,7 +198,7 @@ nav:
           - "TYPESCRIPT":
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
-              - "standard": "descriptors/typescript_standard.md"
+              - "ts-standard": "descriptors/typescript_standard.md"
               - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
