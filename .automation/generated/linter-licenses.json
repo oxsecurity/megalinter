@@ -46,6 +46,7 @@
     "kubeval": "Other",
     "lintr": "Other",
     "luacheck": "MIT",
+    "lychee": "Apache-2.0",
     "markdown-link-check": "ISC",
     "markdown-table-formatter": "MIT",
     "markdownlint": "MIT",

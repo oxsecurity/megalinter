@@ -21,10 +21,10 @@ See more details in [Help](#help-content)
 
 - Version in MegaLinter: **3.13.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
-- See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
+- See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
-- See [How to disable sfdx-scanner-apex rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
-- See [Index of problems detected by sfdx-scanner-apex](https://pmd.github.io/latest/pmd_rules_apex.html){target=_blank}
+- See [How to disable sfdx-scanner-apex rules in files](https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
+- See [Index of problems detected by sfdx-scanner-apex](https://docs.pmd-code.org/latest/pmd_rules_apex.html){target=_blank}
 
 [![sfdx-scanner - GitHub](https://gh-card.dev/repos/forcedotcom/sfdx-scanner.svg?fullname=)](https://github.com/forcedotcom/sfdx-scanner){target=_blank}
 
@@ -63,8 +63,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       113        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       114        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
