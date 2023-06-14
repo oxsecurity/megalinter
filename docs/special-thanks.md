@@ -20,8 +20,8 @@ MegaLinter obviously would not exist without its linters and libraries, so many 
 
 ## Super-Linter team
 
-MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
+MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/super-linter/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/super-linter/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/super-linter/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 
 <!-- special-thanks-section-end -->

@@ -25,6 +25,7 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.16.4 as gitleaks
 FROM jdkato/vale:latest as vale
+FROM lycheeverse/lychee:latest-alpine as lychee
 #FROM__END
 
 ##################
@@ -220,6 +221,7 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
+COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -276,6 +278,9 @@ RUN rc-update add docker boot && rc-service docker start || true \
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
+
+# lychee installation
+# Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 #OTHER__END
 

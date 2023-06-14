@@ -75,7 +75,7 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#megalinter-by-)
+- [MegaLinter, by ](#megalinter-by-)
   - [Table of Contents](#table-of-contents)
   - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
@@ -86,8 +86,7 @@ _Github PR reporter_
     - [Other](#other)
   - [Installation](#installation)
     - [Assisted installation](#assisted-installation)
-    - [Upgrade to MegaLinter v7](#upgrade-to-megalinter-v7)
-    - [Manual installation](#manual-installation)
+    - [Which version to use ?](#which-version-to-use-)
     - [GitHub Action](#github-action)
     - [GitLab CI](#gitlab-ci)
     - [Azure Pipelines](#azure-pipelines)
@@ -101,14 +100,21 @@ _Github PR reporter_
     - [Docker container](#docker-container)
     - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
+    - [.mega-linter.yml file](#mega-linteryml-file)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
     - [Filter linted files](#filter-linted-files)
     - [Apply fixes](#apply-fixes)
+      - [Apply fixes issues](#apply-fixes-issues)
+      - [Notes](#notes)
     - [Linter specific variables](#linter-specific-variables)
     - [Pre-commands](#pre-commands)
     - [Post-commands](#post-commands)
     - [Environment variables security](#environment-variables-security)
+      - [Secured env variables](#secured-env-variables)
+      - [Secured configuration examples](#secured-configuration-examples)
+      - [Default secured variables](#default-secured-variables)
+      - [Unhide variables for linters](#unhide-variables-for-linters)
     - [CLI lint mode](#cli-lint-mode)
   - [Reporters](#reporters)
   - [Flavors](#flavors)
@@ -117,7 +123,7 @@ _Github PR reporter_
     - [reStructuredText](#restructuredtext)
   - [Plugins](#plugins)
     - [External Plugins Catalog](#external-plugins-catalog)
-    - [Use plugins](#use-plugins)
+    - [Use external plugins](#use-external-plugins)
       - [Example](#example)
     - [Create your own plugin](#create-your-own-plugin)
       - [Limitations](#limitations)
@@ -135,6 +141,7 @@ _Github PR reporter_
     - [Super-Linter team](#super-linter-team)
   - [License](#license)
   - [MegaLinter vs Super-Linter](#megalinter-vs-super-linter)
+    - [Security](#security)
     - [Performances](#performances)
     - [More languages and formats linted](#more-languages-and-formats-linted)
     - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
@@ -184,8 +191,8 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 **Notes**:
 
-- This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `oxsecurity/megalinter@v7` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- This repo is a hard-fork of [GitHub Super-Linter](https://github.com/super-linter/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` by `oxsecurity/megalinter@v7` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
@@ -1573,7 +1580,7 @@ To help, you can also:
 - [:star: star the repository](https://github.com/oxsecurity/megalinter/stargazers)
 - [:beer: offer a beer !](https://github.com/sponsors/nvuillam)
 - [report problems and request new features](https://github.com/oxsecurity/megalinter/issues)
-- [share on twitter](http://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.io/&via=nvuillam){target=_blank}
+- [share on twitter](https://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.io/&via=nvuillam){target=_blank}
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
@@ -1597,9 +1604,9 @@ MegaLinter obviously would not exist without its linters and libraries, so many 
 
 ### Super-Linter team
 
-MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
+MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/super-linter/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/super-linter/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/super-linter/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 <!-- special-thanks-section-end -->
 
 <!-- license-section-start -->

@@ -106,7 +106,7 @@ OWN_MEGALINTER_CONFIG_FILE = f"{REPO_HOME}/.mega-linter.yml"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
-    "brackets": {"label": "Brackets", "url": "http://brackets.io/"},
+    "brackets": {"label": "Brackets", "url": "https://brackets.io/"},
     "eclipse": {"label": "Eclipse", "url": "https://www.eclipse.org/"},
     "emacs": {"label": "Emacs", "url": "https://www.gnu.org/software/emacs/"},
     "idea": {
