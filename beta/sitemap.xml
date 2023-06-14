@@ -971,6 +971,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/spell_lychee/</loc>
+         <lastmod>2023-06-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/spell_proselint/</loc>
          <lastmod>2023-06-14</lastmod>
          <changefreq>daily</changefreq>
@@ -1412,6 +1417,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/luacheck/</loc>
+         <lastmod>2023-06-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/lychee/</loc>
          <lastmod>2023-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
