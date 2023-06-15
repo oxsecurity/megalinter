@@ -1,6 +1,6 @@
 .PHONY: all test SHELL
 
-python_launcher := python$(shell cat .config/python_version.config | cut -d '=' -f 2)
+python_launcher := python$(shell cut -d '.' -f 1,2 .python-version)
 
 -include $(addsuffix /*.mak, $(shell find .config/make -type d))
 
