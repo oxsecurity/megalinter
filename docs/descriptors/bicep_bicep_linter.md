@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.17.1**
+- Version in MegaLinter: **0.18.4**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -22,8 +22,8 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## Configuration in MegaLinter
 
-- Enable bicep_linter by adding `BICEP_BICEP_LINTER` in [ENABLE_LINTERS variable](https://megalinter.io/7.1.0/configuration/#activation-and-deactivation)
-- Disable bicep_linter by adding `BICEP_BICEP_LINTER` in [DISABLE_LINTERS variable](https://megalinter.io/7.1.0/configuration/#activation-and-deactivation)
+- Enable bicep_linter by adding `BICEP_BICEP_LINTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable bicep_linter by adding `BICEP_BICEP_LINTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                                                                                                                                                  | Default value      |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -52,10 +52,10 @@ Use bicep_linter in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description                                   | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:----------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.1.0/supported-linters/) | Default MegaLinter Flavor                     |       113        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.1.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/7.1.0/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v7.1.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description                                   | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor                     |       114        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        60        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -84,7 +84,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.17.1 (d423d61882)
+Bicep CLI version 0.18.4 (1620479ac6)
 
 Usage:
   bicep build [options] <file>
@@ -94,10 +94,11 @@ Usage:
       <file>        The input file
 
     Options:
-      --outdir <dir>    Saves the output at the specified directory.
-      --outfile <file>  Saves the output as the specified file path.
-      --stdout          Prints the output to stdout.
-      --no-restore      Builds the bicep file without restoring external modules.
+      --outdir <dir>                Saves the output at the specified directory.
+      --outfile <file>              Saves the output as the specified file path.
+      --stdout                      Prints the output to stdout.
+      --no-restore                  Builds the bicep file without restoring external modules.
+      --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build file.bicep
@@ -105,6 +106,7 @@ Usage:
       bicep build file.bicep --outdir dir1
       bicep build file.bicep --outfile file.json
       bicep build file.bicep --no-restore
+      bicep build file.bicep --diagnostics-format sarif
 
     bicep format [options] <file>
     Formats a .bicep file.
@@ -138,7 +140,7 @@ Usage:
       --outdir <dir>    Saves the output at the specified directory.
       --outfile <file>  Saves the output as the specified file path.
       --stdout          Prints the output to stdout.
-      --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile').
+      --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile' or 'bicep decompile-params').
 
     Examples:
       bicep decompile file.json
@@ -147,8 +149,29 @@ Usage:
       bicep decompile file.json --force
       bicep decompile file.json --outfile file.bicep
 
+  bicep decompile-params [options] <file>
+    Attempts to decompile a parameters .json file to .bicepparam.
+
+    Arguments:
+      <file>        The input file
+
+    Options:
+      --outdir <dir>    Saves the output at the specified directory.
+      --outfile <file>  Saves the output as the specified file path.
+      --stdout          Prints the output to stdout.
+      --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile' or 'bicep decompile-params').
+      --bicep-file      Path to the bicep template file (relative to the .bicepparam file) that will be referenced in the using declaration
+
+    Examples:
+      bicep decompile-params file.json
+      bicep decompile-params file.json --bicep-file ./dir/main.bicep
+      bicep decompile-params file.json --stdout
+      bicep decompile-params file.json --outdir dir1
+      bicep decompile-params file.json --force
+      bicep decompile-params file.json --outfile file.bicepparam
+
   bicep generate-params [options] <file>
-    Builds .parameters.json file from the given bicep file, updates if there is an existing parameters.json file.
+    Builds parameters file from the given bicep file, updates if there is an existing parameters file.
 
     Arguments:
       <file>        The input file
@@ -158,6 +181,8 @@ Usage:
       --outdir <dir>    Saves the output at the specified directory.
       --outfile <file>  Saves the output as the specified file path.
       --stdout          Prints the output to stdout.
+      --output-format   Selects the output format {json, bicepparam}
+      --include-params  Selects which parameters to include into output {requiredonly, all}
 
     Examples:
       bicep generate-params file.bicep
@@ -165,7 +190,7 @@ Usage:
       bicep generate-params file.bicep --stdout
       bicep generate-params file.bicep --outdir dir1
       bicep generate-params file.bicep --outfile file.parameters.json
-
+      bicep generate-params file.bicep --output-format bicepparam --include-params all
 
   bicep publish <file> --target <ref>
     Publishes the .bicep file to the module registry.
@@ -190,13 +215,12 @@ Usage:
     Arguments:
       <file>        The input file
 
- bicep [options]
+  bicep [options]
     Options:
       --version              -v   Shows bicep version information
       --help                 -h   Shows this usage information
       --license                   Prints license information
       --third-party-notices       Prints third-party notices
-
 
   bicep build-params <file>
     Builds .bicepparam file.
@@ -215,7 +239,6 @@ Usage:
       bicep build-params params.bicepparam --stdout
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
-
 
 ```
 

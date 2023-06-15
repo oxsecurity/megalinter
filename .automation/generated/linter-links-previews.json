@@ -249,6 +249,11 @@
     "image": "https://avatars3.githubusercontent.com/u/17838737?s=400&v=4",
     "title": "luarocks/luacheck"
   },
+  "lychee": {
+    "description": "Fast, async, stream-based link checker written in Rust. Finds broken URLs and mail addresses inside Markdown, HTML, reStructuredText, websites and more!",
+    "image": "https://avatars.githubusercontent.com/u/74027027?s=200&v=4",
+    "title": "lycheeverse/lychee"
+  },
   "markdown-link-check": {
     "description": "checks that all of the hyperlinks in a markdown text to determine if they are alive or dead - tcort/markdown-link-check",
     "image": "https://avatars2.githubusercontent.com/u/216720?s=400&v=4",

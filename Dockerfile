@@ -37,6 +37,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 FROM zricethezav/gitleaks:v8.16.4 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM jdkato/vale:latest as vale
+FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -326,6 +327,7 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
 COPY --link --from=vale /bin/vale /bin/vale
+COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
@@ -714,6 +716,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
+
+# lychee installation
+# Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 # tsqllint installation
 # Next line commented because already managed by another linter

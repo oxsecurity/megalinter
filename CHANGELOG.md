@@ -8,17 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- New linters
+  - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
+
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.17.1 to **0.18.4** on 2023-06-13
+  - [djlint](https://djlint.com/) from 1.30.2 to **1.31.0** on 2023-06-13
+  - [rubocop](https://rubocop.org/) from 1.52.0 to **1.52.1** on 2023-06-13
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
 
 - Core
-  - Upgrade base image to **python:3.11.4-alpine3.17**, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2738
+  - Upgrade base image to **python:3.11.4-alpine3.17**, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2738>
 
 - Linter enhancements & fixes
-  - cljstyle: Remove default value for configuration file name, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2717
-  - golangci-lint : Add autofix capability using **--fix** argument, by @seaneagan in https://github.com/oxsecurity/megalinter/pull/2700
+  - cljstyle: Remove default value for configuration file name, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2717>
+  - golangci-lint : Add autofix capability using **--fix** argument, by @seaneagan in <https://github.com/oxsecurity/megalinter/pull/2700>
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.5 to **0.77.7**

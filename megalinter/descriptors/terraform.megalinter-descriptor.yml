@@ -46,10 +46,10 @@ linters:
       - cupcake
       - terraform
       - security
-    linter_url: https://www.accurics.com/products/terrascan/
-    linter_repo: https://github.com/accurics/terrascan
-    linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
-    linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
+    linter_url: https://runterrascan.io/
+    linter_repo: https://github.com/tenable/terrascan
+    linter_rules_url: https://runterrascan.io/docs/usage/
+    linter_rules_configuration_url: https://runterrascan.io/docs/usage/config_options/
     linter_banner_image_url: https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png
     config_file_name: terrascan-config.toml
     cli_config_arg_name: --config-path
@@ -111,9 +111,9 @@ linters:
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
     is_formatter: true
-    linter_url: https://www.terraform.io/docs/cli/commands/fmt.html
+    linter_url: https://developer.hashicorp.com/terraform/cli/commands/fmt
     linter_repo: https://github.com/hashicorp/terraform
-    linter_banner_image_url: https://www.terraform.io/assets/images/logo-hashicorp-3f10732f.svg
+    linter_banner_image_url: https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg
     cli_executable: terraform
     cli_lint_extra_args:
       - "fmt"
