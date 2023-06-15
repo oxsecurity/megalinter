@@ -5,6 +5,7 @@ Class for lychee
 
 from megalinter import Linter
 
+
 # ref: https://github.com/lycheeverse/lychee#commandline-parameters
 class LycheeLinter(Linter):
     def build_lint_command(self, file=None):

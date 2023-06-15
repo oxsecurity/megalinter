@@ -75,7 +75,7 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter, by ](#megalinter-by-)
+- [MegaLinter, by](#megalinter-by-)
   - [Table of Contents](#table-of-contents)
   - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
