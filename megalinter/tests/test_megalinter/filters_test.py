@@ -58,13 +58,13 @@ class utilsTest(unittest.TestCase):
             ([], all_files),
             (["hello"], all_files),
             (["target/foo.ext2"], all_files),
-             (
-                 ["target/foo.ext"],
-                 ["src/foo.ext", "README.md"],
-             ),
+            (
+                ["target/foo.ext"],
+                ["src/foo.ext", "README.md"],
+            ),
             (["target/**"], ["src/foo.ext", "README.md"]),
             (["foo.ext"], all_files),
-         ]:
+        ]:
             filtered_files = utils.filter_files(
                 all_files=all_files,
                 filter_regex_include=None,
