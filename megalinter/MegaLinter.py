@@ -797,8 +797,6 @@ class Megalinter:
             ]
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
-        # ignored_files will be match against absolute path (in all_files), so it should be absolute
-        ignored_files = map(lambda x: os.path.join(dirpath, x), ignored_files)
         ignored_files = sorted(list(ignored_files))
         return ignored_files
 
