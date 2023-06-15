@@ -10,11 +10,11 @@ USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Copy Python version config file
-COPY .config/python_version.config /tmp/
+COPY .python-version /tmp/
 
 # Update system and install packages
 # hadolint ignore=DL3008,DL3009,DL3013
-RUN PYTHON_VERSION=$(cut -d '=' -f 2 /tmp/python_version.config) \
+RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     && apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
