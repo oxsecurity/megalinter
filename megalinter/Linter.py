@@ -1332,11 +1332,14 @@ class Linter:
             )
         # Count number of results in sarif format
         elif self.cli_lint_errors_count == "sarif":
-            sarif = yaml.safe_load(stdout)
+            try:
+                sarif = json.loads(stdout)
+            except ValueError as e:
+                logging.warning("Unable to parse sarif :" + stdout)
             if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
                 total_errors = len(sarif["runs"][0]["results"])
             else:
-                logging.warning("Unable to find SARIF in :" + stdout)
+                logging.warning("Unable to find results in :" + stdout)
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
