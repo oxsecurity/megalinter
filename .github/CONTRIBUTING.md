@@ -42,7 +42,7 @@ Keep your Gitpod workspace synced with the main repository.
 
 #### 4.2 Desktop
 
-Install [make](https://www.gnu.org/software/make/), [Python3.10](https://www.python.org/), [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), [docker](https://docs.docker.com/engine/install/ubuntu/) and [nodejs](https://github.com/nodesource/distributions/tree/master).
+Install [make](https://www.gnu.org/software/make/), [Python3.11](https://www.python.org/), [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), [docker](https://docs.docker.com/engine/install/ubuntu/) and [nodejs](https://github.com/nodesource/distributions/tree/master).
 
 Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization` or `make bootstrap`. Test your changes with `make tests` or `make tests-fast`.
 
