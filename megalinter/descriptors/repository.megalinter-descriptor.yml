@@ -67,6 +67,7 @@ linters:
       - --file-format
       - sarif
     cli_lint_extra_args_after:
+      - --source-code
       - "."
       - -E
       - --ignore-globs
