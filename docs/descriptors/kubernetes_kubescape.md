@@ -17,7 +17,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **2.3.5**
+- Version in MegaLinter: **2.3.6**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -122,7 +122,7 @@ Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
   delete      Delete configurations in Kubescape SaaS version
-  download    Download exceptions,control,framework,artifacts,attack-tracks,controls-inputs
+  download    Download artifacts,attack-tracks,controls-inputs,exceptions,control,framework
   fix         Fix misconfiguration in files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls

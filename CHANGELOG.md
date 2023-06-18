@@ -17,6 +17,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.17.1 to **0.18.4** on 2023-06-13
   - [djlint](https://djlint.com/) from 1.30.2 to **1.31.0** on 2023-06-13
   - [rubocop](https://rubocop.org/) from 1.52.0 to **1.52.1** on 2023-06-13
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.24 to **1.6.25** on 2023-06-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.7 to **0.77.9** on 2023-06-17
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.408 to **6.0.410** on 2023-06-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.53.2 to **1.53.3** on 2023-06-17
+  - [eslint](https://eslint.org) from 8.42.0 to **8.43.0** on 2023-06-17
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.8.0 to **2.9.0** on 2023-06-17
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.5 to **2.3.6** on 2023-06-17
+  - [phpstan](https://phpstan.org/) from 1.10.18 to **1.10.19** on 2023-06-17
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.44.0 to **0.45.0** on 2023-06-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.313 to **1.1.314** on 2023-06-17
+  - [checkov](https://www.checkov.io/) from 2.3.287 to **2.3.294** on 2023-06-17
+  - [semgrep](https://semgrep.dev/) from 1.26.0 to **1.27.0** on 2023-06-17
+  - [syft](https://github.com/anchore/syft) from 0.83.0 to **0.83.1** on 2023-06-17
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.28.1 to **7.28.3** on 2023-06-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.4.6 to **1.5.0** on 2023-06-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.47.0** on 2023-06-17
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
