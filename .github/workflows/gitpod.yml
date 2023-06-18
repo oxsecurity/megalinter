@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: make bootstrap
 
-      - name: Run Giptod tests
+      - name: Run Gitpod tests
         uses: nick-invision/retry@v2
         with:
           max_attempts: 3
