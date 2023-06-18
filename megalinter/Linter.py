@@ -1333,10 +1333,11 @@ class Linter:
         # Count number of results in sarif format
         elif self.cli_lint_errors_count == "sarif":
             sarif = None
+            sarif_stdout = utils.find_json_in_stdout(stdout)
             try:
-                sarif = json.loads(stdout)
-            except ValueError:
-                logging.warning("Unable to parse sarif :" + stdout)
+                sarif = json.loads(sarif_stdout)
+            except ValueError as e:
+                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
             if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
                 total_errors = len(sarif["runs"][0]["results"])
             else:
