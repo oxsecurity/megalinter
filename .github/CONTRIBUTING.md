@@ -33,7 +33,7 @@ Use Gitpod for a cloud-based development environment:
 4. Create a new branch: `git checkout -b my-feature-branch`
 5. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
 6. Test all : `make tests` or `make tests-fast` for TDD mode
-7. Test with megalinter: `make megalinter` (Incoming)
+7. Test with megalinter: `make megalinter-tests`
 8. Push your changes: `git push origin my-feature-branch`
 9. Create a pull request on GitHub
 10. Wait for a review
