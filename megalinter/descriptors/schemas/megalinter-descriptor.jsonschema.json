@@ -603,7 +603,8 @@
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "examples": [
               "regex_number",

@@ -70,12 +70,12 @@ linters:
       - --source-code
       - "."
       - -E
+      - --skip-git-ignored-files
       - --ignore-globs
       - "**/megalinter-reports/**"
     cli_help_arg_name: --help
     cli_version_arg_name: --version
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "(\\[.*\\])"
+    cli_lint_errors_count: sarif
     test_folder: devskim
     examples:
       - "devskim analyze ."

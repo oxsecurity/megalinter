@@ -1330,6 +1330,11 @@ class Linter:
             total_errors = sum(
                 not line.isspace() and line != "" for line in stdout.splitlines()
             )
+        # Count number of results in sarif format
+        elif self.cli_lint_errors_count == "sarif":
+            sarif = json.loads(utils.normalize_log_string(stdout))
+            if sarif and sarif["runs"] and sarif["runs"]["results"]:
+                total_errors = len(sarif["runs"]["results"])
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
