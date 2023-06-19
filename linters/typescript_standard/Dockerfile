@@ -87,9 +87,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
-                standard \
-                @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser  && \
+                ts-standard  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \

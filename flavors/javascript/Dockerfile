@@ -170,7 +170,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser  && \
+                @typescript-eslint/parser \
+                ts-standard  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \
