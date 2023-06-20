@@ -29,9 +29,6 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                    | `True`                                          |
 | TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| TERRAFORM_TFLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
 | TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
 | TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
@@ -64,16 +61,19 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- tflint is called one time by identified file (`file` CLI lint mode)
+tflint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using tflint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make tflint analyze only updated files
 
 ### Example calls
 
 ```shell
-tflint myfile.tf
+tflint
 ```
 
 ```shell
-tflint -c .tflint.hcl myfile.tf
+tflint -c .tflint.hcl
 ```
 
 

@@ -22,6 +22,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     linter_text: |
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+    cli_lint_mode: project
     config_file_name: .tflint.hcl
     cli_sarif_args:
       - --format
@@ -31,8 +32,8 @@ linters:
         default_value: true
         description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
     examples:
-      - "tflint myfile.tf"
-      - "tflint -c .tflint.hcl myfile.tf"
+      - "tflint"
+      - "tflint -c .tflint.hcl"
     install:
       dockerfile:
         - FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
