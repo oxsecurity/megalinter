@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "files": [
+    "typescript_bad_1.ts",
+    "typescript_good_1.ts",
+    "typescript_good_2.ts",
+    "typescript_fix_1.ts",
+    "typescript_fix_2.ts",
+  ]
+}

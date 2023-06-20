@@ -539,6 +539,11 @@
     "image": null,
     "title": "Redirecting"
   },
+  "ts-standard": {
+    "description": "English \u2022 Espan\u0303ol (Latinoame\u0301rica) \u2022 Franc\u0327ais \u2022 Bahasa Indonesia \u2022 Italiano (Italian) \u2022 \u65e5\u672c\u8a9e (Japanese) \u2022 \u1112\u1161\u11ab\u1100\u116e\u11a8\u110b\u1165 (Korean) \u2022 Portugue\u0302s (Brasil) \u2022 \u7b80\u4f53\u4e2d\u6587 (Simplified Chinese) \u2022 \u7e41\u9ad4\u4e2d\u6587 (Taiwanese Mandarin).",
+    "image": null,
+    "title": "JavaScript Standard Style"
+  },
   "tsqllint": {
     "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",
     "image": "https://opengraph.githubassets.com/07bcefab8d31eb93bc746724c678639f64a396bb33c2f36f56b4c47d73906d60/tsqllint/tsqllint",

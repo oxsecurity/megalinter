@@ -67,17 +67,19 @@ linters:
       - --file-format
       - sarif
     cli_lint_extra_args_after:
+      - --source-code
       - "."
       - -E
+      - --skip-git-ignored-files
       - --ignore-globs
       - "**/megalinter-reports/**"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "(\\[.*\\])"
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_errors_count: sarif
     test_folder: devskim
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
-    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -94,7 +96,7 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
       vscode:
         - name: VSCode DevSkim
@@ -233,7 +235,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.16.4 as gitleaks
+        - FROM zricethezav/gitleaks:v8.17.0 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN

@@ -71,9 +71,6 @@ linters:
         - "@typescript-eslint/parser"
         - "@microsoft/eslint-formatter-sarif"
     ide:
-      atom:
-        - name: linter-eslint
-          url: https://atom.io/packages/linter-eslint
       brackets:
         - name: brackets-eslint
           url: https://github.com/brackets-userland/brackets-eslint
@@ -100,43 +97,26 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
   - class: TypeScriptStandardLinter
-    linter_name: standard
+    linter_name: ts-standard
+    name: TYPESCRIPT_STANDARD
     activation_rules:
       - type: variable
-        variable: JAVASCRIPT_DEFAULT_STYLE
-        expected_value: standard
-        default_value: standard
+        variable: TYPESCRIPT_STANDARD
+        expected_value: ts-standard
+        default_value: ts-standard
     linter_url: https://standardjs.com/
-    linter_repo: https://github.com/standard/standard
+    linter_repo: https://github.com/standard/ts-standard
     linter_rules_url: https://standardjs.com/rules.html
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
-    name: TYPESCRIPT_STANDARD
     cli_lint_mode: list_of_files
-    cli_lint_extra_args:
-      - "--parser"
-      - "@typescript-eslint/parser"
-      - "--plugin"
-      - "@typescript-eslint/eslint-plugin"
     cli_lint_fix_arg_name: "--fix"
     examples:
-      - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts"
-      - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts"
+      - "ts-standard myfile.ts"
+      - "ts-standard --fix myfile.ts"
     install:
       npm:
-        - standard
-        - "@typescript-eslint/eslint-plugin"
-        - "@typescript-eslint/parser"
+        - ts-standard
     ide:
-      atom:
-        - name: linter-js-standard
-          url: https://atom.io/packages/linter-js-standard
-        - name: linter-js-standard-engine
-          url: https://atom.io/packages/linter-js-standard-engine
-        - name: standard-formatter
-          url: https://atom.io/packages/standard-formatter
-      brackets:
-        - name: brackets-standard
-          url: https://github.com/ishamf/brackets-standard/
       idea:
         - name: native support
           url: https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/
@@ -181,13 +161,6 @@ linters:
       npm:
         - "prettier"
     ide:
-      atom:
-        - name: prettier-atom
-          url: https://github.com/prettier/prettier-atom
-        - name: atom-mprettier
-          url: https://github.com/t9md/atom-mprettier
-        - name: atom-miniprettier
-          url: https://github.com/duailibe/atom-miniprettier
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs
