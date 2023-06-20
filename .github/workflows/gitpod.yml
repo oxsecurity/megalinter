@@ -20,10 +20,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version-file: '.python-version' # Read python version from a file .python-version
 
       - name: Install dependencies
         run: make bootstrap
