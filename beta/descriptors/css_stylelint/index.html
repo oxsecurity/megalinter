@@ -1162,7 +1162,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../typescript_standard/">
+<a class="md-nav__link" href="../typescript_ts_standard/">
         ts-standard
       </a>
 </li>
@@ -2543,7 +2543,7 @@
 <p><a href="https://github.com/stylelint/stylelint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/stylelint/stylelint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver"/></a> <a href="https://github.com/stylelint/stylelint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/stylelint/stylelint"/></a> <a href="https://github.com/stylelint/stylelint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/stylelint/stylelint"/></a> <a href="https://github.com/stylelint/stylelint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/stylelint/stylelint"/></a></p>
 <h2 id="stylelint-documentation">stylelint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>15.7.0</strong></li>
+<li>Version in MegaLinter: <strong>15.8.0</strong></li>
 <li>Visit <a href="https://stylelint.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://stylelint.io/user-guide/configure" target="_blank">How to configure stylelint rules</a><ul>
 <li>If custom <code>.stylelintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json" target="_blank">.stylelintrc.json</a> will be used</li>
@@ -2839,15 +2839,15 @@
 
     --config, -c &lt;path_or_module&gt;
 
-      A path to a specific configuration file (JSON, YAML, or CommonJS), or a
-      module name in "node_modules" that points to one. If no argument is
+      A path to a specific configuration file (JSON, YAML, CommonJS, or ES module),
+      or a module name in "node_modules" that points to one. If no argument is
       provided, Stylelint will search for configuration files in the following
       places, in this order:
 
         - a "stylelint" property in "package.json"
-        - a ".stylelintrc" file (with or without filename extension:
-          ".json", ".yaml", ".yml", ".js", and ".cjs" are available)
-        - a "stylelint.config.js" file exporting a JS object
+        - a ".stylelintrc" file
+        - a ".stylelintrc.{cjs,mjs,js,json,yaml,yml}" file
+        - a "stylelint.config.{cjs,mjs,js}" file
 
       The search will begin in the working directory and move up the directory
       tree until a configuration file is found.
@@ -2858,9 +2858,9 @@
       "plugins", and "customSyntax" are *relative to*. Only necessary if these
       values are relative paths.
 
-    --print-config &lt;path&gt;
+    --print-config
 
-      Print the configuration for the given path.
+      Print the configuration for the given input file path. Globs are unsupported.
 
     --ignore-path, -i &lt;path&gt;
 

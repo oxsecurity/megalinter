@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="rust flavor is an optimized MegaLinter with only linters related to rust projects" name="description"/>
+<meta content="How to use ts-standard (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TYPESCRIPT files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/flavors/rust/" rel="canonical"/>
-<link href="../ruby/" rel="prev"/>
-<link href="../salesforce/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/typescript_ts_standard/" rel="canonical"/>
+<link href="../typescript_eslint/" rel="prev"/>
+<link href="../typescript_prettier/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.16" name="generator"/>
-<title>rust flavor in MegaLinter - MegaLinter by OX Security</title>
+<title>ts-standard configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="rust flavor in MegaLinter" name="twitter:title">
-<meta content="rust flavor is an optimized MegaLinter with only linters related to rust projects" name="twitter:description">
+<meta content="ts-standard configuration in MegaLinter" name="twitter:title">
+<meta content="How to use ts-standard (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TYPESCRIPT files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="rust flavor in MegaLinter" property="og:title"/>
-<meta content="rust flavor is an optimized MegaLinter with only linters related to rust projects" property="og:description"/>
+<meta content="ts-standard configuration in MegaLinter" property="og:title"/>
+<meta content="How to use ts-standard (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TYPESCRIPT files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#rust-megalinter-flavor">
+<a class="md-skip" href="#ts-standard-documentation">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              rust flavor in MegaLinter
+              ts-standard configuration in MegaLinter
             
           </span>
 </div>
@@ -290,13 +290,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           Linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
           Linters
@@ -307,13 +307,13 @@
         All supported linters
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Languages linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Languages linters
@@ -337,22 +337,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bash/">
+<a class="md-nav__link" href="../bash/">
         All BASH linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bash_bash_exec/">
+<a class="md-nav__link" href="../bash_bash_exec/">
         bash-exec
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bash_shellcheck/">
+<a class="md-nav__link" href="../bash_shellcheck/">
         shellcheck
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bash_shfmt/">
+<a class="md-nav__link" href="../bash_shfmt/">
         shfmt
       </a>
 </li>
@@ -372,12 +372,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/c/">
+<a class="md-nav__link" href="../c/">
         All C linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/c_cpplint/">
+<a class="md-nav__link" href="../c_cpplint/">
         cpplint
       </a>
 </li>
@@ -397,17 +397,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/clojure/">
+<a class="md-nav__link" href="../clojure/">
         All CLOJURE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/clojure_clj_kondo/">
+<a class="md-nav__link" href="../clojure_clj_kondo/">
         clj-kondo
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/clojure_cljstyle/">
+<a class="md-nav__link" href="../clojure_cljstyle/">
         cljstyle
       </a>
 </li>
@@ -427,12 +427,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/coffee/">
+<a class="md-nav__link" href="../coffee/">
         All COFFEE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/coffee_coffeelint/">
+<a class="md-nav__link" href="../coffee_coffeelint/">
         coffeelint
       </a>
 </li>
@@ -452,12 +452,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/cpp/">
+<a class="md-nav__link" href="../cpp/">
         All C++ (CPP) linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/cpp_cpplint/">
+<a class="md-nav__link" href="../cpp_cpplint/">
         cpplint
       </a>
 </li>
@@ -477,17 +477,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/csharp/">
+<a class="md-nav__link" href="../csharp/">
         All C# (CSHARP) linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/csharp_dotnet_format/">
+<a class="md-nav__link" href="../csharp_dotnet_format/">
         dotnet-format
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/csharp_csharpier/">
+<a class="md-nav__link" href="../csharp_csharpier/">
         csharpier
       </a>
 </li>
@@ -507,12 +507,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/dart/">
+<a class="md-nav__link" href="../dart/">
         All DART linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/dart_dartanalyzer/">
+<a class="md-nav__link" href="../dart_dartanalyzer/">
         dartanalyzer
       </a>
 </li>
@@ -532,17 +532,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/go/">
+<a class="md-nav__link" href="../go/">
         All GO linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/go_golangci_lint/">
+<a class="md-nav__link" href="../go_golangci_lint/">
         golangci-lint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/go_revive/">
+<a class="md-nav__link" href="../go_revive/">
         revive
       </a>
 </li>
@@ -562,12 +562,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/groovy/">
+<a class="md-nav__link" href="../groovy/">
         All GROOVY linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/groovy_npm_groovy_lint/">
+<a class="md-nav__link" href="../groovy_npm_groovy_lint/">
         npm-groovy-lint
       </a>
 </li>
@@ -587,17 +587,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/java/">
+<a class="md-nav__link" href="../java/">
         All JAVA linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/java_checkstyle/">
+<a class="md-nav__link" href="../java_checkstyle/">
         checkstyle
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/java_pmd/">
+<a class="md-nav__link" href="../java_pmd/">
         pmd
       </a>
 </li>
@@ -617,22 +617,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/javascript/">
+<a class="md-nav__link" href="../javascript/">
         All JAVASCRIPT linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/javascript_eslint/">
+<a class="md-nav__link" href="../javascript_eslint/">
         eslint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/javascript_standard/">
+<a class="md-nav__link" href="../javascript_standard/">
         standard
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/javascript_prettier/">
+<a class="md-nav__link" href="../javascript_prettier/">
         prettier
       </a>
 </li>
@@ -652,12 +652,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/jsx/">
+<a class="md-nav__link" href="../jsx/">
         All JSX linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/jsx_eslint/">
+<a class="md-nav__link" href="../jsx_eslint/">
         eslint
       </a>
 </li>
@@ -677,12 +677,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kotlin/">
+<a class="md-nav__link" href="../kotlin/">
         All KOTLIN linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kotlin_ktlint/">
+<a class="md-nav__link" href="../kotlin_ktlint/">
         ktlint
       </a>
 </li>
@@ -702,12 +702,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/lua/">
+<a class="md-nav__link" href="../lua/">
         All LUA linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/lua_luacheck/">
+<a class="md-nav__link" href="../lua_luacheck/">
         luacheck
       </a>
 </li>
@@ -727,12 +727,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/makefile/">
+<a class="md-nav__link" href="../makefile/">
         All MAKEFILE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/makefile_checkmake/">
+<a class="md-nav__link" href="../makefile_checkmake/">
         checkmake
       </a>
 </li>
@@ -752,12 +752,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/perl/">
+<a class="md-nav__link" href="../perl/">
         All PERL linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/perl_perlcritic/">
+<a class="md-nav__link" href="../perl_perlcritic/">
         perlcritic
       </a>
 </li>
@@ -777,27 +777,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/php/">
+<a class="md-nav__link" href="../php/">
         All PHP linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/php_phpcs/">
+<a class="md-nav__link" href="../php_phpcs/">
         phpcs
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/php_phpstan/">
+<a class="md-nav__link" href="../php_phpstan/">
         phpstan
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/php_psalm/">
+<a class="md-nav__link" href="../php_psalm/">
         psalm
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/php_phplint/">
+<a class="md-nav__link" href="../php_phplint/">
         phplint
       </a>
 </li>
@@ -817,17 +817,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/powershell/">
+<a class="md-nav__link" href="../powershell/">
         All POWERSHELL linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/powershell_powershell/">
+<a class="md-nav__link" href="../powershell_powershell/">
         powershell
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/powershell_powershell_formatter/">
+<a class="md-nav__link" href="../powershell_powershell_formatter/">
         powershell_formatter
       </a>
 </li>
@@ -847,47 +847,47 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python/">
+<a class="md-nav__link" href="../python/">
         All PYTHON linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_pylint/">
+<a class="md-nav__link" href="../python_pylint/">
         pylint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_black/">
+<a class="md-nav__link" href="../python_black/">
         black
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_flake8/">
+<a class="md-nav__link" href="../python_flake8/">
         flake8
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_isort/">
+<a class="md-nav__link" href="../python_isort/">
         isort
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_bandit/">
+<a class="md-nav__link" href="../python_bandit/">
         bandit
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_mypy/">
+<a class="md-nav__link" href="../python_mypy/">
         mypy
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_pyright/">
+<a class="md-nav__link" href="../python_pyright/">
         pyright
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/python_ruff/">
+<a class="md-nav__link" href="../python_ruff/">
         ruff
       </a>
 </li>
@@ -907,12 +907,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/r/">
+<a class="md-nav__link" href="../r/">
         All R linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/r_lintr/">
+<a class="md-nav__link" href="../r_lintr/">
         lintr
       </a>
 </li>
@@ -932,12 +932,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/raku/">
+<a class="md-nav__link" href="../raku/">
         All RAKU linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/raku_raku/">
+<a class="md-nav__link" href="../raku_raku/">
         raku
       </a>
 </li>
@@ -957,12 +957,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/ruby/">
+<a class="md-nav__link" href="../ruby/">
         All RUBY linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/ruby_rubocop/">
+<a class="md-nav__link" href="../ruby_rubocop/">
         rubocop
       </a>
 </li>
@@ -982,12 +982,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rust/">
+<a class="md-nav__link" href="../rust/">
         All RUST linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rust_clippy/">
+<a class="md-nav__link" href="../rust_clippy/">
         clippy
       </a>
 </li>
@@ -1007,22 +1007,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/salesforce/">
+<a class="md-nav__link" href="../salesforce/">
         All SALESFORCE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/salesforce_sfdx_scanner_apex/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_apex/">
         sfdx-scanner-apex
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/salesforce_sfdx_scanner_aura/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_aura/">
         sfdx-scanner-aura
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/salesforce_sfdx_scanner_lwc/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_lwc/">
         sfdx-scanner-lwc
       </a>
 </li>
@@ -1042,12 +1042,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/scala/">
+<a class="md-nav__link" href="../scala/">
         All SCALA linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/scala_scalafix/">
+<a class="md-nav__link" href="../scala_scalafix/">
         scalafix
       </a>
 </li>
@@ -1067,22 +1067,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/sql/">
+<a class="md-nav__link" href="../sql/">
         All SQL linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/sql_sql_lint/">
+<a class="md-nav__link" href="../sql_sql_lint/">
         sql-lint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/sql_sqlfluff/">
+<a class="md-nav__link" href="../sql_sqlfluff/">
         sqlfluff
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/sql_tsqllint/">
+<a class="md-nav__link" href="../sql_tsqllint/">
         tsqllint
       </a>
 </li>
@@ -1102,12 +1102,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/swift/">
+<a class="md-nav__link" href="../swift/">
         All SWIFT linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/swift_swiftlint/">
+<a class="md-nav__link" href="../swift_swiftlint/">
         swiftlint
       </a>
 </li>
@@ -1127,47 +1127,114 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/tsx/">
+<a class="md-nav__link" href="../tsx/">
         All TSX linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/tsx_eslint/">
+<a class="md-nav__link" href="../tsx_eslint/">
         eslint
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2_30" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_30" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_30" id="__nav_5_2_30_label" tabindex="0">
           TYPESCRIPT
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_30_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_30_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_30">
 <span class="md-nav__icon md-icon"></span>
           TYPESCRIPT
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/typescript/">
+<a class="md-nav__link" href="../typescript/">
         All TYPESCRIPT linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/typescript_eslint/">
+<a class="md-nav__link" href="../typescript_eslint/">
         eslint
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/typescript_ts_standard/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          ts-standard
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         ts-standard
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ts-standard-documentation">
+    ts-standard documentation
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/typescript_prettier/">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../typescript_prettier/">
         prettier
       </a>
 </li>
@@ -1187,12 +1254,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/vbdotnet/">
+<a class="md-nav__link" href="../vbdotnet/">
         All Visual Basic .NET (VBDOTNET) linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/vbdotnet_dotnet_format/">
+<a class="md-nav__link" href="../vbdotnet_dotnet_format/">
         dotnet-format
       </a>
 </li>
@@ -1232,17 +1299,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/css/">
+<a class="md-nav__link" href="../css/">
         All CSS linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/css_stylelint/">
+<a class="md-nav__link" href="../css_stylelint/">
         stylelint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/css_scss_lint/">
+<a class="md-nav__link" href="../css_scss_lint/">
         scss-lint
       </a>
 </li>
@@ -1262,12 +1329,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/env/">
+<a class="md-nav__link" href="../env/">
         All ENV linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/env_dotenv_linter/">
+<a class="md-nav__link" href="../env_dotenv_linter/">
         dotenv-linter
       </a>
 </li>
@@ -1287,12 +1354,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/graphql/">
+<a class="md-nav__link" href="../graphql/">
         All GRAPHQL linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/graphql_graphql_schema_linter/">
+<a class="md-nav__link" href="../graphql_graphql_schema_linter/">
         graphql-schema-linter
       </a>
 </li>
@@ -1312,17 +1379,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/html/">
+<a class="md-nav__link" href="../html/">
         All HTML linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/html_djlint/">
+<a class="md-nav__link" href="../html_djlint/">
         djlint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/html_htmlhint/">
+<a class="md-nav__link" href="../html_htmlhint/">
         htmlhint
       </a>
 </li>
@@ -1342,32 +1409,32 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json/">
+<a class="md-nav__link" href="../json/">
         All JSON linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json_jsonlint/">
+<a class="md-nav__link" href="../json_jsonlint/">
         jsonlint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json_eslint_plugin_jsonc/">
+<a class="md-nav__link" href="../json_eslint_plugin_jsonc/">
         eslint-plugin-jsonc
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json_v8r/">
+<a class="md-nav__link" href="../json_v8r/">
         v8r
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json_prettier/">
+<a class="md-nav__link" href="../json_prettier/">
         prettier
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/json_npm_package_json_lint/">
+<a class="md-nav__link" href="../json_npm_package_json_lint/">
         npm-package-json-lint
       </a>
 </li>
@@ -1387,12 +1454,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/latex/">
+<a class="md-nav__link" href="../latex/">
         All LATEX linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/latex_chktex/">
+<a class="md-nav__link" href="../latex_chktex/">
         chktex
       </a>
 </li>
@@ -1412,27 +1479,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/markdown/">
+<a class="md-nav__link" href="../markdown/">
         All MARKDOWN linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/markdown_markdownlint/">
+<a class="md-nav__link" href="../markdown_markdownlint/">
         markdownlint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/markdown_remark_lint/">
+<a class="md-nav__link" href="../markdown_remark_lint/">
         remark-lint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/markdown_markdown_link_check/">
+<a class="md-nav__link" href="../markdown_markdown_link_check/">
         markdown-link-check
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/markdown_markdown_table_formatter/">
+<a class="md-nav__link" href="../markdown_markdown_table_formatter/">
         markdown-table-formatter
       </a>
 </li>
@@ -1452,12 +1519,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/protobuf/">
+<a class="md-nav__link" href="../protobuf/">
         All PROTOBUF linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/protobuf_protolint/">
+<a class="md-nav__link" href="../protobuf_protolint/">
         protolint
       </a>
 </li>
@@ -1477,22 +1544,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rst/">
+<a class="md-nav__link" href="../rst/">
         All RST linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rst_rst_lint/">
+<a class="md-nav__link" href="../rst_rst_lint/">
         rst-lint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rst_rstcheck/">
+<a class="md-nav__link" href="../rst_rstcheck/">
         rstcheck
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/rst_rstfmt/">
+<a class="md-nav__link" href="../rst_rstfmt/">
         rstfmt
       </a>
 </li>
@@ -1512,12 +1579,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/xml/">
+<a class="md-nav__link" href="../xml/">
         All XML linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/xml_xmllint/">
+<a class="md-nav__link" href="../xml_xmllint/">
         xmllint
       </a>
 </li>
@@ -1537,22 +1604,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/yaml/">
+<a class="md-nav__link" href="../yaml/">
         All YAML linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/yaml_prettier/">
+<a class="md-nav__link" href="../yaml_prettier/">
         prettier
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/yaml_yamllint/">
+<a class="md-nav__link" href="../yaml_yamllint/">
         yamllint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/yaml_v8r/">
+<a class="md-nav__link" href="../yaml_v8r/">
         v8r
       </a>
 </li>
@@ -1592,12 +1659,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/action/">
+<a class="md-nav__link" href="../action/">
         All ACTION linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/action_actionlint/">
+<a class="md-nav__link" href="../action_actionlint/">
         actionlint
       </a>
 </li>
@@ -1617,12 +1684,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/ansible/">
+<a class="md-nav__link" href="../ansible/">
         All ANSIBLE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/ansible_ansible_lint/">
+<a class="md-nav__link" href="../ansible_ansible_lint/">
         ansible-lint
       </a>
 </li>
@@ -1642,12 +1709,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/arm/">
+<a class="md-nav__link" href="../arm/">
         All ARM linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/arm_arm_ttk/">
+<a class="md-nav__link" href="../arm_arm_ttk/">
         arm-ttk
       </a>
 </li>
@@ -1667,12 +1734,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bicep/">
+<a class="md-nav__link" href="../bicep/">
         All BICEP linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/bicep_bicep_linter/">
+<a class="md-nav__link" href="../bicep_bicep_linter/">
         bicep_linter
       </a>
 </li>
@@ -1692,12 +1759,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/cloudformation/">
+<a class="md-nav__link" href="../cloudformation/">
         All CLOUDFORMATION linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/cloudformation_cfn_lint/">
+<a class="md-nav__link" href="../cloudformation_cfn_lint/">
         cfn-lint
       </a>
 </li>
@@ -1717,12 +1784,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/dockerfile/">
+<a class="md-nav__link" href="../dockerfile/">
         All DOCKERFILE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/dockerfile_hadolint/">
+<a class="md-nav__link" href="../dockerfile_hadolint/">
         hadolint
       </a>
 </li>
@@ -1742,12 +1809,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/editorconfig/">
+<a class="md-nav__link" href="../editorconfig/">
         All EDITORCONFIG linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/editorconfig_editorconfig_checker/">
+<a class="md-nav__link" href="../editorconfig_editorconfig_checker/">
         editorconfig-checker
       </a>
 </li>
@@ -1767,12 +1834,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/gherkin/">
+<a class="md-nav__link" href="../gherkin/">
         All GHERKIN linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/gherkin_gherkin_lint/">
+<a class="md-nav__link" href="../gherkin_gherkin_lint/">
         gherkin-lint
       </a>
 </li>
@@ -1792,22 +1859,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kubernetes/">
+<a class="md-nav__link" href="../kubernetes/">
         All KUBERNETES linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kubernetes_kubeconform/">
+<a class="md-nav__link" href="../kubernetes_kubeconform/">
         kubeconform
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kubernetes_helm/">
+<a class="md-nav__link" href="../kubernetes_helm/">
         helm
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/kubernetes_kubescape/">
+<a class="md-nav__link" href="../kubernetes_kubescape/">
         kubescape
       </a>
 </li>
@@ -1827,12 +1894,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/openapi/">
+<a class="md-nav__link" href="../openapi/">
         All OPENAPI linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/openapi_spectral/">
+<a class="md-nav__link" href="../openapi_spectral/">
         spectral
       </a>
 </li>
@@ -1852,12 +1919,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/puppet/">
+<a class="md-nav__link" href="../puppet/">
         All PUPPET linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/puppet_puppet_lint/">
+<a class="md-nav__link" href="../puppet_puppet_lint/">
         puppet-lint
       </a>
 </li>
@@ -1877,17 +1944,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/snakemake/">
+<a class="md-nav__link" href="../snakemake/">
         All SNAKEMAKE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/snakemake_snakemake/">
+<a class="md-nav__link" href="../snakemake_snakemake/">
         snakemake
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/snakemake_snakefmt/">
+<a class="md-nav__link" href="../snakemake_snakefmt/">
         snakefmt
       </a>
 </li>
@@ -1907,12 +1974,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/tekton/">
+<a class="md-nav__link" href="../tekton/">
         All TEKTON linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/tekton_tekton_lint/">
+<a class="md-nav__link" href="../tekton_tekton_lint/">
         tekton-lint
       </a>
 </li>
@@ -1932,27 +1999,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/terraform/">
+<a class="md-nav__link" href="../terraform/">
         All TERRAFORM linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/terraform_tflint/">
+<a class="md-nav__link" href="../terraform_tflint/">
         tflint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/terraform_terrascan/">
+<a class="md-nav__link" href="../terraform_terrascan/">
         terrascan
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/terraform_terragrunt/">
+<a class="md-nav__link" href="../terraform_terragrunt/">
         terragrunt
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/terraform_terraform_fmt/">
+<a class="md-nav__link" href="../terraform_terraform_fmt/">
         terraform-fmt
       </a>
 </li>
@@ -1992,12 +2059,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/copypaste/">
+<a class="md-nav__link" href="../copypaste/">
         All COPYPASTE linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/copypaste_jscpd/">
+<a class="md-nav__link" href="../copypaste_jscpd/">
         jscpd
       </a>
 </li>
@@ -2017,57 +2084,57 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository/">
+<a class="md-nav__link" href="../repository/">
         All REPOSITORY linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_checkov/">
+<a class="md-nav__link" href="../repository_checkov/">
         checkov
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_devskim/">
+<a class="md-nav__link" href="../repository_devskim/">
         devskim
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_dustilock/">
+<a class="md-nav__link" href="../repository_dustilock/">
         dustilock
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_git_diff/">
+<a class="md-nav__link" href="../repository_git_diff/">
         git_diff
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_gitleaks/">
+<a class="md-nav__link" href="../repository_gitleaks/">
         gitleaks
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_kics/">
+<a class="md-nav__link" href="../repository_kics/">
         kics
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_secretlint/">
+<a class="md-nav__link" href="../repository_secretlint/">
         secretlint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_semgrep/">
+<a class="md-nav__link" href="../repository_semgrep/">
         semgrep
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_syft/">
+<a class="md-nav__link" href="../repository_syft/">
         syft
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/repository_trivy/">
+<a class="md-nav__link" href="../repository_trivy/">
         trivy
       </a>
 </li>
@@ -2087,27 +2154,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/spell/">
+<a class="md-nav__link" href="../spell/">
         All SPELL linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/spell_cspell/">
+<a class="md-nav__link" href="../spell_cspell/">
         cspell
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/spell_proselint/">
+<a class="md-nav__link" href="../spell_proselint/">
         proselint
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/spell_vale/">
+<a class="md-nav__link" href="../spell_vale/">
         vale
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../descriptors/spell_lychee/">
+<a class="md-nav__link" href="../spell_lychee/">
         lychee
       </a>
 </li>
@@ -2205,147 +2272,95 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
 <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
           Flavors
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
           Flavors
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../">
+<a class="md-nav__link" href="../../flavors/">
         All flavors
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ci_light/">
+<a class="md-nav__link" href="../../flavors/ci_light/">
         ci_light
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cupcake/">
+<a class="md-nav__link" href="../../flavors/cupcake/">
         cupcake
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../documentation/">
+<a class="md-nav__link" href="../../flavors/documentation/">
         documentation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../dotnet/">
+<a class="md-nav__link" href="../../flavors/dotnet/">
         dotnet
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../go/">
+<a class="md-nav__link" href="../../flavors/go/">
         go
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../java/">
+<a class="md-nav__link" href="../../flavors/java/">
         java
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../javascript/">
+<a class="md-nav__link" href="../../flavors/javascript/">
         javascript
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../php/">
+<a class="md-nav__link" href="../../flavors/php/">
         php
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../python/">
+<a class="md-nav__link" href="../../flavors/python/">
         python
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ruby/">
+<a class="md-nav__link" href="../../flavors/ruby/">
         ruby
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          rust
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../flavors/rust/">
         rust
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#description">
-    Description
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usage">
-    Usage
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#embedded-linters">
-    Embedded linters
-  </a>
-<nav aria-label="Embedded linters" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#languages">
-    Languages
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#formats">
-    Formats
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tooling-formats">
-    Tooling formats
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#other">
-    Other
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../salesforce/">
+<a class="md-nav__link" href="../../flavors/salesforce/">
         salesforce
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../security/">
+<a class="md-nav__link" href="../../flavors/security/">
         security
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../swift/">
+<a class="md-nav__link" href="../../flavors/swift/">
         swift
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../terraform/">
+<a class="md-nav__link" href="../../flavors/terraform/">
         terraform
       </a>
 </li>
@@ -2457,39 +2472,54 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#description">
-    Description
+<a class="md-nav__link" href="#ts-standard-documentation">
+    ts-standard documentation
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usage">
-    Usage
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#embedded-linters">
-    Embedded linters
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
   </a>
-<nav aria-label="Embedded linters" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#languages">
-    Languages
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#formats">
-    Formats
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tooling-formats">
-    Tooling formats
+<a class="md-nav__link" href="#example-calls">
+    Example calls
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#other">
-    Other
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
   </a>
 </li>
 </ul>
@@ -2502,365 +2532,240 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="rust-megalinter-flavor">rust MegaLinter Flavor</h1>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"/></a>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"/></a></p>
-<h2 id="description">Description</h2>
-<p>Optimized for RUST based projects</p>
-<h2 id="usage">Usage</h2>
+<h1>ts-standard</h1>
+<!-- markdownlint-disable MD033 MD041 -->
+<!-- @generated by .automation/build.py, please don't update manually -->
+<div align="center">
+<a href="https://standardjs.com/" target="blank" title="Visit linter Web Site">
+<img alt="ts-standard" class="megalinter-banner" height="150px" src="https://github.com/standard/standard/raw/master/sticker.png">
+</img></a>
+</div>
+<p><a href="https://github.com/standard/ts-standard"><img alt="GitHub stars" src="https://img.shields.io/github/stars/standard/ts-standard?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/standard/ts-standard/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/standard/ts-standard?sort=semver"/></a> <a href="https://github.com/standard/ts-standard/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/standard/ts-standard"/></a> <a href="https://github.com/standard/ts-standard/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/standard/ts-standard"/></a> <a href="https://github.com/standard/ts-standard/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/standard/ts-standard"/></a></p>
+<h2 id="ts-standard-documentation">ts-standard documentation</h2>
 <ul>
-<li><a href="https://megalinter.io/beta/installation/#github-action">GitHub Action</a>: <strong>oxsecurity/megalinter/flavors/rust@beta</strong></li>
-<li>Docker image: <strong>oxsecurity/megalinter-rust:beta</strong></li>
-<li><a href="https://megalinter.io/beta/mega-linter-runner/">mega-linter-runner</a>: <code>mega-linter-runner --flavor rust</code></li>
+<li>Version in MegaLinter: <strong>12.0.2</strong></li>
+<li>Visit <a href="https://standardjs.com/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://standardjs.com/rules.html" target="_blank">Index of problems detected by ts-standard</a></li>
 </ul>
-<h2 id="embedded-linters">Embedded linters</h2>
-<h3 id="languages">Languages</h3>
+<p><a href="https://github.com/standard/ts-standard" target="_blank"><img alt="ts-standard - GitHub" src="https://gh-card.dev/repos/standard/ts-standard.svg?fullname="/></a></p>
+<h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
+<ul>
+<li>Enable ts-standard by adding <code>TYPESCRIPT_STANDARD</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable ts-standard by adding <code>TYPESCRIPT_STANDARD</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
+<ul>
+<li>Enable <strong>autofixes</strong> by adding <code>TYPESCRIPT_STANDARD</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
+</ul>
 <table>
 <thead>
 <tr>
-<th align="center"><!-- --></th>
-<th>Language</th>
-<th>Linter</th>
-<th align="center">Additional</th>
+<th>Variable</th>
+<th>Description</th>
+<th>Default value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash/"><strong>BASH</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash_bash_exec/"><strong>bash-exec</strong></a><br/><a href="https://megalinter.io/beta/descriptors/bash_bash_exec/"><em>BASH_EXEC</em></a></td>
-<td align="center"></td>
+<td>TYPESCRIPT_STANDARD</td>
+<td>For ts-standard to be active, TYPESCRIPT_STANDARD must be <code>ts-standard</code></td>
+<td><code>ts-standard</code></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash/"><strong>BASH</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash_shellcheck/"><strong>shellcheck</strong></a><br/><a href="https://megalinter.io/beta/descriptors/bash_shellcheck/"><em>BASH_SHELLCHECK</em></a></td>
-<td align="center"><a href="https://github.com/koalaman/shellcheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/koalaman/shellcheck?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
+<td>TYPESCRIPT_STANDARD_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/bash.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash/"><strong>BASH</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/bash_shfmt/"><strong>shfmt</strong></a><br/><a href="https://megalinter.io/beta/descriptors/bash_shfmt/"><em>BASH_SHFMT</em></a></td>
-<td align="center"><a href="https://github.com/mvdan/sh"><img alt="GitHub stars" src="https://img.shields.io/github/stars/mvdan/sh?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
+<td>TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
+<td>Include every file</td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/groovy.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/groovy.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/groovy/"><strong>GROOVY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/"><strong>npm-groovy-lint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/"><em>GROOVY_NPM_GROOVY_LINT</em></a></td>
-<td align="center"><a href="https://github.com/nvuillam/npm-groovy-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
+<td>TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
+<td>Exclude no file</td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kotlin.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kotlin.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/kotlin/"><strong>KOTLIN</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/kotlin_ktlint/"><strong>ktlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/kotlin_ktlint/"><em>KOTLIN_KTLINT</em></a></td>
-<td align="center"><a href="https://github.com/pinterest/ktlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
+<td>TYPESCRIPT_STANDARD_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/rust/"><strong>RUST</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/rust_clippy/"><strong>clippy</strong></a><br/><a href="https://megalinter.io/beta/descriptors/rust_clippy/"><em>RUST_CLIPPY</em></a></td>
-<td align="center"><a href="https://github.com/rust-lang/rust-clippy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600"/></a></td>
+<td>TYPESCRIPT_STANDARD_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
+<td><code>[".ts"]</code></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sql.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sql.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/sql/"><strong>SQL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/sql_sql_lint/"><strong>sql-lint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/sql_sql_lint/"><em>SQL_SQL_LINT</em></a></td>
-<td align="center"><a href="https://github.com/joereynolds/sql-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/joereynolds/sql-lint?cacheSeconds=3600"/></a></td>
+<td>TYPESCRIPT_STANDARD_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sql.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sql.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/sql/"><strong>SQL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/sql_sqlfluff/"><strong>sqlfluff</strong></a><br/><a href="https://megalinter.io/beta/descriptors/sql_sqlfluff/"><em>SQL_SQLFLUFF</em></a></td>
-<td align="center"><a href="https://github.com/sqlfluff/sqlfluff"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600"/></a></td>
+<td>TYPESCRIPT_STANDARD_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TYPESCRIPT_STANDARD_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling TYPESCRIPT_STANDARD and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TYPESCRIPT_STANDARD_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>TYPESCRIPT_STANDARD_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['ts-standard']</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="formats">Formats</h3>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use ts-standard in your favorite IDE to catch errors before MegaLinter !</p>
 <table>
 <thead>
 <tr>
 <th align="center"><!-- --></th>
-<th>Format</th>
-<th>Linter</th>
-<th align="center">Additional</th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th align="center">Install</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/css.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/css.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/css/"><strong>CSS</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/css_stylelint/"><strong>stylelint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/css_stylelint/"><em>CSS_STYLELINT</em></a></td>
-<td align="center"><a href="https://github.com/stylelint/stylelint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"/></a></td>
+<td><a href="https://www.jetbrains.com/products.html#type=ide">IDEA</a></td>
+<td><a href="https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/">native support</a></td>
+<td align="center"><a href="https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/" target="_blank">Visit Web Site</a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/css.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/css.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/css/"><strong>CSS</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/css_scss_lint/"><strong>scss-lint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/css_scss_lint/"><em>CSS_SCSS_LINT</em></a></td>
-<td align="center"><a href="https://github.com/sds/scss-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
+<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
+<td><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-standard">SublimeLinter-contrib-standard</a></td>
+<td align="center"><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-standard" target="_blank">Visit Web Site</a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/env.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/env.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/env/"><strong>ENV</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/env_dotenv_linter/"><strong>dotenv-linter</strong></a><br/><a href="https://megalinter.io/beta/descriptors/env_dotenv_linter/"><em>ENV_DOTENV_LINTER</em></a></td>
-<td align="center"><a href="https://github.com/dotenv-linter/dotenv-linter"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dotenv-linter/dotenv-linter?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
+<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
+<td><a href="https://packagecontrol.io/packages/StandardFormat">StandardFormat</a></td>
+<td align="center"><a href="https://packagecontrol.io/packages/StandardFormat" target="_blank">Visit Web Site</a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/graphql.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/graphql.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/graphql/"><strong>GRAPHQL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/graphql_graphql_schema_linter/"><strong>graphql-schema-linter</strong></a><br/><a href="https://megalinter.io/beta/descriptors/graphql_graphql_schema_linter/"><em>GRAPHQL_GRAPHQL_SCHEMA_LINTER</em></a></td>
-<td align="center"><a href="https://github.com/cjoudrey/graphql-schema-linter"><img alt="GitHub stars" src="https://img.shields.io/github/stars/cjoudrey/graphql-schema-linter?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/html.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/html.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/html/"><strong>HTML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/html_djlint/"><strong>djlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/html_djlint/"><em>HTML_DJLINT</em></a></td>
-<td align="center"><a href="https://github.com/Riverside-Healthcare/djlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/html.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/html.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/html/"><strong>HTML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/html_htmlhint/"><strong>htmlhint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/html_htmlhint/"><em>HTML_HTMLHINT</em></a></td>
-<td align="center"><a href="https://github.com/htmlhint/HTMLHint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/json/"><strong>JSON</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/json_jsonlint/"><strong>jsonlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/json_jsonlint/"><em>JSON_JSONLINT</em></a></td>
-<td align="center"><a href="https://github.com/prantlf/jsonlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/prantlf/jsonlint?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/json/"><strong>JSON</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/json_eslint_plugin_jsonc/"><strong>eslint-plugin-jsonc</strong></a><br/><a href="https://megalinter.io/beta/descriptors/json_eslint_plugin_jsonc/"><em>JSON_ESLINT_PLUGIN_JSONC</em></a></td>
-<td align="center"><a href="https://github.com/ota-meshi/eslint-plugin-jsonc"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/json/"><strong>JSON</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/json_v8r/"><strong>v8r</strong></a><br/><a href="https://megalinter.io/beta/descriptors/json_v8r/"><em>JSON_V8R</em></a></td>
-<td align="center"><a href="https://github.com/chris48s/v8r"><img alt="GitHub stars" src="https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/json.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/json/"><strong>JSON</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/json_prettier/"><strong>prettier</strong></a><br/><a href="https://megalinter.io/beta/descriptors/json_prettier/"><em>JSON_PRETTIER</em></a></td>
-<td align="center"><a href="https://github.com/prettier/prettier"><img alt="GitHub stars" src="https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown/"><strong>MARKDOWN</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown_markdownlint/"><strong>markdownlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/markdown_markdownlint/"><em>MARKDOWN_MARKDOWNLINT</em></a></td>
-<td align="center"><a href="https://github.com/DavidAnson/markdownlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown/"><strong>MARKDOWN</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown_markdown_link_check/"><strong>markdown-link-check</strong></a><br/><a href="https://megalinter.io/beta/descriptors/markdown_markdown_link_check/"><em>MARKDOWN_MARKDOWN_LINK_CHECK</em></a></td>
-<td align="center"><a href="https://github.com/tcort/markdown-link-check"><img alt="GitHub stars" src="https://img.shields.io/github/stars/tcort/markdown-link-check?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/markdown.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown/"><strong>MARKDOWN</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/markdown_markdown_table_formatter/"><strong>markdown-table-formatter</strong></a><br/><a href="https://megalinter.io/beta/descriptors/markdown_markdown_table_formatter/"><em>MARKDOWN_MARKDOWN_TABLE_FORMATTER</em></a></td>
-<td align="center"><a href="https://github.com/nvuillam/markdown-table-formatter"><img alt="GitHub stars" src="https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/protobuf.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/protobuf.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/protobuf/"><strong>PROTOBUF</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/protobuf_protolint/"><strong>protolint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/protobuf_protolint/"><em>PROTOBUF_PROTOLINT</em></a></td>
-<td align="center"><a href="https://github.com/yoheimuta/protolint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/xml.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/xml.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/xml/"><strong>XML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/xml_xmllint/"><strong>xmllint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/xml_xmllint/"><em>XML_XMLLINT</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml/"><strong>YAML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml_prettier/"><strong>prettier</strong></a><br/><a href="https://megalinter.io/beta/descriptors/yaml_prettier/"><em>YAML_PRETTIER</em></a></td>
-<td align="center"><a href="https://github.com/prettier/prettier"><img alt="GitHub stars" src="https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml/"><strong>YAML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml_yamllint/"><strong>yamllint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/yaml_yamllint/"><em>YAML_YAMLLINT</em></a></td>
-<td align="center"><a href="https://github.com/adrienverge/yamllint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/yaml.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml/"><strong>YAML</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/yaml_v8r/"><strong>v8r</strong></a><br/><a href="https://megalinter.io/beta/descriptors/yaml_v8r/"><em>YAML_V8R</em></a></td>
-<td align="center"><a href="https://github.com/chris48s/v8r"><img alt="GitHub stars" src="https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="vscode-standard">https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard</a></td>
+<td align="center"><a href="vscode-standard" target="_blank">Visit Web Site</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="tooling-formats">Tooling formats</h3>
+<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
+<p>This linter is available in the following flavours</p>
 <table>
 <thead>
 <tr>
 <th align="center"><!-- --></th>
-<th>Tooling format</th>
-<th>Linter</th>
-<th align="center">Additional</th>
+<th align="left">Flavor</th>
+<th align="left">Description</th>
+<th align="center">Embedded linters</th>
+<th align="right">Info</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/action/"><strong>ACTION</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/action_actionlint/"><strong>actionlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/action_actionlint/"><em>ACTION_ACTIONLINT</em></a></td>
-<td align="center"><a href="https://github.com/rhysd/actionlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td align="left">Default MegaLinter Flavor</td>
+<td align="center">114</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ansible.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ansible.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/ansible/"><strong>ANSIBLE</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/ansible_ansible_lint/"><strong>ansible-lint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/ansible_ansible_lint/"><em>ANSIBLE_ANSIBLE_LINT</em></a></td>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-downgraded%20version-orange"><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange"/> <a href="https://github.com/ansible/ansible-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">82</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dockerfile.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dockerfile.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/dockerfile/"><strong>DOCKERFILE</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/dockerfile_hadolint/"><strong>hadolint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/dockerfile_hadolint/"><em>DOCKERFILE_HADOLINT</em></a></td>
-<td align="center"><a href="https://github.com/hadolint/hadolint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/editorconfig.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/editorconfig.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/editorconfig/"><strong>EDITORCONFIG</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/editorconfig_editorconfig_checker/"><strong>editorconfig-checker</strong></a><br/><a href="https://megalinter.io/beta/descriptors/editorconfig_editorconfig_checker/"><em>EDITORCONFIG_EDITORCONFIG_CHECKER</em></a></td>
-<td align="center"><a href="https://github.com/editorconfig-checker/editorconfig-checker"><img alt="GitHub stars" src="https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes_kubeconform/"><strong>kubeconform</strong></a><br/><a href="https://megalinter.io/beta/descriptors/kubernetes_kubeconform/"><em>KUBERNETES_KUBECONFORM</em></a></td>
-<td align="center"><a href="https://github.com/yannh/kubeconform"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes_helm/"><strong>helm</strong></a><br/><a href="https://megalinter.io/beta/descriptors/kubernetes_helm/"><em>KUBERNETES_HELM</em></a></td>
-<td align="center"><a href="https://github.com/helm/helm"><img alt="GitHub stars" src="https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/kubernetes.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes/"><strong>KUBERNETES</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/kubernetes_kubescape/"><strong>kubescape</strong></a><br/><a href="https://megalinter.io/beta/descriptors/kubernetes_kubescape/"><em>KUBERNETES_KUBESCAPE</em></a></td>
-<td align="center"><a href="https://github.com/kubescape/kubescape"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/openapi.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/openapi.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/openapi/"><strong>OPENAPI</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/openapi_spectral/"><strong>spectral</strong></a><br/><a href="https://megalinter.io/beta/descriptors/openapi_spectral/"><em>OPENAPI_SPECTRAL</em></a></td>
-<td align="center"><a href="https://github.com/stoplightio/spectral"><img alt="GitHub stars" src="https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/snakemake/"><strong>SNAKEMAKE</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/snakemake_snakemake/"><strong>snakemake</strong></a><br/><a href="https://megalinter.io/beta/descriptors/snakemake_snakemake/"><em>SNAKEMAKE_LINT</em></a></td>
-<td align="center"><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/snakemake.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/snakemake/"><strong>SNAKEMAKE</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/snakemake_snakefmt/"><strong>snakefmt</strong></a><br/><a href="https://megalinter.io/beta/descriptors/snakemake_snakefmt/"><em>SNAKEMAKE_SNAKEFMT</em></a></td>
-<td align="center"><a href="https://github.com/snakemake/snakefmt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakefmt?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/tekton.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/tekton.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/tekton/"><strong>TEKTON</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/tekton_tekton_lint/"><strong>tekton-lint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/tekton_tekton_lint/"><em>TEKTON_TEKTON_LINT</em></a></td>
-<td align="center"><a href="https://github.com/IBM/tekton-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/IBM/tekton-lint?cacheSeconds=3600"/></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/javascript/">javascript</a></td>
+<td align="left">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
+<td align="center">57</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"/></a></a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="other">Other</h3>
-<table>
-<thead>
-<tr>
-<th align="center"><!-- --></th>
-<th>Code quality checker</th>
-<th>Linter</th>
-<th align="center">Additional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/copypaste.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/copypaste.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/copypaste/"><strong>COPYPASTE</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/copypaste_jscpd/"><strong>jscpd</strong></a><br/><a href="https://megalinter.io/beta/descriptors/copypaste_jscpd/"><em>COPYPASTE_JSCPD</em></a></td>
-<td align="center"><a href="https://github.com/kucherenko/jscpd"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_checkov/"><strong>checkov</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_checkov/"><em>REPOSITORY_CHECKOV</em></a></td>
-<td align="center"><a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_git_diff/"><strong>git_diff</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_git_diff/"><em>REPOSITORY_GIT_DIFF</em></a></td>
-<td align="center"><a href="https://github.com/git/git"><img alt="GitHub stars" src="https://img.shields.io/github/stars/git/git?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_gitleaks/"><strong>gitleaks</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_gitleaks/"><em>REPOSITORY_GITLEAKS</em></a></td>
-<td align="center"><a href="https://github.com/gitleaks/gitleaks"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gitleaks/gitleaks?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_secretlint/"><strong>secretlint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_secretlint/"><em>REPOSITORY_SECRETLINT</em></a></td>
-<td align="center"><a href="https://github.com/secretlint/secretlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_semgrep/"><strong>semgrep</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_semgrep/"><em>REPOSITORY_SEMGREP</em></a></td>
-<td align="center"><a href="https://github.com/returntocorp/semgrep"><img alt="GitHub stars" src="https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository/"><strong>REPOSITORY</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/repository_trivy/"><strong>trivy</strong></a><br/><a href="https://megalinter.io/beta/descriptors/repository_trivy/"><em>REPOSITORY_TRIVY</em></a></td>
-<td align="center"><a href="https://github.com/aquasecurity/trivy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell_cspell/"><strong>cspell</strong></a><br/><a href="https://megalinter.io/beta/descriptors/spell_cspell/"><em>SPELL_CSPELL</em></a></td>
-<td align="center"><a href="https://github.com/streetsidesoftware/cspell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell_proselint/"><strong>proselint</strong></a><br/><a href="https://megalinter.io/beta/descriptors/spell_proselint/"><em>SPELL_PROSELINT</em></a></td>
-<td align="center"><a href="https://github.com/amperser/proselint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell_vale/"><strong>vale</strong></a><br/><a href="https://megalinter.io/beta/descriptors/spell_vale/"><em>SPELL_VALE</em></a></td>
-<td align="center"><a href="https://github.com/errata-ai/vale"><img alt="GitHub stars" src="https://img.shields.io/github/stars/errata-ai/vale?cacheSeconds=3600"/></a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/spell.ico"/></a> <!-- linter-icon --></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell/"><strong>SPELL</strong></a></td>
-<td><a href="https://megalinter.io/beta/descriptors/spell_lychee/"><strong>lychee</strong></a><br/><a href="https://megalinter.io/beta/descriptors/spell_lychee/"><em>SPELL_LYCHEE</em></a></td>
-<td align="center"><a href="https://github.com/lycheeverse/lychee"><img alt="GitHub stars" src="https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600"/></a></td>
-</tr>
-</tbody>
-</table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>File extensions: <code>.ts</code></li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<ul>
+<li>ts-standard is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<pre><code class="language-shell">ts-standard myfile.ts
+</code></pre>
+<pre><code class="language-shell">ts-standard --fix myfile.ts
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">ts-standard - Standard for TypeScript! (https://github.com/standard/ts-standard)
+
+Usage:
+  ts-standard &lt;flags&gt; [FILES...]
+
+  If FILES is omitted, all JavaScript/TypeScript source files (*.js, *.jsx, *.mjs, *.cjs, *.ts, *.tsx)
+  in the current working directory are checked, recursively.
+
+  Certain paths (node_modules/, coverage/, vendor/, *.min.js, and
+  files/folders that begin with '.' like .git/) are automatically ignored.
+
+  Paths in a project's root .gitignore file are also automatically ignored.
+
+Flags:
+      --fix       Automatically fix problems
+  -p, --project   Specify ts-config location (default: ./tsconfig.eslint.json or ./tsconfig.json)
+      --version   Show current version
+  -h, --help      Show usage information
+
+Flags (advanced):
+      --stdin     Read file text from stdin
+      --ext       Specify JavaScript/TypeScript file extensions
+      --global    Declare global variable
+      --plugin    Use custom eslint plugin
+      --env       Use custom eslint environment
+      --parser    Use custom ts/js parser (default: @typescript-eslint/parser)
+
+</code></pre>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
+<ul>
+<li>NPM packages (node.js):<ul>
+<li><a href="https://www.npmjs.com/package/typescript">typescript</a></li>
+<li><a href="https://www.npmjs.com/package/ts-standard">ts-standard</a></li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: ruby" class="md-footer__link md-footer__link--prev" href="../ruby/" rel="prev">
+<a aria-label="Previous: eslint" class="md-footer__link md-footer__link--prev" href="../typescript_eslint/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2869,17 +2774,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                ruby
+                eslint
               </div>
 </div>
 </a>
-<a aria-label="Next: salesforce" class="md-footer__link md-footer__link--next" href="../salesforce/" rel="next">
+<a aria-label="Next: prettier" class="md-footer__link md-footer__link--next" href="../typescript_prettier/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                salesforce
+                prettier
               </div>
 </div>
 <div class="md-footer__button md-icon">
