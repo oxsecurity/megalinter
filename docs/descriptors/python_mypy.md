@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.3.0**
+- Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -208,7 +208,9 @@ Untyped definitions and calls:
                             (inverse: --allow-untyped-defs)
   --disallow-incomplete-defs
                             Disallow defining functions with incomplete type
-                            annotations (inverse: --allow-incomplete-defs)
+                            annotations (while still allowing entirely
+                            unannotated definitions) (inverse: --allow-
+                            incomplete-defs)
   --check-untyped-defs      Type check the interior of functions without type
                             annotations (inverse: --no-check-untyped-defs)
   --disallow-untyped-decorators

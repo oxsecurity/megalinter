@@ -33,6 +33,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.28.1 to **7.28.3** on 2023-06-17
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.4.6 to **1.5.0** on 2023-06-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.47.0** on 2023-06-17
+  - [shfmt](https://github.com/mvdan/sh) from 3.6.0 to **3.7.0** on 2023-06-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.9 to **0.77.10** on 2023-06-21
+  - [stylelint](https://stylelint.io) from 15.7.0 to **15.8.0** on 2023-06-21
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.35.0** on 2023-06-21
+  - [phpstan](https://phpstan.org/) from 1.10.19 to **1.10.20** on 2023-06-21
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.3.0 to **1.4.0** on 2023-06-21
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.272 to **0.0.274** on 2023-06-21
+  - [checkov](https://www.checkov.io/) from 2.3.294 to **2.3.296** on 2023-06-21
+  - [devskim](https://github.com/microsoft/DevSkim) from 0.7.104 to **1.0.8** on 2023-06-21
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.16.4 to **8.17.0** on 2023-06-21
+  - [syft](https://github.com/anchore/syft) from 0.83.1 to **0.84.0** on 2023-06-21
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
