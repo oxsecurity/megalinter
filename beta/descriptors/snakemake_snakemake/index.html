@@ -11,7 +11,7 @@
 <link href="../snakemake/" rel="prev"/>
 <link href="../snakemake_snakefmt/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.3, mkdocs-material-9.1.16" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.17" name="generator"/>
 <title>snakemake configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
@@ -2543,7 +2543,7 @@
 <p><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a> <a href="https://github.com/snakemake/snakemake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver"/></a> <a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/snakemake/snakemake"/></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.28.3</strong></li>
+<li>Version in MegaLinter: <strong>7.29.0</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname="/></a></p>
@@ -2771,7 +2771,8 @@
 <pre><code class="language-shell">snakemake --lint -s Snakefile
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
+<pre><code class="language-shell">usage: snakemake [-h] [--dry-run] [--profile PROFILE]
+                 [--workflow-profile WORKFLOW_PROFILE] [--cache [RULE ...]]
                  [--snakefile FILE] [--cores [N]] [--jobs [N]]
                  [--local-cores N] [--resources [NAME=INT ...]]
                  [--set-threads RULE=THREADS [RULE=THREADS ...]]
@@ -2886,8 +2887,33 @@ EXECUTION:
                         the YAML file. Profiles can be obtained from
                         https://github.com/snakemake-profiles. The profile can
                         also be set via the environment variable
-                        $SNAKEMAKE_PROFILE. [env var: SNAKEMAKE_PROFILE]
-                        (default: None)
+                        $SNAKEMAKE_PROFILE. To override this variable and use
+                        no profile at all, provide the value 'none' to this
+                        argument. [env var: SNAKEMAKE_PROFILE] (default: None)
+  --workflow-profile WORKFLOW_PROFILE
+                        Path (relative to current directory) to workflow
+                        specific profile folder to use for configuring
+                        Snakemake with parameters specific for this workflow
+                        (like resources). If this flag is not used, Snakemake
+                        will by default use 'profiles/default' if present
+                        (searched both relative to current directory and
+                        relative to Snakefile, in this order). For skipping
+                        any workflow specific profile provide the special
+                        value 'none'. Settings made in the workflow profile
+                        will override settings made in the general profile
+                        (see --profile). The profile folder has to contain a
+                        file 'config.yaml'. This file can be used to set
+                        default values for command line options in YAML
+                        format. For example, '--cluster qsub' becomes
+                        'cluster: qsub' in the YAML file. It is advisable to
+                        use the workflow profile to set or overwrite e.g.
+                        workflow specific resources like the amount of threads
+                        of a particular rule or the amount of memory needed.
+                        Note that in such cases, the arguments may be given as
+                        nested YAML mappings in the profile, e.g. 'set-
+                        threads: myrule: 4' instead of 'set-threads:
+                        myrule=4'. [env var: SNAKEMAKE_PROFILE] (default:
+                        None)
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
@@ -3864,7 +3890,7 @@ override environment variables which override defaults.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.a51614de.min.js"></script>
+<script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

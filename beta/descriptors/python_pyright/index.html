@@ -11,7 +11,7 @@
 <link href="../python_mypy/" rel="prev"/>
 <link href="../python_ruff/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.4.3, mkdocs-material-9.1.16" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-9.1.17" name="generator"/>
 <title>pyright configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
@@ -2545,7 +2545,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_PYRIGHT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="pyright-documentation">pyright documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.1.314</strong></li>
+<li>Version in MegaLinter: <strong>1.1.315</strong></li>
 <li>Visit <a href="https://github.com/Microsoft/pyright#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/configuration.md" target="_blank">How to configure pyright rules</a></li>
 <li>See <a href="https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls" target="_blank">How to disable pyright rules in files</a></li>
@@ -2753,9 +2753,10 @@
   -v,--venvpath &lt;DIRECTORY&gt;          Directory that contains virtual environments
   --verbose                          Emit verbose diagnostics
   --verifytypes &lt;PACKAGE&gt;            Verify type completeness of a py.typed package
-  --version                          Print Pyright version
+  --version                          Print Pyright version and exit
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
+  -                                  Read files from stdin
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -2834,7 +2835,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.a51614de.min.js"></script>
+<script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
