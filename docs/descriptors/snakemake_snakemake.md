@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.28.3**
+- Version in MegaLinter: **7.29.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -92,7 +92,8 @@ snakemake --lint -s Snakefile
 ### Help content
 
 ```shell
-usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
+usage: snakemake [-h] [--dry-run] [--profile PROFILE]
+                 [--workflow-profile WORKFLOW_PROFILE] [--cache [RULE ...]]
                  [--snakefile FILE] [--cores [N]] [--jobs [N]]
                  [--local-cores N] [--resources [NAME=INT ...]]
                  [--set-threads RULE=THREADS [RULE=THREADS ...]]
@@ -207,8 +208,33 @@ EXECUTION:
                         the YAML file. Profiles can be obtained from
                         https://github.com/snakemake-profiles. The profile can
                         also be set via the environment variable
-                        $SNAKEMAKE_PROFILE. [env var: SNAKEMAKE_PROFILE]
-                        (default: None)
+                        $SNAKEMAKE_PROFILE. To override this variable and use
+                        no profile at all, provide the value 'none' to this
+                        argument. [env var: SNAKEMAKE_PROFILE] (default: None)
+  --workflow-profile WORKFLOW_PROFILE
+                        Path (relative to current directory) to workflow
+                        specific profile folder to use for configuring
+                        Snakemake with parameters specific for this workflow
+                        (like resources). If this flag is not used, Snakemake
+                        will by default use 'profiles/default' if present
+                        (searched both relative to current directory and
+                        relative to Snakefile, in this order). For skipping
+                        any workflow specific profile provide the special
+                        value 'none'. Settings made in the workflow profile
+                        will override settings made in the general profile
+                        (see --profile). The profile folder has to contain a
+                        file 'config.yaml'. This file can be used to set
+                        default values for command line options in YAML
+                        format. For example, '--cluster qsub' becomes
+                        'cluster: qsub' in the YAML file. It is advisable to
+                        use the workflow profile to set or overwrite e.g.
+                        workflow specific resources like the amount of threads
+                        of a particular rule or the amount of memory needed.
+                        Note that in such cases, the arguments may be given as
+                        nested YAML mappings in the profile, e.g. 'set-
+                        threads: myrule: 4' instead of 'set-threads:
+                        myrule=4'. [env var: SNAKEMAKE_PROFILE] (default:
+                        None)
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
