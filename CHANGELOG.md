@@ -44,6 +44,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 0.7.104 to **1.0.8** on 2023-06-21
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.16.4 to **8.17.0** on 2023-06-21
   - [syft](https://github.com/anchore/syft) from 0.83.1 to **0.84.0** on 2023-06-21
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.410 to **6.0.411** on 2023-06-23
+  - [phpstan](https://phpstan.org/) from 1.10.20 to **1.10.21** on 2023-06-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.314 to **1.1.315** on 2023-06-23
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.274 to **0.0.275** on 2023-06-23
+  - [checkov](https://www.checkov.io/) from 2.3.296 to **2.3.301** on 2023-06-23
+  - [kics](https://www.kics.io) from 1.7.1 to **1.7.2** on 2023-06-23
+  - [semgrep](https://semgrep.dev/) from 1.27.0 to **1.28.0** on 2023-06-23
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.28.3 to **7.29.0** on 2023-06-23
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.0 to **1.5.1** on 2023-06-23
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
