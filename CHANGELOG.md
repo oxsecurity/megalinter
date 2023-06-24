@@ -53,6 +53,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.27.0 to **1.28.0** on 2023-06-23
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.28.3 to **7.29.0** on 2023-06-23
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.0 to **1.5.1** on 2023-06-23
+  - [stylelint](https://stylelint.io) from 15.8.0 to **15.9.0** on 2023-06-24
+  - [rubocop](https://rubocop.org/) from 1.52.1 to **1.53.0** on 2023-06-24
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
