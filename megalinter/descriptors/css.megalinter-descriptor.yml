@@ -14,10 +14,10 @@ linters:
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
     linter_repo: https://github.com/stylelint/stylelint
-    linter_banner_image_url: https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png
+    linter_banner_image_url: https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png
     linter_rules_configuration_url: https://stylelint.io/user-guide/configure
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
-    linter_megalinter_ref_url: https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
+    # linter_megalinter_ref_url: https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
     cli_lint_mode: list_of_files
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"

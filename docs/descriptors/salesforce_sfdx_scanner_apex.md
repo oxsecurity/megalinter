@@ -19,12 +19,12 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.12.0**
+- Version in MegaLinter: **3.13.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
-- See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
+- See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
-- See [How to disable sfdx-scanner-apex rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
-- See [Index of problems detected by sfdx-scanner-apex](https://pmd.github.io/latest/pmd_rules_apex.html){target=_blank}
+- See [How to disable sfdx-scanner-apex rules in files](https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
+- See [Index of problems detected by sfdx-scanner-apex](https://docs.pmd-code.org/latest/pmd_rules_apex.html){target=_blank}
 
 [![sfdx-scanner - GitHub](https://gh-card.dev/repos/forcedotcom/sfdx-scanner.svg?fullname=)](https://github.com/forcedotcom/sfdx-scanner){target=_blank}
 
@@ -33,17 +33,18 @@ See more details in [Help](#help-content)
 - Enable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable sfdx-scanner-apex by adding `SALESFORCE_SFDX_SCANNER_APEX` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                 | Description                                                                                  | Default value                                   |
-|----------------------------------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                     |                                                 |
-| SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS                | List of bash commands to run before the linter                                               | None                                            |
-| SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS               | List of bash commands to run after the linter                                                | None                                            |
-| SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE                 | sfdx-scanner-apex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `apex-pmd-ruleset.xml`                          |
-| SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH                  | Path where to find linter configuration file                                                 | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                   | `false`                                         |
-| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                             | `0`                                             |
-| SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE              | Override CLI executable                                                                      | `['sfdx']`                                      |
-| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                        | `force-app`                                     |
+| Variable                                                 | Description                                                                                                         | Default value                                   |
+|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                            |                                                 |
+| SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                      | None                                            |
+| SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS               | List of bash commands to run after the linter                                                                       | None                                            |
+| SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_APEX and its pre/post commands | None                                            |
+| SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE                 | sfdx-scanner-apex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `apex-pmd-ruleset.xml`                          |
+| SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH                  | Path where to find linter configuration file                                                                        | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                          | `false`                                         |
+| SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                    | `0`                                             |
+| SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE              | Override CLI executable                                                                                             | `['sfdx']`                                      |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                                               | `force-app`                                     |
 
 ## IDE Integration
 
@@ -62,8 +63,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       113        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       114        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -162,7 +163,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1442) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1444) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -379,6 +380,7 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
  UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
+ MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 ```

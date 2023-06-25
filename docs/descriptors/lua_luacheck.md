@@ -9,7 +9,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 
 ## luacheck documentation
 
-- Version in MegaLinter: **1.1.0**
+- Version in MegaLinter: **1.1.1**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file isn't found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -33,6 +33,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 | LUA_LUACHECK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | LUA_LUACHECK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
 | LUA_LUACHECK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| LUA_LUACHECK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling LUA_LUACHECK and its pre/post commands                                                                                          | None                                            |
 | LUA_LUACHECK_CONFIG_FILE                 | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.luacheckrc`                                   |
 | LUA_LUACHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | LUA_LUACHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
@@ -46,7 +47,7 @@ Use luacheck in your favorite IDE to catch errors before MegaLinter !
 |                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                  |                                                                                    Install                                                                                    |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [linter-luacheck](https://atom.io/packages/linter-luacheck)                                     |                                                   [Visit Web Site](https://atom.io/packages/linter-luacheck){target=_blank}                                                   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                      | [brackets-luacheck](https://github.com/Malcolm3141/brackets-luacheck)                           |                                               [Visit Web Site](https://github.com/Malcolm3141/brackets-luacheck){target=_blank}                                               |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                     | [brackets-luacheck](https://github.com/Malcolm3141/brackets-luacheck)                           |                                               [Visit Web Site](https://github.com/Malcolm3141/brackets-luacheck){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#lua)                                |                                             [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#lua){target=_blank}                                             |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-luacheck](https://packagecontrol.io/packages/SublimeLinter-luacheck)             |                                          [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-luacheck){target=_blank}                                           |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [Syntastic](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck)                  |                                      [Visit Web Site](https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck){target=_blank}                                       |
@@ -58,7 +59,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       113        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       114        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -108,7 +109,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 1.1.0, a linter and a static analyzer for Lua.
+luacheck 1.1.1, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass

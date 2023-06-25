@@ -23,14 +23,15 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.16.3 as gitleaks
+FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM jdkato/vale:latest as vale
+FROM lycheeverse/lychee:latest-alpine as lychee
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.11.3-alpine3.17
+FROM python:3.11.4-alpine3.17
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -100,7 +101,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint=='6.16.2' && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging checkov && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
@@ -142,7 +143,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettier \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
-                markdownlint-cli@0.33.0 \
+                markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral-cli \
@@ -221,6 +222,7 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
+COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -300,6 +302,9 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
+
+# lychee installation
+# Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 #OTHER__END
 

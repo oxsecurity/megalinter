@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use Standard to lint js files
-https://github.com/standard/standard
+https://github.com/standard/ts-standard
 """
 from megalinter import Linter, utilstest
 

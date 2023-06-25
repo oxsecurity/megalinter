@@ -16,6 +16,7 @@ Example in `.mega-linter.yml` config file
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+    continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
 ```
 
 

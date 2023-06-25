@@ -2,6 +2,6 @@ Results of standard linter (version 15.0.1)
 See documentation on https://megalinter.io/descriptors/typescript_standard/
 -----------------------------------------------
 
-[SUCCESS] .automation/test/typescript/typescript_good_1.ts
+[SUCCESS] .automation/test/typescript_standard/typescript_good_1.ts
     
 

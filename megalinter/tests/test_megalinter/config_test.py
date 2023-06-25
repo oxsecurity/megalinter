@@ -269,13 +269,14 @@ class config_test(unittest.TestCase):
                 "GITLAB_ACCESS_TOKEN_MEGALINTER": "GITLAB_ACCESS_TOKEN_MEGALINTER_VALUE",
                 "SECRET_VAR": "SECRET_VALUE",
                 "OX_API_KEY": "1234",
-                "SECURED_ENV_VARIABLES": "SECRET_VAR,OX_API_KEY,(VAR_.*_REGEX)",
+                "SECURED_ENV_VARIABLES": "SECRET_VAR,OX_API_KEY,(VAR_.*_REGEX),UNSECURED_VAR",
                 "workspace": ".",
                 "LOG_LEVEL": "DEBUG",
                 "VAR_WITH_REGEX": "aXw32",
+                "UNSECURED_VAR": "visible",
             },
         )
-        cli_env = config.build_env(request_id)
+        cli_env = config.build_env(request_id, True, ["UNSECURED_VAR"])
         self.assertTrue(cli_env["VISIBLE_VAR"] == "VALUE", "VISIBLE_VAR is visible")
         self.assertTrue(
             cli_env["GITHUB_TOKEN"] == "HIDDEN_BY_MEGALINTER",
@@ -294,6 +295,9 @@ class config_test(unittest.TestCase):
         self.assertTrue(
             cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == "HIDDEN_BY_MEGALINTER",
             "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
+        )
+        self.assertTrue(
+            cli_env["UNSECURED_VAR"] == "visible", "UNSECURED_VAR is visible"
         )
         usage_stdout = io.StringIO()
         with contextlib.redirect_stdout(usage_stdout):

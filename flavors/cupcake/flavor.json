@@ -75,6 +75,7 @@
         "RUST_CLIPPY",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
+        "SPELL_LYCHEE",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SWIFT_SWIFTLINT",

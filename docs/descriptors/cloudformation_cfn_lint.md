@@ -15,7 +15,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **0.77.5**
+- Version in MegaLinter: **0.77.10**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
@@ -37,6 +37,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 | CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | CLOUDFORMATION_CFN_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | CLOUDFORMATION_CFN_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| CLOUDFORMATION_CFN_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling CLOUDFORMATION_CFN_LINT and its pre/post commands                                                                                                      | None                                            |
 | CLOUDFORMATION_CFN_LINT_CONFIG_FILE                 | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.cfnlintrc.yml`                                |
 | CLOUDFORMATION_CFN_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
@@ -60,8 +61,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        81        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       114        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        82        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -94,7 +95,7 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 usage:
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml
-Configure a rule: cfn-lint -x E3012:strict=false -t test.yaml
+Configure a rule: cfn-lint -x E3012:strict=true -t test.yaml
 Lint all yaml files in a folder: cfn-lint dir/**/*.yaml
 
 CloudFormation Linter
@@ -126,7 +127,7 @@ Standard:
                         Include experimental rules
   -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
                         Provide configuration for a rule. Format
-                        RuleId:key=value. Example: E3012:strict=false
+                        RuleId:key=value. Example: E3012:strict=true
   --config-file CONFIG_FILE
                         Specify the cfnlintrc file to use
   -z CUSTOM_RULES, --custom-rules CUSTOM_RULES

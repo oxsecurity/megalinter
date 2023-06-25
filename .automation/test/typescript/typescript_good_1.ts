@@ -1,4 +1,4 @@
-const spiderman = (person) => {
+const spiderman = (person: string): string => {
   return 'Hello, ' + person
 }
 

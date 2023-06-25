@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **3.12.0**
+- Version in MegaLinter: **3.13.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -32,17 +32,18 @@ See more details in [Help](#help-content)
 - Enable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER_AURA` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER_AURA` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                 | Description                                                                                  | Default value                                   |
-|----------------------------------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                     |                                                 |
-| SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS                | List of bash commands to run before the linter                                               | None                                            |
-| SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS               | List of bash commands to run after the linter                                                | None                                            |
-| SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE                 | sfdx-scanner-aura configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `--eslintconfig`                                |
-| SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH                  | Path where to find linter configuration file                                                 | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                   | `false`                                         |
-| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                             | `0`                                             |
-| SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE              | Override CLI executable                                                                      | `['sfdx']`                                      |
-| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                        | `force-app`                                     |
+| Variable                                                 | Description                                                                                                         | Default value                                   |
+|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                            |                                                 |
+| SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS                | List of bash commands to run before the linter                                                                      | None                                            |
+| SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS               | List of bash commands to run after the linter                                                                       | None                                            |
+| SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_AURA and its pre/post commands | None                                            |
+| SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE                 | sfdx-scanner-aura configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `--eslintconfig`                                |
+| SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH                  | Path where to find linter configuration file                                                                        | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                          | `false`                                         |
+| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                    | `0`                                             |
+| SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE              | Override CLI executable                                                                                             | `['sfdx']`                                      |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                                               | `force-app`                                     |
 
 ## IDE Integration
 
@@ -58,8 +59,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       113        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       114        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -158,7 +159,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1583) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1585) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -375,6 +376,7 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
  UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
+ MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 ```

@@ -139,3 +139,60 @@ linters:
       vscode:
         - name: Vale
           url: https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server
+
+  # LYCHEE
+  - class: LycheeLinter
+    linter_name: lychee
+    name: SPELL_LYCHEE
+    test_folder: spell_lychee
+    can_output_sarif: false
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - documentation
+    linter_url: https://lychee.cli.rs
+    linter_repo: https://github.com/lycheeverse/lychee
+    linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
+    linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
+    linter_rules_url: https://lychee.cli.rs/#/usage/cli
+    linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
+    linter_speed: 2
+    lint_all_other_linters_files: false
+    lint_all_files: false
+    file_extensions:
+      - .md
+      - .mdx
+      - .markdown
+      - .html
+      - .htm
+      - .rst
+      - .txt
+      - .json
+      - .jsonc
+      - .json5
+      - .yaml
+      - .yml
+    ignore_file_name: .lycheeignore
+    config_file_name: lychee.toml
+    cli_config_arg_name: --config
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Errors\\.+([0-9]+)"
+    cli_lint_extra_args:
+      - --format
+      - detailed
+      - --no-progress
+    examples:
+      - lychee --format detailed --no-progress README.md info.txt test.html
+      - lychee --format detailed --no-progress README.md
+      - lychee --format detailed --no-progress test.html info.txt
+      - lychee --format detailed --no-progress --offline path/to/directory
+      - lychee --format detailed --no-progress https://raw.githubusercontent.com/lycheeverse/lychee/master/README.md
+      - 'lychee --format detailed --no-progress "~/projects/big_project/**/README.*"'
+      - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
+    install:
+      dockerfile:
+        - FROM lycheeverse/lychee:latest-alpine as lychee
+        - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/

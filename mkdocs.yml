@@ -198,7 +198,7 @@ nav:
           - "TYPESCRIPT":
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
-              - "standard": "descriptors/typescript_standard.md"
+              - "ts-standard": "descriptors/typescript_ts_standard.md"
               - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
@@ -329,6 +329,7 @@ nav:
               - "cspell": "descriptors/spell_cspell.md"
               - "proselint": "descriptors/spell_proselint.md"
               - "vale": "descriptors/spell_vale.md"
+              - "lychee": "descriptors/spell_lychee.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
