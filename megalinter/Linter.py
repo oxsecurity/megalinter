@@ -945,6 +945,11 @@ class Linter:
                 return_stdout = (
                     f"Fatal error while calling {self.linter_name}: {str(err)}"
                 )
+            except Exception as err:
+                return_code = 99
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
