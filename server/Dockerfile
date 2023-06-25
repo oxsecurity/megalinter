@@ -14,5 +14,5 @@ RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
 
 COPY server /server
 COPY server/requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
