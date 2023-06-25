@@ -918,6 +918,8 @@ class Linter:
                 if sys.platform == "win32"
                 else "/bin/bash",
             )
+            return_code = process.returncode
+            return_stdout = utils.decode_utf8(process.stdout)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
