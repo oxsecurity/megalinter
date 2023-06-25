@@ -2,10 +2,11 @@
 https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
 
 DEV:
-docker build -t megalinter-server:latest --platform linux/amd64 -f server/Dockerfile-dev . && DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose-dev.yml up
+docker build -t megalinter-server:alpha --platform linux/amd64 -f server/Dockerfile-dev . && DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose-dev.yml up
 
 TEST:
-docker build -t megalinter-server:latest --platform linux/amd64 -f server/Dockerfile . && DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose.yml up
+docker pull --platform linux/amd64 ghcr.io/oxsecurity/megalinter-server:alpha && DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose.yml up
+
 '''
 import logging
 import logging.config
