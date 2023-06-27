@@ -9,5 +9,5 @@ gitpod-lint: ## Run hadolint command to lint Dokerfile
 
 .PHONY: gitpod-tests
 gitpod-tests: ## Run tests for gitpod
-	$(MAKE) gitpod-build
 	$(MAKE) gitpod-lint
+	$(MAKE) gitpod-build
