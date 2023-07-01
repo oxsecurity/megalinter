@@ -4,7 +4,7 @@ description: What you can do and can not do with MegaLinter
 ---
 <!-- markdownlint-disable MD013 -->
 
-# Why AGPLV3 License ?
+# Why AGPL V3 License ?
 
 MegaLinter is an open-source and free tool graciously provided to the developer community.
 

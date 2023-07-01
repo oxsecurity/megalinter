@@ -380,6 +380,6 @@ nav:
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
   - "License":
-      - "AGPLV3 License": "license.md"
+      - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
