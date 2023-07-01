@@ -379,5 +379,7 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
-  - "License": "license.md"
+  - "License":
+      - "AGPLV3 License": "license.md"
+      - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
