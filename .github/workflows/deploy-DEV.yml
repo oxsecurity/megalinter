@@ -98,6 +98,8 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        with:
+          driver: docker
 
       ###################################
       # Build image locally for testing #
