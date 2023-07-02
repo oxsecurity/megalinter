@@ -251,6 +251,8 @@ linters:
       - "mypy myfile.py"
       - "mypy --config-file .mypy.yml myfile.py"
     install:
+      dockerfile:
+        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy
     ide:
