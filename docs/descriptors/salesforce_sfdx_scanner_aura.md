@@ -159,7 +159,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1589) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1592) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
