@@ -218,7 +218,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
+            oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
 
       #####################################
       # Run Linter test cases #
@@ -232,7 +232,7 @@ jobs:
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
 
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
         timeout-minutes: 30
 
       ##############################################
