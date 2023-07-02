@@ -161,6 +161,8 @@ def test_linter_success(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": "true",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -224,6 +226,8 @@ def test_linter_failure(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars_failure.update(linter.test_variables)
@@ -447,6 +451,8 @@ def test_linter_report_tap(linter, test_self):
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "ENABLE_LINTERS": linter.name,
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -528,6 +534,8 @@ def test_linter_report_sarif(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "LOG_LEVEL": "DEBUG",
         "LOG_FILE": "megalinter.log",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -645,6 +653,8 @@ def test_linter_format_fix(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": "true",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
