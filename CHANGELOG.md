@@ -11,6 +11,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
   - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
 
+- Fixes
+  - Handle reporter crashes without making all ML crash
+  - Devskim: Remove default --ignore-globs argument
+  - mypy: USe /tmp as cache folder by default with ENV MYPY_CACHE_DIR=/tmp in Dockerfile
+  
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12

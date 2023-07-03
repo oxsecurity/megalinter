@@ -783,8 +783,10 @@ class Linter:
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
-            reporter.produce_report()
-
+            try:
+                reporter.produce_report()
+            except Exception as e:
+                logging.error("Unable to process reporter " + reporter.name + str(e))
         return self
 
     def replace_vars(self, variables):
