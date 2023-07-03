@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.24.2**
+- Version in MegaLinter: **0.25.0**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -94,7 +94,9 @@ Arguments:
 
 Options:
   --check                      Check that files are formatted. Will not write any changes.
+  --loglevel <loglevel>        Specify the log level - Debug, Information (default), Warning, Error, None [default: Information]
   --no-cache                   Bypass the cache to determine if a file needs to be formatted.
+  --no-msbuild-check           Bypass the check to determine if a csproj files references a different version of CSharpier.MsBuild.
   --fast                       Skip comparing syntax tree of formatted file to original file to validate changes.
   --skip-write                 Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
   --write-stdout               Write the results of formatting any files to stdout.
