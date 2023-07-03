@@ -83,7 +83,7 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
     echo "[MegaLinter Worker] Init Redis Queue Worker pool (${MEGALINTER_SERVER_WORKER_POOL_NUMBER} processes)"
     rq worker-pool --num-workers "${MEGALINTER_SERVER_WORKER_POOL_NUMBER}" --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
   else 
-    # Use RQ worker (a worker can execute a single job paralelly)
+    # Use RQ worker (a worker can execute a single job parallelly)
     echo "[MegaLinter Worker] Init Redis Queue Single worker"
     rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
   fi
