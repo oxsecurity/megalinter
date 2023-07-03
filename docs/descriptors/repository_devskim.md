@@ -9,6 +9,9 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 
 Use `--ignore-globs` to ignore files and/or folders
 
+Example:
+  `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
 ## devskim documentation
 
 - Version in MegaLinter: **1.0.11**
