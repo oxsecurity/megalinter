@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.49.1**
+- Version in MegaLinter: **0.50.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -148,7 +148,7 @@ Flags:
                         Comma-separated list of rules to globally disable. To
                           disable standard ktlint rule-set use
                           --disabled_rules=standard
-  -F, --format          Fix any deviations from the code style
+  -F, --format          Fix deviations from the code style when possible
       --limit=<limit>   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
                           dir/file.kt instead of /home/user/project/dir/file.kt)

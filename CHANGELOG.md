@@ -11,6 +11,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
   - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
 
+- Fixes
+  - Handle reporter crashes without making all ML crash
+  - Devskim: Remove default --ignore-globs argument
+  - mypy: USe /tmp as cache folder by default with ENV MYPY_CACHE_DIR=/tmp in Dockerfile
+  
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12
@@ -56,6 +61,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 15.8.0 to **15.9.0** on 2023-06-24
   - [rubocop](https://rubocop.org/) from 1.52.1 to **1.53.0** on 2023-06-24
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.2 to **0.52.3** on 2023-06-25
+  - [csharpier](https://csharpier.com/) from 0.24.2 to **0.25.0** on 2023-07-02
+  - [djlint](https://djlint.com/) from 1.31.0 to **1.31.1** on 2023-07-02
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.0 to **10.12.1** on 2023-07-02
+  - [eslint](https://eslint.org) from 8.43.0 to **8.44.0** on 2023-07-02
+  - [ktlint](https://ktlint.github.io) from 0.49.1 to **0.50.0** on 2023-07-02
+  - [phpstan](https://phpstan.org/) from 1.10.21 to **1.10.22** on 2023-07-02
+  - [psalm](https://psalm.dev) from Psalm.5.12.0@ to **Psalm.5.13.1@** on 2023-07-02
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.4 to **7.3.5** on 2023-07-02
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.4 to **7.3.5** on 2023-07-02
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.0 to **1.4.1** on 2023-07-02
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.315 to **1.1.316** on 2023-07-02
+  - [checkov](https://www.checkov.io/) from 2.3.301 to **2.3.309** on 2023-07-02
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.8 to **1.0.11** on 2023-07-02
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.2.3 to **6.2.4** on 2023-07-02
+  - [semgrep](https://semgrep.dev/) from 1.28.0 to **1.30.0** on 2023-07-02
+  - [syft](https://github.com/anchore/syft) from 0.84.0 to **0.84.1** on 2023-07-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.1 to **0.43.0** on 2023-07-02
+  - [rubocop](https://rubocop.org/) from 1.53.0 to **1.54.0** on 2023-07-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.29.0 to **7.30.1** on 2023-07-02
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.1 to **1.5.2** on 2023-07-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.47.0 to **0.48.0** on 2023-07-02
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11

@@ -643,7 +643,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 
 # powershell installation
-RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \
+RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 
 # powershell_formatter installation
 # Next line commented because already managed by another linter
@@ -652,8 +652,11 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# mypy installation
+ENV MYPY_CACHE_DIR=/tmp
+
 # lintr installation
-    && mkdir -p /home/r-library \
+RUN mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
     && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
