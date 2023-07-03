@@ -382,5 +382,10 @@ Environment variables:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+ENV MYPY_CACHE_DIR=/tmp
+```
+
 - PIP packages (Python):
   - [mypy](https://pypi.org/project/mypy)

@@ -8,6 +8,15 @@ description: List of all contributors, websites and linters that help MegaLinter
 
 # Special thanks
 
+## Maintainers
+
+MegaLinter wouldn't be what it is without its great team of maintainers !
+
+- [Kurt Von Laven](https://github.com/Kurt-von-Laven)
+- [Borja Dominguez](https://github.com/bdovaz)
+- [Edouard Choiniere](https://github.com/echoix)
+- [Nicolas Vuillamy](https://github.com/nvuillam) (Creator)
+
 ## Contributors
 
 <a href="https://github.com/oxsecurity/megalinter/graphs/contributors">
