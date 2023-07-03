@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.29.0**
+- Version in MegaLinter: **7.30.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -1136,8 +1136,8 @@ ENVIRONMENT MODULES:
                         fallback for rules which don't define environment
                         modules. (default: False)
 
- If an arg is specified in more than one place, then commandline values
-override environment variables which override defaults.
+ In general, command-line values override environment variables which override
+defaults.
 ```
 
 ### Installation on mega-linter Docker image

@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.301**
+- Version in MegaLinter: **2.3.310**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -132,7 +132,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -401,7 +401,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -432,13 +432,12 @@ options:
                         receive enhanced guidelines using
                         CKV_OPENAI_MAX_FINDINGS [env var: CKV_OPENAI_API_KEY]
 
-Args that start with '--' (eg. -v) can also be set in a config file
-(/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
-or specified via --config-file). The config file uses YAML syntax and must
-represent a YAML 'mapping' (for details, see
-http://learn.getgrav.org/advanced/yaml). If an arg is specified in more than
-one place, then commandline values override environment variables which
-override config file values which override defaults.
+Args that start with '--' can also be set in a config file (/.checkov.yaml or
+/.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml or specified via
+--config-file). The config file uses YAML syntax and must represent a YAML
+'mapping' (for details, see http://learn.getgrav.org/advanced/yaml). In
+general, command-line values override environment variables which override
+config file values which override defaults.
 ```
 
 ### Installation on mega-linter Docker image
