@@ -187,4 +187,4 @@ options:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [ansible-lint=='6.16.2'](https://pypi.org/project/ansible-lint/'6.16.2')
+  - [ansible-lint](https://pypi.org/project/ansible-lint)
