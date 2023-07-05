@@ -92,6 +92,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.54.0 to **1.54.1** on 2023-07-05
   - [vale](https://vale.sh/) from 2.27.0 to **2.28.0** on 2023-07-05
   - [sqlfluff](https://www.sqlfluff.com/) from 2.1.1 to **2.1.2** on 2023-07-05
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.2 to **6.17.2** on 2023-07-05
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
