@@ -82,6 +82,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.29.0 to **7.30.1** on 2023-07-02
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.1 to **1.5.2** on 2023-07-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.47.0 to **0.48.0** on 2023-07-02
+  - [stylelint](https://stylelint.io) from 15.9.0 to **15.10.0** on 2023-07-05
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 6.4.0 to **7.0.0** on 2023-07-05
+  - [phpstan](https://phpstan.org/) from 1.10.22 to **1.10.23** on 2023-07-05
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.275 to **0.0.277** on 2023-07-05
+  - [checkov](https://www.checkov.io/) from 2.3.309 to **2.3.311** on 2023-07-05
+  - [kics](https://www.kics.io) from 1.7.2 to **1.7.3** on 2023-07-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.2.4 to **7.0.2** on 2023-07-05
+  - [rubocop](https://rubocop.org/) from 1.54.0 to **1.54.1** on 2023-07-05
+  - [vale](https://vale.sh/) from 2.27.0 to **2.28.0** on 2023-07-05
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.1 to **2.1.2** on 2023-07-05
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
