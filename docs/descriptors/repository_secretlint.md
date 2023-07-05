@@ -15,7 +15,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **6.2.4**
+- Version in MegaLinter: **7.0.2**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -106,7 +106,7 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 
   Options
     --init             setup config file. Create .secretlintrc.json file from your package.json
-    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, json, junit, pretty-error, stylish, tap, unix, mask-result, table
+    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
     --output           [path:String] output file path that is written of reported result.
     --no-color         disable ANSI-color of output.
     --no-terminalLink  disable terminalLink of output.
@@ -128,6 +128,17 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
     $ secretlint "source/**/*.ini"
     # found secrets and mask the secrets
     $ secretlint .zsh_history --format=mask-result --output=.zsh_history
+
+  Exit Status
+    Secretlint exits with the following values:
+
+    - 0:
+      - Linting succeeded, no errors found.
+      - Found lint error but --output is specified.
+    - 1:
+      - Linting failed, errors found.
+    - 2:
+      - Unexpected error occurred, fatal error.
 
 ```
 
