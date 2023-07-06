@@ -93,6 +93,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.27.0 to **2.28.0** on 2023-07-05
   - [sqlfluff](https://www.sqlfluff.com/) from 2.1.1 to **2.1.2** on 2023-07-05
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.2 to **6.17.2** on 2023-07-05
+  - [prettier](https://prettier.io/) from 2.8.8 to **3.0.0** on 2023-07-06
+  - [phpstan](https://phpstan.org/) from 1.10.23 to **1.10.24** on 2023-07-06
+  - [checkov](https://www.checkov.io/) from 2.3.311 to **2.3.312** on 2023-07-06
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
