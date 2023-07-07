@@ -98,6 +98,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 2.8.8 to **3.0.0** on 2023-07-06
   - [phpstan](https://phpstan.org/) from 1.10.23 to **1.10.24** on 2023-07-06
   - [checkov](https://www.checkov.io/) from 2.3.311 to **2.3.312** on 2023-07-06
+  - [stylelint](https://stylelint.io) from 15.10.0 to **15.10.1** on 2023-07-07
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.6 to **2.3.7** on 2023-07-07
+  - [phpstan](https://phpstan.org/) from 1.10.24 to **1.10.25** on 2023-07-07
+  - [checkov](https://www.checkov.io/) from 2.3.312 to **2.3.314** on 2023-07-07
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.13.0 to **3.14.0** on 2023-07-07
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.13.0 to **3.14.0** on 2023-07-07
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.13.0 to **3.14.0** on 2023-07-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.0 to **0.48.1** on 2023-07-07
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
