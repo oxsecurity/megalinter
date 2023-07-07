@@ -3,13 +3,11 @@
 Web Hook linter reporter
 Post linter results to a Web Hook
 """
-import json
 import logging
-from redis import Redis
 
 from megalinter import Reporter, config
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
-from megalinter.utils_reporter import build_linter_reporter_external_result, build_linter_reporter_start_message
+from megalinter.utils_reporter import build_reporter_external_result, build_reporter_start_message, send_redis_message
 
 
 class RedisLinterReporter(Reporter):
@@ -68,33 +66,10 @@ class RedisLinterReporter(Reporter):
 
     # Send message when linter is about to start
     def initialize(self):
-        start_message = build_linter_reporter_start_message(self, redis_stream=(self.redis_method == 'STREAM'))
-        self.send_redis_message(start_message)
+        start_message = build_reporter_start_message(self, redis_stream=(self.redis_method == 'STREAM'))
+        send_redis_message(start_message)
 
     # Send message when linter is completed to Redis Stream
     def produce_report(self):
-        self.message_data = build_linter_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
-        self.send_redis_message(self.message_data)
-
-    def send_redis_message(self,message_data):
-        try:
-            redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
-            logging.debug("REDIS Connection: " + str(redis.info()))
-            if self.redis_method == "STREAM":
-                resp = redis.xadd(self.stream_key, message_data)
-            else:
-                resp = redis.publish(self.pubsub_channel, json.dumps(message_data))
-            logging.info("REDIS RESP" + str(resp))
-        except ConnectionError as e:
-            logging.warning(
-                f"[Redis Linter Reporter] Error posting message for {self.master.descriptor_id}"
-                f" with {self.master.linter_name}: Connection error {str(e)}"
-            )
-        except Exception as e:
-            logging.warning(
-                f"[Redis Linter Reporter] Error posting message for {self.master.descriptor_id}"
-                f" with {self.master.linter_name}: Error {str(e)}"
-            )
-            logging.warning(
-                "[Redis Linter Reporter] Redis Message data: " + str(message_data)
-            )
+        self.message_data = build_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
+        send_redis_message(self.message_data)

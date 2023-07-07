@@ -5,6 +5,8 @@ import subprocess
 import time
 import urllib
 
+from redis import Redis
+
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
@@ -307,3 +309,26 @@ def manage_redis_stream(result, redis_stream):
             elif isinstance(result_val, bool):
                 result[result_key] = int(result_val)
     return result
+
+def send_redis_message(reporter_self,message_data):
+    try:
+        redis = Redis(host=reporter_self.redis_host, port=reporter_self.redis_port, db=0)
+        logging.debug("REDIS Connection: " + str(redis.info()))
+        if reporter_self.redis_method == "STREAM":
+            resp = redis.xadd(reporter_self.stream_key, message_data)
+        else:
+            resp = redis.publish(reporter_self.pubsub_channel, json.dumps(message_data))
+        logging.info("REDIS RESP" + str(resp))
+    except ConnectionError as e:
+        logging.warning(
+            f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+            f" with {reporter_self.master.linter_name}: Connection error {str(e)}"
+        )
+    except Exception as e:
+        logging.warning(
+            f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+            f" with {reporter_self.master.linter_name}: Error {str(e)}"
+        )
+        logging.warning(
+            "[Redis Linter Reporter] Redis Message data: " + str(message_data)
+        )
