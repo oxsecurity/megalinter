@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Fix `hadolint` to use its default configuration file properly.
+
 - New linters
   - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
 
@@ -82,6 +84,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.29.0 to **7.30.1** on 2023-07-02
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.1 to **1.5.2** on 2023-07-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.47.0 to **0.48.0** on 2023-07-02
+  - [stylelint](https://stylelint.io) from 15.9.0 to **15.10.0** on 2023-07-05
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 6.4.0 to **7.0.0** on 2023-07-05
+  - [phpstan](https://phpstan.org/) from 1.10.22 to **1.10.23** on 2023-07-05
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.275 to **0.0.277** on 2023-07-05
+  - [checkov](https://www.checkov.io/) from 2.3.309 to **2.3.311** on 2023-07-05
+  - [kics](https://www.kics.io) from 1.7.2 to **1.7.3** on 2023-07-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 6.2.4 to **7.0.2** on 2023-07-05
+  - [rubocop](https://rubocop.org/) from 1.54.0 to **1.54.1** on 2023-07-05
+  - [vale](https://vale.sh/) from 2.27.0 to **2.28.0** on 2023-07-05
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.1 to **2.1.2** on 2023-07-05
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.16.2 to **6.17.2** on 2023-07-05
+  - [prettier](https://prettier.io/) from 2.8.8 to **3.0.0** on 2023-07-06
+  - [phpstan](https://phpstan.org/) from 1.10.23 to **1.10.24** on 2023-07-06
+  - [checkov](https://www.checkov.io/) from 2.3.311 to **2.3.312** on 2023-07-06
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
