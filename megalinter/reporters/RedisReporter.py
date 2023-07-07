@@ -51,19 +51,19 @@ class RedisLinterReporter(Reporter):
                 if self.redis_method == "STREAM":
                     self.stream_key = config.get(
                         self.master.request_id,
-                        "REDIS_LINTER_REPORTER_STREAM",
-                        "megalinter:stream:linter_results",
+                        "REDIS_REPORTER_STREAM",
+                        "megalinter:stream:results",
                     )
                 else:
                     # Use redis PubSub
                     self.pubsub_channel = config.get(
                         self.master.request_id,
-                        "REDIS_LINTER_REPORTER_PUBSUB_CHANNEL",
-                        "megalinter:pubsub:linter_results:" + self.master.request_id,
+                        "REDIS_REPORTER_PUBSUB_CHANNEL",
+                        "megalinter:pubsub:results:" + self.master.request_id,
                     )
             else:
                 logging.error(
-                    "You need to define REDIS_REPORTER_HOST to use RedisLinterReporter"
+                    "You need to define REDIS_REPORTER_HOST to use RedisReporter"
                 )
 
     # Send message when linter is about to start
