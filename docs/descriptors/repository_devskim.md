@@ -9,9 +9,12 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 
 Use `--ignore-globs` to ignore files and/or folders
 
+Example:
+  `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
 ## devskim documentation
 
-- Version in MegaLinter: **0.7.104**
+- Version in MegaLinter: **1.0.11**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -79,22 +82,20 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-Microsoft DevSkim Command Line Interface 0.7.104+bd34d6c82b
+devskim 1.0.11+87ad45b866
+© Microsoft Corporation. All rights reserved.
 
-Usage: devskim [options] [command]
+  analyze     Analyze source code using DevSkim
 
-Options:
-  -?|-h|--help  Show help information
-  -v|--version  Show version information
+  fix         Apply fixes from a Sarif
 
-Commands:
-  analyze    Analyze source code
-  catalogue  Create csv file catalogue of rules
-  pack       Pack rules into a single file
-  test       Run tests for rules
-  verify     Verify integrity and syntax of rules
+  verify      Verify rule validity
 
-Use "devskim [command] --help" for more information about a command.
+  suppress    Suppress issues identified in a DevSkim Sarif
+
+  help        Display more information on a specific command.
+
+  version     Display version information.
 
 ```
 

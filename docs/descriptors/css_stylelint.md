@@ -15,7 +15,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **15.7.0**
+- Version in MegaLinter: **15.10.1**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -127,15 +127,15 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
     --config, -c <path_or_module>
 
-      A path to a specific configuration file (JSON, YAML, or CommonJS), or a
-      module name in "node_modules" that points to one. If no argument is
+      A path to a specific configuration file (JSON, YAML, CommonJS, or ES module),
+      or a module name in "node_modules" that points to one. If no argument is
       provided, Stylelint will search for configuration files in the following
       places, in this order:
 
         - a "stylelint" property in "package.json"
-        - a ".stylelintrc" file (with or without filename extension:
-          ".json", ".yaml", ".yml", ".js", and ".cjs" are available)
-        - a "stylelint.config.js" file exporting a JS object
+        - a ".stylelintrc" file
+        - a ".stylelintrc.{cjs,mjs,js,json,yaml,yml}" file
+        - a "stylelint.config.{cjs,mjs,js}" file
 
       The search will begin in the working directory and move up the directory
       tree until a configuration file is found.
@@ -146,9 +146,9 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       "plugins", and "customSyntax" are *relative to*. Only necessary if these
       values are relative paths.
 
-    --print-config <path>
+    --print-config
 
-      Print the configuration for the given path.
+      Print the configuration for the given input file path. Globs are unsupported.
 
     --ignore-path, -i <path>
 
