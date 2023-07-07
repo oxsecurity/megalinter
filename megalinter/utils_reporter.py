@@ -225,9 +225,18 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     return output
 
 
+def build_reporter_start_message(reporter, redis_stream=False) -> dict:
+    result = {"megaLinterStatus": "created"}
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_reporter_external_result(reporter, redis_stream=False) -> dict:
+    result = {"megaLinterStatus": "completed"}
+    return manage_redis_stream(result, redis_stream)
+
+
 def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
     result = {"linterStatus": "started"}
-    result = result | get_linter_infos(reporter)
     return manage_redis_stream(result, redis_stream)
 
 
