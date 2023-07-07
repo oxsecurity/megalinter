@@ -12,6 +12,7 @@ description: How to use hadolint (configure, ignore files, ignore errors, help &
 - Version in MegaLinter: **2.12.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
+  - If custom `.hadolint.yaml` config file isn't found, [.hadolint.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.hadolint.yaml){target=_blank} will be used
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
 - See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 
