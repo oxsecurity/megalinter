@@ -6,10 +6,9 @@ import tempfile
 from typing import List
 import zipfile
 
-from fastapi import HTTPException
 import git
 from megalinter import MegaLinter
-from server.types import AnalysisRequestInput, AnalysisStatus
+from server.types import AnalysisRequestInput, AnalysisStatus, MegalinterServerException
 from pygments import lexers
 
 logger = logging.getLogger(__name__)
@@ -65,9 +64,8 @@ class MegaLinterAnalysis:
             self.init_from_snippet()
             return
         # Nothing to create a request !
-        raise HTTPException(
-            status_code=422,
-            detail="Unable to initialize files for analysis",  # Unprocessable content
+        raise MegalinterServerException(
+            "Unable to initialize files for analysis", "missingAnalysisType"
         )
 
     # Init by cloning a remote repository
@@ -76,22 +74,22 @@ class MegaLinterAnalysis:
         try:
             git.Repo.clone_from(self.request_input.repositoryUrl, temp_dir)
         except Exception as e:
-            raise HTTPException(
-                status_code=404, detail=f"Unable to clone repository\n{str(e)}"
+            raise MegalinterServerException(
+                f"Unable to clone repository\n{str(e)}", "gitCloneError"
             )
         print(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
         self.workspace = temp_dir
         self.repository = self.request_input.repositoryUrl
 
     # Init by getting uploaded file(s)
-    def init_from_file_upload(self,file_upload_id):
+    def init_from_file_upload(self, file_upload_id):
         temp_dir = self.create_temp_dir()
-        upload_dir = os.path.join('/tmp/server-files', file_upload_id)
+        upload_dir = os.path.join("/tmp/server-files", file_upload_id)
         if os.path.exists(upload_dir):
-            zip_files = glob.glob(upload_dir+"/*.zip")
+            zip_files = glob.glob(upload_dir + "/*.zip")
             if len(zip_files) == 1:
                 # Unique zip file
-                with zipfile.ZipFile(zip_files[0], 'r') as zip_ref:
+                with zipfile.ZipFile(zip_files[0], "r") as zip_ref:
                     zip_ref.extractall(temp_dir)
             else:
                 # No zip file
@@ -100,17 +98,15 @@ class MegaLinterAnalysis:
             self.workspace = temp_dir
             self.repository = self.request_input.repositoryUrl
         else:
-            raise HTTPException(
-                status_code=500, detail="Unable to load uploaded files for analysis"
-            )            
+            raise MegalinterServerException("Unable to load uploaded files for analysis", "uploadedFileNotFound")
 
     # Init from user snippet
     def init_from_snippet(self):
         # Guess language using pygments
         code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
-            raise HTTPException(
-                status_code=404, detail="Unable to detect language from snippet"
+            raise MegalinterServerException(
+                "Unable to detect language from snippet", "snippetGuessError"
             )
         self.snippet_language = code_lexer.name
         print(f"Guessed snipped language: {self.snippet_language}")
@@ -121,9 +117,8 @@ class MegaLinterAnalysis:
             else:
                 snippet_file_name = code_lexer.filenames[0]
         else:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Unable build file from {code_lexer.name} snippet",
+            raise MegalinterServerException(
+                f"Unable build file from {code_lexer.name} snippet", "snippetBuildError"
             )
         print(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
@@ -134,11 +129,11 @@ class MegaLinterAnalysis:
 
     # Run MegaLinter
     def process(self):
-        megalinter_params =             {
-                "cli": False,
-                "request_id": self.id,
-                "workspace": self.workspace,
-                "SARIF_REPORTER": "true",
+        megalinter_params = {
+            "cli": False,
+            "request_id": self.id,
+            "workspace": self.workspace,
+            "SARIF_REPORTER": "true",
         }
         if self.web_hook_url:
             megalinter_params["WEBHOOK_REPORTER"] = "true"

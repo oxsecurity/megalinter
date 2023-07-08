@@ -15,6 +15,7 @@ class AnalysisRequestInput(BaseModel):
                 "webHookUrl": "https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
             }
         }
+
     fileUploadId: str | None = Field(
         default=None,
         description="Id of the file upload previously run",
@@ -62,3 +63,11 @@ class AnalysisStatus(StrEnum):
     NEW = "new"
     IN_PROGRESS = "in-progress"
     COMPLETE = "complete"
+
+
+class MegalinterServerException(Exception):
+    def __init__(self, message, error_code):
+        # Call the base class constructor with the parameters it needs
+        super().__init__(message)
+        # Now for your custom code...
+        self.code = error_code

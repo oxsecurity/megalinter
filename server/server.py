@@ -17,7 +17,7 @@ import os
 from uuid import uuid1
 import aiofiles
 
-from fastapi import FastAPI, UploadFile, status
+from fastapi import FastAPI, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
 
@@ -69,6 +69,14 @@ else:
 async def request_analysis(
     item: AnalysisRequestInput,
 ) -> AnalysisRequestOutput:
+    # If file type, check it has been uploaded previously
+    if item.fileUploadId:
+        uploaded_file_path = os.path.join("/tmp/server-files", item.fileUploadId)
+        if not os.path.isdir(uploaded_file_path):
+            raise HTTPException(
+                status_code=500, detail="Unable to load uploaded files for analysis"
+            )
+    # Enqueue request in python RQ, so the worker handles it
     request_id = "RQ_" + str(uuid1())
     job = q.enqueue(
         "server.server_worker.processAnalysisRequest",
