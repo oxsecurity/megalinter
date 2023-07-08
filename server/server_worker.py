@@ -1,7 +1,10 @@
+import glob
 import logging
 import os
+import shutil
 import tempfile
 from typing import List
+import zipfile
 
 from fastapi import HTTPException
 import git
@@ -53,6 +56,10 @@ class MegaLinterAnalysis:
         if self.request_input.repositoryUrl:
             self.init_from_repository()
             return
+        # Use uploaded files
+        elif self.request_input.fileUpload is True:
+            self.init_from_file_upload()
+            return
         # Detect language and create temporary workspace with file
         elif self.request_input.snippet:
             self.init_from_snippet()
@@ -75,6 +82,27 @@ class MegaLinterAnalysis:
         print(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
         self.workspace = temp_dir
         self.repository = self.request_input.repositoryUrl
+
+    # Init by getting uploaded file(s)
+    def init_from_file_upload(self):
+        temp_dir = self.create_temp_dir()
+        upload_dir = os.path.join('/tmp/server-files', self.id)
+        if os.path.exists(upload_dir):
+            zip_files = glob.glob(upload_dir+"/*.zip")
+            if len(zip_files) == 1:
+                # Unique zip file
+                with zipfile.ZipFile(zip_files[0], 'r') as zip_ref:
+                    zip_ref.extractall(temp_dir)
+            else:
+                # No zip file
+                shutil.copy(upload_dir, temp_dir)
+            print(f"Copied uploaded files from {self.id} in temp dir {temp_dir}")
+            self.workspace = temp_dir
+            self.repository = self.request_input.repositoryUrl
+        else:
+            raise HTTPException(
+                status_code=500, detail="Unable to load uploaded files for analysis"
+            )            
 
     # Init from user snippet
     def init_from_snippet(self):

@@ -24,6 +24,8 @@ services:
       - megalinter_server_redis
     links:
       - megalinter_server_redis
+    volumes:
+      - ./server-files:/tmp/server-files
 
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
@@ -56,3 +58,5 @@ services:
       - megalinter_server_redis
     links:
       - megalinter_server_redis
+    volumes:
+      - ./server-files:/tmp/server-files

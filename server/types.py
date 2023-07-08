@@ -15,7 +15,11 @@ class AnalysisRequestInput(BaseModel):
                 "webHookUrl": "https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
             }
         }
-
+    fileUpload: bool | None = Field(
+        default=False,
+        description="True if request has attached uploaded files",
+        example=True,
+    )
     snippet: str | None = Field(
         default=None,
         description="Input any code snippet",
