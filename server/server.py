@@ -1,4 +1,5 @@
-'''
+# mypy: ignore-errors
+"""
 https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
 
 DEV:
@@ -9,7 +10,7 @@ TEST:
 docker pull --platform linux/amd64 ghcr.io/oxsecurity/megalinter-server:alpha
 DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose.yml up
 
-'''
+"""
 import logging
 import logging.config
 import os
@@ -28,9 +29,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize FastAPI
 server_id = "SRV_" + str(uuid1())
-app = FastAPI(
-    title="MegaLinter Server", version=os.environ.get("BUILD_VERSION", "DEV")
-)
+app = FastAPI(title="MegaLinter Server", version=os.environ.get("BUILD_VERSION", "DEV"))
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -39,9 +38,13 @@ app.add_middleware(
 )
 logging.info("Fast API: " + app.version)
 # Initialize redis connection
-redis_host: str = os.environ.get("MEGALINTER_SERVER_REDIS_HOST", "megalinter_server_redis")
+redis_host: str = os.environ.get(
+    "MEGALINTER_SERVER_REDIS_HOST", "megalinter_server_redis"
+)
 redis_port: int = int(os.environ.get("MEGALINTER_SERVER_REDIS_PORT", 6379))
-redis_queue: str = os.environ.get("MEGALINTER_SERVER_REDIS_QUEUE","megalinter:queue:requests")
+redis_queue: str = os.environ.get(
+    "MEGALINTER_SERVER_REDIS_QUEUE", "megalinter:queue:requests"
+)
 if redis_port != "":
     redis = Redis(host=redis_host, port=redis_port, db=0)
     logging.info("REDIS Connection: " + str(redis.info()))

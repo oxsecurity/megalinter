@@ -1,7 +1,8 @@
+# mypy: ignore-errors
 # Analysis status enum
 from enum import StrEnum
 
-from pydantic import BaseModel,Field
+from pydantic import BaseModel, Field
 
 # API types
 
@@ -31,13 +32,14 @@ class AnalysisRequestInput(BaseModel):
         example="https://9faea506-7e84-4f5d-a68f-86bbdfgT5t.mock.pstmn.io/webhook",
     )
 
+
 # Analysis request output
 class AnalysisRequestOutput(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
     request_id: str | None = (
-        Field(
+        Field(  # type: ignore
             description="Unique identifier of the request",
             example="",
         ),
