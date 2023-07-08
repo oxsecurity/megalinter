@@ -57,8 +57,8 @@ class MegaLinterAnalysis:
             self.init_from_repository()
             return
         # Use uploaded files
-        elif self.request_input.fileUpload is True:
-            self.init_from_file_upload()
+        elif self.request_input.fileUploadId:
+            self.init_from_file_upload(self.request_input.fileUploadId)
             return
         # Detect language and create temporary workspace with file
         elif self.request_input.snippet:
@@ -84,9 +84,9 @@ class MegaLinterAnalysis:
         self.repository = self.request_input.repositoryUrl
 
     # Init by getting uploaded file(s)
-    def init_from_file_upload(self):
+    def init_from_file_upload(self,file_upload_id):
         temp_dir = self.create_temp_dir()
-        upload_dir = os.path.join('/tmp/server-files', self.id)
+        upload_dir = os.path.join('/tmp/server-files', file_upload_id)
         if os.path.exists(upload_dir):
             zip_files = glob.glob(upload_dir+"/*.zip")
             if len(zip_files) == 1:

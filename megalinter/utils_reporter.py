@@ -227,7 +227,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
 
 def build_reporter_start_message(reporter, redis_stream=False) -> dict:
     result = {
-        "megaLinterStatus": "created", 
+        "megaLinterStatus": "created",
         "linters": [],
         "requestId": reporter.master.request_id,
     }
@@ -240,7 +240,7 @@ def build_reporter_start_message(reporter, redis_stream=False) -> dict:
 
 
 def build_reporter_external_result(reporter, redis_stream=False) -> dict:
-    result = {"megaLinterStatus": "completed"}
+    result = {"megaLinterStatus": "completed", "requestId": reporter.master.request_id}
     return manage_redis_stream(result, redis_stream)
 
 
@@ -329,9 +329,12 @@ def manage_redis_stream(result, redis_stream):
                 result[result_key] = int(result_val)
     return result
 
-def send_redis_message(reporter_self,message_data):
+
+def send_redis_message(reporter_self, message_data):
     try:
-        redis = Redis(host=reporter_self.redis_host, port=reporter_self.redis_port, db=0)
+        redis = Redis(
+            host=reporter_self.redis_host, port=reporter_self.redis_port, db=0
+        )
         logging.debug("REDIS Connection: " + str(redis.info()))
         if reporter_self.redis_method == "STREAM":
             resp = redis.xadd(reporter_self.stream_key, message_data)
@@ -339,7 +342,7 @@ def send_redis_message(reporter_self,message_data):
             resp = redis.publish(reporter_self.pubsub_channel, json.dumps(message_data))
         logging.info("REDIS RESP" + str(resp))
     except ConnectionError as e:
-        if reporter_self.scope == 'linter':
+        if reporter_self.scope == "linter":
             logging.warning(
                 f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
                 f" with {reporter_self.master.linter_name}: Connection error {str(e)}"
@@ -347,9 +350,9 @@ def send_redis_message(reporter_self,message_data):
         else:
             logging.warning(
                 f"[Redis Reporter] Error posting message for MegaLinter: Connection error {str(e)}"
-            )            
+            )
     except Exception as e:
-        if reporter_self.scope == 'linter':
+        if reporter_self.scope == "linter":
             logging.warning(
                 f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
                 f" with {reporter_self.master.linter_name}: Error {str(e)}"
@@ -361,6 +364,4 @@ def send_redis_message(reporter_self,message_data):
             logging.warning(
                 f"[Redis Reporter] Error posting message for MegaLinter: Error {str(e)}"
             )
-            logging.warning(
-                "[Redis Reporter] Redis Message data: " + str(message_data)
-            )            
+            logging.warning("[Redis Reporter] Redis Message data: " + str(message_data))
