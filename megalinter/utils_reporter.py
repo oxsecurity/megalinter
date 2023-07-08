@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import subprocess
@@ -220,3 +221,89 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     output = utils.decode_utf8(process.stdout)
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
+
+
+def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
+    result = {"linterStatus": "started"}
+    result = result | get_linter_infos(reporter)
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
+    success_msg = "No errors were found in the linting process"
+    error_not_blocking = "Errors were detected but are considered not blocking"
+    error_msg = f"Found {reporter.master.total_number_errors} errors"
+    status_message = (
+        success_msg
+        if reporter.master.status == "success" and reporter.master.return_code == 0
+        else error_not_blocking
+        if reporter.master.status == "error" and reporter.master.return_code == 0
+        else error_msg
+    )
+    result = {
+        "linterStatus": "success" if reporter.master.return_code == 0 else "error",
+        "linterErrorNumber": reporter.master.total_number_errors,
+        "linterStatusMessage": status_message,
+        "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
+    }
+    result = result | get_linter_infos(reporter)
+    if (
+        reporter.master.sarif_output_file is not None
+        and os.path.isfile(reporter.master.sarif_output_file)
+        and os.path.getsize(reporter.master.sarif_output_file) > 0
+    ):
+        with open(
+            reporter.master.sarif_output_file, "r", encoding="utf-8"
+        ) as linter_sarif_file:
+            result["outputSarif"] = json.load(linter_sarif_file)
+    else:
+        text_report_sub_folder = config.get(
+            reporter.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
+        text_file_name = (
+            f"{reporter.report_folder}{os.path.sep}"
+            f"{text_report_sub_folder}{os.path.sep}"
+            f"{reporter.master.status.upper()}-{reporter.master.name}.log"
+        )
+        if os.path.isfile(text_file_name):
+            with open(text_file_name, "r", encoding="utf-8") as text_file:
+                result["outputText"] = text_file.read()
+        else:
+            logging.warning(
+                "External Message: Unable to find linter output, "
+                "there is a probably an error within MegaLinter Worker"
+            )
+            result[
+                "outputText"
+            ] = f"Internal error: unable to find linter output in {text_file_name}"
+    return manage_redis_stream(result, redis_stream)
+
+
+def get_linter_infos(reporter):
+    lang_lower = reporter.master.descriptor_id.lower()
+    linter_name_lower = reporter.master.linter_name.lower().replace("-", "_")
+    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    linter_infos = {
+        "descriptorId": reporter.master.descriptor_id,
+        "linterId": reporter.master.linter_name,
+        "linterKey": reporter.master.name,
+        "linterVersion": reporter.master.get_linter_version(),
+        "linterCliLintMode": reporter.master.cli_lint_mode,
+        "requestId": reporter.master.master.request_id,
+        "docUrl": linter_doc_url,
+        "isFormatter": reporter.master.is_formatter,
+    }
+    if reporter.master.cli_lint_mode in ["file", "list_of_files"]:
+        linter_infos["filesNumber"] = len(reporter.master.files)
+    return linter_infos
+
+
+def manage_redis_stream(result, redis_stream):
+    # Redis does not accept certain types of values: convert them
+    if redis_stream is True:
+        for result_key, result_val in result.items():
+            if isinstance(result_val, dict):
+                result[result_key] = json.dumps(result_val)
+            elif isinstance(result_val, bool):
+                result[result_key] = int(result_val)
+    return result

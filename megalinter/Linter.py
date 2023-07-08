@@ -920,6 +920,8 @@ class Linter:
                 if sys.platform == "win32"
                 else "/bin/bash",
             )
+            return_code = process.returncode
+            return_stdout = utils.decode_utf8(process.stdout)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -932,15 +934,26 @@ class Linter:
                     return errno.ESRCH, msg
 
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
-            process = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                env=subprocess_env,
-                cwd=cwd,
-            )
-        return_code = process.returncode
-        return_stdout = utils.decode_utf8(process.stdout)
+            try:
+                process = subprocess.run(
+                    command,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    env=subprocess_env,
+                    cwd=cwd,
+                )
+                return_code = process.returncode
+                return_stdout = utils.decode_utf8(process.stdout)
+            except FileNotFoundError as err:
+                return_code = 999
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
+            except Exception as err:
+                return_code = 99
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout

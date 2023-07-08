@@ -1,0 +1,7 @@
+gitpython
+fastapi 
+pygments
+uvicorn[standard]
+redis
+rq
+

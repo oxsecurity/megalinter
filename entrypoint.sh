@@ -69,14 +69,24 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
-  # MegaLinter HTTP server run
+  # MegaLinter Server Worker, listens to redis queues using python RQ -> https://github.com/rq/rq
   set -eu
-  echo "[MegaLinter init] MEGALINTER SERVER"
+  echo "[MegaLinter init] MEGALINTER SERVER WORKER"
   # Install python dependencies used by server to avoid to make bigger docker images
-  pip install fastapi pygments "uvicorn[standard]"
-  HOST="${HOST:-0.0.0.0}" # Default host
-  PORT="${PORT:-8000}"    # Default port
-  uvicorn megalinter.server:app --host "$HOST" --port "$PORT"
+  pip install -r /server/requirements.txt
+  MEGALINTER_SERVER_REDIS_HOST="${MEGALINTER_SERVER_REDIS_HOST:-megalinter_server_redis}" # Default host
+  MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"    # Default port
+  MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue:requests}" 
+  if [ "${MEGALINTER_SERVER_WORKER_POOL}" == "true" ]; then
+    # Use RQ worker pool (beta)
+    MEGALINTER_SERVER_WORKER_POOL_NUMBER="${MEGALINTER_SERVER_WORKER_POOL_NUMBER:-10}"    # Default number of worker threads
+    echo "[MegaLinter Worker] Init Redis Queue Worker pool (${MEGALINTER_SERVER_WORKER_POOL_NUMBER} processes)"
+    rq worker-pool --num-workers "${MEGALINTER_SERVER_WORKER_POOL_NUMBER}" --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  else 
+    # Use RQ worker (a worker can execute a single job parallelly)
+    echo "[MegaLinter Worker] Init Redis Queue Single worker"
+    rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  fi
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

@@ -1422,6 +1422,7 @@
         "workerpool",
         "wrappy",
         "wscript",
+        "xadd",
         "xargs",
         "xdist",
         "xinclude",
