@@ -15,8 +15,9 @@ import logging
 import logging.config
 import os
 from uuid import uuid1
+import aiofiles
 
-from fastapi import FastAPI, status
+from fastapi import FastAPI, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
 
@@ -79,3 +80,15 @@ async def request_analysis(
         request_id=request_id, server_id=server_id, job_id=str(job.id)
     )
     return result
+
+
+@app.post("/uploadfile")
+async def create_upload_file(file: UploadFile):
+    upload_file_id = "FILE_" + str(uuid1())
+    uploaded_file_path = os.path.join(
+        "/tmp/server-files", upload_file_id, file.filename
+    )
+    async with aiofiles.open(uploaded_file_path, "wb") as out_file:
+        content = await file.read()  # async read
+        await out_file.write(content)  # async write
+    return {"filename": file.filename, "uploadFileId": upload_file_id}

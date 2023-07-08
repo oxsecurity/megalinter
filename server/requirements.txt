@@ -1,3 +1,4 @@
+aiofiles
 gitpython
 fastapi 
 pygments

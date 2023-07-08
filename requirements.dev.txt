@@ -28,3 +28,4 @@ beautifulsoup4
 giturlparse
 json-schema-for-humans
 fastapi
+aiofiles
