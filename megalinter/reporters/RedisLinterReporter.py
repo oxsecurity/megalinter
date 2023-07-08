@@ -69,9 +69,9 @@ class RedisLinterReporter(Reporter):
     # Send message when linter is about to start
     def initialize(self):
         start_message = build_linter_reporter_start_message(self, redis_stream=(self.redis_method == 'STREAM'))
-        send_redis_message(start_message)
+        send_redis_message(self, start_message)
 
     # Send message when linter is completed to Redis Stream
     def produce_report(self):
         self.message_data = build_linter_reporter_external_result(self, redis_stream=(self.redis_method == 'STREAM'))
-        send_redis_message(self.message_data)
+        send_redis_message(self, self.message_data)

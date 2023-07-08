@@ -226,7 +226,16 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
 
 
 def build_reporter_start_message(reporter, redis_stream=False) -> dict:
-    result = {"megaLinterStatus": "created"}
+    result = {
+        "megaLinterStatus": "created", 
+        "linters": [],
+        "requestId": reporter.master.request_id,
+    }
+    linterResults = []
+    for linter in reporter.master.linters:
+        if linter.is_active is True:
+            linterResults += [get_linter_infos(linter)]
+    result["linters"] = linterResults
     return manage_redis_stream(result, redis_stream)
 
 
@@ -237,6 +246,7 @@ def build_reporter_external_result(reporter, redis_stream=False) -> dict:
 
 def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
     result = {"linterStatus": "started"}
+    result = result | get_linter_infos(reporter.master)
     return manage_redis_stream(result, redis_stream)
 
 
@@ -257,7 +267,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
-    result = result | get_linter_infos(reporter)
+    result = result | get_linter_infos(reporter.master)
     if (
         reporter.master.sarif_output_file is not None
         and os.path.isfile(reporter.master.sarif_output_file)
@@ -290,22 +300,22 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
     return manage_redis_stream(result, redis_stream)
 
 
-def get_linter_infos(reporter):
-    lang_lower = reporter.master.descriptor_id.lower()
-    linter_name_lower = reporter.master.linter_name.lower().replace("-", "_")
+def get_linter_infos(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
     linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
     linter_infos = {
-        "descriptorId": reporter.master.descriptor_id,
-        "linterId": reporter.master.linter_name,
-        "linterKey": reporter.master.name,
-        "linterVersion": reporter.master.get_linter_version(),
-        "linterCliLintMode": reporter.master.cli_lint_mode,
-        "requestId": reporter.master.master.request_id,
+        "descriptorId": linter.descriptor_id,
+        "linterId": linter.linter_name,
+        "linterKey": linter.name,
+        "linterVersion": linter.get_linter_version(),
+        "linterCliLintMode": linter.cli_lint_mode,
+        "requestId": linter.master.request_id,
         "docUrl": linter_doc_url,
-        "isFormatter": reporter.master.is_formatter,
+        "isFormatter": linter.is_formatter,
     }
-    if reporter.master.cli_lint_mode in ["file", "list_of_files"]:
-        linter_infos["filesNumber"] = len(reporter.master.files)
+    if linter.cli_lint_mode in ["file", "list_of_files"]:
+        linter_infos["filesNumber"] = len(linter.files)
     return linter_infos
 
 

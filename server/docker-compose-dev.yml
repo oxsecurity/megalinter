@@ -11,7 +11,7 @@ services:
 
   # Server to receive requests and post them in redis queue
   megalinter_server_api:
-    image: megalinter-server:alpha
+    image: megalinter-server:dev
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
     environment:
       - MEGALINTER_SERVER=true
@@ -27,7 +27,7 @@ services:
 
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
-    image: megalinter-server:latest
+    image: megalinter-server:dev
     # command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue:requests
     command: rq worker-pool --num-workers 5 --url redis://megalinter_server_redis:6379 megalinter:queue:requests # Uncomment to try worker pool
     environment:
@@ -46,7 +46,10 @@ services:
       #- REDIS_LINTER_REPORTER_STREAM=megalinter:stream:linter_results
 
       # PubSub mode
+      - REDIS_REPORTER_METHOD=PUBSUB
       - REDIS_LINTER_REPORTER_METHOD=PUBSUB
+      ## You can force a channel. If not set, megalinter:pubsub:results:REQUEST_ID will be used (request_id is returned in initial POST body)
+      - REDIS_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:results
       ## You can force a channel. If not set, megalinter:pubsub:linter_results:REQUEST_ID will be used (request_id is returned in initial POST body)
       - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results  
     depends_on:
