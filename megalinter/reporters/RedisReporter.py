@@ -12,7 +12,7 @@ from megalinter.utils_reporter import build_reporter_external_result, build_repo
 
 class RedisLinterReporter(Reporter):
     name = "REDIS_LINTER_REPORTER"
-    scope = "linter"
+    scope = "mega-linter"
 
     redis_host: str | None = None
     redis_port: int | None = None
