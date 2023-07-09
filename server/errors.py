@@ -1,9 +1,9 @@
 import json
 import logging
-from redis import Redis
 
 from megalinter import config
 from megalinter.utils_reporter import manage_redis_stream
+from redis import Redis
 
 
 class MegalinterServerException(Exception):
@@ -54,7 +54,9 @@ class MegalinterServerException(Exception):
             "errorDetails": self.error_details,
             "requestId": self.request_id,
         }
-        final_message = manage_redis_stream(self.message_data, (self.redis_method == 'STREAM'))
+        final_message = manage_redis_stream(
+            self.message_data, (self.redis_method == "STREAM")
+        )
         try:
             redis = Redis(host=self.redis_host, port=self.redis_port, db=0)
             logging.debug("REDIS Connection: " + str(redis.info()))

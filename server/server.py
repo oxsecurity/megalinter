@@ -15,8 +15,8 @@ import logging
 import logging.config
 import os
 from uuid import uuid1
-import aiofiles
 
+import aiofiles
 from fastapi import FastAPI, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis

@@ -5,8 +5,6 @@ import subprocess
 import time
 import urllib
 
-from redis import Redis
-
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
@@ -16,6 +14,7 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
 )
 from pytablewriter import MarkdownTableWriter
+from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url):

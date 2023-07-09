@@ -3,13 +3,13 @@ import logging
 import os
 import shutil
 import tempfile
-from typing import List
 import zipfile
+from typing import List
 
 import git
 from megalinter import MegaLinter
-from server.errors import MegalinterServerException
 from pygments import lexers
+from server.errors import MegalinterServerException
 from server.types import AnalysisRequestInput, AnalysisStatus
 
 logger = logging.getLogger(__name__)
