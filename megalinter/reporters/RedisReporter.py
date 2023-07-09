@@ -43,7 +43,7 @@ class RedisReporter(Reporter):
                     )
                 )
                 self.redis_method = config.get(
-                    self.master.request_id, "REDIS_REPORTER_METHOD", "STREAM"
+                    self.master.request_id, "REDIS_REPORTER_METHOD", "PUBSUB"
                 )
                 # Use Redis Stream
                 if self.redis_method == "STREAM":
@@ -57,7 +57,7 @@ class RedisReporter(Reporter):
                     self.pubsub_channel = config.get(
                         self.master.request_id,
                         "REDIS_REPORTER_PUBSUB_CHANNEL",
-                        "megalinter:pubsub:results:" + self.master.request_id,
+                        "megalinter:pubsub:" + self.master.request_id,
                     )
             else:
                 logging.error(

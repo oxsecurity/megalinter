@@ -227,6 +227,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
 
 def build_reporter_start_message(reporter, redis_stream=False) -> dict:
     result = {
+        "messageType": "megalinterStart",
         "megaLinterStatus": "created",
         "linters": [],
         "requestId": reporter.master.request_id,
@@ -240,12 +241,16 @@ def build_reporter_start_message(reporter, redis_stream=False) -> dict:
 
 
 def build_reporter_external_result(reporter, redis_stream=False) -> dict:
-    result = {"megaLinterStatus": "completed", "requestId": reporter.master.request_id}
+    result = {
+        "messageType": "megalinterComplete",
+        "megaLinterStatus": "completed",
+        "requestId": reporter.master.request_id,
+    }
     return manage_redis_stream(result, redis_stream)
 
 
 def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
-    result = {"linterStatus": "started"}
+    result = {"messageType": "linterStart", "linterStatus": "started"}
     result = result | get_linter_infos(reporter.master)
     return manage_redis_stream(result, redis_stream)
 
@@ -262,11 +267,14 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         else error_msg
     )
     result = {
+        "messageType": "linterComplete",
         "linterStatus": "success" if reporter.master.return_code == 0 else "error",
         "linterErrorNumber": reporter.master.total_number_errors,
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
+    if reporter.master.lint_command_log is not None:
+        result["linterCliCommand"] = reporter.master.lint_command_log
     result = result | get_linter_infos(reporter.master)
     if (
         reporter.master.sarif_output_file is not None
