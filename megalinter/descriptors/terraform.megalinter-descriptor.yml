@@ -24,6 +24,8 @@ linters:
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
     cli_lint_mode: project
     config_file_name: .tflint.hcl
+    cli_config_extra_args:
+      - --recursive
     cli_sarif_args:
       - --format
       - sarif
