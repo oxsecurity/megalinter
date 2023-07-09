@@ -1,4 +1,11 @@
 resource "aws_instance" "bad" {
-  ami           = "ami-0ff8a91507f77f867"
-  instance_type =  # invalid type!
+  instance_type               = "t2.small"
+  associate_public_ip_address = false
+
+
+  ebs_block_device {
+    encrypted = true
+    wesh = false
+  }
 }
+
