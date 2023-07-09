@@ -108,6 +108,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.13.0 to **3.14.0** on 2023-07-07
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.13.0 to **3.14.0** on 2023-07-07
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.0 to **0.48.1** on 2023-07-07
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.2 to **7.0.3** on 2023-07-09
+  - [semgrep](https://semgrep.dev/) from 1.30.0 to **1.31.2** on 2023-07-09
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.43.0 to **0.43.1** on 2023-07-09
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.3 to **0.52.4** on 2023-07-09
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
