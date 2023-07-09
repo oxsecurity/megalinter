@@ -103,6 +103,7 @@ linters:
         - curl
         - gcompat
         - libc6-compat
+        - libstdc++
       dockerfile:
         - |
           RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \

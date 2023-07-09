@@ -62,11 +62,11 @@ RUN apk add --update --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
                 icu-libs \
                 libcurl \
                 libintl \
                 libssl1.1 \
-                libstdc++ \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \

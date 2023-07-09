@@ -70,6 +70,7 @@ RUN apk add --update --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

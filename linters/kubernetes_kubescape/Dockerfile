@@ -50,6 +50,7 @@ RUN apk add --update --no-cache \
                 openssh \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
     && git config --global core.autocrlf true
 #APK__END
 
