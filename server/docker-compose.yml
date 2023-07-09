@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   # Redis server to manage request queues and results
   megalinter_server_redis:
     image: redis:7.0.11-alpine
@@ -53,7 +52,7 @@ services:
       # PubSub mode
       - REDIS_LINTER_REPORTER_METHOD=PUBSUB
       ## You can force a channel. If not set, megalinter:pubsub:linter_results:REQUEST_ID will be used (request_id is returned in initial POST body)
-      - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results  
+      - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results
     depends_on:
       - megalinter_server_redis
     links:

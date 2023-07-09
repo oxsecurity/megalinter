@@ -19,7 +19,6 @@ from uuid import uuid1
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
-
 from rq import Queue
 from server.types import AnalysisRequestInput, AnalysisRequestOutput
 
