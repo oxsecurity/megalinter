@@ -138,6 +138,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
+        self.lint_command_log: list(str) | str | None = None
 
         # Initialize parameters
         default_params = {
@@ -891,7 +892,11 @@ class Linter:
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
-        logging.debug(f"[{self.linter_name}] command: {str(command)}")
+        # Output command if debug mode
+        if os.environ.get("LOG_LEVEL", "INFO") == "DEBUG":
+            logging.debug(f"[{self.linter_name}] command: {str(command)}")
+            self.lint_command_log = command
+        # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
