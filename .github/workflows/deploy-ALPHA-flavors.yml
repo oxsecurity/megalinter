@@ -24,6 +24,7 @@ on:
       - "flavors/**"
       - "megalinter/**"
       - "mega-linter-runner/**"
+      - "server/**"
       - "**/linter-versions.json"
       - "TEMPLATES/**"
       - ".trivyignore"
