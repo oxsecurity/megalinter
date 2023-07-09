@@ -3,11 +3,11 @@ import os
 import tempfile
 from typing import List
 
-from fastapi import HTTPException
 import git
+from fastapi import HTTPException
 from megalinter import MegaLinter
-from server.types import AnalysisRequestInput, AnalysisStatus
 from pygments import lexers
+from server.types import AnalysisRequestInput, AnalysisStatus
 
 logger = logging.getLogger(__name__)
 
@@ -106,11 +106,11 @@ class MegaLinterAnalysis:
 
     # Run MegaLinter
     def process(self):
-        megalinter_params =             {
-                "cli": False,
-                "request_id": self.id,
-                "workspace": self.workspace,
-                "SARIF_REPORTER": "true",
+        megalinter_params = {
+            "cli": False,
+            "request_id": self.id,
+            "workspace": self.workspace,
+            "SARIF_REPORTER": "true",
         }
         if self.web_hook_url:
             megalinter_params["WEBHOOK_REPORTER"] = "true"
