@@ -93,7 +93,7 @@ class MegaLinterAnalysis:
                     zip_ref.extractall(temp_dir)
             else:
                 # No zip file
-                shutil.copy(upload_dir, temp_dir)
+                shutil.copytree(upload_dir, temp_dir, dirs_exist_ok = True)
             print(f"Copied uploaded files from {self.id} in temp dir {temp_dir}")
             self.workspace = temp_dir
             self.repository = self.request_input.repositoryUrl

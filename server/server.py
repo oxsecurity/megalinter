@@ -90,13 +90,13 @@ async def request_analysis(
     return result
 
 
-@app.post("/uploadfile")
+@app.post("/upload-file")
 async def create_upload_file(file: UploadFile):
-    upload_file_id = "FILE_" + str(uuid1())
-    uploaded_file_path = os.path.join(
-        "/tmp/server-files", upload_file_id, file.filename
-    )
-    async with aiofiles.open(uploaded_file_path, "wb") as out_file:
+    file_upload_id = "FILE_" + str(uuid1())
+    uploaded_file_path = os.path.join("/tmp/server-files", file_upload_id)
+    os.makedirs(uploaded_file_path)
+    uploaded_file = os.path.join(uploaded_file_path, file.filename)
+    async with aiofiles.open(uploaded_file, "wb") as out_file:
         content = await file.read()  # async read
         await out_file.write(content)  # async write
-    return {"filename": file.filename, "uploadFileId": upload_file_id}
+    return {"filename": file.filename, "fileUploadId": file_upload_id}
