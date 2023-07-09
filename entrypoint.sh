@@ -75,14 +75,14 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # Install python dependencies used by server to avoid to make bigger docker images
   pip install -r /server/requirements.txt
   MEGALINTER_SERVER_REDIS_HOST="${MEGALINTER_SERVER_REDIS_HOST:-megalinter_server_redis}" # Default host
-  MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"    # Default port
-  MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue:requests}" 
+  MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"                    # Default port
+  MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue:requests}"
   if [ "${MEGALINTER_SERVER_WORKER_POOL}" == "true" ]; then
     # Use RQ worker pool (beta)
-    MEGALINTER_SERVER_WORKER_POOL_NUMBER="${MEGALINTER_SERVER_WORKER_POOL_NUMBER:-10}"    # Default number of worker threads
+    MEGALINTER_SERVER_WORKER_POOL_NUMBER="${MEGALINTER_SERVER_WORKER_POOL_NUMBER:-10}" # Default number of worker threads
     echo "[MegaLinter Worker] Init Redis Queue Worker pool (${MEGALINTER_SERVER_WORKER_POOL_NUMBER} processes)"
     rq worker-pool --num-workers "${MEGALINTER_SERVER_WORKER_POOL_NUMBER}" --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
-  else 
+  else
     # Use RQ worker (a worker can execute a single job parallelly)
     echo "[MegaLinter Worker] Init Redis Queue Single worker"
     rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"

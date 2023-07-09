@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   # Redis server to manage request queues and results
   megalinter_server_redis:
     image: redis:7.0.11-alpine

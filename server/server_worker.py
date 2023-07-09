@@ -7,10 +7,12 @@ from typing import List
 import zipfile
 
 import git
+from fastapi import HTTPException
 from megalinter import MegaLinter
 from server.errors import MegalinterServerException
 from server.types import AnalysisRequestInput, AnalysisStatus
 from pygments import lexers
+from server.types import AnalysisRequestInput, AnalysisStatus
 
 logger = logging.getLogger(__name__)
 
