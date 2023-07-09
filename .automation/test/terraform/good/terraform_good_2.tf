@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.2.5"
+}
+
 resource "aws_instance" "good" {
   required_version = ">= 0.15.0"
   ami                         = "ami-0ff8a91507f77f867"
