@@ -119,3 +119,4 @@ run_local_linter.sh
 
 # lychee cache 
 .lycheecache
+**/dump.rdb
