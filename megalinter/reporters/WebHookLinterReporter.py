@@ -3,13 +3,10 @@
 Web Hook linter reporter
 Post linter results to a Web Hook
 """
-import json
 import logging
-import os
 
 import requests
 from megalinter import Reporter, config
-from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 from megalinter.utils_reporter import build_linter_reporter_external_result
 
 

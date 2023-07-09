@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 # API types
 
+
 # Analysis request model
 class AnalysisRequestInput(BaseModel):
     class Config:
