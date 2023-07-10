@@ -47,6 +47,9 @@ def list_megalinter_flavors():
         "cupcake": {"label": "MegaLinter for the most commonly used languages"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
+        "dotnetweb": {
+            "label": "Optimized for C, C++, C# or VB based projects with JS/TS"
+        },
         "go": {"label": "Optimized for GO based projects"},
         "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
