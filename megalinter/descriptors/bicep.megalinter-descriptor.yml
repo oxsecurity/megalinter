@@ -2,6 +2,7 @@ descriptor_id: BICEP
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+  - dotnetweb
 linters:
   - class: BicepLinter
     cli_help_arg_name: --help

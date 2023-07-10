@@ -230,6 +230,7 @@ linters:
     descriptor_flavors:
       - cupcake
       - dotnet
+      - dotnetweb
       - javascript
       - salesforce
     file_names_regex:
