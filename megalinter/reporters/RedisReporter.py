@@ -7,15 +7,15 @@ import logging
 
 from megalinter import Reporter, config
 from megalinter.utils_reporter import (
-    build_linter_reporter_external_result,
-    build_linter_reporter_start_message,
+    build_reporter_external_result,
+    build_reporter_start_message,
     send_redis_message,
 )
 
 
-class RedisLinterReporter(Reporter):
-    name = "REDIS_LINTER_REPORTER"
-    scope = "linter"
+class RedisReporter(Reporter):
+    name = "REDIS_REPORTER"
+    scope = "mega-linter"
 
     redis_host: str | None = None
     redis_port: int | None = None
@@ -47,31 +47,31 @@ class RedisLinterReporter(Reporter):
                 if self.redis_method == "STREAM":
                     self.stream_key = config.get(
                         self.master.request_id,
-                        "REDIS_LINTER_REPORTER_STREAM",
-                        "megalinter:stream:linter_results",
+                        "REDIS_REPORTER_STREAM",
+                        "megalinter:stream:results",
                     )
                 else:
                     # Use redis PubSub
                     self.pubsub_channel = config.get(
                         self.master.request_id,
-                        "REDIS_LINTER_REPORTER_PUBSUB_CHANNEL",
+                        "REDIS_REPORTER_PUBSUB_CHANNEL",
                         "megalinter:pubsub:" + self.master.request_id,
                     )
             else:
                 logging.error(
-                    "You need to define REDIS_REPORTER_HOST to use RedisLinterReporter"
+                    "You need to define REDIS_REPORTER_HOST to use RedisReporter"
                 )
 
     # Send message when linter is about to start
     def initialize(self):
-        start_message = build_linter_reporter_start_message(
+        start_message = build_reporter_start_message(
             self, redis_stream=(self.redis_method == "STREAM")
         )
         send_redis_message(self, start_message)
 
     # Send message when linter is completed to Redis Stream
     def produce_report(self):
-        self.message_data = build_linter_reporter_external_result(
+        self.message_data = build_reporter_external_result(
             self, redis_stream=(self.redis_method == "STREAM")
         )
         send_redis_message(self, self.message_data)

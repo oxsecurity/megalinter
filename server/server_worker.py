@@ -1,12 +1,15 @@
+import glob
 import logging
 import os
+import shutil
 import tempfile
+import zipfile
 from typing import List
 
 import git
-from fastapi import HTTPException
 from megalinter import MegaLinter
 from pygments import lexers
+from server.errors import MegalinterServerException
 from server.types import AnalysisRequestInput, AnalysisStatus
 
 logger = logging.getLogger(__name__)
@@ -53,15 +56,23 @@ class MegaLinterAnalysis:
         if self.request_input.repositoryUrl:
             self.init_from_repository()
             return
+        # Use uploaded files
+        elif self.request_input.fileUploadId:
+            self.init_from_file_upload(self.request_input.fileUploadId)
+            return
         # Detect language and create temporary workspace with file
         elif self.request_input.snippet:
             self.init_from_snippet()
             return
         # Nothing to create a request !
-        raise HTTPException(
-            status_code=422,
-            detail="Unable to initialize files for analysis",  # Unprocessable content
+        err = MegalinterServerException(
+            "Unable to initialize files for analysis",
+            "missingAnalysisType",
+            self.id,
+            {"request_input": self.request_input},
         )
+        err.send_redis_message()
+        raise err
 
     # Init by cloning a remote repository
     def init_from_repository(self):
@@ -69,21 +80,57 @@ class MegaLinterAnalysis:
         try:
             git.Repo.clone_from(self.request_input.repositoryUrl, temp_dir)
         except Exception as e:
-            raise HTTPException(
-                status_code=404, detail=f"Unable to clone repository\n{str(e)}"
+            err = MegalinterServerException(
+                f"Unable to clone repository\n{str(e)}",
+                "gitCloneError",
+                self.id,
+                {"error": str(e)},
             )
+            err.send_redis_message()
+            raise err
         print(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
         self.workspace = temp_dir
         self.repository = self.request_input.repositoryUrl
+
+    # Init by getting uploaded file(s)
+    def init_from_file_upload(self, file_upload_id):
+        temp_dir = self.create_temp_dir()
+        upload_dir = os.path.join("/tmp/server-files", file_upload_id)
+        if os.path.exists(upload_dir):
+            zip_files = glob.glob(upload_dir + "/*.zip")
+            if len(zip_files) == 1:
+                # Unique zip file
+                with zipfile.ZipFile(zip_files[0], "r") as zip_ref:
+                    zip_ref.extractall(temp_dir)
+            else:
+                # No zip file
+                shutil.copytree(upload_dir, temp_dir, dirs_exist_ok=True)
+            print(f"Copied uploaded files from {self.id} in temp dir {temp_dir}")
+            self.workspace = temp_dir
+            self.repository = self.request_input.repositoryUrl
+        else:
+            err = MegalinterServerException(
+                "Unable to load uploaded files for analysis",
+                "uploadedFileNotFound",
+                self.id,
+                {"file_upload_id": file_upload_id},
+            )
+            err.send_redis_message()
+            raise err
 
     # Init from user snippet
     def init_from_snippet(self):
         # Guess language using pygments
         code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
-            raise HTTPException(
-                status_code=404, detail="Unable to detect language from snippet"
+            err = MegalinterServerException(
+                "Unable to detect language from snippet",
+                "snippetGuessError",
+                self.id,
+                {"snippet": self.request_input.snippet},
             )
+            err.send_redis_message()
+            raise err
         self.snippet_language = code_lexer.name
         print(f"Guessed snipped language: {self.snippet_language}")
         # Build file name
@@ -93,10 +140,14 @@ class MegaLinterAnalysis:
             else:
                 snippet_file_name = code_lexer.filenames[0]
         else:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Unable build file from {code_lexer.name} snippet",
+            err = MegalinterServerException(
+                f"Unable build file from {code_lexer.name} snippet",
+                "snippetBuildError",
+                self.id,
+                {"snippet": self.request_input.snippet},
             )
+            err.send_redis_message()
+            raise err
         print(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
         snippet_file = os.path.join(temp_dir, snippet_file_name)

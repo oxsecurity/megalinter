@@ -17,6 +17,11 @@ class AnalysisRequestInput(BaseModel):
             }
         }
 
+    fileUploadId: str | None = Field(
+        default=None,
+        description="Id of the file upload previously run",
+        example="xxx123",
+    )
     snippet: str | None = Field(
         default=None,
         description="Input any code snippet",

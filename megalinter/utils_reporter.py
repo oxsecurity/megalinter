@@ -14,6 +14,7 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
 )
 from pytablewriter import MarkdownTableWriter
+from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url):
@@ -223,9 +224,33 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
     return output
 
 
+def build_reporter_start_message(reporter, redis_stream=False) -> dict:
+    result = {
+        "messageType": "megalinterStart",
+        "megaLinterStatus": "created",
+        "linters": [],
+        "requestId": reporter.master.request_id,
+    }
+    linterResults = []
+    for linter in reporter.master.linters:
+        if linter.is_active is True:
+            linterResults += [get_linter_infos(linter)]
+    result["linters"] = linterResults
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_reporter_external_result(reporter, redis_stream=False) -> dict:
+    result = {
+        "messageType": "megalinterComplete",
+        "megaLinterStatus": "completed",
+        "requestId": reporter.master.request_id,
+    }
+    return manage_redis_stream(result, redis_stream)
+
+
 def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
-    result = {"linterStatus": "started"}
-    result = result | get_linter_infos(reporter)
+    result = {"messageType": "linterStart", "linterStatus": "started"}
+    result = result | get_linter_infos(reporter.master)
     return manage_redis_stream(result, redis_stream)
 
 
@@ -241,12 +266,15 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         else error_msg
     )
     result = {
+        "messageType": "linterComplete",
         "linterStatus": "success" if reporter.master.return_code == 0 else "error",
         "linterErrorNumber": reporter.master.total_number_errors,
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
-    result = result | get_linter_infos(reporter)
+    if reporter.master.lint_command_log is not None:
+        result["linterCliCommand"] = reporter.master.lint_command_log
+    result = result | get_linter_infos(reporter.master)
     if (
         reporter.master.sarif_output_file is not None
         and os.path.isfile(reporter.master.sarif_output_file)
@@ -279,22 +307,22 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
     return manage_redis_stream(result, redis_stream)
 
 
-def get_linter_infos(reporter):
-    lang_lower = reporter.master.descriptor_id.lower()
-    linter_name_lower = reporter.master.linter_name.lower().replace("-", "_")
+def get_linter_infos(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
     linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
     linter_infos = {
-        "descriptorId": reporter.master.descriptor_id,
-        "linterId": reporter.master.linter_name,
-        "linterKey": reporter.master.name,
-        "linterVersion": reporter.master.get_linter_version(),
-        "linterCliLintMode": reporter.master.cli_lint_mode,
-        "requestId": reporter.master.master.request_id,
+        "descriptorId": linter.descriptor_id,
+        "linterId": linter.linter_name,
+        "linterKey": linter.name,
+        "linterVersion": linter.get_linter_version(),
+        "linterCliLintMode": linter.cli_lint_mode,
+        "requestId": linter.master.request_id,
         "docUrl": linter_doc_url,
-        "isFormatter": reporter.master.is_formatter,
+        "isFormatter": linter.is_formatter,
     }
-    if reporter.master.cli_lint_mode in ["file", "list_of_files"]:
-        linter_infos["filesNumber"] = len(reporter.master.files)
+    if linter.cli_lint_mode in ["file", "list_of_files"]:
+        linter_infos["filesNumber"] = len(linter.files)
     return linter_infos
 
 
@@ -307,3 +335,40 @@ def manage_redis_stream(result, redis_stream):
             elif isinstance(result_val, bool):
                 result[result_key] = int(result_val)
     return result
+
+
+def send_redis_message(reporter_self, message_data):
+    try:
+        redis = Redis(
+            host=reporter_self.redis_host, port=reporter_self.redis_port, db=0
+        )
+        logging.debug("REDIS Connection: " + str(redis.info()))
+        if reporter_self.redis_method == "STREAM":
+            resp = redis.xadd(reporter_self.stream_key, message_data)
+        else:
+            resp = redis.publish(reporter_self.pubsub_channel, json.dumps(message_data))
+        logging.info("REDIS RESP" + str(resp))
+    except ConnectionError as e:
+        if reporter_self.scope == "linter":
+            logging.warning(
+                f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+                f" with {reporter_self.master.linter_name}: Connection error {str(e)}"
+            )
+        else:
+            logging.warning(
+                f"[Redis Reporter] Error posting message for MegaLinter: Connection error {str(e)}"
+            )
+    except Exception as e:
+        if reporter_self.scope == "linter":
+            logging.warning(
+                f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+                f" with {reporter_self.master.linter_name}: Error {str(e)}"
+            )
+            logging.warning(
+                "[Redis Linter Reporter] Redis Message data: " + str(message_data)
+            )
+        else:
+            logging.warning(
+                f"[Redis Reporter] Error posting message for MegaLinter: Error {str(e)}"
+            )
+            logging.warning("[Redis Reporter] Redis Message data: " + str(message_data))

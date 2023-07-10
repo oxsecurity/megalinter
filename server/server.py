@@ -3,7 +3,7 @@
 https://medium.com/@mike.p.moritz/using-docker-compose-to-deploy-a-lightweight-python-rest-api-with-a-job-queue-37e6072a209b
 
 DEV:
-docker build -t megalinter-server:alpha --platform linux/amd64 -f server/Dockerfile-dev .
+docker build -t megalinter-server:dev --platform linux/amd64 -f server/Dockerfile-dev .
 DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose-dev.yml up
 
 TEST:
@@ -16,7 +16,8 @@ import logging.config
 import os
 from uuid import uuid1
 
-from fastapi import FastAPI, status
+import aiofiles
+from fastapi import FastAPI, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
 from rq import Queue
@@ -67,6 +68,14 @@ else:
 async def request_analysis(
     item: AnalysisRequestInput,
 ) -> AnalysisRequestOutput:
+    # If file type, check it has been uploaded previously
+    if item.fileUploadId:
+        uploaded_file_path = os.path.join("/tmp/server-files", item.fileUploadId)
+        if not os.path.isdir(uploaded_file_path):
+            raise HTTPException(
+                status_code=500, detail="Unable to load uploaded files for analysis"
+            )
+    # Enqueue request in python RQ, so the worker handles it
     request_id = "RQ_" + str(uuid1())
     job = q.enqueue(
         "server.server_worker.processAnalysisRequest",
@@ -78,3 +87,15 @@ async def request_analysis(
         request_id=request_id, server_id=server_id, job_id=str(job.id)
     )
     return result
+
+
+@app.post("/upload-file")
+async def create_upload_file(file: UploadFile):
+    file_upload_id = "FILE_" + str(uuid1())
+    uploaded_file_path = os.path.join("/tmp/server-files", file_upload_id)
+    os.makedirs(uploaded_file_path)
+    uploaded_file = os.path.join(uploaded_file_path, file.filename)
+    async with aiofiles.open(uploaded_file, "wb") as out_file:
+        content = await file.read()  # async read
+        await out_file.write(content)  # async write
+    return {"filename": file.filename, "fileUploadId": file_upload_id}
