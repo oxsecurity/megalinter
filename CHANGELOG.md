@@ -117,6 +117,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 2.3.7 to **2.3.6** on 2023-07-10
   - [checkov](https://www.checkov.io/) from 2.3.314 to **2.3.316** on 2023-07-10
   - [tflint](https://github.com/terraform-linters/tflint) from 0.46.1 to **0.47.0** on 2023-07-10
+  - [checkov](https://www.checkov.io/) from 2.3.316 to **2.3.317** on 2023-07-10
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
