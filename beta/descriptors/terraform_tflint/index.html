@@ -2591,21 +2591,6 @@
 <td></td>
 </tr>
 <tr>
-<td>TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>TERRAFORM_TFLINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
-</tr>
-<tr>
 <td>TERRAFORM_TFLINT_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
 <td><code>[".tf"]</code></td>
@@ -2708,13 +2693,15 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>tflint is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>tflint is called one time by identified file (<code>file</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using tflint configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make tflint analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">tflint myfile.tf
+<pre><code class="language-shell">tflint
 </code></pre>
-<pre><code class="language-shell">tflint -c .tflint.hcl myfile.tf
+<pre><code class="language-shell">tflint -c .tflint.hcl
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Usage:
@@ -2793,7 +2780,7 @@ Help Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
+<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 </code></pre>
 </article>
