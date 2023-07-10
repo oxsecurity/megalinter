@@ -33,7 +33,7 @@ FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter

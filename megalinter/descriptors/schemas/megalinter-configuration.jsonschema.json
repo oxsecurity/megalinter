@@ -16808,16 +16808,6 @@
             "title": "TERRAFORM_TFLINT: CLI Executable",
             "type": "array"
         },
-        "TERRAFORM_TFLINT_CLI_LINT_MODE": {
-            "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
-            "default": "file",
-            "enum": [
-                "file",
-                "project"
-            ],
-            "title": "TERRAFORM_TFLINT: Override default cli lint mode",
-            "type": "string"
-        },
         "TERRAFORM_TFLINT_CONFIG_FILE": {
             "$id": "#/properties/TERRAFORM_TFLINT_CONFIG_FILE",
             "default": ".tflint.hcl",
@@ -16867,16 +16857,6 @@
             },
             "title": "TERRAFORM_TFLINT: Override descriptor/linter matching file name regex",
             "type": "array"
-        },
-        "TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE": {
-            "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE",
-            "title": "TERRAFORM_TFLINT: Excluding Regex",
-            "type": "string"
-        },
-        "TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE": {
-            "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE",
-            "title": "TERRAFORM_TFLINT: Including Regex",
-            "type": "string"
         },
         "TERRAFORM_TFLINT_POST_COMMANDS": {
             "$id": "#/properties/TERRAFORM_TFLINT_POST_COMMANDS",
