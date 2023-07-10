@@ -353,6 +353,7 @@ nav:
       - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
+      - "dotnetweb": "flavors/dotnetweb.md"
       - "go": "flavors/go.md"
       - "java": "flavors/java.md"
       - "javascript": "flavors/javascript.md"

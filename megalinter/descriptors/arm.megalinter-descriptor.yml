@@ -2,6 +2,7 @@ descriptor_id: ARM
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+  - dotnetweb
 file_extensions:
   - ".json"
 file_contains_regex:

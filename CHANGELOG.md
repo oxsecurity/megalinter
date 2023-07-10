@@ -11,6 +11,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
   - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
 
+- New flavor **dotnetweb**: dotnet flavor linters + Javascript & Typescript linters
+
 - Fixes
   - Handle reporter crashes without making all ML crash
   - Devskim: Remove default --ignore-globs argument
@@ -112,6 +114,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.30.0 to **1.31.2** on 2023-07-09
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.43.0 to **0.43.1** on 2023-07-09
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.3 to **0.52.4** on 2023-07-09
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.7 to **2.3.6** on 2023-07-10
+  - [checkov](https://www.checkov.io/) from 2.3.314 to **2.3.316** on 2023-07-10
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
