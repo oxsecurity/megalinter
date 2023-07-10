@@ -14,7 +14,7 @@ from megalinter.utils_reporter import (
 
 
 class RedisReporter(Reporter):
-    name = "REDIS_LINTER_REPORTER"
+    name = "REDIS_REPORTER"
     scope = "mega-linter"
 
     redis_host: str | None = None
