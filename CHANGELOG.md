@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [Lychee](https://github.com/lycheeverse/lychee) - links and email addresses checker, by @DariuszPorowski in [#2673](https://github.com/oxsecurity/megalinter/pull/2673)
+  - Add [grype](https://github.com/anchore/grype) security linter
 
 - New flavor **dotnetweb**: dotnet flavor linters + Javascript & Typescript linters
 
