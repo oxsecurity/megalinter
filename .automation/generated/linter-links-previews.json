@@ -184,6 +184,11 @@
     "image": "https://avatars0.githubusercontent.com/u/385270?s=400&v=4",
     "title": "cjoudrey/graphql-schema-linter"
   },
+  "grype": {
+    "description": "A vulnerability scanner for container images and filesystems - GitHub - anchore/grype: A vulnerability scanner for container images and filesystems",
+    "image": "https://repository-images.githubusercontent.com/267054247/c41d4c8f-cd32-4bdd-9f2a-89a82992a359",
+    "title": "GitHub - anchore/grype: A vulnerability scanner for container images and filesystems"
+  },
   "hadolint": {
     "description": "Dockerfile linter, validate inline bash, written in Haskell - hadolint/hadolint",
     "image": "https://avatars1.githubusercontent.com/u/34047791?s=400&v=4",

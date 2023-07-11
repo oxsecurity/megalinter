@@ -149,6 +149,7 @@ jobs:
             "repository_dustilock",
             "repository_git_diff",
             "repository_gitleaks",
+            "repository_grype",
             "repository_kics",
             "repository_secretlint",
             "repository_semgrep",
