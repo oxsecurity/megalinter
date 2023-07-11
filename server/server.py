@@ -49,7 +49,14 @@ if redis_port != "":
     redis = Redis(host=redis_host, port=redis_port, db=0)
     logging.info("REDIS Connection: " + str(redis.info()))
     # Initialize redis Queue
-    q = Queue(redis_queue, connection=redis)
+    MEGALINTER_RQ_WORKER_DEFAULT_TIMEOUT: int = int(
+        os.environ.get("MEGALINTER_RQ_WORKER_DEFAULT_TIMEOUT", 1200)
+    )
+    q = Queue(
+        redis_queue,
+        connection=redis,
+        default_timeout=MEGALINTER_RQ_WORKER_DEFAULT_TIMEOUT,
+    )
     logging.info("REDIS Queue: " + str(q.name))
 else:
     redis = None
