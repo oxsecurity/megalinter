@@ -211,10 +211,6 @@ class Megalinter:
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
-        # Initialize reports
-        for reporter in self.reporters:
-            reporter.initialize()
-
         # Display warning if selected flavors doesn't match all linters
         if (
             flavor_factory.check_active_linters_match_flavor(
@@ -222,9 +218,14 @@ class Megalinter:
             )
             is False
         ):
+            # Remove linters that are not existing in the flavor
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
             ]
+
+        # Initialize reports
+        for reporter in self.reporters:
+            reporter.initialize()
 
         if (
             config.get(self.request_id, "PARALLEL", "true") == "true"
