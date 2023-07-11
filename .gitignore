@@ -122,3 +122,6 @@ run_local_linter.sh
 **/dump.rdb
 
 server/server-files/
+
+.venv
+*megalinter_file_names_cspell.txt
