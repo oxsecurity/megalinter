@@ -269,6 +269,7 @@ linters:
     cli_sarif_args:
       - --output
       - sarif
+    cli_version_arg_name: -v
     examples:
       - "grype dir:."
     install:
