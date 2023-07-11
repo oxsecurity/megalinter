@@ -2396,14 +2396,53 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#submitting-a-pull-request">
-    Submitting a pull request
+<a class="md-nav__link" href="#how-to-contribute">
+    How to Contribute
   </a>
-<nav aria-label="Submitting a pull request" class="md-nav">
+<nav aria-label="How to Contribute" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#pre-requisites">
-    Pre-requisites
+<a class="md-nav__link" href="#1-create-an-issue">
+    1. Create an issue
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-fork-the-project">
+    2. Fork the project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-make-changes">
+    3. Make changes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-test-your-changes">
+    4. Test your changes
+  </a>
+<nav aria-label="4. Test your changes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-gitpod">
+    4.1 Gitpod
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-desktop">
+    4.2 Desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-submit-a-pull-request">
+    5. Submit a pull request
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-wait">
+    6. Wait
   </a>
 </li>
 <li class="md-nav__item">
@@ -2510,14 +2549,53 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#submitting-a-pull-request">
-    Submitting a pull request
+<a class="md-nav__link" href="#how-to-contribute">
+    How to Contribute
   </a>
-<nav aria-label="Submitting a pull request" class="md-nav">
+<nav aria-label="How to Contribute" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#pre-requisites">
-    Pre-requisites
+<a class="md-nav__link" href="#1-create-an-issue">
+    1. Create an issue
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-fork-the-project">
+    2. Fork the project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-make-changes">
+    3. Make changes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-test-your-changes">
+    4. Test your changes
+  </a>
+<nav aria-label="4. Test your changes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-gitpod">
+    4.1 Gitpod
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-desktop">
+    4.2 Desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-submit-a-pull-request">
+    5. Submit a pull request
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-wait">
+    6. Wait
   </a>
 </li>
 <li class="md-nav__item">
@@ -2583,43 +2661,40 @@
 <h1 id="contributing">Contributing</h1>
 <p><img alt="👋" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f44b.svg" title=":wave:"> Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.</img></p>
-<h2 id="submitting-a-pull-request">Submitting a pull request</h2>
-<p><a href="https://github.com/oxsecurity/megalinter/pulls">Pull Requests</a> are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.</p>
-<h3 id="pre-requisites">Pre-requisites</h3>
-<ul>
-<li>You need <a href="https://www.python.org/downloads/"><strong>Python 3</strong></a> (version 3.7 minimum) and <a href="https://nodejs.org/en/download/"><strong>Node.js</strong> (14+)</a> to be installed on your computer.<ul>
-<li>If you have issues running Python on Windows, you can uninstall it then reinstall it using <a href="https://www.youtube.com/watch?v=uDbDIhR76H4">this video tutorial</a>, then copy python.exe and name it python3.exe</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Run the following commands at the root of the repository to install required dev dependencies</li>
-</ul>
-<pre><code class="language-shell">python3 -m venv .venv
-. .venv/bin/activate
-echo ".venv/" &gt;&gt; .git/info/exclude
-python3 -m pip install -U pip
-python3 -m pip install -r requirements.dev.txt
+<h2 id="how-to-contribute">How to Contribute</h2>
+<h3 id="1-create-an-issue">1. Create an issue</h3>
+<p>Report problems or suggest improvements by <a href="https://github.com/oxsecurity/megalinter/issues">creating an issue</a>.</p>
+<h3 id="2-fork-the-project">2. Fork the project</h3>
+<p><a href="https://github.com/oxsecurity/megalinter">Fork the repository</a> to your GitHub account.</p>
+<h3 id="3-make-changes">3. Make changes</h3>
+<p>Clone your fork locally and make the necessary changes:</p>
+<pre><code class="language-bash">git clone git@github.com:YOURNAMESPACE/megalinter.git
 </code></pre>
-<p><em>If it doesn't work, just run the following script</em></p>
-<pre><code class="language-shell">pip install -r requirements.dev.txt
-pip install mkdocs-material "mkdocs-glightbox==0.3.2" "pymdown-extensions==9.11"
-npm install markdown-table-formatter -g
-</code></pre>
-<p>Second level dev dependencies are installed by running <code>./build.sh</code> which is also a test if the installation worked</p>
-<pre><code class="language-shell">./build.sh
-2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
-2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-…
-Formatting markdown tables…
-Need to install the following packages:
-  markdown-table-formatter
-Ok to proceed? (y)
-…
-INFO    -  Documentation built in 9.76 seconds
-(done.)
-</code></pre>
-<p><em>(if you have a permission denied issue on Windows, please check <a href="https://stackoverflow.com/a/57168165/7113625">this solution</a>)</em></p>
+<h3 id="4-test-your-changes">4. Test your changes</h3>
+<h4 id="41-gitpod">4.1 Gitpod</h4>
+<p>Use Gitpod for a cloud-based development environment:</p>
+<ol>
+<li>Sign up for Gitpod: <a href="https://gitpod.io">https://gitpod.io</a></li>
+<li>Fork the <code>megalinter</code> repository</li>
+<li>Open your fork in Gitpod: <code>https://gitpod.io/#https://github.com/username/megalinter</code></li>
+<li>Create a new branch: <code>git checkout -b my-feature-branch</code></li>
+<li>Make your changes and commit: <code>git add .</code> and <code>git commit -m "chore: description of changes"</code></li>
+<li>Test all : <code>make tests</code> or <code>make tests-fast</code> for TDD mode</li>
+<li>Test with megalinter: <code>make megalinter-tests</code></li>
+<li>Push your changes: <code>git push origin my-feature-branch</code></li>
+<li>Create a pull request on GitHub</li>
+<li>Wait for a review</li>
+</ol>
+<p>Keep your Gitpod workspace synced with the main repository.</p>
+<h4 id="42-desktop">4.2 Desktop</h4>
+<p>Install <a href="https://www.gnu.org/software/make/">make</a>, <a href="https://www.python.org/">Python3.11</a>, <a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/">venv</a>, <a href="https://docs.docker.com/engine/install/ubuntu/">docker</a> and <a href="https://github.com/nodesource/distributions/tree/master">nodejs</a>.</p>
+<p>Run <code>make</code> for Makefile help. Initialize virtualenv and install dependencies with <code>make reinitialization</code> or <code>make bootstrap</code>. Test your changes with <code>make tests</code> or <code>make tests-fast</code>.</p>
+<p>You can lint with <code>make megalinter</code> (Incoming)</p>
+<h3 id="5-submit-a-pull-request">5. Submit a pull request</h3>
+<p><a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Create a pull request</a> and <a href="https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls">refer to the issue number</a> using #123, where 123 is the issue number.</p>
+<h3 id="6-wait">6. Wait</h3>
+<p>Your pull request will be reviewed, and you'll receive feedback. Thanks for contributing!</p>
+<p>Consider sponsoring the maintainer via <a href="https://github.com/sponsors/nvuillam">GitHub</a>.</p>
 <h3 id="with-write-access">With write access</h3>
 <ol>
 <li>Clone the repository (only if you have write access)</li>
