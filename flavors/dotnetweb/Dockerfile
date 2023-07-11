@@ -144,6 +144,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
+                @coffeelint/cli \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
@@ -174,6 +175,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
+                eslint-plugin-react \
+                eslint-plugin-jsx-a11y \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
