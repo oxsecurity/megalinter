@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **23.3.0**
+- Version in MegaLinter: **23.7.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -108,7 +108,7 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312]
                                   Python versions that should be supported by
                                   Black's output. By default, Black will try
                                   to infer this from the project metadata in
@@ -167,9 +167,10 @@ Options:
                                   directories on all platforms (Windows, too).
                                   Exclusions are calculated first, inclusions
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
-                                  g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
-                                  |\.ipynb_checkpoints|_build|buck-
-                                  out|build|dist|__pypackages__)/]
+                                  g|\.ipynb_checkpoints|\.mypy_cache|\.nox|\.p
+                                  ytest_cache|\.ruff_cache|\.tox|\.svn|\.venv|
+                                  \.vscode|__pypackages__|_build|buck-
+                                  out|build|dist|venv)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the
@@ -182,8 +183,9 @@ Options:
                                   stdin. Useful to make sure Black will
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
-  -W, --workers INTEGER RANGE     Number of parallel workers [default: number
-                                  of CPUs in the system]  [x>=1]
+  -W, --workers INTEGER RANGE     Number of parallel workers [default:
+                                  BLACK_NUM_WORKERS environment variable or
+                                  number of CPUs in the system]  [x>=1]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
