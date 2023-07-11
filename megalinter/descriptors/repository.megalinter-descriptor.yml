@@ -54,6 +54,9 @@ linters:
     ignore_for_flavor_suggestions: true
     linter_text: |
       Use `--ignore-globs` to ignore files and/or folders
+
+      Example:
+        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
@@ -71,8 +74,6 @@ linters:
       - "."
       - -E
       - --skip-git-ignored-files
-      - --ignore-globs
-      - "**/megalinter-reports/**"
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif

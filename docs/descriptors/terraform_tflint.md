@@ -11,7 +11,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.46.1**
+- Version in MegaLinter: **0.47.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -29,9 +29,6 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                    | `True`                                          |
 | TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| TERRAFORM_TFLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
 | TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
 | TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
@@ -64,16 +61,19 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- tflint is called one time by identified file (`file` CLI lint mode)
+tflint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using tflint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make tflint analyze only updated files
 
 ### Example calls
 
 ```shell
-tflint myfile.tf
+tflint
 ```
 
 ```shell
-tflint -c .tflint.hcl myfile.tf
+tflint -c .tflint.hcl
 ```
 
 
@@ -146,6 +146,8 @@ Application Options:
                                                                 colorized output
       --no-color                                                Disable
                                                                 colorized output
+      --fix                                                     Fix issues
+                                                                automatically
 
 Help Options:
   -h, --help                                                    Show this help
@@ -157,7 +159,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.46.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 

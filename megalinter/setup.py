@@ -29,6 +29,7 @@ setup(
         "requests",
         "terminaltables",
         "importlib-metadata>=3.10",
+        "redis",
     ],
     zip_safe=False,
 )

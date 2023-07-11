@@ -91,8 +91,14 @@ class GithubCommentReporter(Reporter):
                 else config.get(self.master.request_id, "GITHUB_TOKEN")
             )
             g = github.Github(base_url=github_api_url, login_or_token=github_auth)
-            repo = g.get_repo(github_repo)
-
+            try:
+                repo = g.get_repo(github_repo)
+            except github.GithubException as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
+            except Exception as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
             # Try to get PR from GITHUB_REF
             pr_list = []
             ref = os.environ.get("GITHUB_REF", "")

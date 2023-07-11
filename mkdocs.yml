@@ -198,7 +198,7 @@ nav:
           - "TYPESCRIPT":
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
-              - "ts-standard": "descriptors/typescript_standard.md"
+              - "ts-standard": "descriptors/typescript_ts_standard.md"
               - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
@@ -353,6 +353,7 @@ nav:
       - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
+      - "dotnetweb": "flavors/dotnetweb.md"
       - "go": "flavors/go.md"
       - "java": "flavors/java.md"
       - "javascript": "flavors/javascript.md"
@@ -379,5 +380,7 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
-  - "License": "license.md"
+  - "License":
+      - "AGPL V3 License": "license.md"
+      - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"

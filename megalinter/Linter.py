@@ -138,6 +138,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
+        self.lint_command_log: list(str) | str | None = None
 
         # Initialize parameters
         default_params = {
@@ -783,8 +784,10 @@ class Linter:
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
-            reporter.produce_report()
-
+            try:
+                reporter.produce_report()
+            except Exception as e:
+                logging.error("Unable to process reporter " + reporter.name + str(e))
         return self
 
     def replace_vars(self, variables):
@@ -889,7 +892,11 @@ class Linter:
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
-        logging.debug(f"[{self.linter_name}] command: {str(command)}")
+        # Output command if debug mode
+        if os.environ.get("LOG_LEVEL", "INFO") == "DEBUG":
+            logging.debug(f"[{self.linter_name}] command: {str(command)}")
+            self.lint_command_log = command
+        # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
@@ -918,6 +925,8 @@ class Linter:
                 if sys.platform == "win32"
                 else "/bin/bash",
             )
+            return_code = process.returncode
+            return_stdout = utils.decode_utf8(process.stdout)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -930,15 +939,26 @@ class Linter:
                     return errno.ESRCH, msg
 
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
-            process = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                env=subprocess_env,
-                cwd=cwd,
-            )
-        return_code = process.returncode
-        return_stdout = utils.decode_utf8(process.stdout)
+            try:
+                process = subprocess.run(
+                    command,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    env=subprocess_env,
+                    cwd=cwd,
+                )
+                return_code = process.returncode
+                return_stdout = utils.decode_utf8(process.stdout)
+            except FileNotFoundError as err:
+                return_code = 999
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
+            except Exception as err:
+                return_code = 99
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
