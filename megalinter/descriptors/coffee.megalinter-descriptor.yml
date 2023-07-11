@@ -1,6 +1,7 @@
 descriptor_id: COFFEE
 descriptor_type: language
 descriptor_flavors:
+  - dotnetweb
   - javascript
 file_extensions:
   - ".coffee"

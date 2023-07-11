@@ -120,6 +120,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.46.1 to **0.47.0** on 2023-07-10
   - [black](https://black.readthedocs.io/en/stable/) from 23.3.0 to **23.7.0** on 2023-07-11
   - [checkov](https://www.checkov.io/) from 2.3.316 to **2.3.318** on 2023-07-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.411 to **6.0.412** on 2023-07-11
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
