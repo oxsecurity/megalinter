@@ -30,3 +30,4 @@ json-schema-for-humans
 fastapi
 aiofiles
 python-multipart
+redis
