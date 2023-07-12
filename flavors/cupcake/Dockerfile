@@ -460,9 +460,12 @@ ENV MYPY_CACHE_DIR=/tmp
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
+# grype installation
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
+
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-RUN mkdir -p /opt/kics/assets
+    && mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
 
