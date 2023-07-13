@@ -1381,6 +1381,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/grype/</loc>
+         <lastmod>2023-07-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/hadolint/</loc>
          <lastmod>2023-07-13</lastmod>
          <changefreq>daily</changefreq>
