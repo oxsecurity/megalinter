@@ -319,6 +319,7 @@ nav:
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
               - "gitleaks": "descriptors/repository_gitleaks.md"
+              - "grype": "descriptors/repository_grype.md"
               - "kics": "descriptors/repository_kics.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
