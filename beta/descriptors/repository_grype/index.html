@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="How to use bandit (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="description"/>
+<meta content="How to use grype (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/python_bandit/" rel="canonical"/>
-<link href="../python_isort/" rel="prev"/>
-<link href="../python_mypy/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/repository_grype/" rel="canonical"/>
+<link href="../repository_gitleaks/" rel="prev"/>
+<link href="../repository_kics/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.18" name="generator"/>
-<title>bandit configuration in MegaLinter - MegaLinter by OX Security</title>
+<title>grype configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="bandit configuration in MegaLinter" name="twitter:title">
-<meta content="How to use bandit (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="twitter:description">
+<meta content="grype configuration in MegaLinter" name="twitter:title">
+<meta content="How to use grype (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="bandit configuration in MegaLinter" property="og:title"/>
-<meta content="How to use bandit (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" property="og:description"/>
+<meta content="grype configuration in MegaLinter" property="og:title"/>
+<meta content="How to use grype (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#bandit-documentation">
+<a class="md-skip" href="#grype-documentation">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              bandit configuration in MegaLinter
+              grype configuration in MegaLinter
             
           </span>
 </div>
@@ -307,13 +307,13 @@
         All supported linters
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Languages linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Languages linters
@@ -834,13 +834,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_20" id="__nav_5_2_20_label" tabindex="0">
           PYTHON
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_20">
 <span class="md-nav__icon md-icon"></span>
           PYTHON
@@ -871,77 +871,10 @@
         isort
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          bandit
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../python_bandit/">
         bandit
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#bandit-documentation">
-    bandit documentation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-    Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ide-integration">
-    IDE Integration
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavours">
-    MegaLinter Flavours
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#behind-the-scenes">
-    Behind the scenes
-  </a>
-<nav aria-label="Behind the scenes" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-are-identified-applicable-files">
-    How are identified applicable files
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-the-linting-is-performed">
-    How the linting is performed
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#example-calls">
-    Example calls
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#help-content">
-    Help content
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
-    Installation on mega-linter Docker image
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../python_mypy/">
@@ -2029,13 +1962,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
           Other checks
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Other checks
@@ -2071,13 +2004,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_5_3">
 <span class="md-nav__icon md-icon"></span>
           REPOSITORY
@@ -2113,10 +2046,72 @@
         gitleaks
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../repository_grype/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          grype
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         grype
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grype-documentation">
+    grype documentation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../repository_kics/">
@@ -2502,18 +2497,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#bandit-documentation">
-    bandit documentation
+<a class="md-nav__link" href="#grype-documentation">
+    grype documentation
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configuration-in-megalinter">
     Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ide-integration">
-    IDE Integration
   </a>
 </li>
 <li class="md-nav__item">
@@ -2562,33 +2552,30 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>bandit</h1>
+<h1>grype</h1>
 <!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please don't update manually -->
 <div align="center">
-<a href="https://bandit.readthedocs.io/en/latest/" target="blank" title="Visit linter Web Site">
-<img alt="bandit" class="megalinter-banner" height="150px" src="https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png">
+<a href="https://github.com/anchore/grype#readme" target="blank" title="Visit linter Web Site">
+<img alt="grype" class="megalinter-banner" height="150px" src="https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png">
 </img></a>
 </div>
-<p><a href="https://github.com/PyCQA/bandit"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/PyCQA/bandit/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PyCQA/bandit?sort=semver"/></a> <a href="https://github.com/PyCQA/bandit/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PyCQA/bandit"/></a> <a href="https://github.com/PyCQA/bandit/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PyCQA/bandit"/></a> <a href="https://github.com/PyCQA/bandit/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PyCQA/bandit"/></a></p>
-<p>bandit checks for security risks</p>
-<p>If you find it too harsh, you may define <code>PYTHON_BANDIT_DISABLE_ERRORS: true</code> in your <code>.mega-linter.yml</code> config file</p>
-<h2 id="bandit-documentation">bandit documentation</h2>
+<p><a href="https://github.com/anchore/grype"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/anchore/grype/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/anchore/grype?sort=semver"/></a> <a href="https://github.com/anchore/grype/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anchore/grype"/></a> <a href="https://github.com/anchore/grype/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/anchore/grype"/></a> <a href="https://github.com/anchore/grype/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/anchore/grype"/></a></p>
+<h2 id="grype-documentation">grype documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.7.5</strong></li>
-<li>Visit <a href="https://bandit.readthedocs.io/en/latest/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://bandit.readthedocs.io/en/latest/config.html#" target="_blank">How to configure bandit rules</a><ul>
-<li>If custom <code>.bandit.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml" target="_blank">.bandit.yml</a> will be used</li>
+<li>Version in MegaLinter: <strong>0.63.1</strong></li>
+<li>Visit <a href="https://github.com/anchore/grype#readme" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://github.com/anchore/grype#configuration" target="_blank">How to configure grype rules</a><ul>
+<li>If custom <code>.grype.yaml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml" target="_blank">.grype.yaml</a> will be used</li>
 </ul>
 </li>
-<li>See <a href="https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines" target="_blank">How to disable bandit rules in files</a></li>
-<li>See <a href="https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing" target="_blank">Index of problems detected by bandit</a></li>
+<li>See <a href="https://github.com/anchore/grype#vulnerability-summary" target="_blank">Index of problems detected by grype</a></li>
 </ul>
-<p><a href="https://github.com/PyCQA/bandit" target="_blank"><img alt="bandit - GitHub" src="https://gh-card.dev/repos/PyCQA/bandit.svg?fullname="/></a></p>
+<p><a href="https://github.com/anchore/grype" target="_blank"><img alt="grype - GitHub" src="https://gh-card.dev/repos/anchore/grype.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable bandit by adding <code>PYTHON_BANDIT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable bandit by adding <code>PYTHON_BANDIT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable grype by adding <code>REPOSITORY_GRYPE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable grype by adding <code>REPOSITORY_GRYPE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -2600,106 +2587,49 @@
 </thead>
 <tbody>
 <tr>
-<td>PYTHON_BANDIT_ARGUMENTS</td>
+<td>REPOSITORY_GRYPE_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>PYTHON_BANDIT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>PYTHON_BANDIT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>list_of_files</code></td>
-</tr>
-<tr>
-<td>PYTHON_BANDIT_FILE_EXTENSIONS</td>
-<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
-<td><code>[".py"]</code></td>
-</tr>
-<tr>
-<td>PYTHON_BANDIT_FILE_NAMES_REGEX</td>
-<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>PYTHON_BANDIT_PRE_COMMANDS</td>
+<td>REPOSITORY_GRYPE_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_POST_COMMANDS</td>
+<td>REPOSITORY_GRYPE_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_UNSECURED_ENV_VARIABLES</td>
-<td>List of env variables explicitly not filtered before calling PYTHON_BANDIT and its pre/post commands</td>
+<td>REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling REPOSITORY_GRYPE and its pre/post commands</td>
 <td>None</td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_CONFIG_FILE</td>
-<td>bandit configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.bandit.yml</code></td>
+<td>REPOSITORY_GRYPE_CONFIG_FILE</td>
+<td>grype configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.grype.yaml</code></td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_RULES_PATH</td>
+<td>REPOSITORY_GRYPE_RULES_PATH</td>
 <td>Path where to find linter configuration file</td>
 <td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_DISABLE_ERRORS</td>
+<td>REPOSITORY_GRYPE_DISABLE_ERRORS</td>
 <td>Run linter but consider errors as warnings</td>
 <td><code>false</code></td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>REPOSITORY_GRYPE_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
 </tr>
 <tr>
-<td>PYTHON_BANDIT_CLI_EXECUTABLE</td>
+<td>REPOSITORY_GRYPE_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
-<td><code>['bandit']</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="ide-integration">IDE Integration</h2>
-<p>Use bandit in your favorite IDE to catch errors before MegaLinter !</p>
-<table>
-<thead>
-<tr>
-<th align="center"><!-- --></th>
-<th>IDE</th>
-<th>Extension Name</th>
-<th align="center">Install</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"/></a></td>
-<td><a href="https://atom.io/">Atom</a></td>
-<td><a href="https://atom.io/packages/bandit-lint">bandit-lint</a></td>
-<td align="center"><a href="https://atom.io/packages/bandit-lint" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
-<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
-<td><a href="https://github.com/SublimeLinter/SublimeLinter-bandit">SublimeLinter-bandit</a></td>
-<td align="center"><a href="https://github.com/SublimeLinter/SublimeLinter-bandit" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
-<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
-<td><a href="https://code.visualstudio.com/docs/python/linting#_bandit">Native Support</a></td>
-<td align="center"><a href="https://code.visualstudio.com/docs/python/linting#_bandit" target="_blank">Visit Web Site</a></td>
+<td><code>['grype']</code></td>
 </tr>
 </tbody>
 </table>
@@ -2724,11 +2654,11 @@
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
-<td align="left">Optimized for PYTHON based projects</td>
-<td align="center">59</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">83</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
@@ -2742,210 +2672,86 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.py</code></li>
+<li>If this linter is active, all files will always be linted</li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>grype is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>bandit is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using grype configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make grype analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">bandit myfile.py
-</code></pre>
-<pre><code class="language-shell">bandit --configfile .bandit.yml myfile.py
+<pre><code class="language-shell">grype dir:.
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
-              [-p PROFILE] [-t TESTS] [-s SKIPS]
-              [-l | --severity-level {all,low,medium,high}]
-              [-i | --confidence-level {all,low,medium,high}]
-              [-f {csv,custom,html,json,sarif,screen,txt,xml,yaml}]
-              [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
-              [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
-              [--ini INI_PATH] [--exit-zero] [--version]
-              [targets ...]
+<pre><code class="language-shell">A vulnerability scanner for container images, filesystems, and SBOMs.
 
-Bandit - a Python source code security analyzer
+Supports the following image sources:
+    grype yourrepo/yourimage:tag             defaults to using images from a Docker daemon
+    grype path/to/yourproject                a Docker tar, OCI tar, OCI directory, SIF container, or generic filesystem directory
 
-positional arguments:
-  targets               source file(s) or directory(s) to be tested
+You can also explicitly specify the scheme to use:
+    grype podman:yourrepo/yourimage:tag          explicitly use the Podman daemon
+    grype docker:yourrepo/yourimage:tag          explicitly use the Docker daemon
+    grype docker-archive:path/to/yourimage.tar   use a tarball from disk for archives created from "docker save"
+    grype oci-archive:path/to/yourimage.tar      use a tarball from disk for OCI archives (from Podman or otherwise)
+    grype oci-dir:path/to/yourimage              read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
+    grype singularity:path/to/yourimage.sif      read directly from a Singularity Image Format (SIF) container on disk
+    grype dir:path/to/yourproject                read directly from a path on disk (any directory)
+    grype sbom:path/to/syft.json                 read Syft JSON from path on disk
+    grype registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
+    grype purl:path/to/purl/file                 read a newline separated file of purls from a path on disk
 
-options:
-  -h, --help            show this help message and exit
-  -r, --recursive       find and process files in subdirectories
-  -a {file,vuln}, --aggregate {file,vuln}
-                        aggregate output by vulnerability (default) or by
-                        filename
-  -n CONTEXT_LINES, --number CONTEXT_LINES
-                        maximum number of code lines to output for each issue
-  -c CONFIG_FILE, --configfile CONFIG_FILE
-                        optional config file to use for selecting plugins and
-                        overriding defaults
-  -p PROFILE, --profile PROFILE
-                        profile to use (defaults to executing all tests)
-  -t TESTS, --tests TESTS
-                        comma-separated list of test IDs to run
-  -s SKIPS, --skip SKIPS
-                        comma-separated list of test IDs to skip
-  -l, --level           report only issues of a given severity level or higher
-                        (-l for LOW, -ll for MEDIUM, -lll for HIGH)
-  --severity-level {all,low,medium,high}
-                        report only issues of a given severity level or
-                        higher. "all" and "low" are likely to produce the same
-                        results, but it is possible for rules to be undefined
-                        which will not be listed in "low".
-  -i, --confidence      report only issues of a given confidence level or
-                        higher (-i for LOW, -ii for MEDIUM, -iii for HIGH)
-  --confidence-level {all,low,medium,high}
-                        report only issues of a given confidence level or
-                        higher. "all" and "low" are likely to produce the same
-                        results, but it is possible for rules to be undefined
-                        which will not be listed in "low".
-  -f {csv,custom,html,json,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,screen,txt,xml,yaml}
-                        specify output format
-  --msg-template MSG_TEMPLATE
-                        specify output message template (only usable with
-                        --format custom), see CUSTOM FORMAT section for list
-                        of available values
-  -o [OUTPUT_FILE], --output [OUTPUT_FILE]
-                        write report to filename
-  -v, --verbose         output extra information like excluded and included
-                        files
-  -d, --debug           turn on debug mode
-  -q, --quiet, --silent
-                        only show output in the case of an error
-  --ignore-nosec        do not skip lines with # nosec comments
-  -x EXCLUDED_PATHS, --exclude EXCLUDED_PATHS
-                        comma-separated list of paths (glob patterns
-                        supported) to exclude from scan (note that these are
-                        in addition to the excluded paths provided in the
-                        config file) (default:
-                        .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.eggs,*.egg)
-  -b BASELINE, --baseline BASELINE
-                        path of a baseline report to compare against (only
-                        JSON-formatted files are accepted)
-  --ini INI_PATH        path to a .bandit file that supplies command line
-                        arguments
-  --exit-zero           exit with 0, even with results found
-  --version             show program's version number and exit
+You can also pipe in Syft JSON directly:
+  syft yourimage:tag -o json | grype
 
-CUSTOM FORMATTING
------------------
+Usage:
+  grype [IMAGE] [flags]
+  grype [command]
 
-Available tags:
+Available Commands:
+  completion  Generate a shell completion for Grype (listing local docker images)
+  db          vulnerability database operations
+  help        Help about any command
+  version     show the version
 
-    {abspath}, {relpath}, {line}, {col}, {test_id},
-    {severity}, {msg}, {confidence}, {range}
+Flags:
+      --add-cpes-if-none      generate CPEs for packages with no CPE data
+      --by-cve                orient results by CVE instead of the original vulnerability ID when possible
+  -c, --config string         application config file
+      --distro string         distro to match against in the format: &lt;distro&gt;:&lt;version&gt;
+      --exclude stringArray   exclude paths from being scanned using a glob expression
+  -f, --fail-on string        set the return code to 1 if a vulnerability is found with a severity &gt;= the given severity, options=[negligible low medium high critical]
+      --file string           file to write the report output to (default is STDOUT)
+  -h, --help                  help for grype
+      --name string           set the name of the target being analyzed
+      --only-fixed            ignore matches for vulnerabilities that are not fixed
+      --only-notfixed         ignore matches for vulnerabilities that are fixed
+  -o, --output string         report output formatter, formats=[json table cyclonedx cyclonedx-json sarif template], deprecated formats=[embedded-cyclonedx-vex-json embedded-cyclonedx-vex-xml]
+      --platform string       an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -q, --quiet                 suppress all logging output
+  -s, --scope string          selection of layers to analyze, options=[Squashed AllLayers] (default "Squashed")
+      --show-suppressed       show suppressed/ignored vulnerabilities in the output (only supported with table output format)
+  -t, --template string       specify the path to a Go template file (requires 'template' output to be selected)
+  -v, --verbose count         increase verbosity (-v = info, -vv = debug)
 
-Example usage:
-
-    Default template:
-    bandit -r examples/ --format custom --msg-template \
-    "{abspath}:{line}: {test_id}[bandit]: {severity}: {msg}"
-
-    Provides same output as:
-    bandit -r examples/ --format custom
-
-    Tags can also be formatted in python string.format() style:
-    bandit -r examples/ --format custom --msg-template \
-    "{relpath:20.20s}: {line:03}: {test_id:^8}: DEFECT: {msg:&gt;20}"
-
-    See python documentation for more information about formatting style:
-    https://docs.python.org/3/library/string.html
-
-The following tests were discovered and loaded:
------------------------------------------------
-  B101  assert_used
-  B102  exec_used
-  B103  set_bad_file_permissions
-  B104  hardcoded_bind_all_interfaces
-  B105  hardcoded_password_string
-  B106  hardcoded_password_funcarg
-  B107  hardcoded_password_default
-  B108  hardcoded_tmp_directory
-  B110  try_except_pass
-  B112  try_except_continue
-  B113  request_without_timeout
-  B201  flask_debug_true
-  B202  tarfile_unsafe_members
-  B301  pickle
-  B302  marshal
-  B303  md5
-  B304  ciphers
-  B305  cipher_modes
-  B306  mktemp_q
-  B307  eval
-  B308  mark_safe
-  B310  urllib_urlopen
-  B311  random
-  B312  telnetlib
-  B313  xml_bad_cElementTree
-  B314  xml_bad_ElementTree
-  B315  xml_bad_expatreader
-  B316  xml_bad_expatbuilder
-  B317  xml_bad_sax
-  B318  xml_bad_minidom
-  B319  xml_bad_pulldom
-  B320  xml_bad_etree
-  B321  ftplib
-  B323  unverified_context
-  B324  hashlib_insecure_functions
-  B401  import_telnetlib
-  B402  import_ftplib
-  B403  import_pickle
-  B404  import_subprocess
-  B405  import_xml_etree
-  B406  import_xml_sax
-  B407  import_xml_expat
-  B408  import_xml_minidom
-  B409  import_xml_pulldom
-  B410  import_lxml
-  B411  import_xmlrpclib
-  B412  import_httpoxy
-  B413  import_pycrypto
-  B415  import_pyghmi
-  B501  request_with_no_cert_validation
-  B502  ssl_with_bad_version
-  B503  ssl_with_bad_defaults
-  B504  ssl_with_no_version
-  B505  weak_cryptographic_key
-  B506  yaml_load
-  B507  ssh_no_host_key_verification
-  B508  snmp_insecure_version
-  B509  snmp_weak_cryptography
-  B601  paramiko_calls
-  B602  subprocess_popen_with_shell_equals_true
-  B603  subprocess_without_shell_equals_true
-  B604  any_other_function_with_shell_equals_true
-  B605  start_process_with_a_shell
-  B606  start_process_with_no_shell
-  B607  start_process_with_partial_path
-  B608  hardcoded_sql_expressions
-  B609  linux_commands_wildcard_injection
-  B610  django_extra_used
-  B611  django_rawsql_used
-  B612  logging_config_insecure_listen
-  B701  jinja2_autoescape_false
-  B702  use_of_mako_templates
-  B703  django_mark_safe
+Use "grype [command] --help" for more information about a command.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/bandit">bandit</a></li>
-<li><a href="https://pypi.org/project/bandit_sarif_formatter">bandit_sarif_formatter</a></li>
-<li><a href="https://pypi.org/project/bandit[toml]">bandit[toml]</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile">RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+</code></pre>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: isort" class="md-footer__link md-footer__link--prev" href="../python_isort/" rel="prev">
+<a aria-label="Previous: gitleaks" class="md-footer__link md-footer__link--prev" href="../repository_gitleaks/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2954,17 +2760,17 @@ The following tests were discovered and loaded:
                 Previous
               </span>
 <div class="md-ellipsis">
-                isort
+                gitleaks
               </div>
 </div>
 </a>
-<a aria-label="Next: mypy" class="md-footer__link md-footer__link--next" href="../python_mypy/" rel="next">
+<a aria-label="Next: kics" class="md-footer__link md-footer__link--next" href="../repository_kics/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                mypy
+                kics
               </div>
 </div>
 <div class="md-footer__button md-icon">
