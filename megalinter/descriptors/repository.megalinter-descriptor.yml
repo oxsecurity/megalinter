@@ -503,14 +503,13 @@ linters:
       - cupcake
       - security
     linter_speed: 2
-    linter_url: https://github.com/anchore/grype
+    linter_url: https://github.com/trufflesecurity/trufflehog
     linter_repo: https://github.com/trufflesecurity/trufflehog
-    linter_rules_url: https://github.com/anchore/grype#vulnerability-summary
-    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png
-    linter_rules_configuration_url: https://github.com/anchore/grype#configuration
+    linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
-    config_file_name: .grype.yaml
+    config_file_name: .trufflehog.yml
     cli_lint_extra_args_after:
       - filesystem .
     cli_sarif_args:
@@ -521,5 +520,5 @@ linters:
       - "grype dir:."
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+        - RUN docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys
     test_folder: repository_grype
