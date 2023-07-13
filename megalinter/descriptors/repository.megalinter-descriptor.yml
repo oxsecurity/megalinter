@@ -253,6 +253,8 @@ linters:
   - linter_name: grype
     can_output_sarif: true
     descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
       - cupcake
       - security
     linter_speed: 2

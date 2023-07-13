@@ -280,6 +280,9 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
+# grype installation
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
+
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
 

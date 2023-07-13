@@ -290,8 +290,11 @@ ENV MYPY_CACHE_DIR=/tmp
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
+# grype installation
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
+
 # trivy installation
-RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 
 # vale installation
