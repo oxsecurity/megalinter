@@ -20,6 +20,7 @@
         "REPOSITORY_GRYPE",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_TRIVY",
+        "REPOSITORY_TRUFFLEHOG",
         "XML_XMLLINT",
         "YAML_PRETTIER",
         "YAML_YAMLLINT",

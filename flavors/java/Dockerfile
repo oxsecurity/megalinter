@@ -358,6 +358,10 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 
+# trufflehog installation
+# Next line commented because already managed by another linter
+# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
 

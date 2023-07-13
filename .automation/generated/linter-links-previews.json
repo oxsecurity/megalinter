@@ -544,6 +544,11 @@
     "image": null,
     "title": "Redirecting"
   },
+  "trufflehog": {
+    "description": "A vulnerability scanner for container images and filesystems - GitHub - anchore/grype: A vulnerability scanner for container images and filesystems",
+    "image": "https://repository-images.githubusercontent.com/267054247/c41d4c8f-cd32-4bdd-9f2a-89a82992a359",
+    "title": "GitHub - anchore/grype: A vulnerability scanner for container images and filesystems"
+  },
   "ts-standard": {
     "description": "English \u2022 Espan\u0303ol (Latinoame\u0301rica) \u2022 Franc\u0327ais \u2022 Bahasa Indonesia \u2022 Italiano (Italian) \u2022 \u65e5\u672c\u8a9e (Japanese) \u2022 \u1112\u1161\u11ab\u1100\u116e\u11a8\u110b\u1165 (Korean) \u2022 Portugue\u0302s (Brasil) \u2022 \u7b80\u4f53\u4e2d\u6587 (Simplified Chinese) \u2022 \u7e41\u9ad4\u4e2d\u6587 (Taiwanese Mandarin).",
     "image": null,

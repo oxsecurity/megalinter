@@ -131,6 +131,7 @@ jobs:
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "repository_trufflehog",
             "rst_rst_lint",
             "rst_rstcheck",
             "rst_rstfmt",
