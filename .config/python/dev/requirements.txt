@@ -16,7 +16,7 @@ mkdocs-material
 multiprocessing_logging
 pychalk
 pygithub
-pymdown-extensions==10.0
+pymdown-extensions==9.11
 pytablewriter
 pytest-cov
 pytest-timeout
