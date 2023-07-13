@@ -122,6 +122,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 23.3.0 to **23.7.0** on 2023-07-11
   - [checkov](https://www.checkov.io/) from 2.3.316 to **2.3.318** on 2023-07-11
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.411 to **6.0.412** on 2023-07-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.77.10 to **0.78.1** on 2023-07-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.316 to **1.1.317** on 2023-07-13
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.277 to **0.0.278** on 2023-07-13
+  - [checkov](https://www.checkov.io/) from 2.3.318 to **2.3.320** on 2023-07-13
+  - [syft](https://github.com/anchore/syft) from 0.84.1 to **0.85.0** on 2023-07-13
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
