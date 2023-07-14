@@ -515,6 +515,7 @@ linters:
       - filesystem
     cli_lint_extra_args_after:
       - "."
+    cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:
       - "trufflehog filesystem ."
