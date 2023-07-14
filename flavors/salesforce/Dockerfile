@@ -24,6 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
+FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 #FROM__END
@@ -222,6 +223,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #COPY__END
@@ -287,8 +289,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \

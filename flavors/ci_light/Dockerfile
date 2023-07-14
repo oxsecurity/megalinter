@@ -17,6 +17,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mrtazz/checkmake:latest as checkmake
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
+FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 
 ##################
@@ -170,6 +171,7 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -202,8 +204,7 @@ RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/m
 
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 #OTHER__END
 

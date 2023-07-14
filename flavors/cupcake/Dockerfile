@@ -32,6 +32,7 @@ FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
+FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
@@ -284,6 +285,7 @@ COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bi
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
@@ -474,8 +476,7 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/

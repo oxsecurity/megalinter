@@ -517,8 +517,9 @@ linters:
       - sarif
     cli_version_arg_name: version
     examples:
-      - "grype dir:."
+      - "trufflehog filesystem ."
     install:
       dockerfile:
-        - RUN docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys
-    test_folder: repository_grype
+        - FROM trufflesecurity/trufflehog:latest as trufflehog
+        - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    test_folder: gitleaks

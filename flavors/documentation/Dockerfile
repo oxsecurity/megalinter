@@ -25,6 +25,7 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
+FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 #FROM__END
@@ -221,6 +222,7 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #COPY__END
@@ -283,8 +285,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale

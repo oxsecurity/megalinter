@@ -36,6 +36,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
+FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
@@ -327,6 +328,7 @@ COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
@@ -702,8 +704,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \

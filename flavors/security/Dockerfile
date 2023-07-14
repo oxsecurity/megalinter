@@ -20,6 +20,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
+FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
 FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -179,6 +180,7 @@ COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
@@ -236,8 +238,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 
 
 # trufflehog installation
-# Next line commented because already managed by another linter
-# RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
