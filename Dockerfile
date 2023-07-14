@@ -689,7 +689,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/

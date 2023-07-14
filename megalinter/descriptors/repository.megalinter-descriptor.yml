@@ -274,9 +274,11 @@ linters:
     cli_version_arg_name: version
     examples:
       - "grype dir:."
+    downgraded_version: true
+    downgraded_reason: https://github.com/anchore/grype/issues/1388
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
     test_folder: repository_grype
 
   # KICS

@@ -127,6 +127,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.277 to **0.0.278** on 2023-07-13
   - [checkov](https://www.checkov.io/) from 2.3.318 to **2.3.320** on 2023-07-13
   - [syft](https://github.com/anchore/syft) from 0.84.1 to **0.85.0** on 2023-07-13
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.18.4 to **0.19.5** on 2023-07-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.05.26 to **2023.07.13** on 2023-07-14
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.5 to **7.3.6** on 2023-07-14
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.5 to **7.3.6** on 2023-07-14
+  - [checkov](https://www.checkov.io/) from 2.3.320 to **2.3.324** on 2023-07-14
+  - [grype](https://github.com/anchore/grype) from 0.63.1 to **0.64.0** on 2023-07-14
+  - [semgrep](https://semgrep.dev/) from 1.31.2 to **1.32.0** on 2023-07-14
+  - [rubocop](https://rubocop.org/) from 1.54.1 to **1.54.2** on 2023-07-14
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.70 to **0.1.71** on 2023-07-14
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.2 to **1.5.3** on 2023-07-14
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
