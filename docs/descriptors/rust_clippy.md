@@ -9,7 +9,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.70**
+- Version in MegaLinter: **0.1.71**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -86,7 +86,7 @@ Usage:
 
 Common options:
     --no-deps                Run Clippy only on the given crate, without linting the dependencies
-    --fix                    Automatically apply lint suggestions. This flag implies `--no-deps`
+    --fix                    Automatically apply lint suggestions. This flag implies `--no-deps` and `--all-targets`
     -h, --help               Print this message
     -V, --version            Print version info and exit
     --explain LINT           Print the documentation for a given lint

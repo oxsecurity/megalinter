@@ -9,7 +9,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 
 ## powershell_formatter documentation
 
-- Version in MegaLinter: **7.3.5**
+- Version in MegaLinter: **7.3.6**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
@@ -40,7 +40,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 | POWERSHELL_POWERSHELL_FORMATTER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules                     |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                                              |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                                 |
-| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['powershell']`                                                    |
+| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['pwsh']`                                                          |
 
 ## IDE Integration
 
