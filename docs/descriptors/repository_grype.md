@@ -15,7 +15,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.63.1**
+- Version in MegaLinter: **0.64.0**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -127,12 +127,12 @@ Flags:
       --distro string         distro to match against in the format: <distro>:<version>
       --exclude stringArray   exclude paths from being scanned using a glob expression
   -f, --fail-on string        set the return code to 1 if a vulnerability is found with a severity >= the given severity, options=[negligible low medium high critical]
-      --file string           file to write the report output to (default is STDOUT)
+      --file string           file to write the default report output to (default is STDOUT)
   -h, --help                  help for grype
       --name string           set the name of the target being analyzed
       --only-fixed            ignore matches for vulnerabilities that are not fixed
       --only-notfixed         ignore matches for vulnerabilities that are fixed
-  -o, --output string         report output formatter, formats=[json table cyclonedx cyclonedx-json sarif template], deprecated formats=[embedded-cyclonedx-vex-json embedded-cyclonedx-vex-xml]
+  -o, --output stringArray    report output formatter, formats=[json table cyclonedx cyclonedx-json sarif template], deprecated formats=[embedded-cyclonedx-vex-json embedded-cyclonedx-vex-xml]
       --platform string       an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
   -q, --quiet                 suppress all logging output
   -s, --scope string          selection of layers to analyze, options=[Squashed AllLayers] (default "Squashed")
