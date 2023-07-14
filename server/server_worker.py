@@ -120,6 +120,7 @@ class MegaLinterAnalysis:
 
     # Init from user snippet
     def init_from_snippet(self):
+        print(f"Input snippet:\n {self.request_input.snippet}")
         # Guess language using pygments
         code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
