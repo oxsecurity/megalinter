@@ -498,7 +498,6 @@ linters:
 
  # TRUFFLEHOG
   - linter_name: trufflehog
-    can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -514,9 +513,6 @@ linters:
     config_file_name: .trufflehog.yml
     cli_lint_extra_args_after:
       - filesystem .
-    cli_sarif_args:
-      - --output
-      - sarif
     cli_version_arg_name: version
     examples:
       - "trufflehog filesystem ."
