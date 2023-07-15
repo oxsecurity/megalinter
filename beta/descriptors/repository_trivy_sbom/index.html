@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="golangci-lint, revive are available to analyze GO files in MegaLinter" name="description"/>
+<meta content="How to use trivy-sbom (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/go/" rel="canonical"/>
-<link href="../dart_dartanalyzer/" rel="prev"/>
-<link href="../go_golangci_lint/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/repository_trivy_sbom/" rel="canonical"/>
+<link href="../repository_trivy/" rel="prev"/>
+<link href="../spell/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.18" name="generator"/>
-<title>GO linters in MegaLinter - MegaLinter by OX Security</title>
+<title>trivy-sbom configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="GO linters in MegaLinter" name="twitter:title">
-<meta content="golangci-lint, revive are available to analyze GO files in MegaLinter" name="twitter:description">
+<meta content="trivy-sbom configuration in MegaLinter" name="twitter:title">
+<meta content="How to use trivy-sbom (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="GO linters in MegaLinter" property="og:title"/>
-<meta content="golangci-lint, revive are available to analyze GO files in MegaLinter" property="og:description"/>
+<meta content="trivy-sbom configuration in MegaLinter" property="og:title"/>
+<meta content="How to use trivy-sbom (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#go">
+<a class="md-skip" href="#trivy-sbom-documentation">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              GO linters in MegaLinter
+              trivy-sbom configuration in MegaLinter
             
           </span>
 </div>
@@ -307,13 +307,13 @@
         All supported linters
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Languages linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Languages linters
@@ -519,50 +519,22 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_9" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2_9" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_9" id="__nav_5_2_9_label" tabindex="0">
           GO
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_9_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_9_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_9">
 <span class="md-nav__icon md-icon"></span>
           GO
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          All GO linters
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../go/">
         All GO linters
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linters">
-    Linters
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linted-files">
-    Linted files
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-    Configuration in MegaLinter
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../go_golangci_lint/">
@@ -1990,13 +1962,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
           Other checks
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Other checks
@@ -2032,13 +2004,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_5_3">
 <span class="md-nav__icon md-icon"></span>
           REPOSITORY
@@ -2104,10 +2076,77 @@
         trivy
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../repository_trivy_sbom/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          trivy-sbom
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         trivy-sbom
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trivy-sbom-documentation">
+    trivy-sbom documentation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2468,19 +2507,58 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linters">
-    Linters
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linted-files">
-    Linted files
+<a class="md-nav__link" href="#trivy-sbom-documentation">
+    trivy-sbom documentation
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configuration-in-megalinter">
     Configuration in MegaLinter
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+    IDE Integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2489,37 +2567,29 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->
+<h1>trivy-sbom</h1>
+<!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please don't update manually -->
-<!-- Instead, update descriptor file at https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors/go.yml -->
-<h1 id="go">GO</h1>
-<h2 id="linters">Linters</h2>
-<table>
-<thead>
-<tr>
-<th>Linter</th>
-<th>Additional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../go_golangci_lint/"><strong>golangci-lint</strong></a><br/><a href="../go_golangci_lint/"><em>GO_GOLANGCI_LINT</em></a></td>
-<td><a href="https://github.com/golangci/golangci-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a></td>
-</tr>
-<tr>
-<td><a href="../go_revive/"><strong>revive</strong></a><br/><a href="../go_revive/"><em>GO_REVIVE</em></a></td>
-<td><a href="https://github.com/mgechev/revive"><img alt="GitHub stars" src="https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="linted-files">Linted files</h2>
+<div align="center">
+<a href="https://aquasecurity.github.io/trivy/" target="blank" title="Visit linter Web Site">
+<img alt="trivy-sbom" class="megalinter-banner" height="150px" src="https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png">
+</img></a>
+</div>
+<p><a href="https://github.com/aquasecurity/trivy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600"/></a> <a href="https://github.com/aquasecurity/trivy/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver"/></a> <a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aquasecurity/trivy"/></a></p>
+<p>Generates SBOM (Software Bill Of Material) using Trivy</p>
+<h2 id="trivy-sbom-documentation">trivy-sbom documentation</h2>
 <ul>
-<li>File extensions:<ul>
-<li><code>.go</code></li>
+<li>Version in MegaLinter: <strong>0.43.1</strong></li>
+<li>Visit <a href="https://aquasecurity.github.io/trivy/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/latest/docs/configuration/" target="_blank">How to configure trivy-sbom rules</a></li>
+<li>See <a href="https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments" target="_blank">How to ignore files and directories with trivy-sbom</a></li>
 </ul>
-</li>
-</ul>
+<p><a href="https://github.com/aquasecurity/trivy" target="_blank"><img alt="trivy - GitHub" src="https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
+<ul>
+<li>Enable trivy-sbom by adding <code>REPOSITORY_TRIVY_SBOM</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable trivy-sbom by adding <code>REPOSITORY_TRIVY_SBOM</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -2530,24 +2600,294 @@
 </thead>
 <tbody>
 <tr>
-<td>GO_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter</td>
+<td>REPOSITORY_TRIVY_SBOM_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>GO_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter</td>
-<td></td>
+<td>REPOSITORY_TRIVY_SBOM_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling REPOSITORY_TRIVY_SBOM and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_CONFIG_FILE</td>
+<td>trivy-sbom configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>trivy-sbom.yaml</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['trivy']</code></td>
 </tr>
 </tbody>
 </table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use trivy-sbom in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th align="center">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner">VSCode Trivy</a></td>
+<td align="center"><a href="vscode:extension/AquaSecurityOfficial.trivy-vulnerability-scanner" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
+<p>This linter is available in the following flavours</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th align="left">Flavor</th>
+<th align="left">Description</th>
+<th align="center">Embedded linters</th>
+<th align="right">Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td align="left">Default MegaLinter Flavor</td>
+<td align="center">116</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/ci_light/">ci_light</a></td>
+<td align="left">Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML</td>
+<td align="center">21</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">84</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/documentation/">documentation</a></td>
+<td align="left">MegaLinter for documentation projects</td>
+<td align="center">50</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
+<td align="left">Optimized for C, C++, C# or VB based projects</td>
+<td align="center">62</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
+<td align="left">Optimized for C, C++, C# or VB based projects with JS/TS</td>
+<td align="center">71</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/go/">go</a></td>
+<td align="left">Optimized for GO based projects</td>
+<td align="center">52</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
+<td align="left">Optimized for JAVA based projects</td>
+<td align="center">54</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/javascript/">javascript</a></td>
+<td align="left">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
+<td align="center">59</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
+<td align="left">Optimized for PHP based projects</td>
+<td align="center">53</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
+<td align="left">Optimized for PYTHON based projects</td>
+<td align="center">61</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/ruby/">ruby</a></td>
+<td align="left">Optimized for RUBY based projects</td>
+<td align="center">50</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/rust/">rust</a></td>
+<td align="left">Optimized for RUST based projects</td>
+<td align="center">50</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
+<td align="left">Optimized for Salesforce based projects</td>
+<td align="center">53</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">23</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/swift/">swift</a></td>
+<td align="left">Optimized for SWIFT based projects</td>
+<td align="center">50</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td align="left">Optimized for TERRAFORM based projects</td>
+<td align="center">54</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>If this linter is active, all files will always be linted</li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>trivy-sbom is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
+<ul>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using trivy-sbom configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make trivy-sbom analyze only updated files</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<pre><code class="language-shell">trivy fs --format spdx-json .
+</code></pre>
+<pre><code class="language-shell">trivy fs --config trivy-sbom.yaml --format spdx-json .
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets
+
+Usage:
+  trivy [global flags] command [flags] target
+  trivy [command]
+
+Examples:
+  # Scan a container image
+  $ trivy image python:3.4-alpine
+
+  # Scan a container image from a tar archive
+  $ trivy image --input ruby-3.1.tar
+
+  # Scan local filesystem
+  $ trivy fs .
+
+  # Run in server mode
+  $ trivy server
+
+Scanning Commands
+  aws         [EXPERIMENTAL] Scan AWS account
+  config      Scan config files for misconfigurations
+  filesystem  Scan local filesystem
+  image       Scan a container image
+  kubernetes  [EXPERIMENTAL] Scan kubernetes cluster
+  repository  Scan a remote repository
+  rootfs      Scan rootfs
+  sbom        Scan SBOM for vulnerabilities
+  vm          [EXPERIMENTAL] Scan a virtual machine image
+
+Management Commands
+  module      Manage modules
+  plugin      Manage plugins
+
+Utility Commands
+  completion  Generate the autocompletion script for the specified shell
+  convert     Convert Trivy JSON report into a different format
+  help        Help about any command
+  server      Server mode
+  version     Print the version
+
+Flags:
+      --cache-dir string          cache directory (default "/root/.cache/trivy")
+  -c, --config string             config path (default "trivy.yaml")
+  -d, --debug                     debug mode
+  -f, --format string             version format (json)
+      --generate-default-config   write the default config to trivy-default.yaml
+  -h, --help                      help for trivy
+      --insecure                  allow insecure server connections
+  -q, --quiet                     suppress progress bar and log output
+      --timeout duration          timeout (default 5m0s)
+  -v, --version                   show version
+
+Use "trivy [command] --help" for more information about a command.
+</code></pre>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
+<ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+</code></pre>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: dartanalyzer" class="md-footer__link md-footer__link--prev" href="../dart_dartanalyzer/" rel="prev">
+<a aria-label="Previous: trivy" class="md-footer__link md-footer__link--prev" href="../repository_trivy/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2556,17 +2896,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                dartanalyzer
+                trivy
               </div>
 </div>
 </a>
-<a aria-label="Next: golangci-lint" class="md-footer__link md-footer__link--next" href="../go_golangci_lint/" rel="next">
+<a aria-label="Next: All SPELL linters" class="md-footer__link md-footer__link--next" href="../spell/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                golangci-lint
+                All SPELL linters
               </div>
 </div>
 <div class="md-footer__button md-icon">
