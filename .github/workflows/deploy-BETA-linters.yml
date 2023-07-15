@@ -155,6 +155,7 @@ jobs:
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "repository_trivy_sbom",
             "rst_rst_lint",
             "rst_rstcheck",
             "rst_rstfmt",
