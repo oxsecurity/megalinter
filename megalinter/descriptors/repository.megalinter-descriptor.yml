@@ -518,11 +518,13 @@ linters:
     cli_config_arg_name: --config
     cli_lint_extra_args:
       - sbom
+      - --sbom-format
+      - cyclonedx
     cli_lint_extra_args_after:
       - "."
     test_folder: trivy
     examples:
-      - "trivy sbom ."
+      - "trivy sbom --sbom-format cyclonedx ."
     install:
       dockerfile:
         - |
