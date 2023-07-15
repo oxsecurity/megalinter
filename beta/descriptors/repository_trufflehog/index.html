@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="dotnet-format, csharpier are available to analyze CSHARP files in MegaLinter" name="description"/>
+<meta content="How to use trufflehog (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/csharp/" rel="canonical"/>
-<link href="../cpp_cpplint/" rel="prev"/>
-<link href="../csharp_dotnet_format/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/repository_trufflehog/" rel="canonical"/>
+<link href="../repository_trivy_sbom/" rel="prev"/>
+<link href="../spell/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.18" name="generator"/>
-<title>CSHARP linters in MegaLinter - MegaLinter by OX Security</title>
+<title>trufflehog configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="CSHARP linters in MegaLinter" name="twitter:title">
-<meta content="dotnet-format, csharpier are available to analyze CSHARP files in MegaLinter" name="twitter:description">
+<meta content="trufflehog configuration in MegaLinter" name="twitter:title">
+<meta content="How to use trufflehog (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="CSHARP linters in MegaLinter" property="og:title"/>
-<meta content="dotnet-format, csharpier are available to analyze CSHARP files in MegaLinter" property="og:description"/>
+<meta content="trufflehog configuration in MegaLinter" property="og:title"/>
+<meta content="How to use trufflehog (configure, ignore files, ignore errors, help &amp; version documentations) to analyze REPOSITORY files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#c">
+<a class="md-skip" href="#trufflehog-documentation">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              CSHARP linters in MegaLinter
+              trufflehog configuration in MegaLinter
             
           </span>
 </div>
@@ -307,13 +307,13 @@
         All supported linters
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Languages linters
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Languages linters
@@ -464,64 +464,22 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_7" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2_7" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_7" id="__nav_5_2_7_label" tabindex="0">
           C# (CSHARP)
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_2_7_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_7_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_7">
 <span class="md-nav__icon md-icon"></span>
           C# (CSHARP)
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          All C# (CSHARP) linters
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../csharp/">
         All C# (CSHARP) linters
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linters">
-    Linters
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linted-files">
-    Linted files
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-    Configuration in MegaLinter
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#behind-the-scenes">
-    Behind the scenes
-  </a>
-<nav aria-label="Behind the scenes" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation">
-    Installation
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../csharp_dotnet_format/">
@@ -2004,13 +1962,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
           Other checks
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Other checks
@@ -2046,13 +2004,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
           REPOSITORY
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_5_3_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_5_3">
 <span class="md-nav__icon md-icon"></span>
           REPOSITORY
@@ -2123,10 +2081,72 @@
         trivy-sbom
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../repository_trufflehog/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          trufflehog
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         trufflehog
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trufflehog-documentation">
+    trufflehog documentation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+    Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+    Behind the scenes
+  </a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2487,18 +2507,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linters">
-    Linters
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linted-files">
-    Linted files
+<a class="md-nav__link" href="#trufflehog-documentation">
+    trufflehog documentation
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configuration-in-megalinter">
     Configuration in MegaLinter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavours">
+    MegaLinter Flavours
   </a>
 </li>
 <li class="md-nav__item">
@@ -2508,8 +2528,28 @@
 <nav aria-label="Behind the scenes" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#installation">
-    Installation
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+    How are identified applicable files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+    How the linting is performed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+    Example calls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+    Help content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+    Installation on mega-linter Docker image
   </a>
 </li>
 </ul>
@@ -2522,37 +2562,27 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<!-- markdownlint-disable MD003 MD020 MD033 MD041 -->
+<h1>trufflehog</h1>
+<!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please don't update manually -->
-<!-- Instead, update descriptor file at https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors/csharp.yml -->
-<h1 id="c">C</h1>
-<h2 id="linters">Linters</h2>
-<table>
-<thead>
-<tr>
-<th>Linter</th>
-<th>Additional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../csharp_dotnet_format/"><strong>dotnet-format</strong></a><br/><a href="../csharp_dotnet_format/"><em>CSHARP_DOTNET_FORMAT</em></a></td>
-<td><a href="https://github.com/dotnet/format"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-<tr>
-<td><a href="../csharp_csharpier/"><strong>csharpier</strong></a><br/><a href="../csharp_csharpier/"><em>CSHARP_CSHARPIER</em></a></td>
-<td><a href="https://github.com/belav/csharpier"><img alt="GitHub stars" src="https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="linted-files">Linted files</h2>
+<div align="center">
+<a href="https://github.com/trufflesecurity/trufflehog#readme" target="blank" title="Visit linter Web Site">
+<img alt="trufflehog" class="megalinter-banner" height="150px" src="https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png">
+</img></a>
+</div>
+<p><a href="https://github.com/trufflesecurity/trufflehog"><img alt="GitHub stars" src="https://img.shields.io/github/stars/trufflesecurity/trufflehog?cacheSeconds=3600"/></a> <a href="https://github.com/trufflesecurity/trufflehog/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/trufflesecurity/trufflehog?sort=semver"/></a> <a href="https://github.com/trufflesecurity/trufflehog/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/trufflesecurity/trufflehog"/></a></p>
+<h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>File extensions:<ul>
-<li><code>.cs</code></li>
+<li>Version in MegaLinter: <strong>3.44.0</strong></li>
+<li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
-</li>
-</ul>
+<p><a href="https://github.com/trufflesecurity/trufflehog" target="_blank"><img alt="trufflehog - GitHub" src="https://gh-card.dev/repos/trufflesecurity/trufflehog.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
+<ul>
+<li>Enable trufflehog by adding <code>REPOSITORY_TRUFFLEHOG</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable trufflehog by adding <code>REPOSITORY_TRUFFLEHOG</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -2563,48 +2593,293 @@
 </thead>
 <tbody>
 <tr>
-<td>CSHARP_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter</td>
+<td>REPOSITORY_TRUFFLEHOG_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>CSHARP_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter</td>
-<td></td>
+<td>REPOSITORY_TRUFFLEHOG_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_CONFIG_FILE</td>
+<td>trufflehog configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.trufflehog.yml</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRUFFLEHOG_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['trufflehog']</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
+<p>This linter is available in the following flavours</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th align="left">Flavor</th>
+<th align="left">Description</th>
+<th align="center">Embedded linters</th>
+<th align="right">Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td align="left">Default MegaLinter Flavor</td>
+<td align="center">117</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/ci_light/">ci_light</a></td>
+<td align="left">Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML</td>
+<td align="center">22</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">85</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/documentation/">documentation</a></td>
+<td align="left">MegaLinter for documentation projects</td>
+<td align="center">51</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
+<td align="left">Optimized for C, C++, C# or VB based projects</td>
+<td align="center">63</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
+<td align="left">Optimized for C, C++, C# or VB based projects with JS/TS</td>
+<td align="center">72</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/go/">go</a></td>
+<td align="left">Optimized for GO based projects</td>
+<td align="center">53</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
+<td align="left">Optimized for JAVA based projects</td>
+<td align="center">55</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/javascript/">javascript</a></td>
+<td align="left">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
+<td align="center">60</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
+<td align="left">Optimized for PHP based projects</td>
+<td align="center">54</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
+<td align="left">Optimized for PYTHON based projects</td>
+<td align="center">62</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/ruby/">ruby</a></td>
+<td align="left">Optimized for RUBY based projects</td>
+<td align="center">51</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/rust/">rust</a></td>
+<td align="left">Optimized for RUST based projects</td>
+<td align="center">51</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
+<td align="left">Optimized for Salesforce based projects</td>
+<td align="center">54</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">24</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/swift/">swift</a></td>
+<td align="left">Optimized for SWIFT based projects</td>
+<td align="center">51</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td align="left">Optimized for TERRAFORM based projects</td>
+<td align="center">55</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
-<h3 id="installation">Installation</h3>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>If this linter is active, all files will always be linted</li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>trufflehog is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
+<ul>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using trufflehog configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make trufflehog analyze only updated files</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<pre><code class="language-shell">trufflehog filesystem .
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">usage: TruffleHog [&lt;flags&gt;] &lt;command&gt; [&lt;args&gt; ...]
+
+TruffleHog is a tool for finding credentials.
+
+Flags:
+      --help                     Show context-sensitive help (also try
+                                 --help-long and --help-man).
+      --debug                    Run in debug mode.
+      --trace                    Run in trace mode.
+      --profile                  Enables profiling and sets a pprof and fgprof
+                                 server on :18066.
+  -j, --json                     Output in JSON format.
+      --json-legacy              Use the pre-v3.0 JSON format. Only works with
+                                 git, gitlab, and github sources.
+      --github-actions           Output in GitHub Actions format.
+      --concurrency=2            Number of concurrent workers.
+      --no-verification          Don't verify the results.
+      --only-verified            Only output verified results.
+      --filter-unverified        Only output first unverified result per
+                                 chunk per detector if there are more than one
+                                 results.
+      --config=CONFIG            Path to configuration file.
+      --print-avg-detector-time  Print the average time spent on each detector.
+      --no-update                Don't check for updates.
+      --fail                     Exit with code 183 if results are found.
+      --verifier=VERIFIER ...    Set custom verification endpoints.
+      --archive-max-size=ARCHIVE-MAX-SIZE
+                                 Maximum size of archive to scan. (Byte units
+                                 eg. 512B, 2KB, 4MB)
+      --archive-max-depth=ARCHIVE-MAX-DEPTH
+                                 Maximum depth of archive to scan.
+      --archive-timeout=ARCHIVE-TIMEOUT
+                                 Maximum time to spend extracting an archive.
+      --include-detectors="all"  Comma separated list of detector types to
+                                 include. Protobuf name or IDs may be used,
+                                 as well as ranges.
+      --exclude-detectors=EXCLUDE-DETECTORS
+                                 Comma separated list of detector types to
+                                 exclude. Protobuf name or IDs may be used,
+                                 as well as ranges. IDs defined here take
+                                 precedence over the include list.
+      --version                  Show application version.
+
+Commands:
+  help [&lt;command&gt;...]
+    Show help.
+
+  git [&lt;flags&gt;] &lt;uri&gt;
+    Find credentials in git repositories.
+
+  github [&lt;flags&gt;]
+    Find credentials in GitHub repositories.
+
+  gitlab --token=TOKEN [&lt;flags&gt;]
+    Find credentials in GitLab repositories.
+
+  filesystem [&lt;flags&gt;] [&lt;path&gt;...]
+    Find credentials in a filesystem.
+
+  s3 [&lt;flags&gt;]
+    Find credentials in S3 buckets.
+
+  gcs [&lt;flags&gt;]
+    Find credentials in GCS buckets.
+
+  syslog [&lt;flags&gt;]
+    Scan syslog
+
+  circleci --token=TOKEN
+    Scan CircleCI
+
+  docker --image=IMAGE
+    Scan Docker Image
+
+
+</code></pre>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    &amp;&amp; chmod +x dotnet-install.sh \
-    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+<pre><code class="language-dockerfile">FROM trufflesecurity/trufflehog:latest as trufflehog
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 </code></pre>
-<ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=icu-libs">icu-libs</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libcurl">libcurl</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libintl">libintl</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libssl1.1">libssl1.1</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libstdc++">libstdc++</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=lttng-ust-dev">lttng-ust-dev</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib">zlib</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib-dev">zlib-dev</a></li>
-</ul>
-</li>
-</ul>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: cpplint" class="md-footer__link md-footer__link--prev" href="../cpp_cpplint/" rel="prev">
+<a aria-label="Previous: trivy-sbom" class="md-footer__link md-footer__link--prev" href="../repository_trivy_sbom/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -2613,17 +2888,17 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
                 Previous
               </span>
 <div class="md-ellipsis">
-                cpplint
+                trivy-sbom
               </div>
 </div>
 </a>
-<a aria-label="Next: dotnet-format" class="md-footer__link md-footer__link--next" href="../csharp_dotnet_format/" rel="next">
+<a aria-label="Next: All SPELL linters" class="md-footer__link md-footer__link--next" href="../spell/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                dotnet-format
+                All SPELL linters
               </div>
 </div>
 <div class="md-footer__button md-icon">

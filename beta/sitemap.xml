@@ -886,6 +886,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/repository_trufflehog/</loc>
+         <lastmod>2023-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/rst/</loc>
          <lastmod>2023-07-15</lastmod>
          <changefreq>daily</changefreq>
