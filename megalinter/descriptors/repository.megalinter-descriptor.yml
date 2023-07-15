@@ -519,13 +519,13 @@ linters:
     cli_lint_extra_args:
       - fs
       - --format
-      - spdx-json
+      - cyclonedx
     cli_lint_extra_args_after:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --format spdx-json ."
-      - "trivy fs --config trivy-sbom.yaml --format spdx-json ."
+      - "trivy fs --format cyclonedx ."
+      - "trivy fs --config trivy-sbom.yaml --format cyclonedx ."
     install:
       dockerfile:
         - |
