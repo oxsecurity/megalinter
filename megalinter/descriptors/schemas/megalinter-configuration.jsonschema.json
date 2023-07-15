@@ -192,7 +192,7 @@
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
         "REPOSITORY_TRIVY",
-        "REPOSITORY_TRUFFLEHOG",
+        "REPOSITORY_TRIVY_SBOM",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",

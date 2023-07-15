@@ -496,6 +496,45 @@ linters:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
 
+  # TRIVY
+  - linter_name: trivy-sbom
+    name: REPOSITORY_TRIVY_SBOM
+    cli_executable: trivy
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_text: |
+      Generates SBOM (Software Bill Of Material) using Trivy
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_speed: 2
+    linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
+    cli_lint_mode: project
+    config_file_name: trivy-sbom.yaml
+    cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - fs
+      - --format
+      - spdx-json
+    cli_lint_extra_args_after:
+      - "."
+    test_folder: trivy
+    examples:
+      - "trivy fs --format spdx-json ."
+      - "trivy fs --config trivy-sbom.yaml --format spdx-json ."
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    ide:
+      vscode:
+        - name: VSCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
   # TRUFFLEHOG
   - linter_name: trufflehog
     descriptor_flavors:

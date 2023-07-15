@@ -297,8 +297,9 @@ ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/ass
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 
-# trufflehog installation
-# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+# trivy-sbom installation
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
