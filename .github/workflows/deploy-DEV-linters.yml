@@ -145,6 +145,7 @@ jobs:
             "repository_syft",
             "repository_trivy",
             "repository_trivy_sbom",
+            "repository_trufflehog",
             "rst_rst_lint",
             "rst_rstcheck",
             "rst_rstfmt",
