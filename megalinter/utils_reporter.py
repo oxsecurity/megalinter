@@ -210,16 +210,21 @@ def log_section_end(section_key):
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
-    process = subprocess.run(
-        sarif_fmt_command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        input=sarif_in + "\n",
-        env=config.build_env(request_id),
-    )
-    return_code = process.returncode
-    output = utils.decode_utf8(process.stdout)
+    try:
+        process = subprocess.run(
+            sarif_fmt_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            input=sarif_in + "\n",
+            env=config.build_env(request_id),
+        )
+        return_code = process.returncode
+        output = utils.decode_utf8(process.stdout)
+    except Exception as e:
+        return_code = 1
+        output = sarif_in
+        logging.warning("Unable to call sarif-fmt: " + str(e))
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
 
