@@ -325,6 +325,7 @@ nav:
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"
               - "trivy": "descriptors/repository_trivy.md"
+              - "trivy-sbom": "descriptors/repository_trivy_sbom.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "cspell": "descriptors/spell_cspell.md"
