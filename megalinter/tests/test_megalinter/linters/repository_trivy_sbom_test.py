@@ -20,8 +20,7 @@ class repository_trivy_sbom_test(TestCase, LinterTestRoot):
         super().test_success()
 
     def test_failure(self):
-        self.check_if_another_test_suite()
-        super().test_failure()
+        raise unittest.SkipTest("Skipped because SBOM generation can not fail")
 
     def test_get_linter_version(self):
         self.check_if_another_test_suite()
