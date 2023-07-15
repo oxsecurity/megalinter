@@ -138,6 +138,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.70 to **0.1.71** on 2023-07-14
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.2 to **1.5.3** on 2023-07-14
   - [grype](https://github.com/anchore/grype) from 0.64.0 to **0.63.1** on 2023-07-14
+  - [eslint](https://eslint.org) from 8.44.0 to **8.45.0** on 2023-07-14
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
