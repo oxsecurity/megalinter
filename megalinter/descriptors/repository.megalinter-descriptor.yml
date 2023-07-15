@@ -498,6 +498,8 @@ linters:
 
   # TRIVY
   - linter_name: trivy-sbom
+    class: TrivySbomLinter
+    can_output_sarif: true
     name: REPOSITORY_TRIVY_SBOM
     cli_executable: trivy
     descriptor_flavors:
@@ -522,6 +524,9 @@ linters:
       - cyclonedx
     cli_lint_extra_args_after:
       - "."
+    cli_sarif_args:
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
     test_folder: trivy
     examples:
       - "trivy fs --format cyclonedx ."
