@@ -70,6 +70,7 @@
         "REPOSITORY_SEMGREP",
         "REPOSITORY_TRIVY",
         "REPOSITORY_TRIVY_SBOM",
+        "REPOSITORY_TRUFFLEHOG",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",

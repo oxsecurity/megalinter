@@ -292,6 +292,9 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
+# trufflehog installation
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \

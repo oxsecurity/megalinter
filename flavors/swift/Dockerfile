@@ -286,6 +286,9 @@ RUN rc-update add docker boot && rc-service docker start || true \
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
+# trufflehog installation
+# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
 
