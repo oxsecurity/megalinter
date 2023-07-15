@@ -534,3 +534,32 @@ linters:
       vscode:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
+  # TRUFFLEHOG
+  - linter_name: trufflehog
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_url: https://github.com/trufflesecurity/trufflehog
+    linter_repo: https://github.com/trufflesecurity/trufflehog
+    linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: .trufflehog.yml
+    cli_lint_extra_args:
+      - filesystem
+      - "."
+      - --fail
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    examples:
+      - "trufflehog filesystem ."
+    install:
+      dockerfile:
+        - FROM trufflesecurity/trufflehog:latest as trufflehog
+        - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    test_folder: gitleaks
