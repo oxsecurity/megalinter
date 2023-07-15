@@ -11,6 +11,7 @@ RUN apk add \
     npm
 
 RUN npm install eslint stylelint --global
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
