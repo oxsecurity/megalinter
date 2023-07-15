@@ -326,6 +326,7 @@ nav:
               - "syft": "descriptors/repository_syft.md"
               - "trivy": "descriptors/repository_trivy.md"
               - "trivy-sbom": "descriptors/repository_trivy_sbom.md"
+              - "trufflehog": "descriptors/repository_trufflehog.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "cspell": "descriptors/spell_cspell.md"
