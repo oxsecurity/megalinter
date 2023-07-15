@@ -32,6 +32,8 @@ services:
     image: ghcr.io/oxsecurity/megalinter-security:alpha # cupcake is more complete
     #image: ghcr.io/oxsecurity/megalinter:alpha # all linters
     environment:
+      # Megalinter variables
+      - FLAVOR_SUGGESTIONS=false
       # Worker variables
       - MEGALINTER_SERVER=true
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
