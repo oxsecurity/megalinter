@@ -552,8 +552,8 @@ linters:
     config_file_name: .trufflehog.yml
     cli_lint_extra_args:
       - filesystem
-    cli_lint_extra_args_after:
       - "."
+      - --fail
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:
