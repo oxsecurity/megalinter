@@ -534,4 +534,3 @@ linters:
       vscode:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
-
