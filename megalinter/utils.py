@@ -340,11 +340,11 @@ def format_bullet_list(files):
     return "{}{}".format(prefix, file_list)
 
 
-def find_json_in_stdout(stdout: str):
+def find_json_in_stdout(stdout: str,sarif=True):
     # Try using full stdout
     found_json = truncate_json_from_string(stdout)
     if found_json != "":
-        sarif_json = extract_sarif_json(found_json)
+        sarif_json = extract_sarif_json(found_json,sarif)
         if sarif_json != "":
             return sarif_json
     # Try to find a json single line within stdout
@@ -353,14 +353,14 @@ def find_json_in_stdout(stdout: str):
     for line in stdout_lines:
         if line.strip().startswith("{"):
             json_unique_line = truncate_json_from_string(line)
-            sarif_json = extract_sarif_json(json_unique_line)
+            sarif_json = extract_sarif_json(json_unique_line,sarif)
             if sarif_json != "":
                 return sarif_json
     # Try using regex
     pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
     json_regex_results = pattern.findall(stdout)
     for json_regex_result in json_regex_results:
-        sarif_json = extract_sarif_json(json_regex_result)
+        sarif_json = extract_sarif_json(json_regex_result,sarif)
         if sarif_json != "":
             return sarif_json
     # SARIF json not found in stdout
@@ -375,10 +375,12 @@ def truncate_json_from_string(string_with_json_inside: str):
     return ""
 
 
-def extract_sarif_json(json_text: str):
+def extract_sarif_json(json_text: str,sarif=True):
     try:
         json_obj = json.loads(json_text)
-        if "runs" in json_obj:
+        if sarif is False:
+            sarif_json = json.dumps(json_obj, indent=4)
+        elif "runs" in json_obj:
             sarif_json = json.dumps(json_obj, indent=4)
         else:
             sarif_json = ""

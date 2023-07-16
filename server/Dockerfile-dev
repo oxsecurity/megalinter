@@ -1,4 +1,5 @@
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+FROM trufflesecurity/trufflehog:latest as trufflehog
 
 FROM python:3.11-alpine
 
@@ -10,9 +11,10 @@ RUN apk add \
     nodejs \
     npm
 
-RUN npm install eslint stylelint --global
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 ENV MEGALINTER_FLAVOR=security
 

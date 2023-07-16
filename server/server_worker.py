@@ -48,7 +48,7 @@ class MegaLinterAnalysis:
         self.request_input = request_input
         if request_input.webHookUrl:
             self.web_hook_url = request_input.webHookUrl
-        print(f"Analysis request {self.id} has been initialized")
+        logger.info(f"Analysis request {self.id} has been initialized")
 
     # Initialize files for analysis
     def initialize_files(self):
@@ -88,7 +88,7 @@ class MegaLinterAnalysis:
             )
             err.send_redis_message()
             raise err
-        print(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
+        logger.info(f"Cloned {self.request_input.repositoryUrl} in temp dir {temp_dir}")
         self.workspace = temp_dir
         self.repository = self.request_input.repositoryUrl
 
@@ -105,7 +105,7 @@ class MegaLinterAnalysis:
             else:
                 # No zip file
                 shutil.copytree(upload_dir, temp_dir, dirs_exist_ok=True)
-            print(f"Copied uploaded files from {self.id} in temp dir {temp_dir}")
+            logger.info(f"Copied uploaded files from {self.id} in temp dir {temp_dir}")
             self.workspace = temp_dir
             self.repository = self.request_input.repositoryUrl
         else:
@@ -120,6 +120,7 @@ class MegaLinterAnalysis:
 
     # Init from user snippet
     def init_from_snippet(self):
+        logger.info(f"Input snippet:\n {self.request_input.snippet}")
         # Guess language using pygments
         code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
@@ -132,7 +133,7 @@ class MegaLinterAnalysis:
             err.send_redis_message()
             raise err
         self.snippet_language = code_lexer.name
-        print(f"Guessed snipped language: {self.snippet_language}")
+        logger.info(f"Guessed snipped language: {self.snippet_language}")
         # Build file name
         if len(code_lexer.filenames) > 0:
             if "*." in code_lexer.filenames[0]:
@@ -148,7 +149,7 @@ class MegaLinterAnalysis:
             )
             err.send_redis_message()
             raise err
-        print(f"Snippet file name: {snippet_file_name}")
+        logger.info(f"Snippet file name: {snippet_file_name}")
         temp_dir = self.create_temp_dir()
         snippet_file = os.path.join(temp_dir, snippet_file_name)
         with open(snippet_file, "w", encoding="utf-8") as file:
@@ -187,4 +188,4 @@ class MegaLinterAnalysis:
         self.save()
 
     def save(self):
-        print("Saved state " + str(self.__dict__))
+        logger.debug("Saved state " + str(self.__dict__))

@@ -32,6 +32,9 @@ services:
     # command: rq worker --url redis://megalinter_server_redis:6379 megalinter:queue:requests
     command: rq worker-pool --num-workers 5 --url redis://megalinter_server_redis:6379 megalinter:queue:requests # Uncomment to try worker pool
     environment:
+      # Megalinter variables
+      - FLAVOR_SUGGESTIONS=false
+      - REPOSITORY_TRUFFLEHOG_ARGUMENTS=--json
       # Worker variables
       - MEGALINTER_SERVER=true
       - LOG_LEVEL=DEBUG # Much more logs including run commands

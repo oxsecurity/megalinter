@@ -210,16 +210,21 @@ def log_section_end(section_key):
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
-    process = subprocess.run(
-        sarif_fmt_command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        input=sarif_in + "\n",
-        env=config.build_env(request_id),
-    )
-    return_code = process.returncode
-    output = utils.decode_utf8(process.stdout)
+    try:
+        process = subprocess.run(
+            sarif_fmt_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            input=sarif_in + "\n",
+            env=config.build_env(request_id),
+        )
+        return_code = process.returncode
+        output = utils.decode_utf8(process.stdout)
+    except Exception as e:
+        return_code = 1
+        output = sarif_in
+        logging.warning("Unable to call sarif-fmt: " + str(e))
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
 
@@ -296,6 +301,9 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
+                json_in_stdout = utils.find_json_in_stdout(result["outputText"],False)
+                if json_in_stdout != "":
+                    result["outputJson"] = json.loads(json_in_stdout)
         else:
             logging.warning(
                 "External Message: Unable to find linter output, "
@@ -320,6 +328,7 @@ def get_linter_infos(linter):
         "requestId": linter.master.request_id,
         "docUrl": linter_doc_url,
         "isFormatter": linter.is_formatter,
+        "isSBOM": linter.is_sbom,
     }
     if linter.cli_lint_mode in ["file", "list_of_files"]:
         linter_infos["filesNumber"] = len(linter.files)
