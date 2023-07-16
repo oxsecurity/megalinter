@@ -34,6 +34,7 @@ services:
     environment:
       # Megalinter variables
       - FLAVOR_SUGGESTIONS=false
+      - REPOSITORY_TRUFFLEHOG_ARGUMENTS=--json
       # Worker variables
       - MEGALINTER_SERVER=true
       - LOG_LEVEL=DEBUG # Much more logs including run commands

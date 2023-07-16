@@ -301,6 +301,9 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
+                json_in_stdout = utils.find_json_in_stdout(result["outputText"],False)
+                if json_in_stdout != "":
+                    result["outputJson"] = json.loads(json_in_stdout)
         else:
             logging.warning(
                 "External Message: Unable to find linter output, "
@@ -325,7 +328,7 @@ def get_linter_infos(linter):
         "requestId": linter.master.request_id,
         "docUrl": linter_doc_url,
         "isFormatter": linter.is_formatter,
-        "isSBOM": linter.is_sbom
+        "isSBOM": linter.is_sbom,
     }
     if linter.cli_lint_mode in ["file", "list_of_files"]:
         linter_infos["filesNumber"] = len(linter.files)
