@@ -325,6 +325,7 @@ def get_linter_infos(linter):
         "requestId": linter.master.request_id,
         "docUrl": linter_doc_url,
         "isFormatter": linter.is_formatter,
+        "isSBOM": linter.is_sbom
     }
     if linter.cli_lint_mode in ["file", "list_of_files"]:
         linter_infos["filesNumber"] = len(linter.files)

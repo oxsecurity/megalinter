@@ -54,6 +54,7 @@ class Linter:
         self.name = None
         self.disabled = False
         self.is_formatter = False
+        self.is_sbom = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         self.linter_speed = 3
         self.can_output_sarif = False
