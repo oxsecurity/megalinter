@@ -426,6 +426,7 @@ linters:
   - class: SyftLinter
     linter_name: syft
     can_output_sarif: true
+    is_sbom: true
     descriptor_flavors:
       - security
     ignore_for_flavor_suggestions: true
@@ -496,8 +497,11 @@ linters:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
 
-  # TRIVY
+  # TRIVY SBOM
   - linter_name: trivy-sbom
+    class: TrivySbomLinter
+    can_output_sarif: true
+    is_sbom: true
     name: REPOSITORY_TRIVY_SBOM
     cli_executable: trivy
     descriptor_flavors:
@@ -522,6 +526,9 @@ linters:
       - cyclonedx
     cli_lint_extra_args_after:
       - "."
+    cli_sarif_args:
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
     test_folder: trivy
     examples:
       - "trivy fs --format cyclonedx ."

@@ -1046,6 +1046,13 @@
             "title": "Is formatter",
             "type": "boolean"
           },
+          "is_sbom": {
+            "$id": "#/properties/linters/items/properties/is_sbom",
+            "default": false,
+            "description": "If the linter is SBOM, set to true so extra properties will be returned",
+            "title": "Is SBOM",
+            "type": "boolean"
+          },
           "lint_all_files": {
             "$id": "#/properties/linters/items/lint_all_files",
             "default": false,
