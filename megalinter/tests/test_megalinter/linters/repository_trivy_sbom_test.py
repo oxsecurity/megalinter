@@ -35,8 +35,7 @@ class repository_trivy_sbom_test(TestCase, LinterTestRoot):
         super().test_report_tap()
 
     def test_report_sarif(self):
-        self.check_if_another_test_suite()
-        super().test_report_sarif()
+        raise unittest.SkipTest("Skipped because SBOM generation can not fail")
 
     def test_format_fix(self):
         self.check_if_another_test_suite()
