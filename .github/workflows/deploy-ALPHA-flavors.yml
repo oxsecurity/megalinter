@@ -120,7 +120,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: flavors/${{ matrix.flavor }}/Dockerfile-worker
+          file: Dockerfile-worker
           platforms: linux/amd64
           build-args: |
             MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
