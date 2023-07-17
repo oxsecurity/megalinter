@@ -301,7 +301,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
                 result["outputText"] = text_file.read()
-                json_in_stdout = utils.find_json_in_stdout(result["outputText"],False)
+                json_in_stdout = utils.find_json_in_stdout(result["outputText"], False)
                 if json_in_stdout != "":
                     result["outputJson"] = json.loads(json_in_stdout)
         else:
