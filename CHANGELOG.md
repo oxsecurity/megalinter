@@ -142,6 +142,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.2 to **1.5.3** on 2023-07-14
   - [grype](https://github.com/anchore/grype) from 0.64.0 to **0.63.1** on 2023-07-14
   - [eslint](https://eslint.org) from 8.44.0 to **8.45.0** on 2023-07-14
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.2 to **0.6.3** on 2023-07-17
+  - [checkov](https://www.checkov.io/) from 2.3.324 to **2.3.326** on 2023-07-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.1 to **6.31.2** on 2023-07-17
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11

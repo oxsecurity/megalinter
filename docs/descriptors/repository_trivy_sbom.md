@@ -11,7 +11,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver)](https://github.com/aquasecurity/trivy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver)](https://github.com/aquasecurity/trivy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/contributors/)
 
 Generates SBOM (Software Bill Of Material) using Trivy
 
@@ -91,11 +91,11 @@ trivy-sbom is called once on the whole project directory (`project` CLI lint mod
 ### Example calls
 
 ```shell
-trivy fs --format spdx-json .
+trivy fs --format cyclonedx .
 ```
 
 ```shell
-trivy fs --config trivy-sbom.yaml --format spdx-json .
+trivy fs --config trivy-sbom.yaml --format cyclonedx .
 ```
 
 
