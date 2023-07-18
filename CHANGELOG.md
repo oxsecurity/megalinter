@@ -27,6 +27,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
   - New Redis reporter (alpha)
 
+- CI
+  - Clean docker build cache to avoid no space left on device during Build Dev job
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12
