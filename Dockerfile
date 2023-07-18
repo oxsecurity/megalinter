@@ -49,7 +49,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
- # https://stackoverflow.com/a/73711302/699056
+# https://stackoverflow.com/a/73711302/699056
 FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
 
 FROM python:3.11.4-alpine3.17
