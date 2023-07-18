@@ -58,8 +58,6 @@ ARG GITHUB_TOKEN
 # https://stackoverflow.com/a/73711302/699056
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
 # https://stackoverflow.com/a/73711302/699056
-# https://stackoverflow.com/a/73359981/699056
-# https://stackoverflow.com/a/71209637/699056
 RUN apk add --update --no-cache libc6-compat \
                      gcompat \
                      qemu-x86_64
