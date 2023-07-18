@@ -1,4 +1,16 @@
-resource "aws_instance" "bad" {
-  ami           = "ami-0ff8a91507f77f867"
-  instance_type =  # invalid type!
+terraform {
+  required_version = ">= 1.2.5"
 }
+
+resource "aws_instance" "bad" {
+  instance_type               = "t2.small"
+  associate_public_ip_address = false
+
+  murf = "cupcake8"
+
+  ebs_block_device {
+    encrypted = true
+    wesh = false
+  }
+}
+

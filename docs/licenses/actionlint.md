@@ -1,3 +1,8 @@
+---
+title: License info for actionlint within MegaLinter
+search:
+  exclude: true
+---
 the MIT License
 
 Copyright (c) 2021 rhysd

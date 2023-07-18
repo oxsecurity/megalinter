@@ -92,7 +92,7 @@ def get_excluded_directories(request_id):
 def filter_files(
     all_files: Sequence[str],
     filter_regex_include: Optional[str],
-    filter_regex_exclude: Optional[str],
+    filter_regex_exclude: Sequence[str],
     file_names_regex: Sequence[str],
     file_extensions: Any,
     ignored_files: Optional[Sequence[str]],
@@ -108,9 +108,12 @@ def filter_files(
     filter_regex_include_object = (
         re.compile(filter_regex_include) if filter_regex_include else None
     )
-    filter_regex_exclude_object = (
-        re.compile(filter_regex_exclude) if filter_regex_exclude else None
-    )
+    filter_regex_exclude_objects = []
+    for filter_regex_exclude_item in filter_regex_exclude:
+        filter_regex_exclude_object = (
+            re.compile(filter_regex_exclude_item) if filter_regex_exclude_item else None
+        )
+        filter_regex_exclude_objects += [filter_regex_exclude_object]
     file_names_regex_object = re.compile("|".join(file_names_regex))
     filtered_files = []
     file_contains_regex_object = (
@@ -148,14 +151,23 @@ def filter_files(
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
         # Skip according to FILTER_REGEX_INCLUDE
-        if filter_regex_include_object and not filter_regex_include_object.search(
-            file_with_workspace
+        if filter_regex_include_object and (
+            not filter_regex_include_object.search(file)
+            # Compatibility with v6 regexes
+            and not filter_regex_include_object.search(file_with_workspace)
         ):
             continue
-        # Skip according to FILTER_REGEX_EXCLUDE
-        if filter_regex_exclude_object and filter_regex_exclude_object.search(
-            file_with_workspace
-        ):
+        # Skip according to FILTER_REGEX_EXCLUDE list
+        excluded_by_regex = False
+        for filter_regex_exclude_object in filter_regex_exclude_objects:
+            if filter_regex_exclude_object and (
+                filter_regex_exclude_object.search(file)
+                # Compatibility with v6 regexes
+                or filter_regex_exclude_object.search(file_with_workspace)
+            ):
+                excluded_by_regex = True
+                break
+        if excluded_by_regex is True:
             continue
 
         # Skip according to file extension (only if lint_all_other_linter_files is false or file_extensions is defined)
@@ -233,7 +245,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
             continue
         reporters += [reporter]
     # Sort reporters by name
-    reporters = sorted(reporters, key=lambda r: (r.processing_order, r.name))
+    reporters = sorted(reporters, key=lambda r: r.processing_order)
     return reporters
 
 
@@ -328,11 +340,11 @@ def format_bullet_list(files):
     return "{}{}".format(prefix, file_list)
 
 
-def find_json_in_stdout(stdout: str):
+def find_json_in_stdout(stdout: str, sarif=True):
     # Try using full stdout
     found_json = truncate_json_from_string(stdout)
     if found_json != "":
-        sarif_json = extract_sarif_json(found_json)
+        sarif_json = extract_sarif_json(found_json, sarif)
         if sarif_json != "":
             return sarif_json
     # Try to find a json single line within stdout
@@ -341,14 +353,14 @@ def find_json_in_stdout(stdout: str):
     for line in stdout_lines:
         if line.strip().startswith("{"):
             json_unique_line = truncate_json_from_string(line)
-            sarif_json = extract_sarif_json(json_unique_line)
+            sarif_json = extract_sarif_json(json_unique_line, sarif)
             if sarif_json != "":
                 return sarif_json
     # Try using regex
     pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
     json_regex_results = pattern.findall(stdout)
     for json_regex_result in json_regex_results:
-        sarif_json = extract_sarif_json(json_regex_result)
+        sarif_json = extract_sarif_json(json_regex_result, sarif)
         if sarif_json != "":
             return sarif_json
     # SARIF json not found in stdout
@@ -363,10 +375,12 @@ def truncate_json_from_string(string_with_json_inside: str):
     return ""
 
 
-def extract_sarif_json(json_text: str):
+def extract_sarif_json(json_text: str, sarif=True):
     try:
         json_obj = json.loads(json_text)
-        if "runs" in json_obj:
+        if sarif is False:
+            sarif_json = json.dumps(json_obj, indent=4)
+        elif "runs" in json_obj:
             sarif_json = json.dumps(json_obj, indent=4)
         else:
             sarif_json = ""

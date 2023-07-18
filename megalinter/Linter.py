@@ -54,6 +54,7 @@ class Linter:
         self.name = None
         self.disabled = False
         self.is_formatter = False
+        self.is_sbom = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         self.linter_speed = 3
         self.can_output_sarif = False
@@ -87,6 +88,7 @@ class Linter:
         self.is_plugin = False
         self.pre_commands = None
         self.post_commands = None
+        self.unsecured_env_variables = []
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
@@ -137,6 +139,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
+        self.lint_command_log: list(str) | str | None = None
 
         # Initialize parameters
         default_params = {
@@ -294,7 +297,8 @@ class Linter:
             self.ignore_file_label = None
             self.ignore_file_error = None
             self.filter_regex_include = None
-            self.filter_regex_exclude = None
+            self.filter_regex_exclude_descriptor = None
+            self.filter_regex_exclude_linter = None
             self.post_linter_status = (
                 params["post_linter_status"]
                 if "post_linter_status" in params
@@ -664,6 +668,12 @@ class Linter:
                 self.request_id, self.name + "_POST_COMMANDS"
             )
 
+        # Get secured variables allow list
+        if config.exists(self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"):
+            self.unsecured_env_variables = config.get_list(
+                self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"
+            )
+
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.request_id, self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
             self.disable_errors_if_less_than = int(
@@ -687,16 +697,15 @@ class Linter:
             == "true"
         ):
             self.disable_errors = True
-        # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
-        if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get(
-                self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
-            )
-        elif config.exists(
-            self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
-        ):
-            self.filter_regex_exclude = config.get(
+        # Exclude regex: descriptor level
+        if config.exists(self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude_descriptor = config.get(
                 self.request_id, self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
+            )
+        # Exclude regex: linter level
+        if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude_linter = config.get(
+                self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
             )
         # Override default docker image version
         if config.exists(self.request_id, self.name + "_DOCKER_IMAGE_VERSION"):
@@ -776,8 +785,10 @@ class Linter:
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
-            reporter.produce_report()
-
+            try:
+                reporter.produce_report()
+            except Exception as e:
+                logging.error("Unable to process reporter " + reporter.name + str(e))
         return self
 
     def replace_vars(self, variables):
@@ -832,7 +843,8 @@ class Linter:
         log_object = {
             "name": self.name,
             "filter_regex_include": self.filter_regex_include,
-            "filter_regex_exclude": self.filter_regex_exclude,
+            "filter_regex_exclude_descriptor": self.filter_regex_exclude_descriptor,
+            "filter_regex_exclude_linter": self.filter_regex_exclude_linter,
             "files_sub_directory": self.files_sub_directory,
             "lint_all_files": self.lint_all_files,
             "lint_all_other_linters_files": self.lint_all_other_linters_files,
@@ -851,7 +863,10 @@ class Linter:
         self.files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
-            filter_regex_exclude=self.filter_regex_exclude,
+            filter_regex_exclude=[
+                self.filter_regex_exclude_descriptor,
+                self.filter_regex_exclude_linter,
+            ],
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=[],
@@ -878,7 +893,11 @@ class Linter:
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
-        logging.debug(f"[{self.linter_name}] command: {str(command)}")
+        # Output command if debug mode
+        if os.environ.get("LOG_LEVEL", "INFO") == "DEBUG":
+            logging.debug(f"[{self.linter_name}] command: {str(command)}")
+            self.lint_command_log = command
+        # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
@@ -891,7 +910,7 @@ class Linter:
         cwd = os.path.abspath(self.workspace)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {
-            **config.build_env(self.request_id),
+            **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
         if type(command) == str:
@@ -907,6 +926,8 @@ class Linter:
                 if sys.platform == "win32"
                 else "/bin/bash",
             )
+            return_code = process.returncode
+            return_stdout = utils.decode_utf8(process.stdout)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -919,15 +940,26 @@ class Linter:
                     return errno.ESRCH, msg
 
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
-            process = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                env=subprocess_env,
-                cwd=cwd,
-            )
-        return_code = process.returncode
-        return_stdout = utils.decode_utf8(process.stdout)
+            try:
+                process = subprocess.run(
+                    command,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    env=subprocess_env,
+                    cwd=cwd,
+                )
+                return_code = process.returncode
+                return_stdout = utils.decode_utf8(process.stdout)
+            except FileNotFoundError as err:
+                return_code = 999
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
+            except Exception as err:
+                return_code = 99
+                return_stdout = (
+                    f"Fatal error while calling {self.linter_name}: {str(err)}"
+                )
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
@@ -947,6 +979,10 @@ class Linter:
                 if os.path.isfile(self.sarif_default_output_file)
                 else os.path.join(self.workspace, self.sarif_default_output_file)
             )
+            if not os.path.isfile(linter_sarif_report):
+                linter_sarif_report = os.path.join(
+                    self.report_folder, self.sarif_default_output_file
+                )
 
             # Check that a sarif report really exists before moving it etc)
             if os.path.isfile(linter_sarif_report):
@@ -1017,7 +1053,7 @@ class Linter:
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
         subprocess_env = {
-            **config.build_env(self.request_id),
+            **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
         try:
@@ -1065,7 +1101,9 @@ class Linter:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
                 subprocess_env = {
-                    **config.build_env(self.request_id),
+                    **config.build_env(
+                        self.request_id, True, self.unsecured_env_variables
+                    ),
                     "FORCE_COLOR": "0",
                 }
                 process = subprocess.run(
@@ -1313,6 +1351,18 @@ class Linter:
             total_errors = sum(
                 not line.isspace() and line != "" for line in stdout.splitlines()
             )
+        # Count number of results in sarif format
+        elif self.cli_lint_errors_count == "sarif":
+            sarif = None
+            sarif_stdout = utils.find_json_in_stdout(stdout)
+            try:
+                sarif = json.loads(sarif_stdout)
+            except ValueError as e:
+                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
+            if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
+                total_errors = len(sarif["runs"][0]["results"])
+            else:
+                logging.warning("Unable to find results in :" + stdout)
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors

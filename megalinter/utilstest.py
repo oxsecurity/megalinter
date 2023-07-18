@@ -78,6 +78,9 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "OUTPUT_DETAIL", "detailed")
     config.set_value(request_id, "PLUGINS", "")
     config.set_value(request_id, "GITHUB_STATUS_REPORTER", "false")
+    config.set_value(request_id, "GITHUB_COMMENT_REPORTER", "false")
+    config.set_value(request_id, "CONFIG_REPORTER", "false")
+    config.set_value(request_id, "FLAVOR_SUGGESTIONS", "false")
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
@@ -134,7 +137,7 @@ def test_linter_success(linter, test_self):
     if (
         linter.disabled is True
         or "all" in getattr(linter, "descriptor_flavors_exclude", [])
-        # todo: remove when bug is fixed https://github.com/accurics/terrascan/issues/1036
+        # todo: remove when bug is fixed https://github.com/tenable/terrascan/issues/1036
         or linter.linter_name == "terrascan"
     ):
         raise unittest.SkipTest("Linter has been disabled")
@@ -158,6 +161,8 @@ def test_linter_success(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": "true",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -221,6 +226,8 @@ def test_linter_failure(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars_failure.update(linter.test_variables)
@@ -444,6 +451,8 @@ def test_linter_report_tap(linter, test_self):
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "ENABLE_LINTERS": linter.name,
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -525,6 +534,8 @@ def test_linter_report_sarif(linter, test_self):
         "ENABLE_LINTERS": linter.name,
         "LOG_LEVEL": "DEBUG",
         "LOG_FILE": "megalinter.log",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
@@ -642,6 +653,8 @@ def test_linter_format_fix(linter, test_self):
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
         "PRINT_ALL_FILES": "true",
+        "GITHUB_COMMENT_REPORTER": "false",
+        "GITHUB_STATUS_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)

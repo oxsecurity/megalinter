@@ -58,6 +58,9 @@ linters:
     ignore_for_flavor_suggestions: true
     linter_text: |
       Use `--ignore-globs` to ignore files and/or folders
+
+      Example:
+        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
@@ -71,17 +74,17 @@ linters:
       - --file-format
       - sarif
     cli_lint_extra_args_after:
+      - --source-code
       - "."
       - -E
-      - --ignore-globs
-      - "**/megalinter-reports/**"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "(\\[.*\\])"
+      - --skip-git-ignored-files
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_errors_count: sarif
     test_folder: devskim
     examples:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
-    downgraded_version: true
     install:
       apk:
         - icu-libs
@@ -98,7 +101,7 @@ linters:
               && chmod +x dotnet-install.sh \
               && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
         - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version 0.7.104
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     supported_platforms:
       platform:
         - linux/amd64
@@ -246,7 +249,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.16.3 as gitleaks
+        - FROM zricethezav/gitleaks:v8.17.0 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     supported_platforms:
       platform:
@@ -263,6 +266,83 @@ linters:
         description: Pull Request target commit sha (N/A to supported scenarios)
         default_value: ""
 
+  # GRYPE
+  - linter_name: grype
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_url: https://github.com/anchore/grype
+    linter_repo: https://github.com/anchore/grype
+    linter_rules_url: https://github.com/anchore/grype#vulnerability-summary
+    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png
+    linter_rules_configuration_url: https://github.com/anchore/grype#configuration
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: .grype.yaml
+    cli_lint_extra_args_after:
+      - dir:.
+    cli_sarif_args:
+      - --output
+      - sarif
+    cli_version_arg_name: version
+    examples:
+      - "grype dir:."
+    downgraded_version: true
+    downgraded_reason: https://github.com/anchore/grype/issues/1388
+    install:
+      dockerfile:
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+    test_folder: repository_grype
+
+  # KICS
+  - linter_name: kics
+    can_output_sarif: true
+    descriptor_flavors:
+      - cupcake
+      - terraform
+      - security
+    linter_speed: 2
+    linter_url: https://www.kics.io
+    linter_repo: https://github.com/checkmarx/kics
+    linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
+    linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_rules_configuration_url: https://docs.kics.io/latest/configuration-file/
+    linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
+    linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: kics.config
+    cli_executable: kics
+    cli_lint_extra_args:
+      - scan
+    cli_lint_extra_args_after:
+      - --no-progress
+      - --path
+      - "."
+    sarif_default_output_file: kics-results.sarif
+    cli_sarif_args:
+      - --output-name
+      - kics-results.sarif
+      - --output-path
+      - "{{REPORT_FOLDER}}"
+      - --report-formats
+      - "sarif"
+    cli_version_arg_name: "version"
+    examples:
+      - "kics scan --path ."
+    install:
+      dockerfile:
+        - FROM checkmarx/kics:alpine as kics
+        - COPY --link --from=kics /app/bin/kics /usr/bin/
+        - RUN mkdir -p /opt/kics/assets
+        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+    test_folder: repository_kics
+
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint
@@ -275,7 +355,7 @@ linters:
     linter_speed: 1
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
-    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
+    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
     linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
     linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
     linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
@@ -369,6 +449,7 @@ linters:
   - class: SyftLinter
     linter_name: syft
     can_output_sarif: true
+    is_sbom: true
     descriptor_flavors:
       - security
     ignore_for_flavor_suggestions: true
@@ -407,13 +488,13 @@ linters:
       - cupcake
       - security
     linter_text: |
-      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/vulnerability/examples/filter/#by-vulnerability-ids)
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids)
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
-    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.35/imgs/logo.png
-    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/references/customization/config-file/
-    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/secret/examples/#skip-directories
+    linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
     config_file_name: trivy.yaml
     cli_config_arg_name: --config
@@ -445,3 +526,77 @@ linters:
       vscode:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
+  # TRIVY SBOM
+  - linter_name: trivy-sbom
+    class: TrivySbomLinter
+    can_output_sarif: true
+    is_sbom: true
+    name: REPOSITORY_TRIVY_SBOM
+    cli_executable: trivy
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_text: |
+      Generates SBOM (Software Bill Of Material) using Trivy
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_speed: 2
+    linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
+    cli_lint_mode: project
+    config_file_name: trivy-sbom.yaml
+    cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - fs
+      - --format
+      - cyclonedx
+    cli_lint_extra_args_after:
+      - "."
+    cli_sarif_args:
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
+    test_folder: trivy
+    examples:
+      - "trivy fs --format cyclonedx ."
+      - "trivy fs --config trivy-sbom.yaml --format cyclonedx ."
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    ide:
+      vscode:
+        - name: VSCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
+  # TRUFFLEHOG
+  - linter_name: trufflehog
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_url: https://github.com/trufflesecurity/trufflehog
+    linter_repo: https://github.com/trufflesecurity/trufflehog
+    linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: .trufflehog.yml
+    cli_lint_extra_args:
+      - filesystem
+      - "."
+      - --fail
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    examples:
+      - "trufflehog filesystem ."
+    install:
+      dockerfile:
+        - FROM trufflesecurity/trufflehog:latest as trufflehog
+        - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    test_folder: gitleaks

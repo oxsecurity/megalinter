@@ -61,6 +61,10 @@ jobs:
     name: Deploy Docker Image - Beta - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    permissions:
+      packages: write
+    environment:
+      name: beta
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -145,10 +149,14 @@ jobs:
             "repository_dustilock",
             "repository_git_diff",
             "repository_gitleaks",
+            "repository_grype",
+            "repository_kics",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "repository_trivy_sbom",
+            "repository_trufflehog",
             "rst_rst_lint",
             "rst_rstcheck",
             "rst_rstfmt",
@@ -163,6 +171,7 @@ jobs:
             "spell_cspell",
             "spell_proselint",
             "spell_vale",
+            "spell_lychee",
             "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
@@ -172,7 +181,6 @@ jobs:
             "terraform_terrascan",
             "terraform_terragrunt",
             "terraform_terraform_fmt",
-            "terraform_kics",
             "tsx_eslint",
             "typescript_es",
             "typescript_standard",
@@ -250,7 +258,7 @@ jobs:
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
 
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:beta
         timeout-minutes: 30
 
       ##############################################

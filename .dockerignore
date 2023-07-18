@@ -14,3 +14,4 @@ pids
 *.seed
 *.pid.lock
 *.log
+.venv

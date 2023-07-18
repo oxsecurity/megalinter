@@ -45,6 +45,7 @@
         "cupcake",
         "documentation",
         "dotnet",
+        "dotnetweb",
         "go",
         "java",
         "javascript",
@@ -603,7 +604,8 @@
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "examples": [
               "regex_number",
@@ -786,6 +788,13 @@
             "description": "Disable linter in MegaLinter next builds",
             "title": "Disabled",
             "type": "boolean"
+          },
+          "downgraded_reason": {
+            "$id": "#/properties/linters/items/properties/downgraded_reason",
+            "default": false,
+            "description": "Explanation about why the linter is downgraded",
+            "title": "Downgraded reason",
+            "type": "string"
           },
           "downgraded_version": {
             "$id": "#/properties/linters/items/properties/downgraded_version",
@@ -1037,6 +1046,13 @@
             "title": "Is formatter",
             "type": "boolean"
           },
+          "is_sbom": {
+            "$id": "#/properties/linters/items/properties/is_sbom",
+            "default": false,
+            "description": "If the linter is SBOM, set to true so extra properties will be returned",
+            "title": "Is SBOM",
+            "type": "boolean"
+          },
           "lint_all_files": {
             "$id": "#/properties/linters/items/lint_all_files",
             "default": false,
@@ -1055,7 +1071,7 @@
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "description": "URL of an image used to build header of linter Markdown documentation",
             "examples": [
-              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
             ],
             "format": "uri",
             "title": "Linter banner image URL",

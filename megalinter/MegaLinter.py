@@ -211,10 +211,6 @@ class Megalinter:
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
-        # Initialize reports
-        for reporter in self.reporters:
-            reporter.initialize()
-
         # Display warning if selected flavors doesn't match all linters
         if (
             flavor_factory.check_active_linters_match_flavor(
@@ -222,9 +218,14 @@ class Megalinter:
             )
             is False
         ):
+            # Remove linters that are not existing in the flavor
             active_linters = [
                 linter for linter in active_linters if linter.is_active is True
             ]
+
+        # Initialize reports
+        for reporter in self.reporters:
+            reporter.initialize()
 
         if (
             config.get(self.request_id, "PARALLEL", "true") == "true"
@@ -703,7 +704,7 @@ class Megalinter:
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
-            filter_regex_exclude=self.filter_regex_exclude,
+            filter_regex_exclude=[self.filter_regex_exclude],
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
@@ -856,7 +857,7 @@ class Megalinter:
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
-                c.yellow("◬ Successfully linted all files, but with ignored errors")
+                c.yellow("⚠️ Successfully linted all files, but with ignored errors")
             )
             config.delete(self.request_id)
             self.check_updated_sources_failure()

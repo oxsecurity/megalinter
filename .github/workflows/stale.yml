@@ -9,8 +9,10 @@ on:
   schedule:
     # every day at 0:00 UTC
     - cron: "0 0 * * *"
-  issue_comment:
-    types: [created, deleted, edited]
+permissions:
+  #contents: write # only for delete-branch option
+  issues: write
+  pull-requests: write
 
 ###############
 # Run the job #

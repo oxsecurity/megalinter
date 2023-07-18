@@ -19,6 +19,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "run"
+    cli_lint_fix_arg_name: --fix
     cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:

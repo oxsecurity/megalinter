@@ -4,6 +4,7 @@ descriptor_type: language
 descriptor_flavors:
   - cupcake
   - dotnet
+  - dotnetweb
 file_extensions:
   - ".cpp"
   - ".h"

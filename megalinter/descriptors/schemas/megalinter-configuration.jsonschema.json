@@ -31,6 +31,12 @@
           ],
           "title": "Folder where to run the command",
           "type": "string"
+        },
+        "secured_env": {
+          "Description": "Hides sensitive variables from ENV variables when calling the command",
+          "default": true,
+          "title": "Secured Environment Variables",
+          "type": "boolean"
         }
       },
       "required": [],
@@ -180,10 +186,14 @@
         "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GRYPE",
+        "REPOSITORY_KICS",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
         "REPOSITORY_TRIVY",
+        "REPOSITORY_TRIVY_SBOM",
+        "REPOSITORY_TRUFFLEHOG",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",
@@ -198,6 +208,7 @@
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
         "SPELL_VALE",
+        "SPELL_LYCHEE",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "SQL_TSQLLINT",
@@ -207,7 +218,6 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
-        "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -224,7 +234,8 @@
         "KUBERNETES_KUBEVAL",
         "REPOSITORY_GOODCHECK",
         "SPELL_MISSPELL",
-        "TERRAFORM_CHECKOV"
+        "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS"
       ],
       "type": "string"
     }
@@ -369,6 +380,16 @@
       "description": "ACTION_ACTIONLINT: Path where to find linter configuration file",
       "title": "ACTION_ACTIONLINT: Custom config file path",
       "type": "string"
+    },
+    "ACTION_ACTIONLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ACTION_ACTIONLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ACTION_ACTIONLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ACTIONLINT: Unsecured env variables",
+      "type": "array"
     },
     "ACTION_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ACTION_FILTER_REGEX_EXCLUDE",
@@ -518,6 +539,16 @@
       "description": "ANSIBLE_ANSIBLE_LINT: Path where to find linter configuration file",
       "title": "ANSIBLE_ANSIBLE_LINT: Custom config file path",
       "type": "string"
+    },
+    "ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ANSIBLE_ANSIBLE_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ANSIBLE_ANSIBLE_LINT: Unsecured env variables",
+      "type": "array"
     },
     "ANSIBLE_DIRECTORY": {
       "$id": "#/properties/ANSIBLE_DIRECTORY",
@@ -692,6 +723,16 @@
       "title": "ARM_ARM_TTK: Custom config file path",
       "type": "string"
     },
+    "ARM_ARM_TTK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ARM_ARM_TTK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ARM_ARM_TTK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ARM_ARM_TTK: Unsecured env variables",
+      "type": "array"
+    },
     "ARM_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ARM_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for ARM descriptor",
@@ -838,6 +879,16 @@
       "title": "BASH_EXEC: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "BASH_EXEC_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/BASH_EXEC_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling BASH_EXEC and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_EXEC: Unsecured env variables",
+      "type": "array"
+    },
     "BASH_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BASH_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for BASH descriptor",
@@ -968,6 +1019,16 @@
       "title": "BASH_SHELLCHECK: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling BASH_SHELLCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHELLCHECK: Unsecured env variables",
+      "type": "array"
+    },
     "BASH_SHFMT_ARGUMENTS": {
       "$id": "#/properties/BASH_SHFMT_ARGUMENTS",
       "description": "BASH_SHFMT: User custom arguments to add in linter CLI call",
@@ -1088,6 +1149,16 @@
       "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "BASH_SHFMT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/BASH_SHFMT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling BASH_SHFMT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHFMT: Unsecured env variables",
+      "type": "array"
+    },
     "BICEP_BICEP_LINTER_ARGUMENTS": {
       "$id": "#/properties/BICEP_BICEP_LINTER_ARGUMENTS",
       "description": "BICEP_BICEP_LINTER: User custom arguments to add in linter CLI call",
@@ -1205,6 +1276,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "BICEP_BICEP_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling BICEP_BICEP_LINTER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "BICEP_BICEP_LINTER: Unsecured env variables",
       "type": "array"
     },
     "BICEP_FILTER_REGEX_EXCLUDE": {
@@ -1356,6 +1437,16 @@
       "title": "CLOJURE_CLJSTYLE: Custom config file path",
       "type": "string"
     },
+    "CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CLOJURE_CLJSTYLE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOJURE_CLJSTYLE: Unsecured env variables",
+      "type": "array"
+    },
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_ARGUMENTS",
       "description": "CLOJURE_CLJ_KONDO: User custom arguments to add in linter CLI call",
@@ -1494,6 +1585,16 @@
       "description": "CLOJURE_CLJ_KONDO: Path where to find linter configuration file",
       "title": "CLOJURE_CLJ_KONDO: Custom config file path",
       "type": "string"
+    },
+    "CLOJURE_CLJ_KONDO_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CLOJURE_CLJ_KONDO and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOJURE_CLJ_KONDO: Unsecured env variables",
+      "type": "array"
     },
     "CLOJURE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CLOJURE_FILTER_REGEX_EXCLUDE",
@@ -1645,6 +1746,16 @@
       "title": "CLOUDFORMATION_CFN_LINT: Custom config file path",
       "type": "string"
     },
+    "CLOUDFORMATION_CFN_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CLOUDFORMATION_CFN_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOUDFORMATION_CFN_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "CLOUDFORMATION_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CLOUDFORMATION_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for CLOUDFORMATION descriptor",
@@ -1794,6 +1905,16 @@
       "title": "COFFEE_COFFEELINT: Custom config file path",
       "type": "string"
     },
+    "COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling COFFEE_COFFEELINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "COFFEE_COFFEELINT: Unsecured env variables",
+      "type": "array"
+    },
     "COFFEE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/COFFEE_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for COFFEE descriptor",
@@ -1936,6 +2057,16 @@
       "title": "COPYPASTE_JSCPD: Custom config file path",
       "type": "string"
     },
+    "COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "COPYPASTE_JSCPD: Unsecured env variables",
+      "type": "array"
+    },
     "CPP_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/CPP_CPPLINT_ARGUMENTS",
       "description": "CPP_CPPLINT: User custom arguments to add in linter CLI call",
@@ -2056,6 +2187,16 @@
       "title": "CPP_CPPLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "CPP_CPPLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CPP_CPPLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CPP_CPPLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPLINT: Unsecured env variables",
+      "type": "array"
+    },
     "CPP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CPP_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for CPP descriptor",
@@ -2086,7 +2227,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Custom arguments",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -2096,19 +2237,19 @@
       "$id": "#/properties/CREDENTIALS_SECRETLINT_CONFIG_FILE",
       "default": ".secretlintrc.json",
       "description": "CREDENTIALS_SECRETLINT: User custom config file name if different from default",
-      "title": "CREDENTIALS_SECRETLINT: Custom config file name",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom config file name",
       "type": "string"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "CREDENTIALS_SECRETLINT: Maximum number of errors allowed",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Maximum number of errors allowed",
       "type": "number"
     },
     "CREDENTIALS_SECRETLINT_FILE_EXTENSIONS": {
@@ -2120,7 +2261,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_FILE_NAMES_REGEX": {
@@ -2132,7 +2273,7 @@
       "items": {
         "type": "string"
       },
-      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_POST_COMMANDS": {
@@ -2149,7 +2290,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_PRE_COMMANDS": {
@@ -2166,13 +2307,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "CREDENTIALS_SECRETLINT_RULES_PATH": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_RULES_PATH",
       "description": "CREDENTIALS_SECRETLINT: Path where to find linter configuration file",
-      "title": "CREDENTIALS_SECRETLINT: Custom config file path",
+      "title": "(removed) CREDENTIALS_SECRETLINT: Custom config file path",
       "type": "string"
     },
     "CSHARP_CSHARPIER_ARGUMENTS": {
@@ -2295,6 +2436,16 @@
       "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSHARP_CSHARPIER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_CSHARPIER: Unsecured env variables",
+      "type": "array"
+    },
     "CSHARP_DOTNET_FORMAT_ARGUMENTS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_ARGUMENTS",
       "description": "CSHARP_DOTNET_FORMAT: User custom arguments to add in linter CLI call",
@@ -2412,6 +2563,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "CSHARP_DOTNET_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "CSHARP_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSHARP_DOTNET_FORMAT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_DOTNET_FORMAT: Unsecured env variables",
       "type": "array"
     },
     "CSHARP_FILTER_REGEX_EXCLUDE": {
@@ -2573,6 +2734,16 @@
       "title": "CSS_SCSS_LINT: Custom config file path",
       "type": "string"
     },
+    "CSS_SCSS_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSS_SCSS_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSS_SCSS_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_SCSS_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "CSS_STYLELINT_ARGUMENTS": {
       "$id": "#/properties/CSS_STYLELINT_ARGUMENTS",
       "description": "CSS_STYLELINT: User custom arguments to add in linter CLI call",
@@ -2713,6 +2884,16 @@
       "title": "CSS_STYLELINT: Custom config file path",
       "type": "string"
     },
+    "CSS_STYLELINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSS_STYLELINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSS_STYLELINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_STYLELINT: Unsecured env variables",
+      "type": "array"
+    },
     "C_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/C_CPPLINT_ARGUMENTS",
       "description": "C_CPPLINT: User custom arguments to add in linter CLI call",
@@ -2831,6 +3012,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "C_CPPLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "C_CPPLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/C_CPPLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling C_CPPLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPLINT: Unsecured env variables",
       "type": "array"
     },
     "C_FILTER_REGEX_EXCLUDE": {
@@ -2982,6 +3173,16 @@
       "title": "DART_DARTANALYZER: Custom config file path",
       "type": "string"
     },
+    "DART_DARTANALYZER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/DART_DARTANALYZER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling DART_DARTANALYZER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "DART_DARTANALYZER: Unsecured env variables",
+      "type": "array"
+    },
     "DART_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DART_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for DART descriptor",
@@ -3072,7 +3273,7 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom arguments",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -3086,26 +3287,26 @@
         "list_of_files",
         "project"
       ],
-      "title": "DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
       "default": ".dockerfilelintrc",
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
       "type": "number"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS": {
@@ -3117,14 +3318,14 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAME": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_NAME",
       "default": ".dockerfilelintrc",
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX": {
@@ -3136,17 +3337,17 @@
       "items": {
         "type": "string"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE",
-      "title": "DOCKERFILE_DOCKERFILELINT: Excluding Regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Excluding Regex",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE",
-      "title": "DOCKERFILE_DOCKERFILELINT: Including Regex",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Including Regex",
       "type": "string"
     },
     "DOCKERFILE_DOCKERFILELINT_POST_COMMANDS": {
@@ -3163,7 +3364,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS": {
@@ -3180,13 +3381,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_RULES_PATH": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_RULES_PATH",
       "description": "DOCKERFILE_DOCKERFILELINT: Path where to find linter configuration file",
-      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file path",
+      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file path",
       "type": "string"
     },
     "DOCKERFILE_FILTER_REGEX_EXCLUDE": {
@@ -3339,6 +3540,16 @@
       "title": "DOCKERFILE_HADOLINT: Custom config file path",
       "type": "string"
     },
+    "DOCKERFILE_HADOLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling DOCKERFILE_HADOLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "DOCKERFILE_HADOLINT: Unsecured env variables",
+      "type": "array"
+    },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS",
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom arguments to add in linter CLI call",
@@ -3478,6 +3689,16 @@
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Path where to find linter configuration file",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom config file path",
       "type": "string"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling EDITORCONFIG_EDITORCONFIG_CHECKER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Unsecured env variables",
+      "type": "array"
     },
     "EDITORCONFIG_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/EDITORCONFIG_FILTER_REGEX_EXCLUDE",
@@ -3686,6 +3907,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "ENV_DOTENV_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "ENV_DOTENV_LINTER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ENV_DOTENV_LINTER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ENV_DOTENV_LINTER: Unsecured env variables",
       "type": "array"
     },
     "ENV_FILTER_REGEX_EXCLUDE": {
@@ -3946,6 +4177,16 @@
       "title": "GHERKIN_GHERKIN_LINT: Custom config file path",
       "type": "string"
     },
+    "GHERKIN_GHERKIN_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GHERKIN_GHERKIN_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GHERKIN_GHERKIN_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "GITHUB_API_URL": {
       "$id": "#/properties/GITHUB_API_URL",
       "default": "https://api.github.com",
@@ -4044,7 +4285,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Custom arguments",
+      "title": "(removed) GIT_GIT_DIFF: Custom arguments",
       "type": [
         "array",
         "string"
@@ -4053,13 +4294,13 @@
     "GIT_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS",
       "default": false,
-      "title": "GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "GIT_GIT_DIFF: Maximum number of errors allowed",
+      "title": "(removed) GIT_GIT_DIFF: Maximum number of errors allowed",
       "type": "number"
     },
     "GIT_GIT_DIFF_FILE_EXTENSIONS": {
@@ -4071,7 +4312,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
+      "title": "(removed) GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "GIT_GIT_DIFF_FILE_NAMES_REGEX": {
@@ -4083,7 +4324,7 @@
       "items": {
         "type": "string"
       },
-      "title": "GIT_GIT_DIFF: Override descriptor/linter matching file name regex",
+      "title": "(removed) GIT_GIT_DIFF: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "GIT_GIT_DIFF_POST_COMMANDS": {
@@ -4100,7 +4341,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "GIT_GIT_DIFF_PRE_COMMANDS": {
@@ -4117,7 +4358,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) GIT_GIT_DIFF: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "GO_FILTER_REGEX_EXCLUDE": {
@@ -4270,6 +4511,16 @@
       "title": "GO_GOLANGCI_LINT: Custom config file path",
       "type": "string"
     },
+    "GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GO_GOLANGCI_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_GOLANGCI_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "GO_REVIVE_ARGUMENTS": {
       "$id": "#/properties/GO_REVIVE_ARGUMENTS",
       "description": "GO_REVIVE: User custom arguments to add in linter CLI call",
@@ -4402,6 +4653,16 @@
       "description": "GO_REVIVE: Path where to find linter configuration file",
       "title": "GO_REVIVE: Custom config file path",
       "type": "string"
+    },
+    "GO_REVIVE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GO_REVIVE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GO_REVIVE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: Unsecured env variables",
+      "type": "array"
     },
     "GRAPHQL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GRAPHQL_FILTER_REGEX_EXCLUDE",
@@ -4551,6 +4812,16 @@
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Path where to find linter configuration file",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file path",
       "type": "string"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GRAPHQL_GRAPHQL_SCHEMA_LINTER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Unsecured env variables",
+      "type": "array"
     },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GROOVY_FILTER_REGEX_EXCLUDE",
@@ -4702,6 +4973,16 @@
       "title": "GROOVY_NPM_GROOVY_LINT: Custom config file path",
       "type": "string"
     },
+    "GROOVY_NPM_GROOVY_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GROOVY_NPM_GROOVY_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GROOVY_NPM_GROOVY_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "HTML_DJLINT_ARGUMENTS": {
       "$id": "#/properties/HTML_DJLINT_ARGUMENTS",
       "description": "HTML_DJLINT: User custom arguments to add in linter CLI call",
@@ -4820,6 +5101,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "HTML_DJLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "HTML_DJLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/HTML_DJLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling HTML_DJLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_DJLINT: Unsecured env variables",
       "type": "array"
     },
     "HTML_FILTER_REGEX_EXCLUDE": {
@@ -4971,6 +5262,16 @@
       "description": "HTML_HTMLHINT: Path where to find linter configuration file",
       "title": "HTML_HTMLHINT: Custom config file path",
       "type": "string"
+    },
+    "HTML_HTMLHINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/HTML_HTMLHINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling HTML_HTMLHINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_HTMLHINT: Unsecured env variables",
+      "type": "array"
     },
     "IGNORE_GENERATED_FILES": {
       "$id": "#/properties/IGNORE_GENERATED_FILES",
@@ -5138,6 +5439,16 @@
       "title": "JAVASCRIPT_ES: Custom config file path",
       "type": "string"
     },
+    "JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVASCRIPT_ES and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_ES: Unsecured env variables",
+      "type": "array"
+    },
     "JAVASCRIPT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVASCRIPT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for JAVASCRIPT descriptor",
@@ -5281,6 +5592,16 @@
       "title": "JAVASCRIPT_PRETTIER: Custom config file path",
       "type": "string"
     },
+    "JAVASCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVASCRIPT_PRETTIER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
     "JAVASCRIPT_STANDARD_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_ARGUMENTS",
       "description": "JAVASCRIPT_STANDARD: User custom arguments to add in linter CLI call",
@@ -5399,6 +5720,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_STANDARD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "JAVASCRIPT_STANDARD_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVASCRIPT_STANDARD and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_STANDARD: Unsecured env variables",
       "type": "array"
     },
     "JAVA_CHECKSTYLE_ARGUMENTS": {
@@ -5540,6 +5871,16 @@
       "description": "JAVA_CHECKSTYLE: Path where to find linter configuration file",
       "title": "JAVA_CHECKSTYLE: Custom config file path",
       "type": "string"
+    },
+    "JAVA_CHECKSTYLE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVA_CHECKSTYLE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_CHECKSTYLE: Unsecured env variables",
+      "type": "array"
     },
     "JAVA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVA_FILTER_REGEX_EXCLUDE",
@@ -5684,6 +6025,16 @@
       "title": "JAVA_PMD: Custom config file path",
       "type": "string"
     },
+    "JAVA_PMD_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVA_PMD_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVA_PMD and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_PMD: Unsecured env variables",
+      "type": "array"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
@@ -5823,6 +6174,16 @@
       "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
       "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
       "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_ESLINT_PLUGIN_JSONC and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
+      "type": "array"
     },
     "JSON_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_FILTER_REGEX_EXCLUDE",
@@ -5967,6 +6328,16 @@
       "title": "JSON_JSONLINT: Custom config file path",
       "type": "string"
     },
+    "JSON_JSONLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_JSONLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_JSONLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_JSONLINT: Unsecured env variables",
+      "type": "array"
+    },
     "JSON_NPM_PACKAGE_JSON_LINT_ARGUMENTS": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_ARGUMENTS",
       "description": "JSON_NPM_PACKAGE_JSON_LINT: User custom arguments to add in linter CLI call",
@@ -6078,6 +6449,16 @@
       "description": "JSON_NPM_PACKAGE_JSON_LINT: Path where to find linter configuration file",
       "title": "JSON_NPM_PACKAGE_JSON_LINT: Custom config file path",
       "type": "string"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_NPM_PACKAGE_JSON_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Unsecured env variables",
+      "type": "array"
     },
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
@@ -6211,6 +6592,16 @@
       "description": "JSON_PRETTIER: Path where to find linter configuration file",
       "title": "JSON_PRETTIER: Custom config file path",
       "type": "string"
+    },
+    "JSON_PRETTIER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_PRETTIER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_PRETTIER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_PRETTIER: Unsecured env variables",
+      "type": "array"
     },
     "JSON_REPORTER": {
       "$id": "#/properties/JSON_REPORTER",
@@ -6348,6 +6739,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "JSON_V8R: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "JSON_V8R_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_V8R_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_V8R and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_V8R: Unsecured env variables",
       "type": "array"
     },
     "JSX_ESLINT_ARGUMENTS": {
@@ -6490,6 +6891,16 @@
       "title": "JSX_ESLINT: Custom config file path",
       "type": "string"
     },
+    "JSX_ESLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSX_ESLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSX_ESLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_ESLINT: Unsecured env variables",
+      "type": "array"
+    },
     "JSX_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSX_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for JSX descriptor",
@@ -6629,6 +7040,16 @@
       "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KOTLIN_KTLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/KOTLIN_KTLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling KOTLIN_KTLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_KTLINT: Unsecured env variables",
+      "type": "array"
+    },
     "KUBERNETES_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_DIRECTORY",
       "title": "Directory containing KUBERNETES files",
@@ -6747,6 +7168,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "KUBERNETES_HELM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "KUBERNETES_HELM_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/KUBERNETES_HELM_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling KUBERNETES_HELM and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_HELM: Unsecured env variables",
       "type": "array"
     },
     "KUBERNETES_KUBECONFORM_ARGUMENTS": {
@@ -6875,6 +7306,131 @@
       "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KUBERNETES_KUBECONFORM_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling KUBERNETES_KUBECONFORM and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Unsecured env variables",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_ARGUMENTS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_ARGUMENTS",
+      "description": "KUBERNETES_KUBESCAPE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KUBERNETES_KUBESCAPE_CLI_EXECUTABLE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kubescape"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: CLI Executable",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DIRECTORY",
+      "default": "",
+      "title": "KUBERNETES_KUBESCAPE: Directory containing KUBERNETES files",
+      "type": "string"
+    },
+    "KUBERNETES_KUBESCAPE_DISABLE_ERRORS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DISABLE_ERRORS",
+      "default": false,
+      "title": "KUBERNETES_KUBESCAPE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_KUBESCAPE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KUBERNETES_KUBESCAPE_FILE_EXTENSIONS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling KUBERNETES_KUBESCAPE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBESCAPE: Unsecured env variables",
+      "type": "array"
+    },
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
       "description": "KUBERNETES_KUBEVAL: User custom arguments to add in linter CLI call",
@@ -6885,7 +7441,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Custom arguments",
+      "title": "(removed) KUBERNETES_KUBEVAL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -6901,7 +7457,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: CLI Executable",
+      "title": "(removed) KUBERNETES_KUBEVAL: CLI Executable",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_CLI_LINT_MODE": {
@@ -6911,25 +7467,25 @@
         "file",
         "project"
       ],
-      "title": "KUBERNETES_KUBEVAL: Override default cli lint mode",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override default cli lint mode",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DIRECTORY",
       "default": "kubernetes",
-      "title": "KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
+      "title": "(removed) KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS",
       "default": false,
-      "title": "KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "KUBERNETES_KUBEVAL: Maximum number of errors allowed",
+      "title": "(removed) KUBERNETES_KUBEVAL: Maximum number of errors allowed",
       "type": "number"
     },
     "KUBERNETES_KUBEVAL_FILE_EXTENSIONS": {
@@ -6941,7 +7497,7 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_FILE_NAMES_REGEX": {
@@ -6953,17 +7509,17 @@
       "items": {
         "type": "string"
       },
-      "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE",
-      "title": "KUBERNETES_KUBEVAL: Excluding Regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Excluding Regex",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE",
-      "title": "KUBERNETES_KUBEVAL: Including Regex",
+      "title": "(removed) KUBERNETES_KUBEVAL: Including Regex",
       "type": "string"
     },
     "KUBERNETES_KUBEVAL_POST_COMMANDS": {
@@ -6980,7 +7536,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "KUBERNETES_KUBEVAL_PRE_COMMANDS": {
@@ -6997,7 +7553,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "LATEX_CHKTEX_ARGUMENTS": {
@@ -7138,6 +7694,16 @@
       "description": "LATEX_CHKTEX: Path where to find linter configuration file",
       "title": "LATEX_CHKTEX: Custom config file path",
       "type": "string"
+    },
+    "LATEX_CHKTEX_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/LATEX_CHKTEX_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling LATEX_CHKTEX and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "LATEX_CHKTEX: Unsecured env variables",
+      "type": "array"
     },
     "LATEX_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LATEX_FILTER_REGEX_EXCLUDE",
@@ -7329,6 +7895,16 @@
       "title": "LUA_LUACHECK: Custom config file path",
       "type": "string"
     },
+    "LUA_LUACHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/LUA_LUACHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling LUA_LUACHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_LUACHECK: Unsecured env variables",
+      "type": "array"
+    },
     "MAKEFILE_CHECKMAKE_ARGUMENTS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_ARGUMENTS",
       "description": "MAKEFILE_CHECKMAKE: User custom arguments to add in linter CLI call",
@@ -7460,6 +8036,16 @@
       "description": "MAKEFILE_CHECKMAKE: Path where to find linter configuration file",
       "title": "MAKEFILE_CHECKMAKE: Custom config file path",
       "type": "string"
+    },
+    "MAKEFILE_CHECKMAKE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/MAKEFILE_CHECKMAKE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling MAKEFILE_CHECKMAKE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "MAKEFILE_CHECKMAKE: Unsecured env variables",
+      "type": "array"
     },
     "MAKEFILE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MAKEFILE_FILTER_REGEX_EXCLUDE",
@@ -7631,6 +8217,16 @@
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file path",
       "type": "string"
     },
+    "MARKDOWN_MARKDOWNLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling MARKDOWN_MARKDOWNLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWNLINT: Unsecured env variables",
+      "type": "array"
+    },
     "MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom arguments to add in linter CLI call",
@@ -7771,6 +8367,16 @@
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
       "type": "string"
     },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling MARKDOWN_MARKDOWN_LINK_CHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Unsecured env variables",
+      "type": "array"
+    },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: User custom arguments to add in linter CLI call",
@@ -7889,6 +8495,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling MARKDOWN_MARKDOWN_TABLE_FORMATTER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Unsecured env variables",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS": {
@@ -8076,6 +8692,16 @@
       "title": "MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string"
     },
+    "MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling MARKDOWN_REMARK_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "MEGALINTER_FILES_TO_LINT": {
       "$id": "#/properties/MEGALINTER_FILES_TO_LINT",
       "description": "Comma-separated list of files to analyze. Using this variable will bypass other file listing methods",
@@ -8247,6 +8873,16 @@
       "title": "OPENAPI_SPECTRAL: Custom config file path",
       "type": "string"
     },
+    "OPENAPI_SPECTRAL_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling OPENAPI_SPECTRAL and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "OPENAPI_SPECTRAL: Unsecured env variables",
+      "type": "array"
+    },
     "OUTPUT_DETAIL": {
       "$id": "#/properties/OUTPUT_DETAIL",
       "description": "(DEPRECATED) Output detail for text reporter: only error files (simple) or all files (detailed)",
@@ -8403,6 +9039,16 @@
       "title": "PERL_PERLCRITIC: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PERL_PERLCRITIC and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PERL_PERLCRITIC: Unsecured env variables",
+      "type": "array"
+    },
     "PHP_BUILTIN_ARGUMENTS": {
       "$id": "#/properties/PHP_BUILTIN_ARGUMENTS",
       "description": "PHP_BUILTIN: User custom arguments to add in linter CLI call",
@@ -8413,7 +9059,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Custom arguments",
+      "title": "(removed) PHP_BUILTIN: Custom arguments",
       "type": [
         "array",
         "string"
@@ -8421,7 +9067,7 @@
     },
     "PHP_BUILTIN_CLI_EXECUTABLE": {
       "$id": "#/properties/PHP_BUILTIN_CLI_EXECUTABLE",
-      "title": "PHP_BUILTIN: Override default CLI executable for linting request",
+      "title": "(removed) PHP_BUILTIN: Override default CLI executable for linting request",
       "type": "string"
     },
     "PHP_BUILTIN_CLI_LINT_MODE": {
@@ -8432,19 +9078,19 @@
         "list_of_files",
         "project"
       ],
-      "title": "PHP_BUILTIN: Override default cli lint mode",
+      "title": "(removed) PHP_BUILTIN: Override default cli lint mode",
       "type": "string"
     },
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
+      "title": "(removed) PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "PHP_BUILTIN: Maximum number of errors allowed",
+      "title": "(removed) PHP_BUILTIN: Maximum number of errors allowed",
       "type": "number"
     },
     "PHP_BUILTIN_FILE_EXTENSIONS": {
@@ -8456,7 +9102,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Override descriptor/linter matching files extensions",
+      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "PHP_BUILTIN_FILE_NAMES_REGEX": {
@@ -8468,17 +9114,17 @@
       "items": {
         "type": "string"
       },
-      "title": "PHP_BUILTIN: Override descriptor/linter matching file name regex",
+      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "PHP_BUILTIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_EXCLUDE",
-      "title": "PHP_BUILTIN: Excluding Regex",
+      "title": "(removed) PHP_BUILTIN: Excluding Regex",
       "type": "string"
     },
     "PHP_BUILTIN_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_INCLUDE",
-      "title": "PHP_BUILTIN: Including Regex",
+      "title": "(removed) PHP_BUILTIN: Including Regex",
       "type": "string"
     },
     "PHP_BUILTIN_POST_COMMANDS": {
@@ -8495,7 +9141,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "PHP_BUILTIN_PRE_COMMANDS": {
@@ -8512,7 +9158,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "PHP_FILTER_REGEX_EXCLUDE": {
@@ -8665,6 +9311,16 @@
       "title": "PHP_PHPCS: Custom config file path",
       "type": "string"
     },
+    "PHP_PHPCS_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PHPCS_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PHPCS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCS: Unsecured env variables",
+      "type": "array"
+    },
     "PHP_PHPLINT_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPLINT_ARGUMENTS",
       "description": "PHP_PHPLINT: User custom arguments to add in linter CLI call",
@@ -8804,6 +9460,16 @@
       "description": "PHP_PHPLINT: Path where to find linter configuration file",
       "title": "PHP_PHPLINT: Custom config file path",
       "type": "string"
+    },
+    "PHP_PHPLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PHPLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PHPLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPLINT: Unsecured env variables",
+      "type": "array"
     },
     "PHP_PHPSTAN_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPSTAN_ARGUMENTS",
@@ -8945,6 +9611,16 @@
       "title": "PHP_PHPSTAN: Custom config file path",
       "type": "string"
     },
+    "PHP_PHPSTAN_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PHPSTAN_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PHPSTAN and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPSTAN: Unsecured env variables",
+      "type": "array"
+    },
     "PHP_PSALM_ARGUMENTS": {
       "$id": "#/properties/PHP_PSALM_ARGUMENTS",
       "description": "PHP_PSALM: User custom arguments to add in linter CLI call",
@@ -9084,6 +9760,16 @@
       "description": "PHP_PSALM: Path where to find linter configuration file",
       "title": "PHP_PSALM: Custom config file path",
       "type": "string"
+    },
+    "PHP_PSALM_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PSALM_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PSALM and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PSALM: Unsecured env variables",
+      "type": "array"
     },
     "PLUGINS": {
       "$id": "#/properties/PLUGINS",
@@ -9373,6 +10059,16 @@
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Custom config file path",
       "type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling POWERSHELL_POWERSHELL_FORMATTER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Unsecured env variables",
+      "type": "array"
+    },
     "POWERSHELL_POWERSHELL_POST_COMMANDS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_POST_COMMANDS",
       "examples": [
@@ -9412,6 +10108,16 @@
       "description": "POWERSHELL_POWERSHELL: Path where to find linter configuration file",
       "title": "POWERSHELL_POWERSHELL: Custom config file path",
       "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling POWERSHELL_POWERSHELL and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL: Unsecured env variables",
+      "type": "array"
     },
     "PRE_COMMANDS": {
       "$id": "#/properties/PRE_COMMANDS",
@@ -9599,6 +10305,16 @@
       "title": "PROTOBUF_PROTOLINT: Custom config file path",
       "type": "string"
     },
+    "PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PROTOBUF_PROTOLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PROTOBUF_PROTOLINT: Unsecured env variables",
+      "type": "array"
+    },
     "PUPPET_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PUPPET_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for PUPPET descriptor",
@@ -9748,6 +10464,16 @@
       "title": "PUPPET_PUPPET_LINT: Custom config file path",
       "type": "string"
     },
+    "PUPPET_PUPPET_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PUPPET_PUPPET_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PUPPET_PUPPET_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_BANDIT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BANDIT_ARGUMENTS",
       "description": "PYTHON_BANDIT: User custom arguments to add in linter CLI call",
@@ -9880,6 +10606,16 @@
       "description": "PYTHON_BANDIT: Path where to find linter configuration file",
       "title": "PYTHON_BANDIT: Custom config file path",
       "type": "string"
+    },
+    "PYTHON_BANDIT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_BANDIT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_BANDIT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: Unsecured env variables",
+      "type": "array"
     },
     "PYTHON_BLACK_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BLACK_ARGUMENTS",
@@ -10020,6 +10756,16 @@
       "description": "PYTHON_BLACK: Path where to find linter configuration file",
       "title": "PYTHON_BLACK: Custom config file path",
       "type": "string"
+    },
+    "PYTHON_BLACK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_BLACK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_BLACK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BLACK: Unsecured env variables",
+      "type": "array"
     },
     "PYTHON_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_FILTER_REGEX_EXCLUDE",
@@ -10171,6 +10917,16 @@
       "title": "PYTHON_FLAKE8: Custom config file path",
       "type": "string"
     },
+    "PYTHON_FLAKE8_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_FLAKE8_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_FLAKE8 and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_FLAKE8: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_ISORT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_ISORT_ARGUMENTS",
       "description": "PYTHON_ISORT: User custom arguments to add in linter CLI call",
@@ -10311,6 +11067,16 @@
       "title": "PYTHON_ISORT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_ISORT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_ISORT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_ISORT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_ISORT: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_MYPY_ARGUMENTS": {
       "$id": "#/properties/PYTHON_MYPY_ARGUMENTS",
       "description": "PYTHON_MYPY: User custom arguments to add in linter CLI call",
@@ -10443,6 +11209,16 @@
       "description": "PYTHON_MYPY: Path where to find linter configuration file",
       "title": "PYTHON_MYPY: Custom config file path",
       "type": "string"
+    },
+    "PYTHON_MYPY_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_MYPY_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_MYPY and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_MYPY: Unsecured env variables",
+      "type": "array"
     },
     "PYTHON_PYLINT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_PYLINT_ARGUMENTS",
@@ -10584,6 +11360,16 @@
       "title": "PYTHON_PYLINT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_PYLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_PYLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_PYLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYLINT: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_PYRIGHT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_PYRIGHT_ARGUMENTS",
       "description": "PYTHON_PYRIGHT: User custom arguments to add in linter CLI call",
@@ -10717,6 +11503,16 @@
       "title": "PYTHON_PYRIGHT: Custom config file path",
       "type": "string"
     },
+    "PYTHON_PYRIGHT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_PYRIGHT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_PYRIGHT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYRIGHT: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_RUFF_ARGUMENTS": {
       "$id": "#/properties/PYTHON_RUFF_ARGUMENTS",
       "description": "PYTHON_RUFF: User custom arguments to add in linter CLI call",
@@ -10849,6 +11645,16 @@
       "description": "PYTHON_RUFF: Path where to find linter configuration file",
       "title": "PYTHON_RUFF: Custom config file path",
       "type": "string"
+    },
+    "PYTHON_RUFF_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_RUFF_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_RUFF and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF: Unsecured env variables",
+      "type": "array"
     },
     "RAKU_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RAKU_FILTER_REGEX_EXCLUDE",
@@ -10999,6 +11805,16 @@
       "title": "RAKU_RAKU: Custom config file path",
       "type": "string"
     },
+    "RAKU_RAKU_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RAKU_RAKU_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RAKU_RAKU and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RAKU_RAKU: Unsecured env variables",
+      "type": "array"
+    },
     "REPORTERS_MARKDOWN_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
       "default": "advanced",
@@ -11105,6 +11921,16 @@
       "title": "REPOSITORY_CHECKOV: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_CHECKOV and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_CHECKOV: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_DEVSKIM_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_ARGUMENTS",
       "description": "REPOSITORY_DEVSKIM: User custom arguments to add in linter CLI call",
@@ -11180,6 +12006,16 @@
       "title": "REPOSITORY_DEVSKIM: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DEVSKIM: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_DUSTILOCK_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_ARGUMENTS",
       "description": "REPOSITORY_DUSTILOCK: User custom arguments to add in linter CLI call",
@@ -11253,6 +12089,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "REPOSITORY_DUSTILOCK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_DUSTILOCK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Unsecured env variables",
       "type": "array"
     },
     "REPOSITORY_FILTER_REGEX_EXCLUDE": {
@@ -11353,6 +12199,16 @@
       "title": "REPOSITORY_GITLEAKS: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GITLEAKS: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_GIT_DIFF_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_ARGUMENTS",
       "description": "REPOSITORY_GIT_DIFF: User custom arguments to add in linter CLI call",
@@ -11428,6 +12284,16 @@
       "title": "REPOSITORY_GIT_DIFF: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_GIT_DIFF and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GIT_DIFF: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_GOODCHECK_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_ARGUMENTS",
       "description": "REPOSITORY_GOODCHECK: User custom arguments to add in linter CLI call",
@@ -11438,7 +12304,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GOODCHECK: Custom arguments",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom arguments",
       "type": [
         "array",
         "string"
@@ -11454,26 +12320,26 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GOODCHECK: CLI Executable",
+      "title": "(removed) REPOSITORY_GOODCHECK: CLI Executable",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_CONFIG_FILE",
       "default": "goodcheck.yml",
       "description": "REPOSITORY_GOODCHECK: User custom config file name if different from default",
-      "title": "REPOSITORY_GOODCHECK: Custom config file name",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file name",
       "type": "string"
     },
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "REPOSITORY_GOODCHECK: Maximum number of errors allowed",
+      "title": "(removed) REPOSITORY_GOODCHECK: Maximum number of errors allowed",
       "type": "number"
     },
     "REPOSITORY_GOODCHECK_POST_COMMANDS": {
@@ -11490,7 +12356,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_PRE_COMMANDS": {
@@ -11507,14 +12373,210 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "REPOSITORY_GOODCHECK_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_RULES_PATH",
       "description": "REPOSITORY_GOODCHECK: Path where to find linter configuration file",
-      "title": "REPOSITORY_GOODCHECK: Custom config file path",
+      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file path",
       "type": "string"
+    },
+    "REPOSITORY_GRYPE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_GRYPE_ARGUMENTS",
+      "description": "REPOSITORY_GRYPE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GRYPE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_GRYPE_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "grype"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GRYPE: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_GRYPE_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_CONFIG_FILE",
+      "default": ".grype.yaml",
+      "description": "REPOSITORY_GRYPE: User custom config file name if different from default",
+      "title": "REPOSITORY_GRYPE: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_GRYPE_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_GRYPE_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_GRYPE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_GRYPE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_GRYPE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_GRYPE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_GRYPE_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_GRYPE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_GRYPE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_GRYPE_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_GRYPE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_GRYPE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_GRYPE_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_GRYPE_RULES_PATH",
+      "description": "REPOSITORY_GRYPE: Path where to find linter configuration file",
+      "title": "REPOSITORY_GRYPE: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_GRYPE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GRYPE: Unsecured env variables",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_KICS_ARGUMENTS",
+      "description": "REPOSITORY_KICS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_KICS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kics"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_KICS_CONFIG_FILE",
+      "default": "kics.config",
+      "description": "REPOSITORY_KICS: User custom config file name if different from default",
+      "title": "REPOSITORY_KICS: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_KICS: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_KICS_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KICS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KICS_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_KICS_RULES_PATH",
+      "description": "REPOSITORY_KICS: Path where to find linter configuration file",
+      "title": "REPOSITORY_KICS: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_KICS_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_KICS_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KICS: Unsecured env variables",
+      "type": "array"
     },
     "REPOSITORY_SECRETLINT_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_ARGUMENTS",
@@ -11604,6 +12666,16 @@
       "title": "REPOSITORY_SECRETLINT: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_SECRETLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SECRETLINT: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_SEMGREP_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_ARGUMENTS",
       "description": "REPOSITORY_SEMGREP: User custom arguments to add in linter CLI call",
@@ -11677,6 +12749,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "REPOSITORY_SEMGREP: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SEMGREP: Unsecured env variables",
       "type": "array"
     },
     "REPOSITORY_SYFT_ARGUMENTS": {
@@ -11767,6 +12849,16 @@
       "title": "REPOSITORY_SYFT: Custom config file path",
       "type": "string"
     },
+    "REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SYFT: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_TRIVY_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_ARGUMENTS",
       "description": "REPOSITORY_TRIVY: User custom arguments to add in linter CLI call",
@@ -11854,6 +12946,212 @@
       "description": "REPOSITORY_TRIVY: Path where to find linter configuration file",
       "title": "REPOSITORY_TRIVY: Custom config file path",
       "type": "string"
+    },
+    "REPOSITORY_TRIVY_SBOM_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_ARGUMENTS",
+      "description": "REPOSITORY_TRIVY_SBOM: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRIVY_SBOM: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_TRIVY_SBOM_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_CLI_EXECUTABLE",
+      "default": [
+        [
+          "trivy"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRIVY_SBOM: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_TRIVY_SBOM_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_CONFIG_FILE",
+      "default": "trivy-sbom.yaml",
+      "description": "REPOSITORY_TRIVY_SBOM: User custom config file name if different from default",
+      "title": "REPOSITORY_TRIVY_SBOM: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_TRIVY_SBOM: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_TRIVY_SBOM: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_TRIVY_SBOM_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_TRIVY_SBOM: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_TRIVY_SBOM_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_TRIVY_SBOM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_TRIVY_SBOM_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_RULES_PATH",
+      "description": "REPOSITORY_TRIVY_SBOM: Path where to find linter configuration file",
+      "title": "REPOSITORY_TRIVY_SBOM: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_TRIVY_SBOM and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRIVY_SBOM: Unsecured env variables",
+      "type": "array"
+    },
+    "REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_TRIVY and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRIVY: Unsecured env variables",
+      "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_ARGUMENTS",
+      "description": "REPOSITORY_TRUFFLEHOG: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRUFFLEHOG: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_TRUFFLEHOG_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_CLI_EXECUTABLE",
+      "default": [
+        [
+          "trufflehog"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRUFFLEHOG: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_CONFIG_FILE",
+      "default": ".trufflehog.yml",
+      "description": "REPOSITORY_TRUFFLEHOG: User custom config file name if different from default",
+      "title": "REPOSITORY_TRUFFLEHOG: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_TRUFFLEHOG: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_TRUFFLEHOG: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_TRUFFLEHOG_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_TRUFFLEHOG: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_TRUFFLEHOG: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_RULES_PATH",
+      "description": "REPOSITORY_TRUFFLEHOG: Path where to find linter configuration file",
+      "title": "REPOSITORY_TRUFFLEHOG: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_TRUFFLEHOG: Unsecured env variables",
+      "type": "array"
     },
     "RST_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_FILTER_REGEX_EXCLUDE",
@@ -12004,6 +13302,16 @@
       "title": "RST_RSTCHECK: Custom config file path",
       "type": "string"
     },
+    "RST_RSTCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RST_RSTCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RST_RSTCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTCHECK: Unsecured env variables",
+      "type": "array"
+    },
     "RST_RSTFMT_ARGUMENTS": {
       "$id": "#/properties/RST_RSTFMT_ARGUMENTS",
       "description": "RST_RSTFMT: User custom arguments to add in linter CLI call",
@@ -12123,6 +13431,16 @@
       "title": "RST_RSTFMT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "RST_RSTFMT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RST_RSTFMT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RST_RSTFMT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTFMT: Unsecured env variables",
+      "type": "array"
+    },
     "RST_RST_LINT_ARGUMENTS": {
       "$id": "#/properties/RST_RST_LINT_ARGUMENTS",
       "description": "RST_RST_LINT: User custom arguments to add in linter CLI call",
@@ -12240,6 +13558,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "RST_RST_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "RST_RST_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RST_RST_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RST_RST_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RST_LINT: Unsecured env variables",
       "type": "array"
     },
     "RUBY_FILTER_REGEX_EXCLUDE": {
@@ -12391,6 +13719,16 @@
       "title": "RUBY_RUBOCOP: Custom config file path",
       "type": "string"
     },
+    "RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RUBY_RUBOCOP and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RUBY_RUBOCOP: Unsecured env variables",
+      "type": "array"
+    },
     "RUST_CLIPPY_ARGUMENTS": {
       "$id": "#/properties/RUST_CLIPPY_ARGUMENTS",
       "description": "RUST_CLIPPY: User custom arguments to add in linter CLI call",
@@ -12509,6 +13847,16 @@
       "description": "RUST_CLIPPY: Path where to find linter configuration file",
       "title": "RUST_CLIPPY: Custom config file path",
       "type": "string"
+    },
+    "RUST_CLIPPY_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/RUST_CLIPPY_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling RUST_CLIPPY and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "RUST_CLIPPY: Unsecured env variables",
+      "type": "array"
     },
     "RUST_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RUST_FILTER_REGEX_EXCLUDE",
@@ -12669,6 +14017,16 @@
       "title": "R_LINTR: Custom config file path",
       "type": "string"
     },
+    "R_LINTR_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/R_LINTR_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling R_LINTR and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "R_LINTR: Unsecured env variables",
+      "type": "array"
+    },
     "SALESFORCE_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_DIRECTORY",
       "default": "force-app",
@@ -12779,6 +14137,16 @@
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
       "type": "string"
     },
+    "SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_APEX and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Unsecured env variables",
+      "type": "array"
+    },
     "SALESFORCE_SFDX_SCANNER_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER: User custom arguments to add in linter CLI call",
@@ -12888,6 +14256,16 @@
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Path where to find linter configuration file",
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
       "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_AURA and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Unsecured env variables",
+      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DIRECTORY",
@@ -13034,6 +14412,16 @@
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Unsecured env variables",
+      "type": "array"
     },
     "SARIF_REPORTER": {
       "$id": "#/properties/SARIF_REPORTER",
@@ -13212,6 +14600,16 @@
       "description": "SCALA_SCALAFIX: Path where to find linter configuration file",
       "title": "SCALA_SCALAFIX: Custom config file path",
       "type": "string"
+    },
+    "SCALA_SCALAFIX_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SCALA_SCALAFIX_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SCALA_SCALAFIX and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SCALA_SCALAFIX: Unsecured env variables",
+      "type": "array"
     },
     "SECURED_ENV_VARIABLES": {
       "$id": "#/properties/SECURED_ENV_VARIABLES",
@@ -13405,6 +14803,16 @@
       "title": "SNAKEMAKE_LINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "SNAKEMAKE_SNAKEFMT_ARGUMENTS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_ARGUMENTS",
       "description": "SNAKEMAKE_SNAKEFMT: User custom arguments to add in linter CLI call",
@@ -13543,6 +14951,16 @@
       "description": "SNAKEMAKE_SNAKEFMT: Path where to find linter configuration file",
       "title": "SNAKEMAKE_SNAKEFMT: Custom config file path",
       "type": "string"
+    },
+    "SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SNAKEMAKE_SNAKEFMT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_SNAKEFMT: Unsecured env variables",
+      "type": "array"
     },
     "SPELL_CSPELL_ANALYZE_FILE_NAMES": {
       "$id": "#/properties/SPELL_CSPELL_ANALYZE_FILE_NAMES",
@@ -13691,6 +15109,16 @@
       "title": "SPELL_CSPELL: Custom config file path",
       "type": "string"
     },
+    "SPELL_CSPELL_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SPELL_CSPELL_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_CSPELL and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Unsecured env variables",
+      "type": "array"
+    },
     "SPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SPELL descriptor",
@@ -13700,6 +15128,149 @@
       "$id": "#/properties/SPELL_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for SPELL descriptor",
       "type": "string"
+    },
+    "SPELL_LYCHEE_ARGUMENTS": {
+      "$id": "#/properties/SPELL_LYCHEE_ARGUMENTS",
+      "description": "SPELL_LYCHEE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_LYCHEE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SPELL_LYCHEE_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_LYCHEE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "lychee"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_LYCHEE: CLI Executable",
+      "type": "array"
+    },
+    "SPELL_LYCHEE_CLI_LINT_MODE": {
+      "$id": "#/properties/SPELL_LYCHEE_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SPELL_LYCHEE: Override default cli lint mode",
+      "type": "string"
+    },
+    "SPELL_LYCHEE_CONFIG_FILE": {
+      "$id": "#/properties/SPELL_LYCHEE_CONFIG_FILE",
+      "default": "lychee.toml",
+      "description": "SPELL_LYCHEE: User custom config file name if different from default",
+      "title": "SPELL_LYCHEE: Custom config file name",
+      "type": "string"
+    },
+    "SPELL_LYCHEE_DISABLE_ERRORS": {
+      "$id": "#/properties/SPELL_LYCHEE_DISABLE_ERRORS",
+      "default": false,
+      "title": "SPELL_LYCHEE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SPELL_LYCHEE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SPELL_LYCHEE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SPELL_LYCHEE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SPELL_LYCHEE_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_LYCHEE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_LYCHEE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_LYCHEE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_LYCHEE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_LYCHEE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SPELL_LYCHEE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SPELL_LYCHEE_FILTER_REGEX_EXCLUDE",
+      "title": "SPELL_LYCHEE: Excluding Regex",
+      "type": "string"
+    },
+    "SPELL_LYCHEE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SPELL_LYCHEE_FILTER_REGEX_INCLUDE",
+      "title": "SPELL_LYCHEE: Including Regex",
+      "type": "string"
+    },
+    "SPELL_LYCHEE_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_LYCHEE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_LYCHEE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SPELL_LYCHEE_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_LYCHEE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_LYCHEE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SPELL_LYCHEE_RULES_PATH": {
+      "$id": "#/properties/SPELL_LYCHEE_RULES_PATH",
+      "description": "SPELL_LYCHEE: Path where to find linter configuration file",
+      "title": "SPELL_LYCHEE: Custom config file path",
+      "type": "string"
+    },
+    "SPELL_LYCHEE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SPELL_LYCHEE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_LYCHEE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_LYCHEE: Unsecured env variables",
+      "type": "array"
     },
     "SPELL_MISSPELL_ARGUMENTS": {
       "$id": "#/properties/SPELL_MISSPELL_ARGUMENTS",
@@ -13954,6 +15525,16 @@
       "title": "SPELL_PROSELINT: Custom config file path",
       "type": "string"
     },
+    "SPELL_PROSELINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SPELL_PROSELINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_PROSELINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_PROSELINT: Unsecured env variables",
+      "type": "array"
+    },
     "SPELL_VALE_ARGUMENTS": {
       "$id": "#/properties/SPELL_VALE_ARGUMENTS",
       "description": "SPELL_VALE: User custom arguments to add in linter CLI call",
@@ -14086,6 +15667,16 @@
       "description": "SPELL_VALE: Path where to find linter configuration file",
       "title": "SPELL_VALE: Custom config file path",
       "type": "string"
+    },
+    "SPELL_VALE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SPELL_VALE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_VALE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_VALE: Unsecured env variables",
+      "type": "array"
     },
     "SQL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_FILTER_REGEX_EXCLUDE",
@@ -14230,6 +15821,16 @@
       "title": "SQL_SQLFLUFF: Custom config file path",
       "type": "string"
     },
+    "SQL_SQLFLUFF_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SQL_SQLFLUFF_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SQL_SQLFLUFF and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQLFLUFF: Unsecured env variables",
+      "type": "array"
+    },
     "SQL_SQL_LINT_ARGUMENTS": {
       "$id": "#/properties/SQL_SQL_LINT_ARGUMENTS",
       "description": "SQL_SQL_LINT: User custom arguments to add in linter CLI call",
@@ -14369,6 +15970,16 @@
       "title": "SQL_SQL_LINT: Custom config file path",
       "type": "string"
     },
+    "SQL_SQL_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SQL_SQL_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SQL_SQL_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQL_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "SQL_TSQLLINT_ARGUMENTS": {
       "$id": "#/properties/SQL_TSQLLINT_ARGUMENTS",
       "description": "SQL_TSQLLINT: User custom arguments to add in linter CLI call",
@@ -14502,6 +16113,16 @@
       "title": "SQL_TSQLLINT: Custom config file path",
       "type": "string"
     },
+    "SQL_TSQLLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SQL_TSQLLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SQL_TSQLLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: Unsecured env variables",
+      "type": "array"
+    },
     "SWIFT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SWIFT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SWIFT descriptor",
@@ -14623,6 +16244,16 @@
       "description": "SWIFT_SWIFTLINT: Path where to find linter configuration file",
       "title": "SWIFT_SWIFTLINT: Custom config file path",
       "type": "string"
+    },
+    "SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SWIFT_SWIFTLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: Unsecured env variables",
+      "type": "array"
     },
     "TAP_REPORTER": {
       "$id": "#/properties/TAP_REPORTER",
@@ -14787,6 +16418,16 @@
       "title": "TEKTON_TEKTON_LINT: Custom config file path",
       "type": "string"
     },
+    "TEKTON_TEKTON_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TEKTON_TEKTON_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TEKTON_TEKTON_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "TERRAFORM_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_ARGUMENTS",
       "description": "TERRAFORM_CHECKOV: User custom arguments to add in linter CLI call",
@@ -14797,7 +16438,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Custom arguments",
+      "title": "(removed) TERRAFORM_CHECKOV: Custom arguments",
       "type": [
         "array",
         "string"
@@ -14813,7 +16454,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: CLI Executable",
+      "title": "(removed) TERRAFORM_CHECKOV: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_CLI_LINT_MODE": {
@@ -14823,19 +16464,19 @@
         "file",
         "project"
       ],
-      "title": "TERRAFORM_CHECKOV: Override default cli lint mode",
+      "title": "(removed) TERRAFORM_CHECKOV: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_CHECKOV: Maximum number of errors allowed",
+      "title": "(removed) TERRAFORM_CHECKOV: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_CHECKOV_FILE_EXTENSIONS": {
@@ -14847,7 +16488,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
+      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_FILE_NAMES_REGEX": {
@@ -14859,17 +16500,17 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_CHECKOV: Excluding Regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Excluding Regex",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_CHECKOV: Including Regex",
+      "title": "(removed) TERRAFORM_CHECKOV: Including Regex",
       "type": "string"
     },
     "TERRAFORM_CHECKOV_POST_COMMANDS": {
@@ -14886,7 +16527,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_CHECKOV_PRE_COMMANDS": {
@@ -14903,7 +16544,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_FILTER_REGEX_EXCLUDE": {
@@ -14926,7 +16567,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Custom arguments",
+      "title": "(removed) TERRAFORM_KICS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -14942,7 +16583,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: CLI Executable",
+      "title": "(removed) TERRAFORM_KICS: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_KICS_CLI_LINT_MODE": {
@@ -14952,19 +16593,19 @@
         "file",
         "project"
       ],
-      "title": "TERRAFORM_KICS: Override default cli lint mode",
+      "title": "(removed) TERRAFORM_KICS: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(removed) TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_KICS: Maximum number of errors allowed",
+      "title": "(removed) TERRAFORM_KICS: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_KICS_FILE_EXTENSIONS": {
@@ -14976,7 +16617,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_KICS_FILE_NAMES_REGEX": {
@@ -14988,17 +16629,17 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_KICS: Excluding Regex",
+      "title": "(removed) TERRAFORM_KICS: Excluding Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_KICS: Including Regex",
+      "title": "(removed) TERRAFORM_KICS: Including Regex",
       "type": "string"
     },
     "TERRAFORM_KICS_POST_COMMANDS": {
@@ -15015,7 +16656,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_KICS_PRE_COMMANDS": {
@@ -15032,7 +16673,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
@@ -15152,6 +16793,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TERRAFORM_FMT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Unsecured env variables",
       "type": "array"
     },
     "TERRAFORM_TERRAGRUNT_ARGUMENTS": {
@@ -15293,6 +16944,16 @@
       "title": "TERRAFORM_TERRAGRUNT: Custom config file path",
       "type": "string"
     },
+    "TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TERRAGRUNT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAGRUNT: Unsecured env variables",
+      "type": "array"
+    },
     "TERRAFORM_TERRASCAN_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_ARGUMENTS",
       "description": "TERRAFORM_TERRASCAN: User custom arguments to add in linter CLI call",
@@ -15405,6 +17066,16 @@
       "title": "TERRAFORM_TERRASCAN: Custom config file path",
       "type": "string"
     },
+    "TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TERRASCAN and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRASCAN: Unsecured env variables",
+      "type": "array"
+    },
     "TERRAFORM_TFLINT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_ARGUMENTS",
       "description": "TERRAFORM_TFLINT: User custom arguments to add in linter CLI call",
@@ -15433,16 +17104,6 @@
       },
       "title": "TERRAFORM_TFLINT: CLI Executable",
       "type": "array"
-    },
-    "TERRAFORM_TFLINT_CLI_LINT_MODE": {
-      "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
-      "default": "file",
-      "enum": [
-        "file",
-        "project"
-      ],
-      "title": "TERRAFORM_TFLINT: Override default cli lint mode",
-      "type": "string"
     },
     "TERRAFORM_TFLINT_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TFLINT_CONFIG_FILE",
@@ -15494,16 +17155,6 @@
       "title": "TERRAFORM_TFLINT: Override descriptor/linter matching file name regex",
       "type": "array"
     },
-    "TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_TFLINT: Excluding Regex",
-      "type": "string"
-    },
-    "TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_TFLINT: Including Regex",
-      "type": "string"
-    },
     "TERRAFORM_TFLINT_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_TFLINT_POST_COMMANDS",
       "examples": [
@@ -15543,6 +17194,16 @@
       "description": "TERRAFORM_TFLINT: Path where to find linter configuration file",
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
+    },
+    "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TFLINT: Unsecured env variables",
+      "type": "array"
     },
     "TEXT_REPORTER": {
       "$id": "#/properties/TEXT_REPORTER",
@@ -15697,6 +17358,16 @@
       "description": "TSX_ESLINT: Path where to find linter configuration file",
       "title": "TSX_ESLINT: Custom config file path",
       "type": "string"
+    },
+    "TSX_ESLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TSX_ESLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TSX_ESLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_ESLINT: Unsecured env variables",
+      "type": "array"
     },
     "TSX_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TSX_FILTER_REGEX_EXCLUDE",
@@ -15862,6 +17533,16 @@
       "title": "TYPESCRIPT_ES: Custom config file path",
       "type": "string"
     },
+    "TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TYPESCRIPT_ES and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_ES: Unsecured env variables",
+      "type": "array"
+    },
     "TYPESCRIPT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TYPESCRIPT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for TYPESCRIPT descriptor",
@@ -16005,6 +17686,16 @@
       "title": "TYPESCRIPT_PRETTIER: Custom config file path",
       "type": "string"
     },
+    "TYPESCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TYPESCRIPT_PRETTIER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
     "TYPESCRIPT_STANDARD_ARGUMENTS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_ARGUMENTS",
       "description": "TYPESCRIPT_STANDARD: User custom arguments to add in linter CLI call",
@@ -16025,7 +17716,7 @@
       "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_EXECUTABLE",
       "default": [
         [
-          "standard"
+          "ts-standard"
         ]
       ],
       "items": {
@@ -16123,6 +17814,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_STANDARD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TYPESCRIPT_STANDARD and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_STANDARD: Unsecured env variables",
       "type": "array"
     },
     "UPDATED_SOURCES_REPORTER": {
@@ -16259,6 +17960,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "VBDOTNET_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling VBDOTNET_DOTNET_FORMAT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "VBDOTNET_DOTNET_FORMAT: Unsecured env variables",
       "type": "array"
     },
     "VBDOTNET_FILTER_REGEX_EXCLUDE": {
@@ -16399,6 +18110,16 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "XML_XMLLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "XML_XMLLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/XML_XMLLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling XML_XMLLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "XML_XMLLINT: Unsecured env variables",
       "type": "array"
     },
     "YAML_FILTER_REGEX_EXCLUDE": {
@@ -16544,6 +18265,16 @@
       "title": "YAML_PRETTIER: Custom config file path",
       "type": "string"
     },
+    "YAML_PRETTIER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/YAML_PRETTIER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling YAML_PRETTIER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
     "YAML_V8R_ARGUMENTS": {
       "$id": "#/properties/YAML_V8R_ARGUMENTS",
       "description": "YAML_V8R: User custom arguments to add in linter CLI call",
@@ -16676,6 +18407,16 @@
       "description": "YAML_V8R: Path where to find linter configuration file",
       "title": "YAML_V8R: Custom config file path",
       "type": "string"
+    },
+    "YAML_V8R_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/YAML_V8R_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling YAML_V8R and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_V8R: Unsecured env variables",
+      "type": "array"
     },
     "YAML_YAMLLINT_ARGUMENTS": {
       "$id": "#/properties/YAML_YAMLLINT_ARGUMENTS",
@@ -16816,6 +18557,19 @@
       "description": "YAML_YAMLLINT: Path where to find linter configuration file",
       "title": "YAML_YAMLLINT: Custom config file path",
       "type": "string"
+    },
+    "YAML_YAMLLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/YAML_YAMLLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling YAML_YAMLLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_YAMLLINT: Unsecured env variables",
+      "type": "array"
     }
-  }
+  },
+  "required": [],
+  "title": "Command",
+  "type": "object"
 }

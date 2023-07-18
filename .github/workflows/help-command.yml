@@ -23,12 +23,13 @@ on:
 jobs:
   help:
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v3
         with:
           ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.PAT }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           ## These are if we want to use repository_dispatch (default)
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}

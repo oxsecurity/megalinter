@@ -16,23 +16,27 @@ DISABLE:
 DISABLE_LINTERS:
   - JSON_PRETTIER
   - REPOSITORY_GITLEAKS
+  - REPOSITORY_KICS
   - SPELL_PROSELINT
+  - SPELL_MISSPELL
+  - SPELL_VALE
+  - REPOSITORY_TRUFFLEHOG
 DISABLE_ERRORS_LINTERS:
   - PYTHON_BANDIT
   - PYTHON_PYRIGHT
   - REPOSITORY_DEVSKIM
+  - REPOSITORY_GRYPE
   - REPOSITORY_SEMGREP
   - SPELL_VALE
 PRINT_ALL_FILES: false
-FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
+FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.venv|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
-SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors|used-by-stats|docs/used-by-stats\.md)'
 SPELL_VALE_FILE_EXTENSIONS:
   - .md
 SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github|docs/licenses)
@@ -40,6 +44,8 @@ DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 
 REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"
   - ".automation/test"
+  - "--skip-dirs"
+  - ".venv"
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false
 EMAIL_REPORTER: false

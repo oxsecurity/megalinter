@@ -2,6 +2,7 @@
 import json
 import logging
 import os
+import re
 import shlex
 import tempfile
 
@@ -52,6 +53,9 @@ def init_config(request_id, workspace=None, params={}):
             ), f"Unable to retrieve config file {config_file_name}"
             with open(config_file, "wb") as f:
                 f.write(r.content)
+        # Hardcoded path to config file
+        elif os.path.isfile(config_file_name):
+            config_file = config_file_name
         else:
             # Local configuration file with name forced by user
             config_file = workspace + os.path.sep + config_file_name
@@ -232,13 +236,20 @@ def delete(request_id=None, key=None):
     set_config(request_id, config)
 
 
-def build_env(request_id, secured=True):
+def build_env(request_id, secured=True, allow_list=[]):
     secured_env_variables = []
+    secured_env_variables_regex = []
     if secured is True:
         secured_env_variables = list_secured_variables(request_id)
+        secured_env_variables_regex = list_secured_variables_regexes(
+            secured_env_variables
+        )
     env_dict = {}
     for key, value in get_config(request_id).items():
-        if key in secured_env_variables:
+        if (
+            key in secured_env_variables
+            or match_variable_regexes(key, secured_env_variables_regex)
+        ) and key not in allow_list:
             env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)
@@ -260,6 +271,7 @@ def list_secured_variables(request_id) -> list[str]:
             "GITLAB_ACCESS_TOKEN_MEGALINTER",
             "GITLAB_CUSTOM_CERTIFICATE",
             "WEBHOOK_REPORTER_BEARER_TOKEN",
+            "NODE_TOKEN",
             "NPM_TOKEN",
             "DOCKER_USERNAME",
             "DOCKER_PASSWORD",
@@ -267,6 +279,8 @@ def list_secured_variables(request_id) -> list[str]:
             "GCR_USERNAME",
             "GCR_PASSWORD",
             "SMTP_PASSWORD",
+            "CI_SFDX_HARDIS_GITLAB_TOKEN" "(SFDX_CLIENT_ID_.*)",
+            "(SFDX_CLIENT_KEY_.*)",
         ],
     )
     secured_env_variables = get_list(
@@ -275,3 +289,20 @@ def list_secured_variables(request_id) -> list[str]:
         [],
     )
     return secured_env_variables_default + secured_env_variables
+
+
+def list_secured_variables_regexes(secured_env_variables: list[str]):
+    regexes = []
+    for variable_expression in secured_env_variables:
+        if variable_expression.startswith("("):
+            regexes += [re.compile(variable_expression)]
+    return regexes
+
+
+def match_variable_regexes(
+    variable_name, secured_env_variable_regexes: list[re.Pattern]
+):
+    for regex in secured_env_variable_regexes:
+        if regex.search(variable_name):
+            return True
+    return False

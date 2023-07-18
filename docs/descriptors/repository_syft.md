@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.80.0**
+- Version in MegaLinter: **0.85.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -27,16 +27,17 @@ Builds a SBOM (Software Build Of Materials) from your repository
 - Enable syft by adding `REPOSITORY_SYFT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable syft by adding `REPOSITORY_SYFT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                     | Default value                                   |
-|---------------------------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`        |                                                 |
-| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                  | None                                            |
-| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                   | None                                            |
-| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.syft.yaml`                                    |
-| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                    | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                      | `false`                                         |
-| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                | `0`                                             |
-| REPOSITORY_SYFT_CLI_EXECUTABLE              | Override CLI executable                                                         | `['syft']`                                      |
+| Variable                                    | Description                                                                                            | Default value                                   |
+|---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
+| REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
+| REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands | None                                            |
+| REPOSITORY_SYFT_CONFIG_FILE                 | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.syft.yaml`                                    |
+| REPOSITORY_SYFT_RULES_PATH                  | Path where to find linter configuration file                                                           | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SYFT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                             | `false`                                         |
+| REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                       | `0`                                             |
+| REPOSITORY_SYFT_CLI_EXECUTABLE              | Override CLI executable                                                                                | `['syft']`                                      |
 
 ## MegaLinter Flavours
 
@@ -44,8 +45,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       113        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       117        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -116,16 +117,19 @@ Available Commands:
   version     show the version
 
 Flags:
+      --base-path string         base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
       --catalogers stringArray   enable one or more package catalogers
   -c, --config string            application config file
       --exclude stringArray      exclude paths from being scanned using a glob expression
       --file string              file to write the default report output to (default is STDOUT)
   -h, --help                     help for syft
-      --name string              set the name of the target being analyzed
+      --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
   -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
   -q, --quiet                    suppress all logging output
   -s, --scope string             selection of layers to catalog, options=[Squashed AllLayers] (default "Squashed")
+      --source-name string       set the name of the target being analyzed
+      --source-version string    set the name of the target being analyzed
   -t, --template string          specify the path to a Go template file
   -v, --verbose count            increase verbosity (-v = info, -vv = debug)
       --version                  version for syft

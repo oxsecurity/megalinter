@@ -267,7 +267,7 @@ jobs:
       },
       // GitHub Action report folder
       {
-        regex: /Mega-Linter reports(.*)\n(.*)path:(.*)\n(.*)report/gm,
+        regex: /Mega-Linter reports(.*)\n(.*)path:(.*)\n(.*)report(?!s)/gm,
         replacement: "Mega-Linter reports$1\n$2path:$3\n$4megalinter-reports",
         test: `      name: Mega-Linter reports
         path: |
@@ -346,6 +346,12 @@ jobs:
         replacement: "https://megalinter.io",
         test: "https://oxsecurity.github.io/megalinter/configuration",
         testRes: "https://megalinter.io/configuration",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/configuration/gm,
+        replacement: "https://megalinter.io/config-file",
+        test: "https://megalinter.io/configuration/",
+        testRes: "https://megalinter.io/config-file/",
       },
       // Github actions flavors
       {

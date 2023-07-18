@@ -68,7 +68,7 @@ class utilsTest(unittest.TestCase):
             filtered_files = utils.filter_files(
                 all_files=all_files,
                 filter_regex_include=None,
-                filter_regex_exclude=None,
+                filter_regex_exclude=[None],
                 file_names_regex=[],
                 file_extensions=["", ".md", ".ext"],
                 ignored_files=ignored_files,
@@ -95,7 +95,7 @@ class utilsTest(unittest.TestCase):
             filtered_files = utils.filter_files(
                 all_files=all_files,
                 filter_regex_include=None,
-                filter_regex_exclude=None,
+                filter_regex_exclude=[],
                 file_names_regex=[],
                 file_extensions=file_extensions,
                 ignored_files=[],
@@ -104,3 +104,47 @@ class utilsTest(unittest.TestCase):
             self.assertListEqual(
                 sorted(filtered_files), sorted(expected), f"check {file_extensions}"
             )
+
+    def test_filter_regex_exclude_single_level(self):
+        all_files = [
+            "index.html",
+            "target/index.html",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=None,
+            filter_regex_exclude=["(^index.html)"],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["target/index.html"]),
+            "check regex_exclude_multilevel",
+        )
+
+    def test_filter_regex_exclude_multilevel(self):
+        all_files = [
+            "should/be/excluded/descriptor-level/test.md",
+            "target/foo.md",
+            "should/be/excluded/descriptor-level/test2.md",
+            "should/be/excluded/linter-level/test.md",
+            "should/be/excluded/linter-level/test2.md",
+            "target/foo2.ext",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=None,
+            filter_regex_exclude=["(descriptor-level)", "(linter-level)"],
+            file_names_regex=[],
+            file_extensions=[".md"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["target/foo.md"]),
+            "check regex_exclude_multilevel",
+        )

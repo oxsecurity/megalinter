@@ -28,7 +28,7 @@ install:
               Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
               1QIDAQAB\
               -----END PUBLIC KEY-----" | sed 's/   */\\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
-          wget --quiet \
+          wget --quiet --tries=10 --waitretry=10 \
               "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
               "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
               "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
@@ -101,6 +101,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/greglook/cljstyle#ignoring-forms
     linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
     config_file_name: .cljstyle
+    cli_config_arg_name: ""
     cli_lint_extra_args:
       - "check"
     cli_lint_fix_arg_name: "fix"

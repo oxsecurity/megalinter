@@ -2,6 +2,7 @@ descriptor_id: GHERKIN
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+  - dotnetweb
 file_extensions:
   - ".feature"
 linters:

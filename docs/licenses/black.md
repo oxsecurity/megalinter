@@ -1,3 +1,8 @@
+---
+title: License info for black within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2018 Łukasz Langa

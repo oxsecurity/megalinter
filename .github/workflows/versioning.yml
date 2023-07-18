@@ -28,6 +28,10 @@ on:
 jobs:
   actions-tagger:
     runs-on: windows-latest
+    environment:
+      name: release
+    permissions:
+      contents: write
     steps:
       #############################
       # Check out the latest code #

@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import subprocess
@@ -13,6 +14,7 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
 )
 from pytablewriter import MarkdownTableWriter
+from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url):
@@ -208,15 +210,174 @@ def log_section_end(section_key):
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
-    process = subprocess.run(
-        sarif_fmt_command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        input=sarif_in + "\n",
-        env=config.build_env(request_id),
-    )
-    return_code = process.returncode
-    output = utils.decode_utf8(process.stdout)
+    try:
+        process = subprocess.run(
+            sarif_fmt_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            input=sarif_in + "\n",
+            env=config.build_env(request_id),
+        )
+        return_code = process.returncode
+        output = utils.decode_utf8(process.stdout)
+    except Exception as e:
+        return_code = 1
+        output = sarif_in
+        logging.warning("Unable to call sarif-fmt: " + str(e))
     logging.debug("Sarif to human result: " + str(return_code) + "\n" + output)
     return output
+
+
+def build_reporter_start_message(reporter, redis_stream=False) -> dict:
+    result = {
+        "messageType": "megalinterStart",
+        "megaLinterStatus": "created",
+        "linters": [],
+        "requestId": reporter.master.request_id,
+    }
+    linterResults = []
+    for linter in reporter.master.linters:
+        if linter.is_active is True:
+            linterResults += [get_linter_infos(linter)]
+    result["linters"] = linterResults
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_reporter_external_result(reporter, redis_stream=False) -> dict:
+    result = {
+        "messageType": "megalinterComplete",
+        "megaLinterStatus": "completed",
+        "requestId": reporter.master.request_id,
+    }
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_linter_reporter_start_message(reporter, redis_stream=False) -> dict:
+    result = {"messageType": "linterStart", "linterStatus": "started"}
+    result = result | get_linter_infos(reporter.master)
+    return manage_redis_stream(result, redis_stream)
+
+
+def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
+    success_msg = "No errors were found in the linting process"
+    error_not_blocking = "Errors were detected but are considered not blocking"
+    error_msg = f"Found {reporter.master.total_number_errors} errors"
+    status_message = (
+        success_msg
+        if reporter.master.status == "success" and reporter.master.return_code == 0
+        else error_not_blocking
+        if reporter.master.status == "error" and reporter.master.return_code == 0
+        else error_msg
+    )
+    result = {
+        "messageType": "linterComplete",
+        "linterStatus": "success" if reporter.master.return_code == 0 else "error",
+        "linterErrorNumber": reporter.master.total_number_errors,
+        "linterStatusMessage": status_message,
+        "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
+    }
+    if reporter.master.lint_command_log is not None:
+        result["linterCliCommand"] = reporter.master.lint_command_log
+    result = result | get_linter_infos(reporter.master)
+    if (
+        reporter.master.sarif_output_file is not None
+        and os.path.isfile(reporter.master.sarif_output_file)
+        and os.path.getsize(reporter.master.sarif_output_file) > 0
+    ):
+        with open(
+            reporter.master.sarif_output_file, "r", encoding="utf-8"
+        ) as linter_sarif_file:
+            result["outputSarif"] = json.load(linter_sarif_file)
+    else:
+        text_report_sub_folder = config.get(
+            reporter.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
+        text_file_name = (
+            f"{reporter.report_folder}{os.path.sep}"
+            f"{text_report_sub_folder}{os.path.sep}"
+            f"{reporter.master.status.upper()}-{reporter.master.name}.log"
+        )
+        if os.path.isfile(text_file_name):
+            with open(text_file_name, "r", encoding="utf-8") as text_file:
+                result["outputText"] = text_file.read()
+                json_in_stdout = utils.find_json_in_stdout(result["outputText"], False)
+                if json_in_stdout != "":
+                    result["outputJson"] = json.loads(json_in_stdout)
+        else:
+            logging.warning(
+                "External Message: Unable to find linter output, "
+                "there is a probably an error within MegaLinter Worker"
+            )
+            result[
+                "outputText"
+            ] = f"Internal error: unable to find linter output in {text_file_name}"
+    return manage_redis_stream(result, redis_stream)
+
+
+def get_linter_infos(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    linter_infos = {
+        "descriptorId": linter.descriptor_id,
+        "linterId": linter.linter_name,
+        "linterKey": linter.name,
+        "linterVersion": linter.get_linter_version(),
+        "linterCliLintMode": linter.cli_lint_mode,
+        "requestId": linter.master.request_id,
+        "docUrl": linter_doc_url,
+        "isFormatter": linter.is_formatter,
+        "isSBOM": linter.is_sbom,
+    }
+    if linter.cli_lint_mode in ["file", "list_of_files"]:
+        linter_infos["filesNumber"] = len(linter.files)
+    return linter_infos
+
+
+def manage_redis_stream(result, redis_stream):
+    # Redis does not accept certain types of values: convert them
+    if redis_stream is True:
+        for result_key, result_val in result.items():
+            if isinstance(result_val, dict):
+                result[result_key] = json.dumps(result_val)
+            elif isinstance(result_val, bool):
+                result[result_key] = int(result_val)
+    return result
+
+
+def send_redis_message(reporter_self, message_data):
+    try:
+        redis = Redis(
+            host=reporter_self.redis_host, port=reporter_self.redis_port, db=0
+        )
+        logging.debug("REDIS Connection: " + str(redis.info()))
+        if reporter_self.redis_method == "STREAM":
+            resp = redis.xadd(reporter_self.stream_key, message_data)
+        else:
+            resp = redis.publish(reporter_self.pubsub_channel, json.dumps(message_data))
+        logging.info("REDIS RESP" + str(resp))
+    except ConnectionError as e:
+        if reporter_self.scope == "linter":
+            logging.warning(
+                f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+                f" with {reporter_self.master.linter_name}: Connection error {str(e)}"
+            )
+        else:
+            logging.warning(
+                f"[Redis Reporter] Error posting message for MegaLinter: Connection error {str(e)}"
+            )
+    except Exception as e:
+        if reporter_self.scope == "linter":
+            logging.warning(
+                f"[Redis Linter Reporter] Error posting message for {reporter_self.master.descriptor_id}"
+                f" with {reporter_self.master.linter_name}: Error {str(e)}"
+            )
+            logging.warning(
+                "[Redis Linter Reporter] Redis Message data: " + str(message_data)
+            )
+        else:
+            logging.warning(
+                f"[Redis Reporter] Error posting message for MegaLinter: Error {str(e)}"
+            )
+            logging.warning("[Redis Reporter] Redis Message data: " + str(message_data))

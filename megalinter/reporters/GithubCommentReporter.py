@@ -91,8 +91,14 @@ class GithubCommentReporter(Reporter):
                 else config.get(self.master.request_id, "GITHUB_TOKEN")
             )
             g = github.Github(base_url=github_api_url, login_or_token=github_auth)
-            repo = g.get_repo(github_repo)
-
+            try:
+                repo = g.get_repo(github_repo)
+            except github.GithubException as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
+            except Exception as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
             # Try to get PR from GITHUB_REF
             pr_list = []
             ref = os.environ.get("GITHUB_REF", "")
@@ -139,13 +145,10 @@ class GithubCommentReporter(Reporter):
                 except github.GithubException as e:
                     logging.warning(
                         f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
-                        "To enable this function, please :\n"
-                        "1. Create a Personal Access Token (https://docs.github.com/en/free-pro-team@"
-                        "latest/github/authenticating-to-github/creating-a-personal-access-token)\n"
-                        "2. Create a secret named PAT with its value on your repository (https://docs."
-                        "github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#"
-                        "creating-encrypted-secrets-for-a-repository)"
-                        "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
+                        "To enable this function, please add permissions in your Github Actions Workflow:\n"
+                        "permissions:\n"
+                        "  issues: write\n"
+                        "  pull-requests: write"
                     )
                 except Exception as e:
                     logging.warning(

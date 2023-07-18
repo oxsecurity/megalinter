@@ -92,7 +92,7 @@ linters:
           url: https://github.com/jorgenschaefer/elpy
       idea:
         - name: black
-          url: https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea
+          url: https://black.readthedocs.io/en/stable/integrations/editors.html#pycharm-intellij-idea
       sublime:
         - name: sublack
           url: https://github.com/jgirardet/sublack
@@ -142,8 +142,8 @@ linters:
     linter_repo: https://github.com/PyCQA/isort
     linter_speed: 5
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
-    linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files/
-    linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments/
+    linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files.html
+    linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments.html
     cli_lint_mode: list_of_files
     config_file_name: .isort.cfg
     cli_config_arg_name: "--settings-file"
@@ -204,8 +204,8 @@ linters:
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
-    linter_banner_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logotype-sm.png
-    linter_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logomark.png
+    linter_banner_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png
+    linter_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logomark.png
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
@@ -271,6 +271,8 @@ linters:
       - "mypy myfile.py"
       - "mypy --config-file .mypy.yml myfile.py"
     install:
+      dockerfile:
+        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy
     supported_platforms:

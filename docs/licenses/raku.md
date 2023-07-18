@@ -1,3 +1,8 @@
+---
+title: License info for raku within MegaLinter
+search:
+  exclude: true
+---
          The Artistic License 2.0
 
      Copyright (c) 2000-2006, The Perl Foundation.
@@ -108,7 +113,7 @@ you do at least ONE of the following:
     (c)  allow anyone who receives a copy of the Modified Version to
     make the Source form of the Modified Version available to others
     under
-  
+
  (i)  the Original License or
 
  (ii)  a license that permits the licensee to freely copy,
