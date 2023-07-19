@@ -59,6 +59,7 @@ jobs:
       load: true
       push: false
       imageName: megalinter
+      workerImageName: megalinter-worker
   test:
     name: Test
     runs-on: ubuntu-latest
