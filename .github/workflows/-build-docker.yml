@@ -15,9 +15,6 @@ on:
       dockerfile:
         required: true
         type: string
-      load:
-        required: true
-        type: boolean
       push:
         required: true
         type: boolean
@@ -96,7 +93,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
-          load: ${{ inputs.load }}
+          load: false
           push: ${{ inputs.push }}
           outputs: ${{ (!inputs.push && 'type=oci,dest=image.tar') || '' }}
 
@@ -115,7 +112,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
-          load: ${{ inputs.load }}
+          load: false
           push: ${{ inputs.push }}
 
           secrets: |
