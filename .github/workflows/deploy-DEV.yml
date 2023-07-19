@@ -56,8 +56,8 @@ jobs:
       shouldLoginDockerHub: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter') }}
       shouldLoginGithub: false
       dockerfile: ${{ (contains(github.event.head_commit.message, 'quick build') && 'Dockerfile-quick') || 'Dockerfile' }}
-      load: false
-      push: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter') }}
+      load: true
+      push: false
       imageName: megalinter
   test:
     name: Test
