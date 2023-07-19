@@ -115,8 +115,8 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
-          load: false
-          push: true
+          load: ${{ inputs.load }}
+          push: ${{ inputs.push }}
 
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
