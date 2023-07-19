@@ -20,28 +20,28 @@ python-bootstrap-dev: ## Bootstrap python for dev env
 # ===============================================================================================
 .PHONY: python-venv-init
 python-venv-init: ## Create venv ".venv/" if not exist
-	if [ ! -d .venv ] ; then
-		$(python_launcher) -m venv .venv
+	if [[ ! -d .venv ]] ; then \
+		$(python_launcher) -m venv .venv; \
 	fi
 
 .PHONY: python-venv-upgrade
 python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	pip install --upgrade pip setuptools wheel
 
 .PHONY: python-venv-requirements
 python-venv-requirements: ## Install or upgrade from $(python_requirements_file)
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	pip install --upgrade --requirement $(python_requirements_file)
 
 .PHONY: python-venv-requirements-dev
 python-venv-requirements-dev: ## Install or upgrade from $(python_requirements_dev_file)
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	pip install --upgrade --requirement $(python_requirements_dev_file)
 
 .PHONY: python-venv-linters-install
 python-venv-linters-install: ## Install or upgrade linters
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	pip install --upgrade flake8
 
 .PHONY: python-venv-purge
@@ -54,22 +54,22 @@ python-venv-purge: ## Remove venv ".venv/" folder
 .PHONY: python-purge-cache
 python-purge-cache: ## Purge cache to avoid used cached files
 	if [ -d .venv ] ; then
-		source .venv/bin/activate
+		. .venv/bin/activate; \
 		pip cache purge
 	fi
 
 .PHONY: python-version
 python-version: ## Displays the python version used for the .venv
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	$(python_launcher) --version
 
 .PHONY: python-flake8
 python-flake8: ## Run flake8 linter for python
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	flake8 --config .config/.flake8
 
 .PHONY: python-pytest
 python-pytest: ## Run pytest to test python scripts
-	source .venv/bin/activate
+	. .venv/bin/activate; \
 	cd scripts/
 	$(python_launcher) -m pytest
