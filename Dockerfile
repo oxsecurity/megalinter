@@ -84,12 +84,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/shellcheck-sarif", "--help"]
 RUN ["/bin/sarif-fmt", "--help"]
+RUN ["/bin/shellcheck-sarif", "--help"]
 
 #FROM__END
 
@@ -204,7 +204,7 @@ WORKDIR /
 
 #NPM__END
 
-FROM busybox AS copy-collector
+FROM scratch AS copy-collector
 
 ##############################
 # COPY instructions #

@@ -83,7 +83,7 @@ WORKDIR /
 
 #NPM__END
 
-FROM busybox AS copy-collector
+FROM scratch AS copy-collector
 
 ##############################
 # COPY instructions #
