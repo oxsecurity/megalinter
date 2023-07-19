@@ -135,7 +135,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # trivy-sbom installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
-
+#
 #OTHER__END
 
 ################################

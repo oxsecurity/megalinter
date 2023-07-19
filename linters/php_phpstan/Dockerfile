@@ -136,7 +136,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+COPY --link --chmod=755 --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 #COPY__END
 
 #############################################################################################
@@ -159,11 +159,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-
-# phpstan installation
-# Managed with COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-RUN chmod +x /usr/bin/phpstan
-
+#
 #OTHER__END
 
 ################################

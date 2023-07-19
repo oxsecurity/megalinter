@@ -154,10 +154,10 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
     && chmod +x /usr/bin/pwsh
 
-
+#
 # powershell_formatter installation
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
-
+#
 #OTHER__END
 
 ################################

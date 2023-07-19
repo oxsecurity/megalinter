@@ -231,11 +231,6 @@ Less common options:
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier
-
-# Linter install
-RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
+COPY --link --from=build-platform /usr/bin/scalafix /usr/bin/
 ```
 

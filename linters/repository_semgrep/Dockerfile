@@ -79,10 +79,13 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__END
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/semgrep/bin
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/semgrep" \
+ && cd "/venvs/semgrep" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip semgrep
+
 #PIPVENV__END
 
 ############################

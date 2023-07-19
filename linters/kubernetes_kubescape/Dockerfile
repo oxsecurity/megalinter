@@ -139,7 +139,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6
 
-
+#
 #OTHER__END
 
 ################################

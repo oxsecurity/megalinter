@@ -159,11 +159,11 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-
+#
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
-
+#
 #OTHER__END
 
 ################################

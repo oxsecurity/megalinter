@@ -159,11 +159,11 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-
+#
 # psalm installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
-
+#
 #OTHER__END
 
 ################################

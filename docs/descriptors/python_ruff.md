@@ -115,5 +115,17 @@ For help with a specific command, see: `ruff help <command>`.
 
 ### Installation on mega-linter Docker image
 
-- PIP packages (Python):
-  - [ruff](https://pypi.org/project/ruff)
+- Dockerfile commands :
+```dockerfile
+FROM --platform=$BUILDPLATFORM alpine:3 AS fetch-ruff
+ARG BUILDARCH
+RUN --mount=type=cache,target=/var/cache/apk,id=apk-${BUILDARCH},sharing=locked  \
+    apk add --update curl
+WORKDIR /
+ARG TARGETARCH
+RUN export DL_LOCATION="https://github.com/charliermarsh/ruff/releases/latest/download/ruff-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tar.gz" \
+    && echo "Downloading from ${DL_LOCATION}" \
+    && curl --location "${DL_LOCATION}" | tar -xzv
+COPY --link --from=fetch-ruff /ruff /usr/bin/ruff
+```
+

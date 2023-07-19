@@ -147,7 +147,7 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
-
+#
 #OTHER__END
 
 ################################

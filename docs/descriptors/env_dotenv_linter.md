@@ -122,6 +122,7 @@ SUBCOMMANDS:
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+FROM dotenvlinter/dotenv-linter:latest as dotenvlinter
+COPY --link --from=dotenvlinter /dotenv-linter /usr/bin/dotenv-linter
 ```
 

@@ -79,10 +79,13 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__END
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/cfn-lint/bin
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/cfn-lint" \
+ && cd "/venvs/cfn-lint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cfn-lint
+
 #PIPVENV__END
 
 ############################

@@ -136,7 +136,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-
+#
 # pmd installation
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
     unzip pmd-bin-${PMD_VERSION}.zip && \
@@ -144,7 +144,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
     chmod +x /usr/bin/pmd/bin/run.sh
 
-
+#
 #OTHER__END
 
 ################################

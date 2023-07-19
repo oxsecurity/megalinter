@@ -21,6 +21,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM dotenvlinter/dotenv-linter:latest as dotenvlinter
 FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
@@ -30,6 +31,15 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+FROM --platform=$BUILDPLATFORM alpine:3 AS fetch-ruff
+ARG BUILDARCH
+RUN --mount=type=cache,target=/var/cache/apk,id=apk-${BUILDARCH},sharing=locked  \
+    apk add --update curl
+WORKDIR /
+ARG TARGETARCH
+RUN export DL_LOCATION="https://github.com/charliermarsh/ruff/releases/latest/download/ruff-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tar.gz" \
+    && echo "Downloading from ${DL_LOCATION}" \
+    && curl --location "${DL_LOCATION}" | tar -xzv
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
@@ -39,6 +49,43 @@ FROM tenable/terrascan:1.18.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
+FROM --platform=$BUILDPLATFORM alpine:3 AS cargo-build
+WORKDIR /cargo
+ENV HOME=/cargo
+USER 0
+RUN --mount=type=cache,target=/var/cache/apk,id=apk-${BUILDARCH},sharing=locked  \
+    apk add --update \
+      gcc \
+      rustup \
+      bash \
+      git \
+      musl-dev \
+      llvm \
+      clang \
+      curl 
+RUN curl --location "https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-$([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64" || echo "aarch64")-unknown-linux-musl.tgz" | tar -xzv \
+ && mkdir -p /cargo/.cargo/bin \
+ && mv cargo-binstall /cargo/.cargo/bin \
+ && chown -R 63425:63425 /cargo 
+USER 63425
+ENV CC_aarch64_unknown_linux_musl=clang \
+    AR_aarch64_unknown_linux_musl=llvm-ar \
+    CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-Clink-self-contained=yes -Clinker=rust-lld" \
+    CC_x86_64_unknown_linux_musl=clang \
+    AR_x86_64_unknown_linux_musl=llvm-ar \
+    CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-Clink-self-contained=yes -Clinker=rust-lld"
+ARG TARGETARCH
+RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl")
+
+RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
+     . /cargo/.cargo/env \
+ && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+
+FROM scratch AS cargo
+COPY --link --from=cargo-build /tmp/bin/* /bin/
+RUN ["/bin/sarif-fmt", "--help"]
+RUN ["/bin/shellcheck-sarif", "--help"]
+
 #FROM__END
 
 ##################
@@ -138,28 +185,115 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__END
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/pylint" && cd "/venvs/pylint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pylint typing-extensions && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/black" && cd "/venvs/black" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/flake8" && cd "/venvs/flake8" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir flake8 && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir isort black && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/mypy" && cd "/venvs/mypy" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir mypy && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/pyright" && cd "/venvs/pyright" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pyright && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/ruff" && cd "/venvs/ruff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ruff && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging checkov && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir restructuredtext_lint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstcheck && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/rstfmt" && cd "/venvs/rstfmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstfmt && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/pyright/bin:/venvs/ruff/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/ansible-lint" \
+ && cd "/venvs/ansible-lint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip ansible-lint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/cpplint" \
+ && cd "/venvs/cpplint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cpplint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/cfn-lint" \
+ && cd "/venvs/cfn-lint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cfn-lint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/djlint" \
+ && cd "/venvs/djlint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip djlint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/pylint" \
+ && cd "/venvs/pylint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip pylint typing-extensions
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/black" \
+ && cd "/venvs/black" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip black
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/flake8" \
+ && cd "/venvs/flake8" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip flake8
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/isort" \
+ && cd "/venvs/isort" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip isort black
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/mypy" \
+ && cd "/venvs/mypy" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip mypy
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/pyright" \
+ && cd "/venvs/pyright" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip pyright
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/checkov" \
+ && cd "/venvs/checkov" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip packaging checkov
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/semgrep" \
+ && cd "/venvs/semgrep" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip semgrep
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/rst-lint" \
+ && cd "/venvs/rst-lint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip restructuredtext_lint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/rstcheck" \
+ && cd "/venvs/rstcheck" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip rstcheck
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/rstfmt" \
+ && cd "/venvs/rstfmt" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip rstfmt
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/proselint" \
+ && cd "/venvs/proselint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip proselint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/sqlfluff" \
+ && cd "/venvs/sqlfluff" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip sqlfluff
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/yamllint" \
+ && cd "/venvs/yamllint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip yamllint
+
 #PIPVENV__END
 
 ############################
@@ -267,7 +401,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif \
+    && rustup component add clippy \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -279,19 +413,23 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #COPY__START
+COPY --link --from=node_modules /node-deps /node-deps
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=build-platform /usr/bin/bash-exec /usr/bin/bash-exec
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=dotenvlinter /dotenv-linter /usr/bin/dotenv-linter
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
-COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+COPY --link --chmod=755 --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+COPY --link --from=fetch-ruff /ruff /usr/bin/ruff
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
 COPY --from=kics /app/bin/assets /opt/kics/assets/
@@ -301,6 +439,7 @@ COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
+COPY --link --from=cargo /bin/* /usr/bin/
 #COPY__END
 
 #############################################################################################
@@ -350,11 +489,11 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
-
+#
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-
+#
 # PHP installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && export GITHUB_AUTH_TOKEN \
@@ -371,50 +510,22 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
-
-# actionlint installation
-# Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-#              # shellcheck is a dependency for actionlint
-# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
-# bash-exec installation
-RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec \
-
-# shellcheck installation
-# Managed with # Next COPY line commented because already managed by another linter
-#              # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
-# shfmt installation
-# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
-
+#
 # clj-kondo installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \
-
+#
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
     && chmod +x install-cljstyle \
     && ./install-cljstyle \
-
-# hadolint installation
-# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-
-# editorconfig-checker installation
-# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-
-# dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
-
+#
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
     && golangci-lint --version
 
-
-# revive installation
-# Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
-
+#
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
     -H "Accept: application/vnd.github+json" \
@@ -426,87 +537,54 @@ RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
     && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
         --output /usr/bin/checkstyle
 
-
+#
 # pmd installation
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
     unzip pmd-bin-${PMD_VERSION}.zip && \
     rm pmd-bin-${PMD_VERSION}.zip && \
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
     chmod +x /usr/bin/pmd/bin/run.sh \
-
+#
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
-
-# kubeconform installation
-# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
-
+#
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6
 
-
-# checkmake installation
-# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
-
+#
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
-
-# phpstan installation
-# Managed with COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-RUN chmod +x /usr/bin/phpstan
-
+#
 # psalm installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
-
+#
 # phplint installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
 
-
+#
 # mypy installation
 ENV MYPY_CACHE_DIR=/tmp
-
-# gitleaks installation
-# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
-
+#
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
-
+#
 # kics installation
-# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
     && mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
-
+#
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
-
+#
 # trivy-sbom installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-
-# trufflehog installation
-# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
-
-# lychee installation
-# Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-
-# tflint installation
-# Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-
-# terrascan installation
-# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
-
-# terragrunt installation
-# Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-
-# terraform-fmt installation
-# Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
-
+#
 #OTHER__END
 
 ################################
@@ -564,7 +642,6 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 
 #EXTRA_DOCKERFILE_LINES__START
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

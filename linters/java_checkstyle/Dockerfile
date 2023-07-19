@@ -136,7 +136,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-
+#
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
     -H "Accept: application/vnd.github+json" \
@@ -148,7 +148,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
     && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
         --output /usr/bin/checkstyle
 
-
+#
 #OTHER__END
 
 ################################

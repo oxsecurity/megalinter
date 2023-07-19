@@ -148,7 +148,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-
+COPY --link --from=node_modules /node-deps /node-deps
 #COPY__END
 
 #############################################################################################
@@ -161,13 +161,13 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
-
+#
 # sfdx-scanner-lwc installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
-
+#
 #OTHER__END
 
 ################################

@@ -116,8 +116,6 @@ General help using GNU software: <http://www.gnu.org/gethelp/>
 
 - Dockerfile commands :
 ```dockerfile
-RUN printf '#!/bin/bash \\n\\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec
-
+COPY --link --from=build-platform /usr/bin/bash-exec /usr/bin/bash-exec
 ```
 

@@ -155,7 +155,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
         | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
-
+#
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
@@ -164,7 +164,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
     && chmod a+x /usr/bin/arm-ttk
 
-
+#
 #OTHER__END
 
 ################################

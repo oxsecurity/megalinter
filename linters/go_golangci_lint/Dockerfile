@@ -137,7 +137,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
     && golangci-lint --version
 
-
+#
 #OTHER__END
 
 ################################

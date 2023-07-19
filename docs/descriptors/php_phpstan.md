@@ -137,7 +137,6 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
 
 # Linter install
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
-COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-RUN chmod +x /usr/bin/phpstan
+COPY --link --chmod=755 --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 ```
 

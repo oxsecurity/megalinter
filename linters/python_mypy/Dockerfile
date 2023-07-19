@@ -79,10 +79,13 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__END
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/mypy" && cd "/venvs/mypy" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir mypy && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/mypy/bin
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/mypy" \
+ && cd "/venvs/mypy" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip mypy
+
 #PIPVENV__END
 
 ############################
@@ -137,7 +140,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # mypy installation
 ENV MYPY_CACHE_DIR=/tmp
-
+#
 #OTHER__END
 
 ################################

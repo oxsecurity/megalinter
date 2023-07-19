@@ -133,9 +133,8 @@ COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 #############################################################################################
 #OTHER__START
 # chktex installation
-# Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
-
+#
 #OTHER__END
 
 ################################

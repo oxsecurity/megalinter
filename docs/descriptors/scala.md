@@ -30,12 +30,5 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 ### Installation
 
-- Dockerfile commands :
-```dockerfile
-RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier
-
-```
-
 - APK packages (Linux):
   - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)

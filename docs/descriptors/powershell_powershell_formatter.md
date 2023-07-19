@@ -408,15 +408,20 @@ All parameters are case-insensitive.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+ARG TARGETPLATFORM
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-RUN mkdir -p ${PWSH_DIRECTORY} \
+RUN case ${TARGETPLATFORM} in \
+      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+    esac \
+    && mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s \
        -H "Accept: application/vnd.github+json" \
        -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
        https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
-        | grep linux-alpine-x64 \
+        | grep linux-${POWERSHELL_ARCH} \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \

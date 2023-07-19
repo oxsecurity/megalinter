@@ -21,6 +21,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM dotenvlinter/dotenv-linter:latest as dotenvlinter
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
@@ -128,19 +129,67 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIP__END
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging checkov && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint && deactivate && cd ./../..  \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/ansible-lint" \
+ && cd "/venvs/ansible-lint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip ansible-lint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/cpplint" \
+ && cd "/venvs/cpplint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cpplint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/djlint" \
+ && cd "/venvs/djlint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip djlint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/checkov" \
+ && cd "/venvs/checkov" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip packaging checkov
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/semgrep" \
+ && cd "/venvs/semgrep" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip semgrep
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/snakemake" \
+ && cd "/venvs/snakemake" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip snakemake
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/snakefmt" \
+ && cd "/venvs/snakefmt" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip snakefmt
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/proselint" \
+ && cd "/venvs/proselint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip proselint
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/sqlfluff" \
+ && cd "/venvs/sqlfluff" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip sqlfluff
+RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
+   mkdir -p "/venvs/yamllint" \
+ && cd "/venvs/yamllint" \
+ && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && source bin/activate \
+ && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip yamllint
+
 #PIPVENV__END
 
 ############################
@@ -224,11 +273,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
-    && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install --force --locked sarif-fmt  shellcheck-sarif \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
-ENV PATH="/root/.cargo/bin:${PATH}"
+
 #CARGO__END
 
 ##############################
@@ -242,11 +287,14 @@ COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=build-platform /usr/bin/bash-exec /usr/bin/bash-exec
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=node_modules /node-deps /node-deps
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=dotenvlinter /dotenv-linter /usr/bin/dotenv-linter
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
@@ -277,14 +325,14 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
         | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
-
+#
 # CSHARP installation
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-
+#
 # POWERSHELL installation
 RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
@@ -303,7 +351,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
     && chmod +x /usr/bin/pwsh
 
-
+#
 # VBDOTNET installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -311,12 +359,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-
-# actionlint installation
-# Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-#              # shellcheck is a dependency for actionlint
-# Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
+#
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
@@ -324,18 +367,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && rm "${ARM_TTK_NAME}" \
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
     && chmod a+x /usr/bin/arm-ttk \
-
-# bash-exec installation
-    && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec \
-
-# shellcheck installation
-# Managed with # Next COPY line commented because already managed by another linter
-#              # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-
-# shfmt installation
-# Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
-
+#
 # bicep_linter installation
     && case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
@@ -344,66 +376,36 @@ esac \
 && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/latest/download/bicep-linux-${POWERSHELL_ARCH}" \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}" \
-
+#
 # csharpier installation
     && /usr/share/dotnet/dotnet tool install -g csharpier \
-
-# hadolint installation
-# Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-
-# editorconfig-checker installation
-# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-
-# dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
-
+#
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
-
-# kubeconform installation
-# Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
-
+#
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
-
-# checkmake installation
-# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
-
+#
 # powershell installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \
-
+#
 # powershell_formatter installation
 # Next line commented because already managed by another linter
 # RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
-
-# protolint installation
-# Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-
-# gitleaks installation
-# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
-
+#
 # grype installation
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
-
+#
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
-
+#
 # trivy-sbom installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-
-# trufflehog installation
-# Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
-
-# vale installation
-# Managed with COPY --link --from=vale /bin/vale /bin/vale
-
-# lychee installation
-# Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-
+#
 # tsqllint installation
 # Next line commented because already managed by another linter
 # RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
@@ -412,7 +414,7 @@ esac \
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
     && dotnet tool install --global TSQLLint
-
+#
 #OTHER__END
 
 ################################
@@ -470,7 +472,6 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 
 #EXTRA_DOCKERFILE_LINES__START
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
