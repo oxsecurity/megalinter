@@ -22,12 +22,6 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM dotenvlinter/dotenv-linter:latest as dotenvlinter
-FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround 
-## for the released revive binaries not returning version numbers (devel). 
-## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
@@ -79,12 +73,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/sarif-fmt", "--help"]
 RUN ["/bin/shellcheck-sarif", "--help"]
+RUN ["/bin/sarif-fmt", "--help"]
 
 #FROM__END
 
@@ -639,6 +633,22 @@ RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-ko
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
     && golangci-lint --version
+
+#
+# revive installation
+## The golang image used as a builder is a temporary workaround 
+## for the released revive binaries not returning version numbers (devel). 
+## The install command should then be what is commented in the go.megalinter-descriptor.yml
+FROM --platform=$BUILDPLATFORM golang:1-alpine as revive-build
+RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/mgechev/revive@latest
+ARG BUILDARCH
+ARG TARGETARCH
+RUN GOOS=linux GOARCH=${TARGETARCH} go install github.com/mgechev/revive@latest \
+&& ([[ "${BUILDARCH}" == "${TARGETARCH}" ]] && mv bin/revive /usr/bin) || mv bin/linux_${TARGETARCH}/revive /usr/bin
+FROM golang:1-alpine as revive
+COPY --from=revive-build /usr/bin/revive /usr/bin/revive
+# Verify Binary
+RUN /usr/bin/revive --version
 
 #
 # checkstyle installation

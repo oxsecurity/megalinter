@@ -22,12 +22,6 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
 FROM dotenvlinter/dotenv-linter:latest as dotenvlinter
-FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround 
-## for the released revive binaries not returning version numbers (devel). 
-## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
@@ -398,10 +392,27 @@ COPY --from=copy-collector / /
 #OTHER__START
 # golangci-lint installation
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version \
+    && golangci-lint --version
+
+#
+# revive installation
+## The golang image used as a builder is a temporary workaround 
+## for the released revive binaries not returning version numbers (devel). 
+## The install command should then be what is commented in the go.megalinter-descriptor.yml
+FROM --platform=$BUILDPLATFORM golang:1-alpine as revive-build
+RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/mgechev/revive@latest
+ARG BUILDARCH
+ARG TARGETARCH
+RUN GOOS=linux GOARCH=${TARGETARCH} go install github.com/mgechev/revive@latest \
+&& ([[ "${BUILDARCH}" == "${TARGETARCH}" ]] && mv bin/revive /usr/bin) || mv bin/linux_${TARGETARCH}/revive /usr/bin
+FROM golang:1-alpine as revive
+COPY --from=revive-build /usr/bin/revive /usr/bin/revive
+# Verify Binary
+RUN /usr/bin/revive --version
+
 #
 # ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 #

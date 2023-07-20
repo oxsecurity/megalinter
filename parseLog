@@ -16,8 +16,8 @@ for f in $jobIds; do
   jobTimestamps=$(echo "$timeStamps" | grep "$f$" | grep -o "^[^ ]*")
   start=$(echo "$jobTimestamps" | head -n 1)
   end=$(echo "$jobTimestamps" | tail -n 1)
-  length=$(echo "$file" | grep "$f DONE" | grep -o "[0-9.]*s$" | grep -o "[0-9.]*")
-  label=$(echo "$file" | grep -o -e "Z $f \[[^]]*\]" | grep -o -e "\[[^]]*\]" | grep -o -e "[^][]*")
+  length=$(echo "$file" | grep "$f DONE" | grep -o "[0-9.]*s$" | grep -o "[0-9.]*" | tail -n 1)
+  label=$(echo "$file" | grep -o -e "Z $f \[[^]]*\]" | grep -o -e "\[[^]]*\]" | grep -o -e "[^][]*" | tail -n 1 | sed 's_1/1__g')
   data="${data}
 ${f},${label},${start},${end},${length}"
 done

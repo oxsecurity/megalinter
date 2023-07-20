@@ -85,11 +85,19 @@ linters:
         # - FROM ghcr.io/mgechev/revive:1.2.5 as revive
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |
-          FROM golang:1-alpine as revive
           ## The golang image used as a builder is a temporary workaround 
           ## for the released revive binaries not returning version numbers (devel). 
           ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-          RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
+          FROM --platform=$BUILDPLATFORM golang:1-alpine as revive-build
+          RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/mgechev/revive@latest
+          ARG BUILDARCH
+          ARG TARGETARCH
+          RUN GOOS=linux GOARCH=${TARGETARCH} go install github.com/mgechev/revive@latest \
+          && ([[ "${BUILDARCH}" == "${TARGETARCH}" ]] && mv bin/revive /usr/bin) || mv bin/linux_${TARGETARCH}/revive /usr/bin
+          FROM golang:1-alpine as revive
+          COPY --from=revive-build /usr/bin/revive /usr/bin/revive
+          # Verify Binary
+          RUN /usr/bin/revive --version
         - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     supported_platforms:
       platform:
