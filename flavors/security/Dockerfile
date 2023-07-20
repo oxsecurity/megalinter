@@ -15,8 +15,16 @@
 FROM koalaman/shellcheck:stable as shellcheck
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
+FROM --platform=$BUILDPLATFORM golang:alpine as dustilock-build
+RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/checkmarx/dustilock@v1.2.0
+ARG BUILDARCH
+ARG TARGETARCH
+RUN GOOS=linux GOARCH=${TARGETARCH} go install github.com/checkmarx/dustilock@v1.2.0 \
+&& ([[ "${BUILDARCH}" == "${TARGETARCH}" ]] && mv bin/dustilock /usr/bin) || mv bin/linux_${TARGETARCH}/dustilock /usr/bin
 FROM golang:alpine as dustilock
-RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+COPY --from=dustilock-build /usr/bin/dustilock /usr/bin/dustilock
+# Verify Binary
+RUN /usr/bin/dustilock --version
 
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
