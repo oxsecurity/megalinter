@@ -646,7 +646,7 @@ def build_dockerfile(
         pipenv_download_command = (
             "RUN --mount=type=cache,id=pip,sharing=locked,target=/var/cache/pip,uid=0 \\\n"
             "    mkdir /download \\\n"
-            "    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv \\\n"
+            "    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv wheel \\\n"
         )
         pipenv_install_command = ""
         pipenv_path_command = 'ENV PATH="${PATH}"'

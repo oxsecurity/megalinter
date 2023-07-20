@@ -84,7 +84,7 @@ RUN apk add --update --no-cache \
 #PIPVENV_DOWNLOAD__START
 RUN --mount=type=cache,id=pip,sharing=locked,target=/var/cache/pip,uid=0 \
     mkdir /download \
-    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv \
+    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv wheel \
 && pip download --cache-dir=/var/cache/pip --dest "/download" \
       pyright 
 

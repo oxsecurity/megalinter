@@ -100,12 +100,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/shellcheck-sarif", "--help"]
 RUN ["/bin/sarif-fmt", "--help"]
+RUN ["/bin/shellcheck-sarif", "--help"]
 
 #FROM__END
 
@@ -292,7 +292,7 @@ RUN apk add --update --no-cache \
 #PIPVENV_DOWNLOAD__START
 RUN --mount=type=cache,id=pip,sharing=locked,target=/var/cache/pip,uid=0 \
     mkdir /download \
-    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv \
+    && PYTHONDONTWRITEBYTECODE=1 pip3 --disable-pip-version-check install --cache-dir=/var/cache/pip --upgrade pip crossenv wheel \
 && pip download --cache-dir=/var/cache/pip --dest "/download" \
       ansible-lint \
       cpplint \
