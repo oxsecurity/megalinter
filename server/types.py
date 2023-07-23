@@ -27,6 +27,16 @@ class AnalysisRequestInput(BaseModel):
         description="Input any code snippet",
         example="#!/usr/bin/env python3",
     )
+    snippetLanguage: str | None = Field(
+        default=None,
+        description="Language of code snippet",
+        example="PYTHON",
+    )
+    snippetExtension: str | None = Field(
+        default=None,
+        description="Extension of code snippet",
+        example=".py",
+    )
     repositoryUrl: str | None = Field(
         default=None,
         description="Input a public repository url",
