@@ -8,7 +8,7 @@
     "black": "23.7.0",
     "cfn-lint": "0.78.2",
     "checkmake": "0.2.0",
-    "checkov": "2.3.335",
+    "checkov": "2.3.339",
     "checkstyle": "10.12.1",
     "chktex": "1.7.6",
     "clippy": "0.1.71",
