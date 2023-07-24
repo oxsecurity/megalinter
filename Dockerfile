@@ -902,7 +902,7 @@ RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-    && luarocks-5.4 install luacheck \
+    && luarocks5.4 install luacheck \
 #
 # perlcritic installation
     && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

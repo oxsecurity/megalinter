@@ -23,7 +23,7 @@ linters:
         - lua
         - luarocks
       dockerfile:
-        - RUN luarocks-5.4 install luacheck
+        - RUN luarocks5.4 install luacheck
     supported_platforms:
       platform:
         - linux/amd64

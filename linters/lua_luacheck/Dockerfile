@@ -220,7 +220,7 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # luacheck installation
-RUN luarocks-5.4 install luacheck
+RUN luarocks5.4 install luacheck
 #
 #OTHER__END
 
