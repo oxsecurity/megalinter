@@ -20,7 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Handle reporter crashes without making all ML crash
   - Devskim: Remove default --ignore-globs argument
-  - mypy: USe /tmp as cache folder by default with ENV MYPY_CACHE_DIR=/tmp in Dockerfile
+  - mypy: Use /tmp as cache folder by default with ENV MYPY_CACHE_DIR=/tmp in Dockerfile
   - Fix `hadolint` to use its default configuration file properly.
   - Remove linters not in flavor before calling reporters
 

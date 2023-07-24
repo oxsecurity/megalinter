@@ -121,7 +121,59 @@ class MegaLinterAnalysis:
     # Init from user snippet
     def init_from_snippet(self):
         logger.info(f"Input snippet:\n {self.request_input.snippet}")
-        # Guess language using pygments
+        if self.request_input.snippetExtension:
+            snippet_file_name = "snippet" + self.request_input.snippetExtension
+        elif self.request_input.snippetLanguage:
+            snippet_file_name = self.get_language_extension()
+        else:
+            snippet_file_name = self.guess_snippet_filename()
+        logger.info(f"Snippet file name: {snippet_file_name}")
+        temp_dir = self.create_temp_dir()
+        snippet_file = os.path.join(temp_dir, snippet_file_name)
+        with open(snippet_file, "w", encoding="utf-8") as file:
+            file.write(self.request_input.snippet)
+        self.workspace = temp_dir
+
+    # Get extension from language
+    def get_language_extension(self):
+        languageId = self.request_input.snippetLanguage
+        all_code_lexers = lexers.get_all_lexers()
+        code_lexer_name = None
+        code_lexer_filenames = None
+        for name, aliases, filenames, _mimetypes in all_code_lexers:
+            if name == languageId or name in aliases:
+                code_lexer_name = name
+                code_lexer_filenames = filenames
+                break
+        if code_lexer_name is None:
+            err = MegalinterServerException(
+                "Unable to find language lexer for " + languageId,
+                "snippetUnknownLanguage",
+                self.id,
+                {"snippet": self.request_input.snippet, "snippetLanguage": languageId},
+            )
+            err.send_redis_message()
+            raise err
+        logger.info(f"Identified snippet language: {code_lexer_name}")
+        # Build file name
+        if len(code_lexer_filenames) > 0:
+            if "*." in code_lexer_filenames[0]:
+                snippet_file_name = "snippet" + code_lexer_filenames[0].replace("*", "")
+            else:
+                snippet_file_name = code_lexer_filenames[0]
+        else:
+            err = MegalinterServerException(
+                f"Unable build file from {code_lexer_name} snippet",
+                "snippetBuildError",
+                self.id,
+                {"snippet": self.request_input.snippet},
+            )
+            err.send_redis_message()
+            raise err
+        return snippet_file_name
+
+    # Guess language using pygments
+    def guess_snippet_filename(self):
         code_lexer = lexers.guess_lexer(self.request_input.snippet)
         if not code_lexer:
             err = MegalinterServerException(
@@ -149,12 +201,7 @@ class MegaLinterAnalysis:
             )
             err.send_redis_message()
             raise err
-        logger.info(f"Snippet file name: {snippet_file_name}")
-        temp_dir = self.create_temp_dir()
-        snippet_file = os.path.join(temp_dir, snippet_file_name)
-        with open(snippet_file, "w", encoding="utf-8") as file:
-            file.write(self.request_input.snippet)
-        self.workspace = temp_dir
+        return snippet_file_name
 
     # Run MegaLinter
     def process(self):
