@@ -29,7 +29,10 @@ class AnalysisRequestInput(BaseModel):
     )
     snippetLanguage: str | None = Field(
         default=None,
-        description="Language of code snippet",
+        description=(
+            "Languag)e of code snippet (must be a pygment name"
+            + " or shortname: https://pygments.org/languages/)"
+        ),
         example="PYTHON",
     )
     snippetExtension: str | None = Field(
