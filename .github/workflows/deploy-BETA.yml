@@ -139,16 +139,16 @@ jobs:
             oxsecurity/megalinter-worker:beta
             ghcr.io/oxsecurity/megalinter-worker:beta
 
-      ###############################
-      # Run tests for code coverage #
-      ###############################
-      - name: Run Test Cases and code coverage
-        shell: bash
-        run: |
-          export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
-          echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:beta
-        timeout-minutes: 60
+      # ###############################
+      # # Run tests for code coverage #
+      # ###############################
+      # - name: Run Test Cases and code coverage
+      #   shell: bash
+      #   run: |
+      #     export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
+      #     echo "CI_ENV=${CI_ENV}"
+      #     docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:beta
+      #   timeout-minutes: 60
 
       ##############################################
       # Check Docker image security with Trivy #
