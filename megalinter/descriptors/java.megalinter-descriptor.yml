@@ -99,7 +99,7 @@ linters:
       - "pmd --rulesets java-pmd-ruleset.xml --file-list /tmp/list-off-files-generated-by-megalinter.txt"
       - "pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources"
     install:
-      dockerfile:
+      build_platform_dockerfile:
         - ARG PMD_VERSION=6.55.0
         - |
           RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
@@ -107,6 +107,8 @@ linters:
               rm pmd-bin-${PMD_VERSION}.zip && \
               mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
               chmod +x /usr/bin/pmd/bin/run.sh
+      dockerfile:
+        - COPY --link --from=build-platform /usr/bin/pmd /usr/bin/pmd
     supported_platforms:
       platform:
         - linux/amd64

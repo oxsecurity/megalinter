@@ -43,7 +43,12 @@ FROM --platform=$BUILDPLATFORM python:3.11.3-alpine3.17 AS build-platform
 #BUILD_PLATFORM_OTHER__START
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec
+    && chmod +x /usr/bin/bash-exec \
+#
+# ktlint installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+    chmod a+x ktlint && \
+    mv "ktlint" /usr/bin/
 
 #
 #BUILD_PLATFORM_OTHER__END
@@ -134,6 +139,7 @@ COPY --link --from=node_modules /node-deps /node-deps
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=dotenvlinter /dotenv-linter /usr/bin/dotenv-linter
+COPY --link --from=build-platform /usr/bin/ktlint /usr/bin/ktlint
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
@@ -484,11 +490,6 @@ esac \
 #
 # csharpier installation
     && /usr/share/dotnet/dotnet tool install -g csharpier \
-#
-# ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
-    chmod a+x ktlint && \
-    mv "ktlint" /usr/bin/ \
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \

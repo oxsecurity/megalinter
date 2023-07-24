@@ -127,7 +127,21 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli
 #
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec \
+    && chmod +x /usr/bin/bash-exec
+
+#
+# pmd installation
+ARG PMD_VERSION=6.55.0
+RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    unzip pmd-bin-${PMD_VERSION}.zip && \
+    rm pmd-bin-${PMD_VERSION}.zip && \
+    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+    chmod +x /usr/bin/pmd/bin/run.sh \
+#
+# ktlint installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+    chmod a+x ktlint && \
+    mv "ktlint" /usr/bin/ \
 #
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
@@ -242,6 +256,8 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=dotenvlinter /dotenv-linter /usr/bin/dotenv-linter
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+COPY --link --from=build-platform /usr/bin/pmd /usr/bin/pmd
+COPY --link --from=build-platform /usr/bin/ktlint /usr/bin/ktlint
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
@@ -507,7 +523,6 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
-ARG PMD_VERSION=6.55.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -566,6 +581,8 @@ RUN apk add --no-cache \
                 libc6-compat \
                 openssl \
                 readline-dev \
+                lua \
+                luarocks \
                 g++ \
                 libc-dev \
                 libgcc \
@@ -877,39 +894,15 @@ RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
         --output /usr/bin/checkstyle
 
 #
-# pmd installation
-RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
-    unzip pmd-bin-${PMD_VERSION}.zip && \
-    rm pmd-bin-${PMD_VERSION}.zip && \
-    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
-    chmod +x /usr/bin/pmd/bin/run.sh \
-#
-# ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
-    chmod a+x ktlint && \
-    mv "ktlint" /usr/bin/ \
-#
 # kubescape installation
-    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
 #
 # chktex installation
     && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-    && wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/ \
-    && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
-    && cd luarocks-3.3.1-super-linter \
-    && ./configure --with-lua-include=/usr/local/include \
-    && make \
-    && make -b install \
-    && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck \
-    && cd / \
 #
 # perlcritic installation
     && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

@@ -160,6 +160,8 @@ RUN apk add --no-cache \
                 openssh \
                 openssl \
                 readline-dev \
+                lua \
+                luarocks \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -218,20 +220,7 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # luacheck installation
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/ \
-    && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
-    && cd luarocks-3.3.1-super-linter \
-    && ./configure --with-lua-include=/usr/local/include \
-    && make \
-    && make -b install \
-    && cd .. && rm -r luarocks-3.3.1-super-linter/ \
-    && luarocks install luacheck \
-    && cd /
-
+RUN luarocks install luacheck
 #
 #OTHER__END
 
