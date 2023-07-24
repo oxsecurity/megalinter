@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.326**
+- Version in MegaLinter: **2.3.335**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -170,8 +170,10 @@ options:
                         repeated
   --external-checks-git EXTERNAL_CHECKS_GIT
                         Github url of external checks to be added. you can
-                        specify a subdirectory after a double-slash //. cannot
-                        be used together with --external-checks-dir
+                        specify a subdirectory after a double-slash //.
+                        possible to use ?ref=tags/tagName or
+                        ?ref=heads/branchName or ?ref=commit_id cannot be used
+                        together with --external-checks-dir
   -l, --list            List checks
   -o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using

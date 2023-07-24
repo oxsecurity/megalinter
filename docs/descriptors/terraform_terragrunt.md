@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.48.1**
+- Version in MegaLinter: **0.48.4**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -123,9 +123,11 @@ GLOBAL OPTIONS:
    terragrunt-json-out                          The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json.
    terragrunt-use-partial-parse-config-cache    Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided.
    terragrunt-include-module-prefix             When this flag is set output from Terraform sub-commands is prefixed with module path.
+   terragrunt-fail-on-state-bucket-creation     When this flag is set Terragrunt will fail if the remote state bucket needs to be created.
+   terragrunt-disable-bucket-update             When this flag is set Terragrunt will not update the remote state bucket.
 
 VERSION:
-   v0.48.1
+   v0.48.4
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

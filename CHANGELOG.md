@@ -27,6 +27,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
   - New Redis reporter (alpha)
 
+- CI
+  - Clean docker build cache to avoid no space left on device during Build Dev job
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.3.285 to **2.3.287** on 2023-06-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.26.0 to **7.28.1** on 2023-06-12
@@ -145,6 +148,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.2 to **0.6.3** on 2023-07-17
   - [checkov](https://www.checkov.io/) from 2.3.324 to **2.3.326** on 2023-07-17
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.1 to **6.31.2** on 2023-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.78.1 to **0.78.2** on 2023-07-23
+  - [stylelint](https://stylelint.io) from 15.10.1 to **15.10.2** on 2023-07-23
+  - [djlint](https://djlint.com/) from 1.31.1 to **1.32.1** on 2023-07-23
+  - [phpstan](https://phpstan.org/) from 1.10.25 to **1.10.26** on 2023-07-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.317 to **1.1.318** on 2023-07-23
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.278 to **0.0.280** on 2023-07-23
+  - [checkov](https://www.checkov.io/) from 2.3.326 to **2.3.335** on 2023-07-23
+  - [kics](https://www.kics.io) from 1.7.3 to **1.7.4** on 2023-07-23
+  - [semgrep](https://semgrep.dev/) from 1.32.0 to **1.33.2** on 2023-07-23
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.30.1 to **7.30.2** on 2023-07-23
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.2 to **2.1.3** on 2023-07-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.1 to **0.48.4** on 2023-07-23
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
