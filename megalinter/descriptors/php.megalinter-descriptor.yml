@@ -9,6 +9,7 @@ install:
   build_platform_apk:
     - gnupg
   apk:
+    - gnupg
     - php81
     - php81-phar
     - php81-mbstring

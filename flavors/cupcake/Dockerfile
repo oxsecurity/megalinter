@@ -506,6 +506,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 openjdk11 \
+                gnupg \
                 php81 \
                 php81-phar \
                 php81-mbstring \

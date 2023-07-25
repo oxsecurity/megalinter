@@ -336,6 +336,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openjdk11 \
+                gnupg \
                 php81 \
                 php81-phar \
                 php81-mbstring \

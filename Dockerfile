@@ -589,6 +589,7 @@ RUN apk add --no-cache \
                 openjdk11 \
                 perl \
                 perl-dev \
+                gnupg \
                 php81 \
                 php81-phar \
                 php81-mbstring \
