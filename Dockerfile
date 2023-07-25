@@ -25,6 +25,7 @@ FROM --platform=$BUILDPLATFORM golang:1-alpine as revive-build
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
+## See https://github.com/mgechev/revive/issues/787
 RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/mgechev/revive@latest
 ARG BUILDARCH
 ARG TARGETARCH
@@ -140,7 +141,19 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 #
 # SCALA installation
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier \
+        chmod +x coursier
+
+#
+# arm-ttk installation
+ARG ARM_TTK_NAME='master.zip'
+ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
+RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
+    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
+    && rm "${ARM_TTK_NAME}" \
+    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
+    && chmod a+x /usr/bin/arm-ttk \
 #
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
@@ -266,6 +279,7 @@ COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=build-platform /usr/bin/arm-ttk /usr/bin/arm-ttk
 COPY --link --from=build-platform /usr/bin/bash-exec /usr/bin/bash-exec
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
@@ -535,9 +549,6 @@ RUN apk add --update --no-cache libc6-compat \
 ARG TARGETPLATFORM
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-ARG ARM_TTK_NAME='master.zip'
-ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
-ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
@@ -830,8 +841,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache
-
+    && rm -rf /root/.npm/_cacache \
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
@@ -840,14 +850,6 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 #     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-#
-# arm-ttk installation
-ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
-RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
-    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
-    && rm "${ARM_TTK_NAME}" \
-    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
-    && chmod a+x /usr/bin/arm-ttk \
 #
 # bicep_linter installation
     && case ${TARGETPLATFORM} in \

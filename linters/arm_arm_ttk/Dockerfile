@@ -24,7 +24,18 @@ FROM --platform=$BUILDPLATFORM python:3.11.3-alpine3.17 AS build-platform
 #BUILD_PLATFORM_APK__END
 
 #BUILD_PLATFORM_OTHER__START
+# arm-ttk installation
+ARG ARM_TTK_NAME='master.zip'
+ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
+RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
+    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
+    && rm "${ARM_TTK_NAME}" \
+    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
+    && chmod a+x /usr/bin/arm-ttk
 
+#
 #BUILD_PLATFORM_OTHER__END
 
 FROM --platform=$BUILDPLATFORM python:3.11.3-alpine3.17 AS node_modules
@@ -54,7 +65,7 @@ FROM scratch AS copy-collector
 #############################################################################################
 
 #COPY__START
-
+COPY --link --from=build-platform /usr/bin/arm-ttk /usr/bin/arm-ttk
 #COPY__END
 
 #######################################
@@ -137,9 +148,6 @@ RUN apk add --update --no-cache libc6-compat \
 ARG TARGETPLATFORM
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-ARG ARM_TTK_NAME='master.zip'
-ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
-ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 #ARG__END
 
 ####################
@@ -237,15 +245,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
-
-#
-# arm-ttk installation
-ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
-RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
-    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
-    && rm "${ARM_TTK_NAME}" \
-    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
-    && chmod a+x /usr/bin/arm-ttk
 
 #
 #OTHER__END

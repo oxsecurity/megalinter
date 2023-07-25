@@ -41,8 +41,19 @@ FROM --platform=$BUILDPLATFORM python:3.11.3-alpine3.17 AS build-platform
 #BUILD_PLATFORM_APK__END
 
 #BUILD_PLATFORM_OTHER__START
+# arm-ttk installation
+ARG ARM_TTK_NAME='master.zip'
+ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
+RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
+    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
+    && rm "${ARM_TTK_NAME}" \
+    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
+    && chmod a+x /usr/bin/arm-ttk \
+#
 # bash-exec installation
-RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
+    && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec \
 #
 # ktlint installation
@@ -152,6 +163,7 @@ COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=build-platform /usr/bin/arm-ttk /usr/bin/arm-ttk
 COPY --link --from=build-platform /usr/bin/bash-exec /usr/bin/bash-exec
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
@@ -326,9 +338,6 @@ RUN apk add --update --no-cache libc6-compat \
 ARG TARGETPLATFORM
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-ARG ARM_TTK_NAME='master.zip'
-ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
-ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 ARG PSSA_VERSION='latest'
@@ -491,16 +500,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 #
-# arm-ttk installation
-ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
-RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
-    && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
-    && rm "${ARM_TTK_NAME}" \
-    && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
-    && chmod a+x /usr/bin/arm-ttk \
-#
 # bicep_linter installation
-    && case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
 esac \

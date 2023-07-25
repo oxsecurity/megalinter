@@ -15,6 +15,7 @@ FROM --platform=$BUILDPLATFORM golang:1-alpine as revive-build
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
+## See https://github.com/mgechev/revive/issues/787
 RUN mkdir temp && cd temp && go mod init temp && go get -d github.com/mgechev/revive@latest
 ARG BUILDARCH
 ARG TARGETARCH

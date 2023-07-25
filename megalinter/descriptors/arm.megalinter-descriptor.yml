@@ -54,7 +54,7 @@ linters:
             if (${Error}.Count) {exit 1}
             "
     install:
-      dockerfile:
+      build_platform_dockerfile:
         - ARG ARM_TTK_NAME='master.zip'
         - ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
         - ARG ARM_TTK_DIRECTORY='/opt/microsoft'
@@ -65,6 +65,8 @@ linters:
               && rm "${ARM_TTK_NAME}" \
               && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
               && chmod a+x /usr/bin/arm-ttk
+      dockerfile:
+        - COPY --link --from=build-platform /usr/bin/arm-ttk /usr/bin/arm-ttk
     supported_platforms:
       platform:
         - linux/amd64
