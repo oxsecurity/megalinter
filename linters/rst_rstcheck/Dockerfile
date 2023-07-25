@@ -117,7 +117,8 @@ RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/rstcheck" \
  && cd "/venvs/rstcheck" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip rstcheck
 

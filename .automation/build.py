@@ -658,7 +658,9 @@ def build_dockerfile(
                 'RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \\\n'
                 f'   mkdir -p "/venvs/{pip_linter}" \\\n'
                 + f' && cd "/venvs/{pip_linter}" \\\n'
-                + " && python3 -m crossenv /usr/local/bin/target-python3 . \\\n"
+                + " && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ \"${TARGETPLATFORM}\" == \"linux/arm64\" ]] && echo \"aarch64\" || echo \"x86_64\") . \\\n"
+                # See https://github.com/benfogle/crossenv/issues/107
+                + " && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\\\\0\\\\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \\\n"
                 + " && source bin/activate \\\n"
                 + f" && PYTHONDONTWRITEBYTECODE=1 {pip_linter_env} pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip "
                 + (" ".join(pip_linter_packages))

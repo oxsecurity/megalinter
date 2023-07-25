@@ -88,12 +88,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/sarif-fmt", "--help"]
 RUN ["/bin/shellcheck-sarif", "--help"]
+RUN ["/bin/sarif-fmt", "--help"]
 
 #FROM__END
 
@@ -349,109 +349,127 @@ RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/ansible-lint" \
  && cd "/venvs/ansible-lint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip ansible-lint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/cpplint" \
  && cd "/venvs/cpplint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cpplint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/cfn-lint" \
  && cd "/venvs/cfn-lint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip cfn-lint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/djlint" \
  && cd "/venvs/djlint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip djlint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/pylint" \
  && cd "/venvs/pylint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip pylint typing-extensions
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/black" \
  && cd "/venvs/black" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip black
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/flake8" \
  && cd "/venvs/flake8" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip flake8
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/isort" \
  && cd "/venvs/isort" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip isort black
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/mypy" \
  && cd "/venvs/mypy" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip mypy
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/pyright" \
  && cd "/venvs/pyright" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip pyright
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/checkov" \
  && cd "/venvs/checkov" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip packaging checkov
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/semgrep" \
  && cd "/venvs/semgrep" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip semgrep
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/rst-lint" \
  && cd "/venvs/rst-lint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip restructuredtext_lint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/rstcheck" \
  && cd "/venvs/rstcheck" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip rstcheck
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/rstfmt" \
  && cd "/venvs/rstfmt" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip rstfmt
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/proselint" \
  && cd "/venvs/proselint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip proselint
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/sqlfluff" \
  && cd "/venvs/sqlfluff" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip sqlfluff
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
    mkdir -p "/venvs/yamllint" \
  && cd "/venvs/yamllint" \
- && python3 -m crossenv /usr/local/bin/target-python3 . \
+ && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+ && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
  && source bin/activate \
  && PYTHONDONTWRITEBYTECODE=1  pip3 --disable-pip-version-check install --find-links=/download --cache-dir=/var/cache/pip yamllint
 
