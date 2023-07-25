@@ -100,12 +100,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/shellcheck-sarif", "--help"]
 RUN ["/bin/sarif-fmt", "--help"]
+RUN ["/bin/shellcheck-sarif", "--help"]
 
 #FROM__END
 
@@ -116,11 +116,28 @@ FROM --platform=$BUILDPLATFORM python:3.11.3-alpine3.17 AS build-platform
 #############################################################################################
 #BUILD_PLATFORM_APK__START
 RUN apk add --update --no-cache \
+                gnupg \
                 curl \
                 openjdk11
 #BUILD_PLATFORM_APK__END
 
 #BUILD_PLATFORM_OTHER__START
+# PHP installation
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
+    && export GITHUB_AUTH_TOKEN \
+    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
+    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    && gpg --verify phive.phar.asc phive.phar \
+    && chmod +x phive.phar \
+    && mv phive.phar /usr/local/bin/phive \
+    && rm phive.phar.asc
+
+#
 # SCALA installation
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier \
@@ -243,6 +260,7 @@ FROM scratch AS copy-collector
 #############################################################################################
 
 #COPY__START
+COPY --link --from=build-platform /usr/local/bin/phive /usr/local/bin/phive
 COPY --link --from=node_modules /node-deps /node-deps
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
@@ -560,7 +578,6 @@ RUN apk add --no-cache \
                 openjdk11 \
                 perl \
                 perl-dev \
-                gnupg \
                 php81 \
                 php81-phar \
                 php81-mbstring \
@@ -785,21 +802,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # PHP installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 #
 # POWERSHELL installation
 RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \

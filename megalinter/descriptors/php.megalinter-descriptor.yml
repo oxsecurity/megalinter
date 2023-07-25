@@ -6,8 +6,9 @@ descriptor_flavors:
 file_extensions:
   - ".php"
 install:
-  apk:
+  build_platform_apk:
     - gnupg
+  apk:
     - php81
     - php81-phar
     - php81-mbstring
@@ -18,7 +19,7 @@ install:
     - php81-dom
     - php81-simplexml
     - dpkg
-  dockerfile:
+  build_platform_dockerfile:
     - |
       RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
           && export GITHUB_AUTH_TOKEN \
@@ -32,8 +33,10 @@ install:
           && gpg --verify phive.phar.asc phive.phar \
           && chmod +x phive.phar \
           && mv phive.phar /usr/local/bin/phive \
-          && rm phive.phar.asc \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+          && rm phive.phar.asc
+  dockerfile:
+    - COPY --link --from=build-platform /usr/local/bin/phive /usr/local/bin/phive
+    - RUN update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 supported_platforms:
   platform:
     - linux/amd64
