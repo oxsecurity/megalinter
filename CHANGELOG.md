@@ -27,18 +27,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - MegaLinter Server for [CodeTotal](https://www.blackhat.com/us-23/arsenal/schedule/index.html#codetotal-shift-left-just-became-easier-33596)
-  - Improvements to Gitpod workspace and addition of Makefile for automation, by @ThomasSanson in https://github.com/oxsecurity/megalinter/pull/2737
+  - Improvements to Gitpod workspace and addition of Makefile for automation, by @ThomasSanson in <https://github.com/oxsecurity/megalinter/pull/2737>
 
 - Fixes
   - Handle reporter crashes without making all ML crash
   - Devskim: Remove default --ignore-globs argument
   - mypy: Use /tmp as cache folder by default with ENV MYPY_CACHE_DIR=/tmp in Dockerfile
-  - Fix `hadolint` to use its default configuration file properly, by @KihyeokK in https://github.com/oxsecurity/megalinter/pull/2763
+  - Fix `hadolint` to use its default configuration file properly, by @KihyeokK in <https://github.com/oxsecurity/megalinter/pull/2763>
   - Remove linters not in flavor before calling reporters
-  - Undowngrade devskim, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/2748
-  - Add ts-standard linter for ts standard, by @janderssonse in https://github.com/oxsecurity/megalinter/pull/2746
-  - Remove additional `--update` for apk in Dockerfile by @PeterDaveHello in https://github.com/oxsecurity/megalinter/pull/2619
-  - Fix V8R config arg usage (#2756), by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2819 
+  - Undowngrade devskim, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2748>
+  - Add ts-standard linter for ts standard, by @janderssonse in <https://github.com/oxsecurity/megalinter/pull/2746>
+  - Remove additional `--update` for apk in Dockerfile by @PeterDaveHello in <https://github.com/oxsecurity/megalinter/pull/2619>
+  - Fix V8R config arg usage (#2756), by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2819>
 
 - Reporters
   - New Redis reporter (beta)
