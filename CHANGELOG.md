@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.44.0 to **3.45.0** on 2023-07-25
 <!-- linter-versions-end -->
 
 ## [v7.2.0] - 2023-07-25
