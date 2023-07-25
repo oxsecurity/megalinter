@@ -162,6 +162,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.1 to **0.48.4** on 2023-07-23
   - [checkov](https://www.checkov.io/) from 2.3.335 to **2.3.339** on 2023-07-24
   - [checkov](https://www.checkov.io/) from 2.3.339 to **2.3.340** on 2023-07-24
+  - [vale](https://vale.sh/) from 2.28.0 to **2.28.1** on 2023-07-25
 <!-- linter-versions-end -->
 
 ## [v7.1.0] - 2023-06-11
