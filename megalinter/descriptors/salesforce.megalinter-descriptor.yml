@@ -16,7 +16,7 @@ install:
           && rm -rf /root/.npm/_cacache
   # Salesforce DX
   npm:
-    - sfdx-cli
+    - "@salesforce/cli"
 supported_platforms:
   platform:
     - linux/amd64

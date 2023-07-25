@@ -100,12 +100,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/sarif-fmt", "--help"]
 RUN ["/bin/shellcheck-sarif", "--help"]
+RUN ["/bin/sarif-fmt", "--help"]
 
 #FROM__END
 
@@ -166,7 +166,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                sfdx-cli \
+                @salesforce/cli \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
@@ -900,13 +900,13 @@ RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
 #
 # chktex installation
-RUN cd ~ && touch .chktexrc && cd / \
+    && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-RUN luarocks-5.3 install luacheck \
+    && luarocks-5.3 install luacheck \
 #
 # perlcritic installation
-RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
+    && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 #
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
