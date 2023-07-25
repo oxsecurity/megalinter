@@ -100,12 +100,12 @@ RUN rustup-init -y --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-u
 
 RUN --mount=type=cache,id=cargo-${TARGETARCH},sharing=locked,target=/cargo/.cargo/registry/,uid=63425 \
      . /cargo/.cargo/env \
- && cargo binstall --no-confirm --no-symlinks shellcheck-sarif sarif-fmt --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
+ && cargo binstall --no-confirm --no-symlinks sarif-fmt shellcheck-sarif --root /tmp --target $([[ "${TARGETARCH}" == "amd64" ]] && echo "x86_64-unknown-linux-musl" || echo "aarch64-unknown-linux-musl") 
 
 FROM scratch AS cargo
 COPY --link --from=cargo-build /tmp/bin/* /bin/
-RUN ["/bin/shellcheck-sarif", "--help"]
 RUN ["/bin/sarif-fmt", "--help"]
+RUN ["/bin/shellcheck-sarif", "--help"]
 
 #FROM__END
 
@@ -581,8 +581,9 @@ RUN apk add --no-cache \
                 libc6-compat \
                 openssl \
                 readline-dev \
-                lua \
-                luarocks \
+                lua5.3 \
+                lua5.3-dev \
+                luarocks5.3 \
                 g++ \
                 libc-dev \
                 libgcc \
@@ -902,7 +903,7 @@ RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-    && luarocks5.4 install luacheck \
+    && luarocks-5.3 install luacheck \
 #
 # perlcritic installation
     && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

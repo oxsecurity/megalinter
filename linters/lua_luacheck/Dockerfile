@@ -160,8 +160,9 @@ RUN apk add --no-cache \
                 openssh \
                 openssl \
                 readline-dev \
-                lua \
-                luarocks \
+                lua5.3 \
+                lua5.3-dev \
+                luarocks5.3 \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -220,7 +221,7 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # luacheck installation
-RUN luarocks5.4 install luacheck
+RUN luarocks-5.3 install luacheck
 #
 #OTHER__END
 

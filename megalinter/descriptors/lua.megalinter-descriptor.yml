@@ -20,10 +20,13 @@ linters:
       apk:
         - openssl
         - readline-dev
-        - lua
-        - luarocks
+        - lua5.3
+        - lua5.3-dev
+        - luarocks5.3
+        - gcc
+        - musl-dev
       dockerfile:
-        - RUN luarocks5.4 install luacheck
+        - RUN luarocks-5.3 install luacheck
     supported_platforms:
       platform:
         - linux/amd64
