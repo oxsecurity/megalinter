@@ -27,7 +27,7 @@ jobs:
   automerge:
     name: automerge dependabot
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]' && github.repository == 'oxsecurity/megalinter'
+    if: github.actor == 'dependabot[bot]' && github.repository == '0xshimon/megalinter'
     steps:
       - name: Wait for CI/CT/CD to succeed
         uses: fountainhead/action-wait-for-check@v1.1.0
