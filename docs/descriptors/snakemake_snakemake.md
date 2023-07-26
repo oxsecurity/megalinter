@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.30.2**
+- Version in MegaLinter: **7.31.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -171,8 +171,11 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--google-lifesciences]
                  [--google-lifesciences-regions GOOGLE_LIFESCIENCES_REGIONS [GOOGLE_LIFESCIENCES_REGIONS ...]]
                  [--google-lifesciences-location GOOGLE_LIFESCIENCES_LOCATION]
-                 [--google-lifesciences-keep-cache] [--az-batch]
-                 [--az-batch-enable-autoscale]
+                 [--google-lifesciences-keep-cache]
+                 [--google-lifesciences-service-account-email GOOGLE_LIFESCIENCES_SERVICE_ACCOUNT_EMAIL]
+                 [--google-lifesciences-network GOOGLE_LIFESCIENCES_NETWORK]
+                 [--google-lifesciences-subnetwork GOOGLE_LIFESCIENCES_SUBNETWORK]
+                 [--az-batch] [--az-batch-enable-autoscale]
                  [--az-batch-account-url [AZ_BATCH_ACCOUNT_URL]] [--flux]
                  [--tes URL] [--use-conda]
                  [--conda-not-block-search-path-envvars] [--list-conda-envs]
@@ -992,6 +995,15 @@ GOOGLE_LIFE_SCIENCE:
                         in Google Cloud Storage. By default, the caches are
                         deleted at the shutdown step of the workflow.
                         (default: False)
+  --google-lifesciences-service-account-email GOOGLE_LIFESCIENCES_SERVICE_ACCOUNT_EMAIL
+                        Specify a service account email address (default:
+                        None)
+  --google-lifesciences-network GOOGLE_LIFESCIENCES_NETWORK
+                        Specify a network for a Google Compute Engine VM
+                        instance (default: None)
+  --google-lifesciences-subnetwork GOOGLE_LIFESCIENCES_SUBNETWORK
+                        Specify a subnetwork for a Google Compute Engine VM
+                        instance (default: None)
 
 KUBERNETES:
   --kubernetes [NAMESPACE]
