@@ -60,7 +60,7 @@ linters:
     install:
       dockerfile:
         - ARG PSSA_VERSION='latest'
-        - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+        - RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     supported_platforms:
       platform:
         - linux/amd64
@@ -93,7 +93,7 @@ linters:
     install:
       dockerfile:
         - ARG PSSA_VERSION='latest'
-        - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+        - RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     supported_platforms:
       platform:
         - linux/amd64

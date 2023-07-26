@@ -241,7 +241,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN ([[ "${TARGETPLATFORM}" == "linux/arm64"
 
 #
 # powershell_formatter installation
-RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 #OTHER__END
 
