@@ -26,7 +26,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-    if: github.repository == 'oxsecurity/megalinter'
+    if: github.repository == '0xshimon/megalinter'
     steps:
       - name: automerge
         env:
