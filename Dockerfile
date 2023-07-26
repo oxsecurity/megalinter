@@ -721,9 +721,10 @@ COPY --from=copy-collector / /
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
 # ARM installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
+RUN --mount=type=secret,id=GITHUB_TOKEN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+    case ${TARGETPLATFORM} in \
       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+      "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
     esac \
     && mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s \
@@ -735,7 +736,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
 
 #
 # CLOJURE installation
@@ -836,26 +838,27 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # PHP installation
-RUN update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php81 110 \
 #
 # POWERSHELL installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
-      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
-    esac \
-    && mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s \
-       -H "Accept: application/vnd.github+json" \
-       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-${POWERSHELL_ARCH} \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    && chmod +x /usr/bin/pwsh
-
+# Next line commented because already managed by another linter
+# RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+#     case ${TARGETPLATFORM} in \
+#       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+#       "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
+#     esac \
+#     && mkdir -p ${PWSH_DIRECTORY} \
+#     && curl --retry 5 --retry-delay 5 -s \
+#        -H "Accept: application/vnd.github+json" \
+#        -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+#        https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#         | grep browser_download_url \
+#         | grep linux-${POWERSHELL_ARCH} \
+#         | cut -d '"' -f 4 \
+#         | xargs -n 1 wget -O - \
+#         | tar -xzC ${PWSH_DIRECTORY} \
+#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+#     && chmod +x /usr/bin/pwsh
 #
 # SALESFORCE installation
 # Next line commented because already managed by another linter
@@ -872,7 +875,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 #
 # bicep_linter installation
-RUN case ${TARGETPLATFORM} in \
+    && case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
 esac \
@@ -946,7 +949,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 #
 # powershell installation
-#RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 # powershell_formatter installation
 # Next line commented because already managed by another linter

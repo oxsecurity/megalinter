@@ -231,9 +231,10 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
+RUN --mount=type=secret,id=GITHUB_TOKEN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+    case ${TARGETPLATFORM} in \
       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+      "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
     esac \
     && mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s \
@@ -245,7 +246,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+    && chmod +x /usr/bin/pwsh
 
 #
 #OTHER__END

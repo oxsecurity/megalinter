@@ -221,9 +221,10 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # POWERSHELL installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
+RUN --mount=type=secret,id=GITHUB_TOKEN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+    case ${TARGETPLATFORM} in \
       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+      "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
     esac \
     && mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s \

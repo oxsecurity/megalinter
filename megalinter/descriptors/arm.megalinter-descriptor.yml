@@ -14,10 +14,12 @@ install:
     - ARG TARGETPLATFORM
     - ARG PWSH_VERSION='latest'
     - ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
+  # Currently there is no support for alpine / arm in powershell. Leaving the case statement here since it should work once it's supported
     - |
-      RUN case ${TARGETPLATFORM} in \
+      RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+          case ${TARGETPLATFORM} in \
             "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-            "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+            "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
           esac \
           && mkdir -p ${PWSH_DIRECTORY} \
           && curl --retry 5 --retry-delay 5 -s \
@@ -29,7 +31,8 @@ install:
               | cut -d '"' -f 4 \
               | xargs -n 1 wget -O - \
               | tar -xzC ${PWSH_DIRECTORY} \
-          && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+          && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+          && chmod +x /usr/bin/pwsh
 linters:
   # ARM TTK
   - class: ArmLinter
@@ -70,7 +73,6 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
     ide:
       vscode:
         - name: ARMTTKExtension

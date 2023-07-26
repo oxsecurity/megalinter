@@ -440,34 +440,10 @@ COPY --from=copy-collector / /
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
+RUN --mount=type=secret,id=GITHUB_TOKEN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+    case ${TARGETPLATFORM} in \
       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
-    esac \
-    && mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s \
-       -H "Accept: application/vnd.github+json" \
-       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-${POWERSHELL_ARCH} \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
-
-#
-# CSHARP installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-#
-# POWERSHELL installation
-RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
-      "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
-      "linux/arm64")  POWERSHELL_ARCH=arm64      ;; \
+      "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
     esac \
     && mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s \
@@ -482,6 +458,33 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
     && chmod +x /usr/bin/pwsh
 
+#
+# CSHARP installation
+RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+    && chmod +x dotnet-install.sh \
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+
+ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+#
+# POWERSHELL installation
+# Next line commented because already managed by another linter
+# RUN ([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && exit 0) || \
+#     case ${TARGETPLATFORM} in \
+#       "linux/amd64")  POWERSHELL_ARCH=alpine-x64 ;; \
+#       "linux/arm64")  POWERSHELL_ARCH=alpine-arm64      ;; \
+#     esac \
+#     && mkdir -p ${PWSH_DIRECTORY} \
+#     && curl --retry 5 --retry-delay 5 -s \
+#        -H "Accept: application/vnd.github+json" \
+#        -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
+#        https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#         | grep browser_download_url \
+#         | grep linux-${POWERSHELL_ARCH} \
+#         | cut -d '"' -f 4 \
+#         | xargs -n 1 wget -O - \
+#         | tar -xzC ${PWSH_DIRECTORY} \
+#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
+#     && chmod +x /usr/bin/pwsh
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
