@@ -63,11 +63,9 @@ class ConfigReporter(Reporter):
                 # Get applicable IDEA extensions
                 idea_extensions = ide.get("idea", [])
                 for idea_extension in idea_extensions:
-                    if "https://plugins.jetbrains.com/plugin/" in idea_extension["url"]:
+                    if "id" in idea_extension:
                         idea_recommended_extensions += [
-                            idea_extension["url"].split(
-                                "https://plugins.jetbrains.com/plugin/", 1
-                            )[1]
+                            idea_extension["id"]
                         ]
             # Copy config file if default (and not already at the root of the folder)
             if linter.final_config_file is not None:
