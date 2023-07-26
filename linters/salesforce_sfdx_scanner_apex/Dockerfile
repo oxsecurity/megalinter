@@ -110,6 +110,7 @@ ENV PATH=${PATH}:/root/.cargo/bin
 
 RUN mkdir /venvs
 
+# Enforce seperation
 ARG TARGETPLATFORM
 COPY --link --from=target-python /usr/local/bin/python3 /usr/local/bin/target-python3
 
@@ -120,8 +121,8 @@ COPY --link megalinter /megalinter
 RUN --mount=type=cache,id=pip,sharing=shared,target=/var/cache/pip,uid=0 \
     mkdir -p "/venvs/megalinter" \
     && cd "/venvs/megalinter" \
-    && python3 -m crossenv /usr/local/bin/target-python3 . \
-    && source bin/activate \
+    && python3 -m crossenv /usr/local/bin/target-python3 --machine $([[ "${TARGETPLATFORM}" == "linux/arm64" ]] && echo "aarch64" || echo "x86_64") . \
+    && find . -type f -name _musllinux.py -exec sed -i 's|def _get_musl_version.*:|\0\n    return _MuslVersion(major=1, minor=2)|g' \{\} \; \
     && PYTHONDONTWRITEBYTECODE=1 pip3 install --cache-dir=/var/cache/pip /megalinter
 
 #############################################################################################
@@ -242,12 +243,9 @@ COPY --from=copy-collector / /
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
 #
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+RUN sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

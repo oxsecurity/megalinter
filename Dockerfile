@@ -862,9 +862,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN case ${TARGETPLATFORM} in \
 # ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
-    && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
@@ -875,7 +872,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 #
 # bicep_linter installation
-    && case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
 esac \
@@ -928,13 +925,13 @@ RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
 #
 # chktex installation
-RUN cd ~ && touch .chktexrc && cd / \
+    && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-RUN luarocks-5.3 install luacheck \
+    && luarocks-5.3 install luacheck \
 #
 # perlcritic installation
-RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
+    && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 #
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
