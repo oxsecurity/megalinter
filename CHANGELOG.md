@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.pycqa.org) from 2.17.4 to **2.17.5** on 2023-07-26
   - [checkov](https://www.checkov.io/) from 2.3.340 to **2.3.343** on 2023-07-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.30.2 to **7.31.0** on 2023-07-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.1 to **0.79.2** on 2023-07-26
 <!-- linter-versions-end -->
 
 ## [v7.2.0] - 2023-07-25
