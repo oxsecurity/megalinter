@@ -19,6 +19,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.45.0 to **3.45.1** on 2023-07-26
   - [rubocop](https://rubocop.org/) from 1.54.2 to **1.55.0** on 2023-07-26
   - [sqlfluff](https://www.sqlfluff.com/) from 2.1.3 to **2.1.4** on 2023-07-26
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.9.0 to **6.10.0** on 2023-07-26
+  - [pylint](https://pylint.pycqa.org) from 2.17.4 to **2.17.5** on 2023-07-26
+  - [checkov](https://www.checkov.io/) from 2.3.340 to **2.3.343** on 2023-07-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.30.2 to **7.31.0** on 2023-07-26
 <!-- linter-versions-end -->
 
 ## [v7.2.0] - 2023-07-25
