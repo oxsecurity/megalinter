@@ -387,3 +387,4 @@ nav:
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
+  - "OX Security": "https://ox.security?ref=megalinter"
