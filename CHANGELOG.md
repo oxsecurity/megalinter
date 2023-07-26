@@ -10,6 +10,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.44.0 to **3.45.0** on 2023-07-25
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.78.2 to **0.79.1** on 2023-07-26
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.8.0 to **6.9.0** on 2023-07-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.45.0 to **3.45.1** on 2023-07-26
+  - [rubocop](https://rubocop.org/) from 1.54.2 to **1.55.0** on 2023-07-26
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.3 to **2.1.4** on 2023-07-26
 <!-- linter-versions-end -->
 
 ## [v7.2.0] - 2023-07-25
