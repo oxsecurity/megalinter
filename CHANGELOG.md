@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Fix TAP reporter (3 real dots instead if 3 dots character)
+  - Call trufflehog with `--only-verified` to avoid false positives in .git/config
 
 - Linter versions upgrades
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.44.0 to **3.45.0** on 2023-07-25

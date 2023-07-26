@@ -561,6 +561,7 @@ linters:
       - filesystem
       - "."
       - --fail
+      - --only-verified
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:
