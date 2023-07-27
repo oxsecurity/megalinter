@@ -19,13 +19,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Call trufflehog with `--only-verified` to avoid false positives in .git/config
 
 - Linter versions upgrades
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.78.2 to **0.79.2** 
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.78.2 to **0.79.2**
   - [checkov](https://www.checkov.io/) from 2.3.340 to **2.3.343**
-  - [pylint](https://pylint.pycqa.org) from 2.17.4 to **2.17.5** 
-  - [rubocop](https://rubocop.org/) from 1.54.2 to **1.55.0** 
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.30.2 to **7.31.0** 
-  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.8.0 to **6.10.0** 
-  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.3 to **2.1.4** 
+  - [pylint](https://pylint.pycqa.org) from 2.17.4 to **2.17.5**
+  - [rubocop](https://rubocop.org/) from 1.54.2 to **1.55.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.30.2 to **7.31.0**
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.8.0 to **6.10.0**
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.3 to **2.1.4**
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.44.0 to **3.45.1**
 
 ## [v7.2.0] - 2023-07-25
