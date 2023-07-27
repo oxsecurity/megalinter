@@ -81,7 +81,7 @@ class MegaLinterAnalysis:
             git.Repo.clone_from(self.request_input.repositoryUrl, temp_dir)
         except Exception as e:
             err = MegalinterServerException(
-                f"Unable to clone repository\n{str(e)}",
+                f"Unable to clone repository {self.request_input.repositoryUrl}",
                 "gitCloneError",
                 self.id,
                 {"error": str(e)},
