@@ -147,7 +147,7 @@ class MegaLinterAnalysis:
                 break
         if code_lexer_name is None:
             err = MegalinterServerException(
-                "Unable to find language lexer for " + languageId,
+                "Unable to find pygments language for " + languageId,
                 "snippetUnknownLanguage",
                 self.id,
                 {"snippet": self.request_input.snippet, "snippetLanguage": languageId},
