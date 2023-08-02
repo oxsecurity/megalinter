@@ -141,6 +141,11 @@ module.exports = optionator({
       type: "Boolean",
       description: "Remove MegaLinter Docker container when done",
     },
+    {
+      option: "codetotal",
+      type: "Boolean",
+      description: "Run CodeTotal locally",
+    },
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],
