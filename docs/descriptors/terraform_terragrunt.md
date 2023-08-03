@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.48.4**
+- Version in MegaLinter: **0.48.5**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -92,6 +92,7 @@ COMMANDS:
    hclfmt                Recursively find hcl files and rewrite them into a canonical format.
    aws-provider-patch    Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018)
    render-json           Render the final terragrunt config, with all variables, includes, and functions resolved, as json. This is useful for enforcing policies using static analysis tools like Open Policy Agent, or for debugging your terragrunt config.
+   output-module-groups  Output groups of modules ordered for apply as a list of list in JSON (useful for CI use cases).
    *                     Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
@@ -127,7 +128,7 @@ GLOBAL OPTIONS:
    terragrunt-disable-bucket-update             When this flag is set Terragrunt will not update the remote state bucket.
 
 VERSION:
-   v0.48.4
+   v0.48.5
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

@@ -9,7 +9,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 
 ## flake8 documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.1.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -160,13 +160,15 @@ options:
   --max-doc-length n    Maximum allowed doc line length for the entirety of
                         this run. (Default: None)
   --indent-size n       Number of spaces used for indentation (Default: 4)
-  --select errors       Comma-separated list of error codes to enable. For
-                        example, ``--select=E4,E51,W234``. (Default:
-                        E,F,W,C90)
+  --select errors       Limit the reported error codes to codes prefix-matched
+                        by this list. You usually do not need to specify this
+                        option as the default includes all installed plugin
+                        codes. For example, ``--select=E4,E51,W234``.
   --extend-select errors
-                        Comma-separated list of error codes to add to the list
-                        of selected ones. For example, ``--extend-
-                        select=E4,E51,W234``.
+                        Add additional error codes to the default
+                        ``--select``. You usually do not need to specify this
+                        option as the default includes all installed plugin
+                        codes. For example, ``--extend-select=E4,E51,W234``.
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.
@@ -194,7 +196,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.10.0, pyflakes: 3.0.1
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.11.0, pyflakes: 3.1.0
 ```
 
 ### Installation on mega-linter Docker image

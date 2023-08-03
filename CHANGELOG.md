@@ -10,6 +10,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.19.5 to **0.20.4** on 2023-08-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.3 to **0.79.6** on 2023-08-03
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.1 to **10.12.2** on 2023-08-03
+  - [eslint](https://eslint.org) from 8.45.0 to **8.46.0** on 2023-08-03
+  - [psalm](https://psalm.dev) from Psalm.5.13.1@ to **Psalm.5.14.1@** on 2023-08-03
+  - [puppet-lint](http://puppet-lint.com/) from 4.0.0 to **4.0.1** on 2023-08-03
+  - [flake8](https://flake8.pycqa.org) from 6.0.0 to **6.1.0** on 2023-08-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.318 to **1.1.320** on 2023-08-03
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.280 to **0.0.282** on 2023-08-03
+  - [checkov](https://www.checkov.io/) from 2.3.343 to **2.3.354** on 2023-08-03
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.11 to **1.0.15** on 2023-08-03
+  - [semgrep](https://semgrep.dev/) from 1.33.2 to **1.34.1** on 2023-08-03
+  - [syft](https://github.com/anchore/syft) from 0.85.0 to **0.86.1** on 2023-08-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.43.1 to **0.44.0** on 2023-08-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.43.1 to **0.44.0** on 2023-08-03
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.45.1 to **3.46.3** on 2023-08-03
+  - [rubocop](https://rubocop.org/) from 1.55.0 to **1.55.1** on 2023-08-03
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.0 to **7.31.1** on 2023-08-03
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.3 to **1.5.4** on 2023-08-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.4 to **0.48.5** on 2023-08-03
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
