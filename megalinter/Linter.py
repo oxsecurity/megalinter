@@ -913,7 +913,7 @@ class Linter:
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
-        if type(command) == str:
+        if isinstance(command, str):
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -1035,7 +1035,7 @@ class Linter:
             return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
-        if type(reg) == str:
+        if isinstance(reg, str):
             reg = re.compile(reg)
         m = reg.search(version_output)
         if m:
@@ -1132,7 +1132,7 @@ class Linter:
     def get_regex(self, reg):
         if reg is None:
             raise Exception("You must define a regex !")
-        if type(reg) == str:
+        if isinstance(reg, str):
             reg = re.compile(reg)
         return reg
 
@@ -1157,7 +1157,7 @@ class Linter:
             self.cli_docker_args,
         )
         docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
-        if type(command) == str:
+        if isinstance(command, str):
             command = " ".join(docker_command) + " " + command
         else:
             command = (
