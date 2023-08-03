@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.343**
+- Version in MegaLinter: **2.3.354**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -350,7 +350,7 @@ options:
                         es/variables.html#variable-definitions-tfvars-
                         files).Currently only supported for source Terraform
                         (.tf file), and Helm chart scans.Requires using
-                        --directory, not --file.
+                        --directory, not --file. [env var: CKV_VAR_FILE]
   --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]
