@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.31.1**
+- Version in MegaLinter: **7.32.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -165,7 +165,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--cluster-cancel-nargs CLUSTER_CANCEL_NARGS]
                  [--cluster-sidecar CLUSTER_SIDECAR] [--drmaa-log-dir DIR]
                  [--kubernetes [NAMESPACE]] [--container-image IMAGE]
-                 [--k8s-cpu-scalar FLOAT] [--tibanna]
+                 [--k8s-cpu-scalar FLOAT]
+                 [--k8s-service-account-name SERVICEACCOUNTNAME] [--tibanna]
                  [--tibanna-sfn TIBANNA_SFN] [--precommand PRECOMMAND]
                  [--tibanna-config TIBANNA_CONFIG [TIBANNA_CONFIG ...]]
                  [--google-lifesciences]
@@ -1037,6 +1038,13 @@ KUBERNETES:
                         it to utilise one entire node. N.B: the job itself
                         would still see the original value, i.e. as the value
                         substituted in {threads}. (default: 0.95)
+  --k8s-service-account-name SERVICEACCOUNTNAME
+                        This argument allows the use of customer service
+                        accounts for kubernetes pods. If specified
+                        serviceAccountName will be added to the pod specs.
+                        This is needed when using workload identity which is
+                        enforced when using Google Cloud GKE Autopilot.
+                        (default: None)
 
 TES:
   --tes URL             Send workflow tasks to GA4GH TES server specified by
