@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.48.5**
+- Version in MegaLinter: **0.48.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -128,7 +128,7 @@ GLOBAL OPTIONS:
    terragrunt-disable-bucket-update             When this flag is set Terragrunt will not update the remote state bucket.
 
 VERSION:
-   v0.48.5
+   v0.48.6
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
