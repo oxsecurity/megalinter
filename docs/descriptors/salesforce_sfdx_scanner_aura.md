@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **3.14.0**
+- Version in MegaLinter: **3.15.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -159,7 +159,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1661) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1668) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -374,9 +374,11 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  @typescript-eslint/triple-slash-reference              typescript  suggestion            suggestion                                       eslint-typescript N      N
  @typescript-eslint/unbound-method                      typescript  problem               problem                                          eslint-typescript N      N
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
- UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
+ AvoidDatabaseOperationInLoop                           apex        Performance                                                            sfge              Y      Y
+ AvoidMultipleMassSchemaLookups                         apex        Performance                                                            sfge              Y      N
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
- MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
+ RemoveUnusedMethod                                     apex        Performance                                                            sfge              Y      Y
+ UseWithSharingOnDatabaseOperation                      apex        Security                                                               sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 ```
