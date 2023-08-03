@@ -37,6 +37,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.354 to **2.3.356** on 2023-08-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.5 to **0.48.6** on 2023-08-03
   - [terrascan](https://runterrascan.io/) from 1.18.1 to **1.18.2** on 2023-08-03
+  - [kics](https://www.kics.io) from 1.7.4 to **1.7.5** on 2023-08-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.1 to **7.32.0** on 2023-08-03
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
