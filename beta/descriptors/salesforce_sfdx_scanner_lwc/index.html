@@ -11,7 +11,7 @@
 <link href="../salesforce_sfdx_scanner_aura/" rel="prev"/>
 <link href="../scala/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.0, mkdocs-material-9.1.20" name="generator"/>
+<meta content="mkdocs-1.5.2, mkdocs-material-9.1.21" name="generator"/>
 <title>sfdx-scanner-lwc configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.eebd395e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
@@ -2588,7 +2588,7 @@
 <p><strong>Workaround: Restricted to LWC</strong></p>
 <h2 id="sfdx-scanner-lwc-documentation">sfdx-scanner-lwc documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.14.0</strong></li>
+<li>Version in MegaLinter: <strong>3.15.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure sfdx-scanner-lwc rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring/rules#disabling-rules" target="_blank">How to disable sfdx-scanner-lwc rules in files</a></li>
@@ -2799,7 +2799,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1802) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1809) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -3014,9 +3014,11 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  @typescript-eslint/triple-slash-reference              typescript  suggestion            suggestion                                       eslint-typescript N      N
  @typescript-eslint/unbound-method                      typescript  problem               problem                                          eslint-typescript N      N
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
- UnusedMethodRule                                       apex        Performance                                                            sfge              Y      Y
+ AvoidDatabaseOperationInLoop                           apex        Performance                                                            sfge              Y      Y
+ AvoidMultipleMassSchemaLookups                         apex        Performance                                                            sfge              Y      N
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
- MultipleMassSchemaLookupRule                           apex        Performance                                                            sfge              Y      Y
+ RemoveUnusedMethod                                     apex        Performance                                                            sfge              Y      Y
+ UseWithSharingOnDatabaseOperation                      apex        Security                                                               sfge              Y      Y
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 </code></pre>

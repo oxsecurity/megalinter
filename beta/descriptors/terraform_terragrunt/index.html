@@ -11,7 +11,7 @@
 <link href="../terraform_terrascan/" rel="prev"/>
 <link href="../terraform_terraform_fmt/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.0, mkdocs-material-9.1.20" name="generator"/>
+<meta content="mkdocs-1.5.2, mkdocs-material-9.1.21" name="generator"/>
 <title>terragrunt configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.eebd395e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
@@ -2573,7 +2573,7 @@
 <p><a href="https://github.com/gruntwork-io/terragrunt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/gruntwork-io/terragrunt/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/gruntwork-io/terragrunt?sort=semver"/></a> <a href="https://github.com/gruntwork-io/terragrunt/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/gruntwork-io/terragrunt"/></a></p>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.48.4</strong></li>
+<li>Version in MegaLinter: <strong>0.48.5</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -2743,6 +2743,7 @@ COMMANDS:
    hclfmt                Recursively find hcl files and rewrite them into a canonical format.
    aws-provider-patch    Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018)
    render-json           Render the final terragrunt config, with all variables, includes, and functions resolved, as json. This is useful for enforcing policies using static analysis tools like Open Policy Agent, or for debugging your terragrunt config.
+   output-module-groups  Output groups of modules ordered for apply as a list of list in JSON (useful for CI use cases).
    *                     Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
@@ -2778,7 +2779,7 @@ GLOBAL OPTIONS:
    terragrunt-disable-bucket-update             When this flag is set Terragrunt will not update the remote state bucket.
 
 VERSION:
-   v0.48.4
+   v0.48.5
 
 AUTHOR(S):
    Gruntwork &lt;www.gruntwork.io&gt;
