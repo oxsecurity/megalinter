@@ -33,6 +33,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.0 to **7.31.1** on 2023-08-03
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.3 to **1.5.4** on 2023-08-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.4 to **0.48.5** on 2023-08-03
+  - [prettier](https://prettier.io/) from 3.0.0 to **3.0.1** on 2023-08-03
+  - [checkov](https://www.checkov.io/) from 2.3.354 to **2.3.356** on 2023-08-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.5 to **0.48.6** on 2023-08-03
+  - [terrascan](https://runterrascan.io/) from 1.18.1 to **1.18.2** on 2023-08-03
+  - [kics](https://www.kics.io) from 1.7.4 to **1.7.5** on 2023-08-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.1 to **7.32.0** on 2023-08-03
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
