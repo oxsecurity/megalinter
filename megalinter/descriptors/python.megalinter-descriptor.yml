@@ -190,6 +190,7 @@ linters:
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
     linter_banner_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png
     linter_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logomark.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bandit.png
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
