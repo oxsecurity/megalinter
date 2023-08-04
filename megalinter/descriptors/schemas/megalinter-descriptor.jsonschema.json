@@ -1077,6 +1077,16 @@
             "title": "Linter banner image URL",
             "type": "string"
           },
+          "linter_icon_png_url": {
+            "$id": "#/properties/linters/items/properties/linter_icon_png_url",
+            "description": "URL of a PNG image representing the icon of the linter",
+            "examples": [
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
+            ],
+            "format": "uri",
+            "title": "Linter Icon PNG URL",
+            "type": "string"
+          },
           "linter_help_cache": {
             "$id": "#/properties/linters/items/properties/linter_help_cache",
             "description": "If the linter is unable to return help content, hardcode it here",
