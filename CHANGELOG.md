@@ -48,6 +48,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 7.0.3 to **7.0.4** on 2023-08-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.0 to **7.32.1** on 2023-08-06
   - [sqlfluff](https://www.sqlfluff.com/) from 2.1.4 to **2.2.0** on 2023-08-06
+  - [checkov](https://www.checkov.io/) from 2.3.356 to **2.3.358** on 2023-08-07
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.4 to **7.0.6** on 2023-08-07
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
