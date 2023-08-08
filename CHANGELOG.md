@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Redis reporter
+  - Return URL of linter icons when available, in property `iconPngUrl`
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.19.5 to **0.20.4** on 2023-08-03
@@ -39,6 +42,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) from 1.18.1 to **1.18.2** on 2023-08-03
   - [kics](https://www.kics.io) from 1.7.4 to **1.7.5** on 2023-08-03
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.1 to **7.32.0** on 2023-08-03
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.10.0 to **6.10.1** on 2023-08-06
+  - [phpstan](https://phpstan.org/) from 1.10.26 to **1.10.27** on 2023-08-06
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.15 to **1.0.16** on 2023-08-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.3 to **7.0.4** on 2023-08-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.0 to **7.32.1** on 2023-08-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.4 to **2.2.0** on 2023-08-06
+  - [checkov](https://www.checkov.io/) from 2.3.356 to **2.3.358** on 2023-08-07
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.4 to **7.0.6** on 2023-08-07
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26

@@ -63,6 +63,7 @@ class Linter:
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
         )
+        self.linter_icon_png_url = None
         self.test_folder = None  # Override only if different from language.lowercase()
         self.activation_rules = []
         self.test_variables = {}
