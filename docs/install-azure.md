@@ -46,8 +46,4 @@ Add the following job in your `azure-pipelines.yaml` file
 To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
 
 
-# Alternative Setup
-
-[Etienne Deneuve](https://github.com/etiennedeneuve) published an article [here](https://etienne.deneuve.xyz/2023/07/28/autofix-megalinter-azure-devops/) to auto create Azure DevOps Pull-Request with auto commit modifications.
-
 <!-- install-azure-section-end -->
