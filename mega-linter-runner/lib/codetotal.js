@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 "use strict";
 const { spawnSync, spawn } = require("child_process");
+const c = require("chalk");
 const fs = require("fs-extra");
 const https = require('https');
 const open = require("open");
@@ -19,7 +20,7 @@ class CodeTotalRunner {
     // Retrieve docker-compose
     if (!fs.existsSync(path.join(process.cwd(), 'docker-compose.yml'))) {
       const dockerComposeUrl = "https://raw.githubusercontent.com/oxsecurity/codetotal/main/docker-compose.yml";
-      console.info(`Downloading latest docker-compose.yml from ${dockerComposeUrl}`);
+      console.info(c.cyan(`Downloading latest docker-compose.yml from ${c.bold(dockerComposeUrl)} ...`));
       https.get(dockerComposeUrl, resp => resp.pipe(fs.createWriteStream(path.join(process.cwd(), 'docker-compose.yml'))));
       await new Promise(r => setTimeout(r, 2000));
     }
@@ -27,9 +28,9 @@ class CodeTotalRunner {
     // Check for docker installation
     const whichPromise = which("docker");
     whichPromise.catch(() => {
-      console.error(`
+      console.error(c.red(`
     ERROR: Docker engine has not been found on your system.
-    - to run CodeTotal locally, please install docker desktop: https://www.docker.com/products/docker-desktop`);
+    - to run CodeTotal locally, please install docker desktop: https://www.docker.com/products/docker-desktop`));
     });
 
     // Get platform to use with docker pull & run
@@ -40,13 +41,14 @@ class CodeTotalRunner {
 
     // Pull docker image
     if (this.options.nodockerpull !== true) {
-      console.info(`Pulling docker-compose.yml images... `);
-      console.info(
+      console.info(c.cyan(`Pulling docker-compose.yml images...`));
+      console.info(c.grey(
         "INFO: this operation can be long during the first use of CodeTotal"
-      );
-      console.info(
+      ));
+      console.info(c.grey(
         "The next runs, it will be immediate (thanks to docker cache !)"
-      );
+      ));
+      console.log("Running command: " + c.whiteBright(c.bgGray("docker-compose " + ["-f", "docker-compose.yml", "pull"].join(" "))));
       const spawnResPull = spawnSync(
         "docker-compose",
         ["-f", "docker-compose.yml", "pull"],
@@ -82,22 +84,23 @@ class CodeTotalRunner {
     let interval = setInterval(async () => {
       let response;
       try {
-       response = await fetch(uiUrl);
+        response = await fetch(uiUrl);
       } catch (e) {
         // URL not available yet
-        return ;
+        return;
       }
       const statusCode = response.status;
       if (statusCode >= 200 && statusCode <= 400 && isOpen === false) {
         clearInterval(interval);
         isOpen = true;
-        console.log("CodeTotal is started: opening " + uiUrl + " ...");
+        console.log(c.green("CodeTotal is started: opening " + uiUrl + " ..."));
         open(uiUrl);
+        console.log(c.yellow("Hit CTRL+C to terminate"));
       }
     }, 2000);
 
     // Call docker run
-    console.log(`Command: docker-compose ${commandArgs.join(" ")}`);
+    console.log("Running command: " + c.whiteBright(c.bgGray("docker-compose " + commandArgs.join(" "))));
     const spawnOptions = {
       stdio: "inherit",
       windowsHide: true,
