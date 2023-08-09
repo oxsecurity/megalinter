@@ -3697,6 +3697,12 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Features<ul>
+<li>Allow to define linter_key<strong>_COMMAND_REMOVE_ARGUMENTS</strong> to remove a command line argument internally added by MegaLinter</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Redis reporter<ul>
 <li>Return URL of linter icons when available, in property <code>iconPngUrl</code></li>
 </ul>
@@ -3705,6 +3711,7 @@
 <ul>
 <li>Fixes<ul>
 <li>Replace <code>https://megalinter.io/config-file</code> by <code>https://megalinter.io/latest/config-file</code> to avoid lychee 404 detection</li>
+<li>Improve docs for posting comments to PRs in GitHub Enterprise</li>
 </ul>
 </li>
 </ul>
