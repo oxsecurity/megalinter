@@ -2448,6 +2448,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v730-2023-08-10">
+    [v7.3.0] - 2023-08-10
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v721-2023-07-26">
     [v7.2.1] - 2023-07-26
   </a>
@@ -3080,6 +3085,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v730-2023-08-10">
+    [v7.3.0] - 2023-08-10
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v721-2023-07-26">
     [v7.2.1] - 2023-07-26
   </a>
@@ -3697,6 +3707,11 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+<h2 id="v730-2023-08-10">[v7.3.0] - 2023-08-10</h2>
+<ul>
 <li>Features<ul>
 <li>Allow to define linter_key<strong>_COMMAND_REMOVE_ARGUMENTS</strong> to remove a command line argument internally added by MegaLinter</li>
 </ul>
@@ -3710,7 +3725,7 @@
 </li>
 </ul>
 <ul>
-<li>CodeTotal<ul>
+<li><a href="https://codetotal.io">CodeTotal</a><ul>
 <li>Redis reporter: Return URL of linter icons when available, in property <code>iconPngUrl</code></li>
 <li>Allow to run CodeTotal with a single command <code>npx mega-linter-runner@beta --codetotal</code> , that opens CodeTotal in Web Browser once started</li>
 </ul>
@@ -3718,65 +3733,42 @@
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.79.2 to <strong>0.79.3</strong> on 2023-07-26</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.19.5 to <strong>0.20.4</strong> on 2023-08-03</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.79.3 to <strong>0.79.6</strong> on 2023-08-03</li>
-<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.12.1 to <strong>10.12.2</strong> on 2023-08-03</li>
-<li><a href="https://eslint.org">eslint</a> from 8.45.0 to <strong>8.46.0</strong> on 2023-08-03</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.5.13.1@ to <strong>Psalm.5.14.1@</strong> on 2023-08-03</li>
-<li><a href="http://puppet-lint.com/">puppet-lint</a> from 4.0.0 to <strong>4.0.1</strong> on 2023-08-03</li>
-<li><a href="https://flake8.pycqa.org">flake8</a> from 6.0.0 to <strong>6.1.0</strong> on 2023-08-03</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.318 to <strong>1.1.320</strong> on 2023-08-03</li>
-<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.280 to <strong>0.0.282</strong> on 2023-08-03</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.343 to <strong>2.3.354</strong> on 2023-08-03</li>
-<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 1.0.11 to <strong>1.0.15</strong> on 2023-08-03</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.33.2 to <strong>1.34.1</strong> on 2023-08-03</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 0.85.0 to <strong>0.86.1</strong> on 2023-08-03</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.43.1 to <strong>0.44.0</strong> on 2023-08-03</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.43.1 to <strong>0.44.0</strong> on 2023-08-03</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.45.1 to <strong>3.46.3</strong> on 2023-08-03</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.55.0 to <strong>1.55.1</strong> on 2023-08-03</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.14.0 to <strong>3.15.0</strong> on 2023-08-03</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.14.0 to <strong>3.15.0</strong> on 2023-08-03</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.14.0 to <strong>3.15.0</strong> on 2023-08-03</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.31.0 to <strong>7.31.1</strong> on 2023-08-03</li>
-<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.5.3 to <strong>1.5.4</strong> on 2023-08-03</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.48.4 to <strong>0.48.5</strong> on 2023-08-03</li>
-<li><a href="https://prettier.io/">prettier</a> from 3.0.0 to <strong>3.0.1</strong> on 2023-08-03</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.354 to <strong>2.3.356</strong> on 2023-08-03</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.48.5 to <strong>0.48.6</strong> on 2023-08-03</li>
-<li><a href="https://runterrascan.io/">terrascan</a> from 1.18.1 to <strong>1.18.2</strong> on 2023-08-03</li>
-<li><a href="https://www.kics.io">kics</a> from 1.7.4 to <strong>1.7.5</strong> on 2023-08-03</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.31.1 to <strong>7.32.0</strong> on 2023-08-03</li>
-<li><a href="https://meta.stoplight.io/docs/spectral/README.md">spectral</a> from 6.10.0 to <strong>6.10.1</strong> on 2023-08-06</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.10.26 to <strong>1.10.27</strong> on 2023-08-06</li>
-<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 1.0.15 to <strong>1.0.16</strong> on 2023-08-06</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 7.0.3 to <strong>7.0.4</strong> on 2023-08-06</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.32.0 to <strong>7.32.1</strong> on 2023-08-06</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 2.1.4 to <strong>2.2.0</strong> on 2023-08-06</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.356 to <strong>2.3.358</strong> on 2023-08-07</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 7.0.4 to <strong>7.0.6</strong> on 2023-08-07</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.358 to <strong>2.3.359</strong> on 2023-08-07</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.32.1 to <strong>7.32.2</strong> on 2023-08-07</li>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format">dotnet-format</a> from 6.0.412 to <strong>6.0.413</strong> on 2023-08-09</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.53.3 to <strong>1.54.0</strong> on 2023-08-09</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.10.27 to <strong>1.10.28</strong> on 2023-08-09</li>
-<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.282 to <strong>0.0.283</strong> on 2023-08-09</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 2.3.359 to <strong>2.3.360</strong> on 2023-08-09</li>
-<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 1.0.16 to <strong>1.0.17</strong> on 2023-08-09</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 7.0.6 to <strong>7.0.7</strong> on 2023-08-09</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.55.1 to <strong>1.56.0</strong> on 2023-08-09</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.32.2 to <strong>7.32.3</strong> on 2023-08-09</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.31.2 to <strong>6.31.3</strong> on 2023-08-09</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.320 to <strong>1.1.321</strong> on 2023-08-09</li>
-<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.283 to <strong>0.0.284</strong> on 2023-08-09</li>
-<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 1.0.17 to <strong>1.0.18</strong> on 2023-08-09</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.46.3 to <strong>3.47.0</strong> on 2023-08-09</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 2.2.0 to <strong>2.2.1</strong> on 2023-08-09</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.19.5 to <strong>0.20.4</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 0.79.2 to <strong>0.79.6</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.3.343 to <strong>2.3.360</strong></li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 10.12.1 to <strong>10.12.2</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 6.31.2 to <strong>6.31.3</strong></li>
+<li><a href="https://github.com/microsoft/DevSkim">devskim</a> from 1.0.1 to <strong>1.0.18</strong></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format">dotnet-format</a> from 6.0.412 to <strong>6.0.413</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 8.45.0 to <strong>8.46.0</strong></li>
+<li><a href="https://flake8.pycqa.org">flake8</a> from 6.0.0 to <strong>6.1.0</strong></li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.53.3 to <strong>1.54.0</strong></li>
+<li><a href="https://www.kics.io">kics</a> from 1.7.4 to <strong>1.7.5</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.10.26 to <strong>1.10.28</strong></li>
+<li><a href="https://prettier.io/">prettier</a> from 3.0.0 to <strong>3.0.1</strong></li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.5.13.1@ to <strong>Psalm.5.14.1@</strong></li>
+<li><a href="http://puppet-lint.com/">puppet-lint</a> from 4.0.0 to <strong>4.0.1</strong></li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.318 to <strong>1.1.321</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.55.0 to <strong>1.56.0</strong></li>
+<li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.280 to <strong>0.0.284</strong></li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 7.0.3 to <strong>7.0.7</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.33.2 to <strong>1.34.1</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 3.14.0 to <strong>3.15.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 3.14.0 to <strong>3.15.0</strong></li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 3.14.0 to <strong>3.15.0</strong></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.31.0 to <strong>7.32.3</strong></li>
+<li><a href="https://meta.stoplight.io/docs/spectral/README.md">spectral</a> from 6.10.0 to <strong>6.10.1</strong></li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 2.1.4 to <strong>2.2.1</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.85.0 to <strong>0.86.1</strong></li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.5.3 to <strong>1.5.4</strong></li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.48.4 to <strong>0.48.6</strong></li>
+<li><a href="https://runterrascan.io/">terrascan</a> from 1.18.1 to <strong>1.18.2</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.43.1 to <strong>0.44.0</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.43.1 to <strong>0.44.0</strong></li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.45.1 to <strong>3.47.0</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
 <h2 id="v721-2023-07-26">[v7.2.1] - 2023-07-26</h2>
 <ul>
 <li>Fixes<ul>
