@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Replace `https://megalinter.io/config-file` by `https://megalinter.io/latest/config-file` to avoid lychee 404 detection
+  - Improve docs for posting comments to PRs in GitHub Enterprise
 
 - CodeTotal
   - Redis reporter: Return URL of linter icons when available, in property `iconPngUrl`
