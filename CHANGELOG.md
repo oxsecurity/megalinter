@@ -70,6 +70,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.55.1 to **1.56.0** on 2023-08-09
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.2 to **7.32.3** on 2023-08-09
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.2 to **6.31.3** on 2023-08-09
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.320 to **1.1.321** on 2023-08-09
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.283 to **0.0.284** on 2023-08-09
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.17 to **1.0.18** on 2023-08-09
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.46.3 to **3.47.0** on 2023-08-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.2.0 to **2.2.1** on 2023-08-09
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
