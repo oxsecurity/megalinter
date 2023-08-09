@@ -61,7 +61,7 @@ class MegaLinterRunner {
     }
 
     if (options.codetotal) {
-      const codeTotalRunner = new CodeTotalRunner();
+      const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
       return {status: 0 }
     }

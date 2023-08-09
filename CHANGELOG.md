@@ -8,11 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Redis reporter
-  - Return URL of linter icons when available, in property `iconPngUrl`
-
 - Fixes
   - Replace `https://megalinter.io/config-file` by `https://megalinter.io/latest/config-file` to avoid lychee 404 detection
+
+- CodeTotal
+  - Redis reporter: Return URL of linter icons when available, in property `iconPngUrl`
+  - Allow to run CodeTotal with a single command npx mega-linter-runner@beta --codetotal
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
