@@ -55,6 +55,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 7.0.4 to **7.0.6** on 2023-08-07
   - [checkov](https://www.checkov.io/) from 2.3.358 to **2.3.359** on 2023-08-07
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.1 to **7.32.2** on 2023-08-07
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.412 to **6.0.413** on 2023-08-09
+  - [golangci-lint](https://golangci-lint.run/) from 1.53.3 to **1.54.0** on 2023-08-09
+  - [phpstan](https://phpstan.org/) from 1.10.27 to **1.10.28** on 2023-08-09
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.282 to **0.0.283** on 2023-08-09
+  - [checkov](https://www.checkov.io/) from 2.3.359 to **2.3.360** on 2023-08-09
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.16 to **1.0.17** on 2023-08-09
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.6 to **7.0.7** on 2023-08-09
+  - [rubocop](https://rubocop.org/) from 1.55.1 to **1.56.0** on 2023-08-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.2 to **7.32.3** on 2023-08-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.2 to **6.31.3** on 2023-08-09
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26
