@@ -22,7 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - [CodeTotal](https://codetotal.io)
   - Redis reporter: Return URL of linter icons when available, in property `iconPngUrl`
-  - Allow to run CodeTotal with a single command `npx mega-linter-runner@beta --codetotal` , that opens CodeTotal in Web Browser once started
+  - Allow to run CodeTotal with a single command `npx mega-linter-runner@latest --codetotal` , that opens CodeTotal in Web Browser once started
 
 - Linter versions upgrades
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.19.5 to **0.20.4**
