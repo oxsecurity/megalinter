@@ -298,6 +298,7 @@ linters:
     linter_repo: https://github.com/checkmarx/kics
     linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
     linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kics.png
     linter_rules_configuration_url: https://docs.kics.io/latest/configuration-file/
     linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
     linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
@@ -344,6 +345,7 @@ linters:
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/secretlint.png
     linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
     linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
     linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
@@ -391,6 +393,7 @@ linters:
     linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
     linter_rules_ignore_config_url: https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore
     linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/semgrep.png
     cli_lint_mode: project
     cli_config_arg_name: --config
     cli_config_default_value: auto
@@ -472,6 +475,7 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
     linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy.png
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
@@ -520,6 +524,7 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
     linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy-sbom.png
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
@@ -558,6 +563,7 @@ linters:
     linter_url: https://github.com/trufflesecurity/trufflehog
     linter_repo: https://github.com/trufflesecurity/trufflehog
     linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trufflehog.png
     linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
     cli_lint_mode: project
     cli_config_arg_name: "--config"
