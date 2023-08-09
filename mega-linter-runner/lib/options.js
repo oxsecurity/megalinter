@@ -146,6 +146,12 @@ module.exports = optionator({
       type: "Boolean",
       description: "Run CodeTotal locally",
     },
+    {
+      option: "codetotal-url",
+      type: "String",
+      default: "http://localhost:8081/",
+      description: "URL Hosting CodeTotal once launched",
+    },
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],

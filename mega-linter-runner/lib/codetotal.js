@@ -78,7 +78,7 @@ class CodeTotalRunner {
 
     // Prepare interval to check localhost is open
     let isOpen = false;
-    const uiUrl = "http://localhost:8081/";
+    const uiUrl = this.options["codetotal-url"] || "http://localhost:8081/";
     let interval = setInterval(async () => {
       let response;
       try {
