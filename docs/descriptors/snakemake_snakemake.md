@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.31.0**
+- Version in MegaLinter: **7.32.3**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -165,7 +165,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--cluster-cancel-nargs CLUSTER_CANCEL_NARGS]
                  [--cluster-sidecar CLUSTER_SIDECAR] [--drmaa-log-dir DIR]
                  [--kubernetes [NAMESPACE]] [--container-image IMAGE]
-                 [--k8s-cpu-scalar FLOAT] [--tibanna]
+                 [--k8s-cpu-scalar FLOAT]
+                 [--k8s-service-account-name SERVICEACCOUNTNAME] [--tibanna]
                  [--tibanna-sfn TIBANNA_SFN] [--precommand PRECOMMAND]
                  [--tibanna-config TIBANNA_CONFIG [TIBANNA_CONFIG ...]]
                  [--google-lifesciences]
@@ -237,8 +238,7 @@ EXECUTION:
                         Note that in such cases, the arguments may be given as
                         nested YAML mappings in the profile, e.g. 'set-
                         threads: myrule: 4' instead of 'set-threads:
-                        myrule=4'. [env var: SNAKEMAKE_PROFILE] (default:
-                        None)
+                        myrule=4'. (default: None)
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
@@ -249,10 +249,10 @@ EXECUTION:
                         parameters and software stack (conda envs or
                         containers) needed to create them. (default: None)
   --snakefile FILE, -s FILE
-                        The workflow definition in form of a
-                        snakefile.Usually, you should not need to specify
-                        this. By default, Snakemake will search for
-                        'Snakefile', 'snakefile', 'workflow/Snakefile',
+                        The workflow definition in form of a snakefile.
+                        Usually, you should not need to specify this. By
+                        default, Snakemake will search for 'Snakefile',
+                        'snakefile', 'workflow/Snakefile',
                         'workflow/snakefile' beneath the current working
                         directory, in this order. Only if you definitely want
                         a different layout, you need to use this parameter.
@@ -358,7 +358,7 @@ EXECUTION:
   --preemption-default PREEMPTION_DEFAULT
                         A preemptible instance can be requested when using the
                         Google Life Sciences API. If you set a --preemption-
-                        default,all rules will be subject to the default.
+                        default, all rules will be subject to the default.
                         Specifically, this integer is the number of restart
                         attempts that will be made given that the instance is
                         killed unexpectedly. Note that preemptible instances
@@ -849,13 +849,13 @@ BEHAVIOR:
   --log-handler-script FILE
                         Provide a custom script containing a function 'def
                         log_handler(msg):'. Snakemake will call this function
-                        for every logging output (given as a dictionary
-                        msg)allowing to e.g. send notifications in the form of
+                        for every logging output (given as a dictionary msg)
+                        allowing to e.g. send notifications in the form of
                         e.g. slack messages or emails. (default: None)
   --log-service {none,slack,wms}
-                        Set a specific messaging service for logging
-                        output.Snakemake will notify the service on errors and
-                        completed execution.Currently slack and workflow
+                        Set a specific messaging service for logging output.
+                        Snakemake will notify the service on errors and
+                        completed execution. Currently slack and workflow
                         management system (wms) are supported. (default: None)
 
 SLURM:
@@ -882,8 +882,8 @@ CLUSTER:
                         snakemake --cluster 'qsub -pe threaded {threads}'.
                         (default: None)
   --cluster-sync CMD    cluster submission command will block, returning the
-                        remote exitstatus upon remote termination (for
-                        example, this should be usedif the cluster command is
+                        remote exit status upon remote termination (for
+                        example, this should be used if the cluster command is
                         'qsub -sync y' (SGE) (default: None)
   --drmaa [ARGS]        Execute snakemake on a cluster accessed via DRMAA,
                         Snakemake compiles jobs into scripts that are
@@ -897,7 +897,7 @@ CLUSTER:
                         with a leading whitespace. (default: None)
   --cluster-config FILE, -u FILE
                         A JSON or YAML file that defines the wildcards used in
-                        'cluster'for specific rules, instead of having them
+                        'cluster' for specific rules, instead of having them
                         specified in the Snakefile. For example, for rule
                         'job' you may define: { 'job' : { 'time' : '24:00:00'
                         } } to specify the time for rule 'job'. You can
@@ -1037,6 +1037,13 @@ KUBERNETES:
                         it to utilise one entire node. N.B: the job itself
                         would still see the original value, i.e. as the value
                         substituted in {threads}. (default: 0.95)
+  --k8s-service-account-name SERVICEACCOUNTNAME
+                        This argument allows the use of customer service
+                        accounts for kubernetes pods. If specified
+                        serviceAccountName will be added to the pod specs.
+                        This is needed when using workload identity which is
+                        enforced when using Google Cloud GKE Autopilot.
+                        (default: None)
 
 TES:
   --tes URL             Send workflow tasks to GA4GH TES server specified by
@@ -1057,7 +1064,7 @@ TIBANNA:
                         (default: False)
   --tibanna-sfn TIBANNA_SFN
                         Name of Tibanna Unicorn step function (e.g.
-                        tibanna_unicorn_monty).This works as serverless
+                        tibanna_unicorn_monty). This works as serverless
                         scheduler/resource allocator and must be deployed
                         first using tibanna cli. (e.g. tibanna deploy_unicorn
                         --usergroup=monty --buckets=bucketname) (default:
@@ -1130,7 +1137,7 @@ SINGULARITY:
                         directive is ignored. (default: False)
   --singularity-prefix DIR
                         Specify a directory in which singularity images will
-                        be stored.If not supplied, the value is set to the
+                        be stored. If not supplied, the value is set to the
                         '.snakemake' directory relative to the invocation
                         directory. If supplied, the `--use-singularity` flag
                         must also be set. The value may be given as a relative

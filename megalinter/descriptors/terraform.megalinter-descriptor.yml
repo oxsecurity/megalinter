@@ -22,6 +22,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     linter_text: |
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
     cli_lint_mode: project
     config_file_name: .tflint.hcl
     cli_config_extra_args:
@@ -54,6 +55,7 @@ linters:
     linter_rules_url: https://runterrascan.io/docs/usage/
     linter_rules_configuration_url: https://runterrascan.io/docs/usage/config_options/
     linter_banner_image_url: https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terrascan.png
     config_file_name: terrascan-config.toml
     cli_config_arg_name: --config-path
     cli_lint_mode: project
@@ -75,7 +77,7 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM tenable/terrascan:1.18.1 as terrascan
+        - FROM tenable/terrascan:1.18.2 as terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
@@ -92,6 +94,7 @@ linters:
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
     config_file_name: terragrunt.hcl
     cli_config_arg_name: "--terragrunt-config"
     cli_lint_extra_args:

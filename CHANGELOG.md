@@ -8,8 +8,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Redis reporter
+  - Return URL of linter icons when available, in property `iconPngUrl`
+
+- Fixes
+  - Replace `https://megalinter.io/config-file` by `https://megalinter.io/latest/config-file` to avoid lychee 404 detection
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.19.5 to **0.20.4** on 2023-08-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.3 to **0.79.6** on 2023-08-03
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.1 to **10.12.2** on 2023-08-03
+  - [eslint](https://eslint.org) from 8.45.0 to **8.46.0** on 2023-08-03
+  - [psalm](https://psalm.dev) from Psalm.5.13.1@ to **Psalm.5.14.1@** on 2023-08-03
+  - [puppet-lint](http://puppet-lint.com/) from 4.0.0 to **4.0.1** on 2023-08-03
+  - [flake8](https://flake8.pycqa.org) from 6.0.0 to **6.1.0** on 2023-08-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.318 to **1.1.320** on 2023-08-03
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.280 to **0.0.282** on 2023-08-03
+  - [checkov](https://www.checkov.io/) from 2.3.343 to **2.3.354** on 2023-08-03
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.11 to **1.0.15** on 2023-08-03
+  - [semgrep](https://semgrep.dev/) from 1.33.2 to **1.34.1** on 2023-08-03
+  - [syft](https://github.com/anchore/syft) from 0.85.0 to **0.86.1** on 2023-08-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.43.1 to **0.44.0** on 2023-08-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.43.1 to **0.44.0** on 2023-08-03
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.45.1 to **3.46.3** on 2023-08-03
+  - [rubocop](https://rubocop.org/) from 1.55.0 to **1.55.1** on 2023-08-03
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.14.0 to **3.15.0** on 2023-08-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.0 to **7.31.1** on 2023-08-03
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.3 to **1.5.4** on 2023-08-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.4 to **0.48.5** on 2023-08-03
+  - [prettier](https://prettier.io/) from 3.0.0 to **3.0.1** on 2023-08-03
+  - [checkov](https://www.checkov.io/) from 2.3.354 to **2.3.356** on 2023-08-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.5 to **0.48.6** on 2023-08-03
+  - [terrascan](https://runterrascan.io/) from 1.18.1 to **1.18.2** on 2023-08-03
+  - [kics](https://www.kics.io) from 1.7.4 to **1.7.5** on 2023-08-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.31.1 to **7.32.0** on 2023-08-03
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.10.0 to **6.10.1** on 2023-08-06
+  - [phpstan](https://phpstan.org/) from 1.10.26 to **1.10.27** on 2023-08-06
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.15 to **1.0.16** on 2023-08-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.3 to **7.0.4** on 2023-08-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.0 to **7.32.1** on 2023-08-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.1.4 to **2.2.0** on 2023-08-06
+  - [checkov](https://www.checkov.io/) from 2.3.356 to **2.3.358** on 2023-08-07
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.4 to **7.0.6** on 2023-08-07
+  - [checkov](https://www.checkov.io/) from 2.3.358 to **2.3.359** on 2023-08-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.1 to **7.32.2** on 2023-08-07
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.412 to **6.0.413** on 2023-08-09
+  - [golangci-lint](https://golangci-lint.run/) from 1.53.3 to **1.54.0** on 2023-08-09
+  - [phpstan](https://phpstan.org/) from 1.10.27 to **1.10.28** on 2023-08-09
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.282 to **0.0.283** on 2023-08-09
+  - [checkov](https://www.checkov.io/) from 2.3.359 to **2.3.360** on 2023-08-09
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.16 to **1.0.17** on 2023-08-09
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.6 to **7.0.7** on 2023-08-09
+  - [rubocop](https://rubocop.org/) from 1.55.1 to **1.56.0** on 2023-08-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.2 to **7.32.3** on 2023-08-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.2 to **6.31.3** on 2023-08-09
 <!-- linter-versions-end -->
 
 ## [v7.2.1] - 2023-07-26

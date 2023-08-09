@@ -95,6 +95,24 @@ jobs:
       - name: Get current date
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
+      - name: Build & Push Docker Image (Server)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: server/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-server:beta
+          # ghcr.io/oxsecurity/megalinter-server:beta-${{ github.sha }}
+
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v4
         with:
