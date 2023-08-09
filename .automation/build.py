@@ -1315,6 +1315,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |'
         ]
+        linter_doc_md += [
+            f"| {linter.name}_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove "
+            "from command line before calling the linter<br/>"
+            f'Ex: `-s --foo "bar"` |  |'
+        ]
         # Files can be filtered only in cli_lint_mode is file or list_of_files
         if linter.cli_lint_mode != "project":
             linter_doc_md += [
@@ -1450,6 +1455,17 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ]
         add_in_config_schema_file(
             [
+                [
+                    f"{linter.name}_COMMAND_REMOVE_ARGUMENTS",
+                    {
+                        "$id": f"#/properties/{linter.name}_COMMAND_REMOVE_ARGUMENTS",
+                        "type": ["array", "string"],
+                        "title": f"{title_prefix}{linter.name}: Custom remove arguments",
+                        "description": f"{linter.name}: User custom arguments to remove before calling linter",
+                        "examples:": ["--foo", "bar"],
+                        "items": {"type": "string"},
+                    },
+                ],
                 [
                     f"{linter.name}_ARGUMENTS",
                     {

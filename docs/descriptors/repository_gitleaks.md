@@ -71,6 +71,7 @@ git fetch --depth=0
 | REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Pull Request source commit sha (N/A to supported scenarios)                                                | ``                                              |
 | REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Pull Request target commit sha (N/A to supported scenarios)                                                | ``                                              |
 | REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                   |                                                 |
+| REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`       |                                                 |
 | REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                             | None                                            |
 | REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                              | None                                            |
 | REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands | None                                            |
