@@ -17,7 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CodeTotal
   - Redis reporter: Return URL of linter icons when available, in property `iconPngUrl`
-  - Allow to run CodeTotal with a single command npx mega-linter-runner@beta --codetotal
+  - Allow to run CodeTotal with a single command `npx mega-linter-runner@beta --codetotal`
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26
