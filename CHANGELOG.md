@@ -11,12 +11,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Features
   - Allow to define linter_key**_COMMAND_REMOVE_ARGUMENTS** to remove a command line argument internally added by MegaLinter
 
-- Redis reporter
-  - Return URL of linter icons when available, in property `iconPngUrl`
-
 - Fixes
   - Replace `https://megalinter.io/config-file` by `https://megalinter.io/latest/config-file` to avoid lychee 404 detection
   - Improve docs for posting comments to PRs in GitHub Enterprise
+
+- CodeTotal
+  - Redis reporter: Return URL of linter icons when available, in property `iconPngUrl`
+  - Allow to run CodeTotal with a single command `npx mega-linter-runner@beta --codetotal` , that opens CodeTotal in Web Browser once started
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.2 to **0.79.3** on 2023-07-26

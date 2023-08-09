@@ -7,6 +7,7 @@ const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");
 const { MegaLinterUpgrader } = require("./upgrade");
+const { CodeTotalRunner} = require("./codetotal");
 const { DEFAULT_RELEASE } = require("./config");
 
 class MegaLinterRunner {
@@ -57,6 +58,12 @@ class MegaLinterRunner {
       const megaLinterUpgrader = new MegaLinterUpgrader();
       await megaLinterUpgrader.run();
       return { status: 0 };
+    }
+
+    if (options.codetotal) {
+      const codeTotalRunner = new CodeTotalRunner(options);
+      await codeTotalRunner.run();
+      return {status: 0 }
     }
 
     // Build MegaLinter docker image name with flavor and release version
