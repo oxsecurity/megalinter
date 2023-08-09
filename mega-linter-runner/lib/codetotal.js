@@ -1,8 +1,9 @@
 #! /usr/bin/env node
 "use strict";
-const { spawnSync } = require("child_process");
+const { spawnSync, spawn } = require("child_process");
 const fs = require("fs-extra");
 const https = require('https');
+const open = require("open");
 const path = require("path");
 const which = require("which");
 const { asciiArtCodeTotal } = require("./ascii");
@@ -16,10 +17,11 @@ class CodeTotalRunner {
     console.log(asciiArtCodeTotal());
 
     // Retrieve docker-compose
-    if (!fs.existsSync(path.join(process.cwd(),'docker-compose.yml'))) {
+    if (!fs.existsSync(path.join(process.cwd(), 'docker-compose.yml'))) {
       const dockerComposeUrl = "https://raw.githubusercontent.com/oxsecurity/codetotal/main/docker-compose.yml";
       console.info(`Downloading latest docker-compose.yml from ${dockerComposeUrl}`);
-      https.get(dockerComposeUrl, resp => resp.pipe(fs.createWriteStream(path.join(process.cwd(),'docker-compose.yml'))));
+      https.get(dockerComposeUrl, resp => resp.pipe(fs.createWriteStream(path.join(process.cwd(), 'docker-compose.yml'))));
+      await new Promise(r => setTimeout(r, 2000));
     }
 
     // Check for docker installation
@@ -32,6 +34,9 @@ class CodeTotalRunner {
 
     // Get platform to use with docker pull & run
     const imagesPlatform = this.options.platform || "linux/amd64";
+    const platformVars = {
+      "DOCKER_DEFAULT_PLATFORM": imagesPlatform
+    };
 
     // Pull docker image
     if (this.options.nodockerpull !== true) {
@@ -44,12 +49,13 @@ class CodeTotalRunner {
       );
       const spawnResPull = spawnSync(
         "docker-compose",
-        ["-f", "docker-compose.yml", "--platform", imagesPlatform, "pull"],
+        ["-f", "docker-compose.yml", "pull"],
         {
           detached: false,
           stdio: "inherit",
           windowsHide: true,
           windowsVerbatimArguments: true,
+          env: { ...process.env, ...platformVars }
         }
       );
       // Manage case when unable to pull docker image
@@ -68,16 +74,36 @@ class CodeTotalRunner {
     }
 
     // Prepare docker-compose command
-    const commandArgs = ["--platform", imagesPlatform, "-f", "docker-compose.yml", "up"];
+    const commandArgs = ["-f", "docker-compose.yml", "up"];
+
+    // Prepare interval to check localhost is open
+    let isOpen = false;
+    const uiUrl = "http://localhost:8081/";
+    let interval = setInterval(async () => {
+      let response;
+      try {
+       response = await fetch(uiUrl);
+      } catch (e) {
+        // URL not available yet
+        return ;
+      }
+      const statusCode = response.status;
+      if (statusCode >= 200 && statusCode <= 400 && isOpen === false) {
+        clearInterval(interval);
+        isOpen = true;
+        console.log("CodeTotal is started: opening " + uiUrl + " ...");
+        open(uiUrl);
+      }
+    }, 2000);
 
     // Call docker run
     console.log(`Command: docker-compose ${commandArgs.join(" ")}`);
     const spawnOptions = {
-      env: Object.assign({}, process.env),
       stdio: "inherit",
       windowsHide: true,
+      env: { ...process.env, ...platformVars }
     };
-    const spawnRes = spawnSync("docker-compose", commandArgs, spawnOptions);
+    const spawnRes = spawn("docker-compose", commandArgs, spawnOptions);
     return spawnRes;
   }
 }
