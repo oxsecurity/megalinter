@@ -41,6 +41,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 | REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                             | `auto`        |
 | REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                    | ``            |
 | REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
+| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
 | REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
 | REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
 | REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands | None          |

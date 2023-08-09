@@ -32,6 +32,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | Variable                                       | Description                                                                                               | Default value                                   |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
+| REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
 | REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
 | REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
 | REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_CHECKOV and its pre/post commands | None                                            |

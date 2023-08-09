@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Features
+  - Allow to define linter_key**_COMMAND_REMOVE_ARGUMENTS** to remove a command line argument internally added by MegaLinter
+
 - Fixes
   - Replace `https://megalinter.io/config-file` by `https://megalinter.io/latest/config-file` to avoid lychee 404 detection
 

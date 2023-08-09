@@ -32,6 +32,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 | Variable                                     | Description                                                                                             | Default value                                   |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_TRIVY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                |                                                 |
+| REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`    |                                                 |
 | REPOSITORY_TRIVY_PRE_COMMANDS                | List of bash commands to run before the linter                                                          | None                                            |
 | REPOSITORY_TRIVY_POST_COMMANDS               | List of bash commands to run after the linter                                                           | None                                            |
 | REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_TRIVY and its pre/post commands | None                                            |
