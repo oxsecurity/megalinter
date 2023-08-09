@@ -111,6 +111,9 @@ class Linter:
         self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_command_remove_args = (
+            []
+        )  # Arguments to remove in case fix argument is sent
         # Name of the cli argument to send in case of APPLY_FIXES required by user
         self.cli_lint_fix_arg_name = None
         self.cli_lint_fix_remove_args = (
@@ -651,12 +654,21 @@ class Linter:
             self.filter_regex_include = config.get(
                 self.request_id, self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
+
         # User arguments from config
+        if (
+            config.get(self.request_id, self.name + "_COMMAND_REMOVE_ARGUMENTS", "")
+            != ""
+        ):
+            self.cli_command_remove_args = config.get_list_args(
+                self.request_id, self.name + "_COMMAND_REMOVE_ARGUMENTS"
+            )
+
+        # User remove arguments from config
         if config.get(self.request_id, self.name + "_ARGUMENTS", "") != "":
             self.cli_lint_user_args = config.get_list_args(
                 self.request_id, self.name + "_ARGUMENTS"
             )
-
         # Get PRE_COMMANDS overridden by user
         if config.get(self.request_id, self.name + "_PRE_COMMANDS", "") != "":
             self.pre_commands = config.get_list(
@@ -1239,6 +1251,10 @@ class Linter:
                 cmd.remove(arg)
             if "--megalinter-fix-flag" in cmd:
                 cmd.remove("--megalinter-fix-flag")
+
+        # Remove arguments at user request
+        for arg in self.cli_command_remove_args:
+            cmd.remove(arg)
 
         # Append file in command arguments
         if file is not None:
