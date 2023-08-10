@@ -125,3 +125,5 @@ server/server-files/
 
 .venv
 *megalinter_file_names_cspell.txt
+
+.DS_Store

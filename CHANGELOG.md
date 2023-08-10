@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Linter versions upgrades
+- Secretlint logo - reduce size to 150 and remove background
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
