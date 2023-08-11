@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.4.1**
+- Version in MegaLinter: **1.5.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -254,8 +254,12 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
-  --strict-concatenate      Make arguments prepended via Concatenate be truly
-                            positional-only (inverse: --no-strict-concatenate)
+  --extra-checks            Enable additional checks that are technically
+                            correct but may be impractical in real code. For
+                            example, this prohibits partial overlap in
+                            TypedDict updates, and makes arguments prepended
+                            via Concatenate positional-only (inverse: --no-
+                            extra-checks)
   --strict                  Strict mode; enables the following flags: --warn-
                             unused-configs, --disallow-any-generics,
                             --disallow-subclassing-any, --disallow-untyped-
@@ -263,8 +267,8 @@ Miscellaneous strictness flags:
                             incomplete-defs, --check-untyped-defs, --disallow-
                             untyped-decorators, --warn-redundant-casts,
                             --warn-unused-ignores, --warn-return-any, --no-
-                            implicit-reexport, --strict-equality, --strict-
-                            concatenate
+                            implicit-reexport, --strict-equality, --extra-
+                            checks
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -281,6 +285,8 @@ Configuring error messages:
                             (inverse: --hide-error-end)
   --hide-error-codes        Hide error codes in error messages (inverse:
                             --show-error-codes)
+  --show-error-code-links   Show links to error code documentation (inverse:
+                            --hide-error-code-links)
   --pretty                  Use visually nicer output in error messages: Use
                             soft word wrap, show source code snippets, and
                             show error location markers (inverse: --no-pretty)
@@ -317,6 +323,7 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
+  --new-type-inference      Enable new experimental type inference algorithm
   --disable-recursive-aliases
                             Disable experimental support for recursive type
                             aliases
