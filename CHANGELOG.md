@@ -10,6 +10,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
 - Secretlint logo - reduce size to 150 and remove background
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
+  - [checkov](https://www.checkov.io/) from 2.3.360 to **2.3.361** on 2023-08-11
+  - [semgrep](https://semgrep.dev/) from 1.34.1 to **1.35.0** on 2023-08-11
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.44.1** on 2023-08-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.44.1** on 2023-08-11
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.13 to **0.0.14** on 2023-08-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.3 to **7.0.0** on 2023-08-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.4 to **1.5.5** on 2023-08-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.6 to **0.48.7** on 2023-08-11
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

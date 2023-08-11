@@ -9,7 +9,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 
 ## rstfmt documentation
 
-- Version in MegaLinter: **0.0.13**
+- Version in MegaLinter: **0.0.14**
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 
 [![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
@@ -73,7 +73,8 @@ rstfmt myfile.rst
 ### Help content
 
 ```shell
-usage: rstfmt [-h] [--version] [--check] [-w WIDTH] [--ext EXT] [--test] [-v]
+usage: rstfmt [-h] [--version] [--check] [--diff] [-w WIDTH] [--ext EXT]
+              [--test] [-v]
               [path ...]
 
 positional arguments:
@@ -84,6 +85,8 @@ options:
   --version             show rstfmt version and exit
   --check               don't update files, but exit with nonzero status if
                         any files are not formatted
+  --diff                don't update files, but show a diff of what would
+                        change
   -w WIDTH, --width WIDTH
                         the target line length in characters
   --ext EXT             the extension of files to look at when passed a
