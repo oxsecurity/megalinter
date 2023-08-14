@@ -19,6 +19,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.3 to **7.0.0** on 2023-08-11
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.4 to **1.5.5** on 2023-08-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.6 to **0.48.7** on 2023-08-11
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.0 to **1.54.1** on 2023-08-14
+  - [eslint](https://eslint.org) from 8.46.0 to **8.47.0** on 2023-08-14
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.0 to **0.45.1** on 2023-08-14
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.321 to **1.1.322** on 2023-08-14
+  - [checkov](https://www.checkov.io/) from 2.3.361 to **2.3.364** on 2023-08-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.47.0 to **3.48.0** on 2023-08-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.7 to **0.49.1** on 2023-08-14
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

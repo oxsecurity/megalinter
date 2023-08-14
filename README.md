@@ -17,13 +17,13 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.9M-blue)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.0M-blue)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 <!-- gh-dependents-info-used-by-start -->
-[![](https://img.shields.io/static/v1?label=Used%20by&message=2657&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
+[![](https://img.shields.io/static/v1?label=Used%20by&message=2660&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)<!-- gh-dependents-info-used-by-end -->
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
@@ -1109,6 +1109,7 @@ Example in `.mega-linter.yml` config file
 PRE_COMMANDS:
   - command: npm install eslint-plugin-whatever
     cwd: "root"        # Will be run at the root of MegaLinter docker image
+    secured_env: true  # True by default, but if defined to false, no global variable will be hidden (for example if you need GITHUB_TOKEN)
   - command: echo "pre-test command has been called"
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
