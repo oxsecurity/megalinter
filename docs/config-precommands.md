@@ -16,6 +16,7 @@ Example in `.mega-linter.yml` config file
 PRE_COMMANDS:
   - command: npm install eslint-plugin-whatever
     cwd: "root"        # Will be run at the root of MegaLinter docker image
+    secured_env: true  # True by default, but if defined to false, no global variable will be hidden (for example if you need GITHUB_TOKEN)
   - command: echo "pre-test command has been called"
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
