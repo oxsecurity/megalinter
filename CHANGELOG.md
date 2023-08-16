@@ -10,7 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
-  - Secretlint logo - reduce size to 150 and remove background, by itayox
+  - Secretlint logo - reduce size to 150 and remove background, by @itayox
 
 - Linter versions upgrades
 
