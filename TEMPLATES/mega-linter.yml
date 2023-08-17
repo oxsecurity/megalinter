@@ -156,7 +156,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]') &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
@@ -172,7 +172,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]') &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
