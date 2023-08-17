@@ -20,7 +20,7 @@ class RLinter(Linter):
         r_commands = [
             f"lints <- lintr::lint('{file}');",
             "print(lints);",
-            "errors <- purrr::keep(lints, \(x) x$type == 'error');",
+            "errors <- purrr::keep(lints, function(x) x$type == 'error');",
             "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
         ]
         # Build shell command
