@@ -75,7 +75,7 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter, by](#megalinter-by-)
+- [MegaLinter, by ](#megalinter-by-)
   - [Table of Contents](#table-of-contents)
   - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
@@ -136,6 +136,7 @@ _Github PR reporter_
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
+    - [Maintainers](#maintainers)
     - [Contributors](#contributors)
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
@@ -443,7 +444,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
     permissions:

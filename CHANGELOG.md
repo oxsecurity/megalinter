@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
 - Linter versions upgrades
 - Secretlint logo - reduce size to 150 and remove background
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
