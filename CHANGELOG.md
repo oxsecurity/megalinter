@@ -10,10 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
 - Secretlint logo - reduce size to 150 and remove background
-- Deprecate SCSSLINT as not maintained anymore (https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint)
+- Fix rstcheck options & install
+- Deprecate SCSS LINT as not maintained anymore (https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint)
 
 - Linter versions upgrades
-
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
   - [checkov](https://www.checkov.io/) from 2.3.360 to **2.3.361** on 2023-08-11
   - [semgrep](https://semgrep.dev/) from 1.34.1 to **1.35.0** on 2023-08-11
