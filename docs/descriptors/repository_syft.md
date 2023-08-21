@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.85.0**
+- Version in MegaLinter: **0.87.1**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -30,6 +30,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 | Variable                                    | Description                                                                                            | Default value                                   |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_SYFT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`   |                                                 |
 | REPOSITORY_SYFT_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
 | REPOSITORY_SYFT_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
 | REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands | None                                            |

@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.3.343**
+- Version in MegaLinter: **2.4.4**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -32,6 +32,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | Variable                                       | Description                                                                                               | Default value                                   |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
+| REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
 | REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
 | REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
 | REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_CHECKOV and its pre/post commands | None                                            |
@@ -350,7 +351,7 @@ options:
                         es/variables.html#variable-definitions-tfvars-
                         files).Currently only supported for source Terraform
                         (.tf file), and Helm chart scans.Requires using
-                        --directory, not --file.
+                        --directory, not --file. [env var: CKV_VAR_FILE]
   --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]

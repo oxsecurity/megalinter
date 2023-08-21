@@ -22,6 +22,7 @@ linters:
       Checks if shell files are executable
 
       Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bash-exec.png
     linter_megalinter_ref_url: never
     name: BASH_EXEC
     descriptor_flavors:
@@ -56,6 +57,7 @@ linters:
     linter_repo: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png
     linter_megalinter_ref_url: never
     cli_lint_mode: list_of_files
     cli_lint_extra_args:

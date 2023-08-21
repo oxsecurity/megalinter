@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 ## kics documentation
 
-- Version in MegaLinter: **1.7.4**
+- Version in MegaLinter: **1.7.5**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
@@ -31,6 +31,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 | Variable                                    | Description                                                                                            | Default value                                   |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`   |                                                 |
 | REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
 | REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
 | REPOSITORY_KICS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands | None                                            |

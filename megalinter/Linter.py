@@ -63,6 +63,7 @@ class Linter:
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
         )
+        self.linter_icon_png_url = None
         self.test_folder = None  # Override only if different from language.lowercase()
         self.activation_rules = []
         self.test_variables = {}
@@ -110,6 +111,9 @@ class Linter:
         self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_command_remove_args = (
+            []
+        )  # Arguments to remove in case fix argument is sent
         # Name of the cli argument to send in case of APPLY_FIXES required by user
         self.cli_lint_fix_arg_name = None
         self.cli_lint_fix_remove_args = (
@@ -650,12 +654,21 @@ class Linter:
             self.filter_regex_include = config.get(
                 self.request_id, self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
+
         # User arguments from config
+        if (
+            config.get(self.request_id, self.name + "_COMMAND_REMOVE_ARGUMENTS", "")
+            != ""
+        ):
+            self.cli_command_remove_args = config.get_list_args(
+                self.request_id, self.name + "_COMMAND_REMOVE_ARGUMENTS"
+            )
+
+        # User remove arguments from config
         if config.get(self.request_id, self.name + "_ARGUMENTS", "") != "":
             self.cli_lint_user_args = config.get_list_args(
                 self.request_id, self.name + "_ARGUMENTS"
             )
-
         # Get PRE_COMMANDS overridden by user
         if config.get(self.request_id, self.name + "_PRE_COMMANDS", "") != "":
             self.pre_commands = config.get_list(
@@ -913,7 +926,7 @@ class Linter:
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
-        if type(command) == str:
+        if isinstance(command, str):
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -1035,7 +1048,7 @@ class Linter:
             return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
-        if type(reg) == str:
+        if isinstance(reg, str):
             reg = re.compile(reg)
         m = reg.search(version_output)
         if m:
@@ -1132,7 +1145,7 @@ class Linter:
     def get_regex(self, reg):
         if reg is None:
             raise Exception("You must define a regex !")
-        if type(reg) == str:
+        if isinstance(reg, str):
             reg = re.compile(reg)
         return reg
 
@@ -1157,7 +1170,7 @@ class Linter:
             self.cli_docker_args,
         )
         docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
-        if type(command) == str:
+        if isinstance(command, str):
             command = " ".join(docker_command) + " " + command
         else:
             command = (
@@ -1238,6 +1251,10 @@ class Linter:
                 cmd.remove(arg)
             if "--megalinter-fix-flag" in cmd:
                 cmd.remove("--megalinter-fix-flag")
+
+        # Remove arguments at user request
+        for arg in self.cli_command_remove_args:
+            cmd.remove(arg)
 
         # Append file in command arguments
         if file is not None:

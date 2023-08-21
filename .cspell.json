@@ -587,6 +587,7 @@
         "codebases",
         "codeclimate",
         "codecov",
+        "codetotal",
         "codenarcargs",
         "codeql",
         "codestyle",

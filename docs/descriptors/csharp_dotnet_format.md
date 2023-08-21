@@ -11,7 +11,7 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **6.0.412**
+- Version in MegaLinter: **6.0.413**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -26,6 +26,7 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 | Variable                                         | Description                                                                                                                                                                                  | Default value      |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | CSHARP_DOTNET_FORMAT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| CSHARP_DOTNET_FORMAT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
 | CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
 | CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
 | CSHARP_DOTNET_FORMAT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |

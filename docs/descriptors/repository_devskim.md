@@ -14,7 +14,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.11**
+- Version in MegaLinter: **1.0.18**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -29,6 +29,7 @@ Example:
 | Variable                                       | Description                                                                                               | Default value |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
 | REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
+| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
 | REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
 | REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
 | REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None          |
@@ -82,7 +83,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-devskim 1.0.11+87ad45b866
+devskim 1.0.18+fba56c26b8
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim

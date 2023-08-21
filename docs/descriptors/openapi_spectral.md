@@ -15,7 +15,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 ## spectral documentation
 
-- Version in MegaLinter: **6.10.0**
+- Version in MegaLinter: **6.10.1**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
   - If custom `.openapirc.yml` config file isn't found, [.openapirc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.openapirc.yml){target=_blank} will be used
@@ -31,6 +31,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 | Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | OPENAPI_SPECTRAL_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| OPENAPI_SPECTRAL_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | OPENAPI_SPECTRAL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | OPENAPI_SPECTRAL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | OPENAPI_SPECTRAL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |

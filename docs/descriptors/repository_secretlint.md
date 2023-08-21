@@ -15,7 +15,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **7.0.3**
+- Version in MegaLinter: **7.0.7**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -33,6 +33,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 | Variable                                          | Description                                                                                                  | Default value                                   |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_SECRETLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                     |                                                 |
+| REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`         |                                                 |
 | REPOSITORY_SECRETLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                               | None                                            |
 | REPOSITORY_SECRETLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                | None                                            |
 | REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SECRETLINT and its pre/post commands | None                                            |

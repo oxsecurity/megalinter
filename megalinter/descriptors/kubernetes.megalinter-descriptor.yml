@@ -20,6 +20,7 @@ linters:
     linter_repo: https://github.com/yannh/kubeconform
     linter_url: https://github.com/yannh/kubeconform
     linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubeconform.png
     linter_text: |
       `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
     cli_version_arg_name: -v
@@ -56,6 +57,7 @@ linters:
     cli_lint_extra_args:
       - "lint"
     linter_banner_image_url: https://helm.sh/img/helm.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/helm.png
     linter_text: |
       `helm lint` examine a chart for possible issues.
     examples:
@@ -74,6 +76,7 @@ linters:
     linter_text: |
       `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
     linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubescape.png
     linter_spdx_license: Apache-2.0
     active_only_if_file_found:
       - Chart.yml

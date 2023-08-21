@@ -332,6 +332,8 @@ def get_linter_infos(linter):
     }
     if linter.cli_lint_mode in ["file", "list_of_files"]:
         linter_infos["filesNumber"] = len(linter.files)
+    if linter.linter_icon_png_url is not None:
+        linter_infos["iconPngUrl"] = linter.linter_icon_png_url
     return linter_infos
 
 

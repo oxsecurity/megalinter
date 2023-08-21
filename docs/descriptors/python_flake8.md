@@ -9,7 +9,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 
 ## flake8 documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.1.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -26,6 +26,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PYTHON_FLAKE8_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PYTHON_FLAKE8_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | PYTHON_FLAKE8_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | PYTHON_FLAKE8_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -160,13 +161,15 @@ options:
   --max-doc-length n    Maximum allowed doc line length for the entirety of
                         this run. (Default: None)
   --indent-size n       Number of spaces used for indentation (Default: 4)
-  --select errors       Comma-separated list of error codes to enable. For
-                        example, ``--select=E4,E51,W234``. (Default:
-                        E,F,W,C90)
+  --select errors       Limit the reported error codes to codes prefix-matched
+                        by this list. You usually do not need to specify this
+                        option as the default includes all installed plugin
+                        codes. For example, ``--select=E4,E51,W234``.
   --extend-select errors
-                        Comma-separated list of error codes to add to the list
-                        of selected ones. For example, ``--extend-
-                        select=E4,E51,W234``.
+                        Add additional error codes to the default
+                        ``--select``. You usually do not need to specify this
+                        option as the default includes all installed plugin
+                        codes. For example, ``--extend-select=E4,E51,W234``.
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.
@@ -194,7 +197,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.10.0, pyflakes: 3.0.1
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.11.0, pyflakes: 3.1.0
 ```
 
 ### Installation on mega-linter Docker image

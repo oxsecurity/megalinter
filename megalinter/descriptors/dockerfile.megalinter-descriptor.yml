@@ -21,6 +21,7 @@ linters:
     linter_repo: https://github.com/hadolint/hadolint
     linter_rules_url: https://github.com/hadolint/hadolint#rules
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/hadolint.png
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter

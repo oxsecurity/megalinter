@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.45.1**
+- Version in MegaLinter: **3.52.1**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -29,6 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 | Variable                                          | Description                                                                                                  | Default value                                   |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_TRUFFLEHOG_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                     |                                                 |
+| REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`         |                                                 |
 | REPOSITORY_TRUFFLEHOG_PRE_COMMANDS                | List of bash commands to run before the linter                                                               | None                                            |
 | REPOSITORY_TRUFFLEHOG_POST_COMMANDS               | List of bash commands to run after the linter                                                                | None                                            |
 | REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands | None                                            |

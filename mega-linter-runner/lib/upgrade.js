@@ -349,9 +349,15 @@ jobs:
       },
       {
         regex: /https:\/\/megalinter.io\/configuration/gm,
-        replacement: "https://megalinter.io/config-file",
+        replacement: "https://megalinter.io/latest/config-file",
         test: "https://megalinter.io/configuration/",
-        testRes: "https://megalinter.io/config-file/",
+        testRes: "https://megalinter.io/latest/config-file/",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/config-file/gm,
+        replacement: "https://megalinter.io/latest/config-file",
+        test: "https://megalinter.io/config-file/",
+        testRes: "https://megalinter.io/latest/config-file/",
       },
       // Github actions flavors
       {
