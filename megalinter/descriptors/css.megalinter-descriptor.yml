@@ -53,6 +53,8 @@ linters:
   # SCSS Lint
   - linter_name: scss-lint
     name: CSS_SCSS_LINT
+    deprecated: true
+    deprecated_description: https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
     file_extensions:
       - ".scss"
       - ".saas"
