@@ -23,7 +23,7 @@ FROM trufflesecurity/trufflehog:latest as trufflehog
 ##################
 # Get base image #
 ##################
-FROM python:3.11.4-alpine3.17
+FROM python:3.11.4-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
