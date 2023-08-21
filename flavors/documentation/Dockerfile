@@ -20,7 +20,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 # FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM mstruebing/editorconfig-checker:2.7.1 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
