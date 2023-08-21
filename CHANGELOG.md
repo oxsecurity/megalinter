@@ -42,6 +42,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 2.2.1 to **2.3.0** on 2023-08-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.49.1 to **0.50.4** on 2023-08-20
   - [checkov](https://www.checkov.io/) from 2.4.2 to **2.4.3** on 2023-08-20
+  - [checkov](https://www.checkov.io/) from 2.4.3 to **2.4.4** on 2023-08-21
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
