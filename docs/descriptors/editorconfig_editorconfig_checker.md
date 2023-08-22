@@ -15,7 +15,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **2.7.0**
+- Version in MegaLinter: **2.7.1**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -131,7 +131,7 @@ USAGE:
 
 - Dockerfile commands :
 ```dockerfile
-FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM mstruebing/editorconfig-checker:2.7.1 as editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
 

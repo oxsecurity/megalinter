@@ -12,7 +12,7 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 | Linter                                                                    | Additional                                                                                                                                                                               |
 |---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**stylelint**](css_stylelint.md)<br/>[_CSS_STYLELINT_](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
-| [**scss-lint**](css_scss_lint.md)<br/>[_CSS_SCSS_LINT_](css_scss_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)                                                                 |
+| [**scss-lint**](css_scss_lint.md)<br/>[_CSS_SCSS_LINT_](css_scss_lint.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint)         |
 
 ## Linted files
 
