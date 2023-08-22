@@ -46,6 +46,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.49.1 to **0.50.4** on 2023-08-20
   - [checkov](https://www.checkov.io/) from 2.4.2 to **2.4.3** on 2023-08-20
   - [checkov](https://www.checkov.io/) from 2.4.3 to **2.4.4** on 2023-08-21
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.17.2 to **6.18.0** on 2023-08-22
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.0 to **2.7.1** on 2023-08-22
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.1 to **1.54.2** on 2023-08-22
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.10.2 to **3.11.3** on 2023-08-22
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.6 to **2.9.0** on 2023-08-22
+  - [psalm](https://psalm.dev) from Psalm.5.14.1@ to **Psalm.5.15.0@** on 2023-08-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.2 to **0.46.0** on 2023-08-22
+  - [checkov](https://www.checkov.io/) from 2.4.4 to **2.4.5** on 2023-08-22
+  - [git_diff](https://git-scm.com) from 2.38.5 to **2.40.1** on 2023-08-22
+  - [kics](https://www.kics.io) from 1.7.5 to **1.7.6** on 2023-08-22
+  - [rubocop](https://rubocop.org/) from 1.56.0 to **1.56.1** on 2023-08-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.0 to **7.0.1** on 2023-08-22
+  - [terrascan](https://runterrascan.io/) from 1.18.2 to **1.18.3** on 2023-08-22
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104** on 2023-08-22
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

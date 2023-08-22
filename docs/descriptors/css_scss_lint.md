@@ -11,7 +11,15 @@ description: How to use scss-lint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sds/scss-lint?sort=semver)](https://github.com/sds/scss-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/contributors/)
+![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/sds/scss-lint?cacheSeconds=3600)](https://github.com/sds/scss-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sds/scss-lint?sort=semver)](https://github.com/sds/scss-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sds/scss-lint)](https://github.com/sds/scss-lint/graphs/contributors/)
+
+> This linter has been deprecated.
+>
+> https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
+>
+> You should disable scss-lint by adding it in DISABLE_LINTERS property.
+>
+> It will be maintained at least until the next major release.
 
 ## scss-lint documentation
 
