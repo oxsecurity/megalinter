@@ -3227,11 +3227,11 @@
 <img alt="kubescape" class="megalinter-banner" height="150px" src="https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png">
 </img></a>
 </div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-downgraded%20version-orange"><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange"/> <a href="https://github.com/kubescape/kubescape"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/kubescape/kubescape/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver"/></a> <a href="https://github.com/kubescape/kubescape/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/kubescape/kubescape"/></a> <a href="https://github.com/kubescape/kubescape/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/kubescape/kubescape"/></a> <a href="https://github.com/kubescape/kubescape/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/kubescape/kubescape"/></a></a></p>
+<p><a href="https://github.com/kubescape/kubescape"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/kubescape/kubescape/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver"/></a> <a href="https://github.com/kubescape/kubescape/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/kubescape/kubescape"/></a> <a href="https://github.com/kubescape/kubescape/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/kubescape/kubescape"/></a> <a href="https://github.com/kubescape/kubescape/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/kubescape/kubescape"/></a></p>
 <p><code>kubescape scan</code> examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.</p>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.6</strong></li>
+<li>Version in MegaLinter: <strong>2.9.0</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname="/></a></p>
@@ -3497,7 +3497,7 @@ Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
   delete      Delete configurations in Kubescape SaaS version
-  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks
+  download    Download artifacts,attack-tracks,controls-inputs,exceptions,control,framework
   fix         Fix misconfiguration in files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls
@@ -3520,7 +3520,7 @@ Use "kubescape [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 &amp;&amp; \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s
 
 </code></pre>
 <ul>
