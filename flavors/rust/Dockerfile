@@ -20,7 +20,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 # FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM mstruebing/editorconfig-checker:2.7.1 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.17.0 as gitleaks
@@ -32,7 +32,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.11.4-alpine3.17
+FROM python:3.11.4-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -264,7 +264,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s \
 
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/

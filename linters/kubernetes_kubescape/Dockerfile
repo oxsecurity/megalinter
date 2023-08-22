@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.4-alpine3.17
+FROM python:3.11.4-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -127,7 +127,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # kubescape installation
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s
 
 
 #OTHER__END

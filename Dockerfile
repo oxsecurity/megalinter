@@ -19,7 +19,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 # FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:2.7.0 as editorconfig-checker
+FROM mstruebing/editorconfig-checker:2.7.1 as editorconfig-checker
 FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
@@ -40,7 +40,7 @@ FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
-FROM tenable/terrascan:1.18.2 as terrascan
+FROM tenable/terrascan:1.18.3 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -49,7 +49,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.11.4-alpine3.17
+FROM python:3.11.4-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -175,7 +175,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtuale
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging checkov && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir restructuredtext_lint && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstcheck && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstcheck[toml,sphinx] && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rstfmt" && cd "/venvs/rstfmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstfmt && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt && deactivate && cd ./../.. \
@@ -601,7 +601,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.3.6 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s \
 
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/

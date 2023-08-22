@@ -9,7 +9,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.45.1**
+- Version in MegaLinter: **0.46.0**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -103,6 +103,8 @@ protolint lint -fix --config_path .protolintrc.yml myfile.proto
 
 ```shell
 Usage of lint:
+  -add-reporter value
+      Adds a reporter to the list of reporters to use. The format should be 'name of reporter':'Path-To_output_file'
   -auto_disable value
       mode that the command line automatically disable some of the problems. Available auto_disable are "next" and "this".
   -config_dir_path string

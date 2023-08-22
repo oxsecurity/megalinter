@@ -49,7 +49,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
     permissions:

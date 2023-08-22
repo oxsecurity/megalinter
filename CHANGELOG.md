@@ -8,10 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Fixes
-  - Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
-  - Secretlint logo - reduce size to 150 and remove background, by @itayox
-  - Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows, by @andrewvaughan
+- Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
+- Secretlint logo - reduce size to 150 and remove background
+- Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
+- Fix rstcheck options & install
+- Deprecate SCSS LINT as not maintained anymore (<https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>)
 
 - Linter versions upgrades
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
@@ -30,6 +31,37 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.3.361 to **2.3.364** on 2023-08-14
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.47.0 to **3.48.0** on 2023-08-14
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.7 to **0.49.1** on 2023-08-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.6 to **0.79.7** on 2023-08-20
+  - [stylelint](https://stylelint.io) from 15.10.2 to **15.10.3** on 2023-08-20
+  - [prettier](https://prettier.io/) from 3.0.1 to **3.0.2** on 2023-08-20
+  - [phpstan](https://phpstan.org/) from 1.10.28 to **1.10.29** on 2023-08-20
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.1 to **0.45.2** on 2023-08-20
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.5.0 to **1.5.1** on 2023-08-20
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.322 to **1.1.323** on 2023-08-20
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.284 to **0.0.285** on 2023-08-20
+  - [checkov](https://www.checkov.io/) from 2.3.364 to **2.4.2** on 2023-08-20
+  - [semgrep](https://semgrep.dev/) from 1.35.0 to **1.36.0** on 2023-08-20
+  - [syft](https://github.com/anchore/syft) from 0.86.1 to **0.87.1** on 2023-08-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.48.0 to **3.52.1** on 2023-08-20
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.2.1 to **2.3.0** on 2023-08-20
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.49.1 to **0.50.4** on 2023-08-20
+  - [checkov](https://www.checkov.io/) from 2.4.2 to **2.4.3** on 2023-08-20
+  - [checkov](https://www.checkov.io/) from 2.4.3 to **2.4.4** on 2023-08-21
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.17.2 to **6.18.0** on 2023-08-22
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.0 to **2.7.1** on 2023-08-22
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.1 to **1.54.2** on 2023-08-22
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.10.2 to **3.11.3** on 2023-08-22
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.6 to **2.9.0** on 2023-08-22
+  - [psalm](https://psalm.dev) from Psalm.5.14.1@ to **Psalm.5.15.0@** on 2023-08-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.2 to **0.46.0** on 2023-08-22
+  - [checkov](https://www.checkov.io/) from 2.4.4 to **2.4.5** on 2023-08-22
+  - [git_diff](https://git-scm.com) from 2.38.5 to **2.40.1** on 2023-08-22
+  - [kics](https://www.kics.io) from 1.7.5 to **1.7.6** on 2023-08-22
+  - [rubocop](https://rubocop.org/) from 1.56.0 to **1.56.1** on 2023-08-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.0 to **7.0.1** on 2023-08-22
+  - [terrascan](https://runterrascan.io/) from 1.18.2 to **1.18.3** on 2023-08-22
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104** on 2023-08-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.4 to **0.50.6** on 2023-08-22
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
