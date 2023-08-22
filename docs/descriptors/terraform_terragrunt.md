@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.50.4**
+- Version in MegaLinter: **0.50.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -131,7 +131,7 @@ GLOBAL OPTIONS:
    --help, -h                                       Show help
    --version, -v                                    Show terragrunt version
 
-VERSION: v0.50.4
+VERSION: v0.50.6
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```

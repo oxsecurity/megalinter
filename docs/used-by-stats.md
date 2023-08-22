@@ -1,26 +1,26 @@
 # Dependents stats for oxsecurity/megalinter
 
 [![](https://img.shields.io/static/v1?label=Used%20by&message=2682&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1813&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=869&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=69544&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=1814&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=868&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=69717&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 42289 |
-| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  8442 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 42299 |
+| [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  8443 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2490 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  2244 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  2136 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  2137 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  2084 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1784 |
 | [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)                                                                                                               |  1399 |
-| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1389 |
+| [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1390 |
 | [flosse/sloc](https://github.com/flosse/sloc)                                                                                                                                   |   936 |
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   906 |
 | [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   671 |
 | [ministryofjustice/modernisation-platform](https://github.com/ministryofjustice/modernisation-platform)                                                                         |   641 |
-| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   638 |
+| [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   639 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   617 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   586 |
 | [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   581 |
@@ -33,7 +33,7 @@
 | [scolladon/sfdx-git-delta](https://github.com/scolladon/sfdx-git-delta)                                                                                                         |   321 |
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   310 |
 | [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   310 |
-| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   293 |
+| [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   294 |
 | [neon-mmd/websurfx](https://github.com/neon-mmd/websurfx)                                                                                                                       |   225 |
 | [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   209 |
 | [OCSInventory-NG/OCSInventory-ocsreports](https://github.com/OCSInventory-NG/OCSInventory-ocsreports)                                                                           |   208 |
@@ -1422,6 +1422,7 @@
 | [ortelius/scec-domain](https://github.com/ortelius/scec-domain)                                                                                                                 |     0 |
 | [rciam/keycloak-rciam-metrics-plugin](https://github.com/rciam/keycloak-rciam-metrics-plugin)                                                                                   |     0 |
 | [charkchalk/backend](https://github.com/charkchalk/backend)                                                                                                                     |     0 |
+| [sarvex/CoDeF](https://github.com/sarvex/CoDeF)                                                                                                                                 |     0 |
 | [sarvex/pysonar2](https://github.com/sarvex/pysonar2)                                                                                                                           |     0 |
 | [sarvex/DataflowTemplates](https://github.com/sarvex/DataflowTemplates)                                                                                                         |     0 |
 | [sarvex/ea-async](https://github.com/sarvex/ea-async)                                                                                                                           |     0 |
