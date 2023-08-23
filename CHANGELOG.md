@@ -61,6 +61,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) from 1.18.2 to **1.18.3** on 2023-08-22
   - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104** on 2023-08-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.4 to **0.50.6** on 2023-08-22
+  - [phpstan](https://phpstan.org/) from 1.10.29 to **1.10.30** on 2023-08-23
+  - [checkov](https://www.checkov.io/) from 2.4.5 to **2.4.6** on 2023-08-23
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
