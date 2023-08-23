@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
 - Secretlint logo - reduce size to 150 and remove background
+- Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
 - Fix rstcheck options & install
 - Deprecate SCSS LINT as not maintained anymore (<https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>)
 

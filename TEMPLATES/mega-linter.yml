@@ -71,7 +71,7 @@ jobs:
         # All available variables are described in documentation
         # https://megalinter.io/configuration/
         env:
-        
+
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources
           #
@@ -82,12 +82,12 @@ jobs:
           # VALIDATE_ALL_CODEBASE: >-
           #   ${{
           #     github.event_name == 'push' &&
-          #     github.ref == 'refs/heads/main'
+          #     contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
           #   }}
           VALIDATE_ALL_CODEBASE: >-
             ${{
               github.event_name == 'push' &&
-              github.ref == 'refs/heads/main'
+              contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
             }}
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -156,7 +156,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          github.ref != 'refs/heads/main' &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
@@ -172,7 +172,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          github.ref != 'refs/heads/main' &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
