@@ -359,6 +359,12 @@ jobs:
         test: "https://megalinter.io/config-file/",
         testRes: "https://megalinter.io/latest/config-file/",
       },
+      {
+        regex: /https:\/\/megalinter.io\/flavors/gm,
+        replacement: "https://megalinter.io/latest/flavors",
+        test: "https://megalinter.io/flavors/",
+        testRes: "https://megalinter.io/latest/flavors/",
+      },
       // Github actions flavors
       {
         regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v6\.(.*)/gm,
