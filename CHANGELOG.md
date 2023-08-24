@@ -69,6 +69,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.4.6 to **2.4.7** on 2023-08-24
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.18 to **1.0.19** on 2023-08-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.52.1 to **3.53.0** on 2023-08-24
+  - [checkov](https://www.checkov.io/) from 2.4.7 to **2.4.8** on 2023-08-24
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.5 to **1.5.6** on 2023-08-24
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
