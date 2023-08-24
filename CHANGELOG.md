@@ -65,6 +65,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.4 to **0.50.6** on 2023-08-22
   - [phpstan](https://phpstan.org/) from 1.10.29 to **1.10.30** on 2023-08-23
   - [checkov](https://www.checkov.io/) from 2.4.5 to **2.4.6** on 2023-08-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.323 to **1.1.324** on 2023-08-24
+  - [checkov](https://www.checkov.io/) from 2.4.6 to **2.4.7** on 2023-08-24
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.18 to **1.0.19** on 2023-08-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.52.1 to **3.53.0** on 2023-08-24
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
