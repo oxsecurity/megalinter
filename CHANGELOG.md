@@ -71,6 +71,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.52.1 to **3.53.0** on 2023-08-24
   - [checkov](https://www.checkov.io/) from 2.4.7 to **2.4.8** on 2023-08-24
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.5 to **1.5.6** on 2023-08-24
+  - [revive](https://revive.run/) from 1.3.2 to **1.3.3** on 2023-08-25
+  - [phpstan](https://phpstan.org/) from 1.10.30 to **1.10.32** on 2023-08-25
+  - [checkov](https://www.checkov.io/) from 2.4.8 to **2.4.10** on 2023-08-25
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.71 to **0.1.72** on 2023-08-25
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
