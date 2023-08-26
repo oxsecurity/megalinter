@@ -630,7 +630,7 @@ class Megalinter:
             all_files = list()
             for file_to_lint in files_to_lint:
                 if os.path.isfile(self.workspace + os.path.sep + file_to_lint):
-                    all_files += [self.workspace + os.path.sep + file_to_lint]
+                    all_files += [file_to_lint]
                 else:
                     logging.warning(
                         "[File listing] Input file "
