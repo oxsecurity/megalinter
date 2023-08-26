@@ -81,6 +81,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.36.0 to **1.37.0** on 2023-08-26
   - [syft](https://github.com/anchore/syft) from 0.87.1 to **0.88.0** on 2023-08-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.6 to **0.50.7** on 2023-08-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.7 to **0.50.8** on 2023-08-26
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
