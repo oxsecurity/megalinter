@@ -18,7 +18,7 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.17.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint

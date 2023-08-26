@@ -3122,7 +3122,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download artifacts,attack-tracks,controls-inputs,exceptions,control,framework",
+        "  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -9621,7 +9621,7 @@
         "   --help, -h                                       Show help",
         "   --version, -v                                    Show terragrunt version",
         "",
-        "VERSION: v0.50.7",
+        "VERSION: v0.50.8",
         "",
         "AUTHOR: Gruntwork <www.gruntwork.io>"
     ],
