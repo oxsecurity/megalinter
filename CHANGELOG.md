@@ -75,6 +75,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.30 to **1.10.32** on 2023-08-25
   - [checkov](https://www.checkov.io/) from 2.4.8 to **2.4.10** on 2023-08-25
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.71 to **0.1.72** on 2023-08-25
+  - [eslint](https://eslint.org) from 8.47.0 to **8.48.0** on 2023-08-26
+  - [puppet-lint](http://puppet-lint.com/) from 4.0.1 to **4.1.0** on 2023-08-26
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.285 to **0.0.286** on 2023-08-26
+  - [semgrep](https://semgrep.dev/) from 1.36.0 to **1.37.0** on 2023-08-26
+  - [syft](https://github.com/anchore/syft) from 0.87.1 to **0.88.0** on 2023-08-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.6 to **0.50.7** on 2023-08-26
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
