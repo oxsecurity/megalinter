@@ -84,6 +84,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.6 to **0.50.7** on 2023-08-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.7 to **0.50.8** on 2023-08-26
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.17.0 to **8.18.0** on 2023-08-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.7 to **0.79.8** on 2023-09-01
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.2 to **10.12.3** on 2023-09-01
+  - [prettier](https://prettier.io/) from 3.0.2 to **3.0.3** on 2023-09-01
+  - [chktex](https://www.nongnu.org/chktex) from 1.7.6 to **1.7.8** on 2023-09-01
+  - [puppet-lint](http://puppet-lint.com/) from 4.1.0 to **4.2.0** on 2023-09-01
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.324 to **1.1.325** on 2023-09-01
+  - [checkov](https://www.checkov.io/) from 2.4.10 to **2.4.22** on 2023-09-01
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.19 to **1.0.20** on 2023-09-01
+  - [kics](https://www.kics.io) from 1.7.6 to **1.7.7** on 2023-09-01
+  - [semgrep](https://semgrep.dev/) from 1.37.0 to **1.38.0** on 2023-09-01
+  - [syft](https://github.com/anchore/syft) from 0.88.0 to **0.89.0** on 2023-09-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.53.0 to **3.54.1** on 2023-09-01
+  - [rubocop](https://rubocop.org/) from 1.56.1 to **1.56.2** on 2023-09-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.1 to **7.2.0** on 2023-09-01
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.0 to **2.3.1** on 2023-09-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.8 to **0.50.9** on 2023-09-01
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
