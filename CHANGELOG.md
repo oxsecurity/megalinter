@@ -16,6 +16,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Replace `https://megalinter.io/flavors` with `https://megalinter.io/latest/flavors` to avoid lychee 404 error
 - Fix [v7 issue when using MEGALINTER_FILES_TO_LINT](https://github.com/oxsecurity/megalinter/issues/2744) ( thanks @pfiaux !)
 
+- Media
+  - [Maximize your code consistency with Megalinter](https://codewithme.cloud/posts/2023/08/maximize-your-code-consistency-with-megalinter/) by [Tor Ivar Asbølmo](https://www.linkedin.com/in/torivara/) on [codewithme.cloud](https://codewithme.cloud)
+
 - Linter versions upgrades
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
   - [checkov](https://www.checkov.io/) from 2.3.360 to **2.3.361** on 2023-08-11
