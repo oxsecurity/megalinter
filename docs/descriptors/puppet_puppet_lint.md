@@ -9,7 +9,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 
 ## puppet-lint documentation
 
-- Version in MegaLinter: **4.1.0**
+- Version in MegaLinter: **4.2.0**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/puppetlabs/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -178,8 +178,6 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
                                      Skip the single_quote_string_with_variables check.
         --no-variables_not_enclosed-check
                                      Skip the variables_not_enclosed check.
-        --no-check_unsafe_interpolations-check
-                                     Skip the check_unsafe_interpolations check.
         --no-variable_contains_dash-check
                                      Skip the variable_contains_dash check.
         --no-variable_is_lowercase-check
