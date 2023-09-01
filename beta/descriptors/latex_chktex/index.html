@@ -11,7 +11,7 @@
 <link href="../latex/" rel="prev"/>
 <link href="../markdown/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.2, mkdocs-material-9.2.4" name="generator"/>
+<meta content="mkdocs-1.5.2, mkdocs-material-9.2.6" name="generator"/>
 <title>chktex configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.0e669242.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.85d0ee34.min.css" rel="stylesheet"/>
@@ -3224,7 +3224,7 @@
 <h1 id="chktex">chktex</h1>
 <h2 id="chktex-documentation">chktex documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.7.6</strong></li>
+<li>Version in MegaLinter: <strong>1.7.8</strong></li>
 <li>Visit <a href="https://www.nongnu.org/chktex" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/amaloz/dotfiles/blob/master/chktexrc" target="_blank">How to configure chktex rules</a><ul>
 <li>If custom <code>.chktexrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.chktexrc" target="_blank">.chktexrc</a> will be used</li>
@@ -3387,7 +3387,7 @@
 <pre><code class="language-shell">chktex -q -l .chktexrc myfile.tex
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">ChkTeX v1.7.6 - Copyright 1995-96 Jens T. Berger Thielemann.
+<pre><code class="language-shell">ChkTeX v1.7.8 - Copyright 1995-96 Jens T. Berger Thielemann.
 Compiled with POSIX extended regex support.
 ChkTeX comes with ABSOLUTELY NO WARRANTY; details on this and
 distribution conditions in the GNU General Public License file.
@@ -3398,7 +3398,7 @@ Bug reports: https://savannah.nongnu.org/bugs/?group=chktex
 Press Ctrl-D to terminate stdin input.
 
 
-                         Usage of ChkTeX v1.7.6
+                         Usage of ChkTeX v1.7.8
                          ~~~~~~~~~~~~~~~~~~~~~~
 
                                Template
@@ -3415,8 +3415,11 @@ Misc. options
     -h  --help      : This text.
     -i  --license   : Show distribution information
     -l  --localrc   : Read local .chktexrc formatted file.
-    -d  --debug     : Debug information. Give it a number.
+    -d  --debug     : Debug information. A bit field with 5 bits.
+                      Each bit shows a different type of information.
     -r  --reset     : Reset settings to default.
+    -S  --set       : Read it's argument as if from chktexrc.
+                      e.g., -S TabSize=8 will override the TabSize.
 
 Muting warning messages:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3424,7 +3427,7 @@ Muting warning messages:
     -e  --erroron   : Makes msg # given an error and turns it on.
     -m  --msgon     : Makes msg # given a message and turns it on.
     -n  --nowarn    : Mutes msg # given.
-    -L  --nolinesupp: Disables per-line suppressions.
+    -L  --nolinesupp: Disables per-line and per-file suppressions.
 
 Output control flags:
 ~~~~~~~~~~~~~~~~~~~~~
@@ -3444,7 +3447,7 @@ Boolean switches (1 -&gt; enables / 0 -&gt; disables):
     -x  --wipeverb  : Ignore contents of `\verb' commands.
     -g  --globalrc  : Read global .chktexrc file.
     -I  --inputfiles: Execute \input statements.
-    -H  --headererr : Show errors found in front of \begin{document}
+    -H  --headererr : Show errors found before \begin{document}
 
 Miscellaneous switches:
 ~~~~~~~~~~~~~~~~~~~~~~~
