@@ -17,7 +17,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.44.1**
+- Version in MegaLinter: **0.45.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -124,7 +124,7 @@ Scanning Commands
   filesystem  Scan local filesystem
   image       Scan a container image
   kubernetes  [EXPERIMENTAL] Scan kubernetes cluster
-  repository  Scan a remote repository
+  repository  Scan a repository
   rootfs      Scan rootfs
   sbom        Scan SBOM for vulnerabilities
   vm          [EXPERIMENTAL] Scan a virtual machine image
