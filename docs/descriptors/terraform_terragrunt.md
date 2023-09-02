@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.50.9**
+- Version in MegaLinter: **0.50.11**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -100,6 +100,7 @@ GLOBAL OPTIONS:
    --terragrunt-config value                        The path to the Terragrunt config file. Default is terragrunt.hcl. [$TERRAGRUNT_CONFIG]
    --terragrunt-debug                               Write terragrunt-debug.tfvars to working folder to help root-cause issues. [$TERRAGRUNT_DEBUG]
    --terragrunt-disable-bucket-update               When this flag is set Terragrunt will not update the remote state bucket. [$TERRAGRUNT_DISABLE_BUCKET_UPDATE]
+   --terragrunt-disable-command-validation          When this flag is set, Terragrunt will not validate the terraform command. [$TERRAGRUNT_DISABLE_COMMAND_VALIDATION]
    --terragrunt-download-dir value                  The path where to download Terraform code. Default is .terragrunt-cache in the working directory. [$TERRAGRUNT_DOWNLOAD]
    --terragrunt-exclude-dir value                   Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
    --terragrunt-fail-on-state-bucket-creation       When this flag is set Terragrunt will fail if the remote state bucket needs to be created. [$TERRAGRUNT_FAIL_ON_STATE_BUCKET_CREATION]
@@ -131,7 +132,7 @@ GLOBAL OPTIONS:
    --help, -h                                       Show help
    --version, -v                                    Show terragrunt version
 
-VERSION: v0.50.9
+VERSION: v0.50.11
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
