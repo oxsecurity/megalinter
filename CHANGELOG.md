@@ -103,6 +103,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.1 to **7.2.0** on 2023-09-01
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.0 to **2.3.1** on 2023-09-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.8 to **0.50.9** on 2023-09-01
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.286 to **0.0.287** on 2023-09-02
+  - [semgrep](https://semgrep.dev/) from 1.38.0 to **1.38.2** on 2023-09-02
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.44.1 to **0.45.0** on 2023-09-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.1 to **0.45.0** on 2023-09-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.54.1 to **3.54.3** on 2023-09-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.2.0 to **7.3.2** on 2023-09-02
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

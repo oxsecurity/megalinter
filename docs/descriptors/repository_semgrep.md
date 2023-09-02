@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.38.0**
+- Version in MegaLinter: **1.38.2**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -278,9 +278,10 @@ OPTIONS
            Maximum number of lines of code that will be shown for each match
            before trimming (set to 0 for unlimited).
 
-       --max-memory-mb=VAL (absent=0)
+       --max-memory=VAL (absent=0)
            Maximum system memory to use running a rule on a single file in
-           MB. If set to 0 will not have memory limit. Defaults to 0.
+           MiB. If set to 0 will not have memory limit. Defaults to 0. For CI
+           scans that use the Pro Engine, it defaults to 5000 MiB.
 
        --max-target-bytes=VAL (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
@@ -327,6 +328,10 @@ OPTIONS
 
        --no-time
            negates --time
+
+       -o VAL, --output=VAL
+           Save search results to a file or post to URL. Default is to print
+           to stdout.
 
        --optimizations=VAL (absent=all)
            Turn on/off optimizations. Default = 'all'. Use 'none' to turn all
@@ -402,6 +407,9 @@ OPTIONS
        --test-ignore-todo
            If --test-ignore-todo, ignores rules marked as '#todoruleid:' in
            test files.
+
+       --text
+           Output results in text format.
 
        --time
            Include a timing summary with the results. If output format is
