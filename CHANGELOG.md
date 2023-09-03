@@ -111,6 +111,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.2.0 to **7.3.2** on 2023-09-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.9 to **0.50.11** on 2023-09-02
   - [semgrep](https://semgrep.dev/) from 1.38.2 to **1.38.3** on 2023-09-03
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.35.0 to **0.36.0** on 2023-09-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.11 to **0.50.12** on 2023-09-03
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
