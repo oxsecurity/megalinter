@@ -56,7 +56,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #

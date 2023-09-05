@@ -11,13 +11,13 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
 
 `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
 
 ## kubescape documentation
 
-- Version in MegaLinter: **2.9.0**
+- Version in MegaLinter: **2.9.1**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -107,11 +107,11 @@ Usage:
 
 Examples:
 
-  # Scan command
+  # Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
   kubescape scan
 
-  # List supported frameworks
-  kubescape list frameworks
+  # List supported controls
+  kubescape list controls
 
   # Download artifacts (air-gapped environment support)
   kubescape download artifacts
@@ -123,22 +123,22 @@ Examples:
 Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
-  delete      Delete configurations in Kubescape SaaS version
-  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions
-  fix         Fix misconfiguration in files
+  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks
+  fix         Propose a fix for the misconfiguration found when scanning Kubernetes manifest files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls
-  scan        Scan the current running cluster or yaml files
-  submit      Submit an object to the Kubescape SaaS version
-  update      Update your version
+  scan        Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
+  update      Update to latest release version
   version     Get current version
 
 Flags:
-      --cache-dir string   Cache directory [$KS_CACHE_DIR] (default "/root/.kubescape")
-      --disable-color      Disable Color output for logging
-      --enable-color       Force enable Color output for logging
-  -h, --help               help for kubescape
-  -l, --logger string      Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default "info")
+      --cache-dir string      Cache directory [$KS_CACHE_DIR] (default "/root/.kubescape")
+      --disable-color         Disable color output for logging
+      --enable-color          Force enable color output for logging
+  -h, --help                  help for kubescape
+      --kube-context string   Kube context. Default will use the current-context
+  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default "info")
+      --server string         Backend discovery server URL (default "api.armosec.io")
 
 Use "kubescape [command] --help" for more information about a command.
 ```
@@ -148,7 +148,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
 
 ```
 

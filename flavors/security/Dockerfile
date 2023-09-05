@@ -21,7 +21,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 FROM zricethezav/gitleaks:v8.18.0 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
-FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.48.0 as tflint
 FROM tenable/terrascan:1.18.3 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
@@ -205,7 +205,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
 
 # devskim installation
     && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
