@@ -11,7 +11,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
 
 `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
 
@@ -148,7 +148,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
 
 ```
 
