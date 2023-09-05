@@ -907,9 +907,8 @@ class Linter:
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         # Output command if debug mode
-        if os.environ.get("LOG_LEVEL", "INFO") == "DEBUG":
-            logging.debug(f"[{self.linter_name}] command: {str(command)}")
-            self.lint_command_log = command
+        logging.debug(f"[{self.linter_name}] command: {str(command)}")
+        self.lint_command_log = command
         # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
