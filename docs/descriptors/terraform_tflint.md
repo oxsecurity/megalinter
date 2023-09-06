@@ -11,7 +11,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.47.0**
+- Version in MegaLinter: **0.48.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used

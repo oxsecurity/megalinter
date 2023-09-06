@@ -17,7 +17,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **2.9.1**
+- Version in MegaLinter: **2.9.0**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -107,11 +107,11 @@ Usage:
 
 Examples:
 
-  # Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
+  # Scan command
   kubescape scan
 
-  # List supported controls
-  kubescape list controls
+  # List supported frameworks
+  kubescape list frameworks
 
   # Download artifacts (air-gapped environment support)
   kubescape download artifacts
@@ -123,22 +123,22 @@ Examples:
 Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
+  delete      Delete configurations in Kubescape SaaS version
   download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks
-  fix         Propose a fix for the misconfiguration found when scanning Kubernetes manifest files
+  fix         Fix misconfiguration in files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls
-  scan        Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
-  update      Update to latest release version
+  scan        Scan the current running cluster or yaml files
+  submit      Submit an object to the Kubescape SaaS version
+  update      Update your version
   version     Get current version
 
 Flags:
-      --cache-dir string      Cache directory [$KS_CACHE_DIR] (default "/root/.kubescape")
-      --disable-color         Disable color output for logging
-      --enable-color          Force enable color output for logging
-  -h, --help                  help for kubescape
-      --kube-context string   Kube context. Default will use the current-context
-  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default "info")
-      --server string         Backend discovery server URL (default "api.armosec.io")
+      --cache-dir string   Cache directory [$KS_CACHE_DIR] (default "/root/.kubescape")
+      --disable-color      Disable Color output for logging
+      --enable-color       Force enable Color output for logging
+  -h, --help               help for kubescape
+  -l, --logger string      Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default "info")
 
 Use "kubescape [command] --help" for more information about a command.
 ```

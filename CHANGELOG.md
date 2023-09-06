@@ -116,6 +116,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.11 to **0.50.12** on 2023-09-03
   - [checkov](https://www.checkov.io/) from 2.4.22 to **2.4.25** on 2023-09-03
   - [kubescape](https://github.com/kubescape/kubescape) from 2.9.0 to **2.9.1** on 2023-09-04
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.8 to **0.79.9** on 2023-09-06
+  - [ktlint](https://ktlint.github.io) from 0.50.0 to **1.0.0** on 2023-09-06
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.9.1 to **2.9.0** on 2023-09-06
+  - [phpstan](https://phpstan.org/) from 1.10.32 to **1.10.33** on 2023-09-06
+  - [checkov](https://www.checkov.io/) from 2.4.25 to **2.4.27** on 2023-09-06
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.47.0 to **0.48.0** on 2023-09-06
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
