@@ -125,6 +125,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
   - [tflint](https://github.com/terraform-linters/tflint) from 0.47.0 to **0.48.0** on 2023-09-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.12 to **0.50.13** on 2023-09-06
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
