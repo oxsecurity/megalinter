@@ -3230,7 +3230,7 @@
 <p><strong>Workaround: Restricted to Aura</strong></p>
 <h2 id="sfdx-scanner-aura-documentation">sfdx-scanner-aura documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.15.0</strong></li>
+<li>Version in MegaLinter: <strong>3.16.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure sfdx-scanner-aura rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring/rules#disabling-rules" target="_blank">How to disable sfdx-scanner-aura rules in files</a></li>
@@ -3446,7 +3446,7 @@ COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1676) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
+(node:1678) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
 (Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -3661,11 +3661,12 @@ WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you 
  @typescript-eslint/triple-slash-reference              typescript  suggestion            suggestion                                       eslint-typescript N      N
  @typescript-eslint/unbound-method                      typescript  problem               problem                                          eslint-typescript N      N
  insecure-bundled-dependencies                          javascript  Insecure Dependencies                                                  retire-js         N      N
- AvoidDatabaseOperationInLoop                           apex        Performance                                                            sfge              Y      Y
+ AvoidDatabaseOperationInLoop                           apex        Performance                                                            sfge              Y      N
  AvoidMultipleMassSchemaLookups                         apex        Performance                                                            sfge              Y      N
  ApexFlsViolationRule                                   apex        Security                                                               sfge              Y      N
  RemoveUnusedMethod                                     apex        Performance                                                            sfge              Y      Y
- UseWithSharingOnDatabaseOperation                      apex        Security                                                               sfge              Y      Y
+ PerformNullCheckOnSoqlVariables                        apex        Performance                                                            sfge              Y      Y
+ UseWithSharingOnDatabaseOperation                      apex        Security                                                               sfge              Y      N
  ApexNullPointerExceptionRule                           apex        Error Prone                                                            sfge              Y      N
  UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N
 </code></pre>
