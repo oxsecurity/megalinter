@@ -70,12 +70,15 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"
+          body: "Please merge this pull request to apply automatic fixes by MegaLinter."
           labels: bot
+          branch: patch-${{ github.workflow }}-${{ github.ref_name }}
+          delete-branch: true
       - name: Create PR output
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "::error::Merge pull request ${{ steps.cpr.outputs.pull-request-url }} to apply automatic fixes."
+          exit 1
 
       # Push new commit if applicable (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
