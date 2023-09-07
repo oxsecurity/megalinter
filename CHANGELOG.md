@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Update and improve GitHub action template and clean up documentation by @vkucera
 - Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
 - Secretlint logo - reduce size to 150 and remove background
 - Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
