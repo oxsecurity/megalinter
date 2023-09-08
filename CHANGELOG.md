@@ -126,6 +126,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
   - [tflint](https://github.com/terraform-linters/tflint) from 0.47.0 to **0.48.0** on 2023-09-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.12 to **0.50.13** on 2023-09-06
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.18.0 to **6.19.0** on 2023-09-08
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.07.13 to **2023.09.07** on 2023-09-08
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.325 to **1.1.326** on 2023-09-08
+  - [checkov](https://www.checkov.io/) from 2.4.27 to **2.4.30** on 2023-09-08
+  - [semgrep](https://semgrep.dev/) from 1.38.3 to **1.39.0** on 2023-09-08
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.13 to **0.50.14** on 2023-09-08
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
