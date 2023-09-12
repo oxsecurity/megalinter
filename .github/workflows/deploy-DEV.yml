@@ -112,7 +112,7 @@ jobs:
       - name: Build MegaLinter Docker Image (quick)
         if: "contains(github.event.head_commit.message, 'quick build')"
         id: docker_build_quick
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile-quick
@@ -142,7 +142,7 @@ jobs:
           &&
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile
@@ -170,7 +170,7 @@ jobs:
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile
