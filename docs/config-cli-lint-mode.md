@@ -11,19 +11,18 @@ description: Cli lint mode can be list_of_files, project or files
 Each linter is pre-configured to use a default lint mode, which are visible in the MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)). The possible values are:
 
 - `list_of_files`: The linter is called only once, and passed a list of all the files to be processed
-- `project`: The linter is responsible to scan all the files in the repository, as no filenames are provided it
-- `file`: The linter is called once per file (which hurts performance)
+- `project`: The linter is called only once, from the root folder of the repository, and it scans for the files to process, as no file names are provided it
+- `file`: The linter is called once per file, which hurts performance
 
 You can override the CLI_LINT_MODE by using a configuration variable for each linter (see [linters documentation](https://megalinter.io/supported-linters/)).
 
-- Linters using the `file` lint mode cannot be overridden to use the `list_of_files` lint mode
-- Linters using the `project` lint mode cannot be overridden to use either the `list_of_files` or `file` lint modes.
+- Linters that default to the `file` lint mode cannot be overridden to use the `list_of_files` lint mode
+- Linters that default to the `project` lint mode cannot be overridden to use either the `list_of_files` or `file` lint modes.
 
-Allowing `file` or `list_of_files` to be overridden to `project` is mostly for a workaround. For example, with linters that have a problem finding their config file when the current folder isn't the repository's root folder.
+Allowing `file` or `list_of_files` to be overridden to `project` is mostly for workarounds. For example, some linters have a problem finding their config file when the current folder isn't the repository's root folder.
 
 Special considerations:
 
-- Linters that are configured to use `project` lint mode ignore variables like `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`, as they are not passed a list of files to lint. For those linters, you must check their documentation to see if a linter can be configured to ignore specific files (for example, the secretlint linter ignores files listed in a `.secretlintignore` file, in the root of the repository).
-
+- Linters that are configured to use the `project` lint mode ignore variables like `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`, as they are not passed a list of files to lint. For those linters, you must check their documentation to see if a linter can be configured to ignore specific files. For example, the [Secretlint](https://megalinter.io/latest/descriptors/repository_secretlint/) linter ignore files listed in `~/.secretlintignore` by default, or it can be configured to instead ignore files listed in `~/.gitignore` by setting `REPOSITORY_SECRETLINT_ARGUMENTS` to `--secretlintignore .gitignore.`.
 
 <!-- config-cli-lint-mode-section-end -->
