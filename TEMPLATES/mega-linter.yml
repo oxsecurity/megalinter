@@ -108,22 +108,40 @@ jobs:
             megalinter-reports
             mega-linter.log
 
+      # Set APPLY_FIXES_IF var for use in future steps
+      - name: Set APPLY_FIXES_IF var
+        run: |
+          printf 'APPLY_FIXES_IF=%s\n' "${{
+            steps.ml.outputs.has_updated_sources == 1 &&
+            (
+              env.APPLY_FIXES_EVENT == 'all' ||
+              env.APPLY_FIXES_EVENT == github.event_name
+            ) &&
+            (
+              github.event_name == 'push' ||
+              github.event.pull_request.head.repo.full_name == github.repository
+            )
+          }}" >> "${GITHUB_ENV}"
+
+      # Set APPLY_FIXES_IF_* vars for use in future steps
+      - name: Set APPLY_FIXES_IF_* vars
+        run: |
+          printf 'APPLY_FIXES_IF_PR=%s\n' "${{
+            env.APPLY_FIXES_IF == 'true' &&
+            env.APPLY_FIXES_MODE == 'pull_request'
+          }}" >> "${GITHUB_ENV}"
+          printf 'APPLY_FIXES_IF_COMMIT=%s\n' "${{
+            env.APPLY_FIXES_IF == 'true' &&
+            env.APPLY_FIXES_MODE == 'commit' &&
+            (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref))
+          }}" >> "${GITHUB_ENV}"
+
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
         uses: peter-evans/create-pull-request@v5
         id: cpr
-        if: >-
-          steps.ml.outputs.has_updated_sources == 1 &&
-          (
-            env.APPLY_FIXES_EVENT == 'all' ||
-            env.APPLY_FIXES_EVENT == github.event_name
-          ) &&
-          env.APPLY_FIXES_MODE == 'pull_request' &&
-          (
-            github.event_name == 'push' ||
-            github.event.pull_request.head.repo.full_name == github.repository
-          )
+        if: env.APPLY_FIXES_IF_PR == 'true'
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
@@ -131,17 +149,7 @@ jobs:
           labels: bot
 
       - name: Create PR output
-        if: >-
-          steps.ml.outputs.has_updated_sources == 1 &&
-          (
-            env.APPLY_FIXES_EVENT == 'all' ||
-            env.APPLY_FIXES_EVENT == github.event_name
-          ) &&
-          env.APPLY_FIXES_MODE == 'pull_request' &&
-          (
-            github.event_name == 'push' ||
-            github.event.pull_request.head.repo.full_name == github.repository
-          )
+        if: env.APPLY_FIXES_IF_PR == 'true'
         run: |
           echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
@@ -149,34 +157,12 @@ jobs:
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
-        if: >-
-          steps.ml.outputs.has_updated_sources == 1 &&
-          (
-            env.APPLY_FIXES_EVENT == 'all' ||
-            env.APPLY_FIXES_EVENT == github.event_name
-          ) &&
-          env.APPLY_FIXES_MODE == 'commit' &&
-          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
-          (
-            github.event_name == 'push' ||
-            github.event.pull_request.head.repo.full_name == github.repository
-          )
+        if: env.APPLY_FIXES_IF_COMMIT == 'true'
         run: sudo chown -Rc $UID .git/
 
       - name: Commit and push applied linter fixes
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: >-
-          steps.ml.outputs.has_updated_sources == 1 &&
-          (
-            env.APPLY_FIXES_EVENT == 'all' ||
-            env.APPLY_FIXES_EVENT == github.event_name
-          ) &&
-          env.APPLY_FIXES_MODE == 'commit' &&
-          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
-          (
-            github.event_name == 'push' ||
-            github.event.pull_request.head.repo.full_name == github.repository
-          )
+        if: env.APPLY_FIXES_IF_COMMIT == 'true'
         with:
           branch: >-
             ${{
