@@ -109,7 +109,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -134,7 +134,7 @@ jobs:
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
       - name: Build Worker Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile-worker
