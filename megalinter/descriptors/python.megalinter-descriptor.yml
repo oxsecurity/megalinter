@@ -36,9 +36,6 @@ linters:
       idea:
         - name: PyCharm (Native Support)
           url: https://www.jetbrains.com/pycharm/
-      # vim:
-      #   - name: pylint.vim
-      #     url: https://www.vim.org/scripts/script.php?script_id=891
       visual_studio:
         - name: Native Support
           url: https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019
