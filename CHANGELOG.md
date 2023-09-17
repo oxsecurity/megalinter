@@ -132,6 +132,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.4.27 to **2.4.30** on 2023-09-08
   - [semgrep](https://semgrep.dev/) from 1.38.3 to **1.39.0** on 2023-09-08
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.13 to **0.50.14** on 2023-09-08
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.20.4 to **0.21.1** on 2023-09-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.9 to **0.79.11** on 2023-09-17
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.413 to **6.0.414** on 2023-09-17
+  - [eslint](https://eslint.org) from 8.48.0 to **8.49.0** on 2023-09-17
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.10.1 to **6.11.0** on 2023-09-17
+  - [phpstan](https://phpstan.org/) from 1.10.33 to **1.10.34** on 2023-09-17
+  - [black](https://black.readthedocs.io/en/stable/) from 23.7.0 to **23.9.1** on 2023-09-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.326 to **1.1.327** on 2023-09-17
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.287 to **0.0.290** on 2023-09-17
+  - [checkov](https://www.checkov.io/) from 2.4.30 to **2.4.39** on 2023-09-17
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.20 to **1.0.21** on 2023-09-17
+  - [kics](https://www.kics.io) from 1.7.7 to **1.7.8** on 2023-09-17
+  - [semgrep](https://semgrep.dev/) from 1.39.0 to **1.40.0** on 2023-09-17
+  - [syft](https://github.com/anchore/syft) from 0.89.0 to **0.90.0** on 2023-09-17
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.45.0 to **0.45.1** on 2023-09-17
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.45.0 to **0.45.1** on 2023-09-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.54.3 to **3.56.1** on 2023-09-17
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.2 to **6.2.0** on 2023-09-17
+  - [rubocop](https://rubocop.org/) from 1.56.2 to **1.56.3** on 2023-09-17
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.11.0 to **0.11.1** on 2023-09-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.2 to **7.3.6** on 2023-09-17
+  - [vale](https://vale.sh/) from 2.28.1 to **2.28.3** on 2023-09-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.1 to **2.3.2** on 2023-09-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.6 to **1.5.7** on 2023-09-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.14 to **0.50.17** on 2023-09-17
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

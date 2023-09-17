@@ -9,7 +9,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.10.33**
+- Version in MegaLinter: **1.10.34**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -108,6 +108,7 @@ Options:
       --fix                                    Launch PHPStan Pro
       --watch                                  Launch PHPStan Pro
       --pro                                    Launch PHPStan Pro
+      --fail-without-result-cache              Return non-zero exit code when result cache is not used
   -h, --help                                   Display help for the given command. When no command is given display help for the analyse command
   -q, --quiet                                  Do not output any message
   -V, --version                                Display this application version
