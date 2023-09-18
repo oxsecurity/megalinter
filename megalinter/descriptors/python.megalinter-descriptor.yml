@@ -160,9 +160,6 @@ linters:
       emacs:
         - name: py-isort.el
           url: https://github.com/paetzke/py-isort.el
-      sublime:
-        - name: isort plugin
-          url: https://github.com/jcugat/sublime-text-isort-plugin#install
       vim:
         - name: ale
           url: https://github.com/w0rp/ale
