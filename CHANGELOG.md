@@ -160,6 +160,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [revive](https://revive.run/) from 1.3.3 to **1.3.4** on 2023-09-17
   - [checkov](https://www.checkov.io/) from 2.4.39 to **2.4.40** on 2023-09-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.17 to **0.51.0** on 2023-09-17
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.9 to **3.5.10** on 2023-09-18
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
