@@ -13,10 +13,10 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 - Version in MegaLinter: **0.48.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
-- See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
+- See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
-- See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md){target=_blank}
-- See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules){target=_blank}
+- See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md){target=_blank}
+- See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md){target=_blank}
 
 [![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
 
