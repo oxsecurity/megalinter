@@ -4349,6 +4349,7 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Upgrade python to 3.11.5</li>
 <li>Workflow job name changed from <code>build</code> to <code>megalinter</code> to prevent conflicts with other workflows</li>
 <li>Secretlint logo - reduce size to 150 and remove background</li>
 <li>Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa</li>
@@ -4356,11 +4357,12 @@
 <li>Deprecate SCSS LINT as not maintained anymore (<a href="https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint">https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint</a>)</li>
 <li>Replace <code>https://megalinter.io/flavors</code> with <code>https://megalinter.io/latest/flavors</code> to avoid lychee 404 error</li>
 <li>Fix <a href="https://github.com/oxsecurity/megalinter/issues/2744">v7 issue when using MEGALINTER_FILES_TO_LINT</a> ( thanks @pfiaux !)</li>
-<li>Upgrade python to 3.11.5</li>
+<li>Fix <a href="https://github.com/oxsecurity/megalinter/issues/2944">Ignore symlink files when VALIDATE_ALL_CODEBASE is false</a></li>
 </ul>
 <ul>
 <li>Media<ul>
 <li><a href="https://codewithme.cloud/posts/2023/08/maximize-your-code-consistency-with-megalinter/">Maximize your code consistency with Megalinter</a> by <a href="https://www.linkedin.com/in/torivara/">Tor Ivar Asbølmo</a> on <a href="https://codewithme.cloud">codewithme.cloud</a></li>
+<li><a href="https://jamescook.dev/megalinter-in-azure-devops">MegaLinter in Azure DevOps</a> by <a href="https://www.linkedin.com/in/cookjames/">James Cook</a></li>
 </ul>
 </li>
 </ul>
