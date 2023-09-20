@@ -31,6 +31,7 @@ description: List of all known articles, blog posts and videos that talk about M
 | [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide)                                                                         | [Google Cloud](https://cloud.google.com/)                                                                                               |
 | [8 Tools to Scan Node.js Applications for Security Vulnerability](https://geekflare.com/nodejs-security-scanner/)                                                                               | [Chandan Kumar](https://www.linkedin.com/in/chandank){target=_blank} on [GeekFlare.com](https://geekflare.com/){target=_blank}          |
 | [Maximize your code consistency with Megalinter](https://codewithme.cloud/posts/2023/08/maximize-your-code-consistency-with-megalinter/)                                                        | [Tor Ivar Asbølmo](https://www.linkedin.com/in/torivara/){target=_blank} on [codewithme.cloud](https://codewithme.cloud){target=_blank} |
+| [MegaLinter in Azure DevOps](https://jamescook.dev/megalinter-in-azure-devops)                                                                                                                  | [James Cook](https://www.linkedin.com/in/cookjames/)                                                                                    |
 
 ## French articles
 

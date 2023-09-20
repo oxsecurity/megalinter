@@ -170,6 +170,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.4.40 to **2.4.41** on 2023-09-19
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.21 to **1.0.22** on 2023-09-19
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.3 to **7.32.4** on 2023-09-19
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.19.0 to **6.20.0** on 2023-09-20
+  - [djlint](https://djlint.com/) from 1.33.0 to **1.34.0** on 2023-09-20
+  - [phpstan](https://phpstan.org/) from 1.10.34 to **1.10.35** on 2023-09-20
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.6 to **7.3.7** on 2023-09-20
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.6 to **7.3.7** on 2023-09-20
+  - [checkov](https://www.checkov.io/) from 2.4.41 to **2.4.47** on 2023-09-20
+  - [semgrep](https://semgrep.dev/) from 1.40.0 to **1.41.0** on 2023-09-20
+  - [vale](https://vale.sh/) from 2.28.3 to **2.29.0** on 2023-09-20
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.0 to **0.51.3** on 2023-09-20
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
