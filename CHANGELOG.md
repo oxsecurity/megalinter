@@ -164,6 +164,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.4.39 to **2.4.40** on 2023-09-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.17 to **0.51.0** on 2023-09-17
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.9 to **3.5.10** on 2023-09-18
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.25 to **1.6.26** on 2023-09-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.11 to **0.80.2** on 2023-09-19
+  - [djlint](https://djlint.com/) from 1.32.1 to **1.33.0** on 2023-09-19
+  - [checkov](https://www.checkov.io/) from 2.4.40 to **2.4.41** on 2023-09-19
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.21 to **1.0.22** on 2023-09-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.3 to **7.32.4** on 2023-09-19
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10

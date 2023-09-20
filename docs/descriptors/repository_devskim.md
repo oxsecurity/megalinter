@@ -14,7 +14,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.21**
+- Version in MegaLinter: **1.0.22**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
@@ -83,7 +83,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-devskim 1.0.21+3c9f46a59c
+devskim 1.0.22+c8c65ea813
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
