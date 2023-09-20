@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.40.0**
+- Version in MegaLinter: **1.41.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -384,6 +384,9 @@ OPTIONS
            If true, explicit files will be scanned using the language
            specified in --lang. If --skip-unknown-extensions, these files
            will not be scanned.
+
+       --secrets
+           Run with Semgrep Secrets.
 
        --severity=VAL
            Report findings only from rules matching the supplied severity
