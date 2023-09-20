@@ -1231,7 +1231,7 @@ title: Override the way linters are called by MegaLinter
 description: Cli lint mode can be list_of_files, project or files
 ---
 -->
-# CLI lint mode
+### CLI lint mode
 
 Each linter is pre-configured to use a default lint mode, which are visible in the MegaLinter documentation ([example](https://megalinter.io/latest/descriptors/repository_trivy/#how-the-linting-is-performed)). The possible values are:
 
