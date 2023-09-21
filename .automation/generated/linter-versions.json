@@ -98,7 +98,7 @@
     "standard": "17.1.0",
     "stylelint": "15.10.3",
     "swiftlint": "0.52.4",
-    "syft": "0.90.0",
+    "syft": "0.91.0",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.5.7",
     "terragrunt": "0.51.3",
