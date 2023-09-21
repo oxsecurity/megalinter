@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.90.0**
+- Version in MegaLinter: **0.91.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -84,7 +84,7 @@ Application Configuration:
   # (env: SYFT_CONFIG)
   config: ''
 
-  # report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (env: SYFT_OUTPUT)
+  # report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (env: SYFT_OUTPUT)
   output:
     - 'syft-table'
 
@@ -217,7 +217,7 @@ Application Configuration:
     # set the name of the target being analyzed (env: SYFT_SOURCE_NAME)
     name: ''
 
-    # set the name of the target being analyzed (env: SYFT_SOURCE_VERSION)
+    # set the version of the target being analyzed (env: SYFT_SOURCE_VERSION)
     version: ''
 
     file:
@@ -284,12 +284,12 @@ Flags:
       --file string              file to write the default report output to (default is STDOUT)
   -h, --help                     help for syft
       --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
-  -o, --output stringArray       report output format, options=[syft-json cyclonedx-xml cyclonedx-json github-json spdx-tag-value spdx-json syft-table syft-text template] (default [syft-table])
+  -o, --output stringArray       report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
   -q, --quiet                    suppress all logging output
   -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "Squashed")
       --source-name string       set the name of the target being analyzed
-      --source-version string    set the name of the target being analyzed
+      --source-version string    set the version of the target being analyzed
   -t, --template string          specify the path to a Go template file
   -v, --verbose count            increase verbosity (-v = info, -vv = debug)
       --version                  version for syft
