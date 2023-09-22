@@ -214,7 +214,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.7.1 to **1.7.4**
   - [ktlint](https://ktlint.github.io) from 0.49.1 to **0.50.0**
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.2 to **2.3.6**
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.35.0**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.37.0**
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.3.0 to **1.4.1**
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 6.4.0 to **7.0.0**
   - [phpstan](https://phpstan.org/) from 1.10.18 to **1.10.26**
@@ -238,7 +238,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.2 to **0.52.4**
   - [syft](https://github.com/anchore/syft) from 0.83.0 to **0.85.0**
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.4.6 to **1.5.3**
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.48.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.51.4**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.46.1 to **0.47.0**
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.1 to **0.43.1**
   - [vale](https://vale.sh/) from 2.27.0 to **2.28.1**
