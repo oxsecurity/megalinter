@@ -181,6 +181,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.0 to **0.51.3** on 2023-09-20
   - [syft](https://github.com/anchore/syft) from 0.90.0 to **0.91.0** on 2023-09-21
   - [checkov](https://www.checkov.io/) from 2.4.47 to **2.4.48** on 2023-09-22
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.36.0 to **0.37.0** on 2023-09-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.3 to **0.51.4** on 2023-09-22
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
