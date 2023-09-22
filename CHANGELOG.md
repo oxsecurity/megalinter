@@ -180,6 +180,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.28.3 to **2.29.0** on 2023-09-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.0 to **0.51.3** on 2023-09-20
   - [syft](https://github.com/anchore/syft) from 0.90.0 to **0.91.0** on 2023-09-21
+  - [checkov](https://www.checkov.io/) from 2.4.47 to **2.4.48** on 2023-09-22
 <!-- linter-versions-end -->
 
 ## [v7.3.0] - 2023-08-10
