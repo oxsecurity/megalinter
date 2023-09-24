@@ -1,4 +1,3 @@
-"use strict";
 import { Generator } from "yeoman-generator";
 import { asciiArt } from "../../lib/ascii.js";
 import { OXSecuritySetup } from "../../lib/ox-setup.js";

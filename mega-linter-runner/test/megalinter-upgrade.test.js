@@ -1,7 +1,4 @@
-#! /usr/bin/env node
-"use strict";
-
-import * as assert from "assert";
+import assert from 'assert';
 import { MegaLinterUpgrader } from "../lib/upgrade.js";
 
 describe("Upgrade config", function () {

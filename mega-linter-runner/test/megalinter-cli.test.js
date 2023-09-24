@@ -1,5 +1,5 @@
 /* jscpd:ignore-start */
-import * as assert from 'assert';
+import assert from 'assert';
 import { exec as childProcessExec } from "child_process";
 import * as  util from "util";
 const exec = util.promisify(childProcessExec);

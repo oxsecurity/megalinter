@@ -1,6 +1,4 @@
 #! /usr/bin/env node
-"use strict";
-
 import { MegaLinterRunner } from "./runner.js";
 import {optionsDefinition} from "./options.js";
 
