@@ -89,8 +89,7 @@
     "uuid": "^9.0.1",
     "which": "^4.0.0",
     "yeoman-environment": "^3.19.3",
-    "yeoman-generator": "^5.9.0",
-    "yosay": "^2.0.2"
+    "yeoman-generator": "^5.9.0"
   },
   "devDependencies": {
     "assert": "^2.1.0",
