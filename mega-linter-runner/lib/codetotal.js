@@ -1,6 +1,6 @@
 import { spawnSync, spawn } from "child_process";
 import { default as c } from 'chalk';
-import * as fs from "fs-extra";
+import { default as fs } from "fs-extra";
 import * as https from 'https';
 import * as open from 'open';
 import * as path from "path";
