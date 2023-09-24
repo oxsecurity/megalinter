@@ -1,8 +1,8 @@
 "use strict";
-const Generator = require("yeoman-generator");
-const { asciiArt } = require("../../lib/ascii");
-const { OXSecuritySetup } = require("../../lib/ox-setup");
-const { DEFAULT_RELEASE } = require("../../lib/config");
+import { Generator } from "yeoman-generator";
+import { asciiArt } from "../../lib/ascii.js";
+import { OXSecuritySetup } from "../../lib/ox-setup.js";
+import { DEFAULT_RELEASE } from "../../lib/config.js";
 
 module.exports = class extends Generator {
   prompting() {

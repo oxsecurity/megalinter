@@ -7,6 +7,8 @@ import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
+import { default as yeoman } from "yeoman-environment";
+import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
   async run(options) {
@@ -27,7 +29,6 @@ export class MegaLinterRunner {
       let v = process.env.npm_package_version;
       if (!v) {
         try {
-          const FindPackageJson = require("find-package-json");
           const finder = FindPackageJson(__dirname);
           v = finder.next().value.version;
         } catch (e) {
@@ -41,7 +42,6 @@ export class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
-      const yeoman = require("yeoman-environment");
       const env = yeoman.createEnv();
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
