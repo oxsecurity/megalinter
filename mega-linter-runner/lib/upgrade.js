@@ -1,5 +1,5 @@
-import * as glob from "glob-promise";
-import * as fs from "fs-extra";
+import { default as glob } from "glob-promise";
+import { default as fs } from "fs-extra";
 import * as path from "path";
 import { default as c } from 'chalk';
 import prompts from "prompts";
