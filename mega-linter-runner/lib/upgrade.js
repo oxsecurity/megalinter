@@ -1,8 +1,8 @@
 import * as glob from "glob-promise";
 import * as fs from "fs-extra";
 import * as path from "path";
-import * as c from 'chalk';
-import * as prompts from "prompts";
+import { default as c } from 'chalk';
+import prompts from "prompts";
 import { OXSecuritySetup } from "./ox-setup.js";
 import { asciiArt } from "./ascii.js";
 import { DEFAULT_RELEASE } from "./config.js";

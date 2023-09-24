@@ -1,6 +1,6 @@
 import { optionsDefinition } from "./options.js"
 import { spawnSync } from "child_process";
-import * as c from "chalk";
+import { default as c } from 'chalk';
 import * as path from 'path';
 import * as which from "which";
 import * as fs from "fs-extra";
