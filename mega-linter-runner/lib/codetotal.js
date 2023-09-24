@@ -5,7 +5,7 @@ import * as https from 'https';
 import * as open from 'open';
 import * as path from "path";
 import * as which from "which";
-import { asciiArtCodeTotal } from "./ascii";
+import { asciiArtCodeTotal } from "./ascii.js";
 
 export class CodeTotalRunner {
   constructor(options = {}) {

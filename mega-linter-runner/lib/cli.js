@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 "use strict";
 
-const { MegaLinterRunner } = require("./runner.js");
-const optionsDefinition = require("./options");
+import { MegaLinterRunner } from "./runner.js";
+import {optionsDefinition} from "./options.js";
 
-class MegaLinterRunnerCli {
+export class MegaLinterRunnerCli {
   async run(argv) {
     const megaLinter = new MegaLinterRunner();
     const options = optionsDefinition.parse(argv);
@@ -12,5 +12,3 @@ class MegaLinterRunnerCli {
     process.exitCode = res.status;
   }
 }
-
-module.exports = { MegaLinterRunnerCli };
