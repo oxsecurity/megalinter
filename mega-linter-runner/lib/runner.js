@@ -2,7 +2,7 @@ import { optionsDefinition } from "./options.js"
 import { spawnSync } from "child_process";
 import { default as c } from 'chalk';
 import * as path from 'path';
-import * as which from "which";
+import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";

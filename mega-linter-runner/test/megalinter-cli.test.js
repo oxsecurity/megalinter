@@ -1,8 +1,8 @@
 /* jscpd:ignore-start */
 import * as assert from 'assert';
-import { childProcess } from "child_process";
+import { exec as childProcessExec } from "child_process";
 import * as  util from "util";
-const exec = util.promisify(childProcess.exec);
+const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =

@@ -4,7 +4,7 @@ import { default as fs } from "fs-extra";
 import * as https from 'https';
 import { default as open } from 'open';
 import * as path from "path";
-import * as which from "which";
+import which from "which";
 import { asciiArtCodeTotal } from "./ascii.js";
 
 export class CodeTotalRunner {
