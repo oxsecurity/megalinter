@@ -37,7 +37,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3.8.1
         with:
-          node-version: "12"
+          node-version: "16"
       - name: Install dependencies
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
       - name: Run tests
