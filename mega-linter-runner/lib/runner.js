@@ -2,7 +2,7 @@
 "use strict";
 const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
-const c = require("chalk");
+const c = (...args) => import('chalk').then(({default: c}) => c(...args));
 const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");

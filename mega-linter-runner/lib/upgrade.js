@@ -3,7 +3,7 @@
 const glob = require("glob-promise");
 const fs = require("fs-extra");
 const path = require("path");
-const c = require("chalk");
+const c = (...args) => import('chalk').then(({default: c}) => c(...args));
 const prompts = require("prompts");
 const { OXSecuritySetup } = require("./ox-setup");
 const { asciiArt } = require("./ascii");

@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 "use strict";
 const { spawnSync, spawn } = require("child_process");
-const c = require("chalk");
+const c = (...args) => import('chalk').then(({default: c}) => c(...args));
 const fs = require("fs-extra");
 const https = require('https');
-const open = require("open");
+const open = (...args) => import('open').then(({default: open}) => open(...args));
 const path = require("path");
 const which = require("which");
 const { asciiArtCodeTotal } = require("./ascii");
