@@ -1,16 +1,14 @@
-#! /usr/bin/env node
-"use strict";
-const optionsDefinition = require("./options");
-const { spawnSync } = require("child_process");
-const c = (...args) => import('chalk').then(({default: c}) => c(...args));
-const path = require("path");
-const which = require("which");
-const fs = require("fs-extra");
-const { MegaLinterUpgrader } = require("./upgrade");
-const { CodeTotalRunner} = require("./codetotal");
-const { DEFAULT_RELEASE } = require("./config");
+import { optionsDefinition } from "./options.js"
+import { spawnSync } from "child_process";
+import * as c from "chalk";
+import * as path from 'path';
+import * as which from "which";
+import * as fs from "fs-extra";
+import { MegaLinterUpgrader } from "./upgrade.js";
+import { CodeTotalRunner } from "./codetotal.js";
+import { DEFAULT_RELEASE } from "./config.js";
 
-class MegaLinterRunner {
+export class MegaLinterRunner {
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -63,7 +61,7 @@ class MegaLinterRunner {
     if (options.codetotal) {
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
-      return {status: 0 }
+      return { status: 0 }
     }
 
     // Build MegaLinter docker image name with flavor and release version
@@ -233,5 +231,3 @@ ERROR: Docker engine has not been found on your system.
     }
   }
 }
-
-module.exports = { MegaLinterRunner };

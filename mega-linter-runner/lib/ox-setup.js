@@ -1,9 +1,9 @@
 // const uuid = require("uuid");
-const { OX_LOGIN_URL } = require("./config");
-const open = (...args) => import('open').then(({default: open}) => open(...args));
+import { OX_LOGIN_URL } from "./config.js";
+import * as open from "open";
 
 // Class to setup OX security on the repository
-class OXSecuritySetup {
+export class OXSecuritySetup {
   // Open OX registration page
   // Once SSO (managed internally by OX app) is performed, we'll receive an ox token in response
   async run() {
@@ -40,4 +40,3 @@ class OXSecuritySetup {
     */
 }
 
-module.exports = { OXSecuritySetup };

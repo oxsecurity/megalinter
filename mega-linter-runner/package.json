@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/oxsecurity/megalinter.git"
   },
+  "type": "module",
   "description": "Local runner for MegaLinter",
   "main": "index.js",
   "files": [

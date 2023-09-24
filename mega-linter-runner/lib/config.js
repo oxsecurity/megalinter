@@ -1,4 +1,4 @@
-const path = require("path");
+import * as path from "path";
 
 const DEFAULT_RELEASE = 'v7';
 const OX_PROTOCOL = process.env.OX_PROTOCOL || "https";
@@ -13,7 +13,7 @@ const ALLOWED_ORIGINS = {
 };
 
 
-module.exports = {
+export {
   DEFAULT_RELEASE,
   OX_BASE_URL,
   OX_PORT,

@@ -1,15 +1,13 @@
-#! /usr/bin/env node
-"use strict";
-const glob = require("glob-promise");
-const fs = require("fs-extra");
-const path = require("path");
-const c = (...args) => import('chalk').then(({default: c}) => c(...args));
-const prompts = require("prompts");
-const { OXSecuritySetup } = require("./ox-setup");
-const { asciiArt } = require("./ascii");
-const { DEFAULT_RELEASE } = require("./config");
+import * as glob from "glob-promise";
+import * as fs from "fs-extra";
+import * as path from "path";
+import * as c from 'chalk';
+import * as prompts from "prompts";
+import { OXSecuritySetup } from "./ox-setup.js";
+import { asciiArt } from "./ascii.js";
+import { DEFAULT_RELEASE } from "./config.js";
 
-class MegaLinterUpgrader {
+export class MegaLinterUpgrader {
   constructor() {
     this.replacements = [
       // Documentation base URL
@@ -539,4 +537,3 @@ jobs:
   }
 }
 
-module.exports = { MegaLinterUpgrader };

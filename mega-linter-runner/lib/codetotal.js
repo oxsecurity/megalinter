@@ -1,15 +1,13 @@
-#! /usr/bin/env node
-"use strict";
-const { spawnSync, spawn } = require("child_process");
-const c = (...args) => import('chalk').then(({default: c}) => c(...args));
-const fs = require("fs-extra");
-const https = require('https');
-const open = (...args) => import('open').then(({default: open}) => open(...args));
-const path = require("path");
-const which = require("which");
-const { asciiArtCodeTotal } = require("./ascii");
+import { spawnSync, spawn } from "child_process";
+import * as c from 'chalk';
+import * as fs from "fs-extra";
+import * as https from 'https';
+import * as open from 'open';
+import * as path from "path";
+import * as which from "which";
+import { asciiArtCodeTotal } from "./ascii";
 
-class CodeTotalRunner {
+export class CodeTotalRunner {
   constructor(options = {}) {
     this.options = options;
   }
@@ -111,4 +109,3 @@ class CodeTotalRunner {
   }
 }
 
-module.exports = { CodeTotalRunner };

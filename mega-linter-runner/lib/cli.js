@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 "use strict";
 
-const { MegaLinterRunner } = require("./runner");
+const { MegaLinterRunner } = require("./runner.js");
 const optionsDefinition = require("./options");
 
 class MegaLinterRunnerCli {
