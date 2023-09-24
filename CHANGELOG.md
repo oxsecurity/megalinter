@@ -19,6 +19,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.2 to **0.80.3** on 2023-09-24
+  - [eslint](https://eslint.org) from 8.49.0 to **8.50.0** on 2023-09-24
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.290 to **0.0.291** on 2023-09-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.56.1 to **3.57.0** on 2023-09-24
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
