@@ -1,6 +1,6 @@
 // const uuid = require("uuid");
 import { OX_LOGIN_URL } from "./config.js";
-import * as open from "open";
+import { default as open } from "open";
 
 // Class to setup OX security on the repository
 export class OXSecuritySetup {
