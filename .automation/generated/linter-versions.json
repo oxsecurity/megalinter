@@ -70,7 +70,7 @@
     "protolint": "0.46.0",
     "psalm": "Psalm.5.15.0@",
     "puppet-lint": "4.2.0",
-    "pylint": "2.17.5",
+    "pylint": "2.17.6",
     "pyright": "1.1.327",
     "raku": "2020.10",
     "remark-lint": "14.0.2",

@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.49.0 to **8.50.0** on 2023-09-24
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.290 to **0.0.291** on 2023-09-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.56.1 to **3.57.0** on 2023-09-24
+  - [pylint](https://pylint.pycqa.org) from 2.17.5 to **2.17.6** on 2023-09-26
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
