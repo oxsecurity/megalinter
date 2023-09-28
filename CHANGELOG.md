@@ -25,8 +25,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.290 to **0.0.291** on 2023-09-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.56.1 to **3.57.0** on 2023-09-24
   - [pylint](https://pylint.pycqa.org) from 2.17.5 to **2.17.6** on 2023-09-26
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.327 to **1.1.328** on 2023-09-27
-  - [checkov](https://www.checkov.io/) from 2.4.48 to **2.4.50** on 2023-09-27
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.327 to **1.1.329** on 2023-09-28
+  - [checkov](https://www.checkov.io/) from 2.4.48 to **2.4.51** on 2023-09-28
+  - [syft](https://github.com/anchore/syft) from 0.91.0 to **0.92.0** on 2023-09-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.4 to **0.53.0** on 2023-09-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.4 to **0.51.5** on 2023-09-28
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
