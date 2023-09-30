@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Fixes
+  - Fix if condition in `mega-linter.yml` template #2985 
 
 - Doc
 
