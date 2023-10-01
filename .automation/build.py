@@ -462,7 +462,16 @@ def build_dockerfile(
             cargo_packages.remove("clippy")
             rust_commands += ["rustup component add clippy"]
             keep_rustup = True
-        if len(cargo_packages) > 0:
+        # Only empty cargo packages in descriptors just to have rust toolchain in the Dockerfile
+        if all(p == "" for p in cargo_packages):
+            rust_commands += [
+                'echo "No cargo package to install, we just need rust for dependencies"'
+            ]
+        # Cargo packages to install minus empty package
+        elif len(cargo_packages) > 0:
+            cargo_packages = list(
+                filter(None, cargo_packages)
+            )  # remove empty string packages
             cargo_cmd = "cargo install --force --locked " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
             )

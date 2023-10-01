@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - mega-linter-runner: Convert to ES6 and upgrade npm dependencies
+  - Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)
 
 - Media
 
