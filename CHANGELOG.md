@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Fixes
+  - build.py: Remove exclusivity between pip, gem & cargo packages
 
 - Doc
 

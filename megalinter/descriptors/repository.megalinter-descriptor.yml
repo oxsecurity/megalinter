@@ -39,7 +39,7 @@ linters:
       - "checkov --directory . --output --sarif"
     install:
       cargo:
-        - '' # Use empty package just to Dockerfile contains rust toolchain install
+        - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
         - checkov
