@@ -467,6 +467,7 @@ def build_dockerfile(
             rust_commands += [
                 'echo "No cargo package to install, we just need rust for dependencies"'
             ]
+            keep_rustup = True
         # Cargo packages to install minus empty package
         elif len(cargo_packages) > 0:
             cargo_packages = list(
