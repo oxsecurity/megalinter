@@ -13,11 +13,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)
 
 - Media
+  - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
 
 - Doc
+  - Display list of articles from newest to oldest
 
 - CI
 
