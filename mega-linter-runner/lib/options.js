@@ -3,21 +3,19 @@
  * @author Nicolas Vuillamy
  */
 
-"use strict";
-
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const optionator = require("optionator");
-const { DEFAULT_RELEASE } = require("./config");
+import * as optionator from 'optionator';
+import { DEFAULT_RELEASE } from "./config.js";
 
 //------------------------------------------------------------------------------
 // Initialization and Public Interface
 //------------------------------------------------------------------------------
 
 // exports "parse(args)", "generateHelp()", and "generateHelpForOption(optionName)"
-module.exports = optionator({
+export const optionsDefinition = optionator.default({
   prepend: "mega-linter [options]",
   defaults: {
     concatRepeatedArrays: true,

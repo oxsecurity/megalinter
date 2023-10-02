@@ -9,12 +9,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - mega-linter-runner: Convert to ES6 and upgrade npm dependencies
+  - Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)
 
 - Media
+  - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
 - Fixes
+  - build.py: Remove exclusivity between pip, gem & cargo packages
 
 - Doc
+  - Display list of articles from newest to oldest
 
 - CI
 
@@ -24,6 +29,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.290 to **0.0.291** on 2023-09-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.56.1 to **3.57.0** on 2023-09-24
   - [pylint](https://pylint.pycqa.org) from 2.17.5 to **2.17.6** on 2023-09-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.327 to **1.1.329** on 2023-09-28
+  - [checkov](https://www.checkov.io/) from 2.4.48 to **2.4.51** on 2023-09-28
+  - [syft](https://github.com/anchore/syft) from 0.91.0 to **0.92.0** on 2023-09-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.4 to **0.53.0** on 2023-09-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.4 to **0.51.5** on 2023-09-28
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22

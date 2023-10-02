@@ -53,7 +53,7 @@ linters:
       - proselint/config.json
     linter_text: a linter for prose
     linter_speed: 2
-    linter_url: http://proselint.com
+    linter_url: https://github.com/amperser/proselint
     linter_repo: https://github.com/amperser/proselint
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
     linter_rules_url: https://github.com/amperser/proselint#checks

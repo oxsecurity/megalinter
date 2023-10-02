@@ -62,13 +62,13 @@ jobs:
       - name: MegaLinter
 
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.io/flavors/
+        # More info at https://megalinter.io/latest/flavors/
         uses: <%= GITHUB_ACTION_NAME %>@<%= GITHUB_ACTION_VERSION %>
 
         id: ml
 
         # All available variables are described in documentation
-        # https://megalinter.io/configuration/
+        # https://megalinter.io/latest/config-file/
         env:
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources

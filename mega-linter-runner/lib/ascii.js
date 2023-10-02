@@ -1,4 +1,4 @@
-function asciiArt() {
+export function asciiArt() {
   return `
     .:oool'                                  ,looo;                           
     .xNXNXl                                 .dXNNXo.                          
@@ -25,7 +25,7 @@ function asciiArt() {
 `;
 }
 
-function asciiArtCodeTotal() {
+export function asciiArtCodeTotal() {
   return `
     .:oool'                                  ,looo;                           
     .xNXNXl                                 .dXNNXo.                          
@@ -52,4 +52,3 @@ function asciiArtCodeTotal() {
 `;
 }
 
-module.exports = { asciiArt, asciiArtCodeTotal };
