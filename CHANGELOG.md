@@ -34,6 +34,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.91.0 to **0.92.0** on 2023-09-28
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.4 to **0.53.0** on 2023-09-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.4 to **0.51.5** on 2023-09-28
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.0 to **6.20.2** on 2023-10-02
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.3 to **10.12.4** on 2023-10-02
+  - [phpstan](https://phpstan.org/) from 1.10.35 to **1.10.36** on 2023-10-02
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.0 to **0.46.1** on 2023-10-02
+  - [pylint](https://pylint.pycqa.org) from 2.17.6 to **2.17.7** on 2023-10-02
+  - [checkov](https://www.checkov.io/) from 2.4.51 to **2.4.59** on 2023-10-02
+  - [semgrep](https://semgrep.dev/) from 1.41.0 to **1.42.0** on 2023-10-02
+  - [rubocop](https://rubocop.org/) from 1.56.3 to **1.56.4** on 2023-10-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.6 to **7.3.7** on 2023-10-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.5 to **0.51.7** on 2023-10-02
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
