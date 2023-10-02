@@ -4359,16 +4359,29 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>mega-linter-runner: Convert to ES6 and upgrade npm dependencies</li>
+<li>Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Media</li>
+<li>Media<ul>
+<li><a href="https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448">Achieve Code Consistency: MegaLinter Integration in Azure DevOps</a>, by <a href="https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile">Don Koning</a> on <a href="https://techcommunity.microsoft.com/">Microsoft Tech Community</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Fixes</li>
+<li>Fixes<ul>
+<li>build.py: Remove exclusivity between pip, gem &amp; cargo packages</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>Doc<ul>
+<li>Display list of articles from newest to oldest</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>CI</li>
@@ -4380,6 +4393,11 @@
 <li><a href="https://github.com/charliermarsh/ruff">ruff</a> from 0.0.290 to <strong>0.0.291</strong> on 2023-09-24</li>
 <li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.56.1 to <strong>3.57.0</strong> on 2023-09-24</li>
 <li><a href="https://pylint.pycqa.org">pylint</a> from 2.17.5 to <strong>2.17.6</strong> on 2023-09-26</li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.327 to <strong>1.1.329</strong> on 2023-09-28</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.4.48 to <strong>2.4.51</strong> on 2023-09-28</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 0.91.0 to <strong>0.92.0</strong> on 2023-09-28</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.52.4 to <strong>0.53.0</strong> on 2023-09-28</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.51.4 to <strong>0.51.5</strong> on 2023-09-28</li>
 </ul>
 </li>
 </ul>
