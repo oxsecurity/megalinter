@@ -17,12 +17,12 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
-  # More info at https://megalinter.io/flavors/
+  # More info at https://megalinter.io/latest/flavors/
   image: oxsecurity/megalinter:v7
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
-    # https://megalinter.io/configuration/
+    # https://megalinter.io/latest/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:

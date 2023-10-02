@@ -24,8 +24,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/latest/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/latest/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -56,7 +56,7 @@ This linter is available in the following flavours
 | <!-- -->                                                                                                                                                 | Flavor                                                  | Description                             | Embedded linters | Info                                                                                                                                                                                           |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/supported-linters/)         | Default MegaLinter Flavor               | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter)                       |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.io/latest/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 
 ## Behind the scenes
 

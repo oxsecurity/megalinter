@@ -68,7 +68,7 @@ jobs:
         id: ml
 
         # All available variables are described in documentation
-        # https://megalinter.io/latest/config-file/
+        # https://megalinter.io/latest/configuration/
         env:
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources

@@ -348,7 +348,7 @@ jobs:
       {
         regex: /https:\/\/megalinter.io\/configuration/gm,
         replacement: "https://megalinter.io/latest/config-file",
-        test: "https://megalinter.io/configuration/",
+        test: "https://megalinter.io/latest/configuration/",
         testRes: "https://megalinter.io/latest/config-file/",
       },
       {
@@ -360,7 +360,7 @@ jobs:
       {
         regex: /https:\/\/megalinter.io\/flavors/gm,
         replacement: "https://megalinter.io/latest/flavors",
-        test: "https://megalinter.io/flavors/",
+        test: "https://megalinter.io/latest/flavors/",
         testRes: "https://megalinter.io/latest/flavors/",
       },
       // Github actions flavors

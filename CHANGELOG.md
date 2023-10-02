@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
+  - Fix URLs to configuration and flavors
 
 - Doc
   - Display list of articles from newest to oldest

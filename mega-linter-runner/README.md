@@ -15,7 +15,7 @@
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?maxAge=2592000)](https://GitHub.com/oxsecurity/megalinter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.2M-blue)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.2M-blue)](https://megalinter.io/latest/flavors/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.io)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
@@ -97,7 +97,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | Option                 | Description                                                                                                                                                                                     | Default           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                                                                                                          | current directory |
-| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
+| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/latest/flavors/)                                                                                                                 | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it's on another docker registry                                                                                                            | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                                                                                                          | <!-- -->          |
@@ -130,7 +130,7 @@ mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.p
 
 ## Configuration
 
-You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can generate a ready-to-use [.mega-linter.yml configuration file](https://megalinter.io/latest/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
