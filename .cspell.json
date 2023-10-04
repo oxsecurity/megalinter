@@ -405,6 +405,7 @@
         "SHFMT",
         "SNAKEFMT",
         "SOQL",
+        "SOURCEFILEHEADER",
         "SOURCEPATHS",
         "SQLFLUFF",
         "STDLIB",
