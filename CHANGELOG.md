@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Display list of articles from newest to oldest
+  - Fix incorrect environment variable in djlint docs
 
 - CI
 
