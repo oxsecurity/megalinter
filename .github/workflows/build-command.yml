@@ -89,7 +89,7 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
