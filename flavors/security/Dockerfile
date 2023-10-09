@@ -19,7 +19,7 @@ FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
 FROM zricethezav/gitleaks:v8.18.0 as gitleaks
-FROM checkmarx/kics:alpine as kics
+FROM checkmarx/kics:v1.7.8-alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v0.48.0 as tflint
 FROM tenable/terrascan:1.18.3 as terrascan

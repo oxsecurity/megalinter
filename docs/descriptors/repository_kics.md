@@ -11,7 +11,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkmarx/kics?sort=semver)](https://github.com/checkmarx/kics/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkmarx/kics?sort=semver)](https://github.com/checkmarx/kics/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/contributors/)
 
 ## kics documentation
 
@@ -109,7 +109,7 @@ Use "kics [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM checkmarx/kics:alpine as kics
+FROM checkmarx/kics:v1.7.8-alpine as kics
 COPY --link --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
