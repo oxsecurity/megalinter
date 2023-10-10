@@ -24,7 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.1 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.18.0 as gitleaks
-FROM checkmarx/kics:v1.7.8-alpine as kics
+FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee

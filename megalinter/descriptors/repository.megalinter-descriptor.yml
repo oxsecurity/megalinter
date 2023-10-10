@@ -323,13 +323,11 @@ linters:
       - --report-formats
       - "sarif"
     cli_version_arg_name: "version"
-    downgraded_version: true
-    downgraded_reason: https://github.com/Checkmarx/kics/issues/6753
     examples:
       - "kics scan --path ."
     install:
       dockerfile:
-        - FROM checkmarx/kics:v1.7.8-alpine as kics
+        - FROM checkmarx/kics:alpine as kics
         - COPY --link --from=kics /app/bin/kics /usr/bin/
         - RUN mkdir -p /opt/kics/assets
         - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries

@@ -109,7 +109,7 @@ Use "kics [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM checkmarx/kics:v1.7.8-alpine as kics
+FROM checkmarx/kics:alpine as kics
 COPY --link --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
