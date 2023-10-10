@@ -210,7 +210,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                sfdx-cli \
+                @salesforce/cli \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
@@ -489,7 +489,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
 # ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging \
+    && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
