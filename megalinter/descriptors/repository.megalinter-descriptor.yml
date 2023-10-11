@@ -290,6 +290,7 @@ linters:
 
   # KICS
   - linter_name: kics
+    disabled: true
     can_output_sarif: true
     descriptor_flavors:
       - cupcake
