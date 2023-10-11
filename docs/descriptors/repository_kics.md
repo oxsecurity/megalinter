@@ -111,8 +111,7 @@ Use "kics [command] --help" for more information about a command.
 ```dockerfile
 FROM checkmarx/kics:alpine as kics
 COPY --link --from=kics /app/bin/kics /usr/bin/
-RUN mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-COPY --from=kics /app/bin/assets /opt/kics/assets/
+ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
+COPY --from=kics /app/bin/assets /usr/bin/
 ```
 
