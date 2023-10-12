@@ -226,10 +226,10 @@ jobs:
       // V5 to V6 migration rules
       // GitHub actions
       {
-        regex: /actions\/checkout@v2/gm,
-        replacement: "actions/checkout@v3",
-        test: "uses: actions/checkout@v2",
-        testRes: "uses: actions/checkout@v3",
+        regex: /actions\/checkout@v3/gm,
+        replacement: "actions/checkout@v4",
+        test: "uses: actions/checkout@v3",
+        testRes: "uses: actions/checkout@v4",
       },
       // Documentation base URL
       {
