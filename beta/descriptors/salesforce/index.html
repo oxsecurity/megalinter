@@ -3226,7 +3226,8 @@
 </ul>
 <pre><code class="language-dockerfile">ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging \
+    &amp;&amp; echo y|sfdx plugins:install sfdx-hardis \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
 
@@ -3237,7 +3238,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis \
 </ul>
 </li>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/sfdx-cli">sfdx-cli</a></li>
+<li><a href="https://www.npmjs.com/package/@salesforce/cli">@salesforce/cli</a></li>
 </ul>
 </li>
 </ul>

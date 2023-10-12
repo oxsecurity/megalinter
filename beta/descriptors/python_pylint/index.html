@@ -3230,7 +3230,7 @@
 <p><a href="https://github.com/PyCQA/pylint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600"/></a> <a href="https://github.com/PyCQA/pylint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PyCQA/pylint?sort=semver"/></a> <a href="https://github.com/PyCQA/pylint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PyCQA/pylint"/></a> <a href="https://github.com/PyCQA/pylint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PyCQA/pylint"/></a> <a href="https://github.com/PyCQA/pylint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PyCQA/pylint"/></a></p>
 <h2 id="pylint-documentation">pylint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.17.7</strong></li>
+<li>Version in MegaLinter: <strong>3.0.1</strong></li>
 <li>Visit <a href="https://pylint.pycqa.org" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html" target="_blank">How to configure pylint rules</a><ul>
 <li>If custom <code>.pylintrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc" target="_blank">.pylintrc</a> will be used</li>
@@ -3393,7 +3393,7 @@
 <td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td align="left">MegaLinter for the most commonly used languages</td>
-<td align="center">85</td>
+<td align="center">84</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -3563,9 +3563,10 @@ Reports:
   Options related to output formatting and reporting
 
   --output-format &lt;format&gt;, -f &lt;format&gt;
-                        Set the output format. Available formats are text,
-                        parseable, colorized, json and msvs (visual studio).
-                        You can also give a reporter class, e.g.
+                        Set the output format. Available formats are: text,
+                        parseable, colorized, json2 (improved json format),
+                        json (old json format) and msvs (visual studio). You
+                        can also give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass.
   --reports &lt;y or n&gt;, -r &lt;y or n&gt;
                         Tells whether to display a full report or only the
@@ -4011,7 +4012,7 @@ Spelling:
   --spelling-dict &lt;dict name&gt;
                         Spelling dictionary name. No available dictionaries :
                         You need to install both the python package and the
-                        system dependency for enchant to work.. (default: )
+                        system dependency for enchant to work. (default: )
   --spelling-ignore-words &lt;comma separated words&gt;
                         List of comma separated words that should not be
                         checked. (default: )
