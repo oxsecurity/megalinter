@@ -28,6 +28,7 @@ setup(
         "regex",
         "requests",
         "terminaltables",
+        "urllib3",
         "importlib-metadata>=3.10",
         "redis",
     ],

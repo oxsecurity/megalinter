@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
+  - Salesforce linters: Switch sfdx-cli to @salesforce/cli
 
 - Doc
   - Display list of articles from newest to oldest
@@ -44,6 +45,34 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.56.3 to **1.56.4** on 2023-10-02
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.6 to **7.3.7** on 2023-10-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.5 to **0.51.7** on 2023-10-02
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.2 to **6.20.3** on 2023-10-11
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.21.1 to **0.22.6** on 2023-10-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.3 to **0.81.0** on 2023-10-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.414 to **6.0.415** on 2023-10-11
+  - [eslint](https://eslint.org) from 8.50.0 to **8.51.0** on 2023-10-11
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.9.0 to **2.10.0** on 2023-10-11
+  - [phpstan](https://phpstan.org/) from 1.10.36 to **1.10.38** on 2023-10-11
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.7 to **7.3.8** on 2023-10-11
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.7 to **7.3.8** on 2023-10-11
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.0 to **4.2.1** on 2023-10-11
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.5.1 to **1.6.0** on 2023-10-11
+  - [pylint](https://pylint.pycqa.org) from 2.17.7 to **3.0.1** on 2023-10-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.329 to **1.1.330** on 2023-10-11
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.291 to **0.0.292** on 2023-10-11
+  - [checkov](https://www.checkov.io/) from 2.4.59 to **2.5.6** on 2023-10-11
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.22 to **1.0.23** on 2023-10-11
+  - [kics](https://www.kics.io) from 1.7.8 to **1.7.10** on 2023-10-11
+  - [semgrep](https://semgrep.dev/) from 1.42.0 to **1.43.0** on 2023-10-11
+  - [syft](https://github.com/anchore/syft) from 0.92.0 to **0.93.0** on 2023-10-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.57.0 to **3.59.0** on 2023-10-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.72 to **0.1.73** on 2023-10-11
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.4 to **0.8.5** on 2023-10-11
+  - [vale](https://vale.sh/) from 2.29.0 to **2.29.2** on 2023-10-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.7 to **1.6.0** on 2023-10-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.7 to **0.52.1** on 2023-10-11
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22

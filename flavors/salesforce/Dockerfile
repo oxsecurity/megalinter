@@ -140,7 +140,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                sfdx-cli \
+                @salesforce/cli \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
@@ -234,7 +234,8 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN echo y|sfdx plugins:install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging \
+    && echo y|sfdx plugins:install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
