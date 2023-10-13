@@ -73,6 +73,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.29.0 to **2.29.2** on 2023-10-11
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.7 to **1.6.0** on 2023-10-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.7 to **0.52.1** on 2023-10-11
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.1 to **0.46.2** on 2023-10-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.330 to **1.1.331** on 2023-10-12
+  - [checkov](https://www.checkov.io/) from 2.5.6 to **2.5.7** on 2023-10-12
+  - [semgrep](https://semgrep.dev/) from 1.43.0 to **1.44.0** on 2023-10-12
+  - [rubocop](https://rubocop.org/) from 1.56.4 to **1.57.0** on 2023-10-12
+  - [vale](https://vale.sh/) from 2.29.2 to **2.29.3** on 2023-10-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.0 to **1.6.1** on 2023-10-12
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
