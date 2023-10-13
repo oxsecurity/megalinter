@@ -124,7 +124,7 @@ COPY --from=kics /app/bin/assets /usr/bin/
 #OTHER__START
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
+ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /usr/bin/
 
 #OTHER__END
