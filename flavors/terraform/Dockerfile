@@ -226,7 +226,7 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/bin/assets /usr/bin/
+COPY --from=kics /app/bin/assets /usr/bin/kics/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
@@ -288,8 +288,8 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /usr/bin/
+ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
+# Managed with COPY --from=kics /app/bin/assets /usr/bin/kics/
 
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin

@@ -178,7 +178,7 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/bin/assets /usr/bin/
+COPY --from=kics /app/bin/assets /usr/bin/kics/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
@@ -225,8 +225,8 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /usr/bin/
+ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
+# Managed with COPY --from=kics /app/bin/assets /usr/bin/kics/
 
 # syft installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin \
