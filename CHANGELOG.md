@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - mega-linter-runner: Convert to ES6 and upgrade npm dependencies
   - Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)
+  - Optimize `@generated` marker scanning ([#2654](https://github.com/oxsecurity/megalinter/pull/2654))
 
 - Media
   - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)
