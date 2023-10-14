@@ -68,11 +68,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
-    && export PATH="/root/.cargo/bin:${PATH}" \
-    && echo "No cargo package to install, we just need rust for dependencies" \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
-ENV PATH="/root/.cargo/bin:${PATH}"
+
 #CARGO__END
 
 ################################
