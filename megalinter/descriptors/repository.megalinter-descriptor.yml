@@ -290,7 +290,6 @@ linters:
 
   # KICS
   - linter_name: kics
-    disabled: true
     can_output_sarif: true
     descriptor_flavors:
       - cupcake
@@ -329,9 +328,9 @@ linters:
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
-        - COPY --link --from=kics /app/bin/kics /usr/bin/
-        - ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
-        - COPY --from=kics /app/bin/assets /usr/bin/
+        - COPY --link --from=kics /app/bin/kics /usr/bin/kics
+        - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+        - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
 
   # SECRETLINT
