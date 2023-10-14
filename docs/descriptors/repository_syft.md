@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.92.0**
+- Version in MegaLinter: **0.93.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -47,7 +47,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       117        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        23        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -84,7 +84,7 @@ Application Configuration:
   # (env: SYFT_CONFIG)
   config: ''
 
-  # report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (env: SYFT_OUTPUT)
+  # report output format (<format>=<file> to output to a file), formats=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (env: SYFT_OUTPUT)
   output:
     - 'syft-table'
 
@@ -281,10 +281,10 @@ Flags:
       --catalogers stringArray   enable one or more package catalogers
   -c, --config string            syft configuration file
       --exclude stringArray      exclude paths from being scanned using a glob expression
-      --file string              file to write the default report output to (default is STDOUT)
+      --file string              file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
   -h, --help                     help for syft
       --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
-  -o, --output stringArray       report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (default [syft-table])
+  -o, --output stringArray       report output format (<format>=<file> to output to a file), formats=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
   -q, --quiet                    suppress all logging output
   -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "Squashed")

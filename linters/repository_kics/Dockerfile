@@ -114,8 +114,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-COPY --link --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/bin/assets /opt/kics/assets/
+COPY --link --from=kics /app/bin/kics /usr/bin/kics
+COPY --from=kics /app/bin/assets /usr/bin/assets
 #COPY__END
 
 #############################################################################################
@@ -123,10 +123,9 @@ COPY --from=kics /app/bin/assets /opt/kics/assets/
 #############################################################################################
 #OTHER__START
 # kics installation
-# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/
-RUN mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-# Managed with COPY --from=kics /app/bin/assets /opt/kics/assets/
+# Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
+ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+# Managed with COPY --from=kics /app/bin/assets /usr/bin/assets
 
 #OTHER__END
 

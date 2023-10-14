@@ -38,7 +38,7 @@ from megalinter.constants import (
     ML_REPO_URL,
 )
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util import Retry
 from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv

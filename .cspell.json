@@ -1414,6 +1414,7 @@
         "updaterm",
         "upgrader",
         "upshape",
+        "urllib3",
         "usergroup",
         "utilstest",
         "utogenconf",
