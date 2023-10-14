@@ -155,7 +155,7 @@ linters:
       https://twitter.com/intent/tweet*
       (.*some_url_part)
       https://github.com/sgerrand/alpine-pkg-glibc/releases/download
-      ``` 
+      ```
     test_folder: spell_lychee
     can_output_sarif: false
     descriptor_flavors:
