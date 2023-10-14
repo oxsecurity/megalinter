@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.0.0**
+- Version in MegaLinter: **1.0.1**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -141,15 +141,19 @@ Flags:
       --code-style=<codeStyle>
                         Defines the code style (ktlint_official, intellij_idea
                           or android_studio) to be used for formatting the
-                          code. It is advised to define '.editorconfig'
-                          property 'ktlint_code_style'.
+                          code. This option is deprecated, and will be removed
+                          in Ktlint 1.1. The code style has to be defined as '.
+                          editorconfig' property 'ktlint_code_style'.
       --color           Make output colorful
       --color-name=<colorName>
                         Customize the output color
       --disabled_rules=<disabledRules>
-                        Comma-separated list of rules to globally disable. To
-                          disable standard ktlint rule-set use
-                          --disabled_rules=standard
+                        Comma-separated list of rules to globally disable. This
+                          option is deprecated, and will be removed in Ktlint
+                          1.1. The disabled rules have to be defined as '.
+                          editorconfig' properties. See https://pinterest.
+                          github.io/ktlint/1.0.0
+                          /faq/#how-do-i-enable-or-disable-a-rule
   -F, --format          Fix deviations from the code style when possible
       --limit=<limit>   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
@@ -176,7 +180,12 @@ Flags:
                           property. Note: up until ktlint 0.46 the property
                           value in this file used to override values found in '.
                           editorconfig' files on the path to the source file.
-      --experimental    Enable experimental rules
+      --experimental    Enable experimental rules. This option is deprecated,
+                          and will be removed in Ktlint 1.1. The experimental
+                          flag has to be set as '.editorconfig' property
+                          'ktlint_experimental'. See https://pinterest.github.
+                          io/ktlint/1.0.0
+                          /faq/#how-do-i-enable-or-disable-a-rule-set
       --baseline=<baselinePath>
                         Defines a baseline file to check against
   -l, --log-level=<minLogLevel>

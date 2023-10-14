@@ -80,6 +80,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.56.4 to **1.57.0** on 2023-10-12
   - [vale](https://vale.sh/) from 2.29.2 to **2.29.3** on 2023-10-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.0 to **1.6.1** on 2023-10-12
+  - [ktlint](https://ktlint.github.io) from 1.0.0 to **1.0.1** on 2023-10-14
+  - [checkov](https://www.checkov.io/) from 2.5.7 to **2.5.8** on 2023-10-14
+  - [rubocop](https://rubocop.org/) from 1.57.0 to **1.57.1** on 2023-10-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.7 to **7.3.8** on 2023-10-14
+  - [vale](https://vale.sh/) from 2.29.3 to **2.29.4** on 2023-10-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.2 to **2.3.3** on 2023-10-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.1 to **0.52.2** on 2023-10-14
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22

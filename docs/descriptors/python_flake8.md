@@ -197,7 +197,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.11.0, pyflakes: 3.1.0
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.11.1, pyflakes: 3.1.0
 ```
 
 ### Installation on mega-linter Docker image
