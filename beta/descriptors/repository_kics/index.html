@@ -3218,7 +3218,6 @@
 </img></a>
 </div>
 <p><a href="https://github.com/checkmarx/kics"><img alt="GitHub stars" src="https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/checkmarx/kics/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/checkmarx/kics?sort=semver"/></a> <a href="https://github.com/checkmarx/kics/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/checkmarx/kics"/></a></p>
-<p><em>This linter has been temporary disabled in this version</em></p>
 <h2 id="kics-documentation">kics documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>1.7.10</strong></li>
@@ -3314,6 +3313,27 @@
 <td align="center">117</td>
 <td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td align="left">MegaLinter for the most commonly used languages</td>
+<td align="center">85</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
+<td align="left">Optimized for security</td>
+<td align="center">24</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+</tr>
+<tr>
+<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
+<td align="left"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td align="left">Optimized for TERRAFORM based projects</td>
+<td align="center">55</td>
+<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
@@ -3365,9 +3385,9 @@ Use "kics [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">FROM checkmarx/kics:alpine as kics
-COPY --link --from=kics /app/bin/kics /usr/bin/
-ENV KICS_QUERIES_PATH=/usr/bin/kics/assets/queries KICS_LIBRARIES_PATH=/usr/bin/kics/assets/libraries
-COPY --from=kics /app/bin/assets /usr/bin/
+COPY --link --from=kics /app/bin/kics /usr/bin/kics
+ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+COPY --from=kics /app/bin/assets /usr/bin/assets
 </code></pre>
 </article>
 </div>
