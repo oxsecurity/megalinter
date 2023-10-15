@@ -95,6 +95,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 2.29.3 to **2.29.4** on 2023-10-15
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.2 to **2.3.3** on 2023-10-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.1 to **0.52.3** on 2023-10-15
+  - [checkov](https://www.checkov.io/) from 2.5.8 to **2.5.9** on 2023-10-15
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
