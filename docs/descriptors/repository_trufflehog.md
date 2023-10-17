@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.59.0**
+- Version in MegaLinter: **3.60.0**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -109,6 +109,9 @@ Flags:
       --filter-unverified        Only output first unverified result per
                                  chunk per detector if there are more than one
                                  results.
+      --filter-entropy=FILTER-ENTROPY
+                                 Filter unverified results with Shannon entropy.
+                                 Start with 3.0.
       --config=CONFIG            Path to configuration file.
       --print-avg-detector-time  Print the average time spent on each detector.
       --no-update                Don't check for updates.
