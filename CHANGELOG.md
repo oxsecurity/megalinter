@@ -107,6 +107,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 23.9.1 to **23.10.0** on 2023-10-18
   - [checkov](https://www.checkov.io/) from 2.5.10 to **2.5.11** on 2023-10-18
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.3 to **2.3.4** on 2023-10-18
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.0 to **1.6.1** on 2023-10-18
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
