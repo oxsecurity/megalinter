@@ -100,6 +100,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.0.292 to **0.1.0** on 2023-10-17
   - [checkov](https://www.checkov.io/) from 2.5.9 to **2.5.10** on 2023-10-17
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.59.0 to **3.60.0** on 2023-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.81.0 to **0.82.1** on 2023-10-18
+  - [stylelint](https://stylelint.io) from 15.10.3 to **15.11.0** on 2023-10-18
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.150 to **1.152** on 2023-10-18
+  - [phpstan](https://phpstan.org/) from 1.10.38 to **1.10.39** on 2023-10-18
+  - [black](https://black.readthedocs.io/en/stable/) from 23.9.1 to **23.10.0** on 2023-10-18
+  - [checkov](https://www.checkov.io/) from 2.5.10 to **2.5.11** on 2023-10-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.3 to **2.3.4** on 2023-10-18
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
