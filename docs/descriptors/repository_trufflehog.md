@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.60.0**
+- Version in MegaLinter: **3.60.1**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -93,7 +93,7 @@ usage: TruffleHog [<flags>] <command> [<args> ...]
 TruffleHog is a tool for finding credentials.
 
 Flags:
-      --help                     Show context-sensitive help (also try
+  -h, --help                     Show context-sensitive help (also try
                                  --help-long and --help-man).
       --debug                    Run in debug mode.
       --trace                    Run in trace mode.
