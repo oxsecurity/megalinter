@@ -114,6 +114,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.5.11 to **2.5.13** on 2023-10-19
   - [semgrep](https://semgrep.dev/) from 1.44.0 to **1.45.0** on 2023-10-19
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.0 to **3.60.1** on 2023-10-19
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.1 to **1.6.2** on 2023-10-19
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
