@@ -108,6 +108,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.5.10 to **2.5.11** on 2023-10-18
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.3 to **2.3.4** on 2023-10-18
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.0 to **1.6.1** on 2023-10-18
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.3 to **6.21.0** on 2023-10-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.82.1 to **0.82.2** on 2023-10-19
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.331 to **1.1.332** on 2023-10-19
+  - [checkov](https://www.checkov.io/) from 2.5.11 to **2.5.13** on 2023-10-19
+  - [semgrep](https://semgrep.dev/) from 1.44.0 to **1.45.0** on 2023-10-19
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.0 to **3.60.1** on 2023-10-19
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
