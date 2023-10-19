@@ -56,10 +56,18 @@ linters:
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
-      Use `--ignore-globs` to ignore files and/or folders
+      If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
-        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+      ```json
+      {
+        Glob: [
+          "**/.git/**",
+          "**/megalinter-reports/**"
+        ]
+      }
+      ```
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
