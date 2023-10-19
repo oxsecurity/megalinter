@@ -3233,7 +3233,7 @@
 <p>Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</p>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.44.0</strong></li>
+<li>Version in MegaLinter: <strong>1.45.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -3658,7 +3658,9 @@ OPTIONS
            Prefer old (legacy) behavior.
 
        --matching-explanations
-           Explain how a match is found.
+           Add debugging information in the JSON output to trace how
+           different parts of a rule are matched (a.k.a., "Inspect Rule" in
+           the Semgrep playground)
 
        --max-chars-per-line=VAL (absent=160)
            Maximum number of characters to show per line.
