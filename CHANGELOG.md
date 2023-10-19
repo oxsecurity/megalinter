@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Added default `.devskim.json` to mitigate errors introduced when no config exists
 
 - Doc
   - Display list of articles from newest to oldest
