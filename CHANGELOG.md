@@ -10,7 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - mega-linter-runner: Convert to ES6 and upgrade npm dependencies
-  - Add rust to checkov as it is a required dependency (to do that, allow to define empty string packages as cargo dependencies in descriptors)
+  - Allow to define `COMPILER_ONLY` virtual package as cargo dependency in descriptors to embed rust compiler in the Dockerfile
   - Optimize `@generated` marker scanning ([#2654](https://github.com/oxsecurity/megalinter/pull/2654))
   - Upgrade to python 3.12.0
 
@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Added default `.devskim.json` to mitigate errors introduced when no config exists
 
 - Doc
   - Display list of articles from newest to oldest
@@ -27,6 +28,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Improve lychee documentation to add an example of `.lycheeignore`
 
 - CI
+  - Add the other maintainers globally to the CODEOWNERS file ([#3008](https://github.com/oxsecurity/megalinter/pull/3008))
+  - Free disk space earlier in the process to avoid failure during docker build
+  - Set flavors-stats.json as a generated file in .gitattributes ([#3023](https://github.com/oxsecurity/megalinter/pull/3023))
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.2 to **0.80.3** on 2023-09-24
@@ -84,6 +88,36 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.56.4 to **1.57.0** on 2023-10-12
   - [vale](https://vale.sh/) from 2.29.2 to **2.29.3** on 2023-10-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.0 to **1.6.1** on 2023-10-12
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.1 to **2.7.2** on 2023-10-15
+  - [ktlint](https://ktlint.github.io) from 1.0.0 to **1.0.1** on 2023-10-15
+  - [checkov](https://www.checkov.io/) from 2.5.7 to **2.5.8** on 2023-10-15
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.45.1 to **0.46.0** on 2023-10-15
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.45.1 to **0.46.0** on 2023-10-15
+  - [rubocop](https://rubocop.org/) from 1.57.0 to **1.57.1** on 2023-10-15
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.7 to **7.3.8** on 2023-10-15
+  - [vale](https://vale.sh/) from 2.29.3 to **2.29.4** on 2023-10-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.2 to **2.3.3** on 2023-10-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.1 to **0.52.3** on 2023-10-15
+  - [checkov](https://www.checkov.io/) from 2.5.8 to **2.5.9** on 2023-10-15
+  - [vale](https://vale.sh/) from 2.29.4 to **2.29.5** on 2023-10-16
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.292 to **0.1.0** on 2023-10-17
+  - [checkov](https://www.checkov.io/) from 2.5.9 to **2.5.10** on 2023-10-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.59.0 to **3.60.0** on 2023-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.81.0 to **0.82.1** on 2023-10-18
+  - [stylelint](https://stylelint.io) from 15.10.3 to **15.11.0** on 2023-10-18
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.150 to **1.152** on 2023-10-18
+  - [phpstan](https://phpstan.org/) from 1.10.38 to **1.10.39** on 2023-10-18
+  - [black](https://black.readthedocs.io/en/stable/) from 23.9.1 to **23.10.0** on 2023-10-18
+  - [checkov](https://www.checkov.io/) from 2.5.10 to **2.5.11** on 2023-10-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.3 to **2.3.4** on 2023-10-18
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.0 to **1.6.1** on 2023-10-18
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.3 to **6.21.0** on 2023-10-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.82.1 to **0.82.2** on 2023-10-19
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.331 to **1.1.332** on 2023-10-19
+  - [checkov](https://www.checkov.io/) from 2.5.11 to **2.5.13** on 2023-10-19
+  - [semgrep](https://semgrep.dev/) from 1.44.0 to **1.45.0** on 2023-10-19
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.0 to **3.60.1** on 2023-10-19
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.1 to **1.6.2** on 2023-10-19
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
