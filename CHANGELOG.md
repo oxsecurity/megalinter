@@ -122,6 +122,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.54.2 to **1.55.0** on 2023-10-20
   - [ruff](https://github.com/charliermarsh/ruff) from 0.1.0 to **0.1.1** on 2023-10-20
   - [checkov](https://www.checkov.io/) from 2.5.13 to **2.5.15** on 2023-10-20
+  - [syft](https://github.com/anchore/syft) from 0.93.0 to **0.94.0** on 2023-10-20
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
