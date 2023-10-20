@@ -7,16 +7,22 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 # <a href="https://github.com/microsoft/DevSkim" target="blank" title="Visit linter Web Site"><img src="https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg" alt="devskim" height="100px" class="megalinter-logo"></a>devskim
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/DevSkim?cacheSeconds=3600)](https://github.com/microsoft/DevSkim) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/DevSkim?sort=semver)](https://github.com/microsoft/DevSkim/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/contributors/)
 
-Use `--ignore-globs` to ignore files and/or folders
+Use the `Globs` configuration in a `.devskim.json` configuration file to ignore files and/or folders.
 
 Example:
-  `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+```json
+{
+  "Globs": ["**/.git/**", "**/megalinter-reports/**"]
+}
+```
 
 ## devskim documentation
 
 - Version in MegaLinter: **1.0.23**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
+  - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 
 [![DevSkim - GitHub](https://gh-card.dev/repos/microsoft/DevSkim.svg?fullname=)](https://github.com/microsoft/DevSkim){target=_blank}
