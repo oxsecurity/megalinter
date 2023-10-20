@@ -67,7 +67,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        oxsecurity/megalinter/flavors/javascript@beta # ml workflow change
+        uses: oxsecurity/megalinter/flavors/javascript@beta # ml workflow change
 
         id: ml
 
