@@ -15,7 +15,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.5.6**
+- Version in MegaLinter: **1.6.2**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -115,7 +115,7 @@ All other commands:
   show          Show the current state or a saved plan
   state         Advanced state management
   taint         Mark a resource instance as not fully functional
-  test          Experimental support for module integration testing
+  test          Execute integration tests for Terraform modules
   untaint       Remove the 'tainted' state from a resource instance
   version       Show the current Terraform version
   workspace     Workspace management

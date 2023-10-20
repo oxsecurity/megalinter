@@ -5,9 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}",
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
             "name": "Python : CurrentFile",
             "type": "python",
-            "request": "test",
+            "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
         }

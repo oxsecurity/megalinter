@@ -9,7 +9,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 
 ## snakefmt documentation
 
-- Version in MegaLinter: **0.8.4**
+- Version in MegaLinter: **0.8.5**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file isn't found, [.snakefmt.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.snakefmt.toml){target=_blank} will be used
@@ -125,9 +125,10 @@ Options:
                          searches.  An empty value means no paths are
                          excluded. Use forward slashes for directories on all
                          platforms (Windows, too). Exclusions are calculated
-                         first, inclusions later.  [default: (\.snakemake|\.eg
-                         gs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_
-                         build|buck-out|build|dist|\.template)]
+                         first, inclusions later.  [default: (\.snakemake/|\.e
+                         ggs/|\.git/|\.hg/|\.mypy_cache/|\.nox/|\.tox/|\.venv/
+                         |\.svn/|_build/|buck-
+                         out/|/build/|/dist/|\.template/)]
   -c, --config PATH      Read configuration from PATH. By default, will try to
                          read from `./pyproject.toml`
   -h, --help             Show this message and exit.

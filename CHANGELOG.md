@@ -8,131 +8,207 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
-- Secretlint logo - reduce size to 150 and remove background
-- Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
-- Fix rstcheck options & install
-- Deprecate SCSS LINT as not maintained anymore (<https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>)
-- Replace `https://megalinter.io/flavors` with `https://megalinter.io/latest/flavors` to avoid lychee 404 error
-- Fix [v7 issue when using MEGALINTER_FILES_TO_LINT](https://github.com/oxsecurity/megalinter/issues/2744) ( thanks @pfiaux !)
-- Upgrade python to 3.11.5
+- Core
+  - mega-linter-runner: Convert to ES6 and upgrade npm dependencies
+  - Allow to define `COMPILER_ONLY` virtual package as cargo dependency in descriptors to embed rust compiler in the Dockerfile
+  - Optimize `@generated` marker scanning ([#2654](https://github.com/oxsecurity/megalinter/pull/2654))
+
+- Media
+  - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)
+
+- Fixes
+  - build.py: Remove exclusivity between pip, gem & cargo packages
+  - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Added default `.devskim.json` to mitigate errors introduced when no config exists
+
+- Doc
+  - Display list of articles from newest to oldest
+  - Fix incorrect environment variable in djlint docs
+  - Improve lychee documentation to add an example of `.lycheeignore`
+
+- CI
+  - Add the other maintainers globally to the CODEOWNERS file ([#3008](https://github.com/oxsecurity/megalinter/pull/3008))
+  - Free disk space earlier in the process to avoid failure during docker build
+  - Set flavors-stats.json as a generated file in .gitattributes ([#3023](https://github.com/oxsecurity/megalinter/pull/3023))
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.2 to **0.80.3** on 2023-09-24
+  - [eslint](https://eslint.org) from 8.49.0 to **8.50.0** on 2023-09-24
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.290 to **0.0.291** on 2023-09-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.56.1 to **3.57.0** on 2023-09-24
+  - [pylint](https://pylint.pycqa.org) from 2.17.5 to **2.17.6** on 2023-09-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.327 to **1.1.329** on 2023-09-28
+  - [checkov](https://www.checkov.io/) from 2.4.48 to **2.4.51** on 2023-09-28
+  - [syft](https://github.com/anchore/syft) from 0.91.0 to **0.92.0** on 2023-09-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.4 to **0.53.0** on 2023-09-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.4 to **0.51.5** on 2023-09-28
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.0 to **6.20.2** on 2023-10-02
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.3 to **10.12.4** on 2023-10-02
+  - [phpstan](https://phpstan.org/) from 1.10.35 to **1.10.36** on 2023-10-02
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.0 to **0.46.1** on 2023-10-02
+  - [pylint](https://pylint.pycqa.org) from 2.17.6 to **2.17.7** on 2023-10-02
+  - [checkov](https://www.checkov.io/) from 2.4.51 to **2.4.59** on 2023-10-02
+  - [semgrep](https://semgrep.dev/) from 1.41.0 to **1.42.0** on 2023-10-02
+  - [rubocop](https://rubocop.org/) from 1.56.3 to **1.56.4** on 2023-10-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.6 to **7.3.7** on 2023-10-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.5 to **0.51.7** on 2023-10-02
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.2 to **6.20.3** on 2023-10-11
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.21.1 to **0.22.6** on 2023-10-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.3 to **0.81.0** on 2023-10-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.414 to **6.0.415** on 2023-10-11
+  - [eslint](https://eslint.org) from 8.50.0 to **8.51.0** on 2023-10-11
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.9.0 to **2.10.0** on 2023-10-11
+  - [phpstan](https://phpstan.org/) from 1.10.36 to **1.10.38** on 2023-10-11
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.7 to **7.3.8** on 2023-10-11
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.7 to **7.3.8** on 2023-10-11
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.0 to **4.2.1** on 2023-10-11
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.5.1 to **1.6.0** on 2023-10-11
+  - [pylint](https://pylint.pycqa.org) from 2.17.7 to **3.0.1** on 2023-10-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.329 to **1.1.330** on 2023-10-11
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.291 to **0.0.292** on 2023-10-11
+  - [checkov](https://www.checkov.io/) from 2.4.59 to **2.5.6** on 2023-10-11
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.22 to **1.0.23** on 2023-10-11
+  - [kics](https://www.kics.io) from 1.7.8 to **1.7.10** on 2023-10-11
+  - [semgrep](https://semgrep.dev/) from 1.42.0 to **1.43.0** on 2023-10-11
+  - [syft](https://github.com/anchore/syft) from 0.92.0 to **0.93.0** on 2023-10-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.57.0 to **3.59.0** on 2023-10-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.72 to **0.1.73** on 2023-10-11
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.16.0 to **3.17.0** on 2023-10-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.4 to **0.8.5** on 2023-10-11
+  - [vale](https://vale.sh/) from 2.29.0 to **2.29.2** on 2023-10-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.7 to **1.6.0** on 2023-10-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.51.7 to **0.52.1** on 2023-10-11
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.1 to **0.46.2** on 2023-10-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.330 to **1.1.331** on 2023-10-12
+  - [checkov](https://www.checkov.io/) from 2.5.6 to **2.5.7** on 2023-10-12
+  - [semgrep](https://semgrep.dev/) from 1.43.0 to **1.44.0** on 2023-10-12
+  - [rubocop](https://rubocop.org/) from 1.56.4 to **1.57.0** on 2023-10-12
+  - [vale](https://vale.sh/) from 2.29.2 to **2.29.3** on 2023-10-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.0 to **1.6.1** on 2023-10-12
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.1 to **2.7.2** on 2023-10-15
+  - [ktlint](https://ktlint.github.io) from 1.0.0 to **1.0.1** on 2023-10-15
+  - [checkov](https://www.checkov.io/) from 2.5.7 to **2.5.8** on 2023-10-15
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.45.1 to **0.46.0** on 2023-10-15
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.45.1 to **0.46.0** on 2023-10-15
+  - [rubocop](https://rubocop.org/) from 1.57.0 to **1.57.1** on 2023-10-15
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.7 to **7.3.8** on 2023-10-15
+  - [vale](https://vale.sh/) from 2.29.3 to **2.29.4** on 2023-10-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.2 to **2.3.3** on 2023-10-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.1 to **0.52.3** on 2023-10-15
+  - [checkov](https://www.checkov.io/) from 2.5.8 to **2.5.9** on 2023-10-15
+  - [vale](https://vale.sh/) from 2.29.4 to **2.29.5** on 2023-10-16
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.292 to **0.1.0** on 2023-10-17
+  - [checkov](https://www.checkov.io/) from 2.5.9 to **2.5.10** on 2023-10-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.59.0 to **3.60.0** on 2023-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.81.0 to **0.82.1** on 2023-10-18
+  - [stylelint](https://stylelint.io) from 15.10.3 to **15.11.0** on 2023-10-18
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.150 to **1.152** on 2023-10-18
+  - [phpstan](https://phpstan.org/) from 1.10.38 to **1.10.39** on 2023-10-18
+  - [black](https://black.readthedocs.io/en/stable/) from 23.9.1 to **23.10.0** on 2023-10-18
+  - [checkov](https://www.checkov.io/) from 2.5.10 to **2.5.11** on 2023-10-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.3 to **2.3.4** on 2023-10-18
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.0 to **1.6.1** on 2023-10-18
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.20.3 to **6.21.0** on 2023-10-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.82.1 to **0.82.2** on 2023-10-19
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.331 to **1.1.332** on 2023-10-19
+  - [checkov](https://www.checkov.io/) from 2.5.11 to **2.5.13** on 2023-10-19
+  - [semgrep](https://semgrep.dev/) from 1.44.0 to **1.45.0** on 2023-10-19
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.0 to **3.60.1** on 2023-10-19
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.1 to **1.6.2** on 2023-10-19
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.21.0 to **6.21.1** on 2023-10-20
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.09.07 to **2023.10.20** on 2023-10-20
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.2 to **1.55.0** on 2023-10-20
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.1.0 to **0.1.1** on 2023-10-20
+  - [checkov](https://www.checkov.io/) from 2.5.13 to **2.5.15** on 2023-10-20
+<!-- linter-versions-end -->
+
+## [v7.4.0] - 2023-09-22
+
+- Core
+  - Upgrade python to 3.11.5
 
 - Media
   - [Maximize your code consistency with Megalinter](https://codewithme.cloud/posts/2023/08/maximize-your-code-consistency-with-megalinter/) by [Tor Ivar Asbølmo](https://www.linkedin.com/in/torivara/) on [codewithme.cloud](https://codewithme.cloud)
+  - [MegaLinter in Azure DevOps](https://jamescook.dev/megalinter-in-azure-devops) by [James Cook](https://www.linkedin.com/in/cookjames/)
+
+- Fixes
+  - Fix [IGNORE_GITIGNORED_FILES not working anymore](https://github.com/oxsecurity/megalinter/issues/2955) , by @iisisrael
+  - Fix [v7 issue when using MEGALINTER_FILES_TO_LINT](https://github.com/oxsecurity/megalinter/issues/2744) ( thanks @pfiaux !)
+  - Fix [Ignore symlink files when VALIDATE_ALL_CODEBASE is false](https://github.com/oxsecurity/megalinter/issues/2944)
+  - Fix rstcheck options & install
+
+- Doc
+  - Secretlint logo - reduce size to 150 and remove background
+  - Replace `https://megalinter.io/flavors` with `https://megalinter.io/latest/flavors` to avoid lychee 404 error
+
+- CI
+  - Workflow job name changed from `build` to `megalinter` to prevent conflicts with other workflows
+  - Add support for master branch in TEMPLATES/mega-linter.yml, by @rasa
+
+- Deprecations
+  - Deprecate SCSS LINT as not maintained anymore (<https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>)
 
 - Linter versions upgrades
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.0** on 2023-08-11
-  - [checkov](https://www.checkov.io/) from 2.3.360 to **2.3.361** on 2023-08-11
-  - [semgrep](https://semgrep.dev/) from 1.34.1 to **1.35.0** on 2023-08-11
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.44.1** on 2023-08-11
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.44.1** on 2023-08-11
-  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.13 to **0.0.14** on 2023-08-11
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.3 to **7.0.0** on 2023-08-11
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.4 to **1.5.5** on 2023-08-11
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.6 to **0.48.7** on 2023-08-11
-  - [golangci-lint](https://golangci-lint.run/) from 1.54.0 to **1.54.1** on 2023-08-14
-  - [eslint](https://eslint.org) from 8.46.0 to **8.47.0** on 2023-08-14
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.0 to **0.45.1** on 2023-08-14
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.321 to **1.1.322** on 2023-08-14
-  - [checkov](https://www.checkov.io/) from 2.3.361 to **2.3.364** on 2023-08-14
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.47.0 to **3.48.0** on 2023-08-14
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.7 to **0.49.1** on 2023-08-14
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.6 to **0.79.7** on 2023-08-20
-  - [stylelint](https://stylelint.io) from 15.10.2 to **15.10.3** on 2023-08-20
-  - [prettier](https://prettier.io/) from 3.0.1 to **3.0.2** on 2023-08-20
-  - [phpstan](https://phpstan.org/) from 1.10.28 to **1.10.29** on 2023-08-20
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.1 to **0.45.2** on 2023-08-20
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.5.0 to **1.5.1** on 2023-08-20
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.322 to **1.1.323** on 2023-08-20
-  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.284 to **0.0.285** on 2023-08-20
-  - [checkov](https://www.checkov.io/) from 2.3.364 to **2.4.2** on 2023-08-20
-  - [semgrep](https://semgrep.dev/) from 1.35.0 to **1.36.0** on 2023-08-20
-  - [syft](https://github.com/anchore/syft) from 0.86.1 to **0.87.1** on 2023-08-20
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.48.0 to **3.52.1** on 2023-08-20
-  - [sqlfluff](https://www.sqlfluff.com/) from 2.2.1 to **2.3.0** on 2023-08-20
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.49.1 to **0.50.4** on 2023-08-20
-  - [checkov](https://www.checkov.io/) from 2.4.2 to **2.4.3** on 2023-08-20
-  - [checkov](https://www.checkov.io/) from 2.4.3 to **2.4.4** on 2023-08-21
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.17.2 to **6.18.0** on 2023-08-22
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.0 to **2.7.1** on 2023-08-22
-  - [golangci-lint](https://golangci-lint.run/) from 1.54.1 to **1.54.2** on 2023-08-22
-  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.10.2 to **3.11.3** on 2023-08-22
-  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.6 to **2.9.0** on 2023-08-22
-  - [psalm](https://psalm.dev) from Psalm.5.14.1@ to **Psalm.5.15.0@** on 2023-08-22
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.2 to **0.46.0** on 2023-08-22
-  - [checkov](https://www.checkov.io/) from 2.4.4 to **2.4.5** on 2023-08-22
-  - [git_diff](https://git-scm.com) from 2.38.5 to **2.40.1** on 2023-08-22
-  - [kics](https://www.kics.io) from 1.7.5 to **1.7.6** on 2023-08-22
-  - [rubocop](https://rubocop.org/) from 1.56.0 to **1.56.1** on 2023-08-22
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.0 to **7.0.1** on 2023-08-22
-  - [terrascan](https://runterrascan.io/) from 1.18.2 to **1.18.3** on 2023-08-22
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104** on 2023-08-22
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.4 to **0.50.6** on 2023-08-22
-  - [phpstan](https://phpstan.org/) from 1.10.29 to **1.10.30** on 2023-08-23
-  - [checkov](https://www.checkov.io/) from 2.4.5 to **2.4.6** on 2023-08-23
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.323 to **1.1.324** on 2023-08-24
-  - [checkov](https://www.checkov.io/) from 2.4.6 to **2.4.7** on 2023-08-24
-  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.18 to **1.0.19** on 2023-08-24
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.52.1 to **3.53.0** on 2023-08-24
-  - [checkov](https://www.checkov.io/) from 2.4.7 to **2.4.8** on 2023-08-24
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.5 to **1.5.6** on 2023-08-24
-  - [revive](https://revive.run/) from 1.3.2 to **1.3.3** on 2023-08-25
-  - [phpstan](https://phpstan.org/) from 1.10.30 to **1.10.32** on 2023-08-25
-  - [checkov](https://www.checkov.io/) from 2.4.8 to **2.4.10** on 2023-08-25
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.71 to **0.1.72** on 2023-08-25
-  - [eslint](https://eslint.org) from 8.47.0 to **8.48.0** on 2023-08-26
-  - [puppet-lint](http://puppet-lint.com/) from 4.0.1 to **4.1.0** on 2023-08-26
-  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.285 to **0.0.286** on 2023-08-26
-  - [semgrep](https://semgrep.dev/) from 1.36.0 to **1.37.0** on 2023-08-26
-  - [syft](https://github.com/anchore/syft) from 0.87.1 to **0.88.0** on 2023-08-26
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.6 to **0.50.7** on 2023-08-26
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.7 to **0.50.8** on 2023-08-26
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.17.0 to **8.18.0** on 2023-08-26
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.7 to **0.79.8** on 2023-09-01
-  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.2 to **10.12.3** on 2023-09-01
-  - [prettier](https://prettier.io/) from 3.0.2 to **3.0.3** on 2023-09-01
-  - [chktex](https://www.nongnu.org/chktex) from 1.7.6 to **1.7.8** on 2023-09-01
-  - [puppet-lint](http://puppet-lint.com/) from 4.1.0 to **4.2.0** on 2023-09-01
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.324 to **1.1.325** on 2023-09-01
-  - [checkov](https://www.checkov.io/) from 2.4.10 to **2.4.22** on 2023-09-01
-  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.19 to **1.0.20** on 2023-09-01
-  - [kics](https://www.kics.io) from 1.7.6 to **1.7.7** on 2023-09-01
-  - [semgrep](https://semgrep.dev/) from 1.37.0 to **1.38.0** on 2023-09-01
-  - [syft](https://github.com/anchore/syft) from 0.88.0 to **0.89.0** on 2023-09-01
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.53.0 to **3.54.1** on 2023-09-01
-  - [rubocop](https://rubocop.org/) from 1.56.1 to **1.56.2** on 2023-09-01
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.0.1 to **7.2.0** on 2023-09-01
-  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.0 to **2.3.1** on 2023-09-01
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.8 to **0.50.9** on 2023-09-01
-  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.286 to **0.0.287** on 2023-09-02
-  - [semgrep](https://semgrep.dev/) from 1.38.0 to **1.38.2** on 2023-09-02
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.44.1 to **0.45.0** on 2023-09-02
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.1 to **0.45.0** on 2023-09-02
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.54.1 to **3.54.3** on 2023-09-02
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.2.0 to **7.3.2** on 2023-09-02
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.9 to **0.50.11** on 2023-09-02
-  - [semgrep](https://semgrep.dev/) from 1.38.2 to **1.38.3** on 2023-09-03
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.35.0 to **0.36.0** on 2023-09-03
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.11 to **0.50.12** on 2023-09-03
-  - [checkov](https://www.checkov.io/) from 2.4.22 to **2.4.25** on 2023-09-03
-  - [kubescape](https://github.com/kubescape/kubescape) from 2.9.0 to **2.9.1** on 2023-09-04
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.8 to **0.79.9** on 2023-09-06
-  - [ktlint](https://ktlint.github.io) from 0.50.0 to **1.0.0** on 2023-09-06
-  - [kubescape](https://github.com/kubescape/kubescape) from 2.9.1 to **2.9.0** on 2023-09-06
-  - [phpstan](https://phpstan.org/) from 1.10.32 to **1.10.33** on 2023-09-06
-  - [checkov](https://www.checkov.io/) from 2.4.25 to **2.4.27** on 2023-09-06
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0** on 2023-09-06
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.47.0 to **0.48.0** on 2023-09-06
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.12 to **0.50.13** on 2023-09-06
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.18.0 to **6.19.0** on 2023-09-08
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.07.13 to **2023.09.07** on 2023-09-08
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.325 to **1.1.326** on 2023-09-08
-  - [checkov](https://www.checkov.io/) from 2.4.27 to **2.4.30** on 2023-09-08
-  - [semgrep](https://semgrep.dev/) from 1.38.3 to **1.39.0** on 2023-09-08
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.50.13 to **0.50.14** on 2023-09-08
-<!-- linter-versions-end -->
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.25 to **1.6.26**
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.17.2 to **6.20.0**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.20.4 to **0.21.1**
+  - [black](https://black.readthedocs.io/en/stable/) from 23.7.0 to **23.9.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.79.6 to **0.80.2**
+  - [checkov](https://www.checkov.io/) from 2.3.360 to **2.4.10**
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.2 to **10.12.3**
+  - [chktex](https://www.nongnu.org/chktex) from 1.7.6 to **1.7.8**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.71 to **0.1.72**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.07.13 to **2023.09.07**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.31.3 to **7.3.6**
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.18 to **1.0.22**
+  - [djlint](https://djlint.com/) from 1.32.1 to **1.34.0**
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.413 to **6.0.414**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.0 to **2.7.1**
+  - [eslint](https://eslint.org) from 8.46.0 to **8.49.0**
+  - [git_diff](https://git-scm.com) from 2.38.5 to **2.40.1**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.17.0 to **8.18.0**
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.0 to **1.54.2**
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.10.2 to **3.11.3**
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.9 to **3.5.10**
+  - [kics](https://www.kics.io) from 1.7.5 to **1.7.8**
+  - [ktlint](https://ktlint.github.io) from 0.50.0 to **1.0.0**
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.3.6 to **2.9.0**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.35.0 to **0.36.0**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.4.1 to **1.5.1**
+  - [phpstan](https://phpstan.org/) from 1.10.28 to **1.10.35**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.6 to **7.3.7**
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.6 to **7.3.7**
+  - [prettier](https://prettier.io/) from 3.0.1 to **3.0.3**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.45.0 to **0.46.0**
+  - [psalm](https://psalm.dev) from Psalm.5.14.1@ to **Psalm.5.15.0@**
+  - [puppet-lint](http://puppet-lint.com/) from 4.0.1 to **4.2.0**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.321 to **1.1.327**
+  - [revive](https://revive.run/) from 1.3.2 to **1.3.4**
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.1.2 to **6.2.0**
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.13 to **0.0.14**
+  - [rubocop](https://rubocop.org/) from 1.56.0 to **1.56.3**
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.0.284 to **0.0.290**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.11.0 to **0.11.1**
+  - [semgrep](https://semgrep.dev/) from 1.34.1 to **1.41.0**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.15.0 to **3.16.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.3 to **7.32.4**
+  - [spectral](https://meta.stoplight.io/docs/spectral/README.md) from 6.10.1 to **6.11.0**
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.2.1 to **2.3.2**
+  - [stylelint](https://stylelint.io) from 15.10.2 to **15.10.3**
+  - [syft](https://github.com/anchore/syft) from 0.86.1 to **0.91.0**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.5.4 to **1.5.7**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.48.6 to **0.51.3**
+  - [terrascan](https://runterrascan.io/) from 1.18.2 to **1.18.3**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.47.0 to **0.48.0**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.45.1**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.45.1**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.47.0 to **3.56.1**
+  - [vale](https://vale.sh/) from 2.28.1 to **2.29.0**
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104**
 
 ## [v7.3.0] - 2023-08-10
 
@@ -255,7 +331,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.7.1 to **1.7.4**
   - [ktlint](https://ktlint.github.io) from 0.49.1 to **0.50.0**
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.2 to **2.3.6**
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.35.0**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.34.0 to **0.37.0**
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.3.0 to **1.4.1**
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 6.4.0 to **7.0.0**
   - [phpstan](https://phpstan.org/) from 1.10.18 to **1.10.26**
@@ -279,7 +355,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.52.2 to **0.52.4**
   - [syft](https://github.com/anchore/syft) from 0.83.0 to **0.85.0**
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.4.6 to **1.5.3**
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.48.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.46.3 to **0.51.4**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.46.1 to **0.47.0**
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.42.1 to **0.43.1**
   - [vale](https://vale.sh/) from 2.27.0 to **2.28.1**

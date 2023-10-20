@@ -1,10 +1,8 @@
-#! /usr/bin/env node
-"use strict";
 /* jscpd:ignore-start */
-const assert = require("assert");
-const childProcess = require("child_process");
-const util = require("util");
-const exec = util.promisify(childProcess.exec);
+import assert from 'assert';
+import { exec as childProcessExec } from "child_process";
+import * as  util from "util";
+const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =

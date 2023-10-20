@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.20.4**
+- Version in MegaLinter: **0.22.6**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.20.4 (c9422e016d)
+Bicep CLI version 0.22.6 (d62b94db31)
 
 Usage:
   bicep build [options] <file>
@@ -151,6 +151,21 @@ Usage:
       bicep decompile file.json --force
       bicep decompile file.json --outfile file.bicep
 
+  bicep lint [options] <file>
+    Lints a .bicep file.
+
+    Arguments:
+      <file>        The input file
+
+    Options:
+      --no-restore                   Skips restoring external modules.
+      --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
+
+    Examples:
+      bicep lint file.bicep
+      bicep lint file.bicep --no-restore
+      bicep lint file.bicep --diagnostics-format sarif
+
   bicep decompile-params [options] <file>
     Attempts to decompile a parameters .json file to .bicepparam.
 
@@ -162,7 +177,7 @@ Usage:
       --outfile <file>  Saves the output as the specified file path.
       --stdout          Prints the output to stdout.
       --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile' or 'bicep decompile-params').
-      --bicep-file      Path to the bicep template file (relative to the .bicepparam file) that will be referenced in the using declaration
+      --bicep-file      Path to the bicep template file that will be referenced in the using declaration
 
     Examples:
       bicep decompile-params file.json

@@ -753,12 +753,14 @@ class Megalinter:
             local_ref = f"refs/remotes/{default_branch_remote}"
             # Try to fetch default_branch from origin, because it'sn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
-        # Make git diff to list files
+        # Make git diff to list files (and exclude symlinks)
         diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():
-            if os.path.isfile(self.workspace + os.path.sep + diff_line):
+            if os.path.isfile(
+                self.workspace + os.path.sep + diff_line
+            ) and not os.path.islink(self.workspace + os.path.sep + diff_line):
                 all_files += [diff_line]
         return all_files
 
@@ -797,8 +799,6 @@ class Megalinter:
             ]
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
-        # ignored_files will be match against absolute path (in all_files), so it should be absolute
-        ignored_files = map(lambda x: os.path.join(dirpath, x), ignored_files)
         ignored_files = sorted(list(ignored_files))
         return ignored_files
 

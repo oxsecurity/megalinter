@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.39.0**
+- Version in MegaLinter: **1.45.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -146,13 +146,21 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
+       --allow-untrusted-postprocessors
+           Run postprocessors from untrusted sources.
+
        --ast-caching
            Store in ~/.semgrep/cache/asts/ the parsed ASTs to speedup things.
+           Requires --experimental.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
            run if not currently in a git directory, there are unstaged
            changes, or given baseline hash doesn't exist.
+
+       --beta-testing-secrets-enabled
+           Enable support for secret validation. Requires Semgrep Secrets,
+           contact support@semgrep.com for more informationon this.
 
        -d, --dump-command-for-core
            <internal, do not use>
@@ -166,6 +174,12 @@ OPTIONS
 
        --develop
            Living on the edge.
+
+       --diff-depth=VAL (absent=2)
+           The depth of the Pro (interfile) differential scan, the number of
+           steps (both in the caller and callee sides) from the targets in
+           the call graph tracked by the deep preprocessor. Only applied in
+           differential scan mode. Default to 2.
 
        --disable-nosem
            negates --enable-nosem
@@ -254,9 +268,14 @@ OPTIONS
            by python, which is documented at
            https://docs.python.org/3/library/glob.html
 
+       --interfile-timeout=VAL (absent=0)
+           Maximum time to spend on interfile analysis. If set to 0 will not
+           have time limit. Defaults to 0 s for all CLI scans. For CI scans,
+           it defaults to 3 hours.
+
        -j VAL, --jobs=VAL (absent=3)
            Number of subprocesses to use to run checks in parallel. Defaults
-           to the number of cores detected on the system.
+           to the number of cores detected on the system (1 if using --pro).
 
        --json
            Output results in Semgrep's JSON format.
@@ -270,6 +289,11 @@ OPTIONS
 
        --legacy
            Prefer old (legacy) behavior.
+
+       --matching-explanations
+           Add debugging information in the JSON output to trace how
+           different parts of a rule are matched (a.k.a., "Inspect Rule" in
+           the Semgrep playground)
 
        --max-chars-per-line=VAL (absent=160)
            Maximum number of characters to show per line.
@@ -286,7 +310,7 @@ OPTIONS
        --max-target-bytes=VAL (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
            input program larger than this will be ignored. A zero or negative
-           value disables this filter. Defaults to 1000000 bytes.
+           value disables this filter. Defaults to 1000000 bytes
 
        --metrics=VAL (absent=auto or SEMGREP_SEND_METRICS env)
            Configures how usage metrics are sent to the Semgrep server. If
@@ -337,18 +361,22 @@ OPTIONS
            Turn on/off optimizations. Default = 'all'. Use 'none' to turn all
            optimizations off.
 
-       --oss
-           Run with the OSS engine.
+       --oss-only
+           Run using only OSS features, even if the Semgrep Pro toggle is on.
 
        --pro
-           Run with all pro engine features including cross-file analysis.
+           Inter-file analysis and Pro languages (currently just Apex).
+           Requires Semgrep Pro Engine, contact support@semgrep.com for more
+           information on this.
 
        --pro-intrafile
-           Run with intrafile cross-function analysis.
+           Intra-file inter-procedural taint analysis. Implies
+           --pro-languages. Requires Semgrep Pro Engine, contact
+           support@semgrep.com for more information on this.
 
        --pro-languages
-           Run a language only supported by the pro engine without extra
-           analysis features.
+           Enable Pro languages (currently just Apex). Requires Semgrep Pro
+           Engine, contact support@semgrep.com for more information on this.
 
        --profile
            <undocumented>
@@ -368,6 +396,7 @@ OPTIONS
 
        --registry-caching
            Cache for 24 hours in ~/.semgrep/cache rules from the registry.
+           Requires --experimental.
 
        --replacement=VAL
            An autofix expression that will be applied to any matches found
@@ -383,7 +412,7 @@ OPTIONS
        --scan-unknown-extensions
            If true, explicit files will be scanned using the language
            specified in --lang. If --skip-unknown-extensions, these files
-           will not be scanned.
+           will not be scanned. Defaults to false.
 
        --severity=VAL
            Report findings only from rules matching the supplied severity
@@ -415,9 +444,9 @@ OPTIONS
            Include a timing summary with the results. If output format is
            json, provides times for each pair (rule, target).
 
-       --timeout=VAL (absent=30.)
+       --timeout=VAL (absent=2.)
            Maximum time to spend running a rule on a single file in seconds.
-           If set to 0 will not have time limit. Defaults to 30 s.
+           If set to 0 will not have time limit. Defaults to 2.0 s.
 
        --timeout-threshold=VAL (absent=3)
            Maximum number of rules that can time out on a file before the

@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.5.1**
+- Version in MegaLinter: **1.6.1**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -170,7 +170,6 @@ Platform configuration:
 
   --python-version x.y      Type check code assuming it will be running on
                             Python x.y
-  -2, --py2                 Use Python 2 mode (same as --python-version 2.7)
   --platform PLATFORM       Type check special-cased code for the given OS
                             platform (defaults to sys.platform)
   --always-true NAME        Additional variable to be considered True (may be
@@ -204,6 +203,10 @@ Untyped definitions and calls:
   --disallow-untyped-calls  Disallow calling functions without type
                             annotations from functions with type annotations
                             (inverse: --allow-untyped-calls)
+  --untyped-calls-exclude MODULE
+                            Disable --disallow-untyped-calls for
+                            functions/methods coming from specific package,
+                            module, or class
   --disallow-untyped-defs   Disallow defining functions without type
                             annotations or with incomplete type annotations
                             (inverse: --allow-untyped-defs)

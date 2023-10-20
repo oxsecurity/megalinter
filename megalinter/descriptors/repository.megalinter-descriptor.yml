@@ -38,6 +38,8 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
+      # cargo:
+      #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
         - checkov
@@ -54,10 +56,18 @@ linters:
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
-      Use `--ignore-globs` to ignore files and/or folders
+      If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
-        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+      ```json
+      {
+        Glob: [
+          "**/.git/**",
+          "**/megalinter-reports/**"
+        ]
+      }
+      ```
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
@@ -65,6 +75,7 @@ linters:
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    config_file_name: .devskim.json
     cli_lint_mode: project
     cli_lint_extra_args:
       - analyze
@@ -326,10 +337,9 @@ linters:
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
-        - COPY --link --from=kics /app/bin/kics /usr/bin/
-        - RUN mkdir -p /opt/kics/assets
-        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+        - COPY --link --from=kics /app/bin/kics /usr/bin/kics
+        - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+        - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
 
   # SECRETLINT

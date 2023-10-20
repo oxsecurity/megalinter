@@ -23,11 +23,11 @@ DjLint can analyse multiple formats of HTML:
 - golang
 - angular
 
-For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to select django format
+For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.32.1**
+- Version in MegaLinter: **1.34.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}

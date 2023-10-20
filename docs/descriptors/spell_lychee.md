@@ -13,6 +13,18 @@ description: How to use lychee (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600)](https://github.com/lycheeverse/lychee) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lycheeverse/lychee?sort=semver)](https://github.com/lycheeverse/lychee/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/contributors/)
 
+A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
+
+Each line can contain Regular Expressions or glob format.
+
+Example with glob, regex and full url:
+
+```
+https://twitter.com/intent/tweet*
+(.*some_url_part)
+https://github.com/sgerrand/alpine-pkg-glibc/releases/download
+```
+
 ## lychee documentation
 
 - Version in MegaLinter: **0.13.0**

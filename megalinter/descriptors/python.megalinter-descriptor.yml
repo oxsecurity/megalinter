@@ -36,9 +36,6 @@ linters:
       idea:
         - name: PyCharm (Native Support)
           url: https://www.jetbrains.com/pycharm/
-      vim:
-        - name: pylint.vim
-          url: https://www.vim.org/scripts/script.php?script_id=891
       visual_studio:
         - name: Native Support
           url: https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019
@@ -163,9 +160,6 @@ linters:
       emacs:
         - name: py-isort.el
           url: https://github.com/paetzke/py-isort.el
-      sublime:
-        - name: isort plugin
-          url: https://github.com/jcugat/sublime-text-isort-plugin#install
       vim:
         - name: ale
           url: https://github.com/w0rp/ale
