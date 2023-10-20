@@ -2,6 +2,7 @@ import { optionsDefinition } from "./options.js"
 import { spawnSync } from "child_process";
 import { default as c } from 'chalk';
 import * as path from 'path';
+import { URL } from 'url';
 import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
@@ -43,6 +44,7 @@ export class MegaLinterRunner {
     // Run configuration generator
     if (options.install) {
       const env = yeoman.createEnv();
+      const __dirname = new URL('.', import.meta.url).pathname;
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
       );
