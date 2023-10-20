@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Add the other maintainers globally to the CODEOWNERS file ([#3008](https://github.com/oxsecurity/megalinter/pull/3008))
   - Free disk space earlier in the process to avoid failure during docker build
+  - Set flavors-stats.json as a generated file in .gitattributes ([#3023](https://github.com/oxsecurity/megalinter/pull/3023))
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.2 to **0.80.3** on 2023-09-24
