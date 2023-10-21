@@ -70,8 +70,8 @@ env:
   ##
   # Only applies if `APPLY_FIXES` is enabled.
   #
-  # Defines which GitHub event triggers the application of fixes. Options
-  # include:
+  # Defines which GitHub event triggers the application of fixes.
+  # Options include:
   #
   #   - `all`          - whenever any of the below events occur
   #   - `pull_request` - whenever a Pull Request occurs in GitHub (default)
