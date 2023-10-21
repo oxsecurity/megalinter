@@ -125,7 +125,9 @@ jobs:
             (
               github.event_name == 'push' ||
               github.event.pull_request.head.repo.full_name == github.repository
-            )
+            ) &&
+            !contains(github.event.head_commit.message, 'skip fix')
+
           }}" >> "${GITHUB_ENV}"
 
       # Set APPLY_FIXES_IF_* vars for use in future steps
