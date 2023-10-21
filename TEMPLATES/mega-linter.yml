@@ -25,7 +25,7 @@ on:
   ##
   # To only have MegaLinter run on Pull Requests, comment out the following line.
   # It is not recommended to use `push` linting on all pushes (the default,
-  # here)if you do not pay for GitHub Actions.
+  # here) if you do not pay for GitHub Actions.
   #
   # Some projects also prefer to limit push linting to specific branches, such
   # as when a `production` branch is updated. This can be done by adding a
