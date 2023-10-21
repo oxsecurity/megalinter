@@ -38,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Display list of articles from newest to oldest
   - Fix incorrect environment variable in djlint docs
   - Improve lychee documentation to add an example of `.lycheeignore`
+  - Improved commenting in `.mega-linter.yml` file to help new users configure the GitHub workflow more effectively
 
 - CI
   - Add the other maintainers globally to the CODEOWNERS file ([#3008](https://github.com/oxsecurity/megalinter/pull/3008))

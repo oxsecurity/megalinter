@@ -196,8 +196,11 @@ When you don't know what option to select, please use default values`
     } else {
       this.validateAllCodeBaseGha  = ">-\n"
       this.validateAllCodeBaseGha += "            ${{";
-      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
-      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&";
+      this.validateAllCodeBaseGha += "              (";
+      this.validateAllCodeBaseGha += "                github.ref == 'refs/heads/main' ||";
+      this.validateAllCodeBaseGha += "                github.ref == 'refs/heads/master'";
+      this.validateAllCodeBaseGha += "              )";
       this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
