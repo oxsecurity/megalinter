@@ -7,13 +7,16 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 # <a href="https://github.com/microsoft/DevSkim" target="blank" title="Visit linter Web Site"><img src="https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg" alt="devskim" height="100px" class="megalinter-logo"></a>devskim
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/DevSkim?cacheSeconds=3600)](https://github.com/microsoft/DevSkim) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/DevSkim?sort=semver)](https://github.com/microsoft/DevSkim/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/contributors/)
 
-Use the `Globs` configuration in a `.devskim.json` configuration file to ignore files and/or folders.
+If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
 Example:
 
 ```json
 {
-  "Globs": ["**/.git/**", "**/megalinter-reports/**"]
+  Glob: [
+    "**/.git/**",
+    "**/megalinter-reports/**"
+  ]
 }
 ```
 
@@ -32,16 +35,18 @@ Example:
 - Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
-| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
-| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
-| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
-| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None          |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`       |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`           |
-| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']` |
+| Variable                                       | Description                                                                                               | Default value                                   |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
+| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
+| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
+| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
+| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None                                            |
+| REPOSITORY_DEVSKIM_CONFIG_FILE                 | devskim configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.devskim.json`                                 |
+| REPOSITORY_DEVSKIM_RULES_PATH                  | Path where to find linter configuration file                                                              | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`                                         |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`                                             |
+| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']`                                   |
 
 ## IDE Integration
 

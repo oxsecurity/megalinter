@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Fixed issue with `actionlint` throwing an error on `if` statements in the generated workflow file
   - Added default `.devskim.json` to mitigate errors introduced when no config exists
 
 - Doc
@@ -117,6 +118,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.44.0 to **1.45.0** on 2023-10-19
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.0 to **3.60.1** on 2023-10-19
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.1 to **1.6.2** on 2023-10-19
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.21.0 to **6.21.1** on 2023-10-20
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.09.07 to **2023.10.20** on 2023-10-20
+  - [golangci-lint](https://golangci-lint.run/) from 1.54.2 to **1.55.0** on 2023-10-20
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.1.0 to **0.1.1** on 2023-10-20
+  - [checkov](https://www.checkov.io/) from 2.5.13 to **2.5.15** on 2023-10-20
+  - [syft](https://github.com/anchore/syft) from 0.93.0 to **0.94.0** on 2023-10-20
+  - [eslint](https://eslint.org) from 8.51.0 to **8.52.0** on 2023-10-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.3 to **0.52.4** on 2023-10-21
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
