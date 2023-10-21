@@ -2,16 +2,14 @@ name: Slash Command Dispatch
 on:
   issue_comment:
     types: [created]
+permissions: {}
 jobs:
   slashCommandDispatch:
     # This job only runs for pull request comments
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
-      # Remove the ones you do not need
-      contents: write
-      issues: write
+      actions: write # needed to launch a workflow_dispatch
       pull-requests: write
     steps:
       - name: Dump the event payload context
@@ -50,6 +48,7 @@ jobs:
             build
             help
           issue-type: pull-request
+          permission: write   # Collaborator permission required: (`none`, `read`, `triage`, `write`, `maintain`, `admin`),  default: `write`
           dispatch-type: workflow
           static-args: |
             repository=${{ github.repository }}

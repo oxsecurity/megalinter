@@ -13,22 +13,24 @@ on:
         description: 'The comment-id of the slash command'
         required: true
       issue-number:
-       description: 'The issue number in which the slash command was made'
-       required: true
+        description: 'The issue number in which the slash command was made'
+        required: true
       actor:
-       description: 'The user who executed the slash command'
-       required: true
+        description: 'The user who executed the slash command'
+        required: true
   repository_dispatch:
     types: [help-command]
+permissions: {}
 jobs:
   help:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions:
+      pull-requests: write
     steps:
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
+## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
           # token: ${{ secrets.GITHUB_TOKEN }}
           ## These are if we want to use repository_dispatch (default)
           # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
