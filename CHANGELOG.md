@@ -30,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Set default permissions to all workflows to `read-only` to increase security and prevent Checkov `CKV2_GHA_1` errors
   - Fixed issue with `actionlint` throwing an error on `if` statements in the generated workflow file
   - Added default `.devskim.json` to mitigate errors introduced when no config exists
 
