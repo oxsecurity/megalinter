@@ -92,7 +92,7 @@ jobs:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-          reaction-type: hooray
+          reactions: hooray
       - name: Create final comment updated files
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
         uses: peter-evans/create-or-update-comment@v3
