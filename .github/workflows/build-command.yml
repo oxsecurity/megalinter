@@ -22,7 +22,7 @@ on:
         description: "The reference to pass to 'ref' to checkout action"
         required: true
       checkout-repository:
-        description: "The repository to pass to 'repository' to tcheckout action"
+        description: "The repository to pass to 'repository' to checkout action"
         required: false
   repository_dispatch:
     types: [build-command]
