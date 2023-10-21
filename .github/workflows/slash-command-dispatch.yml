@@ -64,3 +64,10 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           body: |
             > ${{ steps.scd.outputs.error-message }}
+          reactions: confused
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: -1
