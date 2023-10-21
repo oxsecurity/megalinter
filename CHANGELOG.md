@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - build.py: Remove exclusivity between pip, gem & cargo packages
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
+  - Fixed issue with `actionlint` throwing an error on `if` statements in the generated workflow file
 
 - Doc
   - Display list of articles from newest to oldest
