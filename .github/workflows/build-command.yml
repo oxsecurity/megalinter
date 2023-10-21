@@ -41,15 +41,9 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
         with:
-## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-## These are if we want to use repository_dispatch (default)
-          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             > [Command run output](${{ steps.vars.outputs.run-url }})
             > Build command workflow started.
@@ -79,8 +73,6 @@ jobs:
       - name: Create comment starting build.sh
         uses: peter-evans/create-or-update-comment@v3
         with:
-## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -97,8 +89,6 @@ jobs:
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v3
         with:
-## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -107,8 +97,6 @@ jobs:
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
         uses: peter-evans/create-or-update-comment@v3
         with:
-## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -118,8 +106,6 @@ jobs:
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
         uses: peter-evans/create-or-update-comment@v3
         with:
-## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
