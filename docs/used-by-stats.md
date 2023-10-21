@@ -1,13 +1,13 @@
 # Dependents stats for oxsecurity/megalinter
 
-[![](https://img.shields.io/static/v1?label=Used%20by&message=3019&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by&message=3020&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=2047&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=972&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=73125&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=973&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=73429&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 44154 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 44158 |
 | [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  8645 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2523 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  2403 |
@@ -63,7 +63,7 @@
 | [rasa/scoops](https://github.com/rasa/scoops)                                                                                                                                   |    79 |
 | [ahmadnassri/docker-vscode-server](https://github.com/ahmadnassri/docker-vscode-server)                                                                                         |    66 |
 | [AndreaPontrandolfo/sheriff](https://github.com/AndreaPontrandolfo/sheriff)                                                                                                     |    66 |
-| [nvuillam/vscode-groovy-lint](https://github.com/nvuillam/vscode-groovy-lint)                                                                                                   |    63 |
+| [nvuillam/vscode-groovy-lint](https://github.com/nvuillam/vscode-groovy-lint)                                                                                                   |    64 |
 | [unixorn/warhol.plugin.zsh](https://github.com/unixorn/warhol.plugin.zsh)                                                                                                       |    55 |
 | [llaville/umlwriter](https://github.com/llaville/umlwriter)                                                                                                                     |    53 |
 | [ahmadnassri/node-glob-promise](https://github.com/ahmadnassri/node-glob-promise)                                                                                               |    53 |
@@ -1283,7 +1283,6 @@
 | [robpitcher/TerraformAzureActionTemplate](https://github.com/robpitcher/TerraformAzureActionTemplate)                                                                           |     0 |
 | [cdzombak/windowstack2](https://github.com/cdzombak/windowstack2)                                                                                                               |     0 |
 | [GenZmeY/KF2-TrueRandomBoss](https://github.com/GenZmeY/KF2-TrueRandomBoss)                                                                                                     |     0 |
-| [johndutchover/rearc-quest](https://github.com/johndutchover/rearc-quest)                                                                                                       |     0 |
 | [Kevinnnnnnnnnnnnnnnn/emissary](https://github.com/Kevinnnnnnnnnnnnnnnn/emissary)                                                                                               |     0 |
 | [ablyler/aquahawk_client](https://github.com/ablyler/aquahawk_client)                                                                                                           |     0 |
 | [cdzombak/periodic-docker-pull](https://github.com/cdzombak/periodic-docker-pull)                                                                                               |     0 |
@@ -1521,6 +1520,7 @@
 | [beiertu-mms/sonarqube-report](https://github.com/beiertu-mms/sonarqube-report)                                                                                                 |     0 |
 | [rciam/keycloak-rciam-metrics-plugin](https://github.com/rciam/keycloak-rciam-metrics-plugin)                                                                                   |     0 |
 | [charkchalk/backend](https://github.com/charkchalk/backend)                                                                                                                     |     0 |
+| [sarvex/pizza-menu](https://github.com/sarvex/pizza-menu)                                                                                                                       |     0 |
 | [sarvex/cockpit](https://github.com/sarvex/cockpit)                                                                                                                             |     0 |
 | [sarvex/MetaGPT](https://github.com/sarvex/MetaGPT)                                                                                                                             |     0 |
 | [2lambda123/megalinter](https://github.com/2lambda123/megalinter)                                                                                                               |     0 |

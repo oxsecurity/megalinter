@@ -26,7 +26,7 @@
     "dotnet-format": "6.0.415",
     "dustilock": "1.2.0",
     "editorconfig-checker": "2.7.2",
-    "eslint": "8.51.0",
+    "eslint": "8.52.0",
     "eslint-plugin-jsonc": "2.10.0",
     "flake8": "6.1.0",
     "gherkin-lint": "0.0.0",

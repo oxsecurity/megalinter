@@ -123,6 +123,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/charliermarsh/ruff) from 0.1.0 to **0.1.1** on 2023-10-20
   - [checkov](https://www.checkov.io/) from 2.5.13 to **2.5.15** on 2023-10-20
   - [syft](https://github.com/anchore/syft) from 0.93.0 to **0.94.0** on 2023-10-20
+  - [eslint](https://eslint.org) from 8.51.0 to **8.52.0** on 2023-10-21
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
