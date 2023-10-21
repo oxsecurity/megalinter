@@ -60,7 +60,7 @@ env:
   # be a list of comma-separated linter keys.
   #
   # When active, `APPLY_FIXES` must also be defined as environment variable
-  # (in github/workflows/mega-linter.yml or other CI tool)
+  # (in .github/workflows/mega-linter.yml or other CI tool)
   #
   # More info at:
   # https://megalinter.io/latest/config-apply-fixes/
