@@ -728,7 +728,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -999,7 +999,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -1239,7 +1239,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2023.09.07",
+        "clj-kondo v2023.10.20",
         "",
         "",
         "Options:",
@@ -1262,7 +1262,7 @@
         "  nearest `.clj-kondo` directory in the current and parent directories.",
         "",
         "  --config <config>: config may be a file or an EDN expression. See",
-        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.09.07/doc/configuration",
+        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.10.20/doc/configuration",
         "",
         "  --config-dir <config-dir>: use this config directory instead of auto-detected",
         "    .clj-kondo dir.",
@@ -2180,7 +2180,7 @@
         "  -h, --help                      help for golangci-lint",
         "      --mem-profile-path string   Path to memory profile output file",
         "      --trace-path string         Path to trace output file",
-        "  -v, --verbose                   verbose output",
+        "  -v, --verbose                   Verbose output",
         "      --version                   Print version",
         "",
         "Use \"golangci-lint [command] --help\" for more information about a command."
@@ -10596,9 +10596,9 @@
         "",
         "Commands:",
         "",
-        " sync             Download and install external configuration sources.",
         " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
+        " sync             Download and install external configuration sources.",
         ""
     ],
     "xmllint": [
