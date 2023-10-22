@@ -184,7 +184,7 @@ jobs:
         #   oxsecurity/megalinter/flavors/python@<%= GITHUB_ACTION_VERSION %>
         #
         # More info at:
-        # https://megalinter.io/flavors/
+        # https://megalinter.io/latest/flavors/
         #
         uses: <%= GITHUB_ACTION_NAME %>@<%= GITHUB_ACTION_VERSION %>
 
