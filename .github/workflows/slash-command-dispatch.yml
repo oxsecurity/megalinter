@@ -2,14 +2,14 @@ name: Slash Command Dispatch
 on:
   issue_comment:
     types: [created]
+permissions: {}
 jobs:
   slashCommandDispatch:
+    # This job only runs for pull request comments
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
-      # Remove the ones you do not need
-      contents: write
-      issues: write
+      actions: write # needed to launch a workflow_dispatch
       pull-requests: write
     steps:
       - name: Dump the event payload context
@@ -36,8 +36,8 @@ jobs:
             }
       - name: Dump the get-pr payload context
         env:
-          GETPR_OUTPUTS: ${{ toJson(steps.get-pr.outputs) }}
-        run: echo "$GETPR_OUTPUTS"
+          GET_PR_OUTPUTS: ${{ toJson(steps.get-pr.outputs) }}
+        run: echo "$GET_PR_OUTPUTS"
       - name: Slash Command Dispatch PR
         uses: peter-evans/slash-command-dispatch@v3
         id: scd
@@ -48,6 +48,7 @@ jobs:
             build
             help
           issue-type: pull-request
+          permission: write   # Collaborator permission required: (`none`, `read`, `triage`, `write`, `maintain`, `admin`),  default: `write`
           dispatch-type: workflow
           static-args: |
             repository=${{ github.repository }}
@@ -57,9 +58,16 @@ jobs:
             checkout-ref=${{ steps.get-pr.outputs.head_ref }}
             checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
       - name: Edit comment with error message
-        if: steps.scd.outputs.error-message
+        if: (success() || failure()) && steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ github.event.comment.id }}
           body: |
             > ${{ steps.scd.outputs.error-message }}
+          reactions: confused
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: -1
