@@ -24,6 +24,16 @@
     "image": null,
     "title": "The GNU Bourne-Again Shell"
   },
+  "bicep": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
+  "bicep_linter": {
+    "description": "Learn how to use Bicep linter.",
+    "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
+    "title": "Use Bicep linter - Azure Resource Manager"
+  },
   "black": {
     "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
@@ -64,6 +74,11 @@
     "image": "https://avatars1.githubusercontent.com/u/284934?s=400&v=4",
     "title": "borkdude/clj-kondo"
   },
+  "cljstyle": {
+    "description": "A tool for formatting Clojure code. Contribute to greglook/cljstyle development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bf0d187aea6f03a804178458080b2be18a5fd1bf8d8cc353ff3150743aae9805/greglook/cljstyle",
+    "title": "GitHub - greglook/cljstyle: A tool for formatting Clojure code"
+  },
   "coffeelint": {
     "description": "\n          CoffeeLint is a style checker that helps keep\n          CoffeeScript\n          code clean and consistent. CoffeeScript does a great job at\n          insulating programmers from many of\n          JavaScript's bad parts, but it won't help enforce a consistent style\n          across a code base. CoffeeLint can help with that.\n        ",
     "image": null,
@@ -73,6 +88,11 @@
     "description": "Static code checker for C++. Contribute to cpplint/cpplint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",
     "title": "cpplint/cpplint"
+  },
+  "csharpier": {
+    "description": "An Opinionated Code Formatter.",
+    "image": null,
+    "title": "CSharpier"
   },
   "cspell": {
     "description": "A Spell Checker for Code! Contribute to streetsidesoftware/cspell development by creating an account on GitHub.",
@@ -164,10 +184,20 @@
     "image": "https://avatars0.githubusercontent.com/u/385270?s=400&v=4",
     "title": "cjoudrey/graphql-schema-linter"
   },
+  "grype": {
+    "description": "A vulnerability scanner for container images and filesystems - GitHub - anchore/grype: A vulnerability scanner for container images and filesystems",
+    "image": "https://repository-images.githubusercontent.com/267054247/c41d4c8f-cd32-4bdd-9f2a-89a82992a359",
+    "title": "GitHub - anchore/grype: A vulnerability scanner for container images and filesystems"
+  },
   "hadolint": {
     "description": "Dockerfile linter, validate inline bash, written in Haskell - hadolint/hadolint",
     "image": "https://avatars1.githubusercontent.com/u/34047791?s=400&v=4",
     "title": "hadolint/hadolint"
+  },
+  "helm": {
+    "description": "Helm - The Kubernetes Package Manager.",
+    "image": "https://helm.sh/img/og-image.png",
+    "title": "Helm Lint"
   },
   "htmlhint": {
     "description": "\u2699\ufe0f The static code analysis tool you need for your HTML - htmlhint/HTMLHint",
@@ -204,6 +234,11 @@
     "image": "https://opengraph.githubassets.com/b990bb1574e3f44a352a20ca20657b21cc9f52eb1738f5551195458f99aa596d/yannh/kubeconform",
     "title": "GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!"
   },
+  "kubescape": {
+    "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernet...",
+    "image": "https://repository-images.githubusercontent.com/395283401/8b597a65-306c-496e-bc3e-9a7c1e21620f",
+    "title": "GitHub - kubescape/kubescape: Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources."
+  },
   "kubeval": {
     "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",
     "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
@@ -218,6 +253,11 @@
     "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
     "image": "https://avatars3.githubusercontent.com/u/17838737?s=400&v=4",
     "title": "luarocks/luacheck"
+  },
+  "lychee": {
+    "description": "Fast, async, stream-based link checker written in Rust. Finds broken URLs and mail addresses inside Markdown, HTML, reStructuredText, websites and more!",
+    "image": "https://avatars.githubusercontent.com/u/74027027?s=200&v=4",
+    "title": "lycheeverse/lychee"
   },
   "markdown-link-check": {
     "description": "checks that all of the hyperlinks in a markdown text to determine if they are alive or dead - tcort/markdown-link-check",
@@ -254,6 +294,11 @@
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
     "title": "nvuillam/npm-groovy-lint"
   },
+  "npm-package-json-lint": {
+    "description": "A configurable linter for package.json files",
+    "image": null,
+    "title": "npm-package-json-lint | npm-package-json-lint"
+  },
   "perlcritic": {
     "description": "Critique Perl source code for best-practices.",
     "image": null,
@@ -289,6 +334,11 @@
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
     "title": "PowerShell/PSScriptAnalyzer"
   },
+  "powershell_formatter": {
+    "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
+    "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
+    "title": "GitHub - PowerShell/PSScriptAnalyzer: Download ScriptAnalyzer from PowerShellGallery"
+  },
   "prettier": {
     "description": "Opinionated Code Formatter",
     "image": "https://prettier.io/icon.png",
@@ -318,6 +368,16 @@
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,
     "title": "Pylint - code analysis for Python | www.pylint.org"
+  },
+  "pyright": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
+  },
+  "pytype": {
+    "description": "A static type analyzer for Python code",
+    "image": null,
+    "title": "pytype - \ud83e\udd86\u2714"
   },
   "raku": {
     "description": "Home page for Raku, the newest member of the family of languages known as Perl.",
@@ -353,6 +413,11 @@
     "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide. - rubocop-hq/rubocop",
     "image": "https://avatars1.githubusercontent.com/u/39672756?s=400&v=4",
     "title": "rubocop-hq/rubocop"
+  },
+  "ruff": {
+    "description": "An extremely fast Python linter, written in Rust. Contribute to charliermarsh/ruff development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/125c259b7ef6ad7bf2a4d9b3af0e3bc2b1f8561c1d4ce8923b052cc30d8b8d75/charliermarsh/ruff",
+    "title": "GitHub - charliermarsh/ruff: An extremely fast Python linter, written in Rust."
   },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",
@@ -479,6 +544,21 @@
     "image": null,
     "title": "Redirecting"
   },
+  "trivy-sbom": {
+    "description": "None",
+    "image": null,
+    "title": "Redirecting"
+  },
+  "trufflehog": {
+    "description": "Find and verify credentials. Contribute to trufflesecurity/trufflehog development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/55d7b011372ebd97a601f51e0a882c04765952ec8a9de7f814746cc71a64face/trufflesecurity/trufflehog",
+    "title": "GitHub - trufflesecurity/trufflehog: Find and verify credentials"
+  },
+  "ts-standard": {
+    "description": "English \u2022 Espan\u0303ol (Latinoame\u0301rica) \u2022 Franc\u0327ais \u2022 Bahasa Indonesia \u2022 Italiano (Italian) \u2022 \u65e5\u672c\u8a9e (Japanese) \u2022 \u1112\u1161\u11ab\u1100\u116e\u11a8\u110b\u1165 (Korean) \u2022 Portugue\u0302s (Brasil) \u2022 \u7b80\u4f53\u4e2d\u6587 (Simplified Chinese) \u2022 \u7e41\u9ad4\u4e2d\u6587 (Taiwanese Mandarin).",
+    "image": null,
+    "title": "JavaScript Standard Style"
+  },
   "tsqllint": {
     "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",
     "image": "https://opengraph.githubassets.com/07bcefab8d31eb93bc746724c678639f64a396bb33c2f36f56b4c47d73906d60/tsqllint/tsqllint",
@@ -488,6 +568,11 @@
     "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",
     "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",
     "title": "chris48s/v8r"
+  },
+  "vale": {
+    "description": "Vale is a command-line tool that brings code-like linting to prose. It's fast, cross-platform (Windows, macOS, and Linux), and highly customizable.",
+    "image": "https://user-images.githubusercontent.com/8785025/167473311-6de8c59b-ccb3-41e1-b887-4a17b2cb74fd.png",
+    "title": "Your style, our editor"
   },
   "xmllint": {
     "description": "None",

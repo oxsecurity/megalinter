@@ -10,7 +10,6 @@ from megalinter import Linter
 
 
 class SecretLintLinter(Linter):
-
     # Called before linting files
     def get_ignore_arguments(self, cmd):
         ignore_args = super().get_ignore_arguments(cmd)

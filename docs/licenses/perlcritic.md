@@ -1,3 +1,8 @@
+---
+title: License info for perlcritic within MegaLinter
+search:
+  exclude: true
+---
 Terms of Perl itself
 
 a) the GNU General Public License as published by the Free

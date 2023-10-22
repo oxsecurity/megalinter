@@ -20,8 +20,8 @@ linters:
     install:
       dockerfile:
         - FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
-        - COPY --from=chktex /usr/bin/chktex /usr/bin/
-        - RUN cd ~ && touch .chktexrc
+        - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
+        - RUN cd ~ && touch .chktexrc && cd /
     ide:
       atom:
         - name: linter-chktex

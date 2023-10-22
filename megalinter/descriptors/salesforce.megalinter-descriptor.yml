@@ -10,10 +10,14 @@ install:
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - RUN echo y|sfdx plugins:install sfdx-hardis
+    - |
+      RUN sf plugins install @salesforce/plugin-packaging \
+          && echo y|sfdx plugins:install sfdx-hardis \
+          && npm cache clean --force || true \
+          && rm -rf /root/.npm/_cacache
   # Salesforce DX
   npm:
-    - sfdx-cli
+    - "@salesforce/cli"
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -31,10 +35,10 @@ linters:
       **Workaround: Restricted to PMD**
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
-    linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
+    linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
     linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
-    linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
+    linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
+    linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: apex-pmd-ruleset.xml
     cli_executable: sfdx
@@ -45,7 +49,8 @@ linters:
       - "pmd"
       - "--target"
       - '"./**/*"'
-      - "--violations-cause-error"
+      - "--severity-threshold"
+      - "2"
       - "--outfile"
       - "{{REPORT_FOLDER}}/sfdx-scanner-report-apex.csv"
       - "--format"
@@ -65,7 +70,10 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -76,6 +84,7 @@ linters:
       idea:
         - name: PMD IntelliJ
           url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+          id: PMDPlugin
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
@@ -129,7 +138,10 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -184,7 +196,10 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+        - |
+          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack

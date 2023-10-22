@@ -1,3 +1,7 @@
+---
+title: GitHub Pull Request Status Reporter for MegaLinter
+description: Posts a job status on the Github Pull Request for each processed linter
+---
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # GitHub Status Reporter
 

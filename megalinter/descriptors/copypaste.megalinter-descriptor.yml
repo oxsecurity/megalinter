@@ -2,6 +2,8 @@ descriptor_id: COPYPASTE
 descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - ci_light
+  - cupcake
 lint_all_files: true
 linters:
   # JSCPD
@@ -9,6 +11,7 @@ linters:
     linter_name: jscpd
     linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
+    linter_speed: 1
     linter_text: |
       JSCPD browses all files of your repository to detect excessive copy-pastes
 
@@ -37,10 +40,8 @@ linters:
     cli_lint_extra_args:
       - "--reporters"
       - "console,html"
-      - "--output"
-      - "{{REPORT_FOLDER}}/copy-paste/"
-    #      - "--exitCode" # uncomment when jscpd > 3.4.0
-    #      - "1"
+      - "--exitCode"
+      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
@@ -48,11 +49,10 @@ linters:
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
-    downgraded_version: true
     install:
       apk:
         - nodejs
         - npm
         - yarn
       npm:
-        - jscpd@3.3.26
+        - jscpd

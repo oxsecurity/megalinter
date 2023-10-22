@@ -1,0 +1,39 @@
+FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+FROM trufflesecurity/trufflehog:latest as trufflehog
+
+FROM python:3.11-alpine
+
+WORKDIR /
+
+RUN apk add \
+    bash \
+    git \
+    nodejs \
+    npm
+
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+
+ENV MEGALINTER_FLAVOR=security
+
+# Core MegaLinter
+COPY megalinter /megalinter
+
+
+
+RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
+    && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
+    && rm -rf /var/cache/apk/* \
+    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+
+COPY megalinter/descriptors /megalinter-descriptors
+COPY TEMPLATES /action/lib/.automation
+
+# MegaLinter Server
+COPY server /server
+COPY server/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+COPY logging.conf logging.conf

@@ -1,11 +1,10 @@
 #! /usr/bin/env node
-"use strict";
 
-const { MegaLinterRunner } = require("./runner");
-const { MegaLinterRunnerCli } = require("./cli");
+import { MegaLinterRunner } from "./runner.js";
+import { MegaLinterRunnerCli } from "./cli.js";
 
 // Run only if called by script
-const runningAsScript = !module.parent;
+const runningAsScript = (this === undefined);
 
 // Run asynchronously to use the returned status for process.exit
 if (runningAsScript) {
@@ -14,4 +13,4 @@ if (runningAsScript) {
   })();
 }
 
-module.exports = { MegaLinterRunner, MegaLinterRunnerCli };
+export { MegaLinterRunner, MegaLinterRunnerCli };

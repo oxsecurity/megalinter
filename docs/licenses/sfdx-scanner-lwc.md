@@ -1,3 +1,8 @@
+---
+title: License info for sfdx-scanner-lwc within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2020 Michael Hoefer

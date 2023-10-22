@@ -8,10 +8,10 @@ import os
 import subprocess
 
 import megalinter
+from megalinter import config
 
 
 class RakuLinter(megalinter.Linter):
-
     # To execute before linting files
     def before_lint_files(self):
         if os.path.isfile(
@@ -24,6 +24,9 @@ class RakuLinter(megalinter.Linter):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 shell=True,
+                env=config.build_env(
+                    self.request_id, True, self.unsecured_env_variables
+                ),
             )
             return_code = process.returncode
             return_stdout = megalinter.utils.decode_utf8(process.stdout)
@@ -31,7 +34,7 @@ class RakuLinter(megalinter.Linter):
 
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
-        cmd = [self.cli_executable]
+        cmd = [*self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined

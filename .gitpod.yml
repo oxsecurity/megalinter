@@ -1,0 +1,8 @@
+---
+image:
+  file: .config/gitpod/Dockerfile
+
+tasks:
+  - init: |
+      make bootstrap
+      source .venv/bin/activate

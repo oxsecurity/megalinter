@@ -1,15 +1,15 @@
 // const uuid = require("uuid");
-const { OX_LOGIN_URL } = require("./config");
-const open = require("open");
+import { OX_LOGIN_URL } from "./config.js";
+import { default as open } from "open";
 
-// Class to setup Ox security on the repository
-class OxSecuritySetup {
-  // Open Ox registration page
-  // Once SSO (managed internally by Ox app) is performed, we'll receive an ox token in response
+// Class to setup OX security on the repository
+export class OXSecuritySetup {
+  // Open OX registration page
+  // Once SSO (managed internally by OX app) is performed, we'll receive an ox token in response
   async run() {
     //,this.clientToken = uuid.v4(); // generate a random key
     const registerUrl = OX_LOGIN_URL + "?ref=megalinter";
-    // console.log(`Waiting for response from Ox.security app...`);
+    // console.log(`Waiting for response from OX.security app...`);
     open(registerUrl);
   }
 
@@ -22,12 +22,12 @@ class OxSecuritySetup {
         throw new Error("Client token error");
       }
       if (body.oxToken) {
-        await this.storeOxToken(body.oxToken);
+        await this.storeOXToken(body.oxToken);
       }
     }
   
     // Store ox token in local config file
-    async storeOxToken(oxToken) {
+    async storeOXToken(oxToken) {
       const oxAuthInfo = fs.existsSync(OX_REPO_LOCAL_CONFIG_FILE)
         ? fs.readJSONSync(OX_REPO_LOCAL_CONFIG_FILE)
         : {};
@@ -35,9 +35,8 @@ class OxSecuritySetup {
       // Make sure ox directory is not existing
       fs.ensureDir(path.dirname(OX_REPO_LOCAL_CONFIG_FILE));
       await fs.writeJSON(OX_REPO_LOCAL_CONFIG_FILE, oxAuthInfo);
-      console.log(`Written Ox token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
+      console.log(`Written OX token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
     }
     */
 }
 
-module.exports = { OxSecuritySetup };

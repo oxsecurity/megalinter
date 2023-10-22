@@ -1,3 +1,8 @@
+---
+title: License info for cfn-lint within MegaLinter
+search:
+  exclude: true
+---
 MIT No Attribution
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this

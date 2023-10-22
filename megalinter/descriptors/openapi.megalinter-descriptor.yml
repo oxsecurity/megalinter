@@ -14,11 +14,11 @@ file_contains_regex:
 linters:
   # Spectral
   - linter_name: spectral
-    linter_url: https://meta.stoplight.io/docs/spectral/README.md
+    linter_url: https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
     linter_repo: https://github.com/stoplightio/spectral
-    linter_rules_url: https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md
+    linter_rules_url: https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
     linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
-    linter_rules_configuration_url: https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md
+    linter_rules_configuration_url: https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file
     config_file_name: .openapirc.yml
     cli_config_arg_name: "-r"
     cli_lint_extra_args:
@@ -29,10 +29,9 @@ linters:
     examples:
       - "spectral lint myfile.yml"
       - "spectral lint -r .openapirc.yml myfile.yml"
-    downgraded_version: true
     install:
       npm:
-        - "@stoplight/spectral@5.6.0"
+        - "@stoplight/spectral-cli"
     ide:
       stoplight:
         - name: Native integration

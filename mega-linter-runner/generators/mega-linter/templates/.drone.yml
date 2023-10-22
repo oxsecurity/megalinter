@@ -1,0 +1,12 @@
+kind: pipeline
+type: docker
+name: MegaLinter
+
+workspace:
+  path: /tmp/lint
+
+steps:
+  - name: megalinter
+    image: oxsecurity/megalinter:v7
+    environment:
+      DEFAULT_WORKSPACE: /tmp/lint

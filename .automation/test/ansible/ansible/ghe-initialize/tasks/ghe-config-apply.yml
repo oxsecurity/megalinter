@@ -1,0 +1,32 @@
+---
+- block:
+  ########################################
+  # Copy the script to the local machine #
+  ########################################
+  - name: CopyScript
+    become: true
+    template:
+      force: 'yes'
+      src: "ghe-config-apply.sh"
+      dest: /tmp/ghe-config-apply.sh
+      owner: admin
+      group: admin
+      mode: 0755
+
+  ##################################
+  # Run config to take in settings #
+  ##################################
+  - name: RunConfigSettings
+    shell: "nohup ./tmp/ghe-config-apply.sh </dev/null >/dev/null 2>&1 &"
+    async: 300
+    poll: 0
+    args:
+      executable: "/bin/bash"
+
+  ######################
+  # Set the tags block #
+  ######################
+  tags:
+    - github
+    - ghe_primary
+    - initialize

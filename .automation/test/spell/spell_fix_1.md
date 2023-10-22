@@ -1,0 +1,1 @@
+- Correct some wierd links in `README` from `Mega-Linter` to `MegaLinter` (#1030)

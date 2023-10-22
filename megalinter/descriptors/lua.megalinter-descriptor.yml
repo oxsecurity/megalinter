@@ -33,7 +33,8 @@ linters:
               && make \
               && make -b install \
               && cd .. && rm -r luarocks-3.3.1-super-linter/ \
-              && luarocks install luacheck
+              && luarocks install luacheck \
+              && cd /
     ide:
       atom:
         - name: linter-luacheck

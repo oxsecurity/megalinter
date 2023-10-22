@@ -1,7 +1,9 @@
 descriptor_id: C
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - dotnet
+  - dotnetweb
 file_extensions:
   - ".c"
   - ".h"
@@ -10,6 +12,7 @@ linters:
   - linter_name: cpplint
     name: C_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
+    linter_repo: https://github.com/cpplint/cpplint
     linter_rules_url: https://google.github.io/styleguide/cppguide.html
     cli_lint_mode: list_of_files
     cli_help_arg_name: "--help"

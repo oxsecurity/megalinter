@@ -1,6 +1,7 @@
 descriptor_id: RUBY
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - ruby
 file_extensions:
   - ".rb"
@@ -26,6 +27,7 @@ linters:
         - rubocop-github
         - rubocop-performance
         - rubocop-rails
+        - rubocop-rake
         - rubocop-rspec
     ide:
       atom:
@@ -51,5 +53,5 @@ linters:
         - name: ale
           url: https://github.com/w0rp/ale
       vscode:
-        - name: VsCode Ruby Extension
+        - name: VSCode Ruby Extension
           url: https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby

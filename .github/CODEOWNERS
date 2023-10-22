@@ -1,4 +1,24 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+
+# Docs about the CODEOWNERS file are found here: 
+# https://help.github.com/articles/about-codeowners/
+
+# Order is important; the last matching pattern takes the most
+# precedence.
+
 ######################################################################
 # These owners will be the default owners for everything in the repo #
 ######################################################################
-*       @nvuillam
+
+# In the following rule, unless a later match takes precedence, one of
+# the maintainers will be requested for review when someone opens a
+# pull request.
+
+# Global rule:
+*       @nvuillam @echoix @bdovaz @Kurt-von-Laven
+
+
+# Workflow files can be part of branch protection rules, so they are
+# sensitive and must be attentively reviewed.
+.github/workflows @nvuillam

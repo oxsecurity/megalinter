@@ -1,6 +1,8 @@
 descriptor_id: JAVASCRIPT
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
+  - dotnetweb
   - javascript
 file_extensions:
   - ".js"
@@ -64,7 +66,6 @@ linters:
         - eslint-plugin-prettier
         - eslint-plugin-promise
         - eslint-plugin-vue
-        - babel-eslint
         - "@babel/core"
         - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
@@ -84,6 +85,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint
@@ -96,7 +98,8 @@ linters:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
-  - linter_name: standard
+  - class: JavaScriptStandardLinter
+    linter_name: standard
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -109,13 +112,13 @@ linters:
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
+    test_folder: javascript_standard
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - standard
     ide:
       atom:
         - name: linter-js-standard
@@ -136,8 +139,8 @@ linters:
         - name: StandardFormat
           url: https://packagecontrol.io/packages/StandardFormat
       vscode:
-        - name: vscode-standardjs
-          url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
+        - name: vscode-standard
+          url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
@@ -151,7 +154,7 @@ linters:
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
@@ -186,8 +189,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier

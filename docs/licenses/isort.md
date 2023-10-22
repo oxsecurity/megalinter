@@ -1,3 +1,8 @@
+---
+title: License info for isort within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2013 Timothy Edmund Crosley

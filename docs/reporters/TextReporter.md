@@ -1,6 +1,10 @@
+---
+title: Text Reporter for MegaLinter
+description: Generate SAST results as text logs for each linter
+---
 # Text Reporter
 
-Posts a pack of text logs , zipped as a GitHub Action artifact
+Generate text logs for each linter
 
 - General execution log `mega-linter.log` (same as [ConsoleReporter](ConsoleReporter.md) log)
 - A separate log file for each processed linter
@@ -19,7 +23,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 ### Get Artifacts on GitLab CI
 
-- Access GitLabel CI job page
+- Access GitLab CI job page
 
 ![Screenshot](../assets/images/TextReporter_gitlab_1.jpg)
 
@@ -29,7 +33,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 - You can export `mega-linter.log` and folder `<WORKSPACE>/report` as external artifacts
 
-- You can also use [File.io Reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail Reporter](https://megalinter.github.io/reporters/EmailReporter/)
+- You can also use [File.io Reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail Reporter](https://megalinter.io/reporters/EmailReporter/)
 
 ## Report folder structure
 

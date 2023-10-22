@@ -38,7 +38,7 @@ def run_linter_post_commands(mega_linter, linter):
 
 # Get commands from configuration
 def run_pre_post_commands(key, log_key, mega_linter):
-    pre_or_post_commands = config.get_list(key, None)
+    pre_or_post_commands = config.get_list(mega_linter.request_id, key, None)
     return run_commands(pre_or_post_commands, log_key, mega_linter)
 
 
@@ -59,9 +59,22 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     cwd = os.getcwd()
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
+        # Secure env by default. Must be explicitly define to false in command definition to be disabled
+    if "secured_env" not in command_info:
+        command_info["secured_env"] = True
     command_info = complete_command(command_info)
+    unsecured_env_variables = []
+    if linter is not None:
+        unsecured_env_variables = linter.unsecured_env_variables
+    subprocess_env = {
+        **config.build_env(
+            mega_linter.request_id, command_info["secured_env"], unsecured_env_variables
+        )
+    }
     add_in_logs(
-        linter, log_key, [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"]
+        linter,
+        log_key,
+        [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"],
     )
     # Run command
     process = subprocess.run(
@@ -71,13 +84,14 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         shell=True,
         cwd=os.path.realpath(cwd),
         executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
+        env=subprocess_env,
     )
     return_code = process.returncode
     return_stdout = utils.decode_utf8(process.stdout)
     if return_code == 0:
-        add_in_logs(linter, log_key, [f"{log_key} {return_stdout}"])
-    else:
         add_in_logs(linter, log_key, [f"{log_key} result:\n{return_stdout}"])
+    else:
+        add_in_logs(linter, log_key, [f"{log_key} error:\n{return_stdout}"])
     # If user defined command to fail in case of crash, stop running MegaLinter
     if return_code > 0 and command_info.get("continue_if_failed", True) is False:
         raise Exception(
@@ -90,11 +104,17 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     }
 
 
-def complete_command(command_info):
-    if command_info["command"].startswith("npm install") or command_info[
-        "command"
-    ].startswith("npm i"):
+def complete_command(command_info: dict):
+    # Force npm install in /node-deps ONLY if cwd is root
+    command: str = command_info["command"]
+    if command.startswith("npm i") and command_info.get("cwd", "root") == "root":
         command_info["command"] = "cd /node-deps && " + command_info["command"]
+    # Pip dependencies case
+    elif command_info.get("venv", None) is not None:
+        venv = command_info.get("venv")
+        command_info[
+            "command"
+        ] = f"cd /venvs/{venv} && source bin/activate && {command} && deactivate"
     return command_info
 
 
@@ -106,3 +126,17 @@ def add_in_logs(linter, log_key, lines):
             linter.log_lines_post += lines
     else:
         logging.info("\n".join(lines))
+
+
+def has_npm_or_yarn_commands(request_id):
+    config_dict = config.get(request_id)
+    for key in config_dict.keys():
+        if "PRE_COMMANDS" in key or "POST_COMMANDS" in key:
+            for command_info in config.get_list(request_id, key, []):
+                if (
+                    "command" in command_info
+                    and "npm" in command_info["command"]
+                    or "yarn" in command_info["command"]
+                ):
+                    return True
+    return False

@@ -9,20 +9,23 @@ from megalinter import Linter, config
 
 
 class ArmLinter(Linter):
-    arm_ttk_psd1 = config.get("ARM_TTK_PSD1", "/usr/bin/arm-ttk")
+    arm_ttk_psd1 = ""
 
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
+        self.arm_ttk_psd1 = config.get(
+            self.request_id, "ARM_TTK_PSD1", "/usr/bin/arm-ttk"
+        )
         pwsh_script = ["Import-Module " + self.arm_ttk_psd1 + " ;"]
         if self.config_file is not None:
             pwsh_script += [
                 '${config} = $(Import-PowerShellDataFile -Path "'
                 + self.config_file
                 + '") ;',
-                "Test-AzTemplate @config -TemplatePath " + file + " ;",
+                f"Test-AzTemplate @config -TemplatePath '{file}' ;",
             ]
         else:
-            pwsh_script += ["Test-AzTemplate -TemplatePath " + file + " ;"]
+            pwsh_script += [f"Test-AzTemplate -TemplatePath '{file}' ;"]
         pwsh_script += ["if (${Error}.Count) {exit 1}"]
         cmd = [
             ("powershell" if sys.platform == "win32" else "pwsh"),
