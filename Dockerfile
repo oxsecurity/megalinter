@@ -626,7 +626,9 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # perlcritic installation
-    && curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
+    && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+    && rm -rf /root/.perl-cpm
+
 
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192

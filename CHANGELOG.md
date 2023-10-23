@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Free disk space earlier in the process to avoid failure during docker build
   - Set flavors-stats.json as a generated file in .gitattributes ([#3023](https://github.com/oxsecurity/megalinter/pull/3023))
   - Update and fix our ChatOps automations to only run on pull request comments, by @echoix in [#3034](https://github.com/oxsecurity/megalinter/pull/3034)
+  - Use App::cpm to install perlcritic faster, and clean `.perl-cpm` cache, by @echoix in [#3036](https://github.com/oxsecurity/megalinter/pull/3036) 
   - Add failure message in ChatOps build-command and Slash dispatcher, by @echoix in [#3037](https://github.com/oxsecurity/megalinter/pull/3037)
 
 - Linter versions upgrades
