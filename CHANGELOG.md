@@ -127,6 +127,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.93.0 to **0.94.0** on 2023-10-20
   - [eslint](https://eslint.org) from 8.51.0 to **8.52.0** on 2023-10-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.3 to **0.52.4** on 2023-10-21
+  - [pylint](https://pylint.pycqa.org) from 3.0.1 to **3.0.2** on 2023-10-22
+  - [checkov](https://www.checkov.io/) from 2.5.15 to **2.5.18** on 2023-10-22
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
