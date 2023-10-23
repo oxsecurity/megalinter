@@ -183,6 +183,10 @@ jobs:
         #
         #   oxsecurity/megalinter/flavors/python@v7
         #
+        # By default, MegaLinter recommends a specific flavor for your project
+        # setup in its logs. It's shown after the summary table at the end of
+        # the run for your convenience.
+        #
         # More info at:
         # https://megalinter.io/flavors/
         #
