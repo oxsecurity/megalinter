@@ -80,6 +80,7 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
+      - run: git pull
       - uses: stefanzweifel/git-auto-commit-action@v5
         id: auto-commit-action
         with:
@@ -111,3 +112,13 @@ jobs:
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             > Build command workflow completed without updating files.
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.comment.id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Build command workflow failed.
+          reactions: -1
