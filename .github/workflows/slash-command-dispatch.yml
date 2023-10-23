@@ -12,6 +12,9 @@ jobs:
       actions: write # needed to launch a workflow_dispatch
       pull-requests: write
     steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
       - name: Dump the event payload context
         env:
           EVENT_CONTEXT: ${{ toJson(github.event) }}
@@ -71,3 +74,6 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: -1
+          body: |
+            > Command dispatch failed.
+            > [Command run output](${{ steps.vars.outputs.run-url }})
