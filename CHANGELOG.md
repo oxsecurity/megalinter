@@ -131,6 +131,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.3 to **0.52.4** on 2023-10-21
   - [pylint](https://pylint.pycqa.org) from 3.0.1 to **3.0.2** on 2023-10-22
   - [checkov](https://www.checkov.io/) from 2.5.15 to **2.5.18** on 2023-10-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.82.2 to **0.83.0** on 2023-10-24
+  - [v8r](https://github.com/chris48s/v8r) from 2.0.0 to **2.1.0** on 2023-10-24
+  - [black](https://black.readthedocs.io/en/stable/) from 23.10.0 to **23.10.1** on 2023-10-24
+  - [checkov](https://www.checkov.io/) from 2.5.18 to **2.5.19** on 2023-10-24
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
