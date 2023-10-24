@@ -213,7 +213,7 @@ jobs:
         #   oxsecurity/megalinter/flavors/python@v7
         #
         # More info at:
-        # https://megalinter.io/flavors/
+        # https://megalinter.io/latest/flavors/
         #
         uses: oxsecurity/megalinter@v7
 

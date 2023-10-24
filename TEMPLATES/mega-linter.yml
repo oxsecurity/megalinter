@@ -188,7 +188,7 @@ jobs:
         # the run for your convenience.
         #
         # More info at:
-        # https://megalinter.io/flavors/
+        # https://megalinter.io/latest/flavors/
         #
         uses: oxsecurity/megalinter@v7
 
@@ -208,9 +208,9 @@ jobs:
           # be linted for better efficiency.
           #
           # This can be overridden to always lint the codebase with:
-          # 
+          #
           #   VALIDATE_ALL_CODEBASE: true
-          # 
+          #
           # To validate only `git diff`` with the default branch on push:
           #
           # VALIDATE_ALL_CODEBASE: >-
