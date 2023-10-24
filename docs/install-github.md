@@ -172,7 +172,6 @@ jobs:
       issues: write
       pull-requests: write
 
-
     steps:
       
       ##
@@ -227,7 +226,7 @@ jobs:
         # https://megalinter.io/latest/config-file/
         #
         env:
-          
+
           ##
           # By default, this validates full codebase whenever a push to the
           # default branch occurs. Otherwise, only the `git diff` files will
@@ -256,7 +255,7 @@ jobs:
                 github.ref == 'refs/heads/master'
               )
             }}
-          
+
           ##
           # This token is automatically created on the GitHub server and you
           # should not modify this line.
