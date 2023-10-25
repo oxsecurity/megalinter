@@ -3226,7 +3226,7 @@
 <p>An extremely fast Python linter, written in Rust.</p>
 <h2 id="ruff-documentation">ruff documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.1.1</strong></li>
+<li>Version in MegaLinter: <strong>0.1.2</strong></li>
 <li>Visit <a href="https://github.com/charliermarsh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://beta.ruff.rs/docs/configuration/" target="_blank">How to configure ruff rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -3414,12 +3414,14 @@
 Usage: ruff [OPTIONS] &lt;COMMAND&gt;
 
 Commands:
-  check   Run Ruff on the given files or directories (default)
-  rule    Explain a rule (or all rules)
-  config  List or describe the available configuration options
-  linter  List all supported upstream linters
-  clean   Clear any caches in the current directory and any subdirectories
-  help    Print this message or the help of the given subcommand(s)
+  check    Run Ruff on the given files or directories (default)
+  rule     Explain a rule (or all rules)
+  config   List or describe the available configuration options
+  linter   List all supported upstream linters
+  clean    Clear any caches in the current directory and any subdirectories
+  format   Run the Ruff formatter on the given files or directories
+  version  Display Ruff's version
+  help     Print this message or the help of the given subcommand(s)
 
 Options:
   -h, --help     Print help
