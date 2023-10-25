@@ -3141,7 +3141,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions",
+        "  download    Download framework,artifacts,attack-tracks,controls-inputs,exceptions,control",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -10199,7 +10199,7 @@
         "   --help, -h                                       Show help",
         "   --version, -v                                    Show terragrunt version",
         "",
-        "VERSION: v0.52.4",
+        "VERSION: v0.52.5",
         "",
         "AUTHOR: Gruntwork <www.gruntwork.io>"
     ],
@@ -10617,9 +10617,9 @@
         "",
         "Commands:",
         "",
-        " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
         " sync             Download and install external configuration sources.",
+        " ls-config        Print the current configuration to stdout.",
         ""
     ],
     "xmllint": [
