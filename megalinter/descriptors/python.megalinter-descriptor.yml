@@ -342,13 +342,13 @@ linters:
     name: PYTHON_RUFF
     linter_text: |
       An extremely fast Python linter, written in Rust.
-    linter_url: https://github.com/charliermarsh/ruff
-    linter_repo: https://github.com/charliermarsh/ruff
+    linter_url: https://github.com/astral-sh/ruff
+    linter_repo: https://github.com/astral-sh/ruff
     linter_spdx_license: MIT
     linter_speed: 5
-    linter_rules_url: https://beta.ruff.rs/docs/rules/
-    linter_rules_configuration_url: https://beta.ruff.rs/docs/configuration/
-    linter_rules_inline_disable_url: https://beta.ruff.rs/docs/configuration/#error-suppression
+    linter_rules_url: https://docs.astral.sh/ruff/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
