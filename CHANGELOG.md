@@ -135,6 +135,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 2.0.0 to **2.1.0** on 2023-10-24
   - [black](https://black.readthedocs.io/en/stable/) from 23.10.0 to **23.10.1** on 2023-10-24
   - [checkov](https://www.checkov.io/) from 2.5.18 to **2.5.19** on 2023-10-24
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.415 to **6.0.416** on 2023-10-25
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.1.1 to **0.1.2** on 2023-10-25
+  - [checkov](https://www.checkov.io/) from 2.5.19 to **3.0.4** on 2023-10-25
+  - [semgrep](https://semgrep.dev/) from 1.45.0 to **1.46.0** on 2023-10-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.1 to **3.60.2** on 2023-10-25
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
