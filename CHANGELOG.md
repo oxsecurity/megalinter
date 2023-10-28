@@ -142,6 +142,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.1 to **3.60.2** on 2023-10-25
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.2 to **3.60.3** on 2023-10-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.4 to **0.52.5** on 2023-10-25
+  - [golangci-lint](https://golangci-lint.run/) from 1.55.0 to **1.55.1** on 2023-10-28
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.8 to **7.3.9** on 2023-10-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.8 to **7.3.9** on 2023-10-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.332 to **1.1.333** on 2023-10-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.2 to **0.1.3** on 2023-10-28
+  - [checkov](https://www.checkov.io/) from 3.0.4 to **3.0.12** on 2023-10-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.3 to **3.61.0** on 2023-10-28
+  - [rubocop](https://rubocop.org/) from 1.57.1 to **1.57.2** on 2023-10-28
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.4 to **2.3.5** on 2023-10-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.5 to **0.52.7** on 2023-10-28
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
