@@ -152,6 +152,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.57.1 to **1.57.2** on 2023-10-28
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.4 to **2.3.5** on 2023-10-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.5 to **0.52.7** on 2023-10-28
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.46.0 to **0.46.1** on 2023-10-28
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.0 to **0.46.1** on 2023-10-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.7 to **0.53.0** on 2023-10-28
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
