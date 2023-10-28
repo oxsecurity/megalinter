@@ -3619,46 +3619,35 @@ Messages control:
                         Warning level messages displayed, use "--disable=all
                         --enable=classes --disable=W".
 
-Variables:
-  BaseChecker for variables.
+Similarities:
+  Checks for similarities and duplicated code.
 
-  --init-import &lt;y or n&gt;
-                        Tells whether we should check for unused import in
-                        __init__ files. (default: False)
-  --dummy-variables-rgx &lt;regexp&gt;
-                        A regular expression matching the name of dummy
-                        variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
-                        9]+?$)|dummy|^ignored_|^unused_)
-  --additional-builtins &lt;comma separated list&gt;
-                        List of additional names supposed to be defined in
-                        builtins. Remember that you should avoid defining new
-                        builtins when possible. (default: ())
-  --callbacks &lt;callbacks&gt;
-                        List of strings which can identify a callback function
-                        by name. A callback name must start or end with one of
-                        those strings. (default: ('cb_', '_cb'))
-  --redefining-builtins-modules &lt;comma separated list&gt;
-                        List of qualified module names which can have objects
-                        that can redefine builtins. (default: ('six.moves',
-                        'past.builtins', 'future.builtins', 'builtins', 'io'))
-  --ignored-argument-names &lt;regexp&gt;
-                        Argument names that match this expression will be
-                        ignored. (default:
-                        re.compile('_.*|^ignored_|^unused_'))
-  --allow-global-unused-variables &lt;y or n&gt;
-                        Tells whether unused global variables should be
-                        treated as a violation. (default: True)
-  --allowed-redefined-builtins &lt;comma separated list&gt;
-                        List of names allowed to shadow builtins (default: ())
+  --min-similarity-lines &lt;int&gt;
+                        Minimum lines number of a similarity. (default: 4)
+  --ignore-comments &lt;y or n&gt;
+                        Comments are removed from the similarity computation
+                        (default: True)
+  --ignore-docstrings &lt;y or n&gt;
+                        Docstrings are removed from the similarity computation
+                        (default: True)
+  --ignore-imports &lt;y or n&gt;
+                        Imports are removed from the similarity computation
+                        (default: True)
+  --ignore-signatures &lt;y or n&gt;
+                        Signatures are removed from the similarity computation
+                        (default: True)
 
-Exceptions:
-  Exception related checks.
+Logging:
+  Checks use of the logging module.
 
-  --overgeneral-exceptions &lt;comma-separated class names&gt;
-                        Exceptions that will emit a warning when caught.
-                        (default: ('builtins.BaseException',
-                        'builtins.Exception'))
+  --logging-modules &lt;comma separated list&gt;
+                        Logging modules to check that the string format
+                        arguments are in logging function parameter format.
+                        (default: ('logging',))
+  --logging-format-style &lt;old (%) or new ({)&gt;
+                        The type of string formatting that logging methods do.
+                        `old` means using % formatting, `new` is for `{}`
+                        formatting. (default: old)
 
 Basic:
   --good-names &lt;names&gt;  Good variable names which should always be accepted,
@@ -3825,24 +3814,6 @@ Design:
                         ignore when counting public methods (see R0903)
                         (default: [])
 
-Similarities:
-  Checks for similarities and duplicated code.
-
-  --min-similarity-lines &lt;int&gt;
-                        Minimum lines number of a similarity. (default: 4)
-  --ignore-comments &lt;y or n&gt;
-                        Comments are removed from the similarity computation
-                        (default: True)
-  --ignore-docstrings &lt;y or n&gt;
-                        Docstrings are removed from the similarity computation
-                        (default: True)
-  --ignore-imports &lt;y or n&gt;
-                        Imports are removed from the similarity computation
-                        (default: True)
-  --ignore-signatures &lt;y or n&gt;
-                        Signatures are removed from the similarity computation
-                        (default: True)
-
 Method_args:
   BaseChecker for method_args.
 
@@ -3855,17 +3826,72 @@ Method_args:
                         'requests.api.patch', 'requests.api.post',
                         'requests.api.put', 'requests.api.request'))
 
-Logging:
-  Checks use of the logging module.
+Variables:
+  BaseChecker for variables.
 
-  --logging-modules &lt;comma separated list&gt;
-                        Logging modules to check that the string format
-                        arguments are in logging function parameter format.
-                        (default: ('logging',))
-  --logging-format-style &lt;old (%) or new ({)&gt;
-                        The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
-                        formatting. (default: old)
+  --init-import &lt;y or n&gt;
+                        Tells whether we should check for unused import in
+                        __init__ files. (default: False)
+  --dummy-variables-rgx &lt;regexp&gt;
+                        A regular expression matching the name of dummy
+                        variables (i.e. expected to not be used). (default: _+
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
+                        9]+?$)|dummy|^ignored_|^unused_)
+  --additional-builtins &lt;comma separated list&gt;
+                        List of additional names supposed to be defined in
+                        builtins. Remember that you should avoid defining new
+                        builtins when possible. (default: ())
+  --callbacks &lt;callbacks&gt;
+                        List of strings which can identify a callback function
+                        by name. A callback name must start or end with one of
+                        those strings. (default: ('cb_', '_cb'))
+  --redefining-builtins-modules &lt;comma separated list&gt;
+                        List of qualified module names which can have objects
+                        that can redefine builtins. (default: ('six.moves',
+                        'past.builtins', 'future.builtins', 'builtins', 'io'))
+  --ignored-argument-names &lt;regexp&gt;
+                        Argument names that match this expression will be
+                        ignored. (default:
+                        re.compile('_.*|^ignored_|^unused_'))
+  --allow-global-unused-variables &lt;y or n&gt;
+                        Tells whether unused global variables should be
+                        treated as a violation. (default: True)
+  --allowed-redefined-builtins &lt;comma separated list&gt;
+                        List of names allowed to shadow builtins (default: ())
+
+Exceptions:
+  Exception related checks.
+
+  --overgeneral-exceptions &lt;comma-separated class names&gt;
+                        Exceptions that will emit a warning when caught.
+                        (default: ('builtins.BaseException',
+                        'builtins.Exception'))
+
+Spelling:
+  Check spelling in comments and docstrings.
+
+  --spelling-dict &lt;dict name&gt;
+                        Spelling dictionary name. No available dictionaries :
+                        You need to install both the python package and the
+                        system dependency for enchant to work. (default: )
+  --spelling-ignore-words &lt;comma separated words&gt;
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file &lt;path to file&gt;
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words &lt;y or n&gt;
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives &lt;comma separated words&gt;
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
 
 Format:
   Formatting checker.
@@ -3908,28 +3934,6 @@ String:
                         generates a warning when the character used as a quote
                         delimiter is used inconsistently within a module.
                         (default: False)
-
-Classes:
-  Checker for class nodes.
-
-  --defining-attr-methods &lt;method names&gt;
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', 'asyncSetUp', '__post_init__'))
-  --valid-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('mcs',))
-  --exclude-protected &lt;protected access exclusions&gt;
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make',
-                        'os._exit'))
-  --check-protected-access-in-special-methods &lt;y or n&gt;
-                        Warn about protected attribute access inside special
-                        methods (default: False)
 
 Typecheck:
   Try to find bugs in the code using type inference.
@@ -4016,32 +4020,6 @@ Miscellaneous:
   --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in
                         consideration. (default: )
 
-Spelling:
-  Check spelling in comments and docstrings.
-
-  --spelling-dict &lt;dict name&gt;
-                        Spelling dictionary name. No available dictionaries :
-                        You need to install both the python package and the
-                        system dependency for enchant to work. (default: )
-  --spelling-ignore-words &lt;comma separated words&gt;
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file &lt;path to file&gt;
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words &lt;y or n&gt;
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives &lt;comma separated words&gt;
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
-
 Imports:
   BaseChecker for import statements.
 
@@ -4079,6 +4057,28 @@ Imports:
   --allow-reexport-from-package &lt;y or n&gt;
                         Allow explicit reexports by alias from a package
                         __init__. (default: False)
+
+Classes:
+  Checker for class nodes.
+
+  --defining-attr-methods &lt;method names&gt;
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', 'asyncSetUp', '__post_init__'))
+  --valid-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('mcs',))
+  --exclude-protected &lt;protected access exclusions&gt;
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make',
+                        'os._exit'))
+  --check-protected-access-in-special-methods &lt;y or n&gt;
+                        Warn about protected attribute access inside special
+                        methods (default: False)
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
