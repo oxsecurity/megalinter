@@ -31,6 +31,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add the other maintainers globally to the CODEOWNERS file ([#3008](https://github.com/oxsecurity/megalinter/pull/3008))
   - Free disk space earlier in the process to avoid failure during docker build
   - Set flavors-stats.json as a generated file in .gitattributes ([#3023](https://github.com/oxsecurity/megalinter/pull/3023))
+  - Update and fix our ChatOps automations to only run on pull request comments, by @echoix in [#3034](https://github.com/oxsecurity/megalinter/pull/3034)
+  - Use App::cpm to install perlcritic faster, and clean `.perl-cpm` cache, by @echoix in [#3036](https://github.com/oxsecurity/megalinter/pull/3036)
+  - Add failure message in ChatOps build-command and Slash dispatcher, by @echoix in [#3037](https://github.com/oxsecurity/megalinter/pull/3037)
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.80.2 to **0.80.3** on 2023-09-24
@@ -126,6 +129,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.93.0 to **0.94.0** on 2023-10-20
   - [eslint](https://eslint.org) from 8.51.0 to **8.52.0** on 2023-10-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.3 to **0.52.4** on 2023-10-21
+  - [pylint](https://pylint.pycqa.org) from 3.0.1 to **3.0.2** on 2023-10-22
+  - [checkov](https://www.checkov.io/) from 2.5.15 to **2.5.18** on 2023-10-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.82.2 to **0.83.0** on 2023-10-24
+  - [v8r](https://github.com/chris48s/v8r) from 2.0.0 to **2.1.0** on 2023-10-24
+  - [black](https://black.readthedocs.io/en/stable/) from 23.10.0 to **23.10.1** on 2023-10-24
+  - [checkov](https://www.checkov.io/) from 2.5.18 to **2.5.19** on 2023-10-24
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.415 to **6.0.416** on 2023-10-25
+  - [ruff](https://github.com/charliermarsh/ruff) from 0.1.1 to **0.1.2** on 2023-10-25
+  - [checkov](https://www.checkov.io/) from 2.5.19 to **3.0.4** on 2023-10-25
+  - [semgrep](https://semgrep.dev/) from 1.45.0 to **1.46.0** on 2023-10-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.1 to **3.60.2** on 2023-10-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.60.2 to **3.60.3** on 2023-10-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.52.4 to **0.52.5** on 2023-10-25
 <!-- linter-versions-end -->
 
 ## [v7.4.0] - 2023-09-22
