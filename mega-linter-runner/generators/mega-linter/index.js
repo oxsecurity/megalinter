@@ -1,5 +1,5 @@
-import { Generator } from "yeoman-generator";
 import { asciiArt } from "../../lib/ascii.js";
+import * as Generator from 'yeoman-generator';
 import { OXSecuritySetup } from "../../lib/ox-setup.js";
 import { DEFAULT_RELEASE } from "../../lib/config.js";
 
