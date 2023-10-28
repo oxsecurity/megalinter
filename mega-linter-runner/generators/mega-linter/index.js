@@ -1,9 +1,9 @@
 import { asciiArt } from "../../lib/ascii.js";
-import * as Generator from 'yeoman-generator';
+import Generator from 'yeoman-generator';
 import { OXSecuritySetup } from "../../lib/ox-setup.js";
 import { DEFAULT_RELEASE } from "../../lib/config.js";
 
-module.exports = class extends Generator {
+export default class GeneratorMegaLinter extends Generator {
   prompting() {
     console.log(asciiArt());
     this.log(
@@ -340,4 +340,4 @@ When you don't know what option to select, please use default values`
       );
     }
   }
-};
+}

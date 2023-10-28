@@ -9,7 +9,7 @@ import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
-import { default as yeoman } from "yeoman-environment";
+import { createEnv} from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
@@ -44,7 +44,7 @@ export class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
-      const env = yeoman.createEnv();
+      const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
