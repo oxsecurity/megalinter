@@ -67,7 +67,7 @@
     "powershell_formatter": "7.3.9",
     "prettier": "3.0.3",
     "proselint": "0.13.0",
-    "protolint": "0.46.2",
+    "protolint": "0.46.3",
     "psalm": "Psalm.5.15.0@",
     "puppet-lint": "4.2.1",
     "pylint": "3.0.2",
