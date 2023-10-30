@@ -13,6 +13,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.0.12 to **3.0.13** on 2023-10-30
 <!-- linter-versions-end -->
 
+- Fixes
+  - Fix actionlint error in GitHub Action workflows
+
 ## [v7.5.0] - 2023-10-29
 
 - Core

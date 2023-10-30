@@ -225,7 +225,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
@@ -236,7 +236,7 @@ jobs:
             linter-versions.json
 
       - name: debug
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         run: echo ${{ steps.docker_build.outcome }}
 
       # Clean disk space
