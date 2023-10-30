@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
+  - [checkov](https://www.checkov.io/) from 3.0.12 to **3.0.13** on 2023-10-30
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
