@@ -11,6 +11,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
   - [checkov](https://www.checkov.io/) from 3.0.12 to **3.0.13** on 2023-10-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.0 to **0.83.1** on 2023-10-31
+  - [phpstan](https://phpstan.org/) from 1.10.39 to **1.10.40** on 2023-10-31
+  - [checkov](https://www.checkov.io/) from 3.0.13 to **3.0.14** on 2023-10-31
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.61.0 to **3.62.0** on 2023-10-31
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
