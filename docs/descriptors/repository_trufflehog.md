@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.61.0**
+- Version in MegaLinter: **3.62.0**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -164,6 +164,9 @@ Commands:
 
   docker --image=IMAGE
     Scan Docker Image
+
+  travisci --token=TOKEN
+    Scan TravisCI
 
 
 ```
