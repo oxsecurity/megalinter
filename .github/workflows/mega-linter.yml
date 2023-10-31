@@ -21,7 +21,6 @@ name: MegaLinter
 # efficiency.
 #
 on:
-  
   ##
   # To only have MegaLinter run on Pull Requests, comment out the following line.
   # It is not recommended to use `push` linting on all pushes (the default,
@@ -127,7 +126,7 @@ jobs:
     # permissions enabled to `write` for MegaLinter to function.
     #
     # Always aim to provide as few permissions as possible for personal access
-    # tokens. By default, all permissions are set to read only. Write
+    # tokens. By default, all permissions are set to read-only. Write
     # permissions must be set for the following scopes in the described
     # circumstances:
     #
@@ -172,7 +171,12 @@ jobs:
           #
           fetch-depth: 0
 
-      # MegaLinter
+      ##
+      # Run MegaLinter.
+      #
+      # More info at:
+      # https://github.com/oxsecurity/megalinter
+      #
       - name: MegaLinter
         id: ml
 
@@ -200,7 +204,6 @@ jobs:
         # https://megalinter.io/latest/config-file/
         #
         env:
-          
           ##
           # By default, this validates full codebase whenever a push to the
           # default branch occurs. Otherwise, only the `git diff` files will

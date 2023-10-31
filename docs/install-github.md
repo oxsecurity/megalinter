@@ -154,7 +154,7 @@ jobs:
     # permissions enabled to `write` for MegaLinter to function.
     #
     # Always aim to provide as few permissions as possible for personal access
-    # tokens. By default, all permissions are set to read only. Write
+    # tokens. By default, all permissions are set to read-only. Write
     # permissions must be set for the following scopes in the described
     # circumstances:
     #
@@ -173,7 +173,6 @@ jobs:
       pull-requests: write
 
     steps:
-      
       ##
       # Clone the Repository for linting.
       #

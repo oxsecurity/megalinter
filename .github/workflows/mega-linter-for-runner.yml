@@ -21,11 +21,10 @@ name: MegaLinter
 # efficiency.
 #
 on:
-  
   ##
   # To only have MegaLinter run on Pull Requests, comment out the following line.
   # It is not recommended to use `push` linting on all pushes (the default,
-  # here)if you do not pay for GitHub Actions.
+  # here) if you do not pay for GitHub Actions.
   #
   # Some projects also prefer to limit push linting to specific branches, such
   # as when a `production` branch is updated. This can be done by adding a
@@ -56,7 +55,6 @@ on:
 # efficiency.
 #
 env:
-  
   ##
   # Automatically applies formatting fixes during linting for linters that
   # support fixes. This is set to `all` to apply fixes from all linters, or can
@@ -81,7 +79,6 @@ env:
   #   - `push`         - whenever a push occurs to a branch
   #
   APPLY_FIXES_EVENT: pull_request
-  
   ##
   # Only applies if `APPLY_FIXES` is enabled.
   #
@@ -128,7 +125,7 @@ jobs:
     # permissions enabled to `write` for MegaLinter to function.
     #
     # Always aim to provide as few permissions as possible for personal access
-    # tokens. By default, all permissions are set to read only. Write
+    # tokens. By default, all permissions are set to read-only. Write
     # permissions must be set for the following scopes in the described
     # circumstances:
     #
@@ -183,9 +180,10 @@ jobs:
         id: ml
 
         ##
-        # The full MegaLinter project can be over 8GB in size! This is due to it including every linter available for
-        # the full MegaLinter project. It is highly recommended to select a more refined "flavor" that better-matches
-        # your project by changing the image used here.
+        # The full MegaLinter project can be over 8GB in size! This is due to it
+        # including every linter available for the full MegaLinter project. It
+        # is highly recommended to select a more refined "flavor" that better
+        # matches your project by changing the image used here.
         #
         # For example, a Python project may elect to use:
         #
@@ -252,8 +250,8 @@ jobs:
       # https://megalinter.io/latest/reporters/
       #
       - name: Archive production artifacts
-        if: success() || failure()
         uses: actions/upload-artifact@v3
+        if: success() || failure()
         with:
           name: MegaLinter reports
           path: |

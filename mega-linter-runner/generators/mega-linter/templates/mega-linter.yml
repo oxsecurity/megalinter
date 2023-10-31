@@ -176,7 +176,7 @@ jobs:
         ##
         # The full MegaLinter project can be over 8GB in size! This is due to it
         # including every linter available for the full MegaLinter project. It
-        # is highly recommended to select a more refined "flavor" that better-
+        # is highly recommended to select a more refined "flavor" that better
         # matches your project by changing the image used here.
         #
         # For example, a Python project may elect to use:

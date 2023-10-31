@@ -662,9 +662,6 @@ jobs:
           # below this line.
           #
 
-          # Uncomment to disable copy-paste and spell checks
-          # DISABLE: COPYPASTE,SPELL
-
       ##
       # Upload MegaLinter artifacts.
       #
