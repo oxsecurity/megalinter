@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.39 to **1.10.40** on 2023-10-31
   - [checkov](https://www.checkov.io/) from 3.0.13 to **3.0.14** on 2023-10-31
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.61.0 to **3.62.0** on 2023-10-31
+  - [checkov](https://www.checkov.io/) from 3.0.14 to **3.0.15** on 2023-11-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.62.0 to **3.62.1** on 2023-11-01
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29

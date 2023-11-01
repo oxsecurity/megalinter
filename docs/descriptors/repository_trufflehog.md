@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.62.0**
+- Version in MegaLinter: **3.62.1**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -92,30 +92,32 @@ usage: TruffleHog [<flags>] <command> [<args> ...]
 
 TruffleHog is a tool for finding credentials.
 
+
 Flags:
-  -h, --help                     Show context-sensitive help (also try
+  -h, --[no-]help                Show context-sensitive help (also try
                                  --help-long and --help-man).
-      --debug                    Run in debug mode.
-      --trace                    Run in trace mode.
-      --profile                  Enables profiling and sets a pprof and fgprof
+      --[no-]debug               Run in debug mode.
+      --[no-]trace               Run in trace mode.
+      --[no-]profile             Enables profiling and sets a pprof and fgprof
                                  server on :18066.
-  -j, --json                     Output in JSON format.
-      --json-legacy              Use the pre-v3.0 JSON format. Only works with
+  -j, --[no-]json                Output in JSON format.
+      --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
-      --github-actions           Output in GitHub Actions format.
+      --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=2            Number of concurrent workers.
-      --no-verification          Don't verify the results.
-      --only-verified            Only output verified results.
-      --filter-unverified        Only output first unverified result per
+      --[no-]no-verification     Don't verify the results.
+      --[no-]only-verified       Only output verified results.
+      --[no-]filter-unverified   Only output first unverified result per
                                  chunk per detector if there are more than one
                                  results.
       --filter-entropy=FILTER-ENTROPY
                                  Filter unverified results with Shannon entropy.
                                  Start with 3.0.
       --config=CONFIG            Path to configuration file.
-      --print-avg-detector-time  Print the average time spent on each detector.
-      --no-update                Don't check for updates.
-      --fail                     Exit with code 183 if results are found.
+      --[no-]print-avg-detector-time
+                                 Print the average time spent on each detector.
+      --[no-]no-update           Don't check for updates.
+      --[no-]fail                Exit with code 183 if results are found.
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --archive-max-size=ARCHIVE-MAX-SIZE
                                  Maximum size of archive to scan. (Byte units
@@ -132,40 +134,40 @@ Flags:
                                  exclude. Protobuf name or IDs may be used,
                                  as well as ranges. IDs defined here take
                                  precedence over the include list.
-      --version                  Show application version.
+      --[no-]version             Show application version.
 
 Commands:
-  help [<command>...]
+help [<command>...]
     Show help.
 
-  git [<flags>] <uri>
+git [<flags>] <uri>
     Find credentials in git repositories.
 
-  github [<flags>]
+github [<flags>]
     Find credentials in GitHub repositories.
 
-  gitlab --token=TOKEN [<flags>]
+gitlab --token=TOKEN [<flags>]
     Find credentials in GitLab repositories.
 
-  filesystem [<flags>] [<path>...]
+filesystem [<flags>] [<path>...]
     Find credentials in a filesystem.
 
-  s3 [<flags>]
+s3 [<flags>]
     Find credentials in S3 buckets.
 
-  gcs [<flags>]
+gcs [<flags>]
     Find credentials in GCS buckets.
 
-  syslog [<flags>]
+syslog [<flags>]
     Scan syslog
 
-  circleci --token=TOKEN
+circleci --token=TOKEN
     Scan CircleCI
 
-  docker --image=IMAGE
+docker --image=IMAGE
     Scan Docker Image
 
-  travisci --token=TOKEN
+travisci --token=TOKEN
     Scan TravisCI
 
 
