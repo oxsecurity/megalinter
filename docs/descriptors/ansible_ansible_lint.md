@@ -36,7 +36,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | ANSIBLE_ANSIBLE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['ansible-lint']`                              |
-| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                           | `ansible`                                       |
+| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files (use `any` to always activate the linter)                                                                                                                 | `ansible`                                       |
 
 ## MegaLinter Flavours
 

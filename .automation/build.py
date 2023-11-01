@@ -1618,7 +1618,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         if linter.files_sub_directory is not None:
             linter_doc_md += [
-                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
+                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files"
+                " (use `any` to always activate the linter)"
                 f"| `{linter.files_sub_directory}` |"
             ]
             add_in_config_schema_file(
@@ -1628,6 +1629,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
+                            "description": (
+                                'Directory that must be found to activate linter. Use value "any" to always activate'
+                            ),
                             "title": f"{title_prefix}{linter.name}: Directory containing {linter.descriptor_id} files",
                             "default": linter.files_sub_directory,
                         },

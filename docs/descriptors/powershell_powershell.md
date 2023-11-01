@@ -40,7 +40,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 | POWERSHELL_POWERSHELL_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules                     |
 | POWERSHELL_POWERSHELL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                                             |
 | POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                                 |
-| POWERSHELL_POWERSHELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['pwsh']`                                                          |
+| POWERSHELL_POWERSHELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['powershell']`                                                    |
 
 ## IDE Integration
 

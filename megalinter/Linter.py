@@ -328,13 +328,17 @@ class Linter:
                     f"{self.descriptor_id}_DIRECTORY",
                     self.files_sub_directory,
                 )
-                if not os.path.isdir(
+                if self.files_sub_directory == "any":
+                    logging.info(
+                        f'[Activation] {self.name} skip check of directory as value set to "any"'
+                    )
+                elif not os.path.isdir(
                     self.workspace + os.path.sep + self.files_sub_directory
                 ):
                     self.is_active = False
-                    logging.debug(
+                    logging.info(
                         f"[Activation] {self.name} has been set inactive, as subdirectory has not been found:"
-                        f" {self.files_sub_directory}"
+                        f' {self.files_sub_directory} (set value "any" to always activate)'
                     )
 
             # Some linters require a file to be existing, else they're deactivated ( ex: .editorconfig )
