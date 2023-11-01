@@ -1630,7 +1630,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
                             "description": (
-                                f'Directory that must be found to activate linter. Use value "any" to always activate'
+                                'Directory that must be found to activate linter. Use value "any" to always activate'
                             ),
                             "title": f"{title_prefix}{linter.name}: Directory containing {linter.descriptor_id} files",
                             "default": linter.files_sub_directory,
