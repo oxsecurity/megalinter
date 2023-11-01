@@ -45,7 +45,7 @@ See more details in [Help](#help-content)
 | SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                          | `false`                                         |
 | SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                    | `0`                                             |
 | SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE              | Override CLI executable                                                                                             | `['sfdx']`                                      |
-| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                                               | `force-app`                                     |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files (use `any` to always activate the linter)                                     | `force-app`                                     |
 
 ## IDE Integration
 

@@ -39,7 +39,7 @@ Static checker for GitHub Actions workflow files
 | ACTION_ACTIONLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | ACTION_ACTIONLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | ACTION_ACTIONLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['actionlint']`                                |
-| ACTION_DIRECTORY                              | Directory containing ACTION files                                                                                                                                                                                   | `.github/workflows`                             |
+| ACTION_DIRECTORY                              | Directory containing ACTION files (use `any` to always activate the linter)                                                                                                                                         | `.github/workflows`                             |
 
 ## MegaLinter Flavours
 

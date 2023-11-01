@@ -42,7 +42,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 | KUBERNETES_KUBECONFORM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                      |
 | KUBERNETES_KUBECONFORM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                          |
 | KUBERNETES_KUBECONFORM_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['kubeconform']`            |
-| KUBERNETES_DIRECTORY                               | Directory containing KUBERNETES files                                                                                                                                                                               | `kubernetes`                 |
+| KUBERNETES_DIRECTORY                               | Directory containing KUBERNETES files (use `any` to always activate the linter)                                                                                                                                     | `kubernetes`                 |
 
 ## MegaLinter Flavours
 
