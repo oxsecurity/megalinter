@@ -3220,7 +3220,7 @@
 <p><a href="https://github.com/trufflesecurity/trufflehog"><img alt="GitHub stars" src="https://img.shields.io/github/stars/trufflesecurity/trufflehog?cacheSeconds=3600"/></a> <a href="https://github.com/trufflesecurity/trufflehog/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/trufflesecurity/trufflehog?sort=semver"/></a> <a href="https://github.com/trufflesecurity/trufflehog/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/trufflesecurity/trufflehog"/></a></p>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.62.0</strong></li>
+<li>Version in MegaLinter: <strong>3.62.1</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -3446,30 +3446,32 @@
 
 TruffleHog is a tool for finding credentials.
 
+
 Flags:
-  -h, --help                     Show context-sensitive help (also try
+  -h, --[no-]help                Show context-sensitive help (also try
                                  --help-long and --help-man).
-      --debug                    Run in debug mode.
-      --trace                    Run in trace mode.
-      --profile                  Enables profiling and sets a pprof and fgprof
+      --[no-]debug               Run in debug mode.
+      --[no-]trace               Run in trace mode.
+      --[no-]profile             Enables profiling and sets a pprof and fgprof
                                  server on :18066.
-  -j, --json                     Output in JSON format.
-      --json-legacy              Use the pre-v3.0 JSON format. Only works with
+  -j, --[no-]json                Output in JSON format.
+      --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
-      --github-actions           Output in GitHub Actions format.
+      --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=2            Number of concurrent workers.
-      --no-verification          Don't verify the results.
-      --only-verified            Only output verified results.
-      --filter-unverified        Only output first unverified result per
+      --[no-]no-verification     Don't verify the results.
+      --[no-]only-verified       Only output verified results.
+      --[no-]filter-unverified   Only output first unverified result per
                                  chunk per detector if there are more than one
                                  results.
       --filter-entropy=FILTER-ENTROPY
                                  Filter unverified results with Shannon entropy.
                                  Start with 3.0.
       --config=CONFIG            Path to configuration file.
-      --print-avg-detector-time  Print the average time spent on each detector.
-      --no-update                Don't check for updates.
-      --fail                     Exit with code 183 if results are found.
+      --[no-]print-avg-detector-time
+                                 Print the average time spent on each detector.
+      --[no-]no-update           Don't check for updates.
+      --[no-]fail                Exit with code 183 if results are found.
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --archive-max-size=ARCHIVE-MAX-SIZE
                                  Maximum size of archive to scan. (Byte units
@@ -3486,40 +3488,40 @@ Flags:
                                  exclude. Protobuf name or IDs may be used,
                                  as well as ranges. IDs defined here take
                                  precedence over the include list.
-      --version                  Show application version.
+      --[no-]version             Show application version.
 
 Commands:
-  help [&lt;command&gt;...]
+help [&lt;command&gt;...]
     Show help.
 
-  git [&lt;flags&gt;] &lt;uri&gt;
+git [&lt;flags&gt;] &lt;uri&gt;
     Find credentials in git repositories.
 
-  github [&lt;flags&gt;]
+github [&lt;flags&gt;]
     Find credentials in GitHub repositories.
 
-  gitlab --token=TOKEN [&lt;flags&gt;]
+gitlab --token=TOKEN [&lt;flags&gt;]
     Find credentials in GitLab repositories.
 
-  filesystem [&lt;flags&gt;] [&lt;path&gt;...]
+filesystem [&lt;flags&gt;] [&lt;path&gt;...]
     Find credentials in a filesystem.
 
-  s3 [&lt;flags&gt;]
+s3 [&lt;flags&gt;]
     Find credentials in S3 buckets.
 
-  gcs [&lt;flags&gt;]
+gcs [&lt;flags&gt;]
     Find credentials in GCS buckets.
 
-  syslog [&lt;flags&gt;]
+syslog [&lt;flags&gt;]
     Scan syslog
 
-  circleci --token=TOKEN
+circleci --token=TOKEN
     Scan CircleCI
 
-  docker --image=IMAGE
+docker --image=IMAGE
     Scan Docker Image
 
-  travisci --token=TOKEN
+travisci --token=TOKEN
     Scan TravisCI
 
 
