@@ -7,9 +7,11 @@ on:
       - main
       - auto-update
       - fixes/docgen
-  # Automatically run every day at midnight
+  # Automatically run every day at 22:00 UTC
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 22 * * *"
+  # Allow to manually trigger a run of the workflow
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
