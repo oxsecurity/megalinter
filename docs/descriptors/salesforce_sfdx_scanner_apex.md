@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.17.0**
+- Version in MegaLinter: **3.18.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -96,76 +96,14 @@ sfdx scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run -t <array> [-c <array>] [-f
-    csv|html|json|junit|sarif|table|xml] [-o <string>] [-s <integer> | --json]
-    [--normalize-severity] [-p <array>] [-r <array>] [-e <array>] [--tsconfig
-    <string>] [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>]
-    [--verbose-violations] [--verbose] [--loglevel
-    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
-
-FLAGS
-  -c, --category=<value>
-      one or more categories of rules to run
-
-  -e, --engine=<value>
-      specify which engines to run
-
-  -f, --format=(csv|html|json|junit|sarif|table|xml)
-      specify results output format
-
-  -o, --outfile=<value>
-      write output to a file
-
-  -p, --projectdir=<value>
-      provide root directory of project
-
-  -r, --ruleset=<value>
-      [deprecated] rulesets to run
-
-  -s, --severity-threshold=<value>
-      throw an error when a violation threshold is reached, the
-      --normalize-severity is invoked, and severity levels are reset to the
-      baseline
-
-  -t, --target=<value>
-      (required) source code location
-
-  --env=<value>
-      [deprecated] override ESLint's default environment variables, in
-      JSON-formatted string
-
-  --eslintconfig=<value>
-      specify the location of eslintrc config to customize eslint engine
-
-  --json
-      format output as json
-
-  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
-  L)
-      [default: warn] logging level for this command invocation
-
-  --normalize-severity
-      return normalized severity 1 (high), 2 (moderate), and 3 (low), and the
-      engine-specific severity
-
-  --pmdconfig=<value>
-      specify location of PMD rule reference XML file to customize rule selection
-
-  --tsconfig=<value>
-      location of tsconfig.json file
-
-  --verbose
-      emit additional command output to stdout
-
-  --verbose-violations
-      return retire-js violation message details
+  $ sf scanner run
 
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.18.0) differs from the version
+ ›    specified by sf (3.17.0)
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1539) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
-(Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
  VfCsrf                                                 visualforce Security              Basic VF                                         pmd               N      N

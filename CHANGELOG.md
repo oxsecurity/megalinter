@@ -20,6 +20,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.0.14 to **3.0.15** on 2023-11-01
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.62.0 to **3.62.1** on 2023-11-01
   - [checkov](https://www.checkov.io/) from 3.0.15 to **3.0.16** on 2023-11-01
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.22.6 to **0.23.1** on 2023-11-03
+  - [golangci-lint](https://golangci-lint.run/) from 1.55.1 to **1.55.2** on 2023-11-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.333 to **1.1.334** on 2023-11-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.3 to **0.1.4** on 2023-11-03
+  - [checkov](https://www.checkov.io/) from 3.0.16 to **3.0.19** on 2023-11-03
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.2 to **1.6.3** on 2023-11-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.0 to **0.53.1** on 2023-11-03
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
