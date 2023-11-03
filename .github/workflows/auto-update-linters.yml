@@ -7,9 +7,9 @@ on:
       - main
       - auto-update
       - fixes/docgen
-  # Automatically run every day at 22:00 UTC
+  # Automatically run every day at 21:49 UTC, before a start of hour peak
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "49 21 * * *"
   # Allow to manually trigger a run of the workflow
   workflow_dispatch:
 
