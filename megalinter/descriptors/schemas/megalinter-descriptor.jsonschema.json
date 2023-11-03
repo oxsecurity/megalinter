@@ -43,6 +43,7 @@
         "all",
         "ci_light",
         "cupcake",
+        "c_cpp",
         "documentation",
         "dotnet",
         "dotnetweb",

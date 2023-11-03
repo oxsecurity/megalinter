@@ -10,6 +10,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Allow to use value `any` to always activate a linter who as a **_DIRECTORY** variable. Example: `KUBERNETES_DIRECTORY: any`
 
+- New flavor **c_cpp**: New flavor for pure C/C++ projects
+
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
   - [checkov](https://www.checkov.io/) from 3.0.12 to **3.0.13** on 2023-10-30

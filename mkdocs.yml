@@ -352,6 +352,7 @@ nav:
   - "Flavors":
       - "All flavors": "flavors.md"
       # flavors-start
+      - "c_cpp": "flavors/c_cpp.md"
       - "ci_light": "flavors/ci_light.md"
       - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
