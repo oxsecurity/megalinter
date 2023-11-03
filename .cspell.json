@@ -1442,6 +1442,7 @@
         "weakref",
         "webpreview",
         "weirdnesses",
+        "Werror",
         "wesh",
         "whitespaces",
         "windir",
