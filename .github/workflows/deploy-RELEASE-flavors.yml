@@ -45,6 +45,7 @@ jobs:
         # flavors-start
         flavor:
           [
+            "c_cpp",
             "ci_light",
             "cupcake",
             "documentation",
