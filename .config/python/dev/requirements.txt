@@ -12,6 +12,7 @@ jsonpickle
 jsonschema
 markdown
 mdx_truly_sane_lists
+mike
 mkdocs
 mkdocs-glightbox==0.3.2
 mkdocs-material
