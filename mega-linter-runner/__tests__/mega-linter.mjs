@@ -1,12 +1,11 @@
 import helpers, { RunResult, result } from "yeoman-test";
 import MyGenerator from "../generators/mega-linter/index.js";
 
-import { basename, dirname } from "path";
+import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const generator = basename(__dirname);
 
 import * as path from "path";
 
@@ -23,13 +22,7 @@ describe("generator test", () => {
           resolved: path.join(__dirname, "..", "generators", "mega-linter"),
           namespace: "mega-linter-runner:mega-linter",
         })
-        .withFiles(
-          path.join(__dirname, "..", "generators", "mega-linter", "templates"),
-          {
-            "mega-linter.yml": "foo: Bar",
-          }
-        )
-        .withAnswers({ flavor: "all", ox: false, validateAllCodeBase: "diff" });
+        .withAnswers({ flavor: "all", ox: false, ci: "gitHubActions" });
     });
 
     it("creates files", () => {
