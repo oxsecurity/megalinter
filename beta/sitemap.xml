@@ -1151,6 +1151,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/flavors/c_cpp/</loc>
+         <lastmod>2023-11-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/flavors/ci_light/</loc>
          <lastmod>2023-11-04</lastmod>
          <changefreq>daily</changefreq>
@@ -1172,6 +1177,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/dotnetweb/</loc>
+         <lastmod>2023-11-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/flavors/formatters/</loc>
          <lastmod>2023-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
