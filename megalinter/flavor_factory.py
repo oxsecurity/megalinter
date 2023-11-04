@@ -45,6 +45,7 @@ def list_megalinter_flavors():
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
         "cupcake": {"label": "MegaLinter for the most commonly used languages"},
+        "c_cpp": {"label": "Optimized for pure C/C++ projects"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
         "dotnetweb": {
