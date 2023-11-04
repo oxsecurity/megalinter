@@ -11,10 +11,10 @@
 <link href="../bicep/" rel="prev"/>
 <link href="../cloudformation/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.2.6" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.7" name="generator"/>
 <title>bicep_linter configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.0e669242.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.85d0ee34.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.4b4a2bd9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Satoshi, sans-serif";--md-code-font:"Roboto Mono"}</style>
@@ -2877,6 +2877,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../flavors/c_cpp.md">
+<span class="md-ellipsis">
+    c_cpp
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../flavors/ci_light/">
 <span class="md-ellipsis">
     ci_light
@@ -3227,7 +3234,7 @@
 use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.22.6</strong></li>
+<li>Version in MegaLinter: <strong>0.23.1</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -3320,18 +3327,18 @@ use a <code>bicepconfig.json</code> file. For more information, see the <a href=
 <table>
 <thead>
 <tr>
-<th align="center"><!-- --></th>
+<th style="text-align: center;"><!-- --></th>
 <th>IDE</th>
 <th>Extension Name</th>
-<th align="center">Install</th>
+<th style="text-align: center;">Install</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
 <td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
 <td><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep">VSCode Bicep</a></td>
-<td align="center"><a href="vscode:extension/ms-azuretools.vscode-bicep" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
+<td style="text-align: center;"><a href="vscode:extension/ms-azuretools.vscode-bicep" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -3340,34 +3347,34 @@ use a <code>bicepconfig.json</code> file. For more information, see the <a href=
 <table>
 <thead>
 <tr>
-<th align="center"><!-- --></th>
-<th align="left">Flavor</th>
-<th align="left">Description</th>
-<th align="center">Embedded linters</th>
-<th align="right">Info</th>
+<th style="text-align: center;"><!-- --></th>
+<th style="text-align: left;">Flavor</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: center;">Embedded linters</th>
+<th style="text-align: right;">Info</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
-<td align="left"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
-<td align="left">Default MegaLinter Flavor</td>
-<td align="center">117</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td style="text-align: left;">Default MegaLinter Flavor</td>
+<td style="text-align: center;">117</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
-<td align="left">Optimized for C, C++, C# or VB based projects</td>
-<td align="center">63</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
+<td style="text-align: left;">Optimized for C, C++, C# or VB based projects</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
 </tr>
 <tr>
-<td align="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
-<td align="left"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
-<td align="left">Optimized for C, C++, C# or VB based projects with JS/TS</td>
-<td align="center">72</td>
-<td align="right"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
+<td style="text-align: left;">Optimized for C, C++, C# or VB based projects with JS/TS</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
 </tr>
 </tbody>
 </table>
@@ -3391,7 +3398,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.22.6 (d62b94db31)
+<pre><code class="language-shell">Bicep CLI version 0.23.1 (b02de2da48)
 
 Usage:
   bicep build [options] &lt;file&gt;
@@ -3401,10 +3408,10 @@ Usage:
       &lt;file&gt;        The input file
 
     Options:
-      --outdir &lt;dir&gt;                Saves the output at the specified directory.
-      --outfile &lt;file&gt;              Saves the output as the specified file path.
-      --stdout                      Prints the output to stdout.
-      --no-restore                  Builds the bicep file without restoring external modules.
+      --outdir &lt;dir&gt;                 Saves the output at the specified directory.
+      --outfile &lt;file&gt;               Saves the output as the specified file path.
+      --stdout                       Prints the output to stdout.
+      --no-restore                   Builds the bicep file without restoring external modules.
       --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
@@ -3415,7 +3422,7 @@ Usage:
       bicep build file.bicep --no-restore
       bicep build file.bicep --diagnostics-format sarif
 
-    bicep format [options] &lt;file&gt;
+  bicep format [options] &lt;file&gt;
     Formats a .bicep file.
 
     Arguments:
@@ -3523,12 +3530,13 @@ Usage:
 
     Options:
       --documentationUri  Module documentation uri
+      --with-source       [Experimental] Publish source code with the module
       --force             Overwrite existing published module or file
 
     Examples:
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --force
-      bicep publish file.json --target br:example.azurecr.io/hello/world:v1
+      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md --with-source
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md
 
   bicep restore &lt;file&gt;
@@ -3551,16 +3559,18 @@ Usage:
       &lt;file&gt;        The input Bicepparam file
 
     Options:
-      --bicep-file &lt;file&gt; Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outfile &lt;file&gt;  Saves the param output json as the specified file path.
-      --stdout          Prints the param and bicep json output to stdout.
-      --no-restore      Builds the bicep file (referenced in using declaration) without restoring external modules.
+      --bicep-file &lt;file&gt;            Verifies if the specified bicep file path matches the one provided in the params file using declaration
+      --outfile &lt;file&gt;               Saves the param output json as the specified file path.
+      --stdout                       Prints the param and bicep json output to stdout.
+      --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
+      --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
+      bicep build-params params.bicepparam --diagnostics-format sarif
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -3587,7 +3597,7 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: All BICEP linters" class="md-footer__link md-footer__link--prev" href="../bicep/" rel="prev">
+<a aria-label="Previous: All BICEP linters" class="md-footer__link md-footer__link--prev" href="../bicep/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -3600,7 +3610,7 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
               </div>
 </div>
 </a>
-<a aria-label="Next: All CLOUDFORMATION linters" class="md-footer__link md-footer__link--next" href="../cloudformation/" rel="next">
+<a aria-label="Next: All CLOUDFORMATION linters" class="md-footer__link md-footer__link--next" href="../cloudformation/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
@@ -3645,8 +3655,8 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.78eede0e.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
