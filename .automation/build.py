@@ -590,8 +590,16 @@ def match_flavor(item, flavor, flavor_info):
         and flavor in item["descriptor_flavors_exclude"]
     ):
         return False
+    # Flavor all
     elif flavor == "all":
         return True
+    # Formatter flavor
+    elif flavor == "formatters":
+        if "is_formatter" in item and item["is_formatter"] is True:
+            return True
+        else:
+            return False
+    # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
