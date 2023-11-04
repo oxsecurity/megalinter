@@ -50,9 +50,7 @@ def list_megalinter_flavors():
         "dotnetweb": {
             "label": "Optimized for C, C++, C# or VB based projects with JS/TS"
         },
-        "formatters": {
-            "label": "Contains only formatters"
-        },
+        "formatters": {"label": "Contains only formatters"},
         "go": {"label": "Optimized for GO based projects"},
         "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
