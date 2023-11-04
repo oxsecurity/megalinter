@@ -61,6 +61,7 @@ jobs:
             "documentation",
             "dotnet",
             "dotnetweb",
+            "formatters",
             "go",
             "java",
             "javascript",
