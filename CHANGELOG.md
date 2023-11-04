@@ -35,6 +35,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.2 to **1.6.3** on 2023-11-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.0 to **0.53.1** on 2023-11-03
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.1.1 to **12.0.0** on 2023-11-04
+  - [eslint](https://eslint.org) from 8.52.0 to **8.53.0** on 2023-11-04
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
