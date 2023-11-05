@@ -9,7 +9,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 
 ## npm-package-json-lint documentation
 
-- Version in MegaLinter: **7.0.0**
+- Version in MegaLinter: **7.1.0**
 - Visit [Official Web Site](https://npmpackagejsonlint.org/){target=_blank}
 - See [How to configure npm-package-json-lint rules](https://npmpackagejsonlint.org/docs/configuration){target=_blank}
   - If custom `.npmpackagejsonlintrc.json` config file isn't found, [.npmpackagejsonlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.npmpackagejsonlintrc.json){target=_blank} will be used
