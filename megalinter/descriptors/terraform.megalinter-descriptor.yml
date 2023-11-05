@@ -2,6 +2,7 @@ descriptor_id: TERRAFORM
 descriptor_type: tooling_format
 descriptor_flavors:
   - cupcake
+  - formatters
   - terraform
 file_extensions:
   - ".tf"

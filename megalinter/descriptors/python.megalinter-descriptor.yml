@@ -2,6 +2,7 @@ descriptor_id: PYTHON
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - formatters
   - python
 file_extensions:
   - ".py"
