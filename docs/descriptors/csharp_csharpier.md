@@ -121,6 +121,28 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 # Linter install
+RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+    && chmod +x dotnet-install.sh \
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+
+ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN /usr/share/dotnet/dotnet tool install -g csharpier
 ```
 
+- APK packages (Linux):
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
+  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
+  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
+  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
+  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
+  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
+  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
+  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
+  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
+  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
+  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
+  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
+  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
