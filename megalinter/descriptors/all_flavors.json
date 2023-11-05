@@ -412,7 +412,13 @@
         ]
     },
     "formatters": {
-        "descriptors": [],
+        "descriptors": [
+            "BASH",
+            "CSHARP",
+            "POWERSHELL",
+            "TYPESCRIPT",
+            "VBDOTNET"
+        ],
         "label": "Contains only formatters",
         "linters": [
             "BASH_SHFMT",

@@ -3,6 +3,7 @@ descriptor_type: language
 descriptor_flavors:
   - dotnet
   - dotnetweb
+  - formatters
 file_extensions:
   - ".ps1"
   - ".psm1"
