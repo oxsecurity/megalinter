@@ -50,14 +50,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
                 npm \
                 nodejs-current \
                 yarn \
@@ -170,11 +162,6 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 
 # csharpier installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN /usr/share/dotnet/dotnet tool install -g csharpier \
 
 # powershell_formatter installation
