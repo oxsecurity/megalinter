@@ -39,6 +39,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.52.0 to **8.53.0** on 2023-11-04
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.0.0 to **7.1.0** on 2023-11-05
   - [checkov](https://www.checkov.io/) from 3.0.19 to **3.0.20** on 2023-11-05
+  - [phpstan](https://phpstan.org/) from 1.10.40 to **1.10.41** on 2023-11-05
+  - [checkov](https://www.checkov.io/) from 3.0.20 to **3.0.21** on 2023-11-05
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
