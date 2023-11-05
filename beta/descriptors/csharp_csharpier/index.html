@@ -3457,8 +3457,34 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 # Linter install
+RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+    &amp;&amp; chmod +x dotnet-install.sh \
+    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+
+ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN /usr/share/dotnet/dotnet tool install -g csharpier
 </code></pre>
+<ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=icu-libs">icu-libs</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libcurl">libcurl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libintl">libintl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libssl1.1">libssl1.1</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libstdc++">libstdc++</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=lttng-ust-dev">lttng-ust-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib">zlib</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib-dev">zlib-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=icu-libs">icu-libs</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libcurl">libcurl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libintl">libintl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libssl1.1">libssl1.1</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libstdc++">libstdc++</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=lttng-ust-dev">lttng-ust-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib">zlib</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib-dev">zlib-dev</a></li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 </div>
