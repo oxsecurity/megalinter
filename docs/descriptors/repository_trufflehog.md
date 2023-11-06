@@ -105,7 +105,7 @@ Flags:
       --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
       --[no-]github-actions      Output in GitHub Actions format.
-      --concurrency=4            Number of concurrent workers.
+      --concurrency=2            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
       --[no-]only-verified       Only output verified results.
       --[no-]filter-unverified   Only output first unverified result per
