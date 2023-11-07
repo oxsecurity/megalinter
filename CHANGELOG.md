@@ -47,6 +47,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.1 to **0.53.2** on 2023-11-06
+  - [csharpier](https://csharpier.com/) from 0.25.0 to **0.26.0** on 2023-11-07
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
