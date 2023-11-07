@@ -3247,7 +3247,7 @@
 <p>Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</p>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.46.0</strong></li>
+<li>Version in MegaLinter: <strong>1.48.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -3661,7 +3661,7 @@ OPTIONS
            have time limit. Defaults to 0 s for all CLI scans. For CI scans,
            it defaults to 3 hours.
 
-       -j VAL, --jobs=VAL (absent=4)
+       -j VAL, --jobs=VAL (absent=3)
            Number of subprocesses to use to run checks in parallel. Defaults
            to the number of cores detected on the system (1 if using --pro).
 
@@ -3731,6 +3731,9 @@ OPTIONS
 
        --no-rewrite-rule-ids
            negates --rewrite-rule-ids
+
+       --no-secrets-validation
+           Disables secrets validation
 
        --no-strict
            negates --strict
