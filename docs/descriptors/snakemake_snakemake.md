@@ -276,7 +276,7 @@ EXECUTION:
                         machine in parallel (default: number of CPU cores of
                         the host). The cores are used to execute local rules.
                         This option is ignored when not in cluster/cloud mode.
-                        (default: 4)
+                        (default: 2)
   --resources [NAME=INT ...], --res [NAME=INT ...]
                         Define additional resources that shall constrain the
                         scheduling analogously to --cores (see above). A

@@ -41,6 +41,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.0.19 to **3.0.20** on 2023-11-05
   - [phpstan](https://phpstan.org/) from 1.10.40 to **1.10.41** on 2023-11-05
   - [checkov](https://www.checkov.io/) from 3.0.20 to **3.0.21** on 2023-11-05
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.0.0 to **12.0.1** on 2023-11-06
+  - [checkov](https://www.checkov.io/) from 3.0.21 to **3.0.24** on 2023-11-06
+  - [semgrep](https://semgrep.dev/) from 1.46.0 to **1.48.0** on 2023-11-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.1 to **0.53.2** on 2023-11-06
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
