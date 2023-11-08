@@ -114,6 +114,7 @@ RUN apk add --no-cache \
                 php81-simplexml \
                 dpkg \
                 py3-pyflakes \
+                clang16-extra-tools \
                 nodejs \
                 npm \
                 yarn \
