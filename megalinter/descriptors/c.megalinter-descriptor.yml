@@ -39,7 +39,7 @@ linters:
       - "--Werror"
       - "--dry-run"
     config_file_name: .clang-format
-    cli_config_arg_name: "--style"
+    cli_config_arg_name: "--style=file:"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "code should be clang-formatted"
     examples:
