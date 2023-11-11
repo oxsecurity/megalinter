@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.0.24**
+- Version in MegaLinter: **3.0.32**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -189,13 +189,13 @@ options:
                         platform
   --include-all-checkov-policies
                         When running with an API key, Checkov will omit any
-                        policies that do not exist in the Bridgecrew or Prisma
-                        Cloud platform, except for local custom policies
-                        loaded with the --external-check flags. Use this key
-                        to include policies that only exist in Checkov in the
-                        scan. Note that this will make the local CLI results
-                        different from the results you see in the platform.
-                        Has no effect if you are not using an API key. Use the
+                        policies that do not exist in Prisma Cloud platform,
+                        except for local custom policies loaded with the
+                        --external-check flags. Use this key to include
+                        policies that only exist in Checkov in the scan. Note
+                        that this will make the local CLI results different
+                        from the results you see in the platform. Has no
+                        effect if you are not using an API key. Use the
                         --check option to explicitly include checks by ID even
                         if they are not in the platform, without using this
                         flag.
@@ -337,7 +337,7 @@ options:
   -b BRANCH, --branch BRANCH
                         Selected branch of the persisted repository. Only has
                         effect when using the --bc-api-key flag
-  --skip-download       Do not download any data from Bridgecrew. This will
+  --skip-download       Do not download any data from Prisma Cloud. This will
                         omit doc links, severities, etc., as well as custom
                         policies and suppressions if using an API token. Note:
                         it will prevent BC platform IDs from being available

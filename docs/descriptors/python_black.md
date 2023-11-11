@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **23.10.1**
+- Version in MegaLinter: **23.11.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -145,6 +145,14 @@ Options:
                                   was an internal error.
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
+  --line-ranges START-END         When specified, _Black_ will try its best to
+                                  only format these lines. This option can be
+                                  specified multiple times, and a union of the
+                                  lines will be formatted. Each range must be
+                                  specified as two integers connected by a
+                                  `-`: `<START>-<END>`. The `<START>` and
+                                  `<END>` integer indices are 1-based and
+                                  inclusive on both ends.
   --color / --no-color            Show colored diff. Only applies when
                                   `--diff` is given.
   --fast / --safe                 If --fast given, skip temporary sanity
