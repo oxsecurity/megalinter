@@ -231,6 +231,7 @@ linters:
     version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: '"[0-9]+",'
+    test_folder: salesforce-lfs
     examples:
       - "sfdx flow:scan"
     install:
