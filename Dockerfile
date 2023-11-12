@@ -90,6 +90,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 docker \
                 openrc \
                 icu-libs \
@@ -122,7 +123,6 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
-                openssl \
                 readline-dev \
                 g++ \
                 libc-dev \

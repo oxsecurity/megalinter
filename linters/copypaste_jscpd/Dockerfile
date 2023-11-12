@@ -48,6 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 nodejs \
                 npm \
                 yarn \

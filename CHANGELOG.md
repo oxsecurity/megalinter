@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Allow to use value `any` to always activate a linter who as a **_DIRECTORY** variable. Example: `KUBERNETES_DIRECTORY: any`
 - New flavor **c_cpp**: New flavor for pure C/C++ projects
+- Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
 
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
@@ -48,6 +49,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.1 to **0.53.2** on 2023-11-06
   - [csharpier](https://csharpier.com/) from 0.25.0 to **0.26.0** on 2023-11-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.21.1 to **6.22.0** on 2023-11-11
+  - [csharpier](https://csharpier.com/) from 0.26.0 to **0.26.1** on 2023-11-11
+  - [black](https://black.readthedocs.io/en/stable/) from 23.10.1 to **23.11.0** on 2023-11-11
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.1 to **1.7.0** on 2023-11-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.334 to **1.1.335** on 2023-11-11
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.4 to **0.1.5** on 2023-11-11
+  - [checkov](https://www.checkov.io/) from 3.0.24 to **3.0.32** on 2023-11-11
+  - [kics](https://www.kics.io) from 1.7.10 to **1.7.11** on 2023-11-11
+  - [syft](https://github.com/anchore/syft) from 0.94.0 to **0.96.0** on 2023-11-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.8 to **8.0.0** on 2023-11-11
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.53.0 to **0.54.0** on 2023-11-11
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0** on 2023-11-11
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29

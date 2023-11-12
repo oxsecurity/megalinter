@@ -64,6 +64,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 openjdk11 \
                 py3-pyflakes \
                 nodejs \

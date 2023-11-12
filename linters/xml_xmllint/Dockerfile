@@ -48,6 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
