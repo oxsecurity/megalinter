@@ -154,6 +154,7 @@ jobs:
             "salesforce_sfdx_scanner_apex",
             "salesforce_sfdx_scanner_aura",
             "salesforce_sfdx_scanner_lwc",
+            "salesforce_lightning_flow_scanner",
             "scala_scalafix",
             "snakemake_lint",
             "snakemake_snakefmt",
