@@ -60,6 +60,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 helm \
                 gcompat \
                 libc6-compat \
