@@ -229,8 +229,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "=== Total: ([0-9]+) Results in .* Flows"
     test_folder: salesforce-lfs
     examples:
       - "sfdx flow:scan"
