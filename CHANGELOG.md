@@ -61,6 +61,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.8 to **8.0.0** on 2023-11-11
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.53.0 to **0.54.0** on 2023-11-11
   - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0** on 2023-11-11
+  - [checkov](https://www.checkov.io/) from 3.0.32 to **3.0.34** on 2023-11-12
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.7 to **7.1.0** on 2023-11-12
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
