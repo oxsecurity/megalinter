@@ -299,8 +299,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache
-
+    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
@@ -313,6 +312,12 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
+
+# lightning-flow-scanner installation
+    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
