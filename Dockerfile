@@ -728,6 +728,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
+# lightning-flow-scanner installation
+    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
+
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 
