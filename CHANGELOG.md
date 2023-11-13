@@ -64,6 +64,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0** on 2023-11-11
   - [checkov](https://www.checkov.io/) from 3.0.32 to **3.0.34** on 2023-11-12
   - [secretlint](https://github.com/secretlint/secretlint) from 7.0.7 to **7.1.0** on 2023-11-12
+  - [prettier](https://prettier.io/) from 3.0.3 to **3.1.0** on 2023-11-13
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
