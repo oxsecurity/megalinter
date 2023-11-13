@@ -19,6 +19,7 @@ updates:
     directory: "/.automation/test/repository_grype/bad/"
     ignore:
       - dependency-name: "minimist"
+      - dependency-name: "chalk/ansi-regex"
     
   # Maintain dependencies for ruby with bundler
   - package-ecosystem: "bundler"
