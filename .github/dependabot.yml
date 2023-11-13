@@ -22,7 +22,7 @@ updates:
     ignore:
       - dependency-name: "minimist"
       - dependency-name: "chalk/ansi-regex"
-    
+
   # Maintain dependencies for ruby with bundler
   - package-ecosystem: "bundler"
     directory: "/"
