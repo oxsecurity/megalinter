@@ -936,6 +936,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/salesforce_lightning_flow_scanner/</loc>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner/</loc>
          <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
