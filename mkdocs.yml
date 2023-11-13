@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 55 languages, 24 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Switch to MegaLinter v7 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 56 languages, 24 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Switch to MegaLinter v7 !
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -182,6 +182,7 @@ nav:
               - "sfdx-scanner-apex": "descriptors/salesforce_sfdx_scanner_apex.md"
               - "sfdx-scanner-aura": "descriptors/salesforce_sfdx_scanner_aura.md"
               - "sfdx-scanner-lwc": "descriptors/salesforce_sfdx_scanner_lwc.md"
+              - "lightning-flow-scanner": "descriptors/salesforce_lightning_flow_scanner.md"
           - "SCALA":
               - "All SCALA linters": "descriptors/scala.md"
               - "scalafix": "descriptors/scala_scalafix.md"
