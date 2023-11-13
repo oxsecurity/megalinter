@@ -17,6 +17,8 @@ updates:
     open-pull-requests-limit: 10
   - package-ecosystem: "npm"
     directory: "/.automation/test/repository_grype/bad/"
+    schedule:
+      interval: monthly
     ignore:
       - dependency-name: "minimist"
       - dependency-name: "chalk/ansi-regex"
