@@ -13,10 +13,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
 - Update base image to `python:3.11.6-alpine3.18`
 
+- Fixes
+  - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [PR 3112](https://github.com/oxsecurity/megalinter/pull/3112)
+
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
   - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
-
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
