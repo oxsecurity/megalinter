@@ -69,6 +69,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.0.32 to **3.0.34** on 2023-11-12
   - [secretlint](https://github.com/secretlint/secretlint) from 7.0.7 to **7.1.0** on 2023-11-12
   - [prettier](https://prettier.io/) from 3.0.3 to **3.1.0** on 2023-11-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.1 to **0.83.2** on 2023-11-15
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.416 to **6.0.417** on 2023-11-15
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.4 to **10.12.5** on 2023-11-15
+  - [checkov](https://www.checkov.io/) from 3.0.34 to **3.0.36** on 2023-11-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.2 to **0.53.3** on 2023-11-15
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
