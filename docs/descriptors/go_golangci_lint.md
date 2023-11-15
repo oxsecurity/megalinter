@@ -116,7 +116,7 @@ Available Commands:
 
 Flags:
       --color string              Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
-  -j, --concurrency int           Concurrency (default NumCPU) (default 2)
+  -j, --concurrency int           Concurrency (default NumCPU) (default 4)
       --cpu-profile-path string   Path to CPU profile output file
   -h, --help                      help for golangci-lint
       --mem-profile-path string   Path to memory profile output file
