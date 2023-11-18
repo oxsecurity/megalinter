@@ -39,7 +39,7 @@ FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.48.0 as tflint
 FROM tenable/terrascan:1.18.3 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
@@ -476,7 +476,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
        -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
        https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
-        | grep linux-alpine-x64 \
+        | grep linux-musl-x64 \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \

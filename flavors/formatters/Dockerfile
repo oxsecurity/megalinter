@@ -184,7 +184,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN mkdir -p ${PWSH_DIRECTORY} \
        -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
        https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
-        | grep linux-alpine-x64 \
+        | grep linux-musl-x64 \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
         | tar -xzC ${PWSH_DIRECTORY} \
