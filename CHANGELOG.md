@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New flavor **c_cpp**: New flavor for pure C/C++ projects
 - Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
 - Update base image to `python:3.11.6-alpine3.18`
+- Write checkov SARIF report `results_sarif.sarif` in `REPORT_FOLDER`
 
 - Fixes
   - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [PR 3112](https://github.com/oxsecurity/megalinter/pull/3112)
