@@ -17,10 +17,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [PR 3112](https://github.com/oxsecurity/megalinter/pull/3112)
   - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
   - Update Pylint links to their current locations, by @echoix in [#3116](https://github.com/oxsecurity/megalinter/issues/3116)
+  - Fix way to install powershell on Alpine linux image
 
 
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
+  - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
