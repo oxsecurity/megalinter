@@ -19,7 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
   - Update Pylint links to their current locations, by @echoix in [#3116](https://github.com/oxsecurity/megalinter/issues/3116)
   - Fix way to install powershell on Alpine linux image
-
+  - Fix issue with VS Code devcontainer not building [#3114](https://github.com/oxsecurity/megalinter/issues/3114)
 
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
