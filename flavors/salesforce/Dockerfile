@@ -32,7 +32,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.6-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -63,6 +63,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 openjdk11 \
                 py3-pyflakes \
                 nodejs \
@@ -298,8 +299,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # sfdx-scanner-apex installation
     && sfdx plugins:install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache
-
+    && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
@@ -312,6 +312,12 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # RUN sfdx plugins:install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
+
+# lightning-flow-scanner installation
+    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache
+
 
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale

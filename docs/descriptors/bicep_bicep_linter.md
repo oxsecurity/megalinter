@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.22.6**
+- Version in MegaLinter: **0.23.1**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -55,7 +55,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       118        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        63        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        72        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.22.6 (d62b94db31)
+Bicep CLI version 0.23.1 (b02de2da48)
 
 Usage:
   bicep build [options] <file>
@@ -96,10 +96,10 @@ Usage:
       <file>        The input file
 
     Options:
-      --outdir <dir>                Saves the output at the specified directory.
-      --outfile <file>              Saves the output as the specified file path.
-      --stdout                      Prints the output to stdout.
-      --no-restore                  Builds the bicep file without restoring external modules.
+      --outdir <dir>                 Saves the output at the specified directory.
+      --outfile <file>               Saves the output as the specified file path.
+      --stdout                       Prints the output to stdout.
+      --no-restore                   Builds the bicep file without restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
@@ -110,7 +110,7 @@ Usage:
       bicep build file.bicep --no-restore
       bicep build file.bicep --diagnostics-format sarif
 
-    bicep format [options] <file>
+  bicep format [options] <file>
     Formats a .bicep file.
 
     Arguments:
@@ -218,12 +218,13 @@ Usage:
 
     Options:
       --documentationUri  Module documentation uri
+      --with-source       [Experimental] Publish source code with the module
       --force             Overwrite existing published module or file
 
     Examples:
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --force
-      bicep publish file.json --target br:example.azurecr.io/hello/world:v1
+      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md --with-source
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentationUri https://github.com/hello-world/README.md
 
   bicep restore <file>
@@ -246,16 +247,18 @@ Usage:
       <file>        The input Bicepparam file
 
     Options:
-      --bicep-file <file> Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outfile <file>  Saves the param output json as the specified file path.
-      --stdout          Prints the param and bicep json output to stdout.
-      --no-restore      Builds the bicep file (referenced in using declaration) without restoring external modules.
+      --bicep-file <file>            Verifies if the specified bicep file path matches the one provided in the params file using declaration
+      --outfile <file>               Saves the param output json as the specified file path.
+      --stdout                       Prints the param and bicep json output to stdout.
+      --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
+      --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
+      bicep build-params params.bicepparam --diagnostics-format sarif
 
 ```
 

@@ -3,6 +3,7 @@ descriptor_label: "C++"
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - c_cpp
   - dotnet
   - dotnetweb
 file_extensions:

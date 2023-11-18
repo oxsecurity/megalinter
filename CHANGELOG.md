@@ -8,6 +8,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Allow to use value `any` to always activate a linter who as a **_DIRECTORY** variable. Example: `KUBERNETES_DIRECTORY: any`
+- New flavor **c_cpp**: New flavor for pure C/C++ projects
+- Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
+- Update base image to `python:3.11.6-alpine3.18`
+
+- Fixes
+  - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [PR 3112](https://github.com/oxsecurity/megalinter/pull/3112)
+  - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
+  - Update Pylint links to their current locations, by @echoix in [#3116](https://github.com/oxsecurity/megalinter/issues/3116)
+  - Fix way to install powershell on Alpine linux image
+
+
+- CI
+  - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
+  - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
+
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
   - [checkov](https://www.checkov.io/) from 3.0.12 to **3.0.13** on 2023-10-30
@@ -15,6 +31,52 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.39 to **1.10.40** on 2023-10-31
   - [checkov](https://www.checkov.io/) from 3.0.13 to **3.0.14** on 2023-10-31
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.61.0 to **3.62.0** on 2023-10-31
+  - [checkov](https://www.checkov.io/) from 3.0.14 to **3.0.15** on 2023-11-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.62.0 to **3.62.1** on 2023-11-01
+  - [checkov](https://www.checkov.io/) from 3.0.15 to **3.0.16** on 2023-11-01
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.22.6 to **0.23.1** on 2023-11-03
+  - [golangci-lint](https://golangci-lint.run/) from 1.55.1 to **1.55.2** on 2023-11-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.333 to **1.1.334** on 2023-11-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.3 to **0.1.4** on 2023-11-03
+  - [checkov](https://www.checkov.io/) from 3.0.16 to **3.0.19** on 2023-11-03
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.17.0 to **3.18.0** on 2023-11-03
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.2 to **1.6.3** on 2023-11-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.0 to **0.53.1** on 2023-11-03
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 11.1.1 to **12.0.0** on 2023-11-04
+  - [eslint](https://eslint.org) from 8.52.0 to **8.53.0** on 2023-11-04
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.0.0 to **7.1.0** on 2023-11-05
+  - [checkov](https://www.checkov.io/) from 3.0.19 to **3.0.20** on 2023-11-05
+  - [phpstan](https://phpstan.org/) from 1.10.40 to **1.10.41** on 2023-11-05
+  - [checkov](https://www.checkov.io/) from 3.0.20 to **3.0.21** on 2023-11-05
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.0.0 to **12.0.1** on 2023-11-06
+  - [checkov](https://www.checkov.io/) from 3.0.21 to **3.0.24** on 2023-11-06
+  - [semgrep](https://semgrep.dev/) from 1.46.0 to **1.48.0** on 2023-11-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0** on 2023-11-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.1 to **0.53.2** on 2023-11-06
+  - [csharpier](https://csharpier.com/) from 0.25.0 to **0.26.0** on 2023-11-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.21.1 to **6.22.0** on 2023-11-11
+  - [csharpier](https://csharpier.com/) from 0.26.0 to **0.26.1** on 2023-11-11
+  - [black](https://black.readthedocs.io/en/stable/) from 23.10.1 to **23.11.0** on 2023-11-11
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.6.1 to **1.7.0** on 2023-11-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.334 to **1.1.335** on 2023-11-11
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.4 to **0.1.5** on 2023-11-11
+  - [checkov](https://www.checkov.io/) from 3.0.24 to **3.0.32** on 2023-11-11
+  - [kics](https://www.kics.io) from 1.7.10 to **1.7.11** on 2023-11-11
+  - [syft](https://github.com/anchore/syft) from 0.94.0 to **0.96.0** on 2023-11-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 7.3.8 to **8.0.0** on 2023-11-11
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.53.0 to **0.54.0** on 2023-11-11
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0** on 2023-11-11
+  - [checkov](https://www.checkov.io/) from 3.0.32 to **3.0.34** on 2023-11-12
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.0.7 to **7.1.0** on 2023-11-12
+  - [prettier](https://prettier.io/) from 3.0.3 to **3.1.0** on 2023-11-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.1 to **0.83.2** on 2023-11-15
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.416 to **6.0.417** on 2023-11-15
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.4 to **10.12.5** on 2023-11-15
+  - [checkov](https://www.checkov.io/) from 3.0.34 to **3.0.36** on 2023-11-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.2 to **0.53.3** on 2023-11-15
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29

@@ -590,8 +590,22 @@ def match_flavor(item, flavor, flavor_info):
         and flavor in item["descriptor_flavors_exclude"]
     ):
         return False
+    # Flavor all
     elif flavor == "all":
         return True
+    # Formatter flavor
+    elif flavor == "formatters":
+        if "is_formatter" in item and item["is_formatter"] is True:
+            return True
+        elif (
+            "descriptor_flavors" in item
+            and flavor in item["descriptor_flavors"]
+            and "linter_name" not in item
+        ):
+            return True
+        else:
+            return False
+    # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
@@ -1618,7 +1632,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         if linter.files_sub_directory is not None:
             linter_doc_md += [
-                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
+                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files"
+                " (use `any` to always activate the linter)"
                 f"| `{linter.files_sub_directory}` |"
             ]
             add_in_config_schema_file(
@@ -1628,6 +1643,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
+                            "description": (
+                                'Directory that must be found to activate linter. Use value "any" to always activate'
+                            ),
                             "title": f"{title_prefix}{linter.name}: Directory containing {linter.descriptor_id} files",
                             "default": linter.files_sub_directory,
                         },
