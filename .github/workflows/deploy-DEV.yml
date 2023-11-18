@@ -187,8 +187,8 @@ jobs:
             oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
 
       # Clean docker build cache
-      - name: Clean docker build cache
-        run: docker builder prune --force
+      - name: Clean docker buildx cache
+        run: docker buildx prune --force
 
       #####################################
       # Run Linter test cases #
