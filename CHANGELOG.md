@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
   - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
+  - Call docker buildx prune instead of docker builder prune, by @echoix in [#3127](https://github.com/oxsecurity/megalinter/pull/3127)
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
