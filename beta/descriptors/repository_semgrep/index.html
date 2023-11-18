@@ -3294,7 +3294,7 @@
 <p>Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</p>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.48.0</strong></li>
+<li>Version in MegaLinter: <strong>1.50.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -3882,9 +3882,9 @@ OPTIONS
            Include a timing summary with the results. If output format is
            json, provides times for each pair (rule, target).
 
-       --timeout=VAL (absent=2.)
+       --timeout=VAL (absent=5.)
            Maximum time to spend running a rule on a single file in seconds.
-           If set to 0 will not have time limit. Defaults to 2.0 s.
+           If set to 0 will not have time limit. Defaults to 5.0 s.
 
        --timeout-threshold=VAL (absent=3)
            Maximum number of rules that can time out on a file before the

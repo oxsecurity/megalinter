@@ -3286,7 +3286,7 @@
 <p><a href="https://github.com/PowerShell/PSScriptAnalyzer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PowerShell/PSScriptAnalyzer?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/PowerShell/PSScriptAnalyzer/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PowerShell/PSScriptAnalyzer?sort=semver"/></a> <a href="https://github.com/PowerShell/PSScriptAnalyzer/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer"/></a> <a href="https://github.com/PowerShell/PSScriptAnalyzer/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PowerShell/PSScriptAnalyzer"/></a> <a href="https://github.com/PowerShell/PSScriptAnalyzer/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PowerShell/PSScriptAnalyzer"/></a></p>
 <h2 id="powershell-documentation">powershell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.3.9</strong></li>
+<li>Version in MegaLinter: <strong>7.4.0</strong></li>
 <li>Visit <a href="https://github.com/PowerShell/PSScriptAnalyzer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit" target="_blank">How to configure powershell rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules" target="_blank">How to disable powershell rules in files</a></li>
@@ -3464,6 +3464,7 @@
 Usage: pwsh[.exe] [-Login] [[-File] &lt;filePath&gt; [args]]
                   [-Command { - | &lt;script-block&gt; [-args &lt;arg-array&gt;]
                                 | &lt;string&gt; [&lt;CommandParameters&gt;] } ]
+                  [-CommandWithArgs &lt;string&gt; [&lt;CommandParameters&gt;]
                   [-ConfigurationName &lt;string&gt;] [-ConfigurationFile &lt;filePath&gt;]
                   [-CustomPipeName &lt;string&gt;] [-EncodedCommand &lt;Base64EncodedCommand&gt;]
                   [-ExecutionPolicy &lt;ExecutionPolicy&gt;] [-InputFormat {Text | XML}]
@@ -3597,6 +3598,25 @@ All parameters are case-insensitive.
     (runspace-terminating) error, such as a throw or -ErrorAction Stop, occurs
     or when execution is interrupted with Ctrl-C.
 
+-CommandWithArgs | -cwa
+
+    [Experimental]
+    Executes a PowerShell command with arguments.  Unlike `-Command`, this
+    parameter populates the `$args built-in variable which can be used by the
+    command.
+
+    The first string is the command and subsequent strings delimited by whitespace
+    are the arguments.
+
+    For example:
+
+        pwsh -CommandWithArgs '$args | % { "arg: $_" }' arg1 arg2
+
+    This example produces the following output:
+
+        arg: arg1
+        arg: arg2
+
 -ConfigurationName | -config
 
     Specifies a configuration endpoint in which PowerShell is run. This can be
@@ -3709,9 +3729,10 @@ All parameters are case-insensitive.
 
 -NonInteractive | -noni
 
-    Does not present an interactive prompt to the user. Any attempts to use
-    interactive features, like Read-Host or confirmation prompts, result in
-    statement-terminating errors.
+    This switch is used to create sessions that shouldn't require user input.
+    This is useful for scripts that run in scheduled tasks or CI/CD pipelines.
+    Any attempts to use interactive features, like 'Read-Host' or confirmation
+    prompts, result in statement terminating errors rather than hanging.
 
 -NoProfile | -nop
 
@@ -3729,7 +3750,7 @@ All parameters are case-insensitive.
 
     Example: "pwsh -o XML -c Get-Date"
 
-    When called withing a PowerShell session, you get deserialized objects as
+    When called within a PowerShell session, you get deserialized objects as
     output rather plain strings. When called from other shells, the output is
     string data formatted as CLIXML text.
 
@@ -3781,20 +3802,11 @@ All parameters are case-insensitive.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
-ARG PWSH_VERSION='latest'
-ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    &amp;&amp; curl --retry 5 --retry-delay 5 -s \
-       -H "Accept: application/vnd.github+json" \
-       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    &amp;&amp; ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    &amp;&amp; chmod +x /usr/bin/pwsh
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    &amp;&amp; mkdir -p /opt/microsoft/powershell/7 \
+    &amp;&amp; tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    &amp;&amp; chmod +x /opt/microsoft/powershell/7/pwsh \
+    &amp;&amp; ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # Linter install
 ARG PSSA_VERSION='latest'
