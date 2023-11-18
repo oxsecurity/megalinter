@@ -13,9 +13,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
 - Update base image to `python:3.11.6-alpine3.18`
 
+- Fixes
+  - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [PR 3112](https://github.com/oxsecurity/megalinter/pull/3112)
+  - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
+  - Update Pylint links to their current locations, by @echoix in [#3116](https://github.com/oxsecurity/megalinter/issues/3116)
+  - Fix way to install powershell on Alpine linux image
+
+
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
-
+  - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.46.2 to **0.46.3** on 2023-10-29
@@ -64,6 +71,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0** on 2023-11-11
   - [checkov](https://www.checkov.io/) from 3.0.32 to **3.0.34** on 2023-11-12
   - [secretlint](https://github.com/secretlint/secretlint) from 7.0.7 to **7.1.0** on 2023-11-12
+  - [prettier](https://prettier.io/) from 3.0.3 to **3.1.0** on 2023-11-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.1 to **0.83.2** on 2023-11-15
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.416 to **6.0.417** on 2023-11-15
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.4 to **10.12.5** on 2023-11-15
+  - [checkov](https://www.checkov.io/) from 3.0.34 to **3.0.36** on 2023-11-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.2 to **0.53.3** on 2023-11-15
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29

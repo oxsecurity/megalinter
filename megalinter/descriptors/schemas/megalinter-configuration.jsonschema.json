@@ -15486,6 +15486,127 @@
       "title": "Including regex filter for SALESFORCE descriptor",
       "type": "string"
     },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sfdx"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI Executable",
+      "type": "array"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE",
+      "default": ".flow-scanner.json",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom config file name if different from default",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file name",
+      "type": "string"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY",
+      "default": "force-app",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Path where to find linter configuration file",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file path",
+      "type": "string"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Unsecured env variables",
+      "type": "array"
+    },
     "SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to add in linter CLI call",
