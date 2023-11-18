@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.48.0**
+- Version in MegaLinter: **1.50.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -448,9 +448,9 @@ OPTIONS
            Include a timing summary with the results. If output format is
            json, provides times for each pair (rule, target).
 
-       --timeout=VAL (absent=2.)
+       --timeout=VAL (absent=5.)
            Maximum time to spend running a rule on a single file in seconds.
-           If set to 0 will not have time limit. Defaults to 2.0 s.
+           If set to 0 will not have time limit. Defaults to 5.0 s.
 
        --timeout-threshold=VAL (absent=3)
            Maximum number of rules that can time out on a file before the
