@@ -78,6 +78,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.4 to **10.12.5** on 2023-11-15
   - [checkov](https://www.checkov.io/) from 3.0.34 to **3.0.36** on 2023-11-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.2 to **0.53.3** on 2023-11-15
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.2 to **0.83.3** on 2023-11-18
+  - [csharpier](https://csharpier.com/) from 0.26.1 to **0.26.2** on 2023-11-18
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.0.1 to **12.1.0** on 2023-11-18
+  - [eslint](https://eslint.org) from 8.53.0 to **8.54.0** on 2023-11-18
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.3 to **0.6.4** on 2023-11-18
+  - [phpstan](https://phpstan.org/) from 1.10.41 to **1.10.42** on 2023-11-18
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.9 to **7.4.0** on 2023-11-18
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.3.9 to **7.4.0** on 2023-11-18
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.335 to **1.1.336** on 2023-11-18
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.5 to **0.1.6** on 2023-11-18
+  - [checkov](https://www.checkov.io/) from 3.0.36 to **3.0.38** on 2023-11-18
+  - [semgrep](https://semgrep.dev/) from 1.48.0 to **1.50.0** on 2023-11-18
+  - [syft](https://github.com/anchore/syft) from 0.96.0 to **0.97.1** on 2023-11-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.62.1 to **3.63.0** on 2023-11-18
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.73 to **0.1.74** on 2023-11-18
+  - [vale](https://vale.sh/) from 2.29.5 to **2.29.7** on 2023-11-18
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.3 to **1.6.4** on 2023-11-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.3 to **0.53.4** on 2023-11-18
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.48.0 to **0.49.0** on 2023-11-18
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29
