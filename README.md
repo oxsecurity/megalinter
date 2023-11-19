@@ -566,7 +566,7 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 
 ![R2Devops Logo](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/r2devops-logo.jpg?raw=true)
 
-Out friends at [R2Devops](https://r2devops.io/) have packaged a [Gitlab-CI MegaLinter workflow](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter) on their [open-source templates marketplace](https://r2devops.io/marketplace), and it can post MegaLinter results in Gitlab Code Quality Reports !
+Our friends at [R2Devops](https://r2devops.io/) have packaged a [Gitlab-CI MegaLinter workflow](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter) on their [open-source templates marketplace](https://r2devops.io/marketplace), and it can post MegaLinter results in Gitlab Code Quality Reports !
 
 [![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/r2devops-link.jpg?raw=true)](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter)
 
