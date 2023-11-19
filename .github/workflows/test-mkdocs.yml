@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - "**/mkdocs.yml"
+  pull_request:
+    paths:
+      - "**/mkdocs.yml"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}

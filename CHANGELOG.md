@@ -19,43 +19,44 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 3.0.39 to **3.0.40** on 2023-11-19
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
 
 - Major enhancements
-  - New flavor [**c_cpp**](https://megalinter.io/latest/flavors/c_cpp/): New flavor for pure C/C++ projects, by @daltonv in https://github.com/oxsecurity/megalinter/pull/3067
-  - New flavor [**formatters**](https://megalinter.io/beta/flavors/formatters/): Contains only formatter linters, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3071
-  - Add [**Salesforce Lightning Flow Scanner**](https://github.com/Lightning-Flow-Scanner), by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3092
+  - New flavor [**c_cpp**](https://megalinter.io/latest/flavors/c_cpp/): New flavor for pure C/C++ projects, by @daltonv in <https://github.com/oxsecurity/megalinter/pull/3067>
+  - New flavor [**formatters**](https://megalinter.io/beta/flavors/formatters/): Contains only formatter linters, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3071>
+  - Add [**Salesforce Lightning Flow Scanner**](https://github.com/Lightning-Flow-Scanner), by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3092>
 
 - Core
-  - Allow to use value `any` to always activate a linter who as a **_DIRECTORY** variable. Example: `KUBERNETES_DIRECTORY: any`, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3058
+  - Allow to use value `any` to always activate a linter who as a **_DIRECTORY** variable. Example: `KUBERNETES_DIRECTORY: any`, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3058>
   - Update base Docker image to `python:3.11.6-alpine3.18`
 
 - Fixes
   - Fix issue Gitleaks `--no-git` does not work anymore, [#2945](https://github.com/oxsecurity/megalinter/issues/2945), in [#3112](https://github.com/oxsecurity/megalinter/pull/3112)
   - Fix way to install powershell on Alpine linux image
   - Fix issue with VS Code devcontainer not building [#3114](https://github.com/oxsecurity/megalinter/issues/3114)
-  - Fix Default Workflow to handle latest ActionLint rules, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3130
-  - Write checkov SARIF report `results_sarif.sarif` in `REPORT_FOLDER`, by @gmeligio in https://github.com/oxsecurity/megalinter/pull/3121
+  - Fix Default Workflow to handle latest ActionLint rules, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3130>
+  - Write checkov SARIF report `results_sarif.sarif` in `REPORT_FOLDER`, by @gmeligio in <https://github.com/oxsecurity/megalinter/pull/3121>
   - Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
-  - Fix csharp installation dependencies, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3075
-  - Fix powershell installation by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3126
+  - Fix csharp installation dependencies, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3075>
+  - Fix powershell installation by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3126>
 
 
 - Doc
   - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
   - Update Pylint links to their current locations, by @echoix in [#3116](https://github.com/oxsecurity/megalinter/issues/3116)
-  - Add R2DevOps way to setup MegaLinter on Gitlab, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3129
+  - Add R2DevOps way to setup MegaLinter on Gitlab, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3129>
 
 - CI
   - Upgrade pymdown-extensions and markdown, by @BryanQuigley in [#3053](https://github.com/oxsecurity/megalinter/pull/3053)
   - Use docker/metadata-action for some internal CI, by @echoix in [#3110](https://github.com/oxsecurity/megalinter/pull/3110)
   - Call docker buildx prune instead of docker builder prune, by @echoix in [#3127](https://github.com/oxsecurity/megalinter/pull/3127)
-  - Set schedule earlier for auto-update-linters.yml, allow manual runs, by @echoix in https://github.com/oxsecurity/megalinter/pull/3066
-  - Add mike to dev/requirements.txt, by @echoix in https://github.com/oxsecurity/megalinter/pull/3070
-  - Modernize dependabot.yml in correct directories, by @echoix in https://github.com/oxsecurity/megalinter/pull/3093
-  - Fix devcontainer Dockerfile typo (fixes #3114) by @daltonv in https://github.com/oxsecurity/megalinter/pull/3115
+  - Set schedule earlier for auto-update-linters.yml, allow manual runs, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3066>
+  - Add mike to dev/requirements.txt, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3070>
+  - Modernize dependabot.yml in correct directories, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3093>
+  - Fix devcontainer Dockerfile typo (fixes #3114) by @daltonv in <https://github.com/oxsecurity/megalinter/pull/3115>
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.21.1 to **6.22.0**
