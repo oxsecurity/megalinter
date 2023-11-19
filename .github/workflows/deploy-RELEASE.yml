@@ -154,7 +154,7 @@ jobs:
           echo "curr ver ${{ steps.version.outputs.cversion }}"
       - uses: actions/setup-python@v4.5.0
         with:
-          python-version: 3.x
+          python-version: 3.12.0
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
