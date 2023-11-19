@@ -99,6 +99,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.3 to **1.6.4** on 2023-11-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.3 to **0.53.4** on 2023-11-18
   - [tflint](https://github.com/terraform-linters/tflint) from 0.48.0 to **0.49.0** on 2023-11-18
+  - [checkov](https://www.checkov.io/) from 3.0.38 to **3.0.39** on 2023-11-19
 <!-- linter-versions-end -->
 
 ## [v7.5.0] - 2023-10-29

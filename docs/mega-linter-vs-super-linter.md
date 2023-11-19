@@ -50,20 +50,20 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 - [Console](reporters/ConsoleReporter.md)
 
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true)
 
 - [Text files](reporters/TextReporter.md)
 - [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)
 
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true)
 
 - [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md)
 
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true)
 
 - [Azure Pull Request comments](reporters/AzureCommentReporter.md)
 
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/AzureCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/AzureCommentReporter.jpg?raw=true)
 
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
