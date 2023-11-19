@@ -62,7 +62,7 @@
     "php": "7.4.26",
     "phpcs": "3.7.2",
     "phplint": "9.0.4",
-    "phpstan": "1.10.42",
+    "phpstan": "1.10.43",
     "pmd": "6.55.0",
     "powershell": "7.4.0",
     "powershell_formatter": "7.4.0",
