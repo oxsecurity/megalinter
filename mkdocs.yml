@@ -30,7 +30,7 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: docs
       check_paths: true
-      restrict_base_path: False
+      restrict_base_path: false
   - mdx_truly_sane_lists
   - attr_list
 extra_javascript:
