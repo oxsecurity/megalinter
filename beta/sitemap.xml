@@ -1461,6 +1461,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/lightning-flow-scanner/</loc>
+         <lastmod>2023-11-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/lintr/</loc>
          <lastmod>2023-11-19</lastmod>
          <changefreq>daily</changefreq>
