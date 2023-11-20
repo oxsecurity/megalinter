@@ -53,8 +53,8 @@ linters:
         - clang16-extra-tools
     ide:
       vscode:
-        name: Clang-Format
-        url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
+        - name: Clang-Format
+          url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
       emacs:
-        name: clang-format
-        url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration
+        - name: clang-format
+          url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration
