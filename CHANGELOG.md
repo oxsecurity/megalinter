@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.0.39 to **3.0.40** on 2023-11-19
   - [phpstan](https://phpstan.org/) from 1.10.42 to **1.10.43** on 2023-11-19
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.0 to **12.1.1** on 2023-11-19
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
