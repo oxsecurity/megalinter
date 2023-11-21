@@ -296,6 +296,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/c_clang_format/</loc>
+         <lastmod>2023-11-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/c_cpplint/</loc>
          <lastmod>2023-11-21</lastmod>
          <changefreq>daily</changefreq>
@@ -347,6 +352,11 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cpp/</loc>
+         <lastmod>2023-11-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/cpp_clang_format/</loc>
          <lastmod>2023-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
