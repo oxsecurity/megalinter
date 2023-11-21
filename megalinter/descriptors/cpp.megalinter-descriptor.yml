@@ -48,6 +48,10 @@ linters:
     cli_lint_extra_args:
       - "--Werror"
       - "--dry-run"
+    cli_lint_fix_arg_name: "-i"
+    cli_lint_fix_remove_args:
+      - "--Werror"
+      - "--dry-run"
     config_file_name: .clang-format
     cli_config_arg_name: "--style=file:"
     cli_lint_errors_count: regex_count
@@ -59,8 +63,8 @@ linters:
         - clang16-extra-tools
     ide:
       vscode:
-        name: Clang-Format
-        url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
+        - name: Clang-Format
+          url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
       emacs:
-        name: clang-format
-        url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration
+        - name: clang-format
+          url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration
