@@ -45,6 +45,7 @@
     "kubeconform": "Apache-2.0",
     "kubescape": "Apache-2.0",
     "kubeval": "Other",
+    "lightning-flow-scanner": "AGPL-3.0",
     "lintr": "Other",
     "luacheck": "MIT",
     "lychee": "Apache-2.0",

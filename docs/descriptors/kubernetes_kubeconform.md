@@ -17,7 +17,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 ## kubeconform documentation
 
-- Version in MegaLinter: **0.6.3**
+- Version in MegaLinter: **0.6.4**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}

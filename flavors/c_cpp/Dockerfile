@@ -67,6 +67,7 @@ RUN apk add --no-cache \
                 openssl \
                 openjdk11 \
                 py3-pyflakes \
+                clang16-extra-tools \
                 nodejs \
                 npm \
                 yarn \

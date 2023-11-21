@@ -23,7 +23,7 @@ If you want GitHub to handle the SARIF file to display it in its UI, add the fol
 
 ```yaml
 - name: Upload MegaLinter scan results to GitHub Security tab
-if: ${{ success() }} || ${{ failure() }}
+if: success() || failure()
 uses: github/codeql-action/upload-sarif@v2
 with:
     sarif_file: 'megalinter-reports/megalinter-report.sarif'
