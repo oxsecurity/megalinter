@@ -25,6 +25,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.0.39 to **3.0.40** on 2023-11-19
   - [phpstan](https://phpstan.org/) from 1.10.42 to **1.10.43** on 2023-11-19
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.0 to **12.1.1** on 2023-11-19
+  - [checkov](https://www.checkov.io/) from 3.0.40 to **3.1.4** on 2023-11-21
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.0 to **8.18.1** on 2023-11-21
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.0 to **3.63.1** on 2023-11-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.4 to **0.53.5** on 2023-11-21
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19

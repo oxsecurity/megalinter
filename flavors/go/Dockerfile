@@ -30,7 +30,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee

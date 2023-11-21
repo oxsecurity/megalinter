@@ -34,7 +34,7 @@ linters:
     install:
       pip:
         - cpplint
-
+  # clang-format
   - linter_name: clang-format
     name: CPP_CLANG_FORMAT
     descriptor_flavors:
