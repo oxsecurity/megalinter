@@ -2264,6 +2264,165 @@
       "title": "COPYPASTE_JSCPD: Unsecured env variables",
       "type": "array"
     },
+    "CPP_CLANG_FORMAT_ARGUMENTS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_ARGUMENTS",
+      "description": "CPP_CLANG_FORMAT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CLANG_FORMAT_CLI_EXECUTABLE": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "clang-format"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: CLI Executable",
+      "type": "array"
+    },
+    "CPP_CLANG_FORMAT_CLI_LINT_MODE": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CPP_CLANG_FORMAT: Override default cli lint mode",
+      "type": "string"
+    },
+    "CPP_CLANG_FORMAT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "CPP_CLANG_FORMAT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CLANG_FORMAT_CONFIG_FILE": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_CONFIG_FILE",
+      "default": ".clang-format",
+      "description": "CPP_CLANG_FORMAT: User custom config file name if different from default",
+      "title": "CPP_CLANG_FORMAT: Custom config file name",
+      "type": "string"
+    },
+    "CPP_CLANG_FORMAT_DISABLE_ERRORS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_DISABLE_ERRORS",
+      "default": false,
+      "title": "CPP_CLANG_FORMAT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CPP_CLANG_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CPP_CLANG_FORMAT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CPP_CLANG_FORMAT_FILE_EXTENSIONS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CPP_CLANG_FORMAT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CPP_CLANG_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
+      "title": "CPP_CLANG_FORMAT: Excluding Regex",
+      "type": "string"
+    },
+    "CPP_CLANG_FORMAT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
+      "title": "CPP_CLANG_FORMAT: Including Regex",
+      "type": "string"
+    },
+    "CPP_CLANG_FORMAT_POST_COMMANDS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CLANG_FORMAT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CPP_CLANG_FORMAT_PRE_COMMANDS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CLANG_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "CPP_CLANG_FORMAT_RULES_PATH": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_RULES_PATH",
+      "description": "CPP_CLANG_FORMAT: Path where to find linter configuration file",
+      "title": "CPP_CLANG_FORMAT: Custom config file path",
+      "type": "string"
+    },
+    "CPP_CLANG_FORMAT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CPP_CLANG_FORMAT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CLANG_FORMAT: Unsecured env variables",
+      "type": "array"
+    },
     "CPP_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/CPP_CPPLINT_ARGUMENTS",
       "description": "CPP_CPPLINT: User custom arguments to add in linter CLI call",
@@ -3169,6 +3328,165 @@
         "type": "string"
       },
       "title": "CSS_STYLELINT: Unsecured env variables",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_ARGUMENTS": {
+      "$id": "#/properties/C_CLANG_FORMAT_ARGUMENTS",
+      "description": "C_CLANG_FORMAT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CLANG_FORMAT_CLI_EXECUTABLE": {
+      "$id": "#/properties/C_CLANG_FORMAT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "clang-format"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: CLI Executable",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_CLI_LINT_MODE": {
+      "$id": "#/properties/C_CLANG_FORMAT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "C_CLANG_FORMAT: Override default cli lint mode",
+      "type": "string"
+    },
+    "C_CLANG_FORMAT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/C_CLANG_FORMAT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "C_CLANG_FORMAT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CLANG_FORMAT_CONFIG_FILE": {
+      "$id": "#/properties/C_CLANG_FORMAT_CONFIG_FILE",
+      "default": ".clang-format",
+      "description": "C_CLANG_FORMAT: User custom config file name if different from default",
+      "title": "C_CLANG_FORMAT: Custom config file name",
+      "type": "string"
+    },
+    "C_CLANG_FORMAT_DISABLE_ERRORS": {
+      "$id": "#/properties/C_CLANG_FORMAT_DISABLE_ERRORS",
+      "default": false,
+      "title": "C_CLANG_FORMAT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "C_CLANG_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/C_CLANG_FORMAT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "C_CLANG_FORMAT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "C_CLANG_FORMAT_FILE_EXTENSIONS": {
+      "$id": "#/properties/C_CLANG_FORMAT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/C_CLANG_FORMAT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/C_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
+      "title": "C_CLANG_FORMAT: Excluding Regex",
+      "type": "string"
+    },
+    "C_CLANG_FORMAT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/C_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
+      "title": "C_CLANG_FORMAT: Including Regex",
+      "type": "string"
+    },
+    "C_CLANG_FORMAT_POST_COMMANDS": {
+      "$id": "#/properties/C_CLANG_FORMAT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CLANG_FORMAT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_PRE_COMMANDS": {
+      "$id": "#/properties/C_CLANG_FORMAT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CLANG_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "C_CLANG_FORMAT_RULES_PATH": {
+      "$id": "#/properties/C_CLANG_FORMAT_RULES_PATH",
+      "description": "C_CLANG_FORMAT: Path where to find linter configuration file",
+      "title": "C_CLANG_FORMAT: Custom config file path",
+      "type": "string"
+    },
+    "C_CLANG_FORMAT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/C_CLANG_FORMAT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling C_CLANG_FORMAT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CLANG_FORMAT: Unsecured env variables",
       "type": "array"
     },
     "C_CPPLINT_ARGUMENTS": {
