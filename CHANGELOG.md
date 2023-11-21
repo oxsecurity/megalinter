@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html) c & cpp formatting linter including "apply fix" support
 
 - Fixes
+  - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
 
 - Doc
 
