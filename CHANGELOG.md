@@ -30,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.0 to **8.18.1** on 2023-11-21
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.0 to **3.63.1** on 2023-11-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.4 to **0.53.5** on 2023-11-21
+  - [checkov](https://www.checkov.io/) from 3.1.4 to **3.1.7** on 2023-11-21
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
