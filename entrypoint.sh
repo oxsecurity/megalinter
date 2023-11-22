@@ -29,7 +29,7 @@ git config --global --add safe.directory /tmp/lint
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
-  pip install pytest-cov pytest-timeout
+pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
@@ -47,9 +47,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout pytest-xdist
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml megalinter/
+    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto megalinter/
   else
-    pytest -v --timeout=300 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
+    pytest -v --timeout=300 --durations=0 --numprocesses auto -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
