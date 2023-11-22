@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - CI
+  - Add arguments to make use of pytest-xdist, by @echoix
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.0.39 to **3.0.40** on 2023-11-19
