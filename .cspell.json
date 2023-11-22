@@ -98,6 +98,7 @@
         "mkdirp",
         "msgon",
         "nextick",
+        "numprocesses",
         "noni",
         "noout",
         "nopt",
