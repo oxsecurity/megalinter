@@ -1227,7 +1227,9 @@ class Linter:
                 self.final_config_file = self.final_config_file.replace(
                     self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
                 )
-            if self.cli_config_arg_name.endswith("="):
+            if self.cli_config_arg_name.endswith(
+                "="
+            ) or self.cli_config_arg_name.endswith(":"):
                 cmd += [self.cli_config_arg_name + self.final_config_file]
             elif self.cli_config_arg_name != "":
                 cmd += [self.cli_config_arg_name, self.final_config_file]

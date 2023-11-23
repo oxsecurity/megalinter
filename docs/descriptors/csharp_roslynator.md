@@ -9,6 +9,7 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 
 ## roslynator documentation
 
+- Version in MegaLinter: **0.8.0.0**
 - Visit [Official Web Site](https://github.com/JosefPihrt/Roslynator#readme){target=_blank}
 - See [How to configure roslynator rules](https://github.com/JosefPihrt/Roslynator/blob/main/docs/Configuration.md){target=_blank}
 
@@ -52,7 +53,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       118        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
@@ -79,6 +80,29 @@ roslynator analyze myproject.csproj
 roslynator fix myproject.csproj
 ```
 
+
+### Help content
+
+```shell
+Roslynator Command Line Tool version 0.8.0.0 (Roslyn version 4.7.0.0)
+Usage: roslynator [command] [arguments]
+
+Commands:
+  analyze            Analyzes specified project or solution and reports diagnostics.
+  find-symbol        Finds symbols in the specified project or solution.
+  fix                Fixes diagnostics in the specified project or solution.
+  format             Formats whitespace in the specified project or solution.
+  generate-doc       Generates reference documentation from specified project/solution.
+  generate-doc-root  [deprecated] Generates root documentation file from specified project/solution.
+  list-symbols       Lists symbols from the specified project or solution.
+  lloc               Counts logical lines of code in the specified project or solution.
+  loc                Counts physical lines of code in the specified project or solution.
+  migrate            Migrates analyzers to a new version.
+  rename-symbol      Rename symbols in the specified project or solution.
+  spellcheck         Searches the specified project or solution for possible misspellings or typos.
+
+Run 'roslynator help [command]' for more information on a command.
+```
 
 ### Installation on mega-linter Docker image
 

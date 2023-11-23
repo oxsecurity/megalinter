@@ -16,14 +16,14 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.6-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -54,6 +54,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 nodejs \
                 npm \
                 yarn \

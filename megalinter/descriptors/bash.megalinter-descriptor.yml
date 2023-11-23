@@ -5,6 +5,7 @@ descriptor_flavors:
   - ci_light
   - cupcake
   - c_cpp
+  - formatters
 file_extensions:
   - ".sh"
   - ".bash"

@@ -101,7 +101,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         with:
           name: MegaLinter reports
           path: |
