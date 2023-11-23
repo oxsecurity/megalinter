@@ -626,12 +626,17 @@ def test_linter_format_fix(linter, test_self):
 
     files = glob.iglob(search_glob_pattern, recursive=True)
 
+    file_extensions = linter.file_extensions
+
+    if len(linter.test_format_fix_file_extensions) > 0:
+        file_extensions = linter.test_format_fix_file_extensions
+
     filtered_files = utils.filter_files(
         all_files=files,
         filter_regex_include=None,
         filter_regex_exclude=[linter.test_format_fix_regex_exclude],
         file_names_regex=["_fix_"],
-        file_extensions=linter.test_format_fix_file_extensions,
+        file_extensions=file_extensions,
         ignored_files=[],
         ignore_generated_files=False,
     )
