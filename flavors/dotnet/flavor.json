@@ -21,6 +21,7 @@
         "CPP_CPPLINT",
         "CSHARP_DOTNET_FORMAT",
         "CSHARP_CSHARPIER",
+        "CSHARP_ROSLYNATOR",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_HADOLINT",

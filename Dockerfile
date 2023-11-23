@@ -555,6 +555,15 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
     && /usr/share/dotnet/dotnet tool install -g csharpier \
 
+# roslynator installation
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    && /usr/share/dotnet/dotnet tool install -g roslynator.dotnet.cli \
+
 # dartanalyzer installation
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     && chmod +x dart-sdk/bin/dart* \

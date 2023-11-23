@@ -394,6 +394,11 @@
     "image": null,
     "title": "revive - fast & configurable linter for Go"
   },
+  "roslynator": {
+    "description": "Roslynator is a set of code analysis tools for C#, powered by Roslyn. - GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn.",
+    "image": "https://repository-images.githubusercontent.com/57153744/57b7135a-1505-4930-98d1-acfd619f1457",
+    "title": "GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn."
+  },
   "rst-lint": {
     "description": "reStructuredText linter. Contribute to twolfson/restructuredtext-lint development by creating an account on GitHub.",
     "image": "https://avatars2.githubusercontent.com/u/902488?s=400&v=4",

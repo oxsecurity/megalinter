@@ -624,17 +624,19 @@ def test_linter_format_fix(linter, test_self):
 
     search_glob_pattern = workspace.replace("\\", "/") + "/**/*"
 
-    for file in glob.iglob(search_glob_pattern, recursive=True):
-        file_name = os.path.basename(file)
-        _, file_extension = os.path.splitext(file_name)
-        if (
-            len(linter.file_extensions) > 0
-            and file_extension not in linter.file_extensions
-        ):
-            continue
-        elif "_fix_" not in file_name:
-            continue
+    files = glob.iglob(search_glob_pattern, recursive=True)
 
+    filtered_files = utils.filter_files(
+        all_files=files,
+        filter_regex_include=None,
+        filter_regex_exclude=[linter.test_format_fix_regex_exclude],
+        file_names_regex=["_fix_"],
+        file_extensions=linter.test_format_fix_file_extensions,
+        ignored_files=[],
+        ignore_generated_files=False,
+    )
+
+    for file in filtered_files:
         with open(file, "r", encoding="utf-8") as f_expected:
             content_expected = f_expected.read()
             file_map[file] = content_expected
@@ -664,7 +666,11 @@ def test_linter_format_fix(linter, test_self):
     )
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
+        if (
+            len(linter.file_names_regex) > 0
+            and len(linter.test_format_fix_file_extensions) == 0
+            and len(linter.file_extensions) == 0
+        ):
             test_self.assertRegex(
                 output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
             )
