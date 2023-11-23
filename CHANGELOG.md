@@ -36,6 +36,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [puppet-lint](http://puppet-lint.com/) from 4.2.1 to **4.2.2** on 2023-11-21
   - [checkov](https://www.checkov.io/) from 3.1.7 to **3.1.9** on 2023-11-21
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.1 to **3.63.2** on 2023-11-21
+  - [psalm](https://psalm.dev) from Psalm.5.15.0@ to **Psalm.5.16.0@** on 2023-11-22
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.2 to **4.2.3** on 2023-11-22
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.336 to **1.1.337** on 2023-11-22
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
