@@ -34,4 +34,6 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "make",
     "musl-dev",
     "openssh",
+    # Temporary, to make sure openssl 3.1.3 (installed by default) is replaced by 3.1.4 for CVE-2023-5363 (2023-11-12)
+    "openssl",
 ]

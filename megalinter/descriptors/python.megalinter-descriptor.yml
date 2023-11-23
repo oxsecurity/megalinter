@@ -2,6 +2,7 @@ descriptor_id: PYTHON
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - formatters
   - python
 file_extensions:
   - ".py"
@@ -10,13 +11,13 @@ linters:
   # PYLINT
   - linter_name: pylint
     name: PYTHON_PYLINT
-    linter_url: https://pylint.pycqa.org
-    linter_repo: https://github.com/PyCQA/pylint
+    linter_url: https://pylint.readthedocs.io
+    linter_repo: https://github.com/pylint-dev/pylint
     linter_speed: 2
-    linter_rules_url: https://pylint.pycqa.org/en/latest/user_guide/messages/messages_overview.html
-    linter_banner_image_url: https://www.pylint.org/pylint.svg
-    linter_rules_configuration_url: https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html
-    linter_rules_inline_disable_url: https://pylint.pycqa.org/en/latest/user_guide/messages/message_control.html
+    linter_rules_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/index.html
+    linter_image_url: https://raw.githubusercontent.com/pylint-dev/pylint/main/doc/logo.svg
+    linter_rules_configuration_url: https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html
+    linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/message_control.html
     cli_lint_mode: list_of_files
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
@@ -342,13 +343,13 @@ linters:
     name: PYTHON_RUFF
     linter_text: |
       An extremely fast Python linter, written in Rust.
-    linter_url: https://github.com/charliermarsh/ruff
-    linter_repo: https://github.com/charliermarsh/ruff
+    linter_url: https://github.com/astral-sh/ruff
+    linter_repo: https://github.com/astral-sh/ruff
     linter_spdx_license: MIT
     linter_speed: 5
-    linter_rules_url: https://beta.ruff.rs/docs/rules/
-    linter_rules_configuration_url: https://beta.ruff.rs/docs/configuration/
-    linter_rules_inline_disable_url: https://beta.ruff.rs/docs/configuration/#error-suppression
+    linter_rules_url: https://docs.astral.sh/ruff/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"

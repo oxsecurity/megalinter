@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **3.17.0**
+- Version in MegaLinter: **3.18.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -44,7 +44,7 @@ See more details in [Help](#help-content)
 | SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                          | `false`                                         |
 | SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                    | `0`                                             |
 | SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE              | Override CLI executable                                                                                             | `['sfdx']`                                      |
-| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                                               | `force-app`                                     |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files (use `any` to always activate the linter)                                     | `force-app`                                     |
 
 ## IDE Integration
 
@@ -60,8 +60,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       117        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       120        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -92,76 +92,12 @@ sfdx scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run -t <array> [-c <array>] [-f
-    csv|html|json|junit|sarif|table|xml] [-o <string>] [-s <integer> | --json]
-    [--normalize-severity] [-p <array>] [-r <array>] [-e <array>] [--tsconfig
-    <string>] [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>]
-    [--verbose-violations] [--verbose] [--loglevel
-    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
-
-FLAGS
-  -c, --category=<value>
-      one or more categories of rules to run
-
-  -e, --engine=<value>
-      specify which engines to run
-
-  -f, --format=(csv|html|json|junit|sarif|table|xml)
-      specify results output format
-
-  -o, --outfile=<value>
-      write output to a file
-
-  -p, --projectdir=<value>
-      provide root directory of project
-
-  -r, --ruleset=<value>
-      [deprecated] rulesets to run
-
-  -s, --severity-threshold=<value>
-      throw an error when a violation threshold is reached, the
-      --normalize-severity is invoked, and severity levels are reset to the
-      baseline
-
-  -t, --target=<value>
-      (required) source code location
-
-  --env=<value>
-      [deprecated] override ESLint's default environment variables, in
-      JSON-formatted string
-
-  --eslintconfig=<value>
-      specify the location of eslintrc config to customize eslint engine
-
-  --json
-      format output as json
-
-  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
-  L)
-      [default: warn] logging level for this command invocation
-
-  --normalize-severity
-      return normalized severity 1 (high), 2 (moderate), and 3 (low), and the
-      engine-specific severity
-
-  --pmdconfig=<value>
-      specify location of PMD rule reference XML file to customize rule selection
-
-  --tsconfig=<value>
-      location of tsconfig.json file
-
-  --verbose
-      emit additional command output to stdout
-
-  --verbose-violations
-      return retire-js violation message details
+  $ sf scanner run
 
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
 WARNING: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
-(node:1683) Warning: Deprecated config name: apiVersion. Please use org-api-version instead.
-(Use `node --trace-warnings ...` to show where the warning was created)
  NAME                                                   LANGUAGES   CATEGORIES            RULESETS [DEP]                                   ENGINE            IS DFA IS PILOT
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
  VfCsrf                                                 visualforce Security              Basic VF                                         pmd               N      N

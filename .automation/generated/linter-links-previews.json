@@ -64,6 +64,11 @@
     "image": null,
     "title": "ChkTeX - LaTeX semantic checker"
   },
+  "clang-format": {
+    "description": "A\u0302\u00ab ClangCheck :: Contents :: Clang-Format Style Options A\u0302\u00bb.",
+    "image": null,
+    "title": "ClangFormat \u2014 Clang 18.0.0git documentation"
+  },
   "clippy": {
     "description": "A bunch of lints to catch common mistakes and improve your Rust code - rust-lang/rust-clippy",
     "image": "https://avatars1.githubusercontent.com/u/5430905?s=400&v=4",
@@ -243,6 +248,11 @@
     "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",
     "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
     "title": "instrumenta/kubeval"
+  },
+  "lightning-flow-scanner": {
+    "description": "Lightning-Flow-Scanner has 5 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/148573214?s=280&v=4",
+    "title": "Lightning-Flow-Scanner"
   },
   "lintr": {
     "description": "Static Code Analysis for R. Contribute to r-lib/lintr development by creating an account on GitHub.",

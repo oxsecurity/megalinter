@@ -9,7 +9,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 
 ## powershell documentation
 
-- Version in MegaLinter: **7.3.8**
+- Version in MegaLinter: **7.4.0**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
@@ -56,7 +56,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       120        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        63        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        72        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
@@ -90,6 +90,7 @@ pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Settings .p
 Usage: pwsh[.exe] [-Login] [[-File] <filePath> [args]]
                   [-Command { - | <script-block> [-args <arg-array>]
                                 | <string> [<CommandParameters>] } ]
+                  [-CommandWithArgs <string> [<CommandParameters>]
                   [-ConfigurationName <string>] [-ConfigurationFile <filePath>]
                   [-CustomPipeName <string>] [-EncodedCommand <Base64EncodedCommand>]
                   [-ExecutionPolicy <ExecutionPolicy>] [-InputFormat {Text | XML}]
@@ -223,6 +224,25 @@ All parameters are case-insensitive.
     (runspace-terminating) error, such as a throw or -ErrorAction Stop, occurs
     or when execution is interrupted with Ctrl-C.
 
+-CommandWithArgs | -cwa
+
+    [Experimental]
+    Executes a PowerShell command with arguments.  Unlike `-Command`, this
+    parameter populates the `$args built-in variable which can be used by the
+    command.
+
+    The first string is the command and subsequent strings delimited by whitespace
+    are the arguments.
+
+    For example:
+
+        pwsh -CommandWithArgs '$args | % { "arg: $_" }' arg1 arg2
+
+    This example produces the following output:
+
+        arg: arg1
+        arg: arg2
+
 -ConfigurationName | -config
 
     Specifies a configuration endpoint in which PowerShell is run. This can be
@@ -335,9 +355,10 @@ All parameters are case-insensitive.
 
 -NonInteractive | -noni
 
-    Does not present an interactive prompt to the user. Any attempts to use
-    interactive features, like Read-Host or confirmation prompts, result in
-    statement-terminating errors.
+    This switch is used to create sessions that shouldn't require user input.
+    This is useful for scripts that run in scheduled tasks or CI/CD pipelines.
+    Any attempts to use interactive features, like 'Read-Host' or confirmation
+    prompts, result in statement terminating errors rather than hanging.
 
 -NoProfile | -nop
 
@@ -355,7 +376,7 @@ All parameters are case-insensitive.
 
     Example: "pwsh -o XML -c Get-Date"
 
-    When called withing a PowerShell session, you get deserialized objects as
+    When called within a PowerShell session, you get deserialized objects as
     output rather plain strings. When called from other shells, the output is
     string data formatted as CLIXML text.
 
@@ -408,20 +429,11 @@ All parameters are case-insensitive.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ARG PWSH_VERSION='latest'
-ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s \
-       -H "Accept: application/vnd.github+json" \
-       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    && chmod +x /usr/bin/pwsh
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # Linter install
 ARG PSSA_VERSION='latest'

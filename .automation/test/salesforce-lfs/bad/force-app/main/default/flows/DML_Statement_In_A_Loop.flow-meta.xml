@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>a Case failed to create automatically. Please examine its details manually.</description>
+        <name>create_case_manually</name>
+        <label>create case manually</label>
+        <locationX>528</locationX>
+        <locationY>350</locationY>
+        <actionName>FeedItem.NewTaskFromFeedItem</actionName>
+        <actionType>quickAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contextId</name>
+            <value>
+                <elementReference>createCase.OwnerId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>FeedItem.NewTaskFromFeedItem</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <description>This flow demonstrates a violation of the rule &quot;DML Statement In A Loop&quot;.</description>
+    <environments>Default</environments>
+    <interviewLabel>DML Statements In A Loop {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DML Statement In A Loop</label>
+    <loops>
+        <description>an example loop</description>
+        <name>aLoop</name>
+        <label>aLoop</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <collectionReference>Accounts</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>createNewCase</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>creates a new case</description>
+        <name>createNewCase</name>
+        <label>createNewCase</label>
+        <locationX>264</locationX>
+        <locationY>242</locationY>
+        <connector>
+            <targetReference>aLoop</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>create_case_manually</targetReference>
+        </faultConnector>
+        <inputReference>createCase</inputReference>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>aLoop</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>A collection of Accounts</description>
+        <name>Accounts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>createCase</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <description>a task</description>
+        <name>task</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

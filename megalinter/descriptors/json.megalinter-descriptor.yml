@@ -4,6 +4,7 @@ descriptor_flavors:
   - all_flavors # Any project can contain JSON
   - ci_light
   - cupcake
+  - formatters
 file_extensions:
   - ".json"
 linters:
