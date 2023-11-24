@@ -45,6 +45,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.9 to **3.1.10** on 2023-11-23
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.5 to **0.53.6** on 2023-11-23
   - [checkov](https://www.checkov.io/) from 3.1.10 to **3.1.11** on 2023-11-24
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.15.0 to **2.16.0** on 2023-11-24
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
