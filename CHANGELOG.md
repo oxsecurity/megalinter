@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - CI
+  - Add arguments to make use of pytest-xdist, by @echoix
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.0.39 to **3.0.40** on 2023-11-19
@@ -32,6 +33,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.0 to **3.63.1** on 2023-11-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.4 to **0.53.5** on 2023-11-21
   - [checkov](https://www.checkov.io/) from 3.1.4 to **3.1.7** on 2023-11-21
+  - [phpstan](https://phpstan.org/) from 1.10.43 to **1.10.44** on 2023-11-21
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.1 to **4.2.2** on 2023-11-21
+  - [checkov](https://www.checkov.io/) from 3.1.7 to **3.1.9** on 2023-11-21
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.1 to **3.63.2** on 2023-11-21
+  - [psalm](https://psalm.dev) from Psalm.5.15.0@ to **Psalm.5.16.0@** on 2023-11-22
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.2 to **4.2.3** on 2023-11-22
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.336 to **1.1.337** on 2023-11-22
+  - [csharpier](https://csharpier.com/) from 0.26.2 to **0.26.3** on 2023-11-23
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.1 to **12.1.2** on 2023-11-23
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.7.0 to **1.7.1** on 2023-11-23
+  - [checkov](https://www.checkov.io/) from 3.1.9 to **3.1.10** on 2023-11-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.5 to **0.53.6** on 2023-11-23
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
