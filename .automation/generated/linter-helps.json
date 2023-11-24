@@ -10217,7 +10217,7 @@
         "   --help, -h                                       Show help",
         "   --version, -v                                    Show terragrunt version",
         "",
-        "VERSION: v0.53.5",
+        "VERSION: v0.53.6",
         "",
         "AUTHOR: Gruntwork <www.gruntwork.io>"
     ],
@@ -10640,9 +10640,9 @@
         "",
         "Commands:",
         "",
-        " sync             Download and install external configuration sources.",
         " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
+        " sync             Download and install external configuration sources.",
         ""
     ],
     "xmllint": [
