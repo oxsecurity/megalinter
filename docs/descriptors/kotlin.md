@@ -31,5 +31,11 @@ description: ktlint is available to analyze KOTLIN files in MegaLinter
 
 ### Installation
 
+- Dockerfile commands :
+```dockerfile
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+```
+
 - APK packages (Linux):
-  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
+  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)

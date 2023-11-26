@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.6-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,6 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 perl \
                 perl-dev \
     && git config --global core.autocrlf true
@@ -124,7 +125,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # perlcritic installation
-RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
+RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+    && rm -rf /root/.perl-cpm
+
 
 #OTHER__END
 

@@ -17,7 +17,7 @@ FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 ##################
 # Get base image #
 ##################
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.6-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,6 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                openssl \
                 gnupg \
                 php81 \
                 php81-phar \

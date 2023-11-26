@@ -7,9 +7,11 @@ on:
       - main
       - auto-update
       - fixes/docgen
-  # Automatically run every day at midnight
+  # Automatically run every day at 21:49 UTC, before a start of hour peak
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "49 21 * * *"
+  # Allow to manually trigger a run of the workflow
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -106,7 +108,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports

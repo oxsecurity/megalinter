@@ -7,16 +7,25 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 # <a href="https://github.com/microsoft/DevSkim" target="blank" title="Visit linter Web Site"><img src="https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg" alt="devskim" height="100px" class="megalinter-logo"></a>devskim
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/DevSkim?cacheSeconds=3600)](https://github.com/microsoft/DevSkim) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/DevSkim?sort=semver)](https://github.com/microsoft/DevSkim/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/contributors/)
 
-Use `--ignore-globs` to ignore files and/or folders
+If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
 Example:
-  `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+```json
+{
+  Glob: [
+    "**/.git/**",
+    "**/megalinter-reports/**"
+  ]
+}
+```
 
 ## devskim documentation
 
 - Version in MegaLinter: **1.0.23**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
+  - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 
 [![DevSkim - GitHub](https://gh-card.dev/repos/microsoft/DevSkim.svg?fullname=)](https://github.com/microsoft/DevSkim){target=_blank}
@@ -26,16 +35,18 @@ Example:
 - Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
-| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
-| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
-| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
-| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None          |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`       |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`           |
-| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']` |
+| Variable                                       | Description                                                                                               | Default value                                   |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
+| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
+| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
+| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
+| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None                                            |
+| REPOSITORY_DEVSKIM_CONFIG_FILE                 | devskim configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.devskim.json`                                 |
+| REPOSITORY_DEVSKIM_RULES_PATH                  | Path where to find linter configuration file                                                              | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`                                         |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`                                             |
+| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']`                                   |
 
 ## IDE Integration
 
@@ -51,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       117        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       120        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
