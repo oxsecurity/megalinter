@@ -4,6 +4,8 @@ descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
   - cupcake
+  - c_cpp
+  - formatters
 file_extensions:
   - ".sh"
   - ".bash"

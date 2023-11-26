@@ -590,8 +590,22 @@ def match_flavor(item, flavor, flavor_info):
         and flavor in item["descriptor_flavors_exclude"]
     ):
         return False
+    # Flavor all
     elif flavor == "all":
         return True
+    # Formatter flavor
+    elif flavor == "formatters":
+        if "is_formatter" in item and item["is_formatter"] is True:
+            return True
+        elif (
+            "descriptor_flavors" in item
+            and flavor in item["descriptor_flavors"]
+            and "linter_name" not in item
+        ):
+            return True
+        else:
+            return False
+    # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
@@ -2509,7 +2523,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.2M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.5M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)

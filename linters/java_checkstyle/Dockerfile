@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.6-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,7 +48,8 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openjdk11 \
+                openssl \
+                openjdk17 \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -123,7 +124,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation
