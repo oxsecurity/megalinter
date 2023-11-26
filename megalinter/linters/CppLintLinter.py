@@ -18,7 +18,7 @@ class CppLintLinter(Linter):
         ):
             extensions = []
             for file in self.files:
-                extension = pathlib.Path(file).suffix
+                extension = pathlib.Path(file).suffix.replace(".","")
                 if extension not in extensions:
                     extensions += [extension]
             self.cli_lint_extra_args += ["--extensions=" + ",".join(extensions)]
