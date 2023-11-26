@@ -47,6 +47,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.10 to **3.1.11** on 2023-11-24
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.15.0 to **2.16.0** on 2023-11-24
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.4.0 to **1.5.0** on 2023-11-25
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.2 to **12.2.0** on 2023-11-26
+  - [checkov](https://www.checkov.io/) from 3.1.11 to **3.1.14** on 2023-11-26
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
