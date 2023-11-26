@@ -11,7 +11,7 @@
 <link href="../java/" rel="prev"/>
 <link href="../java_pmd/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.4.12" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.14" name="generator"/>
 <title>checkstyle configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.fad675c6.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
@@ -3524,6 +3524,9 @@
                   root modules to resolve in addition to the initial module.
                   &lt;module name&gt; can also be ALL-DEFAULT, ALL-SYSTEM,
                   ALL-MODULE-PATH.
+    --enable-native-access &lt;module name&gt;[,&lt;module name&gt;...]
+                  modules that are permitted to perform restricted native operations.
+                  &lt;module name&gt; can also be ALL-UNNAMED.
     --list-modules
                   list observable modules and exit
     -d &lt;module name&gt;
@@ -3539,7 +3542,7 @@
     -D&lt;name&gt;=&lt;value&gt;
                   set a system property
     -verbose:[class|module|gc|jni]
-                  enable verbose output
+                  enable verbose output for the given subsystem
     -version      print product version to the error stream and exit
     --version     print product version to the output stream and exit
     -showversion  print product version to the error stream and continue
@@ -3592,7 +3595,7 @@ To specify an argument for a long option, you can use --&lt;name&gt;=&lt;value&g
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \
@@ -3671,7 +3674,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s \
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+<script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
