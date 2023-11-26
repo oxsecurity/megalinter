@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
+  - cpplint: Dynamically add the list of extensions from list of files in --extensions parameter
 
 - Doc
 
