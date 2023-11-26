@@ -9,7 +9,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **12.1.1**
+- Version in MegaLinter: **13.0.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file isn't found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -146,7 +146,13 @@ Note: command-line arguments have priority on config file properties - default: 
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+```
+
 - APK packages (Linux):
-  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
+  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)
 - NPM packages (node.js):
   - [npm-groovy-lint](https://www.npmjs.com/package/npm-groovy-lint)

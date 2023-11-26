@@ -20,7 +20,8 @@ file_extensions:
   - ".cuh"
 linters:
   # CPPLINT
-  - linter_name: cpplint
+  - class: CppLintLinter
+    linter_name: cpplint
     name: CPP_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint

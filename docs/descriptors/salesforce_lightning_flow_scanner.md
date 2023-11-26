@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.15.0**
+- Version in MegaLinter: **2.16.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
 - See [Index of problems detected by lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules){target=_blank}
@@ -133,7 +133,7 @@ FLAGS
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
     && echo y|sfdx plugins:install sfdx-hardis \
