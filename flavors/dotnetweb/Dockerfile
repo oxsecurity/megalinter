@@ -79,7 +79,7 @@ RUN apk add --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
-                openjdk11 \
+                openjdk17 \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -282,6 +282,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
+# KOTLIN installation
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+
 # POWERSHELL installation
 # Next line commented because already managed by another linter
 # RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
@@ -338,6 +342,12 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # dotenv-linter installation
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+
+# npm-groovy-lint installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
