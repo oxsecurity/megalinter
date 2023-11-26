@@ -126,6 +126,9 @@ Usage: java [options] <mainclass> [args...]
                   root modules to resolve in addition to the initial module.
                   <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
                   ALL-MODULE-PATH.
+    --enable-native-access <module name>[,<module name>...]
+                  modules that are permitted to perform restricted native operations.
+                  <module name> can also be ALL-UNNAMED.
     --list-modules
                   list observable modules and exit
     -d <module name>
@@ -141,7 +144,7 @@ Usage: java [options] <mainclass> [args...]
     -D<name>=<value>
                   set a system property
     -verbose:[class|module|gc|jni]
-                  enable verbose output
+                  enable verbose output for the given subsystem
     -version      print product version to the error stream and exit
     --version     print product version to the output stream and exit
     -showversion  print product version to the error stream and continue
@@ -195,7 +198,7 @@ To specify an argument for a long option, you can use --<name>=<value> or
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \

@@ -78,7 +78,7 @@ RUN apk add --no-cache \
                 openssl \
                 docker \
                 openrc \
-                openjdk11 \
+                openjdk17 \
                 gnupg \
                 php81 \
                 php81-phar \
@@ -342,8 +342,14 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+
+# KOTLIN installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
@@ -404,6 +410,12 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+
+# npm-groovy-lint installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
