@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.11 to **3.1.14** on 2023-11-26
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.2.0 to **13.0.0** on 2023-11-26
   - [checkov](https://www.checkov.io/) from 3.1.14 to **3.1.15** on 2023-11-26
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.1.0 to **7.2.0** on 2023-11-27
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
