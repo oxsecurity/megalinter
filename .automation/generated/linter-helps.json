@@ -3254,7 +3254,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions",
+        "  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -10643,9 +10643,9 @@
         "",
         "Commands:",
         "",
-        " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
         " sync             Download and install external configuration sources.",
+        " ls-config        Print the current configuration to stdout.",
         ""
     ],
     "xmllint": [
