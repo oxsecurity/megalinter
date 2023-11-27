@@ -14354,6 +14354,22 @@
       "title": "REPOSITORY_SEMGREP: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_SEMGREP_RULESETS": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_RULESETS",
+      "description": "REPOSITORY_SEMGREP: Specify custom ruleset(s) for semgrep",
+      "examples:": [
+        "auto",
+        "p/ci"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SEMGREP: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
     "REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES",
       "default": [],
