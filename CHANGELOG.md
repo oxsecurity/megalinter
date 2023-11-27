@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
+  - cpplint: Dynamically add the list of extensions from list of files in --extensions parameter
 
 - Doc
 
@@ -36,6 +37,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [puppet-lint](http://puppet-lint.com/) from 4.2.1 to **4.2.2** on 2023-11-21
   - [checkov](https://www.checkov.io/) from 3.1.7 to **3.1.9** on 2023-11-21
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.1 to **3.63.2** on 2023-11-21
+  - [psalm](https://psalm.dev) from Psalm.5.15.0@ to **Psalm.5.16.0@** on 2023-11-22
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.2 to **4.2.3** on 2023-11-22
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.336 to **1.1.337** on 2023-11-22
+  - [csharpier](https://csharpier.com/) from 0.26.2 to **0.26.3** on 2023-11-23
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.1 to **12.1.2** on 2023-11-23
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.7.0 to **1.7.1** on 2023-11-23
+  - [checkov](https://www.checkov.io/) from 3.1.9 to **3.1.10** on 2023-11-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.5 to **0.53.6** on 2023-11-23
+  - [checkov](https://www.checkov.io/) from 3.1.10 to **3.1.11** on 2023-11-24
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.15.0 to **2.16.0** on 2023-11-24
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.4.0 to **1.5.0** on 2023-11-25
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.1.2 to **12.2.0** on 2023-11-26
+  - [checkov](https://www.checkov.io/) from 3.1.11 to **3.1.14** on 2023-11-26
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.2.0 to **13.0.0** on 2023-11-26
+  - [checkov](https://www.checkov.io/) from 3.1.14 to **3.1.15** on 2023-11-26
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.1.0 to **7.2.0** on 2023-11-27
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19

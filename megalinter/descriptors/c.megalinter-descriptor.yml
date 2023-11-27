@@ -10,7 +10,8 @@ file_extensions:
   - ".h"
 linters:
   # CPPLINT
-  - linter_name: cpplint
+  - class: CppLintLinter
+    linter_name: cpplint
     name: C_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint

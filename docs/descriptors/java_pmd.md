@@ -275,7 +275,7 @@ $ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickst
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 ARG PMD_VERSION=6.55.0
