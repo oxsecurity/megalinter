@@ -624,7 +624,12 @@ def test_linter_format_fix(linter, test_self):
 
     search_glob_pattern = workspace.replace("\\", "/") + "/**/*"
 
-    files = glob.iglob(search_glob_pattern, recursive=True)
+    files = glob.glob(search_glob_pattern, recursive=True)
+
+    filter_regex_exclude = []
+
+    if linter.test_format_fix_regex_exclude is not None:
+        filter_regex_exclude = [linter.test_format_fix_regex_exclude]
 
     file_extensions = linter.file_extensions
 
@@ -633,9 +638,9 @@ def test_linter_format_fix(linter, test_self):
 
     filtered_files = utils.filter_files(
         all_files=files,
-        filter_regex_include=None,
-        filter_regex_exclude=[linter.test_format_fix_regex_exclude],
-        file_names_regex=["_fix_"],
+        filter_regex_include="_fix_",
+        filter_regex_exclude=filter_regex_exclude,
+        file_names_regex=[],
         file_extensions=file_extensions,
         ignored_files=[],
         ignore_generated_files=False,
