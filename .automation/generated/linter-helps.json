@@ -6458,6 +6458,26 @@
         "  -version",
         "      get revive version"
     ],
+    "roslynator": [
+        "Roslynator Command Line Tool version 0.8.0.0 (Roslyn version 4.7.0.0)",
+        "Usage: roslynator [command] [arguments]",
+        "",
+        "Commands:",
+        "  analyze            Analyzes specified project or solution and reports diagnostics.",
+        "  find-symbol        Finds symbols in the specified project or solution.",
+        "  fix                Fixes diagnostics in the specified project or solution.",
+        "  format             Formats whitespace in the specified project or solution.",
+        "  generate-doc       Generates reference documentation from specified project/solution.",
+        "  generate-doc-root  [deprecated] Generates root documentation file from specified project/solution.",
+        "  list-symbols       Lists symbols from the specified project or solution.",
+        "  lloc               Counts logical lines of code in the specified project or solution.",
+        "  loc                Counts physical lines of code in the specified project or solution.",
+        "  migrate            Migrates analyzers to a new version.",
+        "  rename-symbol      Rename symbols in the specified project or solution.",
+        "  spellcheck         Searches the specified project or solution for possible misspellings or typos.",
+        "",
+        "Run 'roslynator help [command]' for more information on a command."
+    ],
     "rst-lint": [
         "usage: rst-lint [-h] [--version] [--format {text,json}] [--encoding ENCODING]",
         "                [--level {debug,info,warning,error,severe}]",

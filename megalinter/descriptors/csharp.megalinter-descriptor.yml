@@ -79,3 +79,40 @@ linters:
       vscode:
         - name: csharpier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode
+  # Roslynator
+  - class: RoslynatorLinter
+    linter_name: roslynator
+    file_extensions:
+      - ".csproj"
+    is_formatter: true
+    linter_url: https://github.com/JosefPihrt/Roslynator
+    linter_repo: https://github.com/JosefPihrt/Roslynator
+    linter_image_url: http://pihrt.net/images/Roslynator.ico
+    linter_rules_configuration_url: https://github.com/JosefPihrt/Roslynator/blob/main/docs/Configuration.md
+    cli_lint_fix_arg_name: "fix"
+    cli_lint_extra_args:
+      - "analyze"
+    cli_lint_fix_remove_args:
+      - "analyze"
+    test_folder: csharp_roslynator
+    test_format_fix_file_extensions:
+      - ".cs"
+    test_format_fix_regex_exclude: /bin/|/obj/
+    examples:
+      - "roslynator analyze myproject.csproj"
+      - "roslynator fix myproject.csproj" # Fix
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+              && chmod +x dotnet-install.sh \
+              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - RUN /usr/share/dotnet/dotnet tool install -g roslynator.dotnet.cli
+    ide:
+      visual_studio:
+        - name: Roslynator 2022
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt.Roslynator2022
+      vscode:
+        - name: Roslynator
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt-vscode.roslynator

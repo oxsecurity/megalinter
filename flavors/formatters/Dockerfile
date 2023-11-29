@@ -196,6 +196,15 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
 # csharpier installation
     && /usr/share/dotnet/dotnet tool install -g csharpier \
 
+# roslynator installation
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    && /usr/share/dotnet/dotnet tool install -g roslynator.dotnet.cli \
+
 # powershell_formatter installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 

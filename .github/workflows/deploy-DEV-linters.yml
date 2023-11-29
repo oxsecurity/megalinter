@@ -63,6 +63,7 @@ jobs:
             "cpp_clang_format",
             "csharp_dotnet_format",
             "csharp_csharpier",
+            "csharp_roslynator",
             "css_stylelint",
             "css_scss_lint",
             "dart_dartanalyzer",
