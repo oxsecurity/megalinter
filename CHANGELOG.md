@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.45 to **1.10.46** on 2023-11-28
   - [checkov](https://www.checkov.io/) from 3.1.17 to **3.1.18** on 2023-11-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.6 to **0.53.7** on 2023-11-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.7 to **0.53.8** on 2023-11-29
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
