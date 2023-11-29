@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.22.0**
+- Version in MegaLinter: **6.22.1**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
@@ -159,6 +159,8 @@ ANSIBLE_LINT_IGNORE_FILE: Define it to override the name of the default ignore f
 ANSIBLE_LINT_WRITE_TMP: Tells linter to dump fixes into different temp files instead of overriding original. Used internally for testing.
 
 ANSIBLE_LINT_SKIP_SCHEMA_UPDATE: Tells ansible-lint to skip schema refresh.
+
+ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performing checks that would fail when modules are not installed. Far less violations will be reported.
 ```
 
 ### Installation on mega-linter Docker image

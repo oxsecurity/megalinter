@@ -21,7 +21,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.50.0**
+- Version in MegaLinter: **1.51.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -161,7 +161,7 @@ OPTIONS
 
        --beta-testing-secrets-enabled
            Enable support for secret validation. Requires Semgrep Secrets,
-           contact support@semgrep.com for more informationon this.
+           contact support@semgrep.com for more information on this.
 
        -d, --dump-command-for-core
            <internal, do not use>
@@ -370,17 +370,17 @@ OPTIONS
 
        --pro
            Inter-file analysis and Pro languages (currently just Apex).
-           Requires Semgrep Pro Engine, contact support@semgrep.com for more
-           information on this.
+           Requires Semgrep Pro Engine. See
+           https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-intrafile
            Intra-file inter-procedural taint analysis. Implies
-           --pro-languages. Requires Semgrep Pro Engine, contact
-           support@semgrep.com for more information on this.
+           --pro-languages. Requires Semgrep Pro Engine. See
+           https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-languages
            Enable Pro languages (currently just Apex). Requires Semgrep Pro
-           Engine, contact support@semgrep.com for more information on this.
+           Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            <undocumented>
@@ -479,6 +479,13 @@ OPTIONS
 
        --vim
            Output results in vim single-line format.
+
+       --x-ls
+           [INTERNAL] List the selected target files and the skipped target
+           files before any rule-specific or language-specific filtering.
+           Then exit. The output format is unspecified. THIS OPTION IS NOT
+           PART OF THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT
+           NOTICE.
 
 COMMON OPTIONS
        --help[=FMT] (default=auto)
