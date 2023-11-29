@@ -52,6 +52,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.11 to **3.1.14** on 2023-11-26
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 12.2.0 to **13.0.0** on 2023-11-26
   - [checkov](https://www.checkov.io/) from 3.1.14 to **3.1.15** on 2023-11-26
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.1.0 to **7.2.0** on 2023-11-27
+  - [phpstan](https://phpstan.org/) from 1.10.44 to **1.10.45** on 2023-11-27
+  - [checkov](https://www.checkov.io/) from 3.1.15 to **3.1.17** on 2023-11-27
+  - [phpstan](https://phpstan.org/) from 1.10.45 to **1.10.46** on 2023-11-28
+  - [checkov](https://www.checkov.io/) from 3.1.17 to **3.1.18** on 2023-11-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.6 to **0.53.7** on 2023-11-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.7 to **0.53.8** on 2023-11-29
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.337 to **1.1.338** on 2023-11-29
+  - [checkov](https://www.checkov.io/) from 3.1.18 to **3.1.19** on 2023-11-29
+  - [secretlint](https://github.com/secretlint/secretlint) from 7.2.0 to **8.0.0** on 2023-11-29
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
