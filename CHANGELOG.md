@@ -62,6 +62,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.337 to **1.1.338** on 2023-11-29
   - [checkov](https://www.checkov.io/) from 3.1.18 to **3.1.19** on 2023-11-29
   - [secretlint](https://github.com/secretlint/secretlint) from 7.2.0 to **8.0.0** on 2023-11-29
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.22.0 to **6.22.1** on 2023-11-29
+  - [semgrep](https://semgrep.dev/) from 1.50.0 to **1.51.0** on 2023-11-29
+  - [syft](https://github.com/anchore/syft) from 0.97.1 to **0.98.0** on 2023-11-29
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
