@@ -3293,7 +3293,7 @@
 <p><a href="https://github.com/ansible/ansible-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/ansible/ansible-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/ansible/ansible-lint?sort=semver"/></a> <a href="https://github.com/ansible/ansible-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/ansible/ansible-lint"/></a></p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.22.0</strong></li>
+<li>Version in MegaLinter: <strong>6.22.1</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives" target="_blank">How to disable ansible-lint rules in files</a></li>
@@ -3602,6 +3602,8 @@ ANSIBLE_LINT_IGNORE_FILE: Define it to override the name of the default ignore f
 ANSIBLE_LINT_WRITE_TMP: Tells linter to dump fixes into different temp files instead of overriding original. Used internally for testing.
 
 ANSIBLE_LINT_SKIP_SCHEMA_UPDATE: Tells ansible-lint to skip schema refresh.
+
+ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performing checks that would fail when modules are not installed. Far less violations will be reported.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
