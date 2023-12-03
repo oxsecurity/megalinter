@@ -10,13 +10,6 @@ file_extensions:
 install:
   apk:
     - dotnet7-sdk
-    - icu-libs
-    - krb5-libs
-    - libgcc
-    - libintl
-    - libssl1.1
-    - libstdc++
-    - zlib
   dockerfile:
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
@@ -43,7 +36,7 @@ linters:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
   # CSharpier
-  - class: DotnetLinter
+  - class: DotNetToolLinter
     linter_name: csharpier
     is_formatter: true
     linter_url: https://csharpier.com/
@@ -52,6 +45,7 @@ linters:
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
     ignore_file_name: .csharpierignore
+    cli_executable: dotnet-csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
@@ -99,12 +93,7 @@ linters:
       - "roslynator fix myproject.csproj" # Fix
     install:
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN /usr/share/dotnet/dotnet tool install -g roslynator.dotnet.cli
+        - RUN dotnet tool install -g roslynator.dotnet.cli
     ide:
       visual_studio:
         - name: Roslynator 2022

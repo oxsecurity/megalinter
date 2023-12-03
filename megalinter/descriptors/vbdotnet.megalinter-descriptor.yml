@@ -10,13 +10,6 @@ file_extensions:
 install:
   apk:
     - dotnet7-sdk
-    - icu-libs
-    - krb5-libs
-    - libgcc
-    - libintl
-    - libssl1.1
-    - libstdc++
-    - zlib
   dockerfile:
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:

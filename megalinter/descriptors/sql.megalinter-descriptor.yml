@@ -50,7 +50,8 @@ linters:
       pip:
         - sqlfluff
   # TSQL
-  - linter_name: tsqllint
+  - class: DotNetToolLinter
+    linter_name: tsqllint
     descriptor_flavors:
       - dotnet
       - dotnetweb
@@ -71,14 +72,7 @@ linters:
       - "tsqllint myfile.sql myfile2.sql"
     install:
       apk:
-        - dotnet6-sdk
-        - icu-libs
-        - krb5-libs
-        - libgcc
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - zlib
+        - dotnet7-sdk
       dockerfile:
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global TSQLLint

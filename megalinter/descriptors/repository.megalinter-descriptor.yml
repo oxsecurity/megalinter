@@ -53,7 +53,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
   # DEVSKIM
-  - linter_name: devskim
+  - class: DotNetToolLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -100,14 +101,7 @@ linters:
       - "devskim analyze --file-format sarif ."
     install:
       apk:
-        - dotnet6-sdk
-        - icu-libs
-        - krb5-libs
-        - libgcc
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - zlib
+        - dotnet7-sdk
       dockerfile:
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
