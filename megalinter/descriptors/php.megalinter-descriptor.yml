@@ -17,7 +17,6 @@ install:
     - php81-curl
     - php81-dom
     - php81-simplexml
-    - composer
     - dpkg
   dockerfile:
     - |
@@ -35,7 +34,6 @@ install:
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
-    - ENV PATH="/root/.composer/vendor/bin:$PATH"
 linters:
   # PHPCS
   - linter_name: phpcs
@@ -47,6 +45,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
@@ -97,9 +97,9 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-    ide:
+        - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
+        - RUN chmod +x /usr/bin/phpstan
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -118,6 +118,8 @@ linters:
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - --output-format=console
     cli_config_arg_name: "--config="
     cli_sarif_args:
       - "--report={{SARIF_OUTPUT_FILE}}"
@@ -137,6 +139,7 @@ linters:
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+          id: de.espend.idea.php.generics
       vscode:
         - name: Psalm VSCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
@@ -154,5 +157,4 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require --ignore-platform-reqs overtrue/phplint ^5.3 \
-              && composer global config bin-dir --absolute
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g

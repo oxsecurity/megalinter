@@ -1,3 +1,8 @@
+---
+title: License info for cpplint within MegaLinter
+search:
+  exclude: true
+---
 cpplint.py and its corresponding unit tests are Copyright (C) 2009 Google Inc.
 
 Redistribution and use in source and binary forms, with or without

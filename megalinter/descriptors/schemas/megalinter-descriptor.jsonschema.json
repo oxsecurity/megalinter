@@ -43,8 +43,11 @@
         "all",
         "ci_light",
         "cupcake",
+        "c_cpp",
         "documentation",
         "dotnet",
+        "dotnetweb",
+        "formatters",
         "go",
         "java",
         "javascript",
@@ -384,7 +387,7 @@
                 "eslint-config-prettier",
                 "eslint-plugin-jest",
                 "eslint-plugin-prettier",
-                "babel-eslint"
+                "@babel/eslint-parser"
               ]
             },
             "linter_banner_image_url": "https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png",
@@ -603,7 +606,8 @@
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "examples": [
               "regex_number",
@@ -786,6 +790,13 @@
             "description": "Disable linter in MegaLinter next builds",
             "title": "Disabled",
             "type": "boolean"
+          },
+          "downgraded_reason": {
+            "$id": "#/properties/linters/items/properties/downgraded_reason",
+            "default": false,
+            "description": "Explanation about why the linter is downgraded",
+            "title": "Downgraded reason",
+            "type": "string"
           },
           "downgraded_version": {
             "$id": "#/properties/linters/items/properties/downgraded_version",
@@ -1037,6 +1048,13 @@
             "title": "Is formatter",
             "type": "boolean"
           },
+          "is_sbom": {
+            "$id": "#/properties/linters/items/properties/is_sbom",
+            "default": false,
+            "description": "If the linter is SBOM, set to true so extra properties will be returned",
+            "title": "Is SBOM",
+            "type": "boolean"
+          },
           "lint_all_files": {
             "$id": "#/properties/linters/items/lint_all_files",
             "default": false,
@@ -1055,7 +1073,7 @@
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "description": "URL of an image used to build header of linter Markdown documentation",
             "examples": [
-              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
             ],
             "format": "uri",
             "title": "Linter banner image URL",
@@ -1065,6 +1083,16 @@
             "$id": "#/properties/linters/items/properties/linter_help_cache",
             "description": "If the linter is unable to return help content, hardcode it here",
             "title": "Hardcoded help content",
+            "type": "string"
+          },
+          "linter_icon_png_url": {
+            "$id": "#/properties/linters/items/properties/linter_icon_png_url",
+            "description": "URL of a PNG image representing the icon of the linter",
+            "examples": [
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
+            ],
+            "format": "uri",
+            "title": "Linter Icon PNG URL",
             "type": "string"
           },
           "linter_image_url": {
@@ -1246,6 +1274,33 @@
               ]
             ],
             "title": "Test folder in .automation/",
+            "type": "string"
+          },
+          "test_format_fix_file_extensions": {
+            "$id": "#/properties/test_format_fix_file_extensions",
+            "default": [],
+            "description": "Format / Fix test file extension filters.",
+            "examples": [
+              [
+                ".py",
+                ""
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Allowed file extensions",
+            "type": "array"
+          },
+          "test_format_fix_regex_exclude": {
+            "$id": "#/properties/linters/items/test_format_fix_regex_exclude",
+            "description": "Format / Fix test exclusions",
+            "examples": [
+              [
+                "/bin/|/obj/"
+              ]
+            ],
+            "title": "Format / Fix test exclusions",
             "type": "string"
           },
           "test_variables": {

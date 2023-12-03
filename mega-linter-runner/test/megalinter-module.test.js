@@ -1,7 +1,5 @@
-#! /usr/bin/env node
-"use strict";
-const { MegaLinterRunner } = require("../lib/index");
-const assert = require("assert");
+import { MegaLinterRunner } from "../lib/index.js";
+import assert from 'assert';
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =

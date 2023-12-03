@@ -2,6 +2,7 @@ descriptor_id: BICEP
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+  - dotnetweb
 linters:
   - class: BicepLinter
     cli_help_arg_name: --help
@@ -31,6 +32,8 @@ linters:
         # Azure CLI 
         az bicep build -f infra.bicep
     install:
+      apk:
+        - icu-libs
       dockerfile:
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'

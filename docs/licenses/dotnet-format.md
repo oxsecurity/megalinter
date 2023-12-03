@@ -1,3 +1,8 @@
+---
+title: License info for dotnet-format within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) .NET Foundation and Contributors

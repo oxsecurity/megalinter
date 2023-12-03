@@ -1,3 +1,8 @@
+---
+title: License info for csharpier within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2021 belav

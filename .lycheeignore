@@ -1,0 +1,26 @@
+# These links are ignored by lychee link checker: https://github.com/lycheeverse/lychee
+# The file allows you to list multiple regular expressions for exclusion (one pattern per line).
+# The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/recipes/excluding-paths.md
+
+my-company.com
+https://megalinter.io/
+https://megalinter.io/flavors/
+https://megalinter.io/configuration/
+https://www.linkedin.com/
+https://twitter.com
+https://twitter.com/intent/tweet
+https://fonts.gstatic.com
+https://img.shields.io
+http://mozilla.org/MPL/2.0/
+https://github.com/sider/goodcheck
+https://api.github.com/repos/powershell/powershell/releases
+https://storage.googleapis.com/dart-archive/channels/stable/release
+https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
+https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules
+https://raw.githubusercontent.com/cookiejar/megalinter-plugin-cookiejar/main/cookietemplate.mega-linter-descriptor.yml
+https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico
+https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico
+https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
+https://github.com/pmd/pmd/releases/download/pmd_releases
+https://twitter.com/intent/tweet*
+https://github.com/sgerrand/alpine-pkg-glibc/releases/download

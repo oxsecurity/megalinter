@@ -1,9 +1,9 @@
-"use strict";
-const Generator = require("yeoman-generator");
-const { asciiArt } = require("../../lib/ascii");
-const { OXSecuritySetup } = require("../../lib/ox-setup");
+import { asciiArt } from "../../lib/ascii.js";
+import Generator from 'yeoman-generator';
+import { OXSecuritySetup } from "../../lib/ox-setup.js";
+import { DEFAULT_RELEASE } from "../../lib/config.js";
 
-module.exports = class extends Generator {
+export default class GeneratorMegaLinter extends Generator {
   prompting() {
     console.log(asciiArt());
     this.log(
@@ -68,9 +68,9 @@ When you don't know what option to select, please use default values`
         type: "list",
         name: "version",
         message: "Which MegaLinter version do you want to use ?",
-        default: "v6",
+        default: DEFAULT_RELEASE,
         choices: [
-          { name: "v6 (Latest official release)", value: "v6" },
+          { name: `${DEFAULT_RELEASE} (Latest official release)`, value: DEFAULT_RELEASE },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -125,8 +125,8 @@ When you don't know what option to select, please use default values`
         type: "confirm",
         name: "ox",
         message:
-          "Do you want to connect to OX Security to secure your repository ?",
-        default: false,
+          "Do you want to try OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
+        default: true,
       },
     ];
 
@@ -183,18 +183,22 @@ When you don't know what option to select, please use default values`
       this.dockerImageName = "oxsecurity/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v6") {
-      this.gitHubActionVersion = "v6";
-      this.dockerImageVersion = "v6";
+    if (this.props.version == DEFAULT_RELEASE) {
+      this.gitHubActionVersion = DEFAULT_RELEASE;
+      this.dockerImageVersion = DEFAULT_RELEASE;
     } else {
       this.gitHubActionVersion = "beta";
       this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
+      this.validateAllCodeBaseGha = "true";
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha  = ">-\n"
+      this.validateAllCodeBaseGha += "            ${{";
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
+      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
     // COPY PASTES
@@ -275,7 +279,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
     );
   }
 
@@ -336,4 +340,4 @@ When you don't know what option to select, please use default values`
       );
     }
   }
-};
+}

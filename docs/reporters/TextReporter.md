@@ -33,7 +33,7 @@ Generate text logs for each linter
 
 - You can export `mega-linter.log` and folder `<WORKSPACE>/report` as external artifacts
 
-- You can also use [File.io Reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail Reporter](https://megalinter.github.io/reporters/EmailReporter/)
+- You can also use [File.io Reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail Reporter](https://megalinter.io/reporters/EmailReporter/)
 
 ## Report folder structure
 

@@ -1,6 +1,7 @@
 descriptor_id: COFFEE
 descriptor_type: language
 descriptor_flavors:
+  - dotnetweb
   - javascript
 file_extensions:
   - ".coffee"
@@ -28,3 +29,4 @@ linters:
       idea:
         - name: coffeelint
           url: https://plugins.jetbrains.com/plugin/7723-coffeelint
+          id: com.wix.coffeelint

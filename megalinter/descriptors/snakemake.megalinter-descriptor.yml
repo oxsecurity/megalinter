@@ -2,6 +2,7 @@ descriptor_id: SNAKEMAKE
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - formatters
 file_extensions:
   - ".smk"
 file_names_regex:
@@ -25,6 +26,7 @@ linters:
       idea:
         - name: SnakeCharm
           url: https://plugins.jetbrains.com/plugin/11947-snakecharm
+          id: SnakeCharm
       vscode:
         - name: VSCode SnakeMake
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake

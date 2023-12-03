@@ -28,7 +28,7 @@ Paste the result in your repository
 
 ### Other CI tools
 
-If you are not using GitHub Actions, you can:
+If you aren't using GitHub Actions, you can:
 
 - use [File.io Reporter](FileIoReporter.md): Updated sources folder will be in the downloadable reports zip
 - use [Email Reporter](EmailReporter.md): Updated source folder will be in the email attachment reports zip

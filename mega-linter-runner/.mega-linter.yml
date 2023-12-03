@@ -1,13 +1,15 @@
 # Configuration file for MegaLinter
-# See all available variables at https://megalinter.io/configuration/ and in linters documentation
+# See all available variables at https://megalinter.io/latest/config-file/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
   - EDITORCONFIG
+DISABLE_ERRORS_LINTERS:
+  - REPOSITORY_GRYPE
+  - REPOSITORY_TRUFFLEHOG
 DISABLE_LINTERS:
-  - REPOSITORY_SEMGREP
   - SPELL_PROSELINT
 JAVASCRIPT_DEFAULT_STYLE: prettier
 YAML_FILTER_REGEX_EXCLUDE: (templates)

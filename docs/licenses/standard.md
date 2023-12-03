@@ -1,3 +1,8 @@
+---
+title: License info for standard within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) Feross Aboukhadijeh

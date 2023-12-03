@@ -4,8 +4,10 @@ descriptor_flavors:
   - all # Applicable to CI in any language project
   - ci_light
   - cupcake
+  - c_cpp
   - documentation
   - dotnet
+  - dotnetweb
   - go
   - java
   - python

@@ -1,3 +1,8 @@
+---
+title: License info for luacheck within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2014 - 2018 Peter Melnichenko

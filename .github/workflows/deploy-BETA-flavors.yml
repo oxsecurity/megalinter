@@ -44,20 +44,25 @@ jobs:
     name: Deploy Docker Image - BETA - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
-    environment: 
-      name: beta-flavors
+    permissions:
+      packages: write
+    environment:
+      name: beta
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # flavors-start
         flavor:
           [
+            "c_cpp",
             "ci_light",
             "cupcake",
             "documentation",
             "dotnet",
+            "dotnetweb",
+            "formatters",
             "go",
             "java",
             "javascript",
@@ -72,7 +77,7 @@ jobs:
           ]
 # flavors-end
     # Only run this on the main repo
-    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
     ##################
     # Load all steps #
     ##################
@@ -81,44 +86,29 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: flavors/${{ matrix.flavor }}/Dockerfile
-          platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            oxsecurity/megalinter-${{ matrix.flavor }}:beta
-            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       # Free disk space
       - name: Free Disk space
@@ -127,17 +117,54 @@ jobs:
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
+      - name: Build Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: flavors/${{ matrix.flavor }}/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=beta
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+
+      - name: Build Worker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile-worker
+          platforms: linux/amd64
+          build-args: |
+            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=beta
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
+            ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
+
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta'
+          image-ref: 'docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s

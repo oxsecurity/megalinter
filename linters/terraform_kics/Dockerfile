@@ -17,7 +17,7 @@ FROM checkmarx/kics:alpine as kics
 ##################
 # Get base image #
 ##################
-FROM python:3.11.2-alpine3.17
+FROM python:3.11.3-alpine3.17
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -145,6 +145,9 @@ RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
+
+# Copy server scripts
+COPY server /server
 
 ###########################
 # Get the build arguments #

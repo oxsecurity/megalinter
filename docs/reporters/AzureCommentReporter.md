@@ -22,16 +22,10 @@ Example:
 ```yaml
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            -e CI=true \
-            -e TF_BUILD=true \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
-            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
-            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
-            -e BUILD_BUILD_ID=$(Build.BuildId) \
-            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
-            oxsecurity/megalinter:v6
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            oxsecurity/megalinter:v7
         displayName: Run MegaLinter
 ```
 

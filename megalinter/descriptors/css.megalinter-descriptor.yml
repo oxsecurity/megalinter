@@ -14,10 +14,10 @@ linters:
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
     linter_repo: https://github.com/stylelint/stylelint
-    linter_banner_image_url: https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png
+    linter_banner_image_url: https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png
     linter_rules_configuration_url: https://stylelint.io/user-guide/configure
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
-    linter_megalinter_ref_url: https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
+    # linter_megalinter_ref_url: https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
     cli_lint_mode: list_of_files
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
@@ -53,6 +53,8 @@ linters:
   # SCSS Lint
   - linter_name: scss-lint
     name: CSS_SCSS_LINT
+    deprecated: true
+    deprecated_description: https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
     file_extensions:
       - ".scss"
       - ".saas"
@@ -76,6 +78,7 @@ linters:
       idea:
         - name: scss-lint-plugin
           url: https://plugins.jetbrains.com/plugin/7530-scss-lint
+          id: com.wix.scss.lint
       vscode:
         - name: scss-lint
           url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

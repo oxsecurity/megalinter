@@ -1,0 +1,29 @@
+{
+    "descriptors": [
+        "BASH",
+        "CSHARP",
+        "POWERSHELL",
+        "TYPESCRIPT",
+        "VBDOTNET"
+    ],
+    "label": "Contains only formatters",
+    "linters": [
+        "BASH_SHFMT",
+        "CSHARP_DOTNET_FORMAT",
+        "CSHARP_CSHARPIER",
+        "CSHARP_ROSLYNATOR",
+        "JAVASCRIPT_PRETTIER",
+        "JSON_PRETTIER",
+        "MARKDOWN_MARKDOWNLINT",
+        "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
+        "POWERSHELL_POWERSHELL_FORMATTER",
+        "PYTHON_BLACK",
+        "PYTHON_ISORT",
+        "RST_RSTFMT",
+        "SNAKEMAKE_SNAKEFMT",
+        "TERRAFORM_TERRAFORM_FMT",
+        "TYPESCRIPT_PRETTIER",
+        "VBDOTNET_DOTNET_FORMAT",
+        "YAML_PRETTIER"
+    ]
+}

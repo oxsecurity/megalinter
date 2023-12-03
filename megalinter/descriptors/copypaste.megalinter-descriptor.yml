@@ -38,10 +38,9 @@ linters:
     config_file_name: .jscpd.json
     cli_lint_mode: project
     cli_lint_extra_args:
+      - --gitignore
       - "--reporters"
       - "console,html"
-      - "--output"
-      - "{{REPORT_FOLDER}}/copy-paste/"
       - "--exitCode"
       - "1"
     cli_lint_extra_args_after:

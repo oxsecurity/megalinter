@@ -1,3 +1,8 @@
+---
+title: License info for gherkin-lint within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) 2016, Vasiliki Siakka
 
 Permission to use, copy, modify, and/or distribute this software for any

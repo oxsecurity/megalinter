@@ -1,0 +1,49 @@
+################################################
+################################################
+###### Dockerfile to release MegaLinter  #######
+################################################
+################################################
+
+##################
+# Get base image #
+##################
+ARG MEGALINTER_BASE_IMAGE
+FROM $MEGALINTER_BASE_IMAGE
+
+###########################
+# Get the build arguments #
+###########################
+ARG BUILD_DATE
+ARG BUILD_REVISION
+ARG BUILD_VERSION
+
+#################################################
+# Set ENV values used for displaying the version #
+#################################################
+ENV BUILD_DATE=$BUILD_DATE \
+    BUILD_REVISION=$BUILD_REVISION \
+    BUILD_VERSION=$BUILD_VERSION
+
+# Install python libs required for MegaLinter to be used as worker
+RUN pip install -r /server/requirements.txt
+
+######################
+# Set the entrypoint #
+######################
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+
+#########################################
+# Label the instance and set maintainer #
+#########################################
+LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.revision=$BUILD_REVISION \
+      org.opencontainers.image.version=$BUILD_VERSION \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.url="https://megalinter.io" \
+      org.opencontainers.image.source="https://github.com/oxsecurity/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.io" \
+      org.opencontainers.image.vendor="Nicolas Vuillamy" \
+      org.opencontainers.image.description="Lint and secure your code base with MegaLinter (Worker version)"

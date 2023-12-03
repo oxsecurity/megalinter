@@ -1,7 +1,0 @@
-Results of misspell linter (version dev)
-See documentation on https://megalinter.github.io/descriptors/spell_misspell/
------------------------------------------------
-
-❌ [ERROR] .automation/test/spell
-    .automation/test/spell/spell_bad_1.js:1:6: "langauge" is a misspelling of "language"
-

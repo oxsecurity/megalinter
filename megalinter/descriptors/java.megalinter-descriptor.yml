@@ -7,9 +7,9 @@ file_extensions:
   - ".java"
 install:
   apk:
-    - openjdk11
+    - openjdk17
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+    - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
 linters:
   # Java Checkstyle
@@ -21,7 +21,7 @@ linters:
     linter_rules_url: https://checkstyle.sourceforge.io/checks.html
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
-    linter_rules_inline_disable_url: https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter
+    linter_rules_inline_disable_url: https://checkstyle.sourceforge.io/filters/suppresswarningsfilter.html#SuppressWarningsFilter
     linter_megalinter_ref_url: https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools
     config_file_name: sun_checks.xml
     cli_executable: java
@@ -61,6 +61,7 @@ linters:
       idea:
         - name: checkstyle-idea
           url: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
+          id: CheckStyle-IDEA
       vscode:
         - name: vscode-checkstyle
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle
@@ -71,11 +72,11 @@ linters:
     linter_repo: https://github.com/pmd/pmd
     linter_url: https://pmd.github.io/
     linter_spdx_license: Apache-2.0
-    linter_rules_url: https://pmd.github.io/pmd-6.40.0/pmd_rules_java.html
-    linter_rules_configuration_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_configuring_rules.html
-    linter_rules_inline_disable_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html
-    linter_image_url: https://pmd.github.io/img/pmd_logo.png
-    linter_megalinter_ref_url: https://pmd.sourceforge.io/pmd-6.49.0/pmd_userdocs_tools_ci.html
+    linter_rules_url: https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_rules_java.html
+    linter_rules_configuration_url: https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html
+    linter_rules_inline_disable_url: https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_suppressing_warnings.html
+    linter_image_url: https://github.com/pmd/pmd/raw/master/docs/images/logo/PMD.svg
+    linter_megalinter_ref_url: https://pmd.sourceforge.io/pmd-6.55.0/pmd_userdocs_tools_ci.html
     cli_lint_mode: list_of_files
     cli_executable: /usr/bin/pmd/bin/run.sh
     config_file_name: java-pmd-ruleset.xml
@@ -91,7 +92,7 @@ linters:
       - "pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources"
     install:
       dockerfile:
-        - ARG PMD_VERSION=6.48.0
+        - ARG PMD_VERSION=6.55.0
         - |
           RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
               unzip pmd-bin-${PMD_VERSION}.zip && \

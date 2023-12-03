@@ -1,3 +1,8 @@
+---
+title: License info for npm-package-json-lint within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
 Copyright (c) 2016-2022 tclindner

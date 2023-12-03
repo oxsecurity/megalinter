@@ -13,16 +13,6 @@
 #######################################
 name: "Build & Deploy - DEV linters"
 on:
-  push:
-    branches-ignore:
-      - main
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
   pull_request:
     branches-ignore: []
     paths-ignore:
@@ -42,32 +32,16 @@ concurrency:
 
 jobs:
 
-  prepare:
-    name: Prepare matrix
-    runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ steps.image_tag.outputs.tag }}
-    steps:
-
-    - name: Build image tag name
-      id: image_tag
-      run: |
-        BRANCH_NAME="${GITHUB_REF##*/}"
-        TAG="test-${{ github.actor }}-${BRANCH_NAME}"
-        echo "Tag name: ${TAG}"
-        echo "tag=${TAG}" >>"$GITHUB_OUTPUT"
-
   build:
     # Name the Job
-    name: Deploy Docker Image - DEV - Linters
-    needs: prepare
+    name: DEV/Linters
     # Set the agent to run on
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    permissions: read-all
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 14
       matrix:
-        os: [ubuntu-latest]
         # linters-start
         linter:
           [
@@ -79,13 +53,17 @@ jobs:
             "bash_shfmt",
             "bicep_bicep_linter",
             "c_cpplint",
+            "c_clang_format",
             "clojure_clj_kondo",
+            "clojure_cljstyle",
             "cloudformation_cfn_lint",
             "coffee_coffeelint",
             "copypaste_jscpd",
             "cpp_cpplint",
+            "cpp_clang_format",
             "csharp_dotnet_format",
             "csharp_csharpier",
+            "csharp_roslynator",
             "css_stylelint",
             "css_scss_lint",
             "dart_dartanalyzer",
@@ -111,8 +89,9 @@ jobs:
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
-            "kubernetes_kubeval",
             "kubernetes_kubeconform",
+            "kubernetes_helm",
+            "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
             "makefile_checkmake",
@@ -137,6 +116,7 @@ jobs:
             "python_bandit",
             "python_mypy",
             "python_pyright",
+            "python_ruff",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
@@ -144,11 +124,14 @@ jobs:
             "repository_dustilock",
             "repository_git_diff",
             "repository_gitleaks",
-            "repository_goodcheck",
+            "repository_grype",
+            "repository_kics",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "repository_trivy_sbom",
+            "repository_trufflehog",
             "rst_rst_lint",
             "rst_rstcheck",
             "rst_rstfmt",
@@ -157,12 +140,14 @@ jobs:
             "salesforce_sfdx_scanner_apex",
             "salesforce_sfdx_scanner_aura",
             "salesforce_sfdx_scanner_lwc",
+            "salesforce_lightning_flow_scanner",
             "scala_scalafix",
             "snakemake_lint",
             "snakemake_snakefmt",
-            "spell_misspell",
             "spell_cspell",
             "spell_proselint",
+            "spell_vale",
+            "spell_lychee",
             "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
@@ -172,8 +157,6 @@ jobs:
             "terraform_terrascan",
             "terraform_terragrunt",
             "terraform_terraform_fmt",
-            "terraform_checkov",
-            "terraform_kics",
             "tsx_eslint",
             "typescript_es",
             "typescript_standard",
@@ -185,6 +168,7 @@ jobs:
             "yaml_v8r",
           ]
 # linters-end
+        platform: ['linux/amd64']
     # Only run this on the main repo
     if: |
         (
@@ -197,32 +181,44 @@ jobs:
     # Load all steps #
     ##################
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
 
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.0.0
+        id: meta
+        with:
+          images: |
+            ${{ github.repository }}-only-${{ matrix.linter }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
+        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
+        
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Build Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: linux/amd64
+          platforms: ${{ matrix.platform }}
           build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.sha }}
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
           load: true
           push: false
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
+          tags: ${{ steps.meta.outputs.tags }}
 
       #####################################
       # Run Linter test cases #
@@ -235,8 +231,8 @@ jobs:
 
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e PAT="${{ secrets.PAT }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}
+          docker image ls
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
         timeout-minutes: 30
 
       ##############################################
@@ -245,11 +241,12 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.tag }}'
+          image-ref: 'docker.io/${{ fromJson(steps.meta.outputs.json).tags[0] }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
+      

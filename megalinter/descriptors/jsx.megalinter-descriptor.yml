@@ -2,6 +2,7 @@ descriptor_id: JSX
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - dotnetweb
   - javascript
 file_extensions:
   - ".jsx"
@@ -70,6 +71,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint
