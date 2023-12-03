@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Use to allow dotnet tools to be used on higher runtimes than the one being targeted
+Use to allow dotnet tools to be used on higher runtime than the one being targeted
 """
 import os
 
