@@ -3479,23 +3479,19 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    &amp;&amp; chmod +x dotnet-install.sh \
-    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+<pre><code class="language-dockerfile">ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=dotnet6-sdk">dotnet6-sdk</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=icu-libs">icu-libs</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libcurl">libcurl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=krb5-libs">krb5-libs</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libgcc">libgcc</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libintl">libintl</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libssl1.1">libssl1.1</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libstdc++">libstdc++</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=lttng-ust-dev">lttng-ust-dev</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib">zlib</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib-dev">zlib-dev</a></li>
 </ul>
 </li>
 </ul>
