@@ -155,7 +155,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.46.1 to **0.47.0**
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.61.0 to **3.63.0**
   - [vale](https://vale.sh/) from 2.29.5 to **2.29.7**
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 21104 to **21106**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21104 to **21106**
   - [yamllint](https://yamllint.readthedocs.io/) from 1.32.0 to **1.33.0**
 
 ## [v7.5.0] - 2023-10-29
@@ -318,7 +318,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.44.0 to **0.45.1**
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.47.0 to **3.56.1**
   - [vale](https://vale.sh/) from 2.28.1 to **2.29.0**
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 21004 to **21104**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21004 to **21104**
 
 ## [v7.3.0] - 2023-08-10
 
@@ -701,7 +701,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.39.0 to **0.41.0**
   - [v8r](https://github.com/chris48s/v8r) from 1.0.0 to **2.0.0**
   - [vale](https://vale.sh/) from 2.24.0 to **2.27.0**
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 21003 to **21004**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21003 to **21004**
   - [yamllint](https://yamllint.readthedocs.io/) from 1.30.0 to **1.32.0**
 
 ## [v6.22.2] - 2023-04-03
@@ -960,7 +960,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.16.0 to **1.18.0**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.44.1 to **0.45.0**
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.35.0 to **0.38.1**
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 20914 to **21003**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 20914 to **21003**
 
 ## [v6.19.0] - 2023-02-05
 
@@ -1996,7 +1996,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.7 to **0.36.8** on 2022-04-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.8 to **0.36.9** on 2022-04-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.9 to **0.36.10** on 2022-05-06
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 20913 to **20914** on 2022-05-14
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 20913 to **20914** on 2022-05-14
 
 ## [v5.12.0] - 2022-04-23
 
@@ -2224,7 +2224,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.2 to **0.36.3** on 2022-03-04
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.1 to **1.13.2** on 2022-02-25
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.3.0 to **1.14.5.0** on 2022-02-21
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 20912 to **20913** on 2022-03-12
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 20912 to **20913** on 2022-03-12
 
 ## [v5.8.0] - 2022-02-18
 
@@ -3028,7 +3028,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
   - [checkov](https://www.checkov.io/) from 2.0.287 to **2.0.295** on 2021-07-25
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.2 to **1.0.3** on 2021-07-25
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.8.0 to **1.8.1** on 2021-07-25
-  - [xmllint](http://xmlsoft.org/xmllint.html) from 20910 to **20912** on 2021-07-25
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 20910 to **20912** on 2021-07-25
 
 ## [4.40.0] - 2021-07-14
 
