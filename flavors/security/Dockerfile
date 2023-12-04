@@ -65,7 +65,7 @@ RUN apk add --no-cache \
                 gcompat \
                 libc6-compat \
                 libstdc++ \
-                dotnet7-sdk \
+                dotnet8-sdk \
                 npm \
                 nodejs-current \
                 yarn \

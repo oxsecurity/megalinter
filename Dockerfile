@@ -92,7 +92,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
-                dotnet7-sdk \
+                dotnet8-sdk \
                 openjdk17 \
                 perl \
                 perl-dev \

@@ -49,7 +49,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openssl \
-                dotnet7-sdk \
+                dotnet8-sdk \
     && git config --global core.autocrlf true
 #APK__END
 

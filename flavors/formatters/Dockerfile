@@ -51,7 +51,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openssl \
-                dotnet7-sdk \
+                dotnet8-sdk \
                 icu-libs \
                 npm \
                 nodejs-current \

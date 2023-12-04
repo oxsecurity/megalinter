@@ -101,7 +101,7 @@ linters:
       - "devskim analyze --file-format sarif ."
     install:
       apk:
-        - dotnet7-sdk
+        - dotnet8-sdk
       dockerfile:
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI

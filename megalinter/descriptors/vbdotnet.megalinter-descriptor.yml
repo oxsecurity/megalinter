@@ -9,7 +9,7 @@ file_extensions:
   - ".vb"
 install:
   apk:
-    - dotnet7-sdk
+    - dotnet8-sdk
   dockerfile:
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:

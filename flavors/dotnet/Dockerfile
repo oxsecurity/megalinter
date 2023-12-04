@@ -72,7 +72,7 @@ RUN apk add --no-cache \
                 openssh \
                 openssl \
                 icu-libs \
-                dotnet7-sdk \
+                dotnet8-sdk \
                 openjdk17 \
                 py3-pyflakes \
                 nodejs \
