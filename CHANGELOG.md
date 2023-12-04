@@ -65,6 +65,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.22.0 to **6.22.1** on 2023-11-29
   - [semgrep](https://semgrep.dev/) from 1.50.0 to **1.51.0** on 2023-11-29
   - [syft](https://github.com/anchore/syft) from 0.97.1 to **0.98.0** on 2023-11-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.3 to **0.83.4** on 2023-12-04
+  - [csharpier](https://csharpier.com/) from 0.26.3 to **0.26.4** on 2023-12-04
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 6.0.417 to **7.0.114** on 2023-12-04
+  - [roslynator](https://github.com/JosefPihrt/Roslynator) from 0.8.0.0 to **0.8.1.0** on 2023-12-04
+  - [eslint](https://eslint.org) from 8.54.0 to **8.55.0** on 2023-12-04
+  - [phplint](https://github.com/overtrue/phplint) from 9.0.4 to **9.0.6** on 2023-12-04
+  - [phpstan](https://phpstan.org/) from 1.10.46 to **1.10.47** on 2023-12-04
+  - [psalm](https://psalm.dev) from Psalm.5.16.0@ to **Psalm.5.17.0@** on 2023-12-04
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.6 to **0.1.7** on 2023-12-04
+  - [checkov](https://www.checkov.io/) from 3.1.19 to **3.1.21** on 2023-12-04
+  - [rubocop](https://rubocop.org/) from 1.57.2 to **1.58.0** on 2023-12-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.0.0 to **8.1.2** on 2023-12-04
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.4 to **1.6.5** on 2023-12-04
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
