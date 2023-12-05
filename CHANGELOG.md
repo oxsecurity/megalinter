@@ -78,6 +78,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.57.2 to **1.58.0** on 2023-12-04
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.0.0 to **8.1.2** on 2023-12-04
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.4 to **1.6.5** on 2023-12-04
+  - [checkov](https://www.checkov.io/) from 3.1.21 to **3.1.23** on 2023-12-05
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.47.0 to **0.48.0** on 2023-12-05
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.47.0 to **0.48.0** on 2023-12-05
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.18.0 to **3.19.0** on 2023-12-05
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.18.0 to **3.19.0** on 2023-12-05
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.18.0 to **3.19.0** on 2023-12-05
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
