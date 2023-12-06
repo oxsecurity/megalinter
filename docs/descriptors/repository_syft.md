@@ -93,7 +93,7 @@ Application Configuration:
 
   format:
     # (env: SYFT_FORMAT_PRETTY)
-    pretty: 0xc000251170
+    pretty: 0xc000451490
 
     template:
       # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)

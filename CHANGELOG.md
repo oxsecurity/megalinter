@@ -86,6 +86,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.18.0 to **3.19.0** on 2023-12-05
   - [checkov](https://www.checkov.io/) from 3.1.23 to **3.1.24** on 2023-12-05
   - [semgrep](https://semgrep.dev/) from 1.51.0 to **1.52.0** on 2023-12-05
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 13.0.0 to **13.0.1** on 2023-12-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.338 to **1.1.339** on 2023-12-06
+  - [checkov](https://www.checkov.io/) from 3.1.24 to **3.1.25** on 2023-12-06
+  - [vale](https://vale.sh/) from 2.29.7 to **2.30.0** on 2023-12-06
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
