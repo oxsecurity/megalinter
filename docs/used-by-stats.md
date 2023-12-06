@@ -3,15 +3,15 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=3249&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=2210&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=1039&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=74901&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=74912&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 45779 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 45785 |
 | [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  8708 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2558 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  2524 |
-| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  2308 |
+| [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  2309 |
 | [PowerDNS-Admin/PowerDNS-Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin)                                                                                               |  2189 |
 | [microsoft/code-with-engineering-playbook](https://github.com/microsoft/code-with-engineering-playbook)                                                                         |  1911 |
 | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)                                                                                                                     |  1586 |
@@ -19,18 +19,18 @@
 | [unixorn/git-extra-commands](https://github.com/unixorn/git-extra-commands)                                                                                                     |   936 |
 | [meichthys/foss_photo_libraries](https://github.com/meichthys/foss_photo_libraries)                                                                                             |   880 |
 | [Romanitho/Winget-AutoUpdate](https://github.com/Romanitho/Winget-AutoUpdate)                                                                                                   |   722 |
-| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   701 |
+| [unixorn/zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)                                                                                                     |   702 |
 | [ministryofjustice/modernisation-platform](https://github.com/ministryofjustice/modernisation-platform)                                                                         |   666 |
 | [secureCodeBox/secureCodeBox](https://github.com/secureCodeBox/secureCodeBox)                                                                                                   |   655 |
 | [awslabs/aws-deployment-framework](https://github.com/awslabs/aws-deployment-framework)                                                                                         |   606 |
 | [cattle-ops/terraform-aws-gitlab-runner](https://github.com/cattle-ops/terraform-aws-gitlab-runner)                                                                             |   530 |
-| [practicalli/clojure-cli-config](https://github.com/practicalli/clojure-cli-config)                                                                                             |   483 |
+| [practicalli/clojure-cli-config](https://github.com/practicalli/clojure-cli-config)                                                                                             |   484 |
 | [bjw-s/home-ops](https://github.com/bjw-s/home-ops)                                                                                                                             |   410 |
 | [ruzickap/packer-templates](https://github.com/ruzickap/packer-templates)                                                                                                       |   405 |
 | [xUnholy/k8s-gitops](https://github.com/xUnholy/k8s-gitops)                                                                                                                     |   404 |
 | [llaville/php-compatinfo](https://github.com/llaville/php-compatinfo)                                                                                                           |   368 |
 | [scolladon/sfdx-git-delta](https://github.com/scolladon/sfdx-git-delta)                                                                                                         |   347 |
-| [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   320 |
+| [ahmadnassri/action-dependabot-auto-merge](https://github.com/ahmadnassri/action-dependabot-auto-merge)                                                                         |   319 |
 | [OCSInventory-NG/OCSInventory-Server](https://github.com/OCSInventory-NG/OCSInventory-Server)                                                                                   |   316 |
 | [leosuncin/nest-auth-example](https://github.com/leosuncin/nest-auth-example)                                                                                                   |   314 |
 | [toboshii/home-ops](https://github.com/toboshii/home-ops)                                                                                                                       |   240 |
@@ -56,7 +56,7 @@
 | [Aurorastation/Aurora.3](https://github.com/Aurorastation/Aurora.3)                                                                                                             |   109 |
 | [practicalli/spacemacs](https://github.com/practicalli/spacemacs)                                                                                                               |   106 |
 | [unixorn/lima-xbar-plugin](https://github.com/unixorn/lima-xbar-plugin)                                                                                                         |    98 |
-| [szinn/k8s-homelab](https://github.com/szinn/k8s-homelab)                                                                                                                       |    94 |
+| [szinn/k8s-homelab](https://github.com/szinn/k8s-homelab)                                                                                                                       |    95 |
 | [davidB/tracing-opentelemetry-instrumentation-sdk](https://github.com/davidB/tracing-opentelemetry-instrumentation-sdk)                                                         |    85 |
 | [practicalli/clojure](https://github.com/practicalli/clojure)                                                                                                                   |    83 |
 | [Azure/ARO-RP](https://github.com/Azure/ARO-RP)                                                                                                                                 |    82 |
