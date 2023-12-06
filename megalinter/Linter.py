@@ -65,6 +65,8 @@ class Linter:
         )
         self.linter_icon_png_url = None
         self.test_folder = None  # Override only if different from language.lowercase()
+        self.test_format_fix_file_extensions = []
+        self.test_format_fix_regex_exclude = None
         self.activation_rules = []
         self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
