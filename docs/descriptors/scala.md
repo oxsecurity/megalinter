@@ -32,10 +32,12 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 ```
 
 - APK packages (Linux):
-  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
+  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)

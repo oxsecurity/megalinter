@@ -72,14 +72,8 @@ RUN apk add --no-cache \
                 openssh \
                 openssl \
                 icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
-                openjdk11 \
+                dotnet7-sdk \
+                openjdk17 \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -87,6 +81,7 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -253,14 +248,15 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+
 
 # CSHARP installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# KOTLIN installation
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # POWERSHELL installation
 # Next line commented because already managed by another linter
@@ -272,11 +268,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -308,7 +300,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
+
+# roslynator installation
+    && dotnet tool install -g roslynator.dotnet.cli \
 
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -318,6 +313,12 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # dotenv-linter installation
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+
+# npm-groovy-lint installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
@@ -368,11 +369,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
 
 #OTHER__END

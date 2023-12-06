@@ -49,7 +49,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openssl \
-                openjdk11 \
+                openjdk17 \
                 npm \
                 nodejs-current \
                 yarn \
@@ -146,7 +146,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
     && echo y|sfdx plugins:install sfdx-hardis \
