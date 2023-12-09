@@ -9,6 +9,7 @@
     "checkmake": "MIT",
     "checkov": "Apache-2.0",
     "checkstyle": "LGPL-2.1",
+    "clang-format": "Other",
     "clippy": "Other",
     "clj-kondo": "EPL-1.0",
     "cljstyle": "EPL-1.0",
