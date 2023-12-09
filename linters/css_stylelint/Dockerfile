@@ -96,7 +96,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                stylelint \
+                stylelint@15.11.0 \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss  && \
