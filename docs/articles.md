@@ -40,6 +40,12 @@ description: List of all known articles, blog posts and videos that talk about M
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|
 | [MegaLinter, votre meilleur ami pour un code de qualité](https://www.neosoft.fr/nos-publications/blog-tech/mega-linter-votre-meilleur-ami-pour-un-code-de-qualite/?utm_source=twitter&utm_medium=organic&utm_campaign=article-mega-linter){target=_blank} | [Thomas Sanson](https://github.com/ThomasSanson){target=_blank} |
 
+## Japanese articles
+
+| Article                                                                                            | Author                                                                                                             |
+|:---------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|
+| [Try using MegaLinter](https://future-architect.github.io/articles/20231129a/?s=03){target=_blank} | [Takashi Minayaga](https://future-architect.github.io/authors/%E5%AE%AE%E6%B0%B8%E5%B4%87%E5%8F%B2){target=_blank} |
+
 ## Videos
 
 - Code quality - Ep01 - MegaLinter, one linter to rule them all, by [Bertrand Thomas](https://github.com/devpro)
