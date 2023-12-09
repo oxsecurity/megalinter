@@ -9,21 +9,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Update base java apk package to openjdk 17 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3160
-  - Update dotnet linters to .NET 7 by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2402
+  - Update base java apk package to openjdk 17 by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3160>
+  - Update dotnet linters to .NET 7 by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2402>
 
 - Media
   - [Try using MegaLinter (article in japanese)](https://future-architect.github.io/articles/20231129a/?s=03) by [Takashi Minayaga](https://future-architect.github.io/authors/%E5%AE%AE%E6%B0%B8%E5%B4%87%E5%8F%B2)
 
 - New linters
   - Add [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html) c & cpp formatting linter including "apply fix" support
-  - Add [Roslynator](https://github.com/dotnet/roslynator) C# linter by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3155
+  - Add [Roslynator](https://github.com/dotnet/roslynator) C# linter by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/3155>
 
 - Fixes
   - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
   - cpplint: Dynamically add the list of extensions from list of files in --extensions parameter
-  - Fix mkdocs generation + CI control job by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3135
-  - Add semgrep ruleset to validation schema by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3164
+  - Fix mkdocs generation + CI control job by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3135>
+  - Add semgrep ruleset to validation schema by @wesley-dean-flexion in <https://github.com/oxsecurity/megalinter/pull/3164>
   - Downgrade stylelint to avoid crash with not v16 compliant dependencies
 
 - CI
