@@ -100,6 +100,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.5 to **10.12.6** on 2023-12-07
   - [checkov](https://www.checkov.io/) from 3.1.25 to **3.1.27** on 2023-12-07
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.1.2 to **8.1.3** on 2023-12-07
+  - [luacheck](https://luacheck.readthedocs.io) from 1.1.1 to **1.1.2** on 2023-12-09
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.37.0 to **0.38.0** on 2023-12-09
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.2 to **3.8.0** on 2023-12-09
+  - [phpstan](https://phpstan.org/) from 1.10.47 to **1.10.48** on 2023-12-09
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.5 to **1.7.6** on 2023-12-09
+  - [isort](https://pycqa.github.io/isort/) from 5.12.0 to **5.13.0** on 2023-12-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.53.8 to **0.54.0** on 2023-12-09
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19

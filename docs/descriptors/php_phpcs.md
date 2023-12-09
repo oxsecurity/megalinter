@@ -9,7 +9,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.7.2**
+- Version in MegaLinter: **3.8.0**
 - Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -139,7 +139,7 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
                 e.g., module/php,es/js
  <file>         One or more files and/or directories to check
  <fileList>     A file containing a list of files and/or directories to check (one per line)
- <filter>       Use either the "gitmodified" or "gitstaged" filter,
+ <filter>       Use either the "GitModified" or "GitStaged" filter,
                 or specify the path to a custom filter class
  <generator>    Use either the "HTML", "Markdown" or "Text" generator
                 (forces documentation generation instead of checking)
@@ -147,8 +147,8 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
  <processes>    How many files should be checked simultaneously (default is 1)
  <report>       Print either the "full", "xml", "checkstyle", "csv"
                 "json", "junit", "emacs", "source", "summary", "diff"
-                "svnblame", "gitblame", "hgblame" or "notifysend" report,
-                or specify the path to a custom report class
+                "svnblame", "gitblame", "hgblame", "notifysend" or "performance",
+                report or specify the path to a custom report class
                 (the "full" report is printed by default)
  <reportFile>   Write the report to the specified file path
  <reportWidth>  How many columns wide screen reports should be printed
@@ -183,7 +183,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 ```
 
