@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix mkdocs generation + CI control job by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3135>
   - Add semgrep ruleset to validation schema by @wesley-dean-flexion in <https://github.com/oxsecurity/megalinter/pull/3164>
   - Downgrade stylelint to avoid crash with not v16 compliant dependencies
+  - Fix count of yaml-lint errors
 
 - CI
   - Add arguments to make use of pytest-xdist, by @echoix
