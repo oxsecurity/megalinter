@@ -49,14 +49,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openssl \
-                icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
+                dotnet7-sdk \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -131,14 +124,10 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # CSHARP installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # csharpier installation
-RUN /usr/share/dotnet/dotnet tool install -g csharpier
+RUN dotnet tool install --global csharpier
 
 #OTHER__END
 

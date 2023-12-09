@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use XmlLint to lint xml files
-http://xmlsoft.org/xmllint.html
+https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 """
 
 from megalinter import Linter, config

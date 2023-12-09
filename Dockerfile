@@ -92,13 +92,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
+                dotnet7-sdk \
                 openjdk17 \
                 perl \
                 perl-dev \
@@ -122,9 +116,11 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
                 readline-dev \
                 g++ \
                 libc-dev \
+                libcurl \
                 libgcc \
                 libxml2-dev \
                 libxml2-utils \
@@ -213,7 +209,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
-                stylelint \
+                stylelint@15.11.0 \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
@@ -388,14 +384,11 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
+
 
 # CSHARP installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # DART installation
 # Next line commented because already managed by another linter
@@ -497,11 +490,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -543,7 +532,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && ./install-cljstyle \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
+
+# roslynator installation
+    && dotnet tool install -g roslynator.dotnet.cli \
 
 # dartanalyzer installation
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
@@ -679,11 +671,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
@@ -746,11 +734,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
 
 # tflint installation
