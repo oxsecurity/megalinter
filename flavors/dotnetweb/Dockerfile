@@ -70,7 +70,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 icu-libs \
                 dotnet7-sdk \
                 openjdk17 \

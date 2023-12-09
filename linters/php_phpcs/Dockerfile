@@ -48,7 +48,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 gnupg \
                 php81 \
                 php81-phar \
