@@ -9,7 +9,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 
 ## luacheck documentation
 
-- Version in MegaLinter: **1.1.1**
+- Version in MegaLinter: **1.1.2**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file isn't found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -110,7 +110,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 1.1.1, a linter and a static analyzer for Lua.
+luacheck 1.1.2, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
