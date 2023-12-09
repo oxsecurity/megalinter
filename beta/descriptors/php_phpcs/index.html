@@ -3307,7 +3307,7 @@
 <p><a href="https://github.com/squizlabs/PHP_CodeSniffer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/squizlabs/PHP_CodeSniffer?cacheSeconds=3600"/></a> <a href="https://github.com/squizlabs/PHP_CodeSniffer/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/squizlabs/PHP_CodeSniffer?sort=semver"/></a> <a href="https://github.com/squizlabs/PHP_CodeSniffer/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/squizlabs/PHP_CodeSniffer"/></a> <a href="https://github.com/squizlabs/PHP_CodeSniffer/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/squizlabs/PHP_CodeSniffer"/></a> <a href="https://github.com/squizlabs/PHP_CodeSniffer/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/squizlabs/PHP_CodeSniffer"/></a></p>
 <h2 id="phpcs-documentation">phpcs documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.7.2</strong></li>
+<li>Version in MegaLinter: <strong>3.8.0</strong></li>
 <li>Visit <a href="https://github.com/squizlabs/PHP_CodeSniffer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file" target="_blank">How to configure phpcs rules</a><ul>
 <li>If custom <code>phpcs.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml" target="_blank">phpcs.xml</a> will be used</li>
@@ -3558,7 +3558,7 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
                 e.g., module/php,es/js
  &lt;file&gt;         One or more files and/or directories to check
  &lt;fileList&gt;     A file containing a list of files and/or directories to check (one per line)
- &lt;filter&gt;       Use either the "gitmodified" or "gitstaged" filter,
+ &lt;filter&gt;       Use either the "GitModified" or "GitStaged" filter,
                 or specify the path to a custom filter class
  &lt;generator&gt;    Use either the "HTML", "Markdown" or "Text" generator
                 (forces documentation generation instead of checking)
@@ -3566,8 +3566,8 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
  &lt;processes&gt;    How many files should be checked simultaneously (default is 1)
  &lt;report&gt;       Print either the "full", "xml", "checkstyle", "csv"
                 "json", "junit", "emacs", "source", "summary", "diff"
-                "svnblame", "gitblame", "hgblame" or "notifysend" report,
-                or specify the path to a custom report class
+                "svnblame", "gitblame", "hgblame", "notifysend" or "performance",
+                report or specify the path to a custom report class
                 (the "full" report is printed by default)
  &lt;reportFile&gt;   Write the report to the specified file path
  &lt;reportWidth&gt;  How many columns wide screen reports should be printed
@@ -3601,7 +3601,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php81 110
 
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 </code></pre>
 </article>
