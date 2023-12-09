@@ -1311,6 +1311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/clang-format/</loc>
+         <lastmod>2023-12-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/clippy/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
