@@ -4925,7 +4925,11 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Update base java apk package to openjdk 17 by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3160">https://github.com/oxsecurity/megalinter/pull/3160</a></li>
+<li>Update dotnet linters to .NET 7 by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/2402">https://github.com/oxsecurity/megalinter/pull/2402</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Media<ul>
@@ -4936,6 +4940,7 @@
 <ul>
 <li>New linters<ul>
 <li>Add <a href="https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html">clang-format</a> c &amp; cpp formatting linter including "apply fix" support</li>
+<li>Add <a href="https://github.com/dotnet/roslynator">Roslynator</a> C# linter by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/3155">https://github.com/oxsecurity/megalinter/pull/3155</a></li>
 </ul>
 </li>
 </ul>
@@ -4943,11 +4948,11 @@
 <li>Fixes<ul>
 <li>Call jscpd with <code>--gitignore</code> to ignore copy-pastes in files matching <code>.gitignore</code></li>
 <li>cpplint: Dynamically add the list of extensions from list of files in --extensions parameter</li>
+<li>Fix mkdocs generation + CI control job by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3135">https://github.com/oxsecurity/megalinter/pull/3135</a></li>
+<li>Add semgrep ruleset to validation schema by @wesley-dean-flexion in <a href="https://github.com/oxsecurity/megalinter/pull/3164">https://github.com/oxsecurity/megalinter/pull/3164</a></li>
+<li>Downgrade stylelint to avoid crash with not v16 compliant dependencies</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Doc</li>
 </ul>
 <ul>
 <li>CI<ul>
