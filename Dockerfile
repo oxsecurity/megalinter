@@ -209,7 +209,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
-                stylelint \
+                stylelint@15.11.0 \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \

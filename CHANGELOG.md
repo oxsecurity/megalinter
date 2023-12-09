@@ -9,19 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Update base java apk package to openjdk 17 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3160
+  - Update dotnet linters to .NET 7 by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2402
 
 - Media
   - [Try using MegaLinter (article in japanese)](https://future-architect.github.io/articles/20231129a/?s=03) by [Takashi Minayaga](https://future-architect.github.io/authors/%E5%AE%AE%E6%B0%B8%E5%B4%87%E5%8F%B2)
 
-
 - New linters
   - Add [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html) c & cpp formatting linter including "apply fix" support
+  - Add [Roslynator](https://github.com/dotnet/roslynator) C# linter by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3155
 
 - Fixes
   - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
   - cpplint: Dynamically add the list of extensions from list of files in --extensions parameter
-
-- Doc
+  - Fix mkdocs generation + CI control job by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3135
+  - Add semgrep ruleset to validation schema by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3164
+  - Downgrade stylelint to avoid crash with not v16 compliant depencencies
 
 - CI
   - Add arguments to make use of pytest-xdist, by @echoix
@@ -92,6 +95,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.338 to **1.1.339** on 2023-12-06
   - [checkov](https://www.checkov.io/) from 3.1.24 to **3.1.25** on 2023-12-06
   - [vale](https://vale.sh/) from 2.29.7 to **2.30.0** on 2023-12-06
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 13.0.1 to **13.0.2** on 2023-12-07
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.5 to **10.12.6** on 2023-12-07
+  - [checkov](https://www.checkov.io/) from 3.1.25 to **3.1.27** on 2023-12-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.1.2 to **8.1.3** on 2023-12-07
 <!-- linter-versions-end -->
 
 ## [v7.6.0] - 2023-11-19
