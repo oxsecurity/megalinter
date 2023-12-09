@@ -144,7 +144,7 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
                 stylelint@15.11.0 \
-                stylelint-config-standard \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 graphql \
