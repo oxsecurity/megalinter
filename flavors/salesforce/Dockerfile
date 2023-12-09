@@ -143,8 +143,8 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli \
                 jscpd \
-                stylelint \
-                stylelint-config-standard \
+                stylelint@15.11.0 \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 graphql \

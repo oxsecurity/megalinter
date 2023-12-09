@@ -209,8 +209,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
-                stylelint \
-                stylelint-config-standard \
+                stylelint@15.11.0 \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 gherkin-lint \
@@ -625,7 +625,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 
 # phpstan installation
