@@ -11,7 +11,7 @@ description: phpcs, phpstan, psalm, phplint are available to analyze PHP files i
 
 | Linter                                                            | Additional                                                                                                                                                            |
 |-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md)         | [![GitHub stars](https://img.shields.io/github/stars/squizlabs/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/squizlabs/PHP_CodeSniffer)                      |
+| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md)         | [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer)            |
 | [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md) | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan)                                          |
 | [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md)         | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) |
 | [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md) | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint)                                        |
