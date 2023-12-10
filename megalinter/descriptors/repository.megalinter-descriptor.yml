@@ -42,13 +42,14 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     downgraded_version: true
-    downgraded_reason: Crash with 3.1.29
+    downgraded_reason: Crash with cyclonedx-python-lib, let's un-downgrade when checkov will be compliant
     install:
       # cargo:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
-        - checkov=='3.1.27'
+        - cyclonedx-python-lib=='5.2.0'
+        - checkov
     ide:
       vscode:
         - name: Checkov
