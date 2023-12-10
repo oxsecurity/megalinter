@@ -48,7 +48,7 @@ linters:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
-        - checkov=='3.1.27',
+        - checkov=='3.1.27'
     ide:
       vscode:
         - name: Checkov
