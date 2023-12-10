@@ -9,8 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Update base java apk package to openjdk 17 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3160
-  - Update dotnet linters to .NET 7 by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2402
+  - Handle GitHub comment markers for multiple MegaLinter workflows in the same repo
 
 - Media
 
