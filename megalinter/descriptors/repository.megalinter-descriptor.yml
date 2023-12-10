@@ -41,11 +41,14 @@ linters:
     examples:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
+    downgraded_version: true
+    downgraded_reason: Crash with cyclonedx-python-lib, let's un-downgrade when checkov will be compliant
     install:
       # cargo:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
+        - cyclonedx-python-lib=='5.2.0'
         - checkov
     ide:
       vscode:
