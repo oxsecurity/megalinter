@@ -41,12 +41,14 @@ linters:
     examples:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
+    downgraded_version: true
+    downgraded_reason: Crash with 3.1.29
     install:
       # cargo:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
-        - checkov
+        - checkov=='3.1.27',
     ide:
       vscode:
         - name: Checkov
