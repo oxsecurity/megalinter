@@ -38,10 +38,12 @@ linters:
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
-    linter_url: https://github.com/squizlabs/PHP_CodeSniffer
-    linter_repo: https://github.com/squizlabs/PHP_CodeSniffer
-    linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
-    linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
+    linter_rules_inline_disable_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    linter_rules_ignore_config_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders
+    linter_rules_url: https://gist.github.com/tmsnvd/057ef1cf4fd412e8c8e866e5ba5119bc
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
