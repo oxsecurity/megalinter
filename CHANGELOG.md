@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [prettier](https://prettier.io/) from 3.1.0 to **3.1.1** on 2023-12-10
   - [checkov](https://www.checkov.io/) from 3.1.27 to **3.1.28** on 2023-12-10
+  - [checkov](https://www.checkov.io/) from 3.1.28 to **3.1.29** on 2023-12-10
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
