@@ -21,13 +21,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [prettier](https://prettier.io/) from 3.1.0 to **3.1.1** on 2023-12-10
+  - [checkov](https://www.checkov.io/) from 3.1.27 to **3.1.28** on 2023-12-10
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
 
 - Core
-  - Update base java apk package to openjdk 17 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3160
-  - Update dotnet linters to .NET 7 by @bdovaz in https://github.com/oxsecurity/megalinter/pull/2402
+  - Update base java apk package to openjdk 17 by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3160>
+  - Update dotnet linters to .NET 7 by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/2402>
 
 - Media
   - [Try using MegaLinter (article in japanese)](https://future-architect.github.io/articles/20231129a/?s=03) by [Takashi Minayaga](https://future-architect.github.io/authors/%E5%AE%AE%E6%B0%B8%E5%B4%87%E5%8F%B2)
@@ -39,11 +41,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Call jscpd with `--gitignore` to ignore copy-pastes in files matching `.gitignore`
   - cpplint: Dynamically add the list of extensions from list of files in --extensions parameter
-  - Fix mkdocs generation + CI control job by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3135
-  - Add semgrep ruleset to validation schema by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3164
+  - Fix mkdocs generation + CI control job by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3135>
+  - Add semgrep ruleset to validation schema by @wesley-dean-flexion in <https://github.com/oxsecurity/megalinter/pull/3164>
   - Downgrade stylelint to avoid crash with not v16 compliant dependencies
   - Fix count of yaml-lint errors
-  - Remove openssl reinstall, as base image has updated version from alpine 3.18.5 by @echoix in https://github.com/oxsecurity/megalinter/pull/3181
+  - Remove openssl reinstall, as base image has updated version from alpine 3.18.5 by @echoix in <https://github.com/oxsecurity/megalinter/pull/3181>
 
 - CI
   - Add arguments to make use of pytest-xdist, by @echoix
