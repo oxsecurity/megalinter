@@ -19,7 +19,7 @@ jobs:
         env:
           EVENT_CONTEXT: ${{ toJson(github.event) }}
         run: echo "$EVENT_CONTEXT"
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         id: get-pr
         with:
           script: |

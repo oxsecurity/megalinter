@@ -15,7 +15,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.1.0**
+- Version in MegaLinter: **3.1.1**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -186,15 +186,12 @@ Config options:
 Editor options:
 
   --cursor-offset <int>    Print (to stderr) where a cursor at the given position would move to after formatting.
-                           This option cannot be used with --range-start and --range-end.
                            Defaults to -1.
   --range-end <int>        Format code ending at a given character offset (exclusive).
                            The range will extend forwards to the end of the selected statement.
-                           This option cannot be used with --cursor-offset.
                            Defaults to Infinity.
   --range-start <int>      Format code starting at a given character offset.
                            The range will extend backwards to the start of the first line containing the selected statement.
-                           This option cannot be used with --cursor-offset.
                            Defaults to 0.
 
 Other options:

@@ -48,7 +48,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 clang16-extra-tools \
     && git config --global core.autocrlf true
 #APK__END

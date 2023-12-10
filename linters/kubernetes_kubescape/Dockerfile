@@ -48,7 +48,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 gcompat \
                 libc6-compat \
                 libstdc++ \
