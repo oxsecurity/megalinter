@@ -3309,7 +3309,7 @@
 <img alt="checkov" class="megalinter-banner" height="150px" src="https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg">
 </img></a>
 </div>
-<p><a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/bridgecrewio/checkov/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver"/></a> <a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bridgecrewio/checkov"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-downgraded%20version-orange"><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange"/> <a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/bridgecrewio/checkov/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver"/></a> <a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bridgecrewio/checkov"/></a></a></p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>3.1.29</strong></li>
@@ -3591,7 +3591,7 @@
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -3883,7 +3883,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -3925,6 +3925,7 @@ config file values which override defaults.
 <ul>
 <li>PIP packages (Python):<ul>
 <li><a href="https://pypi.org/project/packaging">packaging</a></li>
+<li><a href="https://pypi.org/project/cyclonedx-python-lib/" title="5.2.0">cyclonedx-python-lib=='5.2.0'</a></li>
 <li><a href="https://pypi.org/project/checkov">checkov</a></li>
 </ul>
 </li>
