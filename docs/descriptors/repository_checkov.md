@@ -11,7 +11,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
 
 ## checkov documentation
 
@@ -133,7 +133,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -425,7 +425,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -468,4 +468,5 @@ config file values which override defaults.
 
 - PIP packages (Python):
   - [packaging](https://pypi.org/project/packaging)
+  - [cyclonedx-python-lib=='5.2.0'](https://pypi.org/project/cyclonedx-python-lib/'5.2.0')
   - [checkov](https://pypi.org/project/checkov)
