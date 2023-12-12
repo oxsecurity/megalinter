@@ -209,9 +209,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
-                stylelint@15.11.0 \
-                stylelint-config-standard@34.0.0 \
-                stylelint-config-sass-guidelines \
+                stylelint \
+                stylelint-config-standard \
                 stylelint-scss \
                 gherkin-lint \
                 graphql \
