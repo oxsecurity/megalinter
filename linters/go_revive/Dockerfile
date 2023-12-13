@@ -22,7 +22,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
