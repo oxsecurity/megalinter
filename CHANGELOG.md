@@ -39,6 +39,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.0 to **0.54.1** on 2023-12-13
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.339 to **1.1.340** on 2023-12-13
   - [checkov](https://www.checkov.io/) from 3.1.34 to **3.1.35** on 2023-12-13
+  - [phpstan](https://phpstan.org/) from 1.10.49 to **1.10.50** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.35 to **3.1.36** on 2023-12-13
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
