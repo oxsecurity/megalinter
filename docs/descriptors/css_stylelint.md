@@ -297,4 +297,4 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
   - [stylelint@15.11.0](https://www.npmjs.com/package/stylelint@15.11.0)
   - [stylelint-config-standard@34.0.0](https://www.npmjs.com/package/stylelint-config-standard@34.0.0)
   - [stylelint-config-sass-guidelines](https://www.npmjs.com/package/stylelint-config-sass-guidelines)
-  - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
+  - [stylelint-scss@5.3.2](https://www.npmjs.com/package/stylelint-scss@5.3.2)
