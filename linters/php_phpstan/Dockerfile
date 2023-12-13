@@ -17,7 +17,7 @@ FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
