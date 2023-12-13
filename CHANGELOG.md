@@ -29,6 +29,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 0.26.4 to **0.26.5** on 2023-12-10
   - [checkov](https://www.checkov.io/) from 3.1.29 to **3.1.31** on 2023-12-11
   - [rubocop](https://rubocop.org/) from 1.58.0 to **1.59.0** on 2023-12-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.4 to **0.83.5** on 2023-12-13
+  - [phpstan](https://phpstan.org/) from 1.10.48 to **1.10.49** on 2023-12-13
+  - [black](https://black.readthedocs.io/en/stable/) from 23.11.0 to **23.12.0** on 2023-12-13
+  - [isort](https://pycqa.github.io/isort/) from 5.13.0 to **5.13.1** on 2023-12-13
+  - [pylint](https://pylint.readthedocs.io) from 3.0.2 to **3.0.3** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.31 to **3.1.34** on 2023-12-13
+  - [semgrep](https://semgrep.dev/) from 1.52.0 to **1.53.0** on 2023-12-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.0 to **0.54.1** on 2023-12-13
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
