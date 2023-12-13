@@ -37,6 +37,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.31 to **3.1.34** on 2023-12-13
   - [semgrep](https://semgrep.dev/) from 1.52.0 to **1.53.0** on 2023-12-13
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.0 to **0.54.1** on 2023-12-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.339 to **1.1.340** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.34 to **3.1.35** on 2023-12-13
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
