@@ -17,7 +17,7 @@ FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
 ##################
 # Get base image #
 ##################
-FROM python:3.11.7-alpine3.18
+FROM python:3.11.7-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
