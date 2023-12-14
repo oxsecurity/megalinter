@@ -9,7 +9,7 @@ description: How to use tekton-lint (configure, ignore files, ignore errors, hel
 
 ## tekton-lint documentation
 
-- Version in MegaLinter: **0.6.0**
+- Version in MegaLinter: **0.7.0**
 - Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme){target=_blank}
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
 - See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
@@ -114,4 +114,4 @@ $ tekton-lint --watch '**/*.yaml'
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [tekton-lint](https://www.npmjs.com/package/tekton-lint)
+  - [@ibm/tekton-lint](https://www.npmjs.com/package/@ibm/tekton-lint)
