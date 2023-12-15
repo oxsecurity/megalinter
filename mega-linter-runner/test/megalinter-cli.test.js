@@ -6,7 +6,7 @@ const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
-process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
+  process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
 
 const MEGA_LINTER = "mega-linter-runner ";
 
