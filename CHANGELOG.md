@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - tekton-lint is now published as @ibm/tekton-lint, by @echoix in [#3210](https://github.com/oxsecurity/megalinter/pull/3210)
 
 - Doc
   - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore.
@@ -40,6 +41,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.0 to **0.54.1** on 2023-12-13
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.339 to **1.1.340** on 2023-12-13
   - [checkov](https://www.checkov.io/) from 3.1.34 to **3.1.35** on 2023-12-13
+  - [phpstan](https://phpstan.org/) from 1.10.49 to **1.10.50** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.35 to **3.1.36** on 2023-12-13
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.10.0 to **2.11.0** on 2023-12-13
+  - [isort](https://pycqa.github.io/isort/) from 5.13.1 to **5.13.2** on 2023-12-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.7 to **0.1.8** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.36 to **3.1.38** on 2023-12-13
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.6.0 to **0.7.0** on 2023-12-13
+  - [csharpier](https://csharpier.com/) from 0.26.5 to **0.26.6** on 2023-12-14
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.11.0 to **2.11.1** on 2023-12-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.2 to **3.63.3** on 2023-12-14
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.5 to **1.6.6** on 2023-12-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.1 to **0.54.3** on 2023-12-14
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.23.1 to **0.24.24** on 2023-12-14
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09

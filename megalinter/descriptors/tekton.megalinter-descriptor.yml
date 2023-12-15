@@ -20,4 +20,4 @@ linters:
       - "tekton-lint myfile.yml"
     install:
       npm:
-        - "tekton-lint"
+        - "@ibm/tekton-lint"
