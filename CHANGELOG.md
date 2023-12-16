@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.4 to **0.54.5** on 2023-12-16
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 13.0.2 to **14.0.0** on 2023-12-16
   - [terrascan](https://runterrascan.io/) from 1.18.3 to **1.18.8** on 2023-12-16
+  - [csharpier](https://csharpier.com/) from 0.26.6 to **0.26.7** on 2023-12-16
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
