@@ -3279,7 +3279,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download framework,artifacts,attack-tracks,controls-inputs,exceptions,control",
+        "  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -9927,7 +9927,7 @@
         "",
         "  format:",
         "    # (env: SYFT_FORMAT_PRETTY)",
-        "    pretty: 0xc000494cd0",
+        "    pretty: 0xc000567650",
         "",
         "    template:",
         "      # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)",
@@ -10684,9 +10684,9 @@
         "",
         "Commands:",
         "",
+        " sync             Download and install external configuration sources.",
         " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
-        " sync             Download and install external configuration sources.",
         ""
     ],
     "xmllint": [

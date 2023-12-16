@@ -3,13 +3,13 @@
 [![](https://img.shields.io/static/v1?label=Used%20by&message=3298&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(public)&message=2243&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![](https://img.shields.io/static/v1?label=Used%20by%20(private)&message=1055&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
-[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=74858&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
+[![](https://img.shields.io/static/v1?label=Used%20by%20(stars)&message=74860&color=informational&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 
 | Repository                                                                                                                                                                      | Stars |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------:|
-| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 46025 |
+| [nektos/act](https://github.com/nektos/act)                                                                                                                                     | 46027 |
 | [PRQL/prql](https://github.com/PRQL/prql)                                                                                                                                       |  8734 |
-| [jdx/rtx](https://github.com/jdx/rtx)                                                                                                                                           |  3678 |
+| [jdx/rtx](https://github.com/jdx/rtx)                                                                                                                                           |  3679 |
 | [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)                                                                                                         |  2572 |
 | [dorssel/usbipd-win](https://github.com/dorssel/usbipd-win)                                                                                                                     |  2557 |
 | [IlanCosman/tide](https://github.com/IlanCosman/tide)                                                                                                                           |  2328 |
@@ -251,6 +251,7 @@
 | [GiorgioAresu/homelab-gitops](https://github.com/GiorgioAresu/homelab-gitops)                                                                                                   |     5 |
 | [apigee/ansible-apigee-hybrid-accelerator](https://github.com/apigee/ansible-apigee-hybrid-accelerator)                                                                         |     5 |
 | [llaville/phpunit-LoggerTestListener](https://github.com/llaville/phpunit-LoggerTestListener)                                                                                   |     5 |
+| [ministryofjustice/operations-engineering](https://github.com/ministryofjustice/operations-engineering)                                                                         |     5 |
 | [SamErde/PowerShell-Pre-Workout](https://github.com/SamErde/PowerShell-Pre-Workout)                                                                                             |     5 |
 | [cdzombak/mailto-things](https://github.com/cdzombak/mailto-things)                                                                                                             |     5 |
 | [cdzombak/energybridge_to_influxdb](https://github.com/cdzombak/energybridge_to_influxdb)                                                                                       |     5 |
@@ -275,7 +276,6 @@
 | [svt/junit5-redis-extension](https://github.com/svt/junit5-redis-extension)                                                                                                     |     4 |
 | [nautilus-cyberneering/chinese-ideographs](https://github.com/nautilus-cyberneering/chinese-ideographs)                                                                         |     4 |
 | [mimmi20/monolog-streamformatter](https://github.com/mimmi20/monolog-streamformatter)                                                                                           |     4 |
-| [ministryofjustice/operations-engineering](https://github.com/ministryofjustice/operations-engineering)                                                                         |     4 |
 | [torrust/torrust-compose](https://github.com/torrust/torrust-compose)                                                                                                           |     4 |
 | [ruzickap/ansible-my_workstation](https://github.com/ruzickap/ansible-my_workstation)                                                                                           |     4 |
 | [cdzombak/instapaper-auto-archiver](https://github.com/cdzombak/instapaper-auto-archiver)                                                                                       |     4 |
