@@ -3664,11 +3664,11 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     &amp;&amp; export GITHUB_AUTH_TOKEN \
     &amp;&amp; wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    &amp;&amp; PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    &amp;&amp; ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    &amp;&amp; PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    &amp;&amp; ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     &amp;&amp; gpg --verify phive.phar.asc phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \

@@ -3293,7 +3293,7 @@
 <p><a href="https://github.com/overtrue/phplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600"/></a> <a href="https://github.com/overtrue/phplint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/overtrue/phplint?sort=semver"/></a> <a href="https://github.com/overtrue/phplint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/overtrue/phplint"/></a></p>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.0.6</strong></li>
+<li>Version in MegaLinter: <strong>9.1.0</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.phplint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
 </ul>
@@ -3489,11 +3489,11 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     &amp;&amp; export GITHUB_AUTH_TOKEN \
     &amp;&amp; wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    &amp;&amp; PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    &amp;&amp; ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    &amp;&amp; PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    &amp;&amp; ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     &amp;&amp; gpg --verify phive.phar.asc phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \
