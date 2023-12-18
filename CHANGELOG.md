@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent
   - Upgrade base image from python:3.11.6-alpine3.18 to python:3.11.7-alpine3.18, by @echoix in [#3212](https://github.com/oxsecurity/megalinter/pull/3212)
   - Upgrade actions/upload-artifact@v3 to actions/upload-artifact@v4 in default workflows
+  - mega-linter-runner: Improve check if running as script or module, by @echoix in [#3233](https://github.com/oxsecurity/megalinter/pull/3233)
 
 - Media
 
