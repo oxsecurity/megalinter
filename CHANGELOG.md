@@ -69,6 +69,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) from 1.18.3 to **1.18.8** on 2023-12-16
   - [csharpier](https://csharpier.com/) from 0.26.6 to **0.26.7** on 2023-12-16
   - [phplint](https://github.com/overtrue/phplint) from 9.0.6 to **9.1.0** on 2023-12-17
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.0.0 to **14.0.1** on 2023-12-18
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.3 to **0.47.0** on 2023-12-18
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.0 to **0.48.1** on 2023-12-18
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.0 to **0.48.1** on 2023-12-18
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
