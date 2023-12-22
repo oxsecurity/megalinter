@@ -84,7 +84,7 @@
     "fs-extra": "^11.1.1",
     "glob-promise": "^6.0.5",
     "mem-fs": "^4.0.0",
-    "open": "^9.1.0",
+    "open": "^10.0.1",
     "optionator": "^0.9.3",
     "prompts": "^2.4.2",
     "uuid": "^9.0.1",
