@@ -10,12 +10,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent
+  - Upgrade base image from python:3.11.6-alpine3.18 to python:3.11.7-alpine3.18, by @echoix in [#3212](https://github.com/oxsecurity/megalinter/pull/3212)
+  - Upgrade actions/upload-artifact@v3 to actions/upload-artifact@v4 in default workflows
 
 - Media
 
 - New linters
 
 - Fixes
+  - tekton-lint is now published as @ibm/tekton-lint, by @echoix in [#3210](https://github.com/oxsecurity/megalinter/pull/3210)
+  - PHP PHIVE: Use keys.openpgp.org and fingerprint for phive key verification, by @echoix in [#3230](https://github.com/oxsecurity/megalinter/pull/3230)
 
 - Doc
   - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore.
@@ -39,6 +43,36 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.0 to **0.54.1** on 2023-12-13
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.339 to **1.1.340** on 2023-12-13
   - [checkov](https://www.checkov.io/) from 3.1.34 to **3.1.35** on 2023-12-13
+  - [phpstan](https://phpstan.org/) from 1.10.49 to **1.10.50** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.35 to **3.1.36** on 2023-12-13
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.10.0 to **2.11.0** on 2023-12-13
+  - [isort](https://pycqa.github.io/isort/) from 5.13.1 to **5.13.2** on 2023-12-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.7 to **0.1.8** on 2023-12-13
+  - [checkov](https://www.checkov.io/) from 3.1.36 to **3.1.38** on 2023-12-13
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.6.0 to **0.7.0** on 2023-12-13
+  - [csharpier](https://csharpier.com/) from 0.26.5 to **0.26.6** on 2023-12-14
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.11.0 to **2.11.1** on 2023-12-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.2 to **3.63.3** on 2023-12-14
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.5 to **1.6.6** on 2023-12-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.1 to **0.54.3** on 2023-12-14
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.23.1 to **0.24.24** on 2023-12-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.10.20 to **2023.12.15** on 2023-12-15
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.5 to **0.83.6** on 2023-12-15
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.340 to **1.1.341** on 2023-12-15
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.23 to **1.0.27** on 2023-12-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.3 to **3.63.4** on 2023-12-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.3 to **0.54.4** on 2023-12-15
+  - [eslint](https://eslint.org) from 8.55.0 to **8.56.0** on 2023-12-16
+  - [psalm](https://psalm.dev) from Psalm.5.17.0@ to **Psalm.5.18.0@** on 2023-12-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.4 to **0.54.5** on 2023-12-16
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 13.0.2 to **14.0.0** on 2023-12-16
+  - [terrascan](https://runterrascan.io/) from 1.18.3 to **1.18.8** on 2023-12-16
+  - [csharpier](https://csharpier.com/) from 0.26.6 to **0.26.7** on 2023-12-16
+  - [phplint](https://github.com/overtrue/phplint) from 9.0.6 to **9.1.0** on 2023-12-17
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.0.0 to **14.0.1** on 2023-12-18
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.46.3 to **0.47.0** on 2023-12-18
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.0 to **0.48.1** on 2023-12-18
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.0 to **0.48.1** on 2023-12-18
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09

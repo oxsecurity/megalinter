@@ -22,14 +22,14 @@ FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM tenable/terrascan:1.18.8 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################

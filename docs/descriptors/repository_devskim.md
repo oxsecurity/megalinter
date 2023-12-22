@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.23**
+- Version in MegaLinter: **1.0.27**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -94,7 +94,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-devskim 1.0.23+607c9a5eda
+devskim 1.0.27+935af10ad2
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
