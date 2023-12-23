@@ -89,6 +89,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.32.4 to **8.0.1** on 2023-12-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.1.3 to **8.2.3** on 2023-12-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.5 to **0.54.10** on 2023-12-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.47.2 to **0.47.3** on 2023-12-23
+  - [black](https://black.readthedocs.io/en/stable/) from 23.12.0 to **23.12.1** on 2023-12-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.6 to **3.63.7** on 2023-12-23
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
