@@ -403,10 +403,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.CODE: 4>,
-                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.PARAMS:
-                        1>}))
+                        frozenset({<RerunTrigger.CODE: 4>,
+                        <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS: 1>,
+                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:
+                        3>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -818,11 +818,11 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        frozenset({<SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
                         <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
