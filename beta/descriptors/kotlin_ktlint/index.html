@@ -3312,7 +3312,7 @@
 <p><a href="https://github.com/pinterest/ktlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/pinterest/ktlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/pinterest/ktlint?sort=semver"/></a> <a href="https://github.com/pinterest/ktlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/pinterest/ktlint"/></a></p>
 <h2 id="ktlint-documentation">ktlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.1</strong></li>
+<li>Version in MegaLinter: <strong>1.1.0</strong></li>
 <li>Visit <a href="https://ktlint.github.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ktlint.github.io/#rules" target="_blank">Index of problems detected by ktlint</a></li>
 </ul>
@@ -3573,7 +3573,7 @@
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">
 An anti-bikeshedding Kotlin linter with built-in formatter.
-(https://github.com/pinterest/ktlint).
+(https://pinterest.github.io/ktlint/latest/).
 
 Usage:
   ktlint &lt;flags&gt; [patterns]
@@ -3608,22 +3608,9 @@ and its subdirectories:
 output=my-custom-report.csv
 Flags:
 
-      --code-style=&lt;codeStyle&gt;
-                        Defines the code style (ktlint_official, intellij_idea
-                          or android_studio) to be used for formatting the
-                          code. This option is deprecated, and will be removed
-                          in Ktlint 1.1. The code style has to be defined as '.
-                          editorconfig' property 'ktlint_code_style'.
       --color           Make output colorful
       --color-name=&lt;colorName&gt;
                         Customize the output color
-      --disabled_rules=&lt;disabledRules&gt;
-                        Comma-separated list of rules to globally disable. This
-                          option is deprecated, and will be removed in Ktlint
-                          1.1. The disabled rules have to be defined as '.
-                          editorconfig' properties. See https://pinterest.
-                          github.io/ktlint/1.0.0
-                          /faq/#how-do-i-enable-or-disable-a-rule
   -F, --format          Fix deviations from the code style when possible
       --limit=&lt;limit&gt;   Maximum number of errors to show (default: show all)
       --relative        Print files relative to the working directory (e.g.
@@ -3650,12 +3637,6 @@ Flags:
                           property. Note: up until ktlint 0.46 the property
                           value in this file used to override values found in '.
                           editorconfig' files on the path to the source file.
-      --experimental    Enable experimental rules. This option is deprecated,
-                          and will be removed in Ktlint 1.1. The experimental
-                          flag has to be set as '.editorconfig' property
-                          'ktlint_experimental'. See https://pinterest.github.
-                          io/ktlint/1.0.0
-                          /faq/#how-do-i-enable-or-disable-a-rule-set
       --baseline=&lt;baselinePath&gt;
                         Defines a baseline file to check against
   -l, --log-level=&lt;minLogLevel&gt;
@@ -3669,7 +3650,8 @@ Commands:
   installGitPrePushHook    Install git hook to automatically check files for
                              style violations before push
   generateEditorConfig     Generate kotlin style section for '.editorconfig'
-                             file.
+                             file. Output should be copied manually to the '.
+                             editorconfig' file.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
