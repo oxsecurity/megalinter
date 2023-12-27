@@ -17,7 +17,7 @@ from pytablewriter import MarkdownTableWriter
 from redis import Redis
 
 
-def build_markdown_summary(reporter_self, action_run_url):
+def build_markdown_summary(reporter_self, action_run_url=""):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]

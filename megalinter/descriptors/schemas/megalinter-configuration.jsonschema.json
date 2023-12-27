@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/saishivarcr/megalinter-configuration.json",
+  "$id": "http://github.com/oxsecurity/megalinter-configuration.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {

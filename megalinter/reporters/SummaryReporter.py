@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Produce SARIF report
+Produce SUMMARY report
 """
-import json
 import logging
 import os
 
@@ -16,25 +15,20 @@ class SummaryReporter(Reporter):
     name = "SUMMARY"
     scope = "mega-linter"
 
-    def __init__(self, params=None):
-        # Activate SUMMARY reporter by default
-        self.is_active = True
-        super().__init__(params)
-
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
         elif (
-            config.get(self.master.request_id, "SUMMARY_REPORTER", "true")
-            != "true"
+            config.get(self.master.request_id, "SUMMARY_REPORTER", "false")
+            == "true"
         ):
+            self.is_active = True
+        else:
             self.is_active = False
-        logging.info(
-                f"[SUMMARY Reporter] Enabled: {self.is_active}"
-            )
+
 
     def produce_report(self):
-        summary = build_markdown_summary(self, pipeline_step_run_url="")
+        summary = build_markdown_summary(self)
 
         # Write output file
         summary_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
