@@ -11,15 +11,15 @@ from megalinter.constants import DEFAULT_SUMMARY_REPORT_FILE_NAME
     
 
 
-class SummaryReporter(Reporter):
-    name = "SUMMARY"
+class MarkdownSummaryReporter(Reporter):
+    name = "MARKDOWN_SUMMARY"
     scope = "mega-linter"
 
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
         elif (
-            config.get(self.master.request_id, "SUMMARY_REPORTER", "false")
+            config.get(self.master.request_id, "MARKDOWN_SUMMARY_REPORTER", "false")
             == "true"
         ):
             self.is_active = True
@@ -33,7 +33,7 @@ class SummaryReporter(Reporter):
         # Write output file
         summary_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             self.master.request_id,
-            "SUMMARY_REPORTER_FILE_NAME",
+            "MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
             DEFAULT_SUMMARY_REPORT_FILE_NAME,
         )
         if os.path.isfile(summary_file_name):
@@ -42,6 +42,6 @@ class SummaryReporter(Reporter):
         with open(summary_file_name, "w", encoding="utf-8") as sarif_file:
             sarif_file.write(summary)
         logging.info(
-            f"[SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
+            f"[MARKDOWN_SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
         )
         

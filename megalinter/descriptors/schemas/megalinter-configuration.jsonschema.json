@@ -18380,15 +18380,15 @@
       "title": "SQL_TSQLLINT: Unsecured env variables",
       "type": "array"
     },
-    "SUMMARY_REPORTER": {
-      "$id": "#/properties/SUMMARY_REPORTER",
+    "MARKDOWN_SUMMARY_REPORTER": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER",
       "default": false,
       "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
       "title": "Activate SUMMARY reporter",
       "type": "boolean"
     },
-    "SUMMARY_REPORTER_FILE_NAME": {
-      "$id": "#/properties/SUMMARY_REPORTER_FILE_NAME",
+    "MARKDOWN_SUMMARY_REPORTER_FILE_NAME": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
       "default": "megalinter-summary.log",
       "description": "Override SUMMARY output file name",
       "title": "SUMMARY report file name",
