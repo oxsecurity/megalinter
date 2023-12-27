@@ -96,6 +96,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.6 to **3.63.7** on 2023-12-23
   - [protolint](https://github.com/yoheimuta/protolint) from 0.47.3 to **0.47.4** on 2023-12-25
   - [checkov](https://www.checkov.io/) from 3.1.42 to **3.1.43** on 2023-12-25
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.342 to **1.1.343** on 2023-12-26
+  - [checkov](https://www.checkov.io/) from 3.1.43 to **3.1.44** on 2023-12-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.10 to **0.54.11** on 2023-12-26
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
