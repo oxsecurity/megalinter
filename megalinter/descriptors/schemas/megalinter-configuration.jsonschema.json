@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/oxsecurity/megalinter-configuration.json",
+  "$id": "http://github.com/saishivarcr/megalinter-configuration.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
@@ -18379,6 +18379,20 @@
       },
       "title": "SQL_TSQLLINT: Unsecured env variables",
       "type": "array"
+    },
+    "SUMMARY_REPORTER": {
+      "$id": "#/properties/SUMMARY_REPORTER",
+      "default": false,
+      "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
+      "title": "Activate SUMMARY reporter",
+      "type": "boolean"
+    },
+    "SUMMARY_REPORTER_FILE_NAME": {
+      "$id": "#/properties/SUMMARY_REPORTER_FILE_NAME",
+      "default": "megalinter-summary.log",
+      "description": "Override SUMMARY output file name",
+      "title": "SUMMARY report file name",
+      "type": "string"
     },
     "SWIFT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SWIFT_FILTER_REGEX_EXCLUDE",
