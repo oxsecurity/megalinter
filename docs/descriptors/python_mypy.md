@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.7.1**
+- Version in MegaLinter: **1.8.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -162,6 +162,10 @@ Import discovery:
   --no-silence-site-packages
                             Do not silence errors in PEP 561 compliant
                             installed packages
+  --junit-format {global,per_file}
+                            If --junit-xml is set, specifies format. global:
+                            single test with all errors; per_file: one test
+                            entry per file with failures
 
 Platform configuration:
   Type check code assuming it will be run under certain runtime conditions.
