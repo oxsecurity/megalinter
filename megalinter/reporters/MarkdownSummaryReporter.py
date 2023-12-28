@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Produce SUMMARY report
+Produce MARKDOWN_SUMMARY report
 """
 import logging
 import os
