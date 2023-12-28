@@ -19,7 +19,7 @@ Activate the reporter (`MARKDOWN_SUMMARY_REPORTER: true`) to generate markdown s
 
 ## Configuration
 
-| Variable                                | Description                                                                                                       | Default value              |
-|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------|
-| MARKDOWN_SUMMARY_REPORTER                          | Activates/deactivates reporter                                                                                    | `false`                    |
-| MARKDOWN_SUMMARY_REPORTER_FILE_NAME                | File name for MARKDOWN_SUMMARY report output file                                                                            | `megalinter-report.md` |
+| Variable                            | Description                                       | Default value          |
+|-------------------------------------|---------------------------------------------------|------------------------|
+| MARKDOWN_SUMMARY_REPORTER           | Activates/deactivates reporter                    | `false`                |
+| MARKDOWN_SUMMARY_REPORTER_FILE_NAME | File name for MARKDOWN_SUMMARY report output file | `megalinter-report.md` |
