@@ -4939,7 +4939,7 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>New reporter <strong>MARKDOWN_SUMMARY_REPORTER</strong>, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools.</li>
+<li>New reporter <strong>MARKDOWN_SUMMARY_REPORTER</strong>, allows saving MegaLinter results summary as a markdown file. This file can be further used to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools.</li>
 </ul>
 <ul>
 <li>Core<ul>
@@ -4970,7 +4970,10 @@
 </li>
 </ul>
 <ul>
-<li>CI</li>
+<li>CI<ul>
+<li>Use docker/metadata-action for deploy-DEV.yml workflow, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3193">#3193</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
@@ -5230,6 +5233,7 @@
 <li>mega-linter-runner: Convert to ES6 and upgrade npm dependencies. Node 18 minimum version is now required.</li>
 <li>Allow to define <code>COMPILER_ONLY</code> virtual package as cargo dependency in descriptors to embed rust compiler in the Dockerfile</li>
 <li>Optimize <code>@generated</code> marker scanning (<a href="https://github.com/oxsecurity/megalinter/pull/2654">#2654</a>)</li>
+<li>Upgrade to python 3.12.0</li>
 </ul>
 </li>
 </ul>
