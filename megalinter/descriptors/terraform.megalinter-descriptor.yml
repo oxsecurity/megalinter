@@ -40,7 +40,7 @@ linters:
       - "tflint -c .tflint.hcl"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - class: TerrascanLinter
@@ -78,7 +78,7 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM tenable/terrascan:1.18.8 as terrascan
+        - FROM tenable/terrascan:1.18.11 as terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
   # TERRAGRUNT
   - linter_name: terragrunt
