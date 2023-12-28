@@ -25,5 +25,6 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 | [Email](reporters/EmailReporter.md)                                        | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                       |
 | [TAP files](reporters/TapReporter.md)                                      | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                       |
 | [Console](reporters/ConsoleReporter.md)                                    | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                       |
+| [Markdown Summary](docs/reporters/MarkdownSummaryReporter.md)              | Generates a Markdown summary report file                                                                      | Inactive                     |
 
 <!-- reporters-section-end -->

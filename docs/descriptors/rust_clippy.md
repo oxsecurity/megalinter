@@ -9,7 +9,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.74**
+- Version in MegaLinter: **0.1.75**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -83,24 +83,25 @@ cargo-clippy
 Checks a package to catch common mistakes and improve your Rust code.
 
 Usage:
-    cargo clippy [options] [--] [<opts>...]
+    cargo clippy [OPTIONS] [--] [<ARGS>...]
 
 Common options:
     --no-deps                Run Clippy only on the given crate, without linting the dependencies
-    --fix                    Automatically apply lint suggestions. This flag implies `--no-deps` and `--all-targets`
+    --fix                    Automatically apply lint suggestions. This flag implies --no-deps and --all-targets
     -h, --help               Print this message
     -V, --version            Print version info and exit
-    --explain LINT           Print the documentation for a given lint
+    --explain [LINT]         Print the documentation for a given lint
 
-For the other options see `cargo check --help`.
+See all options with cargo check --help.
 
-To allow or deny a lint from the command line you can use `cargo clippy --`
-with:
+Allowing / Denying lints
 
-    -W --warn OPT       Set lint warnings
-    -A --allow OPT      Set lint allowed
-    -D --deny OPT       Set lint denied
-    -F --forbid OPT     Set lint forbidden
+To allow or deny a lint from the command line you can use cargo clippy -- with:
+
+    -W / --warn [LINT]       Set lint warnings
+    -A / --allow [LINT]      Set lint allowed
+    -D / --deny [LINT]       Set lint denied
+    -F / --forbid [LINT]     Set lint forbidden
 
 You can use tool lints to allow or deny lints from your code, e.g.:
 
