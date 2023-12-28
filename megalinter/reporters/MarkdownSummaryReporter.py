@@ -6,9 +6,8 @@ import logging
 import os
 
 from megalinter import Reporter, config, utils
-from megalinter.utils_reporter import build_markdown_summary
 from megalinter.constants import DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME
-    
+from megalinter.utils_reporter import build_markdown_summary
 
 
 class MarkdownSummaryReporter(Reporter):
@@ -25,7 +24,6 @@ class MarkdownSummaryReporter(Reporter):
             self.is_active = True
         else:
             self.is_active = False
-
 
     def produce_report(self):
         summary = build_markdown_summary(self)
@@ -44,4 +42,3 @@ class MarkdownSummaryReporter(Reporter):
         logging.info(
             f"[MARKDOWN_SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
         )
-        
