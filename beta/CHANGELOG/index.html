@@ -4939,6 +4939,9 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>New reporter <strong>MARKDOWN_SUMMARY_REPORTER</strong>, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools.</li>
+</ul>
+<ul>
 <li>Core<ul>
 <li>mega-linter-runner: Remove container by default, except of <code>no-remove-container</code> option is sent</li>
 <li>Upgrade base image from python:3.11.6-alpine3.18 to python:3.11.7-alpine3.18, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3212">#3212</a></li>
