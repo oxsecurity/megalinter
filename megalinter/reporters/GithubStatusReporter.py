@@ -55,7 +55,7 @@ class GithubStatusReporter(Reporter):
             url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",
-                "authorization": f"Bearer {config.get(self.master.request_id,'GITHUB_TOKEN')}",
+                "authorization": f"Bearer {config.get(self.master.request_id, 'GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
             if config.exists(self.master.request_id, "GITHUB_RUN_ID"):

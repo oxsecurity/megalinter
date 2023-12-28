@@ -252,6 +252,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - mega-linter-runner: Convert to ES6 and upgrade npm dependencies. Node 18 minimum version is now required.
   - Allow to define `COMPILER_ONLY` virtual package as cargo dependency in descriptors to embed rust compiler in the Dockerfile
   - Optimize `@generated` marker scanning ([#2654](https://github.com/oxsecurity/megalinter/pull/2654))
+  - Upgrade to python 3.12.0
 
 - Media
   - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)
