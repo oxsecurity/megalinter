@@ -18380,6 +18380,20 @@
       "title": "SQL_TSQLLINT: Unsecured env variables",
       "type": "array"
     },
+    "MARKDOWN_SUMMARY_REPORTER": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER",
+      "default": false,
+      "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
+      "title": "Activate SUMMARY reporter",
+      "type": "boolean"
+    },
+    "MARKDOWN_SUMMARY_REPORTER_FILE_NAME": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
+      "default": "megalinter-summary.log",
+      "description": "Override SUMMARY output file name",
+      "title": "SUMMARY report file name",
+      "type": "string"
+    },
     "SWIFT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SWIFT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SWIFT descriptor",

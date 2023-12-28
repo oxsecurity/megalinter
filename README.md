@@ -1295,6 +1295,7 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 | [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)                                        | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                       |
 | [TAP files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TapReporter.md)                                      | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                       |
 | [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                                    | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                       |
+| [Markdown Summary](docs/reporters/MarkdownSummaryReporter.md)                                    | Generates a Markdown summary report file   | Inactive                       |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -1723,6 +1724,10 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 - [Azure Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/AzureCommentReporter.jpg?raw=true)
+
+- [Markdown Summary](docs/reporters/MarkdownSummaryReporter.md)
+
+![Screenshot](docs/assets/images/MarkdownSummaryReporter_2.png)
 
 - [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - [Email](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/EmailReporter.md)
