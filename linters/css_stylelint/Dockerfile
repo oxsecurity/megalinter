@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -95,10 +95,10 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                stylelint \
-                stylelint-config-standard \
+                stylelint@15.11.0 \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
-                stylelint-scss  && \
+                stylelint-scss@5.3.2  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \

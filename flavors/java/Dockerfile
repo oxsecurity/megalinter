@@ -24,7 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -33,7 +33,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -64,7 +64,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openjdk11 \
+                openjdk17 \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -142,10 +142,10 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
-                stylelint \
-                stylelint-config-standard \
+                stylelint@15.11.0 \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
-                stylelint-scss \
+                stylelint-scss@5.3.2 \
                 graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
@@ -165,7 +165,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
-                tekton-lint  && \
+                @ibm/tekton-lint  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \
@@ -274,8 +274,14 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+
+# KOTLIN installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -311,6 +317,12 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # dotenv-linter installation
     && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+
+# npm-groovy-lint installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \

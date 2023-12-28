@@ -56,11 +56,13 @@ jobs:
         # flavors-start
         flavor:
           [
+            "c_cpp",
             "ci_light",
             "cupcake",
             "documentation",
             "dotnet",
             "dotnetweb",
+            "formatters",
             "go",
             "java",
             "javascript",

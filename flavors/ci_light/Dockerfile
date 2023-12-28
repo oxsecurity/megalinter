@@ -16,7 +16,7 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 
@@ -57,7 +57,7 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                openjdk11 \
+                openjdk17 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -187,7 +187,11 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+
+# npm-groovy-lint installation
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
@@ -196,7 +200,7 @@ RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/m
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin

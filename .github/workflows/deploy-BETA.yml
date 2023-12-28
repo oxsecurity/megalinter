@@ -64,7 +64,7 @@ jobs:
       ########################################################
       - uses: actions/setup-node@v3.8.1
         with:
-          node-version: "16.x"
+          node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && yarn install --frozen-lockfile
       - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="beta$BETAID"

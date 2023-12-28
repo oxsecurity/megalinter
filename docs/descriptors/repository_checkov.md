@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.5.13**
+- Version in MegaLinter: **3.1.44**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -56,11 +56,12 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       117        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       121        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        55        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        85        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -68,7 +69,7 @@ This linter is available in the following flavours
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)           | Optimized for security                                   |        24        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        51        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -109,8 +110,8 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [-o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
-               [--framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} ...]]
-               [--skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} ...]]
+               [--framework FRAMEWORK [FRAMEWORK ...]]
+               [--skip-framework SKIP_FRAMEWORK [SKIP_FRAMEWORK ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -118,8 +119,6 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
                [-b BRANCH] [--skip-download] [--use-enforcement-rules]
-               [--no-guide] [--skip-suppressions] [--skip-policy-download]
-               [--skip-fixes]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
@@ -134,7 +133,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -190,28 +189,54 @@ options:
                         platform
   --include-all-checkov-policies
                         When running with an API key, Checkov will omit any
-                        policies that do not exist in the Bridgecrew or Prisma
-                        Cloud platform, except for local custom policies
-                        loaded with the --external-check flags. Use this key
-                        to include policies that only exist in Checkov in the
-                        scan. Note that this will make the local CLI results
-                        different from the results you see in the platform.
-                        Has no effect if you are not using an API key. Use the
+                        policies that do not exist in Prisma Cloud platform,
+                        except for local custom policies loaded with the
+                        --external-check flags. Use this key to include
+                        policies that only exist in Checkov in the scan. Note
+                        that this will make the local CLI results different
+                        from the results you see in the platform. Has no
+                        effect if you are not using an API key. Use the
                         --check option to explicitly include checks by ID even
                         if they are not in the platform, without using this
                         flag.
   --quiet               in case of CLI output, display only failed checks.
                         Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
-  --framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy,all} ...]
-                        Filter scan to run only on specific infrastructure
-                        code frameworks [env var: CKV_FRAMEWORK]
-  --skip-framework {ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} [{ansible,argo_workflows,arm,azure_pipelines,bicep,bitbucket_pipelines,circleci_pipelines,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_json,terraform_plan,3d_policy} ...]
+  --framework FRAMEWORK [FRAMEWORK ...]
+                        Filter scan to run only on specific infrastructure as
+                        code frameworks. Defaults to all frameworks. If you
+                        explicitly include 'all' as a value, then all other
+                        values are ignored. Enter as a comma-separated list or
+                        repeat the flag multiple times. For example,
+                        --framework terraform,sca_package or --framework
+                        terraform --framework sca_package. Possible values:
+                        all, ansible, argo_workflows, arm, azure_pipelines,
+                        bicep, bitbucket_pipelines, cdk, circleci_pipelines,
+                        cloudformation, dockerfile, github_configuration,
+                        github_actions, gitlab_configuration, gitlab_ci,
+                        bitbucket_configuration, helm, json, yaml, kubernetes,
+                        kustomize, openapi, sca_package, sca_image, secrets,
+                        serverless, terraform, terraform_json, terraform_plan,
+                        sast, sast_python, sast_java, sast_javascript,
+                        3d_policy [env var: CKV_FRAMEWORK]
+  --skip-framework SKIP_FRAMEWORK [SKIP_FRAMEWORK ...]
                         Filter scan to skip specific infrastructure as code
-                        frameworks.This will be included automatically for
+                        frameworks. This will be included automatically for
                         some frameworks if system dependencies are missing.
-                        Add multiple frameworks using spaces. For example,
-                        --skip-framework terraform sca_package.
+                        Enter as a comma-separated list or repeat the flag
+                        multiple times. For example, --skip-framework
+                        terraform,sca_package or --skip-framework terraform
+                        --skip-framework sca_package. Cannot include values
+                        that are also included in --framework. Possible
+                        values: ansible, argo_workflows, arm, azure_pipelines,
+                        bicep, bitbucket_pipelines, cdk, circleci_pipelines,
+                        cloudformation, dockerfile, github_configuration,
+                        github_actions, gitlab_configuration, gitlab_ci,
+                        bitbucket_configuration, helm, json, yaml, kubernetes,
+                        kustomize, openapi, sca_package, sca_image, secrets,
+                        serverless, terraform, terraform_json, terraform_plan,
+                        sast, sast_python, sast_java, sast_javascript,
+                        3d_policy
   -c CHECK, --check CHECK
                         Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may
@@ -307,11 +332,12 @@ options:
   --dockerfile-path DOCKERFILE_PATH
                         Path to the Dockerfile of the scanned docker image
   --repo-id REPO_ID     Identity string of the repository, with form
-                        <repo_owner>/<repo_name>
+                        <repo_owner>/<repo_name>. Required when using the
+                        platform integration (API key).
   -b BRANCH, --branch BRANCH
                         Selected branch of the persisted repository. Only has
                         effect when using the --bc-api-key flag
-  --skip-download       Do not download any data from Bridgecrew. This will
+  --skip-download       Do not download any data from Prisma Cloud. This will
                         omit doc links, severities, etc., as well as custom
                         policies and suppressions if using an API token. Note:
                         it will prevent BC platform IDs from being available
@@ -336,12 +362,6 @@ options:
                         applying the --check list and then the --skip-check
                         list (as described above under --check) still applies
                         here. Requires a BC or PC platform API key.
-  --no-guide            Deprecated - use --skip-download
-  --skip-suppressions   Deprecated - use --skip-download
-  --skip-policy-download
-                        Deprecated - use --skip-download
-  --skip-fixes          Do not download fixed resource templates from
-                        Bridgecrew. Only has effect when using the API key.
   --download-external-modules DOWNLOAD_EXTERNAL_MODULES
                         download external terraform modules from public git
                         repositories and terraform registry [env var:
@@ -405,7 +425,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

@@ -15,7 +15,7 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.54.2**
+- Version in MegaLinter: **1.55.2**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -69,7 +69,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        53        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 
@@ -116,12 +116,12 @@ Available Commands:
 
 Flags:
       --color string              Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
-  -j, --concurrency int           Concurrency (default NumCPU) (default 2)
+  -j, --concurrency int           Concurrency (default NumCPU) (default 4)
       --cpu-profile-path string   Path to CPU profile output file
   -h, --help                      help for golangci-lint
       --mem-profile-path string   Path to memory profile output file
       --trace-path string         Path to trace output file
-  -v, --verbose                   verbose output
+  -v, --verbose                   Verbose output
       --version                   Print version
 
 Use "golangci-lint [command] --help" for more information about a command.

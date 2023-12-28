@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,7 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openjdk11 \
+                openjdk17 \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -123,6 +123,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # SCALA installation
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier \
 

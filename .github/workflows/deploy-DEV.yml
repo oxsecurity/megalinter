@@ -187,8 +187,8 @@ jobs:
             oxsecurity/megalinter:${{ steps.image_tag.outputs.tag }}
 
       # Clean docker build cache
-      - name: Clean docker build cache
-        run: docker builder prune --force
+      - name: Clean docker buildx cache
+        run: docker buildx prune --force
 
       #####################################
       # Run Linter test cases #
@@ -225,8 +225,8 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |
@@ -236,7 +236,7 @@ jobs:
             linter-versions.json
 
       - name: debug
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         run: echo ${{ steps.docker_build.outcome }}
 
       # Clean disk space
@@ -253,7 +253,7 @@ jobs:
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@v3.8.1
         with:
-          node-version: "16"
+          node-version: "18.x"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && sudo yarn install --frozen-lockfile && sudo npm link

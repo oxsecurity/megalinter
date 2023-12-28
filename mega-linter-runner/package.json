@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "7.4.0",
+  "version": "7.7.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/oxsecurity/megalinter.git"
@@ -83,13 +83,14 @@
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.1.1",
     "glob-promise": "^6.0.5",
+    "mem-fs": "^4.0.0",
     "open": "^9.1.0",
     "optionator": "^0.9.3",
     "prompts": "^2.4.2",
     "uuid": "^9.0.1",
     "which": "^4.0.0",
-    "yeoman-environment": "^3.19.3",
-    "yeoman-generator": "^5.9.0"
+    "yeoman-environment": "^4.0.0",
+    "yeoman-generator": "^7.1.0"
   },
   "devDependencies": {
     "assert": "^2.1.0",

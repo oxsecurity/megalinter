@@ -43,9 +43,11 @@
         "all",
         "ci_light",
         "cupcake",
+        "c_cpp",
         "documentation",
         "dotnet",
         "dotnetweb",
+        "formatters",
         "go",
         "java",
         "javascript",
@@ -1272,6 +1274,33 @@
               ]
             ],
             "title": "Test folder in .automation/",
+            "type": "string"
+          },
+          "test_format_fix_file_extensions": {
+            "$id": "#/properties/test_format_fix_file_extensions",
+            "default": [],
+            "description": "Format / Fix test file extension filters.",
+            "examples": [
+              [
+                ".py",
+                ""
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Allowed file extensions",
+            "type": "array"
+          },
+          "test_format_fix_regex_exclude": {
+            "$id": "#/properties/linters/items/test_format_fix_regex_exclude",
+            "description": "Format / Fix test exclusions",
+            "examples": [
+              [
+                "/bin/|/obj/"
+              ]
+            ],
+            "title": "Format / Fix test exclusions",
             "type": "string"
           },
           "test_variables": {

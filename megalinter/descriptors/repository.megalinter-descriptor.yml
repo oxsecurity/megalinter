@@ -27,8 +27,12 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
-    cli_sarif_args: ["--output", "sarif"]
-    sarif_default_output_file: ./results.sarif
+    cli_sarif_args:
+      - --output
+      - sarif
+      - --output-file-path
+      - "{{REPORT_FOLDER}}"
+    sarif_default_output_file: results_sarif.sarif
     cli_lint_extra_args:
       - "--directory"
       - "."
@@ -49,7 +53,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
   # DEVSKIM
-  - linter_name: devskim
+  - class: DotNetToolLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -96,20 +101,9 @@ linters:
       - "devskim analyze --file-format sarif ."
     install:
       apk:
-        - icu-libs
-        - libcurl
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - lttng-ust-dev
-        - zlib
-        - zlib-dev
+        - dotnet7-sdk
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
       vscode:
@@ -251,7 +245,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+        - FROM zricethezav/gitleaks:v8.18.1 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN

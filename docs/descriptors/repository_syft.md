@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.93.0**
+- Version in MegaLinter: **0.99.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -46,7 +46,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       117        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       121        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -84,15 +84,39 @@ Application Configuration:
   # (env: SYFT_CONFIG)
   config: ''
 
-  # report output format (<format>=<file> to output to a file), formats=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (env: SYFT_OUTPUT)
+  # report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (env: SYFT_OUTPUT)
   output:
     - 'syft-table'
 
   # file to write the default report output to (default is STDOUT) (env: SYFT_FILE)
   file: ''
 
-  # specify the path to a Go template file (env: SYFT_OUTPUT_TEMPLATE_PATH)
-  output-template-path: ''
+  format:
+    # (env: SYFT_FORMAT_PRETTY)
+    pretty:
+
+    template:
+      # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)
+      path: ''
+
+    json:
+      # (env: SYFT_FORMAT_JSON_LEGACY)
+      legacy: false
+
+      # (env: SYFT_FORMAT_JSON_PRETTY)
+      pretty: false
+
+    spdx-json:
+      # (env: SYFT_FORMAT_SPDX_JSON_PRETTY)
+      pretty: false
+
+    cyclonedx-json:
+      # (env: SYFT_FORMAT_CYCLONEDX_JSON_PRETTY)
+      pretty: false
+
+    cyclonedx-xml:
+      # (env: SYFT_FORMAT_CYCLONEDX_XML_PRETTY)
+      pretty: false
 
   # (env: SYFT_CHECK_FOR_APP_UPDATE)
   check-for-app-update: true
@@ -106,7 +130,7 @@ Application Configuration:
       enabled: true
 
       # selection of layers to catalog, options=[squashed all-layers] (env: SYFT_PACKAGE_CATALOGER_SCOPE)
-      scope: 'Squashed'
+      scope: 'squashed'
 
     # (env: SYFT_PACKAGE_SEARCH_UNINDEXED_ARCHIVES)
     search-unindexed-archives: false
@@ -130,6 +154,23 @@ Application Configuration:
     # (env: SYFT_GOLANG_NO_PROXY)
     no-proxy: ''
 
+  java:
+    # (env: SYFT_JAVA_USE_NETWORK)
+    use-network: false
+
+    # (env: SYFT_JAVA_MAVEN_URL)
+    maven-url: ''
+
+    # (env: SYFT_JAVA_MAX_PARENT_RECURSIVE_DEPTH)
+    max-parent-recursive-depth: 0
+
+  javascript:
+    # (env: SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES)
+    search-remote-licenses: false
+
+    # (env: SYFT_JAVASCRIPT_NPM_BASE_URL)
+    npm-base-url: ''
+
   linux-kernel:
     # (env: SYFT_LINUX_KERNEL_CATALOG_MODULES)
     catalog-modules: true
@@ -144,19 +185,11 @@ Application Configuration:
       enabled: false
 
       # (env: SYFT_FILE_METADATA_CATALOGER_SCOPE)
-      scope: 'Squashed'
+      scope: 'squashed'
 
     # (env: SYFT_FILE_METADATA_DIGESTS)
     digests:
       - 'sha256'
-
-  file-classification:
-    cataloger:
-      # (env: SYFT_FILE_CLASSIFICATION_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_CLASSIFICATION_CATALOGER_SCOPE)
-      scope: 'Squashed'
 
   file-contents:
     cataloger:
@@ -164,33 +197,13 @@ Application Configuration:
       enabled: false
 
       # (env: SYFT_FILE_CONTENTS_CATALOGER_SCOPE)
-      scope: 'Squashed'
+      scope: 'squashed'
 
     # (env: SYFT_FILE_CONTENTS_SKIP_FILES_ABOVE_SIZE)
     skip-files-above-size: 1048576
 
     # (env: SYFT_FILE_CONTENTS_GLOBS)
     globs: []
-
-  secrets:
-    cataloger:
-      # (env: SYFT_SECRETS_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_SECRETS_CATALOGER_SCOPE)
-      scope: 'AllLayers'
-
-    # (env: SYFT_SECRETS_ADDITIONAL_PATTERNS)
-    additional-patterns: map[]
-
-    # (env: SYFT_SECRETS_EXCLUDE_PATTERN_NAMES)
-    exclude-pattern-names: []
-
-    # (env: SYFT_SECRETS_REVEAL_VALUES)
-    reveal-values: false
-
-    # (env: SYFT_SECRETS_SKIP_FILES_ABOVE_SIZE)
-    skip-files-above-size: 1048576
 
   registry:
     # (env: SYFT_REGISTRY_INSECURE_SKIP_TLS_VERIFY)
@@ -284,10 +297,10 @@ Flags:
       --file string              file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
   -h, --help                     help for syft
       --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
-  -o, --output stringArray       report output format (<format>=<file> to output to a file), formats=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (default [syft-table])
+  -o, --output stringArray       report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
       --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
   -q, --quiet                    suppress all logging output
-  -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "Squashed")
+  -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "squashed")
       --source-name string       set the name of the target being analyzed
       --source-version string    set the version of the target being analyzed
   -t, --template string          specify the path to a Go template file

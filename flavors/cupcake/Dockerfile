@@ -30,12 +30,12 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
-FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.48.0 as tflint
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
+FROM tenable/terrascan:1.18.8 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -44,7 +44,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -77,7 +77,7 @@ RUN apk add --no-cache \
                 openssh \
                 docker \
                 openrc \
-                openjdk11 \
+                openjdk17 \
                 gnupg \
                 php81 \
                 php81-phar \
@@ -178,10 +178,10 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 jscpd \
-                stylelint \
-                stylelint-config-standard \
+                stylelint@15.11.0 \
+                stylelint-config-standard@34.0.0 \
                 stylelint-config-sass-guidelines \
-                stylelint-scss \
+                stylelint-scss@5.3.2 \
                 graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
@@ -341,19 +341,25 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+
+# KOTLIN installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -404,6 +410,12 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
+# npm-groovy-lint installation
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
+
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
     -H "Accept: application/vnd.github+json" \
@@ -440,7 +452,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 
 # phpstan installation

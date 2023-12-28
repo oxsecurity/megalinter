@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.11.7-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,14 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
+                dotnet7-sdk \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -130,11 +123,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # tsqllint installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global TSQLLint
 
 #OTHER__END
