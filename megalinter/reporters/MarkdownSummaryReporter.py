@@ -7,7 +7,7 @@ import os
 
 from megalinter import Reporter, config, utils
 from megalinter.utils_reporter import build_markdown_summary
-from megalinter.constants import DEFAULT_SUMMARY_REPORT_FILE_NAME
+from megalinter.constants import DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME
     
 
 
@@ -34,7 +34,7 @@ class MarkdownSummaryReporter(Reporter):
         summary_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             self.master.request_id,
             "MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
-            DEFAULT_SUMMARY_REPORT_FILE_NAME,
+            DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME,
         )
         if os.path.isfile(summary_file_name):
             # Remove from previous run
