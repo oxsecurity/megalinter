@@ -99,6 +99,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.342 to **1.1.343** on 2023-12-26
   - [checkov](https://www.checkov.io/) from 3.1.43 to **3.1.44** on 2023-12-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.10 to **0.54.11** on 2023-12-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.11 to **0.54.12** on 2023-12-27
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
