@@ -20,7 +20,7 @@ class BitbucketCommentReporter(Reporter):
     def manage_activation(self):
         if (
             config.get(self.master.request_id,
-                       "BITBUCKET_COMMENT_REPORTER", "false")
+                       "BITBUCKET_COMMENT_REPORTER", "true")
             == "true"
         ):
             self.is_active = True
