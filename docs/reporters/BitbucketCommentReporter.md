@@ -20,7 +20,7 @@ If you really want a new PR comment for each MegaLinter run, define variable `BI
 ## Configuration
 
 - [Create a Repository Access Token](https://support.atlassian.com/bitbucket-cloud/docs/create-a-repository-access-token/) with scope **Pull-requests: Write**
-- Paste the access token in a [masked CI/CD variable](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project) named **BITBUCKET_REPO_ACCESS_TOKEN** in your project (repository)
+- Paste the access token in a [masked CI/CD variable](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/) named **BITBUCKET_REPO_ACCESS_TOKEN** in your project (repository)
 
 | Variable                                     | Description                                                                                  | Default value |
 |----------------------------------------------|----------------------------------------------------------------------------------------------|---------------|
