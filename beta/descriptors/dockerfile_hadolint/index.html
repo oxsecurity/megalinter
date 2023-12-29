@@ -3364,7 +3364,7 @@
 <tr>
 <td>DOCKERFILE_HADOLINT_FILE_NAMES_REGEX</td>
 <td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
-<td><code>["Dockerfile"]</code></td>
+<td><code>["Containerfile", "Dockerfile"]</code></td>
 </tr>
 <tr>
 <td>DOCKERFILE_HADOLINT_PRE_COMMANDS</td>
@@ -3578,7 +3578,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File names (regex): <code>Dockerfile</code></li>
+<li>File names (regex): <code>Containerfile</code>, <code>Dockerfile</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

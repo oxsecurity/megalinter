@@ -3307,7 +3307,7 @@
 <p><a href="https://github.com/rust-lang/rust-clippy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600"/></a> <a href="https://github.com/rust-lang/rust-clippy/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/rust-lang/rust-clippy?sort=semver"/></a> <a href="https://github.com/rust-lang/rust-clippy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rust-lang/rust-clippy"/></a> <a href="https://github.com/rust-lang/rust-clippy/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/rust-lang/rust-clippy"/></a> <a href="https://github.com/rust-lang/rust-clippy/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/rust-lang/rust-clippy"/></a></p>
 <h2 id="clippy-documentation">clippy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.1.74</strong></li>
+<li>Version in MegaLinter: <strong>0.1.75</strong></li>
 <li>Visit <a href="https://github.com/rust-lang/rust-clippy#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/rust-lang/rust-clippy#configuration" target="_blank">How to configure clippy rules</a></li>
 <li>See <a href="https://github.com/rust-lang/rust-clippy#allowingdenying-lints" target="_blank">How to disable clippy rules in files</a></li>
@@ -3466,24 +3466,25 @@
 <pre><code class="language-shell">Checks a package to catch common mistakes and improve your Rust code.
 
 Usage:
-    cargo clippy [options] [--] [&lt;opts&gt;...]
+    cargo clippy [OPTIONS] [--] [&lt;ARGS&gt;...]
 
 Common options:
     --no-deps                Run Clippy only on the given crate, without linting the dependencies
-    --fix                    Automatically apply lint suggestions. This flag implies `--no-deps` and `--all-targets`
+    --fix                    Automatically apply lint suggestions. This flag implies --no-deps and --all-targets
     -h, --help               Print this message
     -V, --version            Print version info and exit
-    --explain LINT           Print the documentation for a given lint
+    --explain [LINT]         Print the documentation for a given lint
 
-For the other options see `cargo check --help`.
+See all options with cargo check --help.
 
-To allow or deny a lint from the command line you can use `cargo clippy --`
-with:
+Allowing / Denying lints
 
-    -W --warn OPT       Set lint warnings
-    -A --allow OPT      Set lint allowed
-    -D --deny OPT       Set lint denied
-    -F --forbid OPT     Set lint forbidden
+To allow or deny a lint from the command line you can use cargo clippy -- with:
+
+    -W / --warn [LINT]       Set lint warnings
+    -A / --allow [LINT]      Set lint allowed
+    -D / --deny [LINT]       Set lint denied
+    -F / --forbid [LINT]     Set lint forbidden
 
 You can use tool lints to allow or deny lints from your code, e.g.:
 
