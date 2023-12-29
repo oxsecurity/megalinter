@@ -102,6 +102,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.43 to **3.1.44** on 2023-12-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.10 to **0.54.11** on 2023-12-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.11 to **0.54.12** on 2023-12-27
+  - [checkov](https://www.checkov.io/) from 3.1.44 to **3.1.46** on 2023-12-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.0.0 to **8.1.0** on 2023-12-28
+  - [semgrep](https://semgrep.dev/) from 1.54.3 to **3.12** on 2023-12-28
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.74 to **0.1.75** on 2023-12-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.0.1 to **3.12** on 2023-12-28
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.2.3 to **8.2.4** on 2023-12-28
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
