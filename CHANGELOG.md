@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent
   - Upgrade base image from python:3.11.6-alpine3.18 to python:3.11.7-alpine3.18, by @echoix in [#3212](https://github.com/oxsecurity/megalinter/pull/3212)
   - Upgrade actions/upload-artifact@v3 to actions/upload-artifact@v4 in default workflows
+  - mega-linter-runner: Improve check if running as script or module, by @echoix in [#3233](https://github.com/oxsecurity/megalinter/pull/3233)
 
 - Media
 
@@ -29,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore.
 
 - CI
+  - Use docker/metadata-action for deploy-DEV.yml workflow, by @echoix in [#3193](https://github.com/oxsecurity/megalinter/pull/3193)
 
 - Linter versions upgrades
   - [prettier](https://prettier.io/) from 3.1.0 to **3.1.1** on 2023-12-10
@@ -102,6 +104,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.43 to **3.1.44** on 2023-12-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.10 to **0.54.11** on 2023-12-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.11 to **0.54.12** on 2023-12-27
+  - [checkov](https://www.checkov.io/) from 3.1.44 to **3.1.46** on 2023-12-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.0.0 to **8.1.0** on 2023-12-28
+  - [semgrep](https://semgrep.dev/) from 1.54.3 to **3.12** on 2023-12-28
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.74 to **0.1.75** on 2023-12-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.0.1 to **3.12** on 2023-12-28
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.2.3 to **8.2.4** on 2023-12-28
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
@@ -252,6 +260,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - mega-linter-runner: Convert to ES6 and upgrade npm dependencies. Node 18 minimum version is now required.
   - Allow to define `COMPILER_ONLY` virtual package as cargo dependency in descriptors to embed rust compiler in the Dockerfile
   - Optimize `@generated` marker scanning ([#2654](https://github.com/oxsecurity/megalinter/pull/2654))
+  - Upgrade to python 3.12.0
 
 - Media
   - [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448), by [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile) on [Microsoft Tech Community](https://techcommunity.microsoft.com/)

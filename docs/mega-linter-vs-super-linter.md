@@ -69,6 +69,10 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ![Screenshot](./assets/images/BitbucketCommentReporter.png)
 
+- [Markdown Summary](docs/reporters/MarkdownSummaryReporter.md)
+
+![Screenshot](docs/assets/images/MarkdownSummaryReporter_2.png)
+
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
 - [File.io](reporters/FileIoReporter.md)
