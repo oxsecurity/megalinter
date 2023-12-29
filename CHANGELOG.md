@@ -10,7 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New reporter **MARKDOWN_SUMMARY_REPORTER**, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools.
 
-- New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
+- New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Bitbucket pull requests.
 
 - Core
   - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent
