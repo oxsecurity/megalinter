@@ -31,7 +31,7 @@ class BitbucketCommentReporter(Reporter):
         # Post comment on Bitbucket pull request
 
         BITBUCKET_REPO_ACCESS_TOKEN = config.get(
-        self.master.request_id, "BITBUCKET_REPO_ACCESS_TOKEN", ""
+            self.master.request_id, "BITBUCKET_REPO_ACCESS_TOKEN", ""
         )
         bitbucket_repo_fullname = config.get(
             self.master.request_id, "BITBUCKET_REPO_FULL_NAME", ""
@@ -58,12 +58,17 @@ class BitbucketCommentReporter(Reporter):
             or pipeline_step_run_uuid == ""
         ):
             logging.info(
-                "[Bitbucket Comment Reporter] Required Bitbucket CICD variables not found, so skipped post of PR comment"
+                "[Bitbucket Comment Reporter] Required Bitbucket CI CD variables not found, so skipped post of PR "
+                "comment"
             )
             return
 
         pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
-        pipeline_step_run_url = f"{bitbucket_project_url}/pipelines/results/{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
+        pipeline_step_run_url = (
+            f"{bitbucket_project_url}/pipelines/results/"
+            f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
+        )
+
         p_r_msg = build_markdown_summary(self, pipeline_step_run_url)
         bitbucket_auth_header = {
             "Authorization": f"Bearer {BITBUCKET_REPO_ACCESS_TOKEN}"
@@ -78,7 +83,7 @@ class BitbucketCommentReporter(Reporter):
             if pr.status_code != 200:
                 pr.raise_for_status()
             pr_state = pr.json().get('state', '')
-            
+
             if pr_state.lower() != 'open':
                 logging.info(
                     "[Bitbucket Comment Reporter] PR is not in OPEN state, skipped posting comment"
@@ -103,7 +108,8 @@ class BitbucketCommentReporter(Reporter):
         ):
             try:
                 comments = requests.get(
-                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/{bitbucket_pr_id}/comments?pagelen=100",
+                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/"
+                    f"pullrequests/{bitbucket_pr_id}/comments?pagelen=100",
                     headers=bitbucket_auth_header
                 )
                 if comments.status_code != 200:
@@ -111,7 +117,7 @@ class BitbucketCommentReporter(Reporter):
                 existing_comments = comments.json().get('values', [])
             except Exception as e:
                 logging.warning(
-                    "[Bitbucket Comment Reporter] Unable to fetch existing comments on PR"
+                    "[Bitbucket Comment Reporter] Unable to fetch existing comments on PR" + str(e)
                 )
                 return
             # Check if there is already a MegaLinter comment
@@ -131,33 +137,38 @@ class BitbucketCommentReporter(Reporter):
                 # Existing comment
                 logging.debug(f"Updated Bitbucket comment: {p_r_msg}")
                 logging.info(
-                    f"[Bitbucket Comment Reporter] Updated existing comment summary on {bitbucket_repo_fullname} #PR {bitbucket_pr_id}"
+                    f"[Bitbucket Comment Reporter] Updated existing comment summary "
+                    f"on {bitbucket_repo_fullname} #PR {bitbucket_pr_id}"
                 )
                 requests.put(
-                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/{bitbucket_pr_id}/comments/{comment_id}",
+                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/"
+                    f"{bitbucket_pr_id}/comments/{comment_id}",
                     headers=bitbucket_auth_header,
                     json=data,
                 )
             else:
                 # New comment
                 requests.post(
-                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/{bitbucket_pr_id}/comments",
+                    f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/"
+                    f"{bitbucket_pr_id}/comments",
                     headers=bitbucket_auth_header,
                     json=data,
                 )
                 logging.info(
-                    f"[Bitbucket Comment Reporter] PR comment summary added on {bitbucket_repo_fullname} #PR {bitbucket_pr_id}"
+                    f"[Bitbucket Comment Reporter] PR comment summary added on {bitbucket_repo_fullname} "
+                    f"#PR {bitbucket_pr_id}"
                 )
+
         except Exception as e:
             logging.warning(
                 "[Bitbucket Comment Reporter] Error while posting comment"
             )
             self.display_auth_error(e)
 
-
     def display_auth_error(self, e):
         logging.error(
-            "[Bitbucket Comment Reporter] You may need to define a masked Bitbucket CI/CD variable "
-            "BITBUCKET_REPO_ACCESS_TOKEN containing a access token with scope 'Pull-requests: write' "
+            "[Bitbucket Comment Reporter] You may need to define a masked "
+            "Bitbucket CI/CD variable BITBUCKET_REPO_ACCESS_TOKEN containing "
+            "a access token with scope 'Pull-requests: write' "
             "(if already defined, your access token is probably invalid): " + str(e)
         )
