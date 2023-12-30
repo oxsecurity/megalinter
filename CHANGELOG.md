@@ -111,6 +111,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.2.4 to **8.3.0** on 2023-12-30
   - [terrascan](https://runterrascan.io/) from 1.18.8 to **1.18.11** on 2023-12-30
   - [tflint](https://github.com/terraform-linters/tflint) from 0.49.0 to **0.50.0** on 2023-12-30
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.343 to **1.1.344** on 2023-12-30
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
