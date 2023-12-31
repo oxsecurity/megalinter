@@ -142,10 +142,10 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli \
                 jscpd \
-                stylelint@15.11.0 \
-                stylelint-config-standard@34.0.0 \
+                stylelint \
+                stylelint-config-standard \
                 stylelint-config-sass-guidelines \
-                stylelint-scss@5.3.2 \
+                stylelint-scss \
                 graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \

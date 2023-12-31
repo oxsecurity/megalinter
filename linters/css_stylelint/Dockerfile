@@ -95,10 +95,10 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                stylelint@15.11.0 \
-                stylelint-config-standard@34.0.0 \
+                stylelint \
+                stylelint-config-standard \
                 stylelint-config-sass-guidelines \
-                stylelint-scss@5.3.2  && \
+                stylelint-scss  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \
