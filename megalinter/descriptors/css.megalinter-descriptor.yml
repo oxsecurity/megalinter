@@ -26,14 +26,12 @@ linters:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
       - "stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
-    downgraded_version: true
-    downgraded_reason: Dependencies not compliant yet with stylelint 16, we'll upgrade when they are ready :)
     install:
       npm:
-        - stylelint@15.11.0
-        - stylelint-config-standard@34.0.0
+        - stylelint
+        - stylelint-config-standard
         - stylelint-config-sass-guidelines
-        - stylelint-scss@5.3.2
+        - stylelint-scss
     ide:
       atom:
         - name: linter-stylelint
