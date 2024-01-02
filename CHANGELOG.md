@@ -115,6 +115,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) from 1.18.8 to **1.18.11** on 2023-12-30
   - [tflint](https://github.com/terraform-linters/tflint) from 0.49.0 to **0.50.0** on 2023-12-30
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.343 to **1.1.344** on 2023-12-30
+  - [roslynator](https://github.com/JosefPihrt/Roslynator) from 0.8.1.0 to **0.8.2.0** on 2024-01-02
+  - [stylelint](https://stylelint.io) from 15.11.0 to **16.1.0** on 2024-01-02
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.6 to **10.12.7** on 2024-01-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.9 to **0.1.10** on 2024-01-02
+  - [checkov](https://www.checkov.io/) from 3.1.46 to **3.1.50** on 2024-01-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.3.0 to **8.3.2** on 2024-01-02
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
