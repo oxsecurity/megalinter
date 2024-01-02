@@ -1287,6 +1287,7 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 | [GitHub Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)         | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action      |
 | [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)        | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI       |
 | [Azure Pipelines Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if in Azure Pipelines |
+| [Bitbucket Pull Request comments](docs/reporters/BitbucketCommentReporter.md)                                                      | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if in Bitbucket CI    |
 | [Updated sources](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)                     | Zip containing **all formatted and autofixed sources** so you can extract them in your repository             | Active                       |
 | [IDE Configuration](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConfigReporter.md)                           | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                       |
 | [GitHub Status](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                         | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action      |
@@ -1720,6 +1721,10 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 - [Gitlab Merge Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true)
+
+- [Bitbucket Pull Request comments](docs/reporters/BitbucketCommentReporter.md)
+
+![Screenshot](docs/assets/images/BitbucketCommentReporter.png)
 
 - [Azure Pull Request comments](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 

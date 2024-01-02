@@ -1416,6 +1416,20 @@
       "title": "Including regex filter for BICEP descriptor",
       "type": "string"
     },
+    "BITBUCKET_COMMENT_REPORTER": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)",
+      "title": "Activate Bitbucket PR Comments reporter",
+      "type": "boolean"
+    },
+    "BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT",
+      "default": true,
+      "description": "Set to false to disable the overwrite of existing MegaLinter Pull Request comment in case of new run",
+      "title": "Overwrite Bitbucket Pull Request Comment",
+      "type": "boolean"
+    },
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
       "default": false,
