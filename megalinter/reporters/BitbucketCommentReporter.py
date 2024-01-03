@@ -19,8 +19,7 @@ class BitbucketCommentReporter(Reporter):
 
     def manage_activation(self):
         if (
-            config.get(self.master.request_id,
-                       "BITBUCKET_COMMENT_REPORTER", "true")
+            config.get(self.master.request_id, "BITBUCKET_COMMENT_REPORTER", "true")
             == "true"
         ):
             self.is_active = True
@@ -42,9 +41,7 @@ class BitbucketCommentReporter(Reporter):
         bitbucket_pipeline_job_number = config.get(
             self.master.request_id, "BITBUCKET_BUILD_NUMBER", ""
         )
-        bitbucket_pr_id = config.get(
-            self.master.request_id, "BITBUCKET_PR_ID", ""
-        )
+        bitbucket_pr_id = config.get(self.master.request_id, "BITBUCKET_PR_ID", "")
         pipeline_step_run_uuid = config.get(
             self.master.request_id, "BITBUCKET_STEP_UUID", ""
         )
@@ -78,21 +75,19 @@ class BitbucketCommentReporter(Reporter):
         try:
             pr = requests.get(
                 f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/pullrequests/{bitbucket_pr_id}",
-                headers=bitbucket_auth_header
+                headers=bitbucket_auth_header,
             )
             if pr.status_code != 200:
                 pr.raise_for_status()
-            pr_state = pr.json().get('state', '')
+            pr_state = pr.json().get("state", "")
 
-            if pr_state.lower() != 'open':
+            if pr_state.lower() != "open":
                 logging.info(
                     "[Bitbucket Comment Reporter] PR is not in OPEN state, skipped posting comment"
                 )
                 return
         except Exception as e:
-            logging.warning(
-                "[Bitbucket Comment Reporter] Unable to get PR details"
-            )
+            logging.warning("[Bitbucket Comment Reporter] Unable to get PR details")
             self.display_auth_error(e)
             return
 
@@ -110,29 +105,28 @@ class BitbucketCommentReporter(Reporter):
                 comments = requests.get(
                     f"{self.BITBUCKET_API}/repositories/{bitbucket_repo_fullname}/"
                     f"pullrequests/{bitbucket_pr_id}/comments?pagelen=100",
-                    headers=bitbucket_auth_header
+                    headers=bitbucket_auth_header,
                 )
                 if comments.status_code != 200:
                     pr.raise_for_status()
-                existing_comments = comments.json().get('values', [])
+                existing_comments = comments.json().get("values", [])
             except Exception as e:
                 logging.warning(
-                    "[Bitbucket Comment Reporter] Unable to fetch existing comments on PR" + str(e)
+                    "[Bitbucket Comment Reporter] Unable to fetch existing comments on PR"
+                    + str(e)
                 )
                 return
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
-                if "MegaLinter is graciously provided by" in comment.get('content', {}).get('raw', ''):
-                    comment_id = comment.get('id', None)
+                if "MegaLinter is graciously provided by" in comment.get(
+                    "content", {}
+                ).get("raw", ""):
+                    comment_id = comment.get("id", None)
                     break
 
         # Process comment
         try:
-            data = {
-                "content": {
-                    "raw": p_r_msg
-                }
-            }
+            data = {"content": {"raw": p_r_msg}}
             if comment_id is not None:
                 # Existing comment
                 logging.debug(f"Updated Bitbucket comment: {p_r_msg}")
@@ -160,9 +154,7 @@ class BitbucketCommentReporter(Reporter):
                 )
 
         except Exception as e:
-            logging.warning(
-                "[Bitbucket Comment Reporter] Error while posting comment"
-            )
+            logging.warning("[Bitbucket Comment Reporter] Error while posting comment")
             self.display_auth_error(e)
 
     def display_auth_error(self, e):

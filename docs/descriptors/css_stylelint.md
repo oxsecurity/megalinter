@@ -11,11 +11,11 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver)](https://github.com/stylelint/stylelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver)](https://github.com/stylelint/stylelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/contributors/)
 
 ## stylelint documentation
 
-- Version in MegaLinter: **15.11.0**
+- Version in MegaLinter: **16.1.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -294,7 +294,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [stylelint@15.11.0](https://www.npmjs.com/package/stylelint@15.11.0)
-  - [stylelint-config-standard@34.0.0](https://www.npmjs.com/package/stylelint-config-standard@34.0.0)
+  - [stylelint](https://www.npmjs.com/package/stylelint)
+  - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
   - [stylelint-config-sass-guidelines](https://www.npmjs.com/package/stylelint-config-sass-guidelines)
-  - [stylelint-scss@5.3.2](https://www.npmjs.com/package/stylelint-scss@5.3.2)
+  - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
