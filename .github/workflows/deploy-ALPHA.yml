@@ -61,7 +61,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v3.8.1
+      - uses: actions/setup-node@v4.0.1
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
