@@ -121,6 +121,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.1.9 to **0.1.10** on 2024-01-02
   - [checkov](https://www.checkov.io/) from 3.1.46 to **3.1.50** on 2024-01-02
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.3.0 to **8.3.2** on 2024-01-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.10 to **0.1.11** on 2024-01-03
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
