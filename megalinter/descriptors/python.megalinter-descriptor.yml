@@ -395,6 +395,10 @@ linters:
     install:
       pip:
         - ruff
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: Ruff

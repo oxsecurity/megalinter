@@ -131,6 +131,10 @@ linters:
       dockerfile:
         - FROM jdkato/vale:latest as vale
         - COPY --link --from=vale /bin/vale /bin/vale
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flymake-vale
@@ -216,3 +220,7 @@ linters:
       dockerfile:
         - FROM lycheeverse/lychee:latest-alpine as lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
