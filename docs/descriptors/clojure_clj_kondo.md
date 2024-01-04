@@ -15,7 +15,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2023.07.13**
+- Version in MegaLinter: **2023.12.15**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file isn't found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -32,6 +32,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 | Variable                                      | Description                                                                                                                                                                                  | Default value                                   |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | CLOJURE_CLJ_KONDO_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| CLOJURE_CLJ_KONDO_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | CLOJURE_CLJ_KONDO_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -63,7 +64,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
@@ -93,7 +94,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2023.07.13
+clj-kondo v2023.12.15
 
 
 Options:
@@ -116,7 +117,7 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config <config>: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.07.13/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2023.12.15/doc/configuration
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.

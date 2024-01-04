@@ -24,11 +24,11 @@ install:
           && export GITHUB_AUTH_TOKEN \
           && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
           && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-          && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-          && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+          && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+          && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+             || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+             || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+             || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
           && gpg --verify phive.phar.asc phive.phar \
           && chmod +x phive.phar \
           && mv phive.phar /usr/local/bin/phive \
@@ -42,10 +42,12 @@ linters:
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
-    linter_url: https://github.com/squizlabs/PHP_CodeSniffer
-    linter_repo: https://github.com/squizlabs/PHP_CodeSniffer
-    linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
-    linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
+    linter_rules_inline_disable_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    linter_rules_ignore_config_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders
+    linter_rules_url: https://gist.github.com/tmsnvd/057ef1cf4fd412e8c8e866e5ba5119bc
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
@@ -58,7 +60,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
     supported_platforms:
       platform:
         - linux/amd64
@@ -130,6 +132,8 @@ linters:
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - --output-format=console
     cli_config_arg_name: "--config="
     cli_sarif_args:
       - "--report={{SARIF_OUTPUT_FILE}}"

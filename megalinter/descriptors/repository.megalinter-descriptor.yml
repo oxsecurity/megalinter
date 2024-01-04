@@ -19,6 +19,7 @@ linters:
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_speed: 2
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/checkov.png
     linter_rules_configuration_url: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
     linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
@@ -26,8 +27,12 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
-    cli_sarif_args: ["--output", "sarif"]
-    sarif_default_output_file: ./results.sarif
+    cli_sarif_args:
+      - --output
+      - sarif
+      - --output-file-path
+      - "{{REPORT_FOLDER}}"
+    sarif_default_output_file: results_sarif.sarif
     cli_lint_extra_args:
       - "--directory"
       - "."
@@ -37,6 +42,8 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
+      # cargo:
+      #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
         - checkov
@@ -50,23 +57,34 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
   # DEVSKIM
-  - linter_name: devskim
+  - class: DotNetToolLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
-      Use `--ignore-globs` to ignore files and/or folders
+      If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
-        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+      ```json
+      {
+        Glob: [
+          "**/.git/**",
+          "**/megalinter-reports/**"
+        ]
+      }
+      ```
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
     linter_rules_configuration_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    config_file_name: .devskim.json
     cli_lint_mode: project
     cli_lint_extra_args:
       - analyze
@@ -87,20 +105,9 @@ linters:
       - "devskim analyze --file-format sarif ."
     install:
       apk:
-        - icu-libs
-        - libcurl
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - lttng-ust-dev
-        - zlib
-        - zlib-dev
+        - dotnet7-sdk
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     supported_platforms:
       platform:
@@ -121,6 +128,7 @@ linters:
     linter_url: https://github.com/Checkmarx/dustilock
     linter_repo: https://github.com/Checkmarx/dustilock
     linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
     cli_lint_mode: project
     cli_lint_extra_args:
       - --recursive
@@ -181,6 +189,7 @@ linters:
     linter_rules_configuration_url: https://github.com/gitleaks/gitleaks#configuration
     linter_rules_ignore_config_url: https://github.com/gitleaks/gitleaks#gitleaksignore
     linter_rules_inline_disable_url: https://github.com/gitleaks/gitleaks#gitleaksallow
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gitleaks.png
     linter_text: |
       ## Scan only Pull Request commits
 
@@ -249,7 +258,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.17.0 as gitleaks
+        - FROM zricethezav/gitleaks:v8.18.1 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     supported_platforms:
       platform:
@@ -279,6 +288,7 @@ linters:
     linter_repo: https://github.com/anchore/grype
     linter_rules_url: https://github.com/anchore/grype#vulnerability-summary
     linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/grype.png
     linter_rules_configuration_url: https://github.com/anchore/grype#configuration
     cli_lint_mode: project
     cli_config_arg_name: "--config"
@@ -310,6 +320,7 @@ linters:
     linter_repo: https://github.com/checkmarx/kics
     linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
     linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kics.png
     linter_rules_configuration_url: https://docs.kics.io/latest/configuration-file/
     linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
     linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
@@ -337,10 +348,9 @@ linters:
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
-        - COPY --link --from=kics /app/bin/kics /usr/bin/
-        - RUN mkdir -p /opt/kics/assets
-        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+        - COPY --link --from=kics /app/bin/kics /usr/bin/kics
+        - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+        - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
 
   # SECRETLINT
@@ -356,6 +366,7 @@ linters:
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/secretlint.png
     linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
     linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
     linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
@@ -406,6 +417,7 @@ linters:
     linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
     linter_rules_ignore_config_url: https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore
     linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/semgrep.png
     cli_lint_mode: project
     cli_config_arg_name: --config
     cli_config_default_value: auto
@@ -493,6 +505,7 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
     linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy.png
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
@@ -545,6 +558,7 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
     linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy-sbom.png
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
@@ -587,6 +601,7 @@ linters:
     linter_url: https://github.com/trufflesecurity/trufflehog
     linter_repo: https://github.com/trufflesecurity/trufflehog
     linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trufflehog.png
     linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
     cli_lint_mode: project
     cli_config_arg_name: "--config"
@@ -595,6 +610,7 @@ linters:
       - filesystem
       - "."
       - --fail
+      - --only-verified
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:

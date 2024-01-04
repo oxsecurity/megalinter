@@ -1,15 +1,13 @@
-#! /usr/bin/env node
-"use strict";
-const glob = require("glob-promise");
-const fs = require("fs-extra");
-const path = require("path");
-const c = require("chalk");
-const prompts = require("prompts");
-const { OXSecuritySetup } = require("./ox-setup");
-const { asciiArt } = require("./ascii");
-const { DEFAULT_RELEASE } = require("./config");
+import { default as glob } from "glob-promise";
+import { default as fs } from "fs-extra";
+import * as path from "path";
+import { default as c } from 'chalk';
+import prompts from "prompts";
+import { OXSecuritySetup } from "./ox-setup.js";
+import { asciiArt } from "./ascii.js";
+import { DEFAULT_RELEASE } from "./config.js";
 
-class MegaLinterUpgrader {
+export class MegaLinterUpgrader {
   constructor() {
     this.replacements = [
       // Documentation base URL
@@ -349,9 +347,21 @@ jobs:
       },
       {
         regex: /https:\/\/megalinter.io\/configuration/gm,
-        replacement: "https://megalinter.io/config-file",
+        replacement: "https://megalinter.io/latest/config-file",
         test: "https://megalinter.io/configuration/",
-        testRes: "https://megalinter.io/config-file/",
+        testRes: "https://megalinter.io/latest/config-file/",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/config-file/gm,
+        replacement: "https://megalinter.io/latest/config-file",
+        test: "https://megalinter.io/config-file/",
+        testRes: "https://megalinter.io/latest/config-file/",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/flavors/gm,
+        replacement: "https://megalinter.io/latest/flavors",
+        test: "https://megalinter.io/flavors/",
+        testRes: "https://megalinter.io/latest/flavors/",
       },
       // Github actions flavors
       {
@@ -527,4 +537,3 @@ jobs:
   }
 }
 
-module.exports = { MegaLinterUpgrader };

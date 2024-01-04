@@ -1,15 +1,18 @@
-#! /usr/bin/env node
-"use strict";
-const optionsDefinition = require("./options");
-const { spawnSync } = require("child_process");
-const c = require("chalk");
-const path = require("path");
-const which = require("which");
-const fs = require("fs-extra");
-const { MegaLinterUpgrader } = require("./upgrade");
-const { DEFAULT_RELEASE } = require("./config");
+import { optionsDefinition } from "./options.js"
+import { spawnSync } from "child_process";
+import { default as c } from 'chalk';
+import * as path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import which from "which";
+import { default as fs } from "fs-extra";
+import { MegaLinterUpgrader } from "./upgrade.js";
+import { CodeTotalRunner } from "./codetotal.js";
+import { DEFAULT_RELEASE } from "./config.js";
+import { createEnv} from "yeoman-environment";
+import { default as FindPackageJson } from "find-package-json";
 
-class MegaLinterRunner {
+export class MegaLinterRunner {
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -28,7 +31,6 @@ class MegaLinterRunner {
       let v = process.env.npm_package_version;
       if (!v) {
         try {
-          const FindPackageJson = require("find-package-json");
           const finder = FindPackageJson(__dirname);
           v = finder.next().value.version;
         } catch (e) {
@@ -42,8 +44,8 @@ class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
-      const yeoman = require("yeoman-environment");
-      const env = yeoman.createEnv();
+      const env = createEnv();
+      const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
       );
@@ -57,6 +59,12 @@ class MegaLinterRunner {
       const megaLinterUpgrader = new MegaLinterUpgrader();
       await megaLinterUpgrader.run();
       return { status: 0 };
+    }
+
+    if (options.codetotal) {
+      const codeTotalRunner = new CodeTotalRunner(options);
+      await codeTotalRunner.run();
+      return { status: 0 }
     }
 
     // Build MegaLinter docker image name with flavor and release version
@@ -130,7 +138,8 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run", "--platform", imagePlatform];
-    if (options["removeContainer"]) {
+    const removeContainer = options["removeContainer"] ? true: options["noRemoveContainer"] ? false: true ;
+    if (removeContainer) {
       commandArgs.push("--rm");
     }
     if (options["containerName"]) {
@@ -226,5 +235,3 @@ ERROR: Docker engine has not been found on your system.
     }
   }
 }
-
-module.exports = { MegaLinterRunner };

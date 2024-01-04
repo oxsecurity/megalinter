@@ -1,10 +1,9 @@
-"use strict";
-const Generator = require("yeoman-generator");
-const { asciiArt } = require("../../lib/ascii");
-const { OXSecuritySetup } = require("../../lib/ox-setup");
-const { DEFAULT_RELEASE } = require("../../lib/config");
+import { asciiArt } from "../../lib/ascii.js";
+import Generator from 'yeoman-generator';
+import { OXSecuritySetup } from "../../lib/ox-setup.js";
+import { DEFAULT_RELEASE } from "../../lib/config.js";
 
-module.exports = class extends Generator {
+export default class GeneratorMegaLinter extends Generator {
   prompting() {
     console.log(asciiArt());
     this.log(
@@ -193,9 +192,13 @@ When you don't know what option to select, please use default values`
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
+      this.validateAllCodeBaseGha = "true";
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha  = ">-\n"
+      this.validateAllCodeBaseGha += "            ${{";
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
+      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
     // COPY PASTES
@@ -337,4 +340,4 @@ When you don't know what option to select, please use default values`
       );
     }
   }
-};
+}

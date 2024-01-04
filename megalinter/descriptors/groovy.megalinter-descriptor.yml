@@ -38,7 +38,10 @@ linters:
       - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
     install:
       apk:
-        - openjdk11
+        - openjdk17
+      dockerfile:
+        - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+        - ENV PATH="$JAVA_HOME/bin:${PATH}"
       npm:
         - npm-groovy-lint
     supported_platforms:

@@ -15,7 +15,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.5.3**
+- Version in MegaLinter: **1.6.6**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -30,6 +30,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | TERRAFORM_TERRAFORM_FMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| TERRAFORM_TERRAFORM_FMT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
 | TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
 | TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
 | TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
@@ -57,11 +58,12 @@ Use terraform-fmt in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        85        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)   | Optimized for TERRAFORM based projects          |        55        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -114,7 +116,7 @@ All other commands:
   show          Show the current state or a saved plan
   state         Advanced state management
   taint         Mark a resource instance as not fully functional
-  test          Experimental support for module integration testing
+  test          Execute integration tests for Terraform modules
   untaint       Remove the 'tainted' state from a resource instance
   version       Show the current Terraform version
   workspace     Workspace management

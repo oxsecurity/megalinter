@@ -1,10 +1,8 @@
-#! /usr/bin/env node
-"use strict";
 /* jscpd:ignore-start */
-const assert = require("assert");
-const childProcess = require("child_process");
-const util = require("util");
-const exec = util.promisify(childProcess.exec);
+import assert from 'assert';
+import { exec as childProcessExec } from "child_process";
+import * as  util from "util";
+const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
@@ -90,6 +88,10 @@ Disabled until find a way to run with default options
     if (nodockerpull) {
       params.push("--nodockerpull");
     }
+    if (process.env.MEGALINTER_IMAGE) {
+      params.push("--image");
+      params.push(process.env.MEGALINTER_IMAGE);
+    }
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {
       console.error(stderr);
@@ -101,6 +103,10 @@ Disabled until find a way to run with default options
     params.push("--json");
     if (nodockerpull) {
       params.push("--nodockerpull");
+    }
+    if (process.env.MEGALINTER_IMAGE) {
+      params.push("--image");
+      params.push(process.env.MEGALINTER_IMAGE);
     }
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {

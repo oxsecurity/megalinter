@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.5.13.1@**
+- Version in MegaLinter: **Psalm.5.18.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -32,6 +32,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 | Variable                              | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PHP_PSALM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PHP_PSALM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | PHP_PSALM_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PHP_PSALM_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | PHP_PSALM_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -61,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
@@ -268,11 +269,11 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \

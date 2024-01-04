@@ -72,7 +72,7 @@ DISABLE_LINTERS:
 
 ## eslint-plugin-jsonc documentation
 
-- Version in MegaLinter: **2.9.0**
+- Version in MegaLinter: **2.11.2**
 - Visit [Official Web Site](https://ota-meshi.github.io/eslint-plugin-jsonc/){target=_blank}
 - See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
@@ -93,6 +93,7 @@ DISABLE_LINTERS:
 | Variable                                             | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -121,12 +122,13 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       117        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       121        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                                      |        55        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/beta/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        22        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        85        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -134,7 +136,7 @@ This linter is available in the following flavours
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        51        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -179,62 +181,63 @@ eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
 eslint [options] file.js [file.js] [dir]
 
 Basic configuration:
-  --no-eslintrc                   Disable use of configuration from .eslintrc.*
-  -c, --config path::String       Use this configuration, overriding .eslintrc.* config options if present
-  --env [String]                  Specify environments
-  --ext [String]                  Specify JavaScript file extensions
-  --global [String]               Define global variables
-  --parser String                 Specify the parser to be used
-  --parser-options Object         Specify parser options
+  --no-eslintrc                    Disable use of configuration from .eslintrc.*
+  -c, --config path::String        Use this configuration, overriding .eslintrc.* config options if present
+  --env [String]                   Specify environments
+  --ext [String]                   Specify JavaScript file extensions
+  --global [String]                Define global variables
+  --parser String                  Specify the parser to be used
+  --parser-options Object          Specify parser options
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specify Rules and Plugins:
-  --plugin [String]               Specify plugins
-  --rule Object                   Specify rules
-  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
+  --plugin [String]                Specify plugins
+  --rule Object                    Specify rules
+  --rulesdir [path::String]        Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fix Problems:
-  --fix                           Automatically fix problems
-  --fix-dry-run                   Automatically fix problems without saving the changes to the file system
-  --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
+  --fix                            Automatically fix problems
+  --fix-dry-run                    Automatically fix problems without saving the changes to the file system
+  --fix-type Array                 Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignore Files:
-  --ignore-path path::String      Specify path of ignore file
-  --no-ignore                     Disable use of ignore files and patterns
-  --ignore-pattern [String]       Pattern of files to ignore (in addition to those in .eslintignore)
+  --ignore-path path::String       Specify path of ignore file
+  --no-ignore                      Disable use of ignore files and patterns
+  --ignore-pattern [String]        Pattern of files to ignore (in addition to those in .eslintignore)
 
 Use stdin:
-  --stdin                         Lint code provided on <STDIN> - default: false
-  --stdin-filename String         Specify filename to process STDIN as
+  --stdin                          Lint code provided on <STDIN> - default: false
+  --stdin-filename String          Specify filename to process STDIN as
 
 Handle Warnings:
-  --quiet                         Report errors only - default: false
-  --max-warnings Int              Number of warnings to trigger nonzero exit code - default: -1
+  --quiet                          Report errors only - default: false
+  --max-warnings Int               Number of warnings to trigger nonzero exit code - default: -1
 
 Output:
-  -o, --output-file path::String  Specify file to write report to
-  -f, --format String             Use a specific output format - default: stylish
-  --color, --no-color             Force enabling/disabling of color
+  -o, --output-file path::String   Specify file to write report to
+  -f, --format String              Use a specific output format - default: stylish
+  --color, --no-color              Force enabling/disabling of color
 
 Inline configuration comments:
-  --no-inline-config              Prevent comments from changing config or rules
-  --report-unused-disable-directives  Adds reported errors for unused eslint-disable directives
+  --no-inline-config               Prevent comments from changing config or rules
+  --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
+  --report-unused-disable-directives-severity String  Chooses severity level for reporting unused eslint-disable and eslint-enable directives - either: off, warn, error, 0, 1, or 2
 
 Caching:
-  --cache                         Only check changed files - default: false
-  --cache-file path::String       Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
-  --cache-location path::String   Path to the cache file or directory
-  --cache-strategy String         Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
+  --cache                          Only check changed files - default: false
+  --cache-file path::String        Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
+  --cache-location path::String    Path to the cache file or directory
+  --cache-strategy String          Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
 Miscellaneous:
-  --init                          Run config initialization wizard - default: false
-  --env-info                      Output execution environment information - default: false
+  --init                           Run config initialization wizard - default: false
+  --env-info                       Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
-  --exit-on-fatal-error           Exit with exit code 2 in case of fatal error - default: false
-  --debug                         Output debugging information
-  -h, --help                      Show help
-  -v, --version                   Output the version number
-  --print-config path::String     Print the configuration for the given file
+  --exit-on-fatal-error            Exit with exit code 2 in case of fatal error - default: false
+  --debug                          Output debugging information
+  -h, --help                       Show help
+  -v, --version                    Output the version number
+  --print-config path::String      Print the configuration for the given file
 ```
 
 ### Installation on mega-linter Docker image

@@ -7,9 +7,11 @@ on:
       - main
       - auto-update
       - fixes/docgen
-  # Automatically run every day at midnight
+  # Automatically run every day at 21:49 UTC, before a start of hour peak
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "49 21 * * *"
+  # Allow to manually trigger a run of the workflow
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -45,16 +47,16 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       #######################
       # Docker Buildx setup #
       #######################
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       ########################
       # Get the current date #
@@ -73,7 +75,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile
@@ -106,8 +108,8 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |

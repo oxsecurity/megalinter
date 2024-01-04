@@ -15,7 +15,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.12.1**
+- Version in MegaLinter: **10.12.7**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -32,6 +32,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 | Variable                                    | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | JAVA_CHECKSTYLE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| JAVA_CHECKSTYLE_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | JAVA_CHECKSTYLE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -62,7 +63,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
@@ -125,6 +126,9 @@ Usage: java [options] <mainclass> [args...]
                   root modules to resolve in addition to the initial module.
                   <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
                   ALL-MODULE-PATH.
+    --enable-native-access <module name>[,<module name>...]
+                  modules that are permitted to perform restricted native operations.
+                  <module name> can also be ALL-UNNAMED.
     --list-modules
                   list observable modules and exit
     -d <module name>
@@ -140,7 +144,7 @@ Usage: java [options] <mainclass> [args...]
     -D<name>=<value>
                   set a system property
     -verbose:[class|module|gc|jni]
-                  enable verbose output
+                  enable verbose output for the given subsystem
     -version      print product version to the error stream and exit
     --version     print product version to the output stream and exit
     -showversion  print product version to the error stream and continue
@@ -194,7 +198,7 @@ To specify an argument for a long option, you can use --<name>=<value> or
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \

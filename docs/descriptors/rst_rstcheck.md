@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.1.2**
+- Version in MegaLinter: **6.2.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -24,6 +24,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 | Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | RST_RSTCHECK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| RST_RSTCHECK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | RST_RSTCHECK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | RST_RSTCHECK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | RST_RSTCHECK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -52,7 +53,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        62        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
@@ -86,7 +87,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...                                             
                                                                                 
  CLI of rstcheck.
- Enabled features: []
+ Enabled features: ['Sphinx']
  Pass one ore more rst FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
@@ -146,4 +147,4 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [rstcheck](https://pypi.org/project/rstcheck)
+  - [rstcheck[toml,sphinx]](https://pypi.org/project/rstcheck[toml,sphinx])

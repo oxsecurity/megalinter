@@ -9,7 +9,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 
 ## puppet-lint documentation
 
-- Version in MegaLinter: **4.0.0**
+- Version in MegaLinter: **4.2.3**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/puppetlabs/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -27,6 +27,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 | Variable                                       | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PUPPET_PUPPET_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| PUPPET_PUPPET_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | PUPPET_PUPPET_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -55,7 +56,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       117        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

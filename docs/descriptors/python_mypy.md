@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.4.1**
+- Version in MegaLinter: **1.8.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -35,6 +35,7 @@ If you don't use python static typing, you should disable this linter by adding 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PYTHON_MYPY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PYTHON_MYPY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | PYTHON_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PYTHON_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -69,7 +70,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       117        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        62        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
@@ -161,6 +162,10 @@ Import discovery:
   --no-silence-site-packages
                             Do not silence errors in PEP 561 compliant
                             installed packages
+  --junit-format {global,per_file}
+                            If --junit-xml is set, specifies format. global:
+                            single test with all errors; per_file: one test
+                            entry per file with failures
 
 Platform configuration:
   Type check code assuming it will be run under certain runtime conditions.
@@ -169,7 +174,6 @@ Platform configuration:
 
   --python-version x.y      Type check code assuming it will be running on
                             Python x.y
-  -2, --py2                 Use Python 2 mode (same as --python-version 2.7)
   --platform PLATFORM       Type check special-cased code for the given OS
                             platform (defaults to sys.platform)
   --always-true NAME        Additional variable to be considered True (may be
@@ -203,6 +207,10 @@ Untyped definitions and calls:
   --disallow-untyped-calls  Disallow calling functions without type
                             annotations from functions with type annotations
                             (inverse: --allow-untyped-calls)
+  --untyped-calls-exclude MODULE
+                            Disable --disallow-untyped-calls for
+                            functions/methods coming from specific package,
+                            module, or class
   --disallow-untyped-defs   Disallow defining functions without type
                             annotations or with incomplete type annotations
                             (inverse: --allow-untyped-defs)
@@ -253,8 +261,12 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
-  --strict-concatenate      Make arguments prepended via Concatenate be truly
-                            positional-only (inverse: --no-strict-concatenate)
+  --extra-checks            Enable additional checks that are technically
+                            correct but may be impractical in real code. For
+                            example, this prohibits partial overlap in
+                            TypedDict updates, and makes arguments prepended
+                            via Concatenate positional-only (inverse: --no-
+                            extra-checks)
   --strict                  Strict mode; enables the following flags: --warn-
                             unused-configs, --disallow-any-generics,
                             --disallow-subclassing-any, --disallow-untyped-
@@ -262,8 +274,8 @@ Miscellaneous strictness flags:
                             incomplete-defs, --check-untyped-defs, --disallow-
                             untyped-decorators, --warn-redundant-casts,
                             --warn-unused-ignores, --warn-return-any, --no-
-                            implicit-reexport, --strict-equality, --strict-
-                            concatenate
+                            implicit-reexport, --strict-equality, --extra-
+                            checks
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -280,6 +292,8 @@ Configuring error messages:
                             (inverse: --hide-error-end)
   --hide-error-codes        Hide error codes in error messages (inverse:
                             --show-error-codes)
+  --show-error-code-links   Show links to error code documentation (inverse:
+                            --hide-error-code-links)
   --pretty                  Use visually nicer output in error messages: Use
                             soft word wrap, show source code snippets, and
                             show error location markers (inverse: --no-pretty)
@@ -316,9 +330,7 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
-  --disable-recursive-aliases
-                            Disable experimental support for recursive type
-                            aliases
+  --old-type-inference      Disable new experimental type inference algorithm
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only

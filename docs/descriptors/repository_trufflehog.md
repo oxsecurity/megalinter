@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.44.0**
+- Version in MegaLinter: **3.63.7**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -29,6 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 | Variable                                          | Description                                                                                                  | Default value                                   |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_TRUFFLEHOG_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                     |                                                 |
+| REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`         |                                                 |
 | REPOSITORY_TRUFFLEHOG_PRE_COMMANDS                | List of bash commands to run before the linter                                                               | None                                            |
 | REPOSITORY_TRUFFLEHOG_POST_COMMANDS               | List of bash commands to run after the linter                                                                | None                                            |
 | REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands | None                                            |
@@ -44,12 +45,13 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       117        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       121        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                                      |        55        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/beta/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        22        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        85        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -57,7 +59,7 @@ This linter is available in the following flavours
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                                      |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)           | Optimized for security                                                 |        24        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        51        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -91,27 +93,32 @@ usage: TruffleHog [<flags>] <command> [<args> ...]
 
 TruffleHog is a tool for finding credentials.
 
+
 Flags:
-      --help                     Show context-sensitive help (also try
+  -h, --[no-]help                Show context-sensitive help (also try
                                  --help-long and --help-man).
-      --debug                    Run in debug mode.
-      --trace                    Run in trace mode.
-      --profile                  Enables profiling and sets a pprof and fgprof
+      --[no-]debug               Run in debug mode.
+      --[no-]trace               Run in trace mode.
+      --[no-]profile             Enables profiling and sets a pprof and fgprof
                                  server on :18066.
-  -j, --json                     Output in JSON format.
-      --json-legacy              Use the pre-v3.0 JSON format. Only works with
+  -j, --[no-]json                Output in JSON format.
+      --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
-      --github-actions           Output in GitHub Actions format.
-      --concurrency=2            Number of concurrent workers.
-      --no-verification          Don't verify the results.
-      --only-verified            Only output verified results.
-      --filter-unverified        Only output first unverified result per
+      --[no-]github-actions      Output in GitHub Actions format.
+      --concurrency=4            Number of concurrent workers.
+      --[no-]no-verification     Don't verify the results.
+      --[no-]only-verified       Only output verified results.
+      --[no-]filter-unverified   Only output first unverified result per
                                  chunk per detector if there are more than one
                                  results.
+      --filter-entropy=FILTER-ENTROPY
+                                 Filter unverified results with Shannon entropy.
+                                 Start with 3.0.
       --config=CONFIG            Path to configuration file.
-      --print-avg-detector-time  Print the average time spent on each detector.
-      --no-update                Don't check for updates.
-      --fail                     Exit with code 183 if results are found.
+      --[no-]print-avg-detector-time
+                                 Print the average time spent on each detector.
+      --[no-]no-update           Don't check for updates.
+      --[no-]fail                Exit with code 183 if results are found.
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --archive-max-size=ARCHIVE-MAX-SIZE
                                  Maximum size of archive to scan. (Byte units
@@ -128,38 +135,41 @@ Flags:
                                  exclude. Protobuf name or IDs may be used,
                                  as well as ranges. IDs defined here take
                                  precedence over the include list.
-      --version                  Show application version.
+      --[no-]version             Show application version.
 
 Commands:
-  help [<command>...]
+help [<command>...]
     Show help.
 
-  git [<flags>] <uri>
+git [<flags>] <uri>
     Find credentials in git repositories.
 
-  github [<flags>]
+github [<flags>]
     Find credentials in GitHub repositories.
 
-  gitlab --token=TOKEN [<flags>]
+gitlab --token=TOKEN [<flags>]
     Find credentials in GitLab repositories.
 
-  filesystem [<flags>] [<path>...]
+filesystem [<flags>] [<path>...]
     Find credentials in a filesystem.
 
-  s3 [<flags>]
+s3 [<flags>]
     Find credentials in S3 buckets.
 
-  gcs [<flags>]
+gcs [<flags>]
     Find credentials in GCS buckets.
 
-  syslog [<flags>]
+syslog [<flags>]
     Scan syslog
 
-  circleci --token=TOKEN
+circleci --token=TOKEN
     Scan CircleCI
 
-  docker --image=IMAGE
+docker --image=IMAGE
     Scan Docker Image
+
+travisci --token=TOKEN
+    Scan TravisCI
 
 
 ```

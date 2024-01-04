@@ -9,7 +9,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 
 ## luacheck documentation
 
-- Version in MegaLinter: **1.1.1**
+- Version in MegaLinter: **1.1.2**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file isn't found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -26,6 +26,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 | Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | LUA_LUACHECK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| LUA_LUACHECK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | LUA_LUACHECK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | LUA_LUACHECK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | LUA_LUACHECK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -59,7 +60,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       117        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -109,7 +110,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 1.1.1, a linter and a static analyzer for Lua.
+luacheck 1.1.2, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass

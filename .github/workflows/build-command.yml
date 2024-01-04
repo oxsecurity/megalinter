@@ -22,18 +22,17 @@ on:
         description: "The reference to pass to 'ref' to checkout action"
         required: true
       checkout-repository:
-        description: "The repository to pass to 'repository' to tcheckout action"
+        description: "The repository to pass to 'repository' to checkout action"
         required: false
   repository_dispatch:
     types: [build-command]
+permissions: {}
 jobs:
   build-sh:
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
-      # Remove the ones you do not need
+      # Give the default GITHUB_TOKEN write permission to commit and push and comment on PR
       contents: write
-      issues: write
       pull-requests: write
     steps:
       - name: Create URL to the run output
@@ -42,15 +41,9 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-          ## These are if we want to use repository_dispatch (default)
-          # repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          # comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          # issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             > [Command run output](${{ steps.vars.outputs.run-url }})
             > Build command workflow started.
@@ -64,13 +57,13 @@ jobs:
           INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
         run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
-        uses: actions/setup-python@v4.5.0
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version-file: '.python-version' # Read python version from a file .python-version
@@ -80,8 +73,6 @@ jobs:
       - name: Create comment starting build.sh
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -89,7 +80,8 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - run: git pull
+      - uses: stefanzweifel/git-auto-commit-action@v5
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
@@ -98,18 +90,14 @@ jobs:
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
-          reaction-type: hooray
+          reactions: hooray
       - name: Create final comment updated files
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
@@ -119,10 +107,18 @@ jobs:
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
         uses: peter-evans/create-or-update-comment@v3
         with:
-          ## Use token if we want to use a PAT instead of GITHUB_TOKEN, GITHUB_TOKEN acts as github-actions[bot]
-          # token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           issue-number: ${{ github.event.inputs.issue-number }}
           body: |
             > Build command workflow completed without updating files.
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.comment.id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Build command workflow failed.
+          reactions: -1

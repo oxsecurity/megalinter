@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 ## kics documentation
 
-- Version in MegaLinter: **1.7.3**
+- Version in MegaLinter: **1.7.12**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
@@ -31,6 +31,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 | Variable                                    | Description                                                                                            | Default value                                   |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
+| REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`   |                                                 |
 | REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
 | REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
 | REPOSITORY_KICS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands | None                                            |
@@ -46,7 +47,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       121        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -82,6 +83,7 @@ Usage:
   kics [command]
 
 Available Commands:
+  analyze        Determines the detected platforms of a certain project
   generate-id    Generates uuid for query
   help           Help about any command
   list-platforms List supported platforms
@@ -108,9 +110,8 @@ Use "kics [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 FROM checkmarx/kics:alpine as kics
-COPY --link --from=kics /app/bin/kics /usr/bin/
-RUN mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-COPY --from=kics /app/bin/assets /opt/kics/assets/
+COPY --link --from=kics /app/bin/kics /usr/bin/kics
+ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+COPY --from=kics /app/bin/assets /usr/bin/assets
 ```
 

@@ -1,3 +1,4 @@
+# Please check changes with entrypoint.sh and keep in sync
 aiofiles
 azure-devops==6.0.0b4
 beautifulsoup4
@@ -9,14 +10,16 @@ importlib-metadata>=3.10
 json-schema-for-humans
 jsonpickle
 jsonschema
+markdown
 mdx_truly_sane_lists
+mike
 mkdocs
 mkdocs-glightbox==0.3.2
 mkdocs-material
 multiprocessing_logging
 pychalk
 pygithub
-pymdown-extensions==9.11
+pymdown-extensions
 pytablewriter
 pytest-cov
 pytest-timeout
@@ -29,5 +32,6 @@ redis
 regex
 requests
 terminaltables
+urllib3
 webpreview
 yq

@@ -57,7 +57,7 @@ linters:
       - proselint/config.json
     linter_text: a linter for prose
     linter_speed: 2
-    linter_url: http://proselint.com
+    linter_url: https://github.com/amperser/proselint
     linter_repo: https://github.com/amperser/proselint
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
     linter_rules_url: https://github.com/amperser/proselint#checks
@@ -152,6 +152,18 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    linter_text: |
+      A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
+
+      Each line can contain Regular Expressions or glob format.
+
+      Example with glob, regex and full url:
+
+      ```
+      https://twitter.com/intent/tweet*
+      (.*some_url_part)
+      https://github.com/sgerrand/alpine-pkg-glibc/releases/download
+      ```
     test_folder: spell_lychee
     can_output_sarif: false
     descriptor_flavors:

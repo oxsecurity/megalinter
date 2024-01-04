@@ -3,21 +3,19 @@
  * @author Nicolas Vuillamy
  */
 
-"use strict";
-
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const optionator = require("optionator");
-const { DEFAULT_RELEASE } = require("./config");
+import * as optionator from 'optionator';
+import { DEFAULT_RELEASE } from "./config.js";
 
 //------------------------------------------------------------------------------
 // Initialization and Public Interface
 //------------------------------------------------------------------------------
 
 // exports "parse(args)", "generateHelp()", and "generateHelpForOption(optionName)"
-module.exports = optionator({
+export const optionsDefinition = optionator.default({
   prepend: "mega-linter [options]",
   defaults: {
     concatRepeatedArrays: true,
@@ -139,7 +137,23 @@ module.exports = optionator({
     {
       option: "remove-container",
       type: "Boolean",
-      description: "Remove MegaLinter Docker container when done",
+      description: "Remove MegaLinter Docker container when done (default: true since v7.8.0)",
+    },
+    {
+      option: "no-remove-container",
+      type: "Boolean",
+      description: "Do not remove MegaLinter Docker container when done",
+    },
+    {
+      option: "codetotal",
+      type: "Boolean",
+      description: "Run CodeTotal locally",
+    },
+    {
+      option: "codetotal-url",
+      type: "String",
+      default: "http://localhost:8081/",
+      description: "URL Hosting CodeTotal once launched",
     },
   ],
   mutuallyExclusive: [

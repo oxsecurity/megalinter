@@ -64,6 +64,11 @@
     "image": null,
     "title": "ChkTeX - LaTeX semantic checker"
   },
+  "clang-format": {
+    "description": "A\u0302\u00ab ClangCheck :: Contents :: Clang-Format Style Options A\u0302\u00bb.",
+    "image": null,
+    "title": "ClangFormat \u2014 Clang 18.0.0git documentation"
+  },
   "clippy": {
     "description": "A bunch of lints to catch common mistakes and improve your Rust code - rust-lang/rust-clippy",
     "image": "https://avatars1.githubusercontent.com/u/5430905?s=400&v=4",
@@ -244,6 +249,11 @@
     "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
     "title": "instrumenta/kubeval"
   },
+  "lightning-flow-scanner": {
+    "description": "Lightning-Flow-Scanner has 5 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/148573214?s=280&v=4",
+    "title": "Lightning-Flow-Scanner"
+  },
   "lintr": {
     "description": "Static Code Analysis for R. Contribute to r-lib/lintr development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
@@ -393,6 +403,11 @@
     "description": "Revive documentation website",
     "image": null,
     "title": "revive - fast & configurable linter for Go"
+  },
+  "roslynator": {
+    "description": "Roslynator is a set of code analysis tools for C#, powered by Roslyn. - GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn.",
+    "image": "https://repository-images.githubusercontent.com/57153744/57b7135a-1505-4930-98d1-acfd619f1457",
+    "title": "GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn."
   },
   "rst-lint": {
     "description": "reStructuredText linter. Contribute to twolfson/restructuredtext-lint development by creating an account on GitHub.",

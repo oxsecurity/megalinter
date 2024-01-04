@@ -11,12 +11,12 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.47.0**
+- Version in MegaLinter: **0.50.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
-- See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
+- See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
-- See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md){target=_blank}
-- See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules){target=_blank}
+- See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md){target=_blank}
+- See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md){target=_blank}
 
 [![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
 
@@ -29,6 +29,7 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                    | `True`                                          |
 | TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
 | TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
@@ -46,7 +47,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       121        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -116,10 +117,9 @@ Application Options:
                                                                 name
       --var='foo=bar'                                           Set a Terraform
                                                                 variable
-      --module                                                  Enable module
-                                                                inspection
-      --no-module                                               Disable module
-                                                                inspection
+      --call-module-type=[all|local|none]                       Types of module
+                                                                to call
+                                                                (default: local)
       --chdir=DIR                                               Switch to a
                                                                 different
                                                                 working
@@ -148,6 +148,9 @@ Application Options:
                                                                 colorized output
       --fix                                                     Fix issues
                                                                 automatically
+      --no-parallel-runners                                     Disable
+                                                                per-runner
+                                                                parallelism
 
 Help Options:
   -h, --help                                                    Show this help
@@ -159,7 +162,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.47.0 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 

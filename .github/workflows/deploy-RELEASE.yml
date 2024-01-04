@@ -49,14 +49,14 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v3.7.0
+      - uses: actions/setup-node@v4.0.1
         with:
-          node-version: "16.x"
+          node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && npm install
       - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
@@ -64,13 +64,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -80,7 +80,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile-release
@@ -103,7 +103,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter:latest
 
       - name: Build Worker Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile-release
@@ -134,7 +134,7 @@ jobs:
     environment:
       name: release
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Get release version
@@ -152,10 +152,10 @@ jobs:
           echo "curr tag ${{ steps.version.outputs.ctag }}"
           echo "prev ver ${{ steps.version.outputs.pversion }}"
           echo "curr ver ${{ steps.version.outputs.cversion }}"
-      - uses: actions/setup-python@v4.5.0
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
-      - run: pip install --upgrade markdown==3.3.7 mike mkdocs-material pymdown-extensions==9.11 mkdocs-glightbox==0.3.2 mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
+          python-version: 3.12.0
+      - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
       - run: |

@@ -15,7 +15,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.18.1**
+- Version in MegaLinter: **1.18.11**
 - Visit [Official Web Site](https://runterrascan.io/){target=_blank}
 - See [How to configure terrascan rules](https://runterrascan.io/docs/usage/config_options/){target=_blank}
 - See [Index of problems detected by terrascan](https://runterrascan.io/docs/usage/){target=_blank}
@@ -30,6 +30,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 | Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | TERRAFORM_TERRASCAN_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | TERRAFORM_TERRASCAN_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
 | TERRAFORM_TERRASCAN_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | TERRAFORM_TERRASCAN_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
@@ -47,7 +48,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       121        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -106,7 +107,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM tenable/terrascan:1.18.1 as terrascan
+FROM tenable/terrascan:1.18.11 as terrascan
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 

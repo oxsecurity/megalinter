@@ -14,7 +14,7 @@ Scalafix lints and fixes scala files
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.11.0**
+- Version in MegaLinter: **0.11.1**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -31,6 +31,7 @@ Scalafix lints and fixes scala files
 | Variable                                   | Description                                                                                                                                                                                  | Default value                                   |
 |--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | SCALA_SCALAFIX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| SCALA_SCALAFIX_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | SCALA_SCALAFIX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | SCALA_SCALAFIX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -51,7 +52,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       117        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -83,7 +84,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.11.0
+Scalafix 0.11.1
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -166,7 +167,7 @@ Semantic options:
     The scala compiler options used to compile this --classpath, for example
     -Ywarn-unused-import
 
-  --scala-version ScalaVersion (default: "2.13.11")
+  --scala-version ScalaVersion (default: "2.13.12")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 
@@ -232,6 +233,8 @@ Less common options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 

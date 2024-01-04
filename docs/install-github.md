@@ -49,7 +49,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
     permissions:
@@ -82,8 +82,8 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |

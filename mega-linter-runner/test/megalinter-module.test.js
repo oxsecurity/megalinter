@@ -1,7 +1,5 @@
-#! /usr/bin/env node
-"use strict";
-const { MegaLinterRunner } = require("../lib/index");
-const assert = require("assert");
+import { MegaLinterRunner } from "../lib/index.js";
+import assert from 'assert';
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
@@ -50,6 +48,9 @@ Disabled until find a way to run with default options
       nodockerpull,
       env: ["ENABLE=YAML"],
     };
+    if (process.env.MEGALINTER_IMAGE) {
+      options.image = process.env.MEGALINTER_IMAGE;
+    }
     const res = await new MegaLinterRunner().run(options);
     assert(res.status === 0, `status is 0 (${res.status} returned)`);
   }).timeout(600000);

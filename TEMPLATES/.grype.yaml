@@ -143,3 +143,9 @@ fail-on-severity: "high"
   #   using-cpes: true
   # stock:
   #   using-cpes: true
+
+ignore:
+
+  # Ignored by default; disputed and unwarranted CVE that causes Megalinter to fail
+  # @link https://nvd.nist.gov/vuln/detail/CVE-2018-20225
+  - vulnerability: CVE-2018-20225

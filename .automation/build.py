@@ -38,7 +38,7 @@ from megalinter.constants import (
     ML_REPO_URL,
 )
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util import Retry
 from webpreview import web_preview
 
 RELEASE = "--release" in sys.argv
@@ -404,13 +404,13 @@ def build_dockerfile(
         if "linter_name" in item and "pip" in item["install"]:
             pipvenv_packages[item["linter_name"]] = item["install"]["pip"]
         # Collect python packages
-        elif "pip" in item["install"]:
+        if "pip" in item["install"]:
             pip_packages += item["install"]["pip"]
         # Collect ruby packages
-        elif "gem" in item["install"]:
+        if "gem" in item["install"]:
             gem_packages += item["install"]["gem"]
         # Collect cargo packages (rust)
-        elif "cargo" in item["install"]:
+        if "cargo" in item["install"]:
             cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
@@ -462,7 +462,17 @@ def build_dockerfile(
             cargo_packages.remove("clippy")
             rust_commands += ["rustup component add clippy"]
             keep_rustup = True
-        if len(cargo_packages) > 0:
+        # Only COMPILER_ONLY in descriptors just to have rust toolchain in the Dockerfile
+        if all(p == "COMPILER_ONLY" for p in cargo_packages):
+            rust_commands += [
+                'echo "No cargo package to install, we just need rust for dependencies"'
+            ]
+            keep_rustup = True
+        # Cargo packages to install minus empty package
+        elif len(cargo_packages) > 0:
+            cargo_packages = [
+                p for p in cargo_packages if p != "COMPILER_ONLY"
+            ]  # remove empty string packages
             cargo_cmd = "cargo install --force --locked " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
             )
@@ -580,8 +590,22 @@ def match_flavor(item, flavor, flavor_info):
         and flavor in item["descriptor_flavors_exclude"]
     ):
         return False
+    # Flavor all
     elif flavor == "all":
         return True
+    # Formatter flavor
+    elif flavor == "formatters":
+        if "is_formatter" in item and item["is_formatter"] is True:
+            return True
+        elif (
+            "descriptor_flavors" in item
+            and flavor in item["descriptor_flavors"]
+            and "linter_name" not in item
+        ):
+            return True
+        else:
+            return False
+    # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
@@ -1315,6 +1339,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |'
         ]
+        linter_doc_md += [
+            f"| {linter.name}_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove "
+            "from command line before calling the linter<br/>"
+            f'Ex: `-s --foo "bar"` |  |'
+        ]
         # Files can be filtered only in cli_lint_mode is file or list_of_files
         if linter.cli_lint_mode != "project":
             linter_doc_md += [
@@ -1441,15 +1470,26 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Pre/post commands & unsecured variables
         linter_doc_md += [
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
-            f"| {dump_as_json(linter.pre_commands,'None')} |",
+            f"| {dump_as_json(linter.pre_commands, 'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
             f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
             + f"not filtered before calling {linter.name} and its pre/post commands"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
         ]
         add_in_config_schema_file(
             [
+                [
+                    f"{linter.name}_COMMAND_REMOVE_ARGUMENTS",
+                    {
+                        "$id": f"#/properties/{linter.name}_COMMAND_REMOVE_ARGUMENTS",
+                        "type": ["array", "string"],
+                        "title": f"{title_prefix}{linter.name}: Custom remove arguments",
+                        "description": f"{linter.name}: User custom arguments to remove before calling linter",
+                        "examples:": ["--foo", "bar"],
+                        "items": {"type": "string"},
+                    },
+                ],
                 [
                     f"{linter.name}_ARGUMENTS",
                     {
@@ -1592,7 +1632,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         if linter.files_sub_directory is not None:
             linter_doc_md += [
-                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
+                f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files"
+                " (use `any` to always activate the linter)"
                 f"| `{linter.files_sub_directory}` |"
             ]
             add_in_config_schema_file(
@@ -1602,6 +1643,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         {
                             "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
+                            "description": (
+                                'Directory that must be found to activate linter. Use value "any" to always activate'
+                            ),
                             "title": f"{title_prefix}{linter.name}: Directory containing {linter.descriptor_id} files",
                             "default": linter.files_sub_directory,
                         },
@@ -2479,7 +2523,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-4.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-5.5M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
@@ -3239,7 +3283,7 @@ def update_workflow_linters(file_path, linters):
         file_content = f.read()
         file_content = re.sub(
             r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
-            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            rf"\1{re.escape(linters).replace(chr(92), '').strip()}\3",
             file_content,
         )
 

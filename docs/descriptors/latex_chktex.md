@@ -8,7 +8,7 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 
 ## chktex documentation
 
-- Version in MegaLinter: **1.7.6**
+- Version in MegaLinter: **1.7.8**
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
   - If custom `.chktexrc` config file isn't found, [.chktexrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
@@ -21,6 +21,7 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 | Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | LATEX_CHKTEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| LATEX_CHKTEX_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
 | LATEX_CHKTEX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | LATEX_CHKTEX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | LATEX_CHKTEX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
@@ -50,7 +51,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       117        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -78,7 +79,7 @@ chktex -q -l .chktexrc myfile.tex
 ### Help content
 
 ```shell
-ChkTeX v1.7.6 - Copyright 1995-96 Jens T. Berger Thielemann.
+ChkTeX v1.7.8 - Copyright 1995-96 Jens T. Berger Thielemann.
 Compiled with POSIX extended regex support.
 ChkTeX comes with ABSOLUTELY NO WARRANTY; details on this and
 distribution conditions in the GNU General Public License file.
@@ -89,7 +90,7 @@ Bug reports: https://savannah.nongnu.org/bugs/?group=chktex
 Press Ctrl-D to terminate stdin input.
 
 
-                         Usage of ChkTeX v1.7.6
+                         Usage of ChkTeX v1.7.8
                          ~~~~~~~~~~~~~~~~~~~~~~
 
                                Template
@@ -106,8 +107,11 @@ Misc. options
     -h  --help      : This text.
     -i  --license   : Show distribution information
     -l  --localrc   : Read local .chktexrc formatted file.
-    -d  --debug     : Debug information. Give it a number.
+    -d  --debug     : Debug information. A bit field with 5 bits.
+                      Each bit shows a different type of information.
     -r  --reset     : Reset settings to default.
+    -S  --set       : Read it's argument as if from chktexrc.
+                      e.g., -S TabSize=8 will override the TabSize.
 
 Muting warning messages:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,7 +119,7 @@ Muting warning messages:
     -e  --erroron   : Makes msg # given an error and turns it on.
     -m  --msgon     : Makes msg # given a message and turns it on.
     -n  --nowarn    : Mutes msg # given.
-    -L  --nolinesupp: Disables per-line suppressions.
+    -L  --nolinesupp: Disables per-line and per-file suppressions.
 
 Output control flags:
 ~~~~~~~~~~~~~~~~~~~~~
@@ -135,7 +139,7 @@ Boolean switches (1 -> enables / 0 -> disables):
     -x  --wipeverb  : Ignore contents of `\verb' commands.
     -g  --globalrc  : Read global .chktexrc file.
     -I  --inputfiles: Execute \input statements.
-    -H  --headererr : Show errors found in front of \begin{document}
+    -H  --headererr : Show errors found before \begin{document}
 
 Miscellaneous switches:
 ~~~~~~~~~~~~~~~~~~~~~~~

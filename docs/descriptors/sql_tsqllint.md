@@ -25,6 +25,7 @@ description: How to use tsqllint (configure, ignore files, ignore errors, help &
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | SQL_TSQLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| SQL_TSQLLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | SQL_TSQLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | SQL_TSQLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | SQL_TSQLLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
@@ -53,9 +54,9 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        63        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        72        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       121        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        64        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        73        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
 ## Behind the scenes
 
@@ -107,20 +108,9 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global TSQLLint
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
-  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
-  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
-  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
-  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
+  - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)
