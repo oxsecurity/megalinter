@@ -9,9 +9,11 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 
 ## roslynator documentation
 
-- Version in MegaLinter: **0.8.0.0**
+- Version in MegaLinter: **0.8.2.0**
 - Visit [Official Web Site](https://github.com/JosefPihrt/Roslynator#readme){target=_blank}
-- See [How to configure roslynator rules](https://github.com/JosefPihrt/Roslynator/blob/main/docs/Configuration.md){target=_blank}
+- See [How to configure roslynator rules](https://josefpihrt.github.io/docs/roslynator/configuration){target=_blank}
+- See [How to disable roslynator rules in files](https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic){target=_blank}
+- See [Index of problems detected by roslynator](https://josefpihrt.github.io/docs/roslynator/analyzers){target=_blank}
 
 [![Roslynator - GitHub](https://gh-card.dev/repos/JosefPihrt/Roslynator.svg?fullname=)](https://github.com/JosefPihrt/Roslynator){target=_blank}
 
@@ -84,7 +86,7 @@ roslynator fix myproject.csproj
 ### Help content
 
 ```shell
-Roslynator Command Line Tool version 0.8.0.0 (Roslyn version 4.7.0.0)
+Roslynator Command Line Tool version 0.8.2.0 (Roslyn version 4.8.0.0)
 Usage: roslynator [command] [arguments]
 
 Commands:
@@ -109,17 +111,8 @@ Run 'roslynator help [command]' for more information on a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-RUN /usr/share/dotnet/dotnet tool install -g roslynator.dotnet.cli
+RUN dotnet tool install -g roslynator.dotnet.cli
 ```
 

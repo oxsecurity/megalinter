@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.98.0**
+- Version in MegaLinter: **0.99.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -93,7 +93,7 @@ Application Configuration:
 
   format:
     # (env: SYFT_FORMAT_PRETTY)
-    pretty: 0xc0005d96e0
+    pretty:
 
     template:
       # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)
@@ -163,6 +163,13 @@ Application Configuration:
 
     # (env: SYFT_JAVA_MAX_PARENT_RECURSIVE_DEPTH)
     max-parent-recursive-depth: 0
+
+  javascript:
+    # (env: SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES)
+    search-remote-licenses: false
+
+    # (env: SYFT_JAVASCRIPT_NPM_BASE_URL)
+    npm-base-url: ''
 
   linux-kernel:
     # (env: SYFT_LINUX_KERNEL_CATALOG_MODULES)

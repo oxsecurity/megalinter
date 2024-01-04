@@ -78,7 +78,9 @@ linters:
     linter_url: https://github.com/JosefPihrt/Roslynator
     linter_repo: https://github.com/JosefPihrt/Roslynator
     linter_image_url: http://pihrt.net/images/Roslynator.ico
-    linter_rules_configuration_url: https://github.com/JosefPihrt/Roslynator/blob/main/docs/Configuration.md
+    linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
+    linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration
+    linter_rules_inline_disable_url: https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic
     cli_lint_fix_arg_name: "fix"
     cli_lint_extra_args:
       - "analyze"

@@ -13,7 +13,7 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 ## bash-exec documentation
 
 - Version in MegaLinter: **5.2.15**
-- Visit [Official Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank}
+- Visit [Official Web Site](https://www.gnu.org/software/bash/){target=_blank}
 
 ## Configuration in MegaLinter
 

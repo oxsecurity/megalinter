@@ -19,7 +19,7 @@ linters:
   # Bash Built in Linter
   - class: BashBashExecLinter
     linter_name: bash-exec
-    linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
+    linter_url: https://www.gnu.org/software/bash/
     linter_text: |
       Checks if shell files are executable
 

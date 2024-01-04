@@ -21,15 +21,15 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
-FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
+FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.0-alpine3.18
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -60,7 +60,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 helm \
                 gcompat \
                 libc6-compat \

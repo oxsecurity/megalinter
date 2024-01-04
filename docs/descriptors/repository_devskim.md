@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.23**
+- Version in MegaLinter: **1.0.27**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -94,7 +94,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-devskim 1.0.23+607c9a5eda
+devskim 1.0.27+935af10ad2
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -120,11 +120,4 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```
 
 - APK packages (Linux):
-  - [dotnet6-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet6-sdk)
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [krb5-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=krb5-libs)
-  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
-  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
-  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
+  - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)

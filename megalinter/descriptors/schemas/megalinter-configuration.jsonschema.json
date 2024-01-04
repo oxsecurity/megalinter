@@ -1416,6 +1416,20 @@
       "title": "Including regex filter for BICEP descriptor",
       "type": "string"
     },
+    "BITBUCKET_COMMENT_REPORTER": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)",
+      "title": "Activate Bitbucket PR Comments reporter",
+      "type": "boolean"
+    },
+    "BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT",
+      "default": true,
+      "description": "Set to false to disable the overwrite of existing MegaLinter Pull Request comment in case of new run",
+      "title": "Overwrite Bitbucket Pull Request Comment",
+      "type": "boolean"
+    },
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
       "default": false,
@@ -2709,7 +2723,7 @@
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
       "default": [
         [
-          "csharpier"
+          "dotnet-csharpier"
         ]
       ],
       "items": {
@@ -9989,6 +10003,20 @@
       },
       "title": "MARKDOWN_REMARK_LINT: Unsecured env variables",
       "type": "array"
+    },
+    "MARKDOWN_SUMMARY_REPORTER": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER",
+      "default": false,
+      "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
+      "title": "Activate SUMMARY reporter",
+      "type": "boolean"
+    },
+    "MARKDOWN_SUMMARY_REPORTER_FILE_NAME": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
+      "default": "megalinter-summary.log",
+      "description": "Override SUMMARY output file name",
+      "title": "SUMMARY report file name",
+      "type": "string"
     },
     "MEGALINTER_FILES_TO_LINT": {
       "$id": "#/properties/MEGALINTER_FILES_TO_LINT",

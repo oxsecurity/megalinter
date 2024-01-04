@@ -15,7 +15,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.18.3**
+- Version in MegaLinter: **1.18.11**
 - Visit [Official Web Site](https://runterrascan.io/){target=_blank}
 - See [How to configure terrascan rules](https://runterrascan.io/docs/usage/config_options/){target=_blank}
 - See [Index of problems detected by terrascan](https://runterrascan.io/docs/usage/){target=_blank}
@@ -107,7 +107,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM tenable/terrascan:1.18.11 as terrascan
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 

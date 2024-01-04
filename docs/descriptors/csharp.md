@@ -39,10 +39,3 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 
 - APK packages (Linux):
   - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [krb5-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=krb5-libs)
-  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
-  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
-  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
