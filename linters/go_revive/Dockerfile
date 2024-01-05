@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround: https://github.com/mgechev/revive/issues/787
+## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@v1.3.4
@@ -119,7 +119,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-
+COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 #COPY__END
 
 #############################################################################################
@@ -127,6 +127,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # revive installation
+# Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
 #OTHER__END
 
