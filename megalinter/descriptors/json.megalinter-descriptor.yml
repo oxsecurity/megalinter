@@ -24,6 +24,10 @@ linters:
     install:
       npm:
         - "@prantlf/jsonlint"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # ESLINT-PLUGIN-JSONC
   - class: EslintLinter
     linter_name: eslint-plugin-jsonc
@@ -128,6 +132,10 @@ linters:
         - eslint
         - eslint-plugin-jsonc
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: vscode-eslint
@@ -150,6 +158,10 @@ linters:
     install:
       npm:
         - v8r
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: native support
@@ -188,6 +200,10 @@ linters:
     install:
       npm:
         - "prettier"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: prettier-atom
@@ -256,3 +272,7 @@ linters:
       npm:
         - "npm-package-json-lint"
         - "npm-package-json-lint-config-default"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

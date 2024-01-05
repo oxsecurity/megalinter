@@ -47,6 +47,10 @@ linters:
       pip:
         - packaging
         - checkov
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Checkov
@@ -105,11 +109,14 @@ linters:
       dockerfile:
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
-
   # DUSTILOCK
   - class: DustilockLinter
     linter_name: dustilock
@@ -139,7 +146,10 @@ linters:
           FROM golang:alpine as dustilock
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true
@@ -159,7 +169,10 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # GITLEAKS
   - class: GitleaksLinter
     linter_name: gitleaks
@@ -247,6 +260,10 @@ linters:
       dockerfile:
         - FROM zricethezav/gitleaks:v8.18.1 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
         description: Scan only PR commits on Pull Request
@@ -289,6 +306,10 @@ linters:
     install:
       dockerfile:
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: repository_grype
 
   # KICS
@@ -334,6 +355,10 @@ linters:
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
         - COPY --from=kics /app/bin/assets /usr/bin/assets
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: repository_kics
 
   # SECRETLINT
@@ -374,7 +399,10 @@ linters:
         - secretlint
         - "@secretlint/secretlint-rule-preset-recommend"
         - "@secretlint/secretlint-formatter-sarif"
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # SEMGREP
   - class: SemgrepLinter
     linter_name: semgrep
@@ -429,11 +457,14 @@ linters:
       - name: REPOSITORY_SEMGREP_RULESETS_TYPE
         description: "MegaLinter semgrep ruleset list preset id . Available values: security"
         default_value: ""
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
-
   # SYFT
   - class: SyftLinter
     linter_name: syft
@@ -464,7 +495,10 @@ linters:
     install:
       dockerfile:
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TRIVY
   - linter_name: trivy
     can_output_sarif: true
@@ -505,6 +539,10 @@ linters:
       dockerfile:
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode Trivy
@@ -551,6 +589,10 @@ linters:
       dockerfile:
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode Trivy
@@ -585,4 +627,8 @@ linters:
       dockerfile:
         - FROM trufflesecurity/trufflehog:latest as trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: gitleaks

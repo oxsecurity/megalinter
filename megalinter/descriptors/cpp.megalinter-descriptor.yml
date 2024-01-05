@@ -35,6 +35,10 @@ linters:
     install:
       pip:
         - cpplint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # clang-format
   - linter_name: clang-format
     name: CPP_CLANG_FORMAT
@@ -62,6 +66,10 @@ linters:
     install:
       apk:
         - clang16-extra-tools
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Clang-Format

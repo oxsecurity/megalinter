@@ -40,6 +40,10 @@ linters:
     install:
       npm:
         - markdownlint-cli
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-node-markdownlint
@@ -85,6 +89,10 @@ linters:
       npm:
         - remark-cli
         - remark-preset-lint-recommended
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-remark
@@ -118,6 +126,10 @@ linters:
     install:
       npm:
         - markdown-link-check
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true
@@ -138,6 +150,10 @@ linters:
     install:
       npm:
         - markdown-table-formatter
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Markdown Table Prettify Extension

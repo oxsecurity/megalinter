@@ -72,6 +72,10 @@ linters:
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-eslint
@@ -118,6 +122,10 @@ linters:
     install:
       npm:
         - ts-standard
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: native support
@@ -162,6 +170,10 @@ linters:
     install:
       npm:
         - "prettier"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: prettier-emacs

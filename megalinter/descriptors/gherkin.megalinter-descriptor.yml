@@ -20,3 +20,7 @@ linters:
     install:
       npm:
         - gherkin-lint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

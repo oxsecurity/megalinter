@@ -33,6 +33,10 @@ linters:
     install:
       pip:
         - cfn-lint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: atom-cfn-lint

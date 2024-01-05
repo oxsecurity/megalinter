@@ -36,6 +36,10 @@ linters:
     install:
       pip:
         - djlint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -63,6 +67,10 @@ linters:
     install:
       npm:
         - htmlhint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: atom-htmlhint

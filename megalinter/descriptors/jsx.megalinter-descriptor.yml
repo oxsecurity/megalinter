@@ -55,6 +55,10 @@ linters:
         - eslint-plugin-react
         - eslint-plugin-jsx-a11y
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-eslint

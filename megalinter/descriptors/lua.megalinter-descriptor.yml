@@ -35,6 +35,10 @@ linters:
               && cd .. && rm -r luarocks-3.3.1-super-linter/ \
               && luarocks install luacheck \
               && cd /
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-luacheck

@@ -40,7 +40,10 @@ linters:
       dockerfile:
         - FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
         - COPY --link --from=kubeconform /kubeconform /usr/bin/
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # HELM LINT
   - linter_name: helm
     name: KUBERNETES_HELM
@@ -66,6 +69,10 @@ linters:
     install:
       apk:
         - helm
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     # KUBESCAPE
   - linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
@@ -113,3 +120,7 @@ linters:
         - |
           RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
               curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

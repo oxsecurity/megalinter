@@ -5,6 +5,10 @@ descriptor_flavors:
   - java
 file_extensions:
   - ".java"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - openjdk17
@@ -54,6 +58,10 @@ linters:
                   | cut -d '"' -f 4) \
               && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
                   --output /usr/bin/checkstyle
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: eclipse-cs
@@ -99,3 +107,7 @@ linters:
               rm pmd-bin-${PMD_VERSION}.zip && \
               mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
               chmod +x /usr/bin/pmd/bin/run.sh
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

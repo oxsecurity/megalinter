@@ -35,3 +35,7 @@ linters:
     examples:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

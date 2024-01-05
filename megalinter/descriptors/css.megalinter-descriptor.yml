@@ -32,6 +32,10 @@ linters:
         - stylelint-config-standard
         - stylelint-config-sass-guidelines
         - stylelint-scss
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-stylelint
@@ -71,6 +75,10 @@ linters:
     install:
       gem:
         - scss_lint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-scss-lint

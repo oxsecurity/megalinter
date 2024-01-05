@@ -35,6 +35,10 @@ linters:
     examples:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # CSharpier
   - class: DotNetToolLinter
     linter_name: csharpier
@@ -59,6 +63,10 @@ linters:
     install:
       dockerfile:
         - RUN dotnet tool install --global csharpier
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       rider:
         - name: csharpier
@@ -96,6 +104,10 @@ linters:
     install:
       dockerfile:
         - RUN dotnet tool install -g roslynator.dotnet.cli
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       visual_studio:
         - name: Roslynator 2022

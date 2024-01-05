@@ -22,6 +22,9 @@ linters:
         - FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
         - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc && cd /
+    supported_platforms:
+      platform:
+        - linux/amd64
     ide:
       atom:
         - name: linter-chktex

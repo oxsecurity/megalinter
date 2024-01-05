@@ -41,6 +41,10 @@ linters:
         - |
           RUN printf '#!/bin/bash \\n\\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
               && chmod +x /usr/bin/bash-exec
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     variables:
       - name: ERROR_ON_MISSING_EXEC_BIT
         description: If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead
@@ -80,6 +84,10 @@ linters:
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - FROM koalaman/shellcheck:stable as shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-shellcheck
@@ -126,6 +134,10 @@ linters:
       dockerfile:
         - FROM mvdan/shfmt:latest-alpine as shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: format-shell

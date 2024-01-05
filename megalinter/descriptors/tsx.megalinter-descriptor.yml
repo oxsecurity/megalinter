@@ -65,6 +65,10 @@ linters:
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-eslint

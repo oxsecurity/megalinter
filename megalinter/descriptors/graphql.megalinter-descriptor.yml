@@ -23,3 +23,7 @@ linters:
       npm:
         - graphql
         - graphql-schema-linter
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

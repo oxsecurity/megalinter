@@ -68,12 +68,21 @@ linters:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
       dockerfile:
+        - ARG TARGETPLATFORM
         - ARG DART_VERSION='2.8.4'
         - |
-          RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
-              && chmod +x dart-sdk/bin/dart* \
-              && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
-              && rm -r dart-sdk/
+          RUN case ${TARGETPLATFORM} in \
+            "linux/amd64")  DART_ARCH=x64   ;; \
+            "linux/arm64")  DART_ARCH=arm64 ;; \
+          esac \
+          && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+          && chmod +x dart-sdk/bin/dart* \
+          && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
+          && rm -r dart-sdk/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: dart-jetbrains-plugin

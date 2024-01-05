@@ -11,6 +11,10 @@ install:
     - |
       RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
               chmod +x coursier
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 linters:
   # SCALAFIX
   - linter_name: scalafix
@@ -40,3 +44,7 @@ linters:
     install:
       dockerfile:
         - RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

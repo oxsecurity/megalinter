@@ -36,3 +36,7 @@ linters:
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

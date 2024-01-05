@@ -70,6 +70,10 @@ linters:
         - "@babel/core"
         - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-eslint
@@ -120,6 +124,10 @@ linters:
     install:
       npm:
         - standard
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: linter-js-standard
@@ -174,6 +182,10 @@ linters:
     install:
       npm:
         - "prettier"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       atom:
         - name: prettier-atom
