@@ -66,7 +66,7 @@ RUN apk add --no-cache \
                 openssh \
                 openjdk17 \
                 py3-pyflakes \
-                clang16-extra-tools \
+                clang17-extra-tools \
                 nodejs \
                 npm \
                 yarn \

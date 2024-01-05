@@ -124,6 +124,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.1.10 to **0.1.11** on 2024-01-03
   - [checkov](https://www.checkov.io/) from 3.1.50 to **3.1.51** on 2024-01-03
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.7.0 to **1.0.0** on 2024-01-03
+  - [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html) from 16.0.6 to **17.0.5** on 2024-01-05
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
