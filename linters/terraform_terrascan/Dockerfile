@@ -17,7 +17,7 @@ FROM tenable/terrascan:1.18.11 as terrascan
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.12.1-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
