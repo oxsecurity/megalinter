@@ -176,13 +176,13 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 # dartanalyzer installation
     && case ${TARGETPLATFORM} in \
-      "linux/amd64")  DART_ARCH=x64   ;; \
-      "linux/arm64")  DART_ARCH=arm64 ;; \
-    esac \
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
-    && chmod +x dart-sdk/bin/dart* \
-    && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
-    && rm -r dart-sdk/
+  "linux/amd64")  DART_ARCH=x64   ;; \
+  "linux/arm64")  DART_ARCH=arm64 ;; \
+esac \
+&& wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+&& chmod +x dart-sdk/bin/dart* \
+&& mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
+&& rm -r dart-sdk/
 
 
 #OTHER__END
