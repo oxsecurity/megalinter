@@ -33,7 +33,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.12.0-alpine3.18
+FROM python:3.12.1-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -66,7 +66,7 @@ RUN apk add --no-cache \
                 openssh \
                 openjdk17 \
                 py3-pyflakes \
-                clang16-extra-tools \
+                clang17-extra-tools \
                 nodejs \
                 npm \
                 yarn \
