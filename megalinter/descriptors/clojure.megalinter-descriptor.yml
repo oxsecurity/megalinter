@@ -89,7 +89,7 @@ linters:
 
     # cljstyle
   - linter_name: cljstyle
-    disabled: true
+    disabled: true # Disabled until https://github.com/greglook/cljstyle/issues/104 is solved
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
