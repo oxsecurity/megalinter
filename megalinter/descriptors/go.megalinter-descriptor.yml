@@ -75,6 +75,8 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
+    downgraded_version: true
+    downgraded_reason: https://github.com/mgechev/revive/issues/956
     install:
       dockerfile:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 as revive" is available, use
