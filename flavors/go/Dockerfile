@@ -33,7 +33,7 @@ FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
-FROM lycheeverse/lychee:latest-alpine as lychee
+FROM lycheeverse/lychee:0.13.0 as lychee
 #FROM__END
 
 ##################

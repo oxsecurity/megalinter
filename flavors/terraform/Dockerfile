@@ -27,7 +27,7 @@ FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
-FROM lycheeverse/lychee:latest-alpine as lychee
+FROM lycheeverse/lychee:0.13.0 as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt

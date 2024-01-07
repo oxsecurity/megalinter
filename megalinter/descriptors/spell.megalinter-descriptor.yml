@@ -204,7 +204,9 @@ linters:
       - lychee --format detailed --no-progress https://raw.githubusercontent.com/lycheeverse/lychee/master/README.md
       - 'lychee --format detailed --no-progress "~/projects/big_project/**/README.*"'
       - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
+    downgraded_version: true
+    downgraded_reason: https://github.com/lycheeverse/lychee/issues/1338
     install:
       dockerfile:
-        - FROM lycheeverse/lychee:latest-alpine as lychee
+        - FROM lycheeverse/lychee:0.13.0 as lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
