@@ -9,7 +9,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 
 ## clang-format documentation
 
-- Version in MegaLinter: **16.0.6**
+- Version in MegaLinter: **17.0.5**
 - Visit [Official Web Site](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html){target=_blank}
 - See [How to disable clang-format rules in files](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
 - See [Index of problems detected by clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html){target=_blank}
@@ -182,4 +182,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang16-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang16-extra-tools)
+  - [clang17-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang17-extra-tools)

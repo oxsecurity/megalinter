@@ -114,7 +114,7 @@ Usage of revive:
 - Dockerfile commands :
 ```dockerfile
 FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround 
+## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest

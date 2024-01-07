@@ -17,7 +17,7 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
 
 ## helm documentation
 
-- Version in MegaLinter: **3.11.3**
+- Version in MegaLinter: **3.13.2**
 - Visit [Official Web Site](https://helm.sh/docs/helm/helm_lint/){target=_blank}
 
 [![helm - GitHub](https://gh-card.dev/repos/helm/helm.svg?fullname=)](https://github.com/helm/helm){target=_blank}
