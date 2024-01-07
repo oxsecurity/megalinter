@@ -132,6 +132,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.1 to **0.48.2** on 2024-01-07
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.1 to **0.48.2** on 2024-01-07
   - [lychee](https://lychee.cli.rs) from 0.13.0 to **0.14.0** on 2024-01-07
+  - [revive](https://revive.run/) from 1.3.4 to **1.3.6** on 2024-01-07
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
