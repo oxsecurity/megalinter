@@ -51,7 +51,7 @@ This linter is available in the following flavours
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -84,31 +84,29 @@ tekton-lint myfile.yml
 ### Help content
 
 ```shell
-Usage:
-tekton-lint <path-to-yaml-files>
+tekton-lint [<options>]  <glob-pattern-to-yaml-files> ...
 
 Options:
-$ tekton-lint --watch                # Run tekton-lint in watch mode
-$ tekton-lint --version              # Show version number
-$ tekton-lint --help                 # Show help
-$ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
-$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
-$ tekton-lint --quiet                # Report errors only - default: false
-$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
+  --watch           Run tekton-lint in watch mode     [boolean] [default: false]
+  --color          Forcefully enable/disable colored output
+                                                       [boolean] [default: true]
+  --format         Format output. Available formatters: vscode | stylish | json
+            [string] [choices: "vscode", "stylish", "json"] [default: "stylish"]
+  --quiet          Report errors only                 [boolean] [default: false]
+  --max-warnings   Number of warnings to trigger nonzero exit code
+                                                          [number] [default: -1]
+  --config         location of the .tektonlintrc.yaml, defaults to cwd
+                                                         [string] [default: "/"]
+  --refresh-cache  If true will delete the cache directory for external tasks
+                                                    [boolean] [default: "false"]
+  --version        Show version number                                 [boolean]
+  --help           Show help                                           [boolean]
 
 Examples:
-# Globstar matching
-$ tekton-lint '**/*.yaml'
-
-# Exact file path
-$ tekton-lint my-pipeline.yaml my-task.yaml
-
-# Multiple glob patterns
-$ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
-
-# Watch mode
-$ tekton-lint --watch '**/*.yaml'
-
+  tekton-lint "**/*.yaml"                   Globstar matching
+  tekton-lint path/to/my/pipeline.yaml      Multiple glob patterns
+  "path/to/my/tasks/*.yaml"
+  tekton-lint --watch "**/*.yaml"           Watch mode
 ```
 
 ### Installation on mega-linter Docker image
