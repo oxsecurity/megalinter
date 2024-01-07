@@ -24,7 +24,7 @@ FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround 
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
+RUN GOBIN=/usr/bin go install github.com/mgechev/revive@v1.3.4
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
@@ -525,11 +525,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \
-
-# cljstyle installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-    && chmod +x install-cljstyle \
-    && ./install-cljstyle \
 
 # csharpier installation
     && dotnet tool install --global csharpier \
