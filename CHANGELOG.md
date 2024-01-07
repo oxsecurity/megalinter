@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - tekton-lint is now published as @ibm/tekton-lint, by @echoix in [#3210](https://github.com/oxsecurity/megalinter/pull/3210)
   - PHP PHIVE: Use keys.openpgp.org and fingerprint for phive key verification, by @echoix in [#3230](https://github.com/oxsecurity/megalinter/pull/3230)
   - Undowngrade sass linters, by @echoix in [#3260](https://github.com/oxsecurity/megalinter/pull/3260)
+  - Upgrade lychee default configuration to handle [breaking change between 0.13.0 and 0.14.0](https://github.com/lycheeverse/lychee/issues/1338)
 
 - Doc
   - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore.
@@ -124,7 +125,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.1.10 to **0.1.11** on 2024-01-03
   - [checkov](https://www.checkov.io/) from 3.1.50 to **3.1.51** on 2024-01-03
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.7.0 to **1.0.0** on 2024-01-03
-  - [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html) from 16.0.6 to **17.0.5** on 2024-01-05
+  - [phpstan](https://phpstan.org/) from 1.10.50 to **1.10.54** on 2024-01-07
+  - [flake8](https://flake8.pycqa.org) from 6.1.0 to **7.0.0** on 2024-01-07
+  - [checkov](https://www.checkov.io/) from 3.1.51 to **3.1.54** on 2024-01-07
+  - [syft](https://github.com/anchore/syft) from 0.99.0 to **0.100.0** on 2024-01-07
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.1 to **0.48.2** on 2024-01-07
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.1 to **0.48.2** on 2024-01-07
+  - [lychee](https://lychee.cli.rs) from 0.13.0 to **0.14.0** on 2024-01-07
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
