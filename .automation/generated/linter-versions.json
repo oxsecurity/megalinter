@@ -11,7 +11,7 @@
     "checkov": "3.1.54",
     "checkstyle": "10.12.7",
     "chktex": "1.7.8",
-    "clang-format": "16.0.6",
+    "clang-format": "17.0.5",
     "clippy": "0.1.75",
     "clj-kondo": "2023.12.15",
     "cljstyle": "0.15.0",
