@@ -133,6 +133,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.1 to **0.48.2** on 2024-01-07
   - [lychee](https://lychee.cli.rs) from 0.13.0 to **0.14.0** on 2024-01-07
   - [revive](https://revive.run/) from 1.3.4 to **1.3.6** on 2024-01-07
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.15 to **5.2.21** on 2024-01-07
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.11.3 to **3.13.2** on 2024-01-07
+  - [git_diff](https://git-scm.com) from 2.40.1 to **2.43.0** on 2024-01-07
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
