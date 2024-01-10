@@ -159,6 +159,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Downgrade stylelint to avoid crash with not v16 compliant dependencies
   - Fix count of yaml-lint errors
   - Remove openssl reinstall, as base image has updated version from alpine 3.18.5 by @echoix in <https://github.com/oxsecurity/megalinter/pull/3181>
+  - Fixed console reporter warning symbol width
 
 - CI
   - Add arguments to make use of pytest-xdist, by @echoix
