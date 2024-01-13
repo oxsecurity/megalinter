@@ -136,6 +136,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.15 to **5.2.21** on 2024-01-07
   - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.11.3 to **3.13.2** on 2024-01-07
   - [git_diff](https://git-scm.com) from 2.40.1 to **2.43.0** on 2024-01-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.7 to **0.83.8** on 2024-01-13
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 7.0.114 to **7.0.115** on 2024-01-13
+  - [prettier](https://prettier.io/) from 3.1.1 to **3.2.1** on 2024-01-13
+  - [ktlint](https://ktlint.github.io) from 1.1.0 to **1.1.1** on 2024-01-13
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.8.0 to **3.8.1** on 2024-01-13
+  - [phpstan](https://phpstan.org/) from 1.10.54 to **1.10.55** on 2024-01-13
+  - [psalm](https://psalm.dev) from Psalm.5.18.0@ to **Psalm.5.19.0@** on 2024-01-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.47.4 to **0.47.5** on 2024-01-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.344 to **1.1.345** on 2024-01-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.11 to **0.1.13** on 2024-01-13
+  - [checkov](https://www.checkov.io/) from 3.1.54 to **3.1.57** on 2024-01-13
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.27 to **1.0.28** on 2024-01-13
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.2 to **0.48.3** on 2024-01-13
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.2 to **0.48.3** on 2024-01-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.7 to **3.63.8** on 2024-01-13
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.19.0 to **3.20.0** on 2024-01-13
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.19.0 to **3.20.0** on 2024-01-13
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.19.0 to **3.20.0** on 2024-01-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 3.12 to **8.1.2** on 2024-01-13
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.8.5 to **0.9.0** on 2024-01-13
+  - [lychee](https://lychee.cli.rs) from 0.14.0 to **0.14.1** on 2024-01-13
+  - [vale](https://vale.sh/) from 2.30.0 to **3.0.4** on 2024-01-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.12 to **0.54.17** on 2024-01-13
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
