@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.63.7**
+- Version in MegaLinter: **3.63.9**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -120,6 +120,8 @@ Flags:
       --[no-]no-update           Don't check for updates.
       --[no-]fail                Exit with code 183 if results are found.
       --verifier=VERIFIER ...    Set custom verification endpoints.
+      --[no-]custom-verifiers-only
+                                 Only use custom verification endpoints.
       --archive-max-size=ARCHIVE-MAX-SIZE
                                  Maximum size of archive to scan. (Byte units
                                  eg. 512B, 2KB, 4MB)
