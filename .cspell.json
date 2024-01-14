@@ -69,6 +69,7 @@
         "ffenses",
         "filelist",
         "fs.realpath",
+        "gfch",
         "gotit",
         "has-bigints",
         "has-tostringtag",
