@@ -159,6 +159,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lychee](https://lychee.cli.rs) from 0.14.0 to **0.14.1** on 2024-01-14
   - [vale](https://vale.sh/) from 2.30.0 to **3.0.4** on 2024-01-14
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.12 to **0.54.17** on 2024-01-14
+  - [csharpier](https://csharpier.com/) from 0.26.7 to **0.27.0** on 2024-01-15
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.0.1 to **14.2.0** on 2024-01-15
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.11.2 to **2.12.0** on 2024-01-15
+  - [phpstan](https://phpstan.org/) from 1.10.55 to **1.10.56** on 2024-01-15
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.345 to **1.1.347** on 2024-01-15
+  - [checkov](https://www.checkov.io/) from 3.1.60 to **3.1.61** on 2024-01-15
+  - [rubocop](https://rubocop.org/) from 1.59.0 to **1.60.0** on 2024-01-15
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.1.2 to **8.1.3** on 2024-01-15
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09

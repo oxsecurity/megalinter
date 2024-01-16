@@ -72,7 +72,7 @@ DISABLE_LINTERS:
 
 ## eslint-plugin-jsonc documentation
 
-- Version in MegaLinter: **2.11.2**
+- Version in MegaLinter: **2.12.0**
 - Visit [Official Web Site](https://ota-meshi.github.io/eslint-plugin-jsonc/){target=_blank}
 - See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
