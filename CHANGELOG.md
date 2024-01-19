@@ -167,6 +167,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.60 to **3.1.61** on 2024-01-15
   - [rubocop](https://rubocop.org/) from 1.59.0 to **1.60.0** on 2024-01-15
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.1.2 to **8.1.3** on 2024-01-15
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.22.1 to **6.22.2** on 2024-01-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.83.8 to **0.84.0** on 2024-01-19
+  - [stylelint](https://stylelint.io) from 16.1.0 to **16.2.0** on 2024-01-19
+  - [prettier](https://prettier.io/) from 3.2.2 to **3.2.4** on 2024-01-19
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.12.0 to **2.12.2** on 2024-01-19
+  - [psalm](https://psalm.dev) from Psalm.5.19.0@ to **Psalm.5.20.0@** on 2024-01-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.13 to **0.1.14** on 2024-01-19
+  - [checkov](https://www.checkov.io/) from 3.1.61 to **3.1.67** on 2024-01-19
+  - [syft](https://github.com/anchore/syft) from 0.100.0 to **0.101.0** on 2024-01-19
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.9 to **3.63.10** on 2024-01-19
+  - [rubocop](https://rubocop.org/) from 1.60.0 to **1.60.1** on 2024-01-19
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.1.3 to **8.2.3** on 2024-01-19
+  - [vale](https://vale.sh/) from 3.0.4 to **3.0.5** on 2024-01-19
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.6.6 to **1.7.0** on 2024-01-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.17 to **0.54.19** on 2024-01-19
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
