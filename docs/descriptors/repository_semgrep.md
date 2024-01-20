@@ -402,6 +402,11 @@ OPTIONS
            Cache for 24 hours in ~/.semgrep/cache rules from the registry.
            Requires --experimental.
 
+       --remote=VAL
+           Remote will quickly checkout and scan a remote git repository of
+           the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
+           --pro Incompatible with --project-root
+
        --replacement=VAL
            An autofix expression that will be applied to any matches found
            with --pattern. Only valid with a command-line specified pattern.
