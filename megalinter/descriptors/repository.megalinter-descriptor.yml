@@ -419,9 +419,11 @@ linters:
     examples:
       - "semgrep /tmp/lint"
       - "semgrep "
+    downgraded_version: true
+    downgraded_reason: https://github.com/semgrep/semgrep/issues/9632
     install:
       pip:
-        - semgrep
+        - semgrep=='1.56.0'
     variables:
       - name: REPOSITORY_SEMGREP_RULESETS
         description: List of semgrep rulesets identifiers that you want to enforce
