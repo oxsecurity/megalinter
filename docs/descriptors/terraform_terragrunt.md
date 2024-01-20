@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.54.19**
+- Version in MegaLinter: **0.54.20**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -116,6 +116,7 @@ GLOBAL OPTIONS:
    --terragrunt-include-dir value                   Unix-style glob of directories to include when running *-all commands
    --terragrunt-include-external-dependencies       *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
    --terragrunt-include-module-prefix               When this flag is set output from Terraform sub-commands is prefixed with module path. [$TERRAGRUNT_INCLUDE_MODULE_PREFIX]
+   --terragrunt-json-log                            If specified, Terragrunt will output its logs in JSON format. [$TERRAGRUNT_JSON_LOG]
    --terragrunt-log-level value                     Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn, info, debug, trace. (default: info) [$TERRAGRUNT_LOG_LEVEL]
    --terragrunt-modules-that-include value          If flag is set, 'run-all' will only run the command against Terragrunt modules that include the specified file.
    --terragrunt-no-auto-approve -auto-approve       Don't automatically append -auto-approve to the underlying Terraform commands run with 'run-all'. (default: true) [$TERRAGRUNT_NO_AUTO_APPROVE]
@@ -128,13 +129,14 @@ GLOBAL OPTIONS:
    --terragrunt-source-map value                    Replace any source URL (including the source URL of a config pulled in with dependency blocks) that has root source with dest. [$TERRAGRUNT_SOURCE_MAP]
    --terragrunt-source-update                       Delete the contents of the temporary folder to clear out any old, cached source code before downloading new source code into it. [$TERRAGRUNT_SOURCE_UPDATE]
    --terragrunt-strict-include                      If flag is set, only modules under the directories passed in with '--terragrunt-include-dir' will be included.
+   --terragrunt-tf-logs-to-json                     If specified, Terragrunt will wrap Terraform stdout and stderr in JSON. [$TERRAGRUNT_TF_JSON_LOG]
    --terragrunt-tfpath value                        Path to the Terraform binary. Default is terraform (on PATH). (default: terraform) [$TERRAGRUNT_TFPATH]
    --terragrunt-use-partial-parse-config-cache      Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided. [$TERRAGRUNT_USE_PARTIAL_PARSE_CONFIG_CACHE]
    --terragrunt-working-dir value                   The path to the Terraform templates. Default is current directory. [$TERRAGRUNT_WORKING_DIR]
    --help, -h                                       Show help
    --version, -v                                    Show terragrunt version
 
-VERSION: v0.54.19
+VERSION: v0.54.20
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
