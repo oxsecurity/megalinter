@@ -15,7 +15,7 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
 
 _This linter has been temporary disabled in this version_
 
-**Disabled until <https://github.com/semgrep/semgrep/issues/9632> is solved**
+**Disabled until https://github.com/semgrep/semgrep/issues/9632 is solved**
 
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
@@ -37,8 +37,8 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## Configuration in MegaLinter
 
-- Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/7.8.0/configuration/#activation-and-deactivation)
+- Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/7.8.0/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                                                               | Default value |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
@@ -65,9 +65,9 @@ Use semgrep in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.8.0/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.8.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
