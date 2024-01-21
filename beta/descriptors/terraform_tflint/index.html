@@ -11,7 +11,7 @@
 <link href="../terraform/" rel="prev"/>
 <link href="../terraform_terrascan/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.4" name="generator"/>
 <title>tflint configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3310,7 +3310,7 @@
 </blockquote>
 <h2 id="tflint-documentation">tflint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.50.0</strong></li>
+<li>Version in MegaLinter: <strong>0.50.1</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md" target="_blank">How to configure tflint rules</a><ul>
 <li>If custom <code>.tflint.hcl</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
@@ -3322,8 +3322,8 @@
 <p><a href="https://github.com/terraform-linters/tflint" target="_blank"><img alt="tflint - GitHub" src="https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+<li>Enable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.io/7.8.0/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable tflint by adding <code>TERRAFORM_TFLINT</code> in <a href="https://megalinter.io/7.8.0/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -3416,31 +3416,31 @@
 <tbody>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/7.8.0/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
 <td style="text-align: center;">121</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.8.0"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.8.0"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/7.8.0/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">85</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+<td style="text-align: center;">83</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.8.0"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.8.0"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/7.8.0/flavors/security/">security</a></td>
 <td style="text-align: left;">Optimized for security</td>
-<td style="text-align: center;">24</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
+<td style="text-align: center;">23</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.8.0"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.8.0"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/7.8.0/flavors/terraform/">terraform</a></td>
 <td style="text-align: left;">Optimized for TERRAFORM based projects</td>
-<td style="text-align: center;">55</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
+<td style="text-align: center;">54</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v7.8.0"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v7.8.0"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
 </tr>
 </tbody>
 </table>
@@ -3543,7 +3543,7 @@ Help Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
+<pre><code class="language-dockerfile">FROM ghcr.io/terraform-linters/tflint:v0.50.1 as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 </code></pre>
 </article>
@@ -3611,8 +3611,8 @@ COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
