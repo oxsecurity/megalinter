@@ -15,7 +15,7 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
 
 _This linter has been temporary disabled in this version_
 
-**Disabled until https://github.com/semgrep/semgrep/issues/9632 is solved**
+**Disabled until <https://github.com/semgrep/semgrep/issues/9632> is solved**
 
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
