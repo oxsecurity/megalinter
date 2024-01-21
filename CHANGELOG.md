@@ -186,6 +186,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.17 to **0.54.19** on 2024-01-19
   - [syft](https://github.com/anchore/syft) from 0.101.0 to **0.101.1** on 2024-01-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.19 to **0.54.20** on 2024-01-20
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.50.0 to **0.50.1** on 2024-01-20
 <!-- linter-versions-end -->
 
 ## [v7.7.0] - 2023-12-09
