@@ -26,14 +26,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v7.8.0] - 2024-01-21
 
 - Reporters
-  - New reporter **MARKDOWN_SUMMARY_REPORTER**, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools by @saishivarcr in https://github.com/oxsecurity/megalinter/pull/3250
-  - New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Bitbucket pull requests  by @saishivarcr in https://github.com/oxsecurity/megalinter/pull/3256
+  - New reporter **MARKDOWN_SUMMARY_REPORTER**, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools by @saishivarcr in <https://github.com/oxsecurity/megalinter/pull/3250>
+  - New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Bitbucket pull requests  by @saishivarcr in <https://github.com/oxsecurity/megalinter/pull/3256>
 
 - Core
-  - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3203
+  - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3203>
   - Upgrade base image from python:3.11.6-alpine3.18 to python:3.11.7-alpine3.18, by @echoix in [#3212](https://github.com/oxsecurity/megalinter/pull/3212)
-  - Upgrade to python 3.12.0 by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3006
-  - Upgrade actions/upload-artifact@v3 to actions/upload-artifact@v4 in default workflows by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3225
+  - Upgrade to python 3.12.0 by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3006>
+  - Upgrade actions/upload-artifact@v3 to actions/upload-artifact@v4 in default workflows by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3225>
   - mega-linter-runner: Improve check if running as script or module, by @echoix in [#3233](https://github.com/oxsecurity/megalinter/pull/3233)
 
 - Media
@@ -46,10 +46,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - PHP PHIVE: Use keys.openpgp.org and fingerprint for phive key verification, by @echoix in [#3230](https://github.com/oxsecurity/megalinter/pull/3230)
   - Undowngrade sass linters, by @echoix in [#3260](https://github.com/oxsecurity/megalinter/pull/3260)
   - Upgrade lychee default configuration to handle [breaking change between 0.13.0 and 0.14.0](https://github.com/lycheeverse/lychee/issues/1338)
-  - Hadolint: support both `Containerfile` and `Dockerfile` by @sanmai-NL in https://github.com/oxsecurity/megalinter/pull/3217
+  - Hadolint: support both `Containerfile` and `Dockerfile` by @sanmai-NL in <https://github.com/oxsecurity/megalinter/pull/3217>
 
 - Doc
-  - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3201
+  - Upgrade url to [PHP CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer), as now the original repo is not maintained anymore by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3201>
 
 - CI
   - Use docker/metadata-action for deploy-DEV.yml workflow, by @echoix in [#3193](https://github.com/oxsecurity/megalinter/pull/3193)
