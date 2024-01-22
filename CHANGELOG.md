@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.347 to **1.1.348** on 2024-01-21
+  - [checkov](https://www.checkov.io/) from 3.1.67 to **3.1.69** on 2024-01-22
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
