@@ -377,7 +377,6 @@ linters:
 
   # SEMGREP
   - class: SemgrepLinter
-    disabled: true
     linter_name: semgrep
     can_output_sarif: true
     descriptor_flavors:
