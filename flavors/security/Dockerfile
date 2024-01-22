@@ -21,7 +21,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 FROM zricethezav/gitleaks:v8.18.1 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
-FROM ghcr.io/terraform-linters/tflint:v0.50.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.50.2 as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
