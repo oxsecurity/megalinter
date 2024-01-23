@@ -25,6 +25,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.1.67 to **3.1.69** on 2024-01-22
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.10 to **3.63.11** on 2024-01-22
   - [tflint](https://github.com/terraform-linters/tflint) from 0.50.1 to **0.50.2** on 2024-01-22
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.12.2 to **2.13.0** on 2024-01-23
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.6 to **1.7.7** on 2024-01-23
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.2.3 to **8.3.1** on 2024-01-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.20 to **0.54.21** on 2024-01-23
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
