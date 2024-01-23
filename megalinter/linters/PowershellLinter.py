@@ -51,6 +51,8 @@ class PowershellLinter(Linter):
             and self.cli_lint_fix_arg_name is not None
         ):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
+        if self.linter_name == "powershell":
+            pwsh_script[0] += " | Format-Table -AutoSize -Wrap"
         cmd = [
             *self.cli_executable,
             "-NoProfile",
