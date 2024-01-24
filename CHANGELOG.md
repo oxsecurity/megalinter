@@ -30,6 +30,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.6 to **1.7.7** on 2024-01-23
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.2.3 to **8.3.1** on 2024-01-23
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.20 to **0.54.21** on 2024-01-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.11 to **3.64.0** on 2024-01-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.21 to **0.54.22** on 2024-01-24
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
