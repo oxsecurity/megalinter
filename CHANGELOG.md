@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - powershell: Improve table output, by @efrecon in [#3313](https://github.com/oxsecurity/megalinter/issues/3313)
 
 - Doc
 
