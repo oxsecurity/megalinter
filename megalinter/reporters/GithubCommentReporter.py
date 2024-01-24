@@ -23,7 +23,7 @@ class GithubCommentReporter(Reporter):
 
     def manage_activation(self):
         if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
-            self.is_active = False        
+            self.is_active = False
         elif (
             config.get(self.master.request_id, "GITHUB_COMMENT_REPORTER", "true")
             != "true"

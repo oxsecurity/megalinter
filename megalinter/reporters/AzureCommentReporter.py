@@ -26,7 +26,7 @@ class AzureCommentReporter(Reporter):
     scope = "mega-linter"
 
     def manage_activation(self):
-        if not config.exists(self.master.request_id,"SYSTEM_COLLECTIONURI"):
+        if not config.exists(self.master.request_id, "SYSTEM_COLLECTIONURI"):
             self.is_active = False
         elif (
             config.get(self.master.request_id, "AZURE_COMMENT_REPORTER", "true")
