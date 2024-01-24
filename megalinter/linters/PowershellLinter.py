@@ -3,6 +3,7 @@
 Use PowerShell to lint Powershell files
 https://github.com/PowerShell/PSScriptAnalyzer
 """
+import os
 import sys
 
 from megalinter import Linter, config
@@ -19,7 +20,9 @@ class PowershellLinter(Linter):
     def build_lint_command(self, file=None):
         pwsh_script = []
         if self.linter_name == "powershell":
-            pwsh_script = ["Invoke-ScriptAnalyzer -EnableExit"]
+            # Prevent Out-String (piped later) to strip ANSI escape sequences
+            # and start forming a call to Invoke-ScriptAnalyzer
+            pwsh_script = ["$PSStyle.OutputRendering = 'Ansi'; Invoke-ScriptAnalyzer -EnableExit"]
         elif self.linter_name == "powershell_formatter":
             pwsh_script = ["Invoke-Formatter"]
 
@@ -52,7 +55,10 @@ class PowershellLinter(Linter):
         ):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
         if self.linter_name == "powershell":
-            pwsh_script[0] += " | Format-Table -AutoSize -Wrap"
+            # Format output to fit in terminal, respecting the terminal width.
+            # For more info: https://stackoverflow.com/a/76889369
+            size = os.get_terminal_size()
+            pwsh_script[0] += " | Format-Table -AutoSize -Wrap | Out-String -Width " + str(size.columns)
         cmd = [
             *self.cli_executable,
             "-NoProfile",
