@@ -351,21 +351,22 @@ class Linter:
                     prop = None
                     if ":" in file_to_check:
                         file_to_check, prop = file_to_check.split(":")
-                    if os.path.isfile(
+                    if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
+                        found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
-                            f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
+                            f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
                         )
-                    elif os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
-                        found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
                     elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
-                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
+                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}"
+                            + f"{os.path.sep}{file_to_check}"
                         )
-
                     # filename case
                     if found_file is not None and prop is None:
                         is_found = True
