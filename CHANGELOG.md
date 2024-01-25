@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - Activate CI servers reporters only if we find a related default env variable
 
 - Doc
 
