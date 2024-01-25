@@ -62,7 +62,7 @@ jobs:
             checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
       - name: Edit comment with error message
         if: (success() || failure()) && steps.scd.outputs.error-message
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ github.event.comment.id }}
           body: |
@@ -70,7 +70,7 @@ jobs:
           reactions: confused
       - name: Add failure reaction
         if: failure()
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: -1
