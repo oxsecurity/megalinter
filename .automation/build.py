@@ -1063,11 +1063,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     col_header = (
         "Language"
         if type1 == "language"
-        else "Format"
-        if type1 == "format"
-        else "Tooling format"
-        if type1 == "tooling_format"
-        else "Code quality checker"
+        else (
+            "Format"
+            if type1 == "format"
+            else (
+                "Tooling format"
+                if type1 == "tooling_format"
+                else "Code quality checker"
+            )
+        )
     )
     linters_tables_md += [
         f"### {type_label}",
@@ -2834,11 +2838,15 @@ def generate_documentation_all_linters():
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
-                                else resp["license"]["name"]
-                                if "name" in resp["license"]
-                                else resp["license"]["key"]
-                                if "key" in resp["license"]
-                                else ""
+                                else (
+                                    resp["license"]["name"]
+                                    if "name" in resp["license"]
+                                    else (
+                                        resp["license"]["key"]
+                                        if "key" in resp["license"]
+                                        else ""
+                                    )
+                                )
                             )
                             if license != "":
                                 linter_licenses[linter.linter_name] = license

@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-    - Upgrade actions/checkout and stefanzweifel/git-auto-commit-action in generator template workflow
+  - Upgrade actions/checkout and stefanzweifel/git-auto-commit-action in generator template workflow
 
 - Media
 
