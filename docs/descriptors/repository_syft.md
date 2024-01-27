@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.101.1**
+- Version in MegaLinter: **0.102.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -98,6 +98,9 @@ Application Configuration:
     template:
       # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)
       path: ''
+
+      # (env: SYFT_FORMAT_TEMPLATE_LEGACY)
+      legacy: false
 
     json:
       # (env: SYFT_FORMAT_JSON_LEGACY)
@@ -226,9 +229,6 @@ Application Configuration:
   # an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux') (env: SYFT_PLATFORM)
   platform: ''
 
-  # (env: SYFT_NAME)
-  name: ''
-
   source:
     # set the name of the target being analyzed (env: SYFT_SOURCE_NAME)
     name: ''
@@ -300,7 +300,6 @@ Flags:
       --exclude stringArray                       exclude paths from being scanned using a glob expression
       --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
   -h, --help                                      help for syft
-      --name string                               set the name of the target being analyzed (DEPRECATED: use: source-name)
   -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
       --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)
       --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')

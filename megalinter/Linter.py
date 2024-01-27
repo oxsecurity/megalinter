@@ -186,9 +186,11 @@ class Linter:
             if self.is_formatter is True
             and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
             == "false"
-            else True
-            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
-            else False
+            else (
+                True
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                else False
+            )
         )
         # Name
         if self.name is None:
@@ -947,9 +949,9 @@ class Linter:
                 shell=True,
                 cwd=cwd,
                 env=subprocess_env,
-                executable=shutil.which("bash")
-                if sys.platform == "win32"
-                else "/bin/bash",
+                executable=(
+                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                ),
             )
             return_code = process.returncode
             return_stdout = utils.decode_utf8(process.stdout)
