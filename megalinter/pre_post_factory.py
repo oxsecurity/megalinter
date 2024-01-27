@@ -112,9 +112,9 @@ def complete_command(command_info: dict):
     # Pip dependencies case
     elif command_info.get("venv", None) is not None:
         venv = command_info.get("venv")
-        command_info[
-            "command"
-        ] = f"cd /venvs/{venv} && source bin/activate && {command} && deactivate"
+        command_info["command"] = (
+            f"cd /venvs/{venv} && source bin/activate && {command} && deactivate"
+        )
     return command_info
 
 

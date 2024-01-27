@@ -186,9 +186,11 @@ class Linter:
             if self.is_formatter is True
             and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
             == "false"
-            else True
-            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
-            else False
+            else (
+                True
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                else False
+            )
         )
         # Name
         if self.name is None:
@@ -353,11 +355,18 @@ class Linter:
                         file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
-                    if os.path.isfile(
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
                             f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
+                    elif os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
+                    ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}"
                             + f"{os.path.sep}{file_to_check}"
                         )
                     # filename case
@@ -940,9 +949,9 @@ class Linter:
                 shell=True,
                 cwd=cwd,
                 env=subprocess_env,
-                executable=shutil.which("bash")
-                if sys.platform == "win32"
-                else "/bin/bash",
+                executable=(
+                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                ),
             )
             return_code = process.returncode
             return_stdout = utils.decode_utf8(process.stdout)
