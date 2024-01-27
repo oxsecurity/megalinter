@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+    - Upgrade actions/checkout and stefanzweifel/git-auto-commit-action in generator template workflow
 
 - Media
 
@@ -16,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Allow active_only_if_file_found to work in specified subdirectory (_DIRECTORY), fixes [#2873](https://github.com/oxsecurity/megalinter/issues/2873)
+  - Activate CI servers reporters only if we find a related default env variable
 
 - Doc
 
@@ -33,6 +35,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.11 to **3.64.0** on 2024-01-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.21 to **0.54.22** on 2024-01-24
   - [csharpier](https://csharpier.com/) from 0.27.0 to **0.27.1** on 2024-01-24
+  - [roslynator](https://github.com/JosefPihrt/Roslynator) from 0.8.2.0 to **0.8.3.0** on 2024-01-24
+  - [phpstan](https://phpstan.org/) from 1.10.56 to **1.10.57** on 2024-01-24
+  - [checkov](https://www.checkov.io/) from 3.1.69 to **3.1.70** on 2024-01-24
+  - [rubocop](https://rubocop.org/) from 1.60.1 to **1.60.2** on 2024-01-24
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21

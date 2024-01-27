@@ -18,7 +18,9 @@ class BitbucketCommentReporter(Reporter):
     BITBUCKET_API = "https://api.bitbucket.org/2.0"
 
     def manage_activation(self):
-        if (
+        if not config.exists(self.master.request_id, "BITBUCKET_REPO_FULL_NAME"):
+            self.is_active = False
+        elif (
             config.get(self.master.request_id, "BITBUCKET_COMMENT_REPORTER", "true")
             == "true"
         ):
