@@ -1,10 +1,13 @@
 #---------------------------------------------------------------------------#
-# Author: André Breuer                                                      #
+# Authors: André Breuer, Pierre Gronau                                      #
 # Created: 2022-03-22                                                       #
 # Updated: 2024-01-18														#
 # This configuration is created from the default config template available  #
 # at:                                                                       #
 # https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml  #
+#                                                                           #
+# Source:                                                                   #
+#  https://gitlab.com/ndaal_open_source/ndaal_secretes_search/-/raw/master/gitleaks_base.toml #
 #                                                                           #
 # License: MIT                                                              #
 # Copyright (C) 2022 ndaal GmbH & Co KG                                     #
