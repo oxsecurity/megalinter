@@ -47,6 +47,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.3.1 to **8.3.2** on 2024-01-27
   - [lychee](https://lychee.cli.rs) from 0.14.1 to **0.14.2** on 2024-01-27
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.0 to **1.7.1** on 2024-01-27
+  - [csharpier](https://csharpier.com/) from 0.27.1 to **0.27.2** on 2024-01-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.7 to **10.13.0** on 2024-01-28
+  - [black](https://black.readthedocs.io/en/stable/) from 24.1.0 to **24.1.1** on 2024-01-28
+  - [checkov](https://www.checkov.io/) from 3.1.70 to **3.2.0** on 2024-01-28
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
