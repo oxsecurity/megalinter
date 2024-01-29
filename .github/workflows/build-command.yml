@@ -39,7 +39,7 @@ jobs:
         id: vars
         run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -71,7 +71,7 @@ jobs:
           cache: pip # optional
       - run: pip install -r .config/python/dev/requirements.txt
       - name: Create comment starting build.sh
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -88,7 +88,7 @@ jobs:
           commit_user_name: megalinter-bot
           commit_user_email: nicolas.vuillamy@ox.security
       - name: Add reaction
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -96,7 +96,7 @@ jobs:
           reactions: hooray
       - name: Create final comment updated files
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -105,7 +105,7 @@ jobs:
             > Build command workflow completed updating files.
       - name: Create final comment no updated files
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
@@ -114,7 +114,7 @@ jobs:
             > Build command workflow completed without updating files.
       - name: Add failure reaction
         if: failure()
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.comment.id }}

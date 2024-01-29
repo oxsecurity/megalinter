@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.27.0**
+- Version in MegaLinter: **0.27.2**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -105,8 +105,8 @@ Options:
   --skip-write                 Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
   --write-stdout               Write the results of formatting any files to stdout.
   --pipe-multiple-files        Keep csharpier running so that multiples files can be piped to it via stdin.
-  --grpc                       Run CSharpier as a service using GRPC so that multiple files may be formatted.
-  --grpc-port <grpc-port>      Specify the port that CSharpier should start on. Defaults to a random unused port.
+  --server                     Run CSharpier as a server so that multiple files may be formatted.
+  --server-port <server-port>  Specify the port that CSharpier should start on. Defaults to a random unused port.
   --config-path <config-path>  Path to the CSharpier configuration file
   --version                    Show version information
   -?, -h, --help               Show help and usage information

@@ -34,4 +34,4 @@ jobs:
           MERGE_COMMIT_MESSAGE: "pull-request-description"
           MERGE_FORKS: "false"
         if: env.GITHUB_TOKEN != null
-        uses: "pascalgn/automerge-action@v0.15.2"
+        uses: "pascalgn/automerge-action@v0.16.2"

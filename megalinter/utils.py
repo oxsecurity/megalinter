@@ -19,9 +19,11 @@ SIZE_MAX_SOURCEFILEHEADER = 1024
 REPO_HOME_DEFAULT = (
     DEFAULT_DOCKER_WORKSPACE_DIR
     if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
-    else os.environ.get("DEFAULT_WORKSPACE")
-    if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
-    else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
+    else (
+        os.environ.get("DEFAULT_WORKSPACE")
+        if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
+        else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
+    )
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")

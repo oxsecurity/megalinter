@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Upgrade actions/checkout and stefanzweifel/git-auto-commit-action in generator template workflow
 
 - Media
 
@@ -16,6 +17,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - powershell: Improve table output, by @efrecon in [#3313](https://github.com/oxsecurity/megalinter/issues/3313)
+  - Allow active_only_if_file_found to work in specified subdirectory (_DIRECTORY), fixes [#2873](https://github.com/oxsecurity/megalinter/issues/2873)
+  - Activate CI servers reporters only if we find a related default env variable
+
 
 - Doc
 
@@ -32,6 +36,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.20 to **0.54.21** on 2024-01-23
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.63.11 to **3.64.0** on 2024-01-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.21 to **0.54.22** on 2024-01-24
+  - [csharpier](https://csharpier.com/) from 0.27.0 to **0.27.1** on 2024-01-24
+  - [roslynator](https://github.com/JosefPihrt/Roslynator) from 0.8.2.0 to **0.8.3.0** on 2024-01-24
+  - [phpstan](https://phpstan.org/) from 1.10.56 to **1.10.57** on 2024-01-24
+  - [checkov](https://www.checkov.io/) from 3.1.69 to **3.1.70** on 2024-01-24
+  - [rubocop](https://rubocop.org/) from 1.60.1 to **1.60.2** on 2024-01-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.84.0 to **0.85.0** on 2024-01-27
+  - [v8r](https://github.com/chris48s/v8r) from 2.1.0 to **3.0.0** on 2024-01-27
+  - [black](https://black.readthedocs.io/en/stable/) from 23.12.1 to **24.1.0** on 2024-01-27
+  - [syft](https://github.com/anchore/syft) from 0.101.1 to **0.102.0** on 2024-01-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.64.0 to **3.65.0** on 2024-01-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.3.1 to **8.3.2** on 2024-01-27
+  - [lychee](https://lychee.cli.rs) from 0.14.1 to **0.14.2** on 2024-01-27
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.0 to **1.7.1** on 2024-01-27
+  - [csharpier](https://csharpier.com/) from 0.27.1 to **0.27.2** on 2024-01-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.7 to **10.13.0** on 2024-01-28
+  - [black](https://black.readthedocs.io/en/stable/) from 24.1.0 to **24.1.1** on 2024-01-28
+  - [checkov](https://www.checkov.io/) from 3.1.70 to **3.2.0** on 2024-01-28
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.38.0 to **0.39.0** on 2024-01-29
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
