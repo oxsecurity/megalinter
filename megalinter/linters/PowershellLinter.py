@@ -58,13 +58,12 @@ class PowershellLinter(Linter):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
         if self.linter_name == "powershell":
             # Format output to fit in terminal, respecting the terminal width.
-            # For more info: https://stackoverflow.com/a/76889369
+            # Use good defaults, shutil respects COLUMNS env var. For more info:
+            # https://stackoverflow.com/a/76889369
             size = get_terminal_size()
             pwsh_script[
                 0
-            ] += " | Format-Table -AutoSize -Wrap | Out-String -Width " + str(
-                size.columns
-            )
+            ] += f" | Format-Table -AutoSize -Wrap -Property Severity, RuleName, ScriptName, Line, Message | Out-String -Width {size.columns}"
         cmd = [
             *self.cli_executable,
             "-NoProfile",
