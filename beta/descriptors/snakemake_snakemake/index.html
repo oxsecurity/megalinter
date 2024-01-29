@@ -11,7 +11,7 @@
 <link href="../snakemake/" rel="prev"/>
 <link href="../snakemake_snakefmt/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.5" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.6" name="generator"/>
 <title>snakemake configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3611,7 +3611,7 @@
                  [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--list-changes {params,input,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -3640,7 +3640,7 @@
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {subprocess,remote,default}] [--show-failed-logs]
+                 [--mode {remote,default,subprocess}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--container-image IMAGE]
                  [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
@@ -3881,9 +3881,9 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({&lt;RerunTrigger.MTIME: 0&gt;,
-                        &lt;RerunTrigger.PARAMS: 1&gt;, &lt;RerunTrigger.SOFTWARE_ENV:
-                        3&gt;, &lt;RerunTrigger.INPUT: 2&gt;, &lt;RerunTrigger.CODE: 4&gt;}))
+                        frozenset({&lt;RerunTrigger.PARAMS: 1&gt;,
+                        &lt;RerunTrigger.SOFTWARE_ENV: 3&gt;, &lt;RerunTrigger.INPUT:
+                        2&gt;, &lt;RerunTrigger.CODE: 4&gt;, &lt;RerunTrigger.MTIME: 0&gt;}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -4120,7 +4120,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,input,params}, --lc {code,input,params}
+  --list-changes {params,input,code}, --lc {params,input,code}
                         List all output files for which the rule body (run or
                         shell) have changed in the Snakefile. (default: None)
   --list-input-changes, --li
@@ -4299,12 +4299,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({&lt;SharedFSUsage.SOURCES: 3&gt;,
+                        frozenset({&lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;,
                         &lt;SharedFSUsage.INPUT_OUTPUT: 1&gt;,
                         &lt;SharedFSUsage.PERSISTENCE: 0&gt;,
+                        &lt;SharedFSUsage.SOURCES: 3&gt;,
                         &lt;SharedFSUsage.SOURCE_CACHE: 5&gt;,
-                        &lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;,
-                        &lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;}))
+                        &lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -4318,7 +4318,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {subprocess,remote,default}
+  --mode {remote,default,subprocess}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -4526,7 +4526,7 @@ defaults.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+<script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
