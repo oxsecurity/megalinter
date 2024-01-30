@@ -54,6 +54,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.12.7 to **10.13.0** on 2024-01-28
   - [black](https://black.readthedocs.io/en/stable/) from 24.1.0 to **24.1.1** on 2024-01-28
   - [checkov](https://www.checkov.io/) from 3.1.70 to **3.2.0** on 2024-01-28
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.38.0 to **0.39.0** on 2024-01-29
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
