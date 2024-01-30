@@ -46,6 +46,7 @@ regex = '''((A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16})''
 secretGroup = 1
 
 # Cryptographic keys
+
 [[rules]]
 id = "private-key"
 description = "Generic private key"
