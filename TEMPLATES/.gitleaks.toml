@@ -10,7 +10,7 @@
 #  https://gitlab.com/ndaal_open_source/ndaal_secretes_search/-/raw/master/gitleaks_base.toml #
 #                                                                           #
 # License: MIT                                                              #
-# Copyright (C) 2022 ndaal GmbH & Co KG                                     #
+# Copyright (C) 2023, 2024 ndaal GmbH & Co KG                               #
 #---------------------------------------------------------------------------#
 
 title = "ndaal gitleaks config"
