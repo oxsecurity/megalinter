@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 8.1.0 to **8.1.1** on 2024-01-30
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.65.0 to **3.66.2** on 2024-01-30
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.3.2 to **3.12** on 2024-01-30
+  - [psalm](https://psalm.dev) from Psalm.5.20.0@ to **Psalm.5.21.0@** on 2024-01-30
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
