@@ -162,8 +162,9 @@ OPTIONS
            changes, or given baseline hash doesn't exist.
 
        --beta-testing-secrets-enabled
-           Enable support for secret validation. Requires Semgrep Secrets,
-           contact support@semgrep.com for more information on this.
+           Please use --secrets instead of --beta-testing-secrets. Requires
+           Semgrep Secrets, contact support@semgrep.com for more information
+           on this.
 
        -d, --dump-command-for-core
            <internal, do not use>
@@ -348,7 +349,7 @@ OPTIONS
            negates --rewrite-rule-ids
 
        --no-secrets-validation
-           Disables secrets validation
+           Disables secret validation.
 
        --no-strict
            negates --strict
@@ -371,7 +372,7 @@ OPTIONS
            Run using only OSS features, even if the Semgrep Pro toggle is on.
 
        --pro
-           Inter-file analysis and Pro languages (currently just Apex).
+           Inter-file analysis and Pro languages (currently Apex and Elixir).
            Requires Semgrep Pro Engine. See
            https://semgrep.dev/products/pro-engine/ for more.
 
@@ -381,8 +382,8 @@ OPTIONS
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-languages
-           Enable Pro languages (currently just Apex). Requires Semgrep Pro
-           Engine. See https://semgrep.dev/products/pro-engine/ for more.
+           Enable Pro languages (currently Apex and Elixir). Requires Semgrep
+           Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            <undocumented>
