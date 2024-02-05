@@ -54,6 +54,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 24.1.0 to **24.1.1** on 2024-01-28
   - [checkov](https://www.checkov.io/) from 3.1.70 to **3.2.0** on 2024-01-28
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.38.0 to **0.39.0** on 2024-01-29
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.348 to **1.1.349** on 2024-01-30
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.14 to **0.1.15** on 2024-01-30
+  - [checkov](https://www.checkov.io/) from 3.2.0 to **3.2.2** on 2024-01-30
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.1.0 to **8.1.1** on 2024-01-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.65.0 to **3.66.2** on 2024-01-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.3.2 to **3.12** on 2024-01-30
+  - [psalm](https://psalm.dev) from Psalm.5.20.0@ to **Psalm.5.21.0@** on 2024-01-30
+  - [checkov](https://www.checkov.io/) from 3.2.2 to **3.2.3** on 2024-01-31
+  - [syft](https://github.com/anchore/syft) from 0.102.0 to **0.103.1** on 2024-01-31
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
