@@ -70,6 +70,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.3 to **0.49.0** on 2024-02-02
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.66.2 to **3.67.0** on 2024-02-02
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.9.0 to **0.10.0** on 2024-02-02
+  - [prettier](https://prettier.io/) from 3.2.4 to **3.2.5** on 2024-02-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.349 to **1.1.350** on 2024-02-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.2.0 to **0.2.1** on 2024-02-06
+  - [checkov](https://www.checkov.io/) from 3.2.5 to **3.2.8** on 2024-02-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.0 to **3.67.2** on 2024-02-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 3.12 to **8.4.4** on 2024-02-06
+  - [lychee](https://lychee.cli.rs) from 0.14.2 to **0.14.3** on 2024-02-06
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.1 to **1.7.2** on 2024-02-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.22 to **0.55.0** on 2024-02-06
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
