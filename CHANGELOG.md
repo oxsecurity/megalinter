@@ -81,6 +81,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.1 to **1.7.2** on 2024-02-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.22 to **0.55.0** on 2024-02-06
   - [checkov](https://www.checkov.io/) from 3.2.8 to **3.2.9** on 2024-02-06
+  - [checkov](https://www.checkov.io/) from 3.2.9 to **3.2.12** on 2024-02-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.49.0 to **0.49.1** on 2024-02-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.49.0 to **0.49.1** on 2024-02-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.2 to **3.67.4** on 2024-02-06
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.20.0 to **3.21.0** on 2024-02-06
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.20.0 to **3.21.0** on 2024-02-06
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.20.0 to **3.21.0** on 2024-02-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.4 to **8.4.6** on 2024-02-06
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.33.0 to **1.34.0** on 2024-02-06
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
