@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.65.0**
+- Version in MegaLinter: **3.67.2**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -108,6 +108,9 @@ Flags:
       --concurrency=4            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
       --[no-]only-verified       Only output verified results.
+      --[no-]allow-verification-overlap
+                                 Allow verification of similar credentials
+                                 across detectors
       --[no-]filter-unverified   Only output first unverified result per
                                  chunk per detector if there are more than one
                                  results.

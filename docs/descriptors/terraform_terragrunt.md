@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.54.22**
+- Version in MegaLinter: **0.55.0**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -88,6 +88,7 @@ USAGE:
 COMMANDS:
    aws-provider-patch     Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018).
    catalog                Launch the user interface for searching and managing your module catalog.
+   graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
    output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
@@ -136,7 +137,7 @@ GLOBAL OPTIONS:
    --help, -h                                       Show help
    --version, -v                                    Show terragrunt version
 
-VERSION: v0.54.22
+VERSION: v0.55.0
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```

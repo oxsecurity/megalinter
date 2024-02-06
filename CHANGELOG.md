@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - CI
+  - Free more disk space before docker build
 
 - Linter versions upgrades
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.347 to **1.1.348** on 2024-01-21
@@ -55,6 +56,33 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 24.1.0 to **24.1.1** on 2024-01-28
   - [checkov](https://www.checkov.io/) from 3.1.70 to **3.2.0** on 2024-01-28
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.38.0 to **0.39.0** on 2024-01-29
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.348 to **1.1.349** on 2024-01-30
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.14 to **0.1.15** on 2024-01-30
+  - [checkov](https://www.checkov.io/) from 3.2.0 to **3.2.2** on 2024-01-30
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.1.0 to **8.1.1** on 2024-01-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.65.0 to **3.66.2** on 2024-01-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.3.2 to **3.12** on 2024-01-30
+  - [psalm](https://psalm.dev) from Psalm.5.20.0@ to **Psalm.5.21.0@** on 2024-01-30
+  - [checkov](https://www.checkov.io/) from 3.2.2 to **3.2.3** on 2024-01-31
+  - [syft](https://github.com/anchore/syft) from 0.102.0 to **0.103.1** on 2024-01-31
+  - [stylelint](https://stylelint.io) from 16.2.0 to **16.2.1** on 2024-02-02
+  - [psalm](https://psalm.dev) from Psalm.5.21.0@ to **Psalm.5.21.1@** on 2024-02-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.1.15 to **0.2.0** on 2024-02-02
+  - [checkov](https://www.checkov.io/) from 3.2.3 to **3.2.5** on 2024-02-02
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.48.3 to **0.49.0** on 2024-02-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.48.3 to **0.49.0** on 2024-02-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.66.2 to **3.67.0** on 2024-02-02
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.9.0 to **0.10.0** on 2024-02-02
+  - [prettier](https://prettier.io/) from 3.2.4 to **3.2.5** on 2024-02-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.349 to **1.1.350** on 2024-02-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.2.0 to **0.2.1** on 2024-02-06
+  - [checkov](https://www.checkov.io/) from 3.2.5 to **3.2.8** on 2024-02-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.0 to **3.67.2** on 2024-02-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 3.12 to **8.4.4** on 2024-02-06
+  - [lychee](https://lychee.cli.rs) from 0.14.2 to **0.14.3** on 2024-02-06
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.1 to **1.7.2** on 2024-02-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.22 to **0.55.0** on 2024-02-06
+  - [checkov](https://www.checkov.io/) from 3.2.8 to **3.2.9** on 2024-02-06
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
