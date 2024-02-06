@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Activate CI servers reporters only if we find a related default env variable
 
 - Doc
+  - Update copyright year to 2024
 
 - CI
   - Free more disk space before docker build
