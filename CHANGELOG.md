@@ -79,6 +79,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lychee](https://lychee.cli.rs) from 0.14.2 to **0.14.3** on 2024-02-06
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.1 to **1.7.2** on 2024-02-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.54.22 to **0.55.0** on 2024-02-06
+  - [checkov](https://www.checkov.io/) from 3.2.8 to **3.2.9** on 2024-02-06
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
