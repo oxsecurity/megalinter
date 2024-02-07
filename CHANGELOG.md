@@ -90,6 +90,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.20.0 to **3.21.0** on 2024-02-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.4 to **8.4.6** on 2024-02-06
   - [yamllint](https://yamllint.readthedocs.io/) from 1.33.0 to **1.34.0** on 2024-02-06
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 6.22.2 to **24.2.0** on 2024-02-07
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.24.24 to **0.25.3** on 2024-02-07
+  - [checkov](https://www.checkov.io/) from 3.2.12 to **3.2.17** on 2024-02-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.6 to **8.4.7** on 2024-02-07
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
