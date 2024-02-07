@@ -11,7 +11,7 @@
 <link href="../salesforce_sfdx_scanner_apex/" rel="prev"/>
 <link href="../salesforce_sfdx_scanner_lwc/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.8" name="generator"/>
 <title>sfdx-scanner-aura configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3326,7 +3326,7 @@
 <p><strong>Workaround: Restricted to Aura</strong></p>
 <h2 id="sfdx-scanner-aura-documentation">sfdx-scanner-aura documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.20.0</strong></li>
+<li>Version in MegaLinter: <strong>3.21.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure sfdx-scanner-aura rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring/rules#disabling-rules" target="_blank">How to disable sfdx-scanner-aura rules in files</a></li>
@@ -3471,17 +3471,17 @@
 <pre><code class="language-shell">sfdx scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:2175) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:2165) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run -t &lt;value&gt; [--verbose] [-c &lt;value&gt;] [-f
+  $ sf scanner run [--verbose] [-c &lt;value&gt;] [-f
     csv|html|json|junit|sarif|table|xml] [-o &lt;value&gt;] [-s &lt;value&gt; | ]
     [--normalize-severity] [-p &lt;value&gt;] [-r &lt;value&gt;] [-e
     eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
-    [--tsconfig &lt;value&gt;] [--eslintconfig &lt;value&gt;] [--pmdconfig &lt;value&gt;] [--env
-    &lt;value&gt;] [--verbose-violations]
+    [-t &lt;value&gt;] [--tsconfig &lt;value&gt;] [--eslintconfig &lt;value&gt;] [--pmdconfig
+    &lt;value&gt;] [--env &lt;value&gt;] [--verbose-violations]
 
 FLAGS
   -c, --category=&lt;value&gt;...         one or more categories of rules to run
@@ -3492,13 +3492,13 @@ FLAGS
                                     &lt;options:
                                     csv|html|json|junit|sarif|table|xml&gt;
   -o, --outfile=&lt;value&gt;             write output to a file
-  -p, --projectdir=&lt;value&gt;          provide root directory of project
+  -p, --projectdir=&lt;value&gt;...       root directory of project
   -r, --ruleset=&lt;value&gt;...          [deprecated] rulesets to run
   -s, --severity-threshold=&lt;value&gt;  throw an error when a violation threshold is
                                     reached, the --normalize-severity is
                                     invoked, and severity levels are reset to
                                     the baseline
-  -t, --target=&lt;value&gt;...           (required) source code location
+  -t, --target=&lt;value&gt;...           source code location
       --env=&lt;value&gt;                 [deprecated] override ESLint's default
                                     environment variables, in JSON-formatted
                                     string
@@ -3516,8 +3516,10 @@ FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2195) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2184) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.21.0) differs from the version
+ ›    specified by sf (3.20.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -3822,7 +3824,7 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner \
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
+<script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
