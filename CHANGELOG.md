@@ -94,6 +94,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.24.24 to **0.25.3** on 2024-02-07
   - [checkov](https://www.checkov.io/) from 3.2.12 to **3.2.17** on 2024-02-07
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.6 to **8.4.7** on 2024-02-07
+  - [golangci-lint](https://golangci-lint.run/) from 1.55.2 to **1.56.0** on 2024-02-07
+  - [revive](https://revive.run/) from 1.3.6 to **1.3.7** on 2024-02-07
+  - [syft](https://github.com/anchore/syft) from 0.103.1 to **0.104.0** on 2024-02-07
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21

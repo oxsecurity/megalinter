@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.103.1**
+- Version in MegaLinter: **0.104.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -160,6 +160,10 @@ Application Configuration:
       # (env: SYFT_FILE_CONTENT_GLOBS)
       globs: []
 
+    executable:
+      # (env: SYFT_FILE_EXECUTABLE_GLOBS)
+      globs: []
+
   # selection of layers to catalog, options=[squashed all-layers] (env: SYFT_SCOPE)
   scope: 'squashed'
 
@@ -271,11 +275,12 @@ Application Configuration:
   # show catalogers that have been de-selected (env: SYFT_SHOW_HIDDEN)
   show-hidden: false
 
-  # (env: SYFT_KEY)
-  key:
+  attest:
+    # the key to use for the attestation (env: SYFT_ATTEST_KEY)
+    key:
 
-  # (env: SYFT_PASSWORD)
-  password:
+    # (env: SYFT_ATTEST_PASSWORD)
+    password:
 
 Config Search Locations:
   - .syft.yaml
