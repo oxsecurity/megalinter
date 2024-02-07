@@ -88,7 +88,7 @@ sfdx flow:scan
 ### Help content
 
 ```shell
-(node:1938) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1928) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
