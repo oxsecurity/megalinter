@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.20.0**
+- Version in MegaLinter: **3.21.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -93,17 +93,17 @@ sfdx scanner:run
 ### Help content
 
 ```shell
-(node:1941) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1959) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run -t <value> [--verbose] [-c <value>] [-f
+  $ sf scanner run [--verbose] [-c <value>] [-f
     csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | ]
     [--normalize-severity] [-p <value>] [-r <value>] [-e
     eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
-    [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig <value>] [--env
-    <value>] [--verbose-violations]
+    [-t <value>] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
+    <value>] [--env <value>] [--verbose-violations]
 
 FLAGS
   -c, --category=<value>...         one or more categories of rules to run
@@ -114,13 +114,13 @@ FLAGS
                                     <options:
                                     csv|html|json|junit|sarif|table|xml>
   -o, --outfile=<value>             write output to a file
-  -p, --projectdir=<value>          provide root directory of project
+  -p, --projectdir=<value>...       root directory of project
   -r, --ruleset=<value>...          [deprecated] rulesets to run
   -s, --severity-threshold=<value>  throw an error when a violation threshold is
                                     reached, the --normalize-severity is
                                     invoked, and severity levels are reset to
                                     the baseline
-  -t, --target=<value>...           (required) source code location
+  -t, --target=<value>...           source code location
       --env=<value>                 [deprecated] override ESLint's default
                                     environment variables, in JSON-formatted
                                     string
@@ -138,8 +138,10 @@ FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:1957) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1976) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.21.0) differs from the version
+ ›    specified by sf (3.20.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
