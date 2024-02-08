@@ -16,8 +16,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - powershell: Improve table output, by @efrecon in [#3313](https://github.com/oxsecurity/megalinter/issues/3313)
   - Allow active_only_if_file_found to work in specified subdirectory (_DIRECTORY), fixes [#2873](https://github.com/oxsecurity/megalinter/issues/2873)
   - Activate CI servers reporters only if we find a related default env variable
+
 
 - Doc
   - Update copyright year to 2024
