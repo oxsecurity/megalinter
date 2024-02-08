@@ -59,7 +59,9 @@ class PowershellLinter(Linter):
         if self.linter_name == "powershell":
             # Enforce table output for easier parsing of number of errors
             # (severity first)
-            pwsh_script[0] += " | Format-Table -AutoSize -Wrap -Property Severity, RuleName, ScriptName, Line, Message"
+            pwsh_script[
+                0
+            ] += " | Format-Table -AutoSize -Wrap -Property Severity, RuleName, ScriptName, Line, Message"
             # Format output to fit in terminal, respecting the terminal width.
             # Use good defaults, shutil respects COLUMNS env var. For more info:
             # https://stackoverflow.com/a/76889369
