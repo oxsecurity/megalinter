@@ -97,6 +97,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.55.2 to **1.56.0** on 2024-02-07
   - [revive](https://revive.run/) from 1.3.6 to **1.3.7** on 2024-02-07
   - [syft](https://github.com/anchore/syft) from 0.103.1 to **0.104.0** on 2024-02-07
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.1 to **8.18.2** on 2024-02-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.50.2 to **0.50.3** on 2024-02-07
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
