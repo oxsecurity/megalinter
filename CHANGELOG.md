@@ -101,6 +101,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.103.1 to **0.104.0** on 2024-02-07
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.1 to **8.18.2** on 2024-02-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.50.2 to **0.50.3** on 2024-02-07
+  - [golangci-lint](https://golangci-lint.run/) from 1.56.0 to **1.56.1** on 2024-02-08
+  - [checkov](https://www.checkov.io/) from 3.2.17 to **3.2.19** on 2024-02-08
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.4 to **3.67.5** on 2024-02-08
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.75 to **0.1.76** on 2024-02-08
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
