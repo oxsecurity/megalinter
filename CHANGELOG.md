@@ -20,12 +20,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow active_only_if_file_found to work in specified subdirectory (_DIRECTORY), fixes [#2873](https://github.com/oxsecurity/megalinter/issues/2873)
   - Activate CI servers reporters only if we find a related default env variable
 
-
 - Doc
   - Update copyright year to 2024
 
 - CI
   - Free more disk space before docker build
+  - Upgrade peter-evans/create-pull-request from v5 to v6 in GitHub Actions workflows
 
 - Linter versions upgrades
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.347 to **1.1.348** on 2024-01-21
