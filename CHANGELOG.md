@@ -105,6 +105,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.17 to **3.2.19** on 2024-02-08
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.4 to **3.67.5** on 2024-02-08
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.75 to **0.1.76** on 2024-02-08
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.85.0 to **0.85.1** on 2024-02-09
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.0 to **14.2.1** on 2024-02-09
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.3 to **4.2.4** on 2024-02-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.7 to **8.4.8** on 2024-02-09
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
