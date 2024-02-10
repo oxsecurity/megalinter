@@ -115,6 +115,7 @@ directory, all shell scripts found under that directory will be used.
   -d,  --diff      error with a diff when the formatting differs
   -s,  --simplify  simplify the code
   -mn, --minify    minify the code to reduce its size (implies -s)
+  --apply-ignore   always apply EditorConfig ignore rules
 
 Parser options:
 
