@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Free more disk space before docker build
+  - Upgrade peter-evans/create-pull-request from v5 to v6 in GitHub Actions workflows
 
 - Linter versions upgrades
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.347 to **1.1.348** on 2024-01-21
