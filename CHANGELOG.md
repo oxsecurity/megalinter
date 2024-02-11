@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Upgrade actions/checkout and stefanzweifel/git-auto-commit-action in generator template workflow
+  - Upgrade base python image to python:3.12.2-alpine3.19
 
 - Media
 
@@ -109,6 +110,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.0 to **14.2.1** on 2024-02-09
   - [puppet-lint](http://puppet-lint.com/) from 4.2.3 to **4.2.4** on 2024-02-09
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.7 to **8.4.8** on 2024-02-09
+  - [phplint](https://github.com/overtrue/phplint) from 9.1.0 to **9.1.2** on 2024-02-10
+  - [grype](https://github.com/anchore/grype) from 0.63.1 to **0.74.5** on 2024-02-10
 <!-- linter-versions-end -->
 
 ## [v7.8.0] - 2024-01-21
