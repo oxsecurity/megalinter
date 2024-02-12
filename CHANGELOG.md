@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2023.12.15 to **2024.02.12** on 2024-02-12
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
