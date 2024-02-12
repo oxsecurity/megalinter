@@ -386,7 +386,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 
 # CSHARP installation
-    && apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # DART installation
@@ -489,7 +489,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 
@@ -667,7 +667,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
@@ -732,7 +732,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint

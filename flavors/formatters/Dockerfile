@@ -161,7 +161,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 #OTHER__START
 # CSHARP installation
-RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # POWERSHELL installation
@@ -173,7 +173,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 
