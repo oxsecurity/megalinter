@@ -385,8 +385,6 @@ linters:
     linter_repo: https://github.com/returntocorp/semgrep
     linter_speed: 1
     linter_text: |
-      **Disabled until https://github.com/semgrep/semgrep/issues/9632 is solved**
-
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
       Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
