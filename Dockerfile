@@ -34,12 +34,12 @@ FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.50.2 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
@@ -49,7 +49,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -91,7 +91,6 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
-                dotnet7-sdk \
                 openjdk17 \
                 perl \
                 perl-dev \
@@ -384,10 +383,10 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
-
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 
 # CSHARP installation
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # DART installation
@@ -489,6 +488,8 @@ RUN sf plugins install @salesforce/plugin-packaging \
 
 
 # VBDOTNET installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 
@@ -632,7 +633,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint@9.1.0 --force-accept-unsigned -g
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
 
 
 # powershell installation
@@ -666,6 +667,8 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # devskim installation
 # Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+# Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
@@ -676,7 +679,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
@@ -728,6 +731,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 # tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint

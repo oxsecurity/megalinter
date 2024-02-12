@@ -24,7 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -33,7 +33,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -71,7 +71,6 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 icu-libs \
-                dotnet7-sdk \
                 openjdk17 \
                 py3-pyflakes \
                 nodejs \
@@ -267,10 +266,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 
 # CSHARP installation
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # KOTLIN installation
@@ -286,6 +285,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 #     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # VBDOTNET installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 
@@ -368,7 +369,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
@@ -387,6 +388,8 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 # tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint

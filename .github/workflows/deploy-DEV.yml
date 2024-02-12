@@ -74,7 +74,7 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.5.0
+        uses: docker/metadata-action@v5.5.1
         id: meta
         with:
           images: |
@@ -228,7 +228,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: "18.x"
       - name: Install NPM dependencies

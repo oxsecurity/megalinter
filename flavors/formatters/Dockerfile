@@ -19,7 +19,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -50,7 +50,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                dotnet7-sdk \
                 icu-libs \
                 npm \
                 nodejs-current \
@@ -162,6 +161,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 #OTHER__START
 # CSHARP installation
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # POWERSHELL installation
@@ -172,6 +172,8 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 
 # VBDOTNET installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 

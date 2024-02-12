@@ -30,11 +30,11 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.50.2 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
@@ -44,7 +44,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -459,7 +459,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint@9.1.0 --force-accept-unsigned -g
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
 
 
 # mypy installation
@@ -469,7 +469,7 @@ ENV MYPY_CACHE_DIR=/tmp
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics

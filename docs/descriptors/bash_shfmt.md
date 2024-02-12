@@ -9,7 +9,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.7.0**
+- Version in MegaLinter: **3.8.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -115,6 +115,7 @@ directory, all shell scripts found under that directory will be used.
   -d,  --diff      error with a diff when the formatting differs
   -s,  --simplify  simplify the code
   -mn, --minify    minify the code to reduce its size (implies -s)
+  --apply-ignore   always apply EditorConfig ignore rules
 
 Parser options:
 

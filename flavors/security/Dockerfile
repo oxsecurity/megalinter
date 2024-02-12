@@ -18,10 +18,10 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
-FROM ghcr.io/terraform-linters/tflint:v0.50.2 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
@@ -29,7 +29,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -64,7 +64,6 @@ RUN apk add --no-cache \
                 gcompat \
                 libc6-compat \
                 libstdc++ \
-                dotnet7-sdk \
                 npm \
                 nodejs-current \
                 yarn \
@@ -198,10 +197,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
-
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
 
 # devskim installation
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
@@ -212,7 +211,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
