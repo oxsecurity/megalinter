@@ -65,9 +65,11 @@ class GithubStatusReporter(Reporter):
             description = (
                 success_msg
                 if self.master.status == "success" and self.master.return_code == 0
-                else error_not_blocking
-                if self.master.status == "error" and self.master.return_code == 0
-                else error_msg
+                else (
+                    error_not_blocking
+                    if self.master.status == "error" and self.master.return_code == 0
+                    else error_msg
+                )
             )
             if self.master.show_elapsed_time is True:
                 description += f" ({str(round(self.master.elapsed_time_s, 2))}s)"

@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **3.12**
+- Version in MegaLinter: **8.4.8**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,code,params}] [--list-input-changes]
+                 [--list-changes {code,params,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -144,7 +144,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
-                 [--notemp] [--all-temp]
+                 [--queue-input-wait-time SECONDS] [--notemp] [--all-temp]
                  [--unneeded-temp-files FILE [FILE ...]]
                  [--keep-storage-local-copies]
                  [--target-files-omit-workdir-adjustment]
@@ -162,7 +162,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,remote,subprocess}] [--show-failed-logs]
+                 [--mode {subprocess,remote,default}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--container-image IMAGE]
                  [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
@@ -353,7 +353,7 @@ EXECUTION:
                         currently only supported by the Google Life Sciences
                         executor and ignored by all other executors. If no
                         rule names are provided, all rules are considered to
-                        be preemptible. The (default: None)
+                        be preemptible. (default: None)
   --preemptible-retries PREEMPTIBLE_RETRIES
                         Number of retries that shall be made in order to
                         finish a job from of rule that has been marked as
@@ -404,8 +404,8 @@ EXECUTION:
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
                         frozenset({<RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.CODE: 4>,
-                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.SOFTWARE_ENV:
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
                         3>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
@@ -643,7 +643,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {input,code,params}, --lc {input,code,params}
+  --list-changes {code,params,input}, --lc {code,params,input}
                         List all output files for which the rule body (run or
                         shell) have changed in the Snakefile. (default: None)
   --list-input-changes, --li
@@ -736,6 +736,10 @@ BEHAVIOR:
                         commandline. This is useful when the list of files is
                         too long to be passed on the commandline. (default:
                         None)
+  --queue-input-wait-time SECONDS
+                        Set the interval in seconds to check for new input in
+                        rules that use from_queue to obtain input files.
+                        (default: 10)
   --notemp, --nt        Ignore temp() declarations. This is useful when
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
@@ -818,12 +822,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
+                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOURCES: 3>,
+                        <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>}))
+                        <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -837,7 +841,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {default,remote,subprocess}
+  --mode {subprocess,remote,default}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -868,7 +872,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: None)
+                        running version. (default: snakemake/snakemake:v8.4.8)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -898,7 +902,7 @@ FLUX:
                         additionally specify --no-shared-fs. (default: False)
 
 SOFTWARE DEPLOYMENT:
-  --software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
+  --software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
                         Specify software environment deployment method.
                         (default: set())
   --container-cleanup-images

@@ -67,7 +67,7 @@
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
-      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
+      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated. Search in workspace, linter rules path, and files_sub_directory",
       "examples": [
         [
           ".editorconfig",

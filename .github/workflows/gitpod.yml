@@ -29,7 +29,7 @@ jobs:
         run: make bootstrap
 
       - name: Run Gitpod tests
-        uses: nick-invision/retry@v2
+        uses: nick-invision/retry@v3
         with:
           max_attempts: 3
           timeout_minutes: 10

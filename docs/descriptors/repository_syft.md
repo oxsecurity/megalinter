@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.100.0**
+- Version in MegaLinter: **0.104.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -81,15 +81,15 @@ Usage:
 
 Application Configuration:
 
-  # (env: SYFT_CONFIG)
+  # the configuration file that was used to load application configuration (env: SYFT_CONFIG)
   config: ''
 
   # report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (env: SYFT_OUTPUT)
   output:
     - 'syft-table'
 
-  # file to write the default report output to (default is STDOUT) (env: SYFT_FILE)
-  file: ''
+  # file to write the default report output to (default is STDOUT) (env: SYFT_LEGACYFILE)
+  legacyFile: ''
 
   format:
     # (env: SYFT_FORMAT_PRETTY)
@@ -98,6 +98,9 @@ Application Configuration:
     template:
       # specify the path to a Go template file (env: SYFT_FORMAT_TEMPLATE_PATH)
       path: ''
+
+      # (env: SYFT_FORMAT_TEMPLATE_LEGACY)
+      legacy: false
 
     json:
       # (env: SYFT_FORMAT_JSON_LEGACY)
@@ -118,25 +121,61 @@ Application Configuration:
       # (env: SYFT_FORMAT_CYCLONEDX_XML_PRETTY)
       pretty: false
 
-  # (env: SYFT_CHECK_FOR_APP_UPDATE)
+  # whether to check for an application update on start up or not (env: SYFT_CHECK_FOR_APP_UPDATE)
   check-for-app-update: true
 
   # enable one or more package catalogers (env: SYFT_CATALOGERS)
   catalogers: []
 
+  # set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source) (env: SYFT_DEFAULT_CATALOGERS)
+  default-catalogers: []
+
+  # add, remove, and filter the catalogers to be used (env: SYFT_SELECT_CATALOGERS)
+  select-catalogers: []
+
   package:
-    cataloger:
-      # (env: SYFT_PACKAGE_CATALOGER_ENABLED)
-      enabled: true
-
-      # selection of layers to catalog, options=[squashed all-layers] (env: SYFT_PACKAGE_CATALOGER_SCOPE)
-      scope: 'squashed'
-
     # (env: SYFT_PACKAGE_SEARCH_UNINDEXED_ARCHIVES)
     search-unindexed-archives: false
 
     # (env: SYFT_PACKAGE_SEARCH_INDEXED_ARCHIVES)
     search-indexed-archives: true
+
+    # (env: SYFT_PACKAGE_EXCLUDE_BINARY_OVERLAP_BY_OWNERSHIP)
+    exclude-binary-overlap-by-ownership: true
+
+  file:
+    metadata:
+      # (env: SYFT_FILE_METADATA_SELECTION)
+      selection: owned-by-package
+
+      # (env: SYFT_FILE_METADATA_DIGESTS)
+      digests:
+        - 'sha1'
+        - 'sha256'
+
+    content:
+      # (env: SYFT_FILE_CONTENT_SKIP_FILES_ABOVE_SIZE)
+      skip-files-above-size: 256000
+
+      # (env: SYFT_FILE_CONTENT_GLOBS)
+      globs: []
+
+    executable:
+      # (env: SYFT_FILE_EXECUTABLE_GLOBS)
+      globs: []
+
+  # selection of layers to catalog, options=[squashed all-layers] (env: SYFT_SCOPE)
+  scope: 'squashed'
+
+  # number of cataloger workers to run in parallel (env: SYFT_PARALLELISM)
+  parallelism: 1
+
+  relationships:
+    # include package-to-file relationships that indicate which files are owned by which packages. (env: SYFT_RELATIONSHIPS_PACKAGE_FILE_OWNERSHIP)
+    package-file-ownership: true
+
+    # include package-to-package relationships that indicate one package is owned by another due to files claimed to be owned by one package are also evidence of another package's existence. (env: SYFT_RELATIONSHIPS_PACKAGE_FILE_OWNERSHIP_OVERLAP)
+    package-file-ownership-overlap: true
 
   golang:
     # (env: SYFT_GOLANG_SEARCH_LOCAL_MOD_CACHE_LICENSES)
@@ -179,32 +218,6 @@ Application Configuration:
     # (env: SYFT_PYTHON_GUESS_UNPINNED_REQUIREMENTS)
     guess-unpinned-requirements: false
 
-  file-metadata:
-    cataloger:
-      # (env: SYFT_FILE_METADATA_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_METADATA_CATALOGER_SCOPE)
-      scope: 'squashed'
-
-    # (env: SYFT_FILE_METADATA_DIGESTS)
-    digests:
-      - 'sha256'
-
-  file-contents:
-    cataloger:
-      # (env: SYFT_FILE_CONTENTS_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_CONTENTS_CATALOGER_SCOPE)
-      scope: 'squashed'
-
-    # (env: SYFT_FILE_CONTENTS_SKIP_FILES_ABOVE_SIZE)
-    skip-files-above-size: 1048576
-
-    # (env: SYFT_FILE_CONTENTS_GLOBS)
-    globs: []
-
   registry:
     # (env: SYFT_REGISTRY_INSECURE_SKIP_TLS_VERIFY)
     insecure-skip-tls-verify: false
@@ -217,14 +230,8 @@ Application Configuration:
     # (env: SYFT_REGISTRY_CA_CERT)
     ca-cert: ''
 
-  # exclude paths from being scanned using a glob expression (env: SYFT_EXCLUDE)
-  exclude: []
-
   # an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux') (env: SYFT_PLATFORM)
   platform: ''
-
-  # (env: SYFT_NAME)
-  name: ''
 
   source:
     # set the name of the target being analyzed (env: SYFT_SOURCE_NAME)
@@ -233,22 +240,20 @@ Application Configuration:
     # set the version of the target being analyzed (env: SYFT_SOURCE_VERSION)
     version: ''
 
+    # base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory (env: SYFT_SOURCE_BASE_PATH)
+    base-path: ''
+
     file:
       # (env: SYFT_SOURCE_FILE_DIGESTS)
       digests:
         - 'sha256'
 
-  # (env: SYFT_PARALLELISM)
-  parallelism: 1
+    image:
+      # (env: SYFT_SOURCE_IMAGE_DEFAULT_PULL_SOURCE)
+      default-pull-source: ''
 
-  # (env: SYFT_DEFAULT_IMAGE_PULL_SOURCE)
-  default-image-pull-source: ''
-
-  # base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory (env: SYFT_BASE_PATH)
-  base-path: ''
-
-  # (env: SYFT_EXCLUDE_BINARY_OVERLAP_BY_OWNERSHIP)
-  exclude-binary-overlap-by-ownership: true
+  # exclude paths from being scanned using a glob expression (env: SYFT_EXCLUDE)
+  exclude: []
 
   log:
     # suppress all logging output (env: SYFT_LOG_QUIET)
@@ -267,11 +272,15 @@ Application Configuration:
     # capture resource profiling data (available: [cpu, mem]) (env: SYFT_DEV_PROFILE)
     profile: none
 
-  # (env: SYFT_KEY)
-  key:
+  # show catalogers that have been de-selected (env: SYFT_SHOW_HIDDEN)
+  show-hidden: false
 
-  # (env: SYFT_PASSWORD)
-  password:
+  attest:
+    # the key to use for the attestation (env: SYFT_ATTEST_KEY)
+    key:
+
+    # (env: SYFT_ATTEST_PASSWORD)
+    password:
 
 Config Search Locations:
   - .syft.yaml
@@ -282,6 +291,7 @@ Config Search Locations:
 
 Available Commands:
   attest      Generate an SBOM as an attestation for the given [SOURCE] container image
+  cataloger   Show available catalogers and configuration
   completion  Generate the autocompletion script for the specified shell
   convert     Convert between SBOM formats
   help        Help about any command
@@ -290,22 +300,22 @@ Available Commands:
   version     show version information
 
 Flags:
-      --base-path string         base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
-      --catalogers stringArray   enable one or more package catalogers
-  -c, --config string            syft configuration file
-      --exclude stringArray      exclude paths from being scanned using a glob expression
-      --file string              file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
-  -h, --help                     help for syft
-      --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
-  -o, --output stringArray       report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
-      --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
-  -q, --quiet                    suppress all logging output
-  -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "squashed")
-      --source-name string       set the name of the target being analyzed
-      --source-version string    set the version of the target being analyzed
-  -t, --template string          specify the path to a Go template file
-  -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for syft
+      --base-path string                          base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
+  -c, --config string                             syft configuration file
+      --exclude stringArray                       exclude paths from being scanned using a glob expression
+      --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
+  -h, --help                                      help for syft
+  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
+      --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)
+      --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -q, --quiet                                     suppress all logging output
+  -s, --scope string                              selection of layers to catalog, options=[squashed all-layers] (default "squashed")
+      --select-catalogers stringArray             add, remove, and filter the catalogers to be used
+      --source-name string                        set the name of the target being analyzed
+      --source-version string                     set the version of the target being analyzed
+  -t, --template string                           specify the path to a Go template file
+  -v, --verbose count                             increase verbosity (-v = info, -vv = debug)
+      --version                                   version for syft
 
 Use "syft [command] --help" for more information about a command.
 ```

@@ -245,7 +245,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+        - FROM zricethezav/gitleaks:v8.18.2 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
@@ -284,11 +284,9 @@ linters:
     cli_version_arg_name: version
     examples:
       - "grype dir:."
-    downgraded_version: true
-    downgraded_reason: https://github.com/anchore/grype/issues/1388
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
   # KICS
@@ -387,6 +385,8 @@ linters:
     linter_repo: https://github.com/returntocorp/semgrep
     linter_speed: 1
     linter_text: |
+      **Disabled until https://github.com/semgrep/semgrep/issues/9632 is solved**
+
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
       Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`

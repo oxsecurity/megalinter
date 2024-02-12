@@ -49,6 +49,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
       #######################
       # Docker Buildx setup #
       #######################
@@ -63,13 +72,6 @@ jobs:
       ########################
       - name: Get current date
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
       ###################################
       # Build image locally for testing #
@@ -120,7 +122,7 @@ jobs:
       - name: Create Pull Request
         id: cpr
         if: steps.compute_versions.outputs.has_updated_versions == 1
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"

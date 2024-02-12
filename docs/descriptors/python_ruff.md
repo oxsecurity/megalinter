@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.1.11**
+- Version in MegaLinter: **0.2.1**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -111,7 +111,8 @@ Options:
 Log levels:
   -v, --verbose  Enable verbose logging
   -q, --quiet    Print diagnostics, but nothing else
-  -s, --silent   Disable all logging (but still exit with status code "1" upon detecting diagnostics)
+  -s, --silent   Disable all logging (but still exit with status code "1" upon detecting
+                 diagnostics)
 
 For help with a specific command, see: `ruff help <command>`.
 ```

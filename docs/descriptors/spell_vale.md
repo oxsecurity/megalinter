@@ -15,7 +15,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 ## vale documentation
 
-- Version in MegaLinter: **2.30.0**
+- Version in MegaLinter: **3.0.5**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -50,13 +50,13 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 Use vale in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                              |                                                                                  Install                                                                                   |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flymake-vale](https://github.com/tpeacock19/flymake-vale)                                  |                                                [Visit Web Site](https://github.com/tpeacock19/flymake-vale){target=_blank}                                                 |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | jetbrains                                            | [Vale](https://vale.sh/docs/integrations/jetbrains/)                                        |                                               [Visit Web Site](https://vale.sh/docs/integrations/jetbrains/){target=_blank}                                                |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-vale](https://packagecontrol.io/packages/SublimeLinter-contrib-vale) |                                       [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-vale){target=_blank}                                       |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [dense-analysis/vale](https://github.com/dense-analysis/ale)                                |                                                   [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Vale](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server)           | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/errata-ai.vale-server){target=_blank} |
+|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                              |                                                                                     Install                                                                                      |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flymake-vale](https://github.com/tpeacock19/flymake-vale)                                  |                                                   [Visit Web Site](https://github.com/tpeacock19/flymake-vale){target=_blank}                                                    |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | jetbrains                                            | [Vale](https://vale.sh/docs/integrations/jetbrains/)                                        |                                                  [Visit Web Site](https://vale.sh/docs/integrations/jetbrains/){target=_blank}                                                   |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-vale](https://packagecontrol.io/packages/SublimeLinter-contrib-vale) |                                          [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-vale){target=_blank}                                          |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [dense-analysis/vale](https://github.com/dense-analysis/ale)                                |                                                      [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                      |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Vale](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode)     | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ChrisChinchilla.vale-vscode){target=_blank} |
 
 ## MegaLinter Flavours
 
@@ -142,9 +142,10 @@ Flags:
 
 Commands:
 
- sync             Download and install external configuration sources.
  ls-config        Print the current configuration to stdout.
  ls-metrics       Print the given file's internal metrics to stdout.
+ ls-dirs          Print the default configuration directories to stdout.
+ sync             Download and install external configuration sources.
 
 ```
 

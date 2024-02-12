@@ -15,7 +15,7 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.55.2**
+- Version in MegaLinter: **1.56.1**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -108,7 +108,7 @@ Usage:
 Available Commands:
   cache       Cache control and information
   completion  Generate the autocompletion script for the specified shell
-  config      Config
+  config      Config file information
   help        Help
   linters     List current linters configuration
   run         Run the linters
@@ -116,7 +116,7 @@ Available Commands:
 
 Flags:
       --color string              Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
-  -j, --concurrency int           Concurrency (default NumCPU) (default 4)
+  -j, --concurrency int           Number of CPUs to use (Default: number of logical CPUs) (default 4)
       --cpu-profile-path string   Path to CPU profile output file
   -h, --help                      help for golangci-lint
       --mem-profile-path string   Path to memory profile output file

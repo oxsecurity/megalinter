@@ -24,7 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -33,7 +33,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -348,7 +348,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \

@@ -13,6 +13,8 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600)](https://github.com/returntocorp/semgrep) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/returntocorp/semgrep?sort=semver)](https://github.com/returntocorp/semgrep/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/contributors/)
 
+**Disabled until <https://github.com/semgrep/semgrep/issues/9632> is solved**
+
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
 
 Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
@@ -160,8 +162,9 @@ OPTIONS
            changes, or given baseline hash doesn't exist.
 
        --beta-testing-secrets-enabled
-           Enable support for secret validation. Requires Semgrep Secrets,
-           contact support@semgrep.com for more information on this.
+           Please use --secrets instead of --beta-testing-secrets. Requires
+           Semgrep Secrets, contact support@semgrep.com for more information
+           on this.
 
        -d, --dump-command-for-core
            <internal, do not use>
@@ -346,7 +349,7 @@ OPTIONS
            negates --rewrite-rule-ids
 
        --no-secrets-validation
-           Disables secrets validation
+           Disables secret validation.
 
        --no-strict
            negates --strict
@@ -369,7 +372,7 @@ OPTIONS
            Run using only OSS features, even if the Semgrep Pro toggle is on.
 
        --pro
-           Inter-file analysis and Pro languages (currently just Apex).
+           Inter-file analysis and Pro languages (currently Apex and Elixir).
            Requires Semgrep Pro Engine. See
            https://semgrep.dev/products/pro-engine/ for more.
 
@@ -379,8 +382,8 @@ OPTIONS
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-languages
-           Enable Pro languages (currently just Apex). Requires Semgrep Pro
-           Engine. See https://semgrep.dev/products/pro-engine/ for more.
+           Enable Pro languages (currently Apex and Elixir). Requires Semgrep
+           Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            <undocumented>
@@ -401,6 +404,11 @@ OPTIONS
        --registry-caching
            Cache for 24 hours in ~/.semgrep/cache rules from the registry.
            Requires --experimental.
+
+       --remote=VAL
+           Remote will quickly checkout and scan a remote git repository of
+           the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
+           --pro Incompatible with --project-root
 
        --replacement=VAL
            An autofix expression that will be applied to any matches found

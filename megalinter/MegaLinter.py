@@ -298,9 +298,9 @@ class Megalinter:
                         linter.descriptor_id, []
                     )
                     descriptor_active_linters += [linter]
-                    linters_by_descriptor[
-                        linter.descriptor_id
-                    ] = descriptor_active_linters
+                    linters_by_descriptor[linter.descriptor_id] = (
+                        descriptor_active_linters
+                    )
                 else:
                     # If the linter can not updates sources, no need to run it in the same group
                     linter_groups_without_fixes += [[linter]]

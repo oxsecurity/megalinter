@@ -16,14 +16,14 @@ FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mrtazz/checkmake:latest as checkmake
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 
 ##################
 # Get base image #
 ##################
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.2-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -200,7 +200,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin

@@ -466,6 +466,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-5.6.0.tgz#41dd6093d34652cddb5d5bdeee04eafc33826668"
   integrity sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==
 
+"@sindresorhus/merge-streams@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-1.0.0.tgz#9cd84cc15bc865a5ca35fcaae198eb899f7b5c90"
+  integrity sha512-rUV5WyJrJLoloD4NDN1V1+LDMDWOa4OTsT4yYJwQNpTU6FWxkxHpL7eu4w+DmiH8x/EAM1otkPE1+LaspIbplw==
+
 "@szmarczak/http-timer@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-5.0.1.tgz#c7c1bf1141cdd4751b0399c8fc7b8b664cd5be3a"
@@ -551,6 +556,11 @@
   dependencies:
     undici-types "~5.26.4"
 
+"@types/node@^16.18.26":
+  version "16.18.71"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.71.tgz#305a955ab99353d4b8a9e9b6b6682ed6cbc186cc"
+  integrity sha512-ARO+458bNJQeNEFuPyT6W+q9ULotmsQzhV3XABsFSxEvRMUYENcBsNAHWYPlahU+UHa5gCVwyKT1Z3f1Wwr26Q==
+
 "@types/node@^16.18.28", "@types/node@^16.18.31":
   version "16.18.59"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.59.tgz#4cdbd631be6d9be266a96fb17b5d0d7ad6bbe26c"
@@ -632,6 +642,13 @@
     "@types/node" "^16.18.28"
     minimatch "^9.0.0"
     readable-stream "^4.3.0"
+
+"@yeoman/types@^1.1.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@yeoman/types/-/types-1.1.2.tgz#8128972e5a4117344acf6d5508f180a38a6d46e4"
+  integrity sha512-/hg8AIU0ZLijHfZWi0vFgWPVWvUJs/tlKeia7Z5sKsWYGCcqsPSHZcnov5bZlpxv8v+vPQ8K9VtTKORtVALsJw==
+  dependencies:
+    "@types/node" "^16.18.26"
 
 abbrev@^1.0.0:
   version "1.1.1"
@@ -1581,6 +1598,17 @@ fast-glob@^3.3.0:
     merge2 "^1.3.0"
     micromatch "^4.0.4"
 
+fast-glob@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.2.tgz#a904501e57cfdd2ffcded45e99a54fef55e46129"
+  integrity sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==
+  dependencies:
+    "@nodelib/fs.stat" "^2.0.2"
+    "@nodelib/fs.walk" "^1.2.3"
+    glob-parent "^5.1.2"
+    merge2 "^1.3.0"
+    micromatch "^4.0.4"
+
 fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
@@ -1910,6 +1938,18 @@ globby@^13.2.2:
     ignore "^5.2.4"
     merge2 "^1.4.1"
     slash "^4.0.0"
+
+globby@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-14.0.0.tgz#ea9c062a3614e33f516804e778590fcf055256b9"
+  integrity sha512-/1WM/LNHRAOH9lZta77uGbq0dAEQM+XjNesWwhlERDVenqothRbnzTrL3/LrIoEPPjeUHC3vrS6TwoyxeHs7MQ==
+  dependencies:
+    "@sindresorhus/merge-streams" "^1.0.0"
+    fast-glob "^3.3.2"
+    ignore "^5.2.4"
+    path-type "^5.0.0"
+    slash "^5.1.0"
+    unicorn-magic "^0.1.0"
 
 got@^12.1.0:
   version "12.6.1"
@@ -3087,9 +3127,9 @@ onetime@^6.0.0:
     mimic-fn "^4.0.0"
 
 open@^10.0.2:
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/open/-/open-10.0.2.tgz#93b099c6194552b47afac969c9b83f874aee1ab8"
-  integrity sha512-GnYLdE+E3K8NeSE23N0g67/9q9AXRph5oTUbz6IbIgElPigEnQ2aHuqRge3y0JUr67qoc84xME5kF03fDc3fcA==
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/open/-/open-10.0.3.tgz#f60d8db49fa126c50aec751957fb5d7de3308d4f"
+  integrity sha512-dtbI5oW7987hwC9qjJTyABldTaa19SuyJse1QboWv3b0qCcrrLNVDqBx1XgELAjh9QTVQaP/C5b1nhQebd1H2A==
   dependencies:
     default-browser "^5.2.1"
     define-lazy-prop "^3.0.0"
@@ -3301,6 +3341,11 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+path-type@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/path-type/-/path-type-5.0.0.tgz#14b01ed7aea7ddf9c7c3f46181d4d04f9c785bb8"
+  integrity sha512-5HviZNaZcfqP95rwpv+1HDgUamezbqdSYTyzjTvwtJSnIH+3vnbmWsItli8OFEndS984VT55M3jduxZbX351gg==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"
@@ -4277,24 +4322,26 @@ yargs@16.2.0:
     yargs-parser "^20.2.2"
 
 yeoman-environment@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.0.0.tgz#24976d6d454c0b287769aeb646663ca75763e181"
-  integrity sha512-pdr9XhhIfRQmjG+VO2J0420SeI/E5O+dM8CLIG1+8q01kqtiZoxgfI1WGeMiZMIVv4jr8w63qhHVYr7gpRLDVA==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.3.0.tgz#73628defd7eda07ab191b83b0aea935a1a781d5a"
+  integrity sha512-8cKRpZbOSx4wFP2B8XvZLOuPiYq9okcWuwL99K80QbSPGB7IymwHWyMvtXiv2nbQrNXX9SNRLhzCIY4oSimWcQ==
   dependencies:
     "@yeoman/adapter" "^1.4.0"
     "@yeoman/conflicter" "^2.0.0-alpha.2"
     "@yeoman/namespace" "^1.0.0"
     "@yeoman/transform" "^1.2.0"
+    "@yeoman/types" "^1.1.1"
     arrify "^3.0.0"
     chalk "^5.3.0"
     commander "^11.1.0"
     debug "^4.3.4"
     execa "^8.0.1"
     fly-import "^0.4.0"
-    globby "^13.2.2"
+    globby "^14.0.0"
     grouped-queue "^2.0.0"
     locate-path "^7.2.0"
     lodash-es "^4.17.21"
+    mem-fs "^4.0.0"
     mem-fs-editor "^11.0.0"
     semver "^7.5.4"
     slash "^5.1.0"
