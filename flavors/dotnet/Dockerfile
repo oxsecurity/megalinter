@@ -71,7 +71,6 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 icu-libs \
-                dotnet8-sdk \
                 openjdk17 \
                 py3-pyflakes \
                 nodejs \
@@ -247,10 +246,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/po
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 
 # CSHARP installation
+    && apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # KOTLIN installation
@@ -266,6 +265,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 #     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # VBDOTNET installation
+# Next line commented because already managed by another linter
+# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 
@@ -367,6 +368,8 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 
 # tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
