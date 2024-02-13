@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
 - Doc
+  - Removed obsolete warning for semgrep as the issue has been fixed
 
 - CI
 
@@ -272,7 +273,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Updated lintr config template to use `linters_with_defaults()` (formerly `with_defaults()`)
   - Fix csharp installation dependencies, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3075>
   - Fix powershell installation by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3126>
-
 
 - Doc
   - Update lintr links to their current locations, by @echoix in [#3122](https://github.com/oxsecurity/megalinter/issues/3122)
