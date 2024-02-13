@@ -115,9 +115,8 @@ devskim 1.0.28+5b7d83e6c7
 
 - Dockerfile commands :
 ```dockerfile
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```
 
-- APK packages (Linux):
-  - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)

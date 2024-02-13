@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.25.3 to **0.25.53** on 2024-02-12
   - [phpstan](https://phpstan.org/) from 1.10.57 to **1.10.58** on 2024-02-12
   - [black](https://black.readthedocs.io/en/stable/) from 24.1.1 to **24.2.0** on 2024-02-12
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 7.0.115 to **8.0.101** on 2024-02-13
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
