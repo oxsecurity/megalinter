@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments
 
 - Doc
   - Removed obsolete warning for semgrep as the issue has been fixed

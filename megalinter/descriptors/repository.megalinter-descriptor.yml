@@ -491,14 +491,14 @@ linters:
     cli_lint_extra_args:
       - fs
       - --scanners
-      - vuln,config
+      - vuln,misconfig
       - --exit-code
       - "1"
     cli_lint_extra_args_after:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --scanners vuln,config ."
+      - "trivy fs --scanners vuln,misconfig ."
     install:
       dockerfile:
         - |
