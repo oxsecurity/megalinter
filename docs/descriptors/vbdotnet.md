@@ -32,8 +32,7 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
 
-- APK packages (Linux):
-  - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)
