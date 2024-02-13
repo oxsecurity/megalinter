@@ -3493,15 +3493,10 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">ENV PATH="${PATH}:/root/.dotnet/tools"
+<pre><code class="language-dockerfile">RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 </code></pre>
-<ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=dotnet7-sdk">dotnet7-sdk</a></li>
-</ul>
-</li>
-</ul>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
