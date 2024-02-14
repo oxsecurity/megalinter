@@ -358,6 +358,9 @@ OPTIONS
        --no-time
            negates --time
 
+       --no-trace
+           negates --trace
+
        -o VAL, --output=VAL
            Save search results to a file or post to URL. Default is to print
            to stdout.
@@ -461,6 +464,9 @@ OPTIONS
        --timeout-threshold=VAL (absent=3)
            Maximum number of rules that can time out on a file before the
            file is skipped. If set to 0 will not have limit. Defaults to 3.
+
+       --trace
+           Upload a trace of the scan to our endpoint (rule, target).
 
        --use-git-ignore
            Skip files ignored by git. Scanning starts from the root folder
