@@ -28,6 +28,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.57 to **1.10.58** on 2024-02-12
   - [black](https://black.readthedocs.io/en/stable/) from 24.1.1 to **24.2.0** on 2024-02-12
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 7.0.115 to **8.0.101** on 2024-02-13
+  - [psalm](https://psalm.dev) from Psalm.5.21.1@ to **Psalm.5.22.0@** on 2024-02-14
+  - [checkov](https://www.checkov.io/) from 3.2.20 to **3.2.21** on 2024-02-14
+  - [syft](https://github.com/anchore/syft) from 0.104.0 to **0.105.0** on 2024-02-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.5 to **3.67.6** on 2024-02-14
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21106 to **21107** on 2024-02-14
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
