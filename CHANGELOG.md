@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 0.104.0 to **0.105.0** on 2024-02-14
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.5 to **3.67.6** on 2024-02-14
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21106 to **21107** on 2024-02-14
+  - [grype](https://github.com/anchore/grype) from 0.74.5 to **0.74.6** on 2024-02-14
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
