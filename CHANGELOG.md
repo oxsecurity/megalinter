@@ -34,6 +34,26 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.5 to **3.67.6** on 2024-02-14
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21106 to **21107** on 2024-02-14
   - [grype](https://github.com/anchore/grype) from 0.74.5 to **0.74.6** on 2024-02-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.85.1 to **0.85.2** on 2024-02-23
+  - [csharpier](https://csharpier.com/) from 0.27.2 to **0.27.3** on 2024-02-23
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.101 to **8.0.102** on 2024-02-23
+  - [golangci-lint](https://golangci-lint.run/) from 1.56.1 to **1.56.2** on 2024-02-23
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.1 to **14.2.2** on 2024-02-23
+  - [eslint](https://eslint.org) from 8.56.0 to **8.57.0** on 2024-02-23
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.8.1 to **3.9.0** on 2024-02-23
+  - [phpstan](https://phpstan.org/) from 1.10.58 to **1.10.59** on 2024-02-23
+  - [psalm](https://psalm.dev) from Psalm.5.22.0@ to **Psalm.5.22.2@** on 2024-02-23
+  - [pylint](https://pylint.readthedocs.io) from 3.0.3 to **3.0.4** on 2024-02-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.350 to **1.1.351** on 2024-02-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.2.1 to **0.2.2** on 2024-02-23
+  - [checkov](https://www.checkov.io/) from 3.2.21 to **3.2.24** on 2024-02-23
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.28 to **1.0.30** on 2024-02-23
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.1.1 to **8.1.2** on 2024-02-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.67.6 to **3.68.0** on 2024-02-23
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.8 to **8.4.12** on 2024-02-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.3.2 to **8.4.1** on 2024-02-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.1 to **0.55.2** on 2024-02-23
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.34.0 to **1.35.1** on 2024-02-23
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11

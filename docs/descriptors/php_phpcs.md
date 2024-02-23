@@ -9,7 +9,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.8.1**
+- Version in MegaLinter: **3.9.0**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -111,7 +111,7 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
  -n    Do not print warnings (shortcut for --warning-severity=0)
  -w    Print both warnings and errors (this is the default)
  -l    Local directory only, no recursion
- -s    Show sniff codes in all reports
+ -s    Show error codes in all reports
  -a    Run interactively
  -e    Explain a standard by showing the sniffs it includes
  -p    Show progress of the run
